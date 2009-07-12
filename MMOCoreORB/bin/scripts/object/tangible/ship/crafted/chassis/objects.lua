@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_chassis_shared_awing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_crafted_chassis_shared_awing_deed = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_awing_de
 
 object_tangible_ship_crafted_chassis_shared_base_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_crafted_chassis_shared_base_deed = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_base_dee
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun
 
 object_tangible_ship_crafted_chassis_shared_bwing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_crafted_chassis_shared_bwing_deed = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_bwing_de
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_body = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_cockpit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_body = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_cockpit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_
 
 object_tangible_ship_crafted_chassis_shared_decimator_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_crafted_chassis_shared_decimator_deed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_decimato
 
 object_tangible_ship_crafted_chassis_shared_firespray_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_crafted_chassis_shared_firespray_deed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_firespra
 
 object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_hea
 
 object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_hea
 
 object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_lig
 
 object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_lig
 
 object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_med
 
 object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_med
 
 object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_tur
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s01 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s02 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s03 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s04 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s05 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_
 
 object_tangible_ship_crafted_chassis_shared_texture_kit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s06 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_
 
 object_tangible_ship_crafted_chassis_shared_tie_in_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_ship_crafted_chassis_shared_tie_in_deed = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tie_in_d
 
 object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tie_ligh
 
 object_tangible_ship_crafted_chassis_shared_tieadvanced_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_ship_crafted_chassis_shared_tieadvanced_deed = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieadvan
 
 object_tangible_ship_crafted_chassis_shared_tieaggressor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_ship_crafted_chassis_shared_tieaggressor_deed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieaggre
 
 object_tangible_ship_crafted_chassis_shared_tiebomber_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_ship_crafted_chassis_shared_tiebomber_deed = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tiebombe
 
 object_tangible_ship_crafted_chassis_shared_tiefighter_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_ship_crafted_chassis_shared_tiefighter_deed = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tiefight
 
 object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieinter
 
 object_tangible_ship_crafted_chassis_shared_tieoppressor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_ship_crafted_chassis_shared_tieoppressor_deed = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieoppre
 
 object_tangible_ship_crafted_chassis_shared_xwing_customization_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_paint_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_ship_crafted_chassis_shared_xwing_customization_kit = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_xwing_cu
 
 object_tangible_ship_crafted_chassis_shared_xwing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_ship_crafted_chassis_shared_xwing_deed = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_xwing_de
 
 object_tangible_ship_crafted_chassis_shared_ykl37r_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_ship_crafted_chassis_shared_ykl37r_deed = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ykl37r_d
 
 object_tangible_ship_crafted_chassis_shared_yt1300_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_ship_crafted_chassis_shared_yt1300_deed = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_yt1300_d
 
 object_tangible_ship_crafted_chassis_shared_ywing_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_ship_crafted_chassis_shared_ywing_deed = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ywing_de
 
 object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ywing_lo
 
 object_tangible_ship_crafted_chassis_shared_z95_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chassis_deed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_ship_crafted_chassis_shared_z95_deed = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_installation_faction_perk_covert_detector_shared_detector_base = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_beacon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 	scale = 2,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/covert_detector/detector_32m.sfp",

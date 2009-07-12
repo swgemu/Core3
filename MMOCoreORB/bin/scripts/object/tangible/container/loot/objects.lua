@@ -43,7 +43,7 @@
 
 object_tangible_container_loot_shared_astromech_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r4_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_astromech_cont
 
 object_tangible_container_loot_shared_computer_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_computer_conta
 
 object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_gas_filter_con
 
 object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_loot_crate, 12
 
 object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_headandbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_imprv_trash_pile_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_
 
 object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

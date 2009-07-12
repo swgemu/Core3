@@ -43,7 +43,7 @@
 
 object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/door.apt",
-	arrangementDescriptor = "hold_door",
+	arrangementDescriptors = {"hold_door"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_transport_shared_door, 2330152069)
 
 object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_a.apt",
-	arrangementDescriptor = "hold_strut_a",
+	arrangementDescriptors = {"hold_strut_a"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_a, 3646229980
 
 object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_b.apt",
-	arrangementDescriptor = "hold_strut_b",
+	arrangementDescriptors = {"hold_strut_b"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_b, 37922123)
 
 object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/strut_c.apt",
-	arrangementDescriptor = "hold_strut_c",
+	arrangementDescriptors = {"hold_strut_c"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_c, 1263518406
 
 object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/transport.apt",
-	arrangementDescriptor = "hold_transport",
+	arrangementDescriptors = {"hold_transport"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

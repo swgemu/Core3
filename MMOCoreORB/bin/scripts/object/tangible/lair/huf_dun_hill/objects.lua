@@ -43,7 +43,7 @@
 
 object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -78,7 +78,7 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

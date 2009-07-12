@@ -43,7 +43,7 @@
 
 object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_base_shared_static_base, 1732101595)
 
 object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

@@ -43,7 +43,7 @@
 
 object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_cargo_pocket.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_container_general_shared_cargo_pocke
 
 object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bag_ingredients_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_container_general_shared_satchel, 29
 
 object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_armoir
 
 object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_bookcase_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_bookca
 
 object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

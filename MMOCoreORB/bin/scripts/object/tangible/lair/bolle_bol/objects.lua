@@ -43,7 +43,7 @@
 
 object_tangible_lair_bolle_bol_shared_lair_bolle_bol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -78,7 +78,7 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol
 
 object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -128,7 +128,7 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

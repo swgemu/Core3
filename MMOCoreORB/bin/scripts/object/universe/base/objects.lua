@@ -43,7 +43,7 @@
 
 object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_universe_base_shared_base_universe, 242807679
 
 object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

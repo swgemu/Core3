@@ -43,7 +43,7 @@
 
 object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_food, 3480
 
 object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_medicine, 
 
 object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_money, 179
 
 object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_resource, 
 
 object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_warp, 1453
 
 object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_wound, 123
 
 object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_xp, 344087
 
 object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

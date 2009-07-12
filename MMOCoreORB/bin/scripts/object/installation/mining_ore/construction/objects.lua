@@ -43,7 +43,7 @@
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_c
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_c
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",

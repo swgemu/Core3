@@ -43,7 +43,7 @@
 
 object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_a
 
 object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_v
 
 object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_v
 
 object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_v
 
 object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

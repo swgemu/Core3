@@ -43,7 +43,7 @@
 
 object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_spawning_shared_fs_village_npc_spawn
 
 object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_spawning_shared_quest_spawner, 30651
 
 object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_spawning_shared_remote_theater_spawn
 
 object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

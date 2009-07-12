@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_base_shared_ship_component_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_components_base_shared_ship_component_base = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_com
 
 object_tangible_ship_components_base_shared_ship_component_loot_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_components_base_shared_ship_component_loot_base = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_com
 
 object_tangible_ship_components_base_shared_ship_subcomponent_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_components_base_shared_ship_subcomponent_base = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

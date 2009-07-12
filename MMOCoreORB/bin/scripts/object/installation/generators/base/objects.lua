@@ -43,7 +43,7 @@
 
 object_installation_generators_base_shared_power_generator_base = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",

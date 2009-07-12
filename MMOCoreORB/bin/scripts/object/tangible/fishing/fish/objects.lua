@@ -43,7 +43,7 @@
 
 object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_blackfish.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blackfish, 40862
 
 object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_blowfish.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blowfish, 201079
 
 object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_bluefish.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_bluefish, 299031
 
 object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_faa.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_faa, 2004254750)
 
 object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_fish_generic, 10
 
 object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_laa.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_laa, 2598448090)
 
 object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_ray.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_ray, 1789117227)
 
 object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_fish_striped_tropical.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

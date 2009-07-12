@@ -43,7 +43,7 @@
 
 object_draft_schematic_clothing_shared_clothing_apron_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_draft_schematic_clothing_shared_clothing_apron_chef_01 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apro
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apro
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apro
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apro
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_03 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apro
 
 object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_apro
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_l = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bicep_r = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_boots = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_l = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_bracer_r = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_chest = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_gloves = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_helmet = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bone_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bone_leggings = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_belt = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_l = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bicep_r = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_boots = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_l = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_bracer_r = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_chest_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_chest_plate 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_gloves = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_helmet = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_draft_schematic_clothing_shared_clothing_armor_bounty_hunter_leggings = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_l = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bicep_r = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_boots = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_l = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_bracer_r = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_chest = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_gloves = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_helmet = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_chitin_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_draft_schematic_clothing_shared_clothing_armor_chitin_leggings = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_l = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1438,7 +1438,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bicep_r = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1477,7 +1477,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_boots = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1516,7 +1516,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_l = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1555,7 +1555,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_bracer_r = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1594,7 +1594,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_chest = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1633,7 +1633,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_gloves = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1672,7 +1672,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_helmet = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_composite_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1711,7 +1711,7 @@ object_draft_schematic_clothing_shared_clothing_armor_composite_leggings = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1750,7 +1750,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_l 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1789,7 +1789,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bicep_r 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1828,7 +1828,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_boots = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1867,7 +1867,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_l
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1906,7 +1906,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_bracer_r
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1915,7 +1915,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1945,7 +1945,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_chest = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1954,7 +1954,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1984,7 +1984,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_gloves =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2023,7 +2023,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_helmet =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2032,7 +2032,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2062,7 +2062,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_defender_leggings
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2071,7 +2071,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2101,7 +2101,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_l 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2110,7 +2110,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2140,7 +2140,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bicep_r 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2149,7 +2149,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2179,7 +2179,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_boots = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2188,7 +2188,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2218,7 +2218,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_l
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2227,7 +2227,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2257,7 +2257,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_bracer_r
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2266,7 +2266,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2296,7 +2296,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_chest = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2305,7 +2305,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2335,7 +2335,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_gloves =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2344,7 +2344,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2374,7 +2374,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_helmet =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2383,7 +2383,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2413,7 +2413,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_guardian_leggings
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2422,7 +2422,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2452,7 +2452,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_l 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2461,7 +2461,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2491,7 +2491,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bicep_r 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2500,7 +2500,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2530,7 +2530,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_boots = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2539,7 +2539,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2569,7 +2569,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_l
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2578,7 +2578,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2608,7 +2608,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_bracer_r
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2617,7 +2617,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2647,7 +2647,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_chest = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2656,7 +2656,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2686,7 +2686,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_gloves =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2695,7 +2695,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2725,7 +2725,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_helmet =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2734,7 +2734,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2764,7 +2764,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ithorian_sentinel_leggings
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2773,7 +2773,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2803,7 +2803,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_brac
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2812,7 +2812,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2842,7 +2842,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_brac
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2851,7 +2851,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2881,7 +2881,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_ches
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2890,7 +2890,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2920,7 +2920,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_black_mtn_legg
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2929,7 +2929,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2959,7 +2959,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2968,7 +2968,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2998,7 +2998,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_bra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3007,7 +3007,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3037,7 +3037,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_che
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3046,7 +3046,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3076,7 +3076,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_ceremonial_leg
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3085,7 +3085,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3115,7 +3115,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3124,7 +3124,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3154,7 +3154,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_bracer
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3163,7 +3163,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3193,7 +3193,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_chest 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3202,7 +3202,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3232,7 +3232,7 @@ object_draft_schematic_clothing_shared_clothing_armor_kashyyykian_hunting_leggin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3241,7 +3241,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3271,7 +3271,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_belt = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3280,7 +3280,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3310,7 +3310,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_l = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3319,7 +3319,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3349,7 +3349,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bicep_r = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3358,7 +3358,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3388,7 +3388,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_boots = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3397,7 +3397,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3427,7 +3427,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_l = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3436,7 +3436,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3466,7 +3466,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_bracer_r = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3475,7 +3475,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_chest_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3505,7 +3505,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_chest_plate = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3514,7 +3514,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3544,7 +3544,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_gloves = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3553,7 +3553,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3583,7 +3583,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_helmet = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3592,7 +3592,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3622,7 +3622,7 @@ object_draft_schematic_clothing_shared_clothing_armor_mandalorian_leggings = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3631,7 +3631,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3661,7 +3661,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_belt = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3670,7 +3670,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3700,7 +3700,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_l = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3709,7 +3709,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3739,7 +3739,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bicep_r = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3748,7 +3748,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3778,7 +3778,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_boots = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3787,7 +3787,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3817,7 +3817,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_l = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3826,7 +3826,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3856,7 +3856,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_bracer_r = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3865,7 +3865,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3895,7 +3895,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_chest = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3904,7 +3904,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3934,7 +3934,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_gloves = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3973,7 +3973,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_helmet = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3982,7 +3982,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_padded_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4012,7 +4012,7 @@ object_draft_schematic_clothing_shared_clothing_armor_padded_leggings = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4021,7 +4021,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4051,7 +4051,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_l = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4060,7 +4060,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4090,7 +4090,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bicep_r = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4099,7 +4099,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4129,7 +4129,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_boots = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4138,7 +4138,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4168,7 +4168,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_l = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4177,7 +4177,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4207,7 +4207,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_bracer_r = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4216,7 +4216,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_chest_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4246,7 +4246,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_chest_plate = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4255,7 +4255,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4285,7 +4285,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_gloves = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4294,7 +4294,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4324,7 +4324,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_helmet = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4333,7 +4333,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ris_leggings = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4363,7 +4363,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ris_leggings = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4372,7 +4372,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_tantel_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4402,7 +4402,7 @@ object_draft_schematic_clothing_shared_clothing_armor_tantel_boots = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4411,7 +4411,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_tantel_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4441,7 +4441,7 @@ object_draft_schematic_clothing_shared_clothing_armor_tantel_chest = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4450,7 +4450,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_tantel_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4480,7 +4480,7 @@ object_draft_schematic_clothing_shared_clothing_armor_tantel_helmet = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4489,7 +4489,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4519,7 +4519,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_bandolier = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4528,7 +4528,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4558,7 +4558,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_boots = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4567,7 +4567,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_l = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4597,7 +4597,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_l = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4606,7 +4606,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_r = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4636,7 +4636,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_bracer_r = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4645,7 +4645,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4675,7 +4675,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_gloves = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4684,7 +4684,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4714,7 +4714,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_helmet = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4723,7 +4723,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_jacket = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4753,7 +4753,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_jacket = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4762,7 +4762,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_pants = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4792,7 +4792,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_pants = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4801,7 +4801,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4831,7 +4831,7 @@ object_draft_schematic_clothing_shared_clothing_armor_ubese_shirt = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4840,7 +4840,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_belt = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4870,7 +4870,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_belt = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4879,7 +4879,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_boots = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4909,7 +4909,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_boots = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4918,7 +4918,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_chest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4948,7 +4948,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_chest = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4957,7 +4957,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_gloves = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4987,7 +4987,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_gloves = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4996,7 +4996,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_helmet = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5026,7 +5026,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_helmet = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5035,7 +5035,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_armor_zam_pants = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5065,7 +5065,7 @@ object_draft_schematic_clothing_shared_clothing_armor_zam_pants = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5074,7 +5074,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_armo
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5104,7 +5104,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5113,7 +5113,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5143,7 +5143,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_03 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5152,7 +5152,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5182,7 +5182,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5191,7 +5191,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5221,7 +5221,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_04 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5230,7 +5230,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5260,7 +5260,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_05 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5269,7 +5269,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5299,7 +5299,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_06 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5308,7 +5308,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5338,7 +5338,7 @@ object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5347,7 +5347,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_back
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5377,7 +5377,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_02 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5386,7 +5386,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5416,7 +5416,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5425,7 +5425,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5455,7 +5455,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_03 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5464,7 +5464,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5494,7 +5494,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_04 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5503,7 +5503,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5533,7 +5533,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5542,7 +5542,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5572,7 +5572,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_05 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5581,7 +5581,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5611,7 +5611,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_06 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5620,7 +5620,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5650,7 +5650,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_07 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5659,7 +5659,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_bandolier_field_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5689,7 +5689,7 @@ object_draft_schematic_clothing_shared_clothing_bandolier_field_08 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5698,7 +5698,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_band
 
 object_draft_schematic_clothing_shared_clothing_base = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5728,7 +5728,7 @@ object_draft_schematic_clothing_shared_clothing_base = SharedDraftSchematicObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5737,7 +5737,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_base
 
 object_draft_schematic_clothing_shared_clothing_belt_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5767,7 +5767,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_01 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5776,7 +5776,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5806,7 +5806,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_02 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5815,7 +5815,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5845,7 +5845,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_03 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5854,7 +5854,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5884,7 +5884,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_04 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5923,7 +5923,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_05 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5932,7 +5932,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_05_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5962,7 +5962,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_05_quest = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5971,7 +5971,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6001,7 +6001,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_07 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6010,7 +6010,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6040,7 +6040,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_09 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6049,7 +6049,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6079,7 +6079,7 @@ object_draft_schematic_clothing_shared_clothing_belt_field_11 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6088,7 +6088,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6118,7 +6118,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_12 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6127,7 +6127,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6157,7 +6157,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_13 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6166,7 +6166,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6196,7 +6196,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_14 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6205,7 +6205,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6235,7 +6235,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_15 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6244,7 +6244,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6274,7 +6274,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_16 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6283,7 +6283,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6313,7 +6313,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_17 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6322,7 +6322,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6352,7 +6352,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_18 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6361,7 +6361,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6391,7 +6391,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_19 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6400,7 +6400,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_belt_formal_20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6430,7 +6430,7 @@ object_draft_schematic_clothing_shared_clothing_belt_formal_20 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6439,7 +6439,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_belt
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6469,7 +6469,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_01 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6478,7 +6478,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_biki
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6508,7 +6508,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_02 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6517,7 +6517,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_biki
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6547,7 +6547,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_03 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6556,7 +6556,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_biki
 
 object_draft_schematic_clothing_shared_clothing_bikini_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6586,7 +6586,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_casual_04 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6595,7 +6595,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_biki
 
 object_draft_schematic_clothing_shared_clothing_bikini_leggings_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6625,7 +6625,7 @@ object_draft_schematic_clothing_shared_clothing_bikini_leggings_casual_01 = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6634,7 +6634,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_biki
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6664,7 +6664,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_casual_08 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6673,7 +6673,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6703,7 +6703,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_casual_12 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6712,7 +6712,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6742,7 +6742,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6751,7 +6751,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6781,7 +6781,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_13 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6790,7 +6790,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6820,7 +6820,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_14 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6829,7 +6829,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6859,7 +6859,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_15 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6868,7 +6868,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_field_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6898,7 +6898,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_field_16 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6907,7 +6907,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_bodysuit_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6937,7 +6937,7 @@ object_draft_schematic_clothing_shared_clothing_bodysuit_formal_06 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6946,7 +6946,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_body
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6976,7 +6976,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_04 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6985,7 +6985,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7015,7 +7015,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_12 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7024,7 +7024,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7054,7 +7054,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_15 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7063,7 +7063,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7093,7 +7093,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_19 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7102,7 +7102,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_casual_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7132,7 +7132,7 @@ object_draft_schematic_clothing_shared_clothing_boots_casual_21 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7141,7 +7141,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7171,7 +7171,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_03 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7180,7 +7180,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7210,7 +7210,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_05 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7219,7 +7219,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7249,7 +7249,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_14 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7258,7 +7258,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_field_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7288,7 +7288,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_22 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7297,7 +7297,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_boots_field_34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7327,7 +7327,7 @@ object_draft_schematic_clothing_shared_clothing_boots_field_34 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7336,7 +7336,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_boot
 
 object_draft_schematic_clothing_shared_clothing_bustier_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7366,7 +7366,7 @@ object_draft_schematic_clothing_shared_clothing_bustier_casual_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7375,7 +7375,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bust
 
 object_draft_schematic_clothing_shared_clothing_bustier_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7405,7 +7405,7 @@ object_draft_schematic_clothing_shared_clothing_bustier_casual_02 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7414,7 +7414,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bust
 
 object_draft_schematic_clothing_shared_clothing_bustier_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7444,7 +7444,7 @@ object_draft_schematic_clothing_shared_clothing_bustier_casual_03 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7453,7 +7453,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_bust
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7483,7 +7483,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_05 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7492,7 +7492,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7522,7 +7522,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_06 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7531,7 +7531,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7561,7 +7561,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_07 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7570,7 +7570,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7600,7 +7600,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_09 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7609,7 +7609,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7639,7 +7639,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_10 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7648,7 +7648,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7678,7 +7678,7 @@ object_draft_schematic_clothing_shared_clothing_dress_casual_12 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7687,7 +7687,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7717,7 +7717,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_08 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7726,7 +7726,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7756,7 +7756,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7765,7 +7765,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7795,7 +7795,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_11 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7804,7 +7804,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7834,7 +7834,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_13 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7843,7 +7843,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7873,7 +7873,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_14 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7882,7 +7882,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7912,7 +7912,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_15 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7921,7 +7921,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7951,7 +7951,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_16 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7960,7 +7960,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7990,7 +7990,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_18 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7999,7 +7999,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8029,7 +8029,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_19 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8038,7 +8038,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_23 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8068,7 +8068,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_23 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8077,7 +8077,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8107,7 +8107,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_26 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8116,7 +8116,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8146,7 +8146,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_27 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8155,7 +8155,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_29 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8185,7 +8185,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_29 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8194,7 +8194,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_30 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8224,7 +8224,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_30 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8233,7 +8233,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_31 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8263,7 +8263,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_31 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8272,7 +8272,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_32 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8302,7 +8302,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_32 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8311,7 +8311,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_33 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8341,7 +8341,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_33 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8350,7 +8350,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8380,7 +8380,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_34 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8389,7 +8389,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_dress_formal_35 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8419,7 +8419,7 @@ object_draft_schematic_clothing_shared_clothing_dress_formal_35 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8428,7 +8428,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_dres
 
 object_draft_schematic_clothing_shared_clothing_gloves_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8458,7 +8458,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_casual_03 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8467,7 +8467,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8497,7 +8497,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_casual_06 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8506,7 +8506,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8536,7 +8536,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_02 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8545,7 +8545,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8575,7 +8575,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_07 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8584,7 +8584,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8614,7 +8614,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_10 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8623,7 +8623,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8653,7 +8653,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_11 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8662,7 +8662,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8692,7 +8692,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_12 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8701,7 +8701,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8731,7 +8731,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_13 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8740,7 +8740,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_gloves_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8770,7 +8770,7 @@ object_draft_schematic_clothing_shared_clothing_gloves_field_14 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8779,7 +8779,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_glov
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8809,7 +8809,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_02 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8818,7 +8818,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8848,7 +8848,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_10 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8857,7 +8857,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8887,7 +8887,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_12 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8896,7 +8896,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8926,7 +8926,7 @@ object_draft_schematic_clothing_shared_clothing_hat_casual_14 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8935,7 +8935,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8965,7 +8965,7 @@ object_draft_schematic_clothing_shared_clothing_hat_chef_01 = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8974,7 +8974,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_chef_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9004,7 +9004,7 @@ object_draft_schematic_clothing_shared_clothing_hat_chef_02 = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9013,7 +9013,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9043,7 +9043,7 @@ object_draft_schematic_clothing_shared_clothing_hat_field_04 = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9052,7 +9052,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9082,7 +9082,7 @@ object_draft_schematic_clothing_shared_clothing_hat_formal_13 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9091,7 +9091,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9121,7 +9121,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_01 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9130,7 +9130,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9160,7 +9160,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_casual_02 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9169,7 +9169,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9199,7 +9199,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_03 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9208,7 +9208,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9238,7 +9238,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_04 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9247,7 +9247,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9277,7 +9277,7 @@ object_draft_schematic_clothing_shared_clothing_hat_twilek_formal_05 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9286,7 +9286,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_hat_
 
 object_draft_schematic_clothing_shared_clothing_ith_apron_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9316,7 +9316,7 @@ object_draft_schematic_clothing_shared_clothing_ith_apron_chef_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9325,7 +9325,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9355,7 +9355,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_01 = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9364,7 +9364,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9394,7 +9394,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_03 = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9403,7 +9403,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9433,7 +9433,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_05 = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9442,7 +9442,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_backpack_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9472,7 +9472,7 @@ object_draft_schematic_clothing_shared_clothing_ith_backpack_field_06 = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9481,7 +9481,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9511,7 +9511,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_02 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9520,7 +9520,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9550,7 +9550,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_03 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9559,7 +9559,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9589,7 +9589,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_04 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9598,7 +9598,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9628,7 +9628,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_05 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9637,7 +9637,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9667,7 +9667,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_06 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9676,7 +9676,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9706,7 +9706,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_07 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9715,7 +9715,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9745,7 +9745,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bandolier_field_08 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9754,7 +9754,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9784,7 +9784,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9793,7 +9793,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9823,7 +9823,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_02 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9832,7 +9832,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9862,7 +9862,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_03 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9871,7 +9871,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9901,7 +9901,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_04 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9910,7 +9910,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9940,7 +9940,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_05 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9949,7 +9949,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9979,7 +9979,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_07 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9988,7 +9988,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10018,7 +10018,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_09 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10027,7 +10027,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10057,7 +10057,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_field_11 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10066,7 +10066,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10096,7 +10096,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_12 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10105,7 +10105,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10135,7 +10135,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_13 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10144,7 +10144,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10174,7 +10174,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_14 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10183,7 +10183,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10213,7 +10213,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_15 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10222,7 +10222,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10252,7 +10252,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_16 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10261,7 +10261,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10291,7 +10291,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_17 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10300,7 +10300,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10330,7 +10330,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_18 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10339,7 +10339,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10369,7 +10369,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_19 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10378,7 +10378,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10408,7 +10408,7 @@ object_draft_schematic_clothing_shared_clothing_ith_belt_formal_20 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10417,7 +10417,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10447,7 +10447,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_01 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10456,7 +10456,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10486,7 +10486,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_03 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10495,7 +10495,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10525,7 +10525,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_04 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10534,7 +10534,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10564,7 +10564,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_casual_05 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10573,7 +10573,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10603,7 +10603,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_field_02 = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10612,7 +10612,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_bodysuit_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10642,7 +10642,7 @@ object_draft_schematic_clothing_shared_clothing_ith_bodysuit_formal_06 = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10651,7 +10651,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_dress_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10681,7 +10681,7 @@ object_draft_schematic_clothing_shared_clothing_ith_dress_casual_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10690,7 +10690,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_dress_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10720,7 +10720,7 @@ object_draft_schematic_clothing_shared_clothing_ith_dress_formal_03 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10729,7 +10729,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_dress_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10759,7 +10759,7 @@ object_draft_schematic_clothing_shared_clothing_ith_dress_formal_04 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10768,7 +10768,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_gloves_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10798,7 +10798,7 @@ object_draft_schematic_clothing_shared_clothing_ith_gloves_field_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10807,7 +10807,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10837,7 +10837,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_casual_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10846,7 +10846,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10876,7 +10876,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_casual_03 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10885,7 +10885,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_chef_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10915,7 +10915,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_chef_01 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10924,7 +10924,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_chef_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10954,7 +10954,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_chef_02 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10963,7 +10963,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10993,7 +10993,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_formal_02 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11002,7 +11002,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_hat_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11032,7 +11032,7 @@ object_draft_schematic_clothing_shared_clothing_ith_hat_formal_04 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11041,7 +11041,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11071,7 +11071,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_01 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11080,7 +11080,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11110,7 +11110,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_03 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11119,7 +11119,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11149,7 +11149,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_06 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11158,7 +11158,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11188,7 +11188,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_09 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11197,7 +11197,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11227,7 +11227,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_12 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11236,7 +11236,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11266,7 +11266,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_casual_14 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11275,7 +11275,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11305,7 +11305,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11314,7 +11314,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11344,7 +11344,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_05 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11353,7 +11353,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11383,7 +11383,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_07 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11392,7 +11392,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11422,7 +11422,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_11 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11431,7 +11431,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11461,7 +11461,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_field_13 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11470,7 +11470,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11500,7 +11500,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_04 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11509,7 +11509,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11539,7 +11539,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_08 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11548,7 +11548,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11578,7 +11578,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_10 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11587,7 +11587,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11617,7 +11617,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jacket_formal_15 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11626,7 +11626,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11656,7 +11656,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_01 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11665,7 +11665,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11695,7 +11695,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_02 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11704,7 +11704,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11734,7 +11734,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_03 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11743,7 +11743,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11773,7 +11773,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_04 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11782,7 +11782,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11812,7 +11812,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_05 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11821,7 +11821,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11851,7 +11851,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_06 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11860,7 +11860,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11890,7 +11890,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_07 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11899,7 +11899,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11929,7 +11929,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_08 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11938,7 +11938,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11968,7 +11968,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_09 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11977,7 +11977,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12007,7 +12007,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_10 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12016,7 +12016,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12046,7 +12046,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_11 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12055,7 +12055,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12085,7 +12085,7 @@ object_draft_schematic_clothing_shared_clothing_ith_jewelry_necklace_12 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12094,7 +12094,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12124,7 +12124,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_01 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12133,7 +12133,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12163,7 +12163,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12172,7 +12172,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12202,7 +12202,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_03 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12211,7 +12211,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12241,7 +12241,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_08 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12250,7 +12250,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12280,7 +12280,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_09 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12289,7 +12289,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12319,7 +12319,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_16 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12328,7 +12328,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12358,7 +12358,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_17 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12367,7 +12367,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12397,7 +12397,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_18 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12406,7 +12406,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_casual_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12436,7 +12436,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_casual_21 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12445,7 +12445,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12475,7 +12475,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_04 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12484,7 +12484,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12514,7 +12514,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_05 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12523,7 +12523,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12553,7 +12553,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_06 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12562,7 +12562,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12592,7 +12592,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_07 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12601,7 +12601,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12631,7 +12631,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_12 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12640,7 +12640,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12670,7 +12670,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_13 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12679,7 +12679,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12709,7 +12709,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_15 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12718,7 +12718,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12748,7 +12748,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_19 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12757,7 +12757,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_field_20 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12787,7 +12787,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_field_20 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12796,7 +12796,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_formal_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12826,7 +12826,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_formal_10 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12835,7 +12835,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12865,7 +12865,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_formal_11 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12874,7 +12874,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_pants_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12904,7 +12904,7 @@ object_draft_schematic_clothing_shared_clothing_ith_pants_formal_14 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12913,7 +12913,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_robe_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12943,7 +12943,7 @@ object_draft_schematic_clothing_shared_clothing_ith_robe_formal_01 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12952,7 +12952,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_robe_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12982,7 +12982,7 @@ object_draft_schematic_clothing_shared_clothing_ith_robe_formal_02 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12991,7 +12991,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13021,7 +13021,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_01 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13030,7 +13030,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13060,7 +13060,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_03 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13069,7 +13069,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13099,7 +13099,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_04 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13108,7 +13108,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13138,7 +13138,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_06 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13147,7 +13147,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13177,7 +13177,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_07 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13186,7 +13186,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13216,7 +13216,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_08 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13225,7 +13225,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13255,7 +13255,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_09 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13264,7 +13264,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13294,7 +13294,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_12 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13303,7 +13303,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13333,7 +13333,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_13 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13342,7 +13342,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13372,7 +13372,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_casual_14 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13381,7 +13381,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_field_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13411,7 +13411,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_field_05 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13420,7 +13420,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_field_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13450,7 +13450,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_field_11 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13459,7 +13459,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13489,7 +13489,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13498,7 +13498,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13528,7 +13528,7 @@ object_draft_schematic_clothing_shared_clothing_ith_shirt_formal_10 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13537,7 +13537,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13567,7 +13567,7 @@ object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_01 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13576,7 +13576,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13606,7 +13606,7 @@ object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13615,7 +13615,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13645,7 +13645,7 @@ object_draft_schematic_clothing_shared_clothing_ith_skirt_formal_03 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13654,7 +13654,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_ith_vest_field_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13684,7 +13684,7 @@ object_draft_schematic_clothing_shared_clothing_ith_vest_field_01 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13693,7 +13693,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ith_
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13723,7 +13723,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_02 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13732,7 +13732,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13762,7 +13762,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_05 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13771,7 +13771,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13801,7 +13801,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_07 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13810,7 +13810,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13840,7 +13840,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_12 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13849,7 +13849,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13879,7 +13879,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_14 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13888,7 +13888,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13918,7 +13918,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_17 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13927,7 +13927,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13957,7 +13957,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_18 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13966,7 +13966,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_19 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13996,7 +13996,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_19 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14005,7 +14005,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_24 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14035,7 +14035,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_24 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14044,7 +14044,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_casual_36 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14074,7 +14074,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_casual_36 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14083,7 +14083,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14113,7 +14113,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_08 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14122,7 +14122,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14152,7 +14152,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_10 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14161,7 +14161,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14191,7 +14191,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_13 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14200,7 +14200,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14230,7 +14230,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_15 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14239,7 +14239,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14269,7 +14269,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_16 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14278,7 +14278,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14308,7 +14308,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_18 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14317,7 +14317,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14347,7 +14347,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_21 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14356,7 +14356,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_field_35 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14386,7 +14386,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_field_35 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14395,7 +14395,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14425,7 +14425,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_03 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14434,7 +14434,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14464,7 +14464,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_06 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14473,7 +14473,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14503,7 +14503,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_11 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14512,7 +14512,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14542,7 +14542,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_22 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14551,7 +14551,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_25 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14581,7 +14581,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_25 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14590,7 +14590,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jacket_formal_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14620,7 +14620,7 @@ object_draft_schematic_clothing_shared_clothing_jacket_formal_26 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14629,7 +14629,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jack
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14659,7 +14659,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14668,7 +14668,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14698,7 +14698,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_03 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14707,7 +14707,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14737,7 +14737,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_04 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14746,7 +14746,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14776,7 +14776,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_05 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14785,7 +14785,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14815,7 +14815,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_bracelet_06 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14824,7 +14824,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14854,7 +14854,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_01 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14863,7 +14863,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14893,7 +14893,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14902,7 +14902,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14932,7 +14932,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_03 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14941,7 +14941,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14971,7 +14971,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_04 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -14980,7 +14980,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15010,7 +15010,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_05 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15019,7 +15019,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15049,7 +15049,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_06 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15058,7 +15058,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15088,7 +15088,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_07 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15097,7 +15097,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15127,7 +15127,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_08 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15136,7 +15136,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15166,7 +15166,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_09 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15175,7 +15175,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15205,7 +15205,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_10 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15214,7 +15214,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15244,7 +15244,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_11 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15253,7 +15253,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_necklace_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15283,7 +15283,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_necklace_12 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15292,7 +15292,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15322,7 +15322,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_01 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15331,7 +15331,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15361,7 +15361,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_02 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15370,7 +15370,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15400,7 +15400,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_03 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15409,7 +15409,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_jewelry_ring_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15439,7 +15439,7 @@ object_draft_schematic_clothing_shared_clothing_jewelry_ring_04 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15448,7 +15448,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_jewe
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15478,7 +15478,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_01 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15487,7 +15487,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15517,7 +15517,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_02 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15526,7 +15526,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15556,7 +15556,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_05 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15565,7 +15565,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15595,7 +15595,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_06 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15604,7 +15604,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15634,7 +15634,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_08 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15643,7 +15643,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15673,7 +15673,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_09 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15682,7 +15682,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15712,7 +15712,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_10 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15721,7 +15721,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15751,7 +15751,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_11 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15760,7 +15760,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_17 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15790,7 +15790,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_17 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15799,7 +15799,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15829,7 +15829,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_18 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15838,7 +15838,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_24 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15868,7 +15868,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_24 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15877,7 +15877,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_25 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15907,7 +15907,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_25 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15916,7 +15916,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_casual_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15946,7 +15946,7 @@ object_draft_schematic_clothing_shared_clothing_pants_casual_26 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15955,7 +15955,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -15985,7 +15985,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_04 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -15994,7 +15994,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16024,7 +16024,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_07 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16033,7 +16033,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16063,7 +16063,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_12 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16072,7 +16072,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16102,7 +16102,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_14 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16111,7 +16111,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_21 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16141,7 +16141,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_21 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16150,7 +16150,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16180,7 +16180,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_22 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16189,7 +16189,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16219,7 +16219,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_27 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16228,7 +16228,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_28 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16258,7 +16258,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_28 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16267,7 +16267,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_29 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16297,7 +16297,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_29 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16306,7 +16306,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_field_30 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16336,7 +16336,7 @@ object_draft_schematic_clothing_shared_clothing_pants_field_30 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16345,7 +16345,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16375,7 +16375,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_13 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16384,7 +16384,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16414,7 +16414,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_15 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16423,7 +16423,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_31 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16453,7 +16453,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_31 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16462,7 +16462,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_32 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16492,7 +16492,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_32 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16501,7 +16501,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_33 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16531,7 +16531,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_33 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16540,7 +16540,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_pants_formal_38 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16570,7 +16570,7 @@ object_draft_schematic_clothing_shared_clothing_pants_formal_38 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16579,7 +16579,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_pant
 
 object_draft_schematic_clothing_shared_clothing_quest_jacket_rebel_pilot = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16609,7 +16609,7 @@ object_draft_schematic_clothing_shared_clothing_quest_jacket_rebel_pilot = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16618,7 +16618,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ques
 
 object_draft_schematic_clothing_shared_clothing_quest_robe_imperial = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16648,7 +16648,7 @@ object_draft_schematic_clothing_shared_clothing_quest_robe_imperial = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16657,7 +16657,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ques
 
 object_draft_schematic_clothing_shared_clothing_quest_vest_smuggler_pilot = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16687,7 +16687,7 @@ object_draft_schematic_clothing_shared_clothing_quest_vest_smuggler_pilot = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16696,7 +16696,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_ques
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16726,7 +16726,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_04 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16735,7 +16735,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16765,7 +16765,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_05 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16774,7 +16774,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_05b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16804,7 +16804,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_05b = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16813,7 +16813,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_robe_casual_18 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16843,7 +16843,7 @@ object_draft_schematic_clothing_shared_clothing_robe_casual_18 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16852,7 +16852,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_robe_field_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16882,7 +16882,7 @@ object_draft_schematic_clothing_shared_clothing_robe_field_27 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16891,7 +16891,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_robe_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16921,7 +16921,7 @@ object_draft_schematic_clothing_shared_clothing_robe_formal_01 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16930,7 +16930,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_robe_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16960,7 +16960,7 @@ object_draft_schematic_clothing_shared_clothing_robe_formal_12 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -16969,7 +16969,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_robe
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -16999,7 +16999,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_03 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17008,7 +17008,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17038,7 +17038,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_04 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17047,7 +17047,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17077,7 +17077,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_07 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17086,7 +17086,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17116,7 +17116,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_11 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17125,7 +17125,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_16 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17155,7 +17155,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_16 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17164,7 +17164,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_24 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17194,7 +17194,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_24 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17203,7 +17203,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_27 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17233,7 +17233,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_27 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17242,7 +17242,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_30 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17272,7 +17272,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_30 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17281,7 +17281,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_34 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17311,7 +17311,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_34 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17320,7 +17320,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_38 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17350,7 +17350,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_38 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17359,7 +17359,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_casual_42 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17389,7 +17389,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_casual_42 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17398,7 +17398,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17428,7 +17428,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_09 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17437,7 +17437,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17467,7 +17467,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_10 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17476,7 +17476,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17506,7 +17506,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_14 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17515,7 +17515,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_field_26 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17545,7 +17545,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_field_26 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17554,7 +17554,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17584,7 +17584,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_05 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17593,7 +17593,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17623,7 +17623,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_08 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17632,7 +17632,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17662,7 +17662,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_12 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17671,7 +17671,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17701,7 +17701,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_13 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17710,7 +17710,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17740,7 +17740,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_15 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17749,7 +17749,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_28 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17779,7 +17779,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_28 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17788,7 +17788,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shirt_formal_32 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17818,7 +17818,7 @@ object_draft_schematic_clothing_shared_clothing_shirt_formal_32 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17827,7 +17827,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shir
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17857,7 +17857,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_02 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17866,7 +17866,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoe
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17896,7 +17896,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_03 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17905,7 +17905,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoe
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17935,7 +17935,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_07 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17944,7 +17944,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoe
 
 object_draft_schematic_clothing_shared_clothing_shoes_casual_08 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -17974,7 +17974,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_casual_08 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -17983,7 +17983,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoe
 
 object_draft_schematic_clothing_shared_clothing_shoes_formal_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18013,7 +18013,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_formal_01 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18022,7 +18022,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoe
 
 object_draft_schematic_clothing_shared_clothing_shoes_formal_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18052,7 +18052,7 @@ object_draft_schematic_clothing_shared_clothing_shoes_formal_09 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18061,7 +18061,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_shoe
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18091,7 +18091,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_03 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18100,7 +18100,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18130,7 +18130,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_04 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18139,7 +18139,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18169,7 +18169,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_05 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18178,7 +18178,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18208,7 +18208,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_casual_10 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18217,7 +18217,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18247,7 +18247,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_06 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18256,7 +18256,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_07 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18286,7 +18286,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_07 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18295,7 +18295,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18325,7 +18325,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_09 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18334,7 +18334,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18364,7 +18364,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_11 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18373,7 +18373,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18403,7 +18403,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_12 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18412,7 +18412,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_13 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18442,7 +18442,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_13 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18451,7 +18451,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_skirt_formal_14 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18481,7 +18481,7 @@ object_draft_schematic_clothing_shared_clothing_skirt_formal_14 = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18490,7 +18490,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_skir
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18520,7 +18520,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_01 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18529,7 +18529,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18559,7 +18559,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_02 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18568,7 +18568,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18598,7 +18598,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_03 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18607,7 +18607,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18637,7 +18637,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_04 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18646,7 +18646,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_05 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18676,7 +18676,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_05 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18685,7 +18685,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_10 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18715,7 +18715,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_10 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18724,7 +18724,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_casual_11 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18754,7 +18754,7 @@ object_draft_schematic_clothing_shared_clothing_vest_casual_11 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18763,7 +18763,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_field_06 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18793,7 +18793,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_06 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18802,7 +18802,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_field_09 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18832,7 +18832,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_09 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18841,7 +18841,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_field_hutt_01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18871,7 +18871,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_hutt_01 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18880,7 +18880,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18910,7 +18910,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_hutt_02 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18919,7 +18919,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_field_hutt_03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18949,7 +18949,7 @@ object_draft_schematic_clothing_shared_clothing_vest_field_hutt_03 = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18958,7 +18958,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_vest_formal_15 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -18988,7 +18988,7 @@ object_draft_schematic_clothing_shared_clothing_vest_formal_15 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -18997,7 +18997,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_vest
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19027,7 +19027,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s01 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19036,7 +19036,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19066,7 +19066,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s02 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19075,7 +19075,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19105,7 +19105,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s03 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19114,7 +19114,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_gloves_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19144,7 +19144,7 @@ object_draft_schematic_clothing_shared_clothing_wke_gloves_s04 = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19153,7 +19153,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_hat_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19183,7 +19183,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hat_s01 = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19192,7 +19192,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_hood_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19222,7 +19222,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hood_s01 = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19231,7 +19231,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_hood_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19261,7 +19261,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hood_s02 = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19270,7 +19270,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_hood_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19300,7 +19300,7 @@ object_draft_schematic_clothing_shared_clothing_wke_hood_s03 = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19309,7 +19309,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19339,7 +19339,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s01 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19348,7 +19348,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19378,7 +19378,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s02 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19387,7 +19387,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19417,7 +19417,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s03 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19426,7 +19426,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_shirt_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19456,7 +19456,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shirt_s04 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19465,7 +19465,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19495,7 +19495,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s01 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19504,7 +19504,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19534,7 +19534,7 @@ object_draft_schematic_clothing_shared_clothing_wke_shoulder_pad_s02 = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19543,7 +19543,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s01 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19573,7 +19573,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s01 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19582,7 +19582,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19612,7 +19612,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s02 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19621,7 +19621,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s03 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19651,7 +19651,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s03 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -19660,7 +19660,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_clothing_shared_clothing_wke_
 
 object_draft_schematic_clothing_shared_clothing_wke_skirt_s04 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_m.sat",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -19690,7 +19690,7 @@ object_draft_schematic_clothing_shared_clothing_wke_skirt_s04 = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

@@ -43,7 +43,7 @@
 
 object_tangible_wearables_earring_shared_earring_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_earring_shared_earring_base = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_bas
 
 object_tangible_wearables_earring_shared_earring_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s01.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_earring_shared_earring_s01 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s01
 
 object_tangible_wearables_earring_shared_earring_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s02.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_earring_shared_earring_s02 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s02
 
 object_tangible_wearables_earring_shared_earring_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s03.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_earring_shared_earring_s03 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s03
 
 object_tangible_wearables_earring_shared_earring_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s04.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_earring_shared_earring_s04 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s04
 
 object_tangible_wearables_earring_shared_earring_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s05.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_earring_shared_earring_s05 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s05
 
 object_tangible_wearables_earring_shared_earring_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s06.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_earring_shared_earring_s06 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s06
 
 object_tangible_wearables_earring_shared_earring_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s07.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_earring_shared_earring_s07 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s07
 
 object_tangible_wearables_earring_shared_earring_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s08.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_earring_shared_earring_s08 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s08
 
 object_tangible_wearables_earring_shared_earring_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s09.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_earring_shared_earring_s09 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s09
 
 object_tangible_wearables_earring_shared_earring_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s10.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_wearables_earring_shared_earring_s10 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s10
 
 object_tangible_wearables_earring_shared_earring_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s10.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_wearables_earring_shared_earring_s11 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s11
 
 object_tangible_wearables_earring_shared_earring_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s12.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_wearables_earring_shared_earring_s12 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s12
 
 object_tangible_wearables_earring_shared_earring_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s13_m.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_wearables_earring_shared_earring_s13 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s13
 
 object_tangible_wearables_earring_shared_earring_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s14_m.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_wearables_earring_shared_earring_s14 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_earring_shared_earring_s14
 
 object_tangible_wearables_earring_shared_earring_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/earring_s15_m.apt",
-	arrangementDescriptor = "earring_l",
+	arrangementDescriptors = {"earring_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_wearables_earring_shared_earring_s15 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

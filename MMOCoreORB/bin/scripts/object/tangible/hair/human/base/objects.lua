@@ -43,7 +43,7 @@
 
 object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hair",
+	arrangementDescriptors = {"hair"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_ba
 
 object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hair",
+	arrangementDescriptors = {"hair"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_fe
 
 object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hair",
+	arrangementDescriptors = {"hair"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

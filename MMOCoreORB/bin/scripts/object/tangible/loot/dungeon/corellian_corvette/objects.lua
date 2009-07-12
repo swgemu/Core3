@@ -43,7 +43,7 @@
 
 object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shar
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_character_inventory
 
 object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory,
 
 object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_
 
 object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_
 
 object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_
 
 object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_
 
 object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_
 
 object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_
 
 object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "saber_inv",
+	arrangementDescriptors = {"saber_inv"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventor
 
 object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "saber_inv",
+	arrangementDescriptors = {"saber_inv"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventor
 
 object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "saber_inv",
+	arrangementDescriptors = {"saber_inv"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventor
 
 object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "saber_inv",
+	arrangementDescriptors = {"saber_inv"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventor
 
 object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "saber_inv",
+	arrangementDescriptors = {"saber_inv"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventor
 
 object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "saber_inv",
+	arrangementDescriptors = {"saber_inv"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventor
 
 object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "inventory",
+	arrangementDescriptors = {"inventory"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

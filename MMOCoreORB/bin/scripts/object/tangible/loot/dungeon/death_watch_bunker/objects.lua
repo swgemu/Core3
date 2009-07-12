@@ -43,7 +43,7 @@
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_formal.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_ammo_rocket.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shar
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

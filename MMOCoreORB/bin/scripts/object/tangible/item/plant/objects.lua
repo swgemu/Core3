@@ -43,7 +43,7 @@
 
 object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

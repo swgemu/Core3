@@ -43,7 +43,7 @@
 
 object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_cdef, 58
 
 object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_cdef_cor
 
 object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17, 68
 
 object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_black.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -259,7 +259,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_bla
 
 object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_snubnose.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -295,7 +295,7 @@ object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -313,7 +313,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_snu
 
 object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dxr6.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -349,7 +349,7 @@ object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -367,7 +367,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dxr6, 20
 
 object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -403,7 +403,7 @@ object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -421,7 +421,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11, 303
 
 object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -457,7 +457,7 @@ object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -475,7 +475,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11_ques
 
 object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -511,7 +511,7 @@ object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -529,7 +529,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11_vict
 
 object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_ee3.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -565,7 +565,7 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -583,7 +583,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, 749
 
 object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -619,7 +619,7 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -637,7 +637,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_elite, 9
 
 object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -673,7 +673,7 @@ object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -691,7 +691,7 @@ ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_laser, 2
 
 object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_slug_carbine_s01.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -727,7 +727,7 @@ object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

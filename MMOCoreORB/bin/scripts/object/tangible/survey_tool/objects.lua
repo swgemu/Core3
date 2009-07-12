@@ -43,7 +43,7 @@
 
 object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_all, 
 
 object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_gas, 
 
 object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_fusion.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_inorg
 
 object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_liquid.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_liqui
 
 object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_organic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_lumbe
 
 object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_ore.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_miner
 
 object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_moisture.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_moist
 
 object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_organ
 
 object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_solar.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_solar
 
 object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_wind.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

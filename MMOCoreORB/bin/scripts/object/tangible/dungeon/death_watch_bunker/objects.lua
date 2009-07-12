@@ -43,7 +43,7 @@
 
 object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_hormone_enhancements.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_cr
 
 object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_do
 
 object_tangible_dungeon_death_watch_bunker_shared_drill_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_dungeon_death_watch_bunker_shared_drill_battery = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_dr
 
 object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_dr
 
 object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_en
 
 object_tangible_dungeon_death_watch_bunker_shared_filter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_dungeon_death_watch_bunker_shared_filter = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_fi
 
 object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_fi
 
 object_tangible_dungeon_death_watch_bunker_shared_gel_packet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_antidote_chemical.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_dungeon_death_watch_bunker_shared_gel_packet = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_ge
 
 object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_in
 
 object_tangible_dungeon_death_watch_bunker_shared_passkey_hall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_hall = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_pa
 
 object_tangible_dungeon_death_watch_bunker_shared_passkey_mine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_mine = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_pa
 
 object_tangible_dungeon_death_watch_bunker_shared_passkey_storage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_storage = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_pa
 
 object_tangible_dungeon_death_watch_bunker_shared_workbench = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_dungeon_death_watch_bunker_shared_workbench = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

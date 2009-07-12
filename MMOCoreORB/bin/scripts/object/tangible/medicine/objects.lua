@@ -43,7 +43,7 @@
 
 object_tangible_medicine_shared_antidote_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_medicine_shared_antidote_sm_s1 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_antidote_sm_s1, 1440
 
 object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_disease
 
 object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_poison,
 
 object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_disease, 146
 
 object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_poison, 3318
 
 object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade, 143
 
 object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_medic_healing_energy_area.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade_long
 
 object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medic_damage, 354709
 
 object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_advance
 
 object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_basic, 
 
 object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_blinded, 765
 
 object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_disease
 
 object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_poison,
 
 object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_damage, 1572
 
 object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_disease_heal
 
 object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_dizzy, 24657
 
 object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_acti
 
 object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_cons
 
 object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_heal
 
 object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_quic
 
 object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_stam
 
 object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_stre
 
 object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_area
 
 object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_dama
 
 object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_intimidated,
 
 object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_poison_healt
 
 object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_revive, 4063
 
 object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_sm_s1, 21592
 
 object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_stunned, 404
 
 object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound, 29365
 
 object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_action
 
 object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_consti
 
 object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_health
 
 object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_quickn
 
 object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_stamin
 
 object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_streng
 
 object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_newbie_heal_mission_
 
 object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_medicine_shared_stimpack_sm_s1, 4245
 
 object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

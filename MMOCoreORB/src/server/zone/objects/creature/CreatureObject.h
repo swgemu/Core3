@@ -50,7 +50,11 @@ public:
 
 	float getAcceleration();
 
-	short getLevel();
+	int getLevel();
+
+	string getPerformanceAnimation();
+
+	string getMoodString();
 
 	unsigned long long getWeaponID();
 
@@ -76,6 +80,9 @@ protected:
 	CreatureObject(DummyConstructorParameter* param);
 
 	virtual ~CreatureObject();
+
+	string _return_getMoodString;
+	string _return_getPerformanceAnimation;
 
 	friend class CreatureObjectHelper;
 };
@@ -132,6 +139,10 @@ protected:
 
 	short level;
 
+	string performanceAnimation;
+
+	string moodString;
+
 	unsigned long long weaponID;
 
 	unsigned long long groupID;
@@ -159,6 +170,8 @@ protected:
 	unsigned int maxHamListUpdateCounter;
 
 	byte frozen;
+
+	string templateString;
 
 public:
 	static bool registered;
@@ -197,7 +210,11 @@ public:
 
 	float getAcceleration();
 
-	short getLevel();
+	int getLevel();
+
+	string getPerformanceAnimation();
+
+	string getMoodString();
 
 	unsigned long long getWeaponID();
 
@@ -260,7 +277,11 @@ public:
 
 	float getAcceleration();
 
-	short getLevel();
+	int getLevel();
+
+	string getPerformanceAnimation();
+
+	string getMoodString();
 
 	unsigned long long getWeaponID();
 

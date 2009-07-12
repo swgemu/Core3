@@ -43,7 +43,7 @@
 
 object_draft_schematic_space_armor_shared_adv_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_draft_schematic_space_armor_shared_adv_durasteel_plating = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_adv_durast
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_rein
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_rein
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_rein
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_rein
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_rein
 
 object_draft_schematic_space_armor_shared_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_draft_schematic_space_armor_shared_durasteel_plating = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_durasteel_
 
 object_draft_schematic_space_armor_shared_exp_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_draft_schematic_space_armor_shared_exp_durasteel_plating = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_exp_durast
 
 object_draft_schematic_space_armor_shared_heavy_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_draft_schematic_space_armor_shared_heavy_durasteel_plating = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_heavy_dura
 
 object_draft_schematic_space_armor_shared_light_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_draft_schematic_space_armor_shared_light_durasteel_plating = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_light_dura
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduc
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduc
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduc
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduc
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5 = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

@@ -43,7 +43,7 @@
 
 object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_geiger_count
 
 object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_imperial, 22
 
 object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_item, 418948
 
 object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_rebel, 19728
 
 object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_droid_command, 11
 
 object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_encryption
 
 object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_0
 
 object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_0
 
 object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_0
 
 object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

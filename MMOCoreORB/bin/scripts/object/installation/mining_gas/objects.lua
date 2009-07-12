@@ -43,7 +43,7 @@
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_mobile_gas_refinery.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInsta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_gas/shared_mining_gas_harvester_style_1.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_har
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInsta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_gas/shared_mining_gas_harvester_style_2.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_har
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_gas_s01_u0.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInsta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_gas/shared_mining_gas_harvester_style_3.sfp",

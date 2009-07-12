@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_b
 
 object_tangible_ship_crafted_weapon_missile_shared_base_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_crafted_weapon_missile_shared_base_pack = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_b
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_lau
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pac
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_c
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_chaff_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_chaff.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_missile_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_w
 
 object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_missile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

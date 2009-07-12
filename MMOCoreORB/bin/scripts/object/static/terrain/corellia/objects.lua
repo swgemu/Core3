@@ -43,7 +43,7 @@
 
 object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_agrlt_bowl_dbl.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agri
 
 object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_agrlt_bowl_single.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agri
 
 object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_arch_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_a
 
 object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_arch_half_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_a
 
 object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_arch_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_a
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_geyser_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_rock_geyser_lrg.cdf",
@@ -268,7 +268,7 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_g
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_agrlt_geyser_main.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_rock_geyser_main.cdf",
@@ -307,7 +307,7 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_g
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_geyser_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_rock_geyser_med.cdf",
@@ -346,7 +346,7 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_g
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_geyser_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_rock_geyser_sml.cdf",
@@ -385,7 +385,7 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_g
 
 object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_mound_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_m
 
 object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_mound_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_m
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_shrpbush_main.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_sh
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_shrpbush_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_sh
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_crystl_shrpbush_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

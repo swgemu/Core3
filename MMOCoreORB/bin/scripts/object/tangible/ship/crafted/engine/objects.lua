@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_engine_shared_adv_exhaust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_crafted_engine_shared_adv_exhaust = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_adv_exhau
 
 object_tangible_ship_crafted_engine_shared_adv_fuel_regulation = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_crafted_engine_shared_adv_fuel_regulation = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_adv_fuel_
 
 object_tangible_ship_crafted_engine_shared_base_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_crafted_engine_shared_base_engine = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk3 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk4 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_crafted_engine_shared_base_engine_subcomponent_mk5 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_base_engi
 
 object_tangible_ship_crafted_engine_shared_basic_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_crafted_engine_shared_basic_engine = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_basic_eng
 
 object_tangible_ship_crafted_engine_shared_eng_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk1 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk1, 
 
 object_tangible_ship_crafted_engine_shared_eng_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk2 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk2, 
 
 object_tangible_ship_crafted_engine_shared_eng_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk3 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk3, 
 
 object_tangible_ship_crafted_engine_shared_eng_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk4 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk4, 
 
 object_tangible_ship_crafted_engine_shared_eng_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_crafted_engine_shared_eng_mk5 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_eng_mk5, 
 
 object_tangible_ship_crafted_engine_shared_engine_incom_fusialthrust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_crafted_engine_shared_engine_incom_fusialthrust = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_in
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk1 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_li
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk2 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_li
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk3 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_li
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk4 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_li
 
 object_tangible_ship_crafted_engine_shared_engine_limiter_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_crafted_engine_shared_engine_limiter_mk5 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_li
 
 object_tangible_ship_crafted_engine_shared_engine_novaldex_eventhorizon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_crafted_engine_shared_engine_novaldex_eventhorizon = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_no
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_ov
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk2 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_ov
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk3 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_ov
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk4 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_ov
 
 object_tangible_ship_crafted_engine_shared_engine_overdriver_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_crafted_engine_shared_engine_overdriver_mk5 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_ov
 
 object_tangible_ship_crafted_engine_shared_engine_qualdex_kyromaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_engine_neg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_crafted_engine_shared_engine_qualdex_kyromaster = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_engine_qu
 
 object_tangible_ship_crafted_engine_shared_hyperdrive_class1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_crafted_engine_shared_hyperdrive_class1 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_hyperdriv
 
 object_tangible_ship_crafted_engine_shared_hyperdrive_class2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_crafted_engine_shared_hyperdrive_class2 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_hyperdriv
 
 object_tangible_ship_crafted_engine_shared_hyperdrive_class3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_crafted_engine_shared_hyperdrive_class3 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_hyperdriv
 
 object_tangible_ship_crafted_engine_shared_std_exhaust = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_crafted_engine_shared_std_exhaust = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_engine_shared_std_exhau
 
 object_tangible_ship_crafted_engine_shared_std_fuel_regulation = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_crafted_engine_shared_std_fuel_regulation = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

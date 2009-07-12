@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_tiefight
 
 object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_z95_basi
 
 object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_a
 
 object_tangible_ship_components_reactor_shared_rct_armek_super_collider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_super_collider = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_a
 
 object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_a
 
 object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_c
 
 object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_f
 
 object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_f
 
 object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_f
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_f
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_f
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_f
 
 object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_g
 
 object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_i
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermast
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_op
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_f
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_outpu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_k
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_a
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_h
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hy
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_m
 
 object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_p
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_r
 
 object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4043,7 +4043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4078,7 +4078,7 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4093,7 +4093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4128,7 +4128,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4143,7 +4143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4178,7 +4178,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4193,7 +4193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4228,7 +4228,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4243,7 +4243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4278,7 +4278,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4293,7 +4293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4328,7 +4328,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4343,7 +4343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -4378,7 +4378,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4428,7 +4428,7 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4478,7 +4478,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4493,7 +4493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4528,7 +4528,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4543,7 +4543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4578,7 +4578,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4593,7 +4593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -4628,7 +4628,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4643,7 +4643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4678,7 +4678,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4693,7 +4693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4728,7 +4728,7 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4743,7 +4743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4778,7 +4778,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4793,7 +4793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4828,7 +4828,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4843,7 +4843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4878,7 +4878,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4893,7 +4893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4928,7 +4928,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4943,7 +4943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4978,7 +4978,7 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5028,7 +5028,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5043,7 +5043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5078,7 +5078,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5093,7 +5093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5128,7 +5128,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5143,7 +5143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5178,7 +5178,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5193,7 +5193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5228,7 +5228,7 @@ object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5243,7 +5243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_s
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5278,7 +5278,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5293,7 +5293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_t
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5328,7 +5328,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5343,7 +5343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_t
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5378,7 +5378,7 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5393,7 +5393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_t
 
 object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5428,7 +5428,7 @@ object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5443,7 +5443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_t
 
 object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5478,7 +5478,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5493,7 +5493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_u
 
 object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5528,7 +5528,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_u
 
 object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5578,7 +5578,7 @@ object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5593,7 +5593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_u
 
 object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5628,7 +5628,7 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5643,7 +5643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_w
 
 object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5678,7 +5678,7 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5693,7 +5693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_w
 
 object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5728,7 +5728,7 @@ object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5743,7 +5743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_z
 
 object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5778,7 +5778,7 @@ object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_armor_
 
 object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_flow_a
 
 object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_laser_
 
 object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_molecu
 
 object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

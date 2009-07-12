@@ -43,7 +43,7 @@
 
 object_draft_schematic_food_component_shared_container_barrel = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_draft_schematic_food_component_shared_container_barrel = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_contain
 
 object_draft_schematic_food_component_shared_container_cask = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_draft_schematic_food_component_shared_container_cask = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_contain
 
 object_draft_schematic_food_component_shared_container_large_glass = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_draft_schematic_food_component_shared_container_large_glass = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_contain
 
 object_draft_schematic_food_component_shared_container_small_glass = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_draft_schematic_food_component_shared_container_small_glass = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_contain
 
 object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredi
 
 object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

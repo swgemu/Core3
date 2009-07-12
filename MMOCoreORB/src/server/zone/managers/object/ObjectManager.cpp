@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "ObjectManager.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
-ObjectFactory<SceneObject> ObjectManager::objectFactory;
+ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> ObjectManager::objectFactory;
 
 ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager") {
 	objectMap = new ObjectMap(100000);

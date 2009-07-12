@@ -43,7 +43,7 @@
 
 object_installation_faction_perk_turret_shared_block_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_faction_perk_turret_shared_block_lg = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block
 
 object_installation_faction_perk_turret_shared_block_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_faction_perk_turret_shared_block_med = SharedInstallationObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block
 
 object_installation_faction_perk_turret_shared_block_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_faction_perk_turret_shared_block_sm = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block
 
 object_installation_faction_perk_turret_shared_dish_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -228,7 +228,7 @@ object_installation_faction_perk_turret_shared_dish_lg = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_dish_
 
 object_installation_faction_perk_turret_shared_dish_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -278,7 +278,7 @@ object_installation_faction_perk_turret_shared_dish_sm = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_dish_
 
 object_installation_faction_perk_turret_shared_tower_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -328,7 +328,7 @@ object_installation_faction_perk_turret_shared_tower_lg = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower
 
 object_installation_faction_perk_turret_shared_tower_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -378,7 +378,7 @@ object_installation_faction_perk_turret_shared_tower_med = SharedInstallationObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower
 
 object_installation_faction_perk_turret_shared_tower_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -428,7 +428,7 @@ object_installation_faction_perk_turret_shared_tower_sm = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/turret/turret_base.sfp",

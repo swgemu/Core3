@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_chassis_shared_awing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_components_chassis_shared_awing_chassis_token = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_awing
 
 object_tangible_ship_components_chassis_shared_base_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_components_chassis_shared_base_chassis_token = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_base_
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_black
 
 object_tangible_ship_components_chassis_shared_bwing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_components_chassis_shared_bwing_chassis_token = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_bwing
 
 object_tangible_ship_components_chassis_shared_decimator_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_components_chassis_shared_decimator_chassis_token = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_decim
 
 object_tangible_ship_components_chassis_shared_firespray_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_components_chassis_shared_firespray_chassis_token = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_fires
 
 object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_hutt_light_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_components_chassis_shared_hutt_light_chassis_token = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_hutt_
 
 object_tangible_ship_components_chassis_shared_tie_in_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_components_chassis_shared_tie_in_chassis_token = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tie_i
 
 object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tie_l
 
 object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tiead
 
 object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tieag
 
 object_tangible_ship_components_chassis_shared_tiebomber_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_components_chassis_shared_tiebomber_chassis_token = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tiebo
 
 object_tangible_ship_components_chassis_shared_tiefighter_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_components_chassis_shared_tiefighter_chassis_token = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tiefi
 
 object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tiein
 
 object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_tieop
 
 object_tangible_ship_components_chassis_shared_xwing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_components_chassis_shared_xwing_chassis_token = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_xwing
 
 object_tangible_ship_components_chassis_shared_ykl37r_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_components_chassis_shared_ykl37r_chassis_token = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_ykl37
 
 object_tangible_ship_components_chassis_shared_yt1300_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_components_chassis_shared_yt1300_chassis_token = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_yt130
 
 object_tangible_ship_components_chassis_shared_ywing_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_components_chassis_shared_ywing_chassis_token = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_ywing
 
 object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_chassis_shared_ywing
 
 object_tangible_ship_components_chassis_shared_z95_chassis_token = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chassis_blueprints.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_ship_components_chassis_shared_z95_chassis_token = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

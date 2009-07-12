@@ -43,7 +43,7 @@
 
 object_static_structure_general_shared_all_banner_generic_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_structure_general_shared_all_banner_generic_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_banner_ge
 
 object_static_structure_general_shared_all_banner_generic_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_structure_general_shared_all_banner_generic_s02 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_banner_ge
 
 object_static_structure_general_shared_all_foodcart_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_foodcart_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_structure_general_shared_all_foodcart_s01 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_foodcart_
 
 object_static_structure_general_shared_all_sign_shop_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_structure_general_shared_all_sign_shop_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_sign_shop
 
 object_static_structure_general_shared_all_sign_shop_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_structure_general_shared_all_sign_shop_s02 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_sign_shop
 
 object_static_structure_general_shared_all_sign_shop_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_structure_general_shared_all_sign_shop_s03 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_sign_shop
 
 object_static_structure_general_shared_all_sign_shop_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_shop_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_static_structure_general_shared_all_sign_shop_s04 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_sign_shop
 
 object_static_structure_general_shared_all_sign_street_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_sign_street_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_static_structure_general_shared_all_sign_street_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_all_sign_stre
 
 object_static_structure_general_shared_allum_mine_bucket_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_bucket_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_static_structure_general_shared_allum_mine_bucket_s01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_bu
 
 object_static_structure_general_shared_allum_mine_car_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_car_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_static_structure_general_shared_allum_mine_car_s01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_ca
 
 object_static_structure_general_shared_allum_mine_console_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_console_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_static_structure_general_shared_allum_mine_console_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_co
 
 object_static_structure_general_shared_allum_mine_device_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_device_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_static_structure_general_shared_allum_mine_device_s01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_de
 
 object_static_structure_general_shared_allum_mine_device_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_device_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_static_structure_general_shared_allum_mine_device_s02 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_de
 
 object_static_structure_general_shared_allum_mine_pipes_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_pipes_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_static_structure_general_shared_allum_mine_pipes_s01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_pi
 
 object_static_structure_general_shared_allum_mine_pipes_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_pipes_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_static_structure_general_shared_allum_mine_pipes_s02 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_pi
 
 object_static_structure_general_shared_allum_mine_support_piston_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_support_piston_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_static_structure_general_shared_allum_mine_support_piston_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_su
 
 object_static_structure_general_shared_allum_mine_support_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/bunker_mine_support_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_static_structure_general_shared_allum_mine_support_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_su
 
 object_static_structure_general_shared_allum_mine_wall_lamp_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mine_wall_lamp_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_allum_mine_wall_lamp_s01_red.cdf",
@@ -736,7 +736,7 @@ object_static_structure_general_shared_allum_mine_wall_lamp_s01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_allum_mine_wa
 
 object_static_structure_general_shared_atat_debris_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_atat_debris_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_static_structure_general_shared_atat_debris_01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_atat_debris_0
 
 object_static_structure_general_shared_atat_debris_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_atat_debris_02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_static_structure_general_shared_atat_debris_02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_atat_debris_0
 
 object_static_structure_general_shared_atat_destroyed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_atat_destroyed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_static_structure_general_shared_atat_destroyed = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_atat_destroye
 
 object_static_structure_general_shared_atst_debris_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_atst_debris_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_static_structure_general_shared_atst_debris_01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_atst_debris_0
 
 object_static_structure_general_shared_atst_destroyed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_atst_destroyed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_static_structure_general_shared_atst_destroyed = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_atst_destroye
 
 object_static_structure_general_shared_banner_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_static_structure_general_shared_banner_imperial_style_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_banner_imperi
 
 object_static_structure_general_shared_banner_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_static_structure_general_shared_banner_rebel_style_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_banner_rebel_
 
 object_static_structure_general_shared_banner_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_tato_banner_freestand_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_static_structure_general_shared_banner_tatooine_style_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_banner_tatooi
 
 object_static_structure_general_shared_bench_generic_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_bench.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_static_structure_general_shared_bench_generic_style_1 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_bench_generic
 
 object_static_structure_general_shared_camp_campfire_logs_fresh_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_fresh.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_static_structure_general_shared_camp_campfire_logs_fresh_s01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_campfire
 
 object_static_structure_general_shared_camp_campfire_logs_smoldering_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_smoldering.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_static_structure_general_shared_camp_campfire_logs_smoldering_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_campfire
 
 object_static_structure_general_shared_camp_cot_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_cot.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_static_structure_general_shared_camp_cot_s01 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_cot_s01,
 
 object_static_structure_general_shared_camp_lawn_chair_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_chair_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_static_structure_general_shared_camp_lawn_chair_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_lawn_cha
 
 object_static_structure_general_shared_camp_spit_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_spit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_static_structure_general_shared_camp_spit_s01 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_spit_s01
 
 object_static_structure_general_shared_camp_stool_short_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_stool_short.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_static_structure_general_shared_camp_stool_short_s01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_stool_sh
 
 object_static_structure_general_shared_camp_stool_tall_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_stool_tall.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_static_structure_general_shared_camp_stool_tall_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_stool_ta
 
 object_static_structure_general_shared_camp_tent_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_tent_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_static_structure_general_shared_camp_tent_s01 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_camp_tent_s01
 
 object_static_structure_general_shared_campfire_ash = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_ash.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1438,7 +1438,7 @@ object_static_structure_general_shared_campfire_ash = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_campfire_ash,
 
 object_static_structure_general_shared_campfire_burnt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_burnt.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1477,7 +1477,7 @@ object_static_structure_general_shared_campfire_burnt = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_campfire_burn
 
 object_static_structure_general_shared_campfire_fresh = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_fresh.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_campfire_fresh.cdf",
@@ -1516,7 +1516,7 @@ object_static_structure_general_shared_campfire_fresh = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_campfire_fres
 
 object_static_structure_general_shared_campfire_smoldering = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_camping_log_smoldering.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1555,7 +1555,7 @@ object_static_structure_general_shared_campfire_smoldering = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_campfire_smol
 
 object_static_structure_general_shared_cave_column_damprock_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_damprock_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1594,7 +1594,7 @@ object_static_structure_general_shared_cave_column_damprock_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_d
 
 object_static_structure_general_shared_cave_column_damprock_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_damprock_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1633,7 +1633,7 @@ object_static_structure_general_shared_cave_column_damprock_style_02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_d
 
 object_static_structure_general_shared_cave_column_damprock_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_damprock_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1672,7 +1672,7 @@ object_static_structure_general_shared_cave_column_damprock_style_03 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_d
 
 object_static_structure_general_shared_cave_column_ice_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_ice_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1711,7 +1711,7 @@ object_static_structure_general_shared_cave_column_ice_style_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_i
 
 object_static_structure_general_shared_cave_column_ice_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_ice_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1750,7 +1750,7 @@ object_static_structure_general_shared_cave_column_ice_style_02 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_i
 
 object_static_structure_general_shared_cave_column_ice_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_ice_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1789,7 +1789,7 @@ object_static_structure_general_shared_cave_column_ice_style_03 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_i
 
 object_static_structure_general_shared_cave_column_tato_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1828,7 +1828,7 @@ object_static_structure_general_shared_cave_column_tato_style_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_t
 
 object_static_structure_general_shared_cave_column_tato_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1867,7 +1867,7 @@ object_static_structure_general_shared_cave_column_tato_style_02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_t
 
 object_static_structure_general_shared_cave_column_tato_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_column_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1906,7 +1906,7 @@ object_static_structure_general_shared_cave_column_tato_style_03 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1915,7 +1915,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_column_t
 
 object_static_structure_general_shared_cave_stalactite_damprock_s01_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_c1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1945,7 +1945,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s01_large = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1954,7 +1954,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s01_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_b1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1984,7 +1984,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s01_med = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s01_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2023,7 +2023,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s01_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2032,7 +2032,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s02_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_c2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2062,7 +2062,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s02_large = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2071,7 +2071,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s02_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_b2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2101,7 +2101,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s02_med = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2110,7 +2110,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s02_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2140,7 +2140,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s02_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2149,7 +2149,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s03_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_c3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2179,7 +2179,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s03_large = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2188,7 +2188,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s03_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_b3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2218,7 +2218,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s03_med = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2227,7 +2227,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_damprock_s03_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_damprock_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2257,7 +2257,7 @@ object_static_structure_general_shared_cave_stalactite_damprock_s03_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2266,7 +2266,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_ice_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_ice_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2296,7 +2296,7 @@ object_static_structure_general_shared_cave_stalactite_ice_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2305,7 +2305,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_ice_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_ice_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2335,7 +2335,7 @@ object_static_structure_general_shared_cave_stalactite_ice_style_02 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2344,7 +2344,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_ice_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_ice_b2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2374,7 +2374,7 @@ object_static_structure_general_shared_cave_stalactite_ice_style_03 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2383,7 +2383,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_ice_style_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_ice_b3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2413,7 +2413,7 @@ object_static_structure_general_shared_cave_stalactite_ice_style_04 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2422,7 +2422,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_ice_style_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_ice_c2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2452,7 +2452,7 @@ object_static_structure_general_shared_cave_stalactite_ice_style_05 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2461,7 +2461,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_ice_style_06 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_ice_c3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2491,7 +2491,7 @@ object_static_structure_general_shared_cave_stalactite_ice_style_06 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2500,7 +2500,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s01_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_c1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2530,7 +2530,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s01_large = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2539,7 +2539,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s01_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_b1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2569,7 +2569,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s01_med = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2578,7 +2578,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s01_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2608,7 +2608,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s01_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2617,7 +2617,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s02_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_c2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2647,7 +2647,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s02_large = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2656,7 +2656,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s02_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_b2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2686,7 +2686,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s02_med = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2695,7 +2695,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s02_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2725,7 +2725,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s02_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2734,7 +2734,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s03_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_c3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2764,7 +2764,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s03_large = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2773,7 +2773,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s03_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_b3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2803,7 +2803,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s03_med = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2812,7 +2812,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalactite_tato_s03_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagtite_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2842,7 +2842,7 @@ object_static_structure_general_shared_cave_stalactite_tato_s03_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2851,7 +2851,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalacti
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s01_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_c1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2881,7 +2881,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s01_large = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2890,7 +2890,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s01_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_b1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2920,7 +2920,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s01_med = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2929,7 +2929,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s01_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2959,7 +2959,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s01_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -2968,7 +2968,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s02_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_c2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2998,7 +2998,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s02_large = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3007,7 +3007,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s02_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_b2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3037,7 +3037,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s02_med = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3046,7 +3046,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s02_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3076,7 +3076,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s02_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3085,7 +3085,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s03_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_c3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3115,7 +3115,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s03_large = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3124,7 +3124,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s03_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_b3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3154,7 +3154,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s03_med = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3163,7 +3163,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_damprock_s03_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_damprock_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3193,7 +3193,7 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s03_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3202,7 +3202,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3232,7 +3232,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3241,7 +3241,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3271,7 +3271,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_02 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3280,7 +3280,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3310,7 +3310,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_03 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3319,7 +3319,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_b1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3349,7 +3349,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_04 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3358,7 +3358,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_b2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3388,7 +3388,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_05 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3397,7 +3397,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_06 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_b3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3427,7 +3427,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_06 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3436,7 +3436,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_07 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_c1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3466,7 +3466,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_07 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3475,7 +3475,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_08 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_c2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3505,7 +3505,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_08 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3514,7 +3514,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_ice_style_09 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_c3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3544,7 +3544,7 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_09 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3553,7 +3553,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s01_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_c1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3583,7 +3583,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s01_large = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3592,7 +3592,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s01_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_b1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3622,7 +3622,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s01_med = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3631,7 +3631,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s01_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3661,7 +3661,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s01_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3670,7 +3670,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s02_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_c2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3700,7 +3700,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s02_large = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3709,7 +3709,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s02_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_b2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3739,7 +3739,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s02_med = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3748,7 +3748,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s02_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3778,7 +3778,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s02_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3787,7 +3787,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s03_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_c3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3817,7 +3817,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s03_large = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3826,7 +3826,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s03_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_b3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3856,7 +3856,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s03_med = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3865,7 +3865,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_stalagmite_tato_s03_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3895,7 +3895,7 @@ object_static_structure_general_shared_cave_stalagmite_tato_s03_small = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3904,7 +3904,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_stalagmi
 
 object_static_structure_general_shared_cave_wall_damprock_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cavewall_damprock_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3934,7 +3934,7 @@ object_static_structure_general_shared_cave_wall_damprock_style_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_wall_dam
 
 object_static_structure_general_shared_cave_wall_ice_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cavewall_ice_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3973,7 +3973,7 @@ object_static_structure_general_shared_cave_wall_ice_style_01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -3982,7 +3982,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_wall_ice
 
 object_static_structure_general_shared_cave_wall_tato_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cavewall_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4012,7 +4012,7 @@ object_static_structure_general_shared_cave_wall_tato_style_01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4021,7 +4021,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cave_wall_tat
 
 object_static_structure_general_shared_cloning_tube = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cloning_tube.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4051,7 +4051,7 @@ object_static_structure_general_shared_cloning_tube = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4060,7 +4060,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_cloning_tube,
 
 object_static_structure_general_shared_corellia_garden_base_lrg_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4090,7 +4090,7 @@ object_static_structure_general_shared_corellia_garden_base_lrg_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4099,7 +4099,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_corellia_gard
 
 object_static_structure_general_shared_corellia_garden_base_med_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4129,7 +4129,7 @@ object_static_structure_general_shared_corellia_garden_base_med_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4138,7 +4138,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_corellia_gard
 
 object_static_structure_general_shared_corellia_garden_base_sml_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4168,7 +4168,7 @@ object_static_structure_general_shared_corellia_garden_base_sml_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -4177,7 +4177,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_corellia_gard
 
 object_static_structure_general_shared_data_terminal_free_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4207,7 +4207,7 @@ object_static_structure_general_shared_data_terminal_free_s1 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4216,7 +4216,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_free_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4246,7 +4246,7 @@ object_static_structure_general_shared_data_terminal_free_s2 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4255,7 +4255,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4285,7 +4285,7 @@ object_static_structure_general_shared_data_terminal_s1 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4294,7 +4294,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4324,7 +4324,7 @@ object_static_structure_general_shared_data_terminal_s2 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4333,7 +4333,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4363,7 +4363,7 @@ object_static_structure_general_shared_data_terminal_s3 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4372,7 +4372,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_s4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4402,7 +4402,7 @@ object_static_structure_general_shared_data_terminal_s4 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4411,7 +4411,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_wall_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4441,7 +4441,7 @@ object_static_structure_general_shared_data_terminal_wall_s1 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4450,7 +4450,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_wall_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4480,7 +4480,7 @@ object_static_structure_general_shared_data_terminal_wall_s2 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4489,7 +4489,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_data_terminal_wall_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4519,7 +4519,7 @@ object_static_structure_general_shared_data_terminal_wall_s3 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4528,7 +4528,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_data_terminal
 
 object_static_structure_general_shared_debris_deathstar_conduit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4558,7 +4558,7 @@ object_static_structure_general_shared_debris_deathstar_conduit = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4567,7 +4567,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_debris_deathstar_large_tube = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_tube.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4597,7 +4597,7 @@ object_static_structure_general_shared_debris_deathstar_large_tube = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4606,7 +4606,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_debris_deathstar_small_chunk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_chunksmalla.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4636,7 +4636,7 @@ object_static_structure_general_shared_debris_deathstar_small_chunk = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4645,7 +4645,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_debris_deathstar_small_tube = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_tubesmall.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4675,7 +4675,7 @@ object_static_structure_general_shared_debris_deathstar_small_tube = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4684,7 +4684,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_debris_deathstar_storage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4714,7 +4714,7 @@ object_static_structure_general_shared_debris_deathstar_storage = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4723,7 +4723,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_debris_deathstar_tractorbeam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4753,7 +4753,7 @@ object_static_structure_general_shared_debris_deathstar_tractorbeam = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4762,7 +4762,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_debris_deathstar_turbolaser = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4792,7 +4792,7 @@ object_static_structure_general_shared_debris_deathstar_turbolaser = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4801,7 +4801,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_debris_deaths
 
 object_static_structure_general_shared_distant_ship_controller2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/distant_ship_controller.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_distant_ship_controller.cdf",
@@ -4831,7 +4831,7 @@ object_static_structure_general_shared_distant_ship_controller2 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -4840,7 +4840,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_distant_ship_
 
 object_static_structure_general_shared_distant_ship_controller_general = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/distant_ship_controller.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_distant_ship_controller.cdf",
@@ -4870,7 +4870,7 @@ object_static_structure_general_shared_distant_ship_controller_general = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -4879,7 +4879,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_distant_ship_
 
 object_static_structure_general_shared_distant_ship_controller_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/distant_ship_controller_imperial.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_distant_ship_controller_imperial.cdf",
@@ -4909,7 +4909,7 @@ object_static_structure_general_shared_distant_ship_controller_imperial = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -4918,7 +4918,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_distant_ship_
 
 object_static_structure_general_shared_distant_ship_controller_rebel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/distant_ship_controller_rebel.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_distant_ship_controller_rebel.cdf",
@@ -4948,7 +4948,7 @@ object_static_structure_general_shared_distant_ship_controller_rebel = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -4957,7 +4957,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_distant_ship_
 
 object_static_structure_general_shared_droid_21bmedical_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_21bmedical_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4987,7 +4987,7 @@ object_static_structure_general_shared_droid_21bmedical_powerdown = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -4996,7 +4996,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_21bmedi
 
 object_static_structure_general_shared_droid_4lom_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_4lom_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5026,7 +5026,7 @@ object_static_structure_general_shared_droid_4lom_powerdown = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5035,7 +5035,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_4lom_po
 
 object_static_structure_general_shared_droid_droideka_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_droideka_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5065,7 +5065,7 @@ object_static_structure_general_shared_droid_droideka_powerdown = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5074,7 +5074,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_droidek
 
 object_static_structure_general_shared_droid_lemedical_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lemedical_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5104,7 +5104,7 @@ object_static_structure_general_shared_droid_lemedical_powerdown = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5113,7 +5113,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_lemedic
 
 object_static_structure_general_shared_droid_probedroid_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_probedroid_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5143,7 +5143,7 @@ object_static_structure_general_shared_droid_probedroid_powerdown = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5152,7 +5152,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_probedr
 
 object_static_structure_general_shared_droid_r2_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r2_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5182,7 +5182,7 @@ object_static_structure_general_shared_droid_r2_powerdown = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5191,7 +5191,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_r2_powe
 
 object_static_structure_general_shared_droid_r3_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r3_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5221,7 +5221,7 @@ object_static_structure_general_shared_droid_r3_powerdown = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5230,7 +5230,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_r3_powe
 
 object_static_structure_general_shared_droid_r4_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r4_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5260,7 +5260,7 @@ object_static_structure_general_shared_droid_r4_powerdown = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5269,7 +5269,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_r4_powe
 
 object_static_structure_general_shared_droid_r5_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r5_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5299,7 +5299,7 @@ object_static_structure_general_shared_droid_r5_powerdown = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5308,7 +5308,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_r5_powe
 
 object_static_structure_general_shared_droid_ra7_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_ra7_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5338,7 +5338,7 @@ object_static_structure_general_shared_droid_ra7_powerdown = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5347,7 +5347,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_droid_ra7_pow
 
 object_static_structure_general_shared_escape_pod = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_escape_pod.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5377,7 +5377,7 @@ object_static_structure_general_shared_escape_pod = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5386,7 +5386,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_escape_pod, 1
 
 object_static_structure_general_shared_escape_pod_door = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_escape_pod_door.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5416,7 +5416,7 @@ object_static_structure_general_shared_escape_pod_door = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5425,7 +5425,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_escape_pod_do
 
 object_static_structure_general_shared_flag_corellia_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_flag_corellia_s01.cdf",
@@ -5455,7 +5455,7 @@ object_static_structure_general_shared_flag_corellia_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5464,7 +5464,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_flag_corellia
 
 object_static_structure_general_shared_fountain_generic_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_fountain_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/amb_fountain_small_lp.sam",
@@ -5494,7 +5494,7 @@ object_static_structure_general_shared_fountain_generic_style_1 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5503,7 +5503,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fountain_gene
 
 object_static_structure_general_shared_fs_village_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/fs_village_bannerpole_s01.cdf",
@@ -5533,7 +5533,7 @@ object_static_structure_general_shared_fs_village_bannerpole_s01 = SharedStaticO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5542,7 +5542,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fs_village_ba
 
 object_static_structure_general_shared_fs_village_drum = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/fs_village/fs_village_drum.cdf",
@@ -5572,7 +5572,7 @@ object_static_structure_general_shared_fs_village_drum = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -5581,7 +5581,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fs_village_dr
 
 object_static_structure_general_shared_fs_village_fire_pit_p1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/fs_village/fs_village_phase1.cdf",
@@ -5611,7 +5611,7 @@ object_static_structure_general_shared_fs_village_fire_pit_p1 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5620,7 +5620,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fs_village_fi
 
 object_static_structure_general_shared_fs_village_fire_pit_p1_test = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/fs_village/fs_village_phase2.cdf",
@@ -5650,7 +5650,7 @@ object_static_structure_general_shared_fs_village_fire_pit_p1_test = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5659,7 +5659,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fs_village_fi
 
 object_static_structure_general_shared_fs_village_fire_pit_p2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/fs_village/fs_village_phase2.cdf",
@@ -5689,7 +5689,7 @@ object_static_structure_general_shared_fs_village_fire_pit_p2 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5698,7 +5698,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fs_village_fi
 
 object_static_structure_general_shared_fs_village_nobuild_768m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5728,7 +5728,7 @@ object_static_structure_general_shared_fs_village_nobuild_768m = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5737,7 +5737,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_fs_village_no
 
 object_static_structure_general_shared_gravestone_generic_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5767,7 +5767,7 @@ object_static_structure_general_shared_gravestone_generic_style_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -5776,7 +5776,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_gravestone_ge
 
 object_static_structure_general_shared_gravestone_generic_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5806,7 +5806,7 @@ object_static_structure_general_shared_gravestone_generic_style_02 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -5815,7 +5815,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_gravestone_ge
 
 object_static_structure_general_shared_gravestone_generic_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5845,7 +5845,7 @@ object_static_structure_general_shared_gravestone_generic_style_03 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -5854,7 +5854,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_gravestone_ge
 
 object_static_structure_general_shared_gravestone_generic_style_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5884,7 +5884,7 @@ object_static_structure_general_shared_gravestone_generic_style_04 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_gravestone_ge
 
 object_static_structure_general_shared_gravestone_generic_style_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s05.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5923,7 +5923,7 @@ object_static_structure_general_shared_gravestone_generic_style_05 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -5932,7 +5932,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_gravestone_ge
 
 object_static_structure_general_shared_ins_shield_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5962,7 +5962,7 @@ object_static_structure_general_shared_ins_shield_generator = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -5971,7 +5971,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_ins_shield_ge
 
 object_static_structure_general_shared_ins_shield_generator_stage1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator_const_1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6001,7 +6001,7 @@ object_static_structure_general_shared_ins_shield_generator_stage1 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -6010,7 +6010,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_ins_shield_ge
 
 object_static_structure_general_shared_ins_shield_generator_stage2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator_const_2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6040,7 +6040,7 @@ object_static_structure_general_shared_ins_shield_generator_stage2 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -6049,7 +6049,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_ins_shield_ge
 
 object_static_structure_general_shared_ins_shield_generator_stage3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ins_shield_generator_const_3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6079,7 +6079,7 @@ object_static_structure_general_shared_ins_shield_generator_stage3 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -6088,7 +6088,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_ins_shield_ge
 
 object_static_structure_general_shared_landing_pad_shuttle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_landing_pad_shuttle.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6118,7 +6118,7 @@ object_static_structure_general_shared_landing_pad_shuttle = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -6127,7 +6127,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_landing_pad_s
 
 object_static_structure_general_shared_landing_pad_transport = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_landing_pad_transport.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6157,7 +6157,7 @@ object_static_structure_general_shared_landing_pad_transport = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -6166,7 +6166,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_landing_pad_t
 
 object_static_structure_general_shared_lucky_despot_debris_aft_hull = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_aft_hull.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6196,7 +6196,7 @@ object_static_structure_general_shared_lucky_despot_debris_aft_hull = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6205,7 +6205,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_lucky_despot_debris_forward_hull = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_forward_hull.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6235,7 +6235,7 @@ object_static_structure_general_shared_lucky_despot_debris_forward_hull = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6244,7 +6244,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_lucky_despot_debris_lg_engine_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_lg_engine_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6274,7 +6274,7 @@ object_static_structure_general_shared_lucky_despot_debris_lg_engine_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6283,7 +6283,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_lucky_despot_debris_lg_engine_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_lg_engine_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6313,7 +6313,7 @@ object_static_structure_general_shared_lucky_despot_debris_lg_engine_s02 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6322,7 +6322,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_lucky_despot_debris_md_engine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_md_engine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6352,7 +6352,7 @@ object_static_structure_general_shared_lucky_despot_debris_md_engine = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6361,7 +6361,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_lucky_despot_debris_nose_cone = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_nose_cone.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6391,7 +6391,7 @@ object_static_structure_general_shared_lucky_despot_debris_nose_cone = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6400,7 +6400,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_lucky_despot_debris_sm_engine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_lucky_despot_debris_sm_engine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6430,7 +6430,7 @@ object_static_structure_general_shared_lucky_despot_debris_sm_engine = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6439,7 +6439,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_lucky_despot_
 
 object_static_structure_general_shared_naboo_garden_base_lrg_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6469,7 +6469,7 @@ object_static_structure_general_shared_naboo_garden_base_lrg_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6478,7 +6478,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_naboo_garden_
 
 object_static_structure_general_shared_naboo_garden_base_med_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6508,7 +6508,7 @@ object_static_structure_general_shared_naboo_garden_base_med_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6517,7 +6517,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_naboo_garden_
 
 object_static_structure_general_shared_naboo_garden_base_sml_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6547,7 +6547,7 @@ object_static_structure_general_shared_naboo_garden_base_sml_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6556,7 +6556,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_naboo_garden_
 
 object_static_structure_general_shared_nboo_imprv_flower_urn_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_flower_urn_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6586,7 +6586,7 @@ object_static_structure_general_shared_nboo_imprv_flower_urn_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -6595,7 +6595,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_nboo_imprv_fl
 
 object_static_structure_general_shared_palette_supply_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_palette_supply_01.cdf",
@@ -6625,7 +6625,7 @@ object_static_structure_general_shared_palette_supply_01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6634,7 +6634,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_palette_suppl
 
 object_static_structure_general_shared_palette_supply_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_palette_supply_02.cdf",
@@ -6664,7 +6664,7 @@ object_static_structure_general_shared_palette_supply_02 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6673,7 +6673,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_palette_suppl
 
 object_static_structure_general_shared_palette_supply_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_plalette_supply_03.cdf",
@@ -6703,7 +6703,7 @@ object_static_structure_general_shared_palette_supply_03 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6712,7 +6712,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_palette_suppl
 
 object_static_structure_general_shared_palette_supply_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_plalette_supply_04.cdf",
@@ -6742,7 +6742,7 @@ object_static_structure_general_shared_palette_supply_04 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6751,7 +6751,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_palette_suppl
 
 object_static_structure_general_shared_palette_supply_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_plalette_supply_05.cdf",
@@ -6781,7 +6781,7 @@ object_static_structure_general_shared_palette_supply_05 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -6790,7 +6790,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_palette_suppl
 
 object_static_structure_general_shared_planter_generic_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6820,7 +6820,7 @@ object_static_structure_general_shared_planter_generic_style_1 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -6829,7 +6829,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_planter_gener
 
 object_static_structure_general_shared_planter_generic_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6859,7 +6859,7 @@ object_static_structure_general_shared_planter_generic_style_2 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -6868,7 +6868,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_planter_gener
 
 object_static_structure_general_shared_planter_generic_style_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6898,7 +6898,7 @@ object_static_structure_general_shared_planter_generic_style_3 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -6907,7 +6907,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_planter_gener
 
 object_static_structure_general_shared_planter_generic_style_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6937,7 +6937,7 @@ object_static_structure_general_shared_planter_generic_style_4 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 3
 }
@@ -6946,7 +6946,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_planter_gener
 
 object_static_structure_general_shared_poi_all_construction_metal_pile = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_construction_metal_pile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6976,7 +6976,7 @@ object_static_structure_general_shared_poi_all_construction_metal_pile = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -6985,7 +6985,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_const
 
 object_static_structure_general_shared_poi_all_construction_stone_pile = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_construction_stone_pile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7015,7 +7015,7 @@ object_static_structure_general_shared_poi_all_construction_stone_pile = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7024,7 +7024,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_const
 
 object_static_structure_general_shared_poi_all_corral_half_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7054,7 +7054,7 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7063,7 +7063,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7093,7 +7093,7 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7102,7 +7102,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_32x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_32x32_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7132,7 +7132,7 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s03 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7141,7 +7141,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_32x32_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_32x32_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7171,7 +7171,7 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s04 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7180,7 +7180,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_32x32_s05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_32x32_s05.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7210,7 +7210,7 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s05 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7219,7 +7219,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7249,7 +7249,7 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7258,7 +7258,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7288,7 +7288,7 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7297,7 +7297,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_64x64_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_64x64_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7327,7 +7327,7 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s03 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7336,7 +7336,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_half_64x64_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_half_64x64_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7366,7 +7366,7 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s04 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7375,7 +7375,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_pen_16x8_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_pen_16x8_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7405,7 +7405,7 @@ object_static_structure_general_shared_poi_all_corral_pen_16x8_s01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7414,7 +7414,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_corral_pen_8x16_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_corral_pen_8x16_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7444,7 +7444,7 @@ object_static_structure_general_shared_poi_all_corral_pen_8x16_s01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7453,7 +7453,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_corra
 
 object_static_structure_general_shared_poi_all_farm_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_farm_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7483,7 +7483,7 @@ object_static_structure_general_shared_poi_all_farm_32x32_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7492,7 +7492,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_farm_
 
 object_static_structure_general_shared_poi_all_farm_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_farm_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7522,7 +7522,7 @@ object_static_structure_general_shared_poi_all_farm_32x32_s02 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7531,7 +7531,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_farm_
 
 object_static_structure_general_shared_poi_all_impl_corral_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_corral_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7561,7 +7561,7 @@ object_static_structure_general_shared_poi_all_impl_corral_32x32_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7570,7 +7570,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_impl_
 
 object_static_structure_general_shared_poi_all_impl_corral_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_corral_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7600,7 +7600,7 @@ object_static_structure_general_shared_poi_all_impl_corral_64x64_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7609,7 +7609,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_impl_
 
 object_static_structure_general_shared_poi_all_impl_corral_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_corral_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7639,7 +7639,7 @@ object_static_structure_general_shared_poi_all_impl_corral_64x64_s02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7648,7 +7648,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_impl_
 
 object_static_structure_general_shared_poi_all_monolith_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_monolith_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7678,7 +7678,7 @@ object_static_structure_general_shared_poi_all_monolith_s01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7687,7 +7687,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_monol
 
 object_static_structure_general_shared_poi_all_obelisk_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_obelisk_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7717,7 +7717,7 @@ object_static_structure_general_shared_poi_all_obelisk_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7726,7 +7726,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_obeli
 
 object_static_structure_general_shared_poi_all_rebl_corral_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_rebl_corral_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7756,7 +7756,7 @@ object_static_structure_general_shared_poi_all_rebl_corral_32x32_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7765,7 +7765,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_rebl_
 
 object_static_structure_general_shared_poi_all_rebl_corral_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_rebl_corral_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7795,7 +7795,7 @@ object_static_structure_general_shared_poi_all_rebl_corral_64x64_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7804,7 +7804,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_rebl_
 
 object_static_structure_general_shared_poi_all_rebl_corral_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_rebl_corral_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7834,7 +7834,7 @@ object_static_structure_general_shared_poi_all_rebl_corral_64x64_s02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7843,7 +7843,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_all_rebl_
 
 object_static_structure_general_shared_poi_corl_corral_half_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7873,7 +7873,7 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7882,7 +7882,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7912,7 +7912,7 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7921,7 +7921,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_32x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_32x32_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7951,7 +7951,7 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7960,7 +7960,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_32x32_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_32x32_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7990,7 +7990,7 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s04 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -7999,7 +7999,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8029,7 +8029,7 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8038,7 +8038,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8068,7 +8068,7 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8077,7 +8077,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_64x64_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_64x64_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8107,7 +8107,7 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8116,7 +8116,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_corl_corral_half_64x64_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_corral_half_64x64_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8146,7 +8146,7 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s04 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8155,7 +8155,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_corl_corr
 
 object_static_structure_general_shared_poi_ev9d9head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_ev9d9head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8185,7 +8185,7 @@ object_static_structure_general_shared_poi_ev9d9head = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -8194,7 +8194,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_ev9d9head
 
 object_static_structure_general_shared_poi_nboo_corral_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8224,7 +8224,7 @@ object_static_structure_general_shared_poi_nboo_corral_32x32_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8233,7 +8233,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8263,7 +8263,7 @@ object_static_structure_general_shared_poi_nboo_corral_32x32_s02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8272,7 +8272,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_32x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_32x32_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8302,7 +8302,7 @@ object_static_structure_general_shared_poi_nboo_corral_32x32_s03 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8311,7 +8311,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8341,7 +8341,7 @@ object_static_structure_general_shared_poi_nboo_corral_64x64_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8350,7 +8350,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_gungan_corral_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8380,7 +8380,7 @@ object_static_structure_general_shared_poi_nboo_corral_64x64_s02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8389,7 +8389,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8419,7 +8419,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8428,7 +8428,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8458,7 +8458,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8467,7 +8467,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_32x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_32x32_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8497,7 +8497,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8506,7 +8506,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_32x32_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_32x32_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8536,7 +8536,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s04 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8545,7 +8545,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8575,7 +8575,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8584,7 +8584,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8614,7 +8614,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8623,7 +8623,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_64x64_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_64x64_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8653,7 +8653,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8662,7 +8662,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_nboo_corral_half_64x64_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_corral_half_64x64_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8692,7 +8692,7 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s04 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8701,7 +8701,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_nboo_corr
 
 object_static_structure_general_shared_poi_powerdroid_powerdown = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_powerdroid_powerdown.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8731,7 +8731,7 @@ object_static_structure_general_shared_poi_powerdroid_powerdown = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -8740,7 +8740,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_powerdroi
 
 object_static_structure_general_shared_poi_powerdroidbody = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_powerdroidbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8770,7 +8770,7 @@ object_static_structure_general_shared_poi_powerdroidbody = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -8779,7 +8779,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_powerdroi
 
 object_static_structure_general_shared_poi_powerdroidleg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_powerdroidleg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8809,7 +8809,7 @@ object_static_structure_general_shared_poi_powerdroidleg = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -8818,7 +8818,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_powerdroi
 
 object_static_structure_general_shared_poi_protocolarm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_protocolarm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8848,7 +8848,7 @@ object_static_structure_general_shared_poi_protocolarm = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -8857,7 +8857,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_protocola
 
 object_static_structure_general_shared_poi_protocolleg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_protocolleg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8887,7 +8887,7 @@ object_static_structure_general_shared_poi_protocolleg = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -8896,7 +8896,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_protocoll
 
 object_static_structure_general_shared_poi_tato_corral_half_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8926,7 +8926,7 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8935,7 +8935,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8965,7 +8965,7 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -8974,7 +8974,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_32x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_32x32_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9004,7 +9004,7 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9013,7 +9013,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_32x32_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_32x32_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9043,7 +9043,7 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s04 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9052,7 +9052,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9082,7 +9082,7 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9091,7 +9091,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9121,7 +9121,7 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9130,7 +9130,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_64x64_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_64x64_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9160,7 +9160,7 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9169,7 +9169,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_half_64x64_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_half_64x64_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9199,7 +9199,7 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s04 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9208,7 +9208,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_corral_pen_16x8_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_corral_pen_16x8_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9238,7 +9238,7 @@ object_static_structure_general_shared_poi_tato_corral_pen_16x8_s01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9247,7 +9247,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_corr
 
 object_static_structure_general_shared_poi_tato_farm_32x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_farm_32x32_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9277,7 +9277,7 @@ object_static_structure_general_shared_poi_tato_farm_32x32_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9286,7 +9286,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_farm
 
 object_static_structure_general_shared_poi_tato_farm_32x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_farm_32x32_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9316,7 +9316,7 @@ object_static_structure_general_shared_poi_tato_farm_32x32_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9325,7 +9325,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_farm
 
 object_static_structure_general_shared_poi_tato_farm_64x64_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_farm_64x64_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9355,7 +9355,7 @@ object_static_structure_general_shared_poi_tato_farm_64x64_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9364,7 +9364,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_farm
 
 object_static_structure_general_shared_poi_tato_farm_64x64_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_farm_64x64_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9394,7 +9394,7 @@ object_static_structure_general_shared_poi_tato_farm_64x64_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9403,7 +9403,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_farm
 
 object_static_structure_general_shared_poi_tato_tent_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_tent_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9433,7 +9433,7 @@ object_static_structure_general_shared_poi_tato_tent_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9442,7 +9442,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_tato_tent
 
 object_static_structure_general_shared_poi_temple_ancient_ruined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_temple_ancient_ruined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9472,7 +9472,7 @@ object_static_structure_general_shared_poi_temple_ancient_ruined = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9481,7 +9481,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_poi_temple_an
 
 object_static_structure_general_shared_prp_engine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9511,7 +9511,7 @@ object_static_structure_general_shared_prp_engine = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9520,7 +9520,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_engine, 1
 
 object_static_structure_general_shared_prp_engine_component = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_engine_component.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9550,7 +9550,7 @@ object_static_structure_general_shared_prp_engine_component = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9559,7 +9559,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_engine_co
 
 object_static_structure_general_shared_prp_junk_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9589,7 +9589,7 @@ object_static_structure_general_shared_prp_junk_s1 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -9598,7 +9598,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s1, 
 
 object_static_structure_general_shared_prp_junk_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9628,7 +9628,7 @@ object_static_structure_general_shared_prp_junk_s2 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9637,7 +9637,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s2, 
 
 object_static_structure_general_shared_prp_junk_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9667,7 +9667,7 @@ object_static_structure_general_shared_prp_junk_s3 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9676,7 +9676,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s3, 
 
 object_static_structure_general_shared_prp_junk_s4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9706,7 +9706,7 @@ object_static_structure_general_shared_prp_junk_s4 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9715,7 +9715,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s4, 
 
 object_static_structure_general_shared_prp_junk_s5 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s5.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9745,7 +9745,7 @@ object_static_structure_general_shared_prp_junk_s5 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9754,7 +9754,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s5, 
 
 object_static_structure_general_shared_prp_junk_s6 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s6.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9784,7 +9784,7 @@ object_static_structure_general_shared_prp_junk_s6 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9793,7 +9793,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s6, 
 
 object_static_structure_general_shared_prp_junk_s7 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s7.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9823,7 +9823,7 @@ object_static_structure_general_shared_prp_junk_s7 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9832,7 +9832,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s7, 
 
 object_static_structure_general_shared_prp_junk_s8 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_junk_s8.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9862,7 +9862,7 @@ object_static_structure_general_shared_prp_junk_s8 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9871,7 +9871,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_prp_junk_s8, 
 
 object_static_structure_general_shared_r2_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r2_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9901,7 +9901,7 @@ object_static_structure_general_shared_r2_head = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9910,7 +9910,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r2_head, 9327
 
 object_static_structure_general_shared_r2_leg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r2_leg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9940,7 +9940,7 @@ object_static_structure_general_shared_r2_leg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9949,7 +9949,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r2_leg, 17719
 
 object_static_structure_general_shared_r2_torso = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r2_torso.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9979,7 +9979,7 @@ object_static_structure_general_shared_r2_torso = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -9988,7 +9988,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r2_torso, 593
 
 object_static_structure_general_shared_r3_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r3_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10018,7 +10018,7 @@ object_static_structure_general_shared_r3_head = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10027,7 +10027,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r3_head, 3070
 
 object_static_structure_general_shared_r3_leg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r3_leg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10057,7 +10057,7 @@ object_static_structure_general_shared_r3_leg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10066,7 +10066,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r3_leg, 26107
 
 object_static_structure_general_shared_r3_torso = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r3_torso.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10096,7 +10096,7 @@ object_static_structure_general_shared_r3_torso = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10105,7 +10105,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r3_torso, 367
 
 object_static_structure_general_shared_r4_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r4_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10135,7 +10135,7 @@ object_static_structure_general_shared_r4_head = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10144,7 +10144,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r4_head, 9683
 
 object_static_structure_general_shared_r4_leg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r4_leg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10174,7 +10174,7 @@ object_static_structure_general_shared_r4_leg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10183,7 +10183,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r4_leg, 12769
 
 object_static_structure_general_shared_r4_torso = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r4_torso.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10213,7 +10213,7 @@ object_static_structure_general_shared_r4_torso = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10222,7 +10222,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r4_torso, 106
 
 object_static_structure_general_shared_r5_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r5_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10252,7 +10252,7 @@ object_static_structure_general_shared_r5_head = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10261,7 +10261,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r5_head, 3106
 
 object_static_structure_general_shared_r5_leg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r5_leg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10291,7 +10291,7 @@ object_static_structure_general_shared_r5_leg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10300,7 +10300,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r5_leg, 31895
 
 object_static_structure_general_shared_r5_torso = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_r5_torso.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10330,7 +10330,7 @@ object_static_structure_general_shared_r5_torso = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10339,7 +10339,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_r5_torso, 333
 
 object_static_structure_general_shared_repairdroidhead = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_repairdroidhead.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10369,7 +10369,7 @@ object_static_structure_general_shared_repairdroidhead = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10378,7 +10378,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_repairdroidhe
 
 object_static_structure_general_shared_repairdroidtorso = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_repairdroidtorso.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10408,7 +10408,7 @@ object_static_structure_general_shared_repairdroidtorso = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -10417,7 +10417,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_repairdroidto
 
 object_static_structure_general_shared_rock_beach_dark_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_beach_dark_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10447,7 +10447,7 @@ object_static_structure_general_shared_rock_beach_dark_lg = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -10456,7 +10456,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_rock_beach_da
 
 object_static_structure_general_shared_rock_beach_dark_md = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_beach_dark_md.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10486,7 +10486,7 @@ object_static_structure_general_shared_rock_beach_dark_md = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -10495,7 +10495,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_rock_beach_da
 
 object_static_structure_general_shared_rock_forestriverrock_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_forestriverrock_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10525,7 +10525,7 @@ object_static_structure_general_shared_rock_forestriverrock_lg = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -10534,7 +10534,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_rock_forestri
 
 object_static_structure_general_shared_rock_mossy_big = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_mossy_big.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10564,7 +10564,7 @@ object_static_structure_general_shared_rock_mossy_big = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -10573,7 +10573,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_rock_mossy_bi
 
 object_static_structure_general_shared_rock_mossy_big_a1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_mossy_big_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10603,7 +10603,7 @@ object_static_structure_general_shared_rock_mossy_big_a1 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -10612,7 +10612,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_rock_mossy_bi
 
 object_static_structure_general_shared_sandcrawler_debris_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_sandcrawler_debris_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10642,7 +10642,7 @@ object_static_structure_general_shared_sandcrawler_debris_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10651,7 +10651,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_sandcrawler_d
 
 object_static_structure_general_shared_sandcrawler_debris_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_sandcrawler_debris_02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10681,7 +10681,7 @@ object_static_structure_general_shared_sandcrawler_debris_02 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10690,7 +10690,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_sandcrawler_d
 
 object_static_structure_general_shared_sandcrawler_destroyed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_sandcrawler_destroyed.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10720,7 +10720,7 @@ object_static_structure_general_shared_sandcrawler_destroyed = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10729,7 +10729,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_sandcrawler_d
 
 object_static_structure_general_shared_skeleton_ancient_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_ancient_skeleton_s01_dynamic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10759,7 +10759,7 @@ object_static_structure_general_shared_skeleton_ancient_s01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10768,7 +10768,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_anci
 
 object_static_structure_general_shared_skeleton_ancient_s01_with_floor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_ancient_skeleton_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10798,7 +10798,7 @@ object_static_structure_general_shared_skeleton_ancient_s01_with_floor = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10807,7 +10807,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_anci
 
 object_static_structure_general_shared_skeleton_bith_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10837,7 +10837,7 @@ object_static_structure_general_shared_skeleton_bith_head = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10846,7 +10846,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_bith
 
 object_static_structure_general_shared_skeleton_bith_headandbody = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10876,7 +10876,7 @@ object_static_structure_general_shared_skeleton_bith_headandbody = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10885,7 +10885,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_bith
 
 object_static_structure_general_shared_skeleton_human_body = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_body.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10915,7 +10915,7 @@ object_static_structure_general_shared_skeleton_human_body = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10924,7 +10924,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_huma
 
 object_static_structure_general_shared_skeleton_human_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10954,7 +10954,7 @@ object_static_structure_general_shared_skeleton_human_head = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -10963,7 +10963,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_huma
 
 object_static_structure_general_shared_skeleton_human_headandbody = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10993,7 +10993,7 @@ object_static_structure_general_shared_skeleton_human_headandbody = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -11002,7 +11002,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_huma
 
 object_static_structure_general_shared_skeleton_ithorian_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_head.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11032,7 +11032,7 @@ object_static_structure_general_shared_skeleton_ithorian_head = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -11041,7 +11041,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_itho
 
 object_static_structure_general_shared_skeleton_ithorian_headandbody = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_headandbody.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11071,7 +11071,7 @@ object_static_structure_general_shared_skeleton_ithorian_headandbody = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -11080,7 +11080,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_skeleton_itho
 
 object_static_structure_general_shared_space_station = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/space_station.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11110,7 +11110,7 @@ object_static_structure_general_shared_space_station = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -11119,7 +11119,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_space_station
 
 object_static_structure_general_shared_streetlamp_large_blue_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_blue_style_1.cdf",
@@ -11149,7 +11149,7 @@ object_static_structure_general_shared_streetlamp_large_blue_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11158,7 +11158,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_blue_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_blue_style_1_on.cdf",
@@ -11188,7 +11188,7 @@ object_static_structure_general_shared_streetlamp_large_blue_style_01_on = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11197,7 +11197,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_blue_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_blue_style_2.cdf",
@@ -11227,7 +11227,7 @@ object_static_structure_general_shared_streetlamp_large_blue_style_02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11236,7 +11236,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_blue_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_blue_style_2_on.cdf",
@@ -11266,7 +11266,7 @@ object_static_structure_general_shared_streetlamp_large_blue_style_02_on = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11275,7 +11275,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_green_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_green_style_1.cdf",
@@ -11305,7 +11305,7 @@ object_static_structure_general_shared_streetlamp_large_green_style_01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11314,7 +11314,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_green_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_green_style_1_on.cdf",
@@ -11344,7 +11344,7 @@ object_static_structure_general_shared_streetlamp_large_green_style_01_on = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11353,7 +11353,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_green_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_green_style_2.cdf",
@@ -11383,7 +11383,7 @@ object_static_structure_general_shared_streetlamp_large_green_style_02 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11392,7 +11392,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_green_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_green_style_2_on.cdf",
@@ -11422,7 +11422,7 @@ object_static_structure_general_shared_streetlamp_large_green_style_02_on = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11431,7 +11431,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_red_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_red_style_1.cdf",
@@ -11461,7 +11461,7 @@ object_static_structure_general_shared_streetlamp_large_red_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11470,7 +11470,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_red_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_red_style_1_on.cdf",
@@ -11500,7 +11500,7 @@ object_static_structure_general_shared_streetlamp_large_red_style_01_on = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11509,7 +11509,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_red_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_red_style_2.cdf",
@@ -11539,7 +11539,7 @@ object_static_structure_general_shared_streetlamp_large_red_style_02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11548,7 +11548,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_red_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_red_style_2_on.cdf",
@@ -11578,7 +11578,7 @@ object_static_structure_general_shared_streetlamp_large_red_style_02_on = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11587,7 +11587,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_style_1.cdf",
@@ -11617,7 +11617,7 @@ object_static_structure_general_shared_streetlamp_large_style_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11626,7 +11626,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_style_01_off = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11656,7 +11656,7 @@ object_static_structure_general_shared_streetlamp_large_style_01_off = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11665,7 +11665,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_style_1_on.cdf",
@@ -11695,7 +11695,7 @@ object_static_structure_general_shared_streetlamp_large_style_01_on = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11704,7 +11704,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_style_2.cdf",
@@ -11734,7 +11734,7 @@ object_static_structure_general_shared_streetlamp_large_style_02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11743,7 +11743,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_large_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_large_style_2_on.cdf",
@@ -11773,7 +11773,7 @@ object_static_structure_general_shared_streetlamp_large_style_02_on = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11782,7 +11782,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_la
 
 object_static_structure_general_shared_streetlamp_medium_blue_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_blue_style_1.cdf",
@@ -11812,7 +11812,7 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11821,7 +11821,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_blue_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_blue_style_1_on.cdf",
@@ -11851,7 +11851,7 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_01_on = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11860,7 +11860,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_blue_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_blue_style_2.cdf",
@@ -11890,7 +11890,7 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_02 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11899,7 +11899,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_blue_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_blue_style_2_on.cdf",
@@ -11929,7 +11929,7 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_02_on = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11938,7 +11938,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_green_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_green_style_1.cdf",
@@ -11968,7 +11968,7 @@ object_static_structure_general_shared_streetlamp_medium_green_style_01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -11977,7 +11977,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_green_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_green_style_1_on.cdf",
@@ -12007,7 +12007,7 @@ object_static_structure_general_shared_streetlamp_medium_green_style_01_on = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12016,7 +12016,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_green_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_green_style_2.cdf",
@@ -12046,7 +12046,7 @@ object_static_structure_general_shared_streetlamp_medium_green_style_02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12055,7 +12055,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_green_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_green_style_2_on.cdf",
@@ -12085,7 +12085,7 @@ object_static_structure_general_shared_streetlamp_medium_green_style_02_on = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12094,7 +12094,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_red_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_red_style_1.cdf",
@@ -12124,7 +12124,7 @@ object_static_structure_general_shared_streetlamp_medium_red_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12133,7 +12133,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_red_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_red_style_1_on.cdf",
@@ -12163,7 +12163,7 @@ object_static_structure_general_shared_streetlamp_medium_red_style_01_on = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12172,7 +12172,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_red_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_red_style_2.cdf",
@@ -12202,7 +12202,7 @@ object_static_structure_general_shared_streetlamp_medium_red_style_02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12211,7 +12211,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_red_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_red_style_2_on.cdf",
@@ -12241,7 +12241,7 @@ object_static_structure_general_shared_streetlamp_medium_red_style_02_on = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12250,7 +12250,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_style_1.cdf",
@@ -12280,7 +12280,7 @@ object_static_structure_general_shared_streetlamp_medium_style_01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12289,7 +12289,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_style_1_on.cdf",
@@ -12319,7 +12319,7 @@ object_static_structure_general_shared_streetlamp_medium_style_01_on = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12328,7 +12328,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_style_2.cdf",
@@ -12358,7 +12358,7 @@ object_static_structure_general_shared_streetlamp_medium_style_02 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12367,7 +12367,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_medium_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_m_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_medium_style_2_on.cdf",
@@ -12397,7 +12397,7 @@ object_static_structure_general_shared_streetlamp_medium_style_02_on = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12406,7 +12406,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_me
 
 object_static_structure_general_shared_streetlamp_small_blue_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_blue_style_1.cdf",
@@ -12436,7 +12436,7 @@ object_static_structure_general_shared_streetlamp_small_blue_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12445,7 +12445,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_blue_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_blue_style_1_on.cdf",
@@ -12475,7 +12475,7 @@ object_static_structure_general_shared_streetlamp_small_blue_style_01_on = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12484,7 +12484,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_blue_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_blue_style_2.cdf",
@@ -12514,7 +12514,7 @@ object_static_structure_general_shared_streetlamp_small_blue_style_02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12523,7 +12523,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_blue_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_blue_style_2_on.cdf",
@@ -12553,7 +12553,7 @@ object_static_structure_general_shared_streetlamp_small_blue_style_02_on = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12562,7 +12562,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_green_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_green_style_1.cdf",
@@ -12592,7 +12592,7 @@ object_static_structure_general_shared_streetlamp_small_green_style_01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12601,7 +12601,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_green_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_green_style_1_on.cdf",
@@ -12631,7 +12631,7 @@ object_static_structure_general_shared_streetlamp_small_green_style_01_on = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12640,7 +12640,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_green_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_green_style_2.cdf",
@@ -12670,7 +12670,7 @@ object_static_structure_general_shared_streetlamp_small_green_style_02 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12679,7 +12679,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_green_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_green_style_2_on.cdf",
@@ -12709,7 +12709,7 @@ object_static_structure_general_shared_streetlamp_small_green_style_02_on = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12718,7 +12718,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_red_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_red_style_1.cdf",
@@ -12748,7 +12748,7 @@ object_static_structure_general_shared_streetlamp_small_red_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12757,7 +12757,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_red_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_red_style_1_on.cdf",
@@ -12787,7 +12787,7 @@ object_static_structure_general_shared_streetlamp_small_red_style_01_on = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12796,7 +12796,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_red_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_red_style_2.cdf",
@@ -12826,7 +12826,7 @@ object_static_structure_general_shared_streetlamp_small_red_style_02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12835,7 +12835,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_red_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_red_style_2_on.cdf",
@@ -12865,7 +12865,7 @@ object_static_structure_general_shared_streetlamp_small_red_style_02_on = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12874,7 +12874,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_style_1.cdf",
@@ -12904,7 +12904,7 @@ object_static_structure_general_shared_streetlamp_small_style_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12913,7 +12913,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_style_01_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_style_1_on.cdf",
@@ -12943,7 +12943,7 @@ object_static_structure_general_shared_streetlamp_small_style_01_on = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12952,7 +12952,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_style_2.cdf",
@@ -12982,7 +12982,7 @@ object_static_structure_general_shared_streetlamp_small_style_02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -12991,7 +12991,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_streetlamp_small_style_02_on = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_streetlamp_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_streetlamp_small_style_2_on.cdf",
@@ -13021,7 +13021,7 @@ object_static_structure_general_shared_streetlamp_small_style_02_on = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13030,7 +13030,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_streetlamp_sm
 
 object_static_structure_general_shared_tankfarm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_tankfarm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13060,7 +13060,7 @@ object_static_structure_general_shared_tankfarm_s01 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -13069,7 +13069,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tankfarm_s01,
 
 object_static_structure_general_shared_tato_cave_rock_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13099,7 +13099,7 @@ object_static_structure_general_shared_tato_cave_rock_large = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13108,7 +13108,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_roc
 
 object_static_structure_general_shared_tato_cave_rock_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13138,7 +13138,7 @@ object_static_structure_general_shared_tato_cave_rock_med = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13147,7 +13147,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_roc
 
 object_static_structure_general_shared_tato_cave_stalactite_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalactite_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13177,7 +13177,7 @@ object_static_structure_general_shared_tato_cave_stalactite_large = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13186,7 +13186,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalactite_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalactite_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13216,7 +13216,7 @@ object_static_structure_general_shared_tato_cave_stalactite_med = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13225,7 +13225,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalactite_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalactite_sml.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13255,7 +13255,7 @@ object_static_structure_general_shared_tato_cave_stalactite_small = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13264,7 +13264,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalactite_tiny = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalactite_tiny.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13294,7 +13294,7 @@ object_static_structure_general_shared_tato_cave_stalactite_tiny = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13303,7 +13303,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalagmite_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalagmite_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13333,7 +13333,7 @@ object_static_structure_general_shared_tato_cave_stalagmite_large = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13342,7 +13342,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalagmite_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalagmite_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13372,7 +13372,7 @@ object_static_structure_general_shared_tato_cave_stalagmite_med = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13381,7 +13381,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalagmite_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalagmite_sml.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13411,7 +13411,7 @@ object_static_structure_general_shared_tato_cave_stalagmite_small = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13420,7 +13420,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tato_cave_stalagmite_tiny = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_stalagmite_tiny.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13450,7 +13450,7 @@ object_static_structure_general_shared_tato_cave_stalagmite_tiny = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13459,7 +13459,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tato_cave_sta
 
 object_static_structure_general_shared_tatooine_garden_base_lrg_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13489,7 +13489,7 @@ object_static_structure_general_shared_tatooine_garden_base_lrg_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13498,7 +13498,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tatooine_gard
 
 object_static_structure_general_shared_tatooine_garden_base_med_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13528,7 +13528,7 @@ object_static_structure_general_shared_tatooine_garden_base_med_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13537,7 +13537,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tatooine_gard
 
 object_static_structure_general_shared_tatooine_garden_base_sml_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13567,7 +13567,7 @@ object_static_structure_general_shared_tatooine_garden_base_sml_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13576,7 +13576,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tatooine_gard
 
 object_static_structure_general_shared_tie_bomber_debris_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_tie_bomber_debris_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13606,7 +13606,7 @@ object_static_structure_general_shared_tie_bomber_debris_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13615,7 +13615,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tie_bomber_de
 
 object_static_structure_general_shared_transport_debris_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_destroyed_transport_1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13645,7 +13645,7 @@ object_static_structure_general_shared_transport_debris_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13654,7 +13654,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_transport_deb
 
 object_static_structure_general_shared_transport_debris_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_destroyed_transport_2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13684,7 +13684,7 @@ object_static_structure_general_shared_transport_debris_02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13693,7 +13693,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_transport_deb
 
 object_static_structure_general_shared_trash_pile_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_imprv_trash_pile_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13723,7 +13723,7 @@ object_static_structure_general_shared_trash_pile_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13732,7 +13732,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_trash_pile_s0
 
 object_static_structure_general_shared_tutorial_waypoint = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_blue.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13762,7 +13762,7 @@ object_static_structure_general_shared_tutorial_waypoint = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13771,7 +13771,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_tutorial_wayp
 
 object_static_structure_general_shared_web_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13801,7 +13801,7 @@ object_static_structure_general_shared_web_01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13810,7 +13810,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_01, 21943
 
 object_static_structure_general_shared_web_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13840,7 +13840,7 @@ object_static_structure_general_shared_web_02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13849,7 +13849,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_02, 15076
 
 object_static_structure_general_shared_web_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13879,7 +13879,7 @@ object_static_structure_general_shared_web_03 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13888,7 +13888,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_03, 28217
 
 object_static_structure_general_shared_web_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13918,7 +13918,7 @@ object_static_structure_general_shared_web_04 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13927,7 +13927,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_04, 39459
 
 object_static_structure_general_shared_web_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_s05.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13957,7 +13957,7 @@ object_static_structure_general_shared_web_05 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -13966,7 +13966,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_05, 27221
 
 object_static_structure_general_shared_web_06 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_s06.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13996,7 +13996,7 @@ object_static_structure_general_shared_web_06 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -14005,7 +14005,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_06, 20326
 
 object_static_structure_general_shared_web_07 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_lair_web_base.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14035,7 +14035,7 @@ object_static_structure_general_shared_web_07 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -14044,7 +14044,7 @@ ObjectTemplates:addTemplate(object_static_structure_general_shared_web_07, 80774
 
 object_static_structure_general_shared_xwing = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_xwing.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -14074,7 +14074,7 @@ object_static_structure_general_shared_xwing = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }

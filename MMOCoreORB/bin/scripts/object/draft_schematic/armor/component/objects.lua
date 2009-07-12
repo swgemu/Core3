@@ -43,7 +43,7 @@
 
 object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_draft_schematic_armor_component_shared_armor_layer_environmental = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_
 
 object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflec
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflec
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_particle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_particl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflec
 
 object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflec
 
 object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_overload_discharg
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflec
 
 object_draft_schematic_armor_component_shared_deflector_shield_projector_plate = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_draft_schematic_armor_component_shared_deflector_shield_projector_plate =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflec
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

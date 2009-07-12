@@ -43,7 +43,7 @@
 
 object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

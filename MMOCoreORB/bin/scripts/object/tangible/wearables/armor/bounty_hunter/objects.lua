@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_belt_f.sat",
-	arrangementDescriptor = "utility_belt",
+	arrangementDescriptors = {"utility_belt"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bicep_l_f.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bicep_r_f.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bracer_l_f.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_bracer_r_f.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_p
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_gloves_f.sat",
-	arrangementDescriptor = "gloves",
+	arrangementDescriptors = {"gloves"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bounty_hunter_leggings_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_legging
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

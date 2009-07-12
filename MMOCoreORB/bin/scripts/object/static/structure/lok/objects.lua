@@ -43,7 +43,7 @@
 
 object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/lok_imprv_bannerpole_s01.cdf",
@@ -72,7 +72,7 @@ object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -81,7 +81,7 @@ ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_bannerp
 
 object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/lok_imprv_flagpole_s01.cdf",
@@ -110,7 +110,7 @@ object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }

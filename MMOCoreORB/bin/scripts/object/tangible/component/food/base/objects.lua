@@ -43,7 +43,7 @@
 
 object_tangible_component_food_base_shared_drink_container_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_component_food_base_shared_drink_container_base = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

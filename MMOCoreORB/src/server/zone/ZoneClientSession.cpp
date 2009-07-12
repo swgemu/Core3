@@ -188,13 +188,18 @@ DistributedObjectStub* ZoneClientSessionImplementation::_getStub() {
 	return _this;
 }
 
+string ZoneClientSessionImplementation::getAddress() {
+	// server/zone/ZoneClientSession.idl(77):  return BaseClientProxy.getAddress();
+	return BaseClientProxy::getAddress();
+}
+
 void ZoneClientSessionImplementation::setSessionKey(unsigned int key) {
-	// server/zone/ZoneClientSession.idl(88):  sessionKey = key;
+	// server/zone/ZoneClientSession.idl(89):  sessionKey = key;
 	sessionKey = key;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionKey() {
-	// server/zone/ZoneClientSession.idl(96):  return sessionKey;
+	// server/zone/ZoneClientSession.idl(97):  return sessionKey;
 	return sessionKey;
 }
 

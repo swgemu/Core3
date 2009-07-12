@@ -43,7 +43,7 @@
 
 object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_base_destruct
 
 object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_override_term
 
 object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_power_regulat
 
 object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_security_term
 
 object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

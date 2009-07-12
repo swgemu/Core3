@@ -43,7 +43,7 @@
 
 object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {16777216},
 	structureFootprintFileName = "",

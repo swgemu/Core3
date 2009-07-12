@@ -43,7 +43,7 @@
 
 object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

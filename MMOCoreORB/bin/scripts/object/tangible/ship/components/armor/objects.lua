@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plasti
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_dur
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durast
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_dura
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_du
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_special_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_special_standard_dura
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cor
 
 object_tangible_ship_components_armor_shared_arm_cygnus_light_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_components_armor_shared_arm_cygnus_light_weave = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cyg
 
 object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_cyg
 
 object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_fre
 
 object_tangible_ship_components_armor_shared_arm_freitek_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_components_armor_shared_arm_freitek_standard = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_fre
 
 object_tangible_ship_components_armor_shared_arm_gallofree_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_components_armor_shared_arm_gallofree_mk1 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gal
 
 object_tangible_ship_components_armor_shared_arm_gallofree_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_components_armor_shared_arm_gallofree_mk2 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gal
 
 object_tangible_ship_components_armor_shared_arm_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_components_armor_shared_arm_generic = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_gen
 
 object_tangible_ship_components_armor_shared_arm_incom_light_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_components_armor_shared_arm_incom_light_plate = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_inc
 
 object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_inc
 
 object_tangible_ship_components_armor_shared_arm_incom_standard_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_components_armor_shared_arm_incom_standard_plate = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_inc
 
 object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystalline_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystal
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kes
 
 object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_impervious = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_im
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kes
 
 object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_finest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_fi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kes
 
 object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kes
 
 object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_multilayer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_mu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kes
 
 object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershell_plating = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kes
 
 object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_duraste
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_dura
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastis
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_duraste
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durastee
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durast
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_duraste
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durastee
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durast
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_duraste
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_koe
 
 object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_duraste
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_kse
 
 object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_composite_j5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_composite_j5 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_composite_j7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_composite_j7 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_j7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_elite_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_elite_composite = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_comp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_man
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_special_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_spe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mis
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_lig
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mis
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_handcrafted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_hand
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mis
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_triplate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mis
 
 object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultralight = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mis
 
 object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mon
 
 object_tangible_ship_components_armor_shared_arm_moncal_elite_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_tangible_ship_components_armor_shared_arm_moncal_elite_weave = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4043,7 +4043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mon
 
 object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -4078,7 +4078,7 @@ object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4093,7 +4093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mon
 
 object_tangible_ship_components_armor_shared_arm_moncal_light_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4128,7 +4128,7 @@ object_tangible_ship_components_armor_shared_arm_moncal_light_weave = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4143,7 +4143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mon
 
 object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4178,7 +4178,7 @@ object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4193,7 +4193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_mon
 
 object_tangible_ship_components_armor_shared_arm_prototype_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4228,7 +4228,7 @@ object_tangible_ship_components_armor_shared_arm_prototype_armor = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4243,7 +4243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_pro
 
 object_tangible_ship_components_armor_shared_arm_rendili_tough_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -4278,7 +4278,7 @@ object_tangible_ship_components_armor_shared_arm_rendili_tough_plate = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4293,7 +4293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_ren
 
 object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4328,7 +4328,7 @@ object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4343,7 +4343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rew
 
 object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4378,7 +4378,7 @@ object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rew
 
 object_tangible_ship_components_armor_shared_arm_reward_freitek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4428,7 +4428,7 @@ object_tangible_ship_components_armor_shared_arm_reward_freitek_elite = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rew
 
 object_tangible_ship_components_armor_shared_arm_reward_mandal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4478,7 +4478,7 @@ object_tangible_ship_components_armor_shared_arm_reward_mandal_elite = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4493,7 +4493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rew
 
 object_tangible_ship_components_armor_shared_arm_reward_subpro_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4528,7 +4528,7 @@ object_tangible_ship_components_armor_shared_arm_reward_subpro_elite = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4543,7 +4543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rew
 
 object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4578,7 +4578,7 @@ object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4593,7 +4593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_rss
 
 object_tangible_ship_components_armor_shared_arm_sds_triplate_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4628,7 +4628,7 @@ object_tangible_ship_components_armor_shared_arm_sds_triplate_system = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4643,7 +4643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sds
 
 object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4678,7 +4678,7 @@ object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4693,7 +4693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs
 
 object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4728,7 +4728,7 @@ object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4743,7 +4743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs
 
 object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4778,7 +4778,7 @@ object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4793,7 +4793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sfs
 
 object_tangible_ship_components_armor_shared_arm_slayn_tech_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -4828,7 +4828,7 @@ object_tangible_ship_components_armor_shared_arm_slayn_tech_weave = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4843,7 +4843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sla
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4878,7 +4878,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4893,7 +4893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4928,7 +4928,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4943,7 +4943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4978,7 +4978,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plas
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5028,7 +5028,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5043,7 +5043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5078,7 +5078,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastis
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5093,7 +5093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5128,7 +5128,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastistee
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5143,7 +5143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5178,7 +5178,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastis
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5193,7 +5193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5228,7 +5228,7 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_d
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5243,7 +5243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sor
 
 object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5278,7 +5278,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5293,7 +5293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5328,7 +5328,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5343,7 +5343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5378,7 +5378,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5393,7 +5393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5428,7 +5428,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastis
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5443,7 +5443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5478,7 +5478,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_pl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5493,7 +5493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5528,7 +5528,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5578,7 +5578,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastiste
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5593,7 +5593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5628,7 +5628,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durast
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5643,7 +5643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5678,7 +5678,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastistee
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5693,7 +5693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5728,7 +5728,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastistee
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5743,7 +5743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5778,7 +5778,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5793,7 +5793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5828,7 +5828,7 @@ object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5843,7 +5843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_arm_sub
 
 object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5878,7 +5878,7 @@ object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_a
 
 object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5928,7 +5928,7 @@ object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5943,7 +5943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_a
 
 object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5978,7 +5978,7 @@ object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5993,7 +5993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_b
 
 object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -6028,7 +6028,7 @@ object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6043,7 +6043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_b
 
 object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -6078,7 +6078,7 @@ object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_b
 
 object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6128,7 +6128,7 @@ object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6143,7 +6143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_f
 
 object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6178,7 +6178,7 @@ object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6193,7 +6193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_f
 
 object_tangible_ship_components_armor_shared_armor_mandal_composite_j14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6228,7 +6228,7 @@ object_tangible_ship_components_armor_shared_armor_mandal_composite_j14 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6243,7 +6243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_m
 
 object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -6278,7 +6278,7 @@ object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6293,7 +6293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_m
 
 object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6328,7 +6328,7 @@ object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6343,7 +6343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_s
 
 object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6378,7 +6378,7 @@ object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6393,7 +6393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_s
 
 object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -6428,7 +6428,7 @@ object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6443,7 +6443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_s
 
 object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -6478,7 +6478,7 @@ object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6493,7 +6493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_s
 
 object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -6528,7 +6528,7 @@ object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6543,7 +6543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_s
 
 object_tangible_ship_components_armor_shared_armor_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_chest_plate_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6578,7 +6578,7 @@ object_tangible_ship_components_armor_shared_armor_test = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6593,7 +6593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_t
 
 object_tangible_ship_components_armor_shared_armor_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6628,7 +6628,7 @@ object_tangible_ship_components_armor_shared_armor_tiefighter_basic = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_t
 
 object_tangible_ship_components_armor_shared_armor_trilon_custom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -6678,7 +6678,7 @@ object_tangible_ship_components_armor_shared_armor_trilon_custom = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6693,7 +6693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_t
 
 object_tangible_ship_components_armor_shared_armor_trilon_unknown = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -6728,7 +6728,7 @@ object_tangible_ship_components_armor_shared_armor_trilon_unknown = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6743,7 +6743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_components_armor_shared_armor_t
 
 object_tangible_ship_components_armor_shared_armor_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_armor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6778,7 +6778,7 @@ object_tangible_ship_components_armor_shared_armor_z95_basic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

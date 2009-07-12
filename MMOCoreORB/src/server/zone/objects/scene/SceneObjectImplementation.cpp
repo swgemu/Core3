@@ -56,7 +56,7 @@ bool SceneObjectImplementation::registered = ObjectManager::objectFactory.regist
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) : Serializable() {
 	SceneObjectImplementation::parent = parent;
 
-	children = new VectorMap<uint32, SceneObject*>();
+	children = new VectorMap<string, SceneObject*>();
 
 	direction = new Quaternion();
 
@@ -68,8 +68,7 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 
 	gameObjectType = templateData->getIntField("gameObjectType");
 
-	/*arrangementDescriptor = String();
-	arrangementDescriptor = templateData->getStringField("arrangementDescriptor");*/
+	arrangementDescriptor = templateData->getStringField("arrangementDescriptor");
 
 
 	addSerializableVariables();
@@ -85,6 +84,15 @@ void SceneObjectImplementation::addSerializableVariables() {
 	addSerializableVariable("containerType", &containerType);
 	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
 	addSerializableVariable("gameObjectType", &gameObjectType);
+	addSerializableVariable("arrangementDescriptor", &arrangementDescriptor);
+}
+
+void SceneObjectImplementation::serialize(string& data) {
+	Serializable::serialize(data);
+}
+
+void SceneObjectImplementation::deSerialize(const string& data) {
+	Serializable::deSerialize(data);
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {

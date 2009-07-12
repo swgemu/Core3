@@ -43,7 +43,7 @@
 
 object_static_item_shared_armor_bone_bicep_left = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bicep_l_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_item_shared_armor_bone_bicep_left = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bicep_left, 189
 
 object_static_item_shared_armor_bone_bicep_right = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bicep_r_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_item_shared_armor_bone_bicep_right = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bicep_right, 41
 
 object_static_item_shared_armor_bone_boots = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_boots_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_item_shared_armor_bone_boots = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_boots, 38283497
 
 object_static_item_shared_armor_bone_bracer_left = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bracer_l_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_item_shared_armor_bone_bracer_left = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bracer_left, 21
 
 object_static_item_shared_armor_bone_bracer_right = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_bracer_r_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_item_shared_armor_bone_bracer_right = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_bracer_right, 1
 
 object_static_item_shared_armor_bone_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_chest_plate_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_item_shared_armor_bone_chestplate = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_chestplate, 163
 
 object_static_item_shared_armor_bone_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_helmet_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_static_item_shared_armor_bone_helmet = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_helmet, 3066229
 
 object_static_item_shared_armor_bone_leggings = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_bone_s01_leggings_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_static_item_shared_armor_bone_leggings = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_bone_leggings, 14081
 
 object_static_item_shared_armor_chitin_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_chest_plate_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_static_item_shared_armor_chitin_chestplate = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_chitin_chestplate, 1
 
 object_static_item_shared_armor_chitin_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_helmet_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_static_item_shared_armor_chitin_helmet = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_chitin_helmet, 36421
 
 object_static_item_shared_armor_composite_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_chest_plate_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_static_item_shared_armor_composite_chestplate = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_composite_chestplate
 
 object_static_item_shared_armor_composite_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_composite_s01_helmet_m.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_static_item_shared_armor_composite_helmet = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_composite_helmet, 31
 
 object_static_item_shared_armor_imp_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_static_item_shared_armor_imp_chestplate = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_imp_chestplate, 1320
 
 object_static_item_shared_armor_imp_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_static_item_shared_armor_imp_helmet = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_imp_helmet, 27945368
 
 object_static_item_shared_armor_imp_leggings = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_static_item_shared_armor_imp_leggings = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_imp_leggings, 274299
 
 object_static_item_shared_armor_padded_chestplate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_chest_plate_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_static_item_shared_armor_padded_chestplate = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_padded_chestplate, 1
 
 object_static_item_shared_armor_padded_helmet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/armor_padded_s01_helmet_f.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_static_item_shared_armor_padded_helmet = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_armor_padded_helmet, 80986
 
 object_static_item_shared_item_ammo_rocket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_ammo_rocket.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_static_item_shared_item_ammo_rocket = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_ammo_rocket, 41705067
 
 object_static_item_shared_item_atat_lifesupport_pack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_imp_atat_pilot_life_support_pack.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_static_item_shared_item_atat_lifesupport_pack = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_atat_lifesupport_pack
 
 object_static_item_shared_item_axe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_static_item_shared_item_axe = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_axe, 109834402)
 
 object_static_item_shared_item_bacta_ampules = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_static_item_shared_item_bacta_ampules = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bacta_ampules, 568915
 
 object_static_item_shared_item_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_static_item_shared_item_base = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_base, 377921986)
 
 object_static_item_shared_item_basket_closed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_static_item_shared_item_basket_closed = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_basket_closed, 219516
 
 object_static_item_shared_item_basket_frame = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_static_item_shared_item_basket_frame = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_basket_frame, 2018770
 
 object_static_item_shared_item_basket_shallow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_basket_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_static_item_shared_item_basket_shallow = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_basket_shallow, 34610
 
 object_static_item_shared_item_binoculars = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_electrobinoculars_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_static_item_shared_item_binoculars = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_binoculars, 225860656
 
 object_static_item_shared_item_bottle_fat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_static_item_shared_item_bottle_fat = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bottle_fat, 368900797
 
 object_static_item_shared_item_bottle_pear = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_static_item_shared_item_bottle_pear = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bottle_pear, 19816676
 
 object_static_item_shared_item_bottle_tall = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bottle_empty_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_static_item_shared_item_bottle_tall = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bottle_tall, 42253753
 
 object_static_item_shared_item_bowl_carved = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_static_item_shared_item_bowl_carved = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bowl_carved, 30689415
 
 object_static_item_shared_item_bowl_plain = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_static_item_shared_item_bowl_plain = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bowl_plain, 107185491
 
 object_static_item_shared_item_bowl_shallow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_static_item_shared_item_bowl_shallow = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bowl_shallow, 1053398
 
 object_static_item_shared_item_bread_loaf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_static_item_shared_item_bread_loaf = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_bread_loaf, 368018969
 
 object_static_item_shared_item_briefcase = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_static_item_shared_item_briefcase = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_briefcase, 3247183112
 
 object_static_item_shared_item_cage_bamboo = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_cage_bamboo.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_static_item_shared_item_cage_bamboo = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cage_bamboo, 24623343
 
 object_static_item_shared_item_camera = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1438,7 +1438,7 @@ object_static_item_shared_item_camera = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_camera, 2142034506)
 
 object_static_item_shared_item_carbine_dh17 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1477,7 +1477,7 @@ object_static_item_shared_item_carbine_dh17 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_dh17, 3137119
 
 object_static_item_shared_item_carbine_elite = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1516,7 +1516,7 @@ object_static_item_shared_item_carbine_elite = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_elite, 147366
 
 object_static_item_shared_item_carbine_imperial_e11 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1555,7 +1555,7 @@ object_static_item_shared_item_carbine_imperial_e11 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_imperial_e11,
 
 object_static_item_shared_item_carbine_laser = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1594,7 +1594,7 @@ object_static_item_shared_item_carbine_laser = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_carbine_laser, 272772
 
 object_static_item_shared_item_chair_cafe_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_cafe_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1633,7 +1633,7 @@ object_static_item_shared_item_chair_cafe_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_cafe_s01, 11484
 
 object_static_item_shared_item_chair_cafe_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_cafe_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1672,7 +1672,7 @@ object_static_item_shared_item_chair_cafe_s02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_cafe_s02, 26741
 
 object_static_item_shared_item_chair_futon_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_couch_futon_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1711,7 +1711,7 @@ object_static_item_shared_item_chair_futon_s1 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_futon_s1, 22689
 
 object_static_item_shared_item_chair_metal_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1750,7 +1750,7 @@ object_static_item_shared_item_chair_metal_s1 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_metal_s1, 24475
 
 object_static_item_shared_item_chair_metal_wheeled_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_wheeled_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1789,7 +1789,7 @@ object_static_item_shared_item_chair_metal_wheeled_01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_metal_wheeled_0
 
 object_static_item_shared_item_chair_modern_loveseat_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_love_seat_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1828,7 +1828,7 @@ object_static_item_shared_item_chair_modern_loveseat_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_modern_loveseat
 
 object_static_item_shared_item_chair_recliner_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_recliner_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1867,7 +1867,7 @@ object_static_item_shared_item_chair_recliner_s1 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_recliner_s1, 30
 
 object_static_item_shared_item_chair_tato_cafe_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1906,7 +1906,7 @@ object_static_item_shared_item_chair_tato_cafe_s01 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1915,7 +1915,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_tato_cafe_s01, 
 
 object_static_item_shared_item_chair_tato_cafe_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1945,7 +1945,7 @@ object_static_item_shared_item_chair_tato_cafe_s02 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1954,7 +1954,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chair_tato_cafe_s02, 
 
 object_static_item_shared_item_cheap_cabinet_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_cabinet_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1984,7 +1984,7 @@ object_static_item_shared_item_cheap_cabinet_01 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cheap_cabinet_01, 389
 
 object_static_item_shared_item_cheese_wheel_s1_partial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cheese_wheel_s1_partial.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2023,7 +2023,7 @@ object_static_item_shared_item_cheese_wheel_s1_partial = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2032,7 +2032,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cheese_wheel_s1_parti
 
 object_static_item_shared_item_chemical_container_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2062,7 +2062,7 @@ object_static_item_shared_item_chemical_container_lg = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2071,7 +2071,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chemical_container_lg
 
 object_static_item_shared_item_chemical_container_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2101,7 +2101,7 @@ object_static_item_shared_item_chemical_container_sm = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2110,7 +2110,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_chemical_container_sm
 
 object_static_item_shared_item_cloth_patches = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_clothing_structural.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2140,7 +2140,7 @@ object_static_item_shared_item_cloth_patches = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2149,7 +2149,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cloth_patches, 755038
 
 object_static_item_shared_item_comp_blaster_cannon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_cannon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2179,7 +2179,7 @@ object_static_item_shared_item_comp_blaster_cannon = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2188,7 +2188,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_comp_blaster_cannon, 
 
 object_static_item_shared_item_comp_ion_cannon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ion_cannon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2218,7 +2218,7 @@ object_static_item_shared_item_comp_ion_cannon = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2227,7 +2227,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_comp_ion_cannon, 2119
 
 object_static_item_shared_item_comp_stabilization_unit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_heavy_stabilization_unit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2257,7 +2257,7 @@ object_static_item_shared_item_comp_stabilization_unit = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2266,7 +2266,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_comp_stabilization_un
 
 object_static_item_shared_item_comp_turret_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2296,7 +2296,7 @@ object_static_item_shared_item_comp_turret_base = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2305,7 +2305,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_comp_turret_base, 881
 
 object_static_item_shared_item_con_bag_ingredients_lg_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bag_ingredients_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2335,7 +2335,7 @@ object_static_item_shared_item_con_bag_ingredients_lg_s1 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2344,7 +2344,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_bag_ingredients_l
 
 object_static_item_shared_item_con_bag_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bag_ingredients_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2374,7 +2374,7 @@ object_static_item_shared_item_con_bag_sm = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2383,7 +2383,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_bag_sm, 288778435
 
 object_static_item_shared_item_con_barrel_lg_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2413,7 +2413,7 @@ object_static_item_shared_item_con_barrel_lg_s1 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2422,7 +2422,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_barrel_lg_s1, 782
 
 object_static_item_shared_item_con_basket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_basket.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2452,7 +2452,7 @@ object_static_item_shared_item_con_basket = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2461,7 +2461,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_basket, 468970819
 
 object_static_item_shared_item_con_bowl_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2491,7 +2491,7 @@ object_static_item_shared_item_con_bowl_full = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2500,7 +2500,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_bowl_full, 143597
 
 object_static_item_shared_item_con_bowl_serving_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2530,7 +2530,7 @@ object_static_item_shared_item_con_bowl_serving_full = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2539,7 +2539,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_bowl_serving_full
 
 object_static_item_shared_item_con_drink_flask = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2569,7 +2569,7 @@ object_static_item_shared_item_con_drink_flask = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2578,7 +2578,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_drink_flask, 3135
 
 object_static_item_shared_item_con_glass_beaker = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2608,7 +2608,7 @@ object_static_item_shared_item_con_glass_beaker = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2617,7 +2617,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_glass_beaker, 130
 
 object_static_item_shared_item_con_glass_full_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s2_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2647,7 +2647,7 @@ object_static_item_shared_item_con_glass_full_s2 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2656,7 +2656,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_glass_full_s2, 25
 
 object_static_item_shared_item_con_pitcher_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_pitcher_s1_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2686,7 +2686,7 @@ object_static_item_shared_item_con_pitcher_full = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2695,7 +2695,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_pitcher_full, 300
 
 object_static_item_shared_item_con_plate_casserole = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2725,7 +2725,7 @@ object_static_item_shared_item_con_plate_casserole = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2734,7 +2734,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_plate_casserole, 
 
 object_static_item_shared_item_con_plate_s1_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2764,7 +2764,7 @@ object_static_item_shared_item_con_plate_s1_full = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2773,7 +2773,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_plate_s1_full, 31
 
 object_static_item_shared_item_con_ration_kit_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2803,7 +2803,7 @@ object_static_item_shared_item_con_ration_kit_lg = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2812,7 +2812,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_ration_kit_lg, 17
 
 object_static_item_shared_item_con_ration_kit_m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2842,7 +2842,7 @@ object_static_item_shared_item_con_ration_kit_m = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2851,7 +2851,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_ration_kit_m, 353
 
 object_static_item_shared_item_con_tankard_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tankard_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2881,7 +2881,7 @@ object_static_item_shared_item_con_tankard_full = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2890,7 +2890,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_tankard_full, 798
 
 object_static_item_shared_item_con_tato_bowl_full_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2920,7 +2920,7 @@ object_static_item_shared_item_con_tato_bowl_full_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2929,7 +2929,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_bowl_full_s0
 
 object_static_item_shared_item_con_tato_bowl_full_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2959,7 +2959,7 @@ object_static_item_shared_item_con_tato_bowl_full_s02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2968,7 +2968,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_bowl_full_s0
 
 object_static_item_shared_item_con_tato_cup_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2998,7 +2998,7 @@ object_static_item_shared_item_con_tato_cup_s2 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3007,7 +3007,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_cup_s2, 1498
 
 object_static_item_shared_item_con_tato_cup_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3037,7 +3037,7 @@ object_static_item_shared_item_con_tato_cup_s3 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3046,7 +3046,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_tato_cup_s3, 2744
 
 object_static_item_shared_item_con_water = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_water.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3076,7 +3076,7 @@ object_static_item_shared_item_con_water = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3085,7 +3085,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_water, 2923451996
 
 object_static_item_shared_item_con_winebottle_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s05.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3115,7 +3115,7 @@ object_static_item_shared_item_con_winebottle_01 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3124,7 +3124,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_01, 32
 
 object_static_item_shared_item_con_winebottle_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3154,7 +3154,7 @@ object_static_item_shared_item_con_winebottle_02 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3163,7 +3163,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_02, 41
 
 object_static_item_shared_item_con_winebottle_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3193,7 +3193,7 @@ object_static_item_shared_item_con_winebottle_03 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3202,7 +3202,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_03, 13
 
 object_static_item_shared_item_con_winebottle_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3232,7 +3232,7 @@ object_static_item_shared_item_con_winebottle_04 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3241,7 +3241,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_04, 28
 
 object_static_item_shared_item_con_winebottle_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3271,7 +3271,7 @@ object_static_item_shared_item_con_winebottle_05 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3280,7 +3280,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_con_winebottle_05, 38
 
 object_static_item_shared_item_container_armor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3310,7 +3310,7 @@ object_static_item_shared_item_container_armor = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3319,7 +3319,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_armor, 4175
 
 object_static_item_shared_item_container_electronics = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_electronics_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3349,7 +3349,7 @@ object_static_item_shared_item_container_electronics = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3358,7 +3358,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_electronics
 
 object_static_item_shared_item_container_energy_gas = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3388,7 +3388,7 @@ object_static_item_shared_item_container_energy_gas = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3397,7 +3397,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_gas,
 
 object_static_item_shared_item_container_energy_liquid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_liquid.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3427,7 +3427,7 @@ object_static_item_shared_item_container_energy_liquid = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3436,7 +3436,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_liqu
 
 object_static_item_shared_item_container_energy_radioactive = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_radioactive_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3466,7 +3466,7 @@ object_static_item_shared_item_container_energy_radioactive = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3475,7 +3475,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_radi
 
 object_static_item_shared_item_container_energy_solid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_solid.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3505,7 +3505,7 @@ object_static_item_shared_item_container_energy_solid = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3514,7 +3514,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_energy_soli
 
 object_static_item_shared_item_container_inorganic_chemicals = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3544,7 +3544,7 @@ object_static_item_shared_item_container_inorganic_chemicals = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3553,7 +3553,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_c
 
 object_static_item_shared_item_container_inorganic_gas = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3583,7 +3583,7 @@ object_static_item_shared_item_container_inorganic_gas = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3592,7 +3592,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_g
 
 object_static_item_shared_item_container_inorganic_minerals = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3622,7 +3622,7 @@ object_static_item_shared_item_container_inorganic_minerals = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3631,7 +3631,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_m
 
 object_static_item_shared_item_container_inorganic_water = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_water.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3661,7 +3661,7 @@ object_static_item_shared_item_container_inorganic_water = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3670,7 +3670,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_inorganic_w
 
 object_static_item_shared_item_container_installation = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3700,7 +3700,7 @@ object_static_item_shared_item_container_installation = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3709,7 +3709,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_installatio
 
 object_static_item_shared_item_container_organic_food = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3739,7 +3739,7 @@ object_static_item_shared_item_container_organic_food = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3748,7 +3748,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_organic_foo
 
 object_static_item_shared_item_container_organic_hide = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3778,7 +3778,7 @@ object_static_item_shared_item_container_organic_hide = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3787,7 +3787,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_organic_hid
 
 object_static_item_shared_item_container_organic_structure = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3817,7 +3817,7 @@ object_static_item_shared_item_container_organic_structure = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3826,7 +3826,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_organic_str
 
 object_static_item_shared_item_container_plain_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3856,7 +3856,7 @@ object_static_item_shared_item_container_plain_s01 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3865,7 +3865,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s01, 
 
 object_static_item_shared_item_container_plain_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3895,7 +3895,7 @@ object_static_item_shared_item_container_plain_s02 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3904,7 +3904,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s02, 
 
 object_static_item_shared_item_container_plain_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3934,7 +3934,7 @@ object_static_item_shared_item_container_plain_s03 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s03, 
 
 object_static_item_shared_item_container_plain_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3973,7 +3973,7 @@ object_static_item_shared_item_container_plain_s04 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -3982,7 +3982,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_plain_s04, 
 
 object_static_item_shared_item_container_weapons = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4012,7 +4012,7 @@ object_static_item_shared_item_container_weapons = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4021,7 +4021,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_container_weapons, 36
 
 object_static_item_shared_item_cook_frying_pan = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_frying_pan.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4051,7 +4051,7 @@ object_static_item_shared_item_cook_frying_pan = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4060,7 +4060,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cook_frying_pan, 3546
 
 object_static_item_shared_item_cook_pot_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_pot_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4090,7 +4090,7 @@ object_static_item_shared_item_cook_pot_lg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4099,7 +4099,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cook_pot_lg, 26851470
 
 object_static_item_shared_item_cook_pot_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_pot_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4129,7 +4129,7 @@ object_static_item_shared_item_cook_pot_sm = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4138,7 +4138,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_cook_pot_sm, 15627950
 
 object_static_item_shared_item_crate_clothing_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4168,7 +4168,7 @@ object_static_item_shared_item_crate_clothing_small = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4177,7 +4177,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_crate_clothing_small,
 
 object_static_item_shared_item_crate_spice = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4207,7 +4207,7 @@ object_static_item_shared_item_crate_spice = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4216,7 +4216,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_crate_spice, 17892847
 
 object_static_item_shared_item_data_disk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4246,7 +4246,7 @@ object_static_item_shared_item_data_disk = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4255,7 +4255,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_data_disk, 4136425931
 
 object_static_item_shared_item_datapad_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4285,7 +4285,7 @@ object_static_item_shared_item_datapad_s1 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4294,7 +4294,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_datapad_s1, 522904897
 
 object_static_item_shared_item_datapad_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4324,7 +4324,7 @@ object_static_item_shared_item_datapad_s2 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4333,7 +4333,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_datapad_s2, 329235195
 
 object_static_item_shared_item_decryptor_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_decryptor_imperial.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4363,7 +4363,7 @@ object_static_item_shared_item_decryptor_imperial = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4372,7 +4372,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_decryptor_imperial, 9
 
 object_static_item_shared_item_diagnostic_screen = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4402,7 +4402,7 @@ object_static_item_shared_item_diagnostic_screen = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4411,7 +4411,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_diagnostic_screen, 16
 
 object_static_item_shared_item_document = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4441,7 +4441,7 @@ object_static_item_shared_item_document = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4450,7 +4450,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_document, 1483782412)
 
 object_static_item_shared_item_door_impl_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/impl_door_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4480,7 +4480,7 @@ object_static_item_shared_item_door_impl_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4489,7 +4489,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_door_impl_s01, 278232
 
 object_static_item_shared_item_drall_medicine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_drall_medicine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4519,7 +4519,7 @@ object_static_item_shared_item_drall_medicine = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4528,7 +4528,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_drall_medicine, 32296
 
 object_static_item_shared_item_droid_magnet = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_droid_magnet.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4558,7 +4558,7 @@ object_static_item_shared_item_droid_magnet = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4567,7 +4567,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_droid_magnet, 2741400
 
 object_static_item_shared_item_dye_kit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4597,7 +4597,7 @@ object_static_item_shared_item_dye_kit = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4606,7 +4606,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_dye_kit, 578717359)
 
 object_static_item_shared_item_edb_con_tato_cup_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4636,7 +4636,7 @@ object_static_item_shared_item_edb_con_tato_cup_s2 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4645,7 +4645,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_edb_con_tato_cup_s2, 
 
 object_static_item_shared_item_edb_con_tato_cup_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4675,7 +4675,7 @@ object_static_item_shared_item_edb_con_tato_cup_s3 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4684,7 +4684,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_edb_con_tato_cup_s3, 
 
 object_static_item_shared_item_eyes_of_mesra = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_eyes_of_mesra.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4714,7 +4714,7 @@ object_static_item_shared_item_eyes_of_mesra = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4723,7 +4723,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_eyes_of_mesra, 268661
 
 object_static_item_shared_item_food_assorted_fruit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4753,7 +4753,7 @@ object_static_item_shared_item_food_assorted_fruit = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4762,7 +4762,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_assorted_fruit, 
 
 object_static_item_shared_item_food_cake = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4792,7 +4792,7 @@ object_static_item_shared_item_food_cake = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4801,7 +4801,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_cake, 2447344421
 
 object_static_item_shared_item_food_dish_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_bivoli_tempari.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4831,7 +4831,7 @@ object_static_item_shared_item_food_dish_01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4840,7 +4840,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_01, 1643171
 
 object_static_item_shared_item_food_dish_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_dustcrepe.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4870,7 +4870,7 @@ object_static_item_shared_item_food_dish_02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4879,7 +4879,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_02, 3135726
 
 object_static_item_shared_item_food_dish_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_kanali_wafers.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4909,7 +4909,7 @@ object_static_item_shared_item_food_dish_03 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4918,7 +4918,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_03, 4092199
 
 object_static_item_shared_item_food_dish_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_terratta.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4948,7 +4948,7 @@ object_static_item_shared_item_food_dish_04 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4957,7 +4957,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_04, 1348181
 
 object_static_item_shared_item_food_dish_05 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_trimpian.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4987,7 +4987,7 @@ object_static_item_shared_item_food_dish_05 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -4996,7 +4996,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_05, 1090801
 
 object_static_item_shared_item_food_dish_06 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_crispic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5026,7 +5026,7 @@ object_static_item_shared_item_food_dish_06 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5035,7 +5035,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_dish_06, 2584995
 
 object_static_item_shared_item_food_fish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5065,7 +5065,7 @@ object_static_item_shared_item_food_fish = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5074,7 +5074,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_fish, 2484078697
 
 object_static_item_shared_item_food_fruit_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5104,7 +5104,7 @@ object_static_item_shared_item_food_fruit_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5113,7 +5113,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_fruit_s01, 42376
 
 object_static_item_shared_item_food_fruit_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5143,7 +5143,7 @@ object_static_item_shared_item_food_fruit_s02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5152,7 +5152,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_fruit_s02, 66286
 
 object_static_item_shared_item_food_fruit_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5182,7 +5182,7 @@ object_static_item_shared_item_food_fruit_s03 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5191,7 +5191,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_fruit_s03, 18548
 
 object_static_item_shared_item_food_links = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_sausage_links.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5221,7 +5221,7 @@ object_static_item_shared_item_food_links = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5230,7 +5230,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_links, 394109156
 
 object_static_item_shared_item_food_meat_loaf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5260,7 +5260,7 @@ object_static_item_shared_item_food_meat_loaf = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5269,7 +5269,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_meat_loaf, 35787
 
 object_static_item_shared_item_food_meat_roast = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_roast_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5299,7 +5299,7 @@ object_static_item_shared_item_food_meat_roast = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5308,7 +5308,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_meat_roast, 3930
 
 object_static_item_shared_item_food_muffins = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5338,7 +5338,7 @@ object_static_item_shared_item_food_muffins = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5347,7 +5347,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_muffins, 2792426
 
 object_static_item_shared_item_food_nutricake = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_parwan_nutricake.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5377,7 +5377,7 @@ object_static_item_shared_item_food_nutricake = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5386,7 +5386,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_nutricake, 14516
 
 object_static_item_shared_item_food_pie = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5416,7 +5416,7 @@ object_static_item_shared_item_food_pie = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5425,7 +5425,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_pie, 4291568660)
 
 object_static_item_shared_item_food_pie_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_pikatta_pie.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5455,7 +5455,7 @@ object_static_item_shared_item_food_pie_02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5464,7 +5464,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_pie_02, 32247130
 
 object_static_item_shared_item_food_sandwich = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_sandwich_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5494,7 +5494,7 @@ object_static_item_shared_item_food_sandwich = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5503,7 +5503,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_sandwich, 422203
 
 object_static_item_shared_item_food_sausage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_sausage_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5533,7 +5533,7 @@ object_static_item_shared_item_food_sausage = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5542,7 +5542,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_sausage, 4188629
 
 object_static_item_shared_item_food_skewer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_skewer.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5572,7 +5572,7 @@ object_static_item_shared_item_food_skewer = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5581,7 +5581,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_skewer, 15302057
 
 object_static_item_shared_item_food_spices = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5611,7 +5611,7 @@ object_static_item_shared_item_food_spices = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5620,7 +5620,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_spices, 27840054
 
 object_static_item_shared_item_food_vegetable_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5650,7 +5650,7 @@ object_static_item_shared_item_food_vegetable_s01 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5659,7 +5659,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_vegetable_s01, 1
 
 object_static_item_shared_item_food_vegetable_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5689,7 +5689,7 @@ object_static_item_shared_item_food_vegetable_s02 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5698,7 +5698,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_vegetable_s02, 2
 
 object_static_item_shared_item_food_vegetable_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_vegetable_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5728,7 +5728,7 @@ object_static_item_shared_item_food_vegetable_s03 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5737,7 +5737,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_food_vegetable_s03, 3
 
 object_static_item_shared_item_fruit_melon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5767,7 +5767,7 @@ object_static_item_shared_item_fruit_melon = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5776,7 +5776,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_fruit_melon, 27262488
 
 object_static_item_shared_item_game_dejarik_gameboard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_game_dejarik_gameboard.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5806,7 +5806,7 @@ object_static_item_shared_item_game_dejarik_gameboard = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5815,7 +5815,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_game_dejarik_gameboar
 
 object_static_item_shared_item_glass_bluemilk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s5.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5845,7 +5845,7 @@ object_static_item_shared_item_glass_bluemilk = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5854,7 +5854,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_glass_bluemilk, 15263
 
 object_static_item_shared_item_glass_empty = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5884,7 +5884,7 @@ object_static_item_shared_item_glass_empty = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_glass_empty, 34642524
 
 object_static_item_shared_item_glass_full = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5923,7 +5923,7 @@ object_static_item_shared_item_glass_full = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5932,7 +5932,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_glass_full, 399510153
 
 object_static_item_shared_item_glass_metal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5962,7 +5962,7 @@ object_static_item_shared_item_glass_metal = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -5971,7 +5971,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_glass_metal, 22615304
 
 object_static_item_shared_item_glass_white = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6001,7 +6001,7 @@ object_static_item_shared_item_glass_white = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6010,7 +6010,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_glass_white, 10704492
 
 object_static_item_shared_item_hair_dye_kit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_hairdressing_hair_dye_kit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6040,7 +6040,7 @@ object_static_item_shared_item_hair_dye_kit = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6049,7 +6049,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_hair_dye_kit, 7817168
 
 object_static_item_shared_item_imperial_lifesupport_pack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_acc_imp_life_support_pack.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6079,7 +6079,7 @@ object_static_item_shared_item_imperial_lifesupport_pack = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6088,7 +6088,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_imperial_lifesupport_
 
 object_static_item_shared_item_items_container_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6118,7 +6118,7 @@ object_static_item_shared_item_items_container_lg = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6127,7 +6127,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_items_container_lg, 1
 
 object_static_item_shared_item_items_container_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6157,7 +6157,7 @@ object_static_item_shared_item_items_container_sm = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6166,7 +6166,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_items_container_sm, 3
 
 object_static_item_shared_item_jacket_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_lining.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6196,7 +6196,7 @@ object_static_item_shared_item_jacket_01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6205,7 +6205,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jacket_01, 1266080022
 
 object_static_item_shared_item_jar_berries = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6235,7 +6235,7 @@ object_static_item_shared_item_jar_berries = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6244,7 +6244,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_berries, 19362713
 
 object_static_item_shared_item_jar_bugs = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6274,7 +6274,7 @@ object_static_item_shared_item_jar_bugs = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6283,7 +6283,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_bugs, 3304125843)
 
 object_static_item_shared_item_jar_empty = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6313,7 +6313,7 @@ object_static_item_shared_item_jar_empty = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6322,7 +6322,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_empty, 3759215411
 
 object_static_item_shared_item_jar_funk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6352,7 +6352,7 @@ object_static_item_shared_item_jar_funk = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6361,7 +6361,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_funk, 2934305982)
 
 object_static_item_shared_item_jar_guts = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6391,7 +6391,7 @@ object_static_item_shared_item_jar_guts = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6400,7 +6400,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_guts, 1848547961)
 
 object_static_item_shared_item_jar_spice_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6430,7 +6430,7 @@ object_static_item_shared_item_jar_spice_blue = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6439,7 +6439,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_spice_blue, 26462
 
 object_static_item_shared_item_jar_spice_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6469,7 +6469,7 @@ object_static_item_shared_item_jar_spice_red = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6478,7 +6478,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_spice_red, 273473
 
 object_static_item_shared_item_jar_spice_white = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6508,7 +6508,7 @@ object_static_item_shared_item_jar_spice_white = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6517,7 +6517,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_jar_spice_white, 3077
 
 object_static_item_shared_item_katana = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6547,7 +6547,7 @@ object_static_item_shared_item_katana = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6556,7 +6556,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_katana, 1894064245)
 
 object_static_item_shared_item_keepsakes = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_vehicle_toolkit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6586,7 +6586,7 @@ object_static_item_shared_item_keepsakes = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6595,7 +6595,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_keepsakes, 775820803)
 
 object_static_item_shared_item_key_electronic = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_key_electronic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6625,7 +6625,7 @@ object_static_item_shared_item_key_electronic = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6634,7 +6634,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_key_electronic, 10106
 
 object_static_item_shared_item_kiosk_statue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6664,7 +6664,7 @@ object_static_item_shared_item_kiosk_statue = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6673,7 +6673,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kiosk_statue, 3347975
 
 object_static_item_shared_item_kitchen_chair_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_kitchen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6703,7 +6703,7 @@ object_static_item_shared_item_kitchen_chair_01 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6712,7 +6712,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_chair_01, 156
 
 object_static_item_shared_item_kitchen_cook_set_lg_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_kitchen_set_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6742,7 +6742,7 @@ object_static_item_shared_item_kitchen_cook_set_lg_s1 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6751,7 +6751,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_cook_set_lg_s
 
 object_static_item_shared_item_kitchen_portable_stove_sm_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_portable_stove_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6781,7 +6781,7 @@ object_static_item_shared_item_kitchen_portable_stove_sm_s1 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6790,7 +6790,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_portable_stov
 
 object_static_item_shared_item_kitchen_pot_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_pot_empty_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6820,7 +6820,7 @@ object_static_item_shared_item_kitchen_pot_style_01 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6829,7 +6829,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_pot_style_01,
 
 object_static_item_shared_item_kitchen_pot_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_pot_empty_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6859,7 +6859,7 @@ object_static_item_shared_item_kitchen_pot_style_02 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6868,7 +6868,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_pot_style_02,
 
 object_static_item_shared_item_kitchen_pot_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_pot_empty_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6898,7 +6898,7 @@ object_static_item_shared_item_kitchen_pot_style_03 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6907,7 +6907,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_kitchen_pot_style_03,
 
 object_static_item_shared_item_makeup = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_kit_materials_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6937,7 +6937,7 @@ object_static_item_shared_item_makeup = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6946,7 +6946,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_makeup, 806343879)
 
 object_static_item_shared_item_meat_hunk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6976,7 +6976,7 @@ object_static_item_shared_item_meat_hunk = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -6985,7 +6985,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_meat_hunk, 1149924451
 
 object_static_item_shared_item_meat_kabob = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7015,7 +7015,7 @@ object_static_item_shared_item_meat_kabob = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7024,7 +7024,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_meat_kabob, 417659217
 
 object_static_item_shared_item_medic_bacta_tank = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_bacta_tank.cdf",
@@ -7054,7 +7054,7 @@ object_static_item_shared_item_medic_bacta_tank = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7063,7 +7063,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bacta_tank, 239
 
 object_static_item_shared_item_medic_bacta_tank_advanced = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_bacta_tank.cdf",
@@ -7093,7 +7093,7 @@ object_static_item_shared_item_medic_bacta_tank_advanced = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7102,7 +7102,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bacta_tank_adva
 
 object_static_item_shared_item_medic_bacta_tank_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bacta_tank_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_bacta_tank.cdf",
@@ -7132,7 +7132,7 @@ object_static_item_shared_item_medic_bacta_tank_large = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7141,7 +7141,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bacta_tank_larg
 
 object_static_item_shared_item_medic_bag = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7171,7 +7171,7 @@ object_static_item_shared_item_medic_bag = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7180,7 +7180,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_bag, 89534284)
 
 object_static_item_shared_item_medic_hormone_enhancements = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_hormone_enhancements.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7210,7 +7210,7 @@ object_static_item_shared_item_medic_hormone_enhancements = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7219,7 +7219,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_hormone_enhance
 
 object_static_item_shared_item_medic_medpack_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7249,7 +7249,7 @@ object_static_item_shared_item_medic_medpack_lg = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7258,7 +7258,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_medpack_lg, 159
 
 object_static_item_shared_item_medic_radical_enhancements = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7288,7 +7288,7 @@ object_static_item_shared_item_medic_radical_enhancements = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7297,7 +7297,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_radical_enhance
 
 object_static_item_shared_item_medic_stimpack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7327,7 +7327,7 @@ object_static_item_shared_item_medic_stimpack = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7336,7 +7336,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medic_stimpack, 28635
 
 object_static_item_shared_item_medical_console = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7366,7 +7366,7 @@ object_static_item_shared_item_medical_console = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7375,7 +7375,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_medical_console, 2461
 
 object_static_item_shared_item_metal_armor_layer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7405,7 +7405,7 @@ object_static_item_shared_item_metal_armor_layer = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7414,7 +7414,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_metal_armor_layer, 21
 
 object_static_item_shared_item_metal_armor_module = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7444,7 +7444,7 @@ object_static_item_shared_item_metal_armor_module = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7453,7 +7453,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_metal_armor_module, 3
 
 object_static_item_shared_item_metal_armor_segment = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7483,7 +7483,7 @@ object_static_item_shared_item_metal_armor_segment = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7492,7 +7492,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_metal_armor_segment, 
 
 object_static_item_shared_item_metal_staff = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7522,7 +7522,7 @@ object_static_item_shared_item_metal_staff = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7531,7 +7531,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_metal_staff, 39102950
 
 object_static_item_shared_item_mockup_bank_terminal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bank.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7561,7 +7561,7 @@ object_static_item_shared_item_mockup_bank_terminal = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7570,7 +7570,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_mockup_bank_terminal,
 
 object_static_item_shared_item_mun_ballot_box = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7600,7 +7600,7 @@ object_static_item_shared_item_mun_ballot_box = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7609,7 +7609,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_mun_ballot_box, 35097
 
 object_static_item_shared_item_music_drum = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_drum.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7639,7 +7639,7 @@ object_static_item_shared_item_music_drum = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7648,7 +7648,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_music_drum, 391368582
 
 object_static_item_shared_item_music_gong_stick = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_giant_gong_stick_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7678,7 +7678,7 @@ object_static_item_shared_item_music_gong_stick = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7687,7 +7687,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_music_gong_stick, 288
 
 object_static_item_shared_item_music_microphone_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7717,7 +7717,7 @@ object_static_item_shared_item_music_microphone_s1 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7726,7 +7726,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_music_microphone_s1, 
 
 object_static_item_shared_item_music_microphone_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_microphone_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7756,7 +7756,7 @@ object_static_item_shared_item_music_microphone_s2 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7765,7 +7765,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_music_microphone_s2, 
 
 object_static_item_shared_item_music_omni_box = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_ommni_box.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7795,7 +7795,7 @@ object_static_item_shared_item_music_omni_box = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7804,7 +7804,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_music_omni_box, 11217
 
 object_static_item_shared_item_music_red_ball_jet_organ = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7834,7 +7834,7 @@ object_static_item_shared_item_music_red_ball_jet_organ = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7843,7 +7843,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_music_red_ball_jet_or
 
 object_static_item_shared_item_nemodian_bird_cage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_nemoidian_bird_cage.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7873,7 +7873,7 @@ object_static_item_shared_item_nemodian_bird_cage = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7882,7 +7882,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_nemodian_bird_cage, 2
 
 object_static_item_shared_item_newbie_crate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_newbie_crate.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7912,7 +7912,7 @@ object_static_item_shared_item_newbie_crate = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7921,7 +7921,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_newbie_crate, 1451068
 
 object_static_item_shared_item_organic_container = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7951,7 +7951,7 @@ object_static_item_shared_item_organic_container = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7960,7 +7960,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_organic_container, 30
 
 object_static_item_shared_item_organichem_stores = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_organichem_stores.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7990,7 +7990,7 @@ object_static_item_shared_item_organichem_stores = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -7999,7 +7999,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_organichem_stores, 61
 
 object_static_item_shared_item_painting_agrilat_swamp_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_agrilat_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8029,7 +8029,7 @@ object_static_item_shared_item_painting_agrilat_swamp_style_01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8038,7 +8038,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_agrilat_swam
 
 object_static_item_shared_item_painting_agrilat_swamp_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_agrilat_sml.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8068,7 +8068,7 @@ object_static_item_shared_item_painting_agrilat_swamp_style_02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8077,7 +8077,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_agrilat_swam
 
 object_static_item_shared_item_painting_bothan_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_bothan.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8107,7 +8107,7 @@ object_static_item_shared_item_painting_bothan_style_01 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8116,7 +8116,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_bothan_style
 
 object_static_item_shared_item_painting_corellia_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_corl_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8146,7 +8146,7 @@ object_static_item_shared_item_painting_corellia_style_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8155,7 +8155,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_corellia_sty
 
 object_static_item_shared_item_painting_corellia_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_corl_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8185,7 +8185,7 @@ object_static_item_shared_item_painting_corellia_style_02 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8194,7 +8194,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_corellia_sty
 
 object_static_item_shared_item_painting_endor_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_endor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8224,7 +8224,7 @@ object_static_item_shared_item_painting_endor_style_01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8233,7 +8233,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_endor_style_
 
 object_static_item_shared_item_painting_naboo_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_naboo_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8263,7 +8263,7 @@ object_static_item_shared_item_painting_naboo_style_01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8272,7 +8272,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_naboo_style_
 
 object_static_item_shared_item_painting_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8302,7 +8302,7 @@ object_static_item_shared_item_painting_tatooine_style_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8311,7 +8311,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_tatooine_sty
 
 object_static_item_shared_item_painting_tatooine_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8341,7 +8341,7 @@ object_static_item_shared_item_painting_tatooine_style_02 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8350,7 +8350,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_painting_tatooine_sty
 
 object_static_item_shared_item_pistol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8380,7 +8380,7 @@ object_static_item_shared_item_pistol = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8389,7 +8389,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_pistol, 1718716397)
 
 object_static_item_shared_item_pistol_imperial_scout = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8419,7 +8419,7 @@ object_static_item_shared_item_pistol_imperial_scout = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8428,7 +8428,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_pistol_imperial_scout
 
 object_static_item_shared_item_place_setting_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_place_setting.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8458,7 +8458,7 @@ object_static_item_shared_item_place_setting_01 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8467,7 +8467,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_place_setting_01, 222
 
 object_static_item_shared_item_raw_cloth = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8497,7 +8497,7 @@ object_static_item_shared_item_raw_cloth = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8506,7 +8506,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_raw_cloth, 3593697104
 
 object_static_item_shared_item_repair_melee_kit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8536,7 +8536,7 @@ object_static_item_shared_item_repair_melee_kit = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8545,7 +8545,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_repair_melee_kit, 730
 
 object_static_item_shared_item_ribbon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8575,7 +8575,7 @@ object_static_item_shared_item_ribbon = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8584,7 +8584,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_ribbon, 1186133138)
 
 object_static_item_shared_item_rifle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8614,7 +8614,7 @@ object_static_item_shared_item_rifle = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8623,7 +8623,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_rifle, 328334469)
 
 object_static_item_shared_item_rifle_t21 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8653,7 +8653,7 @@ object_static_item_shared_item_rifle_t21 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8662,7 +8662,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_rifle_t21, 1042864505
 
 object_static_item_shared_item_rocket_launcher = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8692,7 +8692,7 @@ object_static_item_shared_item_rocket_launcher = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8701,7 +8701,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_rocket_launcher, 1188
 
 object_static_item_shared_item_ryyk_blade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_ryyk_blade.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8731,7 +8731,7 @@ object_static_item_shared_item_ryyk_blade = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8740,7 +8740,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_ryyk_blade, 269249743
 
 object_static_item_shared_item_sclpt_stuffed_bantha = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_sclpt_stuffed_bantha.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8770,7 +8770,7 @@ object_static_item_shared_item_sclpt_stuffed_bantha = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8779,7 +8779,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_sclpt_stuffed_bantha,
 
 object_static_item_shared_item_scrolling_screen = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_monitorscreen_text_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8809,7 +8809,7 @@ object_static_item_shared_item_scrolling_screen = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8818,7 +8818,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_scrolling_screen, 372
 
 object_static_item_shared_item_security_scanner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_security_scanner.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8848,7 +8848,7 @@ object_static_item_shared_item_security_scanner = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8857,7 +8857,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_security_scanner, 210
 
 object_static_item_shared_item_sewing_utensils = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_plain.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8887,7 +8887,7 @@ object_static_item_shared_item_sewing_utensils = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8896,7 +8896,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_sewing_utensils, 2943
 
 object_static_item_shared_item_sewing_utensils_lg_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_formal.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8926,7 +8926,7 @@ object_static_item_shared_item_sewing_utensils_lg_01 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8935,7 +8935,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_sewing_utensils_lg_01
 
 object_static_item_shared_item_sewing_utensils_lg_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_reinforced.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8965,7 +8965,7 @@ object_static_item_shared_item_sewing_utensils_lg_02 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -8974,7 +8974,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_sewing_utensils_lg_02
 
 object_static_item_shared_item_shisha = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_shisha.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9004,7 +9004,7 @@ object_static_item_shared_item_shisha = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9013,7 +9013,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_shisha, 1589368660)
 
 object_static_item_shared_item_slave_brazier = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_slave_brazier.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9043,7 +9043,7 @@ object_static_item_shared_item_slave_brazier = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9052,7 +9052,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_slave_brazier, 110349
 
 object_static_item_shared_item_speaker = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_speaker.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9082,7 +9082,7 @@ object_static_item_shared_item_speaker = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9091,7 +9091,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_speaker, 235065843)
 
 object_static_item_shared_item_storage_cabinet_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_storage_section.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9121,7 +9121,7 @@ object_static_item_shared_item_storage_cabinet_01 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9130,7 +9130,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_storage_cabinet_01, 1
 
 object_static_item_shared_item_structure_module = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_structure_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9160,7 +9160,7 @@ object_static_item_shared_item_structure_module = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9169,7 +9169,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_structure_module, 313
 
 object_static_item_shared_item_substance_analyzer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_substance_analyzer.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9199,7 +9199,7 @@ object_static_item_shared_item_substance_analyzer = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9208,7 +9208,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_substance_analyzer, 1
 
 object_static_item_shared_item_tank_bubble = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_bubble.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9238,7 +9238,7 @@ object_static_item_shared_item_tank_bubble = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9247,7 +9247,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tank_bubble, 22269973
 
 object_static_item_shared_item_tank_gas = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9277,7 +9277,7 @@ object_static_item_shared_item_tank_gas = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9286,7 +9286,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tank_gas, 2134737488)
 
 object_static_item_shared_item_tapestry_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tapestry_impl.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9316,7 +9316,7 @@ object_static_item_shared_item_tapestry_imperial = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9325,7 +9325,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tapestry_imperial, 13
 
 object_static_item_shared_item_tapestry_rebel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_tapestry_rebl.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9355,7 +9355,7 @@ object_static_item_shared_item_tapestry_rebel = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9364,7 +9364,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tapestry_rebel, 39753
 
 object_static_item_shared_item_tapestry_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tato_tapestry_tato.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9394,7 +9394,7 @@ object_static_item_shared_item_tapestry_tatooine = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9403,7 +9403,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tapestry_tatooine, 23
 
 object_static_item_shared_item_tech_console_sectional_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_a.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9433,7 +9433,7 @@ object_static_item_shared_item_tech_console_sectional_a = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9442,7 +9442,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectiona
 
 object_static_item_shared_item_tech_console_sectional_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9472,7 +9472,7 @@ object_static_item_shared_item_tech_console_sectional_b = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9481,7 +9481,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectiona
 
 object_static_item_shared_item_tech_console_sectional_c = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_c.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9511,7 +9511,7 @@ object_static_item_shared_item_tech_console_sectional_c = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9520,7 +9520,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectiona
 
 object_static_item_shared_item_tech_console_sectional_d = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_console_sectional_d.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9550,7 +9550,7 @@ object_static_item_shared_item_tech_console_sectional_d = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9559,7 +9559,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tech_console_sectiona
 
 object_static_item_shared_item_tool_aeromagnifier = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_aeromagnifier.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9589,7 +9589,7 @@ object_static_item_shared_item_tool_aeromagnifier = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9598,7 +9598,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_aeromagnifier, 3
 
 object_static_item_shared_item_tool_computer_toolkit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9628,7 +9628,7 @@ object_static_item_shared_item_tool_computer_toolkit = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9637,7 +9637,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_computer_toolkit
 
 object_static_item_shared_item_tool_demagnetizer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_demagnetizer.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9667,7 +9667,7 @@ object_static_item_shared_item_tool_demagnetizer = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9676,7 +9676,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_demagnetizer, 13
 
 object_static_item_shared_item_tool_droid_toolkit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_droid_toolkit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9706,7 +9706,7 @@ object_static_item_shared_item_tool_droid_toolkit = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9715,7 +9715,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_droid_toolkit, 1
 
 object_static_item_shared_item_tool_engineering_datapad = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9745,7 +9745,7 @@ object_static_item_shared_item_tool_engineering_datapad = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9754,7 +9754,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_engineering_data
 
 object_static_item_shared_item_tool_handheld_viewscreen_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9784,7 +9784,7 @@ object_static_item_shared_item_tool_handheld_viewscreen_s1 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9793,7 +9793,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_handheld_viewscr
 
 object_static_item_shared_item_tool_handheld_viewscreen_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9823,7 +9823,7 @@ object_static_item_shared_item_tool_handheld_viewscreen_s2 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9832,7 +9832,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_handheld_viewscr
 
 object_static_item_shared_item_tool_hydrospanner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_hydrospanner.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9862,7 +9862,7 @@ object_static_item_shared_item_tool_hydrospanner = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9871,7 +9871,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_hydrospanner, 23
 
 object_static_item_shared_item_tool_instrument_calibrator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9901,7 +9901,7 @@ object_static_item_shared_item_tool_instrument_calibrator = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9910,7 +9910,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_instrument_calib
 
 object_static_item_shared_item_tool_magnetite_cleaner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_talking_magnetite_cleaner.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9940,7 +9940,7 @@ object_static_item_shared_item_tool_magnetite_cleaner = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9949,7 +9949,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_magnetite_cleane
 
 object_static_item_shared_item_tool_meson_taloscope = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_meson_taloscope.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9979,7 +9979,7 @@ object_static_item_shared_item_tool_meson_taloscope = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -9988,7 +9988,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_meson_taloscope,
 
 object_static_item_shared_item_tool_ore_mining_unit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ore_mining_unit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10018,7 +10018,7 @@ object_static_item_shared_item_tool_ore_mining_unit = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10027,7 +10027,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_ore_mining_unit,
 
 object_static_item_shared_item_tool_power_output_analyzer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_power_output_analyzer.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10057,7 +10057,7 @@ object_static_item_shared_item_tool_power_output_analyzer = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10066,7 +10066,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_power_output_ana
 
 object_static_item_shared_item_tool_radio = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10096,7 +10096,7 @@ object_static_item_shared_item_tool_radio = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10105,7 +10105,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_radio, 222075916
 
 object_static_item_shared_item_tool_ranged_wp_repair = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_heavy.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10135,7 +10135,7 @@ object_static_item_shared_item_tool_ranged_wp_repair = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10144,7 +10144,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_ranged_wp_repair
 
 object_static_item_shared_item_tool_recording_rod = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10174,7 +10174,7 @@ object_static_item_shared_item_tool_recording_rod = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10183,7 +10183,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_recording_rod, 2
 
 object_static_item_shared_item_tool_sandstat = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10213,7 +10213,7 @@ object_static_item_shared_item_tool_sandstat = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10222,7 +10222,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_sandstat, 333176
 
 object_static_item_shared_item_tool_sensor_beacon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_beacon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10252,7 +10252,7 @@ object_static_item_shared_item_tool_sensor_beacon = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10261,7 +10261,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_sensor_beacon, 9
 
 object_static_item_shared_item_tool_sensor_frequency_jammer_s2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_frequency_jammer_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10291,7 +10291,7 @@ object_static_item_shared_item_tool_sensor_frequency_jammer_s2 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10300,7 +10300,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_sensor_frequency
 
 object_static_item_shared_item_tool_stasis_field = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_app_stasis_field.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10330,7 +10330,7 @@ object_static_item_shared_item_tool_stasis_field = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10339,7 +10339,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_stasis_field, 11
 
 object_static_item_shared_item_tool_tools = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10369,7 +10369,7 @@ object_static_item_shared_item_tool_tools = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10378,7 +10378,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_tools, 268131668
 
 object_static_item_shared_item_tool_turbine_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10408,7 +10408,7 @@ object_static_item_shared_item_tool_turbine_generator = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10417,7 +10417,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_turbine_generato
 
 object_static_item_shared_item_tool_worklight = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_worklight.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10447,7 +10447,7 @@ object_static_item_shared_item_tool_worklight = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10456,7 +10456,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_tool_worklight, 17507
 
 object_static_item_shared_item_turbine_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10486,7 +10486,7 @@ object_static_item_shared_item_turbine_generator = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10495,7 +10495,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_turbine_generator, 12
 
 object_static_item_shared_item_vibroaxe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibroaxe.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10525,7 +10525,7 @@ object_static_item_shared_item_vibroaxe = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10534,7 +10534,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_vibroaxe, 3409584272)
 
 object_static_item_shared_item_vibroknuckles = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10564,7 +10564,7 @@ object_static_item_shared_item_vibroknuckles = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10573,7 +10573,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_vibroknuckles, 674397
 
 object_static_item_shared_item_vibrolance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibrolance.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10603,7 +10603,7 @@ object_static_item_shared_item_vibrolance = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10612,7 +10612,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_vibrolance, 675826205
 
 object_static_item_shared_item_wood_staff = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10642,7 +10642,7 @@ object_static_item_shared_item_wood_staff = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10651,7 +10651,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_item_wood_staff, 401434510
 
 object_static_item_shared_wp_carbine_dh17_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dh17_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10681,7 +10681,7 @@ object_static_item_shared_wp_carbine_dh17_combined = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10690,7 +10690,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_dh17_combined, 
 
 object_static_item_shared_wp_carbine_e11_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10720,7 +10720,7 @@ object_static_item_shared_wp_carbine_e11_combined = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10729,7 +10729,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_e11_combined, 3
 
 object_static_item_shared_wp_carbine_ee3_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_ee3_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10759,7 +10759,7 @@ object_static_item_shared_wp_carbine_ee3_combined = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10768,7 +10768,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_ee3_combined, 1
 
 object_static_item_shared_wp_carbine_elite_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_elite_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10798,7 +10798,7 @@ object_static_item_shared_wp_carbine_elite_combined = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10807,7 +10807,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_elite_combined,
 
 object_static_item_shared_wp_carbine_laser_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_laser_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10837,7 +10837,7 @@ object_static_item_shared_wp_carbine_laser_combined = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10846,7 +10846,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_carbine_laser_combined,
 
 object_static_item_shared_wp_mle_2h_sword_axe_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10876,7 +10876,7 @@ object_static_item_shared_wp_mle_2h_sword_axe_s01 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10885,7 +10885,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_axe_s01, 3
 
 object_static_item_shared_wp_mle_2h_sword_lightsaber_luke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_lightsaber_luke.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10915,7 +10915,7 @@ object_static_item_shared_wp_mle_2h_sword_lightsaber_luke = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10924,7 +10924,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber
 
 object_static_item_shared_wp_mle_2h_sword_lightsaber_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_lightsaber_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10954,7 +10954,7 @@ object_static_item_shared_wp_mle_2h_sword_lightsaber_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -10963,7 +10963,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber
 
 object_static_item_shared_wp_mle_2h_sword_maul_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_maul_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10993,7 +10993,7 @@ object_static_item_shared_wp_mle_2h_sword_maul_s01 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11002,7 +11002,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_maul_s01, 
 
 object_static_item_shared_wp_mle_2h_sword_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11032,7 +11032,7 @@ object_static_item_shared_wp_mle_2h_sword_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11041,7 +11041,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_s01, 52125
 
 object_static_item_shared_wp_mle_2h_sword_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11071,7 +11071,7 @@ object_static_item_shared_wp_mle_2h_sword_s02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11080,7 +11080,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_s02, 32887
 
 object_static_item_shared_wp_mle_2h_sword_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11110,7 +11110,7 @@ object_static_item_shared_wp_mle_2h_sword_s03 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11119,7 +11119,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_2h_sword_s03, 23663
 
 object_static_item_shared_wp_mle_axe_heavy_duty = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_heavy_duty.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11149,7 +11149,7 @@ object_static_item_shared_wp_mle_axe_heavy_duty = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11158,7 +11158,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_axe_heavy_duty, 184
 
 object_static_item_shared_wp_mle_axe_vibroax = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11188,7 +11188,7 @@ object_static_item_shared_wp_mle_axe_vibroax = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11197,7 +11197,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_axe_vibroax, 244065
 
 object_static_item_shared_wp_mle_baton_gaderiffi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_gaderiffi.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11227,7 +11227,7 @@ object_static_item_shared_wp_mle_baton_gaderiffi = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11236,7 +11236,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_baton_gaderiffi, 99
 
 object_static_item_shared_wp_mle_baton_stun = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_baton_stun.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11266,7 +11266,7 @@ object_static_item_shared_wp_mle_baton_stun = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11275,7 +11275,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_baton_stun, 2420709
 
 object_static_item_shared_wp_mle_battleaxe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11305,7 +11305,7 @@ object_static_item_shared_wp_mle_battleaxe = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11314,7 +11314,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_battleaxe, 17793284
 
 object_static_item_shared_wp_mle_blacksun_hack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_blacksun_hack.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11344,7 +11344,7 @@ object_static_item_shared_wp_mle_blacksun_hack = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11353,7 +11353,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_blacksun_hack, 2212
 
 object_static_item_shared_wp_mle_blacksun_razor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_blacksun_knuckler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11383,7 +11383,7 @@ object_static_item_shared_wp_mle_blacksun_razor = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11392,7 +11392,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_blacksun_razor, 162
 
 object_static_item_shared_wp_mle_knife_dagger = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_dagger.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11422,7 +11422,7 @@ object_static_item_shared_wp_mle_knife_dagger = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11431,7 +11431,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_dagger, 36754
 
 object_static_item_shared_wp_mle_knife_stone = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_stone.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11461,7 +11461,7 @@ object_static_item_shared_wp_mle_knife_stone = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11470,7 +11470,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_stone, 320639
 
 object_static_item_shared_wp_mle_knife_survival = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_survival.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11500,7 +11500,7 @@ object_static_item_shared_wp_mle_knife_survival = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11509,7 +11509,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_survival, 826
 
 object_static_item_shared_wp_mle_knife_vibroblade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_knife_vibroblade.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11539,7 +11539,7 @@ object_static_item_shared_wp_mle_knife_vibroblade = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11548,7 +11548,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_knife_vibroblade, 1
 
 object_static_item_shared_wp_mle_lance_controller = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_controller.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11578,7 +11578,7 @@ object_static_item_shared_wp_mle_lance_controller = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11587,7 +11587,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_controller, 1
 
 object_static_item_shared_wp_mle_lance_lightsaber_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11617,7 +11617,7 @@ object_static_item_shared_wp_mle_lance_lightsaber_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11626,7 +11626,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s0
 
 object_static_item_shared_wp_mle_lance_lightsaber_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11656,7 +11656,7 @@ object_static_item_shared_wp_mle_lance_lightsaber_s02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11665,7 +11665,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s0
 
 object_static_item_shared_wp_mle_lance_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11695,7 +11695,7 @@ object_static_item_shared_wp_mle_lance_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11704,7 +11704,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_s01, 14333178
 
 object_static_item_shared_wp_mle_lance_staff_metal_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_metal_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11734,7 +11734,7 @@ object_static_item_shared_wp_mle_lance_staff_metal_s01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11743,7 +11743,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_staff_metal_s
 
 object_static_item_shared_wp_mle_lance_staff_wood_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11773,7 +11773,7 @@ object_static_item_shared_wp_mle_lance_staff_wood_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11782,7 +11782,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s0
 
 object_static_item_shared_wp_mle_lance_staff_wood_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_staff_wood_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11812,7 +11812,7 @@ object_static_item_shared_wp_mle_lance_staff_wood_s02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11821,7 +11821,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s0
 
 object_static_item_shared_wp_mle_lance_vibroaxe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibroaxe.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11851,7 +11851,7 @@ object_static_item_shared_wp_mle_lance_vibroaxe = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11860,7 +11860,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_vibroaxe, 345
 
 object_static_item_shared_wp_mle_lance_vibrolance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_vibrolance.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11890,7 +11890,7 @@ object_static_item_shared_wp_mle_lance_vibrolance = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11899,7 +11899,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_lance_vibrolance, 3
 
 object_static_item_shared_wp_mle_nightsister_lance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_nightsister.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11929,7 +11929,7 @@ object_static_item_shared_wp_mle_nightsister_lance = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11938,7 +11938,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_nightsister_lance, 
 
 object_static_item_shared_wp_mle_scythe = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11968,7 +11968,7 @@ object_static_item_shared_wp_mle_scythe = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -11977,7 +11977,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_scythe, 3502273014)
 
 object_static_item_shared_wp_mle_sword_lightsaber_anakin = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_anakin.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12007,7 +12007,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_anakin = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12016,7 +12016,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_an
 
 object_static_item_shared_wp_mle_sword_lightsaber_andael = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_andael.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12046,7 +12046,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_andael = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12055,7 +12055,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_an
 
 object_static_item_shared_wp_mle_sword_lightsaber_ben = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_ben.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12085,7 +12085,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_ben = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12094,7 +12094,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_be
 
 object_static_item_shared_wp_mle_sword_lightsaber_dugald = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_dugald.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12124,7 +12124,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_dugald = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12133,7 +12133,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_du
 
 object_static_item_shared_wp_mle_sword_lightsaber_leather = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_leather.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12163,7 +12163,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_leather = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12172,7 +12172,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_le
 
 object_static_item_shared_wp_mle_sword_lightsaber_luke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_luke.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12202,7 +12202,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_luke = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12211,7 +12211,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_lu
 
 object_static_item_shared_wp_mle_sword_lightsaber_luke_2h = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_luke_2h.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12241,7 +12241,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_luke_2h = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12250,7 +12250,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_lu
 
 object_static_item_shared_wp_mle_sword_lightsaber_mace = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_mace.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12280,7 +12280,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_mace = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12289,7 +12289,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_ma
 
 object_static_item_shared_wp_mle_sword_lightsaber_nebu = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_nebu.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12319,7 +12319,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_nebu = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12328,7 +12328,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_ne
 
 object_static_item_shared_wp_mle_sword_lightsaber_obi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_obi.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12358,7 +12358,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_obi = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12367,7 +12367,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_ob
 
 object_static_item_shared_wp_mle_sword_lightsaber_quigon = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_quigon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12397,7 +12397,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_quigon = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12406,7 +12406,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_qu
 
 object_static_item_shared_wp_mle_sword_lightsaber_sleekblack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleekblack.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12436,7 +12436,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_sleekblack = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12445,7 +12445,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sl
 
 object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_sleeksilver.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12475,7 +12475,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12484,7 +12484,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sl
 
 object_static_item_shared_wp_mle_sword_lightsaber_vader = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_lightsaber_vader.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12514,7 +12514,7 @@ object_static_item_shared_wp_mle_sword_lightsaber_vader = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12523,7 +12523,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_lightsaber_va
 
 object_static_item_shared_wp_mle_sword_rantok = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_rantok.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12553,7 +12553,7 @@ object_static_item_shared_wp_mle_sword_rantok = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12562,7 +12562,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_rantok, 39247
 
 object_static_item_shared_wp_mle_sword_ryyk_blade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_ryyk_blade.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12592,7 +12592,7 @@ object_static_item_shared_wp_mle_sword_ryyk_blade = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12601,7 +12601,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_ryyk_blade, 1
 
 object_static_item_shared_wp_mle_sword_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12631,7 +12631,7 @@ object_static_item_shared_wp_mle_sword_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12640,7 +12640,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_s01, 37807115
 
 object_static_item_shared_wp_mle_sword_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12670,7 +12670,7 @@ object_static_item_shared_wp_mle_sword_s02 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12679,7 +12679,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_s02, 97823852
 
 object_static_item_shared_wp_mle_sword_vibroblade = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_vibroblade.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12709,7 +12709,7 @@ object_static_item_shared_wp_mle_sword_vibroblade = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12718,7 +12718,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_mle_sword_vibroblade, 1
 
 object_static_item_shared_wp_pistol_cdef_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_cdef_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12748,7 +12748,7 @@ object_static_item_shared_wp_pistol_cdef_combined = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12757,7 +12757,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_cdef_combined, 3
 
 object_static_item_shared_wp_pistol_d18_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_d18_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12787,7 +12787,7 @@ object_static_item_shared_wp_pistol_d18_combined = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12796,7 +12796,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_d18_combined, 13
 
 object_static_item_shared_wp_pistol_dl44_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12826,7 +12826,7 @@ object_static_item_shared_wp_pistol_dl44_combined = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12835,7 +12835,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_dl44_combined, 9
 
 object_static_item_shared_wp_pistol_dl44_metal_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_dl44_metal_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12865,7 +12865,7 @@ object_static_item_shared_wp_pistol_dl44_metal_combined = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12874,7 +12874,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_dl44_metal_combi
 
 object_static_item_shared_wp_pistol_scout_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_scout_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12904,7 +12904,7 @@ object_static_item_shared_wp_pistol_scout_combined = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12913,7 +12913,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_scout_combined, 
 
 object_static_item_shared_wp_pistol_srcombat_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_srcombat_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12943,7 +12943,7 @@ object_static_item_shared_wp_pistol_srcombat_combined = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12952,7 +12952,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_pistol_srcombat_combine
 
 object_static_item_shared_wp_rifle_bowcaster_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_bowcaster_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -12982,7 +12982,7 @@ object_static_item_shared_wp_rifle_bowcaster_combined = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -12991,7 +12991,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_bowcaster_combine
 
 object_static_item_shared_wp_rifle_laser_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13021,7 +13021,7 @@ object_static_item_shared_wp_rifle_laser_combined = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13030,7 +13030,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_laser_combined, 2
 
 object_static_item_shared_wp_rifle_t21_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21_combined.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13060,7 +13060,7 @@ object_static_item_shared_wp_rifle_t21_combined = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -13069,7 +13069,7 @@ ObjectTemplates:addTemplate(object_static_item_shared_wp_rifle_t21_combined, 199
 
 object_static_item_shared_wp_rifle_tusken_combined = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -13099,7 +13099,7 @@ object_static_item_shared_wp_rifle_tusken_combined = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

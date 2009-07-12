@@ -70,7 +70,7 @@ class CreatureObject extends TangibleObject {
 	
 	protected unsigned long stateBitmask;
 	
-	//protected VectorMap<String, SkillBox> skillBoxes;
+	//protected VectorMap<string, SkillBox> skillBoxes;
 	
 	protected Vector<int> encumbrances;
 	protected unsigned int encumbrancesUpdateCounter;
@@ -85,10 +85,8 @@ class CreatureObject extends TangibleObject {
 	
 	protected short level;
 	
-	/*
-	protected string peformanceAnimation;
+	protected string performanceAnimation;
 	protected string moodString;
-	*/
 	
 	protected unsigned long weaponID;
 	protected unsigned long groupID;
@@ -109,8 +107,7 @@ class CreatureObject extends TangibleObject {
 	
 	protected byte frozen;
 	
-	//protected string templateString;
-	
+	protected string templateString;
 	
 	public static boolean registered;
 	public static boolean registered2;
@@ -173,11 +170,10 @@ class CreatureObject extends TangibleObject {
 		return this.acceleration;
 	}
 	
-	public short getLevel() {
+	public int getLevel() {
 		return this.level;
 	}
 	
-	/*
 	public string getPerformanceAnimation() {
 		return this.performanceAnimation;
 	}
@@ -185,8 +181,6 @@ class CreatureObject extends TangibleObject {
 	public string getMoodString() {
 		return this.moodString;
 	}
-	
-	*/
 	
 	public unsigned long getWeaponID() {
 		return this.weaponID;

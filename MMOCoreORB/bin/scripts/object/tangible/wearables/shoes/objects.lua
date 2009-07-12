@@ -43,7 +43,7 @@
 
 object_tangible_wearables_shoes_shared_shoes_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s01_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_shoes_shared_shoes_s01 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s01, 35
 
 object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s02_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s02, 14
 
 object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s03_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s03, 10
 
 object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s07_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s07, 16
 
 object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s08_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_shoes_shared_shoes_s08, 36
 
 object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s09_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

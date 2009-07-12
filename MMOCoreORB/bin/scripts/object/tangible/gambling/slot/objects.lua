@@ -43,7 +43,7 @@
 
 object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

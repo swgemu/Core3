@@ -11,8 +11,6 @@ class ZoneProcessServerImplementation;
 
 class StringId;
 
-class SceneObjectReference;
-
 #include "server/zone/ZoneClientSession.h"
 
 #include "engine/core/ManagedObject.h"
@@ -35,6 +33,8 @@ class SceneObjectReference;
 
 #include "system/util/Quaternion.h"
 
+#include "engine/core/ManagedReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -49,6 +49,26 @@ public:
 	void serialize(string& data);
 
 	void deSerialize(const string& data);
+
+	void redeploy();
+
+	void scheduleUndeploy();
+
+	void undeploy();
+
+	void removeUndeploymentEvent();
+
+	bool isPlayer();
+
+	bool addObject(string& slot, SceneObject* object);
+
+	bool removeObject(string& slot);
+
+	void create(ZoneClientSession* client);
+
+	void destroy(ZoneClientSession* client);
+
+	void sendTo(SceneObject* player, bool doClose = true);
 
 	unsigned long long getObjectID();
 
@@ -75,26 +95,6 @@ public:
 	void setGameObjectType(unsigned int type);
 
 	void setObjectCRC(unsigned int objCRC);
-
-	void redeploy();
-
-	void scheduleUndeploy();
-
-	void undeploy();
-
-	void removeUndeploymentEvent();
-
-	bool isPlayer(byte test);
-
-	bool addObject(unsigned int slot, SceneObject* object);
-
-	bool removeObject(unsigned int slot);
-
-	void create(ZoneClientSession* client);
-
-	void destroy(ZoneClientSession* client);
-
-	void sendTo(SceneObject* player, bool doClose = true);
 
 	void setParent(SceneObject* parent);
 
@@ -126,11 +126,13 @@ protected:
 
 	SceneObject* parent;
 
-	VectorMap<unsigned int, SceneObject* >* children;
+	VectorMap<string, SceneObject* >* children;
 
 	unsigned int objectCRC;
 
 	Quaternion* direction;
+
+	string arrangementDescriptor;
 
 	StringId* objectName;
 
@@ -145,342 +147,6 @@ protected:
 public:
 	static bool registered;
 
-	static int ARMOR = 0x100;
-
-	static int BODYARMOR = 0x101;
-
-	static int HEADARMOR = 0x102;
-
-	static int MISCARMOR = 0x103;
-
-	static int LEGARMOR = 0x104;
-
-	static int ARMARMOR = 0x105;
-
-	static int HANDARMOR = 0x106;
-
-	static int FOOTARMOR = 0x107;
-
-	static int SHIELDGENERATOR = 0x108;
-
-	static int BUILDING = 0x200;
-
-	static int MUNICIPALBUILDING = 0x201;
-
-	static int FACTIONPERKBUILDING = 0x203;
-
-	static int CREATURE = 0x400;
-
-	static int NPCCREATURE = 0x401;
-
-	static int DROIDCREATURE = 0x402;
-
-	static int PROBOTCREATURE = 0x403;
-
-	static int INTANGIBLE = 0x800;
-
-	static int DRAFTSCHEMATIC = 0x801;
-
-	static int MANUFACTURINGSCHEMATIC = 0x802;
-
-	static int MISSIONOBJECT = 0x803;
-
-	static int TOKEN = 0x804;
-
-	static int WAYPOINT = 0x805;
-
-	static int DATA2 = 0x806;
-
-	static int PETCONTROLDEVICE = 0x807;
-
-	static int VEHICLECONTROLDEVICE = 0x808;
-
-	static int SHIPCONTROLDEVICE = 0x80A;
-
-	static int DROIDCONTROLDEVICE = 0x80B;
-
-	static int INSTALLATION = 0x1000;
-
-	static int FACTORY = 0x1001;
-
-	static int GENERATOR = 0x1002;
-
-	static int HARVESTER = 0x1003;
-
-	static int TURRET = 0x1004;
-
-	static int MINEFIELD = 0x1005;
-
-	static int TANGIBLE = 0x2000;
-
-	static int AMMUNITION = 0x2001;
-
-	static int CHEMICAL = 0x2002;
-
-	static int CONTAINER = 0x2005;
-
-	static int CRAFTINGSTATION = 0x2006;
-
-	static int ELECTRONICS = 0x2008;
-
-	static int FLORA = 0x2009;
-
-	static int FOOD = 0x200A;
-
-	static int FURNITURE = 0x200B;
-
-	static int INSTRUMENT = 0x200C;
-
-	static int PHARMACEUTICAL = 0x200D;
-
-	static int SIGN = 0x200F;
-
-	static int COUNTER = 0x2010;
-
-	static int FACTORYCRATE = 0x2011;
-
-	static int TRAVELTICKET = 0x2012;
-
-	static int GENERICITEM = 0x2013;
-
-	static int TRAP = 0x2014;
-
-	static int WEARABLECONTAINER = 0x2015;
-
-	static int FISHINGPOLE = 0x2016;
-
-	static int FISHINGBAIT = 0x2017;
-
-	static int DRINK = 0x2018;
-
-	static int FIREWORK = 0x2019;
-
-	static int ITEM = 0x201A;
-
-	static int PETMEDECINE = 0x201B;
-
-	static int FIREWORKSHOW = 0x201C;
-
-	static int CLOTHINGATTACHMENT = 0x201D;
-
-	static int LIVESAMPLE = 0x201E;
-
-	static int ARMORATTACHMENT = 0x201F;
-
-	static int COMMUNITYCRAFTINGPROJECT = 0x2020;
-
-	static int CRYSTAL = 0x2021;
-
-	static int DROIDPROGRAMMINGCHIP = 0x2022;
-
-	static int ASTEROID = 0x2023;
-
-	static int PILOTCHAIR = 0x2024;
-
-	static int OPERATIONSCHAIR = 0x2025;
-
-	static int TURRETACCESSLADDER = 0x2026;
-
-	static int CONTAINER2 = 0x2027;
-
-	static int CAMOKIT = 0x2028;
-
-	static int TERMINAL = 0x4000;
-
-	static int BANK = 0x4001;
-
-	static int BAZAAR = 0x4002;
-
-	static int CLONING = 0x4003;
-
-	static int INSURANCE = 0x4004;
-
-	static int MISSIONTERMINAL = 0x4006;
-
-	static int PLAYERTERMINALSTRUCTURE = 0x4008;
-
-	static int SHIPPINGTERMINAL = 0x4009;
-
-	static int SPACETERMINAL = 0x400B;
-
-	static int INTERACTIVETERMINAL = 0x400C;
-
-	static int TOOL = 0x8000;
-
-	static int CRAFTINGTOOL = 0x8001;
-
-	static int SURVEYTOOL = 0x8002;
-
-	static int REPAIRTOOL = 0x8003;
-
-	static int CAMPKIT = 0x8004;
-
-	static int SHIPCOMPONENTREPAIRITEM = 0x8005;
-
-	static int VEHICLE = 0x10000;
-
-	static int HOVERVEHICLE = 0x10001;
-
-	static int WEAPON = 0x20000;
-
-	static int MELEEWEAPON = 0x20001;
-
-	static int RANGEDWEAPON = 0x20002;
-
-	static int THROWNWEAPON = 0x20003;
-
-	static int HEAVYWEAPON = 0x20004;
-
-	static int MINE = 0x20005;
-
-	static int SPECIALHEAVYWEAPON = 0x20006;
-
-	static int ONEHANDMELEEWEAPON = 0x20007;
-
-	static int TWOHANDMELEEWEAPON = 0x20008;
-
-	static int POLEARM = 0x20009;
-
-	static int PISTOL = 0x2000A;
-
-	static int CARBINE = 0x2000B;
-
-	static int RIFLE = 0x2000C;
-
-	static int GRENADE = 0x2000E;
-
-	static int COMPONENT = 0x40000;
-
-	static int ARMORCOMPONENT = 0x40001;
-
-	static int CHEMISTRYCOMPONENT = 0x40002;
-
-	static int CLOTHINGCOMPONENT = 0x40003;
-
-	static int COMMUNITYCRAFTINGCOMPONENT = 0x40004;
-
-	static int DROIDCOMPONENT = 0x40005;
-
-	static int ELECTRONICSCOMPONENT = 0x40006;
-
-	static int GENETICCOMPONENT = 0x40007;
-
-	static int LIGHTSABERCRYSTAL = 0x40008;
-
-	static int MELEEWEAPONCOMPONENT = 0x40009;
-
-	static int MUNITIONCOMPONENT = 0x4000A;
-
-	static int RANGEDWEAPONCOMPONENT = 0x4000B;
-
-	static int STRUVTURECOMPONENT = 0x4000C;
-
-	static int TISSUECOMPONENT = 0x4000D;
-
-	static int WEAPONPOWERUP = 0x80000;
-
-	static int MELEEWEAPONPOWERUP = 0x80001;
-
-	static int RANGEDWEAPONPOWERUP = 0x80002;
-
-	static int THROWNWEAPONPOWERUP = 0x80003;
-
-	static int HEAVYWEAPONPOWERUP = 0x80004;
-
-	static int MINEPOWERUP = 0x80005;
-
-	static int SPECIALHEAVYWEAPONPOWERUP = 0x80006;
-
-	static int WEARABLE = 0x200000;
-
-	static int RING = 0x200001;
-
-	static int BRACELET = 0x200002;
-
-	static int NECKLACE = 0x200003;
-
-	static int EARRING = 0x200004;
-
-	static int RESOURCECONTAINER = 0x400000;
-
-	static int ENERGYGAS = 0x400001;
-
-	static int ENERGYLIQUID = 0x400002;
-
-	static int ENERGYRADIOACTIVE = 0x400003;
-
-	static int ENERGYSOLID = 0x400004;
-
-	static int INORGANICCHEMICAL = 0x400005;
-
-	static int INORGANICGAS = 0x400006;
-
-	static int INORGANICMINERAL = 0x400007;
-
-	static int WATER = 0x400008;
-
-	static int ORGANICFOOD = 0x400009;
-
-	static int ORGANICHIDE = 0x40000A;
-
-	static int ORGANICSTRUCTURAL = 0x40000B;
-
-	static int QUESTREOURCE = 0x40000C;
-
-	static int DEED = 0x800000;
-
-	static int BUILDINGDEED = 0x800001;
-
-	static int INSTALLATIONDEED = 0x800002;
-
-	static int PETDEED = 0x800003;
-
-	static int DROIDDEED = 0x800004;
-
-	static int VEHICLEDEED = 0x800005;
-
-	static int RESOURCEDEED = 0x800006;
-
-	static int CLOTHING = 0x1000000;
-
-	static int BANDOLIER = 0x1000001;
-
-	static int BELT = 0x1000002;
-
-	static int BODYSUIT = 0x1000003;
-
-	static int CAPE = 0x1000004;
-
-	static int CLOAK = 0x1000005;
-
-	static int FOOTWEAR = 0x1000006;
-
-	static int DRESS = 0x1000007;
-
-	static int HANDWEAR = 0x1000008;
-
-	static int EYEWEAR = 0x1000009;
-
-	static int HEADWEAR = 0x100000A;
-
-	static int JACKET = 0x100000B;
-
-	static int PANTS = 0x100000C;
-
-	static int ROBE = 0x100000D;
-
-	static int SHIRT = 0x100000E;
-
-	static int VEST = 0x100000F;
-
-	static int WOOKIEGARB = 0x1000010;
-
-	static int MISCCLOTHING = 0x1000011;
-
-	static int SKIRT = 0x1000012;
-
-	static int ITHOGARB = 0x1000013;
-
 	SceneObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
 	void addSerializableVariables();
@@ -488,6 +154,26 @@ public:
 	void serialize(string& data);
 
 	void deSerialize(const string& data);
+
+	void redeploy();
+
+	void scheduleUndeploy();
+
+	void undeploy();
+
+	void removeUndeploymentEvent();
+
+	bool isPlayer();
+
+	virtual bool addObject(string& slot, SceneObject* object);
+
+	virtual bool removeObject(string& slot);
+
+	void create(ZoneClientSession* client);
+
+	void destroy(ZoneClientSession* client);
+
+	virtual void sendTo(SceneObject* player, bool doClose = true);
 
 	unsigned long long getObjectID();
 
@@ -514,26 +200,6 @@ public:
 	void setGameObjectType(unsigned int type);
 
 	void setObjectCRC(unsigned int objCRC);
-
-	void redeploy();
-
-	void scheduleUndeploy();
-
-	void undeploy();
-
-	void removeUndeploymentEvent();
-
-	bool isPlayer(byte test);
-
-	virtual bool addObject(unsigned int slot, SceneObject* object);
-
-	virtual bool removeObject(unsigned int slot);
-
-	void create(ZoneClientSession* client);
-
-	void destroy(ZoneClientSession* client);
-
-	virtual void sendTo(SceneObject* player, bool doClose = true);
 
 	void setParent(SceneObject* parent);
 
@@ -558,6 +224,26 @@ public:
 
 	void deSerialize(const string& data);
 
+	void redeploy();
+
+	void scheduleUndeploy();
+
+	void undeploy();
+
+	void removeUndeploymentEvent();
+
+	bool isPlayer();
+
+	bool addObject(string& slot, SceneObject* object);
+
+	bool removeObject(string& slot);
+
+	void create(ZoneClientSession* client);
+
+	void destroy(ZoneClientSession* client);
+
+	void sendTo(SceneObject* player, bool doClose);
+
 	unsigned long long getObjectID();
 
 	float getPositionX();
@@ -584,31 +270,13 @@ public:
 
 	void setObjectCRC(unsigned int objCRC);
 
-	void redeploy();
-
-	void scheduleUndeploy();
-
-	void undeploy();
-
-	void removeUndeploymentEvent();
-
-	bool isPlayer(byte test);
-
-	bool addObject(unsigned int slot, SceneObject* object);
-
-	bool removeObject(unsigned int slot);
-
-	void create(ZoneClientSession* client);
-
-	void destroy(ZoneClientSession* client);
-
-	void sendTo(SceneObject* player, bool doClose);
-
 	void setParent(SceneObject* parent);
 
 protected:
 	string _param0_serialize__string_;
 	string _param0_deSerialize__string_;
+	string _param0_addObject__string_SceneObject_;
+	string _param0_removeObject__string_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

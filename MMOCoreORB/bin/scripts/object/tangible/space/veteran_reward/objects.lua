@@ -43,7 +43,7 @@
 
 object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_static_structure_tatooine_jawa_base_shared_tent_jawa_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tatt_jawa_tent_small.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_structure_tatooine_jawa_base_shared_tent_jawa_base = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }

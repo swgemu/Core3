@@ -43,7 +43,7 @@
 
 object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ballot_box,
 
 object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bank.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bank, 19899
 
 object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_bazaar.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bazaar, 363
 
 object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_que
 
 object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_que
 
 object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_que
 
 object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bounty_droi
 
 object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_character_b
 
 object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city, 37939
 
 object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city_vote, 
 
 object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_cloning.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_cloning, 37
 
 object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_command_con
 
 object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_djt_voting.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclav
 
 object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclav
 
 object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator, 2
 
 object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_down_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_do
 
 object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_up_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_up
 
 object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_geo_bunker,
 
 object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_guild, 7242
 
 object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq, 4893504
 
 object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_imperial
 
 object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_rebel, 1
 
 object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_turret_c
 
 object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_image_design.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_imagedesign
 
 object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_insurance, 
 
 object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_jukebox, 24
 
 object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_encla
 
 object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_encla
 
 object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission, 29
 
 object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_art
 
 object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_bou
 
 object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_ent
 
 object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_imp
 
 object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_mission.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_new
 
 object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_reb
 
 object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_sco
 
 object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"datapad"},
+	slotDescriptors = {"datapad"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_sta
 
 object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_clot
 
 object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_food
 
 object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_inst
 
 object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_medi
 
 object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_tool
 
 object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newsnet, 75
 
 object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_nym_cave, 3
 
 object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_stru
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_stru
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_stru
 
 object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pm_register
 
 object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pob_ship, 3
 
 object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ship_interi
 
 object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_shipping, 1
 
 object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_skill, 3287
 
 object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_spaceterminal.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_space, 1701
 
 object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ksk_all_travel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_travel, 194
 
 object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_water_press
 
 object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

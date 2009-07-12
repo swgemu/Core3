@@ -43,7 +43,7 @@
 
 object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

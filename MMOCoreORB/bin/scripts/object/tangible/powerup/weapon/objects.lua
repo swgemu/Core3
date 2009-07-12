@@ -43,7 +43,7 @@
 
 object_tangible_powerup_weapon_shared_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_high_power_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_powerup_weapon_shared_heavy = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_heavy, 7173571
 
 object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blade_vibro_unit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee, 1636293
 
 object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_generic,
 
 object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_melee_weapon_lightsaber.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_lightsab
 
 object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine, 23042195
 
 object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine_explosive
 
 object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged, 163721
 
 object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_rifle_barrel.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_barrel,
 
 object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_grip, 1
 
 object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_muzzle_sm_s06.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_muzzle,
 
 object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_power, 
 
 object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_scope_sm_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_scope, 
 
 object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser_stock.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_stock, 
 
 object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown, 540983
 
 object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_explosi
 
 object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_qu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_
 
 object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_tantel_skreej_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

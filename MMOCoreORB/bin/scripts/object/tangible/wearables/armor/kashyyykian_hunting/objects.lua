@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_bracer_l_wke_f.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_bracer_r_wke_f.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_chest_plate_wke_f.sat",
-	arrangementDescriptor = "chest1",
+	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "hat", "mouth", "bicep_l", "bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_leggings_wke_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

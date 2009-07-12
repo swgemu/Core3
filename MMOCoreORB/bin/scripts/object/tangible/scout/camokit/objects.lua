@@ -43,7 +43,7 @@
 
 object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_corelli
 
 object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dantooi
 
 object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dathomi
 
 object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_endor, 
 
 object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_lok, 39
 
 object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_naboo, 
 
 object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_rori, 2
 
 object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_talus, 
 
 object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_tatooin
 
 object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

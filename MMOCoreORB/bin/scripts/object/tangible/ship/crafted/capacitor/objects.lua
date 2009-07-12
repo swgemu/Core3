@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanc
 
 object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanc
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_c
 
 object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_basic_
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capaci
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capaci
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capaci
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capaci
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capaci
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extend
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extend
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extend
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extend
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extend
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_
 
 object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standa
 
 object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

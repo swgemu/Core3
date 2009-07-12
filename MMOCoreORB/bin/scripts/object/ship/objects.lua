@@ -43,7 +43,7 @@
 
 object_ship_shared_assaultship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_assaultship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_ship_shared_assaultship = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_ship_shared_assaultship, 3844148531)
 
 object_ship_shared_awing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_ship_shared_awing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_awing, 1006768204)
 
 object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_awing_tier1, 2304550097)
 
 object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_awing_tier2, 1380650054)
 
 object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_awing_tier3, 457599947)
 
 object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_awing_tier4, 3768926431)
 
 object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_awing_tier5, 2846369618)
 
 object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_basic_hutt_light, 762962365)
 
 object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_basic_tiefighter, 2423388993)
 
 object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_basic_z95, 237307345)
 
 object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01, 1689683950)
 
 object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier1, 4285867
 
 object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier2, 3650768
 
 object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier3, 2425829
 
 object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier4, 1802771
 
 object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier5, 5783867
 
 object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02, 3215011705)
 
 object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier1, 2134787
 
 object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier2, 3618555
 
 object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier3, 2661524
 
 object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier4, 1698728
 
 object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier5, 7433048
 
 object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03, 4138486004)
 
 object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier1, 4111854
 
 object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier2, 7718999
 
 object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier3, 1729045
 
 object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier4, 2632715
 
 object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier5, 3588319
 
 object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04, 223306720)
 
 object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier1, 2820849
 
 object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier2, 3418877
 
 object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier3, 2194311
 
 object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier4, 2032771
 
 object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier5, 8077162
 
 object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01, 2025920948)
 
 object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier1, 1922069
 
 object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier2, 2844252
 
 object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier3, 3767188
 
 object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier4, 4599049
 
 object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier5, 1382346
 
 object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02, 2748756259)
 
 object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier1, 2091181
 
 object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier2, 2813546
 
 object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier3, 4005439
 
 object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier4, 3584169
 
 object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier5, 1548772
 
 object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03, 3940275886)
 
 object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier1, 2231919
 
 object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier2, 1579141
 
 object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier3, 3871003
 
 object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier4, 3975251
 
 object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier5, 2784813
 
 object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04, 288947642)
 
 object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier1, 1624100
 
 object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier2, 3151652
 
 object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier3, 4074177
 
 object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier4, 1544133
 
 object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier5, 1077497
 
 object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01, 1249737248)
 
 object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier1, 368777
 
 object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier2, 142424
 
 object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier3, 123864
 
 object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier4, 298995
 
 object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier5, 421491
 
 object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02, 2439697079)
 
 object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier1, 358995
 
 object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier2, 250464
 
 object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier3, 120590
 
 object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier4, 315434
 
 object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier5, 411139
 
 object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03, 3630675258)
 
 object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier1, 743893
 
 object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier2, 414824
 
 object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier3, 319266
 
 object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier4, 116909
 
 object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier5, 211971
 
 object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04, 595893806)
 
 object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier1, 338187
 
 object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier2, 310701
 
 object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4043,7 +4043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier3, 153574
 
 object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4078,7 +4078,7 @@ object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4093,7 +4093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier4, 269134
 
 object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4128,7 +4128,7 @@ object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4143,7 +4143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier5, 391589
 
 object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4178,7 +4178,7 @@ object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4193,7 +4193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport, 806145873)
 
 object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4228,7 +4228,7 @@ object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4243,7 +4243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier1, 3217548
 
 object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4278,7 +4278,7 @@ object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4293,7 +4293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier2, 1691372
 
 object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4328,7 +4328,7 @@ object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4343,7 +4343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier3, 7694689
 
 object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4378,7 +4378,7 @@ object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier4, 3594387
 
 object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/blacksun_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4428,7 +4428,7 @@ object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier5, 2670945
 
 object_ship_shared_bwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4478,7 +4478,7 @@ object_ship_shared_bwing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4493,7 +4493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_bwing, 784528209)
 
 object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4528,7 +4528,7 @@ object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4543,7 +4543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_bwing_tier1, 3935148784)
 
 object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4578,7 +4578,7 @@ object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4593,7 +4593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_bwing_tier2, 832189031)
 
 object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4628,7 +4628,7 @@ object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4643,7 +4643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_bwing_tier3, 2023183850)
 
 object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4678,7 +4678,7 @@ object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4693,7 +4693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_bwing_tier4, 2205449982)
 
 object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4728,7 +4728,7 @@ object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4743,7 +4743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_bwing_tier5, 3396934003)
 
 object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4778,7 +4778,7 @@ object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4793,7 +4793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_civshuttle, 907129698)
 
 object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_air_speeder_1.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4828,7 +4828,7 @@ object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4843,7 +4843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_civspeeder1, 4120399097)
 
 object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_air_speeder_2.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4878,7 +4878,7 @@ object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4893,7 +4893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_civspeeder2, 781182062)
 
 object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_air_taxi.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4928,7 +4928,7 @@ object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4943,7 +4943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_civtaxi, 3717426532)
 
 object_ship_shared_civtransport = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4978,7 +4978,7 @@ object_ship_shared_civtransport = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_civtransport, 952499678)
 
 object_ship_shared_corvette = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5028,7 +5028,7 @@ object_ship_shared_corvette = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5043,7 +5043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_corvette, 562522734)
 
 object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5078,7 +5078,7 @@ object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5093,7 +5093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_corvette_interior, 3035559423)
 
 object_ship_shared_decimator = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5128,7 +5128,7 @@ object_ship_shared_decimator = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5143,7 +5143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_decimator, 2362865628)
 
 object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5178,7 +5178,7 @@ object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5193,7 +5193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_decimator_tier1, 2353591998)
 
 object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5228,7 +5228,7 @@ object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5243,7 +5243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_decimator_tier2, 1465867817)
 
 object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5278,7 +5278,7 @@ object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5293,7 +5293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_decimator_tier3, 508705188)
 
 object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5328,7 +5328,7 @@ object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5343,7 +5343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_decimator_tier4, 3853587120)
 
 object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5378,7 +5378,7 @@ object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5393,7 +5393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_decimator_tier5, 2898031933)
 
 object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5428,7 +5428,7 @@ object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5443,7 +5443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_droid_fighter, 2308789341)
 
 object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5478,7 +5478,7 @@ object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5493,7 +5493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier1, 14973297)
 
 object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5528,7 +5528,7 @@ object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier2, 3690189286)
 
 object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5578,7 +5578,7 @@ object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5593,7 +5593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier3, 2466166379)
 
 object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5628,7 +5628,7 @@ object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5643,7 +5643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier4, 1763548543)
 
 object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/droid_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5678,7 +5678,7 @@ object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5693,7 +5693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier5, 537983730)
 
 object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5728,7 +5728,7 @@ object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5743,7 +5743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_escape_pod, 2997532055)
 
 object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5778,7 +5778,7 @@ object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5793,7 +5793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier1, 2280868888)
 
 object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5828,7 +5828,7 @@ object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5843,7 +5843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier2, 1558504591)
 
 object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5878,7 +5878,7 @@ object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5893,7 +5893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier3, 367624962)
 
 object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5928,7 +5928,7 @@ object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5943,7 +5943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier4, 3993675798)
 
 object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/escape_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5978,7 +5978,7 @@ object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5993,7 +5993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier5, 2802306971)
 
 object_ship_shared_firespray = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6028,7 +6028,7 @@ object_ship_shared_firespray = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6043,7 +6043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_firespray, 3319462575)
 
 object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6078,7 +6078,7 @@ object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_firespray_tier1, 1391589453)
 
 object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6128,7 +6128,7 @@ object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6143,7 +6143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_firespray_tier2, 2313572570)
 
 object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6178,7 +6178,7 @@ object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6193,7 +6193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_firespray_tier3, 3236640599)
 
 object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6228,7 +6228,7 @@ object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6243,7 +6243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_firespray_tier4, 990387267)
 
 object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6278,7 +6278,7 @@ object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6293,7 +6293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_firespray_tier5, 1912961998)
 
 object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6328,7 +6328,7 @@ object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6343,7 +6343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterheavy, 2210460492)
 
 object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6378,7 +6378,7 @@ object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6393,7 +6393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier1, 237176683)
 
 object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6428,7 +6428,7 @@ object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6443,7 +6443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier2, 3576999932)
 
 object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6478,7 +6478,7 @@ object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6493,7 +6493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier3, 2621032561)
 
 object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6528,7 +6528,7 @@ object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6543,7 +6543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier4, 1742398309)
 
 object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6578,7 +6578,7 @@ object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6593,7 +6593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier5, 785876200)
 
 object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6628,7 +6628,7 @@ object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterlight, 1117310866)
 
 object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6678,7 +6678,7 @@ object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6693,7 +6693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier1, 2981606241)
 
 object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6728,7 +6728,7 @@ object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6743,7 +6743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier2, 1788877814)
 
 object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6778,7 +6778,7 @@ object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6793,7 +6793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier3, 598572155)
 
 object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6828,7 +6828,7 @@ object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6843,7 +6843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier4, 3629012847)
 
 object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6878,7 +6878,7 @@ object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6893,7 +6893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier5, 2437099746)
 
 object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6928,7 +6928,7 @@ object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6943,7 +6943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freightermedium, 3398686729)
 
 object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6978,7 +6978,7 @@ object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6993,7 +6993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier1, 1092912234
 
 object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7028,7 +7028,7 @@ object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7043,7 +7043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier2, 2587045117
 
 object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7078,7 +7078,7 @@ object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7093,7 +7093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier3, 3544075120
 
 object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7128,7 +7128,7 @@ object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7143,7 +7143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier4, 685596772)
 
 object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7178,7 +7178,7 @@ object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7193,7 +7193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier5, 1641023465
 
 object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7228,7 +7228,7 @@ object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7243,7 +7243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01, 1217600546)
 
 object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7278,7 +7278,7 @@ object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7293,7 +7293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier1, 3993388117)
 
 object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7328,7 +7328,7 @@ object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7343,7 +7343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier2, 890367170)
 
 object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7378,7 +7378,7 @@ object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7393,7 +7393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier3, 2082245455)
 
 object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7428,7 +7428,7 @@ object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7443,7 +7443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier4, 2281676891)
 
 object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7478,7 +7478,7 @@ object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7493,7 +7493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier5, 3472017366)
 
 object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7528,7 +7528,7 @@ object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7543,7 +7543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02, 2474947765)
 
 object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7578,7 +7578,7 @@ object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7593,7 +7593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier1, 3761426896)
 
 object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7628,7 +7628,7 @@ object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7643,7 +7643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier2, 992311623)
 
 object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7678,7 +7678,7 @@ object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7693,7 +7693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier3, 1915231946)
 
 object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7728,7 +7728,7 @@ object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7743,7 +7743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier4, 2311796190)
 
 object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7778,7 +7778,7 @@ object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7793,7 +7793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier5, 3234222675)
 
 object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7828,7 +7828,7 @@ object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7843,7 +7843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01, 1424261752)
 
 object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7878,7 +7878,7 @@ object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7893,7 +7893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier1, 2652622661)
 
 object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7928,7 +7928,7 @@ object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7943,7 +7943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier2, 1158440914)
 
 object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7978,7 +7978,7 @@ object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7993,7 +7993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier3, 201392223)
 
 object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8028,7 +8028,7 @@ object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8043,7 +8043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier4, 4158794571)
 
 object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8078,7 +8078,7 @@ object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8093,7 +8093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier5, 3203353798)
 
 object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8128,7 +8128,7 @@ object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8143,7 +8143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02, 2415078127)
 
 object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8178,7 +8178,7 @@ object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8193,7 +8193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier1, 2419022528)
 
 object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8228,7 +8228,7 @@ object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8243,7 +8243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier2, 1262023255)
 
 object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8278,7 +8278,7 @@ object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8293,7 +8293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier3, 37066202)
 
 object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8328,7 +8328,7 @@ object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8343,7 +8343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier4, 4191600334)
 
 object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8378,7 +8378,7 @@ object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8393,7 +8393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier5, 2967198019)
 
 object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8428,7 +8428,7 @@ object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8443,7 +8443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01, 3267992484)
 
 object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8478,7 +8478,7 @@ object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8493,7 +8493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier1, 2698486044
 
 object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8528,7 +8528,7 @@ object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8543,7 +8543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier2, 2076182923
 
 object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8578,7 +8578,7 @@ object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8593,7 +8593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier3, 852323846)
 
 object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8628,7 +8628,7 @@ object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8643,7 +8643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier4, 3375252754
 
 object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8678,7 +8678,7 @@ object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8693,7 +8693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier5, 2149786271
 
 object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8728,7 +8728,7 @@ object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8743,7 +8743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02, 433992499)
 
 object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8778,7 +8778,7 @@ object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8793,7 +8793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier1, 2934125721
 
 object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8828,7 +8828,7 @@ object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8843,7 +8843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier2, 1978965006
 
 object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8878,7 +8878,7 @@ object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8893,7 +8893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier3, 1023015811
 
 object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8928,7 +8928,7 @@ object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8943,7 +8943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier4, 3340423319
 
 object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8978,7 +8978,7 @@ object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8993,7 +8993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier5, 2383918874
 
 object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9028,7 +9028,7 @@ object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9043,7 +9043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_transport, 472470685)
 
 object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9078,7 +9078,7 @@ object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9093,7 +9093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier1, 1397512657)
 
 object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9128,7 +9128,7 @@ object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9143,7 +9143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier2, 2287726918)
 
 object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9178,7 +9178,7 @@ object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9193,7 +9193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier3, 3243677387)
 
 object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9228,7 +9228,7 @@ object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9243,7 +9243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier4, 984989151)
 
 object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_transport.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9278,7 +9278,7 @@ object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9293,7 +9293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier5, 1941494354)
 
 object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9328,7 +9328,7 @@ object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9343,7 +9343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_hutt_turret_ship, 2822462280)
 
 object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9378,7 +9378,7 @@ object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9393,7 +9393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat, 3259306099)
 
 object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9428,7 +9428,7 @@ object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9443,7 +9443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier1, 191010252
 
 object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9478,7 +9478,7 @@ object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9493,7 +9493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier2, 286565617
 
 object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9528,7 +9528,7 @@ object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9543,7 +9543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier3, 382121341
 
 object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9578,7 +9578,7 @@ object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9593,7 +9593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier4, 404766199
 
 object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9628,7 +9628,7 @@ object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9643,7 +9643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier5, 136192677
 
 object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9678,7 +9678,7 @@ object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9693,7 +9693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle, 979946526)
 
 object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9728,7 +9728,7 @@ object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9743,7 +9743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier1, 1746838902)
 
 object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9778,7 +9778,7 @@ object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9793,7 +9793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier2, 3003715041)
 
 object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9828,7 +9828,7 @@ object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9843,7 +9843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier3, 4194593388)
 
 object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9878,7 +9878,7 @@ object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9893,7 +9893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier4, 31932792)
 
 object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9928,7 +9928,7 @@ object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9943,7 +9943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier5, 1223304949)
 
 object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9978,7 +9978,7 @@ object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9993,7 +9993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier1, 254
 
 object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10028,7 +10028,7 @@ object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10043,7 +10043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier2, 128
 
 object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10078,7 +10078,7 @@ object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10093,7 +10093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier3, 928
 
 object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10128,7 +10128,7 @@ object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10143,7 +10143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier4, 426
 
 object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10178,7 +10178,7 @@ object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10193,7 +10193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier5, 307
 
 object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10228,7 +10228,7 @@ object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10243,7 +10243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium, 42663025
 
 object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10278,7 +10278,7 @@ object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10293,7 +10293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier1, 38
 
 object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10328,7 +10328,7 @@ object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10343,7 +10343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier2, 10
 
 object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10378,7 +10378,7 @@ object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10393,7 +10393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier3, 19
 
 object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10428,7 +10428,7 @@ object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10443,7 +10443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier4, 23
 
 object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10478,7 +10478,7 @@ object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10493,7 +10493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier5, 33
 
 object_ship_shared_nebulon = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/nebulon_frigate.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10528,7 +10528,7 @@ object_ship_shared_nebulon = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10543,7 +10543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_nebulon, 2407618193)
 
 object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10578,7 +10578,7 @@ object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10593,7 +10593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod, 327912933)
 
 object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10628,7 +10628,7 @@ object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10643,7 +10643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier1, 2888320846
 
 object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10678,7 +10678,7 @@ object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10693,7 +10693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier2, 2000678873
 
 object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10728,7 +10728,7 @@ object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10743,7 +10743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier3, 1043499092
 
 object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10778,7 +10778,7 @@ object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10793,7 +10793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier4, 3318850368
 
 object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid_pod.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10828,7 +10828,7 @@ object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10843,7 +10843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier5, 2363278541
 
 object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10878,7 +10878,7 @@ object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10893,7 +10893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_prototype_hutt_light, 1036884978)
 
 object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10928,7 +10928,7 @@ object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10943,7 +10943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_prototype_tiefighter, 2160427278)
 
 object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10978,7 +10978,7 @@ object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10993,7 +10993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_prototype_z95, 1141820662)
 
 object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11028,7 +11028,7 @@ object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11043,7 +11043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat, 3542721164)
 
 object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11078,7 +11078,7 @@ object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11093,7 +11093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier1, 137363241)
 
 object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11128,7 +11128,7 @@ object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11143,7 +11143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier2, 3543685054)
 
 object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11178,7 +11178,7 @@ object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11193,7 +11193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier3, 2587177011)
 
 object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11228,7 +11228,7 @@ object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11243,7 +11243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier4, 1641421607)
 
 object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11278,7 +11278,7 @@ object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11293,7 +11293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier5, 685472938)
 
 object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11328,7 +11328,7 @@ object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11343,7 +11343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier1, 282943774)
 
 object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11378,7 +11378,7 @@ object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11393,7 +11393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier2, 3419064713)
 
 object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11428,7 +11428,7 @@ object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11443,7 +11443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier3, 2194124292)
 
 object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11478,7 +11478,7 @@ object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11493,7 +11493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier4, 2032436496)
 
 object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle_rebel.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11528,7 +11528,7 @@ object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11543,7 +11543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier5, 808051357)
 
 object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11578,7 +11578,7 @@ object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11593,7 +11593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier1, 1243
 
 object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11628,7 +11628,7 @@ object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11643,7 +11643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier2, 2433
 
 object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11678,7 +11678,7 @@ object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11693,7 +11693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier3, 3624
 
 object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11728,7 +11728,7 @@ object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11743,7 +11743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier4, 6022
 
 object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11778,7 +11778,7 @@ object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11793,7 +11793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier5, 1793
 
 object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/sorosuub_space_yacht_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11828,7 +11828,7 @@ object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11843,7 +11843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_sorosuub_space_yacht, 2502364217)
 
 object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11878,7 +11878,7 @@ object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11893,7 +11893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_spacestation_imperial, 3165332223
 
 object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_neutral.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11928,7 +11928,7 @@ object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11943,7 +11943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_spacestation_neutral, 4164831037)
 
 object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rebel.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11978,7 +11978,7 @@ object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11993,7 +11993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_spacestation_rebel, 431716433)
 
 object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_space.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12028,7 +12028,7 @@ object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12043,7 +12043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_star_destroyer, 3207599336)
 
 object_ship_shared_supplyship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/distant_supplyship.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12078,7 +12078,7 @@ object_ship_shared_supplyship = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12093,7 +12093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_supplyship, 4043601537)
 
 object_ship_shared_tie_in = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_in.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12128,7 +12128,7 @@ object_ship_shared_tie_in = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12143,7 +12143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tie_in, 1874889307)
 
 object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12178,7 +12178,7 @@ object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12193,7 +12193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tie_light_duty, 1231580532)
 
 object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12228,7 +12228,7 @@ object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12243,7 +12243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieadvanced, 212073063)
 
 object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12278,7 +12278,7 @@ object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12293,7 +12293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier1, 4294368666)
 
 object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12328,7 +12328,7 @@ object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12343,7 +12343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier2, 618755341)
 
 object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12378,7 +12378,7 @@ object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12393,7 +12393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier3, 1844187776)
 
 object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12428,7 +12428,7 @@ object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12443,7 +12443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier4, 2517580180)
 
 object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12478,7 +12478,7 @@ object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12493,7 +12493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier5, 3741474329)
 
 object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12528,7 +12528,7 @@ object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12543,7 +12543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieaggressor, 3457688983)
 
 object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12578,7 +12578,7 @@ object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12593,7 +12593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier1, 1918801119)
 
 object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12628,7 +12628,7 @@ object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12643,7 +12643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier2, 2840149064)
 
 object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12678,7 +12678,7 @@ object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12693,7 +12693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier3, 3762576325)
 
 object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12728,7 +12728,7 @@ object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12743,7 +12743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier4, 463958225)
 
 object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12778,7 +12778,7 @@ object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12793,7 +12793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier5, 1386878812)
 
 object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12828,7 +12828,7 @@ object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12843,7 +12843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiebomber, 1689489833)
 
 object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12878,7 +12878,7 @@ object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12893,7 +12893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier1, 800011159)
 
 object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12928,7 +12928,7 @@ object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12943,7 +12943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier2, 4105739008)
 
 object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12978,7 +12978,7 @@ object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12993,7 +12993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier3, 3182820493)
 
 object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13028,7 +13028,7 @@ object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13043,7 +13043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier4, 1180096409)
 
 object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13078,7 +13078,7 @@ object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13093,7 +13093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier5, 257667092)
 
 object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13128,7 +13128,7 @@ object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13143,7 +13143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiefighter, 2677969389)
 
 object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13178,7 +13178,7 @@ object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13193,7 +13193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier1, 719737899)
 
 object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13228,7 +13228,7 @@ object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13243,7 +13243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier2, 4059167932)
 
 object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13278,7 +13278,7 @@ object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13293,7 +13293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier3, 3103562545)
 
 object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13328,7 +13328,7 @@ object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13343,7 +13343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier4, 1126150181)
 
 object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13378,7 +13378,7 @@ object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13393,7 +13393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier5, 169007016)
 
 object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13428,7 +13428,7 @@ object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13443,7 +13443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor, 2986877248)
 
 object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13478,7 +13478,7 @@ object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13493,7 +13493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier1, 3034789135)
 
 object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13528,7 +13528,7 @@ object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13543,7 +13543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier2, 1878302104)
 
 object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13578,7 +13578,7 @@ object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13593,7 +13593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier3, 653916693)
 
 object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13628,7 +13628,7 @@ object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13643,7 +13643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier4, 3709522177)
 
 object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13678,7 +13678,7 @@ object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13693,7 +13693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier5, 2484582028)
 
 object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13728,7 +13728,7 @@ object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13743,7 +13743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieoppressor, 3234528257)
 
 object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13778,7 +13778,7 @@ object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13793,7 +13793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier1, 3138516559)
 
 object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13828,7 +13828,7 @@ object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13843,7 +13843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier2, 1611030232)
 
 object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13878,7 +13878,7 @@ object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13893,7 +13893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier3, 688601429)
 
 object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13928,7 +13928,7 @@ object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13943,7 +13943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier4, 3538424385)
 
 object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -13978,7 +13978,7 @@ object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13993,7 +13993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier5, 2615506380)
 
 object_ship_shared_transport_science = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14028,7 +14028,7 @@ object_ship_shared_transport_science = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14043,7 +14043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_transport_science, 1879411884)
 
 object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14078,7 +14078,7 @@ object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14093,7 +14093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier1, 16504556
 
 object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14128,7 +14128,7 @@ object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14143,7 +14143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier2, 31085273
 
 object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14178,7 +14178,7 @@ object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14193,7 +14193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier3, 40310690
 
 object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14228,7 +14228,7 @@ object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14243,7 +14243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier4, 19543252
 
 object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/transport_science.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14278,7 +14278,7 @@ object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14293,7 +14293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier5, 11185335
 
 object_ship_shared_xwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14328,7 +14328,7 @@ object_ship_shared_xwing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14343,7 +14343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_xwing, 1476764354)
 
 object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14378,7 +14378,7 @@ object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14393,7 +14393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_xwing_tier1, 1201246834)
 
 object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14428,7 +14428,7 @@ object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14443,7 +14443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_xwing_tier2, 2626566885)
 
 object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14478,7 +14478,7 @@ object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14493,7 +14493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_xwing_tier3, 3582156136)
 
 object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14528,7 +14528,7 @@ object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14543,7 +14543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_xwing_tier4, 778073724)
 
 object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14578,7 +14578,7 @@ object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14593,7 +14593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_xwing_tier5, 1735201265)
 
 object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14628,7 +14628,7 @@ object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14643,7 +14643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ykl37r, 2370729898)
 
 object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14678,7 +14678,7 @@ object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14693,7 +14693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier1, 212362802)
 
 object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14728,7 +14728,7 @@ object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14743,7 +14743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier2, 3619671717)
 
 object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14778,7 +14778,7 @@ object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14793,7 +14793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier3, 2662508840)
 
 object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14828,7 +14828,7 @@ object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14843,7 +14843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier4, 1699840572)
 
 object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14878,7 +14878,7 @@ object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14893,7 +14893,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier5, 744285617)
 
 object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14928,7 +14928,7 @@ object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14943,7 +14943,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300, 4019421648)
 
 object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -14978,7 +14978,7 @@ object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14993,7 +14993,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300_interior, 1347113891)
 
 object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15028,7 +15028,7 @@ object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15043,7 +15043,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier1, 3582257391)
 
 object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15078,7 +15078,7 @@ object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15093,7 +15093,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier2, 244531320)
 
 object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15128,7 +15128,7 @@ object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15143,7 +15143,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier3, 1201547253)
 
 object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15178,7 +15178,7 @@ object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15193,7 +15193,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier4, 3162311905)
 
 object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_npc.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15228,7 +15228,7 @@ object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15243,7 +15243,7 @@ ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier5, 4117785452)
 
 object_ship_shared_ywing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15278,7 +15278,7 @@ object_ship_shared_ywing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15293,7 +15293,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing, 2852456612)
 
 object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15328,7 +15328,7 @@ object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15343,7 +15343,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing_longprobe, 3553113506)
 
 object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15378,7 +15378,7 @@ object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15393,7 +15393,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing_tier1, 2593551104)
 
 object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15428,7 +15428,7 @@ object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15443,7 +15443,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing_tier2, 1099029399)
 
 object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15478,7 +15478,7 @@ object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15493,7 +15493,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing_tier3, 143440922)
 
 object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15528,7 +15528,7 @@ object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15543,7 +15543,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing_tier4, 4084176654)
 
 object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15578,7 +15578,7 @@ object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15593,7 +15593,7 @@ ObjectTemplates:addTemplate(object_ship_shared_ywing_tier5, 3127046275)
 
 object_ship_shared_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15628,7 +15628,7 @@ object_ship_shared_z95 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15643,7 +15643,7 @@ ObjectTemplates:addTemplate(object_ship_shared_z95, 3963433956)
 
 object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15678,7 +15678,7 @@ object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15693,7 +15693,7 @@ ObjectTemplates:addTemplate(object_ship_shared_z95_tier1, 603334641)
 
 object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15728,7 +15728,7 @@ object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15743,7 +15743,7 @@ ObjectTemplates:addTemplate(object_ship_shared_z95_tier2, 4175531878)
 
 object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15778,7 +15778,7 @@ object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15793,7 +15793,7 @@ ObjectTemplates:addTemplate(object_ship_shared_z95_tier3, 2985093355)
 
 object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15828,7 +15828,7 @@ object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -15843,7 +15843,7 @@ ObjectTemplates:addTemplate(object_ship_shared_z95_tier4, 1242547199)
 
 object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptor = "ship_control_device",
+	arrangementDescriptors = {"ship_control_device"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -15878,7 +15878,7 @@ object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

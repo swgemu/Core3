@@ -43,7 +43,7 @@
 
 object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_fishing_pole.apt",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_shared_fishing_pole, 1813029
 
 object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_fishing_float.apt",
-	arrangementDescriptor = "back",
+	arrangementDescriptors = {"back"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_fishing_shared_marker, 1763394438)
 
 object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_splash.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -173,7 +173,7 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
