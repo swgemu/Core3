@@ -53,7 +53,7 @@ import system.io.Serializable;
 import engine.lua.Lua;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
-import system.lang.Quaternion;
+import system.util.Quaternion;
 
 import server.zone.ZoneProcessServerImplementation;
 
@@ -61,7 +61,7 @@ include server.zone.ZoneClientSession;
 
 import server.zone.objects.scene.variables.StringId;
 
-//import server.zone.objects.scene.variables.SceneObjectReference;
+import server.zone.objects.scene.variables.SceneObjectReference;
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
 	protected ZoneProcessServerImplementation server;
@@ -365,7 +365,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 		
 		children.put(slot, object);
 		
-		object.setParent(this);
+		//object.setParent(this);
 		
 		return true;
 	}
@@ -381,7 +381,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	public abstract void sendTo(SceneObject player, boolean doClose = true) {
 	}
 	
-	void setParent(SceneObject parent) {
+	public void setParent(SceneObject parent) {
 		this.parent = parent;
 	}
 

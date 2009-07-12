@@ -11,7 +11,7 @@ class ZoneProcessServerImplementation;
 
 class StringId;
 
-class SceneObject;
+class SceneObjectReference;
 
 #include "server/zone/ZoneClientSession.h"
 
@@ -33,7 +33,7 @@ class SceneObject;
 
 #include "system/util/VectorMap.h"
 
-#include "system/lang/Quaternion.h"
+#include "system/util/Quaternion.h"
 
 namespace server {
 namespace zone {
@@ -97,8 +97,6 @@ public:
 	void sendTo(SceneObject* player, bool doClose = true);
 
 	void setParent(SceneObject* parent);
-
-	void setStrTemp(string& strtmp);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -483,8 +481,6 @@ public:
 
 	static int ITHOGARB = 0x1000013;
 
-	string strTemp;
-
 	SceneObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
 	void addSerializableVariables();
@@ -539,12 +535,8 @@ public:
 
 	virtual void sendTo(SceneObject* player, bool doClose = true);
 
-private:
 	void setParent(SceneObject* parent);
 
-	void setStrTemp(string& strtmp);
-
-public:
 	SceneObject* _this;
 
 protected:
@@ -614,12 +606,9 @@ public:
 
 	void setParent(SceneObject* parent);
 
-	void setStrTemp(string& strtmp);
-
 protected:
 	string _param0_serialize__string_;
 	string _param0_deSerialize__string_;
-	string _param0_setStrTemp__string_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {
