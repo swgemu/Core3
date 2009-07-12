@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bicep_l_m.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bicep_r_m.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_boots_m.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bracer_l_m.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_bracer_r_m.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_chest_plate_m.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_gloves_m.sat",
-	arrangementDescriptor = "gloves",
+	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_helmet_m.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris
 
 object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ris_s01_leggings_m.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

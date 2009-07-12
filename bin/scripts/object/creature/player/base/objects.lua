@@ -45,7 +45,7 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "",
-	arrangementDescriptor = "rider",
+	arrangementDescriptors = {"rider"},
 
 	cameraHeight = 0,
 	certificationsRequired = {},
@@ -94,7 +94,7 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	sendToClient = 1,
 	slopeModAngle = 26,
 	slopeModPercent = 0.0125,
-	slotDescriptor = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
+	slotDescriptors = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,

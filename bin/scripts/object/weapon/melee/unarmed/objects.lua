@@ -43,7 +43,7 @@
 
 object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "default_weapon",
+	arrangementDescriptors = {"default_weapon"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default, 
 
 object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "default_weapon",
+	arrangementDescriptors = {"default_weapon"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

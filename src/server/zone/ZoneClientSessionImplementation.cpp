@@ -87,9 +87,9 @@ void ZoneClientSessionImplementation::sendMessage(StandaloneBaseMessage* msg) {
 	BaseClientProxy::sendPacket((BasePacket*) msg);
 }
 
-String& ZoneClientSessionImplementation::getAddress() {
+/*String& ZoneClientSessionImplementation::getAddress() {
 	return BaseClientProxy::getAddress();
-}
+}*/
 
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	lock(doLock);

@@ -43,7 +43,7 @@
 
 object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_hangar.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_wearables_pants_shared_nightsister_pants_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_pants_s01.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_pants_shared_nightsister_pants_s01 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_nightsister_p
 
 object_tangible_wearables_pants_shared_nightsister_pants_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_pants_s02.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_pants_shared_nightsister_pants_s02 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_nightsister_p
 
 object_tangible_wearables_pants_shared_pants_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s01_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_pants_shared_pants_s01 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s01, 72
 
 object_tangible_wearables_pants_shared_pants_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s02_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_pants_shared_pants_s02 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s02, 40
 
 object_tangible_wearables_pants_shared_pants_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s04_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_pants_shared_pants_s04 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s04, 11
 
 object_tangible_wearables_pants_shared_pants_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s05_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_pants_shared_pants_s05 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s05, 19
 
 object_tangible_wearables_pants_shared_pants_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s06_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_pants_shared_pants_s06 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s06, 34
 
 object_tangible_wearables_pants_shared_pants_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s07_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_pants_shared_pants_s07 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s07, 25
 
 object_tangible_wearables_pants_shared_pants_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s08_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_pants_shared_pants_s08 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s08, 59
 
 object_tangible_wearables_pants_shared_pants_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s09_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_pants_shared_pants_s09 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s09, 17
 
 object_tangible_wearables_pants_shared_pants_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s10_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_wearables_pants_shared_pants_s10 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s10, 20
 
 object_tangible_wearables_pants_shared_pants_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s11_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_wearables_pants_shared_pants_s11 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s11, 81
 
 object_tangible_wearables_pants_shared_pants_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s12_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_wearables_pants_shared_pants_s12 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s12, 39
 
 object_tangible_wearables_pants_shared_pants_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s13_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_wearables_pants_shared_pants_s13 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s13, 27
 
 object_tangible_wearables_pants_shared_pants_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s14_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_wearables_pants_shared_pants_s14 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s14, 15
 
 object_tangible_wearables_pants_shared_pants_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s15_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_wearables_pants_shared_pants_s15 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s15, 27
 
 object_tangible_wearables_pants_shared_pants_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s17_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_wearables_pants_shared_pants_s17 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s17, 21
 
 object_tangible_wearables_pants_shared_pants_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s18_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_wearables_pants_shared_pants_s18 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s18, 95
 
 object_tangible_wearables_pants_shared_pants_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s21_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_wearables_pants_shared_pants_s21 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s21, 48
 
 object_tangible_wearables_pants_shared_pants_s22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s22_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_wearables_pants_shared_pants_s22 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s22, 33
 
 object_tangible_wearables_pants_shared_pants_s24 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s24_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_wearables_pants_shared_pants_s24 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s24, 19
 
 object_tangible_wearables_pants_shared_pants_s25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s25_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_wearables_pants_shared_pants_s25 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s25, 10
 
 object_tangible_wearables_pants_shared_pants_s26 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s26_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_wearables_pants_shared_pants_s26 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s26, 38
 
 object_tangible_wearables_pants_shared_pants_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s27_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_wearables_pants_shared_pants_s27 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s27, 29
 
 object_tangible_wearables_pants_shared_pants_s28 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s28_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_wearables_pants_shared_pants_s28 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s28, 36
 
 object_tangible_wearables_pants_shared_pants_s29 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s29_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_wearables_pants_shared_pants_s29 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s29, 15
 
 object_tangible_wearables_pants_shared_pants_s30 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s30_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_wearables_pants_shared_pants_s30 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s30, 13
 
 object_tangible_wearables_pants_shared_pants_s31 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s31_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_wearables_pants_shared_pants_s31 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s31, 10
 
 object_tangible_wearables_pants_shared_pants_s32 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s32_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_wearables_pants_shared_pants_s32 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s32, 37
 
 object_tangible_wearables_pants_shared_pants_s33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pants_s33_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_wearables_pants_shared_pants_s33 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

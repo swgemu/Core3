@@ -43,7 +43,7 @@
 
 object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_hvy_bla
 
 object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_hvy_pro
 
 object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_vehicle
 
 object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_structure_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_vehicle
 
 object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_warhead
 
 object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel
 
 object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plati
 
 object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plati
 
 object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plati
 
 object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_cannon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_auto_blaste
 
 object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_cannon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_blaster_can
 
 object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -925,7 +925,7 @@ object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_a,
 
 object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -972,7 +972,7 @@ object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -987,7 +987,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_aa
 
 object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1034,7 +1034,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_b,
 
 object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1066,7 +1066,7 @@ object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1081,7 +1081,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_c,
 
 object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1113,7 +1113,7 @@ object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1128,7 +1128,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_d,
 
 object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1160,7 +1160,7 @@ object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1175,7 +1175,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_e,
 
 object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1210,7 +1210,7 @@ object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1225,7 +1225,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_command_cen
 
 object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_turbo_laser.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1260,7 +1260,7 @@ object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1275,7 +1275,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_disperser, 
 
 object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_ion_cannon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1310,7 +1310,7 @@ object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1325,7 +1325,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_dx_disrupto
 
 object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1360,7 +1360,7 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1375,7 +1375,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_extended_fu
 
 object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1410,7 +1410,7 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1425,7 +1425,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_extended_fu
 
 object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1460,7 +1460,7 @@ object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1475,7 +1475,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_a, 875
 
 object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1510,7 +1510,7 @@ object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_b, 401
 
 object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1560,7 +1560,7 @@ object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1575,7 +1575,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_c, 278
 
 object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1610,7 +1610,7 @@ object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1625,7 +1625,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_a
 
 object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1660,7 +1660,7 @@ object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1675,7 +1675,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_b
 
 object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1710,7 +1710,7 @@ object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1725,7 +1725,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_c
 
 object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_blaster_power_handler.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1760,7 +1760,7 @@ object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1775,7 +1775,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_hvy_blaster
 
 object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_projectile_feed_mechanism.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1810,7 +1810,7 @@ object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1825,7 +1825,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_hvy_project
 
 object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1860,7 +1860,7 @@ object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1875,7 +1875,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_laser_canno
 
 object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1910,7 +1910,7 @@ object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1925,7 +1925,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_launcher, 2
 
 object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1960,7 +1960,7 @@ object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1975,7 +1975,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_launcher_po
 
 object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_laser_cannon_gun.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2010,7 +2010,7 @@ object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2025,7 +2025,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_mass_driver
 
 object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2057,7 +2057,7 @@ object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2072,7 +2072,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_a,
 
 object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2104,7 +2104,7 @@ object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2119,7 +2119,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_b,
 
 object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2151,7 +2151,7 @@ object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2166,7 +2166,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_c,
 
 object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2198,7 +2198,7 @@ object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2213,7 +2213,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_d,
 
 object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2245,7 +2245,7 @@ object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2260,7 +2260,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_e,
 
 object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_foundation_military_heavy.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2295,7 +2295,7 @@ object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2310,7 +2310,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_mini_launch
 
 object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_heavy.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2345,7 +2345,7 @@ object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2360,7 +2360,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_proton_torp
 
 object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2395,7 +2395,7 @@ object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2410,7 +2410,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_reactor_uni
 
 object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cloning_tube.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2445,7 +2445,7 @@ object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2460,7 +2460,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_storage_bay
 
 object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2495,7 +2495,7 @@ object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2510,7 +2510,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_structural_
 
 object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2545,7 +2545,7 @@ object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2560,7 +2560,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_structural_
 
 object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2595,7 +2595,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2610,7 +2610,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_p
 
 object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2645,7 +2645,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2660,7 +2660,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_p
 
 object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2695,7 +2695,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2710,7 +2710,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_p
 
 object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2745,7 +2745,7 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2760,7 +2760,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_p
 
 object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2795,7 +2795,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2810,7 +2810,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_
 
 object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2845,7 +2845,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2860,7 +2860,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_
 
 object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_shield_generator.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2895,7 +2895,7 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2910,7 +2910,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_
 
 object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_installation_lg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2945,7 +2945,7 @@ object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2960,7 +2960,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_vehicle_mod
 
 object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_structure_module.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2995,7 +2995,7 @@ object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3010,7 +3010,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_vehicle_str
 
 object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3045,7 +3045,7 @@ object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3060,7 +3060,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_warhead_lau
 
 object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_heavy_stabilization_unit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3095,7 +3095,7 @@ object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3110,7 +3110,7 @@ ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_weapon_arra
 
 object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_weapon_mount.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3145,7 +3145,7 @@ object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01, 42043
 
 object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, 24
 
 object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, 5
 
 object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pv
 
 object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel,
 
 object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_
 
 object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02, 56300
 
 object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, 20
 
 object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, 8
 
 object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pv
 
 object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel,
 
 object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_
 
 object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03, 17534
 
 object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, 66
 
 object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, 3
 
 object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pv
 
 object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel,
 
 object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_
 
 object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04, 24726
 
 object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, 27
 
 object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, 3
 
 object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pv
 
 object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel,
 
 object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s01.sfp",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_
 
 object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 64,
@@ -1278,7 +1278,7 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s05.sfp",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05, 36646
 
 object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 64,
@@ -1328,7 +1328,7 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s05.sfp",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, 42
 
 object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 64,
@@ -1378,7 +1378,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s05.sfp",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, 3
 
 object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 64,
@@ -1428,7 +1428,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s05.sfp",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pv
 
 object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 64,
@@ -1478,7 +1478,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s05.sfp",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel,
 
 object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 64,
@@ -1528,7 +1528,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/hq/fp_s05.sfp",

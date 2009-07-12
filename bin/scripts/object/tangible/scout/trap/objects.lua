@@ -43,7 +43,7 @@
 
 object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_drowsy_dart, 
 
 object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_enraging_spur.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_enraging_spur
 
 object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_flash_bomb.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_flash_bomb, 7
 
 object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_melee_def_1, 
 
 object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_ww41.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_melee_ranged_
 
 object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_noise_maker.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_noise_maker, 
 
 object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_ranged_def_1,
 
 object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_ranged_speed_
 
 object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_sonic_pulse.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_sonic_pulse, 
 
 object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_state_def_1, 
 
 object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_tranq_dart, 2
 
 object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_webber.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

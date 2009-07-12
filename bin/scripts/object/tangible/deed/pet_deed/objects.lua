@@ -43,7 +43,7 @@
 
 object_tangible_deed_pet_deed_shared_acklay_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_deed_pet_deed_shared_acklay_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_acklay_deed, 19
 
 object_tangible_deed_pet_deed_shared_angler_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/angler_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_deed_pet_deed_shared_angler_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_angler_deed, 24
 
 object_tangible_deed_pet_deed_shared_bageraset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bageraset_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_deed_pet_deed_shared_bageraset_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bageraset_deed,
 
 object_tangible_deed_pet_deed_shared_bantha_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bantha_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_deed_pet_deed_shared_bantha_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bantha_deed, 23
 
 object_tangible_deed_pet_deed_shared_bearded_jax_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bearded_jax_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_deed_pet_deed_shared_bearded_jax_deed = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bearded_jax_dee
 
 object_tangible_deed_pet_deed_shared_blurrg_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/blurrg_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_deed_pet_deed_shared_blurrg_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_blurrg_deed, 29
 
 object_tangible_deed_pet_deed_shared_boar_wolf_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boar_wolf_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_deed_pet_deed_shared_boar_wolf_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_boar_wolf_deed,
 
 object_tangible_deed_pet_deed_shared_bocatt_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bocatt_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_deed_pet_deed_shared_bocatt_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bocatt_deed, 17
 
 object_tangible_deed_pet_deed_shared_bol_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bol_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_deed_pet_deed_shared_bol_deed = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bol_deed, 33190
 
 object_tangible_deed_pet_deed_shared_bolle_bol_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_deed_pet_deed_shared_bolle_bol_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bolle_bol_deed,
 
 object_tangible_deed_pet_deed_shared_bolma_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolma_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_deed_pet_deed_shared_bolma_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bolma_deed, 329
 
 object_tangible_deed_pet_deed_shared_bordok_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bordok_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_deed_pet_deed_shared_bordok_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bordok_deed, 38
 
 object_tangible_deed_pet_deed_shared_brackaset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/brackaset_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_deed_pet_deed_shared_brackaset_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_brackaset_deed,
 
 object_tangible_deed_pet_deed_shared_carrion_spat_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_deed_pet_deed_shared_carrion_spat_deed = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_carrion_spat_de
 
 object_tangible_deed_pet_deed_shared_choku_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/choku_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_deed_pet_deed_shared_choku_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_choku_deed, 568
 
 object_tangible_deed_pet_deed_shared_cu_pa_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cu_pa_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_deed_pet_deed_shared_cu_pa_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_cu_pa_deed, 137
 
 object_tangible_deed_pet_deed_shared_dalyrake_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dalyrake_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_deed_pet_deed_shared_dalyrake_deed = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dalyrake_deed, 
 
 object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_advanc
 
 object_tangible_deed_pet_deed_shared_deed_3p0_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_deed_pet_deed_shared_deed_3p0_basic = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_basic,
 
 object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_binary_loa
 
 object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_binary_loa
 
 object_tangible_deed_pet_deed_shared_deed_droid_basic_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_deed_pet_deed_shared_deed_droid_basic_base = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_droid_basi
 
 object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_advan
 
 object_tangible_deed_pet_deed_shared_deed_dz70_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_deed_pet_deed_shared_deed_dz70_basic = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_basic
 
 object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_
 
 object_tangible_deed_pet_deed_shared_deed_le_repair_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_deed_pet_deed_shared_deed_le_repair_basic = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_
 
 object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_mse_advanc
 
 object_tangible_deed_pet_deed_shared_deed_mse_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_deed_pet_deed_shared_deed_mse_basic = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_mse_basic,
 
 object_tangible_deed_pet_deed_shared_deed_power_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_deed_pet_deed_shared_deed_power_advanced_basic = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_power_adva
 
 object_tangible_deed_pet_deed_shared_deed_power_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_deed_pet_deed_shared_deed_power_basic = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_power_basi
 
 object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_probot_adv
 
 object_tangible_deed_pet_deed_shared_deed_probot_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_deed_pet_deed_shared_deed_probot_basic = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_probot_bas
 
 object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r2_advance
 
 object_tangible_deed_pet_deed_shared_deed_r2_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_deed_pet_deed_shared_deed_r2_basic = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r2_basic, 
 
 object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r3_advance
 
 object_tangible_deed_pet_deed_shared_deed_r3_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_deed_pet_deed_shared_deed_r3_basic = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r3_basic, 
 
 object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r4_advance
 
 object_tangible_deed_pet_deed_shared_deed_r4_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_deed_pet_deed_shared_deed_r4_basic = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r4_basic, 
 
 object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r5_advance
 
 object_tangible_deed_pet_deed_shared_deed_r5_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_deed_pet_deed_shared_deed_r5_basic = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r5_basic, 
 
 object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_a
 
 object_tangible_deed_pet_deed_shared_deed_surgical_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_deed_pet_deed_shared_deed_surgical_basic = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_b
 
 object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_
 
 object_tangible_deed_pet_deed_shared_deed_treadwell_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_deed_pet_deed_shared_deed_treadwell_basic = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_
 
 object_tangible_deed_pet_deed_shared_dewback_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dewback_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_deed_pet_deed_shared_dewback_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dewback_deed, 1
 
 object_tangible_deed_pet_deed_shared_dune_lizard_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dune_lizard_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_deed_pet_deed_shared_dune_lizard_deed = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dune_lizard_dee
 
 object_tangible_deed_pet_deed_shared_durni_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/durni_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_deed_pet_deed_shared_durni_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_durni_deed, 568
 
 object_tangible_deed_pet_deed_shared_eopie_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_deed_pet_deed_shared_eopie_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_eopie_deed, 282
 
 object_tangible_deed_pet_deed_shared_falumpaset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/falumpaset_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_deed_pet_deed_shared_falumpaset_deed = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_falumpaset_deed
 
 object_tangible_deed_pet_deed_shared_fambaa_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fambaa_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_deed_pet_deed_shared_fambaa_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_fambaa_deed, 23
 
 object_tangible_deed_pet_deed_shared_gnort_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gnort_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_deed_pet_deed_shared_gnort_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gnort_deed, 121
 
 object_tangible_deed_pet_deed_shared_graul_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/graul_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_deed_pet_deed_shared_graul_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_graul_deed, 417
 
 object_tangible_deed_pet_deed_shared_gronda_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gronda_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_deed_pet_deed_shared_gronda_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gronda_deed, 30
 
 object_tangible_deed_pet_deed_shared_gualama_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gualama_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_deed_pet_deed_shared_gualama_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gualama_deed, 3
 
 object_tangible_deed_pet_deed_shared_guf_drolg_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_deed_pet_deed_shared_guf_drolg_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_guf_drolg_deed,
 
 object_tangible_deed_pet_deed_shared_gurnaset_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurnaset_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_deed_pet_deed_shared_gurnaset_deed = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurnaset_deed, 
 
 object_tangible_deed_pet_deed_shared_gurrcat_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_deed_pet_deed_shared_gurrcat_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurrcat_deed, 1
 
 object_tangible_deed_pet_deed_shared_gurreck_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_deed_pet_deed_shared_gurreck_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurreck_deed, 5
 
 object_tangible_deed_pet_deed_shared_hermit_spider_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hermit_spider_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_tangible_deed_pet_deed_shared_hermit_spider_deed = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_hermit_spider_d
 
 object_tangible_deed_pet_deed_shared_huf_dun_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huf_dun_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_tangible_deed_pet_deed_shared_huf_dun_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_huf_dun_deed, 2
 
 object_tangible_deed_pet_deed_shared_huurton_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huurton_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_tangible_deed_pet_deed_shared_huurton_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_huurton_deed, 2
 
 object_tangible_deed_pet_deed_shared_ikopi_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ikopi_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_tangible_deed_pet_deed_shared_ikopi_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_ikopi_deed, 392
 
 object_tangible_deed_pet_deed_shared_kaadu_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kaadu_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_tangible_deed_pet_deed_shared_kaadu_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kaadu_deed, 317
 
 object_tangible_deed_pet_deed_shared_kahmurra_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/murra_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_tangible_deed_pet_deed_shared_kahmurra_deed = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kahmurra_deed, 
 
 object_tangible_deed_pet_deed_shared_kima_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kima_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_tangible_deed_pet_deed_shared_kima_deed = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kima_deed, 1283
 
 object_tangible_deed_pet_deed_shared_kimogila_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kimogila_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_deed_pet_deed_shared_kimogila_deed = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kimogila_deed, 
 
 object_tangible_deed_pet_deed_shared_kliknik_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kliknik_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_tangible_deed_pet_deed_shared_kliknik_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kliknik_deed, 2
 
 object_tangible_deed_pet_deed_shared_krahbu_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/krahbu_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_tangible_deed_pet_deed_shared_krahbu_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_krahbu_deed, 24
 
 object_tangible_deed_pet_deed_shared_kusak_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kusak_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_tangible_deed_pet_deed_shared_kusak_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kusak_deed, 402
 
 object_tangible_deed_pet_deed_shared_kwi_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kwi_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_tangible_deed_pet_deed_shared_kwi_deed = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kwi_deed, 12385
 
 object_tangible_deed_pet_deed_shared_langlatch_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/langlatch_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_tangible_deed_pet_deed_shared_langlatch_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_langlatch_deed,
 
 object_tangible_deed_pet_deed_shared_malkloc_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/malkloc_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_tangible_deed_pet_deed_shared_malkloc_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_malkloc_deed, 1
 
 object_tangible_deed_pet_deed_shared_mawgax_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mawgax_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_tangible_deed_pet_deed_shared_mawgax_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_mawgax_deed, 22
 
 object_tangible_deed_pet_deed_shared_merek_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/merek_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_tangible_deed_pet_deed_shared_merek_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_merek_deed, 104
 
 object_tangible_deed_pet_deed_shared_mott_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mott_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_tangible_deed_pet_deed_shared_mott_deed = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_mott_deed, 1729
 
 object_tangible_deed_pet_deed_shared_narglatch_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/narglatch_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_tangible_deed_pet_deed_shared_narglatch_deed = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_narglatch_deed,
 
 object_tangible_deed_pet_deed_shared_piket_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/piket_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_tangible_deed_pet_deed_shared_piket_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_piket_deed, 102
 
 object_tangible_deed_pet_deed_shared_pugoriss_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pugoriss_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_tangible_deed_pet_deed_shared_pugoriss_deed = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_pugoriss_deed, 
 
 object_tangible_deed_pet_deed_shared_rancor_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_tangible_deed_pet_deed_shared_rancor_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_rancor_deed, 12
 
 object_tangible_deed_pet_deed_shared_roba_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/roba_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_tangible_deed_pet_deed_shared_roba_deed = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4043,7 +4043,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_roba_deed, 1872
 
 object_tangible_deed_pet_deed_shared_ronto_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ronto_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4078,7 +4078,7 @@ object_tangible_deed_pet_deed_shared_ronto_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4093,7 +4093,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_ronto_deed, 913
 
 object_tangible_deed_pet_deed_shared_sand_panther_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4128,7 +4128,7 @@ object_tangible_deed_pet_deed_shared_sand_panther_deed = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4143,7 +4143,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_sand_panther_de
 
 object_tangible_deed_pet_deed_shared_sharnaff_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sharnaff_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4178,7 +4178,7 @@ object_tangible_deed_pet_deed_shared_sharnaff_deed = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4193,7 +4193,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_sharnaff_deed, 
 
 object_tangible_deed_pet_deed_shared_shear_mite_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shear_mite_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4228,7 +4228,7 @@ object_tangible_deed_pet_deed_shared_shear_mite_deed = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4243,7 +4243,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_shear_mite_deed
 
 object_tangible_deed_pet_deed_shared_slice_hound_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4278,7 +4278,7 @@ object_tangible_deed_pet_deed_shared_slice_hound_deed = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4293,7 +4293,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_slice_hound_dee
 
 object_tangible_deed_pet_deed_shared_snorbal_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/snorbal_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4328,7 +4328,7 @@ object_tangible_deed_pet_deed_shared_snorbal_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4343,7 +4343,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_snorbal_deed, 2
 
 object_tangible_deed_pet_deed_shared_squall_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/squall_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4378,7 +4378,7 @@ object_tangible_deed_pet_deed_shared_squall_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_squall_deed, 49
 
 object_tangible_deed_pet_deed_shared_swirl_prong_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4428,7 +4428,7 @@ object_tangible_deed_pet_deed_shared_swirl_prong_deed = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_swirl_prong_dee
 
 object_tangible_deed_pet_deed_shared_thune_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thune_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4478,7 +4478,7 @@ object_tangible_deed_pet_deed_shared_thune_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4493,7 +4493,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_thune_deed, 397
 
 object_tangible_deed_pet_deed_shared_torton_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/torton_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4528,7 +4528,7 @@ object_tangible_deed_pet_deed_shared_torton_deed = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4543,7 +4543,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_torton_deed, 93
 
 object_tangible_deed_pet_deed_shared_tybis_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tybis_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4578,7 +4578,7 @@ object_tangible_deed_pet_deed_shared_tybis_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4593,7 +4593,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_tybis_deed, 517
 
 object_tangible_deed_pet_deed_shared_veermok_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/veermok_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4628,7 +4628,7 @@ object_tangible_deed_pet_deed_shared_veermok_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4643,7 +4643,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_veermok_deed, 2
 
 object_tangible_deed_pet_deed_shared_vehicular_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/monstrosity.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4678,7 +4678,7 @@ object_tangible_deed_pet_deed_shared_vehicular_prototype = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4693,7 +4693,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vehicular_proto
 
 object_tangible_deed_pet_deed_shared_vehicular_prototype_bike = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4728,7 +4728,7 @@ object_tangible_deed_pet_deed_shared_vehicular_prototype_bike = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4743,7 +4743,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vehicular_proto
 
 object_tangible_deed_pet_deed_shared_verne_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/verne_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4778,7 +4778,7 @@ object_tangible_deed_pet_deed_shared_verne_deed = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4793,7 +4793,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_verne_deed, 175
 
 object_tangible_deed_pet_deed_shared_vesp_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vesp_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4828,7 +4828,7 @@ object_tangible_deed_pet_deed_shared_vesp_deed = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4843,7 +4843,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vesp_deed, 7673
 
 object_tangible_deed_pet_deed_shared_vir_vur_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vir_vur_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4878,7 +4878,7 @@ object_tangible_deed_pet_deed_shared_vir_vur_deed = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4893,7 +4893,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vir_vur_deed, 2
 
 object_tangible_deed_pet_deed_shared_woolamander_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/woolamander_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4928,7 +4928,7 @@ object_tangible_deed_pet_deed_shared_woolamander_deed = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4943,7 +4943,7 @@ ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_woolamander_dee
 
 object_tangible_deed_pet_deed_shared_zucca_boar_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zucca_boar_hue.sat",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4978,7 +4978,7 @@ object_tangible_deed_pet_deed_shared_zucca_boar_deed = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

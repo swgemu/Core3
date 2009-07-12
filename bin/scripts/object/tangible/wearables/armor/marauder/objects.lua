@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_belt_f.sat",
-	arrangementDescriptor = "utility_belt",
+	arrangementDescriptors = {"utility_belt"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bicep_l_f.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bicep_r_f.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bracer_l_f.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_bracer_r_f.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_gloves_f.sat",
-	arrangementDescriptor = "gloves",
+	arrangementDescriptors = {"gloves"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s01_leggings_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bicep_l_f.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bicep_r_f.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bracer_l_f.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_bracer_r_f.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_chest_plate_m.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_q
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s02_leggings_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_double = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bandolier_double_f.sat",
-	arrangementDescriptor = "back",
+	arrangementDescriptors = {"back"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_dou
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bicep_l_f.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bicep_r_f.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bracer_l_f.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_bracer_r_f.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_gloves_f.sat",
-	arrangementDescriptor = "gloves",
+	arrangementDescriptors = {"gloves"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armo
 
 object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marauder_s03_leggings_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

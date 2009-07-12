@@ -43,7 +43,7 @@
 
 object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "default_weapon",
+	arrangementDescriptors = {"default_weapon"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -62,6 +62,7 @@ include server.zone.ZoneClientSession;
 import server.zone.objects.scene.variables.StringId;
 
 import server.zone.objects.scene.variables.SceneObjectReference;
+import engine.core.ManagedReference;
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
 	protected ZoneProcessServerImplementation server;
@@ -70,7 +71,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	
 	protected SceneObject parent;
 	
-	protected VectorMap<unsigned int, SceneObject> children;
+	protected VectorMap<string, SceneObject> children;
 	
 	protected unsigned int objectCRC;
 	
@@ -80,7 +81,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	protected native float positionZ;
 	protected native float positionY;
 	
-	//protected string arrangementDescriptor;
+	protected string arrangementDescriptor;
 	
 	protected StringId objectName;
 	protected StringId detailedDescription;
@@ -88,19 +89,9 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType; 
 	
-	public void addSerializableVariables();
-	
-	public void serialize(string data) {
-		Serializable.serialize(data);
-	}
-	
-	public void deSerialize(final string data) {
-		Serializable.deSerialize(data);
-	}
-	
 	public static boolean registered;
 	
-	public static final int ARMOR = 0x100;
+	/*public static final int ARMOR = 0x100;
 	public static final int BODYARMOR = 0x101;
 	public static final int HEADARMOR = 0x102;
 	public static final int MISCARMOR = 0x103;
@@ -282,9 +273,55 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	public static final int WOOKIEGARB = 0x1000010;
 	public static final int MISCCLOTHING = 0x1000011;
 	public static final int SKIRT = 0x1000012;
-	public static final int ITHOGARB = 0x1000013;
+	public static final int ITHOGARB = 0x1000013;*/
 
 	public SceneObject(LuaObject templateData, SceneObject parent = NULL);
+	
+	public void addSerializableVariables();
+	
+	public void serialize(string data);
+	
+	public void deSerialize(final string data);
+	
+	public void redeploy() {
+	}
+
+	public void scheduleUndeploy() {
+	}
+
+	public void undeploy() {
+	}
+
+	public void removeUndeploymentEvent() {
+	}
+	
+	public boolean isPlayer() {
+		return true;
+	}
+	
+	public abstract boolean addObject(string slot, SceneObject object) {
+		/*if (children.contains(slot)) {
+			removeObject(slot);
+		}
+		
+		children.put(slot, object);
+		
+		//object.setParent(this);*/
+		
+		return true;
+	}
+	
+	public abstract boolean removeObject(string slot) {
+		return true;
+		//return children.drop(slot);
+	}
+	
+	public void create(ZoneClientSession client);
+	
+	public void destroy(ZoneClientSession client);
+	
+	public abstract void sendTo(SceneObject player, boolean doClose = true) {
+	}
 	
 	public unsigned long getObjectID() {
 		return QuadTreeEntry.objectID;
@@ -340,45 +377,6 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	
 	public void setObjectCRC(unsigned int objCRC) {
 		this.objectCRC = objCRC;
-	}
-	
-	public void redeploy() {
-	}
-
-	public void scheduleUndeploy() {
-	}
-
-	public void undeploy() {
-	}
-
-	public void removeUndeploymentEvent() {
-	}
-	
-	public boolean isPlayer(byte[] test) {
-		return true;
-	}
-	
-	public abstract boolean addObject(unsigned int slot, SceneObject object) {
-		if (children.contains(slot)) {
-			removeObject(slot);
-		}
-		
-		children.put(slot, object);
-		
-		//object.setParent(this);
-		
-		return true;
-	}
-	
-	public abstract boolean removeObject(unsigned int slot) {
-		return children.drop(slot);
-	}
-	
-	public void create(ZoneClientSession client);
-	
-	public void destroy(ZoneClientSession client);
-	
-	public abstract void sendTo(SceneObject player, boolean doClose = true) {
 	}
 	
 	public void setParent(SceneObject parent) {

@@ -43,7 +43,7 @@
 
 object_installation_mining_organic_shared_mining_organic_creature_farm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_creature_farm_s01_u0.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -78,7 +78,7 @@ object_installation_mining_organic_shared_mining_organic_creature_farm = SharedI
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_organic/shared_mining_organic_creature_farm.sfp",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_org
 
 object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_small.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -128,7 +128,7 @@ object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInst
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_organic/shared_mining_organic_flora_farm.sfp",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_org
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -178,7 +178,7 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_organic/shared_mining_organic_flora_farm_heavy.sfp",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_org
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_medium = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_flora_farm_base_s01_u0.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -228,7 +228,7 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_medium = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_organic/shared_mining_organic_flora_farm_medium.sfp",

@@ -43,7 +43,7 @@
 
 object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_large_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 4
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_la
 
 object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_large_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 4
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_la
 
 object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_medium_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 4
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_me
 
 object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_medium_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 4
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_me
 
 object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_small_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 4
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_sm
 
 object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_acid_small_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 4
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_sm
 
 object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_large_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_lar
 
 object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_large_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_lar
 
 object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_medium_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_med
 
 object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_medium_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_med
 
 object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_small_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_sma
 
 object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_ice_small_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_sma
 
 object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_large_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_la
 
 object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_large_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_la
 
 object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_medium_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_me
 
 object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_medium_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_me
 
 object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_medium_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_me
 
 object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_small_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_sm
 
 object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_iron_small_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_sm
 
 object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_large_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_large_0
 
 object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_large_02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_large_0
 
 object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_mammoth_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_mammoth
 
 object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_mammoth_02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_mammoth
 
 object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_medium_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_medium_
 
 object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_medium_02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_medium_
 
 object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_large_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_l
 
 object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_large_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_l
 
 object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_medium_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_m
 
 object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_medium_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_m
 
 object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_small_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_s
 
 object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_metal_small_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_s
 
 object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_large_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_
 
 object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_large_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_
 
 object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_medium_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_
 
 object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_medium_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_
 
 object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_small_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1438,7 +1438,7 @@ object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_
 
 object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_moltenrock_small_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1477,7 +1477,7 @@ object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_
 
 object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_large_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1516,7 +1516,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 7
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidia
 
 object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_large_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1555,7 +1555,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 7
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidia
 
 object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_medium_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1594,7 +1594,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 7
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidia
 
 object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_medium_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1633,7 +1633,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 7
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidia
 
 object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_small_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1672,7 +1672,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 7
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidia
 
 object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_obsidian_small_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1711,7 +1711,7 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 7
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidia
 
 object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_small_01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1750,7 +1750,7 @@ object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_small_0
 
 object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/asteroid_all_small_02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1789,7 +1789,7 @@ object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 2
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_small_0
 
 object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/planetoid_ice_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1828,7 +1828,7 @@ object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 5
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_ice_01
 
 object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/planetoid_iron_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1867,7 +1867,7 @@ object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_iron_0
 
 object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/planetoid_moltenrock_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1906,7 +1906,7 @@ object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 6
 }

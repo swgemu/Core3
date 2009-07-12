@@ -43,7 +43,7 @@
 
 object_path_waypoint_shared_path_waypoint = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_path.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_path_waypoint_shared_path_waypoint = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint, 205389152
 
 object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_path.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn
 
 object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_npc.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_city, 3085
 
 object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_droid.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_droid, 398
 
 object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_waypoint_guard.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

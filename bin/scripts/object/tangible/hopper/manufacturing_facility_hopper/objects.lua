@@ -43,7 +43,7 @@
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "ingredient_hopper",
+	arrangementDescriptors = {"ingredient_hopper"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "ingredient_hopper",
+	arrangementDescriptors = {"ingredient_hopper"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "ingredient_hopper",
+	arrangementDescriptors = {"ingredient_hopper"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "ingredient_hopper",
+	arrangementDescriptors = {"ingredient_hopper"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "ingredient_hopper",
+	arrangementDescriptors = {"ingredient_hopper"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper
 
 object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "ingredient_hopper",
+	arrangementDescriptors = {"ingredient_hopper"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

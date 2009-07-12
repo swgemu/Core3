@@ -43,7 +43,7 @@
 
 object_tangible_painting_shared_bestine_history_quest_painting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_planet_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_painting_shared_bestine_history_quest_painting = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_history_ques
 
 object_tangible_painting_shared_bestine_quest_painting = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_jail.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_painting_shared_bestine_quest_painting = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_quest_painti
 
 object_tangible_painting_shared_painting_agrilat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_agrilat_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_painting_shared_painting_agrilat_s01 = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_agrilat_s01
 
 object_tangible_painting_shared_painting_armor_blueprint = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_painting_shared_painting_armor_blueprint = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_armor_bluep
 
 object_tangible_painting_shared_painting_bestine_blueleaf_temple = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_temple_blue_leaf1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_painting_shared_painting_bestine_blueleaf_temple = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blu
 
 object_tangible_painting_shared_painting_bestine_blumbush = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_blumbush.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_painting_shared_painting_bestine_blumbush = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blu
 
 object_tangible_painting_shared_painting_bestine_boffa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_boffa_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_painting_shared_painting_bestine_boffa = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_bof
 
 object_tangible_painting_shared_painting_bestine_golden_flower_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_golden_flower_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_painting_shared_painting_bestine_golden_flower_01 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_gol
 
 object_tangible_painting_shared_painting_bestine_golden_flower_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_golden_flower_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_painting_shared_painting_bestine_golden_flower_02 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_gol
 
 object_tangible_painting_shared_painting_bestine_golden_flower_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_golden_flower_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_painting_shared_painting_bestine_golden_flower_03 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_gol
 
 object_tangible_painting_shared_painting_bestine_house = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_player_house.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_painting_shared_painting_bestine_house = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_hou
 
 object_tangible_painting_shared_painting_bestine_krayt_skeleton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_krayt_skeleton.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_painting_shared_painting_bestine_krayt_skeleton = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_kra
 
 object_tangible_painting_shared_painting_bestine_lucky_despot = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_lucky_despot.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_painting_shared_painting_bestine_lucky_despot = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -693,7 +693,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_luc
 
 object_tangible_painting_shared_painting_bestine_mattberry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_mattberry.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -728,7 +728,7 @@ object_tangible_painting_shared_painting_bestine_mattberry = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -743,7 +743,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_mat
 
 object_tangible_painting_shared_painting_bestine_moncal_eye_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_moncal_eye.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -778,7 +778,7 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_01 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -793,7 +793,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_mon
 
 object_tangible_painting_shared_painting_bestine_moncal_eye_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_moncal_eye_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -828,7 +828,7 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_02 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -843,7 +843,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_mon
 
 object_tangible_painting_shared_painting_bestine_rainbow_berry_bush = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rainbow_berry_bush.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -878,7 +878,7 @@ object_tangible_painting_shared_painting_bestine_rainbow_berry_bush = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -893,7 +893,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_rai
 
 object_tangible_painting_shared_painting_bestine_raventhorn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_raventhorn.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -928,7 +928,7 @@ object_tangible_painting_shared_painting_bestine_raventhorn = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -943,7 +943,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_rav
 
 object_tangible_painting_shared_painting_bestine_ronka = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_ronka.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -978,7 +978,7 @@ object_tangible_painting_shared_painting_bestine_ronka = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -993,7 +993,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_ron
 
 object_tangible_painting_shared_painting_bioengineer_orange = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1028,7 +1028,7 @@ object_tangible_painting_shared_painting_bioengineer_orange = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1043,7 +1043,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bioengineer
 
 object_tangible_painting_shared_painting_bothan_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_bothan_f.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1078,7 +1078,7 @@ object_tangible_painting_shared_painting_bothan_f = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1093,7 +1093,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_f, 8
 
 object_tangible_painting_shared_painting_bothan_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_bothan_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1128,7 +1128,7 @@ object_tangible_painting_shared_painting_bothan_m = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_m, 2
 
 object_tangible_painting_shared_painting_bw_stormtrooper = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1178,7 +1178,7 @@ object_tangible_painting_shared_painting_bw_stormtrooper = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1193,7 +1193,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bw_stormtro
 
 object_tangible_painting_shared_painting_cargoport = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1228,7 +1228,7 @@ object_tangible_painting_shared_painting_cargoport = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1243,7 +1243,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_cargoport, 
 
 object_tangible_painting_shared_painting_dance_party = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1278,7 +1278,7 @@ object_tangible_painting_shared_painting_dance_party = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1293,7 +1293,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_dance_party
 
 object_tangible_painting_shared_painting_double_helix = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1328,7 +1328,7 @@ object_tangible_painting_shared_painting_double_helix = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1343,7 +1343,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_double_heli
 
 object_tangible_painting_shared_painting_droid_bright = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1378,7 +1378,7 @@ object_tangible_painting_shared_painting_droid_bright = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1393,7 +1393,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_droid_brigh
 
 object_tangible_painting_shared_painting_endor_style_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_endor_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1428,7 +1428,7 @@ object_tangible_painting_shared_painting_endor_style_01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1443,7 +1443,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_endor_style
 
 object_tangible_painting_shared_painting_fighter_pilot_human_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_fighter_pilot_human1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1478,7 +1478,7 @@ object_tangible_painting_shared_painting_fighter_pilot_human_01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_fighter_pil
 
 object_tangible_painting_shared_painting_food_baking_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_food_baking_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1528,7 +1528,7 @@ object_tangible_painting_shared_painting_food_baking_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1543,7 +1543,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking
 
 object_tangible_painting_shared_painting_food_baking_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_food_baking_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1578,7 +1578,7 @@ object_tangible_painting_shared_painting_food_baking_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1593,7 +1593,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking
 
 object_tangible_painting_shared_painting_freedom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1628,7 +1628,7 @@ object_tangible_painting_shared_painting_freedom = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1643,7 +1643,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_freedom, 36
 
 object_tangible_painting_shared_painting_han_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_painting_shared_painting_han_wanted = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_han_wanted,
 
 object_tangible_painting_shared_painting_human_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_human_f.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1728,7 +1728,7 @@ object_tangible_painting_shared_painting_human_f = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1743,7 +1743,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_human_f, 35
 
 object_tangible_painting_shared_painting_kite_plant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_kite_plant.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1778,7 +1778,7 @@ object_tangible_painting_shared_painting_kite_plant = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1793,7 +1793,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_kite_plant,
 
 object_tangible_painting_shared_painting_leia_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1828,7 +1828,7 @@ object_tangible_painting_shared_painting_leia_wanted = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1843,7 +1843,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_leia_wanted
 
 object_tangible_painting_shared_painting_luke_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1878,7 +1878,7 @@ object_tangible_painting_shared_painting_luke_wanted = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1893,7 +1893,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_luke_wanted
 
 object_tangible_painting_shared_painting_nebula_flower = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_nebula_orchid.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1928,7 +1928,7 @@ object_tangible_painting_shared_painting_nebula_flower = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1943,7 +1943,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_nebula_flow
 
 object_tangible_painting_shared_painting_palowick_ad_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1978,7 +1978,7 @@ object_tangible_painting_shared_painting_palowick_ad_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad
 
 object_tangible_painting_shared_painting_palowick_ad_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2028,7 +2028,7 @@ object_tangible_painting_shared_painting_palowick_ad_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2043,7 +2043,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad
 
 object_tangible_painting_shared_painting_palowick_ad_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2078,7 +2078,7 @@ object_tangible_painting_shared_painting_palowick_ad_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2093,7 +2093,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad
 
 object_tangible_painting_shared_painting_palowick_ad_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wide_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2128,7 +2128,7 @@ object_tangible_painting_shared_painting_palowick_ad_s04 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2143,7 +2143,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad
 
 object_tangible_painting_shared_painting_planet_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_planet_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2178,7 +2178,7 @@ object_tangible_painting_shared_painting_planet_s01 = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2193,7 +2193,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_planet_s01,
 
 object_tangible_painting_shared_painting_rodian_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rodian_f.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_painting_shared_painting_rodian_f = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f, 2
 
 object_tangible_painting_shared_painting_rodian_f_ad_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rodian_f_ad_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2278,7 +2278,7 @@ object_tangible_painting_shared_painting_rodian_f_ad_01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2293,7 +2293,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f_ad
 
 object_tangible_painting_shared_painting_rodian_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_rodian_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2328,7 +2328,7 @@ object_tangible_painting_shared_painting_rodian_m = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2343,7 +2343,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_m, 1
 
 object_tangible_painting_shared_painting_schematic_droid = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_droid.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2378,7 +2378,7 @@ object_tangible_painting_shared_painting_schematic_droid = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2393,7 +2393,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_d
 
 object_tangible_painting_shared_painting_schematic_transport_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_transport_ship.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2428,7 +2428,7 @@ object_tangible_painting_shared_painting_schematic_transport_ship = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2443,7 +2443,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_t
 
 object_tangible_painting_shared_painting_schematic_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_weapon.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2478,7 +2478,7 @@ object_tangible_painting_shared_painting_schematic_weapon = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2493,7 +2493,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_w
 
 object_tangible_painting_shared_painting_schematic_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_schematic_weapon_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2528,7 +2528,7 @@ object_tangible_painting_shared_painting_schematic_weapon_s03 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2543,7 +2543,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_w
 
 object_tangible_painting_shared_painting_skyscraper = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2578,7 +2578,7 @@ object_tangible_painting_shared_painting_skyscraper = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2593,7 +2593,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_skyscraper,
 
 object_tangible_painting_shared_painting_smoking_ad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_smoking_ad.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2628,7 +2628,7 @@ object_tangible_painting_shared_painting_smoking_ad = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2643,7 +2643,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_smoking_ad,
 
 object_tangible_painting_shared_painting_starmap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2678,7 +2678,7 @@ object_tangible_painting_shared_painting_starmap = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2693,7 +2693,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_starmap, 26
 
 object_tangible_painting_shared_painting_tato_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2728,7 +2728,7 @@ object_tangible_painting_shared_painting_tato_s03 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2743,7 +2743,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s03, 2
 
 object_tangible_painting_shared_painting_tato_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tato_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_painting_shared_painting_tato_s04 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s04, 1
 
 object_tangible_painting_shared_painting_teras_kasi = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2828,7 +2828,7 @@ object_tangible_painting_shared_painting_teras_kasi = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2843,7 +2843,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi,
 
 object_tangible_painting_shared_painting_teras_kasi_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2878,7 +2878,7 @@ object_tangible_painting_shared_painting_teras_kasi_2 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2893,7 +2893,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi_
 
 object_tangible_painting_shared_painting_trandoshan_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tandoshan_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2928,7 +2928,7 @@ object_tangible_painting_shared_painting_trandoshan_m = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_
 
 object_tangible_painting_shared_painting_trandoshan_m_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tandoshan_m1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2978,7 +2978,7 @@ object_tangible_painting_shared_painting_trandoshan_m_01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2993,7 +2993,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_
 
 object_tangible_painting_shared_painting_trandoshan_wanted = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3028,7 +3028,7 @@ object_tangible_painting_shared_painting_trandoshan_wanted = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3043,7 +3043,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_
 
 object_tangible_painting_shared_painting_tree = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_trees_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3078,7 +3078,7 @@ object_tangible_painting_shared_painting_tree = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3093,7 +3093,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tree, 33347
 
 object_tangible_painting_shared_painting_trees_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_trees_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3128,7 +3128,7 @@ object_tangible_painting_shared_painting_trees_s01 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3143,7 +3143,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trees_s01, 
 
 object_tangible_painting_shared_painting_twilek_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_twilek_f.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3178,7 +3178,7 @@ object_tangible_painting_shared_painting_twilek_f = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3193,7 +3193,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f, 1
 
 object_tangible_painting_shared_painting_twilek_f_lg_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3228,7 +3228,7 @@ object_tangible_painting_shared_painting_twilek_f_lg_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3243,7 +3243,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg
 
 object_tangible_painting_shared_painting_twilek_f_lg_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3278,7 +3278,7 @@ object_tangible_painting_shared_painting_twilek_f_lg_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3293,7 +3293,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg
 
 object_tangible_painting_shared_painting_twilek_f_lg_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_painting_shared_painting_twilek_f_lg_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg
 
 object_tangible_painting_shared_painting_twilek_f_lg_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3378,7 +3378,7 @@ object_tangible_painting_shared_painting_twilek_f_lg_s04 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3393,7 +3393,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg
 
 object_tangible_painting_shared_painting_twilek_f_sm_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3428,7 +3428,7 @@ object_tangible_painting_shared_painting_twilek_f_sm_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3443,7 +3443,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm
 
 object_tangible_painting_shared_painting_twilek_f_sm_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3478,7 +3478,7 @@ object_tangible_painting_shared_painting_twilek_f_sm_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3493,7 +3493,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm
 
 object_tangible_painting_shared_painting_twilek_f_sm_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3528,7 +3528,7 @@ object_tangible_painting_shared_painting_twilek_f_sm_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3543,7 +3543,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm
 
 object_tangible_painting_shared_painting_twilek_f_sm_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_sm_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3578,7 +3578,7 @@ object_tangible_painting_shared_painting_twilek_f_sm_s04 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3593,7 +3593,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm
 
 object_tangible_painting_shared_painting_twilek_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_twilek_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3628,7 +3628,7 @@ object_tangible_painting_shared_painting_twilek_m = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3643,7 +3643,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_m, 3
 
 object_tangible_painting_shared_painting_vader_victory = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3678,7 +3678,7 @@ object_tangible_painting_shared_painting_vader_victory = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3693,7 +3693,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_vader_victo
 
 object_tangible_painting_shared_painting_valley_view = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3728,7 +3728,7 @@ object_tangible_painting_shared_painting_valley_view = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3743,7 +3743,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_valley_view
 
 object_tangible_painting_shared_painting_victorious_reign = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_tall_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3778,7 +3778,7 @@ object_tangible_painting_shared_painting_victorious_reign = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3793,7 +3793,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_victorious_
 
 object_tangible_painting_shared_painting_waterfall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_square_lg_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3828,7 +3828,7 @@ object_tangible_painting_shared_painting_waterfall = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3843,7 +3843,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_waterfall, 
 
 object_tangible_painting_shared_painting_wookiee_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wookiee_f.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3878,7 +3878,7 @@ object_tangible_painting_shared_painting_wookiee_f = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_f, 
 
 object_tangible_painting_shared_painting_wookiee_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_wookiee_m.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3928,7 +3928,7 @@ object_tangible_painting_shared_painting_wookiee_m = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3943,7 +3943,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_m, 
 
 object_tangible_painting_shared_painting_zabrak_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_zabrak_f.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3978,7 +3978,7 @@ object_tangible_painting_shared_painting_zabrak_f = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3993,7 +3993,7 @@ ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_f, 2
 
 object_tangible_painting_shared_painting_zabrak_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_painting_zabrak_m1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4028,7 +4028,7 @@ object_tangible_painting_shared_painting_zabrak_m = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

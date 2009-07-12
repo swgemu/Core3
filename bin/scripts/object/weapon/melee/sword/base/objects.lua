@@ -43,7 +43,7 @@
 
 object_weapon_melee_sword_base_shared_crafted_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -79,7 +79,7 @@ object_weapon_melee_sword_base_shared_crafted_lightsaber_base = SharedWeaponObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"saber_inv", "crafted_components"},
+	slotDescriptors = {"saber_inv", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_sword_base_shared_crafted_lights
 
 object_weapon_melee_sword_base_shared_crafted_sword_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -133,7 +133,7 @@ object_weapon_melee_sword_base_shared_crafted_sword_base = SharedWeaponObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -151,7 +151,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_sword_base_shared_crafted_sword_
 
 object_weapon_melee_sword_base_shared_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r", "hold_l"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -187,7 +187,7 @@ object_weapon_melee_sword_base_shared_lightsaber_base = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -205,7 +205,7 @@ ObjectTemplates:addTemplate(object_weapon_melee_sword_base_shared_lightsaber_bas
 
 object_weapon_melee_sword_base_shared_sword_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "hold_r",
+	arrangementDescriptors = {"hold_r"},
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -241,7 +241,7 @@ object_weapon_melee_sword_base_shared_sword_base = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

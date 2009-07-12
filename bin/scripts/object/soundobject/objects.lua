@@ -43,7 +43,7 @@
 
 object_soundobject_shared_soundobject_cantina_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_cantina_large.cdf",
@@ -73,7 +73,7 @@ object_soundobject_shared_soundobject_cantina_large = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cantina_large,
 
 object_soundobject_shared_soundobject_cantina_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_cantina_medium.cdf",
@@ -112,7 +112,7 @@ object_soundobject_shared_soundobject_cantina_medium = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cantina_medium
 
 object_soundobject_shared_soundobject_cantina_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_cantina_small.cdf",
@@ -151,7 +151,7 @@ object_soundobject_shared_soundobject_cantina_small = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cantina_small,
 
 object_soundobject_shared_soundobject_cave_drip = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_cave_drip.cdf",
@@ -190,7 +190,7 @@ object_soundobject_shared_soundobject_cave_drip = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cave_drip, 526
 
 object_soundobject_shared_soundobject_chamber_music = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_chamber_music.cdf",
@@ -229,7 +229,7 @@ object_soundobject_shared_soundobject_chamber_music = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_chamber_music,
 
 object_soundobject_shared_soundobject_city_crowd_booing = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_city_crowd_booing.cdf",
@@ -268,7 +268,7 @@ object_soundobject_shared_soundobject_city_crowd_booing = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_boo
 
 object_soundobject_shared_soundobject_city_crowd_cheering = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_soundobject_shared_soundobject_city_crowd_cheering = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_che
 
 object_soundobject_shared_soundobject_city_crowd_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_city_crowd_medium.cdf",
@@ -346,7 +346,7 @@ object_soundobject_shared_soundobject_city_crowd_medium = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_med
 
 object_soundobject_shared_soundobject_city_crowd_sentients = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_city_crowd_sentients.cdf",
@@ -385,7 +385,7 @@ object_soundobject_shared_soundobject_city_crowd_sentients = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_sen
 
 object_soundobject_shared_soundobject_city_crowd_sentients_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_city_crowd_sentients_large.cdf",
@@ -424,7 +424,7 @@ object_soundobject_shared_soundobject_city_crowd_sentients_large = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_sen
 
 object_soundobject_shared_soundobject_city_crowd_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_city_crowd_small.cdf",
@@ -463,7 +463,7 @@ object_soundobject_shared_soundobject_city_crowd_small = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_sma
 
 object_soundobject_shared_soundobject_cloning_facility = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_cloning_facility.cdf",
@@ -502,7 +502,7 @@ object_soundobject_shared_soundobject_cloning_facility = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cloning_facili
 
 object_soundobject_shared_soundobject_elevator_music = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_ladyluck_elevator.cdf",
@@ -541,7 +541,7 @@ object_soundobject_shared_soundobject_elevator_music = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_elevator_music
 
 object_soundobject_shared_soundobject_factory_exterior = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_factory_exterior.cdf",
@@ -580,7 +580,7 @@ object_soundobject_shared_soundobject_factory_exterior = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_factory_exteri
 
 object_soundobject_shared_soundobject_figrin_dan_band = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_figrin_dan_band.cdf",
@@ -619,7 +619,7 @@ object_soundobject_shared_soundobject_figrin_dan_band = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_figrin_dan_ban
 
 object_soundobject_shared_soundobject_fire_roaring = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_fire_roaring.cdf",
@@ -658,7 +658,7 @@ object_soundobject_shared_soundobject_fire_roaring = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_fire_roaring, 
 
 object_soundobject_shared_soundobject_fort_tusken = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_fort_tusken_lp.cdf",
@@ -697,7 +697,7 @@ object_soundobject_shared_soundobject_fort_tusken = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_fort_tusken, 1
 
 object_soundobject_shared_soundobject_fusion_power_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_fusion_power_gen.cdf",
@@ -736,7 +736,7 @@ object_soundobject_shared_soundobject_fusion_power_generator = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_fusion_power_g
 
 object_soundobject_shared_soundobject_hovering = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_hovering.cdf",
@@ -775,7 +775,7 @@ object_soundobject_shared_soundobject_hovering = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_hovering, 1865
 
 object_soundobject_shared_soundobject_hydro_power_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_hydro_power_gen.cdf",
@@ -814,7 +814,7 @@ object_soundobject_shared_soundobject_hydro_power_generator = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_hydro_power_ge
 
 object_soundobject_shared_soundobject_installation_hydro = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_installation_hydro.cdf",
@@ -853,7 +853,7 @@ object_soundobject_shared_soundobject_installation_hydro = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_installation_h
 
 object_soundobject_shared_soundobject_installation_photo_bio = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_installation_photo_bio.cdf",
@@ -892,7 +892,7 @@ object_soundobject_shared_soundobject_installation_photo_bio = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_installation_p
 
 object_soundobject_shared_soundobject_installation_wind = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_installation_wind.cdf",
@@ -931,7 +931,7 @@ object_soundobject_shared_soundobject_installation_wind = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_installation_w
 
 object_soundobject_shared_soundobject_jabba_audience_chamber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_jabba_audience_chamber.cdf",
@@ -970,7 +970,7 @@ object_soundobject_shared_soundobject_jabba_audience_chamber = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_audience
 
 object_soundobject_shared_soundobject_jabba_max_rebo_band = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_jabba_max_rebo_band.cdf",
@@ -1009,7 +1009,7 @@ object_soundobject_shared_soundobject_jabba_max_rebo_band = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_max_rebo
 
 object_soundobject_shared_soundobject_jabba_monk_hideaway = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_jabba_monk_hideaway.cdf",
@@ -1048,7 +1048,7 @@ object_soundobject_shared_soundobject_jabba_monk_hideaway = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_monk_hid
 
 object_soundobject_shared_soundobject_jabba_palace_entrance = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_jabba_palace_entrance.cdf",
@@ -1087,7 +1087,7 @@ object_soundobject_shared_soundobject_jabba_palace_entrance = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_palace_e
 
 object_soundobject_shared_soundobject_jungle_music_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_jungle_a.cdf",
@@ -1126,7 +1126,7 @@ object_soundobject_shared_soundobject_jungle_music_a = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jungle_music_a
 
 object_soundobject_shared_soundobject_jungle_music_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_jungle_b.cdf",
@@ -1165,7 +1165,7 @@ object_soundobject_shared_soundobject_jungle_music_b = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jungle_music_b
 
 object_soundobject_shared_soundobject_lakeshore = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_lakeshore.cdf",
@@ -1204,7 +1204,7 @@ object_soundobject_shared_soundobject_lakeshore = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_lakeshore, 999
 
 object_soundobject_shared_soundobject_lava = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_lava.cdf",
@@ -1243,7 +1243,7 @@ object_soundobject_shared_soundobject_lava = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_lava, 38545889
 
 object_soundobject_shared_soundobject_loud_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_loud_steam.cdf",
@@ -1282,7 +1282,7 @@ object_soundobject_shared_soundobject_loud_steam = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_loud_steam, 34
 
 object_soundobject_shared_soundobject_marketplace_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_marketplace_large.cdf",
@@ -1321,7 +1321,7 @@ object_soundobject_shared_soundobject_marketplace_large = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_marketplace_la
 
 object_soundobject_shared_soundobject_marketplace_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_marketplace_small.cdf",
@@ -1360,7 +1360,7 @@ object_soundobject_shared_soundobject_marketplace_small = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_marketplace_sm
 
 object_soundobject_shared_soundobject_mountain_winds = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_mountain_winds.cdf",
@@ -1399,7 +1399,7 @@ object_soundobject_shared_soundobject_mountain_winds = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_mountain_winds
 
 object_soundobject_shared_soundobject_nightsisters_stronghold = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_nightsisters_stronghold.cdf",
@@ -1438,7 +1438,7 @@ object_soundobject_shared_soundobject_nightsisters_stronghold = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_nightsisters_s
 
 object_soundobject_shared_soundobject_power_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_power_generator.cdf",
@@ -1477,7 +1477,7 @@ object_soundobject_shared_soundobject_power_generator = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_power_generato
 
 object_soundobject_shared_soundobject_quiet_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_quiet_steam.cdf",
@@ -1516,7 +1516,7 @@ object_soundobject_shared_soundobject_quiet_steam = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1525,7 +1525,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_quiet_steam, 1
 
 object_soundobject_shared_soundobject_rebel_hideout = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_rebel_hideout.cdf",
@@ -1555,7 +1555,7 @@ object_soundobject_shared_soundobject_rebel_hideout = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1564,7 +1564,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_rebel_hideout,
 
 object_soundobject_shared_soundobject_refrigeration_unit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_refrigeration_unit.cdf",
@@ -1594,7 +1594,7 @@ object_soundobject_shared_soundobject_refrigeration_unit = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1603,7 +1603,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_refrigeration_
 
 object_soundobject_shared_soundobject_river_indoors = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_river_indoors.cdf",
@@ -1633,7 +1633,7 @@ object_soundobject_shared_soundobject_river_indoors = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1642,7 +1642,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_river_indoors,
 
 object_soundobject_shared_soundobject_river_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_river_large.cdf",
@@ -1672,7 +1672,7 @@ object_soundobject_shared_soundobject_river_large = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1681,7 +1681,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_river_large, 3
 
 object_soundobject_shared_soundobject_river_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_river_small.cdf",
@@ -1711,7 +1711,7 @@ object_soundobject_shared_soundobject_river_small = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1720,7 +1720,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_river_small, 4
 
 object_soundobject_shared_soundobject_sailbarge_lower = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_sailbarge_lower.cdf",
@@ -1750,7 +1750,7 @@ object_soundobject_shared_soundobject_sailbarge_lower = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1759,7 +1759,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_sailbarge_lowe
 
 object_soundobject_shared_soundobject_sailbarge_upper = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_sailbarge_upper.cdf",
@@ -1789,7 +1789,7 @@ object_soundobject_shared_soundobject_sailbarge_upper = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1798,7 +1798,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_sailbarge_uppe
 
 object_soundobject_shared_soundobject_seashore_indoors = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_seashore_indoors.cdf",
@@ -1828,7 +1828,7 @@ object_soundobject_shared_soundobject_seashore_indoors = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1837,7 +1837,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_seashore_indoo
 
 object_soundobject_shared_soundobject_seashore_outdoors = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_seashore_outdoors.cdf",
@@ -1867,7 +1867,7 @@ object_soundobject_shared_soundobject_seashore_outdoors = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1876,7 +1876,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_seashore_outdo
 
 object_soundobject_shared_soundobject_shield_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_shield_generator.cdf",
@@ -1906,7 +1906,7 @@ object_soundobject_shared_soundobject_shield_generator = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1915,7 +1915,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_shield_generat
 
 object_soundobject_shared_soundobject_snow_outside = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_snow_outside.cdf",
@@ -1945,7 +1945,7 @@ object_soundobject_shared_soundobject_snow_outside = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1954,7 +1954,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_snow_outside, 
 
 object_soundobject_shared_soundobject_space_yacht = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_space_yacht.cdf",
@@ -1984,7 +1984,7 @@ object_soundobject_shared_soundobject_space_yacht = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1993,7 +1993,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_space_yacht, 2
 
 object_soundobject_shared_soundobject_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_sparks.cdf",
@@ -2023,7 +2023,7 @@ object_soundobject_shared_soundobject_sparks = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2032,7 +2032,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_sparks, 740379
 
 object_soundobject_shared_soundobject_starport_announcer = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_starport_announcer.cdf",
@@ -2062,7 +2062,7 @@ object_soundobject_shared_soundobject_starport_announcer = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2071,7 +2071,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_starport_annou
 
 object_soundobject_shared_soundobject_starport_exterior = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_starport_exterior.cdf",
@@ -2101,7 +2101,7 @@ object_soundobject_shared_soundobject_starport_exterior = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2110,7 +2110,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_starport_exter
 
 object_soundobject_shared_soundobject_starport_interior = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_starport_interior.cdf",
@@ -2140,7 +2140,7 @@ object_soundobject_shared_soundobject_starport_interior = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2149,7 +2149,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_starport_inter
 
 object_soundobject_shared_soundobject_theed_fountain = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_theed_fountain.cdf",
@@ -2179,7 +2179,7 @@ object_soundobject_shared_soundobject_theed_fountain = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2188,7 +2188,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_theed_fountain
 
 object_soundobject_shared_soundobject_transport_interior = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_transport_interior.cdf",
@@ -2218,7 +2218,7 @@ object_soundobject_shared_soundobject_transport_interior = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2227,7 +2227,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_transport_inte
 
 object_soundobject_shared_soundobject_underground_music_a = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_underground_music_a.cdf",
@@ -2257,7 +2257,7 @@ object_soundobject_shared_soundobject_underground_music_a = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2266,7 +2266,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_underground_mu
 
 object_soundobject_shared_soundobject_underground_music_b = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_underground_music_b.cdf",
@@ -2296,7 +2296,7 @@ object_soundobject_shared_soundobject_underground_music_b = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2305,7 +2305,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_underground_mu
 
 object_soundobject_shared_soundobject_water_gurgle = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_water_gurgle.cdf",
@@ -2335,7 +2335,7 @@ object_soundobject_shared_soundobject_water_gurgle = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2344,7 +2344,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_water_gurgle, 
 
 object_soundobject_shared_soundobject_water_gurgle_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_water_gurgle_small.cdf",
@@ -2374,7 +2374,7 @@ object_soundobject_shared_soundobject_water_gurgle_small = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2383,7 +2383,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_water_gurgle_s
 
 object_soundobject_shared_soundobject_waterfall_indoors = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_waterfall_indoors.cdf",
@@ -2413,7 +2413,7 @@ object_soundobject_shared_soundobject_waterfall_indoors = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2422,7 +2422,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_indo
 
 object_soundobject_shared_soundobject_waterfall_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_waterfall_large.cdf",
@@ -2452,7 +2452,7 @@ object_soundobject_shared_soundobject_waterfall_large = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2461,7 +2461,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_larg
 
 object_soundobject_shared_soundobject_waterfall_outdoors = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_waterfall_outdoors.cdf",
@@ -2491,7 +2491,7 @@ object_soundobject_shared_soundobject_waterfall_outdoors = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2500,7 +2500,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_outd
 
 object_soundobject_shared_soundobject_waterfall_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_waterfall_small.cdf",
@@ -2530,7 +2530,7 @@ object_soundobject_shared_soundobject_waterfall_small = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -2539,7 +2539,7 @@ ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_smal
 
 object_soundobject_shared_soundobject_wind_power_generator = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/soundobject/client_shared_soundobject_wind_power_generator.cdf",
@@ -2569,7 +2569,7 @@ object_soundobject_shared_soundobject_wind_power_generator = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

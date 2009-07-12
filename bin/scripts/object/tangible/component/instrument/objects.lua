@@ -43,7 +43,7 @@
 
 object_tangible_component_instrument_shared_dual_wave_synthesizer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_component_instrument_shared_dual_wave_synthesizer = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

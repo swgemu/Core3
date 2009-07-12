@@ -43,7 +43,7 @@
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s05.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s06.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s07.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s08.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_vet_painting_s09.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

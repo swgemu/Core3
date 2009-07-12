@@ -43,7 +43,7 @@
 
 object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_m_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards
 
 object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_sculpture_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculptur
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards
 
 object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_light_table.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards
 
 object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_power_output_analyzer.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards
 
 object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_giant_gong.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards
 
 object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_rug_rectangle_m_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

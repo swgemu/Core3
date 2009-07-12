@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bandolier_f.sat",
-	arrangementDescriptor = "back",
+	arrangementDescriptors = {"back"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bracer_l_f.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_bracer_r_f.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_gloves_f.sat",
-	arrangementDescriptor = "gloves",
+	arrangementDescriptors = {"gloves"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_jacket_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_jacket_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_pants_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_pants_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_u
 
 object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_ubese_shirt_f.sat",
-	arrangementDescriptor = "chest1",
+	arrangementDescriptors = {"chest1"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

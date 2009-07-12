@@ -43,7 +43,7 @@
 
 object_tangible_furniture_jedi_shared_frn_all_banner_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_tapestry.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_furniture_jedi_shared_frn_all_banner_dark = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner
 
 object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_tapestry.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_furniture_jedi_shared_frn_all_banner_light = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_banner
 
 object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_candlestick_tbl_s2_lit.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_furniture_jedi_shared_frn_all_candlestick = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_candle
 
 object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_chair_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s01 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_c
 
 object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_chair_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_chair_s02 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_c
 
 object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_throne_dark.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_furniture_jedi_shared_frn_all_dark_throne = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_dark_t
 
 object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_chair_light_s1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s01 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_
 
 object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_chair_light_s2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_chair_s02 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -443,7 +443,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_
 
 object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_throne_light.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -478,7 +478,7 @@ object_tangible_furniture_jedi_shared_frn_all_light_throne = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -493,7 +493,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_light_
 
 object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_table.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -528,7 +528,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_01 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -543,7 +543,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_
 
 object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_dark_table_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -578,7 +578,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_dark_02 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_
 
 object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_table_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -628,7 +628,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_01 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -643,7 +643,7 @@ ObjectTemplates:addTemplate(object_tangible_furniture_jedi_shared_frn_all_table_
 
 object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_jedi_light_table_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -678,7 +678,7 @@ object_tangible_furniture_jedi_shared_frn_all_table_light_02 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

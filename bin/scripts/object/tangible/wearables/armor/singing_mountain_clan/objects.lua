@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bicep_l_s01.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_cla
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bicep_r_s01.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_cla
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bracer_l_s01.sat",
-	arrangementDescriptor = "bracer_upper_l",
+	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_cla
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bracer_r_s01.sat",
-	arrangementDescriptor = "bracer_upper_r",
+	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

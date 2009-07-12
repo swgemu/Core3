@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_backpack_f.sat",
-	arrangementDescriptor = "back",
+	arrangementDescriptors = {"back"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -93,7 +93,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_bicep_l_f.sat",
-	arrangementDescriptor = "bicep_l",
+	arrangementDescriptors = {"bicep_l"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -128,7 +128,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -143,7 +143,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_bicep_r_f.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -178,7 +178,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -193,7 +193,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_boots_f.sat",
-	arrangementDescriptor = "shoes",
+	arrangementDescriptors = {"shoes"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -228,7 +228,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -243,7 +243,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_chest_plate_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -278,7 +278,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -293,7 +293,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_chest_plate_rebel_f.sat",
-	arrangementDescriptor = "chest2",
+	arrangementDescriptors = {"chest2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -328,7 +328,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -343,7 +343,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_helmet_f.sat",
-	arrangementDescriptor = "hat",
+	arrangementDescriptors = {"hat", "eyes", "mouth"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -378,7 +378,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -393,7 +393,7 @@ ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_
 
 object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_marine_leggings_f.sat",
-	arrangementDescriptor = "pants1",
+	arrangementDescriptors = {"pants1", "pants2"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -428,7 +428,7 @@ object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

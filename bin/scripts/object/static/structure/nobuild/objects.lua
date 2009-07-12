@@ -43,7 +43,7 @@
 
 object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_128, 
 
 object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_32, 1
 
 object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_4, 29
 
 object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	surfaceType = 1
 }

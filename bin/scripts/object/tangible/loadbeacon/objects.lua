@@ -43,7 +43,7 @@
 
 object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_green.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -62,7 +62,6 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 	public ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
 	
 	public void sendMessage(BaseMessage msg);
-	
 	public void sendMessage(StandaloneBaseMessage msg);
 	
 	public void disconnect();
@@ -74,7 +73,9 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 
 	public void release();
 	
-	public string getAddress();
+	public dereferenced string getAddress() {
+		return BaseClientProxy.getAddress();
+	}
 	
 	public native void lock(boolean doLock = true);
 	public native void unlock(boolean doLock = true);

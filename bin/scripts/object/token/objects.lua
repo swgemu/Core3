@@ -43,7 +43,7 @@
 
 object_token_shared_token = SharedTokenObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptor = "datapad",
+	arrangementDescriptors = {"datapad"},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"token_waypoint"},
+	slotDescriptors = {"token_waypoint"},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

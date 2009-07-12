@@ -43,7 +43,7 @@
 
 object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spc_beacon_hyperspace_generator.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/space/client_shared_hyperspace_generator_01.cdf",
@@ -73,7 +73,7 @@ object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_generat
 
 object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spc_beacon_transport_route.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 1
 }

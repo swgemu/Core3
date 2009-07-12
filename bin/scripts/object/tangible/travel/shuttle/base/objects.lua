@@ -43,7 +43,7 @@
 
 object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shuttle.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

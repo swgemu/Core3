@@ -43,7 +43,7 @@
 
 object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ui_destroy.spr",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

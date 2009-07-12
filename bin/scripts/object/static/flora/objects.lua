@@ -43,7 +43,7 @@
 
 object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -73,7 +73,7 @@ object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_base, 3282656608)
 
 object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/leaf_dath_hwotha.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -112,7 +112,7 @@ object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -121,7 +121,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_dathomir_hwoth
 
 object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/leaf_endr_rainbowbush.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -151,7 +151,7 @@ object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -160,7 +160,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_endor_rainbowb
 
 object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/leaf_tals_razorcoil.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -190,7 +190,7 @@ object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -199,7 +199,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_talus_razorcoi
 
 object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shrb_blueleaf.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -229,7 +229,7 @@ object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -238,7 +238,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_yavin_blueleaf
 
 object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_dath_azerontree.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -268,7 +268,7 @@ object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -277,7 +277,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_azerontre
 
 object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_dath_blacktree.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -307,7 +307,7 @@ object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -316,7 +316,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_blacktree
 
 object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_endr_destree_dead.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -346,7 +346,7 @@ object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -355,7 +355,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_endr_destree_d
 
 object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_massassi.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -385,7 +385,7 @@ object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -394,7 +394,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massa
 
 object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_massassi_broke.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -424,7 +424,7 @@ object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -433,7 +433,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massa
 
 object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_tallbirch.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -463,7 +463,7 @@ object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -472,7 +472,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallb
 
 object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_scorched_tallbirch_broke.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -502,7 +502,7 @@ object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -511,7 +511,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallb
 
 object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_bauhin.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -541,7 +541,7 @@ object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -550,7 +550,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_all_bauhin, 
 
 object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_endr_scrubwort.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -580,7 +580,7 @@ object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -589,7 +589,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_endor_scrubw
 
 object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_tatt_funnel_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -619,7 +619,7 @@ object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -628,7 +628,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel,
 
 object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_tatt_funnel_med.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -658,7 +658,7 @@ object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -667,7 +667,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_
 
 object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/flow_tatt_funnel_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -697,7 +697,7 @@ object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -706,7 +706,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_
 
 object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_falotil_nuts.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -736,7 +736,7 @@ object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -745,7 +745,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil,
 
 object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_falotil_bare.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -775,7 +775,7 @@ object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -784,7 +784,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil_
 
 object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_hubba_lrg.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -814,7 +814,7 @@ object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -823,7 +823,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_hubba, 9
 
 object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_pika_solo.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -853,7 +853,7 @@ object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -862,7 +862,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika, 20
 
 object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/succ_tatt_pika_tri.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -892,7 +892,7 @@ object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -901,7 +901,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika_tri
 
 object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/shrb_dath_glingi.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -931,7 +931,7 @@ object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -940,7 +940,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_shrb_dath_glingi, 4
 
 object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_lok_mkpud.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -970,7 +970,7 @@ object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -979,7 +979,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_lok_mkpud, 377
 
 object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ever_palmtree_fngi.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1009,7 +1009,7 @@ object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1018,7 +1018,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_fngi, 286
 
 object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ever_palmtree_sm.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1048,7 +1048,7 @@ object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1057,7 +1057,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_sm, 25359
 
 object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ever_palmtree_thk.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1087,7 +1087,7 @@ object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1096,7 +1096,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_thk, 7586
 
 object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_mkpodtree.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1126,7 +1126,7 @@ object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1135,7 +1135,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_mkpodtree
 
 object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1165,7 +1165,7 @@ object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1174,7 +1174,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept
 
 object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept_a1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1204,7 +1204,7 @@ object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1213,7 +1213,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept
 
 object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept_a2.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1243,7 +1243,7 @@ object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1252,7 +1252,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept
 
 object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_windswept_a3.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1282,7 +1282,7 @@ object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1291,7 +1291,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept
 
 object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/decd_touchnot1.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1321,7 +1321,7 @@ object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1330,7 +1330,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_tato_touchnot,
 
 object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s01.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1360,7 +1360,7 @@ object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1369,7 +1369,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_oran
 
 object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s02.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1399,7 +1399,7 @@ object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1408,7 +1408,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_purp
 
 object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s03.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1438,7 +1438,7 @@ object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1447,7 +1447,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_fern,
 
 object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s04.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1477,7 +1477,7 @@ object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -1486,7 +1486,7 @@ ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_ivy, 
 
 object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s05.apt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1516,7 +1516,7 @@ object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }

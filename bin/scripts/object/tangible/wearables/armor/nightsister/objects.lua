@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nightsister_armor_bicep_r_s01.sat",
-	arrangementDescriptor = "bicep_r",
+	arrangementDescriptors = {"bicep_r"},
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -78,7 +78,7 @@ object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {"crafted_components"},
+	slotDescriptors = {"crafted_components"},
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_static_dathomir_shared_dath_mistyfalls_waterfall1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_dath_mistyfalls_waterfall1.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -73,7 +73,7 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall1 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
@@ -82,7 +82,7 @@ ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterf
 
 object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_dath_mistyfalls_waterfall2.prt",
-	arrangementDescriptor = "",
+	arrangementDescriptors = {},
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -112,7 +112,7 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptor = {},
+	slotDescriptors = {},
 	snapToTerrain = 0,
 	surfaceType = 0
 }
