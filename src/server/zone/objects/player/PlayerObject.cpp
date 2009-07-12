@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/ZoneClientSession.h"
+
 /*
  *	PlayerObjectStub
  */
@@ -19,6 +21,19 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 }
 
 PlayerObject::~PlayerObject() {
+}
+
+void PlayerObject::initialize(unsigned int creatureObjectCRC) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addUnsignedIntParameter(creatureObjectCRC);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->initialize(creatureObjectCRC);
 }
 
 /*
@@ -48,11 +63,18 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initialize(inv->getUnsignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PlayerObjectAdapter::initialize(unsigned int creatureObjectCRC) {
+	return ((PlayerObjectImplementation*) impl)->initialize(creatureObjectCRC);
 }
 
 /*

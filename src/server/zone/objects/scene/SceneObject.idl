@@ -45,22 +45,21 @@ which carries forward this exception.
 package server.zone.objects.scene;
 
 import engine.core.ManagedObject;
-
 import engine.log.Logger;
-
 import engine.core.ManagedReference;
-
 import engine.util.Coordinate;
 import engine.util.QuadTreeEntry;
-
 import system.io.Serializable;
-
 import engine.lua.Lua;
 import engine.lua.LuaObject;
-
 import system.util.VectorMap;
+import system.lang.Quaternion;
 
 import server.zone.ZoneProcessServerImplementation;
+
+include server.zone.ZoneClientSession;
+
+import server.zone.objects.scene.variables.StringId;
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
 	protected ZoneProcessServerImplementation server;
@@ -72,6 +71,20 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	protected VectorMap<unsigned int, SceneObject> children;
 	
 	protected unsigned int objectCRC;
+	
+	protected Quaternion direction;
+	
+	protected native float positionX;
+	protected native float positionZ;
+	protected native float positionY;
+	
+	//protected string arrangementDescriptor;
+	
+	protected StringId objectName;
+	protected StringId detailedDescription;
+	protected unsigned int containerType;
+	protected unsigned int containerVolumeLimit;
+	protected unsigned int gameObjectType; 
 	
 	public static boolean registered;
 	
@@ -261,8 +274,60 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 
 	public SceneObject(LuaObject templateData, SceneObject parent = NULL);
 	
-	public native unsigned long getObjectID() {
-		return objectID;
+	public unsigned long getObjectID() {
+		return QuadTreeEntry.objectID;
+	}
+	
+	public float getPositionX() {
+		return QuadTreeEntry.getPositionX();
+	}
+
+	public float getPositionZ() {
+		return QuadTreeEntry.getPositionZ();
+	}
+
+	public float getPositionY() {
+		return QuadTreeEntry.getPositionY();
+	}
+	
+	public float getDirectionX() {
+		return direction.getX();
+	}
+
+	public float getDirectionZ() {
+		return direction.getZ();
+	}
+
+	public float getDirectionY() {
+		return direction.getY();
+	}
+
+	public float getDirectionW() {
+		return direction.getW();
+	}
+	
+	public unsigned int getObjectCRC() {
+		return this.objectCRC;
+	}
+	
+	/*public StringId getObjectName() {
+		return objectName;
+	}*/
+	
+	public unsigned int getGameObjectType() {
+		return this.gameObjectType;
+	}
+	
+	public void setPosition(float x, float z, float y) {
+		QuadTreeEntry.setPosition(x, z, y);
+	}
+	
+	public void setGameObjectType(unsigned int type) {
+		this.gameObjectType = type;
+	}
+	
+	public void setObjectCRC(unsigned int objCRC) {
+		this.objectCRC = objCRC;
 	}
 	
 	public void redeploy() {
@@ -297,7 +362,12 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 		return children.drop(slot);
 	}
 	
-	//public native void info(final byte[] dat);
+	public void create(ZoneClientSession client);
+	
+	public void destroy(ZoneClientSession client);
+	
+	public abstract void sendTo(SceneObject player, boolean doClose = true) {
+	}
 
 }
 

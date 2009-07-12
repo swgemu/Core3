@@ -46,11 +46,71 @@ package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
+import system.util.Vector;
+
+//import server.zone.objects.player.professions.SkillBox;
 
 include server.zone.objects.scene.SceneObject;
 
 class CreatureObject extends TangibleObject {
-	int test;
+	protected int bankCredits;
+	protected int cashCredits;
+	
+	protected Vector<int> baseHealth;
+	protected unsigned int baseHealthUpdateCounter;
+	
+	protected byte posture;
+	protected byte factionRank;
+	
+	protected unsigned long creatureLinkID;
+	protected float shockWounds;
+	
+	protected Vector<int> wounds;
+	protected unsigned int woundsUpdateCounter;
+	
+	protected unsigned long stateBitmask;
+	
+	//protected VectorMap<String, SkillBox> skillBoxes;
+	
+	protected Vector<int> encumbrances;
+	protected unsigned int encumbrancesUpdateCounter;
+	
+	// skillmods
+	
+	protected float speed;
+	protected float terrainNegotiation;
+	protected float acceleration;
+	
+	protected unsigned long listenToID;
+	
+	protected short level;
+	
+	/*
+	protected string peformanceAnimation;
+	protected string moodString;
+	*/
+	
+	protected unsigned long weaponID;
+	protected unsigned long groupID;
+	protected unsigned long groupInviterID;
+	protected unsigned long groupInviteCounter;
+	
+	protected int guildID;
+	protected unsigned long targetID;
+	protected byte moodID;
+	protected int performanceCounter;
+	protected int instrumentID;
+	
+	protected Vector<int> hamList;
+	protected unsigned int hamListUpdateCounter;
+	
+	protected Vector<int> maxHamList;
+	protected unsigned int maxHamListUpdateCounter;
+	
+	protected byte frozen;
+	
+	//protected string templateString;
+	
 	
 	public static boolean registered;
 	public static boolean registered2;
@@ -58,4 +118,111 @@ class CreatureObject extends TangibleObject {
 	public static boolean registered4;
 
 	public CreatureObject(LuaObject templateData, SceneObject parent = NULL);
+	
+	public int getBankCredits() {
+		return this.bankCredits;
+	}
+	
+	public int getCashCredits() {
+		return this.cashCredits;
+	}
+	
+	/*public Vector<int> getBaseHealth() {
+		return baseHealth;
+	}*/
+	
+	public int getBaseHealthUpdateCounter() {
+		return baseHealthUpdateCounter;
+	}
+	
+	public byte getPosture() {
+		return this.posture;
+	}
+	
+	public byte getFactionRank() {
+		return this.factionRank;
+	}
+	
+	public unsigned long getCreatureLinkID() {
+		return this.creatureLinkID;
+	}
+	
+	public float getShockWounds() {
+		return this.shockWounds;
+	}
+	
+	public unsigned long getStateBitmask() {
+		return this.stateBitmask;
+	}
+	
+	public unsigned long getListenID() {
+		return this.listenToID;
+	}
+	
+	public float getSpeed() {
+		return this.speed;
+	}
+	
+	public float getTerrainNegotiation() {
+		return this.terrainNegotiation;	
+	}
+	
+	public float getAcceleration() {
+		return this.acceleration;
+	}
+	
+	public short getLevel() {
+		return this.level;
+	}
+	
+	/*
+	public string getPerformanceAnimation() {
+		return this.performanceAnimation;
+	}
+	
+	public string getMoodString() {
+		return this.moodString;
+	}
+	
+	*/
+	
+	public unsigned long getWeaponID() {
+		return this.weaponID;
+	}
+	
+	public unsigned long getGroupID() {
+		return this.groupID;
+	}
+	
+	public unsigned long getGroupInviterID() {
+		return this.groupInviterID;
+	}
+	
+	public unsigned long getGroupInviteCounter() {
+		return this.groupInviteCounter;
+	}
+	
+	public int getGuildID() {
+		return this.guildID;
+	}
+	
+	public unsigned long getTargetID() {
+		return this.targetID;
+	}
+	
+	public byte getMoodID() {
+		return this.moodID;
+	}
+	
+	public int getPerformanceCounter() {
+		return this.performanceCounter;
+	}
+	
+	public int getInstrumentID() {
+		return instrumentID;
+	}
+	
+	public byte getFrozen() {
+		return this.frozen;
+	}
 }

@@ -46,9 +46,72 @@ package server.zone.objects.tangible;
 
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
+import system.util.Vector;
+
+//import server.zone.objects.scene.variables.CustomizationVariables;
 
 class TangibleObject extends SceneObject {
+	protected boolean targetable;
+	
+	protected float complexity;
+	protected int volume;
+	
+	protected int conditionDamage;
+	protected int maxCondition;
+	protected int objectCount;
+	
+	protected unsigned int optionsBitmask;
+	protected unsigned int pvpStatusBitmask;
+	
+	protected byte unknownByte;
+	
+	protected Vector<SceneObject > defenderList;
+	protected unsigned int defenderListUpdateCounter;
+	 
 	public static boolean registered;
 	
 	public TangibleObject(LuaObject temp, SceneObject parent = NULL);
+	
+	public byte getUnknownByte() {
+		return this.unknownByte;
+	}
+	
+	public int getObjectCount() {
+		return this.objectCount;
+	}
+	
+	public int getMaxCondition() {
+		return this.maxCondition;
+	}
+	
+	public int getConditionDamage() {
+		return this.conditionDamage;
+	}
+	
+	public int getVolume() {
+		return this.volume;
+	}
+	
+	public float getComplexity() {
+		return this.complexity;
+	}
+	
+	public unsigned int getOptionsBitmask() {
+		return this.optionsBitmask;
+	}
+	
+	public unsigned int getPvpStatusBitmask() {
+		return this.pvpStatusBitmask;
+	}
+	
+	public unsigned int getDefenderListUpdateCounter() {
+		return this.defenderListUpdateCounter;
+	}
 }
+
+
+
+
+
+
+

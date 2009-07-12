@@ -11,6 +11,8 @@
 
 #include "engine/lua/LuaObject.h"
 
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -19,6 +21,24 @@ namespace tangible {
 class TangibleObject : public SceneObject {
 public:
 	TangibleObject(LuaObject* temp, SceneObject* parent = NULL);
+
+	byte getUnknownByte();
+
+	int getObjectCount();
+
+	int getMaxCondition();
+
+	int getConditionDamage();
+
+	int getVolume();
+
+	float getComplexity();
+
+	unsigned int getOptionsBitmask();
+
+	unsigned int getPvpStatusBitmask();
+
+	unsigned int getDefenderListUpdateCounter();
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -43,10 +63,51 @@ namespace objects {
 namespace tangible {
 
 class TangibleObjectImplementation : public SceneObjectImplementation {
+protected:
+	bool targetable;
+
+	float complexity;
+
+	int volume;
+
+	int conditionDamage;
+
+	int maxCondition;
+
+	int objectCount;
+
+	unsigned int optionsBitmask;
+
+	unsigned int pvpStatusBitmask;
+
+	byte unknownByte;
+
+	Vector<SceneObject* >* defenderList;
+
+	unsigned int defenderListUpdateCounter;
+
 public:
 	static bool registered;
 
 	TangibleObjectImplementation(LuaObject* temp, SceneObject* parent = NULL);
+
+	byte getUnknownByte();
+
+	int getObjectCount();
+
+	int getMaxCondition();
+
+	int getConditionDamage();
+
+	int getVolume();
+
+	float getComplexity();
+
+	unsigned int getOptionsBitmask();
+
+	unsigned int getPvpStatusBitmask();
+
+	unsigned int getDefenderListUpdateCounter();
 
 	TangibleObject* _this;
 
@@ -62,6 +123,24 @@ public:
 	TangibleObjectAdapter(TangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	byte getUnknownByte();
+
+	int getObjectCount();
+
+	int getMaxCondition();
+
+	int getConditionDamage();
+
+	int getVolume();
+
+	float getComplexity();
+
+	unsigned int getOptionsBitmask();
+
+	unsigned int getPvpStatusBitmask();
+
+	unsigned int getDefenderListUpdateCounter();
 
 };
 

@@ -47,7 +47,7 @@ which carries forward this exception.
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject> ObjectManager::objectFactory;
 
-ObjectManager::ObjectManager() : Logger("ObjectManager") {
+ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObejctManager") {
 	objectMap = new ObjectMap(100000);
 	objectCacheMap = new ObjectMap(20000);
 
@@ -155,32 +155,42 @@ SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 }
 
 SceneObject* ObjectManager::createObject(uint32 objectCRC) {
-	LuaFunction getTemplate(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
-	getTemplate << objectCRC; // push first argument
-	luaTemplatesInstance->callFunction(&getTemplate);
-
-	LuaObject result(luaTemplatesInstance->getLuaState());
-
-	if (!result.isValidTable())
-		return NULL;
-
-	uint32 gameObjectType = result.getIntField("gameObjectType");
-
-	StringBuffer msg;
-	msg << "Object crc:[0x" <<  hex << objectCRC << "]" << " is a [0x" << hex << gameObjectType << "] gameObjectType";
-	info(msg, true);
+	instance()->lock();
 
 	SceneObject* object = NULL;
 
-	object = objectFactory.createObject(gameObjectType, &result, NULL);
+	try {
+		LuaFunction getTemplate(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
+		getTemplate << objectCRC; // push first argument
+		luaTemplatesInstance->callFunction(&getTemplate);
 
-	if (object == NULL) {
-		if (gameObjectType > 0x100)
-			gameObjectType & 0xFF;
+		LuaObject result(luaTemplatesInstance->getLuaState());
+
+		if (!result.isValidTable()) {
+			instance()->unlock();
+			return NULL;
+		}
+
+		uint32 gameObjectType = result.getIntField("gameObjectType");
+
+		/*StringBuffer msg;
+		msg << "Object crc:[0x" <<  hex << objectCRC << "]" << " is a [0x" << hex << gameObjectType << "] gameObjectType";
+		info(msg, true);*/
 
 		object = objectFactory.createObject(gameObjectType, &result, NULL);
+		object->setObjectCRC(objectCRC);
+
+		/*if (object == NULL) {
+		if (gameObjectType > 0x100)
+			gameObjectType & 0x00FF;
+
+		object = objectFactory.createObject(gameObjectType, &result, NULL);
+		}*/
+	} catch (...) {
+		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");
 	}
 
+	instance()->unlock();
 
 	return object;
 }

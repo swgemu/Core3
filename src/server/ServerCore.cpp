@@ -251,9 +251,16 @@ void ServerCore::handleCommands() {
 				if (zoneServer != NULL)
 					zoneServer->fixScheduler();
 			} else if (command == "crash") {
-				zoneServer = NULL;
+				/*zoneServer = NULL;
 
-				zoneServer->fixScheduler();
+				zoneServer->fixScheduler();*/
+
+				SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
+				/*String name;
+				object->getFullObjectName(name);
+
+				System::out << "objectCRC : " << name << "\n";*/
+
 			} else if (command == "help") {
 				System::out << "available commands:\n";
 				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";

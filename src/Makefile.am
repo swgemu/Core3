@@ -83,10 +83,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
-		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/scene/variables/StringId.cpp \
+		server/zone/managers/object/ObjectManager.cpp \
 		main.cpp 
 		
