@@ -35,7 +35,7 @@ void SceneObject::addSerializableVariables() {
 		((SceneObjectImplementation*) _impl)->addSerializableVariables();
 }
 
-void SceneObject::serialize(String& data) {
+void SceneObject::serialize(string& data) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -48,7 +48,7 @@ void SceneObject::serialize(String& data) {
 		((SceneObjectImplementation*) _impl)->serialize(data);
 }
 
-void SceneObject::deSerialize(const String& data) {
+void SceneObject::deSerialize(const string& data) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -270,16 +270,17 @@ void SceneObject::removeUndeploymentEvent() {
 		((SceneObjectImplementation*) _impl)->removeUndeploymentEvent();
 }
 
-bool SceneObject::isPlayer() {
+bool SceneObject::isPlayer(byte test) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 26);
+		method.addByteParameter(test);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _impl)->isPlayer();
+		return ((SceneObjectImplementation*) _impl)->isPlayer(test);
 }
 
 bool SceneObject::addObject(unsigned int slot, SceneObject* object) {
@@ -349,6 +350,32 @@ void SceneObject::sendTo(SceneObject* player, bool doClose) {
 		((SceneObjectImplementation*) _impl)->sendTo(player, doClose);
 }
 
+void SceneObject::setParent(SceneObject* parent) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addObjectParameter(parent);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setParent(parent);
+}
+
+void SceneObject::setStrTemp(string& strtmp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addAsciiParameter(strtmp);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->setStrTemp(strtmp);
+}
+
 /*
  *	SceneObjectImplementation
  */
@@ -365,14 +392,14 @@ DistributedObjectStub* SceneObjectImplementation::_getStub() {
 	return _this;
 }
 
-void SceneObjectImplementation::serialize(String& data) {
+void SceneObjectImplementation::serialize(string& data) {
 	// server/zone/objects/scene/SceneObject.idl(94):  Serializable.serialize(data);
-	Serializable::serialize(data);
+	Serializable::serialize((&data));
 }
 
-void SceneObjectImplementation::deSerialize(const String& data) {
+void SceneObjectImplementation::deSerialize(const string& data) {
 	// server/zone/objects/scene/SceneObject.idl(98):  Serializable.deSerialize(data);
-	Serializable::deSerialize(data);
+	Serializable::deSerialize((&data));
 }
 
 unsigned long long SceneObjectImplementation::getObjectID() {
@@ -452,7 +479,7 @@ void SceneObjectImplementation::undeploy() {
 void SceneObjectImplementation::removeUndeploymentEvent() {
 }
 
-bool SceneObjectImplementation::isPlayer() {
+bool SceneObjectImplementation::isPlayer(byte test) {
 	// server/zone/objects/scene/SceneObject.idl(358):  return true;
 	return true;
 }
@@ -465,6 +492,8 @@ bool SceneObjectImplementation::addObject(unsigned int slot, SceneObject* object
 }
 	// server/zone/objects/scene/SceneObject.idl(366):  put(slot, object);
 	children->put(slot, object);
+	// server/zone/objects/scene/SceneObject.idl(368):  object.setParent(this);
+	object->setParent(this);
 	// server/zone/objects/scene/SceneObject.idl(370):  return true;
 	return true;
 }
@@ -475,6 +504,16 @@ bool SceneObjectImplementation::removeObject(unsigned int slot) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+}
+
+void SceneObjectImplementation::setParent(SceneObject* parent) {
+	// server/zone/objects/scene/SceneObject.idl(385):  this.parent = parent;
+	this->parent = parent;
+}
+
+void SceneObjectImplementation::setStrTemp(string& strtmp) {
+	// server/zone/objects/scene/SceneObject.idl(391):  strTemp = strtmp;
+	(&strTemp) = (&strtmp);
 }
 
 /*
@@ -549,7 +588,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		removeUndeploymentEvent();
 		break;
 	case 26:
-		resp->insertBoolean(isPlayer());
+		resp->insertBoolean(isPlayer(inv->getByteParameter()));
 		break;
 	case 27:
 		resp->insertBoolean(addObject(inv->getUnsignedIntParameter(), (SceneObject*) inv->getObjectParameter()));
@@ -566,6 +605,12 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case 31:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
+	case 32:
+		setParent((SceneObject*) inv->getObjectParameter());
+		break;
+	case 33:
+		setStrTemp(inv->getAsciiParameter(_param0_setStrTemp__string_));
+		break;
 	default:
 		return NULL;
 	}
@@ -577,11 +622,11 @@ void SceneObjectAdapter::addSerializableVariables() {
 	return ((SceneObjectImplementation*) impl)->addSerializableVariables();
 }
 
-void SceneObjectAdapter::serialize(String& data) {
+void SceneObjectAdapter::serialize(string& data) {
 	return ((SceneObjectImplementation*) impl)->serialize(data);
 }
 
-void SceneObjectAdapter::deSerialize(const String& data) {
+void SceneObjectAdapter::deSerialize(const string& data) {
 	return ((SceneObjectImplementation*) impl)->deSerialize(data);
 }
 
@@ -653,8 +698,8 @@ void SceneObjectAdapter::removeUndeploymentEvent() {
 	return ((SceneObjectImplementation*) impl)->removeUndeploymentEvent();
 }
 
-bool SceneObjectAdapter::isPlayer() {
-	return ((SceneObjectImplementation*) impl)->isPlayer();
+bool SceneObjectAdapter::isPlayer(byte test) {
+	return ((SceneObjectImplementation*) impl)->isPlayer(test);
 }
 
 bool SceneObjectAdapter::addObject(unsigned int slot, SceneObject* object) {
@@ -675,6 +720,14 @@ void SceneObjectAdapter::destroy(ZoneClientSession* client) {
 
 void SceneObjectAdapter::sendTo(SceneObject* player, bool doClose) {
 	return ((SceneObjectImplementation*) impl)->sendTo(player, doClose);
+}
+
+void SceneObjectAdapter::setParent(SceneObject* parent) {
+	return ((SceneObjectImplementation*) impl)->setParent(parent);
+}
+
+void SceneObjectAdapter::setStrTemp(string& strtmp) {
+	return ((SceneObjectImplementation*) impl)->setStrTemp(strtmp);
 }
 
 /*

@@ -354,7 +354,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	public void removeUndeploymentEvent() {
 	}
 	
-	public boolean isPlayer() {
+	public boolean isPlayer(byte[] test) {
 		return true;
 	}
 	
@@ -380,6 +380,15 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	
 	public abstract void sendTo(SceneObject player, boolean doClose = true) {
 	}
-
+	
+	void setParent(SceneObject parent) {
+		this.parent = parent;
+	}
+	
+	public string strTemp;
+	
+	void setStrTemp(string strtmp) {
+		strTemp = strtmp;
+	}
 }
 
