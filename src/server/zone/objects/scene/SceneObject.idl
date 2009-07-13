@@ -60,9 +60,11 @@ import server.zone.ZoneProcessServerImplementation;
 include server.zone.ZoneClientSession;
 
 import server.zone.objects.scene.variables.StringId;
+import server.zone.objects.scene.variables.CustomizationVariables;;
 
 import server.zone.objects.scene.variables.SceneObjectReference;
 import engine.core.ManagedReference;
+
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
 	protected ZoneProcessServerImplementation server;
@@ -91,7 +93,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	
 	public static boolean registered;
 	
-	/*public static final int ARMOR = 0x100;
+	public static final int ARMOR = 0x100;
 	public static final int BODYARMOR = 0x101;
 	public static final int HEADARMOR = 0x102;
 	public static final int MISCARMOR = 0x103;
@@ -273,7 +275,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	public static final int WOOKIEGARB = 0x1000010;
 	public static final int MISCCLOTHING = 0x1000011;
 	public static final int SKIRT = 0x1000012;
-	public static final int ITHOGARB = 0x1000013;*/
+	public static final int ITHOGARB = 0x1000013;
 
 	public SceneObject(LuaObject templateData, SceneObject parent = NULL);
 	
@@ -312,8 +314,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	}
 	
 	public abstract boolean removeObject(string slot) {
-		return true;
-		//return children.drop(slot);
+		return children.drop(slot);
 	}
 	
 	public void create(ZoneClientSession client);
@@ -360,7 +361,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	}
 	
 	/*public StringId getObjectName() {
-		return objectName;
+		return this.objectName;
 	}*/
 	
 	public unsigned int getGameObjectType() {
