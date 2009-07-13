@@ -42,7 +42,7 @@ public:
 
 	void release();
 
-	string getAddress();
+	String getAddress();
 
 	void lock(bool doLock = true);
 
@@ -61,7 +61,7 @@ protected:
 
 	void _unlock(bool doLock = true);
 
-	string _return_getAddress;
+	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
 };
@@ -98,7 +98,7 @@ public:
 
 	void release();
 
-	string getAddress();
+	String getAddress();
 
 	void lock(bool doLock = true);
 
@@ -137,7 +137,7 @@ public:
 
 	void release();
 
-	string getAddress();
+	String getAddress();
 
 	void lock(bool doLock);
 

@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
 /*
  *	SceneObjectStub
  */
@@ -35,7 +37,7 @@ void SceneObject::addSerializableVariables() {
 		((SceneObjectImplementation*) _impl)->addSerializableVariables();
 }
 
-void SceneObject::serialize(string& data) {
+void SceneObject::serialize(String& data) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -48,7 +50,7 @@ void SceneObject::serialize(string& data) {
 		((SceneObjectImplementation*) _impl)->serialize(data);
 }
 
-void SceneObject::deSerialize(const string& data) {
+void SceneObject::deSerialize(const String& data) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +123,7 @@ bool SceneObject::isPlayer() {
 		return ((SceneObjectImplementation*) _impl)->isPlayer();
 }
 
-bool SceneObject::addObject(string& slot, SceneObject* object) {
+bool SceneObject::addObject(String& slot, SceneObject* object) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -135,7 +137,7 @@ bool SceneObject::addObject(string& slot, SceneObject* object) {
 		return ((SceneObjectImplementation*) _impl)->addObject(slot, object);
 }
 
-bool SceneObject::removeObject(string& slot) {
+bool SceneObject::removeObject(String& slot) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -391,90 +393,90 @@ void SceneObjectImplementation::removeUndeploymentEvent() {
 }
 
 bool SceneObjectImplementation::isPlayer() {
-	// server/zone/objects/scene/SceneObject.idl(299):  return true;
+	// server/zone/objects/scene/SceneObject.idl(303):  return true;
 	return true;
 }
 
-bool SceneObjectImplementation::addObject(string& slot, SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl(311):  return true;
-	return true;
-}
-
-bool SceneObjectImplementation::removeObject(string& slot) {
+bool SceneObjectImplementation::addObject(String& slot, SceneObject* object) {
 	// server/zone/objects/scene/SceneObject.idl(315):  return true;
 	return true;
+}
+
+bool SceneObjectImplementation::removeObject(String& slot) {
+	// server/zone/objects/scene/SceneObject.idl(320):  return children.drop(slot);
+	return children->drop((&slot));
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
 unsigned long long SceneObjectImplementation::getObjectID() {
-	// server/zone/objects/scene/SceneObject.idl(327):  return QuadTreeEntry.objectID;
+	// server/zone/objects/scene/SceneObject.idl(331):  return QuadTreeEntry.objectID;
 	return QuadTreeEntry::objectID;
 }
 
 float SceneObjectImplementation::getPositionX() {
-	// server/zone/objects/scene/SceneObject.idl(331):  return QuadTreeEntry.getPositionX();
+	// server/zone/objects/scene/SceneObject.idl(335):  return QuadTreeEntry.getPositionX();
 	return QuadTreeEntry::getPositionX();
 }
 
 float SceneObjectImplementation::getPositionZ() {
-	// server/zone/objects/scene/SceneObject.idl(335):  return QuadTreeEntry.getPositionZ();
+	// server/zone/objects/scene/SceneObject.idl(339):  return QuadTreeEntry.getPositionZ();
 	return QuadTreeEntry::getPositionZ();
 }
 
 float SceneObjectImplementation::getPositionY() {
-	// server/zone/objects/scene/SceneObject.idl(339):  return QuadTreeEntry.getPositionY();
+	// server/zone/objects/scene/SceneObject.idl(343):  return QuadTreeEntry.getPositionY();
 	return QuadTreeEntry::getPositionY();
 }
 
 float SceneObjectImplementation::getDirectionX() {
-	// server/zone/objects/scene/SceneObject.idl(343):  return direction.getX();
+	// server/zone/objects/scene/SceneObject.idl(347):  return direction.getX();
 	return direction->getX();
 }
 
 float SceneObjectImplementation::getDirectionZ() {
-	// server/zone/objects/scene/SceneObject.idl(347):  return direction.getZ();
+	// server/zone/objects/scene/SceneObject.idl(351):  return direction.getZ();
 	return direction->getZ();
 }
 
 float SceneObjectImplementation::getDirectionY() {
-	// server/zone/objects/scene/SceneObject.idl(351):  return direction.getY();
+	// server/zone/objects/scene/SceneObject.idl(355):  return direction.getY();
 	return direction->getY();
 }
 
 float SceneObjectImplementation::getDirectionW() {
-	// server/zone/objects/scene/SceneObject.idl(355):  return direction.getW();
+	// server/zone/objects/scene/SceneObject.idl(359):  return direction.getW();
 	return direction->getW();
 }
 
 unsigned int SceneObjectImplementation::getObjectCRC() {
-	// server/zone/objects/scene/SceneObject.idl(359):  return this.objectCRC;
+	// server/zone/objects/scene/SceneObject.idl(363):  return this.objectCRC;
 	return this->objectCRC;
 }
 
 unsigned int SceneObjectImplementation::getGameObjectType() {
-	// server/zone/objects/scene/SceneObject.idl(367):  return this.gameObjectType;
+	// server/zone/objects/scene/SceneObject.idl(371):  return this.gameObjectType;
 	return this->gameObjectType;
 }
 
 void SceneObjectImplementation::setPosition(float x, float z, float y) {
-	// server/zone/objects/scene/SceneObject.idl(371):  QuadTreeEntry.setPosition(x, z, y);
+	// server/zone/objects/scene/SceneObject.idl(375):  QuadTreeEntry.setPosition(x, z, y);
 	QuadTreeEntry::setPosition(x, z, y);
 }
 
 void SceneObjectImplementation::setGameObjectType(unsigned int type) {
-	// server/zone/objects/scene/SceneObject.idl(375):  this.gameObjectType = type;
+	// server/zone/objects/scene/SceneObject.idl(379):  this.gameObjectType = type;
 	this->gameObjectType = type;
 }
 
 void SceneObjectImplementation::setObjectCRC(unsigned int objCRC) {
-	// server/zone/objects/scene/SceneObject.idl(379):  this.objectCRC = objCRC;
+	// server/zone/objects/scene/SceneObject.idl(383):  this.objectCRC = objCRC;
 	this->objectCRC = objCRC;
 }
 
 void SceneObjectImplementation::setParent(SceneObject* parent) {
-	// server/zone/objects/scene/SceneObject.idl(383):  this.parent = parent;
+	// server/zone/objects/scene/SceneObject.idl(387):  this.parent = parent;
 	this->parent = parent;
 }
 
@@ -493,10 +495,10 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		addSerializableVariables();
 		break;
 	case 7:
-		serialize(inv->getAsciiParameter(_param0_serialize__string_));
+		serialize(inv->getAsciiParameter(_param0_serialize__String_));
 		break;
 	case 8:
-		deSerialize(inv->getAsciiParameter(_param0_deSerialize__string_));
+		deSerialize(inv->getAsciiParameter(_param0_deSerialize__String_));
 		break;
 	case 9:
 		redeploy();
@@ -514,10 +516,10 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isPlayer());
 		break;
 	case 14:
-		resp->insertBoolean(addObject(inv->getAsciiParameter(_param0_addObject__string_SceneObject_), (SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(addObject(inv->getAsciiParameter(_param0_addObject__String_SceneObject_), (SceneObject*) inv->getObjectParameter()));
 		break;
 	case 15:
-		resp->insertBoolean(removeObject(inv->getAsciiParameter(_param0_removeObject__string_)));
+		resp->insertBoolean(removeObject(inv->getAsciiParameter(_param0_removeObject__String_)));
 		break;
 	case 16:
 		create((ZoneClientSession*) inv->getObjectParameter());
@@ -581,11 +583,11 @@ void SceneObjectAdapter::addSerializableVariables() {
 	return ((SceneObjectImplementation*) impl)->addSerializableVariables();
 }
 
-void SceneObjectAdapter::serialize(string& data) {
+void SceneObjectAdapter::serialize(String& data) {
 	return ((SceneObjectImplementation*) impl)->serialize(data);
 }
 
-void SceneObjectAdapter::deSerialize(const string& data) {
+void SceneObjectAdapter::deSerialize(const String& data) {
 	return ((SceneObjectImplementation*) impl)->deSerialize(data);
 }
 
@@ -609,11 +611,11 @@ bool SceneObjectAdapter::isPlayer() {
 	return ((SceneObjectImplementation*) impl)->isPlayer();
 }
 
-bool SceneObjectAdapter::addObject(string& slot, SceneObject* object) {
+bool SceneObjectAdapter::addObject(String& slot, SceneObject* object) {
 	return ((SceneObjectImplementation*) impl)->addObject(slot, object);
 }
 
-bool SceneObjectAdapter::removeObject(string& slot) {
+bool SceneObjectAdapter::removeObject(String& slot) {
 	return ((SceneObjectImplementation*) impl)->removeObject(slot);
 }
 

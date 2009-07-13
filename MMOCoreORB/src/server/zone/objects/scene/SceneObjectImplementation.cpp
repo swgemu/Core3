@@ -56,7 +56,7 @@ bool SceneObjectImplementation::registered = ObjectManager::objectFactory.regist
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) : Serializable() {
 	SceneObjectImplementation::parent = parent;
 
-	children = new VectorMap<string, SceneObject*>();
+	children = new VectorMap<String, SceneObject*>();
 
 	direction = new Quaternion();
 
@@ -87,11 +87,11 @@ void SceneObjectImplementation::addSerializableVariables() {
 	addSerializableVariable("arrangementDescriptor", &arrangementDescriptor);
 }
 
-void SceneObjectImplementation::serialize(string& data) {
+void SceneObjectImplementation::serialize(String& data) {
 	Serializable::serialize(data);
 }
 
-void SceneObjectImplementation::deSerialize(const string& data) {
+void SceneObjectImplementation::deSerialize(const String& data) {
 	Serializable::deSerialize(data);
 }
 

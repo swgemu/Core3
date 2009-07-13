@@ -52,9 +52,9 @@ public:
 
 	int getLevel();
 
-	string getPerformanceAnimation();
+	String getPerformanceAnimation();
 
-	string getMoodString();
+	String getMoodString();
 
 	unsigned long long getWeaponID();
 
@@ -81,8 +81,8 @@ protected:
 
 	virtual ~CreatureObject();
 
-	string _return_getMoodString;
-	string _return_getPerformanceAnimation;
+	String _return_getMoodString;
+	String _return_getPerformanceAnimation;
 
 	friend class CreatureObjectHelper;
 };
@@ -139,9 +139,9 @@ protected:
 
 	short level;
 
-	string performanceAnimation;
+	String performanceAnimation;
 
-	string moodString;
+	String moodString;
 
 	unsigned long long weaponID;
 
@@ -171,7 +171,7 @@ protected:
 
 	byte frozen;
 
-	string templateString;
+	String templateString;
 
 public:
 	static bool registered;
@@ -212,9 +212,9 @@ public:
 
 	int getLevel();
 
-	string getPerformanceAnimation();
+	String getPerformanceAnimation();
 
-	string getMoodString();
+	String getMoodString();
 
 	unsigned long long getWeaponID();
 
@@ -279,9 +279,9 @@ public:
 
 	int getLevel();
 
-	string getPerformanceAnimation();
+	String getPerformanceAnimation();
 
-	string getMoodString();
+	String getMoodString();
 
 	unsigned long long getWeaponID();
 
