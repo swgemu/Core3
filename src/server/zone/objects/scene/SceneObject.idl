@@ -53,17 +53,19 @@ import system.io.Serializable;
 import engine.lua.Lua;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
-import system.util.Quaternion;
+import engine.util.Quaternion;
 
 import server.zone.ZoneProcessServerImplementation;
 
 include server.zone.ZoneClientSession;
 
 import server.zone.objects.scene.variables.StringId;
-import server.zone.objects.scene.variables.CustomizationVariables;;
+import server.zone.objects.scene.variables.CustomizationVariables;
 
-import server.zone.objects.scene.variables.SceneObjectReference;
+//import server.zone.objects.scene.variables.SceneObjectReference;
 import engine.core.ManagedReference;
+
+//import server.zone.objects.scene.variables.DeltaVector;
 
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
@@ -314,6 +316,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	}
 	
 	public abstract boolean removeObject(string slot) {
+		//return true;
 		return children.drop(slot);
 	}
 	

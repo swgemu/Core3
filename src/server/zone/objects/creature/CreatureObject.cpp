@@ -187,7 +187,7 @@ int CreatureObject::getLevel() {
 		return ((CreatureObjectImplementation*) _impl)->getLevel();
 }
 
-string CreatureObject::getPerformanceAnimation() {
+String CreatureObject::getPerformanceAnimation() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -200,7 +200,7 @@ string CreatureObject::getPerformanceAnimation() {
 		return ((CreatureObjectImplementation*) _impl)->getPerformanceAnimation();
 }
 
-string CreatureObject::getMoodString() {
+String CreatureObject::getMoodString() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -414,12 +414,12 @@ int CreatureObjectImplementation::getLevel() {
 	return this->level;
 }
 
-string CreatureObjectImplementation::getPerformanceAnimation() {
+String CreatureObjectImplementation::getPerformanceAnimation() {
 	// server/zone/objects/creature/CreatureObject.idl(178):  return this.performanceAnimation;
 	return this->performanceAnimation;
 }
 
-string CreatureObjectImplementation::getMoodString() {
+String CreatureObjectImplementation::getMoodString() {
 	// server/zone/objects/creature/CreatureObject.idl(182):  return this.moodString;
 	return this->moodString;
 }
@@ -626,11 +626,11 @@ int CreatureObjectAdapter::getLevel() {
 	return ((CreatureObjectImplementation*) impl)->getLevel();
 }
 
-string CreatureObjectAdapter::getPerformanceAnimation() {
+String CreatureObjectAdapter::getPerformanceAnimation() {
 	return ((CreatureObjectImplementation*) impl)->getPerformanceAnimation();
 }
 
-string CreatureObjectAdapter::getMoodString() {
+String CreatureObjectAdapter::getMoodString() {
 	return ((CreatureObjectImplementation*) impl)->getMoodString();
 }
 

@@ -108,7 +108,7 @@ void ZoneClientSession::release() {
 		((ZoneClientSessionImplementation*) _impl)->release();
 }
 
-string ZoneClientSession::getAddress() {
+String ZoneClientSession::getAddress() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -188,7 +188,7 @@ DistributedObjectStub* ZoneClientSessionImplementation::_getStub() {
 	return _this;
 }
 
-string ZoneClientSessionImplementation::getAddress() {
+String ZoneClientSessionImplementation::getAddress() {
 	// server/zone/ZoneClientSession.idl(77):  return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
@@ -285,7 +285,7 @@ void ZoneClientSessionAdapter::release() {
 	return ((ZoneClientSessionImplementation*) impl)->release();
 }
 
-string ZoneClientSessionAdapter::getAddress() {
+String ZoneClientSessionAdapter::getAddress() {
 	return ((ZoneClientSessionImplementation*) impl)->getAddress();
 }
 
