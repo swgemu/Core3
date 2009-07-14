@@ -48,13 +48,17 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 
-//import server.zone.objects.scene.variables.CustomizationVariables;
+import server.zone.objects.scene.variables.CustomizationVariables;
+
+include server.zone.objects.scene.variables.DeltaVector;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
 	
 	protected float complexity;
 	protected int volume;
+	
+	protected CustomizationVariables customizationVariables;
 	
 	protected int conditionDamage;
 	protected int maxCondition;
@@ -65,7 +69,7 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	
-	protected Vector<SceneObject > defenderList;
+	protected DeltaVector<SceneObject > defenderList;
 	protected unsigned int defenderListUpdateCounter;
 	
 	public void addSerializableVariables();
@@ -76,6 +80,10 @@ class TangibleObject extends SceneObject {
 	
 	public byte getUnknownByte() {
 		return this.unknownByte;
+	}
+	
+	local public CustomizationVariables getCustomizationVariables() {
+		return customizationVariables;
 	}
 	
 	public int getObjectCount() {

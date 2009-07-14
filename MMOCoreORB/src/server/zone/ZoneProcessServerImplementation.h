@@ -47,11 +47,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ZoneServer.h"
-
-class ZonePacketHandler;
-class ZoneMessageProcessorThread;
-
 /*class Zone;
 class SceneObject;
 
@@ -73,6 +68,13 @@ class GroupManager;
 class LootManager;
 class SuiManager;
 class NameManager;*/
+
+namespace server {
+namespace zone {
+
+class ZonePacketHandler;
+class ZoneMessageProcessorThread;
+class ZoneServer;
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -177,5 +179,10 @@ public:
 	}*/
 
 };
+
+}
+}
+
+using namespace server::zone;
 
 #endif /*ZONEPROCESSSERVERIMPLEMENTATION_H_*/

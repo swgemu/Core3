@@ -42,7 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneServer.h"
+#include "Zone.h"
+//#include "ZoneServer.h"
 
 /*#include "managers/creature/CreatureManager.h"
 #include "managers/creature/CreatureManagerImplementation.h"
@@ -58,12 +59,14 @@ which carries forward this exception.
 
 #include "objects/creature/Creature.h"*/
 
-#include "Zone.h"
-#include "ZoneImplementation.h"
+
+//#include "ZoneImplementation.h"
 
 #include "objects/terrain/PlanetNames.h"
 
-ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ZoneServant(), QuadTree(-8192, -8192, 8192, 8192) {
+#include "ZoneProcessServerImplementation.h""
+
+ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
 
 	processor = srv;
@@ -74,6 +77,8 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	weatherWindX = 1.0f;
 	weatherWindY = -1.0f;
 	weatherEnabled = true;
+
+	heightMap = new HeightMap();
 }
 
 void ZoneImplementation::startManagers() {
@@ -83,7 +88,7 @@ void ZoneImplementation::startManagers() {
 	if (zoneID <= 9) {
 		String planetName = Planet::getPlanetName(zoneID);
 
-		heightMap.load("planets/" + planetName + "/" + planetName + ".hmap");
+		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
 	/*creatureManager = new CreatureManager(_this, processor);
@@ -143,7 +148,7 @@ SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
 }*/
 
 float ZoneImplementation::getHeight(float x, float y) {
-	return heightMap.getHeight(x, y);
+	return heightMap->getHeight(x, y);
 }
 
 /*ChatManager* ZoneImplementation::getChatManager() {

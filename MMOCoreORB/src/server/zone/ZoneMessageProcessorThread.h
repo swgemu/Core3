@@ -47,7 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ZonePacketHandler.h"
+namespace server {
+namespace zone {
+
+class ZonePacketHandler;
 
 class ZoneMessageProcessorThread : public ServiceProcessThread {
 	ZonePacketHandler* phandler;
@@ -67,5 +70,10 @@ public:
 	bool handleError(Message* msg, Exception& e);
 
 };
+
+}
+}
+
+using namespace server::zone;
 
 #endif /*ZONEMESSAGEPROCESSORTHREAD_H_*/

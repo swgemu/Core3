@@ -50,13 +50,19 @@ which carries forward this exception.
 
 #include "conf/ConfigManager.h"
 
+namespace server {
+	namespace zone{
+		class ZoneServer;
+	}
+}
+
 class ServerDatabase;
 class ForumsDatabase;
 class LoginServer;
 class StatusServer;
 class Features;
 class PingServer;
-class ZoneServer;
+class server::zone::ZoneServer;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager configManager;
@@ -75,7 +81,7 @@ class ServerCore : public Core, public Logger {
 
 	PingServer* pingServer;
 
-	static ZoneServer* zoneServer;
+	static server::zone::ZoneServer* zoneServer;
 
 public:
 	ServerCore();
@@ -91,7 +97,7 @@ public:
 	void processConfig();
 
 	// getters
-	static ZoneServer* getZoneServer() {
+	static server::zone::ZoneServer* getZoneServer() {
 		return zoneServer;
 	}
 

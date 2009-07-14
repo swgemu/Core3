@@ -42,74 +42,103 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+package server.zone;
 
-import "ZoneServer";
-include "ZoneProcessServerImplementation";
+import engine.util.QuadTree;
+import engine.sched.ScheduleManager;
+import system.lang.Time;
+import engine.sched.ScheduleManager;
+import engine.core.ManagedObject;
 
-include "engine/util/QuadTreeEntry";
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.ZoneServer;
 
-interface Zone {
-	Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid) {
-		super(zserv, processor, zoneid);
+
+include server.zone.managers.planet.HeightMap;
+
+class Zone extends ManagedObject, native QuadTree {
+	int zoneID;
+
+	ZoneProcessServerImplementation processor;
+
+	ScheduleManager scheduler;
+	
+	ZoneServer server;
+
+	Time galacticTime;
+	
+	HeightMap heightMap;
+
+	//Weather
+	float weatherWindX; //1.0 = east, -1.0 = west
+	float weatherWindY; //1.0 = north, -1.0 = south
+	unsigned int weatherID;
+	boolean weatherEnabled;
+	
+	public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
+
+	public void startManagers();
+
+	public void stopManagers();
+	
+	public float getHeight(float x, float y);
+
+	// setters and getters
+	public int getZoneID() {
+		return zoneID;
 	}
 
-	void startManagers();
+	public ZoneServer getZoneServer() {
+		return server;
+	}
 	
-	void stopManagers();
+	public unsigned long getGalacticTime() {
+		return galacticTime.miliDifference() / 1000;
+	}
 
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
-	/*void registerObject(SceneObject obj);
-	
-	SceneObject lookupObject(unsigned long oid);
-	
-	SceneObject deleteObject(unsigned long oid);
-	SceneObject deleteObject(SceneObject obj);
+	public unsigned int getWeatherID() {
+		return weatherID;
+	}
 
-	SceneObject deleteCachedObject(SceneObject obj);*/
+	public void setWeatherID(unsigned int value) {
+		weatherID = value;
+	}
 
-	// zone cell methods
-	float getHeight(float x, float y);
+	public void changeWeatherID(int value) {
+		if (weatherID == 0 && value < 0) {
+			weatherID = 0;
+			return;
+		}
 
-	//QT methods
-	void setSize(float minx, float miny, float maxx, float maxy);
+		weatherID += value;
 
-	void insert(QuadTreeEntry obj);
+		if (weatherID > 4) {
+			weatherID = 4;
+			return;
+		}
+	}
 
-	void remove(QuadTreeEntry obj);
-	void removeAll();
+	public boolean isWeatherEnabled() {
+		return weatherEnabled;
+	}
 
-	boolean update(QuadTreeEntry obj);
+	public void setWeatherEnabled(boolean value) {
+		weatherEnabled = value;
+	}
 
-	void inRange(QuadTreeEntry obj, float range);
-	
-	// getters
-	int getZoneID();
+	public void setWeatherWindX(float value) {
+		weatherWindX = value;
+	}
 
-	ZoneServer getZoneServer();
+	public void setWeatherWindY(float value) {
+		weatherWindY = value;
+	}
 
-	/*ChatManager getChatManager();
-	CreatureManager getCreatureManager();
-	PlanetManager getPlanetManager();*/
-	
-	unsigned long getGalacticTime();
-	
-	unsigned int getWeatherID();  																																
-	
-	void setWeatherID(unsigned int value);
-	
-	void changeWeatherID(int value);
-	
-    boolean isWeatherEnabled();
+	public float getWeatherWindX() {
+		return weatherWindX;
+	}
 
-	void setWeatherEnabled(boolean value);
-	
-	void setWeatherWindX(float value);
-
-	void setWeatherWindY(float value);
-
-	float getWeatherWindX();
-	
-	float getWeatherWindY();
+	public float getWeatherWindY() {
+		return weatherWindY;
+	}
 }

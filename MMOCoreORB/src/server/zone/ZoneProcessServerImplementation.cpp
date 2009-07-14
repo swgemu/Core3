@@ -44,7 +44,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ZoneClientSession.h"
+#include "ZoneProcessServerImplementation.h"
+
+//#include "ZoneClientSession.h"
 
 #include "ZoneServer.h"
 //#include "Zone.h"
@@ -52,11 +54,11 @@ which carries forward this exception.
 #include "ZonePacketHandler.h"
 #include "ZoneMessageProcessorThread.h"
 
-#include "ZoneProcessServerImplementation.h"
+
 
 //#include "ZoneImplementation.h"
 
-#include "../ServerCore.h"
+//#include "../ServerCore.h"
 
 /*#include "managers/user/UserManager.h"
 #include "managers/user/UserManagerImplementation.h"

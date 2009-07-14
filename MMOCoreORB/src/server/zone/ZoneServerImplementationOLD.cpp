@@ -42,20 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneServer.h"
-
 #include "ZoneClientSession.h"
 
-#include "Zone.h"
+//#include "ZoneServerImplementation.h"
+#include "ZoneServer.h"
 
-#include "../db/ServerDatabase.h"
+#include "ZoneImplementation.h"
+
+#include "../ServerCore.h"
 
 #include "managers/object/ObjectManager.h"
 
-#include "ZoneProcessServerImplementation.h"
-
 ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
-		ManagedObjectImplementation(), DatagramServiceThread("ZoneServer") {
+		DatagramServiceThread("ZoneServer"), ZoneServerServant() {
 	galaxyID = galaxyid;
 
 	name = "Core3";
@@ -81,139 +80,13 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	serverState = OFFLINE;
 
 	setLogging(false);
-	DatagramServiceThread::setLockName("ZoneServerLock");
+	setLockName("ZoneServerLock");
 
 	scheduler->setLogging(false);
-
-	zones = new Vector<Zone*>();
 }
 
-void ZoneServerImplementation::start(int a, int b) {
-	DatagramServiceThread::start(a, b);
-}
-
-void ZoneServerImplementation::stop() {
-	DatagramServiceThread::stop();
-}
-
-void ZoneServerImplementation::lock() {
-	DatagramServiceThread::lock();
-}
-
-void ZoneServerImplementation::unlock() {
-	DatagramServiceThread::unlock();
-}
-
-void ZoneServerImplementation::lock(bool doLock) {
-	DatagramServiceThread::lock(doLock);
-}
-
-void ZoneServerImplementation::unlock(bool doLock) {
-	DatagramServiceThread::unlock(doLock);
-}
-
-String ZoneServerImplementation::getServerName() {
-	return name;
-}
-
-void ZoneServerImplementation::setServerName(const String& na) {
-	name = na;
-}
-
-void ZoneServerImplementation::setServerStateLocked() {
-	lock();
-
-	serverState = LOCKED;
-
-	StringBuffer msg;
-	msg << dec << "server locked";
-	info(msg, true);
-
-	unlock();
-}
-
-void ZoneServerImplementation::setServerStateOnline() {
-	lock();
-
-	serverState = ONLINE;
-
-	StringBuffer msg;
-	msg << dec << "server unlocked";
-	info(msg, true);
-
-	unlock();
-}
-
-String ZoneServerImplementation::getMessageoftheDay() {
-	return messageoftheDay;
-}
-
-void ZoneServerImplementation::loadMessageoftheDay() {
-	lock();
-
-	File* file;
-	FileReader* reader;
-
-	try {
-		file = new File("motd.txt");
-		reader = new FileReader(file);
-
-		String line;
-		while(reader->readLine(line)) {
-			messageoftheDay += line;
-		}
-
-		reader->close();
-	} catch (FileNotFoundException& e) {
-		file = NULL;
-		reader = NULL;
-	}
-
-	unlock();
-}
-
-void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
-	lock();
-
-	File* file;
-	FileWriter* writer;
-
-	String finalMOTD = "";
-
-	try {
-		file = new File("motd.txt");
-		writer = new FileWriter(file);
-
-		for(int i = 0; i < newMOTD.length(); i++) {
-			if(i+1 < newMOTD.length()) {
-				char currentLetter = newMOTD.charAt(i);
-				char nextLetter = newMOTD.charAt(i+1);
-				if(currentLetter == '\\' && nextLetter == 'n') {
-					finalMOTD += "\n";
-					i++;
-				} else {
-					finalMOTD += currentLetter;
-				}
-			} else {
-				finalMOTD += newMOTD.charAt(i);
-			}
-		}
-
-		writer->write(finalMOTD);
-
-		writer->close();
-	} catch (FileNotFoundException& e) {
-		file = NULL;
-		writer = NULL;
-	}
-
-	messageoftheDay = finalMOTD;
-
-	unlock();
-}
-
-/*ZoneServerImplementation::~ZoneServerImplementation() {
-	if (missionManager != NULL) {
+ZoneServerImplementation::~ZoneServerImplementation() {
+	/*if (missionManager != NULL) {
 		missionManager->finalize();
 		missionManager = NULL;
 	}
@@ -287,7 +160,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 		chatManager->finalize();
 		chatManager = NULL;
 	}
-
+	*/
 	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
 
@@ -296,7 +169,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 	}
 
 	zones.removeAll();
-}*/
+}
 
 void ZoneServerImplementation::init() {
 	serverState = LOADING;
@@ -338,7 +211,7 @@ void ZoneServerImplementation::init() {
 			zone->startManagers();
 		}
 
-		zones->add(zone);
+		zones.add(zone);
 	}
 /*
 	userManager = NULL;
@@ -356,7 +229,7 @@ void ZoneServerImplementation::init() {
 
 	loadMessageoftheDay();*/
 
-	//startTimestamp = time(NULL);
+	startTimestamp = time(NULL);
 
 	//serverState = LOCKED;
 	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
@@ -437,7 +310,7 @@ void ZoneServerImplementation::shutdown() {
 	info("shutting down zones", true);
 
 	for (int i = 0; i < 45; ++i) {
-		Zone* zone = zones->get(i);
+		Zone* zone = zones.get(i);
 		if (zone != NULL)
 			zone->stopManagers();
 	}

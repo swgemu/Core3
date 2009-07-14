@@ -45,6 +45,8 @@ which carries forward this exception.
 /*#include "objects.h"
 #include "packets.h"*/
 
+#include "ZonePacketHandler.h"
+
 #include "ZoneServer.h"
 
 #include "ZoneClientSession.h"
@@ -72,7 +74,7 @@ which carries forward this exception.
 
 #include "../chat/ChatManager.h"
 */
-#include "ZonePacketHandler.h"
+
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 		processServer = serv;

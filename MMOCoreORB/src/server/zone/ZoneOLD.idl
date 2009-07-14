@@ -42,48 +42,74 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone;
 
-import engine.service.proto.BasePacketHandler;
-import engine.service.DatagramServiceThread;
-import system.net.Socket;
-import system.net.SocketAddress;
-import engine.service.ServiceClient;
-import engine.core.ManagedObject;
+import "ZoneServer";
+include "ZoneProcessServerImplementation";
 
-/*import server.zone.ZoneProcessServerImplementation;*/
+include "engine/util/QuadTreeEntry";
 
-class ZoneServer extends ManagedObject, native DatagramServiceThread {
-	BasePacketHandler phandler;
+interface Zone {
+	Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid) {
+		super(zserv, processor, zoneid);
+	}
 
-	int procThreadCount;
-
-	int totalSentPackets;
+	void startManagers();
 	
-	int totalResentPackets;
+	void stopManagers();
 
-	int currentPlayers;
-	int maximumPlayers;
-	int totalPlayers;
-	int totalDeletedPlayers;
-
-	unsigned long nextCreatureID;
-	unsigned long nextCellID;
-
-	int serverState;
-
-	string name;
-	string messageoftheDay;
-
-	int galaxyID;
+	void lock(boolean doLock = true);
+	void unlock(boolean doLock = true);
 	
-	public static final int OFFLINE = 0;
-	public static final int LOADING = 1;
-	public static final int ONLINE = 2;
-	public static final int LOCKED = 3;
+	/*void registerObject(SceneObject obj);
 	
-	public ZoneServer(int processingThreads, int galaxyid = 2);
+	SceneObject lookupObject(unsigned long oid);
 	
-	public ServiceClient createConnection(Socket sock, dereferenced SocketAddress addr);
+	SceneObject deleteObject(unsigned long oid);
+	SceneObject deleteObject(SceneObject obj);
+
+	SceneObject deleteCachedObject(SceneObject obj);*/
+
+	// zone cell methods
+	float getHeight(float x, float y);
+
+	//QT methods
+	void setSize(float minx, float miny, float maxx, float maxy);
+
+	void insert(QuadTreeEntry obj);
+
+	void remove(QuadTreeEntry obj);
+	void removeAll();
+
+	boolean update(QuadTreeEntry obj);
+
+	void inRange(QuadTreeEntry obj, float range);
 	
+	// getters
+	int getZoneID();
+
+	ZoneServer getZoneServer();
+
+	/*ChatManager getChatManager();
+	CreatureManager getCreatureManager();
+	PlanetManager getPlanetManager();*/
+	
+	unsigned long getGalacticTime();
+	
+	unsigned int getWeatherID();  																																
+	
+	void setWeatherID(unsigned int value);
+	
+	void changeWeatherID(int value);
+	
+    boolean isWeatherEnabled();
+
+	void setWeatherEnabled(boolean value);
+	
+	void setWeatherWindX(float value);
+
+	void setWeatherWindY(float value);
+
+	float getWeatherWindX();
+	
+	float getWeatherWindY();
 }

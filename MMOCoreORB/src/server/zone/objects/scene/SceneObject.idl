@@ -59,13 +59,9 @@ import server.zone.ZoneProcessServerImplementation;
 
 include server.zone.ZoneClientSession;
 
-import server.zone.objects.scene.variables.StringId;
-import server.zone.objects.scene.variables.CustomizationVariables;
+include server.zone.objects.scene.variables.StringId;
 
-//import server.zone.objects.scene.variables.SceneObjectReference;
 import engine.core.ManagedReference;
-
-//import server.zone.objects.scene.variables.DeltaVector;
 
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, native Serializable {
@@ -316,8 +312,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	}
 	
 	public abstract boolean removeObject(string slot) {
-		//return true;
-		return children.drop(slot);
+		return true;
+		//return children.drop(slot);
 	}
 	
 	public void create(ZoneClientSession client);
@@ -363,9 +359,9 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 		return this.objectCRC;
 	}
 	
-	/*public StringId getObjectName() {
+	local public StringId getObjectName() {
 		return this.objectName;
-	}*/
+	}
 	
 	public unsigned int getGameObjectType() {
 		return this.gameObjectType;

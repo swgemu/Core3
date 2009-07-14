@@ -43,11 +43,14 @@
 IDLC = /usr/local/bin/idlc -rb
 IDLC55 = /usr/local/bin/idlc55
 
-IDL55_SOURCES = server/zone/ZoneServer.idl \
-				server/zone/Zone.idl
-				
+IDL55_SOURCES = 
 
-IDL_SOURCES = 	server/zone/ZoneClientSession.idl \
+#server/zone/Zone.idl \
+# server/zone/ZoneServer.idl add when namespace declare works
+				
+IDL_SOURCES = 	server/zone/Zone.idl \
+				server/zone/ZoneServer.idl \
+				server/zone/ZoneClientSession.idl \
 				server/zone/objects/scene/SceneObject.idl \
 				server/zone/objects/creature/CreatureObject.idl \
 				server/zone/objects/player/PlayerObject.idl \
@@ -55,7 +58,7 @@ IDL_SOURCES = 	server/zone/ZoneClientSession.idl \
 				server/zone/objects/tangible/TangibleObject.idl
 
 all:
-	cd src && $(IDLC) $(IDL_SOURCES)
+	#cd src && $(IDLC) $(IDL_SOURCES)
 	#cd src && $(IDLC55) $(IDL55_SOURCES)
 	cd build/unix && make -j4
 	cp build/unix/src/core3* bin
