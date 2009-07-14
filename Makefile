@@ -58,7 +58,7 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/tangible/TangibleObject.idl
 
 all:
-	#cd src && $(IDLC) $(IDL_SOURCES)
+	cd src && $(IDLC) $(IDL_SOURCES)
 	#cd src && $(IDLC55) $(IDL55_SOURCES)
 	cd build/unix && make -j4
 	cp build/unix/src/core3* bin
