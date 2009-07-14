@@ -42,7 +42,7 @@
 
 
 object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_f.sat",
 	arrangementDescriptors = {},
@@ -84,7 +84,7 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -98,14 +98,14 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 7,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -116,7 +116,7 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_aaph_koden, 2210665097)
 
 object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -158,7 +158,7 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -172,14 +172,14 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -190,7 +190,7 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_binna_jode, 3420862161)
 
 object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -232,7 +232,7 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -246,14 +246,14 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -264,7 +264,7 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_blerx_tango, 2463657324)
 
 object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -306,7 +306,7 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -320,14 +320,14 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -338,7 +338,7 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_boshek, 1226761307)
 
 object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -380,7 +380,7 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -394,14 +394,14 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -412,7 +412,7 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_brea_tonnika, 4285124243)
 
 object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -454,7 +454,7 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -468,14 +468,14 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -486,7 +486,7 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_capt_loftus, 4289563473)
 
 object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -528,7 +528,7 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -542,14 +542,14 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -560,7 +560,7 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_farious_gletch, 1952005063)
 
 object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bith_m.sat",
 	arrangementDescriptors = {},
@@ -602,7 +602,7 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -616,14 +616,14 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -634,7 +634,7 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_figrin_dan, 861642395)
 
 object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -676,7 +676,7 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -690,14 +690,14 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -708,7 +708,7 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_fixer, 119383383)
 
 object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -750,7 +750,7 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -764,14 +764,14 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -782,7 +782,7 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_hedon_istee, 4094763986)
 
 object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -824,7 +824,7 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -838,14 +838,14 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -856,7 +856,7 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_ikka_gesul, 1541010497)
 
 object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -898,7 +898,7 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -912,14 +912,14 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -930,7 +930,7 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_jilljoo_jab, 3479474175)
 
 object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -972,7 +972,7 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -986,14 +986,14 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1004,7 +1004,7 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kaeline_ungasan, 28682516)
 
 object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1046,7 +1046,7 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1060,14 +1060,14 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1078,7 +1078,7 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kitster_banai, 1703616350)
 
 object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1120,7 +1120,7 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1134,14 +1134,14 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1152,7 +1152,7 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kormund_thrylle, 1211559365)
 
 object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1194,7 +1194,7 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1208,14 +1208,14 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1226,7 +1226,7 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lilas_dinhint, 253776339)
 
 object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1268,7 +1268,7 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1282,14 +1282,14 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1300,7 +1300,7 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lt_harburik, 1553404717)
 
 object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1342,7 +1342,7 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1356,14 +1356,14 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1374,7 +1374,7 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mat_rags, 1901596031)
 
 object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1416,7 +1416,7 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1430,14 +1430,14 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1448,7 +1448,7 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_melios_purl, 4049550118)
 
 object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1490,7 +1490,7 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1504,14 +1504,14 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1522,7 +1522,7 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mikos_denari, 2971142656)
 
 object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -1564,7 +1564,7 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1578,14 +1578,14 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1596,7 +1596,7 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_nitra_vendallan, 3562269968)
 
 object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1638,7 +1638,7 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1652,14 +1652,14 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1670,7 +1670,7 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_om_aynat, 197060903)
 
 object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1712,7 +1712,7 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1726,14 +1726,14 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1744,7 +1744,7 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_pfilbee_jhorn, 3055869175)
 
 object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1786,7 +1786,7 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1800,14 +1800,14 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1818,7 +1818,7 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_phinea_shantee, 1801428554)
 
 object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -1860,7 +1860,7 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1874,14 +1874,14 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1892,7 +1892,7 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_rakir_banai, 2174990588)
 
 object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -1934,7 +1934,7 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1948,14 +1948,14 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1966,7 +1966,7 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_senni_tonnika, 3876719112)
 
 object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -2008,7 +2008,7 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2022,14 +2022,14 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2040,7 +2040,7 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tekil_barje, 153136187)
 
 object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {},
@@ -2082,7 +2082,7 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2096,14 +2096,14 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2114,7 +2114,7 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tour_aryon, 651899937)
 
 object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -2156,7 +2156,7 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2170,14 +2170,14 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2188,7 +2188,7 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_vardias_tyne, 2121259164)
 
 object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -2230,7 +2230,7 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2244,14 +2244,14 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2262,7 +2262,7 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_wilhalm_skrim, 4249752702)
 
 object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {},
@@ -2304,7 +2304,7 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2318,14 +2318,14 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 

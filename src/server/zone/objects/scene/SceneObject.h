@@ -29,6 +29,8 @@ class ZoneProcessServerImplementation;
 
 #include "engine/lua/LuaObject.h"
 
+#include "system/util/Vector.h"
+
 #include "system/util/VectorMap.h"
 
 #include "engine/util/Quaternion.h"
@@ -107,9 +109,9 @@ protected:
 
 	void _addSerializableVariables();
 
-	void _serialize(String& data);
+	void _create(ZoneClientSession* client);
 
-	void _deSerialize(const String& data);
+	void _destroy(ZoneClientSession* client);
 
 	friend class SceneObjectHelper;
 };
@@ -140,7 +142,9 @@ protected:
 
 	Quaternion* direction;
 
-	String arrangementDescriptor;
+	Vector<String >* arrangementDescriptors;
+
+	Vector<String >* slotDescriptors;
 
 	StringId* objectName;
 

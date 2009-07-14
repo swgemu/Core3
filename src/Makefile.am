@@ -64,6 +64,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/player/PlayerObject.cpp
 		
+#WARNING always add new .cpp before ObjectManager.cpp
+
 core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \

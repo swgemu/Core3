@@ -116,7 +116,7 @@ object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_base_shared_base_creature, 697154328)
 
 object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {2,2},
 	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptors = {},
@@ -158,7 +158,7 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -172,14 +172,14 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.25,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 

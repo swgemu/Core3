@@ -42,7 +42,7 @@
 
 
 object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -84,7 +84,7 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -98,14 +98,14 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 5,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -116,7 +116,7 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_bothan_female, 491942670)
 
 object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -158,7 +158,7 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -172,14 +172,14 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 5,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -190,7 +190,7 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_bothan_male, 1542946611)
 
 object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -232,7 +232,7 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -246,14 +246,14 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -264,7 +264,7 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_human_female, 4294949865)
 
 object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -306,7 +306,7 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -320,14 +320,14 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -338,7 +338,7 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_human_male, 2937962913)
 
 object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ith_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -380,7 +380,7 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -394,14 +394,14 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 33,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -412,7 +412,7 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_female, 3017834515)
 
 object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ith_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -454,7 +454,7 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -468,14 +468,14 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 33,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -486,7 +486,7 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_male, 951764932)
 
 object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -528,7 +528,7 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -542,14 +542,14 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 3,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -560,7 +560,7 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_moncal_female, 2553266142)
 
 object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -602,7 +602,7 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -616,14 +616,14 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 3,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -634,7 +634,7 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_moncal_male, 3116914088)
 
 object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -676,7 +676,7 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -690,14 +690,14 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -708,7 +708,7 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_rodian_female, 3261342811)
 
 object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -750,7 +750,7 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -764,14 +764,14 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -782,7 +782,7 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_rodian_male, 200920476)
 
 object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sul_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -824,7 +824,7 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -838,14 +838,14 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 49,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -856,7 +856,7 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_female, 359871514)
 
 object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sul_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -898,7 +898,7 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -912,14 +912,14 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 49,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -930,7 +930,7 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_male, 194222500)
 
 object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -972,7 +972,7 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -986,14 +986,14 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 2,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1004,7 +1004,7 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_female, 406594758)
 
 object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -1046,7 +1046,7 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1060,14 +1060,14 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 2,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1078,7 +1078,7 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_male, 1355045775)
 
 object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -1120,7 +1120,7 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1134,14 +1134,14 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 6,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1152,7 +1152,7 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_twilek_female, 2224509660)
 
 object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -1194,7 +1194,7 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1208,14 +1208,14 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 6,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1226,7 +1226,7 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_twilek_male, 4068532859)
 
 object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -1268,7 +1268,7 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1282,14 +1282,14 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 4,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1300,7 +1300,7 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_female, 229336546)
 
 object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -1342,7 +1342,7 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1356,14 +1356,14 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 4,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1374,7 +1374,7 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_male, 90470685)
 
 object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_f.sat",
 	arrangementDescriptors = {"rider"},
@@ -1416,7 +1416,7 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1430,14 +1430,14 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 7,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 
@@ -1448,7 +1448,7 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_female, 2850250749)
 
 object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_m.sat",
 	arrangementDescriptors = {"rider"},
@@ -1490,7 +1490,7 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,0,0,0,0,0,0,0,0,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1504,14 +1504,14 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 7,
-	speed = {0,0},
+	speed = {5.376,1.549},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {720,720},
 
 	useStructureFootprintOutline = 0,
 

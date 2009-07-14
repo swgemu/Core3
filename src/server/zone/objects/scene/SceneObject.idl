@@ -52,6 +52,7 @@ import engine.util.QuadTreeEntry;
 import system.io.Serializable;
 import engine.lua.Lua;
 import engine.lua.LuaObject;
+import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.Quaternion;
 
@@ -81,7 +82,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	protected native float positionZ;
 	protected native float positionY;
 	
-	protected string arrangementDescriptor;
+	protected Vector<string> arrangementDescriptors;
+	protected Vector<string> slotDescriptors;
 	
 	protected StringId objectName;
 	protected StringId detailedDescription;
@@ -279,9 +281,13 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	
 	public native void addSerializableVariables();
 	
-	public native void serialize(string data);
+	public void serialize(string data) {
+		Serializable.serialize(data);
+	}
 	
-	public native void deSerialize(final string data);
+	public void deSerialize(final string data) {
+		Serializable.deSerialize(data);
+	}
 	
 	public void redeploy() {
 	}
@@ -316,9 +322,9 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 		//return children.drop(slot);
 	}
 	
-	public void create(ZoneClientSession client);
+	public native void create(ZoneClientSession client);
 	
-	public void destroy(ZoneClientSession client);
+	public native void destroy(ZoneClientSession client);
 	
 	public abstract void sendTo(SceneObject player, boolean doClose = true) {
 	}
@@ -359,7 +365,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 		return this.objectCRC;
 	}
 	
-	local public StringId getObjectName() {
+	public local StringId getObjectName() {
 		return this.objectName;
 	}
 	

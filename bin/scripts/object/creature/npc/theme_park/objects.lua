@@ -42,7 +42,7 @@
 
 
 object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_event_transport.sat",
 	arrangementDescriptors = {},
@@ -84,7 +84,7 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -98,14 +98,14 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -116,7 +116,7 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport, 1686537229)
 
 object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_event_transport.sat",
 	arrangementDescriptors = {},
@@ -158,7 +158,7 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -172,14 +172,14 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -190,7 +190,7 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, 3010351388)
 
 object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lamda_shuttle_faction_perk.sat",
 	arrangementDescriptors = {},
@@ -232,7 +232,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -246,14 +246,14 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -264,7 +264,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, 3752954766)
 
 object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lamda_shuttle_faction_perk.sat",
 	arrangementDescriptors = {},
@@ -306,7 +306,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -320,14 +320,14 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 216,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -338,7 +338,7 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, 3655546204)
 
 object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_shuttle.sat",
 	arrangementDescriptors = {},
@@ -380,7 +380,7 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -394,14 +394,14 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -412,7 +412,7 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_shuttle, 1984806965)
 
 object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_transport.sat",
 	arrangementDescriptors = {},
@@ -454,7 +454,7 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -468,14 +468,14 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -486,7 +486,7 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport, 1196401137)
 
 object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_transport_theed_hangar.sat",
 	arrangementDescriptors = {},
@@ -528,7 +528,7 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -542,14 +542,14 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 1,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 

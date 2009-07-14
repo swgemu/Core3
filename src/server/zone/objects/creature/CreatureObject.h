@@ -81,6 +81,8 @@ protected:
 
 	virtual ~CreatureObject();
 
+	void _addSerializableVariables();
+
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
 

@@ -180,7 +180,7 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 

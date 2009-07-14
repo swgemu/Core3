@@ -68,8 +68,8 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 
 	gameObjectType = templateData->getIntField("gameObjectType");
 
-	arrangementDescriptor = templateData->getStringField("arrangementDescriptor");
-
+	arrangementDescriptors = new Vector<String>();
+	slotDescriptors = new Vector<String>();
 
 	addSerializableVariables();
 }
@@ -84,12 +84,13 @@ void SceneObjectImplementation::addSerializableVariables() {
 	addSerializableVariable("containerType", &containerType);
 	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
 	addSerializableVariable("gameObjectType", &gameObjectType);
-	addSerializableVariable("arrangementDescriptor", &arrangementDescriptor);
+	addSerializableVariable("arrangementDescriptors", arrangementDescriptors);
+	addSerializableVariable("slotDescriptors", slotDescriptors);
 }
 
-void SceneObjectImplementation::serialize(String& data) {
+/*void SceneObjectImplementation::serialize(String& data) {
 	Serializable::serialize(data);
-}
+}*/
 
 void SceneObjectImplementation::deSerialize(const String& data) {
 	Serializable::deSerialize(data);

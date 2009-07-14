@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_crafted_shared_2_1b_surgical_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/droid_21b.sat",
 	arrangementDescriptors = {},
@@ -84,7 +84,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid = SharedCreatureObj
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -98,14 +98,14 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid = SharedCreatureObj
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 220,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -116,7 +116,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid = SharedCreatureObj
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_2_1b_surgical_droid, 2915843418)
 
 object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/droid_21b.sat",
 	arrangementDescriptors = {},
@@ -158,7 +158,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCr
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -172,14 +172,14 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCr
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 220,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -190,7 +190,7 @@ object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced = SharedCr
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_2_1b_surgical_droid_advanced, 1752432055)
 
 object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
 	arrangementDescriptors = {},
@@ -232,7 +232,7 @@ object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplat
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -246,14 +246,14 @@ object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplat
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 217,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -264,7 +264,7 @@ object_creature_npc_droid_crafted_shared_3po_droid = SharedCreatureObjectTemplat
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_3po_droid, 2764227037)
 
 object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
 	arrangementDescriptors = {},
@@ -306,7 +306,7 @@ object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObje
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -320,14 +320,14 @@ object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObje
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 217,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -338,7 +338,7 @@ object_creature_npc_droid_crafted_shared_3po_droid_advanced = SharedCreatureObje
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_3po_droid_advanced, 604017168)
 
 object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/spider_droid.sat",
 	arrangementDescriptors = {},
@@ -380,7 +380,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatu
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -394,14 +394,14 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatu
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 219,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -412,7 +412,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid = SharedCreatu
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid, 3172589023)
 
 object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/spider_droid.sat",
 	arrangementDescriptors = {},
@@ -454,7 +454,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = Sha
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -468,14 +468,14 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = Sha
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 219,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -486,7 +486,7 @@ object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced = Sha
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_bomarr_monk_spider_droid_advanced, 2295784813)
 
 object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/cll8.sat",
 	arrangementDescriptors = {},
@@ -528,7 +528,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatu
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -542,14 +542,14 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatu
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 213,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -560,7 +560,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter = SharedCreatu
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter, 1144214850)
 
 object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/cll8.sat",
 	arrangementDescriptors = {},
@@ -602,7 +602,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = Sha
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -616,14 +616,14 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = Sha
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 213,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -634,7 +634,7 @@ object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced = Sha
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_cll_8_binary_load_lifter_advanced, 2691944817)
 
 object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dark_trooper_2.sat",
 	arrangementDescriptors = {},
@@ -676,7 +676,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureO
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -690,14 +690,14 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureO
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 207,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -708,7 +708,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii = SharedCreatureO
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii, 3813952229)
 
 object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dark_trooper_2.sat",
 	arrangementDescriptors = {},
@@ -750,7 +750,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = Shared
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -764,14 +764,14 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = Shared
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 207,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -782,7 +782,7 @@ object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced = Shared
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dark_trooper_phase_ii_advanced, 320581973)
 
 object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/droideka.sat",
 	arrangementDescriptors = {},
@@ -824,7 +824,7 @@ object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -838,14 +838,14 @@ object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 210,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -856,7 +856,7 @@ object_creature_npc_droid_crafted_shared_droideka = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_droideka, 3178328195)
 
 object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/droideka.sat",
 	arrangementDescriptors = {},
@@ -898,7 +898,7 @@ object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -912,14 +912,14 @@ object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 210,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -930,7 +930,7 @@ object_creature_npc_droid_crafted_shared_droideka_advanced = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_droideka_advanced, 2397633499)
 
 object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dz70.sat",
 	arrangementDescriptors = {},
@@ -972,7 +972,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCr
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -986,14 +986,14 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCr
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 222,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1004,7 +1004,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid = SharedCr
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid, 3709391789)
 
 object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dz70.sat",
 	arrangementDescriptors = {},
@@ -1046,7 +1046,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced =
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1060,14 +1060,14 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced =
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 222,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1078,7 +1078,7 @@ object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced =
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_dz_70_fugitive_tracker_droid_advanced, 1848917490)
 
 object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/eg6.sat",
 	arrangementDescriptors = {},
@@ -1120,7 +1120,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObject
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1134,14 +1134,14 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObject
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 215,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1152,7 +1152,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid = SharedCreatureObject
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_eg_6_power_droid, 2388417509)
 
 object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/eg6.sat",
 	arrangementDescriptors = {},
@@ -1194,7 +1194,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreat
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1208,14 +1208,14 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreat
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 215,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1226,7 +1226,7 @@ object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced = SharedCreat
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_eg_6_power_droid_advanced, 2251263338)
 
 object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ig88.sat",
 	arrangementDescriptors = {},
@@ -1268,7 +1268,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1282,14 +1282,14 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 203,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1300,7 +1300,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ig_assassin_droid, 103856343)
 
 object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ig88.sat",
 	arrangementDescriptors = {},
@@ -1342,7 +1342,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCrea
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1356,14 +1356,14 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCrea
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 203,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1374,7 +1374,7 @@ object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced = SharedCrea
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ig_assassin_droid_advanced, 3720942075)
 
 object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/probe_droid.sat",
 	arrangementDescriptors = {},
@@ -1416,7 +1416,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectT
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1430,14 +1430,14 @@ object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectT
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 216,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1448,7 +1448,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot = SharedCreatureObjectT
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_imperial_probot, 2904803500)
 
 object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/probe_droid.sat",
 	arrangementDescriptors = {},
@@ -1490,7 +1490,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatu
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1504,14 +1504,14 @@ object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatu
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 216,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1522,7 +1522,7 @@ object_creature_npc_droid_crafted_shared_imperial_probot_advanced = SharedCreatu
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_imperial_probot_advanced, 2998077962)
 
 object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ito.sat",
 	arrangementDescriptors = {},
@@ -1564,7 +1564,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1578,14 +1578,14 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 211,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1596,7 +1596,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_it_o_interrogator, 3950548383)
 
 object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ito.sat",
 	arrangementDescriptors = {},
@@ -1638,7 +1638,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCrea
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1652,14 +1652,14 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCrea
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 211,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1670,7 +1670,7 @@ object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced = SharedCrea
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_it_o_interrogator_advanced, 1493429482)
 
 object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/jedi_training_droid.sat",
 	arrangementDescriptors = {},
@@ -1712,7 +1712,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObj
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1726,14 +1726,14 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObj
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 212,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1744,7 +1744,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid = SharedCreatureObj
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_jedi_training_droid, 150852356)
 
 object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/jedi_training_droid.sat",
 	arrangementDescriptors = {},
@@ -1786,7 +1786,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCr
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1800,14 +1800,14 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCr
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 212,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1818,7 +1818,7 @@ object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced = SharedCr
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_jedi_training_droid_advanced, 1150973475)
 
 object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/le_repair.sat",
 	arrangementDescriptors = {},
@@ -1860,7 +1860,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectT
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1874,14 +1874,14 @@ object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectT
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 218,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1892,7 +1892,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid = SharedCreatureObjectT
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_le_repair_droid, 2448691902)
 
 object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/le_repair.sat",
 	arrangementDescriptors = {},
@@ -1934,7 +1934,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatu
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1948,14 +1948,14 @@ object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatu
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 218,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -1966,7 +1966,7 @@ object_creature_npc_droid_crafted_shared_le_repair_droid_advanced = SharedCreatu
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_le_repair_droid_advanced, 256863265)
 
 object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lin_demolition.sat",
 	arrangementDescriptors = {},
@@ -2008,7 +2008,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObje
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2022,14 +2022,14 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObje
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 208,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2040,7 +2040,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech = SharedCreatureObje
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_lin_demolitionmech, 4276460545)
 
 object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lin_demolition.sat",
 	arrangementDescriptors = {},
@@ -2082,7 +2082,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCre
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2096,14 +2096,14 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCre
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 208,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2114,7 +2114,7 @@ object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced = SharedCre
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_lin_demolitionmech_advanced, 3957385280)
 
 object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mouse_droid.sat",
 	arrangementDescriptors = {},
@@ -2156,7 +2156,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2170,14 +2170,14 @@ object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTempl
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 214,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2188,7 +2188,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid = SharedCreatureObjectTempl
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_mse_6_droid, 2169488229)
 
 object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mouse_droid.sat",
 	arrangementDescriptors = {},
@@ -2230,7 +2230,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureOb
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2244,14 +2244,14 @@ object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureOb
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 214,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2262,7 +2262,7 @@ object_creature_npc_droid_crafted_shared_mse_6_droid_advanced = SharedCreatureOb
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_mse_6_droid_advanced, 2206627850)
 
 object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/maul_probe_droid.sat",
 	arrangementDescriptors = {},
@@ -2304,7 +2304,7 @@ object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2318,14 +2318,14 @@ object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTempl
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 225,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2336,7 +2336,7 @@ object_creature_npc_droid_crafted_shared_probe_droid = SharedCreatureObjectTempl
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_probe_droid, 1995149002)
 
 object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/maul_probe_droid.sat",
 	arrangementDescriptors = {},
@@ -2378,7 +2378,7 @@ object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureOb
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2392,14 +2392,14 @@ object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureOb
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 225,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2410,7 +2410,7 @@ object_creature_npc_droid_crafted_shared_probe_droid_advanced = SharedCreatureOb
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_probe_droid_advanced, 1470713199)
 
 object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r2.sat",
 	arrangementDescriptors = {},
@@ -2452,7 +2452,7 @@ object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2466,14 +2466,14 @@ object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2484,7 +2484,7 @@ object_creature_npc_droid_crafted_shared_r2_droid = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r2_droid, 1532167005)
 
 object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r2.sat",
 	arrangementDescriptors = {},
@@ -2526,7 +2526,7 @@ object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2540,14 +2540,14 @@ object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2558,7 +2558,7 @@ object_creature_npc_droid_crafted_shared_r2_droid_advanced = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r2_droid_advanced, 4218729421)
 
 object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r3.sat",
 	arrangementDescriptors = {},
@@ -2600,7 +2600,7 @@ object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 1,
 	rangedIntCustomizationVariables = {},
@@ -2614,14 +2614,14 @@ object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2632,7 +2632,7 @@ object_creature_npc_droid_crafted_shared_r3_droid = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r3_droid, 2734654643)
 
 object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r3.sat",
 	arrangementDescriptors = {},
@@ -2674,7 +2674,7 @@ object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 1,
 	rangedIntCustomizationVariables = {},
@@ -2688,14 +2688,14 @@ object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2706,7 +2706,7 @@ object_creature_npc_droid_crafted_shared_r3_droid_advanced = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r3_droid_advanced, 3480632347)
 
 object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r4.sat",
 	arrangementDescriptors = {},
@@ -2748,7 +2748,7 @@ object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 2,
 	rangedIntCustomizationVariables = {},
@@ -2762,14 +2762,14 @@ object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2780,7 +2780,7 @@ object_creature_npc_droid_crafted_shared_r4_droid = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r4_droid, 1194993751)
 
 object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r4.sat",
 	arrangementDescriptors = {},
@@ -2822,7 +2822,7 @@ object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 2,
 	rangedIntCustomizationVariables = {},
@@ -2836,14 +2836,14 @@ object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2854,7 +2854,7 @@ object_creature_npc_droid_crafted_shared_r4_droid_advanced = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r4_droid_advanced, 1132172089)
 
 object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r5.sat",
 	arrangementDescriptors = {},
@@ -2896,7 +2896,7 @@ object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 3,
 	rangedIntCustomizationVariables = {},
@@ -2910,14 +2910,14 @@ object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -2928,7 +2928,7 @@ object_creature_npc_droid_crafted_shared_r5_droid = SharedCreatureObjectTemplate
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r5_droid, 3197546425)
 
 object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/astromech_r5.sat",
 	arrangementDescriptors = {},
@@ -2970,7 +2970,7 @@ object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjec
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 3,
 	rangedIntCustomizationVariables = {},
@@ -2984,14 +2984,14 @@ object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjec
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 204,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3002,7 +3002,7 @@ object_creature_npc_droid_crafted_shared_r5_droid_advanced = SharedCreatureObjec
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_r5_droid_advanced, 2004425967)
 
 object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ra7.sat",
 	arrangementDescriptors = {},
@@ -3044,7 +3044,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTem
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3058,14 +3058,14 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTem
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 206,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3076,7 +3076,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid = SharedCreatureObjectTem
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ra7_bug_droid, 1905884809)
 
 object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ra7.sat",
 	arrangementDescriptors = {},
@@ -3118,7 +3118,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreature
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3132,14 +3132,14 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreature
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 206,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3150,7 +3150,7 @@ object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced = SharedCreature
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_ra7_bug_droid_advanced, 298901338)
 
 object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_red.sat",
 	arrangementDescriptors = {},
@@ -3192,7 +3192,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObje
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3206,14 +3206,14 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObje
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 217,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3224,7 +3224,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid = SharedCreatureObje
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_red_protocol_droid, 774994860)
 
 object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_red.sat",
 	arrangementDescriptors = {},
@@ -3266,7 +3266,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCre
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3280,14 +3280,14 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCre
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 217,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3298,7 +3298,7 @@ object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced = SharedCre
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_red_protocol_droid_advanced, 2864675349)
 
 object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/robo_bartender.sat",
 	arrangementDescriptors = {},
@@ -3340,7 +3340,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureOb
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3354,14 +3354,14 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureOb
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 205,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3372,7 +3372,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid = SharedCreatureOb
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_robo_bartender_droid, 700179103)
 
 object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/robo_bartender.sat",
 	arrangementDescriptors = {},
@@ -3414,7 +3414,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedC
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3428,14 +3428,14 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedC
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 205,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3446,7 +3446,7 @@ object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced = SharedC
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_robo_bartender_droid_advanced, 1665563112)
 
 object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
 	arrangementDescriptors = {},
@@ -3488,7 +3488,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureO
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3502,14 +3502,14 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureO
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 217,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3520,7 +3520,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid = SharedCreatureO
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_silver_protocol_droid, 3802774389)
 
 object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
 	arrangementDescriptors = {},
@@ -3562,7 +3562,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = Shared
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3576,14 +3576,14 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = Shared
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 217,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3594,7 +3594,7 @@ object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced = Shared
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_silver_protocol_droid_advanced, 4209769049)
 
 object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tt8l.sat",
 	arrangementDescriptors = {},
@@ -3636,7 +3636,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTempl
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3650,14 +3650,14 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTempl
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 221,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3668,7 +3668,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid = SharedCreatureObjectTempl
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_droid, 3627618627)
 
 object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tt8l.sat",
 	arrangementDescriptors = {},
@@ -3710,7 +3710,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureOb
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3724,14 +3724,14 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureOb
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 221,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3742,7 +3742,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced = SharedCreatureOb
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_droid_advanced, 3840849400)
 
 object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tt8l_y7.sat",
 	arrangementDescriptors = {},
@@ -3784,7 +3784,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTe
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3798,14 +3798,14 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTe
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 209,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3816,7 +3816,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid = SharedCreatureObjectTe
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_y7_droid, 3258466577)
 
 object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tt8l_y7.sat",
 	arrangementDescriptors = {},
@@ -3858,7 +3858,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatur
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3872,14 +3872,14 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatur
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 209,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3890,7 +3890,7 @@ object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced = SharedCreatur
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_tt_8l_y7_droid_advanced, 3957782001)
 
 object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wed_treadwell.sat",
 	arrangementDescriptors = {},
@@ -3932,7 +3932,7 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObj
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3946,14 +3946,14 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObj
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 223,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -3964,7 +3964,7 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid = SharedCreatureObj
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_shared_wed_treadwell_droid, 1585315002)
 
 object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wed_treadwell.sat",
 	arrangementDescriptors = {},
@@ -4006,7 +4006,7 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced = SharedCr
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -4020,14 +4020,14 @@ object_creature_npc_droid_crafted_shared_wed_treadwell_droid_advanced = SharedCr
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 223,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
