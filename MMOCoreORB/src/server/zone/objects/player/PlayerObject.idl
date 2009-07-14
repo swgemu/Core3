@@ -57,5 +57,5 @@ class PlayerObject extends IntangibleObject {
 	
 	public PlayerObject(LuaObject templ, SceneObject parent = NULL);
 	
-	public void initialize(unsigned int creatureObjectCRC);
+	public native void initialize(unsigned int creatureObjectCRC);
 }

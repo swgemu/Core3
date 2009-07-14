@@ -69,10 +69,10 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	
-	protected DeltaVector<SceneObject > defenderList;
+	protected DeltaVector<SceneObject> defenderList;
 	protected unsigned int defenderListUpdateCounter;
 	
-	public void addSerializableVariables();
+	public native void addSerializableVariables();
 	 
 	public static boolean registered;
 	
@@ -82,7 +82,7 @@ class TangibleObject extends SceneObject {
 		return this.unknownByte;
 	}
 	
-	local public CustomizationVariables getCustomizationVariables() {
+	public local CustomizationVariables getCustomizationVariables() {
 		return customizationVariables;
 	}
 	

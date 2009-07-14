@@ -105,6 +105,12 @@ protected:
 
 	virtual ~SceneObject();
 
+	void _addSerializableVariables();
+
+	void _serialize(String& data);
+
+	void _deSerialize(const String& data);
+
 	friend class SceneObjectHelper;
 };
 

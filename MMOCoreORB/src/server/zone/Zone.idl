@@ -77,9 +77,10 @@ class Zone extends ManagedObject, native QuadTree {
 	
 	public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
 
-	public void startManagers();
 
-	public void stopManagers();
+	public native void startManagers();
+
+	public native void stopManagers();
 	
 	public float getHeight(float x, float y);
 

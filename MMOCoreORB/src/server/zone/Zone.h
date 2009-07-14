@@ -7,8 +7,6 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-
-
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "engine/util/QuadTree.h"
@@ -66,6 +64,10 @@ protected:
 	Zone(DummyConstructorParameter* param);
 
 	virtual ~Zone();
+
+	void _startManagers();
+
+	void _stopManagers();
 
 	friend class ZoneHelper;
 };

@@ -100,43 +100,43 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	
 	local public ServiceClient createConnection(Socket sock, dereferenced SocketAddress addr);
 	
-	public void init();
+	public native void init();
 
-	public void run();
+	public native void run();
 
-	public void shutdown();
+	public native void shutdown();
 
-	public void startManagers();
+	public native void startManagers();
 
-	public void stopManagers();
+	public native void stopManagers();
 	
-	public void start(int p, int mconn = 10);
+	public native void start(int p, int mconn = 10);
 	
-	public void stop();
+	public native void stop();
 
-	local public void handleMessage(ServiceClient client, Packet message);
+	public local native void handleMessage(ServiceClient client, Packet message);
 
-	local public boolean handleError(ServiceClient client, dereferenced Exception e);
+	public local native boolean handleError(ServiceClient client, dereferenced Exception e);
 	
-	public void addTotalSentPacket(int count);
-	public void addTotalResentPacket(int count);
+	public native void addTotalSentPacket(int count);
+	public native void addTotalResentPacket(int count);
 
-	public void printInfo(boolean forcedLog = true);
-	public void printEvents();
+	public native void printInfo(boolean forcedLog = true);
+	public native void printEvents();
 	
-	native public void lock();
-	native public void unlock();
+	public native void lock();
+	public native void unlock();
 	
-	native public void lock(boolean doLock);
-	native public void unlock(boolean doLock);
+	public native void lock(boolean doLock);
+	public native void unlock(boolean doLock);
 
 	public void fixScheduler() {
 		scheduler.fixQueue();
 	}
 	
-	public void changeUserCap(int amount = 50);
+	public native void changeUserCap(int amount = 50);
 
-	public int getConnectionCount();
+	public native int getConnectionCount();
 
 	public void increaseTotalDeletedPlayers() {
 		this.lock();
@@ -150,7 +150,7 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 		return galaxyID;
 	}
 	
-	public string getServerName();
+	public native string getServerName();
 	
 	public boolean isServerLocked() {
 		return serverState == LOCKED;
@@ -192,11 +192,11 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 		return startTimestamp;
 	}*/
 	
-	public unsigned long getNextCreatureID(boolean doLock = true);
-	public unsigned long getNextID(boolean doLock = true);
-	public unsigned long getNextCellID(boolean doLock = true);
+	public native unsigned long getNextCreatureID(boolean doLock = true);
+	public native unsigned long getNextID(boolean doLock = true);
+	public native unsigned long getNextCellID(boolean doLock = true);
 	
-	public void setServerName(final string servername);
+	public native void setServerName(final string servername);
 
 	public void setGalaxyID(int galaxyid) {
 		galaxyID = galaxyid;
@@ -210,12 +210,12 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 		unlock();
 	}
 	
-	public void setServerStateLocked();
+	public native void setServerStateLocked();
 
-	public void setServerStateOnline();
+	public native void setServerStateOnline();
 	
-	public void loadMessageoftheDay();
+	public native void loadMessageoftheDay();
 
-	public void changeMessageoftheDay(final string newMOTD);
-	public string getMessageoftheDay();
+	public native void changeMessageoftheDay(final string newMOTD);
+	public native string getMessageoftheDay();
 }
