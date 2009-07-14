@@ -66,7 +66,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, Sce
 
 	optionsBitmask = 0;
 
-	defenderList = new Vector<SceneObject*>();
+	defenderList = new DeltaVector<SceneObject*>();
 
 	addSerializableVariables();
 }

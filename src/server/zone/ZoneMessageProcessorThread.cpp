@@ -42,9 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneClientSession.h"
-
 #include "ZoneMessageProcessorThread.h"
+#include "ZonePacketHandler.h"
+
+#include "ZoneClientSession.h"
 
 void ZoneMessageProcessorThread::processMessage(Message* message) {
 	try {

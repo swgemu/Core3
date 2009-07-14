@@ -9,11 +9,9 @@
 
 class ZoneProcessServerImplementation;
 
-class StringId;
-
-class CustomizationVariables;
-
 #include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -89,6 +87,8 @@ public:
 	float getDirectionW();
 
 	unsigned int getObjectCRC();
+
+	StringId* getObjectName();
 
 	unsigned int getGameObjectType();
 
@@ -530,6 +530,8 @@ public:
 	float getDirectionW();
 
 	unsigned int getObjectCRC();
+
+	StringId* getObjectName();
 
 	unsigned int getGameObjectType();
 

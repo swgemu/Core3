@@ -42,101 +42,180 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-/*import "objects/ObjectMap";*/
+package server.zone;
 
-include "../db/ServerDatabase";
+import engine.service.proto.BasePacketHandler;
+import engine.service.DatagramServiceThread;
+import system.net.Socket;
+import system.net.SocketAddress;
+import system.net.Packet;
+import engine.service.ServiceClient;
+import engine.core.ManagedObject;
+import engine.sched.ScheduleManager;
+import system.lang.Exception;
+import system.util.Vector;
 
-interface ZoneServer {
-	ZoneServer(int threadcount, int galaxyid = 2) {
-		super(threadcount);
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.object.ObjectManager;
+import server.zone.Zone;
+
+class ZoneServer extends ManagedObject, native DatagramServiceThread {
+	BasePacketHandler phandler;
+	
+	ZoneProcessServerImplementation processor;
+
+	int procThreadCount;
+	
+	native ScheduleManager scheduler;
+	
+	Vector<Zone > zones;
+	
+	ObjectManager objectManager;
+
+	int totalSentPackets;
+	
+	int totalResentPackets;
+
+	int currentPlayers;
+	int maximumPlayers;
+	int totalPlayers;
+	int totalDeletedPlayers;
+
+	unsigned long nextCreatureID;
+	unsigned long nextCellID;
+
+	int serverState;
+
+	string name;
+	string messageoftheDay;
+
+	int galaxyID;
+	
+	public static final int OFFLINE = 0;
+	public static final int LOADING = 1;
+	public static final int ONLINE = 2;
+	public static final int LOCKED = 3;
+	
+	public ZoneServer(int processingThreads, int galaxyid = 2);
+	
+	local public ServiceClient createConnection(Socket sock, dereferenced SocketAddress addr);
+	
+	public void init();
+
+	public void run();
+
+	public void shutdown();
+
+	public void startManagers();
+
+	public void stopManagers();
+	
+	public void start(int p, int mconn = 10);
+	
+	public void stop();
+
+	local public void handleMessage(ServiceClient client, Packet message);
+
+	local public boolean handleError(ServiceClient client, dereferenced Exception e);
+	
+	public void addTotalSentPacket(int count);
+	public void addTotalResentPacket(int count);
+
+	public void printInfo(boolean forcedLog = true);
+	public void printEvents();
+	
+	native public void lock();
+	native public void unlock();
+	
+	native public void lock(boolean doLock);
+	native public void unlock(boolean doLock);
+
+	public void fixScheduler() {
+		scheduler.fixQueue();
+	}
+	
+	public void changeUserCap(int amount = 50);
+
+	public int getConnectionCount();
+
+	public void increaseTotalDeletedPlayers() {
+		this.lock();
+
+		++totalDeletedPlayers;
+
+		this.unlock();
+	}
+	
+	public int getGalaxyID() {
+		return galaxyID;
+	}
+	
+	public string getServerName();
+	
+	public boolean isServerLocked() {
+		return serverState == LOCKED;
 	}
 
-	void start(int port, int conn);
+	public boolean isServerOnline() {
+		return serverState == ONLINE;
+	}
 
-	void stop();
+	public boolean isServerOffline() {
+		return serverState == OFFLINE;
+	}
 
-	void startManagers();
+	public boolean isServerLoading() {
+		return serverState == LOADING;
+	}
 
-	// object methods	
-	/*void addObject(SceneObject obj, boolean doLock = true);
+	public int getServerState() {
+		return serverState;
+	}
 
-	SceneObject getObject(unsigned long oid, boolean doLock = true);
+	public Zone getZone(int index) {
+		return zones.get(index);
+	}
 
-	SceneObject removeObject(unsigned long oid, boolean doLock = true);
-	SceneObject removeObject(SceneObject obj, boolean doLock = true);
+	public int getMaxPlayers() {
+		return maximumPlayers;
+	}
 
-	boolean destroyObject(SceneObject obj, boolean doLock = true);
+	public int getTotalPlayers() {
+		return totalPlayers;
+	}
 
-	SceneObject getCachedObject(unsigned long oid, boolean doLock = true);
+	public int getDeletedPlayers() {
+		return totalDeletedPlayers;
+	}
 
-	SceneObject removeCachedObject(unsigned long oid, boolean doLock = true);
-	SceneObject removeCachedObject(SceneObject obj, boolean doLock = true);
+	/*public time_t getStartTimestamp() {
+		return startTimestamp;
+	}*/
 	
-	SceneObject createObject(unsigned int objectCRC, boolean doLock = true);*/
-
-	// administration methods
-	/*boolean banUser(String name, String admin);
+	public unsigned long getNextCreatureID(boolean doLock = true);
+	public unsigned long getNextID(boolean doLock = true);
+	public unsigned long getNextCellID(boolean doLock = true);
 	
-	boolean kickUser(String name, String admin);*/
+	public void setServerName(final string servername);
 
-	void changeUserCap(int amount = 50);
+	public void setGalaxyID(int galaxyid) {
+		galaxyID = galaxyid;
+	}
 
-	void addTotalSentPacket(int count);
-	void addTotalResentPacket(int count);
+	public void setServerState(int state) {
+		lock();
 
-	void lock();
-	void unlock();
-	
-	void increaseTotalDeletedPlayers();
+		serverState = state;
 
-	void printInfo();
+		unlock();
+	}
 	
-	void fixScheduler();
+	public void setServerStateLocked();
 
-	void changeMessageoftheDay(const String newMOTD);
-	void loadMessageoftheDay();
+	public void setServerStateOnline();
+	
+	public void loadMessageoftheDay();
 
-	// getters
-	/*ChatManager getChatManager();
-	GuildManager getGuildManager();
-	PlayerManager getPlayerManager();
-	UserManager getUserManager();
-	CraftingManager getCraftingManager();
-	ItemManager getItemManager();
-	ItemConfigManager getItemConfigManager();
-	ResourceManager getResourceManager();
-	LootTableManager getLootTableManager();
-	BazaarManager getBazaarManager();
-	BankManager getBankManager();
-	MissionManager getMissionManager();
-	CreatureManager getCreatureManager(int zone);
-	
-	Zone getZone(int index);*/
-	
-	String getServerName();
-	int getGalaxyID();
-	
-	boolean isServerLocked();
-	boolean isServerOnline();
-	boolean isServerOffline();
-	boolean isServerLoading();
-	int getServerState();
-	
-	int getConnectionCount();
-	int getTotalPlayers();
-	int getMaxPlayers();
-	int getDeletedPlayers();
-
-	unsigned long getStartTimestamp();
-	
-	unsigned long getNextCreatureID(boolean doLock = true);
-	unsigned long getNextID(boolean doLock = true);
-	unsigned long getNextCellID(boolean doLock = true);
-
-	String& getMessageoftheDay();
-	
-	// setters
-	void setServerState(int state);
-	void setServerStateLocked();
-	void setServerStateOnline();
+	public void changeMessageoftheDay(final string newMOTD);
+	public string getMessageoftheDay();
 }

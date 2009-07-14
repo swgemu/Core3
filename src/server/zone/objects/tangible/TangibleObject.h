@@ -7,6 +7,10 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+class CustomizationVariables;
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -25,6 +29,8 @@ public:
 	void addSerializableVariables();
 
 	byte getUnknownByte();
+
+	CustomizationVariables* getCustomizationVariables();
 
 	int getObjectCount();
 
@@ -72,6 +78,8 @@ protected:
 
 	int volume;
 
+	CustomizationVariables* customizationVariables;
+
 	int conditionDamage;
 
 	int maxCondition;
@@ -84,7 +92,7 @@ protected:
 
 	byte unknownByte;
 
-	Vector<SceneObject* >* defenderList;
+	DeltaVector<SceneObject* >* defenderList;
 
 	unsigned int defenderListUpdateCounter;
 
@@ -96,6 +104,8 @@ public:
 	void addSerializableVariables();
 
 	byte getUnknownByte();
+
+	CustomizationVariables* getCustomizationVariables();
 
 	int getObjectCount();
 

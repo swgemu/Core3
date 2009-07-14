@@ -44,7 +44,6 @@ which carries forward this exception.
 
 #include "ServerCore.h"
 
-
 #include "db/ServerDatabase.h"
 #include "db/ForumsDatabase.h"
 
@@ -59,6 +58,7 @@ which carries forward this exception.
 #include "zone/ZoneServer.h"
 
 #include "zone/managers/object/ObjectManager.h"
+
 
 ZoneServer* ServerCore::zoneServer = NULL;
 
