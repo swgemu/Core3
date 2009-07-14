@@ -84,7 +84,7 @@ object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -158,7 +158,7 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -190,7 +190,7 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_av21, 2842025402)
 
 object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {2,2},
 	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptors = {},
@@ -232,7 +232,7 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -246,14 +246,14 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 0,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -306,7 +306,7 @@ object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -380,7 +380,7 @@ object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -454,7 +454,7 @@ object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -528,7 +528,7 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -560,7 +560,7 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike, 1922373615)
 
 object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {2,2},
 	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptors = {},
@@ -602,7 +602,7 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -616,14 +616,14 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 0,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -676,7 +676,7 @@ object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -750,7 +750,7 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -782,7 +782,7 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_swoop, 2943197007)
 
 object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {2,2},
 	animationMapFilename = "",
 	appearanceFilename = "",
 	arrangementDescriptors = {},
@@ -824,7 +824,7 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -838,14 +838,14 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 0,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 

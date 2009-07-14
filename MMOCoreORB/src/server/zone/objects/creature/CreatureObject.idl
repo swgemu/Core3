@@ -116,7 +116,7 @@ class CreatureObject extends TangibleObject {
 
 	public CreatureObject(LuaObject templateData, SceneObject parent = NULL);
 	
-	public void addSerializableVariables();
+	public native void addSerializableVariables();
 	
 	public int getBankCredits() {
 		return this.bankCredits;

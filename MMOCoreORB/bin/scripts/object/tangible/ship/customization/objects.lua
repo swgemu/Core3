@@ -80,7 +80,7 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s01 = SharedTangibleObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 
@@ -130,7 +130,7 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 
@@ -180,7 +180,7 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 
@@ -230,7 +230,7 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 
@@ -280,7 +280,7 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 
@@ -330,7 +330,7 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	socketDestinations = {},
+	socketDestinations = {16777216},
 	structureFootprintFileName = "",
 	surfaceType = 0,
 

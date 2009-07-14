@@ -84,7 +84,7 @@ object_mobile_skeleton_shared_acklay = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -158,7 +158,7 @@ object_mobile_skeleton_shared_astromech = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -232,7 +232,7 @@ object_mobile_skeleton_shared_base_insect_moth = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -306,7 +306,7 @@ object_mobile_skeleton_shared_bat = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -380,7 +380,7 @@ object_mobile_skeleton_shared_bird_finch = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -454,7 +454,7 @@ object_mobile_skeleton_shared_bird_giant = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -528,7 +528,7 @@ object_mobile_skeleton_shared_bird_turkey = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -602,7 +602,7 @@ object_mobile_skeleton_shared_camel = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -676,7 +676,7 @@ object_mobile_skeleton_shared_canine = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -750,7 +750,7 @@ object_mobile_skeleton_shared_cat_domestic = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -824,7 +824,7 @@ object_mobile_skeleton_shared_cat_predatory = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -898,7 +898,7 @@ object_mobile_skeleton_shared_cll8 = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -972,7 +972,7 @@ object_mobile_skeleton_shared_dewback = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1046,7 +1046,7 @@ object_mobile_skeleton_shared_droid_2 = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1120,7 +1120,7 @@ object_mobile_skeleton_shared_droideka = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1194,7 +1194,7 @@ object_mobile_skeleton_shared_dz70 = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1268,7 +1268,7 @@ object_mobile_skeleton_shared_eg6 = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1342,7 +1342,7 @@ object_mobile_skeleton_shared_elephant = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,1,0,1,1,0,1,0,1,1,1,1,0,0,0},
+	postureAlignToTerrain = {1,1,1,1,1,1,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1416,7 +1416,7 @@ object_mobile_skeleton_shared_elephant_bantha = SharedCreatureObjectTemplate:new
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,1,0,1,1,0,1,0,1,1,1,1,0,0,0},
+	postureAlignToTerrain = {1,1,1,1,1,1,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1490,7 +1490,7 @@ object_mobile_skeleton_shared_fambaa = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1564,7 +1564,7 @@ object_mobile_skeleton_shared_frog = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1638,7 +1638,7 @@ object_mobile_skeleton_shared_giraffe = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1712,7 +1712,7 @@ object_mobile_skeleton_shared_goat = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1786,7 +1786,7 @@ object_mobile_skeleton_shared_griffon = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1860,7 +1860,7 @@ object_mobile_skeleton_shared_horse = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1934,7 +1934,7 @@ object_mobile_skeleton_shared_humanoid = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -1948,7 +1948,7 @@ object_mobile_skeleton_shared_humanoid = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
@@ -2008,7 +2008,7 @@ object_mobile_skeleton_shared_insect_basic = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,1,1,0,0,0,0,1,1,0,0,0,0,0,0},
+	postureAlignToTerrain = {1,1,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2082,7 +2082,7 @@ object_mobile_skeleton_shared_insect_mantis = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2156,7 +2156,7 @@ object_mobile_skeleton_shared_insect_moth = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2230,7 +2230,7 @@ object_mobile_skeleton_shared_ito = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2304,7 +2304,7 @@ object_mobile_skeleton_shared_kaadu = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2378,7 +2378,7 @@ object_mobile_skeleton_shared_lin_demolition = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2452,7 +2452,7 @@ object_mobile_skeleton_shared_lizard_basic = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2526,7 +2526,7 @@ object_mobile_skeleton_shared_lizard_giant = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2600,7 +2600,7 @@ object_mobile_skeleton_shared_mouse_droid = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2674,7 +2674,7 @@ object_mobile_skeleton_shared_mynock = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2748,7 +2748,7 @@ object_mobile_skeleton_shared_orb = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2822,7 +2822,7 @@ object_mobile_skeleton_shared_pig = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2896,7 +2896,7 @@ object_mobile_skeleton_shared_probe_droid = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -2970,7 +2970,7 @@ object_mobile_skeleton_shared_protocol_droid = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3044,7 +3044,7 @@ object_mobile_skeleton_shared_rabbit = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3118,7 +3118,7 @@ object_mobile_skeleton_shared_rancor = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3192,7 +3192,7 @@ object_mobile_skeleton_shared_rat = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3266,7 +3266,7 @@ object_mobile_skeleton_shared_robo_bartender = SharedCreatureObjectTemplate:new 
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3340,7 +3340,7 @@ object_mobile_skeleton_shared_simian_ape = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3414,7 +3414,7 @@ object_mobile_skeleton_shared_simian_monkey = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3488,7 +3488,7 @@ object_mobile_skeleton_shared_snake = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,1,1,1,1,1,0,1,1,0,0,0,0,0,0},
+	postureAlignToTerrain = {1,1,1,1,1,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3562,7 +3562,7 @@ object_mobile_skeleton_shared_spider = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {1,1,1,1,1,1,0,1,1,1,0,0,0,0,0},
+	postureAlignToTerrain = {1,1,1,1,1,1,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3636,7 +3636,7 @@ object_mobile_skeleton_shared_spider_droid = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3710,7 +3710,7 @@ object_mobile_skeleton_shared_tauntaun = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3784,7 +3784,7 @@ object_mobile_skeleton_shared_tt8l = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3858,7 +3858,7 @@ object_mobile_skeleton_shared_tt8l_y7 = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -3932,7 +3932,7 @@ object_mobile_skeleton_shared_wed_treadwell = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},

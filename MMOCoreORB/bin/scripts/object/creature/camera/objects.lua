@@ -42,7 +42,7 @@
 
 
 object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/intro_camera.sat",
 	arrangementDescriptors = {},
@@ -84,7 +84,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -98,14 +98,14 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
@@ -116,7 +116,7 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, 2217042692)
 
 object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:new {
-	acceleration = {0,0},
+	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/intro_controller.sat",
 	arrangementDescriptors = {},
@@ -158,7 +158,7 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 
 	paletteColorCustomizationVariables = {},
 	portalLayoutFilename = "",
-	postureAlignToTerrain = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
 	rangedIntCustomizationVariables = {},
@@ -172,14 +172,14 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,
-	speed = {0,0},
+	speed = {6,2},
 	stepHeight = 0.5,
 	structureFootprintFileName = "",
 	surfaceType = 0,
 	swimHeight = 1,
 
 	targetable = 1,
-	turnRate = {0,0},
+	turnRate = {90,180},
 
 	useStructureFootprintOutline = 0,
 
