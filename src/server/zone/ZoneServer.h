@@ -7,8 +7,6 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-
-
 class ObjectManager;
 
 
@@ -36,8 +34,11 @@ class ObjectManager;
 namespace server {
 namespace zone {
 
-class Zone;
+
 class ZoneProcessServerImplementation;
+
+class Zone;
+
 
 class ZoneServer : public ManagedObject {
 public:
@@ -136,6 +137,32 @@ protected:
 
 	virtual ~ZoneServer();
 
+	void _init();
+
+	void _run();
+
+	void _shutdown();
+
+	void _startManagers();
+
+	void _stopManagers();
+
+	void _start(int p, int mconn = 0x10);
+
+	void _stop();
+
+	void _handleMessage(ServiceClient* client, Packet* message);
+
+	bool _handleError(ServiceClient* client, Exception& e);
+
+	void _addTotalSentPacket(int count);
+
+	void _addTotalResentPacket(int count);
+
+	void _printInfo(bool forcedLog = true);
+
+	void _printEvents();
+
 	void _lock();
 
 	void _unlock();
@@ -143,6 +170,30 @@ protected:
 	void _lock(bool doLock);
 
 	void _unlock(bool doLock);
+
+	void _changeUserCap(int amount = 0x50);
+
+	int _getConnectionCount();
+
+	String _getServerName();
+
+	unsigned long long _getNextCreatureID(bool doLock = true);
+
+	unsigned long long _getNextID(bool doLock = true);
+
+	unsigned long long _getNextCellID(bool doLock = true);
+
+	void _setServerName(const String& servername);
+
+	void _setServerStateLocked();
+
+	void _setServerStateOnline();
+
+	void _loadMessageoftheDay();
+
+	void _changeMessageoftheDay(const String& newMOTD);
+
+	String _getMessageoftheDay();
 
 	String _return_getMessageoftheDay;
 	String _return_getServerName;

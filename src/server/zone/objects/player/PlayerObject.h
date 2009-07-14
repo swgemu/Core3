@@ -33,6 +33,8 @@ protected:
 
 	virtual ~PlayerObject();
 
+	void _initialize(unsigned int creatureObjectCRC);
+
 	friend class PlayerObjectHelper;
 };
 

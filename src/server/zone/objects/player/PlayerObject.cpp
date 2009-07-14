@@ -23,7 +23,7 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 PlayerObject::~PlayerObject() {
 }
 
-void PlayerObject::initialize(unsigned int creatureObjectCRC) {
+void PlayerObject::_initialize(unsigned int creatureObjectCRC) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

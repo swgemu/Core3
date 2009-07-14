@@ -21,7 +21,7 @@ SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param
 SceneObject::~SceneObject() {
 }
 
-void SceneObject::addSerializableVariables() {
+void SceneObject::_addSerializableVariables() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -33,7 +33,7 @@ void SceneObject::addSerializableVariables() {
 		((SceneObjectImplementation*) _impl)->addSerializableVariables();
 }
 
-void SceneObject::serialize(String& data) {
+void SceneObject::_serialize(String& data) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -46,7 +46,7 @@ void SceneObject::serialize(String& data) {
 		((SceneObjectImplementation*) _impl)->serialize(data);
 }
 
-void SceneObject::deSerialize(const String& data) {
+void SceneObject::_deSerialize(const String& data) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

@@ -45,8 +45,9 @@ IDLC55 = /usr/local/bin/idlc55
 
 IDL55_SOURCES = 
 
-#server/zone/Zone.idl \
-# server/zone/ZoneServer.idl add when namespace declare works
+#add when namespace declare works
+# server/zone/Zone.idl \
+#server/zone/ZoneServer.idl
 				
 IDL_SOURCES = 	server/zone/ZoneClientSession.idl \
 				server/zone/objects/scene/SceneObject.idl \

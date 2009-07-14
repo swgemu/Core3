@@ -53,6 +53,8 @@ protected:
 
 	virtual ~TangibleObject();
 
+	void _addSerializableVariables();
+
 	friend class TangibleObjectHelper;
 };
 
