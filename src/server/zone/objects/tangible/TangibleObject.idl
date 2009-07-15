@@ -82,9 +82,9 @@ class TangibleObject extends SceneObject {
 		return this.unknownByte;
 	}
 	
-	public local CustomizationVariables getCustomizationVariables() {
+	/*public local CustomizationVariables getCustomizationVariables() {
 		return customizationVariables;
-	}
+	}*/
 	
 	public int getObjectCount() {
 		return this.objectCount;

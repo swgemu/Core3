@@ -90,11 +90,11 @@ void SceneObjectImplementation::addSerializableVariables() {
 
 /*void SceneObjectImplementation::serialize(String& data) {
 	Serializable::serialize(data);
-}*/
+}
 
 void SceneObjectImplementation::deSerialize(const String& data) {
 	Serializable::deSerialize(data);
-}
+}*/
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);

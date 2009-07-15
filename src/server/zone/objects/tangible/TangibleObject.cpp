@@ -45,14 +45,6 @@ byte TangibleObject::getUnknownByte() {
 		return ((TangibleObjectImplementation*) _impl)->getUnknownByte();
 }
 
-CustomizationVariables* TangibleObject::getCustomizationVariables() {
-	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return ((TangibleObjectImplementation*) _impl)->getCustomizationVariables();
-}
-
 int TangibleObject::getObjectCount() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -168,11 +160,6 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 byte TangibleObjectImplementation::getUnknownByte() {
 	// server/zone/objects/tangible/TangibleObject.idl(82):  return this.unknownByte;
 	return this->unknownByte;
-}
-
-CustomizationVariables* TangibleObjectImplementation::getCustomizationVariables() {
-	// server/zone/objects/tangible/TangibleObject.idl(86):  return customizationVariables;
-	return customizationVariables;
 }
 
 int TangibleObjectImplementation::getObjectCount() {

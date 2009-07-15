@@ -50,7 +50,6 @@ which carries forward this exception.
 #include "Animations.h"
 
 #include "../../../ZoneProcessServerImplementation.h"
-#include "../../../managers/combat/CombatManager.h"
 
 class Skill {
 protected:
