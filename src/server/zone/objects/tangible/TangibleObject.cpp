@@ -21,7 +21,7 @@ TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(p
 TangibleObject::~TangibleObject() {
 }
 
-void TangibleObject::_addSerializableVariables() {
+void TangibleObject::addSerializableVariables() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

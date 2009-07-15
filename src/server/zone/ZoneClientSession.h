@@ -57,10 +57,6 @@ protected:
 
 	virtual ~ZoneClientSession();
 
-	void _lock(bool doLock = true);
-
-	void _unlock(bool doLock = true);
-
 	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
@@ -70,8 +66,6 @@ protected:
 } // namespace server
 
 using namespace server::zone;
-
-#include "engine/core/ManagedObjectImplementation.h"
 
 namespace server {
 namespace zone {

@@ -23,7 +23,7 @@ Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
 Zone::~Zone() {
 }
 
-void Zone::_startManagers() {
+void Zone::startManagers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -35,7 +35,7 @@ void Zone::_startManagers() {
 		((ZoneImplementation*) _impl)->startManagers();
 }
 
-void Zone::_stopManagers() {
+void Zone::stopManagers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

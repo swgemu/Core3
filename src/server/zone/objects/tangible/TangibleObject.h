@@ -7,7 +7,21 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace variables {
+
 class CustomizationVariables;
+
+} // namespace variables
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::variables;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
@@ -53,8 +67,6 @@ protected:
 
 	virtual ~TangibleObject();
 
-	void _addSerializableVariables();
-
 	friend class TangibleObjectHelper;
 };
 
@@ -64,8 +76,6 @@ protected:
 } // namespace server
 
 using namespace server::zone::objects::tangible;
-
-#include "server/zone/objects/scene/SceneObjectImplementation.h"
 
 namespace server {
 namespace zone {

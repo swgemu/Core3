@@ -33,7 +33,7 @@ ServiceClient* ZoneServer::createConnection(Socket* sock, SocketAddress& addr) {
 		return ((ZoneServerImplementation*) _impl)->createConnection(sock, addr);
 }
 
-void ZoneServer::_init() {
+void ZoneServer::init() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +45,7 @@ void ZoneServer::_init() {
 		((ZoneServerImplementation*) _impl)->init();
 }
 
-void ZoneServer::_run() {
+void ZoneServer::run() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +57,7 @@ void ZoneServer::_run() {
 		((ZoneServerImplementation*) _impl)->run();
 }
 
-void ZoneServer::_shutdown() {
+void ZoneServer::shutdown() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +69,7 @@ void ZoneServer::_shutdown() {
 		((ZoneServerImplementation*) _impl)->shutdown();
 }
 
-void ZoneServer::_startManagers() {
+void ZoneServer::startManagers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -81,7 +81,7 @@ void ZoneServer::_startManagers() {
 		((ZoneServerImplementation*) _impl)->startManagers();
 }
 
-void ZoneServer::_stopManagers() {
+void ZoneServer::stopManagers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -93,7 +93,7 @@ void ZoneServer::_stopManagers() {
 		((ZoneServerImplementation*) _impl)->stopManagers();
 }
 
-void ZoneServer::_start(int p, int mconn) {
+void ZoneServer::start(int p, int mconn) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +107,7 @@ void ZoneServer::_start(int p, int mconn) {
 		((ZoneServerImplementation*) _impl)->start(p, mconn);
 }
 
-void ZoneServer::_stop() {
+void ZoneServer::stop() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -119,7 +119,7 @@ void ZoneServer::_stop() {
 		((ZoneServerImplementation*) _impl)->stop();
 }
 
-void ZoneServer::_handleMessage(ServiceClient* client, Packet* message) {
+void ZoneServer::handleMessage(ServiceClient* client, Packet* message) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -127,7 +127,7 @@ void ZoneServer::_handleMessage(ServiceClient* client, Packet* message) {
 		((ZoneServerImplementation*) _impl)->handleMessage(client, message);
 }
 
-bool ZoneServer::_handleError(ServiceClient* client, Exception& e) {
+bool ZoneServer::handleError(ServiceClient* client, Exception& e) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -135,7 +135,7 @@ bool ZoneServer::_handleError(ServiceClient* client, Exception& e) {
 		return ((ZoneServerImplementation*) _impl)->handleError(client, e);
 }
 
-void ZoneServer::_addTotalSentPacket(int count) {
+void ZoneServer::addTotalSentPacket(int count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +148,7 @@ void ZoneServer::_addTotalSentPacket(int count) {
 		((ZoneServerImplementation*) _impl)->addTotalSentPacket(count);
 }
 
-void ZoneServer::_addTotalResentPacket(int count) {
+void ZoneServer::addTotalResentPacket(int count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -161,7 +161,7 @@ void ZoneServer::_addTotalResentPacket(int count) {
 		((ZoneServerImplementation*) _impl)->addTotalResentPacket(count);
 }
 
-void ZoneServer::_printInfo(bool forcedLog) {
+void ZoneServer::printInfo(bool forcedLog) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -174,7 +174,7 @@ void ZoneServer::_printInfo(bool forcedLog) {
 		((ZoneServerImplementation*) _impl)->printInfo(forcedLog);
 }
 
-void ZoneServer::_printEvents() {
+void ZoneServer::printEvents() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -186,7 +186,7 @@ void ZoneServer::_printEvents() {
 		((ZoneServerImplementation*) _impl)->printEvents();
 }
 
-void ZoneServer::_lock() {
+void ZoneServer::lock() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -198,7 +198,7 @@ void ZoneServer::_lock() {
 		((ZoneServerImplementation*) _impl)->lock();
 }
 
-void ZoneServer::_unlock() {
+void ZoneServer::unlock() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -210,7 +210,7 @@ void ZoneServer::_unlock() {
 		((ZoneServerImplementation*) _impl)->unlock();
 }
 
-void ZoneServer::_lock(bool doLock) {
+void ZoneServer::lock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -223,7 +223,7 @@ void ZoneServer::_lock(bool doLock) {
 		((ZoneServerImplementation*) _impl)->lock(doLock);
 }
 
-void ZoneServer::_unlock(bool doLock) {
+void ZoneServer::unlock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -248,7 +248,7 @@ void ZoneServer::fixScheduler() {
 		((ZoneServerImplementation*) _impl)->fixScheduler();
 }
 
-void ZoneServer::_changeUserCap(int amount) {
+void ZoneServer::changeUserCap(int amount) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -261,7 +261,7 @@ void ZoneServer::_changeUserCap(int amount) {
 		((ZoneServerImplementation*) _impl)->changeUserCap(amount);
 }
 
-int ZoneServer::_getConnectionCount() {
+int ZoneServer::getConnectionCount() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -297,7 +297,7 @@ int ZoneServer::getGalaxyID() {
 		return ((ZoneServerImplementation*) _impl)->getGalaxyID();
 }
 
-String ZoneServer::_getServerName() {
+String ZoneServer::getServerName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -419,7 +419,7 @@ int ZoneServer::getDeletedPlayers() {
 		return ((ZoneServerImplementation*) _impl)->getDeletedPlayers();
 }
 
-unsigned long long ZoneServer::_getNextCreatureID(bool doLock) {
+unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -432,7 +432,7 @@ unsigned long long ZoneServer::_getNextCreatureID(bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getNextCreatureID(doLock);
 }
 
-unsigned long long ZoneServer::_getNextID(bool doLock) {
+unsigned long long ZoneServer::getNextID(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -445,7 +445,7 @@ unsigned long long ZoneServer::_getNextID(bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getNextID(doLock);
 }
 
-unsigned long long ZoneServer::_getNextCellID(bool doLock) {
+unsigned long long ZoneServer::getNextCellID(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -458,7 +458,7 @@ unsigned long long ZoneServer::_getNextCellID(bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getNextCellID(doLock);
 }
 
-void ZoneServer::_setServerName(const String& servername) {
+void ZoneServer::setServerName(const String& servername) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -497,7 +497,7 @@ void ZoneServer::setServerState(int state) {
 		((ZoneServerImplementation*) _impl)->setServerState(state);
 }
 
-void ZoneServer::_setServerStateLocked() {
+void ZoneServer::setServerStateLocked() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -509,7 +509,7 @@ void ZoneServer::_setServerStateLocked() {
 		((ZoneServerImplementation*) _impl)->setServerStateLocked();
 }
 
-void ZoneServer::_setServerStateOnline() {
+void ZoneServer::setServerStateOnline() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -521,7 +521,7 @@ void ZoneServer::_setServerStateOnline() {
 		((ZoneServerImplementation*) _impl)->setServerStateOnline();
 }
 
-void ZoneServer::_loadMessageoftheDay() {
+void ZoneServer::loadMessageoftheDay() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -533,7 +533,7 @@ void ZoneServer::_loadMessageoftheDay() {
 		((ZoneServerImplementation*) _impl)->loadMessageoftheDay();
 }
 
-void ZoneServer::_changeMessageoftheDay(const String& newMOTD) {
+void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -546,7 +546,7 @@ void ZoneServer::_changeMessageoftheDay(const String& newMOTD) {
 		((ZoneServerImplementation*) _impl)->changeMessageoftheDay(newMOTD);
 }
 
-String ZoneServer::_getMessageoftheDay() {
+String ZoneServer::getMessageoftheDay() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

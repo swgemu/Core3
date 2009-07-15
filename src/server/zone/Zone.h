@@ -7,6 +7,26 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+namespace server {
+namespace zone {
+
+class ZoneProcessServerImplementation;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "engine/util/QuadTree.h"
@@ -21,10 +41,6 @@
 
 namespace server {
 namespace zone {
-
-class ZoneProcessServerImplementation;
-
-class ZoneServer;
 
 class Zone : public ManagedObject {
 public:
@@ -65,10 +81,6 @@ protected:
 
 	virtual ~Zone();
 
-	void _startManagers();
-
-	void _stopManagers();
-
 	friend class ZoneHelper;
 };
 
@@ -76,8 +88,6 @@ protected:
 } // namespace server
 
 using namespace server::zone;
-
-#include "engine/core/ManagedObjectImplementation.h"
 
 namespace server {
 namespace zone {

@@ -19,7 +19,7 @@ CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObjec
 CreatureObject::~CreatureObject() {
 }
 
-void CreatureObject::_addSerializableVariables() {
+void CreatureObject::addSerializableVariables() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

@@ -21,7 +21,7 @@ SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param
 SceneObject::~SceneObject() {
 }
 
-void SceneObject::_addSerializableVariables() {
+void SceneObject::addSerializableVariables() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -146,7 +146,7 @@ bool SceneObject::removeObject(String& slot) {
 		return ((SceneObjectImplementation*) _impl)->removeObject(slot);
 }
 
-void SceneObject::_create(ZoneClientSession* client) {
+void SceneObject::create(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +159,7 @@ void SceneObject::_create(ZoneClientSession* client) {
 		((SceneObjectImplementation*) _impl)->create(client);
 }
 
-void SceneObject::_destroy(ZoneClientSession* client) {
+void SceneObject::destroy(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

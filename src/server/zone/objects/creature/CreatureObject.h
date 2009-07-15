@@ -81,8 +81,6 @@ protected:
 
 	virtual ~CreatureObject();
 
-	void _addSerializableVariables();
-
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
 
@@ -95,8 +93,6 @@ protected:
 } // namespace server
 
 using namespace server::zone::objects::creature;
-
-#include "server/zone/objects/tangible/TangibleObjectImplementation.h"
 
 namespace server {
 namespace zone {
