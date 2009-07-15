@@ -44,7 +44,7 @@ namespace player {
 
 class PlayerObject : public IntangibleObject {
 public:
-	PlayerObject(LuaObject* templ, SceneObject* parent = null);
+	PlayerObject(LuaObject* templ, SceneObject* parent = NULL);
 
 	void initialize(unsigned int creatureObjectCRC);
 
@@ -74,7 +74,7 @@ class PlayerObjectImplementation : public IntangibleObjectImplementation {
 	ZoneClientSession* owner;
 
 public:
-	PlayerObjectImplementation(LuaObject* templ, SceneObject* parent = null);
+	PlayerObjectImplementation(LuaObject* templ, SceneObject* parent = NULL);
 
 	void initialize(unsigned int creatureObjectCRC);
 

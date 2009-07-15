@@ -277,7 +277,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
 
-	public native SceneObject(LuaObject templateData, SceneObject parent = NULL);
+	public native SceneObject(LuaObject templateData, SceneObject parent = null);
 	
 	public native void addSerializableVariables();
 	

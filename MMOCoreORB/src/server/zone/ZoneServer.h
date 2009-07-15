@@ -66,7 +66,7 @@ namespace zone {
 
 class ZoneServer : public ManagedObject {
 public:
-	ZoneServer(int processingThreads, int galaxyid = 0x2);
+	ZoneServer(int processingThreads, int galaxyid);
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
@@ -80,7 +80,7 @@ public:
 
 	void stopManagers();
 
-	void start(int p, int mconn = 0x10);
+	void start(int p, int mconn);
 
 	void stop();
 
@@ -92,7 +92,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog = true);
+	void printInfo(bool forcedLog);
 
 	void printEvents();
 
@@ -106,7 +106,7 @@ public:
 
 	void fixScheduler();
 
-	void changeUserCap(int amount = 0x50);
+	void changeUserCap(int amount);
 
 	int getConnectionCount();
 
@@ -134,11 +134,11 @@ public:
 
 	int getDeletedPlayers();
 
-	unsigned long long getNextCreatureID(bool doLock = true);
+	unsigned long long getNextCreatureID(bool doLock);
 
-	unsigned long long getNextID(bool doLock = true);
+	unsigned long long getNextID(bool doLock);
 
-	unsigned long long getNextCellID(bool doLock = true);
+	unsigned long long getNextCellID(bool doLock);
 
 	void setServerName(const String& servername);
 
@@ -219,7 +219,7 @@ public:
 
 	static const int LOCKED = 0x3;
 
-	ZoneServerImplementation(int processingThreads, int galaxyid = 0x2);
+	ZoneServerImplementation(int processingThreads, int galaxyid);
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
@@ -233,7 +233,7 @@ public:
 
 	void stopManagers();
 
-	void start(int p, int mconn = 0x10);
+	void start(int p, int mconn);
 
 	void stop();
 
@@ -245,7 +245,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog = true);
+	void printInfo(bool forcedLog);
 
 	void printEvents();
 
@@ -259,7 +259,7 @@ public:
 
 	void fixScheduler();
 
-	void changeUserCap(int amount = 0x50);
+	void changeUserCap(int amount);
 
 	int getConnectionCount();
 
@@ -287,11 +287,11 @@ public:
 
 	int getDeletedPlayers();
 
-	unsigned long long getNextCreatureID(bool doLock = true);
+	unsigned long long getNextCreatureID(bool doLock);
 
-	unsigned long long getNextID(bool doLock = true);
+	unsigned long long getNextID(bool doLock);
 
-	unsigned long long getNextCellID(bool doLock = true);
+	unsigned long long getNextCellID(bool doLock);
 
 	void setServerName(const String& servername);
 
