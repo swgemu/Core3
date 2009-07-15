@@ -36,7 +36,7 @@ public:
 
 	void disconnect(bool doLock);
 
-	void closeConnection(bool lockPlayer, bool doLock = true);
+	void closeConnection(bool lockPlayer, bool doLock);
 
 	void acquire();
 
@@ -44,9 +44,9 @@ public:
 
 	String getAddress();
 
-	void lock(bool doLock = true);
+	void lock(bool doLock);
 
-	void unlock(bool doLock = true);
+	void unlock(bool doLock);
 
 	void setSessionKey(unsigned int key);
 
@@ -86,7 +86,7 @@ public:
 
 	void disconnect(bool doLock);
 
-	void closeConnection(bool lockPlayer, bool doLock = true);
+	void closeConnection(bool lockPlayer, bool doLock);
 
 	void acquire();
 
@@ -94,9 +94,9 @@ public:
 
 	String getAddress();
 
-	void lock(bool doLock = true);
+	void lock(bool doLock);
 
-	void unlock(bool doLock = true);
+	void unlock(bool doLock);
 
 	void setSessionKey(unsigned int key);
 

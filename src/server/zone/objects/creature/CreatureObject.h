@@ -22,7 +22,7 @@ namespace creature {
 
 class CreatureObject : public TangibleObject {
 public:
-	CreatureObject(LuaObject* templateData, SceneObject* parent = null);
+	CreatureObject(LuaObject* templateData, SceneObject* parent = NULL);
 
 	void addSerializableVariables();
 
@@ -180,7 +180,7 @@ public:
 
 	static bool registered4;
 
-	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = null);
+	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
 	void addSerializableVariables();
 

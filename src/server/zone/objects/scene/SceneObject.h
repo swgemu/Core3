@@ -78,7 +78,7 @@ public:
 
 	void destroy(ZoneClientSession* client);
 
-	void sendTo(SceneObject* player, bool doClose = true);
+	void sendTo(SceneObject* player, bool doClose);
 
 	unsigned long long getObjectID();
 
@@ -521,7 +521,7 @@ public:
 
 	void destroy(ZoneClientSession* client);
 
-	virtual void sendTo(SceneObject* player, bool doClose = true);
+	virtual void sendTo(SceneObject* player, bool doClose);
 
 	unsigned long long getObjectID();
 
