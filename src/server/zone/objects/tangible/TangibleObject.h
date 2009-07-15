@@ -38,7 +38,7 @@ namespace tangible {
 
 class TangibleObject : public SceneObject {
 public:
-	TangibleObject(LuaObject* temp, SceneObject* parent = NULL);
+	TangibleObject(LuaObject* temp, SceneObject* parent = null);
 
 	void addSerializableVariables();
 
@@ -111,7 +111,7 @@ protected:
 public:
 	static bool registered;
 
-	TangibleObjectImplementation(LuaObject* temp, SceneObject* parent = NULL);
+	TangibleObjectImplementation(LuaObject* temp, SceneObject* parent = null);
 
 	void addSerializableVariables();
 
