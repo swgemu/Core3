@@ -7,9 +7,29 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
 class CreatureObject;
 
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+
 class ZoneClientSession;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -33,8 +53,6 @@ protected:
 
 	virtual ~PlayerObject();
 
-	void _initialize(unsigned int creatureObjectCRC);
-
 	friend class PlayerObjectHelper;
 };
 
@@ -44,8 +62,6 @@ protected:
 } // namespace server
 
 using namespace server::zone::objects::player;
-
-#include "server/zone/objects/intangible/IntangibleObjectImplementation.h"
 
 namespace server {
 namespace zone {

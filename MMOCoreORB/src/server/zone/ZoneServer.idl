@@ -68,7 +68,7 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	
 	native ScheduleManager scheduler;
 	
-	Vector<Zone > zones;
+	Vector<Zone> zones;
 	
 	ObjectManager objectManager;
 

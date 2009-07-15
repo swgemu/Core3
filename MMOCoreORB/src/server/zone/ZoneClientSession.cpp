@@ -121,7 +121,7 @@ String ZoneClientSession::getAddress() {
 		return ((ZoneClientSessionImplementation*) _impl)->getAddress();
 }
 
-void ZoneClientSession::_lock(bool doLock) {
+void ZoneClientSession::lock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +134,7 @@ void ZoneClientSession::_lock(bool doLock) {
 		((ZoneClientSessionImplementation*) _impl)->lock(doLock);
 }
 
-void ZoneClientSession::_unlock(bool doLock) {
+void ZoneClientSession::unlock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);

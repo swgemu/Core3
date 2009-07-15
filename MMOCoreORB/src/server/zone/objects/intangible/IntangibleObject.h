@@ -35,8 +35,6 @@ protected:
 
 using namespace server::zone::objects::intangible;
 
-#include "server/zone/objects/scene/SceneObjectImplementation.h"
-
 namespace server {
 namespace zone {
 namespace objects {

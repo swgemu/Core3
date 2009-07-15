@@ -7,7 +7,15 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+namespace server {
+namespace zone {
+
 class ZoneProcessServerImplementation;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
 
 #include "server/zone/ZoneClientSession.h"
 
@@ -107,12 +115,6 @@ protected:
 
 	virtual ~SceneObject();
 
-	void _addSerializableVariables();
-
-	void _create(ZoneClientSession* client);
-
-	void _destroy(ZoneClientSession* client);
-
 	friend class SceneObjectHelper;
 };
 
@@ -122,8 +124,6 @@ protected:
 } // namespace server
 
 using namespace server::zone::objects::scene;
-
-#include "engine/core/ManagedObjectImplementation.h"
 
 namespace server {
 namespace zone {
