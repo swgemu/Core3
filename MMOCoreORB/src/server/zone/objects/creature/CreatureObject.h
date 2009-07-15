@@ -24,8 +24,6 @@ class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(LuaObject* templateData, SceneObject* parent = NULL);
 
-	void addSerializableVariables();
-
 	int getBankCredits();
 
 	int getCashCredits();
@@ -186,8 +184,6 @@ public:
 
 	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
-	void addSerializableVariables();
-
 	int getBankCredits();
 
 	int getCashCredits();
@@ -245,6 +241,8 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	friend class CreatureObject;
 };
 
 class CreatureObjectAdapter : public TangibleObjectAdapter {
@@ -252,8 +250,6 @@ public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void addSerializableVariables();
 
 	int getBankCredits();
 

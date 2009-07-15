@@ -279,8 +279,6 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 
 	public native SceneObject(LuaObject templateData, SceneObject parent = null);
 	
-	public native void addSerializableVariables();
-	
 	public void serialize(string data) {
 		Serializable.serialize(data);
 	}
