@@ -54,8 +54,6 @@ class SceneObject : public ManagedObject {
 public:
 	SceneObject(LuaObject* templateData, SceneObject* parent = NULL);
 
-	void addSerializableVariables();
-
 	void serialize(String& data);
 
 	void deSerialize(const String& data);
@@ -497,8 +495,6 @@ public:
 
 	SceneObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
-	void addSerializableVariables();
-
 	void serialize(String& data);
 
 	void deSerialize(const String& data);
@@ -560,6 +556,10 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	void _serializationHelperMethod();
+
+	friend class SceneObject;
 };
 
 class SceneObjectAdapter : public ManagedObjectAdapter {
@@ -567,8 +567,6 @@ public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void addSerializableVariables();
 
 	void serialize(String& data);
 

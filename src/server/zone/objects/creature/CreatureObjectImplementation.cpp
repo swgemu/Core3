@@ -102,43 +102,4 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 	maxHamListUpdateCounter = 0;
 
 	frozen = 0;
-
-	addSerializableVariables();
 }
-
-void CreatureObjectImplementation::addSerializableVariables() {
-	addSerializableVariable("bankCredits", &bankCredits);
-	addSerializableVariable("cashCredits", &cashCredits);
-	addSerializableVariable("posture", &posture);
-	addSerializableVariable("factionRank", &factionRank);
-	addSerializableVariable("creatureLinkID", &creatureLinkID);
-	addSerializableVariable("shockWounds", &shockWounds);
-	addSerializableVariable("stateBitmask", &stateBitmask);
-	addSerializableVariable("speed", &speed);
-	addSerializableVariable("terrainNegotiation", &terrainNegotiation);
-	addSerializableVariable("acceleration", &acceleration);
-	addSerializableVariable("listenToID", &listenToID);
-	addSerializableVariable("level", &level);
-	addSerializableVariable("weaponID", &weaponID);
-	addSerializableVariable("groupID", &groupID);
-	addSerializableVariable("groupInviterID", &groupInviterID);
-	addSerializableVariable("groupInviteCounter", &groupInviteCounter);
-	addSerializableVariable("guildID", &guildID);
-	addSerializableVariable("targetID", &targetID);
-	addSerializableVariable("moodID", &moodID);
-	addSerializableVariable("performanceCounter", &performanceCounter);
-	addSerializableVariable("instrumentID", &instrumentID);
-	addSerializableVariable("encumbrances", encumbrances);
-	addSerializableVariable("encumbrancesUpdateCounter", &encumbrancesUpdateCounter);
-	addSerializableVariable("baseHealth", baseHealth);
-	addSerializableVariable("baseHealthUpdateCounter", &baseHealthUpdateCounter);
-	addSerializableVariable("wounds", wounds);
-	addSerializableVariable("woundsUpdateCounter", &woundsUpdateCounter);
-	addSerializableVariable("hamList", hamList);
-	addSerializableVariable("hamListUpdateCounter", &hamListUpdateCounter);
-	addSerializableVariable("maxHamList", maxHamList);
-	addSerializableVariable("maxHamListUpdateCounter", &maxHamListUpdateCounter);
-	addSerializableVariable("frozen", &frozen);
-}
-
-

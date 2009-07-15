@@ -85,6 +85,8 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	friend class PlayerObject;
 };
 
 class PlayerObjectAdapter : public IntangibleObjectAdapter {

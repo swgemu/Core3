@@ -53,6 +53,10 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	void _serializationHelperMethod();
+
+	friend class IntangibleObject;
 };
 
 class IntangibleObjectAdapter : public SceneObjectAdapter {

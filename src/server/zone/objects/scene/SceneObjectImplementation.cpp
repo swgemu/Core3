@@ -70,22 +70,6 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 
 	arrangementDescriptors = new Vector<String>();
 	slotDescriptors = new Vector<String>();
-
-	addSerializableVariables();
-}
-
-void SceneObjectImplementation::addSerializableVariables() {
-	addSerializableVariable("parent", parent);
-	addSerializableVariable("children", children);
-	addSerializableVariable("objectCRC", &objectCRC);
-	addSerializableVariable("direction", direction);
-	addSerializableVariable("objectName", objectName);
-	addSerializableVariable("detailedDescription", detailedDescription);
-	addSerializableVariable("containerType", &containerType);
-	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
-	addSerializableVariable("gameObjectType", &gameObjectType);
-	addSerializableVariable("arrangementDescriptors", arrangementDescriptors);
-	addSerializableVariable("slotDescriptors", slotDescriptors);
 }
 
 /*void SceneObjectImplementation::serialize(String& data) {

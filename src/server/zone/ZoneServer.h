@@ -316,6 +316,8 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	friend class ZoneServer;
 };
 
 class ZoneServerAdapter : public ManagedObjectAdapter {

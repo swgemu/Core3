@@ -109,6 +109,8 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	friend class ZoneClientSession;
 };
 
 class ZoneClientSessionAdapter : public ManagedObjectAdapter {
