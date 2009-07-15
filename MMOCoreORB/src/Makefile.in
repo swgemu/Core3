@@ -89,7 +89,9 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am__objects_1 = ZoneServer.$(OBJEXT) ZoneClientSession.$(OBJEXT) \
-	Zone.$(OBJEXT) SceneObject.$(OBJEXT)
+	Zone.$(OBJEXT) SceneObject.$(OBJEXT) \
+	IntangibleObject.$(OBJEXT) TangibleObject.$(OBJEXT) \
+	CreatureObject.$(OBJEXT) PlayerObject.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ConfigManager.$(OBJEXT) \
 	Features.$(OBJEXT) ForumsDatabase.$(OBJEXT) \
 	ServerDatabase.$(OBJEXT) LoginMessageProcessorThread.$(OBJEXT) \
@@ -101,7 +103,12 @@ am_core3_OBJECTS = $(am__objects_1) ConfigManager.$(OBJEXT) \
 	ZoneMessageProcessorThread.$(OBJEXT) \
 	ZoneProcessServerImplementation.$(OBJEXT) \
 	ZoneImplementation.$(OBJEXT) HeightMap.$(OBJEXT) \
-	SceneObjectImplementation.$(OBJEXT) main.$(OBJEXT)
+	SceneObjectImplementation.$(OBJEXT) \
+	IntangibleObjectImplementation.$(OBJEXT) \
+	TangibleObjectImplementation.$(OBJEXT) \
+	CreatureObjectImplementation.$(OBJEXT) \
+	PlayerObjectImplementation.$(OBJEXT) StringId.$(OBJEXT) \
+	ObjectManager.$(OBJEXT) main.$(OBJEXT)
 core3_OBJECTS = $(am_core3_OBJECTS)
 core3_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
@@ -233,8 +240,14 @@ INCLUDES = $(SYSTEM_INCLUDES) \
 core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
 				server/zone/Zone.cpp \
-				server/zone/objects/scene/SceneObject.cpp
+				server/zone/objects/scene/SceneObject.cpp \
+				server/zone/objects/intangible/IntangibleObject.cpp \
+				server/zone/objects/tangible/TangibleObject.cpp \
+				server/zone/objects/creature/CreatureObject.cpp \
+				server/zone/objects/player/PlayerObject.cpp
 
+
+#WARNING always add new .cpp before ObjectManager.cpp
 core3_SOURCES = $(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
@@ -254,6 +267,12 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
+		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/creature/CreatureObjectImplementation.cpp \
+		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/scene/variables/StringId.cpp \
+		server/zone/managers/object/ObjectManager.cpp \
 		main.cpp 
 
 all: all-am
@@ -323,18 +342,28 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ConfigManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CreatureObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Features.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ForumsDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HeightMap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IntangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginPacketHandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginProxyServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LoginServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PingServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PlayerObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PlayerObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ServerCore.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ServerDatabase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StringId.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Zone.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ZoneClientSession.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ZoneClientSessionImplementation.Po@am__quote@
@@ -415,6 +444,62 @@ SceneObject.obj: server/zone/objects/scene/SceneObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/SceneObject.cpp' object='SceneObject.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SceneObject.obj `if test -f 'server/zone/objects/scene/SceneObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/SceneObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/SceneObject.cpp'; fi`
+
+IntangibleObject.o: server/zone/objects/intangible/IntangibleObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IntangibleObject.o -MD -MP -MF $(DEPDIR)/IntangibleObject.Tpo -c -o IntangibleObject.o `test -f 'server/zone/objects/intangible/IntangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/intangible/IntangibleObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IntangibleObject.Tpo $(DEPDIR)/IntangibleObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/intangible/IntangibleObject.cpp' object='IntangibleObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IntangibleObject.o `test -f 'server/zone/objects/intangible/IntangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/intangible/IntangibleObject.cpp
+
+IntangibleObject.obj: server/zone/objects/intangible/IntangibleObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IntangibleObject.obj -MD -MP -MF $(DEPDIR)/IntangibleObject.Tpo -c -o IntangibleObject.obj `if test -f 'server/zone/objects/intangible/IntangibleObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/intangible/IntangibleObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/intangible/IntangibleObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IntangibleObject.Tpo $(DEPDIR)/IntangibleObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/intangible/IntangibleObject.cpp' object='IntangibleObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IntangibleObject.obj `if test -f 'server/zone/objects/intangible/IntangibleObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/intangible/IntangibleObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/intangible/IntangibleObject.cpp'; fi`
+
+TangibleObject.o: server/zone/objects/tangible/TangibleObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TangibleObject.o -MD -MP -MF $(DEPDIR)/TangibleObject.Tpo -c -o TangibleObject.o `test -f 'server/zone/objects/tangible/TangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/TangibleObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TangibleObject.Tpo $(DEPDIR)/TangibleObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/TangibleObject.cpp' object='TangibleObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TangibleObject.o `test -f 'server/zone/objects/tangible/TangibleObject.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/TangibleObject.cpp
+
+TangibleObject.obj: server/zone/objects/tangible/TangibleObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TangibleObject.obj -MD -MP -MF $(DEPDIR)/TangibleObject.Tpo -c -o TangibleObject.obj `if test -f 'server/zone/objects/tangible/TangibleObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/TangibleObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/TangibleObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TangibleObject.Tpo $(DEPDIR)/TangibleObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/TangibleObject.cpp' object='TangibleObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TangibleObject.obj `if test -f 'server/zone/objects/tangible/TangibleObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/TangibleObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/TangibleObject.cpp'; fi`
+
+CreatureObject.o: server/zone/objects/creature/CreatureObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureObject.o -MD -MP -MF $(DEPDIR)/CreatureObject.Tpo -c -o CreatureObject.o `test -f 'server/zone/objects/creature/CreatureObject.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/CreatureObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CreatureObject.Tpo $(DEPDIR)/CreatureObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/CreatureObject.cpp' object='CreatureObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureObject.o `test -f 'server/zone/objects/creature/CreatureObject.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/CreatureObject.cpp
+
+CreatureObject.obj: server/zone/objects/creature/CreatureObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureObject.obj -MD -MP -MF $(DEPDIR)/CreatureObject.Tpo -c -o CreatureObject.obj `if test -f 'server/zone/objects/creature/CreatureObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/CreatureObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/CreatureObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CreatureObject.Tpo $(DEPDIR)/CreatureObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/CreatureObject.cpp' object='CreatureObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureObject.obj `if test -f 'server/zone/objects/creature/CreatureObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/CreatureObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/CreatureObject.cpp'; fi`
+
+PlayerObject.o: server/zone/objects/player/PlayerObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObject.o -MD -MP -MF $(DEPDIR)/PlayerObject.Tpo -c -o PlayerObject.o `test -f 'server/zone/objects/player/PlayerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObject.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/PlayerObject.Tpo $(DEPDIR)/PlayerObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObject.cpp' object='PlayerObject.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObject.o `test -f 'server/zone/objects/player/PlayerObject.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObject.cpp
+
+PlayerObject.obj: server/zone/objects/player/PlayerObject.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObject.obj -MD -MP -MF $(DEPDIR)/PlayerObject.Tpo -c -o PlayerObject.obj `if test -f 'server/zone/objects/player/PlayerObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObject.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/PlayerObject.Tpo $(DEPDIR)/PlayerObject.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObject.cpp' object='PlayerObject.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObject.obj `if test -f 'server/zone/objects/player/PlayerObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObject.cpp'; fi`
 
 ConfigManager.o: server/conf/ConfigManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ConfigManager.o -MD -MP -MF $(DEPDIR)/ConfigManager.Tpo -c -o ConfigManager.o `test -f 'server/conf/ConfigManager.cpp' || echo '$(srcdir)/'`server/conf/ConfigManager.cpp
@@ -667,6 +752,90 @@ SceneObjectImplementation.obj: server/zone/objects/scene/SceneObjectImplementati
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/SceneObjectImplementation.cpp' object='SceneObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SceneObjectImplementation.obj `if test -f 'server/zone/objects/scene/SceneObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/SceneObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/SceneObjectImplementation.cpp'; fi`
+
+IntangibleObjectImplementation.o: server/zone/objects/intangible/IntangibleObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IntangibleObjectImplementation.o -MD -MP -MF $(DEPDIR)/IntangibleObjectImplementation.Tpo -c -o IntangibleObjectImplementation.o `test -f 'server/zone/objects/intangible/IntangibleObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/intangible/IntangibleObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IntangibleObjectImplementation.Tpo $(DEPDIR)/IntangibleObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/intangible/IntangibleObjectImplementation.cpp' object='IntangibleObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IntangibleObjectImplementation.o `test -f 'server/zone/objects/intangible/IntangibleObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/intangible/IntangibleObjectImplementation.cpp
+
+IntangibleObjectImplementation.obj: server/zone/objects/intangible/IntangibleObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT IntangibleObjectImplementation.obj -MD -MP -MF $(DEPDIR)/IntangibleObjectImplementation.Tpo -c -o IntangibleObjectImplementation.obj `if test -f 'server/zone/objects/intangible/IntangibleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/intangible/IntangibleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/intangible/IntangibleObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/IntangibleObjectImplementation.Tpo $(DEPDIR)/IntangibleObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/intangible/IntangibleObjectImplementation.cpp' object='IntangibleObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o IntangibleObjectImplementation.obj `if test -f 'server/zone/objects/intangible/IntangibleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/intangible/IntangibleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/intangible/IntangibleObjectImplementation.cpp'; fi`
+
+TangibleObjectImplementation.o: server/zone/objects/tangible/TangibleObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TangibleObjectImplementation.o -MD -MP -MF $(DEPDIR)/TangibleObjectImplementation.Tpo -c -o TangibleObjectImplementation.o `test -f 'server/zone/objects/tangible/TangibleObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/TangibleObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TangibleObjectImplementation.Tpo $(DEPDIR)/TangibleObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/TangibleObjectImplementation.cpp' object='TangibleObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TangibleObjectImplementation.o `test -f 'server/zone/objects/tangible/TangibleObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/TangibleObjectImplementation.cpp
+
+TangibleObjectImplementation.obj: server/zone/objects/tangible/TangibleObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TangibleObjectImplementation.obj -MD -MP -MF $(DEPDIR)/TangibleObjectImplementation.Tpo -c -o TangibleObjectImplementation.obj `if test -f 'server/zone/objects/tangible/TangibleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/TangibleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/TangibleObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TangibleObjectImplementation.Tpo $(DEPDIR)/TangibleObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/TangibleObjectImplementation.cpp' object='TangibleObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TangibleObjectImplementation.obj `if test -f 'server/zone/objects/tangible/TangibleObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/TangibleObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/TangibleObjectImplementation.cpp'; fi`
+
+CreatureObjectImplementation.o: server/zone/objects/creature/CreatureObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureObjectImplementation.o -MD -MP -MF $(DEPDIR)/CreatureObjectImplementation.Tpo -c -o CreatureObjectImplementation.o `test -f 'server/zone/objects/creature/CreatureObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/CreatureObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CreatureObjectImplementation.Tpo $(DEPDIR)/CreatureObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/CreatureObjectImplementation.cpp' object='CreatureObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureObjectImplementation.o `test -f 'server/zone/objects/creature/CreatureObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/creature/CreatureObjectImplementation.cpp
+
+CreatureObjectImplementation.obj: server/zone/objects/creature/CreatureObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureObjectImplementation.obj -MD -MP -MF $(DEPDIR)/CreatureObjectImplementation.Tpo -c -o CreatureObjectImplementation.obj `if test -f 'server/zone/objects/creature/CreatureObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/CreatureObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/CreatureObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CreatureObjectImplementation.Tpo $(DEPDIR)/CreatureObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/creature/CreatureObjectImplementation.cpp' object='CreatureObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CreatureObjectImplementation.obj `if test -f 'server/zone/objects/creature/CreatureObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/creature/CreatureObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/creature/CreatureObjectImplementation.cpp'; fi`
+
+PlayerObjectImplementation.o: server/zone/objects/player/PlayerObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObjectImplementation.o -MD -MP -MF $(DEPDIR)/PlayerObjectImplementation.Tpo -c -o PlayerObjectImplementation.o `test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/PlayerObjectImplementation.Tpo $(DEPDIR)/PlayerObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObjectImplementation.cpp' object='PlayerObjectImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObjectImplementation.o `test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/PlayerObjectImplementation.cpp
+
+PlayerObjectImplementation.obj: server/zone/objects/player/PlayerObjectImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT PlayerObjectImplementation.obj -MD -MP -MF $(DEPDIR)/PlayerObjectImplementation.Tpo -c -o PlayerObjectImplementation.obj `if test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObjectImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/PlayerObjectImplementation.Tpo $(DEPDIR)/PlayerObjectImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObjectImplementation.cpp' object='PlayerObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObjectImplementation.obj `if test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObjectImplementation.cpp'; fi`
+
+StringId.o: server/zone/objects/scene/variables/StringId.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StringId.o -MD -MP -MF $(DEPDIR)/StringId.Tpo -c -o StringId.o `test -f 'server/zone/objects/scene/variables/StringId.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/variables/StringId.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StringId.Tpo $(DEPDIR)/StringId.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/variables/StringId.cpp' object='StringId.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StringId.o `test -f 'server/zone/objects/scene/variables/StringId.cpp' || echo '$(srcdir)/'`server/zone/objects/scene/variables/StringId.cpp
+
+StringId.obj: server/zone/objects/scene/variables/StringId.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT StringId.obj -MD -MP -MF $(DEPDIR)/StringId.Tpo -c -o StringId.obj `if test -f 'server/zone/objects/scene/variables/StringId.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/variables/StringId.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/variables/StringId.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/StringId.Tpo $(DEPDIR)/StringId.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/scene/variables/StringId.cpp' object='StringId.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o StringId.obj `if test -f 'server/zone/objects/scene/variables/StringId.cpp'; then $(CYGPATH_W) 'server/zone/objects/scene/variables/StringId.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/scene/variables/StringId.cpp'; fi`
+
+ObjectManager.o: server/zone/managers/object/ObjectManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectManager.o -MD -MP -MF $(DEPDIR)/ObjectManager.Tpo -c -o ObjectManager.o `test -f 'server/zone/managers/object/ObjectManager.cpp' || echo '$(srcdir)/'`server/zone/managers/object/ObjectManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectManager.Tpo $(DEPDIR)/ObjectManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/object/ObjectManager.cpp' object='ObjectManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectManager.o `test -f 'server/zone/managers/object/ObjectManager.cpp' || echo '$(srcdir)/'`server/zone/managers/object/ObjectManager.cpp
+
+ObjectManager.obj: server/zone/managers/object/ObjectManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectManager.obj -MD -MP -MF $(DEPDIR)/ObjectManager.Tpo -c -o ObjectManager.obj `if test -f 'server/zone/managers/object/ObjectManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/object/ObjectManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/object/ObjectManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectManager.Tpo $(DEPDIR)/ObjectManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/object/ObjectManager.cpp' object='ObjectManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectManager.obj `if test -f 'server/zone/managers/object/ObjectManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/object/ObjectManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/object/ObjectManager.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

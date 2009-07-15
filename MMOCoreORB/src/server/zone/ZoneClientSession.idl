@@ -59,19 +59,19 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 	
 	boolean disconnecting;
 	
-	public ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
+	public native ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
 	
-	public void sendMessage(BaseMessage msg);
-	public void sendMessage(StandaloneBaseMessage msg);
+	public native void sendMessage(BaseMessage msg);
+	public native void sendMessage(StandaloneBaseMessage msg);
 	
-	public void disconnect();
-	public void disconnect(boolean doLock);
+	public native void disconnect();
+	public native void disconnect(boolean doLock);
 
-	public void closeConnection(boolean lockPlayer, boolean doLock = true);
+	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 
-	public void acquire();
+	public native void acquire();
 
-	public void release();
+	public native void release();
 	
 	public dereferenced string getAddress() {
 		return BaseClientProxy.getAddress();

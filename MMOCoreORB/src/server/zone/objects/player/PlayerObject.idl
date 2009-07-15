@@ -52,10 +52,11 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
 
 class PlayerObject extends IntangibleObject {
-	CreatureObject creatureObject;
-	ZoneClientSession owner;
+	private CreatureObject creatureObject;
 	
-	public PlayerObject(LuaObject templ, SceneObject parent = NULL);
+	private ZoneClientSession owner;
+	
+	public native PlayerObject(LuaObject templ, SceneObject parent = null);
 	
 	public native void initialize(unsigned int creatureObjectCRC);
 }

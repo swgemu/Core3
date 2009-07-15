@@ -76,7 +76,7 @@ class TangibleObject extends SceneObject {
 	 
 	public static boolean registered;
 	
-	public TangibleObject(LuaObject temp, SceneObject parent = NULL);
+	public native TangibleObject(LuaObject temp, SceneObject parent = null);
 	
 	public byte getUnknownByte() {
 		return this.unknownByte;

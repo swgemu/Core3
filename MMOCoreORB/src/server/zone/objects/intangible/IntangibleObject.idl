@@ -50,5 +50,5 @@ import server.zone.objects.scene.SceneObject;
 class IntangibleObject extends SceneObject {
 	public static boolean registered;
 	
-	public IntangibleObject(LuaObject templ, SceneObject parent = NULL);
+	public native IntangibleObject(LuaObject templ, SceneObject parent = null);
 }

@@ -49,7 +49,8 @@ IDL55_SOURCES =
 # server/zone/Zone.idl \
 #server/zone/ZoneServer.idl
 				
-IDL_SOURCES = 	server/zone/ZoneClientSession.idl \
+IDL_SOURCES = 	server/zone/ZoneServer.idl \
+				server/zone/ZoneClientSession.idl \
 				server/zone/objects/scene/SceneObject.idl \
 				server/zone/objects/creature/CreatureObject.idl \
 				server/zone/objects/player/PlayerObject.idl \

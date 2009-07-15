@@ -114,7 +114,7 @@ class CreatureObject extends TangibleObject {
 	public static boolean registered3;
 	public static boolean registered4;
 
-	public CreatureObject(LuaObject templateData, SceneObject parent = NULL);
+	public native CreatureObject(LuaObject templateData, SceneObject parent = null);
 	
 	public native void addSerializableVariables();
 	
