@@ -53,6 +53,11 @@ which carries forward this exception.
 
 #include "engine/util/ObjectFactory.h"
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace object {
+
 class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManager> {
 	ObjectMap* objectMap;
 	ObjectMap* objectCacheMap;
@@ -87,5 +92,12 @@ public:
 
 	static int includeFile(lua_State* L);
 };
+
+}
+}
+}
+}
+
+using namespace server::zone::managers::object;
 
 #endif /*OBJECTMANAGER_H_*/

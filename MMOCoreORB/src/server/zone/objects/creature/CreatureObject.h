@@ -105,6 +105,10 @@ protected:
 
 	int cashCredits;
 
+	int gender;
+
+	int species;
+
 	Vector<int >* baseHealth;
 
 	unsigned int baseHealthUpdateCounter;

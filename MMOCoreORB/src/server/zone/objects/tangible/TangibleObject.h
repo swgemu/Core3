@@ -44,8 +44,6 @@ public:
 
 	byte getUnknownByte();
 
-	CustomizationVariables* getCustomizationVariables();
-
 	int getObjectCount();
 
 	int getMaxCondition();
@@ -116,8 +114,6 @@ public:
 	void addSerializableVariables();
 
 	byte getUnknownByte();
-
-	CustomizationVariables* getCustomizationVariables();
 
 	int getObjectCount();
 

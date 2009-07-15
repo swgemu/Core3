@@ -56,6 +56,9 @@ class CreatureObject extends TangibleObject {
 	protected int bankCredits;
 	protected int cashCredits;
 	
+	protected int gender;
+	protected int species;
+	
 	protected Vector<int> baseHealth;
 	protected unsigned int baseHealthUpdateCounter;
 	

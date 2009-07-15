@@ -231,7 +231,7 @@ void ServerCore::handleCommands() {
 					loginServer->printInfo();
 
 				if (zoneServer != NULL)
-					zoneServer->printInfo();
+					zoneServer->printInfo(true);
 
 				if (pingServer != NULL)
 					pingServer->printInfo();
@@ -243,7 +243,7 @@ void ServerCore::handleCommands() {
 					zoneServer->setServerStateOnline();
 			} else if (command == "icap") {
 				if (zoneServer != NULL)
-					zoneServer->changeUserCap();
+					zoneServer->changeUserCap(50);
 			} else if (command == "dcap") {
 				if (zoneServer != NULL)
 					zoneServer->changeUserCap(-50);
