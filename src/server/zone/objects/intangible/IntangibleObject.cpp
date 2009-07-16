@@ -38,6 +38,8 @@ DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
 }
 
 void IntangibleObjectImplementation::_serializationHelperMethod() {
+	SceneObjectImplementation::_serializationHelperMethod();
+
 	addSerializableVariable("registered", &registered);
 }
 
