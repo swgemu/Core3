@@ -67,6 +67,9 @@ public:
 
 	static Lua* luaTemplatesInstance;
 
+private:
+	void registerObjectTypes();
+
 public:
 	ObjectManager();
 

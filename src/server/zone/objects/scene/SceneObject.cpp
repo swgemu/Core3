@@ -384,16 +384,15 @@ void SceneObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("containerType", &containerType);
 	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
 	addSerializableVariable("gameObjectType", &gameObjectType);
-	addSerializableVariable("registered", &registered);
 }
 
 void SceneObjectImplementation::serialize(String& data) {
-	// server/zone/objects/scene/SceneObject.idl(283):  Serializable.serialize(data);
+	// server/zone/objects/scene/SceneObject.idl(281):  Serializable.serialize(data);
 	Serializable::serialize(data);
 }
 
 void SceneObjectImplementation::deSerialize(const String& data) {
-	// server/zone/objects/scene/SceneObject.idl(287):  Serializable.deSerialize(data);
+	// server/zone/objects/scene/SceneObject.idl(285):  Serializable.deSerialize(data);
 	Serializable::deSerialize(data);
 }
 
@@ -410,17 +409,17 @@ void SceneObjectImplementation::removeUndeploymentEvent() {
 }
 
 bool SceneObjectImplementation::isPlayer() {
-	// server/zone/objects/scene/SceneObject.idl(303):  return true;
+	// server/zone/objects/scene/SceneObject.idl(301):  return true;
 	return true;
 }
 
 bool SceneObjectImplementation::addObject(String& slot, SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl(315):  return true;
+	// server/zone/objects/scene/SceneObject.idl(313):  return true;
 	return true;
 }
 
 bool SceneObjectImplementation::removeObject(String& slot) {
-	// server/zone/objects/scene/SceneObject.idl(319):  return true;
+	// server/zone/objects/scene/SceneObject.idl(317):  return true;
 	return true;
 }
 
@@ -428,77 +427,77 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
 unsigned long long SceneObjectImplementation::getObjectID() {
-	// server/zone/objects/scene/SceneObject.idl(331):  return QuadTreeEntry.objectID;
+	// server/zone/objects/scene/SceneObject.idl(329):  return QuadTreeEntry.objectID;
 	return QuadTreeEntry::objectID;
 }
 
 float SceneObjectImplementation::getPositionX() {
-	// server/zone/objects/scene/SceneObject.idl(335):  return QuadTreeEntry.getPositionX();
+	// server/zone/objects/scene/SceneObject.idl(333):  return QuadTreeEntry.getPositionX();
 	return QuadTreeEntry::getPositionX();
 }
 
 float SceneObjectImplementation::getPositionZ() {
-	// server/zone/objects/scene/SceneObject.idl(339):  return QuadTreeEntry.getPositionZ();
+	// server/zone/objects/scene/SceneObject.idl(337):  return QuadTreeEntry.getPositionZ();
 	return QuadTreeEntry::getPositionZ();
 }
 
 float SceneObjectImplementation::getPositionY() {
-	// server/zone/objects/scene/SceneObject.idl(343):  return QuadTreeEntry.getPositionY();
+	// server/zone/objects/scene/SceneObject.idl(341):  return QuadTreeEntry.getPositionY();
 	return QuadTreeEntry::getPositionY();
 }
 
 float SceneObjectImplementation::getDirectionX() {
-	// server/zone/objects/scene/SceneObject.idl(347):  return direction.getX();
+	// server/zone/objects/scene/SceneObject.idl(345):  return direction.getX();
 	return direction->getX();
 }
 
 float SceneObjectImplementation::getDirectionZ() {
-	// server/zone/objects/scene/SceneObject.idl(351):  return direction.getZ();
+	// server/zone/objects/scene/SceneObject.idl(349):  return direction.getZ();
 	return direction->getZ();
 }
 
 float SceneObjectImplementation::getDirectionY() {
-	// server/zone/objects/scene/SceneObject.idl(355):  return direction.getY();
+	// server/zone/objects/scene/SceneObject.idl(353):  return direction.getY();
 	return direction->getY();
 }
 
 float SceneObjectImplementation::getDirectionW() {
-	// server/zone/objects/scene/SceneObject.idl(359):  return direction.getW();
+	// server/zone/objects/scene/SceneObject.idl(357):  return direction.getW();
 	return direction->getW();
 }
 
 unsigned int SceneObjectImplementation::getObjectCRC() {
-	// server/zone/objects/scene/SceneObject.idl(363):  return this.objectCRC;
+	// server/zone/objects/scene/SceneObject.idl(361):  return this.objectCRC;
 	return this->objectCRC;
 }
 
 StringId* SceneObjectImplementation::getObjectName() {
-	// server/zone/objects/scene/SceneObject.idl(367):  return this.objectName;
+	// server/zone/objects/scene/SceneObject.idl(365):  return this.objectName;
 	return this->objectName;
 }
 
 unsigned int SceneObjectImplementation::getGameObjectType() {
-	// server/zone/objects/scene/SceneObject.idl(371):  return this.gameObjectType;
+	// server/zone/objects/scene/SceneObject.idl(369):  return this.gameObjectType;
 	return this->gameObjectType;
 }
 
 void SceneObjectImplementation::setPosition(float x, float z, float y) {
-	// server/zone/objects/scene/SceneObject.idl(375):  QuadTreeEntry.setPosition(x, z, y);
+	// server/zone/objects/scene/SceneObject.idl(373):  QuadTreeEntry.setPosition(x, z, y);
 	QuadTreeEntry::setPosition(x, z, y);
 }
 
 void SceneObjectImplementation::setGameObjectType(unsigned int type) {
-	// server/zone/objects/scene/SceneObject.idl(379):  this.gameObjectType = type;
+	// server/zone/objects/scene/SceneObject.idl(377):  this.gameObjectType = type;
 	this->gameObjectType = type;
 }
 
 void SceneObjectImplementation::setObjectCRC(unsigned int objCRC) {
-	// server/zone/objects/scene/SceneObject.idl(383):  this.objectCRC = objCRC;
+	// server/zone/objects/scene/SceneObject.idl(381):  this.objectCRC = objCRC;
 	this->objectCRC = objCRC;
 }
 
 void SceneObjectImplementation::setParent(SceneObject* parent) {
-	// server/zone/objects/scene/SceneObject.idl(387):  this.parent = parent;
+	// server/zone/objects/scene/SceneObject.idl(385):  this.parent = parent;
 	this->parent = parent;
 }
 

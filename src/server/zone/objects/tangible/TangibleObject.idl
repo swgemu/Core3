@@ -72,10 +72,6 @@ class TangibleObject extends SceneObject {
 	protected DeltaVector<SceneObject> defenderList;
 	protected unsigned int defenderListUpdateCounter;
 	
-	public native void addSerializableVariables();
-	 
-	public static boolean registered;
-	
 	public native TangibleObject(LuaObject temp, SceneObject parent = null);
 	
 	public byte getUnknownByte() {

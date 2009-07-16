@@ -46,8 +46,6 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
-bool TangibleObjectImplementation::registered = false;//ObjectManager::objectFactory.registerObject<TangibleObject>(0);
-
 TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
 		: SceneObjectImplementation(templ, parent) {
 
@@ -68,17 +66,4 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, Sce
 
 	defenderList = new DeltaVector<SceneObject*>();
 
-	addSerializableVariables();
-}
-
-void TangibleObjectImplementation::addSerializableVariables() {
-	addSerializableVariable("targetable", &targetable);
-	addSerializableVariable("complexity", &complexity);
-	addSerializableVariable("volume", &volume);
-	addSerializableVariable("unknownByte", &unknownByte);
-	addSerializableVariable("objectCount", &objectCount);
-	addSerializableVariable("conditionDamage", &conditionDamage);
-	addSerializableVariable("maxCondition", &maxCondition);
-	addSerializableVariable("optionsBitmask", &optionsBitmask);
-	addSerializableVariable("defenderList", defenderList);
 }
