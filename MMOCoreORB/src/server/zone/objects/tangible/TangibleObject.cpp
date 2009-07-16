@@ -148,6 +148,8 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 }
 
 void TangibleObjectImplementation::_serializationHelperMethod() {
+	SceneObjectImplementation::_serializationHelperMethod();
+
 	addSerializableVariable("targetable", &targetable);
 	addSerializableVariable("complexity", &complexity);
 	addSerializableVariable("volume", &volume);
