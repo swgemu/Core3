@@ -155,8 +155,6 @@ protected:
 	unsigned int gameObjectType;
 
 public:
-	static bool registered;
-
 	static const int ARMOR = 0x100;
 
 	static const int BODYARMOR = 0x101;

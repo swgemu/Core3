@@ -91,8 +91,6 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger, na
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType; 
 	
-	public static boolean registered;
-	
 	public static final int ARMOR = 0x100;
 	public static final int BODYARMOR = 0x101;
 	public static final int HEADARMOR = 0x102;

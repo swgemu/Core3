@@ -174,14 +174,6 @@ protected:
 	String templateString;
 
 public:
-	static bool registered;
-
-	static bool registered2;
-
-	static bool registered3;
-
-	static bool registered4;
-
 	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
 	int getBankCredits();

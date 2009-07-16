@@ -40,8 +40,6 @@ class TangibleObject : public SceneObject {
 public:
 	TangibleObject(LuaObject* temp, SceneObject* parent = NULL);
 
-	void addSerializableVariables();
-
 	byte getUnknownByte();
 
 	int getObjectCount();
@@ -107,11 +105,7 @@ protected:
 	unsigned int defenderListUpdateCounter;
 
 public:
-	static bool registered;
-
 	TangibleObjectImplementation(LuaObject* temp, SceneObject* parent = NULL);
-
-	void addSerializableVariables();
 
 	byte getUnknownByte();
 
@@ -149,8 +143,6 @@ public:
 	TangibleObjectAdapter(TangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void addSerializableVariables();
 
 	byte getUnknownByte();
 

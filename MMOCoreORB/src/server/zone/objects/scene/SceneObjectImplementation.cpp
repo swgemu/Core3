@@ -51,7 +51,6 @@ which carries forward this exception.
 
 #include "variables/StringId.h"
 
-bool SceneObjectImplementation::registered = ObjectManager::objectFactory.registerObject<SceneObject>(0);
 
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) : Serializable() {
 	SceneObjectImplementation::parent = parent;

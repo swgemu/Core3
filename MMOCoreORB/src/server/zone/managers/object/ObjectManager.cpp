@@ -44,12 +44,16 @@ which carries forward this exception.
 
 #include "ObjectManager.h"
 
+#include "../../objects/creature/CreatureObject.h"
+
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> ObjectManager::objectFactory;
 
 ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager") {
 	objectMap = new ObjectMap(100000);
 	objectCacheMap = new ObjectMap(20000);
+
+	registerObjectTypes();
 
 	luaTemplatesInstance = new Lua();
 	luaTemplatesInstance->init();
@@ -84,6 +88,14 @@ ObjectManager::~ObjectManager() {
 
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
+}
+
+void ObjectManager::registerObjectTypes() {
+	objectFactory.registerObject<SceneObject>(0);
+	objectFactory.registerObject<CreatureObject>(0x400);
+	objectFactory.registerObject<CreatureObject>(0x401);
+	objectFactory.registerObject<CreatureObject>(0x402);
+	objectFactory.registerObject<CreatureObject>(0x403);
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {

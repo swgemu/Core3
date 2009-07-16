@@ -46,11 +46,6 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
-bool CreatureObjectImplementation::registered = ObjectManager::objectFactory.registerObject<CreatureObject>(0x400);
-bool CreatureObjectImplementation::registered2 = ObjectManager::objectFactory.registerObject<CreatureObject>(0x401);
-bool CreatureObjectImplementation::registered3 = ObjectManager::objectFactory.registerObject<CreatureObject>(0x402);
-bool CreatureObjectImplementation::registered4 = ObjectManager::objectFactory.registerObject<CreatureObject>(0x403);
-
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, SceneObject* parent) :
 	TangibleObjectImplementation(templ, parent) {
 
