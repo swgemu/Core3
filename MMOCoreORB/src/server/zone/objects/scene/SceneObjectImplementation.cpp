@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "variables/StringId.h"
 
 
-SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) : Serializable() {
+SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) {
 	SceneObjectImplementation::parent = parent;
 
 	children = new VectorMap<String, SceneObject*>();
