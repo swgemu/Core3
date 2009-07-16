@@ -54,10 +54,6 @@ class SceneObject : public ManagedObject {
 public:
 	SceneObject(LuaObject* templateData, SceneObject* parent = NULL);
 
-	void serialize(String& data);
-
-	void deSerialize(const String& data);
-
 	void redeploy();
 
 	void scheduleUndeploy();
@@ -128,7 +124,7 @@ namespace zone {
 namespace objects {
 namespace scene {
 
-class SceneObjectImplementation : public ManagedObjectImplementation, public QuadTreeEntry, public Logger, public Serializable {
+class SceneObjectImplementation : public ManagedObjectImplementation, public QuadTreeEntry, public Logger {
 protected:
 	ZoneProcessServerImplementation* server;
 
@@ -493,10 +489,6 @@ public:
 
 	SceneObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
-	void serialize(String& data);
-
-	void deSerialize(const String& data);
-
 	void redeploy();
 
 	void scheduleUndeploy();
@@ -555,8 +547,6 @@ protected:
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
 
-	void _serializationHelperMethod();
-
 	friend class SceneObject;
 };
 
@@ -565,10 +555,6 @@ public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void serialize(String& data);
-
-	void deSerialize(const String& data);
 
 	void redeploy();
 
@@ -619,8 +605,6 @@ public:
 	void setParent(SceneObject* parent);
 
 protected:
-	String _param0_serialize__String_;
-	String _param0_deSerialize__String_;
 	String _param0_addObject__String_SceneObject_;
 	String _param0_removeObject__String_;
 };
