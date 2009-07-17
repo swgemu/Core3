@@ -59,13 +59,11 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 
 	shockWounds = 0.f;
 
+	gender = templ->getIntField("gender");
+	species = templ->getIntField("species");
+
 	stateBitmask = 0;
-
-	speed = 0.f;
-
 	terrainNegotiation = 0.f;
-
-	acceleration = 0.f;
 
 	listenToID = 0;
 
@@ -97,4 +95,23 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 	maxHamListUpdateCounter = 0;
 
 	frozen = 0;
+
+	LuaObject accel = templ->getObjectField("acceleration");
+
+	if (accel.getTableSize() > 0)
+		acceleration = accel.getFloatAt(1);
+	else
+		acceleration = 0;
+
+	accel.pop();
+
+	LuaObject speedTempl = templ->getObjectField("speed");
+
+	if (speedTempl.getTableSize() > 0)
+		speed = speedTempl.getFloatAt(1);
+	else
+		speed = 0;
+
+	speedTempl.pop();
+
 }

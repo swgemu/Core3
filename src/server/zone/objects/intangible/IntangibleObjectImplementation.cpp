@@ -46,8 +46,6 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
-bool IntangibleObjectImplementation::registered = ObjectManager::objectFactory.registerObject<IntangibleObject>(0x800);
-
 IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
 	: SceneObjectImplementation(templ, parent) {
 

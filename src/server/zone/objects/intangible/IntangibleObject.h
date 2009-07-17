@@ -41,9 +41,8 @@ namespace objects {
 namespace intangible {
 
 class IntangibleObjectImplementation : public SceneObjectImplementation {
-public:
-	static bool registered;
 
+public:
 	IntangibleObjectImplementation(LuaObject* templ, SceneObject* parent = NULL);
 
 	IntangibleObject* _this;
@@ -53,8 +52,6 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
-
-	void _serializationHelperMethod();
 
 	friend class IntangibleObject;
 };

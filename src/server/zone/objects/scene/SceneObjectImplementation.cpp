@@ -68,16 +68,26 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 	gameObjectType = templateData->getIntField("gameObjectType");
 
 	arrangementDescriptors = new Vector<String>();
+
+	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
+
+	for (int i = 1; i < arrangements.getTableSize(); ++i) {
+		arrangementDescriptors->add(arrangements.getStringAt(i));
+	}
+
+	arrangements.pop();
+
+
 	slotDescriptors = new Vector<String>();
-}
 
-/*void SceneObjectImplementation::serialize(String& data) {
-	Serializable::serialize(data);
-}
+	LuaObject slots = templateData->getObjectField("slotDescriptors");
 
-void SceneObjectImplementation::deSerialize(const String& data) {
-	Serializable::deSerialize(data);
-}*/
+	for (int i = 1; i < slots.getTableSize(); ++i) {
+		slotDescriptors->add(slots.getStringAt(i));
+	}
+
+	slots.pop();
+}
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);

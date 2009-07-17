@@ -13,8 +13,6 @@
 TangibleObject::TangibleObject(LuaObject* temp, SceneObject* parent) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new TangibleObjectImplementation(temp, parent);
 	_impl->_setStub(this);
-
-	((TangibleObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -145,21 +143,6 @@ void TangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 	return _this;
-}
-
-void TangibleObjectImplementation::_serializationHelperMethod() {
-	SceneObjectImplementation::_serializationHelperMethod();
-
-	addSerializableVariable("targetable", &targetable);
-	addSerializableVariable("complexity", &complexity);
-	addSerializableVariable("volume", &volume);
-	addSerializableVariable("conditionDamage", &conditionDamage);
-	addSerializableVariable("maxCondition", &maxCondition);
-	addSerializableVariable("objectCount", &objectCount);
-	addSerializableVariable("optionsBitmask", &optionsBitmask);
-	addSerializableVariable("pvpStatusBitmask", &pvpStatusBitmask);
-	addSerializableVariable("unknownByte", &unknownByte);
-	addSerializableVariable("defenderListUpdateCounter", &defenderListUpdateCounter);
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {

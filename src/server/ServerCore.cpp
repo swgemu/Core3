@@ -59,6 +59,8 @@ which carries forward this exception.
 
 #include "zone/managers/object/ObjectManager.h"
 
+#include "zone/objects/creature/CreatureObject.h"
+
 
 ZoneServer* ServerCore::zoneServer = NULL;
 
@@ -256,13 +258,15 @@ void ServerCore::handleCommands() {
 				zoneServer->fixScheduler();*/
 
 				SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
-				String data;
+				System::out << "acc:" << ((CreatureObject*)object)->getSlotDescriptor(0);
+				object->finalize();
+				/*String data;
 				object->serialize(data);
 				System::out << data << "\n";
 				object->deSerialize(data);
 				data = "";
 				object->serialize(data);
-				System::out << data;
+				System::out << data;*/
 				/*String name;
 				object->getFullObjectName(name);
 

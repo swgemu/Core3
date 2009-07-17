@@ -11,8 +11,6 @@
 IntangibleObject::IntangibleObject(LuaObject* templ, SceneObject* parent) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new IntangibleObjectImplementation(templ, parent);
 	_impl->_setStub(this);
-
-	((IntangibleObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -35,12 +33,6 @@ void IntangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
 	return _this;
-}
-
-void IntangibleObjectImplementation::_serializationHelperMethod() {
-	SceneObjectImplementation::_serializationHelperMethod();
-
-	addSerializableVariable("registered", &registered);
 }
 
 /*
