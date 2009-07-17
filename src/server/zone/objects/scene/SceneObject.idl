@@ -298,9 +298,9 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 			int arrangementSize = object.getArrangementDescriptorSize();
 			
 			for (int i = 0; i < arrangementSize; ++i) {
-				string childArrangement = object.getArrangementDescriptor();
+				string childArrangement = object.getArrangementDescriptor(i);
 				
-				if (this.children.contains(childArrangement)) {
+				if (this.children.contains(childArrangement))
 					return false;
 			}
 			
