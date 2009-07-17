@@ -75,7 +75,7 @@ class TangibleObject extends SceneObject {
 	public native TangibleObject(LuaObject temp, SceneObject parent = null);
 	
 	public byte getUnknownByte() {
-		return this.unknownByte;
+		return unknownByte;
 	}
 	
 	/*public local CustomizationVariables getCustomizationVariables() {
@@ -83,35 +83,35 @@ class TangibleObject extends SceneObject {
 	}*/
 	
 	public int getObjectCount() {
-		return this.objectCount;
+		return objectCount;
 	}
 	
 	public int getMaxCondition() {
-		return this.maxCondition;
+		return maxCondition;
 	}
 	
 	public int getConditionDamage() {
-		return this.conditionDamage;
+		return conditionDamage;
 	}
 	
 	public int getVolume() {
-		return this.volume;
+		return volume;
 	}
 	
 	public float getComplexity() {
-		return this.complexity;
+		return complexity;
 	}
 	
 	public unsigned int getOptionsBitmask() {
-		return this.optionsBitmask;
+		return optionsBitmask;
 	}
 	
 	public unsigned int getPvpStatusBitmask() {
-		return this.pvpStatusBitmask;
+		return pvpStatusBitmask;
 	}
 	
 	public unsigned int getDefenderListUpdateCounter() {
-		return this.defenderListUpdateCounter;
+		return defenderListUpdateCounter;
 	}
 }
 

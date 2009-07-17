@@ -146,48 +146,48 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(78):  return this.unknownByte;
-	return this->unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl(78):  return unknownByte;
+	return unknownByte;
 }
 
 int TangibleObjectImplementation::getObjectCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(86):  return this.objectCount;
-	return this->objectCount;
+	// server/zone/objects/tangible/TangibleObject.idl(86):  return objectCount;
+	return objectCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(90):  return this.maxCondition;
-	return this->maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(90):  return maxCondition;
+	return maxCondition;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(94):  return this.conditionDamage;
-	return this->conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(94):  return conditionDamage;
+	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(98):  return this.volume;
-	return this->volume;
+	// server/zone/objects/tangible/TangibleObject.idl(98):  return volume;
+	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(102):  return this.complexity;
-	return this->complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(102):  return complexity;
+	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(106):  return this.optionsBitmask;
-	return this->optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(106):  return optionsBitmask;
+	return optionsBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(110):  return this.pvpStatusBitmask;
-	return this->pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(110):  return pvpStatusBitmask;
+	return pvpStatusBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getDefenderListUpdateCounter() {
-	// server/zone/objects/tangible/TangibleObject.idl(114):  return this.defenderListUpdateCounter;
-	return this->defenderListUpdateCounter;
+	// server/zone/objects/tangible/TangibleObject.idl(114):  return defenderListUpdateCounter;
+	return defenderListUpdateCounter;
 }
 
 /*
