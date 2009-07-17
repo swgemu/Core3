@@ -293,14 +293,18 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return true;
 	}
 	
-	public abstract boolean addObject(string slot, SceneObject object) {
-		/*if (children.contains(slot)) {
-			removeObject(slot);
+	public abstract boolean addObject(SceneObject object) {
+		if (containerType == 1) {
+			int arrangementSize = object.getArrangementDescriptorSize();
+			
+			for (int i = 0; i < arrangementSize; ++i) {
+				string childArrangement = object.getArrangementDescriptor();
+				
+				if (this.children.contains(childArrangement)) {
+					return false;
+			}
+			
 		}
-		
-		children.put(slot, object);
-		
-		//object.setParent(this);*/
 		
 		return true;
 	}
@@ -355,6 +359,22 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public local StringId getObjectName() {
 		return this.objectName;
+	}
+	
+	public int getArrangementDescriptorSize() {
+		return arrangementDescriptors.size();
+	}
+	
+	public string getArrangementDescriptor(int idx) {
+		return arrangementDescriptors.get(idx);
+	}
+	
+	public string getSlotDescriptor(int idx) {
+		return slotDescriptors.get(idx);
+	}
+	
+	public int getArrangementDescriptorSize() {
+		return slotDescriptors.size();
 	}
 	
 	public unsigned int getGameObjectType() {

@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "ObjectManager.h"
 
 #include "../../objects/creature/CreatureObject.h"
+#include "../../objects/intangible/IntangibleObject.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> ObjectManager::objectFactory;
@@ -96,6 +97,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(0x401);
 	objectFactory.registerObject<CreatureObject>(0x402);
 	objectFactory.registerObject<CreatureObject>(0x403);
+	objectFactory.registerObject<IntangibleObject>(0x800);
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {
