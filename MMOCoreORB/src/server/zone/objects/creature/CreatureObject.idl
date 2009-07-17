@@ -115,11 +115,11 @@ class CreatureObject extends TangibleObject {
 	public native CreatureObject(LuaObject templateData, SceneObject parent = null);
 	
 	public int getBankCredits() {
-		return this.bankCredits;
+		return bankCredits;
 	}
 	
 	public int getCashCredits() {
-		return this.cashCredits;
+		return cashCredits;
 	}
 	
 	/*public Vector<int> getBaseHealth() {
@@ -131,83 +131,83 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public byte getPosture() {
-		return this.posture;
+		return posture;
 	}
 	
 	public byte getFactionRank() {
-		return this.factionRank;
+		return factionRank;
 	}
 	
 	public unsigned long getCreatureLinkID() {
-		return this.creatureLinkID;
+		return creatureLinkID;
 	}
 	
 	public float getShockWounds() {
-		return this.shockWounds;
+		return shockWounds;
 	}
 	
 	public unsigned long getStateBitmask() {
-		return this.stateBitmask;
+		return stateBitmask;
 	}
 	
 	public unsigned long getListenID() {
-		return this.listenToID;
+		return listenToID;
 	}
 	
 	public float getSpeed() {
-		return this.speed;
+		return speed;
 	}
 	
 	public float getTerrainNegotiation() {
-		return this.terrainNegotiation;	
+		return terrainNegotiation;	
 	}
 	
 	public float getAcceleration() {
-		return this.acceleration;
+		return acceleration;
 	}
 	
 	public int getLevel() {
-		return this.level;
+		return level;
 	}
 	
 	public string getPerformanceAnimation() {
-		return this.performanceAnimation;
+		return performanceAnimation;
 	}
 	
 	public string getMoodString() {
-		return this.moodString;
+		return moodString;
 	}
 	
 	public unsigned long getWeaponID() {
-		return this.weaponID;
+		return weaponID;
 	}
 	
 	public unsigned long getGroupID() {
-		return this.groupID;
+		return groupID;
 	}
 	
 	public unsigned long getGroupInviterID() {
-		return this.groupInviterID;
+		return groupInviterID;
 	}
 	
 	public unsigned long getGroupInviteCounter() {
-		return this.groupInviteCounter;
+		return groupInviteCounter;
 	}
 	
 	public int getGuildID() {
-		return this.guildID;
+		return guildID;
 	}
 	
 	public unsigned long getTargetID() {
-		return this.targetID;
+		return targetID;
 	}
 	
 	public byte getMoodID() {
-		return this.moodID;
+		return moodID;
 	}
 	
 	public int getPerformanceCounter() {
-		return this.performanceCounter;
+		return performanceCounter;
 	}
 	
 	public int getInstrumentID() {
@@ -215,6 +215,6 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public byte getFrozen() {
-		return this.frozen;
+		return frozen;
 	}
 }

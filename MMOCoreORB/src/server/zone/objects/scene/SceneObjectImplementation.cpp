@@ -56,6 +56,7 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 	SceneObjectImplementation::parent = parent;
 
 	children = new VectorMap<String, SceneObject*>();
+	children->setNullValue(NULL);
 
 	direction = new Quaternion();
 
