@@ -42,72 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../item/ItemManager";
-import "../guild/GuildManager";
+package server.zone.managers.player;
 
-import "../../objects/player/Player";
-import "../../objects/tangible/TangibleObject";
+include server.zone.objects.player.PlayerCreature;
+include server.zone.managers.player.PlayerMap;
 
-import "server/zone/ZoneClientSession";
-include "server/zone/ZoneProcessServerImplementation";
+import server.zone.ZoneProcessServerImplementation;
+import server.zone.managers.object.ObjectManager;
 
-import "PlayerMap";
-
-include "engine/service/proto/BaseMessage";
-
-
-interface PlayerManager {
-	PlayerManager(ItemManager itemManager, ZoneProcessServerImplementation processor) {
-		super(itemManager, processor);
-	}
-
-	void stop();
-
-	boolean create(Player player, unsigned int sessionkey);
-	boolean validateName(String name);
-	boolean hasAdminRights(unsigned int characterID);
-
-	BaseMessage checkPlayerName(const String name, const String species);
-	BaseMessage attemptPlayerCreation(Player player, ZoneClientSession client);
-
-	Player load(unsigned long charid);
-
-	void unload(Player player);
-	void save(Player player);
-
-	void handleAbortTradeMessage(Player player);
-	void handleAddItemToTradeWindow(Player player, unsigned long itemID);
-	void handleGiveMoneyMessage(Player player, unsigned int value);
-	void handleAcceptTransactionMessage(Player player);
-	void handleUnAcceptTransactionMessage(Player player);
-	void handleVerifyTradeMessage(Player player);
-
-	void moveItem(Player sender, Player receiver, TangibleObject item);
-
-	void doBankTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
-	void doCashTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
-	boolean modifyOfflineBank(Player sender, String receiverName, int creditAmount);
-	boolean modifyRecipientOfflineBank(String recipient, int creditAmount);
-	void updatePlayerCreditsFromDatabase(Player player);
-	void updatePlayerCreditsToDatabase(Player player);
-
-	void updatePlayerAppearanceToDatabase(Player player);
-	void updatePlayerBaseHAMToDatabase(Player player);
-
-	void updateOtherFriendlists(Player player, boolean status);
-
-	void updateGuildStatus(Player player);
-
-	void setGuildManager(GuildManager gmanager);
-
-	Player putPlayer(Player player);
-
-	Player getPlayer(const String name);
-
-	GuildManager getGuildManager();
-
-	PlayerMap getPlayerMap();
-
-	void setXpScale(int scale);
-	int getXpScale();
+class PlayerManager extends ManagedObject {
+	ZoneProcessServerImplementation server;
+	
+	PlayerMap playerMap;
+	
+	ObjectManager objectManager;
+	
+	public native PlayerManager(ObjectManager objMan, ZoneProcessServerImplementation srv);
+	
 }

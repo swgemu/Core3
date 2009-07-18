@@ -42,33 +42,55 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef DATAPADIMPLEMENTATION_H_
-#define DATAPADIMPLEMENTATION_H_
+package server.zone.objects.creature;
 
-#include "../creature/CreatureObject.h"
+import system.lang.Time;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneClientSession;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.Container;
+import engine.lua.LuaObject;
 
-#include "Container.h"
+class PlayerCreature extends CreatureObject {
+	protected ZoneClientSession owner;
+	
+	protected int onlineStatus;
+	protected Time logoutTimeStamp;
 
-#include "Datapad.h"
+	protected unsigned long accountID;
+	protected unsigned long characterID;
+	protected unsigned long baseID;
 
-class DatapadImplementation : public DatapadServant {
+	protected string raceFile; //race iff, defines the race file of the character being created.
+	protected byte raceID;
 
-public:
-	DatapadImplementation(CreatureObject* creature) : DatapadServant(creature->getObjectID() + 0x03) {
-		objectCRC = 0x73BA5001; //0x01, 0x50, 0xBA, 0x73,
+	protected string startingLocation; //start location iff string
+	protected string startingProfession; //starting profession string
 
-		customName = UnicodeString("");
+	protected unicode biography; //char biography
 
-		stfFile = "item_n";
-		stfName = "datapad";
+	protected byte lotsRemaining;
 
-		parent = (SceneObject*) creature;
-	}
+	// player objects
+	/*protected PlayerObject playerObject;
+	protected Datapad datapad;*/
 
-	virtual ~DatapadImplementation() {
-		parent = NULL;
-	}
+	//Vector<CommandQueueAction> commandQueue;
+	protected Time nextAction;
+	protected Time nextTip;
 
-};
+	protected int itemShift;
 
-#endif /*DATAPADIMPLEMENTATION_H_*/
+	protected byte incapacitationCounter;
+	protected Time firstIncapacitationTime;
+	protected int pvpRating;
+
+
+	protected int factionStatus;
+
+	// Profession stuff
+	
+	public native PlayerCreature(LuaObject templateData, SceneObject par = null);
+
+}

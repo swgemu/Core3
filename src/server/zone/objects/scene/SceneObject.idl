@@ -73,7 +73,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	protected SceneObject parent;
 	
-	protected VectorMap<string, SceneObject> children;
+	protected VectorMap<string, SceneObject> containmentSlots;
 	
 	protected unsigned int objectCRC;
 	
@@ -301,12 +301,12 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 			for (int i = 0; i < arrangementSize; ++i) {
 				string childArrangement = object.getArrangementDescriptor(i);
 				
-				if (children.contains(childArrangement))
+				if (containmentSlots.contains(childArrangement))
 					return false;
 			}
 			
 			for (int i = 0; i < arrangementSize; ++i) {
-				children.put(object.getArrangementDescriptor(i), object);
+				containmentSlots.put(object.getArrangementDescriptor(i), object);
 			}
 		}
 		
@@ -322,16 +322,16 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 			for (int i = 0; i < arrangementSize; ++i) {
 				string childArrangement = object.getArrangementDescriptor(i);
 				
-				if (children.get(childArrangement) != object)
+				if (containmentSlots.get(childArrangement) != object)
 					return false;
 			}
 
 			for (int i = 0; i < arrangementSize; ++i) {
-				children.drop(object.getArrangementDescriptor(i));
+				containmentSlots.drop(object.getArrangementDescriptor(i));
 			}
 		}
 
-		object.setParent(null);
+		//object.setParent(null);
 		
 		return true;
 	}
@@ -395,6 +395,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return slotDescriptors.get(idx);
 	}
 	
+	public SceneObject getSlot(string slot) {
+		return containmentSlots.get(slot);
+	}
+	
 	public int getSlotDescriptorSize() {
 		return slotDescriptors.size();
 	}
@@ -415,8 +419,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		objectCRC = objCRC;
 	}
 	
-	public void setParent(SceneObject parent) {
-		parent = parent;
+	public void setParent(SceneObject par) {
+		parent = par;
 	}
 
 }

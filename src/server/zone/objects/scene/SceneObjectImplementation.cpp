@@ -55,8 +55,8 @@ which carries forward this exception.
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) {
 	SceneObjectImplementation::parent = parent;
 
-	children = new VectorMap<String, SceneObject*>();
-	children->setNullValue(NULL);
+	containmentSlots = new VectorMap<String, SceneObject*>();
+	containmentSlots->setNullValue(NULL);
 
 	direction = new Quaternion();
 

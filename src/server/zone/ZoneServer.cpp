@@ -582,11 +582,11 @@ void ZoneServerImplementation::fixScheduler() {
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 	// server/zone/ZoneServer.idl(142):  this.lock();
-	this->lock();
+	_this->lock();
 	// server/zone/ZoneServer.idl(144):  ++totalDeletedPlayers;
 	 ++totalDeletedPlayers;
 	// server/zone/ZoneServer.idl(146):  this.unlock();
-	this->unlock();
+	_this->unlock();
 }
 
 int ZoneServerImplementation::getGalaxyID() {
