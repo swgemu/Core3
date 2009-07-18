@@ -42,15 +42,20 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
-import "../player/Player";
+package server.zone.objects.tangible;
 
-import "TangibleObject";
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import engine.lua.LuaObject;
 
-interface Container implements TangibleObject {
-	Container(unsigned long oid) {
-		super(oid);
+class Container extends TangibleObject {
+	public native Container(LuaObject templateData, SceneObject par = null);
+	
+	public boolean addObject(SceneObject obj) {
+		return true;
 	}
-
-	void generateAttributes(SceneObject obj);
+	
+	public boolean removeObject(SceneObject obj) {
+		return true;
+	}
 }

@@ -42,30 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef INVENTORYIMPLEMENTATION_H_
-#define INVENTORYIMPLEMENTATION_H_
+import "../scene/SceneObject";
+import "../player/Player";
 
-#include "Inventory.h"
+import "TangibleObject";
 
-class InventoryImplementation : public InventoryServant {
-public:
-	InventoryImplementation(CreatureObject* creature);
-	~InventoryImplementation();
-
-	const static int MAXUNEQUIPPEDCOUNT = 80;
-
-	int getUnequippedItemCount();
-
-	inline bool isFull() {
-		return getUnequippedItemCount() >= MAXUNEQUIPPEDCOUNT;
+interface Container implements TangibleObject {
+	Container(unsigned long oid) {
+		super(oid);
 	}
 
-	bool addObject(SceneObject* obj);
-
-	void removeAllUnequipped(CreatureObject* owner);
-	bool removeObject(int index);
-	bool removeObject(uint64 oid);
-	void moveObjectToTopLevel(CreatureObject* owner, TangibleObject* obj);
-};
-
-#endif /*INVENTORYIMPLEMENTATION_H_*/
+	void generateAttributes(SceneObject obj);
+}

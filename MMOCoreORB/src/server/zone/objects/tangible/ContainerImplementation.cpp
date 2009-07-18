@@ -42,84 +42,9 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ContainerImplementation.h"
+#include "Container.h"
 
-#include "TangibleObject.h"
-#include "../player/Player.h"
+ContainerImplementation::ContainerImplementation(LuaObject* templateData, SceneObject* par) :
+	TangibleObjectImplementation(templateData, par) {
 
-#include "../../packets/scene/ClientOpenContainerMessage.h"
-
-#include "../../packets.h"
-
-ContainerImplementation::ContainerImplementation(uint64 oid) : ContainerServant(oid) {
-	objectCRC = 0x3969E83B;
-
-	setContainerVolumeLimit(0xFFFFFFFF);
-
-	StringBuffer loggingname;
-	loggingname << "Container = 0x" << oid;
-	setLoggingName(loggingname.toString());
-
-	setLogging(false);
-	setGlobalLogging(true);
-}
-
-ContainerImplementation::~ContainerImplementation() {
-
-}
-
-void ContainerImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClientSession* client = player->getClient();
-
-	if (client == NULL)
-		return;
-
-	SceneObjectImplementation::create(client);
-
-	if (parent != NULL)
-		link(client, parent);
-
-	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
-	client->sendMessage(tano3);
-
-	BaseMessage* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
-	client->sendMessage(tano6);
-
-	if (player == parent || player->getInventory() == parent)
-		sendItemsTo(player);
-
-	if (doClose)
-		SceneObjectImplementation::close(client);
-}
-
-void ContainerImplementation::parseItemAttributes() {
-	String attr = "slots";
-	setContainerVolumeLimit(itemAttributes->getIntAttribute(attr));
-}
-
-/*I think its safe to finally delete all commented stuff here
-void ContainerImplementation::setSlots(int attributeSlots) {
-	ContainerObject::setSlots(attributeSlots);
-
-	String attr = "slots";
-	itemAttributes->setIntAttribute(attr, attributeSlots);
-}
-*/
-
-void ContainerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	//TODO:Cell permission check
-	if (_this->getParent() != NULL) {
-		bool cellPermission = true;
-
-		if (_this->getParent()->isCell() && cellPermission) {
-			if (_this->isTangible())
-			omr->addRadialParent(10, 3, "@ui_radial:item_pickup");
-		}
-	}
-
-	//TODO: Enable when working
-	//omr->addRadialItem(0, 131, 3, "Set Name"); //"@player_structure:set_name"
-
-	omr->finish();
-	player->sendMessage(omr);
 }

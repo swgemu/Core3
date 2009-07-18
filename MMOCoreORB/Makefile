@@ -44,10 +44,6 @@ IDLC = /usr/local/bin/idlc -rb
 IDLC55 = /usr/local/bin/idlc55
 
 IDL55_SOURCES = 
-
-#add when namespace declare works
-# server/zone/Zone.idl \
-#server/zone/ZoneServer.idl
 				
 IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/ZoneServer.idl \
@@ -55,8 +51,11 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/scene/SceneObject.idl \
 				server/zone/objects/creature/CreatureObject.idl \
 				server/zone/objects/player/PlayerObject.idl \
+				server/zone/objects/player/PlayerCreature.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
-				server/zone/objects/tangible/TangibleObject.idl
+				server/zone/objects/tangible/TangibleObject.idl \
+				server/zone/objects/tangible/Container.idl \
+				server/zone/managers/player/PlayerManager.idl
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

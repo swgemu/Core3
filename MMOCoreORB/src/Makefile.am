@@ -61,11 +61,12 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/scene/SceneObject.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/tangible/TangibleObject.cpp \
+				server/zone/objects/tangible/Container.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
-				server/zone/objects/player/PlayerObject.cpp
-		
-#WARNING always add new .cpp before ObjectManager.cpp
-
+				server/zone/objects/player/PlayerObject.cpp \
+				server/zone/objects/player/PlayerCreature.cpp \
+				server/zone/managers/player/PlayerManager.cpp
+				
 core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
@@ -84,12 +85,15 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
+		server/zone/managers/object/ObjectManager.cpp \
+		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
-		server/zone/managers/object/ObjectManager.cpp \
-		main.cpp 
+		server/zone/objects/player/PlayerCreatureImplementation.cpp \
+		main.cpp
 		
