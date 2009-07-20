@@ -17,6 +17,8 @@
 ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneServerImplementation(processingThreads, galaxyid);
 	_impl->_setStub(this);
+
+	((ZoneServerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -573,6 +575,24 @@ void ZoneServerImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* ZoneServerImplementation::_getStub() {
 	return _this;
+}
+
+void ZoneServerImplementation::_serializationHelperMethod() {
+	ManagedObjectImplementation::_serializationHelperMethod();
+
+	addSerializableVariable("procThreadCount", &procThreadCount);
+	addSerializableVariable("totalSentPackets", &totalSentPackets);
+	addSerializableVariable("totalResentPackets", &totalResentPackets);
+	addSerializableVariable("currentPlayers", &currentPlayers);
+	addSerializableVariable("maximumPlayers", &maximumPlayers);
+	addSerializableVariable("totalPlayers", &totalPlayers);
+	addSerializableVariable("totalDeletedPlayers", &totalDeletedPlayers);
+	addSerializableVariable("nextCreatureID", &nextCreatureID);
+	addSerializableVariable("nextCellID", &nextCellID);
+	addSerializableVariable("serverState", &serverState);
+	addSerializableVariable("name", &name);
+	addSerializableVariable("messageoftheDay", &messageoftheDay);
+	addSerializableVariable("galaxyID", &galaxyID);
 }
 
 void ZoneServerImplementation::fixScheduler() {

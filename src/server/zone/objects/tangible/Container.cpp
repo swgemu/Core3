@@ -11,6 +11,8 @@
 Container::Container(LuaObject* templateData, SceneObject* par) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new ContainerImplementation(templateData, par);
 	_impl->_setStub(this);
+
+	((ContainerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -59,6 +61,11 @@ void ContainerImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* ContainerImplementation::_getStub() {
 	return _this;
+}
+
+void ContainerImplementation::_serializationHelperMethod() {
+	TangibleObjectImplementation::_serializationHelperMethod();
+
 }
 
 bool ContainerImplementation::addObject(SceneObject* obj) {

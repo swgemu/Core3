@@ -9,20 +9,6 @@
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
 
 class ZoneClientSession;
 
@@ -36,6 +22,8 @@ using namespace server::zone;
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -85,6 +73,8 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	void _serializationHelperMethod();
 
 	friend class PlayerObject;
 };
