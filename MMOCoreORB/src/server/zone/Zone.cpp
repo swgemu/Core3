@@ -15,6 +15,8 @@
 Zone::Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneImplementation(zserv, processor, zoneid);
 	_impl->_setStub(this);
+
+	((ZoneImplementation*) _impl)->_serializationHelperMethod();
 }
 
 Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -224,6 +226,17 @@ void ZoneImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* ZoneImplementation::_getStub() {
 	return _this;
+}
+
+void ZoneImplementation::_serializationHelperMethod() {
+	ManagedObjectImplementation::_serializationHelperMethod();
+
+	addSerializableVariable("zoneID", &zoneID);
+	addSerializableVariable("server", server);
+	addSerializableVariable("weatherWindX", &weatherWindX);
+	addSerializableVariable("weatherWindY", &weatherWindY);
+	addSerializableVariable("weatherID", &weatherID);
+	addSerializableVariable("weatherEnabled", &weatherEnabled);
 }
 
 int ZoneImplementation::getZoneID() {

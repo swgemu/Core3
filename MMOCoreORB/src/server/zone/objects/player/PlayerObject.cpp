@@ -4,8 +4,6 @@
 
 #include "PlayerObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 #include "server/zone/ZoneClientSession.h"
 
 /*
@@ -15,6 +13,8 @@
 PlayerObject::PlayerObject(LuaObject* templ, SceneObject* parent) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerObjectImplementation(templ, parent);
 	_impl->_setStub(this);
+
+	((PlayerObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -50,6 +50,13 @@ void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* PlayerObjectImplementation::_getStub() {
 	return _this;
+}
+
+void PlayerObjectImplementation::_serializationHelperMethod() {
+	IntangibleObjectImplementation::_serializationHelperMethod();
+
+	addSerializableVariable("creatureObject", creatureObject);
+	addSerializableVariable("owner", owner);
 }
 
 /*

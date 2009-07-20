@@ -34,20 +34,6 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace tangible {
 
 class Container;
@@ -62,6 +48,8 @@ using namespace server::zone::objects::tangible;
 #include "system/lang/Time.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -144,6 +132,8 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 	DistributedObjectStub* _getStub();
+
+	void _serializationHelperMethod();
 
 	friend class PlayerCreature;
 };

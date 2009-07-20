@@ -13,6 +13,8 @@
 SceneObject::SceneObject(LuaObject* templateData, SceneObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new SceneObjectImplementation(templateData, parent);
 	_impl->_setStub(this);
+
+	((SceneObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -408,6 +410,20 @@ void SceneObjectImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* SceneObjectImplementation::_getStub() {
 	return _this;
+}
+
+void SceneObjectImplementation::_serializationHelperMethod() {
+	ManagedObjectImplementation::_serializationHelperMethod();
+
+	addSerializableVariable("objectID", &objectID);
+	addSerializableVariable("parent", parent);
+	addSerializableVariable("objectCRC", &objectCRC);
+	addSerializableVariable("positionX", &positionX);
+	addSerializableVariable("positionZ", &positionZ);
+	addSerializableVariable("positionY", &positionY);
+	addSerializableVariable("containerType", &containerType);
+	addSerializableVariable("containerVolumeLimit", &containerVolumeLimit);
+	addSerializableVariable("gameObjectType", &gameObjectType);
 }
 
 void SceneObjectImplementation::redeploy() {

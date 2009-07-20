@@ -11,6 +11,8 @@
 CreatureObject::CreatureObject(LuaObject* templateData, SceneObject* parent) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CreatureObjectImplementation(templateData, parent);
 	_impl->_setStub(this);
+
+	((CreatureObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -335,6 +337,43 @@ void CreatureObjectImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* CreatureObjectImplementation::_getStub() {
 	return _this;
+}
+
+void CreatureObjectImplementation::_serializationHelperMethod() {
+	TangibleObjectImplementation::_serializationHelperMethod();
+
+	addSerializableVariable("bankCredits", &bankCredits);
+	addSerializableVariable("cashCredits", &cashCredits);
+	addSerializableVariable("gender", &gender);
+	addSerializableVariable("species", &species);
+	addSerializableVariable("baseHealthUpdateCounter", &baseHealthUpdateCounter);
+	addSerializableVariable("posture", &posture);
+	addSerializableVariable("factionRank", &factionRank);
+	addSerializableVariable("creatureLinkID", &creatureLinkID);
+	addSerializableVariable("shockWounds", &shockWounds);
+	addSerializableVariable("woundsUpdateCounter", &woundsUpdateCounter);
+	addSerializableVariable("stateBitmask", &stateBitmask);
+	addSerializableVariable("encumbrancesUpdateCounter", &encumbrancesUpdateCounter);
+	addSerializableVariable("speed", &speed);
+	addSerializableVariable("terrainNegotiation", &terrainNegotiation);
+	addSerializableVariable("acceleration", &acceleration);
+	addSerializableVariable("listenToID", &listenToID);
+	addSerializableVariable("level", &level);
+	addSerializableVariable("performanceAnimation", &performanceAnimation);
+	addSerializableVariable("moodString", &moodString);
+	addSerializableVariable("weaponID", &weaponID);
+	addSerializableVariable("groupID", &groupID);
+	addSerializableVariable("groupInviterID", &groupInviterID);
+	addSerializableVariable("groupInviteCounter", &groupInviteCounter);
+	addSerializableVariable("guildID", &guildID);
+	addSerializableVariable("targetID", &targetID);
+	addSerializableVariable("moodID", &moodID);
+	addSerializableVariable("performanceCounter", &performanceCounter);
+	addSerializableVariable("instrumentID", &instrumentID);
+	addSerializableVariable("hamListUpdateCounter", &hamListUpdateCounter);
+	addSerializableVariable("maxHamListUpdateCounter", &maxHamListUpdateCounter);
+	addSerializableVariable("frozen", &frozen);
+	addSerializableVariable("templateString", &templateString);
 }
 
 int CreatureObjectImplementation::getBankCredits() {

@@ -15,6 +15,8 @@
 PlayerManager::PlayerManager(ObjectManager* objMan, ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerManagerImplementation(objMan, srv);
 	_impl->_setStub(this);
+
+	((PlayerManagerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerManager::PlayerManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -37,6 +39,11 @@ void PlayerManagerImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* PlayerManagerImplementation::_getStub() {
 	return _this;
+}
+
+void PlayerManagerImplementation::_serializationHelperMethod() {
+	ManagedObjectImplementation::_serializationHelperMethod();
+
 }
 
 /*

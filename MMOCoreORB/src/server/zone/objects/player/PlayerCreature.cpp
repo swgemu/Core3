@@ -8,8 +8,6 @@
 
 #include "server/zone/objects/player/PlayerObject.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "server/zone/objects/tangible/Container.h"
 
 /*
@@ -19,6 +17,8 @@
 PlayerCreature::PlayerCreature(LuaObject* templateData, SceneObject* par) : CreatureObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerCreatureImplementation(templateData, par);
 	_impl->_setStub(this);
+
+	((PlayerCreatureImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerCreature::PlayerCreature(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -41,6 +41,26 @@ void PlayerCreatureImplementation::_setStub(DistributedObjectStub* stub) {
 
 DistributedObjectStub* PlayerCreatureImplementation::_getStub() {
 	return _this;
+}
+
+void PlayerCreatureImplementation::_serializationHelperMethod() {
+	CreatureObjectImplementation::_serializationHelperMethod();
+
+	addSerializableVariable("owner", owner);
+	addSerializableVariable("onlineStatus", &onlineStatus);
+	addSerializableVariable("accountID", &accountID);
+	addSerializableVariable("characterID", &characterID);
+	addSerializableVariable("baseID", &baseID);
+	addSerializableVariable("raceFile", &raceFile);
+	addSerializableVariable("raceID", &raceID);
+	addSerializableVariable("startingLocation", &startingLocation);
+	addSerializableVariable("startingProfession", &startingProfession);
+	addSerializableVariable("biography", &biography);
+	addSerializableVariable("lotsRemaining", &lotsRemaining);
+	addSerializableVariable("itemShift", &itemShift);
+	addSerializableVariable("incapacitationCounter", &incapacitationCounter);
+	addSerializableVariable("pvpRating", &pvpRating);
+	addSerializableVariable("factionStatus", &factionStatus);
 }
 
 /*
