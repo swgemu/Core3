@@ -47,15 +47,41 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/Player.h"
-#include "../../objects/player/Races.h"
+#include "../MessageCallback.h"
 
 class ClientCreateCharacter : public BaseMessage {
 public:
 	ClientCreateCharacter(const UnicodeString& name);
+};
 
-	static void parse(Packet* pack, Player* player);
+class ClientCreateCharacterCallback : public MessageCallback {
+	String customization;
 
+	UnicodeString characterName;
+
+	String racefile;
+	String location;
+	String hairobj;
+	String haircust;
+	String profession;
+
+	float height;
+	UnicodeString bio;
+	uint8 tutflag;
+
+public:
+	ClientCreateCharacterCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message);
+
+	void execute();
+
+	void getRaceFile(String& file) {
+		file = racefile;
+	}
 };
 
 #endif /*CLIENTCREATECHARACTER_H_*/

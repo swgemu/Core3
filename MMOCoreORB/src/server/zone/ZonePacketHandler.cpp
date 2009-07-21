@@ -42,251 +42,70 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-/*#include "objects.h"
-#include "packets.h"*/
-
 #include "ZonePacketHandler.h"
 
 #include "ZoneServer.h"
-
 #include "ZoneClientSession.h"
-
 #include "ZoneProcessServerImplementation.h"
 
-/*#include "Zone.h"
-
-#include "managers/player/PlayerManager.h"
-#include "managers/name/NameManager.h"
-#include "managers/item/ItemManager.h"
-#include "managers/radial/RadialManager.h"
-#include "managers/planet/PlanetManager.h"
-#include "managers/bazaar/BazaarManager.h"
-#include "managers/bazaar/BazaarPlanetManager.h"
-#include "managers/sui/SuiManager.h"
-
-#include "objects/terrain/PlanetNames.h"
-#include "objects/tangible/terminal/bazaar/RegionBazaar.h"
-
-#include "managers/planet/events/tutorial/TutorialAudioStatMigrationEvent.h"
-#include "managers/planet/events/tutorial/TutorialAudioWelcomeEvent.h"
-
-#include "../login/packets/ErrorMessage.h"
-
-#include "../chat/ChatManager.h"
-*/
-
+#include "packets/zone/ClientIDMessage.h"
+#include "packets/charcreation/ClientCreateCharacter.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
-		processServer = serv;
+	processServer = serv;
 
-		server = processServer->getZoneServer();
+	server = processServer->getZoneServer();
+
+	registerMessages();
+}
+
+void ZonePacketHandler::registerMessages() {
+	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
+	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
 	//info("parsing " + pack->toString());
 
-	/*uint16 opcount = pack->parseShort();
+	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 
-	//System::out << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	System::out << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
+	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
-	switch (opcount) {
-	case 1:
-		switch (opcode) {
-		case 0x43FD1C22: //CmdSceneReady Zone done loading.
-			handleCmdSceneReady(pack);
-			break;
-		case 0xC1B03B81: //FactionRequestMessage
-			handleFactionRequestMessage(pack);
-			break;
-		case 0xB75DD5D7: //StomachRequestMessage
-		    handleStomachRequestMessage(pack);
-		    break;
-		case 0x9D105AA1: //PlayerMoneyRequest
-		    handlePlayerMoneyRequest(pack);
-		    break;
-		case 0x4C3D2CFA: //ChatRequestRoomList
-			handleChatRequestRoomList(pack);
-			break;
-		case 0x9CA80F98: // AbortTradeMsg
-			handleAbortTradeMessage(pack);
-			break;
-		case 0xB131CA17: // AcceptTransactionMessage
-			handleAcceptTransactionMessage(pack);
-			break;
-		case 0xE81E4382: // UnAcceptTransactionMessage
-			handleUnAcceptTransactionMessage(pack);
-			break;
-		case 0x9AE247EE: // VerifyTradeMessage
-			handleVerifyTradeMessage(pack);
-			break;
-		}
+	MessageCallback* data = messageCallbackFactory.createObject(opcode, client, processServer);
 
-		break;
-	case 2:
-		switch (opcode) {
-		case 0xB5098D76: //SelectCharacter Request/zone insert.
-			handleSelectCharacter(pack);
-			break;
-		case 0x8F251641: //ChatDeletePersistentMessage
-			handleDeletePersistentMsg(pack);
-			break;
-		case 0x81EB4EF7: //GuildRequestMessage
-		    handleGuildRequestMessage(pack);
-		    break;
-		case 0x1E8D1356: // AddItemMessage
-			handleAddItemMessage(pack);
-			break;
-		case 0xD1527EE8: // GiveMoneyMessage
-			handleGiveMoneyMessage(pack);
-			break;
-		case 0xD36EFAE4: //GetAuctionDetails
-			handleGetAuctionItemAttributes(pack);
-			break;
-		case 0xD6D1B6D1: //ClientRandomNameRequest
-			handleClientRandomNameRequest(pack);
-			break;
-		case 0x2E365218: //ConnectPlayerMessage
-			handleConnectPlayerMessage(pack);
-			break;
-		case 0x274F4E78: //NewTicketActivityMessage
-			handleNewTicketActivityMessage(pack);
-			break;
-		case 0xF898E25F: //RequestCategoriesMessage
-			handleRequestCategoriesMessage(pack);
-			break;
-		case 0x0F5D5325: //ClientInactivityMessage
-			handleClientInactivityMessage(pack);
-			break;
-		case 0x48F493C5: //CommoditiesItemTypeListRequest
-			handleCommoditiesItemTypeListRequest(pack);
-			break;
-		}
+	try {
 
-		break;
-	case 3:
-		switch (opcode) {
-		case 0xD5899226: //	ClientIdMsg
-			handleClientPermissionsMessage(pack);
-			break;
-		case 0x07E3559F: //ChatRequestPersistentMessage
-			handleRequestPersistentMsg(pack);
-			break;
-		case 0x7CA18726:
-			handleRadialSelect(pack);
-		    break;
-		case 0x96405D4D: //Travel Points list
-		    handleTravelListRequest(pack);
-		    break;
-		case 0xBC6BDDF2: // ChatEnterRoomById
-			handleChatEnterRoomById(pack);
-			break;
-		case 0x94B2A77: // ChatDestroyRoom
-			handleChatDestroyRoom(pack);
-			break;
-		case 0x493E3FFA: //  ChatRemoveAvatarFromRoom
-			handleChatRemoveAvatarFromRoom(pack);
-			break;
-		case 0x12B0D449: //RetrieveAuctionItemMessage
-			handleRetrieveAuctionItem(pack);
-			break;
-		case 0xBB8CAD45: // VerifyPlayerNameMessage
-			handleVerifyPlayerNameMessage(pack);
-			break;
-		case 0x5E7B4846: // GetArticleMessage
-			handleGetArticleMessage(pack);
-			break;
-		case 0x962E8B9B: //SearchKnowledgebaseMessage
-			handleSearchKnowledgebaseMessage(pack);
-			break;
-		}
+		data->parse(pack);
 
-		break;
-	case 04:
-		switch (opcode) {
-		case 0xD5899226:
-			handleClientPermissionsMessage(pack);
-			break;
-		case 0x092D3564: //SuiEventNotification
-			handleSuiEventNotification(pack);
-			break;
-		case 0x91125453: //BidAuctionMessage
-			handleBazaarBuy(pack);
-			break;
-		case 0xC9A5F98D: // GetTicketsMessage
-			handleGetTicketsMessage(pack);
-			break;
-		}
-		break;
-	case 05:
-		switch (opcode) {
-		case 0x80CE5E46:
-			handleObjectControllerMessage(pack);
-			break;
-		case 0x84BB21F7: //ChatInstantMessageToCharacter
-			handleTellMessage(pack);
-			break;
-		case 0xD6D1B6D1: //ClientRandomNameRequest
-			handleClientRandomNameRequest(pack);
-			break;
-		case 0x1A7AB839: //GetMapLocationsRequestMessage
-			handleGetMapLocationsRequestMessage(pack);
-			break;
-		case 0x20E4DBE3: //ChatSendToRoom
-			handleChatRoomMessage(pack);
-			break;
-		}
+	} catch (Exception& e) {
+		error("exception while parsing message in ZonePacketHandler");
+		error(e.getMessage());
+		e.printStackTrace();
 
-		break;
-	case 6:
-		switch(opcode) {
-		case 0x25A29FA6: //	ChatPersistentMessageToServer
-			handleSendMail(pack);
-			break;
-		}
-		break;
-	case 7:
-		switch (opcode) {
-		case 0x35366BED: //ChatCreateRoom
-			handleChatCreateRoom(pack);
-			break;
-		case 0xAD47021D: //CreateAuctionMessage
-			handleBazaarAddItem(pack, true);
-			break;
-		}
+		delete data;
+		return;
+	} catch (...) {
+		error("unknown exception while parsing message in ZonePacketHandler");
 
-		break;
-	case 8:
-		switch (opcode) {
-		case 0x1E9CE308: //CreateImmediateAuctionMessage
-			handleBazaarAddItem(pack, false);
-			break;
-		}
-		break;
-	case 10:
-		switch (opcode) {
-		case 0x40E64DAC: //CreateTicketMessage
-			handleCreateTicketMessage(pack);
-			break;
-		}
-		break;
-	case 12:
-		switch (opcode) {
-		case 0xB97F3074: //ClientCreateCharacter
-			handleClientCreateCharacter(pack);
-			break;
-		}
-		break;
-	case 14:
-		switch (opcode) {
-		case 0x679E0D00: //AuctionQueryHeadersMessage
-			handleBazaarScreens(pack);
-			break;
-		}
-		break;
-	default:
-		//error("unhandled operand count" + pack->toString());
-		break;
-	}*/
+		delete data;
+		return;
+	}
+
+	try {
+
+		data->execute();
+
+	} catch (Exception& e) {
+		error("exception while executing message callback in ZonePacketHandler");
+		error(e.getMessage());
+		e.printStackTrace();
+	} catch (...) {
+		error("unknown exception while executing message callback in ZonePacketHandler");
+	}
+
+	delete data;
 }
 

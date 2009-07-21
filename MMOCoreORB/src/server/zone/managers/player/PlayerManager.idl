@@ -44,13 +44,16 @@ which carries forward this exception.
 
 package server.zone.managers.player;
 
+import engine.log.Logger;
+
 include server.zone.objects.player.PlayerCreature;
 include server.zone.managers.player.PlayerMap;
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
+import server.zone.packets.MessageCallback;
 
-class PlayerManager extends ManagedObject {
+class PlayerManager extends ManagedObject, native Logger {
 	ZoneProcessServerImplementation server;
 	
 	PlayerMap playerMap;
@@ -58,5 +61,7 @@ class PlayerManager extends ManagedObject {
 	ObjectManager objectManager;
 	
 	public native PlayerManager(ObjectManager objMan, ZoneProcessServerImplementation srv);
+	
+	public local native boolean create(MessageCallback callback);
 	
 }

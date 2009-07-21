@@ -47,35 +47,67 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../MessageCallback.h"
+
+#include "../../ZoneClientSession.h"
+
+#include "ClientPermissionsMessage.h"
+
 class ClientIDMessage : public BaseMessage {
 public:
 	ClientIDMessage(uint32 accid) {
 		insertShort(0x03);
-		insertInt(0xD5899226); //opcode: ClientCreateCharacterSuccess
+		insertInt(0xD5899226);
 
 		insertInt(accid);
 	}
 
-	static uint32 parse(Packet* pack) {
-		//Shift past opcode:
-		pack->shiftOffset(4);
+};
 
-		//Get session key + accountId size:
-		uint32 dataLen = pack->parseInt();
-		
-		//Get session key
-		uint32 sessionKey = pack->parseInt();
-		
-		//Shift to end of session key, beginning of accountId:
-		//pack->shiftOffset(dataLen - 4);
-		
-		//Get accountId
-		uint32 accountId = pack->parseInt();
+class ClientIDMessageCallback : public MessageCallback {
+	uint32 dataLen;
+	uint32 sessionKey;
+	uint32 accountId;
 
-		//Return the accountId:
-		return accountId;
+public:
+	ClientIDMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
 	}
 
+	void parse(Message* message) {
+		message->shiftOffset(4);
+
+		dataLen = message->parseInt();
+
+		//Get session key
+		sessionKey = message->parseInt();
+
+		//Shift to end of session key, beginning of accountId:
+		//pack->shiftOffset(dataLen - 4);
+
+		//Get accountId
+		accountId = message->parseInt();
+	}
+
+	void execute() {
+		client->setSessionKey(accountId);
+
+		BaseMessage* cpm = new ClientPermissionsMessage();
+		client->sendMessage(cpm);
+	}
+
+	inline uint32 getDataLen() {
+		return dataLen;
+	}
+
+	inline uint32 getSessionKey() {
+		return sessionKey;
+	}
+
+	inline uint32 getAccountId() {
+		return accountId;
+	}
 };
 
 #endif /*CLIENTIDMESSAGE_H_*/

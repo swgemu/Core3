@@ -331,7 +331,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 			}
 		}
 
-		//object.setParent(null);
+		object.setParent(null);
 		
 		return true;
 	}

@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../MessageCallback.h"
+
 class SelectCharacter : public BaseMessage {
 public:
 	SelectCharacter(uint64 charid) {
@@ -60,6 +62,23 @@ public:
 		return pack->parseInt(10);
 	}
 
+};
+
+class SelectCharacterCallback : public MessageCallback {
+	uint64 characterID;
+public:
+	SelectCharacterCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+		characterID = message->parseInt(10);
+	}
+
+	void execute() {
+		uint64 playerID = (characterID << 32) + 0x15;
+	}
 };
 
 #endif /*SELECTCHARACTER_H_*/

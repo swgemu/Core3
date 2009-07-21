@@ -258,15 +258,14 @@ void ServerCore::handleCommands() {
 				zoneServer->fixScheduler();*/
 
 				SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
-				System::out << "acc:" << ((CreatureObject*)object)->getSlotDescriptor(0);
-				object->finalize();
-				/*String data;
+				String data;
 				object->serialize(data);
 				System::out << data << "\n";
 				object->deSerialize(data);
 				data = "";
 				object->serialize(data);
-				System::out << data;*/
+				System::out << data;
+				object->finalize();
 				/*String name;
 				object->getFullObjectName(name);
 

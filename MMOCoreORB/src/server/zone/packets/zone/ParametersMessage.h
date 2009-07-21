@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../MessageCallback.h"
+
 class ParametersMessage : public BaseMessage {
 public:
 	ParametersMessage() : BaseMessage(7) {
@@ -60,6 +62,22 @@ public:
 		uint16 ackSequence = pack->parseShort();
 	}
 	
+};
+
+class ParametersMessageCallback : public MessageCallback {
+	uint16 ackSequence;
+public:
+	ParametersMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+	}
+
+	void parse(Message* msg) {
+		ackSequence = msg->parseShort();
+	}
+
+	void execute() {
+
+	}
 };
 
 #endif /*PARAMETERSMESSAGE_H_*/

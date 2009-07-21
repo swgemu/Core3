@@ -44,6 +44,8 @@ which carries forward this exception.
 
 #include "ClientCreateCharacter.h"
 
+#include "server/zone/managers/player/PlayerManager.h"
+
 ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
 	insertShort(12);
 	insertInt(0xB97F3074);
@@ -61,68 +63,31 @@ ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
 	insertByte(0);
 }
 
-void ClientCreateCharacter::parse(Packet* pack, Player* player) {
-	String customization;
-	pack->parseAscii(customization);
+void ClientCreateCharacterCallback::parse(Message* message) {
+	message->parseAscii(customization);
+	message->parseUnicode(characterName);
 
-	player->setCustomizationString(customization);
+	message->parseAscii(racefile);
+	message->parseAscii(location);
 
-	UnicodeString characterName;
-	pack->parseUnicode(characterName); //get UnicodeString name
-	player->setCharacterName(characterName);
+	message->parseAscii(hairobj);
+	message->parseAscii(haircust); //grab the hair cust data
 
-	int idx = characterName.indexOf(' ');
-	if (idx != -1) {
-		player->setFirstName(characterName.subString(0, idx).toString());
-		player->setLastName(characterName.subString(idx + 1, characterName.length()).toString());
-	} else {
-		player->setFirstName(characterName.toString());
-		player->setLastName("");
-	}
+	message->parseAscii(profession);
 
-	String racefile;
-	pack->parseAscii(racefile);
-	player->setRaceFileName(racefile);
+	message->shiftOffset(1); //move past some unknown byte
 
-	int raceid = Races::getRaceID(racefile);
-	player->setRaceID(raceid);
-	player->setRaceName(Races::getRace(raceid));
-	player->setStfName(Races::getSpecies(raceid));
-	player->setGender(Races::getGender(raceid));
+	height = message->parseFloat();
 
-	player->makeCharacterMask();
-
-	String location;
-	pack->parseAscii(location);
-	player->setStartingLocation(location);
-
-	String hairobj;
-	pack->parseAscii(hairobj);
-	if (!hairobj.isEmpty()) {
-		hairobj = hairobj.replaceFirst("hair_", "shared_hair_");
-
-		player->setHairObject(hairobj);
-	}
-
-	String haircust;
-	pack->parseAscii(haircust); //grab the hair cust data
-	player->setHairAppearance(haircust);
-
-	String profession;
-	pack->parseAscii(profession);
-	player->setStartingProfession(profession);
-
-	pack->shiftOffset(1); //move past some unknown byte
-
-	float height = pack->parseFloat();
 	if (height < 0.7 || height > 1.5)
 		height = 1;
 
-	player->setHeight(height);
 
-	UnicodeString bio;
-	pack->parseUnicode(bio); //get the biography.
-	player->setBiography(bio);
+	message->parseUnicode(bio); //get the biography.
 
-	uint8 tutflag = pack->parseByte(); //tutorial bool.
+	tutflag = message->parseByte(); //tutorial bool.
+}
+
+void ClientCreateCharacterCallback::execute() {
+
 }
