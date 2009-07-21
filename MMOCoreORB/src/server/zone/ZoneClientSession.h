@@ -38,10 +38,6 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock);
 
-	void acquire();
-
-	void release();
-
 	String getAddress();
 
 	void lock(bool doLock);
@@ -88,10 +84,6 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock);
 
-	void acquire();
-
-	void release();
-
 	String getAddress();
 
 	void lock(bool doLock);
@@ -113,7 +105,6 @@ public:
 	DistributedObjectStub* _getStub();
 
 protected:
-
 	void _serializationHelperMethod();
 
 	friend class ZoneClientSession;
@@ -134,10 +125,6 @@ public:
 	void disconnect(bool doLock);
 
 	void closeConnection(bool lockPlayer, bool doLock);
-
-	void acquire();
-
-	void release();
 
 	String getAddress();
 

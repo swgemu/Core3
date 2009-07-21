@@ -186,10 +186,10 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	}
 }
 
-void ZoneClientSessionImplementation::acquire() {
+/*void ZoneClientSessionImplementation::acquire() {
 	_this->acquire();
 }
 
 void ZoneClientSessionImplementation::release() {
 	_this->release();
-}
+}*/

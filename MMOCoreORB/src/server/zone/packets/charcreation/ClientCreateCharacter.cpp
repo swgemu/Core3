@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "ClientCreateCharacter.h"
 
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
 	insertShort(12);
@@ -89,5 +90,6 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 }
 
 void ClientCreateCharacterCallback::execute() {
-
+	PlayerManager* playerManager = server->getPlayerManager();
+	playerManager->createPlayer(this);
 }

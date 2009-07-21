@@ -33,6 +33,20 @@ using namespace server::zone::managers::object;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace player {
+
+class PlayerManager;
+
+} // namespace player
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::player;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -134,6 +148,8 @@ public:
 
 	int getDeletedPlayers();
 
+	PlayerManager* getPlayerManager();
+
 	unsigned long long getNextCreatureID(bool doLock);
 
 	unsigned long long getNextID(bool doLock);
@@ -185,6 +201,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	Vector<Zone* >* zones;
 
 	ObjectManager* objectManager;
+
+	PlayerManager* playerManager;
 
 	int totalSentPackets;
 
@@ -287,6 +305,8 @@ public:
 
 	int getDeletedPlayers();
 
+	PlayerManager* getPlayerManager();
+
 	unsigned long long getNextCreatureID(bool doLock);
 
 	unsigned long long getNextID(bool doLock);
@@ -387,6 +407,8 @@ public:
 	int getTotalPlayers();
 
 	int getDeletedPlayers();
+
+	PlayerManager* getPlayerManager();
 
 	unsigned long long getNextCreatureID(bool doLock);
 
