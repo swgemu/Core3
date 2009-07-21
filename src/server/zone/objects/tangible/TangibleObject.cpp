@@ -147,6 +147,10 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 	return _this;
 }
 
+TangibleObjectImplementation::operator TangibleObject*() {
+	return _this;
+}
+
 void TangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 

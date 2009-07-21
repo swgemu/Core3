@@ -68,6 +68,7 @@ public:
 
 	PlayerObject* _this;
 
+	operator PlayerObject*();
 protected:
 	virtual ~PlayerObjectImplementation();
 

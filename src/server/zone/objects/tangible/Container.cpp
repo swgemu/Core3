@@ -63,6 +63,10 @@ DistributedObjectStub* ContainerImplementation::_getStub() {
 	return _this;
 }
 
+ContainerImplementation::operator Container*() {
+	return _this;
+}
+
 void ContainerImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 

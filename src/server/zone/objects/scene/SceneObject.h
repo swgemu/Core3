@@ -570,6 +570,7 @@ public:
 
 	SceneObject* _this;
 
+	operator SceneObject*();
 protected:
 	virtual ~SceneObjectImplementation();
 

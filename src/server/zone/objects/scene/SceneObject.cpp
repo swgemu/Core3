@@ -420,6 +420,10 @@ DistributedObjectStub* SceneObjectImplementation::_getStub() {
 	return _this;
 }
 
+SceneObjectImplementation::operator SceneObject*() {
+	return _this;
+}
+
 void SceneObjectImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

@@ -52,6 +52,10 @@ DistributedObjectStub* PlayerObjectImplementation::_getStub() {
 	return _this;
 }
 
+PlayerObjectImplementation::operator PlayerObject*() {
+	return _this;
+}
+
 void PlayerObjectImplementation::_serializationHelperMethod() {
 	IntangibleObjectImplementation::_serializationHelperMethod();
 

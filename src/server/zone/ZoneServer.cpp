@@ -591,6 +591,10 @@ DistributedObjectStub* ZoneServerImplementation::_getStub() {
 	return _this;
 }
 
+ZoneServerImplementation::operator ZoneServer*() {
+	return _this;
+}
+
 void ZoneServerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

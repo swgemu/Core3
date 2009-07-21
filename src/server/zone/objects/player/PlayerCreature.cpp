@@ -56,6 +56,10 @@ DistributedObjectStub* PlayerCreatureImplementation::_getStub() {
 	return _this;
 }
 
+PlayerCreatureImplementation::operator PlayerCreature*() {
+	return _this;
+}
+
 void PlayerCreatureImplementation::_serializationHelperMethod() {
 	CreatureObjectImplementation::_serializationHelperMethod();
 

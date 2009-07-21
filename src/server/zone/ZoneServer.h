@@ -331,6 +331,7 @@ public:
 
 	ZoneServer* _this;
 
+	operator ZoneServer*();
 protected:
 	virtual ~ZoneServerImplementation();
 

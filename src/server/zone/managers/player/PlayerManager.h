@@ -94,6 +94,7 @@ public:
 
 	PlayerManager* _this;
 
+	operator PlayerManager*();
 protected:
 	virtual ~PlayerManagerImplementation();
 

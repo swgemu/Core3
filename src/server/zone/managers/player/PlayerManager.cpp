@@ -51,6 +51,10 @@ DistributedObjectStub* PlayerManagerImplementation::_getStub() {
 	return _this;
 }
 
+PlayerManagerImplementation::operator PlayerManager*() {
+	return _this;
+}
+
 void PlayerManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
