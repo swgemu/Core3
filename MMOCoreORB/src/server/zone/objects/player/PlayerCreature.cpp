@@ -27,6 +27,19 @@ PlayerCreature::PlayerCreature(DummyConstructorParameter* param) : CreatureObjec
 PlayerCreature::~PlayerCreature() {
 }
 
+void PlayerCreature::setClient(ZoneClientSession* cli) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(cli);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->setClient(cli);
+}
+
 /*
  *	PlayerCreatureImplementation
  */
@@ -63,6 +76,11 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 	addSerializableVariable("factionStatus", &factionStatus);
 }
 
+void PlayerCreatureImplementation::setClient(ZoneClientSession* cli) {
+	// server/zone/objects/player/PlayerCreature.idl(97):  owner = cli;
+	owner = cli;
+}
+
 /*
  *	PlayerCreatureAdapter
  */
@@ -74,11 +92,18 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		setClient((ZoneClientSession*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PlayerCreatureAdapter::setClient(ZoneClientSession* cli) {
+	return ((PlayerCreatureImplementation*) impl)->setClient(cli);
 }
 
 /*

@@ -12,4 +12,11 @@
 PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par) :
 	CreatureObjectImplementation(templateData, par) {
 
+	owner = NULL;
+	nextAction = NULL;
+
+	nextTip = NULL;
+
+	firstIncapacitationTime = NULL;
+
 }

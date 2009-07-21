@@ -62,6 +62,8 @@ class PlayerCreature : public CreatureObject {
 public:
 	PlayerCreature(LuaObject* templateData, SceneObject* par = NULL);
 
+	void setClient(ZoneClientSession* cli);
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -125,6 +127,8 @@ protected:
 public:
 	PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par = NULL);
 
+	void setClient(ZoneClientSession* cli);
+
 	PlayerCreature* _this;
 
 protected:
@@ -143,6 +147,8 @@ public:
 	PlayerCreatureAdapter(PlayerCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void setClient(ZoneClientSession* cli);
 
 };
 

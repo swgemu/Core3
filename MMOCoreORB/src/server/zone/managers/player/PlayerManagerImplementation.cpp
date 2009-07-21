@@ -26,7 +26,13 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getRaceFile(race);
 	info("trying to create " + race, true);
 
-	/*SceneObject* player = objectManager->createObject(0x1D52730E); // player
+	SceneObject* player = objectManager->createObject(0x1D52730E); // player
+
+	if (player->getGameObjectType() != 0x409) {
+		player->finalize();
+		return false;
+	}
+
 	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
 	SceneObject* inventory = objectManager->createObject(0x3969E83B); // character_inventory
 
@@ -38,9 +44,8 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	player->addObject(datapad);
 	player->addObject(inventory);
 
-	player->setClient(data->getClient());
+	((PlayerCreature*)player)->setClient(data->getClient());
 	//client->setPlayer(player);
 
-*/
 	return true;
 }

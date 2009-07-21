@@ -66,7 +66,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	processor = NULL;
 	procThreadCount = processingThreads;
 
-	objectManager = ObjectManager::instance();
+	objectManager = NULL;
 	playerManager = NULL;
 
 	totalSentPackets = 0;
@@ -370,6 +370,9 @@ void ZoneServerImplementation::init() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
+
+	objectManager = ObjectManager::instance();
+	objectManager->setZoneProcessServerImplementation(processor);
 
 	playerManager = new PlayerManager(objectManager, processor);
 	playerManager->deploy("PlayerManager");
