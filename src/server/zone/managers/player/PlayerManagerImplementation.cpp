@@ -19,7 +19,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, 
 	playerMap = new PlayerMap(3000);
 }
 
-bool PlayerManagerImplementation::create(MessageCallback* data) {
+bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
 
 	String race;

@@ -62,6 +62,6 @@ class PlayerManager extends ManagedObject, native Logger {
 	
 	public native PlayerManager(ObjectManager objMan, ZoneProcessServerImplementation srv);
 	
-	public local native boolean create(MessageCallback callback);
+	public local native boolean createPlayer(MessageCallback callback);
 	
 }

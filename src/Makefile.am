@@ -50,7 +50,7 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
-	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
+	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
 	-lmysqlclient -lz -lengine3 -llua
 
 bin_PROGRAMS = core3

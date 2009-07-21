@@ -58,7 +58,7 @@ class PlayerManager : public ManagedObject {
 public:
 	PlayerManager(ObjectManager* objMan, ZoneProcessServerImplementation* srv);
 
-	bool create(MessageCallback* callback);
+	bool createPlayer(MessageCallback* callback);
 
 protected:
 	PlayerManager(DummyConstructorParameter* param);
@@ -90,7 +90,7 @@ class PlayerManagerImplementation : public ManagedObjectImplementation, public L
 public:
 	PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv);
 
-	bool create(MessageCallback* callback);
+	bool createPlayer(MessageCallback* callback);
 
 	PlayerManager* _this;
 

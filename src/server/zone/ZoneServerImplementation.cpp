@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "../db/ServerDatabase.h"
 
 #include "managers/object/ObjectManager.h"
+#include "managers/player/PlayerManager.h"
 
 #include "ZoneProcessServerImplementation.h"
 
@@ -66,6 +67,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	procThreadCount = processingThreads;
 
 	objectManager = ObjectManager::instance();
+	playerManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -340,6 +342,8 @@ void ZoneServerImplementation::init() {
 
 		zones->add(zone);
 	}
+
+	startManagers();
 /*
 	userManager = NULL;
 	itemManager = NULL;
@@ -365,9 +369,12 @@ void ZoneServerImplementation::init() {
 }
 
 void ZoneServerImplementation::startManagers() {
-	/*info("loading managers..");
+	info("loading managers..");
 
-	userManager = new UserManager(_this);
+	playerManager = new PlayerManager(objectManager, processor);
+	playerManager->deploy("PlayerManager");
+
+	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
 
 	itemManager = new ItemManager(_this, processor);
@@ -375,9 +382,6 @@ void ZoneServerImplementation::startManagers() {
 
 	itemConfigManager = new ItemConfigManager();
 	itemConfigManager->deploy("ItemConfigManager");
-
-	playerManager = new PlayerManager(itemManager, processor);
-	playerManager->deploy("PlayerManager");
 
 	guildManager = new GuildManager(_this);
 	guildManager->deploy("GuildManager");

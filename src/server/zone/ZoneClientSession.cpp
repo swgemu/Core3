@@ -86,36 +86,12 @@ void ZoneClientSession::closeConnection(bool lockPlayer, bool doLock) {
 		((ZoneClientSessionImplementation*) _impl)->closeConnection(lockPlayer, doLock);
 }
 
-void ZoneClientSession::acquire() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		method.executeWithVoidReturn();
-	} else
-		((ZoneClientSessionImplementation*) _impl)->acquire();
-}
-
-void ZoneClientSession::release() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		method.executeWithVoidReturn();
-	} else
-		((ZoneClientSessionImplementation*) _impl)->release();
-}
-
 String ZoneClientSession::getAddress() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getAddress);
 		return _return_getAddress;
@@ -128,7 +104,7 @@ void ZoneClientSession::lock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 12);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -141,7 +117,7 @@ void ZoneClientSession::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 13);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -154,7 +130,7 @@ void ZoneClientSession::setSessionKey(unsigned int key) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 14);
 		method.addUnsignedIntParameter(key);
 
 		method.executeWithVoidReturn();
@@ -167,7 +143,7 @@ unsigned int ZoneClientSession::getSessionKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -239,24 +215,18 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		closeConnection(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		acquire();
-		break;
-	case 12:
-		release();
-		break;
-	case 13:
 		resp->insertAscii(getAddress());
 		break;
-	case 14:
+	case 12:
 		lock(inv->getBooleanParameter());
 		break;
-	case 15:
+	case 13:
 		unlock(inv->getBooleanParameter());
 		break;
-	case 16:
+	case 14:
 		setSessionKey(inv->getUnsignedIntParameter());
 		break;
-	case 17:
+	case 15:
 		resp->insertInt(getSessionKey());
 		break;
 	default:
@@ -284,14 +254,6 @@ void ZoneClientSessionAdapter::disconnect(bool doLock) {
 
 void ZoneClientSessionAdapter::closeConnection(bool lockPlayer, bool doLock) {
 	return ((ZoneClientSessionImplementation*) impl)->closeConnection(lockPlayer, doLock);
-}
-
-void ZoneClientSessionAdapter::acquire() {
-	return ((ZoneClientSessionImplementation*) impl)->acquire();
-}
-
-void ZoneClientSessionAdapter::release() {
-	return ((ZoneClientSessionImplementation*) impl)->release();
 }
 
 String ZoneClientSessionAdapter::getAddress() {

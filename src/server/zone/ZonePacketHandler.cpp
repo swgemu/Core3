@@ -70,11 +70,22 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 
-	System::out << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	StringBuffer buffer;
+	buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	info(buffer, true);
+
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
 	MessageCallback* data = messageCallbackFactory.createObject(opcode, client, processServer);
+
+	if (data == NULL) {
+		StringBuffer msg;
+		msg << "unknown opcode 0x" << hex << opcode;
+		info(msg, true);
+
+		return;
+	}
 
 	try {
 

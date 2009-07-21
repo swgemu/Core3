@@ -69,12 +69,20 @@ class LootManager;
 class SuiManager;
 class NameManager;*/
 
+#include "ZoneServer.h"
+
 namespace server {
 namespace zone {
 
 class ZonePacketHandler;
 class ZoneMessageProcessorThread;
 class ZoneServer;
+
+namespace managers {
+namespace player {
+	class PlayerManager;
+}
+}
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	ZoneServer* server;
@@ -114,11 +122,11 @@ public:
 		return server;
 	}
 
-	/*inline PlayerManager* getPlayerManager() {
+	inline PlayerManager* getPlayerManager() {
 		return server->getPlayerManager();
 	}
 
-	inline UserManager* getUserManager() {
+	/*inline UserManager* getUserManager() {
 		return server->getUserManager();
 	}
 

@@ -57,6 +57,7 @@ import system.util.Vector;
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
+import server.zone.managers.player.PlayerManager;
 import server.zone.Zone;
 
 class ZoneServer extends ManagedObject, native DatagramServiceThread {
@@ -71,6 +72,7 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	Vector<Zone> zones;
 	
 	ObjectManager objectManager;
+	PlayerManager playerManager;
 
 	int totalSentPackets;
 	
@@ -186,6 +188,10 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 
 	public int getDeletedPlayers() {
 		return totalDeletedPlayers;
+	}
+	
+	public PlayerManager getPlayerManager() {
+		return playerManager;
 	}
 
 	/*public time_t getStartTimestamp() {
