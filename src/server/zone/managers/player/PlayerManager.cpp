@@ -8,6 +8,8 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
+#include "server/zone/packets/MessageCallback.h"
+
 /*
  *	PlayerManagerStub
  */
@@ -23,6 +25,14 @@ PlayerManager::PlayerManager(DummyConstructorParameter* param) : ManagedObject(p
 }
 
 PlayerManager::~PlayerManager() {
+}
+
+bool PlayerManager::create(MessageCallback* callback) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerManagerImplementation*) _impl)->create(callback);
 }
 
 /*

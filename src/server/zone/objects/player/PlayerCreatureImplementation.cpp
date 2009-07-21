@@ -7,6 +7,8 @@
 
 #include "PlayerCreature.h"
 
+#include "server/zone/managers/object/ObjectManager.h"
+
 PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par) :
 	CreatureObjectImplementation(templateData, par) {
 

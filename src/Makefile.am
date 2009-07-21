@@ -95,5 +95,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
+		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
 		main.cpp
 		

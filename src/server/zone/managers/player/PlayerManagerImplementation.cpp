@@ -7,10 +7,40 @@
 
 #include "PlayerManager.h"
 
-PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv) {
+#include "../object/ObjectManager.h"
+#include "../../packets/charcreation/ClientCreateCharacter.h"
+
+PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv) :
+	Logger("PlayerManager") {
 	objectManager = objMan;
 
 	server = srv;
 
 	playerMap = new PlayerMap(3000);
+}
+
+bool PlayerManagerImplementation::create(MessageCallback* data) {
+	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+
+	String race;
+	callback->getRaceFile(race);
+	info("trying to create " + race, true);
+
+	/*SceneObject* player = objectManager->createObject(0x1D52730E); // player
+	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
+	SceneObject* inventory = objectManager->createObject(0x3969E83B); // character_inventory
+
+	if (player == NULL || datapad == NULL || inventory == NULL) {
+		error("could not create player");
+		return false;
+	}
+
+	player->addObject(datapad);
+	player->addObject(inventory);
+
+	player->setClient(data->getClient());
+	//client->setPlayer(player);
+
+*/
+	return true;
 }

@@ -475,7 +475,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object) {
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl(319):  return 
+	// server/zone/objects/scene/SceneObject.idl(319):  object.
 	if (containerType == 0x1){
 	// server/zone/objects/scene/SceneObject.idl(320):  int arrangementSize = object.getArrangementDescriptorSize();
 	int arrangementSize = object->getArrangementDescriptorSize();
@@ -499,7 +499,9 @@ bool SceneObjectImplementation::removeObject(SceneObject* object) {
 	containmentSlots->drop(object->getArrangementDescriptor(i));
 }
 }
-	// server/zone/objects/scene/SceneObject.idl(336):  true;
+	// server/zone/objects/scene/SceneObject.idl(334):  setParent(null);
+	object->setParent(NULL);
+	// server/zone/objects/scene/SceneObject.idl(336):  return true;
 	return true;
 }
 

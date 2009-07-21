@@ -198,17 +198,17 @@ void ZoneClientSessionImplementation::_serializationHelperMethod() {
 }
 
 String ZoneClientSessionImplementation::getAddress() {
-	// server/zone/ZoneClientSession.idl(77):  return BaseClientProxy.getAddress();
+	// server/zone/ZoneClientSession.idl(78):  return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
 
 void ZoneClientSessionImplementation::setSessionKey(unsigned int key) {
-	// server/zone/ZoneClientSession.idl(89):  sessionKey = key;
+	// server/zone/ZoneClientSession.idl(90):  sessionKey = key;
 	sessionKey = key;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionKey() {
-	// server/zone/ZoneClientSession.idl(97):  return sessionKey;
+	// server/zone/ZoneClientSession.idl(98):  return sessionKey;
 	return sessionKey;
 }
 

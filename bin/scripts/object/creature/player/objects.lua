@@ -68,7 +68,7 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -142,7 +142,7 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -216,7 +216,7 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -290,7 +290,7 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -364,7 +364,7 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -438,7 +438,7 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -512,7 +512,7 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -586,7 +586,7 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -660,7 +660,7 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -734,7 +734,7 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -808,7 +808,7 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -882,7 +882,7 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -956,7 +956,7 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -1030,7 +1030,7 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -1104,7 +1104,7 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -1178,7 +1178,7 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -1252,7 +1252,7 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -1326,7 +1326,7 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
@@ -1400,7 +1400,7 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 1,
 
 	locationReservationRadius = 0,
@@ -1474,7 +1474,7 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 1025,
+	gameObjectType = 1033,
 	gender = 0,
 
 	locationReservationRadius = 0,
