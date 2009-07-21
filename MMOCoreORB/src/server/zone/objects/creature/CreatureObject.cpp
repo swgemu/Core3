@@ -339,6 +339,10 @@ DistributedObjectStub* CreatureObjectImplementation::_getStub() {
 	return _this;
 }
 
+CreatureObjectImplementation::operator CreatureObject*() {
+	return _this;
+}
+
 void CreatureObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 

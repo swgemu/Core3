@@ -228,6 +228,7 @@ public:
 
 	CreatureObject* _this;
 
+	operator CreatureObject*();
 protected:
 	virtual ~CreatureObjectImplementation();
 

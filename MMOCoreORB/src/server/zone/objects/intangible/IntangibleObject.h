@@ -47,6 +47,7 @@ public:
 
 	IntangibleObject* _this;
 
+	operator IntangibleObject*();
 protected:
 	virtual ~IntangibleObjectImplementation();
 

@@ -37,6 +37,10 @@ DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
 	return _this;
 }
 
+IntangibleObjectImplementation::operator IntangibleObject*() {
+	return _this;
+}
+
 void IntangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 

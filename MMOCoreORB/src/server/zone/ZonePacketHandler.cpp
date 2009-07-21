@@ -75,7 +75,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	info(buffer, true);
 
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
-	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
+	ZoneClientSession* client = (ZoneClientSession*) clientimpl;
 
 	MessageCallback* data = messageCallbackFactory.createObject(opcode, client, processServer);
 

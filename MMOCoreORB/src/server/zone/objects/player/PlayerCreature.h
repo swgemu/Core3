@@ -131,6 +131,7 @@ public:
 
 	PlayerCreature* _this;
 
+	operator PlayerCreature*();
 protected:
 	virtual ~PlayerCreatureImplementation();
 

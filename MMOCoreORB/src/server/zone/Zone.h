@@ -148,6 +148,7 @@ public:
 
 	Zone* _this;
 
+	operator Zone*();
 protected:
 	virtual ~ZoneImplementation();
 

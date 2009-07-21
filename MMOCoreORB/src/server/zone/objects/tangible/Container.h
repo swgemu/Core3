@@ -57,6 +57,7 @@ public:
 
 	Container* _this;
 
+	operator Container*();
 protected:
 	virtual ~ContainerImplementation();
 

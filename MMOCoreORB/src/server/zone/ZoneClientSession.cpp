@@ -166,6 +166,10 @@ DistributedObjectStub* ZoneClientSessionImplementation::_getStub() {
 	return _this;
 }
 
+ZoneClientSessionImplementation::operator ZoneClientSession*() {
+	return _this;
+}
+
 void ZoneClientSessionImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

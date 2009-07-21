@@ -127,6 +127,7 @@ public:
 
 	TangibleObject* _this;
 
+	operator TangibleObject*();
 protected:
 	virtual ~TangibleObjectImplementation();
 
