@@ -56,6 +56,8 @@ ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager")
 	objectMap = new ObjectMap(100000);
 	objectCacheMap = new ObjectMap(20000);
 
+	server = NULL;
+
 	registerObjectTypes();
 
 	luaTemplatesInstance = new Lua();
@@ -199,6 +201,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC) {
 
 		object = objectFactory.createObject(gameObjectType, &result, NULL);
 		object->setObjectCRC(objectCRC);
+		object->setZoneProcessServer(server);
 
 		/*if (object == NULL) {
 		if (gameObjectType > 0x100)

@@ -110,6 +110,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public static final int NPCCREATURE = 0x401;
 	public static final int DROIDCREATURE = 0x402;
 	public static final int PROBOTCREATURE = 0x403;
+	public static final int PLAYERCREATURE = 0x409;
 
 	public static final int INTANGIBLE = 0x800;
 	public static final int DRAFTSCHEMATIC = 0x801;
@@ -421,6 +422,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public void setParent(SceneObject par) {
 		parent = par;
+	}
+	
+	public local void setZoneProcessServer(ZoneProcessServerImplementation srv) {
+		server = srv;
 	}
 
 }

@@ -55,12 +55,17 @@ which carries forward this exception.
 
 namespace server {
 namespace zone {
+
+	class ZoneProcessServerImplementation;
+
 namespace managers {
 namespace object {
 
 class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManager> {
 	ObjectMap* objectMap;
 	ObjectMap* objectCacheMap;
+
+	ZoneProcessServerImplementation* server;
 
 public:
 	static ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> objectFactory;
@@ -89,6 +94,10 @@ public:
 	SceneObject* removeCachedObject(uint64 oid);
 
 	SceneObject* createObject(uint32 objectCRC);
+
+	void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
+		server = srv;
+	}
 
 	// LUA
 	void registerFunctions();

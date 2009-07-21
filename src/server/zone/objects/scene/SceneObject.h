@@ -114,6 +114,8 @@ public:
 
 	void setParent(SceneObject* par);
 
+	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -195,6 +197,8 @@ public:
 	static const int DROIDCREATURE = 0x402;
 
 	static const int PROBOTCREATURE = 0x403;
+
+	static const int PLAYERCREATURE = 0x409;
 
 	static const int INTANGIBLE = 0x800;
 
@@ -561,6 +565,8 @@ public:
 	void setObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
+
+	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
 	SceneObject* _this;
 

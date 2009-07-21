@@ -92,5 +92,9 @@ class PlayerCreature extends CreatureObject {
 	// Profession stuff
 	
 	public native PlayerCreature(LuaObject templateData, SceneObject par = null);
+	
+	public void setClient(ZoneClientSession cli) {
+		owner = cli;
+	}
 
 }
