@@ -41,9 +41,6 @@
 # which carries forward this exception.
 
 IDLC = /usr/local/bin/idlc -rb
-IDLC55 = /usr/local/bin/idlc55
-
-IDL55_SOURCES = 
 				
 IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/ZoneServer.idl \
@@ -59,7 +56,6 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)
-	#cd src && $(IDLC55) $(IDL55_SOURCES)
 	cd build/unix && make -j4
 	cp build/unix/src/core3* bin
 	#done

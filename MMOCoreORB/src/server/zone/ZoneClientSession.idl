@@ -51,10 +51,10 @@ import engine.service.DatagramServiceThread;
 import system.net.SocketAddress;
 import system.net.Socket;
 import engine.core.ManagedObject;
-//import server.zone.objects.scene.SceneObject;
+import server.zone.objects.scene.SceneObject;
 
 class ZoneClientSession extends ManagedObject, native BaseClientProxy {
-	//SceneObject player;
+	SceneObject player;
 	
 	unsigned int sessionKey;
 	
@@ -69,10 +69,6 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 	public native void disconnect(boolean doLock);
 
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
-
-	/*public native void acquire();
-
-	public native void release();*/
 	
 	public dereferenced string getAddress() {
 		return BaseClientProxy.getAddress();
@@ -82,17 +78,17 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 	public native void unlock(boolean doLock = true);
 
 	// setters and getters
-	/*public void setPlayer(SceneObject p) {
-		player = p;
-	}*/
+	public void setPlayer(SceneObject playerCreature) {
+		player = playerCreature;
+	}
 
 	public void setSessionKey(unsigned int key) {
 		sessionKey = key;
 	}
 
-	/*public SceneObject getPlayer() {
+	public SceneObject getPlayer() {
 		return player;
-	}*/
+	}
 
 	public unsigned int getSessionKey() {
 		return sessionKey;

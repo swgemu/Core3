@@ -86,7 +86,9 @@ which carries forward this exception.
 #include "managers/skills/SkillManager.h"
 #include "managers/loot/LootManager.h"
 #include "managers/sui/SuiManager.h"
-#include "managers/name/NameManager.h"*/
+*/
+
+#include "managers/name/NameManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
@@ -94,6 +96,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 
 	processors = NULL;
 	procThreadCount = processingThreads;
+
+	nameManager = new NameManager(this);
 
 	setLogging(false);
 

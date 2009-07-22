@@ -66,8 +66,9 @@ class SkillManager;
 class RadialManager;
 class GroupManager;
 class LootManager;
-class SuiManager;
-class NameManager;*/
+class SuiManager;*/
+
+class NameManager;
 
 #include "ZoneServer.h"
 
@@ -93,6 +94,8 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	int procThreadCount;
 
 	//Static Managers
+	NameManager* nameManager;
+
 	/*CombatManager* combatManager;
 	ProfessionManager* professionManager;
 	SkillManager* skillManager;
@@ -100,7 +103,7 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	GroupManager* groupManager;
 	LootManager* lootManager;
 	SuiManager* suiManager;
-	NameManager* nameManager;*/
+	*/
 
 public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
@@ -124,6 +127,10 @@ public:
 
 	inline PlayerManager* getPlayerManager() {
 		return server->getPlayerManager();
+	}
+
+	inline NameManager* getNameManager() {
+		return nameManager;
 	}
 
 	/*inline UserManager* getUserManager() {
@@ -182,9 +189,7 @@ public:
 		return suiManager;
 	}
 
-	inline NameManager* getNameManager() {
-		return nameManager;
-	}*/
+	*/
 
 };
 

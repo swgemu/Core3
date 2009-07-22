@@ -50,6 +50,7 @@ which carries forward this exception.
 
 #include "packets/zone/ClientIDMessage.h"
 #include "packets/charcreation/ClientCreateCharacter.h"
+#include "packets/charcreation/ClientRandomNameRequest.h""
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
@@ -62,6 +63,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
 	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
+	messageCallbackFactory.registerObject<ClientRandomNameRequest>(0xD6D1B6D1);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {

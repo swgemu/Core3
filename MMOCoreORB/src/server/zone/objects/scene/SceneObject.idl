@@ -59,7 +59,7 @@ import engine.util.Quaternion;
 
 import server.zone.ZoneProcessServerImplementation;
 
-include server.zone.ZoneClientSession;
+import server.zone.ZoneClientSession;
 
 include server.zone.objects.scene.variables.StringId;
 

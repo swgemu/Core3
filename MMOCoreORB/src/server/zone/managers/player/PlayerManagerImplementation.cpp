@@ -26,26 +26,42 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getRaceFile(race);
 	info("trying to create " + race, true);
 
-	SceneObject* player = objectManager->createObject(0x1D52730E); // player
+	uint32 playerCRC = race.hashCode();
+
+	SceneObject* player = objectManager->createObject(playerCRC); // player
+
+	if (player == NULL) {
+		error("could not create player");
+		return false;
+	}
 
 	if (player->getGameObjectType() != 0x409) {
 		player->finalize();
+		error("could not create player");
 		return false;
 	}
 
 	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
+
+	if (datapad == NULL) {
+		error("could not create player datapad");
+		return false;
+	}
+
 	SceneObject* inventory = objectManager->createObject(0x3969E83B); // character_inventory
 
-	if (player == NULL || datapad == NULL || inventory == NULL) {
-		error("could not create player");
+	if (inventory == NULL) {
+		error("could not create player inventory");
 		return false;
 	}
 
 	player->addObject(datapad);
 	player->addObject(inventory);
 
-	((PlayerCreature*)player)->setClient(data->getClient());
-	//client->setPlayer(player);
+	ZoneClientSession* client = data->getClient();
+
+	((PlayerCreature*)player)->setClient(client);
+	client->setPlayer(player);
 
 	return true;
 }

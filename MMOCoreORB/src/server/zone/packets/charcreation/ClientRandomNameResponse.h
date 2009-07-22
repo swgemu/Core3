@@ -47,14 +47,13 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ClientRandomNameReponse : public BaseMessage {
+class ClientRandomNameResponse : public BaseMessage {
 public:
-	ClientRandomNameReponse(String race_iff, String name) : BaseMessage() {
-		UnicodeString UnicodeString_name = UnicodeString(name);
+	ClientRandomNameResponse(String raceIff, String name) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xE85FB868); //opcode: ClientRandomNameReponse
-		insertAscii(race_iff);
-		insertUnicode(UnicodeString_name); //Insert a randomly generated name here, dont need to do that now..
+		insertAscii(raceIff);
+		insertUnicode(UnicodeString(name)); //Insert a randomly generated name here, dont need to do that now..
 		insertAscii("ui", 0x02); //STF file to use loading the desciption for Approval_Type. Pretty much static unless we really need a custom approval_type message
 		insertInt(0x00); //spacer
 		insertAscii("name_approved", 0x0D); //needed for the generated name to display.
