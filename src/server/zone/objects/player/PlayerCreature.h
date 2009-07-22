@@ -51,6 +51,8 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
 #include "engine/lua/LuaObject.h"
 
 namespace server {
@@ -62,7 +64,19 @@ class PlayerCreature : public CreatureObject {
 public:
 	PlayerCreature(LuaObject* templateData, SceneObject* par = NULL);
 
+	void sendMessage(BaseMessage* msg);
+
+	void sendToOwner(bool doClose);
+
+	ZoneClientSession* getClient();
+
+	byte getRaceID();
+
 	void setClient(ZoneClientSession* cli);
+
+	void setBiography(const UnicodeString& bio);
+
+	void setRaceID(byte id);
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -127,16 +141,29 @@ protected:
 public:
 	PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par = NULL);
 
+	void sendMessage(BaseMessage* msg);
+
+	void sendToOwner(bool doClose);
+
+	ZoneClientSession* getClient();
+
+	byte getRaceID();
+
 	void setClient(ZoneClientSession* cli);
+
+	void setBiography(const UnicodeString& bio);
+
+	void setRaceID(byte id);
 
 	PlayerCreature* _this;
 
-	operator PlayerCreature*();
+	operator const PlayerCreature*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerCreatureImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
@@ -149,7 +176,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendMessage(BaseMessage* msg);
+
+	void sendToOwner(bool doClose);
+
+	ZoneClientSession* getClient();
+
+	byte getRaceID();
+
 	void setClient(ZoneClientSession* cli);
+
+	void setRaceID(byte id);
 
 };
 

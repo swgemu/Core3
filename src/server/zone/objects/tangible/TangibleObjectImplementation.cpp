@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "TangibleObject.h"
 
 #include "../../managers/object/ObjectManager.h"
+#include "../scene/variables/CustomizationVariables.h"
 
 TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
 		: SceneObjectImplementation(templ, parent) {
@@ -65,5 +66,6 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, Sce
 	optionsBitmask = 0;
 
 	defenderList = new DeltaVector<SceneObject*>();
+	customizationVariables = new CustomizationVariables();
 
 }

@@ -68,12 +68,13 @@ public:
 
 	PlayerObject* _this;
 
-	operator PlayerObject*();
+	operator const PlayerObject*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerObjectImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 

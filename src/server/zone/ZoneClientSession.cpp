@@ -191,7 +191,7 @@ DistributedObjectStub* ZoneClientSessionImplementation::_getStub() {
 	return _this;
 }
 
-ZoneClientSessionImplementation::operator ZoneClientSession*() {
+ZoneClientSessionImplementation::operator const ZoneClientSession*() {
 	return _this;
 }
 

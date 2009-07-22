@@ -49,6 +49,8 @@ using namespace server::zone::packets;
 
 #include "engine/log/Logger.h"
 
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -59,6 +61,8 @@ public:
 	PlayerManager(ObjectManager* objMan, ZoneProcessServerImplementation* srv);
 
 	bool createPlayer(MessageCallback* callback);
+
+	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 protected:
 	PlayerManager(DummyConstructorParameter* param);
@@ -92,14 +96,17 @@ public:
 
 	bool createPlayer(MessageCallback* callback);
 
+	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
+
 	PlayerManager* _this;
 
-	operator PlayerManager*();
+	operator const PlayerManager*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~PlayerManagerImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
@@ -112,6 +119,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
+
+protected:
+	String _param0_createHairObject__String_String_;
+	String _param1_createHairObject__String_String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

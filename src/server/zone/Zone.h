@@ -148,12 +148,13 @@ public:
 
 	Zone* _this;
 
-	operator Zone*();
+	operator const Zone*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ZoneImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 

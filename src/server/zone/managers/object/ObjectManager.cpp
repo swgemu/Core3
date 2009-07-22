@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/intangible/IntangibleObject.h"
 #include "../../objects/tangible/Container.h"
+#include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/player/PlayerCreature.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
@@ -57,6 +58,8 @@ ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager")
 	objectCacheMap = new ObjectMap(20000);
 
 	server = NULL;
+	newObjectID = 0x15;
+	newObjectID = newObjectID << 32;
 
 	registerObjectTypes();
 
@@ -82,8 +85,8 @@ ObjectManager::~ObjectManager() {
 	while (objectCacheMap->hasNext()) {
 		SceneObject* object = objectCacheMap->next();
 
-		if (object->isPlayer())
-			info("object \'" + object->_getName() + "\' was not cleaned up properly");
+		/*if (object->isPlayer())
+			info("object \'" + object->_getName() + "\' was not cleaned up properly");*/
 	}
 
 	info("objects cleaned up", true);
@@ -106,10 +109,11 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<IntangibleObject>(0x800);
 	objectFactory.registerObject<Container>(0x2005);
+	objectFactory.registerObject<TangibleObject>(0x2013);
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {
-	/*uint64 oid = obj->getObjectID();
+	uint64 oid = obj->getObjectID();
 
 	if (objectCacheMap->remove(oid) != NULL) {
 		obj->redeploy();
@@ -117,7 +121,7 @@ SceneObject* ObjectManager::add(SceneObject* obj) {
 		return objectMap->put(oid, obj);
 	} else {
 		return objectMap->put(oid, obj);
-	}*/
+	}
 
 	return NULL;
 }
@@ -129,28 +133,28 @@ SceneObject* ObjectManager::get(uint64 oid) {
 SceneObject* ObjectManager::remove(uint64 oid) {
 	SceneObject* obj = NULL;
 
-	/*obj = objectMap->remove(oid);
+	obj = objectMap->remove(oid);
 	if (obj == NULL)
 		return NULL;
 
-	obj->info("removed from ObjectManager");
+	//obj->info("removed from ObjectManager");
 
-	if (obj->isPlayer()) {
+	if (obj->isPlayerCreature()) {
 		objectCacheMap->put(oid, obj);
 
 		obj->scheduleUndeploy();
-	}*/
+	}
 
 	return obj;
 }
 
 bool ObjectManager::destroy(SceneObject* obj) {
-	/*uint64 oid = obj->getObjectID();
+	uint64 oid = obj->getObjectID();
 
 	if (!objectCacheMap->containsKey(oid) && objectMap->containsKey(oid))
 		return false;
 
-	objectCacheMap->remove(oid);*/
+	objectCacheMap->remove(oid);
 
 	return true;
 }
@@ -158,11 +162,11 @@ bool ObjectManager::destroy(SceneObject* obj) {
 SceneObject* ObjectManager::getCachedObject(uint64 oid) {
 	SceneObject* obj = objectCacheMap->get(oid);
 
-	/*if (obj != NULL) {
+	if (obj != NULL) {
 		objectCacheMap->remove(oid);
 
 		obj->redeploy();
-	}*/
+	}
 
 	return obj;
 }
@@ -202,6 +206,9 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC) {
 		object = objectFactory.createObject(gameObjectType, &result, NULL);
 		object->setObjectCRC(objectCRC);
 		object->setZoneProcessServer(server);
+		object->setObjectID(++newObjectID);
+
+		add(object);
 
 		/*if (object == NULL) {
 		if (gameObjectType > 0x100)

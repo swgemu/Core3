@@ -83,6 +83,7 @@ class CreatureObject extends TangibleObject {
 	protected float speed;
 	protected float terrainNegotiation;
 	protected float acceleration;
+	protected float height;
 	
 	protected unsigned long listenToID;
 	
@@ -113,6 +114,8 @@ class CreatureObject extends TangibleObject {
 	protected string templateString;
 
 	public native CreatureObject(LuaObject templateData, SceneObject parent = null);
+	
+	public native void sendTo(SceneObject player, boolean doClose = true);
 	
 	public int getBankCredits() {
 		return bankCredits;
@@ -216,5 +219,13 @@ class CreatureObject extends TangibleObject {
 	
 	public byte getFrozen() {
 		return frozen;
+	}
+	
+	public float getHeight() {
+		return height;
+	}
+	
+	public void setHeight(float heigh) {
+		height = heigh;
 	}
 }

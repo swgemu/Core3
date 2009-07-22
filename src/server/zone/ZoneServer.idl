@@ -60,6 +60,8 @@ import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.Zone;
 
+import server.zone.objects.scene.SceneObject;
+
 class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	BasePacketHandler phandler;
 	
@@ -131,6 +133,8 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	
 	public native void lock(boolean doLock);
 	public native void unlock(boolean doLock);
+	
+	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
 
 	public void fixScheduler() {
 		scheduler.fixQueue();

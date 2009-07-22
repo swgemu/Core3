@@ -56,10 +56,13 @@ import engine.lua.LuaObject;
 import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.Quaternion;
+import engine.service.proto.BaseMessage;
 
 import server.zone.ZoneProcessServerImplementation;
 
 import server.zone.ZoneClientSession;
+
+import server.zone.Zone;
 
 include server.zone.objects.scene.variables.StringId;
 
@@ -68,6 +71,8 @@ import engine.core.ManagedReference;
 
 class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	protected ZoneProcessServerImplementation server;
+	
+	protected Zone zone;
 	
 	protected native unsigned long objectID;
 	
@@ -291,8 +296,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public void removeUndeploymentEvent() {
 	}
 	
-	public boolean isPlayer() {
-		return true;
+	public boolean isPlayerCreature() {
+		return gameObjectType == 409;
 	}
 	
 	public abstract boolean addObject(SceneObject object) {
@@ -341,7 +346,19 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public native void destroy(ZoneClientSession client);
 	
+	public native void close(ZoneClientSession client);
+	
+	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
+	
 	public abstract void sendTo(SceneObject player, boolean doClose = true) {
+	}
+	
+	public abstract void sendToOwner(boolean doClose = true) {
+	}
+	
+	public abstract void sendMessage(BaseMessage msg) {
+		if (msg != null)
+			msg.finalize();
 	}
 	
 	public unsigned long getObjectID() {
@@ -404,8 +421,16 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return slotDescriptors.size();
 	}
 	
+	public abstract ZoneClientSession getClient() {
+		return null;
+	}
+	
 	public unsigned int getGameObjectType() {
 		return gameObjectType;
+	}
+	
+	public Zone getZone() {
+		return zone;
 	}
 	
 	public void setPosition(float x, float z, float y) {
@@ -426,6 +451,18 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public local void setZoneProcessServer(ZoneProcessServerImplementation srv) {
 		server = srv;
+	}
+	
+	public void setObjectID(unsigned long objectid) {
+		QuadTreeEntry.objectID = objectid;
+	}
+	
+	public local void setObjectName(unicode name) {
+		objectName.setCustomString(name);
+	}
+	
+	public void setZone(Zone zon) {
+		zone = zon;
 	}
 
 }

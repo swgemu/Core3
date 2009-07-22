@@ -228,7 +228,7 @@ DistributedObjectStub* ZoneImplementation::_getStub() {
 	return _this;
 }
 
-ZoneImplementation::operator Zone*() {
+ZoneImplementation::operator const Zone*() {
 	return _this;
 }
 

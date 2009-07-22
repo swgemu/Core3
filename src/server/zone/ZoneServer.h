@@ -75,6 +75,8 @@ using namespace server::zone;
 
 #include "system/util/Vector.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 namespace server {
 namespace zone {
 
@@ -117,6 +119,8 @@ public:
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
+
+	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
 	void fixScheduler();
 
@@ -275,6 +279,8 @@ public:
 
 	void unlock(bool doLock);
 
+	SceneObject* getObject(unsigned long long objectID, bool doLock);
+
 	void fixScheduler();
 
 	void changeUserCap(int amount);
@@ -331,12 +337,13 @@ public:
 
 	ZoneServer* _this;
 
-	operator ZoneServer*();
+	operator const ZoneServer*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ZoneServerImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
@@ -378,6 +385,8 @@ public:
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
+
+	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
 	void fixScheduler();
 

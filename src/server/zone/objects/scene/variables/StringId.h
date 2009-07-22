@@ -62,6 +62,10 @@ public:
 		str = "@" + file + ":" + stringID;
 	}
 
+	void setCustomString(const UnicodeString& custom) {
+		customName = custom;
+	}
+
 private:
 	inline void addSerializableVariables();
 };

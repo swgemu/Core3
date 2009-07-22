@@ -44,6 +44,9 @@ which carries forward this exception.
 
 #include "ClientCreateCharacter.h"
 
+#include "ClientCreateCharacterSuccess.h"
+#include "ClientCreateCharacterFailed.h"
+
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 
@@ -91,5 +94,5 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 
 void ClientCreateCharacterCallback::execute() {
 	PlayerManager* playerManager = server->getPlayerManager();
-	playerManager->createPlayer(this);
+	bool success = playerManager->createPlayer(this);
 }

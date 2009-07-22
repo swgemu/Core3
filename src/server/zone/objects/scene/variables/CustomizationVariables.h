@@ -198,6 +198,8 @@ public:
 		return size();
 	}
 
+	void parseFromClientString(const String& custString);
+
 	void getData(String& ascii);
 
 	bool toString(String& ascii);

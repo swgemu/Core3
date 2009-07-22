@@ -52,7 +52,7 @@ DistributedObjectStub* PlayerObjectImplementation::_getStub() {
 	return _this;
 }
 
-PlayerObjectImplementation::operator PlayerObject*() {
+PlayerObjectImplementation::operator const PlayerObject*() {
 	return _this;
 }
 

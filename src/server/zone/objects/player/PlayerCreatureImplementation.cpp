@@ -8,6 +8,9 @@
 #include "PlayerCreature.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/packets/zone/unkByteFlag.h"
+#include "server/zone/packets/zone/CmdStartScene.h"
+#include "server/zone/packets/zone/ParametersMessage.h"
 
 PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par) :
 	CreatureObjectImplementation(templateData, par) {
@@ -19,4 +22,20 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 
 	firstIncapacitationTime = NULL;
 
+}
+
+void PlayerCreatureImplementation::sendToOwner(bool doClose) {
+	if (owner == NULL)
+		return;
+
+	BaseMessage* byteFlag = new unkByteFlag();
+	owner->sendMessage(byteFlag);
+
+	BaseMessage* startScene = new CmdStartScene(_this);
+	owner->sendMessage(startScene);
+
+	BaseMessage* parameters = new ParametersMessage();
+	owner->sendMessage(parameters);
+
+	sendTo(_this, doClose);
 }

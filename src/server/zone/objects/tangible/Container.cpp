@@ -63,7 +63,7 @@ DistributedObjectStub* ContainerImplementation::_getStub() {
 	return _this;
 }
 
-ContainerImplementation::operator Container*() {
+ContainerImplementation::operator const Container*() {
 	return _this;
 }
 

@@ -55,8 +55,7 @@ public:
 	ClientCreateCharacterSuccess(uint64 objid) : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x1DB575CC); //opcode: ClientCreateCharacterSuccess
-		insertInt(0x15);
-		insertInt(objid); //New obj id of the character.
+		insertLong(objid);
 	}
 
 };

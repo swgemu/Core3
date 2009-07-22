@@ -47,12 +47,13 @@ public:
 
 	IntangibleObject* _this;
 
-	operator IntangibleObject*();
+	operator const IntangibleObject*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~IntangibleObjectImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
