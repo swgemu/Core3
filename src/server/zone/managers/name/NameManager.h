@@ -47,12 +47,28 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ZoneServer;
+namespace server {
+	namespace zone {
 
-#include "../../objects/creature/CreatureObject.h"
+	class ZoneProcessServerImplementation;
 
-class CreatureObject;
-class ZoneProcessServerImplementation;
+	}
+}
+
+using namespace server::zone;
+
+namespace server {
+	namespace zone {
+		namespace objects {
+			namespace creature {
+
+				class CreatureObject;
+			}
+		}
+	}
+}
+
+using namespace server::zone::objects::creature;
 
 class BannedNameSet : public HashSet<String> {
 	int hash(const String& str) {

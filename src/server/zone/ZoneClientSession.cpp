@@ -125,12 +125,25 @@ void ZoneClientSession::unlock(bool doLock) {
 		((ZoneClientSessionImplementation*) _impl)->unlock(doLock);
 }
 
-void ZoneClientSession::setSessionKey(unsigned int key) {
+void ZoneClientSession::setPlayer(SceneObject* playerCreature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 14);
+		method.addObjectParameter(playerCreature);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneClientSessionImplementation*) _impl)->setPlayer(playerCreature);
+}
+
+void ZoneClientSession::setSessionKey(unsigned int key) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
 		method.addUnsignedIntParameter(key);
 
 		method.executeWithVoidReturn();
@@ -138,12 +151,24 @@ void ZoneClientSession::setSessionKey(unsigned int key) {
 		((ZoneClientSessionImplementation*) _impl)->setSessionKey(key);
 }
 
+SceneObject* ZoneClientSession::getPlayer() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return ((ZoneClientSessionImplementation*) _impl)->getPlayer();
+}
+
 unsigned int ZoneClientSession::getSessionKey() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -173,22 +198,33 @@ ZoneClientSessionImplementation::operator ZoneClientSession*() {
 void ZoneClientSessionImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
+	addSerializableVariable("player", player);
 	addSerializableVariable("sessionKey", &sessionKey);
 	addSerializableVariable("disconnecting", &disconnecting);
 }
 
 String ZoneClientSessionImplementation::getAddress() {
-	// server/zone/ZoneClientSession.idl(78):  return BaseClientProxy.getAddress();
+	// server/zone/ZoneClientSession.idl(74):  return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
 
+void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
+	// server/zone/ZoneClientSession.idl(82):  player = playerCreature;
+	player = playerCreature;
+}
+
 void ZoneClientSessionImplementation::setSessionKey(unsigned int key) {
-	// server/zone/ZoneClientSession.idl(90):  sessionKey = key;
+	// server/zone/ZoneClientSession.idl(86):  sessionKey = key;
 	sessionKey = key;
 }
 
+SceneObject* ZoneClientSessionImplementation::getPlayer() {
+	// server/zone/ZoneClientSession.idl(90):  return player;
+	return player;
+}
+
 unsigned int ZoneClientSessionImplementation::getSessionKey() {
-	// server/zone/ZoneClientSession.idl(98):  return sessionKey;
+	// server/zone/ZoneClientSession.idl(94):  return sessionKey;
 	return sessionKey;
 }
 
@@ -228,9 +264,15 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		unlock(inv->getBooleanParameter());
 		break;
 	case 14:
-		setSessionKey(inv->getUnsignedIntParameter());
+		setPlayer((SceneObject*) inv->getObjectParameter());
 		break;
 	case 15:
+		setSessionKey(inv->getUnsignedIntParameter());
+		break;
+	case 16:
+		resp->insertLong(getPlayer()->_getObjectID());
+		break;
+	case 17:
 		resp->insertInt(getSessionKey());
 		break;
 	default:
@@ -272,8 +314,16 @@ void ZoneClientSessionAdapter::unlock(bool doLock) {
 	return ((ZoneClientSessionImplementation*) impl)->unlock(doLock);
 }
 
+void ZoneClientSessionAdapter::setPlayer(SceneObject* playerCreature) {
+	return ((ZoneClientSessionImplementation*) impl)->setPlayer(playerCreature);
+}
+
 void ZoneClientSessionAdapter::setSessionKey(unsigned int key) {
 	return ((ZoneClientSessionImplementation*) impl)->setSessionKey(key);
+}
+
+SceneObject* ZoneClientSessionAdapter::getPlayer() {
+	return ((ZoneClientSessionImplementation*) impl)->getPlayer();
 }
 
 unsigned int ZoneClientSessionAdapter::getSessionKey() {

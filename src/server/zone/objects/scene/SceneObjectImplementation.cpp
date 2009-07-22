@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "../../packets/scene/SceneObjectCreateMessage.h"
 #include "../../packets/scene/SceneObjectDestroyMessage.h"
+#include "../../ZoneClientSession.h"
 
 #include "variables/StringId.h"
 

@@ -21,6 +21,8 @@
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 namespace server {
 namespace zone {
 
@@ -44,7 +46,11 @@ public:
 
 	void unlock(bool doLock);
 
+	void setPlayer(SceneObject* playerCreature);
+
 	void setSessionKey(unsigned int key);
+
+	SceneObject* getPlayer();
 
 	unsigned int getSessionKey();
 
@@ -67,6 +73,8 @@ namespace server {
 namespace zone {
 
 class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
+	SceneObject* player;
+
 	unsigned int sessionKey;
 
 	bool disconnecting;
@@ -90,7 +98,11 @@ public:
 
 	void unlock(bool doLock);
 
+	void setPlayer(SceneObject* playerCreature);
+
 	void setSessionKey(unsigned int key);
+
+	SceneObject* getPlayer();
 
 	unsigned int getSessionKey();
 
@@ -130,7 +142,11 @@ public:
 
 	void unlock(bool doLock);
 
+	void setPlayer(SceneObject* playerCreature);
+
 	void setSessionKey(unsigned int key);
+
+	SceneObject* getPlayer();
 
 	unsigned int getSessionKey();
 

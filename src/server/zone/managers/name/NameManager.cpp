@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "../../ZoneServer.h"
 #include "../../ZoneClientSession.h"
 #include "../../objects/player/Races.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 NameManager::NameManager(ZoneProcessServerImplementation* serv) : Logger("NameManager") {
 	server = serv;
@@ -146,10 +147,11 @@ inline bool NameManager::isReserved(String name) {
 }
 
 int NameManager::validateName(CreatureObject* obj) {
-	String name = (obj->getCharacterName()).toString();
+	/*String name = (obj->getCharacterName()).toString();
 	String species = obj->getStfName();
 
-	return validateName(name, species);
+	return validateName(name, species);*/
+	return NameManagerResult::ACCEPTED;
 }
 
 int NameManager::validateName(const String& name, const String& species) {

@@ -17,7 +17,15 @@ class ZoneProcessServerImplementation;
 
 using namespace server::zone;
 
-#include "server/zone/ZoneClientSession.h"
+namespace server {
+namespace zone {
+
+class ZoneClientSession;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
 
 #include "server/zone/objects/scene/variables/StringId.h"
 

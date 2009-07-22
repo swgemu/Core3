@@ -6,6 +6,8 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/ZoneClientSession.h"
+
 /*
  *	SceneObjectStub
  */
