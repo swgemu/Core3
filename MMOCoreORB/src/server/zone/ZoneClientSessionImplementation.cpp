@@ -55,7 +55,7 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
 	init(serv);
 
-	//player = NULL;
+	player = NULL;
 	sessionKey = 0;
 
 	disconnecting = false;
