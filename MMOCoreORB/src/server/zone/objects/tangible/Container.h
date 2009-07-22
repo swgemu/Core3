@@ -57,12 +57,13 @@ public:
 
 	Container* _this;
 
-	operator Container*();
+	operator const Container*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ContainerImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 

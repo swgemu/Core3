@@ -49,6 +49,10 @@ which carries forward this exception.
 
 #include "../MessageCallback.h"
 
+#include "../../ZoneServer.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
 class SelectCharacter : public BaseMessage {
 public:
 	SelectCharacter(uint64 charid) {
@@ -73,11 +77,23 @@ public:
 	}
 
 	void parse(Message* message) {
-		characterID = message->parseInt(10);
+		characterID = message->parseLong(6);
 	}
 
 	void execute() {
-		uint64 playerID = (characterID << 32) + 0x15;
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		SceneObject* obj = zoneServer->getObject(characterID, true);
+		if (obj->isPlayerCreature()) {
+			PlayerCreature* player = (PlayerCreature*) obj;
+			player->setClient(client);
+			client->setPlayer(obj);
+
+			//client->balancePacketCheckupTime();
+
+			player->sendToOwner(true);
+		}
+		//obj->insertToZone(zoneServer->getZone(8))
 	}
 };
 

@@ -24,6 +24,8 @@ class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(LuaObject* templateData, SceneObject* parent = NULL);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -73,6 +75,10 @@ public:
 	int getInstrumentID();
 
 	byte getFrozen();
+
+	float getHeight();
+
+	void setHeight(float heigh);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -135,6 +141,8 @@ protected:
 
 	float acceleration;
 
+	float height;
+
 	unsigned long long listenToID;
 
 	short level;
@@ -176,6 +184,8 @@ protected:
 public:
 	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -226,14 +236,19 @@ public:
 
 	byte getFrozen();
 
+	float getHeight();
+
+	void setHeight(float heigh);
+
 	CreatureObject* _this;
 
-	operator CreatureObject*();
+	operator const CreatureObject*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~CreatureObjectImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
@@ -246,6 +261,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendTo(SceneObject* player, bool doClose);
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -295,6 +312,10 @@ public:
 	int getInstrumentID();
 
 	byte getFrozen();
+
+	float getHeight();
+
+	void setHeight(float heigh);
 
 };
 

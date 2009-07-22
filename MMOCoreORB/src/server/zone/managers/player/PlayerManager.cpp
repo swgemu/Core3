@@ -35,6 +35,20 @@ bool PlayerManager::createPlayer(MessageCallback* callback) {
 		return ((PlayerManagerImplementation*) _impl)->createPlayer(callback);
 }
 
+TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addAsciiParameter(hairObjectFile);
+		method.addAsciiParameter(hairCustomization);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->createHairObject(hairObjectFile, hairCustomization);
+}
+
 /*
  *	PlayerManagerImplementation
  */
@@ -51,7 +65,7 @@ DistributedObjectStub* PlayerManagerImplementation::_getStub() {
 	return _this;
 }
 
-PlayerManagerImplementation::operator PlayerManager*() {
+PlayerManagerImplementation::operator const PlayerManager*() {
 	return _this;
 }
 
@@ -71,11 +85,18 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+	return ((PlayerManagerImplementation*) impl)->createHairObject(hairObjectFile, hairCustomization);
 }
 
 /*

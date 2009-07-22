@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "CreatureObject.h"
 
 #include "../../managers/object/ObjectManager.h"
+#include "../../ZoneClientSession.h"
 
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, SceneObject* parent) :
 	TangibleObjectImplementation(templ, parent) {
@@ -114,4 +115,24 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 
 	speedTempl.pop();
 
+}
+
+void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	ReferenceSlot<ZoneClientSession> client = player->getClient();
+	if (client == NULL)
+		return;
+	/*if (player == _this && group != NULL)
+		group->sendTo(player);*/
+
+	if (parent != NULL) {
+		parent->sendTo(player, false);
+	}
+
+	create(client);
+
+	/*if (parent != NULL)
+		client->sendMessage(link(parent));*/
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
 }

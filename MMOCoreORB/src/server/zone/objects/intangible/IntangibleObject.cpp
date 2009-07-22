@@ -37,7 +37,7 @@ DistributedObjectStub* IntangibleObjectImplementation::_getStub() {
 	return _this;
 }
 
-IntangibleObjectImplementation::operator IntangibleObject*() {
+IntangibleObjectImplementation::operator const IntangibleObject*() {
 	return _this;
 }
 

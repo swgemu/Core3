@@ -27,6 +27,16 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/core/ManagedObject.h"
@@ -51,6 +61,8 @@ using namespace server::zone;
 
 #include "engine/util/Quaternion.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
 #include "engine/core/ManagedReference.h"
 
 namespace server {
@@ -70,7 +82,7 @@ public:
 
 	void removeUndeploymentEvent();
 
-	bool isPlayer();
+	bool isPlayerCreature();
 
 	bool addObject(SceneObject* object);
 
@@ -80,7 +92,15 @@ public:
 
 	void destroy(ZoneClientSession* client);
 
+	void close(ZoneClientSession* client);
+
+	void link(ZoneClientSession* client, unsigned int containmentType);
+
 	void sendTo(SceneObject* player, bool doClose);
+
+	void sendToOwner(bool doClose);
+
+	void sendMessage(BaseMessage* msg);
 
 	unsigned long long getObjectID();
 
@@ -112,7 +132,11 @@ public:
 
 	int getSlotDescriptorSize();
 
+	ZoneClientSession* getClient();
+
 	unsigned int getGameObjectType();
+
+	Zone* getZone();
 
 	void setPosition(float x, float z, float y);
 
@@ -123,6 +147,12 @@ public:
 	void setParent(SceneObject* par);
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
+
+	void setObjectID(unsigned long long objectid);
+
+	void setObjectName(UnicodeString& name);
+
+	void setZone(Zone* zon);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -150,6 +180,8 @@ namespace scene {
 class SceneObjectImplementation : public ManagedObjectImplementation, public QuadTreeEntry, public Logger {
 protected:
 	ZoneProcessServerImplementation* server;
+
+	Zone* zone;
 
 	SceneObject* parent;
 
@@ -522,7 +554,7 @@ public:
 
 	void removeUndeploymentEvent();
 
-	bool isPlayer();
+	bool isPlayerCreature();
 
 	virtual bool addObject(SceneObject* object);
 
@@ -532,7 +564,15 @@ public:
 
 	void destroy(ZoneClientSession* client);
 
+	void close(ZoneClientSession* client);
+
+	void link(ZoneClientSession* client, unsigned int containmentType);
+
 	virtual void sendTo(SceneObject* player, bool doClose);
+
+	virtual void sendToOwner(bool doClose);
+
+	virtual void sendMessage(BaseMessage* msg);
 
 	unsigned long long getObjectID();
 
@@ -564,7 +604,11 @@ public:
 
 	int getSlotDescriptorSize();
 
+	virtual ZoneClientSession* getClient();
+
 	unsigned int getGameObjectType();
+
+	Zone* getZone();
 
 	void setPosition(float x, float z, float y);
 
@@ -576,14 +620,21 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
+	void setObjectID(unsigned long long objectid);
+
+	void setObjectName(UnicodeString& name);
+
+	void setZone(Zone* zon);
+
 	SceneObject* _this;
 
-	operator SceneObject*();
+	operator const SceneObject*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~SceneObjectImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
@@ -604,7 +655,7 @@ public:
 
 	void removeUndeploymentEvent();
 
-	bool isPlayer();
+	bool isPlayerCreature();
 
 	bool addObject(SceneObject* object);
 
@@ -614,7 +665,15 @@ public:
 
 	void destroy(ZoneClientSession* client);
 
+	void close(ZoneClientSession* client);
+
+	void link(ZoneClientSession* client, unsigned int containmentType);
+
 	void sendTo(SceneObject* player, bool doClose);
+
+	void sendToOwner(bool doClose);
+
+	void sendMessage(BaseMessage* msg);
 
 	unsigned long long getObjectID();
 
@@ -644,7 +703,11 @@ public:
 
 	int getSlotDescriptorSize();
 
+	ZoneClientSession* getClient();
+
 	unsigned int getGameObjectType();
+
+	Zone* getZone();
 
 	void setPosition(float x, float z, float y);
 
@@ -653,6 +716,10 @@ public:
 	void setObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
+
+	void setObjectID(unsigned long long objectid);
+
+	void setZone(Zone* zon);
 
 protected:
 	String _param0_getSlot__String_;

@@ -4,8 +4,6 @@
 
 #include "TangibleObject.h"
 
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
 /*
  *	TangibleObjectStub
  */
@@ -131,6 +129,19 @@ unsigned int TangibleObject::getDefenderListUpdateCounter() {
 		return ((TangibleObjectImplementation*) _impl)->getDefenderListUpdateCounter();
 }
 
+void TangibleObject::setCustomizationString(const String& vars) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addAsciiParameter(vars);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setCustomizationString(vars);
+}
+
 /*
  *	TangibleObjectImplementation
  */
@@ -147,7 +158,7 @@ DistributedObjectStub* TangibleObjectImplementation::_getStub() {
 	return _this;
 }
 
-TangibleObjectImplementation::operator TangibleObject*() {
+TangibleObjectImplementation::operator const TangibleObject*() {
 	return _this;
 }
 
@@ -212,6 +223,11 @@ unsigned int TangibleObjectImplementation::getDefenderListUpdateCounter() {
 	return defenderListUpdateCounter;
 }
 
+void TangibleObjectImplementation::setCustomizationString(const String& vars) {
+	// server/zone/objects/tangible/TangibleObject.idl(118):  customizationVariables.parseFromClientString(vars);
+	customizationVariables->parseFromClientString(vars);
+}
+
 /*
  *	TangibleObjectAdapter
  */
@@ -249,6 +265,9 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 14:
 		resp->insertInt(getDefenderListUpdateCounter());
+		break;
+	case 15:
+		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	default:
 		return NULL;
@@ -291,6 +310,10 @@ unsigned int TangibleObjectAdapter::getPvpStatusBitmask() {
 
 unsigned int TangibleObjectAdapter::getDefenderListUpdateCounter() {
 	return ((TangibleObjectImplementation*) impl)->getDefenderListUpdateCounter();
+}
+
+void TangibleObjectAdapter::setCustomizationString(const String& vars) {
+	return ((TangibleObjectImplementation*) impl)->setCustomizationString(vars);
 }
 
 /*

@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "../../packets/scene/SceneObjectCreateMessage.h"
 #include "../../packets/scene/SceneObjectDestroyMessage.h"
+#include "../../packets/scene/SceneObjectCloseMessage.h"
 #include "../../ZoneClientSession.h"
 
 #include "variables/StringId.h"
@@ -89,12 +90,26 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, Sc
 	}
 
 	slots.pop();
+
+	zone = NULL;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this);
 
 	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::close(ZoneClientSession* client) {
+	BaseMessage* msg = new SceneObjectCloseMessage(_this);
+
+	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containmentType) {
+	/*BaseMessage* msg = new UpdateContainmentMessage(_this, parent, containmentType);
+
+	client->sendMessage(msg);*/
 }
 
 

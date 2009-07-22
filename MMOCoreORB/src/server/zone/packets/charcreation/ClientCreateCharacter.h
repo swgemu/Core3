@@ -82,6 +82,45 @@ public:
 	void getRaceFile(String& file) {
 		file = racefile;
 	}
+
+	void getCustomizationString(String& customizationString) {
+		customizationString = customization;
+	}
+
+	void getLocation(String& location) {
+		location = ClientCreateCharacterCallback::location;
+	}
+
+	void getHairObject(String& hair) {
+		hair = hairobj;
+	}
+
+	void getHairCustomization(String& hairCustomization) {
+		hairCustomization = haircust;
+	}
+
+	void getPorfession(String& profession) {
+		profession = this->profession;
+	}
+
+	float getHeight() {
+		return height;
+	}
+
+	void getBiography(UnicodeString& biography) {
+		biography = bio;
+	}
+
+	bool getTutorialFlag() {
+		if (tutflag)
+			return true;
+		else
+			return false;
+	}
+
+	void getCharacterName(UnicodeString& name) {
+		name = characterName;
+	}
 };
 
 #endif /*CLIENTCREATECHARACTER_H_*/

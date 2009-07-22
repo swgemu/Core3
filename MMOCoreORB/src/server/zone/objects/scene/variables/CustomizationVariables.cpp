@@ -65,60 +65,7 @@ CustomizationVariables::~CustomizationVariables() {
 }
 
 CustomizationVariables& CustomizationVariables::operator=(const String& custString) {
-	removeAll();
-	keyIndex.removeAll();
-
-	if (custString.length() < 2)
-		return *this;
-
-	try {
-		unknown = (uint8) custString.charAt(0);
-		uint8 type = 0;
-
-		int totalVars = (uint8) custString.charAt(1);
-		int offset = 1;
-
-		female = false;
-
-		for (int i = 0; i < totalVars; ++i) {
-			uint8 value;
-
-			uint8 type = (uint8) custString.charAt(++offset);
-
-			if (type == 0xAB) {
-				female = true;
-
-				// Not sure about the sometimes shown 0xFF
-				// seems to work if we ignore it
-				// on second thought, account for it in case it is valuable.
-				if ((uint8) custString.charAt(offset+1) == 0xFF) {
-					unknown2 = true;
-					offset++;
-				}
-
-				i--;
-
-				continue;
-			}
-
-			uint8 value1 = (uint8) custString.charAt(++offset);
-
-			if (value1 == 0xFF) 				{
-				value1 = custString.charAt(++offset);
-
-				if (value1 == 0x01)
-					value = 0x00; // zero
-				else // value1 == 0x02
-					value = 0xFF; // 255
-			} else
-				value = value1;
-
-			setVariable(type, value);
-		}
-	} catch (...) {
-		removeAll();
-		//System::out << "Exception in CustomizationVariables& operator=(String& custString)\n";
-	}
+	parseFromClientString(custString);
 
 	return *this;
 }
@@ -403,6 +350,64 @@ void CustomizationVariables::getData(String& ascii) {
 	ascii = buf.toString();
 
 	return;
+}
+
+void CustomizationVariables::parseFromClientString(const String& custString) {
+	removeAll();
+	keyIndex.removeAll();
+
+	if (custString.length() < 2)
+		return;
+
+	try {
+		unknown = (uint8) custString.charAt(0);
+		uint8 type = 0;
+
+		int totalVars = (uint8) custString.charAt(1);
+		int offset = 1;
+
+		female = false;
+
+		for (int i = 0; i < totalVars; ++i) {
+			uint8 value;
+
+			uint8 type = (uint8) custString.charAt(++offset);
+
+			if (type == 0xAB) {
+				female = true;
+
+				// Not sure about the sometimes shown 0xFF
+				// seems to work if we ignore it
+				// on second thought, account for it in case it is valuable.
+				if ((uint8) custString.charAt(offset+1) == 0xFF) {
+					unknown2 = true;
+					offset++;
+				}
+
+				i--;
+
+				continue;
+			}
+
+			uint8 value1 = (uint8) custString.charAt(++offset);
+
+			if (value1 == 0xFF) 				{
+				value1 = custString.charAt(++offset);
+
+				if (value1 == 0x01)
+					value = 0x00; // zero
+				else // value1 == 0x02
+					value = 0xFF; // 255
+			} else
+				value = value1;
+
+			setVariable(type, value);
+		}
+	} catch (...) {
+		removeAll();
+		//System::out << "Exception in CustomizationVariables& operator=(String& custString)\n";
+	}
+
 }
 
 

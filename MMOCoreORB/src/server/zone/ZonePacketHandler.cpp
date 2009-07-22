@@ -49,8 +49,11 @@ which carries forward this exception.
 #include "ZoneProcessServerImplementation.h"
 
 #include "packets/zone/ClientIDMessage.h"
+#include "packets/zone/SelectCharacter.h"
+#include "packets/zone/CmdSceneReady.h"
+
 #include "packets/charcreation/ClientCreateCharacter.h"
-#include "packets/charcreation/ClientRandomNameRequest.h""
+#include "packets/charcreation/ClientRandomNameRequest.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
@@ -64,6 +67,8 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
 	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
 	messageCallbackFactory.registerObject<ClientRandomNameRequest>(0xD6D1B6D1);
+	messageCallbackFactory.registerObject<SelectCharacterCallback>(0xB5098D76);
+	messageCallbackFactory.registerObject<CmdSceneReadyCallback>(0x43FD1C22);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
@@ -77,7 +82,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	info(buffer, true);
 
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
-	ZoneClientSession* client = (ZoneClientSession*) clientimpl;
+	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
 	MessageCallback* data = messageCallbackFactory.createObject(opcode, client, processServer);
 

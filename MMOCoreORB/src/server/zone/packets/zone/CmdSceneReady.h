@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CMDSCENEREADY_H_
 
 #include "engine/engine.h"
+#include "../MessageCallback.h"
 
 class CmdSceneReady : public BaseMessage {
 public:
@@ -59,5 +60,24 @@ public:
 		uint16 ackSequence = pack->parseShort();
 	}
 	
+};
+
+class CmdSceneReadyCallback : public MessageCallback {
+public:
+	CmdSceneReadyCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+
+	}
+
+	void execute() {
+		BaseMessage* msg = new CmdSceneReady();
+		client->sendMessage(msg);
+
+		//client->resetPacketCheckupTime();
+	}
 };
 #endif /*CMDSCENEREADY_H_*/

@@ -67,6 +67,8 @@ class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManage
 
 	ZoneProcessServerImplementation* server;
 
+	uint64 newObjectID;
+
 public:
 	static ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> objectFactory;
 

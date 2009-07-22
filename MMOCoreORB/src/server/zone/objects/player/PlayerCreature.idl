@@ -50,6 +50,7 @@ import server.zone.ZoneClientSession;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.Container;
+import engine.service.proto.BaseMessage;
 import engine.lua.LuaObject;
 
 class PlayerCreature extends CreatureObject {
@@ -93,8 +94,35 @@ class PlayerCreature extends CreatureObject {
 	
 	public native PlayerCreature(LuaObject templateData, SceneObject par = null);
 	
+	public void sendMessage(BaseMessage msg) {
+		if (owner == null) {
+			msg.finalize();
+			return;
+		} else {
+			owner.sendMessage(msg);
+		}
+	}
+	
+	public native void sendToOwner(boolean doClose = true);
+	
+	public ZoneClientSession getClient() {
+		return owner;
+	}
+	
+	public byte getRaceID() {
+		return raceID;
+	}
+	
 	public void setClient(ZoneClientSession cli) {
 		owner = cli;
 	}
-
+	
+	public local void setBiography(final unicode bio) {
+		biography = bio;
+	}
+	
+	public void setRaceID(byte id) {
+		raceID = id;
+	}
+	
 }

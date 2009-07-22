@@ -48,7 +48,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 
-import server.zone.objects.scene.variables.CustomizationVariables;
+include server.zone.objects.scene.variables.CustomizationVariables;
 
 include server.zone.objects.scene.variables.DeltaVector;
 
@@ -112,6 +112,10 @@ class TangibleObject extends SceneObject {
 	
 	public unsigned int getDefenderListUpdateCounter() {
 		return defenderListUpdateCounter;
+	}
+	
+	public void setCustomizationString(final string vars) {
+		customizationVariables.parseFromClientString(vars);
 	}
 }
 

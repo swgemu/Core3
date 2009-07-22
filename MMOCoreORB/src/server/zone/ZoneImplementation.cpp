@@ -79,6 +79,8 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	weatherEnabled = true;
 
 	heightMap = new HeightMap();
+
+	galacticTime = new Time();
 }
 
 void ZoneImplementation::startManagers() {

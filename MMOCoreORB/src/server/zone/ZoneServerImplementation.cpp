@@ -549,7 +549,7 @@ bool ZoneServerImplementation::handleError(ServiceClient* client, Exception& e) 
 	} catch (...) {
 		unlock(doLock);
 	}
-}
+}*/
 
 SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
@@ -566,7 +566,7 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 
 	return obj;
 }
-
+/*
 SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 

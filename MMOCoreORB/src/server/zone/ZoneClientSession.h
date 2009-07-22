@@ -108,12 +108,13 @@ public:
 
 	ZoneClientSession* _this;
 
-	operator ZoneClientSession*();
+	operator const ZoneClientSession*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ZoneClientSessionImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 

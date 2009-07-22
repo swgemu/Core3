@@ -7,21 +7,7 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace variables {
-
-class CustomizationVariables;
-
-} // namespace variables
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene::variables;
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
@@ -57,6 +43,8 @@ public:
 	unsigned int getPvpStatusBitmask();
 
 	unsigned int getDefenderListUpdateCounter();
+
+	void setCustomizationString(const String& vars);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -125,14 +113,17 @@ public:
 
 	unsigned int getDefenderListUpdateCounter();
 
+	void setCustomizationString(const String& vars);
+
 	TangibleObject* _this;
 
-	operator TangibleObject*();
+	operator const TangibleObject*();
+
+	DistributedObjectStub* _getStub();
 protected:
 	virtual ~TangibleObjectImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
-	DistributedObjectStub* _getStub();
 
 	void _serializationHelperMethod();
 
@@ -163,6 +154,10 @@ public:
 
 	unsigned int getDefenderListUpdateCounter();
 
+	void setCustomizationString(const String& vars);
+
+protected:
+	String _param0_setCustomizationString__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {
