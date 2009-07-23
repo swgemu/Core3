@@ -54,8 +54,8 @@ class CreatureObjectMessage1 : public BaseLineMessage {
 public:
 	CreatureObjectMessage1(CreatureObjectImplementation* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 1, 0x04) {
-		insertInt(creo->bankCredits);
-		insertInt(creo->cashCredits);
+		insertInt(creo->getBankCredits());
+		insertInt(creo->getCashCredits());
 
 		// Base HAM
 		insertInt(9);

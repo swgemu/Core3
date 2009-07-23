@@ -117,22 +117,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 }
 
-void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	ReferenceSlot<ZoneClientSession> client = player->getClient();
-	if (client == NULL)
-		return;
-	/*if (player == _this && group != NULL)
-		group->sendTo(player);*/
+void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
-	if (parent != NULL) {
-		parent->sendTo(player, false);
-	}
-
-	create(client);
-
-	/*if (parent != NULL)
-		client->sendMessage(link(parent));*/
-
-	if (doClose)
-		SceneObjectImplementation::close(client);
 }

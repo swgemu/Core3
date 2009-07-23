@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 
 #include "../../objects/tangible/TangibleObject.h"
+#include "../../objects/scene/variables/StringId.h"
+
 
 class TangibleObjectMessage3 : public BaseLineMessage {
 public:
@@ -55,11 +57,7 @@ public:
 			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
 		insertFloat(tano->getComplexity());
 
-		insertAscii(tano->getStfFile());
-		insertInt(0);
-		insertAscii(tano->getStfName());
-
-		insertUnicode(tano->getCustomName());
+		insertStringId(tano->getObjectName());
 
 		insertInt(tano->getVolume());
 
@@ -85,6 +83,14 @@ public:
 		insertByte(tano->getUnknownByte());
 
 		setSize();
+	}
+
+	void insertStringId(StringId* id) {
+		insertAscii(id->getFile());
+		insertInt(0);
+		insertAscii(id->getStringID());
+
+		insertUnicode(id->getCustomString());
 	}
 
 };

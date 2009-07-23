@@ -74,6 +74,8 @@ class TangibleObject extends SceneObject {
 	
 	public native TangibleObject(LuaObject templateData);
 	
+	public native abstract void sendBaselinesTo(SceneObject player);
+	
 	public byte getUnknownByte() {
 		return unknownByte;
 	}
@@ -112,6 +114,10 @@ class TangibleObject extends SceneObject {
 	
 	public unsigned int getDefenderListUpdateCounter() {
 		return defenderListUpdateCounter;
+	}
+	
+	public void getCustomizationString(string variables) {
+		customizationVariables.getData(variables);
 	}
 	
 	public void setCustomizationString(final string vars) {

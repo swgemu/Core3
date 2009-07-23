@@ -98,6 +98,8 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
+	void sendBaselinesTo(SceneObject* player);
+
 	void sendToOwner(bool doClose);
 
 	void sendMessage(BaseMessage* msg);
@@ -572,6 +574,8 @@ public:
 
 	virtual void sendTo(SceneObject* player, bool doClose);
 
+	virtual void sendBaselinesTo(SceneObject* player);
+
 	virtual void sendToOwner(bool doClose);
 
 	virtual void sendMessage(BaseMessage* msg);
@@ -672,6 +676,8 @@ public:
 	void link(ZoneClientSession* client, unsigned int containmentType);
 
 	void sendTo(SceneObject* player, bool doClose);
+
+	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
 

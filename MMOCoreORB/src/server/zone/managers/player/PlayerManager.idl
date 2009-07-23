@@ -66,5 +66,5 @@ class PlayerManager extends ManagedObject, native Logger {
 	public local native boolean createPlayer(MessageCallback callback);
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
-	
+	public native boolean createAllPlayerObjects(PlayerCreature player);
 }

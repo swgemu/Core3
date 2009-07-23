@@ -64,6 +64,8 @@ public:
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
+	bool createAllPlayerObjects(PlayerCreature* player);
+
 protected:
 	PlayerManager(DummyConstructorParameter* param);
 
@@ -98,6 +100,8 @@ public:
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
+	bool createAllPlayerObjects(PlayerCreature* player);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -120,6 +124,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
+
+	bool createAllPlayerObjects(PlayerCreature* player);
 
 protected:
 	String _param0_createHairObject__String_String_;

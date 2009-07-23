@@ -50,6 +50,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	}
 
 	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	createAllPlayerObjects(playerCreature);
 
 	playerCreature->setRaceID((byte)raceID);
 
@@ -81,24 +82,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	UnicodeString biography;
 	callback->getBiography(biography);
 	playerCreature->setBiography(biography);
-
-	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
-
-	if (datapad == NULL) {
-		error("could not create player datapad");
-		return false;
-	}
-
-	player->addObject(datapad);
-
-	SceneObject* inventory = objectManager->createObject(0x3969E83B); // character_inventory
-
-	if (inventory == NULL) {
-		error("could not create player inventory");
-		return false;
-	}
-
-	player->addObject(inventory);
 
 	ZoneClientSession* client = data->getClient();
 
@@ -151,3 +134,55 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 
 	return hairObject;
 }
+
+bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player) {
+	SceneObject* inventory = objectManager->createObject(0x3969E83B); // character_inventory
+
+	if (inventory == NULL) {
+		error("could not create player inventory");
+		return false;
+	}
+
+	player->addObject(inventory);
+
+	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
+
+	if (datapad == NULL) {
+		error("could not create player datapad");
+		return false;
+	}
+
+	player->addObject(datapad);
+
+	SceneObject* playerObject = objectManager->createObject(0x619BAE21); //player object
+
+	if (playerObject == NULL) {
+		error("could not create player object");
+		return false;
+	}
+
+	player->addObject(playerObject);
+
+	SceneObject* bank = objectManager->createObject(0x70FD1394); //bank
+
+	if (bank == NULL) {
+		error("could not create bank");
+		return false;
+	}
+
+	player->addObject(bank);
+
+	SceneObject* missionBag = objectManager->createObject(0x3D7F6F9F); //mission bag
+
+	if (missionBag == NULL) {
+		error("could not create mission bag");
+		return false;
+	}
+
+	player->addObject(missionBag);
+
+	return true;
+}
+
+
+

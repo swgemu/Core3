@@ -46,6 +46,8 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 #include "../scene/variables/CustomizationVariables.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage3.h"
+#include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 
 TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData)
 		: SceneObjectImplementation(templateData) {
@@ -68,4 +70,14 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 	defenderList = new DeltaVector<SceneObject*>();
 	customizationVariables = new CustomizationVariables();
 
+}
+
+void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	info("sending tano baselines");
+
+	BaseMessage* tano3 = new TangibleObjectMessage3(_this);
+	player->sendMessage(tano3);
+
+	BaseMessage* tano6 = new TangibleObjectMessage6(_this);
+	player->sendMessage(tano6);
 }

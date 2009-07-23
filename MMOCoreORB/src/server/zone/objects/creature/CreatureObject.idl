@@ -115,7 +115,7 @@ class CreatureObject extends TangibleObject {
 
 	public native CreatureObject(LuaObject templateData);
 	
-	public native void sendTo(SceneObject player, boolean doClose = true);
+	public native void sendBaselinesTo(SceneObject player);
 	
 	public int getBankCredits() {
 		return bankCredits;

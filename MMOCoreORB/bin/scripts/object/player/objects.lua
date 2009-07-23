@@ -58,7 +58,7 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 
 	detailedDescription = "string_id_table",
 
-	gameObjectType = 1025,
+	gameObjectType = 12,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",
