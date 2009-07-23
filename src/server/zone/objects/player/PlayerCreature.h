@@ -62,7 +62,7 @@ namespace creature {
 
 class PlayerCreature : public CreatureObject {
 public:
-	PlayerCreature(LuaObject* templateData, SceneObject* par = NULL);
+	PlayerCreature(LuaObject* templateData);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -139,7 +139,7 @@ protected:
 	int factionStatus;
 
 public:
-	PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par = NULL);
+	PlayerCreatureImplementation(LuaObject* templateData);
 
 	void sendMessage(BaseMessage* msg);
 

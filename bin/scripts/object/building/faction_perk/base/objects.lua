@@ -62,6 +62,8 @@ object_building_faction_perk_base_shared_factional_building_base = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -85,6 +87,7 @@ object_building_faction_perk_base_shared_factional_building_base = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

@@ -62,6 +62,8 @@ object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_tatooine",
 
@@ -85,6 +87,7 @@ object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBu
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_tatooine2",
 
@@ -135,6 +140,7 @@ object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBu
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bank",
 
@@ -185,6 +193,7 @@ object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_cantina_mos_eisley_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cantina_general",
 
@@ -235,6 +246,7 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:capitol_tatooine",
 
@@ -285,6 +299,7 @@ object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -335,6 +352,7 @@ object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -385,6 +405,7 @@ object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cloning_facility",
 
@@ -435,6 +458,7 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility_tatooine",
 
@@ -485,6 +511,7 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBui
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -535,6 +564,7 @@ object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBui
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBui
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -585,6 +617,7 @@ object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBui
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBui
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -635,6 +670,7 @@ object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBui
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBui
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -685,6 +723,7 @@ object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBui
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_tatooine_shared_filler_building_slave_quarters_style_01 = Shared
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -735,6 +776,7 @@ object_building_tatooine_shared_filler_building_slave_quarters_style_01 = Shared
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_01",
 
@@ -785,6 +829,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_02",
 
@@ -835,6 +882,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_03",
 
@@ -885,6 +935,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_04",
 
@@ -935,6 +988,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_05",
 
@@ -985,6 +1041,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_06",
 
@@ -1035,6 +1094,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_07",
 
@@ -1085,6 +1147,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_08",
 
@@ -1135,6 +1200,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_09",
 
@@ -1185,6 +1253,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -1235,6 +1306,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -1285,6 +1359,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/fort_tusken.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:fort_tusken",
 
@@ -1335,6 +1412,7 @@ object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_combat_style_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_guild",
 
@@ -1385,6 +1465,7 @@ object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_commerce_style_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_guild",
 
@@ -1435,6 +1518,7 @@ object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:theater",
 
@@ -1485,6 +1571,7 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_university_style_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_guild",
 
@@ -1535,6 +1624,7 @@ object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1652,8 @@ object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/mos_entha_police_station.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_guild",
 
@@ -1585,6 +1677,7 @@ object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1705,8 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital",
 
@@ -1635,6 +1730,7 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1758,8 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital",
 
@@ -1685,6 +1783,7 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1811,8 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hotel_tatooine_general",
 
@@ -1735,6 +1836,7 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1864,8 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hotel_tatooine_general",
 
@@ -1785,6 +1889,7 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1917,8 @@ object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_large",
 
@@ -1835,6 +1942,7 @@ object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1862,6 +1970,8 @@ object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_med",
 
@@ -1885,6 +1995,7 @@ object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1912,6 +2023,8 @@ object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_small",
 
@@ -1935,6 +2048,7 @@ object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1962,6 +2076,8 @@ object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_large",
 
@@ -1985,6 +2101,7 @@ object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2012,6 +2129,8 @@ object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_housing_tatt_wealthy_med.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_med",
 
@@ -2035,6 +2154,7 @@ object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2062,6 +2182,8 @@ object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_small",
 
@@ -2085,6 +2207,7 @@ object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2112,6 +2235,8 @@ object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_large",
 
@@ -2135,6 +2260,7 @@ object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2162,6 +2288,8 @@ object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_housing_tatt_wealthy_s01_med.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_med",
 
@@ -2185,6 +2313,7 @@ object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2212,6 +2341,8 @@ object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_small",
 
@@ -2235,6 +2366,7 @@ object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2262,6 +2394,8 @@ object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:junkshop_watto",
 
@@ -2285,6 +2419,7 @@ object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2312,6 +2447,8 @@ object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -2335,6 +2472,7 @@ object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/lair_env_tatooine.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2362,6 +2500,8 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Lucky Despot",
 
@@ -2385,6 +2525,7 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2412,6 +2553,8 @@ object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent_tato_s01",
 
@@ -2435,6 +2578,7 @@ object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2462,6 +2606,8 @@ object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/jabba_palace_interior.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:palace_tatooine_jabba",
 
@@ -2485,6 +2631,7 @@ object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemp
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2512,6 +2659,8 @@ object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:parking_garage_tatooine_style_1",
 
@@ -2535,6 +2684,7 @@ object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2562,6 +2712,8 @@ object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:poi_tato_farm_32x32_s01",
 
@@ -2585,6 +2737,7 @@ object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2612,6 +2765,8 @@ object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_salon_style_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:salon_tatooine",
 
@@ -2635,6 +2790,7 @@ object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2662,6 +2818,8 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport_tatooine",
 
@@ -2685,6 +2843,7 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2712,6 +2871,8 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/starport_tatooine.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_tatooine",
 
@@ -2735,6 +2896,7 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2762,6 +2924,8 @@ object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:tower_jabbas_palace",
 
@@ -2785,6 +2949,7 @@ object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

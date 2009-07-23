@@ -72,7 +72,7 @@ class TangibleObject extends SceneObject {
 	protected DeltaVector<SceneObject> defenderList;
 	protected unsigned int defenderListUpdateCounter;
 	
-	public native TangibleObject(LuaObject temp, SceneObject parent = null);
+	public native TangibleObject(LuaObject templateData);
 	
 	public byte getUnknownByte() {
 		return unknownByte;

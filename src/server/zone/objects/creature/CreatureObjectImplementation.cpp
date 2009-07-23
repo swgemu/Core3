@@ -47,8 +47,8 @@ which carries forward this exception.
 #include "../../managers/object/ObjectManager.h"
 #include "../../ZoneClientSession.h"
 
-CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, SceneObject* parent) :
-	TangibleObjectImplementation(templ, parent) {
+CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
+	TangibleObjectImplementation(templateData) {
 
 	bankCredits = 0;
 	cashCredits = 0;
@@ -60,8 +60,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 
 	shockWounds = 0.f;
 
-	gender = templ->getIntField("gender");
-	species = templ->getIntField("species");
+	gender = templateData->getIntField("gender");
+	species = templateData->getIntField("species");
 
 	stateBitmask = 0;
 	terrainNegotiation = 0.f;
@@ -97,7 +97,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 
 	frozen = 0;
 
-	LuaObject accel = templ->getObjectField("acceleration");
+	LuaObject accel = templateData->getObjectField("acceleration");
 
 	if (accel.getTableSize() > 0)
 		acceleration = accel.getFloatAt(1);
@@ -106,7 +106,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templ, Sce
 
 	accel.pop();
 
-	LuaObject speedTempl = templ->getObjectField("speed");
+	LuaObject speedTempl = templateData->getObjectField("speed");
 
 	if (speedTempl.getTableSize() > 0)
 		speed = speedTempl.getFloatAt(1);

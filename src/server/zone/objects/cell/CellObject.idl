@@ -42,12 +42,30 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.building;
+package server.zone.objects.cell;
 
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 
-class BuildingObject extends TangibleObject {
-	public native BuildingObject(LuaObject templateData);
+class CellObject extends SceneObject {
+	int cellNumber;
+	
+	public native CellObject(LuaObject templateData);
+	
+	public boolean addObject(SceneObject object) {
+		return true;
+	}
+	
+	public boolean removeObject(SceneObject object) {
+		return true;
+	}
+	
+	public int getCellNumber() {
+		return cellNumber;
+	}
+	
+	public void setCellNumber(int number) {
+		cellNumber = number;
+	}
 	
 }

@@ -65,6 +65,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
+				server/zone/objects/cell/CellObject.cpp \
+				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/managers/player/PlayerManager.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
@@ -96,6 +98,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
+		server/zone/objects/cell/CellObjectImplementation.cpp \
+		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
 		main.cpp

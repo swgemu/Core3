@@ -58,54 +58,59 @@ namespace zone {
 
 	class ZoneProcessServerImplementation;
 
-namespace managers {
-namespace object {
+	namespace managers {
+	namespace object {
 
-class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManager> {
-	ObjectMap* objectMap;
-	ObjectMap* objectCacheMap;
+	class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManager> {
+		ObjectMap* objectMap;
+		ObjectMap* objectCacheMap;
 
-	ZoneProcessServerImplementation* server;
+		ZoneProcessServerImplementation* server;
 
-	uint64 newObjectID;
+		uint64 newObjectID;
 
-public:
-	static ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> objectFactory;
+	public:
+		static ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
 
-	static Lua* luaTemplatesInstance;
+		static Lua* luaTemplatesInstance;
 
-private:
-	void registerObjectTypes();
+	private:
+		void registerObjectTypes();
+		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
 
-public:
-	ObjectManager();
+	public:
+		ObjectManager();
 
-	~ObjectManager();
+		~ObjectManager();
 
-	// object methods
-	SceneObject* add(SceneObject* obj);
+		// object methods
+		SceneObject* add(SceneObject* obj);
 
-	SceneObject* get(uint64 oid);
+		SceneObject* get(uint64 oid);
 
-	SceneObject* remove(uint64 oid);
+		SceneObject* remove(uint64 oid);
 
-	bool destroy(SceneObject* obj);
+		bool destroy(SceneObject* obj);
 
-	SceneObject* getCachedObject(uint64 oid);
+		SceneObject* getCachedObject(uint64 oid);
 
-	SceneObject* removeCachedObject(uint64 oid);
+		SceneObject* removeCachedObject(uint64 oid);
 
-	SceneObject* createObject(uint32 objectCRC);
+		SceneObject* createObject(uint32 objectCRC, uint64 oid = 0);
 
-	void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
-		server = srv;
-	}
+		/*template<typename ClassType> void createObject() {
 
-	// LUA
-	void registerFunctions();
+		}*/
 
-	static int includeFile(lua_State* L);
-};
+		void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
+			server = srv;
+		}
+
+		// LUA
+		void registerFunctions();
+
+		static int includeFile(lua_State* L);
+	};
 
 }
 }

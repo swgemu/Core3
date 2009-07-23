@@ -41,5 +41,6 @@
 --which carries forward this exception.
 
 SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
-
+	terrainModificationFileName = "",
+	interiorLayoutFileName = ""
 }

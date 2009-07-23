@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
-	: SceneObjectImplementation(templ, parent) {
+IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData)
+	: SceneObjectImplementation(templateData) {
 
 }

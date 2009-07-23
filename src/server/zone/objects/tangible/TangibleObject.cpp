@@ -8,8 +8,8 @@
  *	TangibleObjectStub
  */
 
-TangibleObject::TangibleObject(LuaObject* temp, SceneObject* parent) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new TangibleObjectImplementation(temp, parent);
+TangibleObject::TangibleObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new TangibleObjectImplementation(templateData);
 	_impl->_setStub(this);
 
 	((TangibleObjectImplementation*) _impl)->_serializationHelperMethod();

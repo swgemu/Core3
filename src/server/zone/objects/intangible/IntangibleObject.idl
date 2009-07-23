@@ -48,5 +48,5 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 
 class IntangibleObject extends SceneObject {
-	public native IntangibleObject(LuaObject templ, SceneObject parent = null);
+	public native IntangibleObject(LuaObject templateData);
 }

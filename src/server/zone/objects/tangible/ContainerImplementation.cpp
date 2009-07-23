@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "Container.h"
 
-ContainerImplementation::ContainerImplementation(LuaObject* templateData, SceneObject* par) :
-	TangibleObjectImplementation(templateData, par) {
+ContainerImplementation::ContainerImplementation(LuaObject* templateData) :
+	TangibleObjectImplementation(templateData) {
 
 }

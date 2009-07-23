@@ -8,8 +8,8 @@
  *	CreatureObjectStub
  */
 
-CreatureObject::CreatureObject(LuaObject* templateData, SceneObject* parent) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new CreatureObjectImplementation(templateData, parent);
+CreatureObject::CreatureObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new CreatureObjectImplementation(templateData);
 	_impl->_setStub(this);
 
 	((CreatureObjectImplementation*) _impl)->_serializationHelperMethod();

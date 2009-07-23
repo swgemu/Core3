@@ -12,8 +12,8 @@
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
 
-PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData, SceneObject* par) :
-	CreatureObjectImplementation(templateData, par) {
+PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
+	CreatureObjectImplementation(templateData) {
 
 	owner = NULL;
 	nextAction = NULL;

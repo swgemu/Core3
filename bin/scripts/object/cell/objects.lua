@@ -58,7 +58,7 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 
 	detailedDescription = "",
 
-	gameObjectType = 0,
+	gameObjectType = 11,
 
 	locationReservationRadius = 0,
 	lookAtText = "",

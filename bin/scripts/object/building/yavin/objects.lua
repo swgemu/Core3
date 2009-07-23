@@ -62,6 +62,8 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/dark_enclave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:dark_enclave",
 
@@ -85,6 +87,7 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/light_enclave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:light_enclave",
 
@@ -135,6 +140,7 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:temple_blueleaf",
 
@@ -185,6 +193,7 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:temple_exar_kun",
 
@@ -235,6 +246,7 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:temple_massassi",
 
@@ -285,6 +299,7 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:temple_woolamander",
 
@@ -335,6 +352,7 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

@@ -8,8 +8,8 @@
  *	IntangibleObjectStub
  */
 
-IntangibleObject::IntangibleObject(LuaObject* templ, SceneObject* parent) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new IntangibleObjectImplementation(templ, parent);
+IntangibleObject::IntangibleObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new IntangibleObjectImplementation(templateData);
 	_impl->_setStub(this);
 
 	((IntangibleObjectImplementation*) _impl)->_serializationHelperMethod();

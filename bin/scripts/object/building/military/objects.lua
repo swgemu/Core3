@@ -62,6 +62,8 @@ object_building_military_shared_military_abandoned_police_station_rebel = Shared
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_abandoned_police_station_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_abandoned_police_station_rebel",
 
@@ -85,6 +87,7 @@ object_building_military_shared_military_abandoned_police_station_rebel = Shared
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_military_shared_military_base_gate_house_imperial = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_gate_house",
 
@@ -135,6 +140,7 @@ object_building_military_shared_military_base_gate_house_imperial = SharedBuildi
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_military_shared_military_base_gate_house_rebel = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_gate_house",
 
@@ -185,6 +193,7 @@ object_building_military_shared_military_base_gate_house_rebel = SharedBuildingO
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_military_shared_military_base_police_station_imperial_lok_otto =
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/police_station_imperial_otto.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_base_police_station_imperial_otto",
 
@@ -235,6 +246,7 @@ object_building_military_shared_military_base_police_station_imperial_lok_otto =
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_military_shared_military_base_police_station_imperial_style_01 =
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_police_station_imperial_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_base_police_station_imperial",
 
@@ -285,6 +299,7 @@ object_building_military_shared_military_base_police_station_imperial_style_01 =
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_military_shared_military_base_police_station_rebel_style_01 = Sh
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -335,6 +352,7 @@ object_building_military_shared_military_base_police_station_rebel_style_01 = Sh
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_military_shared_military_base_shed_imperial_barracks_s01 = Share
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_barracks_s01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -385,6 +405,7 @@ object_building_military_shared_military_base_shed_imperial_barracks_s01 = Share
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_military_shared_military_base_shed_imperial_style_01 = SharedBui
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -435,6 +458,7 @@ object_building_military_shared_military_base_shed_imperial_style_01 = SharedBui
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_military_shared_military_base_shed_imperial_style_bank_s01 = Sha
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_style_bank_s01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -485,6 +511,7 @@ object_building_military_shared_military_base_shed_imperial_style_bank_s01 = Sha
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_style_cantina_s01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -535,6 +564,7 @@ object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = 
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_military_shared_military_base_shed_imperial_style_hospital_01 = 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_style_hospital_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:imperial_military_hospital_1",
 
@@ -585,6 +617,7 @@ object_building_military_shared_military_base_shed_imperial_style_hospital_01 = 
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_military_shared_military_base_shed_imperial_style_officer_s01 = 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_style_officer_s01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -635,6 +670,7 @@ object_building_military_shared_military_base_shed_imperial_style_officer_s01 = 
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_military_shared_military_base_shed_imperial_style_prison_01 = Sh
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_imperial_style_prison_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:imperial_prison_shed",
 
@@ -685,6 +723,7 @@ object_building_military_shared_military_base_shed_imperial_style_prison_01 = Sh
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBu
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_rebel_abandoned_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:abandoned_rebel_shed",
 
@@ -735,6 +776,7 @@ object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBu
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_base_shed_rebel_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -785,6 +829,7 @@ object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildi
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_military_shared_military_imperial_detachment_hq = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_imperial_detachment_hq.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_imperial_detachment",
 
@@ -835,6 +882,7 @@ object_building_military_shared_military_imperial_detachment_hq = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_military_shared_military_imperial_field_hospital = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_imperial_field_hospital.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_imperial_field_hospital",
 
@@ -885,6 +935,7 @@ object_building_military_shared_military_imperial_field_hospital = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_military_shared_military_imperial_forward_outpost = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_imperial_forward_outpost.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_imperial_forward_outpost",
 
@@ -935,6 +988,7 @@ object_building_military_shared_military_imperial_forward_outpost = SharedBuildi
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_military_shared_military_imperial_strategic_base = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_imperial_strategic_base.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_imperial_strategic_base",
 
@@ -985,6 +1041,7 @@ object_building_military_shared_military_imperial_strategic_base = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_military_shared_military_imperial_tactical_center = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_imperial_tactical_center.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_imperial_tactical_center",
 
@@ -1035,6 +1094,7 @@ object_building_military_shared_military_imperial_tactical_center = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_military_shared_military_outpost_guard_house_imperial = SharedBu
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1085,6 +1147,7 @@ object_building_military_shared_military_outpost_guard_house_imperial = SharedBu
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_military_shared_military_outpost_guard_house_rebel = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_rebel_guard_house.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1135,6 +1200,7 @@ object_building_military_shared_military_outpost_guard_house_rebel = SharedBuild
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1185,6 +1253,7 @@ object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingO
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_rebel_detachment_hq.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_rebel_detachment",
 
@@ -1235,6 +1306,7 @@ object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_military_shared_military_rebel_field_hospital = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_rebel_field_hospital.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_rebel_field_hospital",
 
@@ -1285,6 +1359,7 @@ object_building_military_shared_military_rebel_field_hospital = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_military_shared_military_rebel_forward_outpost = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_rebel_forward_outpost.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_rebel_forward_outpost",
 
@@ -1335,6 +1412,7 @@ object_building_military_shared_military_rebel_forward_outpost = SharedBuildingO
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_military_shared_military_rebel_strategic_base = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_rebel_strategic_base.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_rebel_strategic_base",
 
@@ -1385,6 +1465,7 @@ object_building_military_shared_military_rebel_strategic_base = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_military_shared_military_rebel_tactical_center = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_rebel_tactical_center.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_rebel_tactical_center",
 
@@ -1435,6 +1518,7 @@ object_building_military_shared_military_rebel_tactical_center = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBu
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1485,6 +1571,7 @@ object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBu
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_cloning_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility",
 
@@ -1535,6 +1624,7 @@ object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1652,8 @@ object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_cloning_facility_s02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility",
 
@@ -1585,6 +1677,7 @@ object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1705,8 @@ object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_cloning_facility_s03.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility",
 
@@ -1635,6 +1730,7 @@ object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1758,8 @@ object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_shed.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1685,6 +1783,7 @@ object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new 
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1811,8 @@ object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_shed_s02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1735,6 +1836,7 @@ object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1864,8 @@ object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_shed_s03.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1785,6 +1889,7 @@ object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1917,8 @@ object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_shed_s04.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1835,6 +1942,7 @@ object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1862,6 +1970,8 @@ object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_shed_s05.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:outpost_shed",
 
@@ -1885,6 +1995,7 @@ object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1912,6 +2023,8 @@ object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_corellia",
 
@@ -1935,6 +2048,7 @@ object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1962,6 +2076,8 @@ object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_pirate_outpost.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -1985,6 +2101,7 @@ object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:ne
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2012,6 +2129,8 @@ object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/outpost_shed.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -2035,6 +2154,7 @@ object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/mun_all_military_shed.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2062,6 +2182,8 @@ object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -2085,6 +2207,7 @@ object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemp
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2112,6 +2235,8 @@ object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -2135,6 +2260,7 @@ object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildi
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2162,6 +2288,8 @@ object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -2185,6 +2313,7 @@ object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjec
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2212,6 +2341,8 @@ object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -2235,6 +2366,7 @@ object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectT
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2262,6 +2394,8 @@ object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rebel_hideout1.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:military_guard_tower_1",
 
@@ -2285,6 +2419,7 @@ object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2312,6 +2447,8 @@ object_building_military_shared_small_imperial_cloning_facility = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/small_imperial_cloning_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility",
 
@@ -2335,6 +2472,7 @@ object_building_military_shared_small_imperial_cloning_facility = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2362,6 +2500,8 @@ object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuil
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/small_imperial_cloning_facility_s02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility",
 
@@ -2385,6 +2525,7 @@ object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuil
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

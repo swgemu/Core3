@@ -62,6 +62,8 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -85,6 +87,7 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }

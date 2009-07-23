@@ -62,6 +62,8 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_nymstheme_pirate_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -85,6 +87,7 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -135,6 +140,7 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/nym_stronghold_interior.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_palace",
 
@@ -185,6 +193,7 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

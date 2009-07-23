@@ -56,7 +56,7 @@ class PlayerObject extends IntangibleObject {
 	
 	private ZoneClientSession owner;
 	
-	public native PlayerObject(LuaObject templ, SceneObject parent = null);
+	public native PlayerObject(LuaObject templateData);
 	
 	public native void initialize(unsigned int creatureObjectCRC);
 }

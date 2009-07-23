@@ -62,6 +62,8 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_association_hall_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_tatooine",
 
@@ -85,6 +87,7 @@ object_building_corellia_shared_association_hall_civilian_corellia = SharedBuild
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bank_corellia",
 
@@ -135,6 +140,7 @@ object_building_corellia_shared_bank_corellia = SharedBuildingObjectTemplate:new
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_cantina_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cantina_general",
 
@@ -185,6 +193,7 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_capitol_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:capitol_corellia",
 
@@ -235,6 +246,7 @@ object_building_corellia_shared_capitol_corellia = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -285,6 +299,7 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_block_corellia_32x16_s01",
 
@@ -335,6 +352,7 @@ object_building_corellia_shared_filler_block_corellia_32x16_s01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_block_corellia_64x32_s01",
 
@@ -385,6 +405,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_block_corellia_64x32_s02",
 
@@ -435,6 +458,7 @@ object_building_corellia_shared_filler_block_corellia_64x32_s02 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_1",
 
@@ -485,6 +511,7 @@ object_building_corellia_shared_filler_building_corellia_style_01 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_2",
 
@@ -535,6 +564,7 @@ object_building_corellia_shared_filler_building_corellia_style_02 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_3",
 
@@ -585,6 +617,7 @@ object_building_corellia_shared_filler_building_corellia_style_03 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_4",
 
@@ -635,6 +670,7 @@ object_building_corellia_shared_filler_building_corellia_style_04 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_5",
 
@@ -685,6 +723,7 @@ object_building_corellia_shared_filler_building_corellia_style_05 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_6",
 
@@ -735,6 +776,7 @@ object_building_corellia_shared_filler_building_corellia_style_06 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_corellia_style_7",
 
@@ -785,6 +829,7 @@ object_building_corellia_shared_filler_building_corellia_style_07 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_historic_24x16_s01",
 
@@ -835,6 +882,7 @@ object_building_corellia_shared_filler_historic_24x16_s01 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_historic_24x16_s02",
 
@@ -885,6 +935,7 @@ object_building_corellia_shared_filler_historic_24x16_s02 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_historic_32x16_s01",
 
@@ -935,6 +988,7 @@ object_building_corellia_shared_filler_historic_32x16_s01 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_historic_32x16_s02",
 
@@ -985,6 +1041,7 @@ object_building_corellia_shared_filler_historic_32x16_s02 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_slum_16x16_s01",
 
@@ -1035,6 +1094,7 @@ object_building_corellia_shared_filler_slum_16x16_s01 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_slum_16x32_s01",
 
@@ -1085,6 +1147,7 @@ object_building_corellia_shared_filler_slum_16x32_s01 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_slum_16x32_s02",
 
@@ -1135,6 +1200,7 @@ object_building_corellia_shared_filler_slum_16x32_s02 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport_corellia",
 
@@ -1185,6 +1253,7 @@ object_building_corellia_shared_garage_corellia = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_combat_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1235,6 +1306,7 @@ object_building_corellia_shared_guild_combat_corellia_style_01 = SharedBuildingO
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_commerce_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_commerce_corellia",
 
@@ -1285,6 +1359,7 @@ object_building_corellia_shared_guild_commerce_corellia_style_01 = SharedBuildin
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:theater",
 
@@ -1335,6 +1412,7 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_university_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_university_corellia",
 
@@ -1385,6 +1465,7 @@ object_building_corellia_shared_guild_university_corellia_style_01 = SharedBuild
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hospital_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital_corellia",
 
@@ -1435,6 +1518,7 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital_corellia",
 
@@ -1485,6 +1571,7 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hotel_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1535,6 +1624,7 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1652,8 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent_tato_s01",
 
@@ -1585,6 +1677,7 @@ object_building_corellia_shared_merchant_tent_corellia_s01 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1705,8 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1635,6 +1730,7 @@ object_building_corellia_shared_ply_corl_house_lg_s01_fp1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1758,8 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1685,6 +1783,7 @@ object_building_corellia_shared_ply_corl_house_m_s01_fp1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1811,8 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1735,6 +1836,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1864,8 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1785,6 +1889,7 @@ object_building_corellia_shared_ply_corl_house_s_s01_fp2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1917,8 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_corellia",
 
@@ -1835,6 +1942,7 @@ object_building_corellia_shared_ply_corl_house_s_s02_fp1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1862,6 +1970,8 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_salon_style_corellia.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:salon_corellia",
 
@@ -1885,6 +1995,7 @@ object_building_corellia_shared_salon_corellia = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1912,6 +2023,8 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport_corellia",
 
@@ -1935,6 +2048,7 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1962,6 +2076,8 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:skyscraper_corellia_style_1",
 
@@ -1985,6 +2101,7 @@ object_building_corellia_shared_skyscraper_corellia_style_01 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2012,6 +2129,8 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:skyscraper_corellia_style_2",
 
@@ -2035,6 +2154,7 @@ object_building_corellia_shared_skyscraper_corellia_style_02 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2062,6 +2182,8 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:skyscraper_corellia_style_3",
 
@@ -2085,6 +2207,7 @@ object_building_corellia_shared_skyscraper_corellia_style_03 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2112,6 +2235,8 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:skyscraper_corellia_style_4",
 
@@ -2135,6 +2260,7 @@ object_building_corellia_shared_skyscraper_corellia_style_04 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2162,6 +2288,8 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:skyscraper_corellia_style_5",
 
@@ -2185,6 +2313,7 @@ object_building_corellia_shared_skyscraper_corellia_style_05 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2212,6 +2341,8 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/starport_corellia_interior.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_corellia",
 
@@ -2235,6 +2366,7 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

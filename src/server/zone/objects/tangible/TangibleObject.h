@@ -24,7 +24,7 @@ namespace tangible {
 
 class TangibleObject : public SceneObject {
 public:
-	TangibleObject(LuaObject* temp, SceneObject* parent = NULL);
+	TangibleObject(LuaObject* templateData);
 
 	byte getUnknownByte();
 
@@ -93,7 +93,7 @@ protected:
 	unsigned int defenderListUpdateCounter;
 
 public:
-	TangibleObjectImplementation(LuaObject* temp, SceneObject* parent = NULL);
+	TangibleObjectImplementation(LuaObject* templateData);
 
 	byte getUnknownByte();
 

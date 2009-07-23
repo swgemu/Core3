@@ -62,6 +62,8 @@ object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_aircar",
 
@@ -85,6 +87,7 @@ object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_arena",
 
@@ -135,6 +140,7 @@ object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_arena_large",
 
@@ -185,6 +193,7 @@ object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_association_hall",
 
@@ -235,6 +246,7 @@ object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_bank",
 
@@ -285,6 +299,7 @@ object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_bubble_naboo",
 
@@ -335,6 +352,7 @@ object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -385,6 +405,7 @@ object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cantina",
 
@@ -435,6 +458,7 @@ object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_palace",
 
@@ -485,6 +511,7 @@ object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -535,6 +564,7 @@ object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cloning_facility",
 
@@ -585,6 +617,7 @@ object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_filler_building",
 
@@ -635,6 +670,7 @@ object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_guild",
 
@@ -685,6 +723,7 @@ object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_hangar",
 
@@ -735,6 +776,7 @@ object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_palace",
 
@@ -785,6 +829,7 @@ object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_hotel",
 
@@ -835,6 +882,7 @@ object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_housing",
 
@@ -885,6 +935,7 @@ object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_base_shared_base_military_building = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -935,6 +988,7 @@ object_building_base_shared_base_military_building = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 513,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -985,6 +1041,7 @@ object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_palace",
 
@@ -1035,6 +1094,7 @@ object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_parking_garage",
 
@@ -1085,6 +1147,7 @@ object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_housing",
 
@@ -1135,6 +1200,7 @@ object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_power_generator",
 
@@ -1185,6 +1253,7 @@ object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_salon",
 
@@ -1235,6 +1306,7 @@ object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_starport",
 
@@ -1285,6 +1359,7 @@ object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_starport",
 
@@ -1335,6 +1412,7 @@ object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_theater",
 
@@ -1385,6 +1465,7 @@ object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_tower",
 
@@ -1435,6 +1518,7 @@ object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_base_shared_building_default = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1485,6 +1571,7 @@ object_building_base_shared_building_default = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
