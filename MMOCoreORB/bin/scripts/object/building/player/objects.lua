@@ -262,6 +262,8 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_corellia",
 
@@ -285,6 +287,7 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +315,8 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_general",
 
@@ -335,6 +340,7 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +368,8 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_naboo",
 
@@ -385,6 +393,7 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +421,8 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_housing",
 
@@ -435,6 +446,7 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +474,8 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_guildhall",
 
@@ -485,6 +499,7 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +527,8 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_large_style_1",
 
@@ -535,6 +552,7 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +580,8 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_large_style_2",
 
@@ -585,6 +605,7 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +633,8 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_medium_style_1",
 
@@ -635,6 +658,7 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +686,8 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_medium_style_2",
 
@@ -685,6 +711,7 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +739,8 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_small_style_1",
 
@@ -735,6 +764,7 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +792,8 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_small_style_1_floorplan_2",
 
@@ -785,6 +817,7 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +845,8 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_small_style_2",
 
@@ -835,6 +870,7 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +898,8 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_corellia_small_style_2_floorplan_2",
 
@@ -885,6 +923,7 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +951,8 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_large_style_1",
 
@@ -935,6 +976,7 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1004,8 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_large_style_2",
 
@@ -985,6 +1029,7 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1057,8 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_medium_style_1",
 
@@ -1035,6 +1082,7 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1110,8 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_medium_style_2",
 
@@ -1085,6 +1135,7 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1163,8 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_small_style_1",
 
@@ -1135,6 +1188,7 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1216,8 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_small_style_1_floorplan_2",
 
@@ -1185,6 +1241,7 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1269,8 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_small_style_2",
 
@@ -1235,6 +1294,7 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1322,8 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_small_style_2_floorplan_2",
 
@@ -1285,6 +1347,7 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1375,8 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1335,6 +1400,7 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1428,8 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1385,6 +1453,7 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1481,8 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1435,6 +1506,7 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1534,8 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1485,6 +1559,7 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1587,8 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_large",
 
@@ -1535,6 +1612,7 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1640,8 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_med",
 
@@ -1585,6 +1665,7 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1693,8 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_small",
 
@@ -1635,6 +1718,7 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1746,8 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_small",
 
@@ -1685,6 +1771,7 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1799,8 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent",
 
@@ -1735,6 +1824,7 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1852,8 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent",
 
@@ -1785,6 +1877,7 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1905,8 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent",
 
@@ -1835,6 +1930,7 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

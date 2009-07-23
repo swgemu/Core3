@@ -49,7 +49,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 
 class Container extends TangibleObject {
-	public native Container(LuaObject templateData, SceneObject par = null);
+	public native Container(LuaObject templateData);
 	
 	public boolean addObject(SceneObject obj) {
 		return true;

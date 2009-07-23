@@ -18,7 +18,7 @@ namespace intangible {
 
 class IntangibleObject : public SceneObject {
 public:
-	IntangibleObject(LuaObject* templ, SceneObject* parent = NULL);
+	IntangibleObject(LuaObject* templateData);
 
 protected:
 	IntangibleObject(DummyConstructorParameter* param);
@@ -43,7 +43,7 @@ namespace intangible {
 class IntangibleObjectImplementation : public SceneObjectImplementation {
 
 public:
-	IntangibleObjectImplementation(LuaObject* templ, SceneObject* parent = NULL);
+	IntangibleObjectImplementation(LuaObject* templateData);
 
 	IntangibleObject* _this;
 

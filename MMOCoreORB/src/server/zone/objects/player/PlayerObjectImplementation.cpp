@@ -47,8 +47,8 @@ which carries forward this exception.
 #include "../../managers/object/ObjectManager.h"
 
 
-PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templ, SceneObject* parent) :
-	IntangibleObjectImplementation(templ, parent) {
+PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
+	IntangibleObjectImplementation(templateData) {
 
 	objectCRC = 0x619BAE21;
 

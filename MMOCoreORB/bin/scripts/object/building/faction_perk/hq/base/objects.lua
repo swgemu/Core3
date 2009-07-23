@@ -62,6 +62,8 @@ object_building_faction_perk_hq_base_shared_factional_hq_base = SharedBuildingOb
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -85,6 +87,7 @@ object_building_faction_perk_hq_base_shared_factional_hq_base = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObje
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -135,6 +140,7 @@ object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }

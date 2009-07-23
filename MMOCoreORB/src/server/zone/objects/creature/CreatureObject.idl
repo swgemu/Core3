@@ -113,7 +113,7 @@ class CreatureObject extends TangibleObject {
 	
 	protected string templateString;
 
-	public native CreatureObject(LuaObject templateData, SceneObject parent = null);
+	public native CreatureObject(LuaObject templateData);
 	
 	public native void sendTo(SceneObject player, boolean doClose = true);
 	

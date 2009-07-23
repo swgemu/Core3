@@ -49,9 +49,10 @@ which carries forward this exception.
 #include "../../objects/tangible/Container.h"
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/player/PlayerCreature.h"
+#include "../../objects/cell/CellObject.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
-ObjectFactory<SceneObject* (LuaObject*, SceneObject*), unsigned int> ObjectManager::objectFactory;
+ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
 
 ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager") {
 	objectMap = new ObjectMap(100000);
@@ -110,6 +111,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<IntangibleObject>(0x800);
 	objectFactory.registerObject<Container>(0x2005);
 	objectFactory.registerObject<TangibleObject>(0x2013);
+
+	objectFactory.registerObject<CellObject>(11);
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {
@@ -180,9 +183,7 @@ SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
 	return obj;
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC) {
-	instance()->lock();
-
+SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	SceneObject* object = NULL;
 
 	try {
@@ -192,35 +193,56 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC) {
 
 		LuaObject result(luaTemplatesInstance->getLuaState());
 
-		if (!result.isValidTable()) {
-			instance()->unlock();
+		if (!result.isValidTable())
 			return NULL;
-		}
 
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
-		/*StringBuffer msg;
-		msg << "Object crc:[0x" <<  hex << objectCRC << "]" << " is a [0x" << hex << gameObjectType << "] gameObjectType";
-		info(msg, true);*/
-
-		object = objectFactory.createObject(gameObjectType, &result, NULL);
+		object = objectFactory.createObject(gameObjectType, &result);
 		object->setObjectCRC(objectCRC);
-		object->setZoneProcessServer(server);
-		object->setObjectID(++newObjectID);
 
-		add(object);
-
-		/*if (object == NULL) {
-		if (gameObjectType > 0x100)
-			gameObjectType & 0x00FF;
-
-		object = objectFactory.createObject(gameObjectType, &result, NULL);
-		}*/
 	} catch (...) {
 		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");
 	}
 
-	instance()->unlock();
+	return object;
+}
+
+SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
+	SceneObject* object = NULL;
+
+	try {
+		lock();
+
+		object = loadObjectFromTemplate(objectCRC);
+
+		if (object == NULL) {
+			unlock();
+			return NULL;
+		}
+
+		object->setZoneProcessServer(server);
+
+		if (oid == 0)
+			oid = ++newObjectID;
+
+		object->setObjectID(oid);
+
+		add(object);
+
+		unlock();
+	} catch (Exception& e) {
+		unlock();
+
+		error("exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid)");
+		error(e.getMessage());
+
+		e.printStackTrace();
+	} catch (...) {
+		unlock();
+
+		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid)");
+	}
 
 	return object;
 }

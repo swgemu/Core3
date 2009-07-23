@@ -10,8 +10,8 @@
  *	PlayerObjectStub
  */
 
-PlayerObject::PlayerObject(LuaObject* templ, SceneObject* parent) : IntangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new PlayerObjectImplementation(templ, parent);
+PlayerObject::PlayerObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new PlayerObjectImplementation(templateData);
 	_impl->_setStub(this);
 
 	((PlayerObjectImplementation*) _impl)->_serializationHelperMethod();

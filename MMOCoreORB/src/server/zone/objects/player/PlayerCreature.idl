@@ -92,7 +92,7 @@ class PlayerCreature extends CreatureObject {
 
 	// Profession stuff
 	
-	public native PlayerCreature(LuaObject templateData, SceneObject par = null);
+	public native PlayerCreature(LuaObject templateData);
 	
 	public void sendMessage(BaseMessage msg) {
 		if (owner == null) {

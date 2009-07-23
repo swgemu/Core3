@@ -62,6 +62,8 @@ object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:aircar_general",
 
@@ -85,6 +87,7 @@ object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:arena_general",
 
@@ -135,6 +140,7 @@ object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_general_shared_arena_large_general = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:arena_large_general",
 
@@ -185,6 +193,7 @@ object_building_general_shared_arena_large_general = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_general_shared_association_hall_civilian_general = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_general",
 
@@ -235,6 +246,7 @@ object_building_general_shared_association_hall_civilian_general = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_general_shared_association_hall_general = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_general",
 
@@ -285,6 +299,7 @@ object_building_general_shared_association_hall_general = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bank_general",
 
@@ -335,6 +352,7 @@ object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/bunker_allum.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -385,6 +405,7 @@ object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/bunker_blacksun_outpost.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -435,6 +458,7 @@ object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -485,6 +511,7 @@ object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -535,6 +564,7 @@ object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -585,6 +617,7 @@ object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -635,6 +670,7 @@ object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -685,6 +723,7 @@ object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -735,6 +776,7 @@ object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuil
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/bunker_imperial_detainment_center.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -785,6 +829,7 @@ object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuil
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -835,6 +882,7 @@ object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_general_shared_bunker_imperial_weapons_research_facility_01 = Sh
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/naboo_imperial_weapons_research_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -885,6 +935,7 @@ object_building_general_shared_bunker_imperial_weapons_research_facility_01 = Sh
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/geonosian_bio_dungeon.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -935,6 +988,7 @@ object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -985,6 +1041,7 @@ object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1035,6 +1094,7 @@ object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/bunker_rebel_spynet.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1085,6 +1147,7 @@ object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/bunker_rebel_weapons_depot.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1135,6 +1200,7 @@ object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1185,6 +1253,7 @@ object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1235,6 +1306,7 @@ object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/cave01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1285,6 +1359,7 @@ object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/chunker_bunker_interior.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1335,6 +1412,7 @@ object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/tok_retreat.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1385,6 +1465,7 @@ object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/warren.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1435,6 +1518,7 @@ object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cantina",
 
@@ -1485,6 +1571,7 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_palace",
 
@@ -1535,6 +1624,7 @@ object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1652,8 @@ object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1585,6 +1677,7 @@ object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1705,8 @@ object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -1635,6 +1730,7 @@ object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1758,8 @@ object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -1685,6 +1783,7 @@ object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1811,8 @@ object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1735,6 +1836,7 @@ object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1864,8 @@ object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -1785,6 +1889,7 @@ object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1917,8 @@ object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1835,6 +1942,7 @@ object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1862,6 +1970,8 @@ object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -1885,6 +1995,7 @@ object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1912,6 +2023,8 @@ object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -1935,6 +2048,7 @@ object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1962,6 +2076,8 @@ object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -1985,6 +2101,7 @@ object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2012,6 +2129,8 @@ object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -2035,6 +2154,7 @@ object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2062,6 +2182,8 @@ object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2085,6 +2207,7 @@ object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2112,6 +2235,8 @@ object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -2135,6 +2260,7 @@ object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2162,6 +2288,8 @@ object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -2185,6 +2313,7 @@ object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2212,6 +2341,8 @@ object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2235,6 +2366,7 @@ object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2262,6 +2394,8 @@ object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -2285,6 +2419,7 @@ object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2312,6 +2447,8 @@ object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2335,6 +2472,7 @@ object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2362,6 +2500,8 @@ object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2385,6 +2525,7 @@ object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2412,6 +2553,8 @@ object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2435,6 +2578,7 @@ object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2462,6 +2606,8 @@ object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2485,6 +2631,7 @@ object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2512,6 +2659,8 @@ object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2535,6 +2684,7 @@ object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2562,6 +2712,8 @@ object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2585,6 +2737,7 @@ object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2612,6 +2765,8 @@ object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2635,6 +2790,7 @@ object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2662,6 +2818,8 @@ object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2685,6 +2843,7 @@ object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2712,6 +2871,8 @@ object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2735,6 +2896,7 @@ object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2762,6 +2924,8 @@ object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2785,6 +2949,7 @@ object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2812,6 +2977,8 @@ object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2835,6 +3002,7 @@ object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2862,6 +3030,8 @@ object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_pirate_cave_interior.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2885,6 +3055,7 @@ object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2912,6 +3083,8 @@ object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/endor_cave_morag.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -2935,6 +3108,7 @@ object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2962,6 +3136,8 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cloning_facility",
 
@@ -2985,6 +3161,7 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3012,6 +3189,8 @@ object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/corellia_afarathu_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3035,6 +3214,7 @@ object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3062,6 +3242,8 @@ object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/corellia_drall_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3085,6 +3267,7 @@ object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3112,6 +3295,8 @@ object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/corellia_nyax_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3135,6 +3320,7 @@ object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3162,6 +3348,8 @@ object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBu
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/force_crystal_cave_v1.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3185,6 +3373,7 @@ object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBu
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3212,6 +3401,8 @@ object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/dantooine_janta_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3235,6 +3426,7 @@ object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3262,6 +3454,8 @@ object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/dantooine_kunga_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3285,6 +3479,7 @@ object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3312,6 +3507,8 @@ object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/dathomir_nsister_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3335,6 +3532,7 @@ object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3362,6 +3560,8 @@ object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/dathomir_nsister_rancor_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Cave",
 
@@ -3385,6 +3585,7 @@ object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3412,6 +3613,8 @@ object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/endor_jinda_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3435,6 +3638,7 @@ object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3462,6 +3666,8 @@ object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/endor_korga_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3485,6 +3691,7 @@ object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3512,6 +3719,8 @@ object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/endor_marauder_orphans_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3535,6 +3744,7 @@ object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3562,6 +3772,8 @@ object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_general",
 
@@ -3585,6 +3797,7 @@ object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3612,6 +3825,8 @@ object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_commerce_general",
 
@@ -3635,6 +3850,7 @@ object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3662,6 +3878,8 @@ object_building_general_shared_guild_university_general_style_01 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_university_general",
 
@@ -3685,6 +3903,7 @@ object_building_general_shared_guild_university_general_style_01 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3712,6 +3931,8 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hotel_general_style_1",
 
@@ -3735,6 +3956,7 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3762,6 +3984,8 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hotel_general_style_2",
 
@@ -3785,6 +4009,7 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3812,6 +4037,8 @@ object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_general_style_1",
 
@@ -3835,6 +4062,7 @@ object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3862,6 +4090,8 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport_general",
 
@@ -3885,6 +4115,7 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 	surfaceType = 1,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3912,6 +4143,8 @@ object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_evil_droid_engineer_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3935,6 +4168,7 @@ object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -3962,6 +4196,8 @@ object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_kimogila_cult_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -3985,6 +4221,7 @@ object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4012,6 +4249,8 @@ object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_mercenary_cave_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -4035,6 +4274,7 @@ object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4062,6 +4302,8 @@ object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_nymstheme_mercenary_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -4085,6 +4327,7 @@ object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4112,6 +4355,8 @@ object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/lok_nymstheme_pirate_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -4135,6 +4380,7 @@ object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4162,6 +4408,8 @@ object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent_tato_s01",
 
@@ -4185,6 +4433,7 @@ object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4212,6 +4461,8 @@ object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:capitol_general",
 
@@ -4235,6 +4486,7 @@ object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4262,6 +4514,8 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility_general",
 
@@ -4285,6 +4539,7 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4312,6 +4567,8 @@ object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_general",
 
@@ -4335,6 +4592,7 @@ object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4362,6 +4620,8 @@ object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_commerce_general",
 
@@ -4385,6 +4645,7 @@ object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4412,6 +4673,8 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:theater",
 
@@ -4435,6 +4698,7 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4462,6 +4726,8 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_university_general",
 
@@ -4485,6 +4751,7 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4512,6 +4779,8 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital",
 
@@ -4535,6 +4804,7 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4562,6 +4832,8 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital",
 
@@ -4585,6 +4857,7 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4612,6 +4885,8 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hotel_tatooine_general",
 
@@ -4635,6 +4910,7 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4662,6 +4938,8 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport",
 
@@ -4685,6 +4963,7 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4712,6 +4991,8 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport",
 
@@ -4735,6 +5016,7 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4762,6 +5044,8 @@ object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/naboo_narglatch_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -4785,6 +5069,7 @@ object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4812,6 +5097,8 @@ object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/naboo_pirate_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -4835,6 +5122,7 @@ object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4862,6 +5150,8 @@ object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/naboo_veermok_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -4885,6 +5175,7 @@ object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4912,6 +5203,8 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/newbie_hall.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_tatooine",
 
@@ -4935,6 +5228,7 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -4962,6 +5256,8 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_tatooine",
 
@@ -4985,6 +5281,7 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5012,6 +5309,8 @@ object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/nightsister_slave_mine_v2.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5035,6 +5334,7 @@ object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5062,6 +5362,8 @@ object_building_general_shared_parking_garage_general = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:parking_garage_general",
 
@@ -5085,6 +5387,7 @@ object_building_general_shared_parking_garage_general = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5112,6 +5415,8 @@ object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rancher_house.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_tatt_style01_med",
 
@@ -5135,6 +5440,7 @@ object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5162,6 +5468,8 @@ object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/military_rebel_fuel_processing_depot.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5185,6 +5493,7 @@ object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5212,6 +5521,8 @@ object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rori_bark_mite_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5235,6 +5546,7 @@ object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5262,6 +5574,8 @@ object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/bat_rori_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5285,6 +5599,7 @@ object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5312,6 +5627,8 @@ object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rori_cobral_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5335,6 +5652,7 @@ object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5362,6 +5680,8 @@ object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rori_garyn_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5385,6 +5705,7 @@ object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5412,6 +5733,8 @@ object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rori_hyperdrive_research_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:Bunker",
 
@@ -5435,6 +5758,7 @@ object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5462,6 +5786,8 @@ object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rori_kobola_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5485,6 +5811,7 @@ object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5512,6 +5839,8 @@ object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/rori_torton_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5535,6 +5864,7 @@ object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5562,6 +5892,8 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport_general",
 
@@ -5585,6 +5917,7 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5612,6 +5945,8 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/corvette_base.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5635,6 +5970,7 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5662,6 +5998,8 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/corvette_imperial.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5685,6 +6023,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5712,6 +6051,8 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/corvette_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5735,6 +6076,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5762,6 +6104,8 @@ object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5785,6 +6129,7 @@ object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5812,6 +6157,8 @@ object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -5835,6 +6182,7 @@ object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5862,6 +6210,8 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_general",
 
@@ -5885,6 +6235,7 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5912,6 +6263,8 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_general_style_1",
 
@@ -5935,6 +6288,7 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -5962,6 +6316,8 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_general_style_2",
 
@@ -5985,6 +6341,7 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/starportb_circle.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6012,6 +6369,8 @@ object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/aakuan_talus_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6035,6 +6394,7 @@ object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6062,6 +6422,8 @@ object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/talus_aqualish_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6085,6 +6447,7 @@ object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6112,6 +6475,8 @@ object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/talus_binyare_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6135,6 +6500,7 @@ object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6162,6 +6528,8 @@ object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/talus_decay_mite_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6185,6 +6553,7 @@ object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6212,6 +6581,8 @@ object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/talus_giant_fynock_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6235,6 +6606,7 @@ object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6262,6 +6634,8 @@ object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/khmurra_talus_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6285,6 +6659,7 @@ object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6312,6 +6687,8 @@ object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/talus_traitor_erran.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6335,6 +6712,7 @@ object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6362,6 +6740,8 @@ object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/tatooine_beetle_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6385,6 +6765,7 @@ object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6412,6 +6793,8 @@ object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/tatooine_hutt_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6435,6 +6818,7 @@ object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6462,6 +6846,8 @@ object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/tatooine_squill_cave.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6485,6 +6871,7 @@ object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -6512,6 +6899,8 @@ object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/tusken_tatooine_bunker.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_cave",
 
@@ -6535,6 +6924,7 @@ object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

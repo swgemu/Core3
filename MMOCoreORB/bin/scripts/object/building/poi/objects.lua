@@ -62,6 +62,8 @@ object_building_poi_shared_anywhere_fs_intro_camp = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -85,6 +87,7 @@ object_building_poi_shared_anywhere_fs_intro_camp = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_poi_shared_anywhere_imperial_base_large_1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -135,6 +140,7 @@ object_building_poi_shared_anywhere_imperial_base_large_1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_poi_shared_anywhere_imperial_base_small_1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -185,6 +193,7 @@ object_building_poi_shared_anywhere_imperial_base_small_1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_poi_shared_anywhere_misc_camp_small_1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -235,6 +246,7 @@ object_building_poi_shared_anywhere_misc_camp_small_1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_poi_shared_anywhere_rebel_base_large_1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -285,6 +299,7 @@ object_building_poi_shared_anywhere_rebel_base_large_1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_poi_shared_anywhere_rebel_camp_large_1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -335,6 +352,7 @@ object_building_poi_shared_anywhere_rebel_camp_large_1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_poi_shared_anywhere_rebel_camp_small_1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -385,6 +405,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_poi_shared_anywhere_rebel_camp_small_2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -435,6 +458,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_poi_shared_anywhere_rebel_camp_small_3 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -485,6 +511,7 @@ object_building_poi_shared_anywhere_rebel_camp_small_3 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_poi_shared_anywhere_uberlair_imperial_01 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -535,6 +564,7 @@ object_building_poi_shared_anywhere_uberlair_imperial_01 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_poi_shared_corellia_afarathu_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -585,6 +617,7 @@ object_building_poi_shared_corellia_afarathu_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_poi_shared_corellia_afarathu_large2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -635,6 +670,7 @@ object_building_poi_shared_corellia_afarathu_large2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_poi_shared_corellia_afarathu_large3 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -685,6 +723,7 @@ object_building_poi_shared_corellia_afarathu_large3 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_poi_shared_corellia_afarathu_medium2 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -735,6 +776,7 @@ object_building_poi_shared_corellia_afarathu_medium2 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_poi_shared_corellia_afarathu_small1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -785,6 +829,7 @@ object_building_poi_shared_corellia_afarathu_small1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_poi_shared_corellia_afarathu_small2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -835,6 +882,7 @@ object_building_poi_shared_corellia_afarathu_small2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_poi_shared_corellia_afarathu_small3 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -885,6 +935,7 @@ object_building_poi_shared_corellia_afarathu_small3 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_poi_shared_corellia_beldonna_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -935,6 +988,7 @@ object_building_poi_shared_corellia_beldonna_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_poi_shared_corellia_beldonna_large2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -985,6 +1041,7 @@ object_building_poi_shared_corellia_beldonna_large2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_poi_shared_corellia_beldonna_large3 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1035,6 +1094,7 @@ object_building_poi_shared_corellia_beldonna_large3 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_poi_shared_corellia_corellia_times_investigator_large1 = SharedB
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1085,6 +1147,7 @@ object_building_poi_shared_corellia_corellia_times_investigator_large1 = SharedB
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_poi_shared_corellia_corellia_times_investigator_large2 = SharedB
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1135,6 +1200,7 @@ object_building_poi_shared_corellia_corellia_times_investigator_large2 = SharedB
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small1 = S
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1185,6 +1253,7 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small1 = S
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small2 = S
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1235,6 +1306,7 @@ object_building_poi_shared_corellia_corellia_times_investigators_camp_small2 = S
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_poi_shared_corellia_corsec_large1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1285,6 +1359,7 @@ object_building_poi_shared_corellia_corsec_large1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_poi_shared_corellia_corsec_large2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1335,6 +1412,7 @@ object_building_poi_shared_corellia_corsec_large2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_poi_shared_corellia_corsec_large3 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1385,6 +1465,7 @@ object_building_poi_shared_corellia_corsec_large3 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_poi_shared_corellia_drall_abbot_large1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1435,6 +1518,7 @@ object_building_poi_shared_corellia_drall_abbot_large1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_poi_shared_corellia_drall_abbot_large2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1485,6 +1571,7 @@ object_building_poi_shared_corellia_drall_abbot_large2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_poi_shared_corellia_drall_abbot_large3 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1535,6 +1624,7 @@ object_building_poi_shared_corellia_drall_abbot_large3 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1652,8 @@ object_building_poi_shared_corellia_drall_abbot_medium2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1585,6 +1677,7 @@ object_building_poi_shared_corellia_drall_abbot_medium2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1705,8 @@ object_building_poi_shared_corellia_drall_abbot_small1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1635,6 +1730,7 @@ object_building_poi_shared_corellia_drall_abbot_small1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1758,8 @@ object_building_poi_shared_corellia_drall_abbot_small2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1685,6 +1783,7 @@ object_building_poi_shared_corellia_drall_abbot_small2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1811,8 @@ object_building_poi_shared_corellia_drall_abbots_camp_small1 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1735,6 +1836,7 @@ object_building_poi_shared_corellia_drall_abbots_camp_small1 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1864,8 @@ object_building_poi_shared_corellia_drall_patriot_large1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1785,6 +1889,7 @@ object_building_poi_shared_corellia_drall_patriot_large1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1917,8 @@ object_building_poi_shared_corellia_drall_patriot_large2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1835,6 +1942,7 @@ object_building_poi_shared_corellia_drall_patriot_large2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1862,6 +1970,8 @@ object_building_poi_shared_corellia_drall_patriot_large3 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1885,6 +1995,7 @@ object_building_poi_shared_corellia_drall_patriot_large3 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1912,6 +2023,8 @@ object_building_poi_shared_corellia_drall_patriot_medium2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1935,6 +2048,7 @@ object_building_poi_shared_corellia_drall_patriot_medium2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1962,6 +2076,8 @@ object_building_poi_shared_corellia_drall_patriot_small1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -1985,6 +2101,7 @@ object_building_poi_shared_corellia_drall_patriot_small1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2012,6 +2129,8 @@ object_building_poi_shared_corellia_drall_patriot_small2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2035,6 +2154,7 @@ object_building_poi_shared_corellia_drall_patriot_small2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2062,6 +2182,8 @@ object_building_poi_shared_corellia_flail_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2085,6 +2207,7 @@ object_building_poi_shared_corellia_flail_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2112,6 +2235,8 @@ object_building_poi_shared_corellia_flail_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2135,6 +2260,7 @@ object_building_poi_shared_corellia_flail_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2162,6 +2288,8 @@ object_building_poi_shared_corellia_greck_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2185,6 +2313,7 @@ object_building_poi_shared_corellia_greck_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2212,6 +2341,8 @@ object_building_poi_shared_corellia_greck_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2235,6 +2366,7 @@ object_building_poi_shared_corellia_greck_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2262,6 +2394,8 @@ object_building_poi_shared_corellia_hidden_large1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2285,6 +2419,7 @@ object_building_poi_shared_corellia_hidden_large1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2312,6 +2447,8 @@ object_building_poi_shared_corellia_hidden_large2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2335,6 +2472,7 @@ object_building_poi_shared_corellia_hidden_large2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2362,6 +2500,8 @@ object_building_poi_shared_corellia_meatlump_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2385,6 +2525,7 @@ object_building_poi_shared_corellia_meatlump_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2412,6 +2553,8 @@ object_building_poi_shared_corellia_meatlump_large2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2435,6 +2578,7 @@ object_building_poi_shared_corellia_meatlump_large2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2462,6 +2606,8 @@ object_building_poi_shared_corellia_meatlump_large3 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2485,6 +2631,7 @@ object_building_poi_shared_corellia_meatlump_large3 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2512,6 +2659,8 @@ object_building_poi_shared_corellia_meatlump_small1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2535,6 +2684,7 @@ object_building_poi_shared_corellia_meatlump_small1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2562,6 +2712,8 @@ object_building_poi_shared_corellia_meatlump_small2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2585,6 +2737,7 @@ object_building_poi_shared_corellia_meatlump_small2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2612,6 +2765,8 @@ object_building_poi_shared_corellia_meatlump_small3 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2635,6 +2790,7 @@ object_building_poi_shared_corellia_meatlump_small3 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2662,6 +2818,8 @@ object_building_poi_shared_corellia_monumenter_large1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2685,6 +2843,7 @@ object_building_poi_shared_corellia_monumenter_large1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2712,6 +2871,8 @@ object_building_poi_shared_corellia_monumenter_large2 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2735,6 +2896,7 @@ object_building_poi_shared_corellia_monumenter_large2 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2762,6 +2924,8 @@ object_building_poi_shared_corellia_monumenter_large3 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2785,6 +2949,7 @@ object_building_poi_shared_corellia_monumenter_large3 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2812,6 +2977,8 @@ object_building_poi_shared_corellia_nyax_large1 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2835,6 +3002,7 @@ object_building_poi_shared_corellia_nyax_large1 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2862,6 +3030,8 @@ object_building_poi_shared_corellia_nyax_large2 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2885,6 +3055,7 @@ object_building_poi_shared_corellia_nyax_large2 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2912,6 +3083,8 @@ object_building_poi_shared_corellia_nyax_large3 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2935,6 +3108,7 @@ object_building_poi_shared_corellia_nyax_large3 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -2962,6 +3136,8 @@ object_building_poi_shared_corellia_selonian_rebel_large1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -2985,6 +3161,7 @@ object_building_poi_shared_corellia_selonian_rebel_large1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3012,6 +3189,8 @@ object_building_poi_shared_corellia_selonian_rebel_large2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3035,6 +3214,7 @@ object_building_poi_shared_corellia_selonian_rebel_large2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3062,6 +3242,8 @@ object_building_poi_shared_corellia_selonian_rebel_small1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3085,6 +3267,7 @@ object_building_poi_shared_corellia_selonian_rebel_small1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3112,6 +3295,8 @@ object_building_poi_shared_corellia_selonian_rebel_small2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3135,6 +3320,7 @@ object_building_poi_shared_corellia_selonian_rebel_small2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3162,6 +3348,8 @@ object_building_poi_shared_corellia_selonian_rebel_small3 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3185,6 +3373,7 @@ object_building_poi_shared_corellia_selonian_rebel_small3 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3212,6 +3401,8 @@ object_building_poi_shared_corellia_selonian_separatists_large1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3235,6 +3426,7 @@ object_building_poi_shared_corellia_selonian_separatists_large1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3262,6 +3454,8 @@ object_building_poi_shared_corellia_selonian_separatists_large2 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3285,6 +3479,7 @@ object_building_poi_shared_corellia_selonian_separatists_large2 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3312,6 +3507,8 @@ object_building_poi_shared_corellia_selonian_separatists_small1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3335,6 +3532,7 @@ object_building_poi_shared_corellia_selonian_separatists_small1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3362,6 +3560,8 @@ object_building_poi_shared_corellia_selonian_separatists_small2 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3385,6 +3585,7 @@ object_building_poi_shared_corellia_selonian_separatists_small2 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3412,6 +3613,8 @@ object_building_poi_shared_corellia_smashball_large1 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3435,6 +3638,7 @@ object_building_poi_shared_corellia_smashball_large1 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3462,6 +3666,8 @@ object_building_poi_shared_corellia_smashball_large2 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3485,6 +3691,7 @@ object_building_poi_shared_corellia_smashball_large2 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3512,6 +3719,8 @@ object_building_poi_shared_corellia_smashball_large3 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3535,6 +3744,7 @@ object_building_poi_shared_corellia_smashball_large3 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3562,6 +3772,8 @@ object_building_poi_shared_corellia_smashball_small1 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3585,6 +3797,7 @@ object_building_poi_shared_corellia_smashball_small1 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3612,6 +3825,8 @@ object_building_poi_shared_corellia_smashball_small2 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3635,6 +3850,7 @@ object_building_poi_shared_corellia_smashball_small2 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3662,6 +3878,8 @@ object_building_poi_shared_corellia_solitude_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3685,6 +3903,7 @@ object_building_poi_shared_corellia_solitude_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3712,6 +3931,8 @@ object_building_poi_shared_corellia_solitude_large2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3735,6 +3956,7 @@ object_building_poi_shared_corellia_solitude_large2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3762,6 +3984,8 @@ object_building_poi_shared_corellia_solitude_medium3 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3785,6 +4009,7 @@ object_building_poi_shared_corellia_solitude_medium3 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3812,6 +4037,8 @@ object_building_poi_shared_corellia_solitude_small4 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3835,6 +4062,7 @@ object_building_poi_shared_corellia_solitude_small4 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3862,6 +4090,8 @@ object_building_poi_shared_corellia_swoop_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3885,6 +4115,7 @@ object_building_poi_shared_corellia_swoop_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3912,6 +4143,8 @@ object_building_poi_shared_corellia_swoop_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3935,6 +4168,7 @@ object_building_poi_shared_corellia_swoop_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -3962,6 +4196,8 @@ object_building_poi_shared_corellia_swoop_large3 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -3985,6 +4221,7 @@ object_building_poi_shared_corellia_swoop_large3 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4012,6 +4249,8 @@ object_building_poi_shared_creature_lair_baz_nitch = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4035,6 +4274,7 @@ object_building_poi_shared_creature_lair_baz_nitch = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4062,6 +4302,8 @@ object_building_poi_shared_creature_lair_boar_wolf = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4085,6 +4327,7 @@ object_building_poi_shared_creature_lair_boar_wolf = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4112,6 +4355,8 @@ object_building_poi_shared_creature_lair_bocat = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4135,6 +4380,7 @@ object_building_poi_shared_creature_lair_bocat = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4162,6 +4408,8 @@ object_building_poi_shared_creature_lair_bolma = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4185,6 +4433,7 @@ object_building_poi_shared_creature_lair_bolma = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4212,6 +4461,8 @@ object_building_poi_shared_creature_lair_brackaset = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4235,6 +4486,7 @@ object_building_poi_shared_creature_lair_brackaset = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4262,6 +4514,8 @@ object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp = SharedBui
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4285,6 +4539,7 @@ object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp = SharedBui
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4312,6 +4567,8 @@ object_building_poi_shared_creature_lair_condor_dragon = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4335,6 +4592,7 @@ object_building_poi_shared_creature_lair_condor_dragon = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4362,6 +4620,8 @@ object_building_poi_shared_creature_lair_deathstarruins_junktown = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4385,6 +4645,7 @@ object_building_poi_shared_creature_lair_deathstarruins_junktown = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4412,6 +4673,8 @@ object_building_poi_shared_creature_lair_deathstarruinsoldcamp = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4435,6 +4698,7 @@ object_building_poi_shared_creature_lair_deathstarruinsoldcamp = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4462,6 +4726,8 @@ object_building_poi_shared_creature_lair_exploding_homestead = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4485,6 +4751,7 @@ object_building_poi_shared_creature_lair_exploding_homestead = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4512,6 +4779,8 @@ object_building_poi_shared_creature_lair_forest_bloom_herbivore = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4535,6 +4804,7 @@ object_building_poi_shared_creature_lair_forest_bloom_herbivore = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4562,6 +4832,8 @@ object_building_poi_shared_creature_lair_forest_camp_remains = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4585,6 +4857,7 @@ object_building_poi_shared_creature_lair_forest_camp_remains = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4612,6 +4885,8 @@ object_building_poi_shared_creature_lair_forest_sacrifice_beast = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4635,6 +4910,7 @@ object_building_poi_shared_creature_lair_forest_sacrifice_beast = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4662,6 +4938,8 @@ object_building_poi_shared_creature_lair_gaping_spider = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4685,6 +4963,7 @@ object_building_poi_shared_creature_lair_gaping_spider = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4712,6 +4991,8 @@ object_building_poi_shared_creature_lair_graul = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4735,6 +5016,7 @@ object_building_poi_shared_creature_lair_graul = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4762,6 +5044,8 @@ object_building_poi_shared_creature_lair_gronda = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4785,6 +5069,7 @@ object_building_poi_shared_creature_lair_gronda = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4812,6 +5097,8 @@ object_building_poi_shared_creature_lair_guardian_rancor = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4835,6 +5122,7 @@ object_building_poi_shared_creature_lair_guardian_rancor = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4862,6 +5150,8 @@ object_building_poi_shared_creature_lair_gubbur = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4885,6 +5175,7 @@ object_building_poi_shared_creature_lair_gubbur = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4912,6 +5203,8 @@ object_building_poi_shared_creature_lair_imperial_destroy = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4935,6 +5228,7 @@ object_building_poi_shared_creature_lair_imperial_destroy = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -4962,6 +5256,8 @@ object_building_poi_shared_creature_lair_kusak = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -4985,6 +5281,7 @@ object_building_poi_shared_creature_lair_kusak = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5012,6 +5309,8 @@ object_building_poi_shared_creature_lair_kwi = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5035,6 +5334,7 @@ object_building_poi_shared_creature_lair_kwi = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5062,6 +5362,8 @@ object_building_poi_shared_creature_lair_langlatch = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5085,6 +5387,7 @@ object_building_poi_shared_creature_lair_langlatch = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5112,6 +5415,8 @@ object_building_poi_shared_creature_lair_malkloc = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5135,6 +5440,7 @@ object_building_poi_shared_creature_lair_malkloc = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5162,6 +5468,8 @@ object_building_poi_shared_creature_lair_purbole = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5185,6 +5493,7 @@ object_building_poi_shared_creature_lair_purbole = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5212,6 +5521,8 @@ object_building_poi_shared_creature_lair_remer = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5235,6 +5546,7 @@ object_building_poi_shared_creature_lair_remer = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5262,6 +5574,8 @@ object_building_poi_shared_creature_lair_reptilian_flyer = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5285,6 +5599,7 @@ object_building_poi_shared_creature_lair_reptilian_flyer = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5312,6 +5627,8 @@ object_building_poi_shared_creature_lair_sand_panther = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5335,6 +5652,7 @@ object_building_poi_shared_creature_lair_sand_panther = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5362,6 +5680,8 @@ object_building_poi_shared_creature_lair_shear_mite = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5385,6 +5705,7 @@ object_building_poi_shared_creature_lair_shear_mite = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5412,6 +5733,8 @@ object_building_poi_shared_creature_lair_swampy_lair = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5435,6 +5758,7 @@ object_building_poi_shared_creature_lair_swampy_lair = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5462,6 +5786,8 @@ object_building_poi_shared_creature_lair_verne = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5485,6 +5811,7 @@ object_building_poi_shared_creature_lair_verne = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5512,6 +5839,8 @@ object_building_poi_shared_dantooine_janta_large1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5535,6 +5864,7 @@ object_building_poi_shared_dantooine_janta_large1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5562,6 +5892,8 @@ object_building_poi_shared_dantooine_janta_large2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5585,6 +5917,7 @@ object_building_poi_shared_dantooine_janta_large2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5612,6 +5945,8 @@ object_building_poi_shared_dantooine_janta_medium1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5635,6 +5970,7 @@ object_building_poi_shared_dantooine_janta_medium1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5662,6 +5998,8 @@ object_building_poi_shared_dantooine_janta_medium2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5685,6 +6023,7 @@ object_building_poi_shared_dantooine_janta_medium2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5712,6 +6051,8 @@ object_building_poi_shared_dantooine_janta_small1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5735,6 +6076,7 @@ object_building_poi_shared_dantooine_janta_small1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5762,6 +6104,8 @@ object_building_poi_shared_dantooine_janta_small2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5785,6 +6129,7 @@ object_building_poi_shared_dantooine_janta_small2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5812,6 +6157,8 @@ object_building_poi_shared_dantooine_kunga_large1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5835,6 +6182,7 @@ object_building_poi_shared_dantooine_kunga_large1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5862,6 +6210,8 @@ object_building_poi_shared_dantooine_kunga_large2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5885,6 +6235,7 @@ object_building_poi_shared_dantooine_kunga_large2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5912,6 +6263,8 @@ object_building_poi_shared_dantooine_kunga_medium1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5935,6 +6288,7 @@ object_building_poi_shared_dantooine_kunga_medium1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -5962,6 +6316,8 @@ object_building_poi_shared_dantooine_kunga_medium2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -5985,6 +6341,7 @@ object_building_poi_shared_dantooine_kunga_medium2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6012,6 +6369,8 @@ object_building_poi_shared_dantooine_kunga_small1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6035,6 +6394,7 @@ object_building_poi_shared_dantooine_kunga_small1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6062,6 +6422,8 @@ object_building_poi_shared_dantooine_kunga_small2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6085,6 +6447,7 @@ object_building_poi_shared_dantooine_kunga_small2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6112,6 +6475,8 @@ object_building_poi_shared_dantooine_mokk_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6135,6 +6500,7 @@ object_building_poi_shared_dantooine_mokk_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6162,6 +6528,8 @@ object_building_poi_shared_dantooine_mokk_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6185,6 +6553,7 @@ object_building_poi_shared_dantooine_mokk_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6212,6 +6581,8 @@ object_building_poi_shared_dantooine_mokk_medium1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6235,6 +6606,7 @@ object_building_poi_shared_dantooine_mokk_medium1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6262,6 +6634,8 @@ object_building_poi_shared_dantooine_mokk_medium2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6285,6 +6659,7 @@ object_building_poi_shared_dantooine_mokk_medium2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6312,6 +6687,8 @@ object_building_poi_shared_dantooine_mokk_small1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6335,6 +6712,7 @@ object_building_poi_shared_dantooine_mokk_small1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6362,6 +6740,8 @@ object_building_poi_shared_dantooine_mokk_small2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6385,6 +6765,7 @@ object_building_poi_shared_dantooine_mokk_small2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6412,6 +6793,8 @@ object_building_poi_shared_dathomir_freedprisonercamp_small1 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6435,6 +6818,7 @@ object_building_poi_shared_dathomir_freedprisonercamp_small1 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6462,6 +6846,8 @@ object_building_poi_shared_dathomir_freedprisonercamp_small2 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6485,6 +6871,7 @@ object_building_poi_shared_dathomir_freedprisonercamp_small2 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6512,6 +6899,8 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6535,6 +6924,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6562,6 +6952,8 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6585,6 +6977,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_large2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6612,6 +7005,8 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium1 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6635,6 +7030,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium1 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6662,6 +7058,8 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium2 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6685,6 +7083,7 @@ object_building_poi_shared_dathomir_freedprisonerscamp_medium2 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6712,6 +7111,8 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6735,6 +7136,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6762,6 +7164,8 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large2 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6785,6 +7189,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_large2 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6812,6 +7217,8 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_medium1 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6835,6 +7242,7 @@ object_building_poi_shared_dathomir_imperialprisonpatrol_medium1 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6862,6 +7270,8 @@ object_building_poi_shared_dathomir_imperialprisonscout_small1 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6885,6 +7295,7 @@ object_building_poi_shared_dathomir_imperialprisonscout_small1 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6912,6 +7323,8 @@ object_building_poi_shared_dathomir_imperialprisonscout_small2 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6935,6 +7348,7 @@ object_building_poi_shared_dathomir_imperialprisonscout_small2 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -6962,6 +7376,8 @@ object_building_poi_shared_dathomir_nightsister_medium3 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -6985,6 +7401,7 @@ object_building_poi_shared_dathomir_nightsister_medium3 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7012,6 +7429,8 @@ object_building_poi_shared_dathomir_nightsister_small1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7035,6 +7454,7 @@ object_building_poi_shared_dathomir_nightsister_small1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7062,6 +7482,8 @@ object_building_poi_shared_dathomir_nightsister_small2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7085,6 +7507,7 @@ object_building_poi_shared_dathomir_nightsister_small2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7112,6 +7535,8 @@ object_building_poi_shared_dathomir_nightsister_small3 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7135,6 +7560,7 @@ object_building_poi_shared_dathomir_nightsister_small3 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7162,6 +7588,8 @@ object_building_poi_shared_dathomir_nightsister_small4 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7185,6 +7613,7 @@ object_building_poi_shared_dathomir_nightsister_small4 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7212,6 +7641,8 @@ object_building_poi_shared_dathomir_nightsister_small5 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7235,6 +7666,7 @@ object_building_poi_shared_dathomir_nightsister_small5 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7262,6 +7694,8 @@ object_building_poi_shared_dathomir_nightsister_small6 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7285,6 +7719,7 @@ object_building_poi_shared_dathomir_nightsister_small6 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7312,6 +7747,8 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large1 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7335,6 +7772,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large1 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7362,6 +7800,8 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large2 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7385,6 +7825,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_large2 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7412,6 +7853,8 @@ object_building_poi_shared_dathomir_nightsisterpatrol_medium1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7435,6 +7878,7 @@ object_building_poi_shared_dathomir_nightsisterpatrol_medium1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7462,6 +7906,8 @@ object_building_poi_shared_dathomir_singingmtnclan_small1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7485,6 +7931,7 @@ object_building_poi_shared_dathomir_singingmtnclan_small1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7512,6 +7959,8 @@ object_building_poi_shared_dathomir_singingmtnclan_small2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7535,6 +7984,7 @@ object_building_poi_shared_dathomir_singingmtnclan_small2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7562,6 +8012,8 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7585,6 +8037,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7612,6 +8065,8 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large2 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7635,6 +8090,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_large2 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7662,6 +8118,8 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7685,6 +8143,7 @@ object_building_poi_shared_dathomir_singingmtnclanpatrol_medium1 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7712,6 +8171,8 @@ object_building_poi_shared_destroyed_moisture_farm_theater = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7735,6 +8196,7 @@ object_building_poi_shared_destroyed_moisture_farm_theater = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7762,6 +8224,8 @@ object_building_poi_shared_destroyed_sandcrawler_theater = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7785,6 +8249,7 @@ object_building_poi_shared_destroyed_sandcrawler_theater = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7812,6 +8277,8 @@ object_building_poi_shared_endor_dulok_large1 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7835,6 +8302,7 @@ object_building_poi_shared_endor_dulok_large1 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7862,6 +8330,8 @@ object_building_poi_shared_endor_dulok_large2 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7885,6 +8355,7 @@ object_building_poi_shared_endor_dulok_large2 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7912,6 +8383,8 @@ object_building_poi_shared_endor_dulok_large3 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7935,6 +8408,7 @@ object_building_poi_shared_endor_dulok_large3 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -7962,6 +8436,8 @@ object_building_poi_shared_endor_dulok_medium = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -7985,6 +8461,7 @@ object_building_poi_shared_endor_dulok_medium = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8012,6 +8489,8 @@ object_building_poi_shared_endor_dulok_medium2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8035,6 +8514,7 @@ object_building_poi_shared_endor_dulok_medium2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8062,6 +8542,8 @@ object_building_poi_shared_endor_dulok_medium7 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8085,6 +8567,7 @@ object_building_poi_shared_endor_dulok_medium7 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8112,6 +8595,8 @@ object_building_poi_shared_endor_dulok_small1 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8135,6 +8620,7 @@ object_building_poi_shared_endor_dulok_small1 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8162,6 +8648,8 @@ object_building_poi_shared_endor_dulok_small2 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8185,6 +8673,7 @@ object_building_poi_shared_endor_dulok_small2 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8212,6 +8701,8 @@ object_building_poi_shared_endor_dulok_small3 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8235,6 +8726,7 @@ object_building_poi_shared_endor_dulok_small3 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8262,6 +8754,8 @@ object_building_poi_shared_endor_dulok_small5 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8285,6 +8779,7 @@ object_building_poi_shared_endor_dulok_small5 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8312,6 +8807,8 @@ object_building_poi_shared_endor_dulok_small6 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8335,6 +8832,7 @@ object_building_poi_shared_endor_dulok_small6 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8362,6 +8860,8 @@ object_building_poi_shared_endor_dulok_small7 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8385,6 +8885,7 @@ object_building_poi_shared_endor_dulok_small7 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8412,6 +8913,8 @@ object_building_poi_shared_endor_ewok_large1 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8435,6 +8938,7 @@ object_building_poi_shared_endor_ewok_large1 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8462,6 +8966,8 @@ object_building_poi_shared_endor_ewok_large2 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8485,6 +8991,7 @@ object_building_poi_shared_endor_ewok_large2 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8512,6 +9019,8 @@ object_building_poi_shared_endor_ewok_large3 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8535,6 +9044,7 @@ object_building_poi_shared_endor_ewok_large3 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8562,6 +9072,8 @@ object_building_poi_shared_endor_ewok_large4 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8585,6 +9097,7 @@ object_building_poi_shared_endor_ewok_large4 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8612,6 +9125,8 @@ object_building_poi_shared_endor_ewok_large5 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8635,6 +9150,7 @@ object_building_poi_shared_endor_ewok_large5 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8662,6 +9178,8 @@ object_building_poi_shared_endor_ewok_large6 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8685,6 +9203,7 @@ object_building_poi_shared_endor_ewok_large6 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8712,6 +9231,8 @@ object_building_poi_shared_endor_ewok_large7 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8735,6 +9256,7 @@ object_building_poi_shared_endor_ewok_large7 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8762,6 +9284,8 @@ object_building_poi_shared_endor_ewok_medium = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8785,6 +9309,7 @@ object_building_poi_shared_endor_ewok_medium = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8812,6 +9337,8 @@ object_building_poi_shared_endor_ewok_medium3 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8835,6 +9362,7 @@ object_building_poi_shared_endor_ewok_medium3 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8862,6 +9390,8 @@ object_building_poi_shared_endor_ewok_medium4 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8885,6 +9415,7 @@ object_building_poi_shared_endor_ewok_medium4 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8912,6 +9443,8 @@ object_building_poi_shared_endor_ewok_small1 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8935,6 +9468,7 @@ object_building_poi_shared_endor_ewok_small1 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -8962,6 +9496,8 @@ object_building_poi_shared_endor_ewok_small2 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -8985,6 +9521,7 @@ object_building_poi_shared_endor_ewok_small2 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9012,6 +9549,8 @@ object_building_poi_shared_endor_ewok_small3 = SharedBuildingObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9035,6 +9574,7 @@ object_building_poi_shared_endor_ewok_small3 = SharedBuildingObjectTemplate:new 
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9062,6 +9602,8 @@ object_building_poi_shared_endor_marauder_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9085,6 +9627,7 @@ object_building_poi_shared_endor_marauder_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9112,6 +9655,8 @@ object_building_poi_shared_endor_marauder_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9135,6 +9680,7 @@ object_building_poi_shared_endor_marauder_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9162,6 +9708,8 @@ object_building_poi_shared_endor_marauder_large3 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9185,6 +9733,7 @@ object_building_poi_shared_endor_marauder_large3 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9212,6 +9761,8 @@ object_building_poi_shared_endor_marauder_large4 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9235,6 +9786,7 @@ object_building_poi_shared_endor_marauder_large4 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9262,6 +9814,8 @@ object_building_poi_shared_endor_marauder_medium = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9285,6 +9839,7 @@ object_building_poi_shared_endor_marauder_medium = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9312,6 +9867,8 @@ object_building_poi_shared_endor_marauder_medium2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9335,6 +9892,7 @@ object_building_poi_shared_endor_marauder_medium2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9362,6 +9920,8 @@ object_building_poi_shared_endor_marauder_small1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9385,6 +9945,7 @@ object_building_poi_shared_endor_marauder_small1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9412,6 +9973,8 @@ object_building_poi_shared_endor_marauder_small2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9435,6 +9998,7 @@ object_building_poi_shared_endor_marauder_small2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9462,6 +10026,8 @@ object_building_poi_shared_endor_marauder_small3 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9485,6 +10051,7 @@ object_building_poi_shared_endor_marauder_small3 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9512,6 +10079,8 @@ object_building_poi_shared_endor_marauder_small4 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9535,6 +10104,7 @@ object_building_poi_shared_endor_marauder_small4 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9562,6 +10132,8 @@ object_building_poi_shared_imperial_listening_post = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9585,6 +10157,7 @@ object_building_poi_shared_imperial_listening_post = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9612,6 +10185,8 @@ object_building_poi_shared_lincbarnes_testcamp_medium = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9635,6 +10210,7 @@ object_building_poi_shared_lincbarnes_testcamp_medium = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9662,6 +10238,8 @@ object_building_poi_shared_lok_imperial_large1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9685,6 +10263,7 @@ object_building_poi_shared_lok_imperial_large1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9712,6 +10291,8 @@ object_building_poi_shared_lok_imperial_large2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9735,6 +10316,7 @@ object_building_poi_shared_lok_imperial_large2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9762,6 +10344,8 @@ object_building_poi_shared_lok_imperial_large3 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9785,6 +10369,7 @@ object_building_poi_shared_lok_imperial_large3 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9812,6 +10397,8 @@ object_building_poi_shared_lok_imperial_large4 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9835,6 +10422,7 @@ object_building_poi_shared_lok_imperial_large4 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9862,6 +10450,8 @@ object_building_poi_shared_lok_imperial_large5 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9885,6 +10475,7 @@ object_building_poi_shared_lok_imperial_large5 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9912,6 +10503,8 @@ object_building_poi_shared_lok_imperial_medium = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9935,6 +10528,7 @@ object_building_poi_shared_lok_imperial_medium = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -9962,6 +10556,8 @@ object_building_poi_shared_lok_imperial_medium2 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -9985,6 +10581,7 @@ object_building_poi_shared_lok_imperial_medium2 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10012,6 +10609,8 @@ object_building_poi_shared_lok_imperial_medium4 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10035,6 +10634,7 @@ object_building_poi_shared_lok_imperial_medium4 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10062,6 +10662,8 @@ object_building_poi_shared_lok_imperial_medium5 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10085,6 +10687,7 @@ object_building_poi_shared_lok_imperial_medium5 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10112,6 +10715,8 @@ object_building_poi_shared_lok_imperial_medium6 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10135,6 +10740,7 @@ object_building_poi_shared_lok_imperial_medium6 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10162,6 +10768,8 @@ object_building_poi_shared_lok_imperial_small1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10185,6 +10793,7 @@ object_building_poi_shared_lok_imperial_small1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10212,6 +10821,8 @@ object_building_poi_shared_lok_imperial_small2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10235,6 +10846,7 @@ object_building_poi_shared_lok_imperial_small2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10262,6 +10874,8 @@ object_building_poi_shared_lok_nymshenchman_large = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10285,6 +10899,7 @@ object_building_poi_shared_lok_nymshenchman_large = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10312,6 +10927,8 @@ object_building_poi_shared_lok_nymshenchman_large2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10335,6 +10952,7 @@ object_building_poi_shared_lok_nymshenchman_large2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10362,6 +10980,8 @@ object_building_poi_shared_lok_nymshenchman_large3 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10385,6 +11005,7 @@ object_building_poi_shared_lok_nymshenchman_large3 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10412,6 +11033,8 @@ object_building_poi_shared_lok_nymshenchman_large4 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10435,6 +11058,7 @@ object_building_poi_shared_lok_nymshenchman_large4 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10462,6 +11086,8 @@ object_building_poi_shared_lok_nymshenchman_large5 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10485,6 +11111,7 @@ object_building_poi_shared_lok_nymshenchman_large5 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10512,6 +11139,8 @@ object_building_poi_shared_lok_nymshenchman_medium = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10535,6 +11164,7 @@ object_building_poi_shared_lok_nymshenchman_medium = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10562,6 +11192,8 @@ object_building_poi_shared_lok_nymshenchman_medium2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10585,6 +11217,7 @@ object_building_poi_shared_lok_nymshenchman_medium2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10612,6 +11245,8 @@ object_building_poi_shared_lok_nymshenchman_medium3 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10635,6 +11270,7 @@ object_building_poi_shared_lok_nymshenchman_medium3 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10662,6 +11298,8 @@ object_building_poi_shared_lok_nymshenchman_medium4 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10685,6 +11323,7 @@ object_building_poi_shared_lok_nymshenchman_medium4 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10712,6 +11351,8 @@ object_building_poi_shared_lok_nymshenchman_small3 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10735,6 +11376,7 @@ object_building_poi_shared_lok_nymshenchman_small3 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10762,6 +11404,8 @@ object_building_poi_shared_lok_nymshenchman_small4 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10785,6 +11429,7 @@ object_building_poi_shared_lok_nymshenchman_small4 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10812,6 +11457,8 @@ object_building_poi_shared_naboo_abbots_camp_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10835,6 +11482,7 @@ object_building_poi_shared_naboo_abbots_camp_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10862,6 +11510,8 @@ object_building_poi_shared_naboo_afcitexplor_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10885,6 +11535,7 @@ object_building_poi_shared_naboo_afcitexplor_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10912,6 +11563,8 @@ object_building_poi_shared_naboo_afcitexplor_large2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10935,6 +11588,7 @@ object_building_poi_shared_naboo_afcitexplor_large2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -10962,6 +11616,8 @@ object_building_poi_shared_naboo_afcitexplor_medium = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -10985,6 +11641,7 @@ object_building_poi_shared_naboo_afcitexplor_medium = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11012,6 +11669,8 @@ object_building_poi_shared_naboo_borvos_large1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11035,6 +11694,7 @@ object_building_poi_shared_naboo_borvos_large1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11062,6 +11722,8 @@ object_building_poi_shared_naboo_borvos_large2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11085,6 +11747,7 @@ object_building_poi_shared_naboo_borvos_large2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11112,6 +11775,8 @@ object_building_poi_shared_naboo_borvos_large3 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11135,6 +11800,7 @@ object_building_poi_shared_naboo_borvos_large3 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11162,6 +11828,8 @@ object_building_poi_shared_naboo_borvos_medium = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11185,6 +11853,7 @@ object_building_poi_shared_naboo_borvos_medium = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11212,6 +11881,8 @@ object_building_poi_shared_naboo_farm_medium_1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11235,6 +11906,7 @@ object_building_poi_shared_naboo_farm_medium_1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11262,6 +11934,8 @@ object_building_poi_shared_naboo_farm_medium_2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11285,6 +11959,7 @@ object_building_poi_shared_naboo_farm_medium_2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11312,6 +11987,8 @@ object_building_poi_shared_naboo_gungawar_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11335,6 +12012,7 @@ object_building_poi_shared_naboo_gungawar_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11362,6 +12040,8 @@ object_building_poi_shared_naboo_gungawar_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11385,6 +12065,7 @@ object_building_poi_shared_naboo_gungawar_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11412,6 +12093,8 @@ object_building_poi_shared_naboo_gungtrad_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11435,6 +12118,7 @@ object_building_poi_shared_naboo_gungtrad_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11462,6 +12146,8 @@ object_building_poi_shared_naboo_gungtrad_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11485,6 +12171,7 @@ object_building_poi_shared_naboo_gungtrad_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11512,6 +12199,8 @@ object_building_poi_shared_naboo_gungtrad_medium = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11535,6 +12224,7 @@ object_building_poi_shared_naboo_gungtrad_medium = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11562,6 +12252,8 @@ object_building_poi_shared_naboo_gungtrad_medium2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11585,6 +12277,7 @@ object_building_poi_shared_naboo_gungtrad_medium2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11612,6 +12305,8 @@ object_building_poi_shared_naboo_gungwar_large1 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11635,6 +12330,7 @@ object_building_poi_shared_naboo_gungwar_large1 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11662,6 +12358,8 @@ object_building_poi_shared_naboo_gungwar_large2 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11685,6 +12383,7 @@ object_building_poi_shared_naboo_gungwar_large2 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11712,6 +12411,8 @@ object_building_poi_shared_naboo_gungwar_medium = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11735,6 +12436,7 @@ object_building_poi_shared_naboo_gungwar_medium = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11762,6 +12464,8 @@ object_building_poi_shared_naboo_gunrunners_large1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11785,6 +12489,7 @@ object_building_poi_shared_naboo_gunrunners_large1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11812,6 +12517,8 @@ object_building_poi_shared_naboo_gunrunners_large2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11835,6 +12542,7 @@ object_building_poi_shared_naboo_gunrunners_large2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11862,6 +12570,8 @@ object_building_poi_shared_naboo_gunrunners_medium = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11885,6 +12595,7 @@ object_building_poi_shared_naboo_gunrunners_medium = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11912,6 +12623,8 @@ object_building_poi_shared_naboo_gunrunners_small1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11935,6 +12648,7 @@ object_building_poi_shared_naboo_gunrunners_small1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -11962,6 +12676,8 @@ object_building_poi_shared_naboo_gunrunners_small2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -11985,6 +12701,7 @@ object_building_poi_shared_naboo_gunrunners_small2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12012,6 +12729,8 @@ object_building_poi_shared_naboo_imperial_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12035,6 +12754,7 @@ object_building_poi_shared_naboo_imperial_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12062,6 +12782,8 @@ object_building_poi_shared_naboo_imperial_scout_large1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12085,6 +12807,7 @@ object_building_poi_shared_naboo_imperial_scout_large1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12112,6 +12835,8 @@ object_building_poi_shared_naboo_impext_large1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12135,6 +12860,7 @@ object_building_poi_shared_naboo_impext_large1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12162,6 +12888,8 @@ object_building_poi_shared_naboo_impext_large2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12185,6 +12913,7 @@ object_building_poi_shared_naboo_impext_large2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12212,6 +12941,8 @@ object_building_poi_shared_naboo_impext_large3 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12235,6 +12966,7 @@ object_building_poi_shared_naboo_impext_large3 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12262,6 +12994,8 @@ object_building_poi_shared_naboo_impext_medium = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12285,6 +13019,7 @@ object_building_poi_shared_naboo_impext_medium = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12312,6 +13047,8 @@ object_building_poi_shared_naboo_impswamp_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12335,6 +13072,7 @@ object_building_poi_shared_naboo_impswamp_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12362,6 +13100,8 @@ object_building_poi_shared_naboo_impswamp_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12385,6 +13125,7 @@ object_building_poi_shared_naboo_impswamp_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12412,6 +13153,8 @@ object_building_poi_shared_naboo_impswamp_medium = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12435,6 +13178,7 @@ object_building_poi_shared_naboo_impswamp_medium = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12462,6 +13206,8 @@ object_building_poi_shared_naboo_mauler_large1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12485,6 +13231,7 @@ object_building_poi_shared_naboo_mauler_large1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12512,6 +13259,8 @@ object_building_poi_shared_naboo_mauler_large2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12535,6 +13284,7 @@ object_building_poi_shared_naboo_mauler_large2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12562,6 +13312,8 @@ object_building_poi_shared_naboo_mauler_medium = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12585,6 +13337,7 @@ object_building_poi_shared_naboo_mauler_medium = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12612,6 +13365,8 @@ object_building_poi_shared_naboo_mvillager_large1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12635,6 +13390,7 @@ object_building_poi_shared_naboo_mvillager_large1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12662,6 +13418,8 @@ object_building_poi_shared_naboo_mvillager_large2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12685,6 +13443,7 @@ object_building_poi_shared_naboo_mvillager_large2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12712,6 +13471,8 @@ object_building_poi_shared_naboo_mvillager_medium = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12735,6 +13496,7 @@ object_building_poi_shared_naboo_mvillager_medium = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12762,6 +13524,8 @@ object_building_poi_shared_naboo_police_large1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12785,6 +13549,7 @@ object_building_poi_shared_naboo_police_large1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12812,6 +13577,8 @@ object_building_poi_shared_naboo_police_large2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12835,6 +13602,7 @@ object_building_poi_shared_naboo_police_large2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12862,6 +13630,8 @@ object_building_poi_shared_naboo_police_medium = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12885,6 +13655,7 @@ object_building_poi_shared_naboo_police_medium = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12912,6 +13683,8 @@ object_building_poi_shared_naboo_politic_large1 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12935,6 +13708,7 @@ object_building_poi_shared_naboo_politic_large1 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -12962,6 +13736,8 @@ object_building_poi_shared_naboo_politic_large2 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -12985,6 +13761,7 @@ object_building_poi_shared_naboo_politic_large2 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13012,6 +13789,8 @@ object_building_poi_shared_naboo_politic_medium = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13035,6 +13814,7 @@ object_building_poi_shared_naboo_politic_medium = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13062,6 +13842,8 @@ object_building_poi_shared_naboo_ruins_large_1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13085,6 +13867,7 @@ object_building_poi_shared_naboo_ruins_large_1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13112,6 +13895,8 @@ object_building_poi_shared_naboo_ruins_medium_1 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13135,6 +13920,7 @@ object_building_poi_shared_naboo_ruins_medium_1 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13162,6 +13948,8 @@ object_building_poi_shared_naboo_ruins_medium_3 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13185,6 +13973,7 @@ object_building_poi_shared_naboo_ruins_medium_3 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13212,6 +14001,8 @@ object_building_poi_shared_naboo_ruins_small_1 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13235,6 +14026,7 @@ object_building_poi_shared_naboo_ruins_small_1 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13262,6 +14054,8 @@ object_building_poi_shared_naboo_ruins_small_2 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13285,6 +14079,7 @@ object_building_poi_shared_naboo_ruins_small_2 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13312,6 +14107,8 @@ object_building_poi_shared_naboo_ruins_small_3 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13335,6 +14132,7 @@ object_building_poi_shared_naboo_ruins_small_3 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13362,6 +14160,8 @@ object_building_poi_shared_naboo_ruins_small_4 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13385,6 +14185,7 @@ object_building_poi_shared_naboo_ruins_small_4 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13412,6 +14213,8 @@ object_building_poi_shared_naboo_ruins_small_5 = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13435,6 +14238,7 @@ object_building_poi_shared_naboo_ruins_small_5 = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13462,6 +14266,8 @@ object_building_poi_shared_naboo_swamhunt_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13485,6 +14291,7 @@ object_building_poi_shared_naboo_swamhunt_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13512,6 +14319,8 @@ object_building_poi_shared_naboo_swamhunt_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13535,6 +14344,7 @@ object_building_poi_shared_naboo_swamhunt_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13562,6 +14372,8 @@ object_building_poi_shared_naboo_swamhunt_medium = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13585,6 +14397,7 @@ object_building_poi_shared_naboo_swamhunt_medium = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13612,6 +14425,8 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large1 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13635,6 +14450,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large1 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13662,6 +14478,8 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large2 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13685,6 +14503,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_large2 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13712,6 +14531,8 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_medium = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13735,6 +14556,7 @@ object_building_poi_shared_naboo_swamp_rat_gang_camp_medium = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13762,6 +14584,8 @@ object_building_poi_shared_naboo_tradefederationloyalist_large1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13785,6 +14609,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_large1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13812,6 +14637,8 @@ object_building_poi_shared_naboo_tradefederationloyalist_large2 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13835,6 +14662,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_large2 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13862,6 +14690,8 @@ object_building_poi_shared_naboo_tradefederationloyalist_medium = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13885,6 +14715,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_medium = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13912,6 +14743,8 @@ object_building_poi_shared_naboo_tradefederationloyalist_small1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13935,6 +14768,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_small1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -13962,6 +14796,8 @@ object_building_poi_shared_naboo_tradefederationloyalist_small2 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -13985,6 +14821,7 @@ object_building_poi_shared_naboo_tradefederationloyalist_small2 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14012,6 +14849,8 @@ object_building_poi_shared_naboo_tuskcattam_large1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14035,6 +14874,7 @@ object_building_poi_shared_naboo_tuskcattam_large1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14062,6 +14902,8 @@ object_building_poi_shared_naboo_tuskcattam_large2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14085,6 +14927,7 @@ object_building_poi_shared_naboo_tuskcattam_large2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14112,6 +14955,8 @@ object_building_poi_shared_naboo_tuskcattam_medium = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14135,6 +14980,7 @@ object_building_poi_shared_naboo_tuskcattam_medium = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14162,6 +15008,8 @@ object_building_poi_shared_naboo_village_large_1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14185,6 +15033,7 @@ object_building_poi_shared_naboo_village_large_1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14212,6 +15061,8 @@ object_building_poi_shared_rebel_listening_post = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14235,6 +15086,7 @@ object_building_poi_shared_rebel_listening_post = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14262,6 +15114,8 @@ object_building_poi_shared_rebel_scavenger_camp = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14285,6 +15139,7 @@ object_building_poi_shared_rebel_scavenger_camp = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14312,6 +15167,8 @@ object_building_poi_shared_scout_camp_s0 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14335,6 +15192,7 @@ object_building_poi_shared_scout_camp_s0 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14362,6 +15220,8 @@ object_building_poi_shared_scout_camp_s1 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14385,6 +15245,7 @@ object_building_poi_shared_scout_camp_s1 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14412,6 +15273,8 @@ object_building_poi_shared_scout_camp_s2 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14435,6 +15298,7 @@ object_building_poi_shared_scout_camp_s2 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14462,6 +15326,8 @@ object_building_poi_shared_scout_camp_s3 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14485,6 +15351,7 @@ object_building_poi_shared_scout_camp_s3 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14512,6 +15379,8 @@ object_building_poi_shared_scout_camp_s4 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14535,6 +15404,7 @@ object_building_poi_shared_scout_camp_s4 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14562,6 +15432,8 @@ object_building_poi_shared_scout_camp_s5 = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14585,6 +15457,7 @@ object_building_poi_shared_scout_camp_s5 = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14612,6 +15485,8 @@ object_building_poi_shared_slavegirl_medium_camp_1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14635,6 +15510,7 @@ object_building_poi_shared_slavegirl_medium_camp_1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14662,6 +15538,8 @@ object_building_poi_shared_slavegirl_medium_camp_2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14685,6 +15563,7 @@ object_building_poi_shared_slavegirl_medium_camp_2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14712,6 +15591,8 @@ object_building_poi_shared_slavegirl_small_camp = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14735,6 +15616,7 @@ object_building_poi_shared_slavegirl_small_camp = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14762,6 +15644,8 @@ object_building_poi_shared_small_imperial_tie_bomber_base = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14785,6 +15669,7 @@ object_building_poi_shared_small_imperial_tie_bomber_base = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14812,6 +15697,8 @@ object_building_poi_shared_small_imperial_tie_bomber_base_v2 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14835,6 +15722,7 @@ object_building_poi_shared_small_imperial_tie_bomber_base_v2 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14862,6 +15750,8 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_medium = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14885,6 +15775,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_medium = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14912,6 +15803,8 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small1 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14935,6 +15828,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small1 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -14962,6 +15856,8 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small2 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -14985,6 +15881,7 @@ object_building_poi_shared_tatooine_alkahara_bandits_camp_small2 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15012,6 +15909,8 @@ object_building_poi_shared_tatooine_alkahara_large1 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15035,6 +15934,7 @@ object_building_poi_shared_tatooine_alkahara_large1 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15062,6 +15962,8 @@ object_building_poi_shared_tatooine_alkahara_large2 = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15085,6 +15987,7 @@ object_building_poi_shared_tatooine_alkahara_large2 = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15112,6 +16015,8 @@ object_building_poi_shared_tatooine_burning_sandcrawler = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15135,6 +16040,7 @@ object_building_poi_shared_tatooine_burning_sandcrawler = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15162,6 +16068,8 @@ object_building_poi_shared_tatooine_dervishcamp_large1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15185,6 +16093,7 @@ object_building_poi_shared_tatooine_dervishcamp_large1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15212,6 +16121,8 @@ object_building_poi_shared_tatooine_dervishcamp_large2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15235,6 +16146,7 @@ object_building_poi_shared_tatooine_dervishcamp_large2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15262,6 +16174,8 @@ object_building_poi_shared_tatooine_dervishcamp_medium = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15285,6 +16199,7 @@ object_building_poi_shared_tatooine_dervishcamp_medium = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15312,6 +16227,8 @@ object_building_poi_shared_tatooine_dervishcamp_small1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15335,6 +16252,7 @@ object_building_poi_shared_tatooine_dervishcamp_small1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15362,6 +16280,8 @@ object_building_poi_shared_tatooine_dervishcamp_small2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15385,6 +16305,7 @@ object_building_poi_shared_tatooine_dervishcamp_small2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15412,6 +16333,8 @@ object_building_poi_shared_tatooine_desert_demons_camp_large1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15435,6 +16358,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_large1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15462,6 +16386,8 @@ object_building_poi_shared_tatooine_desert_demons_camp_large2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15485,6 +16411,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_large2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15512,6 +16439,8 @@ object_building_poi_shared_tatooine_desert_demons_camp_medium = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15535,6 +16464,7 @@ object_building_poi_shared_tatooine_desert_demons_camp_medium = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15562,6 +16492,8 @@ object_building_poi_shared_tatooine_dim_u_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15585,6 +16517,7 @@ object_building_poi_shared_tatooine_dim_u_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15612,6 +16545,8 @@ object_building_poi_shared_tatooine_dim_u_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15635,6 +16570,7 @@ object_building_poi_shared_tatooine_dim_u_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15662,6 +16598,8 @@ object_building_poi_shared_tatooine_dim_u_medium = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15685,6 +16623,7 @@ object_building_poi_shared_tatooine_dim_u_medium = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15712,6 +16651,8 @@ object_building_poi_shared_tatooine_dunestalkers_large1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15735,6 +16676,7 @@ object_building_poi_shared_tatooine_dunestalkers_large1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15762,6 +16704,8 @@ object_building_poi_shared_tatooine_dunestalkers_large2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15785,6 +16729,7 @@ object_building_poi_shared_tatooine_dunestalkers_large2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15812,6 +16757,8 @@ object_building_poi_shared_tatooine_dunestalkers_medium = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15835,6 +16782,7 @@ object_building_poi_shared_tatooine_dunestalkers_medium = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15862,6 +16810,8 @@ object_building_poi_shared_tatooine_dunestalkers_small1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15885,6 +16835,7 @@ object_building_poi_shared_tatooine_dunestalkers_small1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15912,6 +16863,8 @@ object_building_poi_shared_tatooine_dunestalkers_small2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15935,6 +16888,7 @@ object_building_poi_shared_tatooine_dunestalkers_small2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -15962,6 +16916,8 @@ object_building_poi_shared_tatooine_evil_hermit_large1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -15985,6 +16941,7 @@ object_building_poi_shared_tatooine_evil_hermit_large1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16012,6 +16969,8 @@ object_building_poi_shared_tatooine_evil_hermit_large2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16035,6 +16994,7 @@ object_building_poi_shared_tatooine_evil_hermit_large2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16062,6 +17022,8 @@ object_building_poi_shared_tatooine_evil_hermit_medium1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16085,6 +17047,7 @@ object_building_poi_shared_tatooine_evil_hermit_medium1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16112,6 +17075,8 @@ object_building_poi_shared_tatooine_evil_hermit_medium2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16135,6 +17100,7 @@ object_building_poi_shared_tatooine_evil_hermit_medium2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16162,6 +17128,8 @@ object_building_poi_shared_tatooine_evil_hermit_small1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16185,6 +17153,7 @@ object_building_poi_shared_tatooine_evil_hermit_small1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16212,6 +17181,8 @@ object_building_poi_shared_tatooine_evil_hermit_small2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16235,6 +17206,7 @@ object_building_poi_shared_tatooine_evil_hermit_small2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16262,6 +17234,8 @@ object_building_poi_shared_tatooine_evil_nomad_large1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16285,6 +17259,7 @@ object_building_poi_shared_tatooine_evil_nomad_large1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16312,6 +17287,8 @@ object_building_poi_shared_tatooine_evil_nomad_large2 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16335,6 +17312,7 @@ object_building_poi_shared_tatooine_evil_nomad_large2 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16362,6 +17340,8 @@ object_building_poi_shared_tatooine_evil_nomad_large3 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16385,6 +17365,7 @@ object_building_poi_shared_tatooine_evil_nomad_large3 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16412,6 +17393,8 @@ object_building_poi_shared_tatooine_evil_nomad_medium1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16435,6 +17418,7 @@ object_building_poi_shared_tatooine_evil_nomad_medium1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16462,6 +17446,8 @@ object_building_poi_shared_tatooine_evil_nomad_medium2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16485,6 +17471,7 @@ object_building_poi_shared_tatooine_evil_nomad_medium2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16512,6 +17499,8 @@ object_building_poi_shared_tatooine_evil_nomad_small1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16535,6 +17524,7 @@ object_building_poi_shared_tatooine_evil_nomad_small1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16562,6 +17552,8 @@ object_building_poi_shared_tatooine_evil_nomad_small2 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16585,6 +17577,7 @@ object_building_poi_shared_tatooine_evil_nomad_small2 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16612,6 +17605,8 @@ object_building_poi_shared_tatooine_evil_settlers_large1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16635,6 +17630,7 @@ object_building_poi_shared_tatooine_evil_settlers_large1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16662,6 +17658,8 @@ object_building_poi_shared_tatooine_evil_settlers_large2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16685,6 +17683,7 @@ object_building_poi_shared_tatooine_evil_settlers_large2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16712,6 +17711,8 @@ object_building_poi_shared_tatooine_evil_settlers_large3 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16735,6 +17736,7 @@ object_building_poi_shared_tatooine_evil_settlers_large3 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16762,6 +17764,8 @@ object_building_poi_shared_tatooine_evil_settlers_medium = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16785,6 +17789,7 @@ object_building_poi_shared_tatooine_evil_settlers_medium = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16812,6 +17817,8 @@ object_building_poi_shared_tatooine_evil_settlers_medium2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16835,6 +17842,7 @@ object_building_poi_shared_tatooine_evil_settlers_medium2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16862,6 +17870,8 @@ object_building_poi_shared_tatooine_evil_settlers_small1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16885,6 +17895,7 @@ object_building_poi_shared_tatooine_evil_settlers_small1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16912,6 +17923,8 @@ object_building_poi_shared_tatooine_evil_settlers_small2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16935,6 +17948,7 @@ object_building_poi_shared_tatooine_evil_settlers_small2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -16962,6 +17976,8 @@ object_building_poi_shared_tatooine_factory_liberation = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -16985,6 +18001,7 @@ object_building_poi_shared_tatooine_factory_liberation = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17012,6 +18029,8 @@ object_building_poi_shared_tatooine_farm_medium_2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17035,6 +18054,7 @@ object_building_poi_shared_tatooine_farm_medium_2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17062,6 +18082,8 @@ object_building_poi_shared_tatooine_fugitive_camp_large1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17085,6 +18107,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17112,6 +18135,8 @@ object_building_poi_shared_tatooine_fugitive_camp_large2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17135,6 +18160,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17162,6 +18188,8 @@ object_building_poi_shared_tatooine_fugitive_camp_large3 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17185,6 +18213,7 @@ object_building_poi_shared_tatooine_fugitive_camp_large3 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17212,6 +18241,8 @@ object_building_poi_shared_tatooine_fugitive_camp_medium = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17235,6 +18266,7 @@ object_building_poi_shared_tatooine_fugitive_camp_medium = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17262,6 +18294,8 @@ object_building_poi_shared_tatooine_gunrunners_large1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17285,6 +18319,7 @@ object_building_poi_shared_tatooine_gunrunners_large1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17312,6 +18347,8 @@ object_building_poi_shared_tatooine_gunrunners_large2 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17335,6 +18372,7 @@ object_building_poi_shared_tatooine_gunrunners_large2 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17362,6 +18400,8 @@ object_building_poi_shared_tatooine_gunrunners_medium = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17385,6 +18425,7 @@ object_building_poi_shared_tatooine_gunrunners_medium = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17412,6 +18453,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17435,6 +18478,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17462,6 +18506,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17485,6 +18531,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17512,6 +18559,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large3 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17535,6 +18584,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large3 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17562,6 +18612,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large4 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17585,6 +18637,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_large4 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17612,6 +18665,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium1 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17635,6 +18690,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium1 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17662,6 +18718,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium2 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17685,6 +18743,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_medium2 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17712,6 +18771,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17735,6 +18796,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17762,6 +18824,8 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17785,6 +18849,7 @@ object_building_poi_shared_tatooine_hutt_assassin_camp_small2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17812,6 +18877,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large1 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17835,6 +18902,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large1 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17862,6 +18930,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large2 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17885,6 +18955,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large2 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17912,6 +18983,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large3 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17935,6 +19008,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large3 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -17962,6 +19036,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large4 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -17985,6 +19061,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_large4 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18012,6 +19089,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18035,6 +19114,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18062,6 +19142,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2 = SharedBuildi
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18085,6 +19167,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_medium2 = SharedBuildi
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18112,6 +19195,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small1 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18135,6 +19220,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small1 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18162,6 +19248,8 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small2 = SharedBuildin
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18185,6 +19273,7 @@ object_building_poi_shared_tatooine_hutt_businessmen_camp_small2 = SharedBuildin
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18212,6 +19301,8 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18235,6 +19326,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large1 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18262,6 +19354,8 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18285,6 +19379,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large2 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18312,6 +19407,8 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3 = SharedBuild
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18335,6 +19432,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_large3 = SharedBuild
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18362,6 +19460,8 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1 = SharedBuil
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18385,6 +19485,7 @@ object_building_poi_shared_tatooine_jawa_droid_thieves_camp_medium1 = SharedBuil
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18412,6 +19513,8 @@ object_building_poi_shared_tatooine_jawa_large_1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18435,6 +19538,7 @@ object_building_poi_shared_tatooine_jawa_large_1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18462,6 +19566,8 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18485,6 +19591,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large1 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18512,6 +19619,8 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18535,6 +19644,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18562,6 +19672,8 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1 = SharedBuilding
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18585,6 +19697,7 @@ object_building_poi_shared_tatooine_jawa_tradesmen_camp_medium1 = SharedBuilding
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18612,6 +19725,8 @@ object_building_poi_shared_tatooine_mineral_farmer_large1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18635,6 +19750,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18662,6 +19778,8 @@ object_building_poi_shared_tatooine_mineral_farmer_large2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18685,6 +19803,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18712,6 +19831,8 @@ object_building_poi_shared_tatooine_mineral_farmer_large3 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18735,6 +19856,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large3 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18762,6 +19884,8 @@ object_building_poi_shared_tatooine_mineral_farmer_large4 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18785,6 +19909,7 @@ object_building_poi_shared_tatooine_mineral_farmer_large4 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18812,6 +19937,8 @@ object_building_poi_shared_tatooine_mineral_farmer_medium1 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18835,6 +19962,7 @@ object_building_poi_shared_tatooine_mineral_farmer_medium1 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18862,6 +19990,8 @@ object_building_poi_shared_tatooine_mineral_farmer_medium2 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18885,6 +20015,7 @@ object_building_poi_shared_tatooine_mineral_farmer_medium2 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18912,6 +20043,8 @@ object_building_poi_shared_tatooine_moisture_farmer_large1 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18935,6 +20068,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large1 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -18962,6 +20096,8 @@ object_building_poi_shared_tatooine_moisture_farmer_large2 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -18985,6 +20121,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large2 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19012,6 +20149,8 @@ object_building_poi_shared_tatooine_moisture_farmer_large3 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19035,6 +20174,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large3 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19062,6 +20202,8 @@ object_building_poi_shared_tatooine_moisture_farmer_large4 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19085,6 +20227,7 @@ object_building_poi_shared_tatooine_moisture_farmer_large4 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19112,6 +20255,8 @@ object_building_poi_shared_tatooine_moisture_farmer_medium1 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19135,6 +20280,7 @@ object_building_poi_shared_tatooine_moisture_farmer_medium1 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19162,6 +20308,8 @@ object_building_poi_shared_tatooine_moisture_farmer_medium2 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19185,6 +20333,7 @@ object_building_poi_shared_tatooine_moisture_farmer_medium2 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19212,6 +20361,8 @@ object_building_poi_shared_tatooine_nomad_squatter_large1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19235,6 +20386,7 @@ object_building_poi_shared_tatooine_nomad_squatter_large1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19262,6 +20414,8 @@ object_building_poi_shared_tatooine_nomad_squatter_large2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19285,6 +20439,7 @@ object_building_poi_shared_tatooine_nomad_squatter_large2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19312,6 +20467,8 @@ object_building_poi_shared_tatooine_nomad_squatter_medium1 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19335,6 +20492,7 @@ object_building_poi_shared_tatooine_nomad_squatter_medium1 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19362,6 +20520,8 @@ object_building_poi_shared_tatooine_plaguevictim_large1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19385,6 +20545,7 @@ object_building_poi_shared_tatooine_plaguevictim_large1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19412,6 +20573,8 @@ object_building_poi_shared_tatooine_plaguevictim_large2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19435,6 +20598,7 @@ object_building_poi_shared_tatooine_plaguevictim_large2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19462,6 +20626,8 @@ object_building_poi_shared_tatooine_plaguevictim_medium = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19485,6 +20651,7 @@ object_building_poi_shared_tatooine_plaguevictim_medium = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19512,6 +20679,8 @@ object_building_poi_shared_tatooine_prison_break = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19535,6 +20704,7 @@ object_building_poi_shared_tatooine_prison_break = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19562,6 +20732,8 @@ object_building_poi_shared_tatooine_rodianhunter_large1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19585,6 +20757,7 @@ object_building_poi_shared_tatooine_rodianhunter_large1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19612,6 +20785,8 @@ object_building_poi_shared_tatooine_rodianhunter_large2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19635,6 +20810,7 @@ object_building_poi_shared_tatooine_rodianhunter_large2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19662,6 +20838,8 @@ object_building_poi_shared_tatooine_rodianhunter_medium = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19685,6 +20863,7 @@ object_building_poi_shared_tatooine_rodianhunter_medium = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19712,6 +20891,8 @@ object_building_poi_shared_tatooine_slaver_large1 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19735,6 +20916,7 @@ object_building_poi_shared_tatooine_slaver_large1 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19762,6 +20944,8 @@ object_building_poi_shared_tatooine_slaver_large2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19785,6 +20969,7 @@ object_building_poi_shared_tatooine_slaver_large2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19812,6 +20997,8 @@ object_building_poi_shared_tatooine_slaver_large3 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19835,6 +21022,7 @@ object_building_poi_shared_tatooine_slaver_large3 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19862,6 +21050,8 @@ object_building_poi_shared_tatooine_slaver_large4 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19885,6 +21075,7 @@ object_building_poi_shared_tatooine_slaver_large4 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19912,6 +21103,8 @@ object_building_poi_shared_tatooine_slaver_medium = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19935,6 +21128,7 @@ object_building_poi_shared_tatooine_slaver_medium = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -19962,6 +21156,8 @@ object_building_poi_shared_tatooine_slaver_medium2 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -19985,6 +21181,7 @@ object_building_poi_shared_tatooine_slaver_medium2 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20012,6 +21209,8 @@ object_building_poi_shared_tatooine_spicefiend_large1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20035,6 +21234,7 @@ object_building_poi_shared_tatooine_spicefiend_large1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20062,6 +21262,8 @@ object_building_poi_shared_tatooine_spicefiend_large2 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20085,6 +21287,7 @@ object_building_poi_shared_tatooine_spicefiend_large2 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20112,6 +21315,8 @@ object_building_poi_shared_tatooine_spicefiend_large3 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20135,6 +21340,7 @@ object_building_poi_shared_tatooine_spicefiend_large3 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20162,6 +21368,8 @@ object_building_poi_shared_tatooine_spicefiend_large4 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20185,6 +21393,7 @@ object_building_poi_shared_tatooine_spicefiend_large4 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20212,6 +21421,8 @@ object_building_poi_shared_tatooine_spicefiend_medium = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20235,6 +21446,7 @@ object_building_poi_shared_tatooine_spicefiend_medium = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20262,6 +21474,8 @@ object_building_poi_shared_tatooine_spicefiend_medium2 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20285,6 +21499,7 @@ object_building_poi_shared_tatooine_spicefiend_medium2 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20312,6 +21527,8 @@ object_building_poi_shared_tatooine_swoop_large1 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20335,6 +21552,7 @@ object_building_poi_shared_tatooine_swoop_large1 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20362,6 +21580,8 @@ object_building_poi_shared_tatooine_swoop_large2 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20385,6 +21605,7 @@ object_building_poi_shared_tatooine_swoop_large2 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20412,6 +21633,8 @@ object_building_poi_shared_tatooine_swoop_large3 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20435,6 +21658,7 @@ object_building_poi_shared_tatooine_swoop_large3 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20462,6 +21686,8 @@ object_building_poi_shared_tatooine_swoop_large4 = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20485,6 +21711,7 @@ object_building_poi_shared_tatooine_swoop_large4 = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20512,6 +21739,8 @@ object_building_poi_shared_tatooine_swoop_medium = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20535,6 +21764,7 @@ object_building_poi_shared_tatooine_swoop_medium = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20562,6 +21792,8 @@ object_building_poi_shared_tatooine_swoop_medium2 = SharedBuildingObjectTemplate
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20585,6 +21817,7 @@ object_building_poi_shared_tatooine_swoop_medium2 = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20612,6 +21845,8 @@ object_building_poi_shared_tatooine_tuskenbantha_large1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20635,6 +21870,7 @@ object_building_poi_shared_tatooine_tuskenbantha_large1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20662,6 +21898,8 @@ object_building_poi_shared_tatooine_tuskenbantha_large2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20685,6 +21923,7 @@ object_building_poi_shared_tatooine_tuskenbantha_large2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20712,6 +21951,8 @@ object_building_poi_shared_tatooine_tuskenbantha_medium = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20735,6 +21976,7 @@ object_building_poi_shared_tatooine_tuskenbantha_medium = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20762,6 +22004,8 @@ object_building_poi_shared_tatooine_tuskenwar_large1 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20785,6 +22029,7 @@ object_building_poi_shared_tatooine_tuskenwar_large1 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20812,6 +22057,8 @@ object_building_poi_shared_tatooine_tuskenwar_large2 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20835,6 +22082,7 @@ object_building_poi_shared_tatooine_tuskenwar_large2 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20862,6 +22110,8 @@ object_building_poi_shared_tatooine_tuskenwar_large3 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20885,6 +22135,7 @@ object_building_poi_shared_tatooine_tuskenwar_large3 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20912,6 +22163,8 @@ object_building_poi_shared_tatooine_tuskenwar_medium = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20935,6 +22188,7 @@ object_building_poi_shared_tatooine_tuskenwar_medium = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -20962,6 +22216,8 @@ object_building_poi_shared_tatooine_valariangang_large1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -20985,6 +22241,7 @@ object_building_poi_shared_tatooine_valariangang_large1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21012,6 +22269,8 @@ object_building_poi_shared_tatooine_valariangang_large2 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21035,6 +22294,7 @@ object_building_poi_shared_tatooine_valariangang_large2 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21062,6 +22322,8 @@ object_building_poi_shared_tatooine_valariangang_medium = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21085,6 +22347,7 @@ object_building_poi_shared_tatooine_valariangang_medium = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21112,6 +22375,8 @@ object_building_poi_shared_tatooine_valariantrader_large1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21135,6 +22400,7 @@ object_building_poi_shared_tatooine_valariantrader_large1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21162,6 +22428,8 @@ object_building_poi_shared_tatooine_valariantrader_large2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21185,6 +22453,7 @@ object_building_poi_shared_tatooine_valariantrader_large2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21212,6 +22481,8 @@ object_building_poi_shared_tatooine_valariantrader_medium = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21235,6 +22506,7 @@ object_building_poi_shared_tatooine_valariantrader_medium = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21262,6 +22534,8 @@ object_building_poi_shared_tatooine_village_medium_1 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21285,6 +22559,7 @@ object_building_poi_shared_tatooine_village_medium_1 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21312,6 +22587,8 @@ object_building_poi_shared_tatooine_village_medium_3 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21335,6 +22612,7 @@ object_building_poi_shared_tatooine_village_medium_3 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21362,6 +22640,8 @@ object_building_poi_shared_tatooine_weequayzealots_large1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21385,6 +22665,7 @@ object_building_poi_shared_tatooine_weequayzealots_large1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21412,6 +22693,8 @@ object_building_poi_shared_tatooine_weequayzealots_large2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21435,6 +22718,7 @@ object_building_poi_shared_tatooine_weequayzealots_large2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21462,6 +22746,8 @@ object_building_poi_shared_tatooine_weequayzealots_medium = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21485,6 +22771,7 @@ object_building_poi_shared_tatooine_weequayzealots_medium = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21512,6 +22799,8 @@ object_building_poi_shared_tatooine_weequayzealots_medium2 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21535,6 +22824,7 @@ object_building_poi_shared_tatooine_weequayzealots_medium2 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21562,6 +22852,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21585,6 +22877,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21612,6 +22905,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21635,6 +22930,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21662,6 +22958,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large3 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21685,6 +22983,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_large3 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21712,6 +23011,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21735,6 +23036,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium1 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21762,6 +23064,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2 = SharedBuildingO
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21785,6 +23089,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_medium2 = SharedBuildingO
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21812,6 +23117,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21835,6 +23142,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21862,6 +23170,8 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21885,6 +23195,7 @@ object_building_poi_shared_yavin4_abandoned_rebel_camp_small2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21912,6 +23223,8 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large1 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21935,6 +23248,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large1 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -21962,6 +23276,8 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large2 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -21985,6 +23301,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_large2 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22012,6 +23329,8 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22035,6 +23354,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22062,6 +23382,8 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22085,6 +23407,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_medium2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22112,6 +23435,8 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small1 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22135,6 +23460,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small1 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22162,6 +23488,8 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small2 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22185,6 +23513,7 @@ object_building_poi_shared_yavin4_hutt_scavenger_camp_small2 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22212,6 +23541,8 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large1 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22235,6 +23566,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large1 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22262,6 +23594,8 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large2 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22285,6 +23619,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large2 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22312,6 +23647,8 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large3 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22335,6 +23672,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large3 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22362,6 +23700,8 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large4 = SharedBuildingOb
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22385,6 +23725,7 @@ object_building_poi_shared_yavin4_imperial_patrol_camp_large4 = SharedBuildingOb
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22412,6 +23753,8 @@ object_building_poi_shared_yavin4_imperial_patrol_medium1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22435,6 +23778,7 @@ object_building_poi_shared_yavin4_imperial_patrol_medium1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22462,6 +23806,8 @@ object_building_poi_shared_yavin4_imperial_patrol_medium2 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22485,6 +23831,7 @@ object_building_poi_shared_yavin4_imperial_patrol_medium2 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_medium.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22512,6 +23859,8 @@ object_building_poi_shared_yavin4_imperial_patrol_small1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22535,6 +23884,7 @@ object_building_poi_shared_yavin4_imperial_patrol_small1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -22562,6 +23912,8 @@ object_building_poi_shared_yavin4_imperial_patrol_small2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -22585,6 +23937,7 @@ object_building_poi_shared_yavin4_imperial_patrol_small2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_small.lay",
 
 	useStructureFootprintOutline = 0
 }

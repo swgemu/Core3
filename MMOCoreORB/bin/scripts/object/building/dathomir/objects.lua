@@ -62,6 +62,8 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/singing_mtn_cln_stronghold.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -85,6 +87,7 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/nightsister_stronghold_interior_s01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -135,6 +140,7 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

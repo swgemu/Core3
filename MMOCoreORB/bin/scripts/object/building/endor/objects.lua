@@ -62,6 +62,8 @@ object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_filler_building",
 
@@ -85,6 +87,7 @@ object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new 
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_filler_building",
 
@@ -135,6 +140,7 @@ object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new 
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -185,6 +193,7 @@ object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_filler_building",
 
@@ -235,6 +246,7 @@ object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:ne
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -285,6 +299,7 @@ object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObject
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -335,6 +352,7 @@ object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -385,6 +405,7 @@ object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:n
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_platform",
 
@@ -435,6 +458,7 @@ object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_platform",
 
@@ -485,6 +511,7 @@ object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTempl
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_walkway_straight",
 
@@ -535,6 +564,7 @@ object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTem
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_walkway_straight",
 
@@ -585,6 +617,7 @@ object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectT
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -635,6 +670,7 @@ object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -685,6 +723,7 @@ object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:n
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:endor_lake_hut",
 
@@ -735,6 +776,7 @@ object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObject
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

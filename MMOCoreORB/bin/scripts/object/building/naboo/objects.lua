@@ -62,6 +62,8 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_association_hall_style_naboo2.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:association_hall_civilian_naboo",
 
@@ -85,6 +87,7 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bank",
 
@@ -135,6 +140,7 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bubble_naboo_large_style_1",
 
@@ -185,6 +193,7 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bubble_naboo_medium_style_1",
 
@@ -235,6 +246,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bubble_naboo_medium_style_2",
 
@@ -285,6 +299,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:bubble_naboo_small_style_1",
 
@@ -335,6 +352,7 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_cantina_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cantina_general",
 
@@ -385,6 +405,7 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_capitol_style_naboo.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:capitol_naboo_theed",
 
@@ -435,6 +458,7 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:cloning_facility_naboo",
 
@@ -485,6 +511,7 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/emperor_retreat.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:palace_naboo_theed",
 
@@ -535,6 +564,7 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_10",
 
@@ -585,6 +617,7 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_11",
 
@@ -635,6 +670,7 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_2",
 
@@ -685,6 +723,7 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_3",
 
@@ -735,6 +776,7 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_4",
 
@@ -785,6 +829,7 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_5",
 
@@ -835,6 +882,7 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_6",
 
@@ -885,6 +935,7 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_8",
 
@@ -935,6 +988,7 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_naboo_style_9",
 
@@ -985,6 +1041,7 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -1035,6 +1094,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -1085,6 +1147,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -1135,6 +1200,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:filler_building_tatt_style01_10",
 
@@ -1185,6 +1253,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_combat_style_naboo.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_combat_naboo",
 
@@ -1235,6 +1306,7 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_commerce_style_naboo.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_commerce_naboo",
 
@@ -1285,6 +1359,7 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_01.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:theater",
 
@@ -1335,6 +1412,7 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_guild_university_style_naboo.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:guild_university_naboo",
 
@@ -1385,6 +1465,7 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 	surfaceType = 3,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/theed_hangar2.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:theater",
 
@@ -1435,6 +1518,7 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hospital_style_naboo.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital",
 
@@ -1485,6 +1571,7 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hospital",
 
@@ -1535,6 +1624,7 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1562,6 +1652,8 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_hotel_style_naboo2.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:hotel_naboo_theed",
 
@@ -1585,6 +1677,7 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1612,6 +1705,8 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1635,6 +1730,7 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1662,6 +1758,8 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_3",
 
@@ -1685,6 +1783,7 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1712,6 +1811,8 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:merchant_tent_tato_s01",
 
@@ -1735,6 +1836,7 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1762,6 +1864,8 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:palace_naboo_theed",
 
@@ -1785,6 +1889,7 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1812,6 +1917,8 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:parking_garage_naboo_style_1",
 
@@ -1835,6 +1942,7 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1862,6 +1970,8 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1885,6 +1995,7 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1912,6 +2023,8 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1935,6 +2048,7 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1962,6 +2076,8 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -1985,6 +2101,7 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2012,6 +2129,8 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -2035,6 +2154,7 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2062,6 +2182,8 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:housing_naboo_style_1",
 
@@ -2085,6 +2207,7 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2112,6 +2235,8 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:power_generator_naboo_theed",
 
@@ -2135,6 +2260,7 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2162,6 +2288,8 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:salon_corellia",
 
@@ -2185,6 +2313,7 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2212,6 +2341,8 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/shared_salon_style_naboo.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:salon_naboo",
 
@@ -2235,6 +2366,7 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2262,6 +2394,8 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport_naboo",
 
@@ -2285,6 +2419,7 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -2312,6 +2447,8 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "interiorlayout/starport_naboo_interior.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:starport_naboo",
 
@@ -2335,6 +2472,7 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }

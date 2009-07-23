@@ -20,7 +20,7 @@ namespace tangible {
 
 class Container : public TangibleObject {
 public:
-	Container(LuaObject* templateData, SceneObject* par = NULL);
+	Container(LuaObject* templateData);
 
 	bool addObject(SceneObject* obj);
 
@@ -49,7 +49,7 @@ namespace tangible {
 class ContainerImplementation : public TangibleObjectImplementation {
 
 public:
-	ContainerImplementation(LuaObject* templateData, SceneObject* par = NULL);
+	ContainerImplementation(LuaObject* templateData);
 
 	bool addObject(SceneObject* obj);
 

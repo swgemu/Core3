@@ -22,7 +22,7 @@ namespace creature {
 
 class CreatureObject : public TangibleObject {
 public:
-	CreatureObject(LuaObject* templateData, SceneObject* parent = NULL);
+	CreatureObject(LuaObject* templateData);
 
 	void sendTo(SceneObject* player, bool doClose);
 
@@ -182,7 +182,7 @@ protected:
 	String templateString;
 
 public:
-	CreatureObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
+	CreatureObjectImplementation(LuaObject* templateData);
 
 	void sendTo(SceneObject* player, bool doClose);
 

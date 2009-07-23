@@ -8,8 +8,8 @@
  *	ContainerStub
  */
 
-Container::Container(LuaObject* templateData, SceneObject* par) : TangibleObject(DummyConstructorParameter::instance()) {
-	_impl = new ContainerImplementation(templateData, par);
+Container::Container(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ContainerImplementation(templateData);
 	_impl->_setStub(this);
 
 	((ContainerImplementation*) _impl)->_serializationHelperMethod();

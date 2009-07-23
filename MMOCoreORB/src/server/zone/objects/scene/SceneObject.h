@@ -72,7 +72,7 @@ namespace scene {
 
 class SceneObject : public ManagedObject {
 public:
-	SceneObject(LuaObject* templateData, SceneObject* parent = NULL);
+	SceneObject(LuaObject* templateData);
 
 	void redeploy();
 
@@ -206,6 +206,8 @@ protected:
 	unsigned int gameObjectType;
 
 public:
+	static const int CELLOBJECT = 0x11;
+
 	static const int ARMOR = 0x100;
 
 	static const int BODYARMOR = 0x101;
@@ -544,7 +546,7 @@ public:
 
 	static const int ITHOGARB = 0x1000013;
 
-	SceneObjectImplementation(LuaObject* templateData, SceneObject* parent = NULL);
+	SceneObjectImplementation(LuaObject* templateData);
 
 	void redeploy();
 

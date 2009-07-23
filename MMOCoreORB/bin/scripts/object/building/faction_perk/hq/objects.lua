@@ -62,6 +62,8 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -85,6 +87,7 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -135,6 +140,7 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s01_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -185,6 +193,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s01_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -235,6 +246,7 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s01_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -285,6 +299,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s01_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -335,6 +352,7 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -385,6 +405,7 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -435,6 +458,7 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s02_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -485,6 +511,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -512,6 +539,8 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s02_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -535,6 +564,7 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -562,6 +592,8 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s02_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -585,6 +617,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -612,6 +645,8 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s02_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -635,6 +670,7 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -662,6 +698,8 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -685,6 +723,7 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -712,6 +751,8 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -735,6 +776,7 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -762,6 +804,8 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s03_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -785,6 +829,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -812,6 +857,8 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s03_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -835,6 +882,7 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -862,6 +910,8 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s03_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -885,6 +935,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -912,6 +963,8 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s03_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -935,6 +988,7 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -962,6 +1016,8 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -985,6 +1041,7 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1012,6 +1069,8 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1035,6 +1094,7 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1062,6 +1122,8 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s04_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1085,6 +1147,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1112,6 +1175,8 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s04_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1135,6 +1200,7 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1162,6 +1228,8 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s04_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1185,6 +1253,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1212,6 +1281,8 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s04_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1235,6 +1306,7 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1262,6 +1334,8 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1285,6 +1359,7 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1312,6 +1387,8 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1335,6 +1412,7 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "",
 
 	useStructureFootprintOutline = 0
 }
@@ -1362,6 +1440,8 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s05_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1385,6 +1465,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1412,6 +1493,8 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s05_imp.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1435,6 +1518,7 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1462,6 +1546,8 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s05_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1485,6 +1571,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -1512,6 +1599,8 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 
 	gameObjectType = 515,
 
+	interiorLayoutFileName = "interiorlayout/faction_perk/hq/hq_s05_rebel.ilf",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_building",
 
@@ -1535,6 +1624,7 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/poi_large.lay",
 
 	useStructureFootprintOutline = 0
 }

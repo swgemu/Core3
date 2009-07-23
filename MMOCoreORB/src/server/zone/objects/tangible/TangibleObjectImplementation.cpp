@@ -47,10 +47,10 @@ which carries forward this exception.
 #include "../../managers/object/ObjectManager.h"
 #include "../scene/variables/CustomizationVariables.h"
 
-TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templ, SceneObject* parent)
-		: SceneObjectImplementation(templ, parent) {
+TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData)
+		: SceneObjectImplementation(templateData) {
 
-	targetable = templ->getByteField("targetable");
+	targetable = templateData->getByteField("targetable");
 
 	complexity = 100.f;
 

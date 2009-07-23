@@ -54,8 +54,8 @@ which carries forward this exception.
 #include "variables/StringId.h"
 
 
-SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData, SceneObject* parent) {
-	SceneObjectImplementation::parent = parent;
+SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) {
+	SceneObjectImplementation::parent = NULL;
 
 	containmentSlots = new VectorMap<String, SceneObject*>();
 	containmentSlots->setNullValue(NULL);

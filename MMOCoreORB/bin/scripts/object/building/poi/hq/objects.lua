@@ -62,6 +62,8 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -85,6 +87,7 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -112,6 +115,8 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -135,6 +140,7 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -162,6 +168,8 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -185,6 +193,7 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -212,6 +221,8 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -235,6 +246,7 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -262,6 +274,8 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -285,6 +299,7 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -312,6 +327,8 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -335,6 +352,7 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -362,6 +380,8 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -385,6 +405,7 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -412,6 +433,8 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -435,6 +458,7 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
@@ -462,6 +486,8 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 
 	gameObjectType = 512,
 
+	interiorLayoutFileName = "",
+
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:base_military_building",
 
@@ -485,6 +511,7 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	surfaceType = 2,
 
 	targetable = 0,
+	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
 	useStructureFootprintOutline = 0
 }
