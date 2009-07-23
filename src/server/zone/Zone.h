@@ -31,6 +31,8 @@ using namespace server::zone;
 
 #include "engine/util/QuadTree.h"
 
+#include "engine/util/QuadTreeEntry.h"
+
 #include "engine/sched/ScheduleManager.h"
 
 #include "system/lang/Time.h"
@@ -45,6 +47,14 @@ namespace zone {
 class Zone : public ManagedObject {
 public:
 	Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
+
+	void lock();
+
+	void unlock();
+
+	void insert(QuadTreeEntry* entry);
+
+	void inRange(QuadTreeEntry* entry, float range);
 
 	void startManagers();
 
@@ -116,6 +126,14 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 public:
 	ZoneImplementation(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
+	void lock();
+
+	void unlock();
+
+	void insert(QuadTreeEntry* entry);
+
+	void inRange(QuadTreeEntry* entry, float range);
+
 	void startManagers();
 
 	void stopManagers();
@@ -166,6 +184,10 @@ public:
 	ZoneAdapter(ZoneImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void lock();
+
+	void unlock();
 
 	void startManagers();
 

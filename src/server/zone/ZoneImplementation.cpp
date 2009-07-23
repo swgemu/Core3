@@ -153,6 +153,22 @@ float ZoneImplementation::getHeight(float x, float y) {
 	return heightMap->getHeight(x, y);
 }
 
+void ZoneImplementation::lock() {
+	ManagedObjectImplementation::lock(true);
+}
+
+void ZoneImplementation::unlock() {
+	ManagedObjectImplementation::unlock(true);
+}
+
+void ZoneImplementation::insert(QuadTreeEntry* entry) {
+	QuadTree::insert(entry);
+}
+
+void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
+	QuadTree::inRange(entry, range);
+}
+
 /*ChatManager* ZoneImplementation::getChatManager() {
 	return server->getChatManager();
 }*/

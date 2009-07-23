@@ -67,6 +67,14 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 	
 	public native void disconnect();
 	public native void disconnect(boolean doLock);
+	
+	public void balancePacketCheckupTime() {
+		BaseClientProxy.balancePacketCheckupTime();
+	}
+	
+	public void resetPacketCheckupTime() {
+		BaseClientProxy.resetPacketCheckupTime();
+	}
 
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 	

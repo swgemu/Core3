@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "../../packets/scene/UpdateContainmentMessage.h"
 
 #include "../../ZoneClientSession.h"
+#include "../../Zone.h"
 
 #include "variables/StringId.h"
 
@@ -145,6 +146,13 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
+void SceneObjectImplementation::wlock() {
+	ManagedObjectImplementation::wlock(true);
+}
+
+void SceneObjectImplementation::unlock() {
+	ManagedObjectImplementation::unlock(true);
+}
 
 void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	if (client == NULL)
@@ -152,4 +160,26 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 
 	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
 	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::insertToZone(Zone* zone) {
+	SceneObjectImplementation::zone = zone;
+
+	try {
+		zone->lock();
+
+		sendToOwner(true);
+
+		if (parent == NULL)
+			initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
+		else
+			initializePosition(positionX, positionZ, positionY);
+
+		zone->insert(this);
+		zone->inRange(this, 128);
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
 }

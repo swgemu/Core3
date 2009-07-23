@@ -84,16 +84,25 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 
 		SceneObject* obj = zoneServer->getObject(characterID, true);
-		if (obj->isPlayerCreature()) {
+
+		if (obj != NULL && obj->isPlayerCreature()) {
 			PlayerCreature* player = (PlayerCreature*) obj;
+
 			player->setClient(client);
 			client->setPlayer(obj);
 
-			//client->balancePacketCheckupTime();
+			client->balancePacketCheckupTime();
 
-			player->sendToOwner(true);
+			try {
+				player->wlock();
+
+				player->insertToZone(player->getZone());
+
+				player->unlock();
+			} catch (...) {
+				player->unlock();
+			}
 		}
-		//obj->insertToZone(zoneServer->getZone(8))
 	}
 };
 

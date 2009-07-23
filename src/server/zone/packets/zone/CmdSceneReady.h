@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "../MessageCallback.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CmdSceneReady : public BaseMessage {
 public:
@@ -77,7 +78,7 @@ public:
 		BaseMessage* msg = new CmdSceneReady();
 		client->sendMessage(msg);
 
-		//client->resetPacketCheckupTime();
+		client->resetPacketCheckupTime();
 	}
 };
 #endif /*CMDSCENEREADY_H_*/

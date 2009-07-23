@@ -286,7 +286,11 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 
 	public native SceneObject(LuaObject templateData);
 	
-	public info(final string msg, boolean forced = false);
+	//public info(final string msg, boolean forced = false);
+	
+	public native void wlock();
+	
+	public native void unlock();
 	
 	public void redeploy() {
 	}
@@ -361,7 +365,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public abstract void sendToOwner(boolean doClose = true) {
 	}
 	
-	//public abstract void insertToZone(Zone zone);
+	public native abstract void insertToZone(Zone zone);
 	
 	public abstract void sendMessage(BaseMessage msg) {
 		if (msg != null)

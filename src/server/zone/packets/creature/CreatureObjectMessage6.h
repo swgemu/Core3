@@ -59,7 +59,7 @@ public:
 
 		insertAscii(creo->getPerformanceAnimation());
 
-		insertAscii(creo->getMoodStr());
+		insertAscii(creo->getMoodString());
 
 		insertLong(creo->getWeaponID());
 
@@ -80,28 +80,17 @@ public:
 		insertInt(creo->getInstrumentID()); //might be switched
 
 		insertInt(9);
-		insertInt(creo->getHAMUpdateCounter());
-		insertInt(creo->getHealth());
-		insertInt(creo->getStrength());
-		insertInt(creo->getConstitution());
-		insertInt(creo->getAction());
-		insertInt(creo->getQuickness());
-		insertInt(creo->getStamina());
-		insertInt(creo->getMind());
-		insertInt(creo->getFocus());
-		insertInt(creo->getWillpower());
+		insertInt(creo->getHamListUpdateCounter());
+
+		for (int i = 0; i < 9; ++i) {
+			insertInt(creo->getHAM(i));
+		}
 
 		insertInt(9);
-		insertInt(creo->getHAMMaxUpdateCounter());
-		insertInt(creo->getHealthMax());
-		insertInt(creo->getStrengthMax());
-		insertInt(creo->getConstitutionMax());
-		insertInt(creo->getActionMax());
-		insertInt(creo->getQuicknessMax());
-		insertInt(creo->getStaminaMax());
-		insertInt(creo->getMindMax());
-		insertInt(creo->getFocusMax());
-		insertInt(creo->getWillpowerMax());
+		insertInt(creo->getMaxHamListUpdateCounter());
+		for (int i = 0; i < 9; ++i) {
+			insertInt(creo->getMaxHAM(i));
+		}
 
 		insertInt(0); //Equipment list
 		insertInt(0); //Equipment update count
@@ -119,13 +108,11 @@ public:
 	*/
 
 
-		insertAscii(creo->getTemplateString());
+		insertAscii("");//insertAscii(creo->getTemplateString());
 
-		if (creo->isFrozen() == true) {
-			insertByte(1);
-		} else {
-			insertByte(0);
-		}
+
+		insertByte(creo->getFrozen());
+
 
 
 		setSize();

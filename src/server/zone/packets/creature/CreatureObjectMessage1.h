@@ -47,8 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
-#include "../../objects/player/PlayerImplementation.h"
+#include "../../objects/creature/CreatureObject.h"
 
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
@@ -59,16 +58,11 @@ public:
 
 		// Base HAM
 		insertInt(9);
-		insertInt(creo->getHAMBaseUpdateCounter());
-		insertInt(creo->getBaseHealth());
-		insertInt(creo->getBaseStrength());
-		insertInt(creo->getBaseConstitution());
-		insertInt(creo->getBaseAction());
-		insertInt(creo->getBaseQuickness());
-		insertInt(creo->getBaseStamina());
-		insertInt(creo->getBaseMind());
-		insertInt(creo->getBaseFocus());
-		insertInt(creo->getBaseWillpower());
+		insertInt(creo->getBaseHealthUpdateCounter());
+
+		for (int i = 0; i < 9; ++i) {
+			insertInt(creo->getBaseHealth(i));
+		}
 
 		insertSkillBoxes(creo);
 
@@ -78,7 +72,7 @@ public:
 	}
 
 	void insertSkillBoxes(CreatureObjectImplementation* creo) {
-		PlayerImplementation* player = (PlayerImplementation*)creo;
+		/*PlayerImplementation* player = (PlayerImplementation*)creo;
 
 		int size = player->skillBoxes.size();
 		player->skillBoxes.resetIterator();
@@ -89,7 +83,10 @@ public:
 		while (player->skillBoxes.hasNext()) {
 			SkillBox* skillBox = player->skillBoxes.getNextValue();
 			insertAscii(skillBox->getName());
-		}
+		}*/
+
+		insertInt(0);
+		insertInt(0);
 	}
 
 };

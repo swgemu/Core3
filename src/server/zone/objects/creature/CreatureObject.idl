@@ -129,8 +129,44 @@ class CreatureObject extends TangibleObject {
 		return baseHealth;
 	}*/
 	
-	public int getBaseHealthUpdateCounter() {
+	public int getBaseHealth(int idx) {
+		return baseHealth.get(idx);
+	}
+	
+	public unsigned int getBaseHealthUpdateCounter() {
 		return baseHealthUpdateCounter;
+	}
+	
+	public int getWounds(int idx) {
+		return wounds.get(idx);
+	}
+	
+	public unsigned int getWoundsUpdateCounter() {
+		return woundsUpdateCounter;
+	}
+	
+	public unsigned int getEncumbrancesUpdateCounter() {
+		return encumbrancesUpdateCounter;
+	}
+	
+	public unsigned int getHamListUpdateCounter() {
+		return hamListUpdateCounter;
+	}
+	
+	public int getHAM(int idx) {
+		return hamList.get(idx);
+	}
+	
+	public unsigned int getMaxHamListUpdateCounter() {
+		return maxHamListUpdateCounter;
+	}
+	
+	public int getMaxHAM(int idx) {
+		return maxHamList.get(idx);
+	}
+	
+	public int getEncumbrance(int idx) {
+		return encumbrances.get(idx);
 	}
 	
 	public byte getPosture() {

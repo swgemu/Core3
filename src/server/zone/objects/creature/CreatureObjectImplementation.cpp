@@ -46,6 +46,11 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 #include "../../ZoneClientSession.h"
+#include "server/zone/packets/creature/CreatureObjectMessage1.h"
+#include "server/zone/packets/creature/CreatureObjectMessage3.h"
+#include "server/zone/packets/creature/CreatureObjectMessage4.h"
+#include "server/zone/packets/creature/CreatureObjectMessage6.h"
+
 
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData) {
@@ -81,18 +86,43 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 	instrumentID = 0;
 
 	encumbrances = new Vector<int>(3, 1);
+
+	for (int i = 0; i < 3; ++i) {
+		encumbrances->add(0);
+	}
+
 	encumbrancesUpdateCounter = 0;
 
 	baseHealth = new Vector<int>(9, 1);
+
+	for (int i = 0; i < 9; ++i) {
+		baseHealth->add(100);
+	}
+
 	baseHealthUpdateCounter = 0;
 
 	wounds = new Vector<int>(9, 1);
+
+	for (int i = 0; i < 9; ++i) {
+		wounds->add(0);
+	}
+
 	woundsUpdateCounter = 0;
 
 	hamList = new Vector<int>(9, 1);
+
+	for (int i = 0; i < 9; ++i) {
+		hamList->add(100);
+	}
+
 	hamListUpdateCounter = 0;
 
 	maxHamList = new Vector<int>(9, 1);
+
+	for (int i = 0; i < 9; ++i) {
+		maxHamList->add(100);
+	}
+
 	maxHamListUpdateCounter = 0;
 
 	frozen = 0;
@@ -118,5 +148,19 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	if (player == _this) {
+		CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
+		player->sendMessage(msg);
+	}
 
+	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(_this);
+	player->sendMessage(msg3);
+
+	if (player == _this) {
+		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(this);
+		player->sendMessage(msg4);
+	}
+
+	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this);
+	player->sendMessage(msg6);
 }

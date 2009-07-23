@@ -74,6 +74,10 @@ class SceneObject : public ManagedObject {
 public:
 	SceneObject(LuaObject* templateData);
 
+	void wlock();
+
+	void unlock();
+
 	void redeploy();
 
 	void scheduleUndeploy();
@@ -101,6 +105,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
+
+	void insertToZone(Zone* zone);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -550,6 +556,10 @@ public:
 
 	SceneObjectImplementation(LuaObject* templateData);
 
+	void wlock();
+
+	void unlock();
+
 	void redeploy();
 
 	void scheduleUndeploy();
@@ -577,6 +587,8 @@ public:
 	virtual void sendBaselinesTo(SceneObject* player);
 
 	virtual void sendToOwner(bool doClose);
+
+	virtual void insertToZone(Zone* zone);
 
 	virtual void sendMessage(BaseMessage* msg);
 
@@ -653,6 +665,10 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void wlock();
+
+	void unlock();
+
 	void redeploy();
 
 	void scheduleUndeploy();
@@ -680,6 +696,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
+
+	void insertToZone(Zone* zone);
 
 	void sendMessage(BaseMessage* msg);
 
