@@ -53,6 +53,9 @@ class StringId : public Serializable {
 
 	UnicodeString customName;
 
+private:
+	inline void addSerializableVariables();
+
 public:
 	StringId(const String& fullPath);
 	StringId(const String& fil, const String& stringId);
@@ -62,12 +65,22 @@ public:
 		str = "@" + file + ":" + stringID;
 	}
 
+	String& getFile() {
+		return file;
+	}
+
+	String& getStringID() {
+		return stringID;
+	}
+
+	UnicodeString& getCustomString() {
+		return customName;
+	}
+
 	void setCustomString(const UnicodeString& custom) {
 		customName = custom;
 	}
 
-private:
-	inline void addSerializableVariables();
 };
 
 #endif /* STRINGID_H_ */

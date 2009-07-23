@@ -49,12 +49,14 @@ which carries forward this exception.
 #include "../../packets/scene/SceneObjectCreateMessage.h"
 #include "../../packets/scene/SceneObjectDestroyMessage.h"
 #include "../../packets/scene/SceneObjectCloseMessage.h"
+#include "../../packets/scene/UpdateContainmentMessage.h"
+
 #include "../../ZoneClientSession.h"
 
 #include "variables/StringId.h"
 
 
-SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) {
+SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject"){
 	SceneObjectImplementation::parent = NULL;
 
 	containmentSlots = new VectorMap<String, SceneObject*>();
@@ -74,7 +76,7 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) {
 
 	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
 
-	for (int i = 1; i < arrangements.getTableSize(); ++i) {
+	for (int i = 1; i <= arrangements.getTableSize(); ++i) {
 		arrangementDescriptors->add(arrangements.getStringAt(i));
 	}
 
@@ -85,13 +87,16 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) {
 
 	LuaObject slots = templateData->getObjectField("slotDescriptors");
 
-	for (int i = 1; i < slots.getTableSize(); ++i) {
+	for (int i = 1; i <= slots.getTableSize(); ++i) {
 		slotDescriptors->add(slots.getStringAt(i));
 	}
 
 	slots.pop();
 
 	zone = NULL;
+
+	setGlobalLogging(true);
+	setLogging(true);
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
@@ -107,9 +112,37 @@ void SceneObjectImplementation::close(ZoneClientSession* client) {
 }
 
 void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containmentType) {
-	/*BaseMessage* msg = new UpdateContainmentMessage(_this, parent, containmentType);
+	info("linking to parent");
 
-	client->sendMessage(msg);*/
+	BaseMessage* msg = new UpdateContainmentMessage(_this, parent, containmentType);
+	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	ReferenceSlot<ZoneClientSession> client = player->getClient();
+	if (client == NULL)
+		return;
+
+	StringBuffer msg;
+	msg << "sending 0x" << hex << getObjectCRC() << " oid 0x" << hex << getObjectID();
+	info(msg);
+
+	create(client);
+
+	if (parent != NULL) {
+		link(client.get(), 4);
+	}
+
+	sendBaselinesTo(player);
+
+	for (int i = 0; i < containmentSlots->size(); ++i) {
+		SceneObject* object = containmentSlots->get(i);
+
+		object->sendTo(player, true);
+	}
+
+	if (doClose)
+		SceneObjectImplementation::close(client);
 }
 
 

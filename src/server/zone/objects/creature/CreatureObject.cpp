@@ -21,18 +21,17 @@ CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObjec
 CreatureObject::~CreatureObject() {
 }
 
-void CreatureObject::sendTo(SceneObject* player, bool doClose) {
+void CreatureObject::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
 		method.addObjectParameter(player);
-		method.addBooleanParameter(doClose);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->sendTo(player, doClose);
+		((CreatureObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
 int CreatureObject::getBankCredits() {
@@ -567,7 +566,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
 		resp->insertSignedInt(getBankCredits());
@@ -657,8 +656,8 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void CreatureObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	return ((CreatureObjectImplementation*) impl)->sendTo(player, doClose);
+void CreatureObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	return ((CreatureObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 int CreatureObjectAdapter::getBankCredits() {

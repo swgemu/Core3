@@ -26,6 +26,8 @@ class TangibleObject : public SceneObject {
 public:
 	TangibleObject(LuaObject* templateData);
 
+	void sendBaselinesTo(SceneObject* player);
+
 	byte getUnknownByte();
 
 	int getObjectCount();
@@ -43,6 +45,8 @@ public:
 	unsigned int getPvpStatusBitmask();
 
 	unsigned int getDefenderListUpdateCounter();
+
+	void getCustomizationString(String& variables);
 
 	void setCustomizationString(const String& vars);
 
@@ -95,6 +99,8 @@ protected:
 public:
 	TangibleObjectImplementation(LuaObject* templateData);
 
+	virtual void sendBaselinesTo(SceneObject* player);
+
 	byte getUnknownByte();
 
 	int getObjectCount();
@@ -112,6 +118,8 @@ public:
 	unsigned int getPvpStatusBitmask();
 
 	unsigned int getDefenderListUpdateCounter();
+
+	void getCustomizationString(String& variables);
 
 	void setCustomizationString(const String& vars);
 
@@ -136,6 +144,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendBaselinesTo(SceneObject* player);
+
 	byte getUnknownByte();
 
 	int getObjectCount();
@@ -154,9 +164,12 @@ public:
 
 	unsigned int getDefenderListUpdateCounter();
 
+	void getCustomizationString(String& variables);
+
 	void setCustomizationString(const String& vars);
 
 protected:
+	String _param0_getCustomizationString__String_;
 	String _param0_setCustomizationString__String_;
 };
 

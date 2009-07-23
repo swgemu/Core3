@@ -24,7 +24,7 @@ class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(LuaObject* templateData);
 
-	void sendTo(SceneObject* player, bool doClose);
+	void sendBaselinesTo(SceneObject* player);
 
 	int getBankCredits();
 
@@ -184,7 +184,7 @@ protected:
 public:
 	CreatureObjectImplementation(LuaObject* templateData);
 
-	void sendTo(SceneObject* player, bool doClose);
+	void sendBaselinesTo(SceneObject* player);
 
 	int getBankCredits();
 
@@ -261,7 +261,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void sendTo(SceneObject* player, bool doClose);
+	void sendBaselinesTo(SceneObject* player);
 
 	int getBankCredits();
 
