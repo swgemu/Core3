@@ -47,6 +47,8 @@ using namespace server::zone::objects::tangible;
 
 #include "system/lang/Time.h"
 
+#include "engine/util/QuadTreeEntry.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -63,6 +65,10 @@ namespace creature {
 class PlayerCreature : public CreatureObject {
 public:
 	PlayerCreature(LuaObject* templateData);
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissappear(QuadTreeEntry* entry);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -141,6 +147,10 @@ protected:
 public:
 	PlayerCreatureImplementation(LuaObject* templateData);
 
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissappear(QuadTreeEntry* entry);
+
 	void sendMessage(BaseMessage* msg);
 
 	void sendToOwner(bool doClose);
@@ -175,6 +185,10 @@ public:
 	PlayerCreatureAdapter(PlayerCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissappear(QuadTreeEntry* entry);
 
 	void sendMessage(BaseMessage* msg);
 

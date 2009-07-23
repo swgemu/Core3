@@ -30,7 +30,25 @@ public:
 
 	int getCashCredits();
 
-	int getBaseHealthUpdateCounter();
+	int getBaseHealth(int idx);
+
+	unsigned int getBaseHealthUpdateCounter();
+
+	int getWounds(int idx);
+
+	unsigned int getWoundsUpdateCounter();
+
+	unsigned int getEncumbrancesUpdateCounter();
+
+	unsigned int getHamListUpdateCounter();
+
+	int getHAM(int idx);
+
+	unsigned int getMaxHamListUpdateCounter();
+
+	int getMaxHAM(int idx);
+
+	int getEncumbrance(int idx);
 
 	byte getPosture();
 
@@ -190,7 +208,25 @@ public:
 
 	int getCashCredits();
 
-	int getBaseHealthUpdateCounter();
+	int getBaseHealth(int idx);
+
+	unsigned int getBaseHealthUpdateCounter();
+
+	int getWounds(int idx);
+
+	unsigned int getWoundsUpdateCounter();
+
+	unsigned int getEncumbrancesUpdateCounter();
+
+	unsigned int getHamListUpdateCounter();
+
+	int getHAM(int idx);
+
+	unsigned int getMaxHamListUpdateCounter();
+
+	int getMaxHAM(int idx);
+
+	int getEncumbrance(int idx);
 
 	byte getPosture();
 
@@ -267,7 +303,25 @@ public:
 
 	int getCashCredits();
 
-	int getBaseHealthUpdateCounter();
+	int getBaseHealth(int idx);
+
+	unsigned int getBaseHealthUpdateCounter();
+
+	int getWounds(int idx);
+
+	unsigned int getWoundsUpdateCounter();
+
+	unsigned int getEncumbrancesUpdateCounter();
+
+	unsigned int getHamListUpdateCounter();
+
+	int getHAM(int idx);
+
+	unsigned int getMaxHamListUpdateCounter();
+
+	int getMaxHAM(int idx);
+
+	int getEncumbrance(int idx);
 
 	byte getPosture();
 

@@ -66,15 +66,9 @@ public:
 
 		insertInt(9); // List Size
 		insertInt(creo->getWoundsUpdateCounter());
-		insertInt(creo->getHealthWounds());
-		insertInt(creo->getStrengthWounds());
-		insertInt(creo->getConstitutionWounds());
-		insertInt(creo->getActionWounds());
-		insertInt(creo->getQuicknessWounds());
-		insertInt(creo->getStaminaWounds());
-		insertInt(creo->getMindWounds());
-		insertInt(creo->getFocusWounds());
-		insertInt(creo->getWillpowerWounds());
+		for (int i = 0; i < 9; ++i) {
+			insertInt(creo->getWounds(i));
+		}
 
 		setSize();
 	}

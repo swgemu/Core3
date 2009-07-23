@@ -39,3 +39,17 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 
 	sendTo(_this, doClose);
 }
+
+void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
+	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+
+	if (scno != _this)
+		scno->sendTo(_this, true);
+}
+
+void PlayerCreatureImplementation::notifyDissappear(QuadTreeEntry* entry) {
+	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
+
+	if (scno != _this)
+		scno->destroy(owner);
+}

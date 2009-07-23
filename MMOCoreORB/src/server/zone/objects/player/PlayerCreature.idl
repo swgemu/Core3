@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.objects.creature;
 
 import system.lang.Time;
+import engine.util.QuadTreeEntry;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
 import server.zone.objects.player.PlayerObject;
@@ -93,6 +94,9 @@ class PlayerCreature extends CreatureObject {
 	// Profession stuff
 	
 	public native PlayerCreature(LuaObject templateData);
+	
+	public native void notifyInsert(QuadTreeEntry entry);
+	public native void notifyDissappear(QuadTreeEntry entry);
 	
 	public void sendMessage(BaseMessage msg) {
 		if (owner == null) {

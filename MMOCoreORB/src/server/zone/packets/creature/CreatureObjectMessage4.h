@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/creature/CreatureObjectImplementation.h"
+#include "../../objects/creature/CreatureObject.h"
 
 class CreatureObjectMessage4 : public BaseLineMessage {
 public:
@@ -59,10 +59,11 @@ public:
 
 		//Encumbrances
 		insertInt(3);
-		insertInt(creo->getEncumbUpdateCounter());
-		insertInt(creo->getHealthEncumbrance());
-		insertInt(creo->getActionEncumbrance());
-		insertInt(creo->getMindEncumbrance());
+		insertInt(creo->getEncumbrancesUpdateCounter());
+
+		for (int i = 0; i < 3; ++i) {
+			insertInt(creo->getEncumbrance(i));
+		}
 
 		// skill mods
 		insertSkillMods(creo);
@@ -74,7 +75,7 @@ public:
 		// listenToID
 		insertLong(creo->getListenID());
 
-		insertFloat(creo->speed);
+		insertFloat(creo->getSpeed());
 
 		insertFloat(1.00625f);
 
@@ -83,7 +84,7 @@ public:
 		// turn radius
 		insertFloat(1);
 
-		insertFloat(creo->acceleration);
+		insertFloat(creo->getAcceleration());
 		insertFloat(0.0125f);
 
 		//
@@ -95,7 +96,7 @@ public:
 
 	// TODO: this needs to be cleaner for dealing with values
 	void insertSkillMods(CreatureObjectImplementation* creo) {
-		String skillmod;
+		/*String skillmod;
 		int value;
 
 		creo->creatureSkillMods.resetIterator();
@@ -111,7 +112,10 @@ public:
 			insertInt(value + creo->creatureSkillModBonus.get(skillmod));
 
 			insertInt(0);
-		}
+		}*/
+
+		insertInt(0);
+		insertInt(0);
 	}
 };
 

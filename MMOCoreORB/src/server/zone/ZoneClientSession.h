@@ -38,6 +38,10 @@ public:
 
 	void disconnect(bool doLock);
 
+	void balancePacketCheckupTime();
+
+	void resetPacketCheckupTime();
+
 	void closeConnection(bool lockPlayer, bool doLock);
 
 	String getAddress();
@@ -90,6 +94,10 @@ public:
 
 	void disconnect(bool doLock);
 
+	void balancePacketCheckupTime();
+
+	void resetPacketCheckupTime();
+
 	void closeConnection(bool lockPlayer, bool doLock);
 
 	String getAddress();
@@ -134,6 +142,10 @@ public:
 	void disconnect();
 
 	void disconnect(bool doLock);
+
+	void balancePacketCheckupTime();
+
+	void resetPacketCheckupTime();
 
 	void closeConnection(bool lockPlayer, bool doLock);
 

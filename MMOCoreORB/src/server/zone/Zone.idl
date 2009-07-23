@@ -45,6 +45,8 @@ which carries forward this exception.
 package server.zone;
 
 import engine.util.QuadTree;
+import engine.util.QuadTreeEntry;
+
 import engine.sched.ScheduleManager;
 import system.lang.Time;
 import engine.sched.ScheduleManager;
@@ -76,6 +78,12 @@ class Zone extends ManagedObject, native QuadTree {
 	boolean weatherEnabled;
 	
 	native public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
+	
+	public native void lock();
+	public native void unlock();
+	
+	public local native void insert(QuadTreeEntry entry);
+	public local native void inRange(QuadTreeEntry entry, float range);
 
 	public native void startManagers();
 

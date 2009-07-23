@@ -27,12 +27,38 @@ PlayerCreature::PlayerCreature(DummyConstructorParameter* param) : CreatureObjec
 PlayerCreature::~PlayerCreature() {
 }
 
-void PlayerCreature::sendMessage(BaseMessage* msg) {
+void PlayerCreature::notifyInsert(QuadTreeEntry* entry) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(entry);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->notifyInsert(entry);
+}
+
+void PlayerCreature::notifyDissappear(QuadTreeEntry* entry) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(entry);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerCreatureImplementation*) _impl)->notifyDissappear(entry);
+}
+
+void PlayerCreature::sendMessage(BaseMessage* msg) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -45,7 +71,7 @@ void PlayerCreature::sendToOwner(bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 9);
 		method.addBooleanParameter(doClose);
 
 		method.executeWithVoidReturn();
@@ -58,7 +84,7 @@ ZoneClientSession* PlayerCreature::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -70,7 +96,7 @@ byte PlayerCreature::getRaceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithByteReturn();
 	} else
@@ -82,7 +108,7 @@ void PlayerCreature::setClient(ZoneClientSession* cli) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(cli);
 
 		method.executeWithVoidReturn();
@@ -103,7 +129,7 @@ void PlayerCreature::setRaceID(byte id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 		method.addByteParameter(id);
 
 		method.executeWithVoidReturn();
@@ -152,42 +178,42 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 }
 
 void PlayerCreatureImplementation::sendMessage(BaseMessage* msg) {
-	// server/zone/objects/player/PlayerCreature.idl(98):  
+	// server/zone/objects/player/PlayerCreature.idl(102):  
 	if (owner == NULL){
-	// server/zone/objects/player/PlayerCreature.idl(99):  msg.finalize();
+	// server/zone/objects/player/PlayerCreature.idl(103):  msg.finalize();
 	msg->finalize();
-	// server/zone/objects/player/PlayerCreature.idl(100):  return;
+	// server/zone/objects/player/PlayerCreature.idl(104):  return;
 	return;
 }
 
 	else {
-	// server/zone/objects/player/PlayerCreature.idl(102):  owner.sendMessage(msg);
+	// server/zone/objects/player/PlayerCreature.idl(106):  owner.sendMessage(msg);
 	owner->sendMessage(msg);
 }
 }
 
 ZoneClientSession* PlayerCreatureImplementation::getClient() {
-	// server/zone/objects/player/PlayerCreature.idl(109):  return owner;
+	// server/zone/objects/player/PlayerCreature.idl(113):  return owner;
 	return owner;
 }
 
 byte PlayerCreatureImplementation::getRaceID() {
-	// server/zone/objects/player/PlayerCreature.idl(113):  return raceID;
+	// server/zone/objects/player/PlayerCreature.idl(117):  return raceID;
 	return raceID;
 }
 
 void PlayerCreatureImplementation::setClient(ZoneClientSession* cli) {
-	// server/zone/objects/player/PlayerCreature.idl(117):  owner = cli;
+	// server/zone/objects/player/PlayerCreature.idl(121):  owner = cli;
 	owner = cli;
 }
 
 void PlayerCreatureImplementation::setBiography(const UnicodeString& bio) {
-	// server/zone/objects/player/PlayerCreature.idl(121):  biography = bio;
+	// server/zone/objects/player/PlayerCreature.idl(125):  biography = bio;
 	biography = bio;
 }
 
 void PlayerCreatureImplementation::setRaceID(byte id) {
-	// server/zone/objects/player/PlayerCreature.idl(125):  raceID = id;
+	// server/zone/objects/player/PlayerCreature.idl(129):  raceID = id;
 	raceID = id;
 }
 
@@ -203,21 +229,27 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		sendMessage((BaseMessage*) inv->getObjectParameter());
+		notifyInsert((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 7:
-		sendToOwner(inv->getBooleanParameter());
+		notifyDissappear((QuadTreeEntry*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertLong(getClient()->_getObjectID());
+		sendMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertByte(getRaceID());
+		sendToOwner(inv->getBooleanParameter());
 		break;
 	case 10:
-		setClient((ZoneClientSession*) inv->getObjectParameter());
+		resp->insertLong(getClient()->_getObjectID());
 		break;
 	case 11:
+		resp->insertByte(getRaceID());
+		break;
+	case 12:
+		setClient((ZoneClientSession*) inv->getObjectParameter());
+		break;
+	case 13:
 		setRaceID(inv->getByteParameter());
 		break;
 	default:
@@ -225,6 +257,14 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	}
 
 	return resp;
+}
+
+void PlayerCreatureAdapter::notifyInsert(QuadTreeEntry* entry) {
+	return ((PlayerCreatureImplementation*) impl)->notifyInsert(entry);
+}
+
+void PlayerCreatureAdapter::notifyDissappear(QuadTreeEntry* entry) {
+	return ((PlayerCreatureImplementation*) impl)->notifyDissappear(entry);
 }
 
 void PlayerCreatureAdapter::sendMessage(BaseMessage* msg) {
