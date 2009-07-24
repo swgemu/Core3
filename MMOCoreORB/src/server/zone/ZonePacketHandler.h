@@ -74,6 +74,7 @@ class ZoneServer;
 		}
 
 		void registerMessages();
+		void registerObjectControllerMessages();
 
 		void handleMessage(Message* pack);
 

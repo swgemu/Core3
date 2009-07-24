@@ -120,7 +120,7 @@ void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containme
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	ReferenceSlot<ZoneClientSession> client = player->getClient();
+	ManagedReference<ZoneClientSession*> client = player->getClient();
 	if (client == NULL)
 		return;
 

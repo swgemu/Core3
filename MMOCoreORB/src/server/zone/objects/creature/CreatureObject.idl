@@ -73,6 +73,8 @@ class CreatureObject extends TangibleObject {
 	
 	protected unsigned long stateBitmask;
 	
+	protected unsigned int movementCounter;
+	
 	//protected VectorMap<string, SkillBox> skillBoxes;
 	
 	protected Vector<int> encumbrances;
@@ -259,6 +261,10 @@ class CreatureObject extends TangibleObject {
 	
 	public float getHeight() {
 		return height;
+	}
+	
+	public unsigned int getMovementCounter() {
+		return movementCounter;
 	}
 	
 	public void setHeight(float heigh) {
