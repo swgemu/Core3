@@ -45,6 +45,38 @@ class Container;
 
 using namespace server::zone::objects::tangible;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
+class PlayerDisconnectEvent;
+
+} // namespace events
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
+class PlayerRecoveryEvent;
+
+} // namespace events
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::events;
+
 #include "system/lang/Time.h"
 
 #include "engine/util/QuadTreeEntry.h"
@@ -68,11 +100,33 @@ public:
 
 	void notifyInsert(QuadTreeEntry* entry);
 
-	void notifyDissappear(QuadTreeEntry* entry);
+	void notifyDissapear(QuadTreeEntry* entry);
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void unload();
+
+	void logout(bool doLock);
+
+	void activateRecovery();
+
+	void doRecovery();
 
 	void sendMessage(BaseMessage* msg);
 
 	void sendToOwner(bool doClose);
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
 
 	ZoneClientSession* getClient();
 
@@ -83,6 +137,18 @@ public:
 	void setBiography(const UnicodeString& bio);
 
 	void setRaceID(byte id);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -130,6 +196,10 @@ protected:
 
 	byte lotsRemaining;
 
+	PlayerDisconnectEvent* disconnectEvent;
+
+	PlayerRecoveryEvent* recoveryEvent;
+
 	Time* nextAction;
 
 	Time* nextTip;
@@ -145,15 +215,49 @@ protected:
 	int factionStatus;
 
 public:
+	static const int ONLINE = 0x1;
+
+	static const int OFFLINE = 0x2;
+
+	static const int LINKDEAD = 0x3;
+
+	static const int LOGGINGIN = 0x4;
+
+	static const int LOGGINGOUT = 0x5;
+
+	static const int LOADING = 0x6;
+
 	PlayerCreatureImplementation(LuaObject* templateData);
 
 	void notifyInsert(QuadTreeEntry* entry);
 
-	void notifyDissappear(QuadTreeEntry* entry);
+	void notifyDissapear(QuadTreeEntry* entry);
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void unload();
+
+	void logout(bool doLock);
+
+	void activateRecovery();
+
+	void doRecovery();
 
 	void sendMessage(BaseMessage* msg);
 
 	void sendToOwner(bool doClose);
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
 
 	ZoneClientSession* getClient();
 
@@ -164,6 +268,18 @@ public:
 	void setBiography(const UnicodeString& bio);
 
 	void setRaceID(byte id);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
 
 	PlayerCreature* _this;
 
@@ -188,11 +304,33 @@ public:
 
 	void notifyInsert(QuadTreeEntry* entry);
 
-	void notifyDissappear(QuadTreeEntry* entry);
+	void notifyDissapear(QuadTreeEntry* entry);
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void unload();
+
+	void logout(bool doLock);
+
+	void activateRecovery();
+
+	void doRecovery();
 
 	void sendMessage(BaseMessage* msg);
 
 	void sendToOwner(bool doClose);
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
 
 	ZoneClientSession* getClient();
 
@@ -201,6 +339,18 @@ public:
 	void setClient(ZoneClientSession* cli);
 
 	void setRaceID(byte id);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
 
 };
 

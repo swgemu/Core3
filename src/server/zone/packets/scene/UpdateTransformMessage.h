@@ -67,7 +67,7 @@ public:
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte(scno->getDirectionAngle());
+		insertByte((byte)scno->getDirectionAngle());
 	}
 
 	UpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : BaseMessage(50) {

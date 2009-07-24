@@ -74,9 +74,21 @@ class SceneObject : public ManagedObject {
 public:
 	SceneObject(LuaObject* templateData);
 
+	void info(const String& msg, bool forced);
+
+	void info(const String& msg);
+
+	void error(const String& msg);
+
 	void wlock();
 
+	void wlock(SceneObject* crossLock);
+
+	void wlock(bool doLock);
+
 	void unlock();
+
+	void unlock(bool doLock);
 
 	void redeploy();
 
@@ -107,6 +119,12 @@ public:
 	void sendToOwner(bool doClose);
 
 	void insertToZone(Zone* zone);
+
+	void removeFromZone(bool lockZone);
+
+	void updateZone(bool lightUpdate);
+
+	void broadcastMessage(BaseMessage* message, bool lockZone);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -146,6 +164,10 @@ public:
 
 	Zone* getZone();
 
+	float getDirectionAngle();
+
+	unsigned int getMovementCounter();
+
 	void setPosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
@@ -161,6 +183,10 @@ public:
 	void setObjectName(UnicodeString& name);
 
 	void setZone(Zone* zon);
+
+	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setMovementCounter(unsigned int count);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -198,6 +224,8 @@ protected:
 	unsigned int objectCRC;
 
 	Quaternion* direction;
+
+	unsigned int movementCounter;
 
 	Vector<String >* arrangementDescriptors;
 
@@ -556,9 +584,21 @@ public:
 
 	SceneObjectImplementation(LuaObject* templateData);
 
+	void info(const String& msg, bool forced);
+
+	void info(const String& msg);
+
+	void error(const String& msg);
+
 	void wlock();
 
+	void wlock(SceneObject* crossLock);
+
+	void wlock(bool doLock);
+
 	void unlock();
+
+	void unlock(bool doLock);
 
 	void redeploy();
 
@@ -589,6 +629,12 @@ public:
 	virtual void sendToOwner(bool doClose);
 
 	virtual void insertToZone(Zone* zone);
+
+	virtual void removeFromZone(bool lockZone);
+
+	virtual void updateZone(bool lightUpdate);
+
+	void broadcastMessage(BaseMessage* message, bool lockZone);
 
 	virtual void sendMessage(BaseMessage* msg);
 
@@ -628,6 +674,10 @@ public:
 
 	Zone* getZone();
 
+	float getDirectionAngle();
+
+	unsigned int getMovementCounter();
+
 	void setPosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
@@ -643,6 +693,10 @@ public:
 	void setObjectName(UnicodeString& name);
 
 	void setZone(Zone* zon);
+
+	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setMovementCounter(unsigned int count);
 
 	SceneObject* _this;
 
@@ -665,9 +719,21 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void info(const String& msg, bool forced);
+
+	void info(const String& msg);
+
+	void error(const String& msg);
+
 	void wlock();
 
+	void wlock(SceneObject* crossLock);
+
+	void wlock(bool doLock);
+
 	void unlock();
+
+	void unlock(bool doLock);
 
 	void redeploy();
 
@@ -698,6 +764,12 @@ public:
 	void sendToOwner(bool doClose);
 
 	void insertToZone(Zone* zone);
+
+	void removeFromZone(bool lockZone);
+
+	void updateZone(bool lightUpdate);
+
+	void broadcastMessage(BaseMessage* message, bool lockZone);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -735,6 +807,10 @@ public:
 
 	Zone* getZone();
 
+	float getDirectionAngle();
+
+	unsigned int getMovementCounter();
+
 	void setPosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
@@ -747,7 +823,14 @@ public:
 
 	void setZone(Zone* zon);
 
+	void setDirection(float fw, float fx, float fy, float fz);
+
+	void setMovementCounter(unsigned int count);
+
 protected:
+	String _param0_info__String_bool_;
+	String _param0_info__String_;
+	String _param0_error__String_;
 	String _param0_getSlot__String_;
 };
 

@@ -42,14 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "ZoneClientSession.h"
+
 #include "ZoneServer.h"
 
-//#include "Zone.h"
+#include "Zone.h"
 
-#include "ZoneClientSession.h"
-//#include "ZoneClientSessionImplementation.h"
-
-//#include "objects/player/Player.h"
+#include "objects/player/PlayerCreature.h"
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
@@ -87,14 +86,10 @@ void ZoneClientSessionImplementation::sendMessage(StandaloneBaseMessage* msg) {
 	BaseClientProxy::sendPacket((BasePacket*) msg);
 }
 
-/*String& ZoneClientSessionImplementation::getAddress() {
-	return BaseClientProxy::getAddress();
-}*/
-
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	lock(doLock);
 
-	/*if (disconnecting) {
+	if (disconnecting) {
 		unlock(doLock);
 		return;
 	}
@@ -103,24 +98,24 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 	if (hasError || !clientDisconnected) {
 		if (player != NULL) {
-			unlock();
+			unlock(true);
 
-			player->disconnect(false, true);
+			((PlayerCreature*)player)->disconnect(false, true);
 
-			lock();
+			lock(true);
 		}
 
 		closeConnection(true, false);
 	} else if (player != NULL) {
-		unlock();
+		unlock(true);
 
-		if (player->isLoggingOut())
-			player->logout();
+		if (((PlayerCreature*)player)->isLoggingOut())
+			((PlayerCreature*)player)->logout(true);
 		else {
 			try {
 				//player->wlock();
 
-				player->setLinkDead();
+				((PlayerCreature*)player)->setLinkDead();
 
 				//player->unlock();
 			} catch (...) {
@@ -130,8 +125,8 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 			closeConnection(true, true);
 		}
 
-		lock();
-	}*/
+		lock(true);
+	}
 
 	unlock(doLock);
 }
@@ -142,15 +137,15 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 
 		info("disconnecting client \'" + ip + "\'");
 
-		/*ZoneServer* server = NULL;
+		ZoneServer* server = NULL;
 
 		if (player != NULL) {
 			ZoneServer* srv = NULL;
 
-			ManagedReference<Player> play = player;
+			ManagedReference<PlayerCreature*> play = (PlayerCreature*)player;
 
 			if (lockPlayer)
-				unlock();
+				unlock(true);
 
 			try {
 				play->wlock(lockPlayer);
@@ -166,7 +161,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 			}
 
 			if (lockPlayer)
-				lock();
+				lock(true);
 
 			server = srv;
 
@@ -178,7 +173,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		if (server != NULL) {
 			server->addTotalSentPacket(getSentPacketCount());
 			server->addTotalResentPacket(getResentPacketCount());
-		}*/
+		}
 
 		unlock(doLock);
 	} catch (...) {
@@ -186,10 +181,3 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	}
 }
 
-/*void ZoneClientSessionImplementation::acquire() {
-	_this->acquire();
-}
-
-void ZoneClientSessionImplementation::release() {
-	_this->release();
-}*/

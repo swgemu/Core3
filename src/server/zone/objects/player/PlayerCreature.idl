@@ -53,6 +53,8 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.Container;
 import engine.service.proto.BaseMessage;
 import engine.lua.LuaObject;
+import server.zone.objects.player.events.PlayerDisconnectEvent;
+import server.zone.objects.player.events.PlayerRecoveryEvent;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -73,6 +75,9 @@ class PlayerCreature extends CreatureObject {
 	protected unicode biography; //char biography
 
 	protected byte lotsRemaining;
+	
+	protected PlayerDisconnectEvent disconnectEvent;
+	protected PlayerRecoveryEvent recoveryEvent;
 
 	// player objects
 	/*protected PlayerObject playerObject;
@@ -90,13 +95,28 @@ class PlayerCreature extends CreatureObject {
 
 
 	protected int factionStatus;
-
-	// Profession stuff
+	
+	public static final int ONLINE = 1;
+	public static final int OFFLINE = 2;
+	public static final int LINKDEAD = 3;
+	public static final int LOGGINGIN = 4;
+	public static final int LOGGINGOUT = 5;
+	public static final int LOADING = 6;
 	
 	public native PlayerCreature(LuaObject templateData);
 	
 	public native void notifyInsert(QuadTreeEntry entry);
-	public native void notifyDissappear(QuadTreeEntry entry);
+	public native void notifyDissapear(QuadTreeEntry entry);
+	
+	public native void disconnect(boolean closeClient, boolean doLock);
+	
+	public native void unload();
+	
+	public native void logout(boolean doLock);
+	
+	public native void activateRecovery();
+	
+	public native void doRecovery();
 	
 	public void sendMessage(BaseMessage msg) {
 		if (owner == null) {
@@ -108,6 +128,30 @@ class PlayerCreature extends CreatureObject {
 	}
 	
 	public native void sendToOwner(boolean doClose = true);
+	
+	public boolean isOnline() {
+		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	}
+	
+	public boolean isOffline() {
+		return onlineStatus == OFFLINE;
+	}
+	
+	public boolean isLoading() {
+		return onlineStatus == LOADING ||ÊonlineStatus == LOGGINGOUT;
+	}
+	
+	public boolean isLinkDead() {
+		return onlineStatus == LINKDEAD;
+	}
+	
+	public boolean isLoggingIn() {
+		return onlineStatus == LOGGINGIN;
+	}
+	
+	public boolean isLoggingOut() {
+		return onlineStatus == LOGGINGOUT;
+	}
 	
 	public ZoneClientSession getClient() {
 		return owner;
@@ -127,6 +171,41 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setRaceID(byte id) {
 		raceID = id;
+	}
+	
+	public void setOffline() {
+		if (isLinkDead()) {
+			// clear LD flag
+		}
+		
+		onlineStatus = OFFLINE;
+	}
+	
+	public void setLinkDead() {
+		onlineStatus = LINKDEAD;
+		
+		logoutTimeStamp.update();
+		logoutTimeStamp.addMiliTime(7530);
+		
+		activateRecovery();
+	}
+	
+	public void setOnline() {
+		onlineStatus = ONLINE;
+		
+		doRecovery();
+	}
+	
+	public void setLoggingOut() {
+		onlineStatus = LOGGINGOUT;
+	}
+	
+	public void clearDisconnectEvent() {
+		disconnectEvent = null;
+	}
+	
+	public void clearRecoveryEvent() {
+		recoveryEvent = null;
 	}
 	
 }

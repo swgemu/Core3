@@ -45,13 +45,19 @@ which carries forward this exception.
 #ifndef PLAYERRECOVERYEVENT_H_
 #define PLAYERRECOVERYEVENT_H_
 
-#include "../Player.h"
+#include "../PlayerCreature.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
 
 class PlayerRecoveryEvent : public Event {
-	ManagedReference<Player> player;
+	ManagedReference<PlayerCreature*> player;
 
 public:
-	PlayerRecoveryEvent(Player* pl) : Event(2000) {
+	PlayerRecoveryEvent(PlayerCreature* pl) : Event(2000) {
 		player = pl;
 	}
 
@@ -80,10 +86,12 @@ public:
 		return true;
 	}
 
-	void setPlayer(Player* pl) {
-		player = pl;
-	}
-
 };
+
+}
+}
+}
+}
+}
 
 #endif /*PLAYERRECOVERYEVENT_H_*/

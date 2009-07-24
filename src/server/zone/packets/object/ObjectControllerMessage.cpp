@@ -68,7 +68,11 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
 
 	if (objectControllerCallback == NULL) {
-		System::out << "unregistered 0x" << hex << type << "object controller message received\n";
+		StringBuffer msg;
+		msg << "unregistered 0x" << hex << type << " object controller message received\n";
+
+		SceneObject* player = client->getPlayer();
+		player->error(msg.toString());
 		return;
 	}
 
@@ -96,7 +100,12 @@ void ObjectControllerMessageCallback::execute() {
 		player->wlock();
 
 
-		//if (objectID != client->get)
+		if (objectID != player->getObjectID()) {
+			player->error("wrong object id in object controller message?");
+			player->unlock();
+
+			return;
+		}
 
 		if (objectControllerCallback != NULL)
 			objectControllerCallback->execute();

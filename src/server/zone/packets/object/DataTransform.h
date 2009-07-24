@@ -85,10 +85,10 @@ public:
 		movementStamp = message->parseInt();
 		movementCounter = message->parseInt();
 
+		directionW = message->parseFloat();
 		directionX = message->parseFloat();
 		directionY = message->parseFloat();
 		directionZ = message->parseFloat();
-		directionW = message->parseFloat();
 
 		positionX = message->parseFloat();
 		positionZ = message->parseFloat();
@@ -96,6 +96,13 @@ public:
 	}
 
 	void execute() {
+		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+
+		object->setMovementCounter(movementCounter);
+		object->setDirection(directionW, directionX, directionY, directionZ);
+		object->setPosition(positionX, positionZ, positionY);
+
+		object->updateZone(false);
 
 	}
 };

@@ -50,9 +50,17 @@ public:
 
 	void lock();
 
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
+
 	void unlock();
 
 	void insert(QuadTreeEntry* entry);
+
+	void remove(QuadTreeEntry* entry);
+
+	void update(QuadTreeEntry* entry);
 
 	void inRange(QuadTreeEntry* entry, float range);
 
@@ -128,9 +136,17 @@ public:
 
 	void lock();
 
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
+
 	void unlock();
 
 	void insert(QuadTreeEntry* entry);
+
+	void remove(QuadTreeEntry* entry);
+
+	void update(QuadTreeEntry* entry);
 
 	void inRange(QuadTreeEntry* entry, float range);
 
@@ -186,6 +202,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void lock();
+
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
 
 	void unlock();
 

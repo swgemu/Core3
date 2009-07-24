@@ -98,6 +98,8 @@ public:
 
 				player->insertToZone(player->getZone());
 
+				player->setOnline();
+
 				player->unlock();
 			} catch (...) {
 				player->unlock();
