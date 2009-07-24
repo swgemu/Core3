@@ -200,7 +200,6 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("optionsBitmask", &optionsBitmask);
 	addSerializableVariable("pvpStatusBitmask", &pvpStatusBitmask);
 	addSerializableVariable("unknownByte", &unknownByte);
-	addSerializableVariable("defenderList", defenderList);
 	addSerializableVariable("defenderListUpdateCounter", &defenderListUpdateCounter);
 }
 

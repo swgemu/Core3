@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
@@ -77,7 +79,7 @@ namespace server {
 namespace zone {
 
 class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
-	SceneObject* player;
+	ManagedReference<SceneObject* > player;
 
 	unsigned int sessionKey;
 

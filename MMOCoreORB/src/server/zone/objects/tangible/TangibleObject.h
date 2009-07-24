@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
@@ -92,7 +94,7 @@ protected:
 
 	byte unknownByte;
 
-	DeltaVector<SceneObject* >* defenderList;
+	Vector<SceneObject* >* defenderList;
 
 	unsigned int defenderListUpdateCounter;
 

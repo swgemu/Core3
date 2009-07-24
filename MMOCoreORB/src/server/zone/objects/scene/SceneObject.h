@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 namespace server {
 namespace zone {
 
@@ -215,9 +217,9 @@ class SceneObjectImplementation : public ManagedObjectImplementation, public Qua
 protected:
 	ZoneProcessServerImplementation* server;
 
-	Zone* zone;
+	ManagedReference<Zone* > zone;
 
-	SceneObject* parent;
+	ManagedReference<SceneObject* > parent;
 
 	VectorMap<String, SceneObject* >* containmentSlots;
 

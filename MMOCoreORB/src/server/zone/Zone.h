@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 namespace server {
 namespace zone {
 
@@ -117,7 +119,7 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ScheduleManager* scheduler;
 
-	ZoneServer* server;
+	ManagedReference<ZoneServer* > server;
 
 	Time* galacticTime;
 

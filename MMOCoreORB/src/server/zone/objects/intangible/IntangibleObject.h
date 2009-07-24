@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"

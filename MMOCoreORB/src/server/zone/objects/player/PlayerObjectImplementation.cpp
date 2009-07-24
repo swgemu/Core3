@@ -46,6 +46,8 @@ which carries forward this exception.
 
 #include "../../managers/object/ObjectManager.h"
 
+#include "server/zone/ZoneClientSession.h"
+
 
 PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
 	IntangibleObjectImplementation(templateData) {

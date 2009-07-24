@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
