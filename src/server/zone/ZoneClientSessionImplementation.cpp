@@ -100,7 +100,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		if (player != NULL) {
 			unlock(true);
 
-			((PlayerCreature*)player)->disconnect(false, true);
+			((PlayerCreature*)player.get())->disconnect(false, true);
 
 			lock(true);
 		}
@@ -109,13 +109,13 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	} else if (player != NULL) {
 		unlock(true);
 
-		if (((PlayerCreature*)player)->isLoggingOut())
-			((PlayerCreature*)player)->logout(true);
+		if (((PlayerCreature*)player.get())->isLoggingOut())
+			((PlayerCreature*)player.get())->logout(true);
 		else {
 			try {
 				//player->wlock();
 
-				((PlayerCreature*)player)->setLinkDead();
+				((PlayerCreature*)player.get())->setLinkDead();
 
 				//player->unlock();
 			} catch (...) {
@@ -142,7 +142,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 		if (player != NULL) {
 			ZoneServer* srv = NULL;
 
-			ManagedReference<PlayerCreature*> play = (PlayerCreature*)player;
+			ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
 
 			if (lockPlayer)
 				unlock(true);

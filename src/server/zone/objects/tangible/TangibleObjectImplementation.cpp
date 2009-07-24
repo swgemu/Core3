@@ -67,7 +67,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 
 	optionsBitmask = 0;
 
-	defenderList = new DeltaVector<SceneObject*>();
+	defenderList = new Vector<SceneObject*>();
 	customizationVariables = new CustomizationVariables();
 
 }

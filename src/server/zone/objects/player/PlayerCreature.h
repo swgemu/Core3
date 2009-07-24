@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 namespace server {
 namespace zone {
 
@@ -172,7 +174,7 @@ namespace creature {
 
 class PlayerCreatureImplementation : public CreatureObjectImplementation {
 protected:
-	ZoneClientSession* owner;
+	ManagedReference<ZoneClientSession* > owner;
 
 	int onlineStatus;
 

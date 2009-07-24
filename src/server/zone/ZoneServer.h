@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 namespace server {
 namespace zone {
 
@@ -206,7 +208,7 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	ObjectManager* objectManager;
 
-	PlayerManager* playerManager;
+	ManagedReference<PlayerManager* > playerManager;
 
 	int totalSentPackets;
 

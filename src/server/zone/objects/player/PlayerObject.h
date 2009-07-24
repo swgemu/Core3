@@ -7,6 +7,8 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
+#include "engine/core/ManagedReference.h"
+
 namespace server {
 namespace zone {
 
@@ -57,9 +59,9 @@ namespace objects {
 namespace player {
 
 class PlayerObjectImplementation : public IntangibleObjectImplementation {
-	CreatureObject* creatureObject;
+	ManagedReference<CreatureObject* > creatureObject;
 
-	ZoneClientSession* owner;
+	ManagedReference<ZoneClientSession* > owner;
 
 public:
 	PlayerObjectImplementation(LuaObject* templateData);
