@@ -83,6 +83,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	protected unsigned int objectCRC;
 	
 	protected Quaternion direction;
+	protected unsigned int movementCounter;
 	
 	protected native float positionX;
 	protected native float positionZ;
@@ -286,11 +287,33 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 
 	public native SceneObject(LuaObject templateData);
 	
-	//public info(final string msg, boolean forced = false);
+	public void info(final string msg, boolean forced) {
+		Logger.info(msg, forced);
+	}
+	
+	public void info(final string msg) {
+		Logger.info(msg);
+	}
+	
+	public void error(final string msg) {
+		Logger.error(msg);
+	}
 	
 	public native void wlock();
+	public native void wlock(SceneObject crossLock);
+
+	public void wlock(boolean doLock) {
+		if (doLock)
+			wlock();
+	}
 	
 	public native void unlock();
+	
+	public void unlock(boolean doLock) {
+		if (doLock)
+			unlock();
+	}
+
 	
 	public void redeploy() {
 	}
@@ -366,6 +389,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	}
 	
 	public native abstract void insertToZone(Zone zone);
+	public native abstract void removeFromZone(boolean lockZone);
+	public native abstract void updateZone(boolean lightUpdate);
+	
+	public native void broadcastMessage(BaseMessage message, boolean lockZone = true);
 	
 	public abstract void sendMessage(BaseMessage msg) {
 		if (msg != null)
@@ -444,6 +471,14 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return zone;
 	}
 	
+	public float getDirectionAngle() {
+		return direction.getDegrees();
+	}
+	
+	public unsigned int getMovementCounter() {
+		return movementCounter;
+	}
+	
 	public void setPosition(float x, float z, float y) {
 		QuadTreeEntry.setPosition(x, z, y);
 	}
@@ -474,6 +509,14 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public void setZone(Zone zon) {
 		zone = zon;
+	}
+	
+	public void setDirection(float fw, float fx, float fy, float fz) {
+		direction.set(fw, fx, fy, fz);
+	}
+	
+	public void setMovementCounter(unsigned int count) {
+		movementCounter = count;
 	}
 
 }

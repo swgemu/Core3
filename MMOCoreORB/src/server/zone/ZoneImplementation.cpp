@@ -165,6 +165,14 @@ void ZoneImplementation::insert(QuadTreeEntry* entry) {
 	QuadTree::insert(entry);
 }
 
+void ZoneImplementation::remove(QuadTreeEntry* entry) {
+	QuadTree::remove(entry);
+}
+
+void ZoneImplementation::update(QuadTreeEntry* entry) {
+	QuadTree::update(entry);
+}
+
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 	QuadTree::inRange(entry, range);
 }

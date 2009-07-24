@@ -96,8 +96,6 @@ public:
 
 	float getHeight();
 
-	unsigned int getMovementCounter();
-
 	void setHeight(float heigh);
 
 protected:
@@ -150,8 +148,6 @@ protected:
 	unsigned int woundsUpdateCounter;
 
 	unsigned long long stateBitmask;
-
-	unsigned int movementCounter;
 
 	Vector<int >* encumbrances;
 
@@ -278,8 +274,6 @@ public:
 
 	float getHeight();
 
-	unsigned int getMovementCounter();
-
 	void setHeight(float heigh);
 
 	CreatureObject* _this;
@@ -374,8 +368,6 @@ public:
 	byte getFrozen();
 
 	float getHeight();
-
-	unsigned int getMovementCounter();
 
 	void setHeight(float heigh);
 

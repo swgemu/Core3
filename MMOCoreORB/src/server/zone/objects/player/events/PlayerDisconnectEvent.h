@@ -45,13 +45,19 @@ which carries forward this exception.
 #ifndef PLAYERDISCONNECTEVENT_H_
 #define PLAYERDISCONNECTEVENT_H_
 
-#include "../Player.h"
+#include "../PlayerCreature.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
 
 class PlayerDisconnectEvent : public Event {
-	ManagedReference<Player> player;
+	ManagedReference<PlayerCreature*> player;
 
 public:
-	PlayerDisconnectEvent(Player* pl) : Event(2000) {
+	PlayerDisconnectEvent(PlayerCreature* pl) : Event(2000) {
 		player = pl;
 	}
 
@@ -78,5 +84,11 @@ public:
 	}
 
 };
+
+}
+}
+}
+}
+}
 
 #endif /*PLAYERDISCONNECTEVENT_H_*/

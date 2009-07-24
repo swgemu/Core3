@@ -50,6 +50,10 @@ which carries forward this exception.
 #include "../../packets/scene/SceneObjectDestroyMessage.h"
 #include "../../packets/scene/SceneObjectCloseMessage.h"
 #include "../../packets/scene/UpdateContainmentMessage.h"
+#include "../../packets/scene/UpdateTransformMessage.h"
+#include "../../packets/scene/LightUpdateTransformMessage.h"
+
+
 
 #include "../../ZoneClientSession.h"
 #include "../../Zone.h"
@@ -126,7 +130,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 	StringBuffer msg;
 	msg << "sending 0x" << hex << getObjectCRC() << " oid 0x" << hex << getObjectID();
-	info(msg);
+	info(msg.toString());
 
 	create(client);
 
@@ -150,6 +154,10 @@ void SceneObjectImplementation::wlock() {
 	ManagedObjectImplementation::wlock(true);
 }
 
+void SceneObjectImplementation::wlock(SceneObject* crossLock) {
+	ManagedObjectImplementation::wlock(crossLock);
+}
+
 void SceneObjectImplementation::unlock() {
 	ManagedObjectImplementation::unlock(true);
 }
@@ -160,6 +168,54 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 
 	BaseMessage* msg = new SceneObjectDestroyMessage(_this);
 	client->sendMessage(msg);
+}
+
+void SceneObjectImplementation::broadcastMessage(BaseMessage* message, bool lockZone) {
+	if (zone == NULL) {
+		message->finalize();
+
+		return;
+	}
+
+	try {
+		zone->lock(lockZone);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+			if (scno->isPlayerCreature()) {
+				scno->sendMessage(message->clone());
+			}
+		}
+
+		zone->unlock(lockZone);
+	} catch (...) {
+		zone->unlock(lockZone);
+	}
+}
+
+void SceneObjectImplementation::updateZone(bool lightUpdate) {
+	if (zone == NULL)
+		return;
+
+	try {
+		zone->lock();
+
+		zone->update(this);
+		zone->inRange(this, 128);
+
+		if (lightUpdate) {
+			/*LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
+			broadcastMessage(message, false);*/
+		} else {
+			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
+			broadcastMessage(message, false);
+		}
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+	}
 }
 
 void SceneObjectImplementation::insertToZone(Zone* zone) {
@@ -182,4 +238,32 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 	} catch (...) {
 		zone->unlock();
 	}
+}
+
+void SceneObjectImplementation::removeFromZone(bool lockZone) {
+	if (zone == NULL)
+		return;
+
+	info("removing from zone");
+
+	try {
+		zone->lock(lockZone);
+
+		zone->remove(this);
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			QuadTreeEntry* obj = getInRangeObject(i);
+
+			if (obj != this)
+				obj->removeInRangeObject(this);
+		}
+
+		removeInRangeObjects();
+
+		zone->unlock(lockZone);
+	} catch (...) {
+		zone->unlock(lockZone);
+	}
+
+	info("removed from zone");
 }
