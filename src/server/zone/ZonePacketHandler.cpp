@@ -55,12 +55,17 @@ which carries forward this exception.
 #include "packets/charcreation/ClientCreateCharacter.h"
 #include "packets/charcreation/ClientRandomNameRequest.h"
 
+#include "packets/object/ObjectControllerMessage.h"
+#include "packets/object/DataTransform.h"
+
+
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
 
 	server = processServer->getZoneServer();
 
 	registerMessages();
+	registerObjectControllerMessages();
 }
 
 void ZonePacketHandler::registerMessages() {
@@ -69,6 +74,14 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ClientRandomNameRequest>(0xD6D1B6D1);
 	messageCallbackFactory.registerObject<SelectCharacterCallback>(0xB5098D76);
 	messageCallbackFactory.registerObject<CmdSceneReadyCallback>(0x43FD1C22);
+	messageCallbackFactory.registerObject<ObjectControllerMessageCallback>(0x80CE5E46);
+}
+
+void ZonePacketHandler::registerObjectControllerMessages() {
+	ObjectControllerMessageCallback::objectMessageControllerFactory = new ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
+	ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
+
+	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {

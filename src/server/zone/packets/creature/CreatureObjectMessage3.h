@@ -60,7 +60,7 @@ public:
 		insertLong(creo->getCreatureLinkID()); // creature link id/ mount
 
 		insertFloat(creo->getHeight());
-		insertInt(creo->getShockWounds()); // BF
+		insertInt((int)creo->getShockWounds()); // BF
 
 		insertLong(creo->getStateBitmask());
 

@@ -46,12 +46,11 @@ which carries forward this exception.
 #define DATATRANSFORM_H_
 
 #include "ObjectControllerMessage.h"
-
-class CreatureObject;
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class DataTransform : public ObjectControllerMessage {
 public:
-	DataTransform(CreatureObject* creo) 
+	DataTransform(CreatureObject* creo)
 			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x71) {
 				
 		insertInt(creo->getMovementCounter());
@@ -68,6 +67,37 @@ public:
 		insertInt(0);
 	}
 
+};
+
+class DataTransformCallback : public MessageCallback {
+	uint32 movementStamp;
+	uint32 movementCounter;
+
+	float directionX, directionY, directionZ, directionW;
+	float positionX, positionZ, positionY;
+public:
+	DataTransformCallback(ObjectControllerMessageCallback* objectControllerCallback) :
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+
+	}
+
+	void parse(Message* message) {
+		movementStamp = message->parseInt();
+		movementCounter = message->parseInt();
+
+		directionX = message->parseFloat();
+		directionY = message->parseFloat();
+		directionZ = message->parseFloat();
+		directionW = message->parseFloat();
+
+		positionX = message->parseFloat();
+		positionZ = message->parseFloat();
+		positionY = message->parseFloat();
+	}
+
+	void execute() {
+
+	}
 };
 
 #endif /*DATATRANSFORM_H_*/

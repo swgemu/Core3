@@ -19,7 +19,7 @@ namespace packets {
 
 	class MessageCallback {
 	protected:
-		ReferenceSlot<ZoneClientSession> client;
+		ReferenceSlot<ZoneClientSession*> client;
 		ZoneProcessServerImplementation* server;
 
 	public:
@@ -38,6 +38,10 @@ namespace packets {
 
 		inline ZoneClientSession* getClient() {
 			return client.get();
+		}
+
+		inline ZoneProcessServerImplementation* getServer() {
+			return server;
 		}
 	};
 
