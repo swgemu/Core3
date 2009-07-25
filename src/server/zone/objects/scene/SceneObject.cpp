@@ -818,17 +818,17 @@ void SceneObjectImplementation::removeUndeploymentEvent() {
 
 bool SceneObjectImplementation::isPlayerCreature() {
 	// server/zone/objects/scene/SceneObject.idl(331):  return gameObjectType == 409;
-	return gameObjectType == 0x409;
+	return gameObjectType == 409;
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object) {
 	// server/zone/objects/scene/SceneObject.idl(335):  object.
-	if (containerType == 0x1){
+	if (containerType == 1){
 	// server/zone/objects/scene/SceneObject.idl(336):  int arrangementSize = object.getArrangementDescriptorSize();
 	int arrangementSize = object->getArrangementDescriptorSize();
 	// server/zone/objects/scene/SceneObject.idl(338):  
 	for (	// server/zone/objects/scene/SceneObject.idl(338):  for (int i = 0;
-	int i = 0x0;
+	int i = 0;
 	i < arrangementSize;
  ++i) {
 	// server/zone/objects/scene/SceneObject.idl(339):  string childArrangement = object.getArrangementDescriptor(i);
@@ -839,7 +839,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object) {
 }
 	// server/zone/objects/scene/SceneObject.idl(345):  
 	for (	// server/zone/objects/scene/SceneObject.idl(345):  for (int i = 0;
-	int i = 0x0;
+	int i = 0;
 	i < arrangementSize;
  ++i) {
 	// server/zone/objects/scene/SceneObject.idl(346):  containmentSlots.put(object.getArrangementDescriptor(i), object);
@@ -854,12 +854,12 @@ bool SceneObjectImplementation::addObject(SceneObject* object) {
 
 bool SceneObjectImplementation::removeObject(SceneObject* object) {
 	// server/zone/objects/scene/SceneObject.idl(356):  object.
-	if (containerType == 0x1){
+	if (containerType == 1){
 	// server/zone/objects/scene/SceneObject.idl(357):  int arrangementSize = object.getArrangementDescriptorSize();
 	int arrangementSize = object->getArrangementDescriptorSize();
 	// server/zone/objects/scene/SceneObject.idl(359):  
 	for (	// server/zone/objects/scene/SceneObject.idl(359):  for (int i = 0;
-	int i = 0x0;
+	int i = 0;
 	i < arrangementSize;
  ++i) {
 	// server/zone/objects/scene/SceneObject.idl(360):  string childArrangement = object.getArrangementDescriptor(i);
@@ -870,7 +870,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object) {
 }
 	// server/zone/objects/scene/SceneObject.idl(366):  
 	for (	// server/zone/objects/scene/SceneObject.idl(366):  for (int i = 0;
-	int i = 0x0;
+	int i = 0;
 	i < arrangementSize;
  ++i) {
 	// server/zone/objects/scene/SceneObject.idl(367):  containmentSlots.drop(object.getArrangementDescriptor(i));

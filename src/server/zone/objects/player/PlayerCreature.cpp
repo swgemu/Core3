@@ -414,7 +414,7 @@ bool PlayerCreatureImplementation::isOffline() {
 }
 
 bool PlayerCreatureImplementation::isLoading() {
-	// server/zone/objects/player/PlayerCreature.idl(141):  return onlineStatus == LOADING ||ÊonlineStatus == LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(141):  return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 	return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 }
 
@@ -472,7 +472,7 @@ void PlayerCreatureImplementation::setLinkDead() {
 	// server/zone/objects/player/PlayerCreature.idl(187):  logoutTimeStamp.update();
 	logoutTimeStamp->update();
 	// server/zone/objects/player/PlayerCreature.idl(188):  logoutTimeStamp.addMiliTime(7530);
-	logoutTimeStamp->addMiliTime(0x7530);
+	logoutTimeStamp->addMiliTime(7530);
 	// server/zone/objects/player/PlayerCreature.idl(190):  activateRecovery();
 	activateRecovery();
 }

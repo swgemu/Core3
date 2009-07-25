@@ -217,17 +217,17 @@ protected:
 	int factionStatus;
 
 public:
-	static const int ONLINE = 0x1;
+	static const int ONLINE = 1;
 
-	static const int OFFLINE = 0x2;
+	static const int OFFLINE = 2;
 
-	static const int LINKDEAD = 0x3;
+	static const int LINKDEAD = 3;
 
-	static const int LOGGINGIN = 0x4;
+	static const int LOGGINGIN = 4;
 
-	static const int LOGGINGOUT = 0x5;
+	static const int LOGGINGOUT = 5;
 
-	static const int LOADING = 0x6;
+	static const int LOADING = 6;
 
 	PlayerCreatureImplementation(LuaObject* templateData);
 

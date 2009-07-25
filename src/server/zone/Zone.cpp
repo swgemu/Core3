@@ -349,7 +349,7 @@ ZoneServer* ZoneImplementation::getZoneServer() {
 
 unsigned long long ZoneImplementation::getGalacticTime() {
 	// server/zone/Zone.idl(117):  return galacticTime.miliDifference() / 1000;
-	return galacticTime->miliDifference() / 0x1000;
+	return galacticTime->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
@@ -364,18 +364,18 @@ void ZoneImplementation::setWeatherID(unsigned int value) {
 
 void ZoneImplementation::changeWeatherID(int value) {
 	// server/zone/Zone.idl(129):  weatherID 
-	if (weatherID == 0x0 && value < 0x0){
+	if (weatherID == 0 && value < 0){
 	// server/zone/Zone.idl(130):  weatherID = 0;
-	weatherID = 0x0;
+	weatherID = 0;
 	// server/zone/Zone.idl(131):  return;
 	return;
 }
 	// server/zone/Zone.idl(134):  += value;
 	weatherID += value;
 	// server/zone/Zone.idl(136):  }
-	if (weatherID > 0x4){
+	if (weatherID > 4){
 	// server/zone/Zone.idl(137):  weatherID = 4;
-	weatherID = 0x4;
+	weatherID = 4;
 	// server/zone/Zone.idl(138):  return;
 	return;
 }
