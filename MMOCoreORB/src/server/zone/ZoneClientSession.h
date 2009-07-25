@@ -11,9 +11,7 @@
 
 #include "engine/service/proto/BaseClientProxy.h"
 
-#include "engine/service/proto/StandaloneBaseMessage.h"
-
-#include "engine/service/proto/BaseMessage.h"
+#include "engine/service/proto/BasePacket.h"
 
 #include "engine/service/DatagramServiceThread.h"
 
@@ -32,9 +30,7 @@ class ZoneClientSession : public ManagedObject {
 public:
 	ZoneClientSession(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
 
-	void sendMessage(BaseMessage* msg);
-
-	void sendMessage(StandaloneBaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	void disconnect();
 
@@ -88,9 +84,7 @@ class ZoneClientSessionImplementation : public ManagedObjectImplementation, publ
 public:
 	ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
 
-	void sendMessage(BaseMessage* msg);
-
-	void sendMessage(StandaloneBaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	void disconnect();
 
@@ -137,9 +131,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void sendMessage(BaseMessage* msg);
-
-	void sendMessage(StandaloneBaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	void disconnect();
 

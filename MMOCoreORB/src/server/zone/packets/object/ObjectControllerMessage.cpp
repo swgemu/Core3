@@ -92,9 +92,8 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 void ObjectControllerMessageCallback::execute() {
 	SceneObject* player = client->getPlayer();
 
-	if (player == NULL) {
+	if (player == NULL)
 		return;
-	}
 
 	try {
 		player->wlock();

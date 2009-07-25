@@ -78,12 +78,8 @@ void ZoneClientSessionImplementation::unlock(bool doLock) {
 	BaseClient::unlock(doLock);
 }
 
-void ZoneClientSessionImplementation::sendMessage(BaseMessage* msg) {
-	BaseClientProxy::sendPacket((BasePacket*) msg);
-}
-
-void ZoneClientSessionImplementation::sendMessage(StandaloneBaseMessage* msg) {
-	BaseClientProxy::sendPacket((BasePacket*) msg);
+void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
+	BaseClientProxy::sendPacket(msg);
 }
 
 void ZoneClientSessionImplementation::disconnect(bool doLock) {

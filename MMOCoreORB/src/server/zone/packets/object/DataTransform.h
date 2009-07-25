@@ -75,10 +75,13 @@ class DataTransformCallback : public MessageCallback {
 
 	float directionX, directionY, directionZ, directionW;
 	float positionX, positionZ, positionY;
+
+	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	DataTransformCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 
+		objectControllerMain = objectControllerCallback;
 	}
 
 	void parse(Message* message) {
@@ -102,7 +105,12 @@ public:
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
 
-		object->updateZone(false);
+		//TODO: add improved Speed Hack checks
+
+		if (objectControllerMain->getPriority() == 0x23)
+			object->updateZone(false);
+		else
+			object->updateZone(true);
 
 	}
 };

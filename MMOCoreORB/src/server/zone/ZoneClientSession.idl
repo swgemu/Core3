@@ -45,8 +45,7 @@ which carries forward this exception.
 package server.zone;
 
 import engine.service.proto.BaseClientProxy;
-import engine.service.proto.StandaloneBaseMessage;
-import engine.service.proto.BaseMessage;
+import engine.service.proto.BasePacket;
 import engine.service.DatagramServiceThread;
 import system.net.SocketAddress;
 import system.net.Socket;
@@ -62,8 +61,7 @@ class ZoneClientSession extends ManagedObject, native BaseClientProxy {
 	
 	public native ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
 	
-	public native void sendMessage(BaseMessage msg);
-	public native void sendMessage(StandaloneBaseMessage msg);
+	public native void sendMessage(BasePacket msg);
 	
 	public native void disconnect();
 	public native void disconnect(boolean doLock);

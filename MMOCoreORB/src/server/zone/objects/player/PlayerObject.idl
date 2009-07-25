@@ -58,5 +58,11 @@ class PlayerObject extends IntangibleObject {
 	
 	public native PlayerObject(LuaObject templateData);
 	
-	public native void initialize(unsigned int creatureObjectCRC);
+	public CreatureObject getCreatureObject() {
+		return creatureObject;
+	}
+	
+	public void setCreatureObject(CreatureObject object) {
+		creatureObject = object;
+	}
 }

@@ -348,7 +348,7 @@ void SceneObject::updateZone(bool lightUpdate) {
 		((SceneObjectImplementation*) _impl)->updateZone(lightUpdate);
 }
 
-void SceneObject::broadcastMessage(BaseMessage* message, bool lockZone) {
+void SceneObject::broadcastMessage(BasePacket* message, bool lockZone) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -362,7 +362,7 @@ void SceneObject::broadcastMessage(BaseMessage* message, bool lockZone) {
 		((SceneObjectImplementation*) _impl)->broadcastMessage(message, lockZone);
 }
 
-void SceneObject::sendMessage(BaseMessage* msg) {
+void SceneObject::sendMessage(BasePacket* msg) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -889,7 +889,7 @@ void SceneObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void SceneObjectImplementation::sendToOwner(bool doClose) {
 }
 
-void SceneObjectImplementation::sendMessage(BaseMessage* msg) {
+void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 	// server/zone/objects/scene/SceneObject.idl(398):  }
 	if (msg != NULL)	// server/zone/objects/scene/SceneObject.idl(399):  msg.finalize();
 	msg->finalize();
@@ -1132,10 +1132,10 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		updateZone(inv->getBooleanParameter());
 		break;
 	case 31:
-		broadcastMessage((BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
+		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 32:
-		sendMessage((BaseMessage*) inv->getObjectParameter());
+		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
 	case 33:
 		resp->insertLong(getObjectID());
@@ -1325,11 +1325,11 @@ void SceneObjectAdapter::updateZone(bool lightUpdate) {
 	return ((SceneObjectImplementation*) impl)->updateZone(lightUpdate);
 }
 
-void SceneObjectAdapter::broadcastMessage(BaseMessage* message, bool lockZone) {
+void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool lockZone) {
 	return ((SceneObjectImplementation*) impl)->broadcastMessage(message, lockZone);
 }
 
-void SceneObjectAdapter::sendMessage(BaseMessage* msg) {
+void SceneObjectAdapter::sendMessage(BasePacket* msg) {
 	return ((SceneObjectImplementation*) impl)->sendMessage(msg);
 }
 

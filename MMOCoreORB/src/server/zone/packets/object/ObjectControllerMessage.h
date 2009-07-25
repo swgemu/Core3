@@ -74,6 +74,18 @@ public:
 	void parse(Message* message);
 
 	void execute();
+
+	inline uint32 getPriority() {
+		return priority;
+	}
+
+	inline uint32 getType() {
+		return type;
+	}
+
+	inline uint64 getObjectID() {
+		return objectID;
+	}
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

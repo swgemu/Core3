@@ -64,6 +64,9 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 
 	server = processServer->getZoneServer();
 
+	setGlobalLogging("true");
+	setLogging("true");
+
 	registerMessages();
 	registerObjectControllerMessages();
 }
@@ -92,7 +95,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 
 	StringBuffer buffer;
 	buffer << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
-	info(buffer, true);
+	info(buffer);
 
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
@@ -102,7 +105,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	if (data == NULL) {
 		StringBuffer msg;
 		msg << "unknown opcode 0x" << hex << opcode;
-		info(msg, true);
+		info(msg);
 
 		return;
 	}

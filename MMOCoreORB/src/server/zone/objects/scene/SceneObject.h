@@ -63,7 +63,7 @@ using namespace server::zone;
 
 #include "engine/util/Quaternion.h"
 
-#include "engine/service/proto/BaseMessage.h"
+#include "engine/service/proto/BasePacket.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -126,9 +126,9 @@ public:
 
 	void updateZone(bool lightUpdate);
 
-	void broadcastMessage(BaseMessage* message, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool lockZone);
 
-	void sendMessage(BaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	unsigned long long getObjectID();
 
@@ -636,9 +636,9 @@ public:
 
 	virtual void updateZone(bool lightUpdate);
 
-	void broadcastMessage(BaseMessage* message, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool lockZone);
 
-	virtual void sendMessage(BaseMessage* msg);
+	virtual void sendMessage(BasePacket* msg);
 
 	unsigned long long getObjectID();
 
@@ -771,9 +771,9 @@ public:
 
 	void updateZone(bool lightUpdate);
 
-	void broadcastMessage(BaseMessage* message, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool lockZone);
 
-	void sendMessage(BaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	unsigned long long getObjectID();
 

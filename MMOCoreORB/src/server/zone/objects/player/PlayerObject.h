@@ -36,7 +36,9 @@ class PlayerObject : public IntangibleObject {
 public:
 	PlayerObject(LuaObject* templateData);
 
-	void initialize(unsigned int creatureObjectCRC);
+	CreatureObject* getCreatureObject();
+
+	void setCreatureObject(CreatureObject* object);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -66,7 +68,9 @@ class PlayerObjectImplementation : public IntangibleObjectImplementation {
 public:
 	PlayerObjectImplementation(LuaObject* templateData);
 
-	void initialize(unsigned int creatureObjectCRC);
+	CreatureObject* getCreatureObject();
+
+	void setCreatureObject(CreatureObject* object);
 
 	PlayerObject* _this;
 
@@ -89,7 +93,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initialize(unsigned int creatureObjectCRC);
+	CreatureObject* getCreatureObject();
+
+	void setCreatureObject(CreatureObject* object);
 
 };
 
