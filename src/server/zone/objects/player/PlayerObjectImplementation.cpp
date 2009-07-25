@@ -52,15 +52,8 @@ which carries forward this exception.
 PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
 	IntangibleObjectImplementation(templateData) {
 
-	objectCRC = 0x619BAE21;
-
 	creatureObject = NULL;
 
 	owner = NULL;
 }
 
-void PlayerObjectImplementation::initialize(uint32 creatureObjectCRC) {
-	creatureObject = (CreatureObject*) ObjectManager::instance()->createObject(creatureObjectCRC);
-
-
-}

@@ -23,17 +23,29 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 PlayerObject::~PlayerObject() {
 }
 
-void PlayerObject::initialize(unsigned int creatureObjectCRC) {
+CreatureObject* PlayerObject::getCreatureObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addUnsignedIntParameter(creatureObjectCRC);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getCreatureObject();
+}
+
+void PlayerObject::setCreatureObject(CreatureObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->initialize(creatureObjectCRC);
+		((PlayerObjectImplementation*) _impl)->setCreatureObject(object);
 }
 
 /*
@@ -63,6 +75,16 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("owner", owner);
 }
 
+CreatureObject* PlayerObjectImplementation::getCreatureObject() {
+	// server/zone/objects/player/PlayerObject.idl(62):  return creatureObject;
+	return creatureObject;
+}
+
+void PlayerObjectImplementation::setCreatureObject(CreatureObject* object) {
+	// server/zone/objects/player/PlayerObject.idl(66):  creatureObject = object;
+	creatureObject = object;
+}
+
 /*
  *	PlayerObjectAdapter
  */
@@ -75,7 +97,10 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case 6:
-		initialize(inv->getUnsignedIntParameter());
+		resp->insertLong(getCreatureObject()->_getObjectID());
+		break;
+	case 7:
+		setCreatureObject((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -84,8 +109,12 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	return resp;
 }
 
-void PlayerObjectAdapter::initialize(unsigned int creatureObjectCRC) {
-	return ((PlayerObjectImplementation*) impl)->initialize(creatureObjectCRC);
+CreatureObject* PlayerObjectAdapter::getCreatureObject() {
+	return ((PlayerObjectImplementation*) impl)->getCreatureObject();
+}
+
+void PlayerObjectAdapter::setCreatureObject(CreatureObject* object) {
+	return ((PlayerObjectImplementation*) impl)->setCreatureObject(object);
 }
 
 /*

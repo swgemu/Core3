@@ -120,7 +120,7 @@ void PlayerCreature::doRecovery() {
 		((PlayerCreatureImplementation*) _impl)->doRecovery();
 }
 
-void PlayerCreature::sendMessage(BaseMessage* msg) {
+void PlayerCreature::sendMessage(BasePacket* msg) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -388,7 +388,7 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 	addSerializableVariable("factionStatus", &factionStatus);
 }
 
-void PlayerCreatureImplementation::sendMessage(BaseMessage* msg) {
+void PlayerCreatureImplementation::sendMessage(BasePacket* msg) {
 	// server/zone/objects/player/PlayerCreature.idl(122):  
 	if (owner == NULL){
 	// server/zone/objects/player/PlayerCreature.idl(123):  msg.finalize();
@@ -532,7 +532,7 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		doRecovery();
 		break;
 	case 13:
-		sendMessage((BaseMessage*) inv->getObjectParameter());
+		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
 	case 14:
 		sendToOwner(inv->getBooleanParameter());
@@ -620,7 +620,7 @@ void PlayerCreatureAdapter::doRecovery() {
 	return ((PlayerCreatureImplementation*) impl)->doRecovery();
 }
 
-void PlayerCreatureAdapter::sendMessage(BaseMessage* msg) {
+void PlayerCreatureAdapter::sendMessage(BasePacket* msg) {
 	return ((PlayerCreatureImplementation*) impl)->sendMessage(msg);
 }
 

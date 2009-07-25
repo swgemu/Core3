@@ -56,7 +56,7 @@ import engine.lua.LuaObject;
 import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.Quaternion;
-import engine.service.proto.BaseMessage;
+import engine.service.proto.BasePacket;
 
 import server.zone.ZoneProcessServerImplementation;
 
@@ -392,9 +392,9 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public native abstract void removeFromZone(boolean lockZone);
 	public native abstract void updateZone(boolean lightUpdate);
 	
-	public native void broadcastMessage(BaseMessage message, boolean lockZone = true);
+	public native void broadcastMessage(BasePacket message, boolean lockZone = true);
 	
-	public abstract void sendMessage(BaseMessage msg) {
+	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)
 			msg.finalize();
 	}

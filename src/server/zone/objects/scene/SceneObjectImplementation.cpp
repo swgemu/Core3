@@ -53,8 +53,6 @@ which carries forward this exception.
 #include "../../packets/scene/UpdateTransformMessage.h"
 #include "../../packets/scene/LightUpdateTransformMessage.h"
 
-
-
 #include "../../ZoneClientSession.h"
 #include "../../Zone.h"
 
@@ -124,8 +122,8 @@ void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containme
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	ZoneClientSession* session = player->getClient();
-	ManagedReference<ZoneClientSession*> client = session;
+	ManagedReference<ZoneClientSession*> client = player->getClient();
+
 	if (client == NULL)
 		return;
 
@@ -171,7 +169,7 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::broadcastMessage(BaseMessage* message, bool lockZone) {
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZone) {
 	if (zone == NULL) {
 		message->finalize();
 
@@ -206,8 +204,8 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 		zone->inRange(this, 128);
 
 		if (lightUpdate) {
-			/*LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-			broadcastMessage(message, false);*/
+			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
+			broadcastMessage(message, false);
 		} else {
 			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
 			broadcastMessage(message, false);

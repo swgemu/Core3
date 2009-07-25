@@ -51,7 +51,7 @@ import server.zone.ZoneClientSession;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.Container;
-import engine.service.proto.BaseMessage;
+import engine.service.proto.BasePacket;
 import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
@@ -118,7 +118,7 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void doRecovery();
 	
-	public void sendMessage(BaseMessage msg) {
+	public void sendMessage(BasePacket msg) {
 		if (owner == null) {
 			msg.finalize();
 			return;

@@ -87,7 +87,7 @@ using namespace server::zone::objects::player::events;
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "engine/service/proto/BaseMessage.h"
+#include "engine/service/proto/BasePacket.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -114,7 +114,7 @@ public:
 
 	void doRecovery();
 
-	void sendMessage(BaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose);
 
@@ -245,7 +245,7 @@ public:
 
 	void doRecovery();
 
-	void sendMessage(BaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose);
 
@@ -318,7 +318,7 @@ public:
 
 	void doRecovery();
 
-	void sendMessage(BaseMessage* msg);
+	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose);
 
