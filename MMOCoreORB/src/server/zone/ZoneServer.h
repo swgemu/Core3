@@ -235,13 +235,13 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	int galaxyID;
 
 public:
-	static const int OFFLINE = 0x0;
+	static const int OFFLINE = 0;
 
-	static const int LOADING = 0x1;
+	static const int LOADING = 1;
 
-	static const int ONLINE = 0x2;
+	static const int ONLINE = 2;
 
-	static const int LOCKED = 0x3;
+	static const int LOCKED = 3;
 
 	ZoneServerImplementation(int processingThreads, int galaxyid);
 

@@ -86,7 +86,7 @@ public:
 		insertByte(0); // unknown
 
 		// add direction
-		insertByte(scno->getDirectionAngle());
+		insertByte((byte) scno->getDirectionAngle());
 	}
 
 	static void parse(Packet* pack, SceneObject* scno) {

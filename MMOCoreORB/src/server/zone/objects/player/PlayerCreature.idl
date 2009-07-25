@@ -138,7 +138,7 @@ class PlayerCreature extends CreatureObject {
 	}
 	
 	public boolean isLoading() {
-		return onlineStatus == LOADING ||ÊonlineStatus == LOGGINGOUT;
+		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
 	}
 	
 	public boolean isLinkDead() {

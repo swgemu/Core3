@@ -244,7 +244,7 @@ protected:
 	unsigned int gameObjectType;
 
 public:
-	static const int CELLOBJECT = 0x11;
+	static const int CELLOBJECT = 11;
 
 	static const int ARMOR = 0x100;
 
