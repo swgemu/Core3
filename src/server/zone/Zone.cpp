@@ -326,88 +326,88 @@ void ZoneImplementation::_serializationHelperMethod() {
 }
 
 void ZoneImplementation::lock(bool doLock) {
-	// server/zone/Zone.idl(85):  }
-	if (doLock)	// server/zone/Zone.idl(86):  lock();
+	// server/zone/Zone.idl(86):  }
+	if (doLock)	// server/zone/Zone.idl(87):  lock();
 	lock();
 }
 
 void ZoneImplementation::unlock(bool doLock) {
-	// server/zone/Zone.idl(90):  }
-	if (doLock)	// server/zone/Zone.idl(91):  unlock();
+	// server/zone/Zone.idl(91):  }
+	if (doLock)	// server/zone/Zone.idl(92):  unlock();
 	unlock();
 }
 
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(109):  return zoneID;
+	// server/zone/Zone.idl(110):  return zoneID;
 	return zoneID;
 }
 
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(113):  return server;
+	// server/zone/Zone.idl(116):  return server;
 	return server;
 }
 
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(117):  return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl(120):  return galacticTime.miliDifference() / 1000;
 	return galacticTime->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(121):  return weatherID;
+	// server/zone/Zone.idl(124):  return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(125):  weatherID = value;
+	// server/zone/Zone.idl(128):  weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(129):  weatherID 
+	// server/zone/Zone.idl(132):  weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(130):  weatherID = 0;
+	// server/zone/Zone.idl(133):  weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(131):  return;
+	// server/zone/Zone.idl(134):  return;
 	return;
 }
-	// server/zone/Zone.idl(134):  += value;
+	// server/zone/Zone.idl(137):  += value;
 	weatherID += value;
-	// server/zone/Zone.idl(136):  }
+	// server/zone/Zone.idl(139):  }
 	if (weatherID > 4){
-	// server/zone/Zone.idl(137):  weatherID = 4;
+	// server/zone/Zone.idl(140):  weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(138):  return;
+	// server/zone/Zone.idl(141):  return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(143):  return weatherEnabled;
+	// server/zone/Zone.idl(146):  return weatherEnabled;
 	return weatherEnabled;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(147):  weatherEnabled = value;
+	// server/zone/Zone.idl(150):  weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(151):  weatherWindX = value;
+	// server/zone/Zone.idl(154):  weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(155):  weatherWindY = value;
+	// server/zone/Zone.idl(158):  weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(159):  return weatherWindX;
+	// server/zone/Zone.idl(162):  return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(163):  return weatherWindY;
+	// server/zone/Zone.idl(166):  return weatherWindY;
 	return weatherWindY;
 }
 

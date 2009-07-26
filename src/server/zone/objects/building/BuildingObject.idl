@@ -46,8 +46,25 @@ package server.zone.objects.building;
 
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
+import engine.util.QuadTree;
+import engine.util.QuadTreeEntry;
+import server.zone.objects.cell.CellObject;
+import system.util.SortedVector;
 
-class BuildingObject extends TangibleObject {
+
+class BuildingObject extends TangibleObject, native QuadTree {
+	SortedVector<CellObject> cells;
+
 	public native BuildingObject(LuaObject templateData);
 	
+	public native void notifyInsert(QuadTreeEntry obj);
+	public native void notifyDissapear(QuadTreeEntry obj);
+
+	public native void notifyInsertToZone(SceneObject object);
+	
+	public native void insert(QuadTreeEntry obj);
+	public native void remove(QuadTreeEntry obj);
+	public native void update(QuadTreeEntry obj);
+	public native void inRange(QuadTreeEntry obj, float range);
+
 }

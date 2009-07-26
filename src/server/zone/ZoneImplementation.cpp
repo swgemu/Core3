@@ -65,6 +65,7 @@ which carries forward this exception.
 #include "objects/terrain/PlanetNames.h"
 
 #include "ZoneProcessServerImplementation.h"
+#include "objects/scene/SceneObject.h"
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;

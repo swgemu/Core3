@@ -13,6 +13,8 @@
 
 #include "engine/lua/LuaObject.h"
 
+#include "system/util/VectorMap.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -25,6 +27,10 @@ public:
 	bool addObject(SceneObject* object);
 
 	bool removeObject(SceneObject* object);
+
+	SceneObject* getContainmentObject(int idx);
+
+	int getContainmentObjectsSize();
 
 	int getCellNumber();
 
@@ -53,12 +59,18 @@ namespace cell {
 class CellObjectImplementation : public SceneObjectImplementation {
 	int cellNumber;
 
+	VectorMap<unsigned long long, SceneObject* >* containmentObjects;
+
 public:
 	CellObjectImplementation(LuaObject* templateData);
 
 	bool addObject(SceneObject* object);
 
 	bool removeObject(SceneObject* object);
+
+	SceneObject* getContainmentObject(int idx);
+
+	int getContainmentObjectsSize();
 
 	int getCellNumber();
 
@@ -88,6 +100,10 @@ public:
 	bool addObject(SceneObject* object);
 
 	bool removeObject(SceneObject* object);
+
+	SceneObject* getContainmentObject(int idx);
+
+	int getContainmentObjectsSize();
 
 	int getCellNumber();
 
