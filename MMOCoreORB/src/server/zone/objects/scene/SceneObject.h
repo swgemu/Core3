@@ -150,7 +150,7 @@ public:
 
 	void updateZone(bool lightUpdate);
 
-	void updateZoneWithParent(unsigned long long Parent, bool lightUpdate);
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool lockZone);
 
@@ -676,7 +676,7 @@ public:
 
 	virtual void updateZone(bool lightUpdate);
 
-	virtual void updateZoneWithParent(unsigned long long Parent, bool lightUpdate);
+	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool lockZone);
 
@@ -827,7 +827,7 @@ public:
 
 	void updateZone(bool lightUpdate);
 
-	void updateZoneWithParent(unsigned long long Parent, bool lightUpdate);
+	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool lockZone);
 

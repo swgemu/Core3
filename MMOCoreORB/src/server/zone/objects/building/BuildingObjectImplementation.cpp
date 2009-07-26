@@ -10,7 +10,7 @@
 
 
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) :
-	TangibleObjectImplementation(templateData) {
+	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
 	cells = new SortedVector<CellObject*>();
 }

@@ -250,22 +250,8 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	}
 }
 
-void SceneObjectImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate) {
-	/*if (isMounted())
-		dismount(true, true);*/
-
+void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
 	if (zone == NULL)
-		return;
-
-	ManagedReference<SceneObject*> newParent = parent;
-
-	if (parent == NULL || (parent != NULL && parent->getObjectID() != Parent))
-		newParent = zone->getZoneServer()->getObject(Parent, true);
-
-	if (newParent == NULL)
-		return;
-
-	if (!newParent->isCell())
 		return;
 
 	bool insert = false;

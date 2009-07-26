@@ -45,6 +45,8 @@ which carries forward this exception.
 #ifndef STFPARAMETER_H_
 #define STFPARAMETER_H_
 
+#include "engine/engine.h"
+
 class StfParameter;
 
 class StfPointerParameter : public Message {

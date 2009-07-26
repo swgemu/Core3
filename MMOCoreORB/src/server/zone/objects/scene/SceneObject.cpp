@@ -402,18 +402,18 @@ void SceneObject::updateZone(bool lightUpdate) {
 		((SceneObjectImplementation*) _impl)->updateZone(lightUpdate);
 }
 
-void SceneObject::updateZoneWithParent(unsigned long long Parent, bool lightUpdate) {
+void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 35);
-		method.addUnsignedLongParameter(Parent);
+		method.addObjectParameter(newParent);
 		method.addBooleanParameter(lightUpdate);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->updateZoneWithParent(Parent, lightUpdate);
+		((SceneObjectImplementation*) _impl)->updateZoneWithParent(newParent, lightUpdate);
 }
 
 void SceneObject::broadcastMessage(BasePacket* message, bool lockZone) {
@@ -1283,7 +1283,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		updateZone(inv->getBooleanParameter());
 		break;
 	case 35:
-		updateZoneWithParent(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		updateZoneWithParent((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 36:
 		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -1504,8 +1504,8 @@ void SceneObjectAdapter::updateZone(bool lightUpdate) {
 	return ((SceneObjectImplementation*) impl)->updateZone(lightUpdate);
 }
 
-void SceneObjectAdapter::updateZoneWithParent(unsigned long long Parent, bool lightUpdate) {
-	return ((SceneObjectImplementation*) impl)->updateZoneWithParent(Parent, lightUpdate);
+void SceneObjectAdapter::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
+	return ((SceneObjectImplementation*) impl)->updateZoneWithParent(newParent, lightUpdate);
 }
 
 void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool lockZone) {

@@ -42,9 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.creature;
+package server.zone.objects.player;
 
 import system.lang.Time;
+import system.util.SortedVector;
 import engine.util.QuadTreeEntry;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
@@ -55,6 +56,7 @@ import engine.service.proto.BasePacket;
 import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
+import server.chat.room.ChatRoom;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -80,19 +82,16 @@ class PlayerCreature extends CreatureObject {
 	protected PlayerRecoveryEvent recoveryEvent;
 
 	// player objects
-	/*protected PlayerObject playerObject;
-	protected Datapad datapad;*/
 
 	//Vector<CommandQueueAction> commandQueue;
 	protected Time nextAction;
 	protected Time nextTip;
-
-	protected int itemShift;
+	
+	protected SortedVector<ChatRoom> chatRooms;
 
 	protected byte incapacitationCounter;
 	protected Time firstIncapacitationTime;
 	protected int pvpRating;
-
 
 	protected int factionStatus;
 	
@@ -161,6 +160,8 @@ class PlayerCreature extends CreatureObject {
 		return raceID;
 	}
 	
+	public native string getFirstName();
+	
 	public void setClient(ZoneClientSession cli) {
 		owner = cli;
 	}
@@ -206,6 +207,14 @@ class PlayerCreature extends CreatureObject {
 	
 	public void clearRecoveryEvent() {
 		recoveryEvent = null;
+	}
+	
+	public void addChatRoom(ChatRoom room) {
+		chatRooms.put(room);
+	}
+
+	public void removeChatRoom(ChatRoom room) {
+		chatRooms.drop(room);
 	}
 	
 }
