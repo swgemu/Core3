@@ -42,78 +42,143 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
+package server.chat.room;
 
-import "../../zone/ZoneServer";
+import engine.core.ManagedObject;
+import system.util.VectorMap;
+import system.util.Vector;
+import engine.service.proto.BaseMessage;
+import server.zone.ZoneServer;
+import server.zone.objects.player.PlayerCreature;
 
-import "../../zone/objects/player/Player";
 
-interface ChatRoom {
-	ChatRoom(ZoneServer server, const String name, unsigned int cid) {
-		super(server, name, cid);
+class ChatRoom extends ManagedObject {
+	ZoneServer server;
+
+	string name;
+	string fullPath;
+
+	string owner;
+	string creator;
+
+	unicode title;
+	unsigned int roomID;
+
+	ChatRoom parent;
+
+	VectorMap<string, PlayerCreature> playerList;
+	VectorMap<string, ChatRoom> subRooms;
+
+	boolean isPublicRoom;
+	
+	public native ChatRoom(ZoneServer server, final string name, unsigned int cid);
+	public native ChatRoom(ZoneServer server, ChatRoom parent, final string name, unsigned int cid);
+	
+	public native void wlock();
+	public native void unlock();
+	
+	public native void sendTo(PlayerCreature player);
+	public native void sendDestroyTo(PlayerCreature player);
+
+	public native void addSubRoom(ChatRoom channel);
+
+	public native void removeSubRoom(ChatRoom channel);
+
+	public native ChatRoom getSubRoom(int i);
+	public native ChatRoom getSubRoom(final string name);
+
+	public native void addPlayer(PlayerCreature player, boolean doLock = true);
+	public native void removePlayer(PlayerCreature player, boolean doLock = true);
+	public native void removePlayer(final string player);
+
+	public native void broadcastMessage(BaseMessage msg);
+	public native local void broadcastMessages(Vector<BaseMessage> messages);
+
+	public native boolean hasPlayer(PlayerCreature player);
+	public native boolean hasPlayer(final string name);
+
+	public native void removeAllPlayers();
+
+	public void setPrivate() {
+		isPublicRoom = false;
 	}
-	
-	ChatRoom(ZoneServer server, ChatRoom parent, const String name, unsigned int cid) {
-		super(server, parent, name, cid);
+
+	public void setPublic() {
+		isPublicRoom = true;
 	}
 
-	void sendTo(Player player);
-	void sendDestroyTo(Player player);
-	
-	void addSubRoom(ChatRoom channel);
-	void removeSubRoom(ChatRoom channel);
-	ChatRoom getSubRoom(int i);
-	ChatRoom getSubRoom(const String name);
-	
-	void addPlayer(Player player, boolean doLock = true);
-	void removePlayer(Player player, boolean doLock = true);
-	void removePlayer(const String player);
-	
-	void broadcastMessage(BaseMessage msg);
-	//void broadcastMessage(Vector<Message> messages);
-	
-	boolean hasPlayer(Player player);
-	boolean hasPlayer(const String name);
-	
-	void removeAllPlayers();
-	
-	void setPrivate();
-	
-	void setPublic();
-	
-	boolean isPublic();
-	
-	boolean isPrivate();
-	
-	Player getPlayer(int idx);
-	
-	int getPlayerSize();
-	
-	void setName(const String Name);
-	
-	String getName();
-	
-	String getFullPath();
-	
-	String getOwner();
-	
-	String getCreator();
-	
-	UnicodeString getTitle();
-	
-	String getServerName();
-	
-	void setOwner(const String Owner);
-	
-	void setCreator(const String Creator);
-	
-	void setTitle(const String Title);
-	
-	unsigned int getRoomID();
-	
-	int getSubRoomsSize();
-		
-	ChatRoom getParent();
-	
-	int compareTo(ChatRoom obj);
+	public boolean isPublic() {
+		return isPublicRoom == true;
+	}
+
+	public boolean isPrivate() {
+		return isPublicRoom == false;
+	}
+
+	public PlayerCreature getPlayer(int idx) {
+		return playerList.get(idx);
+	}
+
+	public int getPlayerSize() {
+		return playerList.size();
+	}
+
+	public void setName(final string Name) {
+		name = Name;
+	}
+
+	public string getName() {
+		return name;
+	}
+
+	public string getFullPath() {
+		return fullPath;
+	}
+
+	public string getOwner() {
+		return owner;
+	}
+
+	public string getCreator() {
+		return creator;
+	}
+
+	public unicode getTitle() {
+		return title;
+	}
+
+	public native string getServerName();
+
+	public void setOwner(final string Owner) {
+		owner = Owner;
+	}
+
+	public void setCreator(final string Creator) {
+		creator = Creator;
+	}
+
+	public void setTitle(final string Title) {
+		title = Title;
+	}
+
+	public unsigned int getRoomID() {
+		return roomID;
+	}
+
+	public int getSubRoomsSize() {
+		return subRooms.size();
+	}
+
+	public ChatRoom getParent() {
+		return parent;
+	}
+
+	public int compareTo(ChatRoom obj) {
+		if (roomID < obj.getRoomID())
+			return 1;
+		else if (roomID > obj.getRoomID())
+			return -1;
+		else
+			return 0;
+	}
 }

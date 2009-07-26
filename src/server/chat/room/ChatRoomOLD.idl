@@ -42,50 +42,78 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef COMMANDQUEUEENQUEUE_H_
-#define COMMANDQUEUEENQUEUE_H_
+include "engine/service/proto/BaseMessage";
 
-#include "ObjectControllerMessage.h"
-#include "../MessageCallback.h"
+import "../../zone/ZoneServer";
 
-class CommandQueueEnqueue : public ObjectControllerMessage {
-public:
-	CommandQueueEnqueue(CreatureObject* creo, uint32 actioncnt, uint32 actionCRC) 
-			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x116) {
-		insertInt(actioncnt);
-		insertInt(actionCRC);
-		insertLong(creo->getTargetID());
-		insertInt(0); // UnicodeString shit
+import "../../zone/objects/player/Player";
+
+interface ChatRoom {
+	ChatRoom(ZoneServer server, const String name, unsigned int cid) {
+		super(server, name, cid);
+	}
+	
+	ChatRoom(ZoneServer server, ChatRoom parent, const String name, unsigned int cid) {
+		super(server, parent, name, cid);
 	}
 
-};
-
-class CommandQueueEnqueueCallback : public MessageCallback {
-	uint32 actionCount;
-	uint32 actionCRC;
-	uint64 targetID;
-
-	UnicodeString arguments;
-public:
-	CommandQueueEnqueueCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
-
-	}
-
-	void parse(Message* message) {
-		actionCount = message->parseInt();
-		actionCRC = message->parseInt();
-
-		targetID = message->parseLong();
-
-		message->parseUnicode(arguments);
-	}
-
-	void execute() {
-		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
-
-
-	}
-};
-
-#endif /*COMMANDQUEUEENQUEUE_H_*/
+	void sendTo(Player player);
+	void sendDestroyTo(Player player);
+	
+	void addSubRoom(ChatRoom channel);
+	void removeSubRoom(ChatRoom channel);
+	ChatRoom getSubRoom(int i);
+	ChatRoom getSubRoom(const String name);
+	
+	void addPlayer(Player player, boolean doLock = true);
+	void removePlayer(Player player, boolean doLock = true);
+	void removePlayer(const String player);
+	
+	void broadcastMessage(BaseMessage msg);
+	//void broadcastMessage(Vector<Message> messages);
+	
+	boolean hasPlayer(Player player);
+	boolean hasPlayer(const String name);
+	
+	void removeAllPlayers();
+	
+	void setPrivate();
+	
+	void setPublic();
+	
+	boolean isPublic();
+	
+	boolean isPrivate();
+	
+	Player getPlayer(int idx);
+	
+	int getPlayerSize();
+	
+	void setName(const String Name);
+	
+	String getName();
+	
+	String getFullPath();
+	
+	String getOwner();
+	
+	String getCreator();
+	
+	UnicodeString getTitle();
+	
+	String getServerName();
+	
+	void setOwner(const String Owner);
+	
+	void setCreator(const String Creator);
+	
+	void setTitle(const String Title);
+	
+	unsigned int getRoomID();
+	
+	int getSubRoomsSize();
+		
+	ChatRoom getParent();
+	
+	int compareTo(ChatRoom obj);
+}

@@ -46,8 +46,7 @@ which carries forward this exception.
 #define DATATRANSFORMWITHPARENT_H_
 
 #include "ObjectControllerMessage.h"
-
-class CreatureObject;
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class DataTransformWithParent : public ObjectControllerMessage {
 public:
@@ -71,5 +70,75 @@ public:
 	}
 
 };
+
+class DataTransformWithParentCallback : public MessageCallback {
+	uint32 movementStamp;
+	uint32 movementCounter;
+	uint64 parent;
+
+	float directionX, directionY, directionZ, directionW;
+	float positionX, positionZ, positionY;
+
+	ObjectControllerMessageCallback* objectControllerMain;
+public:
+	DataTransformWithParentCallback(ObjectControllerMessageCallback* objectControllerCallback) :
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+
+		objectControllerMain = objectControllerCallback;
+	}
+
+	void parse(Message* message) {
+		movementStamp = message->parseInt();
+		movementCounter = message->parseInt();
+
+		parent = message->parseLong();
+
+		directionW = message->parseFloat();
+		directionX = message->parseFloat();
+		directionY = message->parseFloat();
+		directionZ = message->parseFloat();
+
+		positionX = message->parseFloat();
+		positionZ = message->parseFloat();
+		positionY = message->parseFloat();
+	}
+
+	void execute() {
+		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+
+		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
+			StringBuffer msg;
+			msg << "position out of bounds cell:[" << parent << "]";
+			object->error(msg.toString());
+		}
+
+		if (object->getZone() == NULL)
+			return;
+
+		/*if (object->isMounted())
+				object->dismount(true, true);*/
+
+		ManagedReference<SceneObject*> newParent = server->getZoneServer()->getObject(parent, true);
+
+		if (newParent == NULL)
+			return;
+
+		if (!newParent->isCell())
+			return;
+
+		object->setMovementCounter(movementCounter);
+		object->setDirection(directionW, directionX, directionY, directionZ);
+		object->setPosition(positionX, positionZ, positionY);
+
+		//TODO: add improved Speed Hack checks
+
+		if (objectControllerMain->getPriority() == 0x23)
+			object->updateZoneWithParent(newParent, false);
+		else
+			object->updateZoneWithParent(newParent, true);
+
+	}
+};
+
 
 #endif /*DATATRANSFORMWITHPARENT_H_*/

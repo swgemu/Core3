@@ -12,6 +12,8 @@
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
 
+#include "server/chat/room/ChatRoom.h"
+
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
 
@@ -32,6 +34,8 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 	recoveryEvent = NULL;
 
 	logoutTimeStamp = new Time();
+
+	chatRooms = new SortedVector<ChatRoom*>();
 
 	setOffline();
 }
@@ -170,4 +174,16 @@ void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
 	} catch (...) {
 		unlock();
 	}
+}
+
+String PlayerCreatureImplementation::getFirstName() {
+	UnicodeString fullName = objectName->getCustomString();
+
+    int idx = fullName.indexOf(' ');
+
+    if (idx != -1) {
+       return fullName.subString(0, idx).toString();
+    } else {
+        return fullName.toString();
+    }
 }

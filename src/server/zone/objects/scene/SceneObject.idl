@@ -396,7 +396,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public native abstract void removeFromZone(boolean lockZone);
 	public native abstract void removeFromBuilding(BuildingObject building);
 	public native abstract void updateZone(boolean lightUpdate);
-	public native abstract void updateZoneWithParent(unsigned long Parent, boolean lightUpdate);
+	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate);
 
 	
 	public native void broadcastMessage(BasePacket message, boolean lockZone = true);

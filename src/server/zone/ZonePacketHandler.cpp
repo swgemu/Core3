@@ -57,6 +57,8 @@ which carries forward this exception.
 
 #include "packets/object/ObjectControllerMessage.h"
 #include "packets/object/DataTransform.h"
+#include "packets/object/DataTransformWithParent.h"
+
 
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
@@ -85,6 +87,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
 
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
+	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {

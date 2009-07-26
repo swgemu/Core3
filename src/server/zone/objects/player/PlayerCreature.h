@@ -79,7 +79,21 @@ class PlayerRecoveryEvent;
 
 using namespace server::zone::objects::player::events;
 
+namespace server {
+namespace chat {
+namespace room {
+
+class ChatRoom;
+
+} // namespace room
+} // namespace chat
+} // namespace server
+
+using namespace server::chat::room;
+
 #include "system/lang/Time.h"
+
+#include "system/util/SortedVector.h"
 
 #include "engine/util/QuadTreeEntry.h"
 
@@ -94,7 +108,7 @@ using namespace server::zone::objects::player::events;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
+namespace player {
 
 class PlayerCreature : public CreatureObject {
 public:
@@ -134,6 +148,8 @@ public:
 
 	byte getRaceID();
 
+	String getFirstName();
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -152,25 +168,31 @@ public:
 
 	void clearRecoveryEvent();
 
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
 	virtual ~PlayerCreature();
 
+	String _return_getFirstName;
+
 	friend class PlayerCreatureHelper;
 };
 
-} // namespace creature
+} // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
+using namespace server::zone::objects::player;
 
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
+namespace player {
 
 class PlayerCreatureImplementation : public CreatureObjectImplementation {
 protected:
@@ -206,7 +228,7 @@ protected:
 
 	Time* nextTip;
 
-	int itemShift;
+	SortedVector<ChatRoom* >* chatRooms;
 
 	byte incapacitationCounter;
 
@@ -265,6 +287,8 @@ public:
 
 	byte getRaceID();
 
+	String getFirstName();
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -282,6 +306,10 @@ public:
 	void clearDisconnectEvent();
 
 	void clearRecoveryEvent();
+
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
 
 	PlayerCreature* _this;
 
@@ -338,6 +366,8 @@ public:
 
 	byte getRaceID();
 
+	String getFirstName();
+
 	void setClient(ZoneClientSession* cli);
 
 	void setRaceID(byte id);
@@ -353,6 +383,10 @@ public:
 	void clearDisconnectEvent();
 
 	void clearRecoveryEvent();
+
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
 
 };
 
@@ -371,11 +405,11 @@ public:
 	friend class Singleton<PlayerCreatureHelper>;
 };
 
-} // namespace creature
+} // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
+using namespace server::zone::objects::player;
 
 #endif /*PLAYERCREATURE_H_*/

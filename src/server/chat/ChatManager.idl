@@ -42,86 +42,123 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/Message";
-include "../zone/packets/object/StfParameter";
+package server.chat;
 
-import "room/ChatRoom";
+import engine.core.ManagedObject;
+import server.zone.ZoneServer;
+import server.chat.room.ChatRoom;
+import server.chat.room.ChatRoomMap;
+import server.zone.objects.player.PlayerCreature;
+import engine.service.proto.BaseMessage;
+import server.zone.packets.object.StfParameter;
+import server.zone.managers.player.PlayerMap;
+import server.zone.managers.player.PlayerManager;
+import system.util.VectorMap;
+import server.zone.objects.creature.CreatureObject;
 
-import "../zone/objects/player/Player";
+class ChatManager extends ManagedObject {
+	ZoneServer server;
 
-import "../zone/objects/creature/CreatureObject";
+	//UserManager userManager;
 
-import "server/zone/ZoneServer";
+	PlayerManager playerManager;
+	//GuildManager guildManager;
 
-interface ChatManager {
-	ChatManager(ZoneServer server, int initPlayers) {
-		super(server, initPlayers);
-	}
+	//GameCommandHandler * gameCommandHandler;
 
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
+	//ResourceManager* resourceManager;
 
-	void addPlayer(Player player);
-	Player getPlayer(String name);
-	Player removePlayer(String name);
+	PlayerMap playerMap;
 
-	void sendMail(const String sendername, UnicodeString header, UnicodeString body, const String name);
-	void sendMailBody(Player receiver, unsigned int mailid);
-	void listMail(Player ply);
-	void deleteMail(unsigned int mailid);
+	VectorMap<string, ChatRoom> gameRooms;
 
-	void handleTellMessage(Player player, Message pack);
+	ChatRoom groupRoom;
+	ChatRoom guildRoom;
+	ChatRoomMap roomMap;
 
-	void handleMessage(Player player, Message pack);
-	void handleEmote(Player player, Message pack);
-	void handleMood(Player player, Message pack);
+	unsigned int roomID;
 
-	void sendSystemMessage(Player player, UnicodeString message);
-	void sendSystemMessage(Player player, const String file, const String str, StfParameter param);
+	boolean mute;
+	
+	public native ChatManager(ZoneServer serv, int initsize);
+	
+	public native void addPlayer(PlayerCreature player);
+	public native PlayerCreature getPlayer(final string name);
+	public native PlayerCreature removePlayer(final string name);
 
-	void broadcastMessage(CreatureObject player, const UnicodeString message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
-	void broadcastMessage(CreatureObject player, const String file, const String str, StfParameter param, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
-	void broadcastMessage(const String message);
-	void broadcastMessageRange(Player player, const String message, float range);
+	public native void sendMail(final string sendername, unicode header, unicode body, final string name);
+	public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
+	public native void listMail(PlayerCreature ply);
+	public native void deleteMail(unsigned int mailid);
 
-	void handleGameCommand(Player player, const String command);
+	public native void handleTellMessage(PlayerCreature player, BaseMessage pack);
+	public native void handleMessage(PlayerCreature player, BaseMessage pack);
+	public native void handleEmote(PlayerCreature player, BaseMessage pack);
+	public native void handleMood(PlayerCreature player, BaseMessage pack);
+
+	public native void handleGameCommand(PlayerCreature player, final string command);
+	public native void sendSystemMessage(PlayerCreature player, unicode message);
+	public native void sendSystemMessage(PlayerCreature player, final string file, final string str, StfParameter param);
+
+	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	public native void broadcastMessage(CreatureObject player, final string file, final string str, StfParameter param, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	public native void broadcastMessage(final string message);
+	public native void broadcastMessageRange(PlayerCreature player, final string message, float range);
 
 	// ChatRooms
-	void initiateRooms();
+	public native void initiateRooms();
+	public native void initGuildChannel(PlayerCreature creator, unsigned int gid);
 
-	void handleChatRoomMessage(Player player, Message pack);
-	void handleGroupChat(Player player, Message pack);
-	void handleGuildChat(Player player, Message pack);
-	void handleCreateRoom(Player player, Message pack);
-	void handleChatEnterRoomById(Player player, Message pack);
-	void handleChatDestroyRoom(Player player, Message pack);
-	void handleChatRemoveAvatarFromRoom(Player player, Message pack);
+	public native void destroyRooms();
 
-	ChatRoom getChatRoom(unsigned int id);
+	public native void handleChatRoomMessage(PlayerCreature player, BaseMessage pack);
+	public native void handleGroupChat(PlayerCreature player, BaseMessage pack);
+	public native void handleGuildChat(PlayerCreature player, BaseMessage pack);
 
-	void addRoom(ChatRoom channel);
-	void removeRoom(ChatRoom channel);
+	public native void handleCreateRoom(PlayerCreature player, BaseMessage pack);
+	public native void handleChatEnterRoomById(PlayerCreature player, BaseMessage pack);
+	public native void handleChatDestroyRoom(PlayerCreature player, BaseMessage pack);
+	public native void handleChatRemoveAvatarFromRoom(PlayerCreature player, BaseMessage pack);
 
-	void sendRoomList(Player player);
-	ChatRoom createGroupRoom(unsigned int groupID, Player creator);
+	public native ChatRoom getChatRoom(unsigned int id);
 
-	void sendGuildChat(Player player);
+	public native void addRoom(ChatRoom channel);
+	public native void removeRoom(ChatRoom channel);
 
-	ChatRoom createRoomByFullPath(const String path);
+	public native void sendRoomList(PlayerCreature player);
 
-	void destroyRoom(ChatRoom room);
+	public native void sendGuildChat(PlayerCreature player);
 
-	void printRoomTree(ChatRoom channel);
+	public native ChatRoom createGroupRoom(unsigned int groupID, PlayerCreature creator);
 
-	ChatRoom getChatRoomByFullPath(const String path);
-	ChatRoom getGameRoom(const String game);
-	ChatRoom getChatRoomByGamePath(ChatRoom game, const String path);
+	public native ChatRoom createRoomByFullPath(final string path);
 
-	unsigned int getNextRoomID();
+	public native void destroyRoom(ChatRoom room);
 
-	int getPlayerCount();
+	/*public native void printRoomTree(ChatRoom channel) {
+		string name;
+		printRoomTree(channel, name);
+	}*/
 
-	boolean isMute();
+	public native ChatRoom getChatRoomByFullPath(final string path);
 
-	void setMute(boolean isMuted);
+	public native ChatRoom getGameRoom(final string game);
+	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
+
+	public unsigned int getNextRoomID() {
+		return ++roomID;
+	}
+
+	public int getPlayerCount() {
+		return playerMap.size();
+	}
+
+	public boolean isMute() {
+		return mute;
+	}
+
+	public void setMute(boolean isMuted) {
+		mute = isMuted;
+	}
 }
