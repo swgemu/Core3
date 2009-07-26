@@ -57,12 +57,13 @@ import system.util.Vector;
 import system.util.VectorMap;
 import engine.util.Quaternion;
 import engine.service.proto.BasePacket;
+import engine.service.proto.BaseMessage;
+
 
 import server.zone.ZoneProcessServerImplementation;
-
 import server.zone.ZoneClientSession;
-
 import server.zone.Zone;
+import server.zone.objects.building.BuildingObject;
 
 include server.zone.objects.scene.variables.StringId;
 
@@ -328,7 +329,11 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	}
 	
 	public boolean isPlayerCreature() {
-		return gameObjectType == 409;
+		return gameObjectType == PLAYERCREATURE;
+	}
+	
+	public boolean isCell() {
+		return gameObjectType == CELLOBJECT;
 	}
 	
 	public abstract boolean addObject(SceneObject object) {
@@ -374,12 +379,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	}
 	
 	public native void create(ZoneClientSession client);
-	
 	public native void destroy(ZoneClientSession client);
-	
 	public native void close(ZoneClientSession client);
-	
 	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
+	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 	
 	public native abstract void sendTo(SceneObject player, boolean doClose = true);
 	public native abstract void sendBaselinesTo(SceneObject player) {
@@ -389,14 +392,34 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	}
 	
 	public native abstract void insertToZone(Zone zone);
+	public native abstract void insertToBuilding(BuildingObject building);
 	public native abstract void removeFromZone(boolean lockZone);
+	public native abstract void removeFromBuilding(BuildingObject building);
 	public native abstract void updateZone(boolean lightUpdate);
+	public native abstract void updateZoneWithParent(unsigned long Parent, boolean lightUpdate);
+
 	
 	public native void broadcastMessage(BasePacket message, boolean lockZone = true);
 	
 	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)
 			msg.finalize();
+	}
+	
+	public int compareTo(SceneObject obj) {
+		if (objectID < obj.getObjectID())
+			return 1;
+		else if (objectID > obj.getObjectID())
+			return -1;
+		else
+			return 0;
+	}
+	
+	public unsigned long getParentID() {
+		if (parent != null) {
+			return parent.getObjectID();
+		} else
+			return 0;
 	}
 	
 	public unsigned long getObjectID() {
@@ -477,6 +500,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public unsigned int getMovementCounter() {
 		return movementCounter;
+	}
+	
+	public SceneObject getParent() {
+		return parent;
 	}
 	
 	public void setPosition(float x, float z, float y) {

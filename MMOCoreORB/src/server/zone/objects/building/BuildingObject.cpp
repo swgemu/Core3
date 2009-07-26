@@ -4,6 +4,8 @@
 
 #include "BuildingObject.h"
 
+#include "server/zone/objects/cell/CellObject.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -19,6 +21,98 @@ BuildingObject::BuildingObject(DummyConstructorParameter* param) : TangibleObjec
 }
 
 BuildingObject::~BuildingObject() {
+}
+
+void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->notifyInsert(obj);
+}
+
+void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->notifyDissapear(obj);
+}
+
+void BuildingObject::notifyInsertToZone(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->notifyInsertToZone(object);
+}
+
+void BuildingObject::insert(QuadTreeEntry* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->insert(obj);
+}
+
+void BuildingObject::remove(QuadTreeEntry* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->remove(obj);
+}
+
+void BuildingObject::update(QuadTreeEntry* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->update(obj);
+}
+
+void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(obj);
+		method.addFloatParameter(range);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->inRange(obj, range);
 }
 
 /*
@@ -57,11 +151,60 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		notifyInsert((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 7:
+		notifyDissapear((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 8:
+		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		insert((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 10:
+		remove((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 11:
+		update((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 12:
+		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void BuildingObjectAdapter::notifyInsert(QuadTreeEntry* obj) {
+	return ((BuildingObjectImplementation*) impl)->notifyInsert(obj);
+}
+
+void BuildingObjectAdapter::notifyDissapear(QuadTreeEntry* obj) {
+	return ((BuildingObjectImplementation*) impl)->notifyDissapear(obj);
+}
+
+void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
+	return ((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
+}
+
+void BuildingObjectAdapter::insert(QuadTreeEntry* obj) {
+	return ((BuildingObjectImplementation*) impl)->insert(obj);
+}
+
+void BuildingObjectAdapter::remove(QuadTreeEntry* obj) {
+	return ((BuildingObjectImplementation*) impl)->remove(obj);
+}
+
+void BuildingObjectAdapter::update(QuadTreeEntry* obj) {
+	return ((BuildingObjectImplementation*) impl)->update(obj);
+}
+
+void BuildingObjectAdapter::inRange(QuadTreeEntry* obj, float range) {
+	return ((BuildingObjectImplementation*) impl)->inRange(obj, range);
 }
 
 /*

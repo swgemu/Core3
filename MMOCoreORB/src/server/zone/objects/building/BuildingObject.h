@@ -9,9 +9,29 @@
 
 #include "engine/core/ManagedReference.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace cell {
+
+class CellObject;
+
+} // namespace cell
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::cell;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
+
+#include "engine/util/QuadTree.h"
+
+#include "engine/util/QuadTreeEntry.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -21,6 +41,20 @@ namespace building {
 class BuildingObject : public TangibleObject {
 public:
 	BuildingObject(LuaObject* templateData);
+
+	void notifyInsert(QuadTreeEntry* obj);
+
+	void notifyDissapear(QuadTreeEntry* obj);
+
+	void notifyInsertToZone(SceneObject* object);
+
+	void insert(QuadTreeEntry* obj);
+
+	void remove(QuadTreeEntry* obj);
+
+	void update(QuadTreeEntry* obj);
+
+	void inRange(QuadTreeEntry* obj, float range);
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -42,10 +76,25 @@ namespace zone {
 namespace objects {
 namespace building {
 
-class BuildingObjectImplementation : public TangibleObjectImplementation {
+class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
+	SortedVector<CellObject* >* cells;
 
 public:
 	BuildingObjectImplementation(LuaObject* templateData);
+
+	void notifyInsert(QuadTreeEntry* obj);
+
+	void notifyDissapear(QuadTreeEntry* obj);
+
+	void notifyInsertToZone(SceneObject* object);
+
+	void insert(QuadTreeEntry* obj);
+
+	void remove(QuadTreeEntry* obj);
+
+	void update(QuadTreeEntry* obj);
+
+	void inRange(QuadTreeEntry* obj, float range);
 
 	BuildingObject* _this;
 
@@ -67,6 +116,20 @@ public:
 	BuildingObjectAdapter(BuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void notifyInsert(QuadTreeEntry* obj);
+
+	void notifyDissapear(QuadTreeEntry* obj);
+
+	void notifyInsertToZone(SceneObject* object);
+
+	void insert(QuadTreeEntry* obj);
+
+	void remove(QuadTreeEntry* obj);
+
+	void update(QuadTreeEntry* obj);
+
+	void inRange(QuadTreeEntry* obj, float range);
 
 };
 

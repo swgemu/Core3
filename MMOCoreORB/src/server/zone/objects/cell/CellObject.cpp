@@ -47,12 +47,37 @@ bool CellObject::removeObject(SceneObject* object) {
 		return ((CellObjectImplementation*) _impl)->removeObject(object);
 }
 
-int CellObject::getCellNumber() {
+SceneObject* CellObject::getContainmentObject(int idx) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addSignedIntParameter(idx);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getContainmentObject(idx);
+}
+
+int CellObject::getContainmentObjectsSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getContainmentObjectsSize();
+}
+
+int CellObject::getCellNumber() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -64,7 +89,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -99,22 +124,36 @@ void CellObjectImplementation::_serializationHelperMethod() {
 }
 
 bool CellObjectImplementation::addObject(SceneObject* object) {
-	// server/zone/objects/cell/CellObject.idl(56):  return true;
-	return true;
+	// server/zone/objects/cell/CellObject.idl(58):  boolean result = containmentObjects.put(object.getObjectID(), object);
+	bool result = containmentObjects->put(object->getObjectID(), object);
+	// server/zone/objects/cell/CellObject.idl(60):  return result;
+	return result;
 }
 
 bool CellObjectImplementation::removeObject(SceneObject* object) {
-	// server/zone/objects/cell/CellObject.idl(60):  return true;
-	return true;
+	// server/zone/objects/cell/CellObject.idl(64):  boolean result = containmentObjects.drop(object.getObjectID());
+	bool result = containmentObjects->drop(object->getObjectID());
+	// server/zone/objects/cell/CellObject.idl(66):  return result;
+	return result;
+}
+
+SceneObject* CellObjectImplementation::getContainmentObject(int idx) {
+	// server/zone/objects/cell/CellObject.idl(70):  return containmentObjects.get(idx);
+	return containmentObjects->get(idx);
+}
+
+int CellObjectImplementation::getContainmentObjectsSize() {
+	// server/zone/objects/cell/CellObject.idl(74):  return containmentObjects.size();
+	return containmentObjects->size();
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(64):  return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(78):  return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(68):  cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(82):  cellNumber = number;
 	cellNumber = number;
 }
 
@@ -136,9 +175,15 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 8:
-		resp->insertSignedInt(getCellNumber());
+		resp->insertLong(getContainmentObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 9:
+		resp->insertSignedInt(getContainmentObjectsSize());
+		break;
+	case 10:
+		resp->insertSignedInt(getCellNumber());
+		break;
+	case 11:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
 	default:
@@ -154,6 +199,14 @@ bool CellObjectAdapter::addObject(SceneObject* object) {
 
 bool CellObjectAdapter::removeObject(SceneObject* object) {
 	return ((CellObjectImplementation*) impl)->removeObject(object);
+}
+
+SceneObject* CellObjectAdapter::getContainmentObject(int idx) {
+	return ((CellObjectImplementation*) impl)->getContainmentObject(idx);
+}
+
+int CellObjectAdapter::getContainmentObjectsSize() {
+	return ((CellObjectImplementation*) impl)->getContainmentObjectsSize();
 }
 
 int CellObjectAdapter::getCellNumber() {

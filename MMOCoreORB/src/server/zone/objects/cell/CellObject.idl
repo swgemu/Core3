@@ -46,18 +46,32 @@ package server.zone.objects.cell;
 
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
+import system.util.VectorMap;
 
 class CellObject extends SceneObject {
 	int cellNumber;
+	VectorMap<unsigned long, SceneObject> containmentObjects;
 	
 	public native CellObject(LuaObject templateData);
 	
 	public boolean addObject(SceneObject object) {
-		return true;
+		boolean result = containmentObjects.put(object.getObjectID(), object);
+	
+		return result;
 	}
 	
 	public boolean removeObject(SceneObject object) {
-		return true;
+		boolean result = containmentObjects.drop(object.getObjectID());
+			
+		return result;
+	}
+	
+	public SceneObject getContainmentObject(int idx) {
+		return containmentObjects.get(idx);
+	}
+	
+	public int getContainmentObjectsSize() {
+		return containmentObjects.size();
 	}
 	
 	public int getCellNumber() {

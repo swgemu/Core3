@@ -471,8 +471,8 @@ void PlayerCreatureImplementation::setLinkDead() {
 	onlineStatus = LINKDEAD;
 	// server/zone/objects/player/PlayerCreature.idl(187):  logoutTimeStamp.update();
 	logoutTimeStamp->update();
-	// server/zone/objects/player/PlayerCreature.idl(188):  logoutTimeStamp.addMiliTime(7530);
-	logoutTimeStamp->addMiliTime(7530);
+	// server/zone/objects/player/PlayerCreature.idl(188):  logoutTimeStamp.addMiliTime(30000);
+	logoutTimeStamp->addMiliTime(30000);
 	// server/zone/objects/player/PlayerCreature.idl(190):  activateRecovery();
 	activateRecovery();
 }

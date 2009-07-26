@@ -51,13 +51,18 @@ which carries forward this exception.
 #include "../../packets/scene/SceneObjectCloseMessage.h"
 #include "../../packets/scene/UpdateContainmentMessage.h"
 #include "../../packets/scene/UpdateTransformMessage.h"
+#include "../../packets/scene/UpdateTransformWithParentMessage.h"
 #include "../../packets/scene/LightUpdateTransformMessage.h"
+#include "../../packets/scene/LightUpdateTransformWithParentMessage.h"
 
 #include "../../ZoneClientSession.h"
 #include "../../Zone.h"
+#include "../../ZoneServer.h"
 
 #include "variables/StringId.h"
 
+#include "../cell/CellObject.h"
+#include "../building/BuildingObject.h"
 
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject"){
 	SceneObjectImplementation::parent = NULL;
@@ -115,10 +120,12 @@ void SceneObjectImplementation::close(ZoneClientSession* client) {
 }
 
 void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containmentType) {
-	info("linking to parent");
-
 	BaseMessage* msg = new UpdateContainmentMessage(_this, parent, containmentType);
 	client->sendMessage(msg);
+}
+
+BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containmentType) {
+	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
@@ -193,6 +200,22 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZ
 	}
 }
 
+void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
+	if (!isInQuadTree() || !parent->isCell())
+		return;
+
+	if (building != parent->getParent()) {
+		error("removing from wrong building object");
+		return;
+	}
+
+    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), false);
+
+    parent->removeObject(_this);
+
+    building->remove(this);
+}
+
 void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	if (zone == NULL)
 		return;
@@ -200,7 +223,17 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	try {
 		zone->lock();
 
-		zone->update(this);
+        if (parent != NULL && parent->isCell()) {
+            CellObject* cell = (CellObject*)parent.get();
+
+            removeFromBuilding((BuildingObject*)cell->getParent());
+
+            parent = NULL;
+
+            zone->insert(this);
+        } else
+        	zone->update(this);
+
 		zone->inRange(this, 128);
 
 		if (lightUpdate) {
@@ -217,6 +250,90 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	}
 }
 
+void SceneObjectImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate) {
+	/*if (isMounted())
+		dismount(true, true);*/
+
+	if (zone == NULL)
+		return;
+
+	ManagedReference<SceneObject*> newParent = parent;
+
+	if (parent == NULL || (parent != NULL && parent->getObjectID() != Parent))
+		newParent = zone->getZoneServer()->getObject(Parent, true);
+
+	if (newParent == NULL)
+		return;
+
+	if (!newParent->isCell())
+		return;
+
+	bool insert = false;
+
+	try {
+		zone->lock();
+
+		if (newParent != parent) {
+			if (parent == NULL) {
+				zone->remove(this);
+				insert = true;
+			} else {
+				if (parent->isCell()) {
+					BuildingObject* building = (BuildingObject*) parent->getParent();
+					SceneObject* newObj = newParent->getParent();
+
+					BuildingObject* newBuilding = (BuildingObject*) newObj;
+
+					if (building != newBuilding) {
+						//System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
+
+						removeFromBuilding(building);
+
+						insert = true;
+					}
+
+
+					// remove from old cell
+					if (parent != NULL)
+						parent->removeObject(_this);
+				} else
+					insert = true;
+			}
+
+			//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
+			// add to new cell
+			parent = newParent;
+			parent->addObject(_this);
+
+			//linkType = 0x04;
+			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), false);
+
+		}
+
+		BuildingObject* building = (BuildingObject*) parent->getParent();
+
+		if (insert) {
+			info("insertToBuilding from updateZoneWithParent");
+			insertToBuilding(building);
+		} else {
+			building->update(this);
+			building->inRange(this, 128);
+		}
+
+		if (lightUpdate) {
+			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
+			broadcastMessage(message, false);
+		} else {
+			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
+			broadcastMessage(message, false);
+		}
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
+		error("Exception in PlayerImplementation::updateZoneWithParent");
+	}
+}
+
 void SceneObjectImplementation::insertToZone(Zone* zone) {
 	SceneObjectImplementation::zone = zone;
 
@@ -227,15 +344,42 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		if (parent == NULL)
 			initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
-		else
-			initializePosition(positionX, positionZ, positionY);
+		else if (parent->isCell()) {
+            BuildingObject* building = (BuildingObject*) parent->getParent();
 
-		zone->insert(this);
-		zone->inRange(this, 128);
+            insertToBuilding(building);
+
+			initializePosition(positionX, positionZ, positionY);
+		} else {
+			zone->insert(this);
+			zone->inRange(this, 128);
+		}
 
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
+	}
+}
+
+void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
+	if (isInQuadTree() || !parent->isCell())
+		return;
+
+	try {
+		info("SceneObjectImplementation::insertToBuilding");
+
+		parent->addObject(_this);
+
+		building->insert(this);
+		building->inRange(this, 128);
+
+		building->notifyInsertToZone(_this);
+
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), false);
+
+		info("sent cell link to everyone else");
+	} catch (...) {
+		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
 	}
 }
 
@@ -248,7 +392,16 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 	try {
 		zone->lock(lockZone);
 
-		zone->remove(this);
+		ManagedReference<SceneObject*> par = parent;
+
+		if (parent != NULL && parent->isCell()) {
+			BuildingObject* building = (BuildingObject*)parent->getParent();
+
+			par = parent;
+
+			removeFromBuilding(building);
+		} else
+			zone->remove(this);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			QuadTreeEntry* obj = getInRangeObject(i);

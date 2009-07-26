@@ -54,6 +54,7 @@ import engine.core.ManagedObject;
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.ZoneServer;
+//import server.zone.objects.SceneObject;
 
 
 include server.zone.managers.planet.HeightMap;
@@ -108,6 +109,8 @@ class Zone extends ManagedObject, native QuadTree {
 	public int getZoneID() {
 		return zoneID;
 	}
+	
+	//public native SceneObject lookupObject(unsigned long objectID);
 
 	public ZoneServer getZoneServer() {
 		return server;

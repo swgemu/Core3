@@ -185,7 +185,7 @@ class PlayerCreature extends CreatureObject {
 		onlineStatus = LINKDEAD;
 		
 		logoutTimeStamp.update();
-		logoutTimeStamp.addMiliTime(7530);
+		logoutTimeStamp.addMiliTime(30000);
 		
 		activateRecovery();
 	}

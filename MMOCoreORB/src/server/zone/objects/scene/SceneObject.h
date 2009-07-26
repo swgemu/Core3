@@ -39,6 +39,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+
+class BuildingObject;
+
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/core/ManagedObject.h"
@@ -64,6 +78,8 @@ using namespace server::zone;
 #include "engine/util/Quaternion.h"
 
 #include "engine/service/proto/BasePacket.h"
+
+#include "engine/service/proto/BaseMessage.h"
 
 #include "engine/core/ManagedReference.h"
 
@@ -102,6 +118,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isCell();
+
 	bool addObject(SceneObject* object);
 
 	bool removeObject(SceneObject* object);
@@ -114,6 +132,8 @@ public:
 
 	void link(ZoneClientSession* client, unsigned int containmentType);
 
+	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
+
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -122,13 +142,23 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void insertToBuilding(BuildingObject* building);
+
 	void removeFromZone(bool lockZone);
 
+	void removeFromBuilding(BuildingObject* building);
+
 	void updateZone(bool lightUpdate);
+
+	void updateZoneWithParent(unsigned long long Parent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool lockZone);
 
 	void sendMessage(BasePacket* msg);
+
+	int compareTo(SceneObject* obj);
+
+	unsigned long long getParentID();
 
 	unsigned long long getObjectID();
 
@@ -169,6 +199,8 @@ public:
 	float getDirectionAngle();
 
 	unsigned int getMovementCounter();
+
+	SceneObject* getParent();
 
 	void setPosition(float x, float z, float y);
 
@@ -612,6 +644,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isCell();
+
 	virtual bool addObject(SceneObject* object);
 
 	virtual bool removeObject(SceneObject* object);
@@ -624,6 +658,8 @@ public:
 
 	void link(ZoneClientSession* client, unsigned int containmentType);
 
+	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
+
 	virtual void sendTo(SceneObject* player, bool doClose);
 
 	virtual void sendBaselinesTo(SceneObject* player);
@@ -632,13 +668,23 @@ public:
 
 	virtual void insertToZone(Zone* zone);
 
+	virtual void insertToBuilding(BuildingObject* building);
+
 	virtual void removeFromZone(bool lockZone);
 
+	virtual void removeFromBuilding(BuildingObject* building);
+
 	virtual void updateZone(bool lightUpdate);
+
+	virtual void updateZoneWithParent(unsigned long long Parent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool lockZone);
 
 	virtual void sendMessage(BasePacket* msg);
+
+	int compareTo(SceneObject* obj);
+
+	unsigned long long getParentID();
 
 	unsigned long long getObjectID();
 
@@ -679,6 +725,8 @@ public:
 	float getDirectionAngle();
 
 	unsigned int getMovementCounter();
+
+	SceneObject* getParent();
 
 	void setPosition(float x, float z, float y);
 
@@ -747,6 +795,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isCell();
+
 	bool addObject(SceneObject* object);
 
 	bool removeObject(SceneObject* object);
@@ -759,6 +809,8 @@ public:
 
 	void link(ZoneClientSession* client, unsigned int containmentType);
 
+	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
+
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -767,13 +819,23 @@ public:
 
 	void insertToZone(Zone* zone);
 
+	void insertToBuilding(BuildingObject* building);
+
 	void removeFromZone(bool lockZone);
 
+	void removeFromBuilding(BuildingObject* building);
+
 	void updateZone(bool lightUpdate);
+
+	void updateZoneWithParent(unsigned long long Parent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool lockZone);
 
 	void sendMessage(BasePacket* msg);
+
+	int compareTo(SceneObject* obj);
+
+	unsigned long long getParentID();
 
 	unsigned long long getObjectID();
 
@@ -812,6 +874,8 @@ public:
 	float getDirectionAngle();
 
 	unsigned int getMovementCounter();
+
+	SceneObject* getParent();
 
 	void setPosition(float x, float z, float y);
 
