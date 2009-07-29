@@ -53,6 +53,8 @@ which carries forward this exception.
 #include "managers/object/ObjectManager.h"
 #include "managers/player/PlayerManager.h"
 
+#include "server/chat/ChatManager.h"
+
 #include "ZoneProcessServerImplementation.h"
 
 ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int galaxyid) :
@@ -68,6 +70,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 
 	objectManager = NULL;
 	playerManager = NULL;
+	chatManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -377,6 +380,10 @@ void ZoneServerImplementation::startManagers() {
 	playerManager = new PlayerManager(objectManager, processor);
 	playerManager->deploy("PlayerManager");
 
+	chatManager = new ChatManager(_this, 10000);
+	chatManager->deploy("ChatManager");
+	chatManager->initiateRooms();
+
 	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
 
@@ -401,8 +408,7 @@ void ZoneServerImplementation::startManagers() {
 	craftingManager = new CraftingManager(_this, processor);
 	craftingManager->deploy("CraftingManager");
 
-	chatManager = new ChatManager(_this, 10000);
-	chatManager->deploy("ChatManager");
+
 
 	bazaarManager = new BazaarManager(_this, processor);
 	bazaarManager->deploy("BazaarManager");

@@ -128,9 +128,11 @@ public:
 
 	void doRecovery();
 
+	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+
 	void sendMessage(BasePacket* msg);
 
-	void sendToOwner(bool doClose);
+	void sendToOwner(bool doClose = true);
 
 	bool isOnline();
 
@@ -267,9 +269,11 @@ public:
 
 	void doRecovery();
 
+	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+
 	void sendMessage(BasePacket* msg);
 
-	void sendToOwner(bool doClose);
+	void sendToOwner(bool doClose = true);
 
 	bool isOnline();
 
@@ -345,6 +349,8 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
+
+	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
 	void sendMessage(BasePacket* msg);
 

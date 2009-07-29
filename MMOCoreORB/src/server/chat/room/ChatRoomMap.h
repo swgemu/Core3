@@ -47,6 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+namespace server {
+namespace chat {
+namespace room {
+
 class ChatRoomMap : public HashTable<uint32, ChatRoom*>, public HashTableIterator<uint32, ChatRoom*> {
 	
 	int hash(const uint32& key) {
@@ -59,5 +63,12 @@ public:
 	}
 
 };
+
+
+}
+}
+}
+
+using namespace server::chat::room;
 
 #endif /*CHATROOMMAP_H_*/

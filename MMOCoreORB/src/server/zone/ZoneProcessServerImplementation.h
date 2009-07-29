@@ -73,6 +73,14 @@ class NameManager;
 #include "ZoneServer.h"
 
 namespace server {
+namespace chat {
+class ChatManager;
+}
+}
+
+using namespace server::chat;
+
+namespace server {
 namespace zone {
 
 class ZonePacketHandler;
@@ -133,6 +141,10 @@ public:
 		return nameManager;
 	}
 
+	inline ChatManager* getChatManager() {
+		return server->getChatManager();
+	}
+
 	/*inline UserManager* getUserManager() {
 		return server->getUserManager();
 	}
@@ -143,10 +155,6 @@ public:
 
 	inline ItemManager* getItemManager() {
 		return server->getItemManager();
-	}
-
-	inline ChatManager* getChatManager() {
-		return server->getChatManager();
 	}
 
 	inline GuildManager* getGuildManager() {

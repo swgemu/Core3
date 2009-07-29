@@ -55,15 +55,20 @@ public:
 			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
 
 		insertFloat(1);
-		insertAscii(itno->getStfName()); //real stf name
-		insertInt(0);
-		insertAscii(itno->getStfFile());
-		insertInt(0);
+		insertStringId(itno->getObjectName());
 
 		insertInt(1);
 		insertInt(itno->getStatus());
 
 		setSize();
+	}
+
+	void insertStringId(StringId* id) {
+		insertAscii(id->getFile());
+		insertInt(0);
+		insertAscii(id->getStringID());
+
+		insertUnicode(id->getCustomString());
 	}
 
 };

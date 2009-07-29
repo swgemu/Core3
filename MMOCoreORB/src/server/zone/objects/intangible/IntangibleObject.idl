@@ -48,5 +48,13 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 
 class IntangibleObject extends SceneObject {
+	protected unsigned int status;
+	
 	public native IntangibleObject(LuaObject templateData);
+	
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public unsigned int getStatus() {
+		return status;
+	}
 }

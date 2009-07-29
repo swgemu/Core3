@@ -101,8 +101,13 @@ public:
 	void execute() {
 		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
 
+		object->info("received data transform");
+
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
+		StringBuffer posMsg;
+		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
+		object->info(posMsg.toString());
 		object->setPosition(positionX, positionZ, positionY);
 
 		//TODO: add improved Speed Hack checks

@@ -58,8 +58,9 @@ which carries forward this exception.
 #include "packets/object/ObjectControllerMessage.h"
 #include "packets/object/DataTransform.h"
 #include "packets/object/DataTransformWithParent.h"
+#include "packets/object/CommandQueueEnqueue.h"
 
-
+#include "packets/chat/ChatRoomList.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
@@ -80,6 +81,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<SelectCharacterCallback>(0xB5098D76);
 	messageCallbackFactory.registerObject<CmdSceneReadyCallback>(0x43FD1C22);
 	messageCallbackFactory.registerObject<ObjectControllerMessageCallback>(0x80CE5E46);
+	messageCallbackFactory.registerObject<ChatRequestRoomListCallback>(0x4C3D2CFA);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
@@ -88,6 +90,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
+	objectMessageControllerFactory->registerObject<CommandQueueEnqueueCallback>(0x116);
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {

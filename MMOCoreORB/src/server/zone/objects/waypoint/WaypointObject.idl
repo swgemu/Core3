@@ -42,28 +42,50 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+package server.zone.objects.waypoint;
 
-import "../player/Player";
+import engine.core.ManagedObject;
+import server.zone.objects.intangible.IntangibleObject;
+import engine.lua.LuaObject;
 
-interface WaypointObject implements SceneObject {
-	WaypointObject(Player player, unsigned long oid) {
-		super(oid, int type);
+class WaypointObject extends IntangibleObject {
+	string internalNote;
+	string planetName;
+
+	boolean active;
+	
+	public native WaypointObject(LuaObject templateData);
+	
+	public void changeStatus(boolean status) {
+		active = status;
 	}
-	
-	void changeStatus(boolean status);
 
-	void setName(const String Name);
-	void setInternalNote(const String message);
-	void setPlanetName(const String planet);
-	
-	void switchStatus();
-	
-	unsigned int getPlanetCRC();
-	
-	boolean getStatus();
-	
-	String getName();
-	String getPlanetName();
-	String getInternalNote();
+	public void switchStatus() {
+		if (active)
+			active = false;
+		else
+			active = true;
+	}
+
+	public boolean getStatus() {
+		return active;
+	}
+
+	public void setInternalNote(final string message) {
+		internalNote = message;
+	}
+
+	public void setPlanetName(final string planet) {
+		planetName = planet;
+	}
+
+	public native unsigned int getPlanetCRC();
+
+	public string getInternalNote() {
+		return internalNote;
+	}
+
+	public string getPlanetName() {
+		return planetName;
+	}
 }

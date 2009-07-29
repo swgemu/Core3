@@ -67,9 +67,9 @@ public:
 
 	ChatRoom* getSubRoom(const String& name);
 
-	void addPlayer(PlayerCreature* player, bool doLock);
+	void addPlayer(PlayerCreature* player, bool doLock = true);
 
-	void removePlayer(PlayerCreature* player, bool doLock);
+	void removePlayer(PlayerCreature* player, bool doLock = true);
 
 	void removePlayer(const String& player);
 
@@ -193,9 +193,9 @@ public:
 
 	ChatRoom* getSubRoom(const String& name);
 
-	void addPlayer(PlayerCreature* player, bool doLock);
+	void addPlayer(PlayerCreature* player, bool doLock = true);
 
-	void removePlayer(PlayerCreature* player, bool doLock);
+	void removePlayer(PlayerCreature* player, bool doLock = true);
 
 	void removePlayer(const String& player);
 

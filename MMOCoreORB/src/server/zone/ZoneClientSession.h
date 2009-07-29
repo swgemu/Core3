@@ -40,13 +40,13 @@ public:
 
 	void resetPacketCheckupTime();
 
-	void closeConnection(bool lockPlayer, bool doLock);
+	void closeConnection(bool lockPlayer, bool doLock = true);
 
 	String getAddress();
 
-	void lock(bool doLock);
+	void lock(bool doLock = true);
 
-	void unlock(bool doLock);
+	void unlock(bool doLock = true);
 
 	void setPlayer(SceneObject* playerCreature);
 
@@ -94,13 +94,13 @@ public:
 
 	void resetPacketCheckupTime();
 
-	void closeConnection(bool lockPlayer, bool doLock);
+	void closeConnection(bool lockPlayer, bool doLock = true);
 
 	String getAddress();
 
-	void lock(bool doLock);
+	void lock(bool doLock = true);
 
-	void unlock(bool doLock);
+	void unlock(bool doLock = true);
 
 	void setPlayer(SceneObject* playerCreature);
 

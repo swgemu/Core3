@@ -47,6 +47,12 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+
 class StfParameter;
 
 class StfPointerParameter : public Message {
@@ -187,4 +193,13 @@ public:
 	}
 
 };
+
+
+}
+}
+}
+}
+
+using namespace server::zone::packets::object;
+
 #endif /* STFPARAMETER_H_ */

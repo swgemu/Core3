@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "../../ZoneServer.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/chat/ChatManager.h"
 
 class SelectCharacter : public BaseMessage {
 public:
@@ -104,6 +105,9 @@ public:
 			} catch (...) {
 				player->unlock();
 			}
+
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->addPlayer(player);
 		}
 	}
 };

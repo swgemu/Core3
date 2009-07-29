@@ -51,6 +51,11 @@ which carries forward this exception.
 
 //#include "../../objects/player/PlayerCreature.h"
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace player {
+
 class PlayerMap : private HashTable<String, PlayerCreature*>, private HashTableIterator<String, PlayerCreature*>, public Mutex {
 	int hash(const String& key) {
         return key.hashCode();
@@ -176,5 +181,14 @@ public:
 	}
 
 };
+
+
+}
+}
+}
+}
+
+using namespace server::zone::managers::player;
+
 
 #endif /*PLAYERMAPIMPLEMENTATION_H_*/

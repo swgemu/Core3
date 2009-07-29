@@ -53,6 +53,7 @@ import server.zone.ZoneProcessServerImplementation;
 import server.zone.managers.object.ObjectManager;
 import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.managers.command.CommandQueueManager;
 
 class PlayerManager extends ManagedObject, native Logger {
 	ZoneProcessServerImplementation server;
@@ -61,10 +62,16 @@ class PlayerManager extends ManagedObject, native Logger {
 	
 	ObjectManager objectManager;
 	
+	CommandQueueManager commandQueueManager;
+	
 	public native PlayerManager(ObjectManager objMan, ZoneProcessServerImplementation srv);
 	
 	public local native boolean createPlayer(MessageCallback callback);
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
 	public native boolean createAllPlayerObjects(PlayerCreature player);
+	
+	public CommandQueueManager getCommandQueueManager() {
+		return commandQueueManager;
+	}
 }

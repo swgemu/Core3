@@ -22,6 +22,10 @@ class IntangibleObject : public SceneObject {
 public:
 	IntangibleObject(LuaObject* templateData);
 
+	void sendBaselinesTo(SceneObject* player);
+
+	unsigned int getStatus();
+
 protected:
 	IntangibleObject(DummyConstructorParameter* param);
 
@@ -43,9 +47,15 @@ namespace objects {
 namespace intangible {
 
 class IntangibleObjectImplementation : public SceneObjectImplementation {
+protected:
+	unsigned int status;
 
 public:
 	IntangibleObjectImplementation(LuaObject* templateData);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	unsigned int getStatus();
 
 	IntangibleObject* _this;
 
@@ -67,6 +77,10 @@ public:
 	IntangibleObjectAdapter(IntangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	unsigned int getStatus();
 
 };
 

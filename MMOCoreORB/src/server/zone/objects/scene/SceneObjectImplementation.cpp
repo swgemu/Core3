@@ -156,16 +156,16 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
-void SceneObjectImplementation::wlock() {
-	ManagedObjectImplementation::wlock(true);
+void SceneObjectImplementation::wlock(bool doLock) {
+	ManagedObjectImplementation::wlock(doLock);
 }
 
 void SceneObjectImplementation::wlock(SceneObject* crossLock) {
 	ManagedObjectImplementation::wlock(crossLock);
 }
 
-void SceneObjectImplementation::unlock() {
-	ManagedObjectImplementation::unlock(true);
+void SceneObjectImplementation::unlock(bool doLock) {
+	ManagedObjectImplementation::unlock(doLock);
 }
 
 void SceneObjectImplementation::destroy(ZoneClientSession* client) {
@@ -326,19 +326,16 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 	try {
 		zone->lock();
 
+		initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
+
 		sendToOwner(true);
 
-		if (parent == NULL)
-			initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
-		else if (parent->isCell()) {
-            BuildingObject* building = (BuildingObject*) parent->getParent();
-
-            insertToBuilding(building);
-
-			initializePosition(positionX, positionZ, positionY);
-		} else {
+		if (parent == NULL || !parent->isCell()) {
 			zone->insert(this);
 			zone->inRange(this, 128);
+		} else if (parent->isCell()) {
+            BuildingObject* building = (BuildingObject*) parent->getParent();
+            insertToBuilding(building);
 		}
 
 		zone->unlock();

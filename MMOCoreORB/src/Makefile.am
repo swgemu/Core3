@@ -68,7 +68,10 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
-				server/chat/room/ChatRoom.cpp
+				server/chat/room/ChatRoom.cpp \
+				server/chat/ChatManager.cpp \
+				server/zone/managers/command/CommandQueueManager.cpp \
+				server/zone/objects/waypoint/WaypointObject.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
@@ -105,5 +108,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
+		server/chat/ChatManagerImplementation.cpp \
+		server/zone/managers/command/CommandQueueManagerImplementation.cpp \
+		server/zone/managers/command/CommandConfigManager.cpp \
+		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		main.cpp
 		

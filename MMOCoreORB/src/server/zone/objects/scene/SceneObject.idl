@@ -300,21 +300,26 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		Logger.error(msg);
 	}
 	
-	public native void wlock();
+	public native void wlock(boolean doLock = true);
 	public native void wlock(SceneObject crossLock);
-
-	public void wlock(boolean doLock) {
-		if (doLock)
-			wlock();
+	
+	public native void unlock(boolean doLock = true);
+	
+	public int inRangeObjectCount() {
+		return QuadTreeEntry.inRangeObjectCount();
 	}
 	
-	public native void unlock();
-	
-	public void unlock(boolean doLock) {
-		if (doLock)
-			unlock();
+	public local QuadTreeEntry getInRangeObject(int index) {
+		return QuadTreeEntry.getInRangeObject(index);
 	}
-
+	
+	public boolean isInRange(SceneObject obj, float range) {
+		return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
+	}
+	
+	public local boolean isInRange(QuadTreeEntry obj, float range) {
+		return QuadTreeEntry.isInRange(obj, range);
+	}
 	
 	public void redeploy() {
 	}
@@ -530,7 +535,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		QuadTreeEntry.objectID = objectid;
 	}
 	
-	public local void setObjectName(unicode name) {
+	public local void setObjectName(final unicode name) {
 		objectName.setCustomString(name);
 	}
 	
