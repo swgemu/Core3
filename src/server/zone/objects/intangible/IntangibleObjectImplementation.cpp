@@ -45,8 +45,15 @@ which carries forward this exception.
 #include "IntangibleObject.h"
 
 #include "../../managers/object/ObjectManager.h"
+#include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
 
 IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData)
 	: SceneObjectImplementation(templateData) {
 
+	status = 0;
+}
+
+void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	/*BaseMessage* itno3 = new IntangibleObjectMessage3(_this);
+	player->sendMessage(itno3);*/
 }

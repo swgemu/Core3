@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-IDLC = /usr/local/bin/idlc -rb
+IDLC = /usr/local/bin/idlc
 				
 IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/ZoneServer.idl \
@@ -54,7 +54,11 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/cell/CellObject.idl \
 				server/zone/objects/building/BuildingObject.idl \
-				server/zone/managers/player/PlayerManager.idl
+				server/zone/managers/player/PlayerManager.idl \
+				server/chat/room/ChatRoom.idl \
+				server/chat/ChatManager.idl \
+				server/zone/managers/command/CommandQueueManager.idl \
+				server/zone/objects/waypoint/WaypointObject.idl
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)
@@ -63,6 +67,9 @@ all:
 	#done
 
 rebuild: clean all
+
+buildidls: 	
+	cd src && $(IDLC) $(IDL_SOURCES)
 
 config:
 	autoreconf --force

@@ -21,6 +21,31 @@ IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObje
 IntangibleObject::~IntangibleObject() {
 }
 
+void IntangibleObject::sendBaselinesTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((IntangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
+}
+
+unsigned int IntangibleObject::getStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((IntangibleObjectImplementation*) _impl)->getStatus();
+}
+
 /*
  *	IntangibleObjectImplementation
  */
@@ -44,6 +69,12 @@ IntangibleObjectImplementation::operator const IntangibleObject*() {
 void IntangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 
+	addSerializableVariable("status", &status);
+}
+
+unsigned int IntangibleObjectImplementation::getStatus() {
+	// server/zone/objects/intangible/IntangibleObject.idl(58):  return status;
+	return status;
 }
 
 /*
@@ -57,11 +88,25 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 7:
+		resp->insertInt(getStatus());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	return ((IntangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+unsigned int IntangibleObjectAdapter::getStatus() {
+	return ((IntangibleObjectImplementation*) impl)->getStatus();
 }
 
 /*

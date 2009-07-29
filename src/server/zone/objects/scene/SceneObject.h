@@ -98,15 +98,19 @@ public:
 
 	void error(const String& msg);
 
-	void wlock();
+	void wlock(bool doLock = true);
 
 	void wlock(SceneObject* crossLock);
 
-	void wlock(bool doLock);
+	void unlock(bool doLock = true);
 
-	void unlock();
+	int inRangeObjectCount();
 
-	void unlock(bool doLock);
+	QuadTreeEntry* getInRangeObject(int index);
+
+	bool isInRange(SceneObject* obj, float range);
+
+	bool isInRange(QuadTreeEntry* obj, float range);
 
 	void redeploy();
 
@@ -130,15 +134,15 @@ public:
 
 	void close(ZoneClientSession* client);
 
-	void link(ZoneClientSession* client, unsigned int containmentType);
+	void link(ZoneClientSession* client, unsigned int containmentType = 4);
 
-	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
+	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
-	void sendTo(SceneObject* player, bool doClose);
+	void sendTo(SceneObject* player, bool doClose = true);
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void sendToOwner(bool doClose);
+	void sendToOwner(bool doClose = true);
 
 	void insertToZone(Zone* zone);
 
@@ -152,7 +156,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool lockZone = true);
 
 	void sendMessage(BasePacket* msg);
 
@@ -214,7 +218,7 @@ public:
 
 	void setObjectID(unsigned long long objectid);
 
-	void setObjectName(UnicodeString& name);
+	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
 
@@ -624,15 +628,19 @@ public:
 
 	void error(const String& msg);
 
-	void wlock();
+	void wlock(bool doLock = true);
 
 	void wlock(SceneObject* crossLock);
 
-	void wlock(bool doLock);
+	void unlock(bool doLock = true);
 
-	void unlock();
+	int inRangeObjectCount();
 
-	void unlock(bool doLock);
+	QuadTreeEntry* getInRangeObject(int index);
+
+	bool isInRange(SceneObject* obj, float range);
+
+	bool isInRange(QuadTreeEntry* obj, float range);
 
 	void redeploy();
 
@@ -656,15 +664,15 @@ public:
 
 	void close(ZoneClientSession* client);
 
-	void link(ZoneClientSession* client, unsigned int containmentType);
+	void link(ZoneClientSession* client, unsigned int containmentType = 4);
 
-	BaseMessage* link(unsigned long long objectID, unsigned int containmentType);
+	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
-	virtual void sendTo(SceneObject* player, bool doClose);
+	virtual void sendTo(SceneObject* player, bool doClose = true);
 
 	virtual void sendBaselinesTo(SceneObject* player);
 
-	virtual void sendToOwner(bool doClose);
+	virtual void sendToOwner(bool doClose = true);
 
 	virtual void insertToZone(Zone* zone);
 
@@ -678,7 +686,7 @@ public:
 
 	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool lockZone = true);
 
 	virtual void sendMessage(BasePacket* msg);
 
@@ -740,7 +748,7 @@ public:
 
 	void setObjectID(unsigned long long objectid);
 
-	void setObjectName(UnicodeString& name);
+	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
 
@@ -775,15 +783,15 @@ public:
 
 	void error(const String& msg);
 
-	void wlock();
+	void wlock(bool doLock);
 
 	void wlock(SceneObject* crossLock);
 
-	void wlock(bool doLock);
-
-	void unlock();
-
 	void unlock(bool doLock);
+
+	int inRangeObjectCount();
+
+	bool isInRange(SceneObject* obj, float range);
 
 	void redeploy();
 

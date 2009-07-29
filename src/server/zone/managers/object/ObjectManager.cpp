@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/player/PlayerCreature.h"
 #include "../../objects/player/PlayerObject.h"
-
+#include "../../objects/waypoint/WaypointObject.h"
 #include "../../objects/cell/CellObject.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
@@ -116,6 +116,8 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<CellObject>(11);
 	objectFactory.registerObject<PlayerObject>(12);
+
+	objectFactory.registerObject<WaypointObject>(0x805);
 
 }
 

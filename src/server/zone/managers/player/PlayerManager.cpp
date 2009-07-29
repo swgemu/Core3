@@ -10,6 +10,8 @@
 
 #include "server/zone/packets/MessageCallback.h"
 
+#include "server/zone/managers/command/CommandQueueManager.h"
+
 /*
  *	PlayerManagerStub
  */
@@ -62,6 +64,18 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		return ((PlayerManagerImplementation*) _impl)->createAllPlayerObjects(player);
 }
 
+CommandQueueManager* PlayerManager::getCommandQueueManager() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return (CommandQueueManager*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->getCommandQueueManager();
+}
+
 /*
  *	PlayerManagerImplementation
  */
@@ -85,6 +99,12 @@ PlayerManagerImplementation::operator const PlayerManager*() {
 void PlayerManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
+	addSerializableVariable("commandQueueManager", commandQueueManager);
+}
+
+CommandQueueManager* PlayerManagerImplementation::getCommandQueueManager() {
+	// server/zone/managers/player/PlayerManager.idl(75):  return commandQueueManager;
+	return commandQueueManager;
 }
 
 /*
@@ -104,6 +124,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 7:
 		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
+	case 8:
+		resp->insertLong(getCommandQueueManager()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -117,6 +140,10 @@ TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectF
 
 bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
 	return ((PlayerManagerImplementation*) impl)->createAllPlayerObjects(player);
+}
+
+CommandQueueManager* PlayerManagerAdapter::getCommandQueueManager() {
+	return ((PlayerManagerImplementation*) impl)->getCommandQueueManager();
 }
 
 /*

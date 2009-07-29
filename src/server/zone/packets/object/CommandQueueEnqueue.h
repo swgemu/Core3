@@ -48,6 +48,9 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
 #include "../MessageCallback.h"
 
+#include "server/zone/managers/command/CommandQueueManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 class CommandQueueEnqueue : public ObjectControllerMessage {
 public:
 	CommandQueueEnqueue(CreatureObject* creo, uint32 actioncnt, uint32 actionCRC) 
@@ -61,6 +64,7 @@ public:
 };
 
 class CommandQueueEnqueueCallback : public MessageCallback {
+	uint32 size;
 	uint32 actionCount;
 	uint32 actionCRC;
 	uint64 targetID;
@@ -73,6 +77,8 @@ public:
 	}
 
 	void parse(Message* message) {
+		size = message->parseInt(); //?
+
 		actionCount = message->parseInt();
 		actionCRC = message->parseInt();
 
@@ -82,9 +88,42 @@ public:
 	}
 
 	void execute() {
-		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
 
+		if (player == NULL)
+			return;
 
+		PlayerManager* playerManager = server->getPlayerManager();
+		CommandQueueManager* commandQueueManager = playerManager->getCommandQueueManager();
+
+		QueueCommand* sc = commandQueueManager->getQueueCommand(actionCRC);
+
+		StringBuffer infoMsg;
+		infoMsg << "trying to activate queue command 0x" << hex << actionCRC << " size? 0x" << hex << size;
+		player->info(infoMsg.toString());
+
+		if (sc != NULL) {
+			player->info("activating queue command");
+
+			bool completed = sc->doSlashCommand(player, targetID, arguments);
+
+			if (!completed)
+				sc->onFail(actionCount, player);
+			else {
+				sc->onComplete(actionCount, player);
+
+				if (sc->addToCombatQueue())
+					player->clearQueueAction(actionCount);
+			}
+
+			return;
+		} else {
+			StringBuffer msg;
+			msg << "null queue command 0x" << hex << actionCRC;
+			player->info(msg.toString());
+		}
+
+		player->clearQueueAction(actionCount, 0, 2, 0);
 	}
 };
 

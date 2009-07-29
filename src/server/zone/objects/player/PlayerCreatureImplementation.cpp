@@ -11,12 +11,14 @@
 #include "server/zone/packets/zone/unkByteFlag.h"
 #include "server/zone/packets/zone/CmdStartScene.h"
 #include "server/zone/packets/zone/ParametersMessage.h"
+#include "server/zone/packets/object/CommandQueueRemove.h"
 
 #include "server/chat/room/ChatRoom.h"
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
 
+#include "commands/QueueCommand.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
@@ -174,6 +176,11 @@ void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
 	} catch (...) {
 		unlock();
 	}
+}
+
+void PlayerCreatureImplementation::clearQueueAction(uint32 actioncntr, float timer, uint32 tab1, uint32 tab2) {
+	BaseMessage* queuemsg = new CommandQueueRemove(_this, actioncntr, timer, tab1, tab2);
+	sendMessage(queuemsg);
 }
 
 String PlayerCreatureImplementation::getFirstName() {

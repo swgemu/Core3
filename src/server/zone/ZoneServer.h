@@ -57,6 +57,16 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace chat {
+
+class ChatManager;
+
+} // namespace chat
+} // namespace server
+
+using namespace server::chat;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -84,7 +94,7 @@ namespace zone {
 
 class ZoneServer : public ManagedObject {
 public:
-	ZoneServer(int processingThreads, int galaxyid);
+	ZoneServer(int processingThreads, int galaxyid = 2);
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
@@ -98,7 +108,7 @@ public:
 
 	void stopManagers();
 
-	void start(int p, int mconn);
+	void start(int p, int mconn = 10);
 
 	void stop();
 
@@ -110,7 +120,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog);
+	void printInfo(bool forcedLog = true);
 
 	void printEvents();
 
@@ -122,11 +132,11 @@ public:
 
 	void unlock(bool doLock);
 
-	SceneObject* getObject(unsigned long long objectID, bool doLock);
+	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
 	void fixScheduler();
 
-	void changeUserCap(int amount);
+	void changeUserCap(int amount = 50);
 
 	int getConnectionCount();
 
@@ -156,11 +166,13 @@ public:
 
 	PlayerManager* getPlayerManager();
 
-	unsigned long long getNextCreatureID(bool doLock);
+	ChatManager* getChatManager();
 
-	unsigned long long getNextID(bool doLock);
+	unsigned long long getNextCreatureID(bool doLock = true);
 
-	unsigned long long getNextCellID(bool doLock);
+	unsigned long long getNextID(bool doLock = true);
+
+	unsigned long long getNextCellID(bool doLock = true);
 
 	void setServerName(const String& servername);
 
@@ -210,6 +222,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	ManagedReference<PlayerManager* > playerManager;
 
+	ManagedReference<ChatManager* > chatManager;
+
 	int totalSentPackets;
 
 	int totalResentPackets;
@@ -243,7 +257,7 @@ public:
 
 	static const int LOCKED = 3;
 
-	ZoneServerImplementation(int processingThreads, int galaxyid);
+	ZoneServerImplementation(int processingThreads, int galaxyid = 2);
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
@@ -257,7 +271,7 @@ public:
 
 	void stopManagers();
 
-	void start(int p, int mconn);
+	void start(int p, int mconn = 10);
 
 	void stop();
 
@@ -269,7 +283,7 @@ public:
 
 	void addTotalResentPacket(int count);
 
-	void printInfo(bool forcedLog);
+	void printInfo(bool forcedLog = true);
 
 	void printEvents();
 
@@ -281,11 +295,11 @@ public:
 
 	void unlock(bool doLock);
 
-	SceneObject* getObject(unsigned long long objectID, bool doLock);
+	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
 	void fixScheduler();
 
-	void changeUserCap(int amount);
+	void changeUserCap(int amount = 50);
 
 	int getConnectionCount();
 
@@ -315,11 +329,13 @@ public:
 
 	PlayerManager* getPlayerManager();
 
-	unsigned long long getNextCreatureID(bool doLock);
+	ChatManager* getChatManager();
 
-	unsigned long long getNextID(bool doLock);
+	unsigned long long getNextCreatureID(bool doLock = true);
 
-	unsigned long long getNextCellID(bool doLock);
+	unsigned long long getNextID(bool doLock = true);
+
+	unsigned long long getNextCellID(bool doLock = true);
 
 	void setServerName(const String& servername);
 
@@ -421,6 +437,8 @@ public:
 	int getDeletedPlayers();
 
 	PlayerManager* getPlayerManager();
+
+	ChatManager* getChatManager();
 
 	unsigned long long getNextCreatureID(bool doLock);
 

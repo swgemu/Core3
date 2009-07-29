@@ -11,6 +11,7 @@
 #include "../../packets/charcreation/ClientCreateCharacter.h"
 #include "../../packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "server/zone/objects/player/Races.h"
+#include "server/zone/managers/command/CommandQueueManager.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
@@ -21,6 +22,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, 
 	server = srv;
 
 	playerMap = new PlayerMap(3000);
+
+	commandQueueManager = new CommandQueueManager(srv);
 
 	setGlobalLogging(true);
 	setLogging(true);

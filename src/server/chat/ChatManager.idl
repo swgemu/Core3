@@ -55,6 +55,8 @@ import server.zone.managers.player.PlayerMap;
 import server.zone.managers.player.PlayerManager;
 import system.util.VectorMap;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.chat.ChatRoomList;
+
 
 class ChatManager extends ManagedObject {
 	ZoneServer server;
@@ -82,11 +84,27 @@ class ChatManager extends ManagedObject {
 	
 	public native ChatManager(ZoneServer serv, int initsize);
 	
+	public native void initiateRooms();
+	public native void destroyRooms();
+	
+	public native void addRoom(ChatRoom channel);
+	public native void removeRoom(ChatRoom channel);
+	
+	public native void wlock();
+	public native void unlock();
+	
+	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
+	
+	public native void sendRoomList(PlayerCreature player);
+	
 	public native void addPlayer(PlayerCreature player);
 	public native PlayerCreature getPlayer(final string name);
 	public native PlayerCreature removePlayer(final string name);
+	
+	public native local void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
+	public native local void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	public native void sendMail(final string sendername, unicode header, unicode body, final string name);
+	/*public native void sendMail(final string sendername, unicode header, unicode body, final string name);
 	public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
 	public native void listMail(PlayerCreature ply);
 	public native void deleteMail(unsigned int mailid);
@@ -100,17 +118,13 @@ class ChatManager extends ManagedObject {
 	public native void sendSystemMessage(PlayerCreature player, unicode message);
 	public native void sendSystemMessage(PlayerCreature player, final string file, final string str, StfParameter param);
 
-	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 	public native void broadcastMessage(CreatureObject player, final string file, final string str, StfParameter param, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	public native void broadcastMessage(final string message);
 	public native void broadcastMessageRange(PlayerCreature player, final string message, float range);
 
 	// ChatRooms
-	public native void initiateRooms();
 	public native void initGuildChannel(PlayerCreature creator, unsigned int gid);
-
-	public native void destroyRooms();
 
 	public native void handleChatRoomMessage(PlayerCreature player, BaseMessage pack);
 	public native void handleGroupChat(PlayerCreature player, BaseMessage pack);
@@ -123,10 +137,8 @@ class ChatManager extends ManagedObject {
 
 	public native ChatRoom getChatRoom(unsigned int id);
 
-	public native void addRoom(ChatRoom channel);
-	public native void removeRoom(ChatRoom channel);
+	
 
-	public native void sendRoomList(PlayerCreature player);
 
 	public native void sendGuildChat(PlayerCreature player);
 
@@ -136,20 +148,16 @@ class ChatManager extends ManagedObject {
 
 	public native void destroyRoom(ChatRoom room);
 
-	/*public native void printRoomTree(ChatRoom channel) {
-		string name;
-		printRoomTree(channel, name);
-	}*/
 
 	public native ChatRoom getChatRoomByFullPath(final string path);
 
 	public native ChatRoom getGameRoom(final string game);
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
-
+	 */
 	public unsigned int getNextRoomID() {
 		return ++roomID;
 	}
-
+	/*
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
@@ -160,5 +168,5 @@ class ChatManager extends ManagedObject {
 
 	public void setMute(boolean isMuted) {
 		mute = isMuted;
-	}
+	}*/
 }

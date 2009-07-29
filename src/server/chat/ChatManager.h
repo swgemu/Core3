@@ -99,6 +99,20 @@ class PlayerManager;
 
 using namespace server::zone::managers::player;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace chat {
+
+class ChatRoomList;
+
+} // namespace chat
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::chat;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/service/proto/BaseMessage.h"
@@ -114,91 +128,33 @@ class ChatManager : public ManagedObject {
 public:
 	ChatManager(ZoneServer* serv, int initsize);
 
+	void initiateRooms();
+
+	void destroyRooms();
+
+	void addRoom(ChatRoom* channel);
+
+	void removeRoom(ChatRoom* channel);
+
+	void wlock();
+
+	void unlock();
+
+	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
+
+	void sendRoomList(PlayerCreature* player);
+
 	void addPlayer(PlayerCreature* player);
 
 	PlayerCreature* getPlayer(const String& name);
 
 	PlayerCreature* removePlayer(const String& name);
 
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
-	void sendMailBody(PlayerCreature* receiver, unsigned int mailid);
-
-	void listMail(PlayerCreature* ply);
-
-	void deleteMail(unsigned int mailid);
-
-	void handleTellMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleEmote(PlayerCreature* player, BaseMessage* pack);
-
-	void handleMood(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGameCommand(PlayerCreature* player, const String& command);
-
-	void sendSystemMessage(PlayerCreature* player, UnicodeString& message);
-
-	void sendSystemMessage(PlayerCreature* player, const String& file, const String& str, StfParameter* param);
-
-	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void broadcastMessage(const String& message);
-
-	void broadcastMessageRange(PlayerCreature* player, const String& message, float range);
-
-	void initiateRooms();
-
-	void initGuildChannel(PlayerCreature* creator, unsigned int gid);
-
-	void destroyRooms();
-
-	void handleChatRoomMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGroupChat(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGuildChat(PlayerCreature* player, BaseMessage* pack);
-
-	void handleCreateRoom(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatEnterRoomById(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatDestroyRoom(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatRemoveAvatarFromRoom(PlayerCreature* player, BaseMessage* pack);
-
-	ChatRoom* getChatRoom(unsigned int id);
-
-	void addRoom(ChatRoom* channel);
-
-	void removeRoom(ChatRoom* channel);
-
-	void sendRoomList(PlayerCreature* player);
-
-	void sendGuildChat(PlayerCreature* player);
-
-	ChatRoom* createGroupRoom(unsigned int groupID, PlayerCreature* creator);
-
-	ChatRoom* createRoomByFullPath(const String& path);
-
-	void destroyRoom(ChatRoom* room);
-
-	ChatRoom* getChatRoomByFullPath(const String& path);
-
-	ChatRoom* getGameRoom(const String& game);
-
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	unsigned int getNextRoomID();
-
-	int getPlayerCount();
-
-	bool isMute();
-
-	void setMute(bool isMuted);
 
 protected:
 	ChatManager(DummyConstructorParameter* param);
@@ -238,91 +194,33 @@ class ChatManagerImplementation : public ManagedObjectImplementation {
 public:
 	ChatManagerImplementation(ZoneServer* serv, int initsize);
 
+	void initiateRooms();
+
+	void destroyRooms();
+
+	void addRoom(ChatRoom* channel);
+
+	void removeRoom(ChatRoom* channel);
+
+	void wlock();
+
+	void unlock();
+
+	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
+
+	void sendRoomList(PlayerCreature* player);
+
 	void addPlayer(PlayerCreature* player);
 
 	PlayerCreature* getPlayer(const String& name);
 
 	PlayerCreature* removePlayer(const String& name);
 
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
+	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
-	void sendMailBody(PlayerCreature* receiver, unsigned int mailid);
-
-	void listMail(PlayerCreature* ply);
-
-	void deleteMail(unsigned int mailid);
-
-	void handleTellMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleEmote(PlayerCreature* player, BaseMessage* pack);
-
-	void handleMood(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGameCommand(PlayerCreature* player, const String& command);
-
-	void sendSystemMessage(PlayerCreature* player, UnicodeString& message);
-
-	void sendSystemMessage(PlayerCreature* player, const String& file, const String& str, StfParameter* param);
-
-	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void broadcastMessage(const String& message);
-
-	void broadcastMessageRange(PlayerCreature* player, const String& message, float range);
-
-	void initiateRooms();
-
-	void initGuildChannel(PlayerCreature* creator, unsigned int gid);
-
-	void destroyRooms();
-
-	void handleChatRoomMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGroupChat(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGuildChat(PlayerCreature* player, BaseMessage* pack);
-
-	void handleCreateRoom(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatEnterRoomById(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatDestroyRoom(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatRemoveAvatarFromRoom(PlayerCreature* player, BaseMessage* pack);
-
-	ChatRoom* getChatRoom(unsigned int id);
-
-	void addRoom(ChatRoom* channel);
-
-	void removeRoom(ChatRoom* channel);
-
-	void sendRoomList(PlayerCreature* player);
-
-	void sendGuildChat(PlayerCreature* player);
-
-	ChatRoom* createGroupRoom(unsigned int groupID, PlayerCreature* creator);
-
-	ChatRoom* createRoomByFullPath(const String& path);
-
-	void destroyRoom(ChatRoom* room);
-
-	ChatRoom* getChatRoomByFullPath(const String& path);
-
-	ChatRoom* getGameRoom(const String& game);
-
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	unsigned int getNextRoomID();
-
-	int getPlayerCount();
-
-	bool isMute();
-
-	void setMute(bool isMuted);
 
 	ChatManager* _this;
 
@@ -345,108 +243,33 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initiateRooms();
+
+	void destroyRooms();
+
+	void addRoom(ChatRoom* channel);
+
+	void removeRoom(ChatRoom* channel);
+
+	void wlock();
+
+	void unlock();
+
+	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
+
+	void sendRoomList(PlayerCreature* player);
+
 	void addPlayer(PlayerCreature* player);
 
 	PlayerCreature* getPlayer(const String& name);
 
 	PlayerCreature* removePlayer(const String& name);
 
-	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
-
-	void sendMailBody(PlayerCreature* receiver, unsigned int mailid);
-
-	void listMail(PlayerCreature* ply);
-
-	void deleteMail(unsigned int mailid);
-
-	void handleTellMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleEmote(PlayerCreature* player, BaseMessage* pack);
-
-	void handleMood(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGameCommand(PlayerCreature* player, const String& command);
-
-	void sendSystemMessage(PlayerCreature* player, UnicodeString& message);
-
-	void sendSystemMessage(PlayerCreature* player, const String& file, const String& str, StfParameter* param);
-
-	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void broadcastMessage(const String& message);
-
-	void broadcastMessageRange(PlayerCreature* player, const String& message, float range);
-
-	void initiateRooms();
-
-	void initGuildChannel(PlayerCreature* creator, unsigned int gid);
-
-	void destroyRooms();
-
-	void handleChatRoomMessage(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGroupChat(PlayerCreature* player, BaseMessage* pack);
-
-	void handleGuildChat(PlayerCreature* player, BaseMessage* pack);
-
-	void handleCreateRoom(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatEnterRoomById(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatDestroyRoom(PlayerCreature* player, BaseMessage* pack);
-
-	void handleChatRemoveAvatarFromRoom(PlayerCreature* player, BaseMessage* pack);
-
-	ChatRoom* getChatRoom(unsigned int id);
-
-	void addRoom(ChatRoom* channel);
-
-	void removeRoom(ChatRoom* channel);
-
-	void sendRoomList(PlayerCreature* player);
-
-	void sendGuildChat(PlayerCreature* player);
-
-	ChatRoom* createGroupRoom(unsigned int groupID, PlayerCreature* creator);
-
-	ChatRoom* createRoomByFullPath(const String& path);
-
-	void destroyRoom(ChatRoom* room);
-
-	ChatRoom* getChatRoomByFullPath(const String& path);
-
-	ChatRoom* getGameRoom(const String& game);
-
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
-
 	unsigned int getNextRoomID();
-
-	int getPlayerCount();
-
-	bool isMute();
-
-	void setMute(bool isMuted);
 
 protected:
 	String _param0_getPlayer__String_;
 	String _param0_removePlayer__String_;
-	String _param0_sendMail__String_UnicodeString_UnicodeString_String_;
-	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
-	String _param1_handleGameCommand__PlayerCreature_String_;
-	String _param1_sendSystemMessage__PlayerCreature_String_String_StfParameter_;
-	String _param2_sendSystemMessage__PlayerCreature_String_String_StfParameter_;
-	String _param1_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_;
-	String _param2_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_;
-	String _param0_broadcastMessage__String_;
-	String _param1_broadcastMessageRange__PlayerCreature_String_float_;
-	String _param0_createRoomByFullPath__String_;
-	String _param0_getChatRoomByFullPath__String_;
-	String _param0_getGameRoom__String_;
-	String _param1_getChatRoomByGamePath__ChatRoom_String_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

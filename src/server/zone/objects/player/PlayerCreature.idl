@@ -117,6 +117,8 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void doRecovery();
 	
+	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+
 	public void sendMessage(BasePacket msg) {
 		if (owner == null) {
 			msg.finalize();
