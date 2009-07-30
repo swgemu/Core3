@@ -21,32 +21,6 @@ Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
 Container::~Container() {
 }
 
-bool Container::addObject(SceneObject* obj) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(obj);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->addObject(obj);
-}
-
-bool Container::removeObject(SceneObject* obj) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(obj);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((ContainerImplementation*) _impl)->removeObject(obj);
-}
-
 /*
  *	ContainerImplementation
  */
@@ -72,16 +46,6 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 }
 
-bool ContainerImplementation::addObject(SceneObject* obj) {
-	// server/zone/objects/tangible/Container.idl(55):  return true;
-	return true;
-}
-
-bool ContainerImplementation::removeObject(SceneObject* obj) {
-	// server/zone/objects/tangible/Container.idl(59):  return true;
-	return true;
-}
-
 /*
  *	ContainerAdapter
  */
@@ -93,25 +57,11 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter()));
-		break;
-	case 7:
-		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-bool ContainerAdapter::addObject(SceneObject* obj) {
-	return ((ContainerImplementation*) impl)->addObject(obj);
-}
-
-bool ContainerAdapter::removeObject(SceneObject* obj) {
-	return ((ContainerImplementation*) impl)->removeObject(obj);
 }
 
 /*

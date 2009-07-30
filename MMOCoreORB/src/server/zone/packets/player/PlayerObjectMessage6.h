@@ -57,8 +57,8 @@ public:
 		insertInt(0);
 
 		int adminFlag = play->getAdminLevel();
-		if (adminFlag == PlayerImplementation::CSRJR)
-			adminFlag = PlayerImplementation::CSR; //Allow CSRJR to have CSR title.
+		if (adminFlag == PlayerObjectImplementation::CSRJR)
+			adminFlag = PlayerObjectImplementation::CSR; //Allow CSRJR to have CSR title.
 
 		insertByte(adminFlag);  //Developer/CSR Flag
 

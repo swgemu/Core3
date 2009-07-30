@@ -68,6 +68,55 @@ public:
 		if (!checkInvalidPostures(player))
 			return false;
 
+		System::out << "target: 0x" << hex << target << " arguments" << arguments.toString() << "\n";
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		uint64 destinationID = tokenizer.getLongToken();
+		int transferType = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes (I think -1 is remove)
+		float unknown1 = tokenizer.getFloatToken();
+		float unknown2 = tokenizer.getFloatToken();
+		float unknown3 = tokenizer.getFloatToken();
+
+		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
+
+		if (objectToTransfer == NULL) {
+			player->error("objectToTransfer NULL in transfermisc command");
+			return false;
+		}
+
+		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
+
+		if (destinationObject == NULL) {
+			player->error("destinationObject NULL in tansfermisc command");
+			return false;
+		}
+
+		if (transferType == -1) {
+			SceneObject* parent = objectToTransfer->getParent();
+
+			if (parent == NULL) {
+				player->error("objectToTransfer parent is NULL in transfermisc command");
+				return false;
+			}
+
+			if (!parent->removeObject(objectToTransfer)) {
+				player->error("could not remove objectToTransfer from parent in transfermisc command");
+				return false;
+			}
+
+			if (!destinationObject->addObject(objectToTransfer)) {
+				player->error("could not remove objectToTransfer from parent in transfermisc command");
+				parent->addObject(objectToTransfer);
+				return false;
+			}
+
+			player->broadcastMessage(objectToTransfer->link(destinationObject->getObjectID(), 0xFFFFFFFF));
+		} /*else if (transferType == 4) {
+
+		}*/ else {
+			player->error("unknown transferType in transfermisc command");
+		}
 		/*
 
 		//Equip weapon + equip armor never gets here, they have their own CRC, while unequipping of all items WILL go here

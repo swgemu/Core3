@@ -19,6 +19,8 @@
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -54,7 +56,7 @@ namespace zone {
 namespace managers {
 namespace command {
 
-class CommandQueueManagerImplementation : public ManagedObjectImplementation {
+class CommandQueueManagerImplementation : public ManagedObjectImplementation, public Logger {
 	ZoneProcessServerImplementation* server;
 
 	CommandList* slashCommands;

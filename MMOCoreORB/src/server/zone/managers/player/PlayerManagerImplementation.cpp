@@ -184,6 +184,11 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(missionBag);
 
+	// temp
+
+	SceneObject* vibro = objectManager->createObject(0x652688CE);
+	player->addObject(vibro);
+
 	return true;
 }
 

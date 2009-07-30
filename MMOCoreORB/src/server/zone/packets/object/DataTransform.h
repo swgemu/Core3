@@ -105,10 +105,13 @@ public:
 
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);
-		StringBuffer posMsg;
-		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
-		object->info(posMsg.toString());
 		object->setPosition(positionX, positionZ, positionY);
+
+
+		/*StringBuffer posMsg;
+		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
+		object->info(posMsg.toString());*/
+
 
 		//TODO: add improved Speed Hack checks
 

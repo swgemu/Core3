@@ -80,6 +80,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	protected SceneObject parent;
 	
 	protected VectorMap<string, SceneObject> containmentSlots;
+	protected VectorMap<unsigned long, SceneObject> containerObjects;
 	
 	protected unsigned int objectCRC;
 	
@@ -337,51 +338,16 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return gameObjectType == PLAYERCREATURE;
 	}
 	
+	public boolean isWeaponObject() {
+		return gameObjectType & WEAPON;
+	}
+	
 	public boolean isCell() {
 		return gameObjectType == CELLOBJECT;
 	}
 	
-	public abstract boolean addObject(SceneObject object) {
-		if (containerType == 1) {
-			int arrangementSize = object.getArrangementDescriptorSize();
-			
-			for (int i = 0; i < arrangementSize; ++i) {
-				string childArrangement = object.getArrangementDescriptor(i);
-				
-				if (containmentSlots.contains(childArrangement))
-					return false;
-			}
-			
-			for (int i = 0; i < arrangementSize; ++i) {
-				containmentSlots.put(object.getArrangementDescriptor(i), object);
-			}
-		}
-		
-		object.setParent(this);
-		
-		return true;
-	}
-	
-	public abstract boolean removeObject(SceneObject object) {
-		if (containerType == 1) {
-			int arrangementSize = object.getArrangementDescriptorSize();
-
-			for (int i = 0; i < arrangementSize; ++i) {
-				string childArrangement = object.getArrangementDescriptor(i);
-				
-				if (containmentSlots.get(childArrangement) != object)
-					return false;
-			}
-
-			for (int i = 0; i < arrangementSize; ++i) {
-				containmentSlots.drop(object.getArrangementDescriptor(i));
-			}
-		}
-
-		object.setParent(null);
-		
-		return true;
-	}
+	public native abstract boolean addObject(SceneObject object, boolean notifyClient = false);
+	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
 	
 	public native void create(ZoneClientSession client);
 	public native void destroy(ZoneClientSession client);
@@ -465,6 +431,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public local StringId getObjectName() {
 		return objectName;
+	}
+	
+	public local StringId getDetailedDescription() {
+		return detailedDescription;
 	}
 	
 	public int getArrangementDescriptorSize() {

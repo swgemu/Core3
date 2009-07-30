@@ -45,15 +45,28 @@ which carries forward this exception.
 #include "PlayerObject.h"
 
 #include "../../managers/object/ObjectManager.h"
-
 #include "server/zone/ZoneClientSession.h"
+#include "server/zone/packets/player/PlayerObjectMessage3.h"
+#include "server/zone/packets/player/PlayerObjectMessage6.h"
+
 
 
 PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
 	IntangibleObjectImplementation(templateData) {
 
-	creatureObject = NULL;
+	characterBitmask = ANONYMOUS;
 
-	owner = NULL;
+	adminLevel = 0;
+
+	setLoggingName("PlayerObject");
 }
 
+void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	info("sending player object baselines");
+
+	BaseMessage* play3 = new PlayerObjectMessage3(_this);
+	player->sendMessage(play3);
+
+	BaseMessage* play6 = new PlayerObjectMessage6(_this);
+	player->sendMessage(play6);
+}

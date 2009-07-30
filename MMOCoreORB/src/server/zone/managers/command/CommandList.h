@@ -73,7 +73,7 @@ public:
 	}
 
 	void put(const String& name, QueueCommand* value) {
-		System::out << "adding queueCommand " << name << "\n";
+		//System::out << "adding queueCommand " << name << "\n";
 		uint32 crc = name.hashCode();
 		HashTable<uint32, QueueCommand*>::put(crc, value);
 	}

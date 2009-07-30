@@ -10,12 +10,21 @@
 #include "CommandConfigManager.h"
 
 CommandQueueManagerImplementation::CommandQueueManagerImplementation(ZoneProcessServerImplementation* serv)
-	: ManagedObjectImplementation() {
+	: ManagedObjectImplementation(), Logger("CommandQueueManager") {
 
 	server = serv;
 	configManager = new CommandConfigManager(server);
 	slashCommands = new CommandList();
+
+	setLogging(true);
+	setGlobalLogging(true);
+
+	info("loading queue commands...", true);
 	configManager->loadSlashCommandsFile(slashCommands);
+
+	StringBuffer infoMsg;
+	infoMsg << "loaded " << slashCommands->size() << " commands";
+	info(infoMsg.toString(), true);
 }
 
 /*CommandQueueManagerImplementation::~CommandQueueManagerImplementation() {

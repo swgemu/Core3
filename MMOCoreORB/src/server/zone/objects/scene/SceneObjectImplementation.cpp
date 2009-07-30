@@ -78,6 +78,8 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 	containerType = templateData->getIntField("containerType");
 	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
 
+	containerObjects = new VectorMap<uint64, SceneObject*>(containerVolumeLimit >> 2, containerVolumeLimit / 10);
+
 	gameObjectType = templateData->getIntField("gameObjectType");
 
 	arrangementDescriptors = new Vector<String>();
@@ -402,3 +404,63 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 
 	info("removed from zone");
 }
+
+bool SceneObjectImplementation::addObject(SceneObject* object, bool notifyClient) {
+	if (containerType == 1) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (containmentSlots->contains(childArrangement))
+				return false;
+		}
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			containmentSlots->put(object->getArrangementDescriptor(i), object);
+		}
+	} else if (containerType == 2) {
+		if (containerObjects->size() >= containerVolumeLimit) {
+			return false;
+		}
+
+		containerObjects->put(object->getObjectID(), object);
+	}
+
+	object->setParent(_this);
+	//object->setZone(zone);
+
+	/*if (notifyClient)
+		broadcastMessage(object->link(objectID, 0xFFFFFFFF));*/
+
+	return true;
+}
+
+bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
+	if (containerType == 1) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (containmentSlots->get(childArrangement) != object)
+				return false;
+		}
+
+		for (int i = 0; i < arrangementSize; ++i)
+			containmentSlots->drop(object->getArrangementDescriptor(i));
+	} else if (containerType == 2) {
+		if (!containerObjects->contains(object->getObjectID()))
+			return false;
+
+		containerObjects->drop(object->getObjectID());
+	}
+
+	object->setParent(NULL);
+
+	/*if (notifyClient)
+		broadcastMessage(object->link(0, 0xFFFFFFFF));*/
+
+	return true;
+}
+

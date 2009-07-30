@@ -85,14 +85,6 @@ public:
 		setSize();
 	}
 
-	void insertStringId(StringId* id) {
-		insertAscii(id->getFile());
-		insertInt(0);
-		insertAscii(id->getStringID());
-
-		insertUnicode(id->getCustomString());
-	}
-
 };
 
 #endif /*TANGIBLEOBJECTMESSAGE3_H_*/

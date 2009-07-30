@@ -45,24 +45,56 @@ which carries forward this exception.
 package server.zone.objects.player;
 
 import engine.lua.LuaObject;
-include server.zone.objects.scene.SceneObject;
+import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.creature.CreatureObject;
 
 import server.zone.ZoneClientSession;
 
-class PlayerObject extends IntangibleObject {
-	private CreatureObject creatureObject;
+class PlayerObject extends IntangibleObject {	
+	unsigned int characterBitmask;
+	string title;
 	
-	private ZoneClientSession owner;
+	unsigned int adminLevel;
+	
+	public static final int LFG = 1;
+	public static final int NEWBIEHELPER = 2;
+	public static final int ROLEPLAYER = 4;
+	public static final int AFK = 0x80;
+	public static final int LD = 0x100;
+	public static final int FACTIONRANK = 0x200;
+	public static final int ANONYMOUS = 0x80000000;
+	
+	public static final int CSR = 1;
+	public static final int DEVELOPER = 2;
+	public static final int ADMIN = 3;
+	public static final int NORMAL = 4;
+	public static final int QA = 8;
+	public static final int EC = 16;
+	public static final int CSRJR = 32;
+	public static final int ECJR = 64;
 	
 	public native PlayerObject(LuaObject templateData);
 	
-	public CreatureObject getCreatureObject() {
-		return creatureObject;
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public unsigned int getCharacterBitmask() {
+		return characterBitmask;
 	}
 	
-	public void setCreatureObject(CreatureObject object) {
-		creatureObject = object;
+	public string getTitle() {
+		return title;
+	}
+	
+	public unsigned int getAdminLevel() {
+		return adminLevel;
+	}
+	
+	public void setCharacterBitmask(unsigned int bitmask) {
+		characterBitmask = bitmask;
+	}
+	
+	public void setTitle(final string characterTitle) {
+		title = characterTitle;
 	}
 }
