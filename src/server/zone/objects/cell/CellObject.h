@@ -24,14 +24,6 @@ class CellObject : public SceneObject {
 public:
 	CellObject(LuaObject* templateData);
 
-	bool addObject(SceneObject* object);
-
-	bool removeObject(SceneObject* object);
-
-	SceneObject* getContainmentObject(int idx);
-
-	int getContainmentObjectsSize();
-
 	int getCellNumber();
 
 	void setCellNumber(int number);
@@ -59,18 +51,8 @@ namespace cell {
 class CellObjectImplementation : public SceneObjectImplementation {
 	int cellNumber;
 
-	VectorMap<unsigned long long, SceneObject* >* containmentObjects;
-
 public:
 	CellObjectImplementation(LuaObject* templateData);
-
-	bool addObject(SceneObject* object);
-
-	bool removeObject(SceneObject* object);
-
-	SceneObject* getContainmentObject(int idx);
-
-	int getContainmentObjectsSize();
 
 	int getCellNumber();
 
@@ -96,14 +78,6 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	bool addObject(SceneObject* object);
-
-	bool removeObject(SceneObject* object);
-
-	SceneObject* getContainmentObject(int idx);
-
-	int getContainmentObjectsSize();
 
 	int getCellNumber();
 

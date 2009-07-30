@@ -198,6 +198,10 @@ public:
 
 	int getSlotDescriptorSize();
 
+	int getContainerObjectsSize();
+
+	SceneObject* getContainerObject(int idx);
+
 	ZoneClientSession* getClient();
 
 	unsigned int getGameObjectType();
@@ -211,6 +215,8 @@ public:
 	SceneObject* getParent();
 
 	void setPosition(float x, float z, float y);
+
+	void initializePosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
 
@@ -734,6 +740,10 @@ public:
 
 	int getSlotDescriptorSize();
 
+	int getContainerObjectsSize();
+
+	SceneObject* getContainerObject(int idx);
+
 	virtual ZoneClientSession* getClient();
 
 	unsigned int getGameObjectType();
@@ -747,6 +757,8 @@ public:
 	SceneObject* getParent();
 
 	void setPosition(float x, float z, float y);
+
+	void initializePosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
 
@@ -885,6 +897,10 @@ public:
 
 	int getSlotDescriptorSize();
 
+	int getContainerObjectsSize();
+
+	SceneObject* getContainerObject(int idx);
+
 	ZoneClientSession* getClient();
 
 	unsigned int getGameObjectType();
@@ -898,6 +914,8 @@ public:
 	SceneObject* getParent();
 
 	void setPosition(float x, float z, float y);
+
+	void initializePosition(float x, float z, float y);
 
 	void setGameObjectType(unsigned int type);
 

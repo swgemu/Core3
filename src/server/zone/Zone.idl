@@ -54,7 +54,7 @@ import engine.core.ManagedObject;
 
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.ZoneServer;
-//import server.zone.objects.SceneObject;
+import server.zone.managers.structure.StructureManager;
 
 
 include server.zone.managers.planet.HeightMap;
@@ -65,6 +65,8 @@ class Zone extends ManagedObject, native QuadTree {
 	ZoneProcessServerImplementation processor;
 
 	ScheduleManager scheduler;
+	
+	StructureManager structureManager; // move to planet manager when converted
 	
 	ZoneServer server;
 
@@ -80,19 +82,8 @@ class Zone extends ManagedObject, native QuadTree {
 	
 	native public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
 	
-	public native void lock();
-	
-	public void lock(boolean doLock) {
-		if (doLock)
-			lock();
-	}
-	
-	public void unlock(boolean doLock) {
-		if (doLock)
-			unlock();
-	}
-	
-	public native void unlock();
+	public native void lock(boolean doLock = true);
+	public native void unlock(boolean doLock = true);
 	
 	public local native void insert(QuadTreeEntry entry);
 	public local native void remove(QuadTreeEntry entry);

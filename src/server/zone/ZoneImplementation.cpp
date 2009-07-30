@@ -66,6 +66,7 @@ which carries forward this exception.
 
 #include "ZoneProcessServerImplementation.h"
 #include "objects/scene/SceneObject.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
@@ -82,6 +83,8 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	heightMap = new HeightMap();
 
 	galacticTime = new Time();
+
+	structureManager = NULL;
 }
 
 void ZoneImplementation::startManagers() {
@@ -94,6 +97,8 @@ void ZoneImplementation::startManagers() {
 		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
+	structureManager = new StructureManager(_this, processor);
+	structureManager->loadStaticBuildings();
 	/*creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 
@@ -154,12 +159,12 @@ float ZoneImplementation::getHeight(float x, float y) {
 	return heightMap->getHeight(x, y);
 }
 
-void ZoneImplementation::lock() {
-	ManagedObjectImplementation::lock(true);
+void ZoneImplementation::lock(bool doLock) {
+	ManagedObjectImplementation::lock(doLock);
 }
 
-void ZoneImplementation::unlock() {
-	ManagedObjectImplementation::unlock(true);
+void ZoneImplementation::unlock(bool doLock) {
+	ManagedObjectImplementation::unlock(doLock);
 }
 
 void ZoneImplementation::insert(QuadTreeEntry* entry) {

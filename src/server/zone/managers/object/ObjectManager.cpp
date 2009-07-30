@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "../../objects/cell/CellObject.h"
 #include "../../objects/tangible/weapon/WeaponObject.h"
 #include "../../objects/tangible/weapon/MeleeWeaponObject.h"
-
+#include "../../objects/building/BuildingObject.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
@@ -121,6 +121,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<PlayerObject>(12);
 
 	objectFactory.registerObject<WaypointObject>(0x805);
+
+	objectFactory.registerObject<BuildingObject>(0x200);
 
 	objectFactory.registerObject<WeaponObject>(0x20000);
 	objectFactory.registerObject<MeleeWeaponObject>(0x20001);
@@ -240,7 +242,8 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
 
 		object->setObjectID(oid);
 
-		add(object);
+		if (add(object) != NULL)
+			error("panic conflicted object id in object manager");
 
 		unlock();
 	} catch (Exception& e) {

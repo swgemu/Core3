@@ -29,6 +29,20 @@ class ZoneServer;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace structure {
+
+class StructureManager;
+
+} // namespace structure
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::structure;
+
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "engine/util/QuadTree.h"
@@ -50,13 +64,9 @@ class Zone : public ManagedObject {
 public:
 	Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
-	void lock();
+	void lock(bool doLock = true);
 
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
-
-	void unlock();
+	void unlock(bool doLock = true);
 
 	void insert(QuadTreeEntry* entry);
 
@@ -119,6 +129,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ScheduleManager* scheduler;
 
+	ManagedReference<StructureManager* > structureManager;
+
 	ManagedReference<ZoneServer* > server;
 
 	Time* galacticTime;
@@ -136,13 +148,9 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 public:
 	ZoneImplementation(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
-	void lock();
+	void lock(bool doLock = true);
 
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
-
-	void unlock();
+	void unlock(bool doLock = true);
 
 	void insert(QuadTreeEntry* entry);
 
@@ -203,13 +211,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void lock();
-
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
-
-	void unlock();
 
 	void startManagers();
 

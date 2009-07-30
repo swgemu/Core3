@@ -457,6 +457,14 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return slotDescriptors.size();
 	}
 	
+	public int getContainerObjectsSize() {
+		return containerObjects.size();
+	}
+	
+	public SceneObject getContainerObject(int idx) {
+		return containerObjects.get(idx);
+	}
+	
 	public abstract ZoneClientSession getClient() {
 		return null;
 	}
@@ -483,6 +491,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public void setPosition(float x, float z, float y) {
 		QuadTreeEntry.setPosition(x, z, y);
+	}
+	
+	public void initializePosition(float x, float z, float y) {
+		QuadTreeEntry.initializePosition(x, z, y);
 	}
 	
 	public void setGameObjectType(unsigned int type) {

@@ -168,6 +168,8 @@ public:
 
 	ChatManager* getChatManager();
 
+	ObjectManager* getObjectManager();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 	unsigned long long getNextID(bool doLock = true);
@@ -330,6 +332,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
+
+	ObjectManager* getObjectManager();
 
 	unsigned long long getNextCreatureID(bool doLock = true);
 

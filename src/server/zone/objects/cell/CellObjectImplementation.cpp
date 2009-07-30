@@ -14,4 +14,7 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 
 	cellNumber = 0;
 
+	containerVolumeLimit = 0xFFFFFFFF;
+
+	containerType = 2;
 }

@@ -13,7 +13,24 @@ BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateDa
 	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
 	cells = new SortedVector<CellObject*>();
+
+	staticBuilding = false;
+
+	setLoggingName("BuildingObject");
 }
+
+void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (!isStaticBuilding()) {
+		info("sending building object create");
+
+		SceneObjectImplementation::sendTo(player, doClose);
+	}
+}
+
+void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
+	//send buios here
+}
+
 
 void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	info("BuildingObjectImplementation::notifyInsertToZone");
@@ -37,8 +54,8 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	for (int i = 0; i < cells->size(); ++i) {
 		CellObject* cell = cells->get(i);
 
-		for (int j = 0; j < cell->getContainmentObjectsSize(); ++j) {
-			SceneObject* childStub = cell->getContainmentObject(j);
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			SceneObject* childStub = cell->getContainerObject(j);
 			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
 			child->addInRangeObject(obj, false);
@@ -53,8 +70,8 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	for (int i = 0; i < cells->size(); ++i) {
 		CellObject* cell = cells->get(i);
 
-		for (int j = 0; j < cell->getContainmentObjectsSize(); ++j) {
-			SceneObject* childStub = cell->getContainmentObject(j);
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			SceneObject* childStub = cell->getContainerObject(j);
 			SceneObjectImplementation* child = (SceneObjectImplementation*) childStub->_getImplementation();
 
 			child->removeInRangeObject(obj);

@@ -33,6 +33,8 @@ using namespace server::zone::objects::cell;
 
 #include "system/util/SortedVector.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -56,6 +58,18 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
+	void sendTo(SceneObject* player, bool doClose = true);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	bool isStaticBuilding();
+
+	CellObject* getCell(int idx);
+
+	void addCell(CellObject* cell);
+
+	void setStaticBuilding(bool value);
+
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -77,7 +91,10 @@ namespace objects {
 namespace building {
 
 class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
+protected:
 	SortedVector<CellObject* >* cells;
+
+	bool staticBuilding;
 
 public:
 	BuildingObjectImplementation(LuaObject* templateData);
@@ -95,6 +112,18 @@ public:
 	void update(QuadTreeEntry* obj);
 
 	void inRange(QuadTreeEntry* obj, float range);
+
+	void sendTo(SceneObject* player, bool doClose = true);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	bool isStaticBuilding();
+
+	CellObject* getCell(int idx);
+
+	void addCell(CellObject* cell);
+
+	void setStaticBuilding(bool value);
 
 	BuildingObject* _this;
 
@@ -130,6 +159,18 @@ public:
 	void update(QuadTreeEntry* obj);
 
 	void inRange(QuadTreeEntry* obj, float range);
+
+	void sendTo(SceneObject* player, bool doClose);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	bool isStaticBuilding();
+
+	CellObject* getCell(int idx);
+
+	void addCell(CellObject* cell);
+
+	void setStaticBuilding(bool value);
 
 };
 
