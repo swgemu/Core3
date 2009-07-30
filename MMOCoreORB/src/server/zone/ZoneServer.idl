@@ -203,6 +203,10 @@ class ZoneServer extends ManagedObject, native DatagramServiceThread {
 	public ChatManager getChatManager() {
 		return chatManager;
 	}
+	
+	public local ObjectManager getObjectManager() {
+		return objectManager;
+	}
 
 	/*public time_t getStartTimestamp() {
 		return startTimestamp;

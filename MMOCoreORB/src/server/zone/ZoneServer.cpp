@@ -463,6 +463,14 @@ ChatManager* ZoneServer::getChatManager() {
 		return ((ZoneServerImplementation*) _impl)->getChatManager();
 }
 
+ObjectManager* ZoneServer::getObjectManager() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ZoneServerImplementation*) _impl)->getObjectManager();
+}
+
 unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -717,17 +725,22 @@ ChatManager* ZoneServerImplementation::getChatManager() {
 	return chatManager;
 }
 
+ObjectManager* ZoneServerImplementation::getObjectManager() {
+	// server/zone/ZoneServer.idl(208):  return objectManager;
+	return objectManager;
+}
+
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
-	// server/zone/ZoneServer.idl(218):  galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(222):  galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
-	// server/zone/ZoneServer.idl(222):  lock();
+	// server/zone/ZoneServer.idl(226):  lock();
 	lock();
-	// server/zone/ZoneServer.idl(224):  serverState = state;
+	// server/zone/ZoneServer.idl(228):  serverState = state;
 	serverState = state;
-	// server/zone/ZoneServer.idl(226):  unlock();
+	// server/zone/ZoneServer.idl(230):  unlock();
 	unlock();
 }
 

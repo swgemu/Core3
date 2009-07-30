@@ -326,6 +326,9 @@ void ZoneServerImplementation::init() {
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
 
+	objectManager = ObjectManager::instance();
+	objectManager->setZoneProcessServerImplementation(processor);
+
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
 
@@ -373,9 +376,6 @@ void ZoneServerImplementation::init() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
-
-	objectManager = ObjectManager::instance();
-	objectManager->setZoneProcessServerImplementation(processor);
 
 	playerManager = new PlayerManager(objectManager, processor);
 	playerManager->deploy("PlayerManager");

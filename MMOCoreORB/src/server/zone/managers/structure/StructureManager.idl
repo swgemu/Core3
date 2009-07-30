@@ -44,16 +44,26 @@ which carries forward this exception.
 
 package server.zone.managers.structure;
 
-import engine.core.
+import engine.core.ManagedObject;
 import server.zone.Zone;
 import server.zone.ZoneProcessServerImplementation;
-
+import server.zone.managers.object.ObjectManager;
+import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.cell.CellObject;
 
-class StructureManager extends ManagedObject {
+class StructureManager extends ManagedObject, native Logger {
+	Zone zone;
+	ZoneProcessServerImplementation server;
+	ObjectManager objectManager;
+	
 	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	
-	public void loadStructures();
+	public void loadStructures() {
+		loadStaticBuildings();
+	}
+	
+	public native void loadStaticBuildings();
+	public native BuildingObject loadStaticBuilding(unsigned long oid, int planet);
 }
 

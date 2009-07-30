@@ -50,11 +50,11 @@ import system.util.VectorMap;
 
 class CellObject extends SceneObject {
 	int cellNumber;
-	VectorMap<unsigned long, SceneObject> containmentObjects;
+	//VectorMap<unsigned long, SceneObject> containmentObjects;
 	
 	public native CellObject(LuaObject templateData);
 	
-	public boolean addObject(SceneObject object) {
+	/*public boolean addObject(SceneObject object) {
 		boolean result = containmentObjects.put(object.getObjectID(), object);
 	
 		return result;
@@ -72,7 +72,7 @@ class CellObject extends SceneObject {
 	
 	public int getContainmentObjectsSize() {
 		return containmentObjects.size();
-	}
+	}*/
 	
 	public int getCellNumber() {
 		return cellNumber;

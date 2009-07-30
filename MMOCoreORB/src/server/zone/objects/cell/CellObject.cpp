@@ -21,63 +21,12 @@ CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 CellObject::~CellObject() {
 }
 
-bool CellObject::addObject(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(object);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((CellObjectImplementation*) _impl)->addObject(object);
-}
-
-bool CellObject::removeObject(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(object);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((CellObjectImplementation*) _impl)->removeObject(object);
-}
-
-SceneObject* CellObject::getContainmentObject(int idx) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addSignedIntParameter(idx);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return ((CellObjectImplementation*) _impl)->getContainmentObject(idx);
-}
-
-int CellObject::getContainmentObjectsSize() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((CellObjectImplementation*) _impl)->getContainmentObjectsSize();
-}
-
 int CellObject::getCellNumber() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 6);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -89,7 +38,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 7);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -123,30 +72,6 @@ void CellObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cellNumber", &cellNumber);
 }
 
-bool CellObjectImplementation::addObject(SceneObject* object) {
-	// server/zone/objects/cell/CellObject.idl(58):  boolean result = containmentObjects.put(object.getObjectID(), object);
-	bool result = containmentObjects->put(object->getObjectID(), object);
-	// server/zone/objects/cell/CellObject.idl(60):  return result;
-	return result;
-}
-
-bool CellObjectImplementation::removeObject(SceneObject* object) {
-	// server/zone/objects/cell/CellObject.idl(64):  boolean result = containmentObjects.drop(object.getObjectID());
-	bool result = containmentObjects->drop(object->getObjectID());
-	// server/zone/objects/cell/CellObject.idl(66):  return result;
-	return result;
-}
-
-SceneObject* CellObjectImplementation::getContainmentObject(int idx) {
-	// server/zone/objects/cell/CellObject.idl(70):  return containmentObjects.get(idx);
-	return containmentObjects->get(idx);
-}
-
-int CellObjectImplementation::getContainmentObjectsSize() {
-	// server/zone/objects/cell/CellObject.idl(74):  return containmentObjects.size();
-	return containmentObjects->size();
-}
-
 int CellObjectImplementation::getCellNumber() {
 	// server/zone/objects/cell/CellObject.idl(78):  return cellNumber;
 	return cellNumber;
@@ -169,21 +94,9 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter()));
-		break;
-	case 7:
-		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter()));
-		break;
-	case 8:
-		resp->insertLong(getContainmentObject(inv->getSignedIntParameter())->_getObjectID());
-		break;
-	case 9:
-		resp->insertSignedInt(getContainmentObjectsSize());
-		break;
-	case 10:
 		resp->insertSignedInt(getCellNumber());
 		break;
-	case 11:
+	case 7:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
 	default:
@@ -191,22 +104,6 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-bool CellObjectAdapter::addObject(SceneObject* object) {
-	return ((CellObjectImplementation*) impl)->addObject(object);
-}
-
-bool CellObjectAdapter::removeObject(SceneObject* object) {
-	return ((CellObjectImplementation*) impl)->removeObject(object);
-}
-
-SceneObject* CellObjectAdapter::getContainmentObject(int idx) {
-	return ((CellObjectImplementation*) impl)->getContainmentObject(idx);
-}
-
-int CellObjectAdapter::getContainmentObjectsSize() {
-	return ((CellObjectImplementation*) impl)->getContainmentObjectsSize();
 }
 
 int CellObjectAdapter::getCellNumber() {
