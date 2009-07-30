@@ -24,10 +24,6 @@ class Container : public TangibleObject {
 public:
 	Container(LuaObject* templateData);
 
-	bool addObject(SceneObject* obj);
-
-	bool removeObject(SceneObject* obj);
-
 protected:
 	Container(DummyConstructorParameter* param);
 
@@ -53,10 +49,6 @@ class ContainerImplementation : public TangibleObjectImplementation {
 public:
 	ContainerImplementation(LuaObject* templateData);
 
-	bool addObject(SceneObject* obj);
-
-	bool removeObject(SceneObject* obj);
-
 	Container* _this;
 
 	operator const Container*();
@@ -77,10 +69,6 @@ public:
 	ContainerAdapter(ContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	bool addObject(SceneObject* obj);
-
-	bool removeObject(SceneObject* obj);
 
 };
 

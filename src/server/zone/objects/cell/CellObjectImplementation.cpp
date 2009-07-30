@@ -10,6 +10,8 @@
 CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 	SceneObjectImplementation(templateData) {
 
+	setLoggingName("CellObject");
+
 	cellNumber = 0;
 
 }

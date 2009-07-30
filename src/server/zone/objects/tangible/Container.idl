@@ -51,11 +51,11 @@ import engine.lua.LuaObject;
 class Container extends TangibleObject {
 	public native Container(LuaObject templateData);
 	
-	public boolean addObject(SceneObject obj) {
+	/*public boolean addObject(SceneObject obj) {
 		return true;
 	}
 	
 	public boolean removeObject(SceneObject obj) {
 		return true;
-	}
+	}*/
 }

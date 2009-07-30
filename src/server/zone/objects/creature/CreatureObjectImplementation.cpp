@@ -55,6 +55,8 @@ which carries forward this exception.
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData) {
 
+	setLoggingName("CreatureObject");
+
 	bankCredits = 0;
 	cashCredits = 0;
 

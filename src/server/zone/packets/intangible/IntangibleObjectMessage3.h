@@ -51,24 +51,16 @@ which carries forward this exception.
 
 class IntangibleObjectMessage3 : public BaseLineMessage {
 public:
-	IntangibleObjectMessage3(IntangibleObject* itno)
-			: BaseLineMessage(itno->getObjectID(), 0x4F4E5449, 3, 5) {
+	IntangibleObjectMessage3(IntangibleObject* itno, uint32 objType = 0x4F4E5449, uint16 opcnt = 5)
+			: BaseLineMessage(itno->getObjectID(), objType , 3, opcnt) {
 
 		insertFloat(1);
 		insertStringId(itno->getObjectName());
 
-		insertInt(1);
+		insertInt(0); // ?
 		insertInt(itno->getStatus());
 
 		setSize();
-	}
-
-	void insertStringId(StringId* id) {
-		insertAscii(id->getFile());
-		insertInt(0);
-		insertAscii(id->getStringID());
-
-		insertUnicode(id->getCustomString());
 	}
 
 };

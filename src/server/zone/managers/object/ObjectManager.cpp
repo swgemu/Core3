@@ -52,6 +52,9 @@ which carries forward this exception.
 #include "../../objects/player/PlayerObject.h"
 #include "../../objects/waypoint/WaypointObject.h"
 #include "../../objects/cell/CellObject.h"
+#include "../../objects/tangible/weapon/WeaponObject.h"
+#include "../../objects/tangible/weapon/MeleeWeaponObject.h"
+
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
@@ -118,6 +121,9 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<PlayerObject>(12);
 
 	objectFactory.registerObject<WaypointObject>(0x805);
+
+	objectFactory.registerObject<WeaponObject>(0x20000);
+	objectFactory.registerObject<MeleeWeaponObject>(0x20001);
 
 }
 

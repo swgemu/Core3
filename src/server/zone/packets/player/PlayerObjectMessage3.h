@@ -46,15 +46,14 @@ which carries forward this exception.
 #define PLAYEROBJECTMESSAGE3_H_
 
 #include "../BaseLineMessage.h"
-
+#include "../intangible/IntangibleObjectMessage3.h"
 #include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/Player.h"
 
-class PlayerObjectMessage3 : public BaseLineMessage {
+class PlayerObjectMessage3 : public IntangibleObjectMessage3 {
 public:
 	PlayerObjectMessage3(PlayerObject* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 3, 0x0B) {
-		insertFloat(1);
+			: IntangibleObjectMessage3(play, 0x504C4159, 0x0B) {
+		/*insertFloat(1);
 
 		insertAscii("String_id_table");
 		insertInt(0);
@@ -62,7 +61,7 @@ public:
 
 		insertInt(0);
 		insertInt(0);
-		insertInt(0);
+		insertInt(0);*/
 
 		insertInt(4);
 		insertInt(play->getCharacterBitmask());
@@ -76,7 +75,7 @@ public:
 		insertInt(0);
 		insertInt(0);
 
-		insertAscii(play->getCurrentTitle());
+		insertAscii(play->getTitle());
 
 		insertInt(0x6C2);
 		insertInt(0xDC62);

@@ -76,7 +76,7 @@ public:
 
 	bool loadSlashCommandsFile(CommandList* sCommands) {
 		slashCommands = sCommands;
-		info("Loading commands...");
+		//info("Loading commands...");
 		return runFile("scripts/commands/commands.lua");
 	}
 

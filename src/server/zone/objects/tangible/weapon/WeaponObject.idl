@@ -42,75 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ONEHANDEDJEDIWEAPONIMPLEMENTATION_H_
-#define ONEHANDEDJEDIWEAPONIMPLEMENTATION_H_
+package server.zone.objects.tangible.weapon;
 
-#include "OneHandedJediWeapon.h"
+import server.zone.objects.tangible.TangibleObject;
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
 
-#include "../../../player/Player.h"
-
-#include "../../../../packets/object/ObjectMenuResponse.h"
-
-class OneHandedJediWeaponImplementation : public OneHandedJediWeaponServant {
-
-
-public:
-	OneHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, ONEHANDSABER, eqp) {
-		init();
+class WeaponObject extends TangibleObject {
+	protected int attackType;
+	protected string weaponEffect;
+	protected int weaponEffectIndex;
+	
+	public native WeaponObject(LuaObject templateData);
+	
+	public native void sendBaselinesTo(SceneObject player);
+	
+	public int getAttackType() {
+		return attackType;
 	}
-
-	OneHandedJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: OneHandedJediWeaponServant(creature, temp, n, tempn, ONEHANDSABER, eqp) {
-		init();
-	}
-
-	void init() {
-		objectSubType = TangibleObjectImplementation::ONEHANDSABER;
-
-		//setType(7);
-		//setCategory(0x30);
-		//This fixes the creature bug causing creatures to do 4k dmg
-		setType(ONEHANDSABER);
-		setCategory(JEDI);
-		setDamageType(LIGHTSABER);
-
-		//setMinDamage(154);
-		//setMaxDamage(257);
-		setMinDamage(125);
-		setMaxDamage(355);
-		setAttackSpeed(3.5f);
-		//setAttackSpeed(4.3f);
-
-		setPointBlankAccuracy(20);
-		setPointBlankRange(0);
-
-		setIdealAccuracy(15);
-		setIdealRange(3);
-
-		setMaxRangeAccuracy(5);
-		setMaxRange(5);
-
-		setHealthAttackCost(5);
-		setActionAttackCost(5);
-		setMindAttackCost(5);
-
-		setForceCost(5);
-	}
-
-	/*
-	void OneHandedJediWeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-		if (player->getInventoryItem(getObjectID()) != NULL) {
-			omr->addRadialItem(0, 65, 3, "Change Blade Color");
-			//omr->addRadialItem(0, 64, 3, "Open Lightsaber");
-			omr->finish();
-
-			player->sendMessage(omr);
-		}
-	}
-*/
-};
-
-
-
-#endif /*ONEHANDEDJEDIWEAPONIMPLEMENTATION_H_*/
+}

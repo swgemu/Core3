@@ -47,4 +47,5 @@ which carries forward this exception.
 ContainerImplementation::ContainerImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData) {
 
+	setLoggingName("Container");
 }

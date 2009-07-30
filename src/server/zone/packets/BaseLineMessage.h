@@ -80,6 +80,14 @@ public:
 		insertInt(23, size() - 27);
 	}
 	
+	inline void insertStringId(StringId* id) {
+		insertAscii(id->getFile());
+		insertInt(0);
+		insertAscii(id->getStringID());
+
+		insertUnicode(id->getCustomString());
+	}
+
 };
 
 #endif /*BASELINEMESSAGE_H_*/

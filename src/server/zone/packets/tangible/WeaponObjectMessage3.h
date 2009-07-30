@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "TangibleObjectMessage3.h"
 
-#include "../../objects/tangible/weapons/Weapon.h"
+#include "../../objects/tangible/weapon/WeaponObject.h"
 
 class WeaponObjectMessage3 : public TangibleObjectMessage3 {
 public:
-	WeaponObjectMessage3(Weapon* weao)
+	WeaponObjectMessage3(WeaponObject* weao)
 			: TangibleObjectMessage3(weao, 0x5745414F, 0x11) {
 		insertInt(0xE8000000);
 

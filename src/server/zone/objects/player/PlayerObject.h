@@ -19,9 +19,9 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "engine/lua/LuaObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
 
@@ -36,14 +36,24 @@ class PlayerObject : public IntangibleObject {
 public:
 	PlayerObject(LuaObject* templateData);
 
-	CreatureObject* getCreatureObject();
+	void sendBaselinesTo(SceneObject* player);
 
-	void setCreatureObject(CreatureObject* object);
+	unsigned int getCharacterBitmask();
+
+	String getTitle();
+
+	unsigned int getAdminLevel();
+
+	void setCharacterBitmask(unsigned int bitmask);
+
+	void setTitle(const String& characterTitle);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
 
 	virtual ~PlayerObject();
+
+	String _return_getTitle;
 
 	friend class PlayerObjectHelper;
 };
@@ -61,16 +71,56 @@ namespace objects {
 namespace player {
 
 class PlayerObjectImplementation : public IntangibleObjectImplementation {
-	ManagedReference<CreatureObject* > creatureObject;
+	unsigned int characterBitmask;
 
-	ManagedReference<ZoneClientSession* > owner;
+	String title;
+
+	unsigned int adminLevel;
 
 public:
+	static const int LFG = 1;
+
+	static const int NEWBIEHELPER = 2;
+
+	static const int ROLEPLAYER = 4;
+
+	static const int AFK = 0x80;
+
+	static const int LD = 0x100;
+
+	static const int FACTIONRANK = 0x200;
+
+	static const int ANONYMOUS = 0x80000000;
+
+	static const int CSR = 1;
+
+	static const int DEVELOPER = 2;
+
+	static const int ADMIN = 3;
+
+	static const int NORMAL = 4;
+
+	static const int QA = 8;
+
+	static const int EC = 16;
+
+	static const int CSRJR = 32;
+
+	static const int ECJR = 64;
+
 	PlayerObjectImplementation(LuaObject* templateData);
 
-	CreatureObject* getCreatureObject();
+	void sendBaselinesTo(SceneObject* player);
 
-	void setCreatureObject(CreatureObject* object);
+	unsigned int getCharacterBitmask();
+
+	String getTitle();
+
+	unsigned int getAdminLevel();
+
+	void setCharacterBitmask(unsigned int bitmask);
+
+	void setTitle(const String& characterTitle);
 
 	PlayerObject* _this;
 
@@ -93,10 +143,20 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	CreatureObject* getCreatureObject();
+	void sendBaselinesTo(SceneObject* player);
 
-	void setCreatureObject(CreatureObject* object);
+	unsigned int getCharacterBitmask();
 
+	String getTitle();
+
+	unsigned int getAdminLevel();
+
+	void setCharacterBitmask(unsigned int bitmask);
+
+	void setTitle(const String& characterTitle);
+
+protected:
+	String _param0_setTitle__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

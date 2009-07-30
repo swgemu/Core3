@@ -265,4 +265,8 @@ class CreatureObject extends TangibleObject {
 		height = heigh;
 	}
 	
+	public void setWeaponID(unsigned long objectID) {
+		weaponID = objectID;
+	}
+	
 }

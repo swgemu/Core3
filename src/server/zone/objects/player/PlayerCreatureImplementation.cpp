@@ -25,6 +25,8 @@
 PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
 	CreatureObjectImplementation(templateData) {
 
+	setLoggingName("PlayerCreature");
+
 	owner = NULL;
 	nextAction = NULL;
 

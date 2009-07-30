@@ -937,10 +937,8 @@ int CommandConfigManager::addAddPowerSlashCommand(lua_State* L) {
 }
 
 int CommandConfigManager::addAdjustLotCountSlashCommand(lua_State* L) {
-	System::out << "trying to add lot count\n";
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable()) {
-		System::out << "invalid table\n";
 		return 0;
 	}
 
@@ -6532,8 +6530,6 @@ int CommandConfigManager::addSpatialChatInternalSlashCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
-
-	System::out << "trying to add spatial chat internal\n";
 
 	SpatialChatInternalSlashCommand* slashCommand = new SpatialChatInternalSlashCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);

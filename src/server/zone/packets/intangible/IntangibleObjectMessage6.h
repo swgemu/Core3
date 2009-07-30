@@ -57,11 +57,7 @@ public:
 		insertInt(0x6E);
 		// should be "monster_detail" for creature mounts (Although it seems to have no effect) and other itno's use
 		// the _n or _name files here.
-		insertAscii(itno->getStfName());
-
-		insertInt(0);
-
-		insertAscii(itno->getStfFile());
+		insertStringId(itno->getDetailedDescription());
 
 		setSize();
 	}

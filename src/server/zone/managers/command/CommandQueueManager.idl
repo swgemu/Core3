@@ -49,8 +49,10 @@ include server.zone.managers.command.CommandConfigManager;
 include server.zone.ZoneProcessServerImplementation;
 include server.zone.objects.player.commands.QueueCommand;
 import engine.core.ManagedObject;
+import engine.log.Logger;
 
-class CommandQueueManager extends ManagedObject {
+
+class CommandQueueManager extends ManagedObject, native Logger {
 	ZoneProcessServerImplementation server;
 	CommandList slashCommands;
 	CommandConfigManager configManager;

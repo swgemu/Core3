@@ -210,7 +210,7 @@ bool SceneObject::isPlayerCreature() {
 		return ((SceneObjectImplementation*) _impl)->isPlayerCreature();
 }
 
-bool SceneObject::isCell() {
+bool SceneObject::isWeaponObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -219,33 +219,47 @@ bool SceneObject::isCell() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _impl)->isCell();
+		return ((SceneObjectImplementation*) _impl)->isWeaponObject();
 }
 
-bool SceneObject::addObject(SceneObject* object) {
+bool SceneObject::isCell() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 20);
-		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _impl)->addObject(object);
+		return ((SceneObjectImplementation*) _impl)->isCell();
 }
 
-bool SceneObject::removeObject(SceneObject* object) {
+bool SceneObject::addObject(SceneObject* object, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
 		method.addObjectParameter(object);
+		method.addBooleanParameter(notifyClient);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((SceneObjectImplementation*) _impl)->removeObject(object);
+		return ((SceneObjectImplementation*) _impl)->addObject(object, notifyClient);
+}
+
+bool SceneObject::removeObject(SceneObject* object, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(object);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->removeObject(object, notifyClient);
 }
 
 void SceneObject::create(ZoneClientSession* client) {
@@ -253,7 +267,7 @@ void SceneObject::create(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -266,7 +280,7 @@ void SceneObject::destroy(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -279,7 +293,7 @@ void SceneObject::close(ZoneClientSession* client) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
@@ -292,7 +306,7 @@ void SceneObject::link(ZoneClientSession* client, unsigned int containmentType) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(client);
 		method.addUnsignedIntParameter(containmentType);
 
@@ -306,7 +320,7 @@ BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int contain
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addUnsignedLongParameter(objectID);
 		method.addUnsignedIntParameter(containmentType);
 
@@ -320,7 +334,7 @@ void SceneObject::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -334,7 +348,7 @@ void SceneObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -347,7 +361,7 @@ void SceneObject::sendToOwner(bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addBooleanParameter(doClose);
 
 		method.executeWithVoidReturn();
@@ -360,7 +374,7 @@ void SceneObject::insertToZone(Zone* zone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
@@ -373,7 +387,7 @@ void SceneObject::insertToBuilding(BuildingObject* building) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(building);
 
 		method.executeWithVoidReturn();
@@ -386,7 +400,7 @@ void SceneObject::removeFromZone(bool lockZone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addBooleanParameter(lockZone);
 
 		method.executeWithVoidReturn();
@@ -399,7 +413,7 @@ void SceneObject::removeFromBuilding(BuildingObject* building) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(building);
 
 		method.executeWithVoidReturn();
@@ -412,7 +426,7 @@ void SceneObject::updateZone(bool lightUpdate) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addBooleanParameter(lightUpdate);
 
 		method.executeWithVoidReturn();
@@ -425,7 +439,7 @@ void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(newParent);
 		method.addBooleanParameter(lightUpdate);
 
@@ -439,7 +453,7 @@ void SceneObject::broadcastMessage(BasePacket* message, bool lockZone) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 		method.addObjectParameter(message);
 		method.addBooleanParameter(lockZone);
 
@@ -453,7 +467,7 @@ void SceneObject::sendMessage(BasePacket* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -466,7 +480,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 		method.addObjectParameter(obj);
 
 		return method.executeWithSignedIntReturn();
@@ -479,7 +493,7 @@ unsigned long long SceneObject::getParentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -491,7 +505,7 @@ unsigned long long SceneObject::getObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -503,7 +517,7 @@ float SceneObject::getPositionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -515,7 +529,7 @@ float SceneObject::getPositionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -527,7 +541,7 @@ float SceneObject::getPositionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -539,7 +553,7 @@ float SceneObject::getDirectionX() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -551,7 +565,7 @@ float SceneObject::getDirectionZ() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -563,7 +577,7 @@ float SceneObject::getDirectionY() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -575,7 +589,7 @@ float SceneObject::getDirectionW() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -587,7 +601,7 @@ unsigned int SceneObject::getObjectCRC() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -602,12 +616,20 @@ StringId* SceneObject::getObjectName() {
 		return ((SceneObjectImplementation*) _impl)->getObjectName();
 }
 
+StringId* SceneObject::getDetailedDescription() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((SceneObjectImplementation*) _impl)->getDetailedDescription();
+}
+
 int SceneObject::getArrangementDescriptorSize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -619,7 +641,7 @@ String SceneObject::getArrangementDescriptor(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getArrangementDescriptor);
@@ -633,7 +655,7 @@ String SceneObject::getSlotDescriptor(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getSlotDescriptor);
@@ -647,7 +669,7 @@ SceneObject* SceneObject::getSlot(String& slot) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 		method.addAsciiParameter(slot);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -660,7 +682,7 @@ int SceneObject::getSlotDescriptorSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -672,7 +694,7 @@ ZoneClientSession* SceneObject::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -684,7 +706,7 @@ unsigned int SceneObject::getGameObjectType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -696,7 +718,7 @@ Zone* SceneObject::getZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 57);
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
@@ -708,7 +730,7 @@ float SceneObject::getDirectionAngle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -720,7 +742,7 @@ unsigned int SceneObject::getMovementCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -732,7 +754,7 @@ SceneObject* SceneObject::getParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -744,7 +766,7 @@ void SceneObject::setPosition(float x, float z, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
 		method.addFloatParameter(y);
@@ -759,7 +781,7 @@ void SceneObject::setGameObjectType(unsigned int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 		method.addUnsignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -772,7 +794,7 @@ void SceneObject::setObjectCRC(unsigned int objCRC) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 		method.addUnsignedIntParameter(objCRC);
 
 		method.executeWithVoidReturn();
@@ -785,7 +807,7 @@ void SceneObject::setParent(SceneObject* par) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 		method.addObjectParameter(par);
 
 		method.executeWithVoidReturn();
@@ -806,7 +828,7 @@ void SceneObject::setObjectID(unsigned long long objectid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 		method.addUnsignedLongParameter(objectid);
 
 		method.executeWithVoidReturn();
@@ -827,7 +849,7 @@ void SceneObject::setZone(Zone* zon) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 66);
 		method.addObjectParameter(zon);
 
 		method.executeWithVoidReturn();
@@ -840,7 +862,7 @@ void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 67);
 		method.addFloatParameter(fw);
 		method.addFloatParameter(fx);
 		method.addFloatParameter(fy);
@@ -856,7 +878,7 @@ void SceneObject::setMovementCounter(unsigned int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 68);
 		method.addUnsignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -901,37 +923,37 @@ void SceneObjectImplementation::_serializationHelperMethod() {
 }
 
 void SceneObjectImplementation::info(const String& msg, bool forced) {
-	// server/zone/objects/scene/SceneObject.idl(292):  Logger.info(msg, forced);
+	// server/zone/objects/scene/SceneObject.idl(293):  Logger.info(msg, forced);
 	Logger::info(msg, forced);
 }
 
 void SceneObjectImplementation::info(const String& msg) {
-	// server/zone/objects/scene/SceneObject.idl(296):  Logger.info(msg);
+	// server/zone/objects/scene/SceneObject.idl(297):  Logger.info(msg);
 	Logger::info(msg);
 }
 
 void SceneObjectImplementation::error(const String& msg) {
-	// server/zone/objects/scene/SceneObject.idl(300):  Logger.error(msg);
+	// server/zone/objects/scene/SceneObject.idl(301):  Logger.error(msg);
 	Logger::error(msg);
 }
 
 int SceneObjectImplementation::inRangeObjectCount() {
-	// server/zone/objects/scene/SceneObject.idl(309):  return QuadTreeEntry.inRangeObjectCount();
+	// server/zone/objects/scene/SceneObject.idl(310):  return QuadTreeEntry.inRangeObjectCount();
 	return QuadTreeEntry::inRangeObjectCount();
 }
 
 QuadTreeEntry* SceneObjectImplementation::getInRangeObject(int index) {
-	// server/zone/objects/scene/SceneObject.idl(313):  return QuadTreeEntry.getInRangeObject(index);
+	// server/zone/objects/scene/SceneObject.idl(314):  return QuadTreeEntry.getInRangeObject(index);
 	return QuadTreeEntry::getInRangeObject(index);
 }
 
 bool SceneObjectImplementation::isInRange(SceneObject* obj, float range) {
-	// server/zone/objects/scene/SceneObject.idl(317):  return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
+	// server/zone/objects/scene/SceneObject.idl(318):  return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
 	return QuadTreeEntry::isInRange(obj->getPositionX(), obj->getPositionY(), range);
 }
 
 bool SceneObjectImplementation::isInRange(QuadTreeEntry* obj, float range) {
-	// server/zone/objects/scene/SceneObject.idl(321):  return QuadTreeEntry.isInRange(obj, range);
+	// server/zone/objects/scene/SceneObject.idl(322):  return QuadTreeEntry.isInRange(obj, range);
 	return QuadTreeEntry::isInRange(obj, range);
 }
 
@@ -948,75 +970,18 @@ void SceneObjectImplementation::removeUndeploymentEvent() {
 }
 
 bool SceneObjectImplementation::isPlayerCreature() {
-	// server/zone/objects/scene/SceneObject.idl(337):  return gameObjectType == PLAYERCREATURE;
+	// server/zone/objects/scene/SceneObject.idl(338):  return gameObjectType == PLAYERCREATURE;
 	return gameObjectType == PLAYERCREATURE;
 }
 
+bool SceneObjectImplementation::isWeaponObject() {
+	// server/zone/objects/scene/SceneObject.idl(342):  return gameObjectType & WEAPON;
+	return gameObjectType & WEAPON;
+}
+
 bool SceneObjectImplementation::isCell() {
-	// server/zone/objects/scene/SceneObject.idl(341):  return gameObjectType == CELLOBJECT;
+	// server/zone/objects/scene/SceneObject.idl(346):  return gameObjectType == CELLOBJECT;
 	return gameObjectType == CELLOBJECT;
-}
-
-bool SceneObjectImplementation::addObject(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl(345):  object.
-	if (containerType == 1){
-	// server/zone/objects/scene/SceneObject.idl(346):  int arrangementSize = object.getArrangementDescriptorSize();
-	int arrangementSize = object->getArrangementDescriptorSize();
-	// server/zone/objects/scene/SceneObject.idl(348):  
-	for (	// server/zone/objects/scene/SceneObject.idl(348):  for (int i = 0;
-	int i = 0;
-	i < arrangementSize;
- ++i) {
-	// server/zone/objects/scene/SceneObject.idl(349):  string childArrangement = object.getArrangementDescriptor(i);
-	String childArrangement = object->getArrangementDescriptor(i);
-	// server/zone/objects/scene/SceneObject.idl(351):  }
-	if (containmentSlots->contains(childArrangement))	// server/zone/objects/scene/SceneObject.idl(352):  return false;
-	return false;
-}
-	// server/zone/objects/scene/SceneObject.idl(355):  
-	for (	// server/zone/objects/scene/SceneObject.idl(355):  for (int i = 0;
-	int i = 0;
-	i < arrangementSize;
- ++i) {
-	// server/zone/objects/scene/SceneObject.idl(356):  containmentSlots.put(object.getArrangementDescriptor(i), object);
-	containmentSlots->put(object->getArrangementDescriptor(i), object);
-}
-}
-	// server/zone/objects/scene/SceneObject.idl(360):  setParent(this);
-	object->setParent(_this);
-	// server/zone/objects/scene/SceneObject.idl(362):  return true;
-	return true;
-}
-
-bool SceneObjectImplementation::removeObject(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl(366):  object.
-	if (containerType == 1){
-	// server/zone/objects/scene/SceneObject.idl(367):  int arrangementSize = object.getArrangementDescriptorSize();
-	int arrangementSize = object->getArrangementDescriptorSize();
-	// server/zone/objects/scene/SceneObject.idl(369):  
-	for (	// server/zone/objects/scene/SceneObject.idl(369):  for (int i = 0;
-	int i = 0;
-	i < arrangementSize;
- ++i) {
-	// server/zone/objects/scene/SceneObject.idl(370):  string childArrangement = object.getArrangementDescriptor(i);
-	String childArrangement = object->getArrangementDescriptor(i);
-	// server/zone/objects/scene/SceneObject.idl(372):  }
-	if (containmentSlots->get(childArrangement) != object)	// server/zone/objects/scene/SceneObject.idl(373):  return false;
-	return false;
-}
-	// server/zone/objects/scene/SceneObject.idl(376):  
-	for (	// server/zone/objects/scene/SceneObject.idl(376):  for (int i = 0;
-	int i = 0;
-	i < arrangementSize;
- ++i) {
-	// server/zone/objects/scene/SceneObject.idl(377):  containmentSlots.drop(object.getArrangementDescriptor(i));
-	containmentSlots->drop(object->getArrangementDescriptor(i));
-}
-}
-	// server/zone/objects/scene/SceneObject.idl(381):  setParent(null);
-	object->setParent(NULL);
-	// server/zone/objects/scene/SceneObject.idl(383):  return true;
-	return true;
 }
 
 void SceneObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -1026,187 +991,192 @@ void SceneObjectImplementation::sendToOwner(bool doClose) {
 }
 
 void SceneObjectImplementation::sendMessage(BasePacket* msg) {
-	// server/zone/objects/scene/SceneObject.idl(410):  }
-	if (msg != NULL)	// server/zone/objects/scene/SceneObject.idl(411):  msg.finalize();
+	// server/zone/objects/scene/SceneObject.idl(376):  }
+	if (msg != NULL)	// server/zone/objects/scene/SceneObject.idl(377):  msg.finalize();
 	msg->finalize();
 }
 
 int SceneObjectImplementation::compareTo(SceneObject* obj) {
-	// server/zone/objects/scene/SceneObject.idl(415):  
-	if (objectID < obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl(416):  return 1;
+	// server/zone/objects/scene/SceneObject.idl(381):  
+	if (objectID < obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl(382):  return 1;
 	return 1;
 
-	else 	// server/zone/objects/scene/SceneObject.idl(417):  
-	if (objectID > obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl(418):  return -1;
+	else 	// server/zone/objects/scene/SceneObject.idl(383):  
+	if (objectID > obj->getObjectID())	// server/zone/objects/scene/SceneObject.idl(384):  return -1;
 	return -1;
 
-	else 	// server/zone/objects/scene/SceneObject.idl(420):  return 0;
+	else 	// server/zone/objects/scene/SceneObject.idl(386):  return 0;
 	return 0;
 }
 
 unsigned long long SceneObjectImplementation::getParentID() {
-	// server/zone/objects/scene/SceneObject.idl(424):  
+	// server/zone/objects/scene/SceneObject.idl(390):  
 	if (parent != NULL){
-	// server/zone/objects/scene/SceneObject.idl(425):  return parent.getObjectID();
+	// server/zone/objects/scene/SceneObject.idl(391):  return parent.getObjectID();
 	return parent->getObjectID();
 }
 
-	else 	// server/zone/objects/scene/SceneObject.idl(427):  return 0;
+	else 	// server/zone/objects/scene/SceneObject.idl(393):  return 0;
 	return 0;
 }
 
 unsigned long long SceneObjectImplementation::getObjectID() {
-	// server/zone/objects/scene/SceneObject.idl(431):  return QuadTreeEntry.objectID;
+	// server/zone/objects/scene/SceneObject.idl(397):  return QuadTreeEntry.objectID;
 	return QuadTreeEntry::objectID;
 }
 
 float SceneObjectImplementation::getPositionX() {
-	// server/zone/objects/scene/SceneObject.idl(435):  return QuadTreeEntry.getPositionX();
+	// server/zone/objects/scene/SceneObject.idl(401):  return QuadTreeEntry.getPositionX();
 	return QuadTreeEntry::getPositionX();
 }
 
 float SceneObjectImplementation::getPositionZ() {
-	// server/zone/objects/scene/SceneObject.idl(439):  return QuadTreeEntry.getPositionZ();
+	// server/zone/objects/scene/SceneObject.idl(405):  return QuadTreeEntry.getPositionZ();
 	return QuadTreeEntry::getPositionZ();
 }
 
 float SceneObjectImplementation::getPositionY() {
-	// server/zone/objects/scene/SceneObject.idl(443):  return QuadTreeEntry.getPositionY();
+	// server/zone/objects/scene/SceneObject.idl(409):  return QuadTreeEntry.getPositionY();
 	return QuadTreeEntry::getPositionY();
 }
 
 float SceneObjectImplementation::getDirectionX() {
-	// server/zone/objects/scene/SceneObject.idl(447):  return direction.getX();
+	// server/zone/objects/scene/SceneObject.idl(413):  return direction.getX();
 	return direction->getX();
 }
 
 float SceneObjectImplementation::getDirectionZ() {
-	// server/zone/objects/scene/SceneObject.idl(451):  return direction.getZ();
+	// server/zone/objects/scene/SceneObject.idl(417):  return direction.getZ();
 	return direction->getZ();
 }
 
 float SceneObjectImplementation::getDirectionY() {
-	// server/zone/objects/scene/SceneObject.idl(455):  return direction.getY();
+	// server/zone/objects/scene/SceneObject.idl(421):  return direction.getY();
 	return direction->getY();
 }
 
 float SceneObjectImplementation::getDirectionW() {
-	// server/zone/objects/scene/SceneObject.idl(459):  return direction.getW();
+	// server/zone/objects/scene/SceneObject.idl(425):  return direction.getW();
 	return direction->getW();
 }
 
 unsigned int SceneObjectImplementation::getObjectCRC() {
-	// server/zone/objects/scene/SceneObject.idl(463):  return objectCRC;
+	// server/zone/objects/scene/SceneObject.idl(429):  return objectCRC;
 	return objectCRC;
 }
 
 StringId* SceneObjectImplementation::getObjectName() {
-	// server/zone/objects/scene/SceneObject.idl(467):  return objectName;
+	// server/zone/objects/scene/SceneObject.idl(433):  return objectName;
 	return objectName;
 }
 
+StringId* SceneObjectImplementation::getDetailedDescription() {
+	// server/zone/objects/scene/SceneObject.idl(437):  return detailedDescription;
+	return detailedDescription;
+}
+
 int SceneObjectImplementation::getArrangementDescriptorSize() {
-	// server/zone/objects/scene/SceneObject.idl(471):  return arrangementDescriptors.size();
+	// server/zone/objects/scene/SceneObject.idl(441):  return arrangementDescriptors.size();
 	return arrangementDescriptors->size();
 }
 
 String SceneObjectImplementation::getArrangementDescriptor(int idx) {
-	// server/zone/objects/scene/SceneObject.idl(475):  return arrangementDescriptors.get(idx);
+	// server/zone/objects/scene/SceneObject.idl(445):  return arrangementDescriptors.get(idx);
 	return arrangementDescriptors->get(idx);
 }
 
 String SceneObjectImplementation::getSlotDescriptor(int idx) {
-	// server/zone/objects/scene/SceneObject.idl(479):  return slotDescriptors.get(idx);
+	// server/zone/objects/scene/SceneObject.idl(449):  return slotDescriptors.get(idx);
 	return slotDescriptors->get(idx);
 }
 
 SceneObject* SceneObjectImplementation::getSlot(String& slot) {
-	// server/zone/objects/scene/SceneObject.idl(483):  return containmentSlots.get(slot);
+	// server/zone/objects/scene/SceneObject.idl(453):  return containmentSlots.get(slot);
 	return containmentSlots->get(slot);
 }
 
 int SceneObjectImplementation::getSlotDescriptorSize() {
-	// server/zone/objects/scene/SceneObject.idl(487):  return slotDescriptors.size();
+	// server/zone/objects/scene/SceneObject.idl(457):  return slotDescriptors.size();
 	return slotDescriptors->size();
 }
 
 ZoneClientSession* SceneObjectImplementation::getClient() {
-	// server/zone/objects/scene/SceneObject.idl(491):  return null;
+	// server/zone/objects/scene/SceneObject.idl(461):  return null;
 	return NULL;
 }
 
 unsigned int SceneObjectImplementation::getGameObjectType() {
-	// server/zone/objects/scene/SceneObject.idl(495):  return gameObjectType;
+	// server/zone/objects/scene/SceneObject.idl(465):  return gameObjectType;
 	return gameObjectType;
 }
 
 Zone* SceneObjectImplementation::getZone() {
-	// server/zone/objects/scene/SceneObject.idl(499):  return zone;
+	// server/zone/objects/scene/SceneObject.idl(469):  return zone;
 	return zone;
 }
 
 float SceneObjectImplementation::getDirectionAngle() {
-	// server/zone/objects/scene/SceneObject.idl(503):  return direction.getDegrees();
+	// server/zone/objects/scene/SceneObject.idl(473):  return direction.getDegrees();
 	return direction->getDegrees();
 }
 
 unsigned int SceneObjectImplementation::getMovementCounter() {
-	// server/zone/objects/scene/SceneObject.idl(507):  return movementCounter;
+	// server/zone/objects/scene/SceneObject.idl(477):  return movementCounter;
 	return movementCounter;
 }
 
 SceneObject* SceneObjectImplementation::getParent() {
-	// server/zone/objects/scene/SceneObject.idl(511):  return parent;
+	// server/zone/objects/scene/SceneObject.idl(481):  return parent;
 	return parent;
 }
 
 void SceneObjectImplementation::setPosition(float x, float z, float y) {
-	// server/zone/objects/scene/SceneObject.idl(515):  QuadTreeEntry.setPosition(x, z, y);
+	// server/zone/objects/scene/SceneObject.idl(485):  QuadTreeEntry.setPosition(x, z, y);
 	QuadTreeEntry::setPosition(x, z, y);
 }
 
 void SceneObjectImplementation::setGameObjectType(unsigned int type) {
-	// server/zone/objects/scene/SceneObject.idl(519):  gameObjectType = type;
+	// server/zone/objects/scene/SceneObject.idl(489):  gameObjectType = type;
 	gameObjectType = type;
 }
 
 void SceneObjectImplementation::setObjectCRC(unsigned int objCRC) {
-	// server/zone/objects/scene/SceneObject.idl(523):  objectCRC = objCRC;
+	// server/zone/objects/scene/SceneObject.idl(493):  objectCRC = objCRC;
 	objectCRC = objCRC;
 }
 
 void SceneObjectImplementation::setParent(SceneObject* par) {
-	// server/zone/objects/scene/SceneObject.idl(527):  parent = par;
+	// server/zone/objects/scene/SceneObject.idl(497):  parent = par;
 	parent = par;
 }
 
 void SceneObjectImplementation::setZoneProcessServer(ZoneProcessServerImplementation* srv) {
-	// server/zone/objects/scene/SceneObject.idl(531):  server = srv;
+	// server/zone/objects/scene/SceneObject.idl(501):  server = srv;
 	server = srv;
 }
 
 void SceneObjectImplementation::setObjectID(unsigned long long objectid) {
-	// server/zone/objects/scene/SceneObject.idl(535):  QuadTreeEntry.objectID = objectid;
+	// server/zone/objects/scene/SceneObject.idl(505):  QuadTreeEntry.objectID = objectid;
 	QuadTreeEntry::objectID = objectid;
 }
 
 void SceneObjectImplementation::setObjectName(const UnicodeString& name) {
-	// server/zone/objects/scene/SceneObject.idl(539):  objectName.setCustomString(name);
+	// server/zone/objects/scene/SceneObject.idl(509):  objectName.setCustomString(name);
 	objectName->setCustomString(name);
 }
 
 void SceneObjectImplementation::setZone(Zone* zon) {
-	// server/zone/objects/scene/SceneObject.idl(543):  zone = zon;
+	// server/zone/objects/scene/SceneObject.idl(513):  zone = zon;
 	zone = zon;
 }
 
 void SceneObjectImplementation::setDirection(float fw, float fx, float fy, float fz) {
-	// server/zone/objects/scene/SceneObject.idl(547):  direction.set(fw, fx, fy, fz);
+	// server/zone/objects/scene/SceneObject.idl(517):  direction.set(fw, fx, fy, fz);
 	direction->set(fw, fx, fy, fz);
 }
 
 void SceneObjectImplementation::setMovementCounter(unsigned int count) {
-	// server/zone/objects/scene/SceneObject.idl(551):  movementCounter = count;
+	// server/zone/objects/scene/SceneObject.idl(521):  movementCounter = count;
 	movementCounter = count;
 }
 
@@ -1261,150 +1231,153 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isPlayerCreature());
 		break;
 	case 19:
-		resp->insertBoolean(isCell());
+		resp->insertBoolean(isWeaponObject());
 		break;
 	case 20:
-		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(isCell());
 		break;
 	case 21:
-		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter()));
+		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 22:
-		create((ZoneClientSession*) inv->getObjectParameter());
+		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 23:
-		destroy((ZoneClientSession*) inv->getObjectParameter());
+		create((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 24:
-		close((ZoneClientSession*) inv->getObjectParameter());
+		destroy((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 25:
-		link((ZoneClientSession*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		close((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 26:
-		resp->insertLong(link(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter())->_getObjectID());
+		link((ZoneClientSession*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 27:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertLong(link(inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 28:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 29:
-		sendToOwner(inv->getBooleanParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 30:
-		insertToZone((Zone*) inv->getObjectParameter());
+		sendToOwner(inv->getBooleanParameter());
 		break;
 	case 31:
-		insertToBuilding((BuildingObject*) inv->getObjectParameter());
+		insertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case 32:
-		removeFromZone(inv->getBooleanParameter());
+		insertToBuilding((BuildingObject*) inv->getObjectParameter());
 		break;
 	case 33:
-		removeFromBuilding((BuildingObject*) inv->getObjectParameter());
+		removeFromZone(inv->getBooleanParameter());
 		break;
 	case 34:
-		updateZone(inv->getBooleanParameter());
+		removeFromBuilding((BuildingObject*) inv->getObjectParameter());
 		break;
 	case 35:
-		updateZoneWithParent((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		updateZone(inv->getBooleanParameter());
 		break;
 	case 36:
-		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
+		updateZoneWithParent((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 37:
-		sendMessage((BasePacket*) inv->getObjectParameter());
+		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 38:
-		resp->insertSignedInt(compareTo((SceneObject*) inv->getObjectParameter()));
+		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
 	case 39:
-		resp->insertLong(getParentID());
+		resp->insertSignedInt(compareTo((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 40:
-		resp->insertLong(getObjectID());
+		resp->insertLong(getParentID());
 		break;
 	case 41:
-		resp->insertFloat(getPositionX());
+		resp->insertLong(getObjectID());
 		break;
 	case 42:
-		resp->insertFloat(getPositionZ());
+		resp->insertFloat(getPositionX());
 		break;
 	case 43:
-		resp->insertFloat(getPositionY());
+		resp->insertFloat(getPositionZ());
 		break;
 	case 44:
-		resp->insertFloat(getDirectionX());
+		resp->insertFloat(getPositionY());
 		break;
 	case 45:
-		resp->insertFloat(getDirectionZ());
+		resp->insertFloat(getDirectionX());
 		break;
 	case 46:
-		resp->insertFloat(getDirectionY());
+		resp->insertFloat(getDirectionZ());
 		break;
 	case 47:
-		resp->insertFloat(getDirectionW());
+		resp->insertFloat(getDirectionY());
 		break;
 	case 48:
-		resp->insertInt(getObjectCRC());
+		resp->insertFloat(getDirectionW());
 		break;
 	case 49:
-		resp->insertSignedInt(getArrangementDescriptorSize());
+		resp->insertInt(getObjectCRC());
 		break;
 	case 50:
-		resp->insertAscii(getArrangementDescriptor(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getArrangementDescriptorSize());
 		break;
 	case 51:
-		resp->insertAscii(getSlotDescriptor(inv->getSignedIntParameter()));
+		resp->insertAscii(getArrangementDescriptor(inv->getSignedIntParameter()));
 		break;
 	case 52:
-		resp->insertLong(getSlot(inv->getAsciiParameter(_param0_getSlot__String_))->_getObjectID());
+		resp->insertAscii(getSlotDescriptor(inv->getSignedIntParameter()));
 		break;
 	case 53:
-		resp->insertSignedInt(getSlotDescriptorSize());
+		resp->insertLong(getSlot(inv->getAsciiParameter(_param0_getSlot__String_))->_getObjectID());
 		break;
 	case 54:
-		resp->insertLong(getClient()->_getObjectID());
+		resp->insertSignedInt(getSlotDescriptorSize());
 		break;
 	case 55:
-		resp->insertInt(getGameObjectType());
+		resp->insertLong(getClient()->_getObjectID());
 		break;
 	case 56:
-		resp->insertLong(getZone()->_getObjectID());
+		resp->insertInt(getGameObjectType());
 		break;
 	case 57:
-		resp->insertFloat(getDirectionAngle());
+		resp->insertLong(getZone()->_getObjectID());
 		break;
 	case 58:
-		resp->insertInt(getMovementCounter());
+		resp->insertFloat(getDirectionAngle());
 		break;
 	case 59:
-		resp->insertLong(getParent()->_getObjectID());
+		resp->insertInt(getMovementCounter());
 		break;
 	case 60:
-		setPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertLong(getParent()->_getObjectID());
 		break;
 	case 61:
-		setGameObjectType(inv->getUnsignedIntParameter());
+		setPosition(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 62:
-		setObjectCRC(inv->getUnsignedIntParameter());
+		setGameObjectType(inv->getUnsignedIntParameter());
 		break;
 	case 63:
-		setParent((SceneObject*) inv->getObjectParameter());
+		setObjectCRC(inv->getUnsignedIntParameter());
 		break;
 	case 64:
-		setObjectID(inv->getUnsignedLongParameter());
+		setParent((SceneObject*) inv->getObjectParameter());
 		break;
 	case 65:
-		setZone((Zone*) inv->getObjectParameter());
+		setObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 66:
-		setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		setZone((Zone*) inv->getObjectParameter());
 		break;
 	case 67:
+		setDirection(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 68:
 		setMovementCounter(inv->getUnsignedIntParameter());
 		break;
 	default:
@@ -1466,16 +1439,20 @@ bool SceneObjectAdapter::isPlayerCreature() {
 	return ((SceneObjectImplementation*) impl)->isPlayerCreature();
 }
 
+bool SceneObjectAdapter::isWeaponObject() {
+	return ((SceneObjectImplementation*) impl)->isWeaponObject();
+}
+
 bool SceneObjectAdapter::isCell() {
 	return ((SceneObjectImplementation*) impl)->isCell();
 }
 
-bool SceneObjectAdapter::addObject(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->addObject(object);
+bool SceneObjectAdapter::addObject(SceneObject* object, bool notifyClient) {
+	return ((SceneObjectImplementation*) impl)->addObject(object, notifyClient);
 }
 
-bool SceneObjectAdapter::removeObject(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->removeObject(object);
+bool SceneObjectAdapter::removeObject(SceneObject* object, bool notifyClient) {
+	return ((SceneObjectImplementation*) impl)->removeObject(object, notifyClient);
 }
 
 void SceneObjectAdapter::create(ZoneClientSession* client) {

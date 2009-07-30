@@ -23,29 +23,80 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 PlayerObject::~PlayerObject() {
 }
 
-CreatureObject* PlayerObject::getCreatureObject() {
+void PlayerObject::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((PlayerObjectImplementation*) _impl)->getCreatureObject();
+		((PlayerObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-void PlayerObject::setCreatureObject(CreatureObject* object) {
+unsigned int PlayerObject::getCharacterBitmask() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(object);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getCharacterBitmask();
+}
+
+String PlayerObject::getTitle() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithAsciiReturn(_return_getTitle);
+		return _return_getTitle;
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getTitle();
+}
+
+unsigned int PlayerObject::getAdminLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getAdminLevel();
+}
+
+void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addUnsignedIntParameter(bitmask);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerObjectImplementation*) _impl)->setCreatureObject(object);
+		((PlayerObjectImplementation*) _impl)->setCharacterBitmask(bitmask);
+}
+
+void PlayerObject::setTitle(const String& characterTitle) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addAsciiParameter(characterTitle);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->setTitle(characterTitle);
 }
 
 /*
@@ -71,18 +122,34 @@ PlayerObjectImplementation::operator const PlayerObject*() {
 void PlayerObjectImplementation::_serializationHelperMethod() {
 	IntangibleObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("creatureObject", creatureObject);
-	addSerializableVariable("owner", owner);
+	addSerializableVariable("characterBitmask", &characterBitmask);
+	addSerializableVariable("title", &title);
+	addSerializableVariable("adminLevel", &adminLevel);
 }
 
-CreatureObject* PlayerObjectImplementation::getCreatureObject() {
-	// server/zone/objects/player/PlayerObject.idl(62):  return creatureObject;
-	return creatureObject;
+unsigned int PlayerObjectImplementation::getCharacterBitmask() {
+	// server/zone/objects/player/PlayerObject.idl(82):  return characterBitmask;
+	return characterBitmask;
 }
 
-void PlayerObjectImplementation::setCreatureObject(CreatureObject* object) {
-	// server/zone/objects/player/PlayerObject.idl(66):  creatureObject = object;
-	creatureObject = object;
+String PlayerObjectImplementation::getTitle() {
+	// server/zone/objects/player/PlayerObject.idl(86):  return title;
+	return title;
+}
+
+unsigned int PlayerObjectImplementation::getAdminLevel() {
+	// server/zone/objects/player/PlayerObject.idl(90):  return adminLevel;
+	return adminLevel;
+}
+
+void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
+	// server/zone/objects/player/PlayerObject.idl(94):  characterBitmask = bitmask;
+	characterBitmask = bitmask;
+}
+
+void PlayerObjectImplementation::setTitle(const String& characterTitle) {
+	// server/zone/objects/player/PlayerObject.idl(98):  title = characterTitle;
+	title = characterTitle;
 }
 
 /*
@@ -97,10 +164,22 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(getCreatureObject()->_getObjectID());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		setCreatureObject((CreatureObject*) inv->getObjectParameter());
+		resp->insertInt(getCharacterBitmask());
+		break;
+	case 8:
+		resp->insertAscii(getTitle());
+		break;
+	case 9:
+		resp->insertInt(getAdminLevel());
+		break;
+	case 10:
+		setCharacterBitmask(inv->getUnsignedIntParameter());
+		break;
+	case 11:
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	default:
 		return NULL;
@@ -109,12 +188,28 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	return resp;
 }
 
-CreatureObject* PlayerObjectAdapter::getCreatureObject() {
-	return ((PlayerObjectImplementation*) impl)->getCreatureObject();
+void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	return ((PlayerObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
-void PlayerObjectAdapter::setCreatureObject(CreatureObject* object) {
-	return ((PlayerObjectImplementation*) impl)->setCreatureObject(object);
+unsigned int PlayerObjectAdapter::getCharacterBitmask() {
+	return ((PlayerObjectImplementation*) impl)->getCharacterBitmask();
+}
+
+String PlayerObjectAdapter::getTitle() {
+	return ((PlayerObjectImplementation*) impl)->getTitle();
+}
+
+unsigned int PlayerObjectAdapter::getAdminLevel() {
+	return ((PlayerObjectImplementation*) impl)->getAdminLevel();
+}
+
+void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {
+	return ((PlayerObjectImplementation*) impl)->setCharacterBitmask(bitmask);
+}
+
+void PlayerObjectAdapter::setTitle(const String& characterTitle) {
+	return ((PlayerObjectImplementation*) impl)->setTitle(characterTitle);
 }
 
 /*

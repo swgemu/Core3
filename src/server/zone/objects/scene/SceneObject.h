@@ -122,11 +122,13 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isWeaponObject();
+
 	bool isCell();
 
-	bool addObject(SceneObject* object);
+	bool addObject(SceneObject* object, bool notifyClient = false);
 
-	bool removeObject(SceneObject* object);
+	bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	void create(ZoneClientSession* client);
 
@@ -183,6 +185,8 @@ public:
 	unsigned int getObjectCRC();
 
 	StringId* getObjectName();
+
+	StringId* getDetailedDescription();
 
 	int getArrangementDescriptorSize();
 
@@ -258,6 +262,8 @@ protected:
 	ManagedReference<SceneObject* > parent;
 
 	VectorMap<String, SceneObject* >* containmentSlots;
+
+	VectorMap<unsigned long long, SceneObject* >* containerObjects;
 
 	unsigned int objectCRC;
 
@@ -652,11 +658,13 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isWeaponObject();
+
 	bool isCell();
 
-	virtual bool addObject(SceneObject* object);
+	virtual bool addObject(SceneObject* object, bool notifyClient = false);
 
-	virtual bool removeObject(SceneObject* object);
+	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	void create(ZoneClientSession* client);
 
@@ -713,6 +721,8 @@ public:
 	unsigned int getObjectCRC();
 
 	StringId* getObjectName();
+
+	StringId* getDetailedDescription();
 
 	int getArrangementDescriptorSize();
 
@@ -803,11 +813,13 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isWeaponObject();
+
 	bool isCell();
 
-	bool addObject(SceneObject* object);
+	bool addObject(SceneObject* object, bool notifyClient);
 
-	bool removeObject(SceneObject* object);
+	bool removeObject(SceneObject* object, bool notifyClient);
 
 	void create(ZoneClientSession* client);
 

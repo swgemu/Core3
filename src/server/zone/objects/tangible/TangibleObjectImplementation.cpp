@@ -52,6 +52,8 @@ which carries forward this exception.
 TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData)
 		: SceneObjectImplementation(templateData) {
 
+	setLoggingName("TangibleObject");
+
 	targetable = templateData->getByteField("targetable");
 
 	complexity = 100.f;
