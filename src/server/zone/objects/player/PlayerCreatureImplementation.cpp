@@ -22,6 +22,8 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "professions/SkillBox.h"
+
 PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
 	CreatureObjectImplementation(templateData) {
 

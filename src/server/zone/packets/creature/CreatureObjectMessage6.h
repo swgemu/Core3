@@ -56,27 +56,16 @@ public:
 			: TangibleObjectMessage6(creo, 0x4352454F, 0x16) {
 
 		insertShort((uint16)creo->getLevel());
-
 		insertAscii(creo->getPerformanceAnimation());
-
 		insertAscii(creo->getMoodString());
-
 		insertLong(creo->getWeaponID());
-
 		insertLong(creo->getGroupID());
-
 		insertLong(creo->getGroupInviterID());
 		insertLong(creo->getGroupInviteCounter());
-
 		insertInt(creo->getGuildID());
-		//0x50, 0xC3, 0x00, 0x00,   // #08
-
 		insertLong(creo->getTargetID());
-
 		insertByte(creo->getMoodID());
-
 		insertInt(creo->getPerformanceCounter()); //might be switched
-
 		insertInt(creo->getInstrumentID()); //might be switched
 
 		insertInt(9);
@@ -88,12 +77,14 @@ public:
 
 		insertInt(9);
 		insertInt(creo->getMaxHamListUpdateCounter());
+
 		for (int i = 0; i < 9; ++i) {
 			insertInt(creo->getMaxHAM(i));
 		}
 
-		insertInt(0); //Equipment list
-		insertInt(0); //Equipment update count
+
+		insertEquipmentList(creo);
+
 		/*
 		insertShort(0); //Customization String
 		insertInt(0x04); //Equipped
@@ -116,6 +107,41 @@ public:
 
 
 		setSize();
+	}
+
+	inline void insertEquipmentList(CreatureObject* creo) {
+		/*VectorMap<String, SceneObject*> equipmentList;
+		creo->getContainmentObjects(equipmentList);
+
+		StringBuffer msg;
+		msg << "size of equipment list " << equipmentList.size();
+		creo->info(msg.toString());
+
+		SortedVector<SceneObject*> uniqueObjects;
+
+		for (int i = 0; i < equipmentList.size(); ++i) {
+			SceneObject* object = equipmentList.get(i);
+
+			if (!uniqueObjects.contains(object))
+				uniqueObjects.put(object);
+		}
+
+		int size = uniqueObjects.size();
+
+		StringBuffer msg2;
+		msg2 << "unique size :" << size;
+		creo->info(msg2.toString());*/
+
+		insertInt(0); //Equipment list
+		insertInt(0); //Equipment update count
+		/*for (int i = 0; i < size; ++i) {
+			SceneObject* object = uniqueObjects.get(i);
+
+			insertAscii("");
+			insertInt(0x04); //Equipped
+			insertLong(object->getObjectID()); //Weapon ID
+			insertInt(object->getObjectCRC()); //CRC of the weapon
+		}*/
 	}
 };
 

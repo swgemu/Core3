@@ -265,11 +265,17 @@ public:
 
 	PlayerCreature* removePlayer(const String& name);
 
+	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
+
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
+
 	unsigned int getNextRoomID();
 
 protected:
 	String _param0_getPlayer__String_;
 	String _param0_removePlayer__String_;
+	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
+	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

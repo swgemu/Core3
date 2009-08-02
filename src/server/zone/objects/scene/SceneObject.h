@@ -92,9 +92,7 @@ class SceneObject : public ManagedObject {
 public:
 	SceneObject(LuaObject* templateData);
 
-	void info(const String& msg, bool forced);
-
-	void info(const String& msg);
+	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
 
@@ -120,15 +118,11 @@ public:
 
 	void removeUndeploymentEvent();
 
-	bool isPlayerCreature();
-
-	bool isWeaponObject();
-
-	bool isCell();
-
-	bool addObject(SceneObject* object, bool notifyClient = false);
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
+
+	bool canAddObject(SceneObject* object);
 
 	void create(ZoneClientSession* client);
 
@@ -145,6 +139,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose = true);
+
+	void sendAttributeListTo(SceneObject* object);
 
 	void insertToZone(Zone* zone);
 
@@ -163,6 +159,8 @@ public:
 	void sendMessage(BasePacket* msg);
 
 	int compareTo(SceneObject* obj);
+
+	void getContainmentObjects(VectorMap<String, SceneObject* >& objects);
 
 	unsigned long long getParentID();
 
@@ -206,6 +204,8 @@ public:
 
 	unsigned int getGameObjectType();
 
+	unsigned int getContainmentType();
+
 	Zone* getZone();
 
 	float getDirectionAngle();
@@ -213,6 +213,14 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	bool isPlayerCreature();
+
+	bool isWeaponObject();
+
+	bool isArmorObject();
+
+	bool isCell();
 
 	void setPosition(float x, float z, float y);
 
@@ -235,6 +243,8 @@ public:
 	void setDirection(float fw, float fx, float fy, float fz);
 
 	void setMovementCounter(unsigned int count);
+
+	void setContainmentType(unsigned int type);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -290,6 +300,8 @@ protected:
 	unsigned int containerVolumeLimit;
 
 	unsigned int gameObjectType;
+
+	unsigned int containmentType;
 
 public:
 	static const int CELLOBJECT = 11;
@@ -634,9 +646,7 @@ public:
 
 	SceneObjectImplementation(LuaObject* templateData);
 
-	void info(const String& msg, bool forced);
-
-	void info(const String& msg);
+	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
 
@@ -662,15 +672,11 @@ public:
 
 	void removeUndeploymentEvent();
 
-	bool isPlayerCreature();
-
-	bool isWeaponObject();
-
-	bool isCell();
-
-	virtual bool addObject(SceneObject* object, bool notifyClient = false);
+	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
+
+	virtual bool canAddObject(SceneObject* object);
 
 	void create(ZoneClientSession* client);
 
@@ -687,6 +693,8 @@ public:
 	virtual void sendBaselinesTo(SceneObject* player);
 
 	virtual void sendToOwner(bool doClose = true);
+
+	virtual void sendAttributeListTo(SceneObject* object);
 
 	virtual void insertToZone(Zone* zone);
 
@@ -705,6 +713,8 @@ public:
 	virtual void sendMessage(BasePacket* msg);
 
 	int compareTo(SceneObject* obj);
+
+	void getContainmentObjects(VectorMap<String, SceneObject* >& objects);
 
 	unsigned long long getParentID();
 
@@ -748,6 +758,8 @@ public:
 
 	unsigned int getGameObjectType();
 
+	unsigned int getContainmentType();
+
 	Zone* getZone();
 
 	float getDirectionAngle();
@@ -755,6 +767,14 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	bool isPlayerCreature();
+
+	bool isWeaponObject();
+
+	bool isArmorObject();
+
+	bool isCell();
 
 	void setPosition(float x, float z, float y);
 
@@ -777,6 +797,8 @@ public:
 	void setDirection(float fw, float fx, float fy, float fz);
 
 	void setMovementCounter(unsigned int count);
+
+	void setContainmentType(unsigned int type);
 
 	SceneObject* _this;
 
@@ -801,8 +823,6 @@ public:
 
 	void info(const String& msg, bool forced);
 
-	void info(const String& msg);
-
 	void error(const String& msg);
 
 	void wlock(bool doLock);
@@ -823,15 +843,11 @@ public:
 
 	void removeUndeploymentEvent();
 
-	bool isPlayerCreature();
-
-	bool isWeaponObject();
-
-	bool isCell();
-
-	bool addObject(SceneObject* object, bool notifyClient);
+	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
 
 	bool removeObject(SceneObject* object, bool notifyClient);
+
+	bool canAddObject(SceneObject* object);
 
 	void create(ZoneClientSession* client);
 
@@ -848,6 +864,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
+
+	void sendAttributeListTo(SceneObject* object);
 
 	void insertToZone(Zone* zone);
 
@@ -905,6 +923,8 @@ public:
 
 	unsigned int getGameObjectType();
 
+	unsigned int getContainmentType();
+
 	Zone* getZone();
 
 	float getDirectionAngle();
@@ -912,6 +932,14 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	bool isPlayerCreature();
+
+	bool isWeaponObject();
+
+	bool isArmorObject();
+
+	bool isCell();
 
 	void setPosition(float x, float z, float y);
 
@@ -925,17 +953,21 @@ public:
 
 	void setObjectID(unsigned long long objectid);
 
+	void setObjectName(const UnicodeString& name);
+
 	void setZone(Zone* zon);
 
 	void setDirection(float fw, float fx, float fy, float fz);
 
 	void setMovementCounter(unsigned int count);
 
+	void setContainmentType(unsigned int type);
+
 protected:
 	String _param0_info__String_bool_;
-	String _param0_info__String_;
 	String _param0_error__String_;
 	String _param0_getSlot__String_;
+	UnicodeString _param0_setObjectName__UnicodeString_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

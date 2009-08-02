@@ -58,7 +58,7 @@ public:
 		tano = ta;
 	}
 
-	void startDefenderUpdate(int updates) {
+	/*void startDefenderUpdate(int updates) {
 		startUpdate(0x01);
 
 		uint32 counter = tano->getNewDefenderUpdateCounter(updates);
@@ -84,7 +84,7 @@ public:
 
 	void removeDefenders() {
 		insertByte(4);
-	}
+	}*/
 };
 
 

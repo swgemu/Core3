@@ -21,7 +21,7 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 	objectManager = processor->getZoneServer()->getObjectManager();
 
 	setGlobalLogging(true);
-	setLogging(true);
+	setLogging(false);
 }
 
 void StructureManagerImplementation::loadStaticBuildings() {

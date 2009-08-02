@@ -100,7 +100,7 @@ public:
 
 	void setHeight(float heigh);
 
-	void setWeaponID(unsigned long long objectID);
+	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -280,7 +280,7 @@ public:
 
 	void setHeight(float heigh);
 
-	void setWeaponID(unsigned long long objectID);
+	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
 	CreatureObject* _this;
 
@@ -377,7 +377,7 @@ public:
 
 	void setHeight(float heigh);
 
-	void setWeaponID(unsigned long long objectID);
+	void setWeaponID(unsigned long long objectID, bool notifyClient);
 
 };
 

@@ -75,7 +75,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
 
 	if (hair != NULL) {
-		player->addObject(hair);
+		player->addObject(hair, 4);
 
 		info("created hair object");
 	}
@@ -146,7 +146,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 		return false;
 	}
 
-	player->addObject(inventory);
+	player->addObject(inventory, 4);
 
 	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
 
@@ -155,7 +155,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 		return false;
 	}
 
-	player->addObject(datapad);
+	player->addObject(datapad, 4);
 
 	SceneObject* playerObject = objectManager->createObject(0x619BAE21); //player object
 
@@ -164,7 +164,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 		return false;
 	}
 
-	player->addObject(playerObject);
+	player->addObject(playerObject, 4);
 
 	SceneObject* bank = objectManager->createObject(0x70FD1394); //bank
 
@@ -173,7 +173,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 		return false;
 	}
 
-	player->addObject(bank);
+	player->addObject(bank, 4);
 
 	SceneObject* missionBag = objectManager->createObject(0x3D7F6F9F); //mission bag
 
@@ -182,12 +182,20 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 		return false;
 	}
 
-	player->addObject(missionBag);
+	player->addObject(missionBag, 4);
 
 	// temp
 
 	SceneObject* vibro = objectManager->createObject(0x652688CE);
-	player->addObject(vibro);
+	player->addObject(vibro, 4);
+	player->setWeaponID(vibro->getObjectID());
+
+	SceneObject* vibro2 = objectManager->createObject(0x652688CE);
+	inventory->addObject(vibro2, -1);
+
+	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
+	SceneObject* armor = objectManager->createObject(bharmor.hashCode());
+	inventory->addObject(armor, -1);
 
 	return true;
 }

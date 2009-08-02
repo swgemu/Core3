@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
 #include "server/zone/packets/creature/CreatureObjectMessage4.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 
 
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
@@ -165,4 +166,16 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this);
 	player->sendMessage(msg6);
+}
+
+void CreatureObjectImplementation::setWeaponID(uint64 objectID, bool notifyClient) {
+	weaponID = objectID;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
+		msg->updateWeapon();
+		msg->close();
+
+		broadcastMessage(msg);
+	}
 }

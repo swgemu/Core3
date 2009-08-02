@@ -88,6 +88,8 @@ public:
 		insertUnicode(id->getCustomString());
 	}
 
+	//
+
 };
 
 #endif /*BASELINEMESSAGE_H_*/

@@ -168,7 +168,7 @@ class PlayerCreature extends CreatureObject {
 		owner = cli;
 	}
 	
-	public local void setBiography(final unicode bio) {
+	public void setBiography(final unicode bio) {
 		biography = bio;
 	}
 	

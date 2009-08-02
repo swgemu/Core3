@@ -376,6 +376,8 @@ public:
 
 	void setClient(ZoneClientSession* cli);
 
+	void setBiography(const UnicodeString& bio);
+
 	void setRaceID(byte id);
 
 	void setOffline();
@@ -394,6 +396,8 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+protected:
+	UnicodeString _param0_setBiography__UnicodeString_;
 };
 
 class PlayerCreatureHelper : public DistributedObjectClassHelper, public Singleton<PlayerCreatureHelper> {

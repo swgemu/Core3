@@ -48,7 +48,7 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../tangible/Inventory.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 class TransferItemArmorSlashCommand : public QueueCommand {
 public:
@@ -65,6 +65,75 @@ public:
 
 		if (!checkInvalidPostures(player))
 			return false;
+
+		StringBuffer infoMsg;
+		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
+		player->info(infoMsg.toString());
+
+		StringTokenizer tokenizer(arguments.toString());
+
+		uint64 destinationID = tokenizer.getLongToken();
+		int transferType = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes (I think -1 is remove)
+		float unknown1 = tokenizer.getFloatToken();
+		float unknown2 = tokenizer.getFloatToken();
+		float unknown3 = tokenizer.getFloatToken();
+
+		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
+
+		if (objectToTransfer == NULL) {
+			player->error("objectToTransfer NULL in transferitemarmor command");
+			return false;
+		}
+
+		if (!objectToTransfer->isArmorObject()) {
+			player->error("objectToTransfer is not an armor object in transferitemarmor");
+			return false;
+		}
+
+		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
+
+		if (destinationObject == NULL) {
+			player->error("destinationObject NULL in transferitemarmor command");
+			return false;
+		}
+
+		if (destinationObject != player) {
+			player->error("destinationObject is not player in transferitemarmor command");
+			return false;
+		}
+
+		if (transferType == 4) {
+			SceneObject* parent = objectToTransfer->getParent();
+
+			if (parent == NULL) {
+				player->error("objectToTransfer parent is NULL in transferitemarmor command");
+				return false;
+			}
+
+			ZoneServer* zoneServer = server->getZoneServer();
+			ObjectManager* objectManager = zoneServer->getObjectManager();
+
+			if (!destinationObject->canAddObject(objectToTransfer)) {
+				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
+
+				if (arrangementSize > 0) {
+					String childArrangement = objectToTransfer->getArrangementDescriptor(0);
+
+					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlot(childArrangement);
+
+					if (!objectManager->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
+						return false;
+				}
+			}
+
+			if (!objectManager->transferObject(objectToTransfer, destinationObject, transferType, true))
+				return false;
+
+		} /*else if (transferType == 4) {
+
+				}*/ else {
+					player->error("unknown transferType in transferitemarmor command");
+				}
 
 		/*
 

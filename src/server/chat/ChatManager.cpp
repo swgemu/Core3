@@ -179,16 +179,31 @@ PlayerCreature* ChatManager::removePlayer(const String& name) {
 
 void ChatManager::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
 	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addUnicodeParameter(args);
+
+		method.executeWithVoidReturn();
 	} else
 		((ChatManagerImplementation*) _impl)->handleSpatialChatInternalMessage(player, args);
 }
 
 void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+		method.addUnicodeParameter(message);
+		method.addUnsignedLongParameter(target);
+		method.addUnsignedIntParameter(moodid);
+		method.addUnsignedIntParameter(mood2);
+
+		method.executeWithVoidReturn();
 	} else
 		((ChatManagerImplementation*) _impl)->broadcastMessage(player, message, target, moodid, mood2);
 }
@@ -198,7 +213,7 @@ unsigned int ChatManager::getNextRoomID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -286,6 +301,12 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
 		break;
 	case 17:
+		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
+		break;
+	case 18:
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 19:
 		resp->insertInt(getNextRoomID());
 		break;
 	default:
@@ -337,6 +358,14 @@ PlayerCreature* ChatManagerAdapter::getPlayer(const String& name) {
 
 PlayerCreature* ChatManagerAdapter::removePlayer(const String& name) {
 	return ((ChatManagerImplementation*) impl)->removePlayer(name);
+}
+
+void ChatManagerAdapter::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
+	return ((ChatManagerImplementation*) impl)->handleSpatialChatInternalMessage(player, args);
+}
+
+void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+	return ((ChatManagerImplementation*) impl)->broadcastMessage(player, message, target, moodid, mood2);
 }
 
 unsigned int ChatManagerAdapter::getNextRoomID() {

@@ -55,6 +55,8 @@ which carries forward this exception.
 #include "../../objects/tangible/weapon/WeaponObject.h"
 #include "../../objects/tangible/weapon/MeleeWeaponObject.h"
 #include "../../objects/building/BuildingObject.h"
+#include "../../objects/tangible/wearables/ArmorObject.h"
+
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
@@ -114,6 +116,10 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<PlayerCreature>(0x409);
 
 	objectFactory.registerObject<IntangibleObject>(0x800);
+
+	objectFactory.registerObject<ArmorObject>(0x100);
+	objectFactory.registerObject<ArmorObject>(0x101); //chest plates
+
 	objectFactory.registerObject<Container>(0x2005);
 	objectFactory.registerObject<TangibleObject>(0x2013);
 
@@ -261,6 +267,31 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
 
 	return object;
 }
+
+bool ObjectManager::transferObject(ManagedReference<SceneObject*> objectToTransfer, ManagedReference<SceneObject*> destinationObject, int containmentType, bool notifyClient) {
+	ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
+
+	if (parent == NULL) {
+		error("objectToTransfer parent is NULL in ObjectManager::transferObject");
+		return false;
+	}
+
+	uint32 oldContainmentType = objectToTransfer->getContainmentType();
+
+	if (!parent->removeObject(objectToTransfer)) {
+		error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
+		return false;
+	}
+
+	if (!destinationObject->addObject(objectToTransfer, containmentType, notifyClient)) {
+		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
+		parent->addObject(objectToTransfer, oldContainmentType);
+		return false;
+	}
+
+	return true;
+}
+
 
 void ObjectManager::registerFunctions() {
 	//lua generic

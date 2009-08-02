@@ -101,8 +101,8 @@ class ChatManager extends ManagedObject {
 	public native PlayerCreature getPlayer(final string name);
 	public native PlayerCreature removePlayer(final string name);
 	
-	public native local void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
-	public native local void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	public native void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
+	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	/*public native void sendMail(final string sendername, unicode header, unicode body, final string name);
 	public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
