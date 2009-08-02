@@ -48,7 +48,7 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../creature/Creature.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
 class GetAttributesBatchSlashCommand : public QueueCommand {
 public:
@@ -66,13 +66,11 @@ public:
 		if (!checkInvalidPostures(player))
 			return false;
 
-/*
-		packet->shiftOffset(8);
+		StringBuffer infoMsg;
+		infoMsg << "received getattributesbatch target 0x" << hex << target << " args " << arguments.toString();
+		player->info(infoMsg.toString());
 
-		UnicodeString objectid;
-		packet->parseUnicode(objectid);
-
-		StringTokenizer ids(objectid.toString());
+		StringTokenizer ids(arguments.toString());
 
 		while (ids.hasMoreTokens()) {
 			uint64 objid = 0;
@@ -85,59 +83,17 @@ public:
 			if (objid == 0)
 				return false;
 
-			Zone* zone = (Zone*) player->getZone();
-
-			if (zone == NULL)
-				return false;
-
-			SceneObject* object = zone->lookupObject(objid);
-
-			if (object == NULL) {
-				object = player->getPlayerItem(objid);
-
-				if (object == NULL) {
-					SceneObject* target = player->getTarget();
-
-					if (target != NULL && target != player) {
-						if (target->isPlayer()) {
-							Player* targetPlayer = (Player*) target;
-
-							try {
-								targetPlayer->wlock(player);
-
-								object = targetPlayer->getPlayerItem(objid);
-
-								targetPlayer->unlock();
-							} catch (...) {
-								targetPlayer->unlock();
-							}
-						} else if (target->isNonPlayerCreature()) {
-							Creature* creature = (Creature*) target;
-
-							try {
-								creature->wlock(player);
-
-								object = creature->getLootItem(objid);
-
-								creature->unlock();
-							} catch (...) {
-								creature->unlock();
-							}
-						}
-					}
-				}
-			}
+			ZoneServer* zoneServer = server->getZoneServer();
+			SceneObject* object = zoneServer->getObject(objid);
 
 			if (object != NULL) {
-
-				object->generateAttributes(player);
-
+				object->sendAttributeListTo(player);
 			} else {
-
 				AttributeListMessage* msg = new AttributeListMessage(objid);
 				player->sendMessage(msg);
 			}
-		}*/
+		}
+
 		return true;
 	}
 

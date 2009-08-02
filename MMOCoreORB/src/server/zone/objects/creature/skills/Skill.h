@@ -245,9 +245,9 @@ public:
 		return false;
 	}
 
-	virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
+	/*virtual void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, Pharmaceutical* pharma) {
 		return;
-	}
+	}*/
 
 	virtual bool checkAreaMedicTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
 		return false;

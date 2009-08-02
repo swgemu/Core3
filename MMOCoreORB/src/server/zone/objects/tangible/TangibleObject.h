@@ -11,8 +11,6 @@
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"

@@ -288,8 +288,13 @@ void PlayerCreature::setClient(ZoneClientSession* cli) {
 
 void PlayerCreature::setBiography(const UnicodeString& bio) {
 	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 26);
+		method.addUnicodeParameter(bio);
+
+		method.executeWithVoidReturn();
 	} else
 		((PlayerCreatureImplementation*) _impl)->setBiography(bio);
 }
@@ -299,7 +304,7 @@ void PlayerCreature::setRaceID(byte id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addByteParameter(id);
 
 		method.executeWithVoidReturn();
@@ -312,7 +317,7 @@ void PlayerCreature::setOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		method.executeWithVoidReturn();
 	} else
@@ -324,7 +329,7 @@ void PlayerCreature::setLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		method.executeWithVoidReturn();
 	} else
@@ -336,7 +341,7 @@ void PlayerCreature::setOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		method.executeWithVoidReturn();
 	} else
@@ -348,7 +353,7 @@ void PlayerCreature::setLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		method.executeWithVoidReturn();
 	} else
@@ -360,7 +365,7 @@ void PlayerCreature::clearDisconnectEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		method.executeWithVoidReturn();
 	} else
@@ -372,7 +377,7 @@ void PlayerCreature::clearRecoveryEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 
 		method.executeWithVoidReturn();
 	} else
@@ -384,7 +389,7 @@ void PlayerCreature::addChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -397,7 +402,7 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -637,30 +642,33 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setClient((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 26:
-		setRaceID(inv->getByteParameter());
+		setBiography(inv->getUnicodeParameter(_param0_setBiography__UnicodeString_));
 		break;
 	case 27:
-		setOffline();
+		setRaceID(inv->getByteParameter());
 		break;
 	case 28:
-		setLinkDead();
+		setOffline();
 		break;
 	case 29:
-		setOnline();
+		setLinkDead();
 		break;
 	case 30:
-		setLoggingOut();
+		setOnline();
 		break;
 	case 31:
-		clearDisconnectEvent();
+		setLoggingOut();
 		break;
 	case 32:
-		clearRecoveryEvent();
+		clearDisconnectEvent();
 		break;
 	case 33:
-		addChatRoom((ChatRoom*) inv->getObjectParameter());
+		clearRecoveryEvent();
 		break;
 	case 34:
+		addChatRoom((ChatRoom*) inv->getObjectParameter());
+		break;
+	case 35:
 		removeChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	default:
@@ -748,6 +756,10 @@ String PlayerCreatureAdapter::getFirstName() {
 
 void PlayerCreatureAdapter::setClient(ZoneClientSession* cli) {
 	return ((PlayerCreatureImplementation*) impl)->setClient(cli);
+}
+
+void PlayerCreatureAdapter::setBiography(const UnicodeString& bio) {
+	return ((PlayerCreatureImplementation*) impl)->setBiography(bio);
 }
 
 void PlayerCreatureAdapter::setRaceID(byte id) {

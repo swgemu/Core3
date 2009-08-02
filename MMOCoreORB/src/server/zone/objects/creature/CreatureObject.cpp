@@ -474,17 +474,18 @@ void CreatureObject::setHeight(float heigh) {
 		((CreatureObjectImplementation*) _impl)->setHeight(heigh);
 }
 
-void CreatureObject::setWeaponID(unsigned long long objectID) {
+void CreatureObject::setWeaponID(unsigned long long objectID, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 43);
 		method.addUnsignedLongParameter(objectID);
+		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureObjectImplementation*) _impl)->setWeaponID(objectID);
+		((CreatureObjectImplementation*) _impl)->setWeaponID(objectID, notifyClient);
 }
 
 /*
@@ -725,11 +726,6 @@ void CreatureObjectImplementation::setHeight(float heigh) {
 	height = heigh;
 }
 
-void CreatureObjectImplementation::setWeaponID(unsigned long long objectID) {
-	// server/zone/objects/creature/CreatureObject.idl(269):  weaponID = objectID;
-	weaponID = objectID;
-}
-
 /*
  *	CreatureObjectAdapter
  */
@@ -853,7 +849,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setHeight(inv->getFloatParameter());
 		break;
 	case 43:
-		setWeaponID(inv->getUnsignedLongParameter());
+		setWeaponID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -1010,8 +1006,8 @@ void CreatureObjectAdapter::setHeight(float heigh) {
 	return ((CreatureObjectImplementation*) impl)->setHeight(heigh);
 }
 
-void CreatureObjectAdapter::setWeaponID(unsigned long long objectID) {
-	return ((CreatureObjectImplementation*) impl)->setWeaponID(objectID);
+void CreatureObjectAdapter::setWeaponID(unsigned long long objectID, bool notifyClient) {
+	return ((CreatureObjectImplementation*) impl)->setWeaponID(objectID, notifyClient);
 }
 
 /*

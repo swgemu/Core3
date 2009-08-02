@@ -48,9 +48,7 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-/*#include "../../../tangible/Inventory.h"
-#include "../../PlayerImplementation.h"
-#include "../../../../managers/item/ItemManager.h"*/
+#include "server/zone/managers/object/ObjectManager.h"
 
 class TransferItemMiscSlashCommand : public QueueCommand {
 public:
@@ -68,7 +66,9 @@ public:
 		if (!checkInvalidPostures(player))
 			return false;
 
-		System::out << "target: 0x" << hex << target << " arguments" << arguments.toString() << "\n";
+		StringBuffer infoMsg;
+		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
+		player->info(infoMsg.toString());
 
 		StringTokenizer tokenizer(arguments.toString());
 
@@ -92,6 +92,21 @@ public:
 			return false;
 		}
 
+		if (!destinationObject->canAddObject(objectToTransfer)) {
+			player->error("cannot add objectToTransfer to destinationObject");
+			return false;
+		}
+
+		ZoneServer* zoneServer = server->getZoneServer();
+		ObjectManager* objectManager = zoneServer->getObjectManager();
+
+		if (!objectManager->transferObject(objectToTransfer, destinationObject, transferType, true))
+			return false;
+
+		if (objectToTransfer->isWeaponObject() && player == objectToTransfer->getParent())
+			player->setWeaponID(0, true);
+
+		/*
 		if (transferType == -1) {
 			SceneObject* parent = objectToTransfer->getParent();
 
@@ -105,18 +120,22 @@ public:
 				return false;
 			}
 
-			if (!destinationObject->addObject(objectToTransfer)) {
-				player->error("could not remove objectToTransfer from parent in transfermisc command");
-				parent->addObject(objectToTransfer);
+			if (!destinationObject->addObject(objectToTransfer, transferType)) {
+				player->error("could not add objectToTransfer to parent in transfermisc command");
+				parent->addObject(objectToTransfer, 4);
 				return false;
 			}
 
 			player->broadcastMessage(objectToTransfer->link(destinationObject->getObjectID(), 0xFFFFFFFF));
-		} /*else if (transferType == 4) {
 
-		}*/ else {
+			if (objectToTransfer->isWeaponObject() && player == parent) {
+				player->setWeaponID(0, true);
+			}
+		} else if (transferType == 4) {
+
+		} else {
 			player->error("unknown transferType in transfermisc command");
-		}
+		}*/
 		/*
 
 		//Equip weapon + equip armor never gets here, they have their own CRC, while unequipping of all items WILL go here

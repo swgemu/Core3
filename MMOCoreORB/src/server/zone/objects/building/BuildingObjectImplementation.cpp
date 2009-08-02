@@ -33,7 +33,7 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 
 void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
-	info("BuildingObjectImplementation::notifyInsertToZone");
+	//info("BuildingObjectImplementation::notifyInsertToZone");
 	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) object->_getImplementation();
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -48,7 +48,7 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
-	info("BuildingObjectImplementation::notifyInsert");
+	//info("BuildingObjectImplementation::notifyInsert");
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
 	for (int i = 0; i < cells->size(); ++i) {

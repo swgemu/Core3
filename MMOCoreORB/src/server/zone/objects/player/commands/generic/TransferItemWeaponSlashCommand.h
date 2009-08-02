@@ -48,7 +48,7 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../tangible/Inventory.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 class TransferItemWeaponSlashCommand : public QueueCommand {
 public:
@@ -66,7 +66,9 @@ public:
 	if (!checkInvalidPostures(player))
 		return false;
 
-	System::out << "target: 0x" << hex << target << " arguments" << arguments.toString() << "\n";
+	StringBuffer infoMsg;
+	infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
+	player->info(infoMsg.toString());
 
 	StringTokenizer tokenizer(arguments.toString());
 
@@ -104,27 +106,36 @@ public:
 		SceneObject* parent = objectToTransfer->getParent();
 
 		if (parent == NULL) {
-			player->error("objectToTransfer parent is NULL in transfermisc command");
+			player->error("objectToTransfer parent is NULL in transfermiscweapon command");
 			return false;
 		}
 
-		if (!parent->removeObject(objectToTransfer)) {
-			player->error("could not remove objectToTransfer from parent in transfermisc command");
-			return false;
+		ZoneServer* zoneServer = server->getZoneServer();
+		ObjectManager* objectManager = zoneServer->getObjectManager();
+
+		if (!destinationObject->canAddObject(objectToTransfer)) {
+			int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
+
+			if (arrangementSize > 0) {
+				String childArrangement = objectToTransfer->getArrangementDescriptor(0);
+
+				ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlot(childArrangement);
+
+				if (!objectManager->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
+					return false;
+			}
 		}
 
-		if (!destinationObject->addObject(objectToTransfer)) {
-			player->error("could not remove objectToTransfer from parent in transfermisc command");
-			parent->addObject(objectToTransfer);
+		if (!objectManager->transferObject(objectToTransfer, destinationObject, transferType, true))
 			return false;
-		}
 
-		player->broadcastMessage(objectToTransfer->link(destinationObject->getObjectID(), 4));
-		player->setWeaponID(objectToTransfer->getObjectID());
+		if (player == destinationObject)
+			player->setWeaponID(objectToTransfer->getObjectID(), true);
+
 	} /*else if (transferType == 4) {
 
 		}*/ else {
-			player->error("unknown transferType in transfermisc command");
+			player->error("unknown transferType in transfermiscweapon command");
 		}
 
 

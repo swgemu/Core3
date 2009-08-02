@@ -54,6 +54,8 @@ which carries forward this exception.
 #include "../../packets/scene/UpdateTransformWithParentMessage.h"
 #include "../../packets/scene/LightUpdateTransformMessage.h"
 #include "../../packets/scene/LightUpdateTransformWithParentMessage.h"
+#include "../../packets/scene/AttributeListMessage.h"
+
 
 #include "../../ZoneClientSession.h"
 #include "../../Zone.h"
@@ -105,6 +107,8 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 
 	zone = NULL;
 
+	containmentType = 4;
+
 	setGlobalLogging(true);
 	setLogging(true);
 }
@@ -143,19 +147,40 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	create(client);
 
 	if (parent != NULL) {
-		link(client.get(), 4);
+		link(client.get(), containmentType);
 	}
-
-	sendBaselinesTo(player);
 
 	for (int i = 0; i < containmentSlots->size(); ++i) {
 		SceneObject* object = containmentSlots->get(i);
 
-		object->sendTo(player, true);
+		object->sendTo(player);
 	}
+
+	if (parent == player) {
+		for (int j = 0; j < containerObjects->size(); ++j) {
+			SceneObject* containerObject = containerObjects->get(j);
+
+			containerObject->sendTo(player);
+		}
+	}
+
+	sendBaselinesTo(player);
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
+}
+
+void SceneObjectImplementation::sendAttributeListTo(SceneObject* object) {
+	if (!object->isPlayerCreature())
+		return;
+
+	info("sending attribute list");
+
+	AttributeListMessage* alm = new AttributeListMessage(_this);
+
+	//addAttributes(alm);
+
+	object->sendMessage(alm);
 }
 
 void SceneObjectImplementation::wlock(bool doLock) {
@@ -180,9 +205,20 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZone) {
 	if (zone == NULL) {
-		message->finalize();
+		SceneObject* grandParent = parent;
 
-		return;
+		if (grandParent != NULL) {
+			while (grandParent->getParent() != NULL)
+				grandParent = grandParent->getParent();
+
+			grandParent->broadcastMessage(message);
+
+			return;
+		} else {
+			message->finalize();
+
+			return;
+		}
 	}
 
 	try {
@@ -291,7 +327,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 			//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
 			// add to new cell
 			parent = newParent;
-			parent->addObject(_this);
+			parent->addObject(_this, 0xFFFFFFFF);
 
 			//linkType = 0x04;
 			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), false);
@@ -353,7 +389,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	try {
 		info("SceneObjectImplementation::insertToBuilding");
 
-		parent->addObject(_this);
+		parent->addObject(_this, 0xFFFFFFFF);
 
 		building->insert(this);
 		building->inRange(this, 128);
@@ -405,7 +441,7 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 	info("removed from zone");
 }
 
-bool SceneObjectImplementation::addObject(SceneObject* object, bool notifyClient) {
+bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	if (containerType == 1) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
@@ -420,18 +456,21 @@ bool SceneObjectImplementation::addObject(SceneObject* object, bool notifyClient
 			containmentSlots->put(object->getArrangementDescriptor(i), object);
 		}
 	} else if (containerType == 2) {
-		if (containerObjects->size() >= containerVolumeLimit) {
+		if (containerObjects->size() >= containerVolumeLimit)
 			return false;
-		}
+
+		if (containerObjects->contains(object->getObjectID()))
+			return false;
 
 		containerObjects->put(object->getObjectID(), object);
 	}
 
 	object->setParent(_this);
+	object->setContainmentType(containmentType);
 	//object->setZone(zone);
 
-	/*if (notifyClient)
-		broadcastMessage(object->link(objectID, 0xFFFFFFFF));*/
+	if (notifyClient)
+		broadcastMessage(object->link(objectID, containmentType));
 
 	return true;
 }
@@ -462,5 +501,9 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 		broadcastMessage(object->link(0, 0xFFFFFFFF));*/
 
 	return true;
+}
+
+void SceneObjectImplementation::getContainmentObjects(VectorMap<String, SceneObject* >& objects) {
+	objects = *containmentSlots;
 }
 

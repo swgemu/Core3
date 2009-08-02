@@ -98,7 +98,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	protected StringId detailedDescription;
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
-	protected unsigned int gameObjectType; 
+	protected unsigned int gameObjectType;
+	protected unsigned int containmentType;
 	
 	public static final int CELLOBJECT = 11;
 	
@@ -289,12 +290,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 
 	public native SceneObject(LuaObject templateData);
 	
-	public void info(final string msg, boolean forced) {
+	public void info(final string msg, boolean forced = false) {
 		Logger.info(msg, forced);
-	}
-	
-	public void info(final string msg) {
-		Logger.info(msg);
 	}
 	
 	public void error(final string msg) {
@@ -334,20 +331,21 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public void removeUndeploymentEvent() {
 	}
 	
-	public boolean isPlayerCreature() {
-		return gameObjectType == PLAYERCREATURE;
-	}
-	
-	public boolean isWeaponObject() {
-		return gameObjectType & WEAPON;
-	}
-	
-	public boolean isCell() {
-		return gameObjectType == CELLOBJECT;
-	}
-	
-	public native abstract boolean addObject(SceneObject object, boolean notifyClient = false);
+	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
 	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
+	
+	public abstract boolean canAddObject(SceneObject object) {
+		int arrangementSize = object.getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			string childArrangement = object.getArrangementDescriptor(i);
+
+			if (containmentSlots.contains(childArrangement))
+				return false;
+		}
+		
+		return true;
+	}
 	
 	public native void create(ZoneClientSession client);
 	public native void destroy(ZoneClientSession client);
@@ -362,13 +360,14 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	public abstract void sendToOwner(boolean doClose = true) {
 	}
 	
+	public native abstract void sendAttributeListTo(SceneObject object);
+	
 	public native abstract void insertToZone(Zone zone);
 	public native abstract void insertToBuilding(BuildingObject building);
 	public native abstract void removeFromZone(boolean lockZone);
 	public native abstract void removeFromBuilding(BuildingObject building);
 	public native abstract void updateZone(boolean lightUpdate);
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate);
-
 	
 	public native void broadcastMessage(BasePacket message, boolean lockZone = true);
 	
@@ -385,6 +384,8 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		else
 			return 0;
 	}
+	
+	public local native void getContainmentObjects(dereferenced VectorMap<string, SceneObject> objects);
 	
 	public unsigned long getParentID() {
 		if (parent != null) {
@@ -473,6 +474,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		return gameObjectType;
 	}
 	
+	public unsigned int getContainmentType() {
+		return containmentType;
+	}
+	
 	public Zone getZone() {
 		return zone;
 	}
@@ -487,6 +492,22 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public SceneObject getParent() {
 		return parent;
+	}
+	
+	public boolean isPlayerCreature() {
+		return gameObjectType == PLAYERCREATURE;
+	}
+	
+	public boolean isWeaponObject() {
+		return gameObjectType & WEAPON;
+	}
+	
+	public boolean isArmorObject() {
+		return gameObjectType & ARMOR;
+	}
+	
+	public boolean isCell() {
+		return gameObjectType == CELLOBJECT;
 	}
 	
 	public void setPosition(float x, float z, float y) {
@@ -517,7 +538,7 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 		QuadTreeEntry.objectID = objectid;
 	}
 	
-	public local void setObjectName(final unicode name) {
+	public void setObjectName(final unicode name) {
 		objectName.setCustomString(name);
 	}
 	
@@ -531,6 +552,10 @@ class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
 	
 	public void setMovementCounter(unsigned int count) {
 		movementCounter = count;
+	}
+	
+	public void setContainmentType(unsigned int type) {
+		containmentType = type;
 	}
 
 }

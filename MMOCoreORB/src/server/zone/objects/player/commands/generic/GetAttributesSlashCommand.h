@@ -58,6 +58,10 @@ public:
 	}
 
 	bool doSlashCommand(PlayerCreature* player, const uint64& target, const UnicodeString& arguments) {
+		StringBuffer infoMsg;
+		infoMsg << "received getattributes target 0x" << hex << target << " args " << arguments.toString();
+		player->info(infoMsg.toString());
+
 		return true;
 	}
 

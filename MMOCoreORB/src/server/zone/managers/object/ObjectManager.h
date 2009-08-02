@@ -98,6 +98,8 @@ namespace zone {
 
 		SceneObject* createObject(uint32 objectCRC, uint64 oid = 0);
 
+		bool transferObject(ManagedReference<SceneObject*> objectToTransfer, ManagedReference<SceneObject*> destinationObject, int containmentType, bool notifyClient = false);
+
 		/*template<typename ClassType> void createObject() {
 
 		}*/

@@ -64,7 +64,7 @@ public:
 		addLongUpdate(0x05, creo->getWeaponID());
 	}
 
-	void updateGroupID() {
+	/*void updateGroupID() {
 		addLongUpdate(0x06, creo->getGroupID());
 	}
 
@@ -78,15 +78,6 @@ public:
 	void updateTarget() {
 		addLongUpdate(0x09, creo->getTargetID());
 	}
-
-
-	/*void updateMaximumHAMBars() {
-		we need to send full creo6 here intead of deltas to avoid counter corruption
-	}
-
-	void updateHAMBars() {
-		we need to send full creo6 here intead of deltas to avoid counter corruption
-	}*/
 
 	void updateMaximumPrimaryBars(int32 health, int32 action, int32 mind) {
 		startUpdate(0x0E);
@@ -221,11 +212,6 @@ public:
 
 	void updateMaxAttributeBar(uint8 attribute, int32 value) {
 		int32 creoAttributeMax = creo->getAttributeMax(attribute);
-
-		/*if (value == creoAttributeMax) {
-			creo->error("update creo delta6 bar error");
-			StackTrace::printStackTrace();
-		}*/
 
 		startUpdate(0x0E);
 
@@ -435,7 +421,7 @@ public:
 	void updateLevel(uint16 value) {
 		startUpdate(0x02);
 		insertShort(value);
-	}
+	}*/
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE6_H_*/
