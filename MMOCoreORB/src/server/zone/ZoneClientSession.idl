@@ -52,7 +52,7 @@ import system.net.Socket;
 import engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
 
-class ZoneClientSession extends ManagedObject, native BaseClientProxy {
+class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	SceneObject player;
 	
 	unsigned int sessionKey;

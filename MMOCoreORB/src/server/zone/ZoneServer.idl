@@ -63,7 +63,7 @@ import server.chat.ChatManager;
 
 import server.zone.objects.scene.SceneObject;
 
-class ZoneServer extends ManagedObject, native DatagramServiceThread {
+class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	BasePacketHandler phandler;
 	
 	ZoneProcessServerImplementation processor;

@@ -52,10 +52,12 @@ import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.cell.CellObject;
 
-class StructureManager extends ManagedObject, native Logger {
-	Zone zone;
-	ZoneProcessServerImplementation server;
-	ObjectManager objectManager;
+class StructureManager extends ManagedObject implements Logger {
+	private Zone zone;
+	
+	private ZoneProcessServerImplementation server;
+	
+	private ObjectManager objectManager;
 	
 	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	
@@ -64,6 +66,7 @@ class StructureManager extends ManagedObject, native Logger {
 	}
 	
 	public native void loadStaticBuildings();
+	
 	public native BuildingObject loadStaticBuilding(unsigned long oid, int planet);
 }
 

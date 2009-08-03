@@ -55,7 +55,7 @@ import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.managers.command.CommandQueueManager;
 
-class PlayerManager extends ManagedObject, native Logger {
+class PlayerManager extends ManagedObject implements Logger {
 	ZoneProcessServerImplementation server;
 	
 	PlayerMap playerMap;
