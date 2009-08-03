@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "../../objects/scene/SceneObject.h"
 
-class ObjectMap : public HashTable<uint64, SceneObject*>, public HashTableIterator<uint64, SceneObject*> {
+class ObjectMap : public HashTable<uint64, ManagedReference<SceneObject*> >, public HashTableIterator<uint64, ManagedReference<SceneObject*> > {
 	int maxConnections;
 
 	int hash(const uint64& key) {
@@ -57,7 +57,7 @@ class ObjectMap : public HashTable<uint64, SceneObject*>, public HashTableIterat
 	}
 
 public:
-	ObjectMap(int initsize) : HashTable<uint64, SceneObject*>(initsize), HashTableIterator<uint64, SceneObject*>(this) {
+	ObjectMap(int initsize) : HashTable<uint64, ManagedReference<SceneObject*> >(initsize), HashTableIterator<uint64, ManagedReference<SceneObject*> >(this) {
 		setNullValue(NULL);
 	}
 

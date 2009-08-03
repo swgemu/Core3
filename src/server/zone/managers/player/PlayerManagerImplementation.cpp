@@ -46,7 +46,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
-	if (player->getGameObjectType() != 0x409) {
+	if (!player->isPlayerCreature()) {
 		player->finalize();
 		error("could not create player... wrong object type");
 		return false;
@@ -197,8 +197,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	SceneObject* armor = objectManager->createObject(bharmor.hashCode());
 	inventory->addObject(armor, -1);
 
+	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
+	SceneObject* backpackObject = objectManager->createObject(backpack.hashCode());
+	inventory->addObject(backpackObject, -1);
+
 	return true;
 }
-
-
-

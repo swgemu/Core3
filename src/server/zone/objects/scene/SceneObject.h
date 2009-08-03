@@ -306,6 +306,8 @@ protected:
 public:
 	static const int CELLOBJECT = 11;
 
+	static const int PLAYEROBJECT = 12;
+
 	static const int ARMOR = 0x100;
 
 	static const int BODYARMOR = 0x101;

@@ -4,6 +4,8 @@
 
 #include "ZoneClientSession.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	ZoneClientSessionStub
  */

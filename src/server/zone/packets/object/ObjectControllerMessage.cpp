@@ -43,6 +43,7 @@
  */
 
 #include "ObjectControllerMessage.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* ObjectControllerMessageCallback::objectMessageControllerFactory = NULL;
 
