@@ -53,7 +53,7 @@ import system.util.SortedVector;
 import server.zone.objects.scene.SceneObject;
 
 
-class BuildingObject extends TangibleObject, native QuadTree {
+class BuildingObject extends TangibleObject implements QuadTree {
 	protected SortedVector<CellObject> cells;
 	protected boolean staticBuilding;
 

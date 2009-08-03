@@ -70,7 +70,7 @@ include server.zone.objects.scene.variables.StringId;
 import engine.core.ManagedReference;
 
 
-class SceneObject extends ManagedObject, native QuadTreeEntry, native Logger {
+class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected ZoneProcessServerImplementation server;
 	
 	protected Zone zone;

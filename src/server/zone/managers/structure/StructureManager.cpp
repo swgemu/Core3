@@ -96,7 +96,7 @@ void StructureManagerImplementation::_serializationHelperMethod() {
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(63):  loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(65):  loadStaticBuildings();
 	loadStaticBuildings();
 }
 

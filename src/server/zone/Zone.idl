@@ -59,7 +59,7 @@ import server.zone.managers.structure.StructureManager;
 
 include server.zone.managers.planet.HeightMap;
 
-class Zone extends ManagedObject, native QuadTree {
+class Zone extends ManagedObject implements QuadTree {
 	int zoneID;
 
 	ZoneProcessServerImplementation processor;
