@@ -9,6 +9,20 @@
 
 #include "engine/core/ManagedReference.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/BasePacket.h"
@@ -20,8 +34,6 @@
 #include "system/net/Socket.h"
 
 #include "engine/core/ManagedObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {

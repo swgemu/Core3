@@ -108,30 +108,31 @@ ObjectManager::~ObjectManager() {
 
 void ObjectManager::registerObjectTypes() {
 	//objectFactory.registerObject<SceneObject>(0);
-	objectFactory.registerObject<CreatureObject>(0x400);
-	objectFactory.registerObject<CreatureObject>(0x401);
-	objectFactory.registerObject<CreatureObject>(0x402);
-	objectFactory.registerObject<CreatureObject>(0x403);
+	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::CREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::NPCCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::DROIDCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::PROBOTCREATURE);
 
-	objectFactory.registerObject<PlayerCreature>(0x409);
+	objectFactory.registerObject<PlayerCreature>(SceneObjectImplementation::PLAYERCREATURE);
 
-	objectFactory.registerObject<IntangibleObject>(0x800);
+	objectFactory.registerObject<IntangibleObject>(SceneObjectImplementation::INTANGIBLE);
 
-	objectFactory.registerObject<ArmorObject>(0x100);
-	objectFactory.registerObject<ArmorObject>(0x101); //chest plates
+	objectFactory.registerObject<ArmorObject>(SceneObjectImplementation::ARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObjectImplementation::BODYARMOR); //chest plates
 
-	objectFactory.registerObject<Container>(0x2005);
-	objectFactory.registerObject<TangibleObject>(0x2013);
+	objectFactory.registerObject<Container>(SceneObjectImplementation::CONTAINER);
+	objectFactory.registerObject<TangibleObject>(SceneObjectImplementation::GENERICITEM);
+	objectFactory.registerObject<TangibleObject>(SceneObjectImplementation::WEARABLECONTAINER);
 
-	objectFactory.registerObject<CellObject>(11);
-	objectFactory.registerObject<PlayerObject>(12);
+	objectFactory.registerObject<CellObject>(SceneObjectImplementation::CELLOBJECT);
+	objectFactory.registerObject<PlayerObject>(SceneObjectImplementation::PLAYEROBJECT);
 
-	objectFactory.registerObject<WaypointObject>(0x805);
+	objectFactory.registerObject<WaypointObject>(SceneObjectImplementation::WAYPOINT);
 
-	objectFactory.registerObject<BuildingObject>(0x200);
+	objectFactory.registerObject<BuildingObject>(SceneObjectImplementation::BUILDING);
 
-	objectFactory.registerObject<WeaponObject>(0x20000);
-	objectFactory.registerObject<MeleeWeaponObject>(0x20001);
+	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
+	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
 
 }
 

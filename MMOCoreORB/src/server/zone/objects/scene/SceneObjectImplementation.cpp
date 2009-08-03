@@ -463,6 +463,9 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 			return false;
 
 		containerObjects->put(object->getObjectID(), object);
+	} else {
+		error("unkown container type");
+		return false;
 	}
 
 	object->setParent(_this);
@@ -493,6 +496,9 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 			return false;
 
 		containerObjects->drop(object->getObjectID());
+	} else {
+		error("unkown container type");
+		return false;
 	}
 
 	object->setParent(NULL);

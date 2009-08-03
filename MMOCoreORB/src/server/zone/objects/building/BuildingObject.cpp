@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	BuildingObjectStub
  */
