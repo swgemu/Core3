@@ -9,9 +9,11 @@
 #include "ObjectMenuResponse.h"
 
 class ObjectMenuRequestCallback : public MessageCallback {
-	int size;
+	int unknownSize;
 	uint64 objectID;
 	uint64 playerID;
+
+	ObjectMenuResponse* menuResponse;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
@@ -19,39 +21,55 @@ public:
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 
 		objectControllerMain = objectControllerCallback;
+		menuResponse = NULL;
 	}
 
 	void parse(Message* message) {
-		size = message->parseInt();
+		unknownSize = message->parseInt();
 
-		objectID = message->parseInt();
-		playerID = message->parseInt();
+		objectID = message->parseLong();
+		playerID = message->parseLong();
 
-		int size = pack->parseInt();
+		int size = message->parseInt();
 
-		ObjectMenuResponse* omr = new ObjectMenuResponse(player, objectid, 0);
+		menuResponse = new ObjectMenuResponse(client->getPlayer(), objectID, 0);
 
-		for (int i = 0; i < size; i++) {
-			uint8 index = pack->parseByte();
-			uint8 parentid = pack->parseByte();
-			uint8 radialid = pack->parseByte();
-			uint8 callback = pack->parseByte();
+		try {
+			for (int i = 0; i < size; i++) {
+				uint8 index = message->parseByte();
+				uint8 parentid = message->parseByte();
+				uint8 radialid = message->parseByte();
+				uint8 callback = message->parseByte();
+				UnicodeString command;
+				message->parseUnicode(command);
 
-			//if (radialid == 20)
-			callback = 3;
+				StringBuffer infoMsg;
+				infoMsg << "idx: " << index << " parent: " << parentid << " radialid: " << radialid;
+				client->getPlayer()->info(infoMsg.toString());
 
-			pack->shiftOffset(4); // shift UnicodeString command
+				//if (radialid == 20)
+				//callback = 3;
 
-			omr->addRadialParent(radialid, callback, "");
+				menuResponse->addRadialMenuItem(parentid, radialid, 3, command);
+			}
+		} catch (...) {
+			delete menuResponse;
+			menuResponse = NULL;
+
+			throw;
 		}
 
-		uint8 counter = pack->parseByte();
-		omr->setCounter(counter);
+		//menuResponse->addRadialMenuItem(1, 20, 3, "test");
+
+		uint8 counter = message->parseByte();
+		menuResponse->setCounter(counter);
 
 	}
 
 	void execute() {
-
-
+		if (menuResponse != NULL) {
+			menuResponse->finish();
+			client->sendMessage(menuResponse);
+		}
 	}
 };

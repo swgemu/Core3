@@ -64,15 +64,57 @@ class RadialMenuItem {
 	uint8 callback;
 	UnicodeString text;
 
+	RadialMenuItem* parent;
+
+	Vector<RadialMenuItem*> children;
+
+	int itemIndex;
+
 public:
-	RadialMenuItem(uint8 radialid, uint8 callback, const UnicodeString& text = "") {
+	RadialMenuItem(int itemidx, RadialMenuItem* parent, uint8 radialid, uint8 callback, const UnicodeString& text = "") {
 		setRadialID(radialid);
 		setCallback(callback);
 		setText(text);
+
+		RadialMenuItem::parent = parent;
+
+		itemIndex = itemidx;
+	}
+
+	RadialMenuItem() {
+		radialID = 0;
+		callback = 0;
+
+		itemIndex = 0;
+
+		parent = NULL;
 	}
 
 	~RadialMenuItem() {
+		for (int i = 0; i < children.size(); ++i)
+			delete children.get(i);
 
+		children.removeAll();
+	}
+
+	void addRadialMenuItem(int itemidx, uint8 radialid, uint8 callback, const UnicodeString& text = "") {
+		RadialMenuItem* menuitem = new RadialMenuItem(itemidx, this, radialid, callback, text);
+		children.add(menuitem);
+	}
+
+	RadialMenuItem* getItem(int index) {
+		RadialMenuItem* returnItem = NULL;
+
+		for (int i = 0; i < children.size(); ++i) {
+			RadialMenuItem* item = children.get(i);
+
+			if (item->getItemIndex() == index)
+				return item;
+			else
+				returnItem = item->getItem(index);
+		}
+
+		return returnItem;
 	}
 
 	//Setters
@@ -88,6 +130,14 @@ public:
 		text = txt;
 	}
 
+	inline void setParent(RadialMenuItem* item) {
+		parent = item;
+	}
+
+	inline void setItemIndex(int idx) {
+		itemIndex = idx;
+	}
+
 	//Getters
 	inline uint8 getRadialID() {
 		return radialID;
@@ -100,69 +150,33 @@ public:
 	inline UnicodeString& getText() {
 		return text;
 	}
-};
 
-class RadialMenuParent : public RadialMenuItem {
-	Vector<RadialMenuItem*> children;
-
-public:
-	RadialMenuParent(uint8 radialid, uint8 callback, const UnicodeString& text = "") :
-		RadialMenuItem(radialid, callback, text) {
+	inline RadialMenuItem* getChild(int idx) {
+		return children.get(idx);
 	}
 
-	~RadialMenuParent() {
-		for (int i = 0; i < children.size(); i++)
-			delete children.get(i);
-
-		children.removeAll();
+	inline RadialMenuItem* getParent() {
+		return parent;
 	}
 
-	/**
-	 * This method adds a sub menu radial item
-	 * \param menuitem The tadial menu item to add.
-	 */
-	inline void addRadialMenuItem(RadialMenuItem* menuitem) {
-		children.add(menuitem);
-	}
-
-	/**
-	 * This method adds a sub menu radial item
-	 * \param radialid What radial id will the new radial menu item return.
-	 * \param callback What sort of callback is produced by this radial menu item.
-	 * \param text The text of the radial item. Preferrably the stf string.
-	 */
-	inline void addRadialMenuItem(uint8 radialid, uint8 callback, const UnicodeString& text = "") {
-		RadialMenuItem* menuitem = new RadialMenuItem(radialid, callback, text);
-		children.add(menuitem);
-	}
-
-	/**
-	 * Removes a child radial menu item from the submenu.
-	 * \param menuitem RadialMenuItem pointer to remove from the list.
-	 */
-	inline void removeRadialMenuItem(RadialMenuItem* menuitem) {
-		int index = getRadialMenuItemIndex(menuitem);
-
-		if (index > -1)
-			children.remove(index);
-	}
-
-	///Returns if this radial parent has any children associated with it.
 	inline bool hasChildren() {
 		return children.size() > 0;
 	}
 
-	///Returns the index of the menuitem if it exists, or -1 if it doesn't
-	inline int getRadialMenuItemIndex(RadialMenuItem* menuitem) {
-		for (int i = 0; i < children.size(); i++) {
-			if (children.get(i) == menuitem)
-				return i;
-		}
-
-		return -1;
+	inline int getChildrenSize() {
+		return children.size();
 	}
 
-	friend class ObjectMenuResponse;
+	inline int getParentIndex() {
+		if (parent != NULL) {
+			return parent->getItemIndex();
+		} else
+			return 0;
+	}
+
+	inline int getItemIndex() {
+		return itemIndex;
+	}
 };
 
 #endif /* RADIALMENUITEM_H_ */
