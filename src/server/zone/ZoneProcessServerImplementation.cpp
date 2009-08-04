@@ -99,6 +99,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 
 	nameManager = new NameManager(this);
 
+	zonephandler = NULL;
+
 	setLogging(false);
 
 	scheduler->setLogging(false);

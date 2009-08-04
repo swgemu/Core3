@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/player/Player.h"
+#include "../../objects/player/PlayerCreature.h"
 
 #include "RadialMenuItem.h"
 
@@ -56,8 +56,9 @@ class ObjectMenuResponse : public ObjectControllerMessage {
 	int listSize;
 	uint8 count;
 
-	Vector<RadialMenuParent*> radials;
+	RadialMenuItem* root;
 
+	int indexCount;
 	/**
 	 * This method is used to write the radial objects to the packet.
 	 * \param parentid The parentid of the radial option.
@@ -65,16 +66,21 @@ class ObjectMenuResponse : public ObjectControllerMessage {
 	 * \param callback The callback type for the radial.
 	 * \param text The text to label the radial choice.
 	 */
-	void addRadialOption(uint8 parentid, uint8 radialid, uint8 callback, const UnicodeString& text = "") {
-		insertByte((uint8) ++listSize);
-		insertByte(parentid);
-		insertByte(radialid);
-		insertByte(callback);
-		insertUnicode(text);
+	void addRadialOption(RadialMenuItem* item) {
+		insertByte(item->getItemIndex());
+		insertByte(item->getParentIndex());
+		insertByte(item->getRadialID());
+		insertByte(item->getCallback());
+		insertUnicode(item->getText());
+
+		System::out << "inserting item idx:" << item->getItemIndex() << " parent: " << item->getParentIndex()
+					<< " radialid: " << item->getRadialID() << "\n";
+
+		++listSize;
 	}
 
 public:
-	ObjectMenuResponse(Player* player, uint64 target, uint8 counter)
+	ObjectMenuResponse(SceneObject* player, uint64 target, uint8 counter)
 	   		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0x147) {
 		insertLong(target);
 		insertLong(player->getObjectID());
@@ -83,53 +89,59 @@ public:
 
 		listSize = 0;
 		count = counter;
+
+		indexCount = 0;
+
+		root = new RadialMenuItem();
 	}
 
 	~ObjectMenuResponse() {
-		for (int i = 0; i < radials.size(); i++)
-			delete radials.get(i);
-
-		radials.removeAll();
+		delete root;
+		root = NULL;
 	}
 
-	/**
-	 * Adds a radial item to the radials Vector.
-	 * These radials will be appended to the packet when finish() is called.
-	 * \param menuitem The RadialMenuParent to add.
-	 */
-	void addRadialParent(RadialMenuParent* menuitem) {
-		radials.add(menuitem);
-
-		//We add the parents immediately upon being added to the list.
-		addRadialOption(0, menuitem->getRadialID(), menuitem->getCallback(), menuitem->getText());
+	RadialMenuItem* getRadialItem(int index) {
+		if (index == 0)
+			return root;
+		else
+			return root->getItem(index);
 	}
 
-	/**
-	 * Adds a radial menu parent object to the ObjectMenuResponse message.
-	 * \param radialid The radial id to be handled when the radial option is clicked.
-	 * \param callback The callback type to be initiated when the radial option is clicked.
-	 * \param text The text to display on the radial menu.
-	 */
-	void addRadialParent(uint8 radialid, uint8 callback, const UnicodeString& text = "") {
-		addRadialParent(new RadialMenuParent(radialid, callback, text));
+	void addRadialMenuItem(uint8 parentid, uint8 radialid, uint8 callback, const UnicodeString& text = "") {
+		RadialMenuItem* parent = getRadialItem(parentid);
+
+		if (parent == NULL)
+			System::out << "error parent radial menu item null" << "\n";
+
+		parent->addRadialMenuItem(++indexCount, radialid, callback, text);
+	}
+
+	void addRadialMenuItem(uint8 radialid, uint8 callback, const UnicodeString& text = "") {
+		root->addRadialMenuItem(++indexCount, radialid, callback, text);
 	}
 
 	void finish() {
-		//Loop through the radials and add their children now.
-		for (int i = 0; i < radials.size(); i++) {
-			RadialMenuParent* rmp = radials.get(i);
-			for (int j = 0; j < rmp->children.size(); j++) {
-				RadialMenuItem* rmi = rmp->children.get(j);
-				addRadialOption(i + 1, rmi->getRadialID(), rmi->getCallback(), rmi->getText());
-			}
-		}
+		insertRadialItemToMessage(root);
 
 		insertInt(46, listSize);
 		insertByte(count);
 	}
 
+	void insertRadialItemToMessage(RadialMenuItem* item) {
+		for (int i = 0; i < item->getChildrenSize(); ++i) {
+			RadialMenuItem* child = item->getChild(i);
+			addRadialOption(child);
+
+			insertRadialItemToMessage(child);
+		}
+	}
+
 	inline void setCounter(uint8 counter) {
 		count = counter;
+	}
+
+	inline RadialMenuItem* getRootMenuItem() {
+		return root;
 	}
 };
 

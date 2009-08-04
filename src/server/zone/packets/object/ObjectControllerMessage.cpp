@@ -84,8 +84,13 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 	} catch (Exception& e) {
 		System::out << "exception parsing ObjectControllerMessage" << e.getMessage();
 		e.printStackTrace();
+
+		delete objectControllerCallback;
+		throw;
 	} catch (...) {
 		System::out << "unknown exception caught in ObjectControllerMessageCallback::parse";
+		delete objectControllerCallback;
+		throw;
 	}
 
 }

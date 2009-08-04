@@ -109,6 +109,8 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 
 	containmentType = 4;
 
+	initializePosition(0.f, 0.f, 0.f);
+
 	setGlobalLogging(true);
 	setLogging(true);
 }
