@@ -47,20 +47,19 @@ which carries forward this exception.
 
 #include "../PlayerImplementation.h"
 
-
-class ForageDelayEvent : public Event {
-
+class ForageDelayEvent : public ReentrantTask {
 	PlayerImplementation* player;
+
 	int forageType;
 
 public:
-	ForageDelayEvent(PlayerImplementation* pi, int type) : Event() {
-		player = pi;
+	ForageDelayEvent(PlayerImplementation* pl, int type) : ReentrantTask() {
+		player = pl;
+
 		forageType = type;
-		setKeeping(false);
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -71,13 +70,13 @@ public:
 			}
 
 			player->unlock();
-
 		} catch (...) {
 			player->error("unreported exception caught in ForageDelayEvent::activate");
+
 			player->unlock();
 		}
-		return true;
 	}
+
 };
 
 #endif /*FORAGEDELAYEVENT_H_*/

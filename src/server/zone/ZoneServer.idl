@@ -51,7 +51,7 @@ import system.net.SocketAddress;
 import system.net.Packet;
 import engine.service.ServiceClient;
 import engine.core.ManagedObject;
-import engine.sched.ScheduleManager;
+import engine.core.TaskManager;
 import system.lang.Exception;
 import system.util.Vector;
 
@@ -70,7 +70,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	int procThreadCount;
 	
-	native ScheduleManager scheduler;
+	native TaskManager taskManager;
 	
 	Vector<Zone> zones;
 	
@@ -139,7 +139,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
 
 	public void fixScheduler() {
-		scheduler.fixQueue();
+		//scheduler.fixQueue();
 	}
 	
 	public native void changeUserCap(int amount = 50);

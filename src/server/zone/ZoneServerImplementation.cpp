@@ -88,7 +88,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	setLogging(false);
 	DatagramServiceThread::setLockName("ZoneServerLock");
 
-	scheduler->setLogging(false);
+	taskManager->setLogging(false);
 
 	zones = new Vector<Zone*>();
 }
@@ -421,8 +421,6 @@ void ZoneServerImplementation::startManagers() {
 }
 
 void ZoneServerImplementation::run() {
-	scheduler->start();
-
 	processor->start();
 
 	receiveMessages();
@@ -456,8 +454,6 @@ void ZoneServerImplementation::shutdown() {
 	}
 
 	info("zones shut down", true);
-
-	scheduler->stop();
 
 	printInfo(true);
 
@@ -731,7 +727,7 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	info(msg, forcedLog);
 
 	StringBuffer msg2;
-	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
+	msg2 << "Scheduler - size = " << taskManager->getScheduledTaskSize();
 	info(msg2, forcedLog);
 
 	float packetloss;
@@ -756,7 +752,7 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 void ZoneServerImplementation::printEvents() {
 	lock();
 
-	scheduler->printEvents();
+	//scheduler->printEvents();
 
 	unlock();
 }

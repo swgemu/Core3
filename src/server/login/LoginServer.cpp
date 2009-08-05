@@ -83,7 +83,7 @@ void LoginServer::init() {
 	phandler = new LoginPacketHandler("LoginPacketHandler", this, configManager);
 	phandler->setLogging(false);
 
-	scheduler->setLogging(false);
+	taskManager->setLogging(false);
 
 	procThreadCount = 1;
 
@@ -100,8 +100,6 @@ void LoginServer::init() {
 }
 
 void LoginServer::run() {
-	scheduler->start();
-
 	for (int i = 0; i < procThreadCount; ++i) {
 		LoginMessageProcessorThread* processor = processors[i];
 		processor->start(this);
@@ -123,8 +121,6 @@ void LoginServer::shutdown() {
 
 		delete processor;
 	}
-
-	scheduler->stop();
 }
 
 LoginClient* LoginServer::createConnection(Socket* sock, SocketAddress& addr) {
@@ -172,7 +168,7 @@ void LoginServer::printInfo() {
 	info(msg, true);
 
 	StringBuffer msg2;
-	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
+	msg2 << "Scheduler - size = " << taskManager->getScheduledTaskSize();
 	info(msg2, true);
 
 	unlock();

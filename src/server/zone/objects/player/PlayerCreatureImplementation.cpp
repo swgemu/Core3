@@ -86,9 +86,9 @@ void PlayerCreatureImplementation::logout(bool doLock) {
 			disconnectEvent = new PlayerDisconnectEvent(_this);
 
 			if (isLoggingOut()) {
-				server->addEvent(disconnectEvent, 10);
+				server->scheduleTask(disconnectEvent, 10);
 			} else {
-				server->addEvent(disconnectEvent, 1000);
+				server->scheduleTask(disconnectEvent, 1000);
 				setLoggingOut();
 			}
 		}
@@ -124,7 +124,7 @@ void PlayerCreatureImplementation::activateRecovery() {
 	if (recoveryEvent == NULL) {
 		recoveryEvent = new PlayerRecoveryEvent(_this);
 
-		server->addEvent(recoveryEvent, 3000);
+		server->scheduleTask(recoveryEvent, 3000);
 	}
 }
 

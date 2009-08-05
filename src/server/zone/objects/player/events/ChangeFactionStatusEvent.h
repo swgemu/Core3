@@ -47,17 +47,17 @@ which carries forward this exception.
 
 #include "../Player.h"
 
-class ChangeFactionStatusEvent : public Event {
+class ChangeFactionStatusEvent : public Task {
 	PlayerImplementation * player;
 	uint8 status;
 
 public:
-	ChangeFactionStatusEvent(PlayerImplementation * pl, uint8 st, uint32 timer) : Event(timer) {
+	ChangeFactionStatusEvent(PlayerImplementation * pl, uint8 st, uint32 timer) : Task(timer) {
 		player = pl;
 		status = st;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -86,8 +86,6 @@ public:
 			player->error("unreported exception caught in ChangeFactionEvent::activate");
 			player->unlock();
 		}
-
-		return true;
 	}
 
 };

@@ -47,18 +47,15 @@ which carries forward this exception.
 
 #include "../PlayerImplementation.h"
 
-
-class InvisibleDelayEvent : public Event {
-
+class InvisibleDelayEvent : public ReentrantTask {
 	PlayerImplementation* player;
 
 public:
-	InvisibleDelayEvent(PlayerImplementation* pi) : Event() {
-		player = pi;
-		setKeeping(true);
+	InvisibleDelayEvent(PlayerImplementation* pl) : ReentrantTask() {
+		player = pl;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -67,13 +64,13 @@ public:
 			}
 
 			player->unlock();
-
 		} catch (...) {
 			player->error("unreported exception caught in InvisibleDelayEvent::activate");
+
 			player->unlock();
 		}
-		return true;
 	}
+
 };
 
 #endif /*INVISIBLEDELAYEVENT_H_*/

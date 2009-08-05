@@ -49,11 +49,9 @@ using namespace server::zone::managers::structure;
 
 #include "engine/util/QuadTreeEntry.h"
 
-#include "engine/sched/ScheduleManager.h"
-
 #include "system/lang/Time.h"
 
-#include "engine/sched/ScheduleManager.h"
+#include "engine/core/TaskManager.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -127,7 +125,7 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ZoneProcessServerImplementation* processor;
 
-	ScheduleManager* scheduler;
+	TaskManager* taskManager;
 
 	ManagedReference<StructureManager* > structureManager;
 

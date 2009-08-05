@@ -47,15 +47,15 @@ which carries forward this exception.
 
 #include "../Player.h"
 
-class PlayerDigestEvent : public Event {
+class PlayerDigestEvent : public Task {
 	ManagedReference<Player> player;
 
 public:
-	PlayerDigestEvent(Player* pl) : Event(18000) {
+	PlayerDigestEvent(Player* pl) : Task(18000) {
 		player = pl;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -67,10 +67,9 @@ public:
 			player->unlock();
 		} catch (...) {
 			player->error("unreported exception caught in PlayerDigestEvent::activate");
+
 			player->unlock();
 		}
-
-		return true;
 	}
 
 	void setPlayer(Player* pl) {

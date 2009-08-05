@@ -103,7 +103,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 
 	setLogging(false);
 
-	scheduler->setLogging(false);
+	taskManager->setLogging(false);
 }
 
 ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
@@ -136,8 +136,6 @@ void ZoneProcessServerImplementation::init() {
 }
 
 void ZoneProcessServerImplementation::run() {
-	scheduler->start();
-
 	info("starting processor instances..");
 
 	for (int i = 0; i < procThreadCount; ++i) {
@@ -161,6 +159,4 @@ void ZoneProcessServerImplementation::stop() {
 	}
 
 	info("processor instances stopped");
-
-	scheduler->stop();
 }
