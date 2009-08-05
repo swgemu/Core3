@@ -67,20 +67,6 @@ class ChatManager;
 
 using namespace server::chat;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -100,6 +86,8 @@ using namespace server::zone::objects::scene;
 #include "system/lang/Exception.h"
 
 #include "system/util/Vector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {

@@ -76,7 +76,7 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
 	
-	public dereferenced string getAddress() {
+	public string getAddress() {
 		return BaseClientProxy.getAddress();
 	}
 	
