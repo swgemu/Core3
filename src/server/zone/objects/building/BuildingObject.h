@@ -23,20 +23,6 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -46,6 +32,8 @@ using namespace server::zone::objects::scene;
 #include "engine/util/QuadTreeEntry.h"
 
 #include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {

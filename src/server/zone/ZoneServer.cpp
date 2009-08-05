@@ -14,8 +14,6 @@
 
 #include "server/chat/ChatManager.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 /*
  *	ZoneServerStub
  */
