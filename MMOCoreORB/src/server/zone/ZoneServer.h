@@ -81,7 +81,7 @@ using namespace server::chat;
 
 #include "engine/core/ManagedObject.h"
 
-#include "engine/sched/ScheduleManager.h"
+#include "engine/core/TaskManager.h"
 
 #include "system/lang/Exception.h"
 

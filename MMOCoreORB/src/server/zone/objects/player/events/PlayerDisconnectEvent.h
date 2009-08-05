@@ -53,15 +53,15 @@ namespace objects {
 namespace player {
 namespace events {
 
-class PlayerDisconnectEvent : public Event {
+class PlayerDisconnectEvent : public Task {
 	ManagedReference<PlayerCreature*> player;
 
 public:
-	PlayerDisconnectEvent(PlayerCreature* pl) : Event(2000) {
+	PlayerDisconnectEvent(PlayerCreature* pl) : Task(2000) {
 		player = pl;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -73,14 +73,13 @@ public:
 			player->unlock();
 		} catch (...) {
 			player->error("Unreported Exception caught in PlayerDisconnectEvent::activate");
+
 			player->clearDisconnectEvent();
 
 			player->unlock();
 		}
 
 		player = NULL;
-
-		return true;
 	}
 
 };

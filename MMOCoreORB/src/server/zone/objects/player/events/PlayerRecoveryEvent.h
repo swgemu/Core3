@@ -53,11 +53,11 @@ namespace objects {
 namespace player {
 namespace events {
 
-class PlayerRecoveryEvent : public Event {
+class PlayerRecoveryEvent : public Task {
 	ManagedReference<PlayerCreature*> player;
 
 public:
-	PlayerRecoveryEvent(PlayerCreature* pl) : Event(2000) {
+	PlayerRecoveryEvent(PlayerCreature* pl) : Task(2000) {
 		player = pl;
 	}
 
@@ -68,7 +68,7 @@ public:
 		}*/
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -80,10 +80,9 @@ public:
 			player->unlock();
 		} catch (...) {
 			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
+
 			player->unlock();
 		}
-
-		return true;
 	}
 
 };

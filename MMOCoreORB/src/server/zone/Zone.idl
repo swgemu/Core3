@@ -47,9 +47,8 @@ package server.zone;
 import engine.util.QuadTree;
 import engine.util.QuadTreeEntry;
 
-import engine.sched.ScheduleManager;
 import system.lang.Time;
-import engine.sched.ScheduleManager;
+import engine.core.TaskManager;
 import engine.core.ManagedObject;
 
 import server.zone.ZoneProcessServerImplementation;
@@ -64,7 +63,7 @@ class Zone extends ManagedObject implements QuadTree {
 
 	ZoneProcessServerImplementation processor;
 
-	ScheduleManager scheduler;
+	TaskManager taskManager;
 	
 	StructureManager structureManager; // move to planet manager when converted
 	

@@ -47,8 +47,9 @@ which carries forward this exception.
 
 #include "../Player.h"
 
-class EntertainerEvent : public Event {
+class EntertainerEvent : public Task {
 	Player* player;
+
 	int flourishXp, healingXp;
 	int flourishCount;
 
@@ -77,7 +78,7 @@ public:
 		healingXp += xp;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -86,7 +87,7 @@ public:
 				player->clearEntertainerEvent();
 
 				player->unlock();
-				return true; // don't tick action if they aren't doing anything
+				return; // don't tick action if they aren't doing anything
 			}
 
 			player->doEntertainerPatronEffects();
@@ -121,8 +122,6 @@ public:
 			player->error("Unhandled EntertainerEvent exception");
 			player->unlock();
 		}
-
-		return true;
 	}
 
 };

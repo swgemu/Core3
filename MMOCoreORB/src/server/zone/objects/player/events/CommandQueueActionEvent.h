@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../PlayerImplementation.h"
 
-class CommandQueueActionEvent : public Event {
+class CommandQueueActionEvent : public Task {
 	ManagedReference<Player> player;
 	
 public:
@@ -55,7 +55,7 @@ public:
 		player = pl;
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 			
@@ -74,8 +74,6 @@ public:
 		}
 		
 		player = NULL;
-		
-		return true;
 	}
 
 };

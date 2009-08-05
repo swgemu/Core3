@@ -652,8 +652,6 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 }
 
 void ZoneServerImplementation::fixScheduler() {
-	// server/zone/ZoneServer.idl(142):  scheduler.fixQueue();
-	scheduler->fixQueue();
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {

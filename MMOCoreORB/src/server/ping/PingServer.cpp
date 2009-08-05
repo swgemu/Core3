@@ -62,7 +62,7 @@ PingServer::~PingServer() {
 }
 
 void PingServer::init() {
-	scheduler->setLogging(false);
+	taskManager->setLogging(false);
 
 	procThreadCount = 0;
 
@@ -81,8 +81,6 @@ void PingServer::init() {
 }
 
 void PingServer::run() {
-	scheduler->start();
-
 	for (int i = 0; i < procThreadCount; ++i) {
 		PingMessageProcessorThread* processor = processors[i];
 		processor->start(this);
@@ -104,8 +102,6 @@ void PingServer::shutdown() {
 
 		delete processor;
 	}
-
-	scheduler->stop();
 }
 
 PingClient* PingServer::createConnection(Socket* sock, SocketAddress& addr) {
@@ -159,7 +155,7 @@ void PingServer::printInfo() {
 	info(msg, true);
 
 	StringBuffer msg2;
-	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
+	msg2 << "Scheduler - size = " << taskManager->getScheduledTaskSize();
 	info(msg2, true);
 
 	unlock();

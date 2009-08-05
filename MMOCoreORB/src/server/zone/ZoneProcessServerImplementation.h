@@ -88,9 +88,9 @@ class ZoneMessageProcessorThread;
 class ZoneServer;
 
 namespace managers {
-namespace player {
+  namespace player {
 	class PlayerManager;
-}
+  }
 }
 
 class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {

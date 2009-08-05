@@ -51,13 +51,11 @@ class CenterOfBeingEvent : public Event {
 	PlayerImplementation* player;
 
 public:
-	CenterOfBeingEvent(PlayerImplementation* pl) : Event() {
+	CenterOfBeingEvent(PlayerImplementation* pl) : ReentrantTask() {
 		player = pl;
-
-		setKeeping(true);
 	}
 
-	bool activate() {
+	void run() {
 		try {
 			player->wlock();
 
@@ -68,8 +66,6 @@ public:
 			player->error("Unreported exception caught in CenterOfBeingEvent::activate");
 			player->unlock();
 		}
-
-		return true;
 	}
 
 };
