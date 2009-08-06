@@ -134,6 +134,10 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
 
+
+	//temporary
+	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::HOVERVEHICLE);
+
 }
 
 SceneObject* ObjectManager::add(SceneObject* obj) {

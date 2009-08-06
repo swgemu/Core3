@@ -88,6 +88,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	setLogging(false);
 	DatagramServiceThread::setLockName("ZoneServerLock");
 
+	taskManager = TaskManager::instance();
 	taskManager->setLogging(false);
 
 	zones = new Vector<Zone*>();
