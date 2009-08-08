@@ -26,7 +26,7 @@ public:
 		message->parseAscii(raceFile);
 	}
 
-	void execute() {
+	void run() {
 		NameManager* nameManager = server->getNameManager();
 
 		bool notwook = (raceFile.indexOf("wookie") == -1);

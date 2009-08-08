@@ -92,7 +92,7 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 	tutflag = message->parseByte(); //tutorial bool.
 }
 
-void ClientCreateCharacterCallback::execute() {
+void ClientCreateCharacterCallback::run() {
 	PlayerManager* playerManager = server->getPlayerManager();
 	bool success = playerManager->createPlayer(this);
 }

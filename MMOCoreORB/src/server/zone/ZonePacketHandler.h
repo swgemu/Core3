@@ -77,6 +77,9 @@ class ZoneServer;
 		void registerObjectControllerMessages();
 
 		void handleMessage(Message* pack);
+
+		bool parseMessage(Message* pack, MessageCallback* messageCallback);
+		void runMessage(MessageCallback* messageCallback);
 	};
 
 	}

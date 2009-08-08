@@ -224,7 +224,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
 		object = objectFactory.createObject(gameObjectType, &result);
-		object->setObjectCRC(objectCRC);
+		object->setServerObjectCRC(objectCRC);
 
 	} catch (...) {
 		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");

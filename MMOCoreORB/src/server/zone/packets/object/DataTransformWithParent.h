@@ -103,7 +103,7 @@ public:
 		positionY = message->parseFloat();
 	}
 
-	void execute() {
+	void run() {
 		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
 
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {

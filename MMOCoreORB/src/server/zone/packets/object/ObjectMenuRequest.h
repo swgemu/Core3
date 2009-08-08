@@ -66,7 +66,7 @@ public:
 
 	}
 
-	void execute() {
+	void run() {
 		if (menuResponse != NULL) {
 			menuResponse->finish();
 			client->sendMessage(menuResponse);

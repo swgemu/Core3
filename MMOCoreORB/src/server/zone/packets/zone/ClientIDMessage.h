@@ -90,7 +90,7 @@ public:
 		accountId = message->parseInt();
 	}
 
-	void execute() {
+	void run() {
 		client->setSessionKey(accountId);
 
 		BaseMessage* cpm = new ClientPermissionsMessage();

@@ -139,7 +139,7 @@ public:
 
 	}
 
-	void execute() {
+	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 
