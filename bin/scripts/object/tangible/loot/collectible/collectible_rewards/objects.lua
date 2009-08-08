@@ -86,7 +86,9 @@ object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2581547421
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_blue_rug, 2581547421)
@@ -136,7 +138,9 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculptur
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1595043156
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01, 1595043156)
@@ -186,7 +190,9 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1553506726
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_table, 1553506726)
@@ -236,7 +242,9 @@ object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3016575876
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device, 3016575876)
@@ -286,7 +294,9 @@ object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1260578344
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_gong, 1260578344)
@@ -336,7 +346,9 @@ object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1620517273
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_collectible_collectible_rewards_shared_orange_rug, 1620517273)

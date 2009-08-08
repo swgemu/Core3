@@ -86,7 +86,9 @@ object_tangible_lair_graul_shared_lair_graul = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1881708167
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_graul_shared_lair_graul, 1881708167)
@@ -136,7 +138,9 @@ object_tangible_lair_graul_shared_lair_graul_jungle = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1200430930
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_graul_shared_lair_graul_jungle, 1200430930)

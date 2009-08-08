@@ -75,7 +75,9 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2977184644
 }
 
 ObjectTemplates:addTemplate(object_static_structure_nobuild_base_shared_nobuild_base, 2977184644)

@@ -86,7 +86,9 @@ object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1810673938
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar, 1810673938)

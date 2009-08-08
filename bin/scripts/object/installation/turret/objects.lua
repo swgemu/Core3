@@ -86,7 +86,9 @@ object_installation_turret_shared_turret_block_large = SharedInstallationObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3901317905
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_block_large, 3901317905)
@@ -136,7 +138,9 @@ object_installation_turret_shared_turret_block_med = SharedInstallationObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1652270840
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_block_med, 1652270840)
@@ -186,7 +190,9 @@ object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3880132119
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_block_sm, 3880132119)
@@ -236,7 +242,9 @@ object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 264371583
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_dish_large, 264371583)
@@ -286,7 +294,9 @@ object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3645535897
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_dish_sm, 3645535897)
@@ -336,7 +346,9 @@ object_installation_turret_shared_turret_tower_large = SharedInstallationObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1938857030
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_tower_large, 1938857030)
@@ -386,7 +398,9 @@ object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3178460661
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_tower_med, 3178460661)
@@ -436,7 +450,9 @@ object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3118272463
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_shared_turret_tower_sm, 3118272463)

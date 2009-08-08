@@ -90,7 +90,9 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2110842690
 }
 
 ObjectTemplates:addTemplate(object_weapon_creature_shared_creature_default_weapon, 2110842690)

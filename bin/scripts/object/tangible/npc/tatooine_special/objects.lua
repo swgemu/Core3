@@ -86,7 +86,9 @@ object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2943030476
 }
 
 ObjectTemplates:addTemplate(object_tangible_npc_tatooine_special_shared_sarlacc, 2943030476)

@@ -86,7 +86,9 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1244300952
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, 1244300952)
@@ -136,7 +138,9 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2597048309
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, 2597048309)

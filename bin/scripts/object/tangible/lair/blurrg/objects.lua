@@ -86,7 +86,9 @@ object_tangible_lair_blurrg_shared_lair_blurrg = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3631991415
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blurrg_shared_lair_blurrg, 3631991415)
@@ -136,7 +138,9 @@ object_tangible_lair_blurrg_shared_lair_blurrg_forest = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 399329773
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_forest, 399329773)
@@ -186,7 +190,9 @@ object_tangible_lair_blurrg_shared_lair_blurrg_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3043394661
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_mountain, 3043394661)

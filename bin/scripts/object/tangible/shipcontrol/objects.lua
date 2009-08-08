@@ -86,7 +86,9 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3541722217
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_pilot_chair, 3541722217)
@@ -136,7 +138,9 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 543526931
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, 543526931)
@@ -186,7 +190,9 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 362033500
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, 362033500)
@@ -236,7 +242,9 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 752872042
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, 752872042)
@@ -286,7 +294,9 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3238239508
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, 3238239508)
@@ -336,7 +346,9 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 315011154
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, 315011154)

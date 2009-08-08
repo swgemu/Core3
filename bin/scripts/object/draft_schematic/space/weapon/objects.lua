@@ -75,7 +75,9 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 357549043
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1, 357549043)
@@ -114,7 +116,9 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3461901156
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2, 3461901156)
@@ -153,7 +157,9 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2270498025
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3, 2270498025)
@@ -192,7 +198,9 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2092312573
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4, 2092312573)
@@ -231,7 +239,9 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 901464176
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5, 901464176)
@@ -270,7 +280,9 @@ object_draft_schematic_space_weapon_shared_basic_weapon = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3535680224
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_basic_weapon, 3535680224)
@@ -309,7 +321,9 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 925393883
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1, 925393883)
@@ -348,7 +362,9 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3963603788
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2, 3963603788)
@@ -387,7 +403,9 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2771561665
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3, 2771561665)
@@ -426,7 +444,9 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1590790101
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4, 1590790101)
@@ -465,7 +485,9 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 400351320
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5, 400351320)
@@ -504,7 +526,9 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2276034256
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1, 2276034256)
@@ -543,7 +567,9 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1555967559
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2, 1555967559)
@@ -582,7 +608,9 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 364071370
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3, 364071370)
@@ -621,7 +649,9 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3998245598
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4, 3998245598)
@@ -660,7 +690,9 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2807891283
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5, 2807891283)
@@ -699,7 +731,9 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 207458723
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1, 207458723)
@@ -738,7 +772,9 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3611965748
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2, 3611965748)
@@ -777,7 +813,9 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2655477433
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3, 2655477433)
@@ -816,7 +854,9 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1705276845
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4, 1705276845)
@@ -855,7 +895,9 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 749277728
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5, 749277728)
@@ -894,7 +936,9 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2068760823
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1, 2068760823)
@@ -933,7 +977,9 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2690211936
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2, 2690211936)
@@ -972,7 +1018,9 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3914598381
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3, 3914598381)
@@ -1011,7 +1059,9 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 313994489
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4, 313994489)
@@ -1050,7 +1100,9 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1538935668
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5, 1538935668)
@@ -1089,7 +1141,9 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1 = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1212255047
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1, 1212255047)
@@ -1128,7 +1182,9 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2 = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2471896016
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2, 2471896016)
@@ -1167,7 +1223,9 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3 = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3663414365
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3, 3663414365)
@@ -1206,7 +1264,9 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4 = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 565735241
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4, 565735241)
@@ -1245,7 +1305,9 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5 = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1756694724
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5, 1756694724)
@@ -1284,7 +1346,9 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_blaster = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3740796153
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster, 3740796153)
@@ -1323,7 +1387,9 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3929052829
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green, 3929052829)
@@ -1362,7 +1428,9 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1431740762
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor, 1431740762)
@@ -1401,7 +1469,9 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 90674496
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon, 90674496)
@@ -1440,7 +1510,9 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_blaster = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 749584960
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster, 749584960)
@@ -1479,7 +1551,9 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3909227909
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green, 3909227909)
@@ -1518,7 +1592,9 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2943870680
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor, 2943870680)
@@ -1557,7 +1633,9 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4282831554
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon, 4282831554)
@@ -1596,7 +1674,9 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_blaster = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2094697931
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster, 2094697931)
@@ -1635,7 +1715,9 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 651808748
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green, 651808748)
@@ -1674,7 +1756,9 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1326996581
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor, 1326996581)
@@ -1713,7 +1797,9 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 522807423
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon, 522807423)
@@ -1752,7 +1838,9 @@ object_draft_schematic_space_weapon_shared_wpn_light_blaster = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4046489612
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster, 4046489612)
@@ -1791,7 +1879,9 @@ object_draft_schematic_space_weapon_shared_wpn_light_blaster_green = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3388774737
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster_green, 3388774737)
@@ -1830,7 +1920,9 @@ object_draft_schematic_space_weapon_shared_wpn_light_disruptor = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1057347445
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_disruptor, 1057347445)
@@ -1869,7 +1961,9 @@ object_draft_schematic_space_weapon_shared_wpn_light_ioncannon = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1865737071
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_light_ioncannon, 1865737071)
@@ -1908,7 +2002,9 @@ object_draft_schematic_space_weapon_shared_wpn_medium_blaster = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3453442561
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster, 3453442561)
@@ -1947,7 +2043,9 @@ object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1698920791
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green, 1698920791)
@@ -1986,7 +2084,9 @@ object_draft_schematic_space_weapon_shared_wpn_medium_disruptor = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3380113095
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_disruptor, 3380113095)
@@ -2025,7 +2125,9 @@ object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2571721437
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon, 2571721437)

@@ -90,7 +90,9 @@ object_weapon_melee_special_shared_blacksun_razor = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3357199743
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_special_shared_blacksun_razor, 3357199743)
@@ -144,7 +146,9 @@ object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1697024206
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_special_shared_vibroknuckler, 1697024206)

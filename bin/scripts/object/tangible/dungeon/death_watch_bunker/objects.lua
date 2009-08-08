@@ -86,7 +86,9 @@ object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3544017422
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_crazed_miner_medicine, 3544017422)
@@ -136,7 +138,9 @@ object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2953987050
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_door_control_terminal, 2953987050)
@@ -186,7 +190,9 @@ object_tangible_dungeon_death_watch_bunker_shared_drill_battery = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 707354619
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_drill_battery, 707354619)
@@ -236,7 +242,9 @@ object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1573354578
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_drill_battery_clean, 1573354578)
@@ -286,7 +294,9 @@ object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 474299270
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_enhanced_filter, 474299270)
@@ -336,7 +346,9 @@ object_tangible_dungeon_death_watch_bunker_shared_filter = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4268583510
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_filter, 4268583510)
@@ -386,7 +398,9 @@ object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3953005946
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_filter_dispenser, 3953005946)
@@ -436,7 +450,9 @@ object_tangible_dungeon_death_watch_bunker_shared_gel_packet = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3707628236
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_gel_packet, 3707628236)
@@ -486,7 +502,9 @@ object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1491458500
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_invulnerable_debris, 1491458500)
@@ -536,7 +554,9 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_hall = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2015489022
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_hall, 2015489022)
@@ -586,7 +606,9 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_mine = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 72046646
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_mine, 72046646)
@@ -636,7 +658,9 @@ object_tangible_dungeon_death_watch_bunker_shared_passkey_storage = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2522380231
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_passkey_storage, 2522380231)
@@ -686,7 +710,9 @@ object_tangible_dungeon_death_watch_bunker_shared_workbench = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4007608473
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_death_watch_bunker_shared_workbench, 4007608473)

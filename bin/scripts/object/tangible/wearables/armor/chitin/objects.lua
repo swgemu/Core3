@@ -86,7 +86,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1049353985
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l, 1049353985)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1314822802
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r, 1314822802)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1961496739
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots, 1961496739)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3411753246
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l, 3411753246)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3146677389
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r, 3146677389)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 590081831
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate, 590081831)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2662099985
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves, 2662099985)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 678202649
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet, 678202649)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1149232129
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings, 1149232129)

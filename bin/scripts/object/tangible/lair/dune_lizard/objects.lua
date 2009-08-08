@@ -86,7 +86,9 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2444927445
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard, 2444927445)
@@ -136,7 +138,9 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2514665274
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert, 2514665274)

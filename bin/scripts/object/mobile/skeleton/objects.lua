@@ -110,7 +110,9 @@ object_mobile_skeleton_shared_acklay = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3915581743
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_acklay, 3915581743)
@@ -184,7 +186,9 @@ object_mobile_skeleton_shared_astromech = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 994908092
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_astromech, 994908092)
@@ -258,7 +262,9 @@ object_mobile_skeleton_shared_base_insect_moth = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1820074321
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_base_insect_moth, 1820074321)
@@ -332,7 +338,9 @@ object_mobile_skeleton_shared_bat = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2504466576
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bat, 2504466576)
@@ -406,7 +414,9 @@ object_mobile_skeleton_shared_bird_finch = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1000541852
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bird_finch, 1000541852)
@@ -480,7 +490,9 @@ object_mobile_skeleton_shared_bird_giant = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 519570189
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bird_giant, 519570189)
@@ -554,7 +566,9 @@ object_mobile_skeleton_shared_bird_turkey = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1413515142
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_bird_turkey, 1413515142)
@@ -628,7 +642,9 @@ object_mobile_skeleton_shared_camel = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2223413436
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_camel, 2223413436)
@@ -702,7 +718,9 @@ object_mobile_skeleton_shared_canine = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 825801147
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_canine, 825801147)
@@ -776,7 +794,9 @@ object_mobile_skeleton_shared_cat_domestic = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1826010896
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_cat_domestic, 1826010896)
@@ -850,7 +870,9 @@ object_mobile_skeleton_shared_cat_predatory = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 284042171
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_cat_predatory, 284042171)
@@ -924,7 +946,9 @@ object_mobile_skeleton_shared_cll8 = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3021854628
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_cll8, 3021854628)
@@ -998,7 +1022,9 @@ object_mobile_skeleton_shared_dewback = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 892528452
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_dewback, 892528452)
@@ -1072,7 +1098,9 @@ object_mobile_skeleton_shared_droid_2 = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2856144413
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_droid_2, 2856144413)
@@ -1146,7 +1174,9 @@ object_mobile_skeleton_shared_droideka = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4190971251
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_droideka, 4190971251)
@@ -1220,7 +1250,9 @@ object_mobile_skeleton_shared_dz70 = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2699879603
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_dz70, 2699879603)
@@ -1294,7 +1326,9 @@ object_mobile_skeleton_shared_eg6 = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3003303428
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_eg6, 3003303428)
@@ -1368,7 +1402,9 @@ object_mobile_skeleton_shared_elephant = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4284811148
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_elephant, 4284811148)
@@ -1442,7 +1478,9 @@ object_mobile_skeleton_shared_elephant_bantha = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1623233094
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_elephant_bantha, 1623233094)
@@ -1516,7 +1554,9 @@ object_mobile_skeleton_shared_fambaa = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1277611918
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_fambaa, 1277611918)
@@ -1590,7 +1630,9 @@ object_mobile_skeleton_shared_frog = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2783556290
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_frog, 2783556290)
@@ -1664,7 +1706,9 @@ object_mobile_skeleton_shared_giraffe = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2416872297
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_giraffe, 2416872297)
@@ -1738,7 +1782,9 @@ object_mobile_skeleton_shared_goat = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3334329739
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_goat, 3334329739)
@@ -1812,7 +1858,9 @@ object_mobile_skeleton_shared_griffon = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1997066566
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_griffon, 1997066566)
@@ -1886,7 +1934,9 @@ object_mobile_skeleton_shared_horse = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2297855719
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_horse, 2297855719)
@@ -1960,7 +2010,9 @@ object_mobile_skeleton_shared_humanoid = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1714909795
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_humanoid, 1714909795)
@@ -2034,7 +2086,9 @@ object_mobile_skeleton_shared_insect_basic = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 422447477
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_insect_basic, 422447477)
@@ -2108,7 +2162,9 @@ object_mobile_skeleton_shared_insect_mantis = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4047561864
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_insect_mantis, 4047561864)
@@ -2182,7 +2238,9 @@ object_mobile_skeleton_shared_insect_moth = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3715444431
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_insect_moth, 3715444431)
@@ -2256,7 +2314,9 @@ object_mobile_skeleton_shared_ito = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4016222327
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_ito, 4016222327)
@@ -2330,7 +2390,9 @@ object_mobile_skeleton_shared_kaadu = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3497999971
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_kaadu, 3497999971)
@@ -2404,7 +2466,9 @@ object_mobile_skeleton_shared_lin_demolition = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 765355707
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_lin_demolition, 765355707)
@@ -2478,7 +2542,9 @@ object_mobile_skeleton_shared_lizard_basic = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2532063942
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_lizard_basic, 2532063942)
@@ -2552,7 +2618,9 @@ object_mobile_skeleton_shared_lizard_giant = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 873783873
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_lizard_giant, 873783873)
@@ -2626,7 +2694,9 @@ object_mobile_skeleton_shared_mouse_droid = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 340337386
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_mouse_droid, 340337386)
@@ -2700,7 +2770,9 @@ object_mobile_skeleton_shared_mynock = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1147356714
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_mynock, 1147356714)
@@ -2774,7 +2846,9 @@ object_mobile_skeleton_shared_orb = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 984617406
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_orb, 984617406)
@@ -2848,7 +2922,9 @@ object_mobile_skeleton_shared_pig = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1813957157
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_pig, 1813957157)
@@ -2922,7 +2998,9 @@ object_mobile_skeleton_shared_probe_droid = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3856845356
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_probe_droid, 3856845356)
@@ -2996,7 +3074,9 @@ object_mobile_skeleton_shared_protocol_droid = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3037551555
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_protocol_droid, 3037551555)
@@ -3070,7 +3150,9 @@ object_mobile_skeleton_shared_rabbit = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 161991049
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_rabbit, 161991049)
@@ -3144,7 +3226,9 @@ object_mobile_skeleton_shared_rancor = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 270823856
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_rancor, 270823856)
@@ -3218,7 +3302,9 @@ object_mobile_skeleton_shared_rat = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1932908380
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_rat, 1932908380)
@@ -3292,7 +3378,9 @@ object_mobile_skeleton_shared_robo_bartender = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2976038956
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_robo_bartender, 2976038956)
@@ -3366,7 +3454,9 @@ object_mobile_skeleton_shared_simian_ape = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1735902555
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_simian_ape, 1735902555)
@@ -3440,7 +3530,9 @@ object_mobile_skeleton_shared_simian_monkey = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 75660389
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_simian_monkey, 75660389)
@@ -3514,7 +3606,9 @@ object_mobile_skeleton_shared_snake = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 253409232
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_snake, 253409232)
@@ -3588,7 +3682,9 @@ object_mobile_skeleton_shared_spider = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4213186397
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_spider, 4213186397)
@@ -3662,7 +3758,9 @@ object_mobile_skeleton_shared_spider_droid = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 460559210
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_spider_droid, 460559210)
@@ -3736,7 +3834,9 @@ object_mobile_skeleton_shared_tauntaun = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3679278095
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_tauntaun, 3679278095)
@@ -3810,7 +3910,9 @@ object_mobile_skeleton_shared_tt8l = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2778895664
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_tt8l, 2778895664)
@@ -3884,7 +3986,9 @@ object_mobile_skeleton_shared_tt8l_y7 = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1315980442
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_tt8l_y7, 1315980442)
@@ -3958,7 +4062,9 @@ object_mobile_skeleton_shared_wed_treadwell = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2765187251
 }
 
 ObjectTemplates:addTemplate(object_mobile_skeleton_shared_wed_treadwell, 2765187251)

@@ -86,7 +86,9 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2992922029
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base, 2992922029)
@@ -136,7 +138,9 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3431919684
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base, 3431919684)
@@ -186,7 +190,9 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 70668813
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base, 70668813)

@@ -86,7 +86,9 @@ object_tangible_lair_sarlacc_shared_lair_sarlacc = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 939893081
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc, 939893081)
@@ -136,7 +138,9 @@ object_tangible_lair_sarlacc_shared_lair_sarlacc_desert = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362534144
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc_desert, 2362534144)

@@ -86,7 +86,9 @@ object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 150449973
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek, 150449973)
@@ -136,7 +138,9 @@ object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1521427454
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, 1521427454)
@@ -186,7 +190,9 @@ object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4083623500
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, 4083623500)

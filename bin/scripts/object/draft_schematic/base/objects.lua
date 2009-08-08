@@ -75,7 +75,9 @@ object_draft_schematic_base_shared_base_draft_schematic = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1315482063
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_base_shared_base_draft_schematic, 1315482063)
@@ -114,7 +116,9 @@ object_draft_schematic_base_shared_draft_schematic_default = SharedDraftSchemati
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1088794197
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_base_shared_draft_schematic_default, 1088794197)
@@ -153,7 +157,9 @@ object_draft_schematic_base_shared_missing_schematic_substitute = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1521547401
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_base_shared_missing_schematic_substitute, 1521547401)

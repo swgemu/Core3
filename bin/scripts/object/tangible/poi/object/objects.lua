@@ -86,7 +86,9 @@ object_tangible_poi_object_shared_droid_body = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2911833522
 }
 
 ObjectTemplates:addTemplate(object_tangible_poi_object_shared_droid_body, 2911833522)
@@ -136,7 +138,9 @@ object_tangible_poi_object_shared_droid_head = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4288485184
 }
 
 ObjectTemplates:addTemplate(object_tangible_poi_object_shared_droid_head, 4288485184)

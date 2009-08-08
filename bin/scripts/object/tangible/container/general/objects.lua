@@ -86,7 +86,9 @@ object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3378300955
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_general_shared_cargo_pocket, 3378300955)
@@ -136,7 +138,9 @@ object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2917538
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_general_shared_satchel, 2917538)
@@ -186,7 +190,9 @@ object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 997788135
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_armoire, 997788135)
@@ -236,7 +242,9 @@ object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3363389476
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_bookcase, 3363389476)
@@ -286,7 +294,9 @@ object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 542811322
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_general_shared_tech_chest, 542811322)

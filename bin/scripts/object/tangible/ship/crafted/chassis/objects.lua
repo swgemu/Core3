@@ -86,7 +86,9 @@ object_tangible_ship_crafted_chassis_shared_awing_deed = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 195949306
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_awing_deed, 195949306)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_chassis_shared_base_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3908589416
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_base_deed, 3908589416)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2022853613
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed, 2022853613)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4259493619
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed, 4259493619)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2104628884
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed, 2104628884)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4089598328
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed, 4089598328)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3394693840
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed, 3394693840)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1327896526
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed, 1327896526)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3484858281
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed, 3484858281)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1090973765
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed, 1090973765)
@@ -586,7 +606,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1166754060
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed, 1166754060)
@@ -636,7 +658,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3237723154
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed, 3237723154)
@@ -686,7 +710,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1080761461
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed, 1080761461)
@@ -736,7 +762,9 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3470482329
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed, 3470482329)
@@ -786,7 +814,9 @@ object_tangible_ship_crafted_chassis_shared_bwing_deed = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3283460537
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_bwing_deed, 3283460537)
@@ -836,7 +866,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1060557321
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body, 1060557321)
@@ -886,7 +918,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 357847559
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base, 357847559)
@@ -936,7 +970,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2488529697
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01, 2488529697)
@@ -986,7 +1022,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1329879990
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02, 1329879990)
@@ -1036,7 +1074,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1329933896
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body, 1329933896)
@@ -1086,7 +1126,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_body = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3155334906
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_body, 3155334906)
@@ -1136,7 +1178,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 629673787
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit, 629673787)
@@ -1186,7 +1230,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3961922253
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l, 3961922253)
@@ -1236,7 +1282,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2633197406
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r, 2633197406)
@@ -1286,7 +1334,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_body = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2732841781
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_body, 2732841781)
@@ -1336,7 +1386,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3648939768
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit, 3648939768)
@@ -1386,7 +1438,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1398777236
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l, 1398777236)
@@ -1436,7 +1490,9 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 596303879
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r, 596303879)
@@ -1486,7 +1542,9 @@ object_tangible_ship_crafted_chassis_shared_decimator_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3999213800
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_decimator_deed, 3999213800)
@@ -1536,7 +1594,9 @@ object_tangible_ship_crafted_chassis_shared_firespray_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2182625467
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_firespray_deed, 2182625467)
@@ -1586,7 +1646,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3022324315
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed, 3022324315)
@@ -1636,7 +1698,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 827719493
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed, 827719493)
@@ -1686,7 +1750,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 115450726
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed, 115450726)
@@ -1736,7 +1802,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2207342200
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed, 2207342200)
@@ -1786,7 +1854,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2588212465
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed, 2588212465)
@@ -1836,7 +1906,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 523502063
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed, 523502063)
@@ -1886,7 +1958,9 @@ object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2817524533
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed, 2817524533)
@@ -1936,7 +2010,9 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1195910466
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s01, 1195910466)
@@ -1986,7 +2062,9 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s02 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2623507925
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s02, 2623507925)
@@ -2036,7 +2114,9 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s03 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3578980952
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s03, 3578980952)
@@ -2086,7 +2166,9 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s04 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 783401292
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s04, 783401292)
@@ -2136,7 +2218,9 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s05 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1740416705
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s05, 1740416705)
@@ -2186,7 +2270,9 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s06 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3165326934
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s06, 3165326934)
@@ -2236,7 +2322,9 @@ object_tangible_ship_crafted_chassis_shared_tie_in_deed = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2702453550
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tie_in_deed, 2702453550)
@@ -2286,7 +2374,9 @@ object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3943699590
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed, 3943699590)
@@ -2336,7 +2426,9 @@ object_tangible_ship_crafted_chassis_shared_tieadvanced_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 535268402
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieadvanced_deed, 535268402)
@@ -2386,7 +2478,9 @@ object_tangible_ship_crafted_chassis_shared_tieaggressor_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 738814292
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieaggressor_deed, 738814292)
@@ -2436,7 +2530,9 @@ object_tangible_ship_crafted_chassis_shared_tiebomber_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2145194763
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tiebomber_deed, 2145194763)
@@ -2486,7 +2582,9 @@ object_tangible_ship_crafted_chassis_shared_tiefighter_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1456733944
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tiefighter_deed, 1456733944)
@@ -2536,7 +2634,9 @@ object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3416726666
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed, 3416726666)
@@ -2586,7 +2686,9 @@ object_tangible_ship_crafted_chassis_shared_tieoppressor_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 471077979
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_tieoppressor_deed, 471077979)
@@ -2636,7 +2738,9 @@ object_tangible_ship_crafted_chassis_shared_xwing_customization_kit = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3720915529
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_xwing_customization_kit, 3720915529)
@@ -2686,7 +2790,9 @@ object_tangible_ship_crafted_chassis_shared_xwing_deed = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 371125137
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_xwing_deed, 371125137)
@@ -2736,7 +2842,9 @@ object_tangible_ship_crafted_chassis_shared_ykl37r_deed = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 829078012
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ykl37r_deed, 829078012)
@@ -2786,7 +2894,9 @@ object_tangible_ship_crafted_chassis_shared_yt1300_deed = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2624812962
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_yt1300_deed, 2624812962)
@@ -2836,7 +2946,9 @@ object_tangible_ship_crafted_chassis_shared_ywing_deed = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1374233936
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ywing_deed, 1374233936)
@@ -2886,7 +2998,9 @@ object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3027627051
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed, 3027627051)
@@ -2936,7 +3050,9 @@ object_tangible_ship_crafted_chassis_shared_z95_deed = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 689633436
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_shared_z95_deed, 689633436)

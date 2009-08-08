@@ -75,7 +75,9 @@ object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1638993826
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_geiger_counter, 1638993826)
@@ -114,7 +116,9 @@ object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 228023073
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_imperial, 228023073)
@@ -153,7 +157,9 @@ object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4189484016
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_item, 4189484016)
@@ -192,7 +198,9 @@ object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 197286219
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_data_rebel, 197286219)
@@ -231,7 +239,9 @@ object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1128492217
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_droid_command, 1128492217)
@@ -270,7 +280,9 @@ object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 994574621
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_encryption_key, 994574621)
@@ -309,7 +321,9 @@ object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3760892474
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_01, 3760892474)
@@ -348,7 +362,9 @@ object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 993854125
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_02, 993854125)
@@ -387,7 +403,9 @@ object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1915774240
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_03, 1915774240)
@@ -426,7 +444,9 @@ object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2312326708
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_shared_warren_evidence_04, 2312326708)

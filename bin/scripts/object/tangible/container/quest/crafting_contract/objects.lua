@@ -86,7 +86,9 @@ object_tangible_container_quest_crafting_contract_shared_armor_crate = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4232935338
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_armor_crate, 4232935338)
@@ -136,7 +138,9 @@ object_tangible_container_quest_crafting_contract_shared_clothing_crate = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2488721733
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_clothing_crate, 2488721733)
@@ -186,7 +190,9 @@ object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 594486839
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_droid_crate, 594486839)
@@ -236,7 +242,9 @@ object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2851563770
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_food_crate, 2851563770)
@@ -286,7 +294,9 @@ object_tangible_container_quest_crafting_contract_shared_furniture_crate = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3179098251
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_furniture_crate, 3179098251)
@@ -336,7 +346,9 @@ object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2299347618
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_generic_crate, 2299347618)
@@ -386,7 +398,9 @@ object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2938212328
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_quest_crafting_contract_shared_weapon_crate, 2938212328)

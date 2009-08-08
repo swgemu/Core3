@@ -86,7 +86,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1002440220
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l, 1002440220)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1259684751
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r, 1259684751)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2016668118
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots, 2016668118)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2538033013
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l, 2538033013)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3885107942
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r, 3885107942)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 253917454
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate, 253917454)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1122862762
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest, 1122862762)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1918468725
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves, 1918468725)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3298386813
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet, 3298386813)
@@ -536,7 +554,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_qu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880764068
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest, 880764068)
@@ -586,7 +606,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 409178730
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings, 409178730)
@@ -636,7 +658,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3027159239
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest, 3027159239)
@@ -686,7 +710,9 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_b
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1212660794
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt, 1212660794)

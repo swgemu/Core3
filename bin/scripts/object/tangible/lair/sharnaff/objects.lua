@@ -86,7 +86,9 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 196553824
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, 196553824)
@@ -136,7 +138,9 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 150207939
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, 150207939)
@@ -186,7 +190,9 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2092015518
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, 2092015518)

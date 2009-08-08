@@ -86,7 +86,9 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2668141954
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing, 2668141954)
@@ -136,7 +138,9 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1253904609
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power, 1253904609)
@@ -186,7 +190,9 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1745145484
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor, 1745145484)
@@ -236,7 +242,9 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 551792434
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader, 551792434)
@@ -286,7 +294,9 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1766910306
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen, 1766910306)
@@ -336,7 +346,9 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3061856066
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation, 3061856066)
@@ -386,7 +398,9 @@ object_tangible_theme_park_alderaan_act2_shared_interface_override_device = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1110698456
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_interface_override_device, 1110698456)
@@ -436,7 +450,9 @@ object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1889725651
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal, 1889725651)

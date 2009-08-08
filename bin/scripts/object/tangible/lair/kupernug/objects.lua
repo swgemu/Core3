@@ -86,7 +86,9 @@ object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2658633620
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, 2658633620)
@@ -136,7 +138,9 @@ object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3996614231
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, 3996614231)
@@ -186,7 +190,9 @@ object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2421166667
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, 2421166667)

@@ -86,7 +86,9 @@ object_tangible_component_base_shared_base_barrel = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2531878022
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_barrel, 2531878022)
@@ -136,7 +138,9 @@ object_tangible_component_base_shared_base_component = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2398764559
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_component, 2398764559)
@@ -186,7 +190,9 @@ object_tangible_component_base_shared_base_dna_sample = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2106678290
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_dna_sample, 2106678290)
@@ -236,7 +242,9 @@ object_tangible_component_base_shared_base_electronic_component = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 77505063
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_electronic_component, 77505063)
@@ -286,7 +294,9 @@ object_tangible_component_base_shared_base_food = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3167521190
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_base_shared_base_food, 3167521190)

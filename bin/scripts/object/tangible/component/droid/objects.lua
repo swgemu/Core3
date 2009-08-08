@@ -86,7 +86,9 @@ object_tangible_component_droid_shared_advanced_droid_frame = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3744416781
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_advanced_droid_frame, 3744416781)
@@ -136,7 +138,9 @@ object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1402137071
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_1, 1402137071)
@@ -186,7 +190,9 @@ object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2290434424
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_2, 2290434424)
@@ -236,7 +242,9 @@ object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3246925557
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_3, 3246925557)
@@ -286,7 +294,9 @@ object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 980094433
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_4, 980094433)
@@ -336,7 +346,9 @@ object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1936091756
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_5, 1936091756)
@@ -386,7 +398,9 @@ object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2826027771
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_6, 2826027771)
@@ -436,7 +450,9 @@ object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 832469141
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_armor_module_base, 832469141)
@@ -486,7 +502,9 @@ object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 262408920
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_auto_repair_module, 262408920)
@@ -536,7 +554,9 @@ object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3300613134
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_binary_load_lifter_droid_chassis, 3300613134)
@@ -586,7 +606,9 @@ object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3671008634
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_module, 3671008634)
@@ -636,7 +658,9 @@ object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 181867093
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_combat_socket_bank, 181867093)
@@ -686,7 +710,9 @@ object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2404931840
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_base, 2404931840)
@@ -736,7 +762,9 @@ object_tangible_component_droid_shared_crafting_module_clothing = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1487860845
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_clothing, 1487860845)
@@ -786,7 +814,9 @@ object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2075775538
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_food, 2075775538)
@@ -836,7 +866,9 @@ object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1790293285
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_space, 1790293285)
@@ -886,7 +918,9 @@ object_tangible_component_droid_shared_crafting_module_structure = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3924145529
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_structure, 3924145529)
@@ -936,7 +970,9 @@ object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 226757157
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_crafting_module_weapon, 226757157)
@@ -986,7 +1022,9 @@ object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1611774846
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_1, 1611774846)
@@ -1036,7 +1074,9 @@ object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3137737705
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_2, 3137737705)
@@ -1086,7 +1126,9 @@ object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4060836964
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_3, 4060836964)
@@ -1136,7 +1178,9 @@ object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 166223728
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_4, 166223728)
@@ -1186,7 +1230,9 @@ object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1088764157
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_5, 1088764157)
@@ -1236,7 +1282,9 @@ object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2616365162
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_6, 2616365162)
@@ -1286,7 +1334,9 @@ object_tangible_component_droid_shared_data_storage_module_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 85639854
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_data_storage_module_base, 85639854)
@@ -1336,7 +1386,9 @@ object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2559519879
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_defensive_module_base, 2559519879)
@@ -1386,7 +1438,9 @@ object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1275393519
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_detonation_module, 1275393519)
@@ -1436,7 +1490,9 @@ object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4221279122
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain, 4221279122)
@@ -1486,7 +1542,9 @@ object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1341617238
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_brain_advanced, 1341617238)
@@ -1536,7 +1594,9 @@ object_tangible_component_droid_shared_droid_combat_service_module_base = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3225311396
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_combat_service_module_base, 3225311396)
@@ -1586,7 +1646,9 @@ object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3837390071
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_interplanetary_survey, 3837390071)
@@ -1636,7 +1698,9 @@ object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3558171946
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system, 3558171946)
@@ -1686,7 +1750,9 @@ object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3082446118
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_motive_system_advanced, 3082446118)
@@ -1736,7 +1802,9 @@ object_tangible_component_droid_shared_droid_service_module_base = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2856991975
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_service_module_base, 2856991975)
@@ -1786,7 +1854,9 @@ object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3107140233
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_droid_storage_compartment, 3107140233)
@@ -1836,7 +1906,9 @@ object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 55086414
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module, 55086414)
@@ -1886,7 +1958,9 @@ object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3831537892
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_harvest_module_base, 3831537892)
@@ -1936,7 +2010,9 @@ object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3060963086
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_1, 3060963086)
@@ -1986,7 +2062,9 @@ object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1835351961
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_2, 1835351961)
@@ -2036,7 +2114,9 @@ object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 610818068
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_3, 610818068)
@@ -2086,7 +2166,9 @@ object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3750458112
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_4, 3750458112)
@@ -2136,7 +2218,9 @@ object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2525369485
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_5, 2525369485)
@@ -2186,7 +2270,9 @@ object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1301396506
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_6, 1301396506)
@@ -2236,7 +2322,9 @@ object_tangible_component_droid_shared_item_storage_module_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1210035121
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_item_storage_module_base, 1210035121)
@@ -2286,7 +2374,9 @@ object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1573291172
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_le_repair_droid_chassis, 1573291172)
@@ -2336,7 +2426,9 @@ object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1333622407
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm, 1333622407)
@@ -2386,7 +2478,9 @@ object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 295096971
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_manipulator_arm_package_set, 295096971)
@@ -2436,7 +2530,9 @@ object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3818431431
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_1, 3818431431)
@@ -2486,7 +2582,9 @@ object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 948898640
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_2, 948898640)
@@ -2536,7 +2634,9 @@ object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1904372957
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_3, 1904372957)
@@ -2586,7 +2686,9 @@ object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2321631177
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_4, 2321631177)
@@ -2636,7 +2738,9 @@ object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3278643268
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_5, 3278643268)
@@ -2686,7 +2790,9 @@ object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 410749139
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_6, 410749139)
@@ -2736,7 +2842,9 @@ object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3806402681
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_medic_module_base, 3806402681)
@@ -2786,7 +2894,9 @@ object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3094537787
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_barker, 3094537787)
@@ -2836,7 +2946,9 @@ object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 246819840
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_merchant_base, 246819840)
@@ -2886,7 +2998,9 @@ object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2364795143
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_p0_droid_chassis, 2364795143)
@@ -2936,7 +3050,9 @@ object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2350039140
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_a, 2350039140)
@@ -2986,7 +3102,9 @@ object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 864794171
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_aa, 864794171)
@@ -3036,7 +3154,9 @@ object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1459972339
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_b, 1459972339)
@@ -3086,7 +3206,9 @@ object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 503844734
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_c, 503844734)
@@ -3136,7 +3258,9 @@ object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3857392746
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_d, 3857392746)
@@ -3186,7 +3310,9 @@ object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2900771815
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_performer_effects_e, 2900771815)
@@ -3236,7 +3362,9 @@ object_tangible_component_droid_shared_personality_module_base = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1069945063
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_base, 1069945063)
@@ -3286,7 +3414,9 @@ object_tangible_component_droid_shared_personality_module_geek = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 671855097
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_geek, 671855097)
@@ -3336,7 +3466,9 @@ object_tangible_component_droid_shared_personality_module_prissy = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3491692659
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_prissy, 3491692659)
@@ -3386,7 +3518,9 @@ object_tangible_component_droid_shared_personality_module_sarcastic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1046791817
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_sarcastic, 1046791817)
@@ -3436,7 +3570,9 @@ object_tangible_component_droid_shared_personality_module_slang = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1711429491
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_slang, 1711429491)
@@ -3486,7 +3622,9 @@ object_tangible_component_droid_shared_personality_module_stupid = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1083621645
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_stupid, 1083621645)
@@ -3536,7 +3674,9 @@ object_tangible_component_droid_shared_personality_module_worshipful = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3187389726
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_personality_module_worshipful, 3187389726)
@@ -3586,7 +3726,9 @@ object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2859558728
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_playback_module, 2859558728)
@@ -3636,7 +3778,9 @@ object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 498496861
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_probot_droid_chassis, 498496861)
@@ -3686,7 +3830,9 @@ object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4039239193
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r2_droid_chassis, 4039239193)
@@ -3736,7 +3882,9 @@ object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4208619072
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r3_droid_chassis, 4208619072)
@@ -3786,7 +3934,9 @@ object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3432568783
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_r4_droid_chassis, 3432568783)
@@ -3836,7 +3986,9 @@ object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2786060955
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_repair_module, 2786060955)
@@ -3886,7 +4038,9 @@ object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4157404831
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_sensor_package_droid, 4157404831)
@@ -3936,7 +4090,9 @@ object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3701424953
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_socket_bank, 3701424953)
@@ -3986,7 +4142,9 @@ object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1691889339
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_stimpack_dispensor, 1691889339)
@@ -4036,7 +4194,9 @@ object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1728777315
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_1, 1728777315)
@@ -4086,7 +4246,9 @@ object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3155993844
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_2, 3155993844)
@@ -4136,7 +4298,9 @@ object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4111582073
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_3, 4111582073)
@@ -4186,7 +4350,9 @@ object_tangible_component_droid_shared_struct_maint_module_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2223185422
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_struct_maint_module_base, 2223185422)
@@ -4236,7 +4402,9 @@ object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2925064047
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_surgical_droid_chassis, 2925064047)
@@ -4286,7 +4454,9 @@ object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3443959311
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module, 3443959311)
@@ -4336,7 +4506,9 @@ object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2178596494
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_shared_trap_module_base, 2178596494)

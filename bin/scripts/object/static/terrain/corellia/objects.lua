@@ -75,7 +75,9 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2001053430
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_double, 2001053430)
@@ -114,7 +116,9 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 269158049
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_single, 269158049)
@@ -153,7 +157,9 @@ object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 443205623
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small, 443205623)
@@ -192,7 +198,9 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3222394313
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium, 3222394313)
@@ -231,7 +239,9 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 925475782
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium, 925475782)
@@ -270,7 +280,9 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1782875920
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large, 1782875920)
@@ -309,7 +321,9 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 667239859
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main, 667239859)
@@ -348,7 +362,9 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2360913555
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium, 2360913555)
@@ -387,7 +403,9 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1583289145
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small, 1583289145)
@@ -426,7 +444,9 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1649037373
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large, 1649037373)
@@ -465,7 +485,9 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2758241835
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium, 2758241835)
@@ -504,7 +526,9 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 563211563
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_main, 563211563)
@@ -543,7 +567,9 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2674710016
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_med, 2674710016)
@@ -582,7 +608,9 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 751683644
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm, 751683644)

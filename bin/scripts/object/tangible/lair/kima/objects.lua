@@ -86,7 +86,9 @@ object_tangible_lair_kima_shared_lair_kima = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3165231595
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima, 3165231595)
@@ -136,7 +138,9 @@ object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2030650931
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima_grassland, 2030650931)
@@ -186,7 +190,9 @@ object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4188775446
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kima_shared_lair_kima_mountain, 4188775446)

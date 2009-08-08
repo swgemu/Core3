@@ -86,7 +86,9 @@ object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 408623623
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blackfish, 408623623)
@@ -136,7 +138,9 @@ object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2010790033
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_blowfish, 2010790033)
@@ -186,7 +190,9 @@ object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2990319970
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_bluefish, 2990319970)
@@ -236,7 +242,9 @@ object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2004254750
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_faa, 2004254750)
@@ -286,7 +294,9 @@ object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1061978988
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_fish_generic, 1061978988)
@@ -336,7 +346,9 @@ object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2598448090
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_laa, 2598448090)
@@ -386,7 +398,9 @@ object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1789117227
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_ray, 1789117227)
@@ -436,7 +450,9 @@ object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2919980156
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_fish_shared_striped, 2919980156)

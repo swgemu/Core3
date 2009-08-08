@@ -75,7 +75,9 @@ object_soundobject_shared_soundobject_cantina_large = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1113312589
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cantina_large, 1113312589)
@@ -114,7 +116,9 @@ object_soundobject_shared_soundobject_cantina_medium = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 769239243
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cantina_medium, 769239243)
@@ -153,7 +157,9 @@ object_soundobject_shared_soundobject_cantina_small = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1983928676
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cantina_small, 1983928676)
@@ -192,7 +198,9 @@ object_soundobject_shared_soundobject_cave_drip = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 526901089
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cave_drip, 526901089)
@@ -231,7 +239,9 @@ object_soundobject_shared_soundobject_chamber_music = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1471626100
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_chamber_music, 1471626100)
@@ -270,7 +280,9 @@ object_soundobject_shared_soundobject_city_crowd_booing = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1649456437
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_booing, 1649456437)
@@ -309,7 +321,9 @@ object_soundobject_shared_soundobject_city_crowd_cheering = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3171942528
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_cheering, 3171942528)
@@ -348,7 +362,9 @@ object_soundobject_shared_soundobject_city_crowd_medium = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1007094640
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_medium, 1007094640)
@@ -387,7 +403,9 @@ object_soundobject_shared_soundobject_city_crowd_sentients = SharedStaticObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2995810506
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_sentients, 2995810506)
@@ -426,7 +444,9 @@ object_soundobject_shared_soundobject_city_crowd_sentients_large = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1220356330
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_sentients_large, 1220356330)
@@ -465,7 +485,9 @@ object_soundobject_shared_soundobject_city_crowd_small = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2160245111
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_city_crowd_small, 2160245111)
@@ -504,7 +526,9 @@ object_soundobject_shared_soundobject_cloning_facility = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2219862072
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_cloning_facility, 2219862072)
@@ -543,7 +567,9 @@ object_soundobject_shared_soundobject_elevator_music = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 805544317
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_elevator_music, 805544317)
@@ -582,7 +608,9 @@ object_soundobject_shared_soundobject_factory_exterior = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3185407219
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_factory_exterior, 3185407219)
@@ -621,7 +649,9 @@ object_soundobject_shared_soundobject_figrin_dan_band = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2322270980
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_figrin_dan_band, 2322270980)
@@ -660,7 +690,9 @@ object_soundobject_shared_soundobject_fire_roaring = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 543287439
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_fire_roaring, 543287439)
@@ -699,7 +731,9 @@ object_soundobject_shared_soundobject_fort_tusken = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1387709357
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_fort_tusken, 1387709357)
@@ -738,7 +772,9 @@ object_soundobject_shared_soundobject_fusion_power_generator = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 111680330
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_fusion_power_generator, 111680330)
@@ -777,7 +813,9 @@ object_soundobject_shared_soundobject_hovering = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1865831738
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_hovering, 1865831738)
@@ -816,7 +854,9 @@ object_soundobject_shared_soundobject_hydro_power_generator = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 111189793
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_hydro_power_generator, 111189793)
@@ -855,7 +895,9 @@ object_soundobject_shared_soundobject_installation_hydro = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 995137663
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_installation_hydro, 995137663)
@@ -894,7 +936,9 @@ object_soundobject_shared_soundobject_installation_photo_bio = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3621719598
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_installation_photo_bio, 3621719598)
@@ -933,7 +977,9 @@ object_soundobject_shared_soundobject_installation_wind = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 522992257
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_installation_wind, 522992257)
@@ -972,7 +1018,9 @@ object_soundobject_shared_soundobject_jabba_audience_chamber = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2503585302
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_audience_chamber, 2503585302)
@@ -1011,7 +1059,9 @@ object_soundobject_shared_soundobject_jabba_max_rebo_band = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1106794
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_max_rebo_band, 1106794)
@@ -1050,7 +1100,9 @@ object_soundobject_shared_soundobject_jabba_monk_hideaway = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3562507459
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_monk_hideaway, 3562507459)
@@ -1089,7 +1141,9 @@ object_soundobject_shared_soundobject_jabba_palace_entrance = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1643654633
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jabba_palace_entrance, 1643654633)
@@ -1128,7 +1182,9 @@ object_soundobject_shared_soundobject_jungle_music_a = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2070906203
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jungle_music_a, 2070906203)
@@ -1167,7 +1223,9 @@ object_soundobject_shared_soundobject_jungle_music_b = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2692230604
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_jungle_music_b, 2692230604)
@@ -1206,7 +1264,9 @@ object_soundobject_shared_soundobject_lakeshore = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 999668036
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_lakeshore, 999668036)
@@ -1245,7 +1305,9 @@ object_soundobject_shared_soundobject_lava = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3854588989
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_lava, 3854588989)
@@ -1284,7 +1346,9 @@ object_soundobject_shared_soundobject_loud_steam = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3479780870
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_loud_steam, 3479780870)
@@ -1323,7 +1387,9 @@ object_soundobject_shared_soundobject_marketplace_large = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3222553098
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_marketplace_large, 3222553098)
@@ -1362,7 +1428,9 @@ object_soundobject_shared_soundobject_marketplace_small = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4094678563
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_marketplace_small, 4094678563)
@@ -1401,7 +1469,9 @@ object_soundobject_shared_soundobject_mountain_winds = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 293547237
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_mountain_winds, 293547237)
@@ -1440,7 +1510,9 @@ object_soundobject_shared_soundobject_nightsisters_stronghold = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1031338094
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_nightsisters_stronghold, 1031338094)
@@ -1479,7 +1551,9 @@ object_soundobject_shared_soundobject_power_generator = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 590222819
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_power_generator, 590222819)
@@ -1518,7 +1592,9 @@ object_soundobject_shared_soundobject_quiet_steam = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1143794115
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_quiet_steam, 1143794115)
@@ -1557,7 +1633,9 @@ object_soundobject_shared_soundobject_rebel_hideout = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3950943395
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_rebel_hideout, 3950943395)
@@ -1596,7 +1674,9 @@ object_soundobject_shared_soundobject_refrigeration_unit = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2124729098
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_refrigeration_unit, 2124729098)
@@ -1635,7 +1715,9 @@ object_soundobject_shared_soundobject_river_indoors = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2374956061
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_river_indoors, 2374956061)
@@ -1674,7 +1756,9 @@ object_soundobject_shared_soundobject_river_large = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3441954755
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_river_large, 3441954755)
@@ -1713,7 +1797,9 @@ object_soundobject_shared_soundobject_river_small = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4180909034
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_river_small, 4180909034)
@@ -1752,7 +1838,9 @@ object_soundobject_shared_soundobject_sailbarge_lower = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4258394168
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_sailbarge_lower, 4258394168)
@@ -1791,7 +1879,9 @@ object_soundobject_shared_soundobject_sailbarge_upper = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2386769474
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_sailbarge_upper, 2386769474)
@@ -1830,7 +1920,9 @@ object_soundobject_shared_soundobject_seashore_indoors = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 279468825
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_seashore_indoors, 279468825)
@@ -1869,7 +1961,9 @@ object_soundobject_shared_soundobject_seashore_outdoors = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2890368574
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_seashore_outdoors, 2890368574)
@@ -1908,7 +2002,9 @@ object_soundobject_shared_soundobject_shield_generator = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3705653312
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_shield_generator, 3705653312)
@@ -1947,7 +2043,9 @@ object_soundobject_shared_soundobject_snow_outside = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1803959668
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_snow_outside, 1803959668)
@@ -1986,7 +2084,9 @@ object_soundobject_shared_soundobject_space_yacht = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2863794774
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_space_yacht, 2863794774)
@@ -2025,7 +2125,9 @@ object_soundobject_shared_soundobject_sparks = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 740379187
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_sparks, 740379187)
@@ -2064,7 +2166,9 @@ object_soundobject_shared_soundobject_starport_announcer = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 111749873
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_starport_announcer, 111749873)
@@ -2103,7 +2207,9 @@ object_soundobject_shared_soundobject_starport_exterior = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 93072533
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_starport_exterior, 93072533)
@@ -2142,7 +2248,9 @@ object_soundobject_shared_soundobject_starport_interior = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2601406698
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_starport_interior, 2601406698)
@@ -2181,7 +2289,9 @@ object_soundobject_shared_soundobject_theed_fountain = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 20514831
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_theed_fountain, 20514831)
@@ -2220,7 +2330,9 @@ object_soundobject_shared_soundobject_transport_interior = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 425345644
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_transport_interior, 425345644)
@@ -2259,7 +2371,9 @@ object_soundobject_shared_soundobject_underground_music_a = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1630317945
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_underground_music_a, 1630317945)
@@ -2298,7 +2412,9 @@ object_soundobject_shared_soundobject_underground_music_b = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3124430318
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_underground_music_b, 3124430318)
@@ -2337,7 +2453,9 @@ object_soundobject_shared_soundobject_water_gurgle = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2014649812
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_water_gurgle, 2014649812)
@@ -2376,7 +2494,9 @@ object_soundobject_shared_soundobject_water_gurgle_small = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4152482150
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_water_gurgle_small, 4152482150)
@@ -2415,7 +2535,9 @@ object_soundobject_shared_soundobject_waterfall_indoors = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1465513069
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_indoors, 1465513069)
@@ -2454,7 +2576,9 @@ object_soundobject_shared_soundobject_waterfall_large = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2572356312
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_large, 2572356312)
@@ -2493,7 +2617,9 @@ object_soundobject_shared_soundobject_waterfall_outdoors = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1999229516
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_outdoors, 1999229516)
@@ -2532,7 +2658,9 @@ object_soundobject_shared_soundobject_waterfall_small = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2907217649
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_waterfall_small, 2907217649)
@@ -2571,7 +2699,9 @@ object_soundobject_shared_soundobject_wind_power_generator = SharedStaticObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2041745522
 }
 
 ObjectTemplates:addTemplate(object_soundobject_shared_soundobject_wind_power_generator, 2041745522)

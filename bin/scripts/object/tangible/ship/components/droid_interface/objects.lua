@@ -86,7 +86,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2255500676
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk1, 2255500676)
@@ -136,7 +138,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1567071507
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk2, 1567071507)
@@ -186,7 +190,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1554428652
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6, 1554428652)
@@ -236,7 +242,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2946627955
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8, 2946627955)
@@ -286,7 +294,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 382961907
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk1, 382961907)
@@ -336,7 +346,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3452182628
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk2, 3452182628)
@@ -386,7 +398,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2227783657
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk3, 2227783657)
@@ -436,7 +450,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2848252301
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite, 2848252301)
@@ -486,7 +502,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1303344441
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droid_commander_mk1, 1303344441)
@@ -536,7 +554,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2130320343
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1, 2130320343)
@@ -586,7 +606,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_generic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3733721392
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_generic, 3733721392)
@@ -636,7 +658,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1006845389
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech, 1006845389)
@@ -686,7 +710,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_pi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1151995556
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_piece, 1151995556)
@@ -736,7 +762,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3073922282
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced, 3073922282)
@@ -786,7 +814,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_elite = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3118062866
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_elite, 3118062866)
@@ -836,7 +866,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3473966086
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1, 3473966086)
@@ -886,7 +918,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 336014481
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2, 336014481)
@@ -936,7 +970,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1560955676
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3, 1560955676)
@@ -986,7 +1022,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2800312328
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4, 2800312328)
@@ -1036,7 +1074,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 70249391
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_interface, 70249391)
@@ -1086,7 +1126,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_in
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2164595319
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_interface_mk1, 2164595319)
@@ -1136,7 +1178,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1507715114
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk1, 1507715114)
@@ -1186,7 +1230,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2194292925
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk2, 2194292925)
@@ -1236,7 +1282,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3418826544
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk3, 3418826544)
@@ -1286,7 +1334,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 807668772
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk4, 807668772)
@@ -1336,7 +1386,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_elite = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2854165292
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_elite, 2854165292)
@@ -1386,7 +1438,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3762048650
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_interface_mk4, 3762048650)
@@ -1436,7 +1490,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_inte
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1562019403
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_interface_mk2, 1562019403)
@@ -1486,7 +1542,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2495157622
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1, 2495157622)
@@ -1536,7 +1594,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1336851937
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2, 1336851937)
@@ -1586,7 +1646,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4052563476
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnus_dp44, 4052563476)
@@ -1636,7 +1698,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_u
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 925674650
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_unknown_prototype, 925674650)
@@ -1686,7 +1750,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_i
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 818987742
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_imperial_finest, 818987742)
@@ -1736,7 +1802,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2292572439
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx61, 2292572439)
@@ -1786,7 +1854,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_su
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3674415260
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_supreme_interface, 3674415260)
@@ -1836,7 +1906,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3713293708
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_integrated_array, 3713293708)
@@ -1886,7 +1958,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2763794124
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid_interface, 2763794124)
@@ -1936,7 +2010,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_dro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2549539607
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface, 2549539607)
@@ -1986,7 +2062,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1119916671
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager, 1119916671)
@@ -2036,7 +2114,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3418100037
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk2, 3418100037)
@@ -2086,7 +2166,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1085256606
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1, 1085256606)
@@ -2136,7 +2218,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2612534025
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2, 2612534025)
@@ -2186,7 +2270,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 686125639
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_mk3, 686125639)
@@ -2236,7 +2322,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1137242392
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_mk1, 1137242392)
@@ -2286,7 +2374,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 363665805
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1, 363665805)
@@ -2336,7 +2426,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3468341530
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2, 3468341530)
@@ -2386,7 +2478,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2276972183
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3, 2276972183)
@@ -2436,7 +2530,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1391406113
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk1, 1391406113)
@@ -2486,7 +2582,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2314765494
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk2, 2314765494)
@@ -2536,7 +2634,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1458928562
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperial_sfs_military_grade, 1458928562)
@@ -2586,7 +2686,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutra
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2653382104
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutral_sorosuub_w19, 2653382104)
@@ -2636,7 +2738,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1715402318
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_moncal_d22, 1715402318)
@@ -2686,7 +2790,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4246752822
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_novaldex_low_latency, 4246752822)
@@ -2736,7 +2842,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_inter
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3456992776
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_interface, 3456992776)
@@ -2786,7 +2894,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 779250230
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2, 779250230)
@@ -2836,7 +2946,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1664316727
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1, 1664316727)
@@ -2886,7 +2998,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3089423776
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2, 3089423776)
@@ -2936,7 +3050,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4046043693
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3, 4046043693)
@@ -2986,7 +3102,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 181047609
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4, 181047609)
@@ -3036,7 +3154,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3431557181
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite, 3431557181)
@@ -3086,7 +3206,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4167158823
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1, 4167158823)
@@ -3136,7 +3258,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_dro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3255531720
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_droid_interface, 3255531720)
@@ -3186,7 +3310,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1177380841
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid_interface_mk4, 1177380841)
@@ -3236,7 +3362,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1309787365
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk1, 1309787365)
@@ -3286,7 +3414,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2500226162
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk2, 2500226162)
@@ -3336,7 +3466,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3691711487
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk3, 3691711487)
@@ -3386,7 +3518,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 669524203
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk4, 669524203)
@@ -3436,7 +3570,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4109273189
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite, 4109273189)
@@ -3486,7 +3622,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1478874794
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droid_interface_mk1, 1478874794)
@@ -3536,7 +3674,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 29344223
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk1, 29344223)
@@ -3586,7 +3726,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3668470088
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk2, 3668470088)
@@ -3636,7 +3778,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2477067973
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk3, 2477067973)
@@ -3686,7 +3830,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1749427665
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk4, 1749427665)
@@ -3736,7 +3882,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1189388094
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite, 1189388094)
@@ -3786,7 +3934,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 545170083
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droid_interface_mk5, 545170083)
@@ -3836,7 +3986,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3983562485
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droid_interface_mk3, 3983562485)
@@ -3886,7 +4038,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1075566151
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperator, 1075566151)
@@ -3936,7 +4090,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 73360089
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1, 73360089)
@@ -3986,7 +4142,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3746089550
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2, 3746089550)
@@ -4036,7 +4194,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 149106
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2, 149106)
@@ -4086,7 +4246,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 785562391
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial_1, 785562391)
@@ -4136,7 +4298,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 55562871
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1, 55562871)
@@ -4186,7 +4350,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3629677280
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2, 3629677280)
@@ -4236,7 +4402,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_elite = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4200034291
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_elite, 4200034291)
@@ -4286,7 +4454,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3078863051
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial_2, 3078863051)
@@ -4336,7 +4506,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2632162038
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1, 2632162038)
@@ -4386,7 +4558,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1207186017
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2, 1207186017)
@@ -4436,7 +4610,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 251221484
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3, 251221484)
@@ -4486,7 +4662,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4112154360
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4, 4112154360)
@@ -4536,7 +4714,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3155630453
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5, 3155630453)
@@ -4586,7 +4766,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 872393893
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_1, 872393893)
@@ -4636,7 +4818,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2015516233
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1, 2015516233)
@@ -4686,7 +4870,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2738224862
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2, 2738224862)
@@ -4736,7 +4922,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3929577811
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3, 3929577811)
@@ -4786,7 +4974,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 299610695
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4, 299610695)
@@ -4836,7 +5026,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4122651135
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite, 4122651135)
@@ -4886,7 +5078,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2826062719
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial_1, 2826062719)
@@ -4936,7 +5130,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3007707212
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1, 3007707212)
@@ -4986,7 +5182,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1750225115
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2, 1750225115)
@@ -5036,7 +5234,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 559888214
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3, 559888214)
@@ -5086,7 +5286,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2393015606
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5, 2393015606)
@@ -5136,7 +5338,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1681488075
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1, 1681488075)
@@ -5186,7 +5390,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3207516252
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2, 3207516252)
@@ -5236,7 +5442,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4095807384
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite, 4095807384)
@@ -5286,7 +5494,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1414454205
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad_mk1, 1414454205)
@@ -5336,7 +5546,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3195193412
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad_mk2, 3195193412)
@@ -5386,7 +5598,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3728923525
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1, 3728923525)
@@ -5436,7 +5650,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 89486098
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2, 89486098)
@@ -5486,7 +5702,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1280840863
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3, 1280840863)
@@ -5536,7 +5754,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1508215157
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33, 1508215157)
@@ -5586,7 +5806,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2330402512
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33, 2330402512)
@@ -5636,7 +5858,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 698514748
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic, 698514748)
@@ -5686,7 +5910,9 @@ object_tangible_ship_components_droid_interface_shared_ddi_z95_basic = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3834107259
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_ddi_z95_basic, 3834107259)
@@ -5736,7 +5962,9 @@ object_tangible_ship_components_droid_interface_shared_droid_interface_test = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 989447066
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_droid_interface_shared_droid_interface_test, 989447066)

@@ -86,7 +86,9 @@ object_tangible_medicine_shared_antidote_sm_s1 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1440189415
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_antidote_sm_s1, 1440189415)
@@ -136,7 +138,9 @@ object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4251613254
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_disease, 4251613254)
@@ -186,7 +190,9 @@ object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 407306967
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_area_poison, 407306967)
@@ -236,7 +242,9 @@ object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1464815996
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_disease, 1464815996)
@@ -286,7 +294,9 @@ object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3318575411
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_grenade_poison, 3318575411)
@@ -336,7 +346,9 @@ object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1436861013
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade, 1436861013)
@@ -386,7 +398,9 @@ object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 517120211
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_healing_grenade_longrange, 517120211)
@@ -436,7 +450,9 @@ object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 354709332
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medic_damage, 354709332)
@@ -486,7 +502,9 @@ object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1604165582
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_advanced, 1604165582)
@@ -536,7 +554,9 @@ object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2114140377
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medikit_tool_basic, 2114140377)
@@ -586,7 +606,9 @@ object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 765314717
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_blinded, 765314717)
@@ -636,7 +658,9 @@ object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3567534855
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_disease, 3567534855)
@@ -686,7 +710,9 @@ object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1928193020
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_cure_poison, 1928193020)
@@ -736,7 +762,9 @@ object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1572232451
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_damage, 1572232451)
@@ -786,7 +814,9 @@ object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 832861899
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_disease_health, 832861899)
@@ -836,7 +866,9 @@ object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2465786722
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_dizzy, 2465786722)
@@ -886,7 +918,9 @@ object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2933500212
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_action, 2933500212)
@@ -936,7 +970,9 @@ object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4043375021
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_constitution, 4043375021)
@@ -986,7 +1022,9 @@ object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 103448599
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_health, 103448599)
@@ -1036,7 +1074,9 @@ object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1230024376
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_quickness, 1230024376)
@@ -1086,7 +1126,9 @@ object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2141072147
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_stamina, 2141072147)
@@ -1136,7 +1178,9 @@ object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1816954138
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_enhance_strength, 1816954138)
@@ -1186,7 +1230,9 @@ object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4052941806
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_area, 4052941806)
@@ -1236,7 +1282,9 @@ object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1050069168
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_grenade_damage, 1050069168)
@@ -1286,7 +1334,9 @@ object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3337310390
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_intimidated, 3337310390)
@@ -1336,7 +1386,9 @@ object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3017797623
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_poison_health, 3017797623)
@@ -1386,7 +1438,9 @@ object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4063460611
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_revive, 4063460611)
@@ -1436,7 +1490,9 @@ object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 215922513
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_sm_s1, 215922513)
@@ -1486,7 +1542,9 @@ object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4041482351
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_stunned, 4041482351)
@@ -1536,7 +1594,9 @@ object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2936514652
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound, 2936514652)
@@ -1586,7 +1646,9 @@ object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 457349028
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_action, 457349028)
@@ -1636,7 +1698,9 @@ object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1021180765
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_constitution, 1021180765)
@@ -1686,7 +1750,9 @@ object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3014770311
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_health, 3014770311)
@@ -1736,7 +1802,9 @@ object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2548119971
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_quickness, 2548119971)
@@ -1786,7 +1854,9 @@ object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1314610438
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_stamina, 1314610438)
@@ -1836,7 +1906,9 @@ object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2043273277
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_medpack_wound_strength, 2043273277)
@@ -1886,7 +1958,9 @@ object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2246906578
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_newbie_heal_mission_medicine, 2246906578)
@@ -1936,7 +2010,9 @@ object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 424530466
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_stimpack_sm_s1, 424530466)
@@ -1986,7 +2062,9 @@ object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 120135169
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_shared_test_fire_blanket, 120135169)

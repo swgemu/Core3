@@ -75,7 +75,9 @@ object_draft_schematic_munition_component_shared_ammo_projectile = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4036740128
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_ammo_projectile, 4036740128)
@@ -114,7 +116,9 @@ object_draft_schematic_munition_component_shared_ammo_projectile_entanglement = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 443220500
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_ammo_projectile_entanglement, 443220500)
@@ -153,7 +157,9 @@ object_draft_schematic_munition_component_shared_base_munition_enhancer = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3506113789
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_base_munition_enhancer, 3506113789)
@@ -192,7 +198,9 @@ object_draft_schematic_munition_component_shared_enhanced_charge_composition = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3153150043
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_composition, 3153150043)
@@ -231,7 +239,9 @@ object_draft_schematic_munition_component_shared_enhanced_charge_shaping = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3158528693
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_shaping, 3158528693)
@@ -270,7 +280,9 @@ object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_chan
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2401022295
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling, 2401022295)
@@ -309,7 +321,9 @@ object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3256653222
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve, 3256653222)
@@ -348,7 +362,9 @@ object_draft_schematic_munition_component_shared_warhead_chemical = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1156003088
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_chemical, 1156003088)
@@ -387,7 +403,9 @@ object_draft_schematic_munition_component_shared_warhead_fusing_mechanism = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3955180920
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_fusing_mechanism, 3955180920)
@@ -426,7 +444,9 @@ object_draft_schematic_munition_component_shared_warhead_heavy = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2232358950
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_heavy, 2232358950)
@@ -465,7 +485,9 @@ object_draft_schematic_munition_component_shared_warhead_light = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1146561784
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_light, 1146561784)
@@ -504,7 +526,9 @@ object_draft_schematic_munition_component_shared_warhead_medium = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 536805307
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_medium, 536805307)
@@ -543,7 +567,9 @@ object_draft_schematic_munition_component_shared_warhead_stabilizer = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4065626322
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_shared_warhead_stabilizer, 4065626322)

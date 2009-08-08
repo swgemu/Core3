@@ -86,7 +86,9 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 100121621
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed, 100121621)
@@ -136,7 +138,9 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_dee
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4084143770
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed, 4084143770)
@@ -186,7 +190,9 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1165081270
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed, 1165081270)

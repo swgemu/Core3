@@ -75,7 +75,9 @@ object_draft_schematic_community_crafting_shared_base_community_crafting = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3199067220
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_base_community_crafting, 3199067220)
@@ -114,7 +116,9 @@ object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2022784928
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_defenses, 2022784928)
@@ -153,7 +157,9 @@ object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2318897333
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_shared_village_shields, 2318897333)

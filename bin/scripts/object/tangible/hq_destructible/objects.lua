@@ -86,7 +86,9 @@ object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 730285201
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_base_destructible, 730285201)
@@ -136,7 +138,9 @@ object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2006377548
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_override_terminal, 2006377548)
@@ -186,7 +190,9 @@ object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3447096600
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_power_regulator, 3447096600)
@@ -236,7 +242,9 @@ object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 868384958
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_security_terminal, 868384958)
@@ -286,7 +294,9 @@ object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 459058175
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_shared_uplink_terminal, 459058175)

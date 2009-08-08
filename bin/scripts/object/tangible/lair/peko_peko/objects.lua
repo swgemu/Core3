@@ -86,7 +86,9 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2543663822
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko, 2543663822)
@@ -136,7 +138,9 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_forest = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1250959161
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_forest, 1250959161)
@@ -186,7 +190,9 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 739180542
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland, 739180542)
@@ -236,7 +242,9 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4010621056
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp, 4010621056)

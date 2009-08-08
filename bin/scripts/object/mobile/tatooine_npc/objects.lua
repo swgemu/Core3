@@ -110,7 +110,9 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2210665097
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_aaph_koden, 2210665097)
@@ -184,7 +186,9 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3420862161
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_binna_jode, 3420862161)
@@ -258,7 +262,9 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2463657324
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_blerx_tango, 2463657324)
@@ -332,7 +338,9 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1226761307
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_boshek, 1226761307)
@@ -406,7 +414,9 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4285124243
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_brea_tonnika, 4285124243)
@@ -480,7 +490,9 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4289563473
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_capt_loftus, 4289563473)
@@ -554,7 +566,9 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1952005063
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_farious_gletch, 1952005063)
@@ -628,7 +642,9 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 861642395
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_figrin_dan, 861642395)
@@ -702,7 +718,9 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 119383383
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_fixer, 119383383)
@@ -776,7 +794,9 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4094763986
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_hedon_istee, 4094763986)
@@ -850,7 +870,9 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1541010497
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_ikka_gesul, 1541010497)
@@ -924,7 +946,9 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3479474175
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_jilljoo_jab, 3479474175)
@@ -998,7 +1022,9 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 28682516
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kaeline_ungasan, 28682516)
@@ -1072,7 +1098,9 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1703616350
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kitster_banai, 1703616350)
@@ -1146,7 +1174,9 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1211559365
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_kormund_thrylle, 1211559365)
@@ -1220,7 +1250,9 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 253776339
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lilas_dinhint, 253776339)
@@ -1294,7 +1326,9 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1553404717
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_lt_harburik, 1553404717)
@@ -1368,7 +1402,9 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1901596031
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mat_rags, 1901596031)
@@ -1442,7 +1478,9 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4049550118
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_melios_purl, 4049550118)
@@ -1516,7 +1554,9 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2971142656
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_mikos_denari, 2971142656)
@@ -1590,7 +1630,9 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3562269968
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_nitra_vendallan, 3562269968)
@@ -1664,7 +1706,9 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 197060903
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_om_aynat, 197060903)
@@ -1738,7 +1782,9 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3055869175
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_pfilbee_jhorn, 3055869175)
@@ -1812,7 +1858,9 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1801428554
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_phinea_shantee, 1801428554)
@@ -1886,7 +1934,9 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2174990588
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_rakir_banai, 2174990588)
@@ -1960,7 +2010,9 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3876719112
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_senni_tonnika, 3876719112)
@@ -2034,7 +2086,9 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 153136187
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tekil_barje, 153136187)
@@ -2108,7 +2162,9 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 651899937
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_tour_aryon, 651899937)
@@ -2182,7 +2238,9 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2121259164
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_vardias_tyne, 2121259164)
@@ -2256,7 +2314,9 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4249752702
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_wilhalm_skrim, 4249752702)
@@ -2330,7 +2390,9 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1129472596
 }
 
 ObjectTemplates:addTemplate(object_mobile_tatooine_npc_shared_windom_starkiller, 1129472596)

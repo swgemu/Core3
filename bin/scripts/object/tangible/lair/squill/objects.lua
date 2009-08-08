@@ -86,7 +86,9 @@ object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1781856165
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_squill_shared_lair_squill, 1781856165)
@@ -136,7 +138,9 @@ object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2102372943
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_squill_shared_lair_squill_desert, 2102372943)

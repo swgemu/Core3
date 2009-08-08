@@ -75,7 +75,9 @@ object_draft_schematic_chemistry_component_shared_biologic_effect_controller = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2661748357
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_biologic_effect_controller, 2661748357)
@@ -114,7 +116,9 @@ object_draft_schematic_chemistry_component_shared_biologic_effect_controller_adv
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 800746464
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_biologic_effect_controller_advanced, 800746464)
@@ -153,7 +157,9 @@ object_draft_schematic_chemistry_component_shared_dispersal_mechanism = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 478830585
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dispersal_mechanism, 478830585)
@@ -192,7 +198,9 @@ object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 830646641
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dispersal_mechanism_advanced, 830646641)
@@ -231,7 +239,9 @@ object_draft_schematic_chemistry_component_shared_dye_clothing = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1655499039
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dye_clothing, 1655499039)
@@ -270,7 +280,9 @@ object_draft_schematic_chemistry_component_shared_dye_hair = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3869282426
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_dye_hair, 3869282426)
@@ -309,7 +321,9 @@ object_draft_schematic_chemistry_component_shared_infection_amplifier = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3761672459
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_infection_amplifier, 3761672459)
@@ -348,7 +362,9 @@ object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 878631490
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_infection_amplifier_advanced, 878631490)
@@ -387,7 +403,9 @@ object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2319984747
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension, 2319984747)
@@ -426,7 +444,9 @@ object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_adv
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3383554373
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_liquid_delivery_suspension_advanced, 3383554373)
@@ -465,7 +485,9 @@ object_draft_schematic_chemistry_component_shared_release_mechanism_duration = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 756180985
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_release_mechanism_duration, 756180985)
@@ -504,7 +526,9 @@ object_draft_schematic_chemistry_component_shared_release_mechanism_duration_adv
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3061218995
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_release_mechanism_duration_advanced, 3061218995)
@@ -543,7 +567,9 @@ object_draft_schematic_chemistry_component_shared_resilience_compound = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4214515751
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_resilience_compound, 4214515751)
@@ -582,7 +608,9 @@ object_draft_schematic_chemistry_component_shared_resilience_compound_advanced =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1897418306
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_resilience_compound_advanced, 1897418306)
@@ -621,7 +649,9 @@ object_draft_schematic_chemistry_component_shared_solid_delivery_shell = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3674074652
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_solid_delivery_shell, 3674074652)
@@ -660,7 +690,9 @@ object_draft_schematic_chemistry_component_shared_solid_delivery_shell_advanced 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1535549193
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_shared_solid_delivery_shell_advanced, 1535549193)

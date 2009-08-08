@@ -75,7 +75,9 @@ object_construction_contract_shared_construction_contract = SharedConstructionCo
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3027882478
 }
 
 ObjectTemplates:addTemplate(object_construction_contract_shared_construction_contract, 3027882478)

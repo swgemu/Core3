@@ -75,7 +75,9 @@ object_draft_schematic_structure_component_shared_structural_module = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3736246245
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structural_module, 3736246245)
@@ -114,7 +116,9 @@ object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pum
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 188700507
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pumping_unit, 188700507)
@@ -153,7 +157,9 @@ object_draft_schematic_structure_component_shared_structure_generator_turbine = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 890068144
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_generator_turbine, 890068144)
@@ -192,7 +198,9 @@ object_draft_schematic_structure_component_shared_structure_harvesting_mechanism
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1426968673
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_harvesting_mechanism, 1426968673)
@@ -231,7 +239,9 @@ object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2142863561
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mechanism, 2142863561)
@@ -270,7 +280,9 @@ object_draft_schematic_structure_component_shared_structure_light_ore_mining_uni
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3263967120
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit, 3263967120)
@@ -309,7 +321,9 @@ object_draft_schematic_structure_component_shared_structure_light_power_core_uni
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2040269434
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_light_power_core_unit, 2040269434)
@@ -348,7 +362,9 @@ object_draft_schematic_structure_component_shared_structure_manufacturing_mechan
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1592150343
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_manufacturing_mechanism, 1592150343)
@@ -387,7 +403,9 @@ object_draft_schematic_structure_component_shared_structure_ore_mining_unit = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2037730009
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_ore_mining_unit, 2037730009)
@@ -426,7 +444,9 @@ object_draft_schematic_structure_component_shared_structure_power_core_unit = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3261427507
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_power_core_unit, 3261427507)
@@ -465,7 +485,9 @@ object_draft_schematic_structure_component_shared_structure_small_storage_sectio
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3364203190
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_small_storage_section, 3364203190)
@@ -504,7 +526,9 @@ object_draft_schematic_structure_component_shared_structure_storage_section = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1345350988
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_storage_section, 1345350988)
@@ -543,7 +567,9 @@ object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilli
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 661556822
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit, 661556822)
@@ -582,7 +608,9 @@ object_draft_schematic_structure_component_shared_wall_module = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 686217066
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_wall_module, 686217066)
@@ -621,7 +649,9 @@ object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilizati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2433532742
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilization_unit, 2433532742)

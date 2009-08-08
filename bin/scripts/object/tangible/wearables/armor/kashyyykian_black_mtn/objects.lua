@@ -86,7 +86,9 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2400154328
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l, 2400154328)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4292491083
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r, 4292491083)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2677805339
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate, 2677805339)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2863047
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings, 2863047)

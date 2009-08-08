@@ -86,7 +86,9 @@ object_tangible_lair_bol_shared_lair_bol = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 690467171
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bol_shared_lair_bol, 690467171)
@@ -136,7 +138,9 @@ object_tangible_lair_bol_shared_lair_bol_grassland = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 494138850
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bol_shared_lair_bol_grassland, 494138850)

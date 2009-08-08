@@ -86,7 +86,9 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1813029717
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_shared_fishing_pole, 1813029717)
@@ -136,7 +138,9 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1763394438
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_shared_marker, 1763394438)
@@ -175,7 +179,9 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1084993175
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_shared_splash, 1084993175)

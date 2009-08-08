@@ -86,7 +86,9 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2281325742
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, 2281325742)
@@ -136,7 +138,9 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1340697568
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, 1340697568)
@@ -186,7 +190,9 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3148607218
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, 3148607218)

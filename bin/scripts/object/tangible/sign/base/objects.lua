@@ -86,7 +86,9 @@ object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 675816768
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_base_shared_base_sign, 675816768)

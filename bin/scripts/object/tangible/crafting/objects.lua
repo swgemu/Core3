@@ -86,7 +86,9 @@ object_tangible_crafting_shared_crafting_components_container = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4203992702
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_shared_crafting_components_container, 4203992702)
@@ -136,7 +138,9 @@ object_tangible_crafting_shared_default_draft_not_found = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 13064699
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_shared_default_draft_not_found, 13064699)
@@ -186,7 +190,9 @@ object_tangible_crafting_shared_missing_schematic_substitute = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1186484366
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_shared_missing_schematic_substitute, 1186484366)

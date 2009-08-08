@@ -75,7 +75,9 @@ object_draft_schematic_scout_shared_item_camokit_corellia = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1271566961
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_corellia, 1271566961)
@@ -114,7 +116,9 @@ object_draft_schematic_scout_shared_item_camokit_dantooine = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1726167672
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dantooine, 1726167672)
@@ -153,7 +157,9 @@ object_draft_schematic_scout_shared_item_camokit_dathomir = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3742569809
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_dathomir, 3742569809)
@@ -192,7 +198,9 @@ object_draft_schematic_scout_shared_item_camokit_endor = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1218082990
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_endor, 1218082990)
@@ -231,7 +239,9 @@ object_draft_schematic_scout_shared_item_camokit_lok = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 594480745
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_lok, 594480745)
@@ -270,7 +280,9 @@ object_draft_schematic_scout_shared_item_camokit_naboo = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2327891628
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_naboo, 2327891628)
@@ -309,7 +321,9 @@ object_draft_schematic_scout_shared_item_camokit_rori = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 380917503
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_rori, 380917503)
@@ -348,7 +362,9 @@ object_draft_schematic_scout_shared_item_camokit_talus = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2475866246
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_talus, 2475866246)
@@ -387,7 +403,9 @@ object_draft_schematic_scout_shared_item_camokit_tatooine = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2005529582
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_tatooine, 2005529582)
@@ -426,7 +444,9 @@ object_draft_schematic_scout_shared_item_camokit_yavin = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2300033935
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camokit_yavin, 2300033935)
@@ -465,7 +485,9 @@ object_draft_schematic_scout_shared_item_camp_basic = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2508179971
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_basic, 2508179971)
@@ -504,7 +526,9 @@ object_draft_schematic_scout_shared_item_camp_elite = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 102187210
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_elite, 102187210)
@@ -543,7 +567,9 @@ object_draft_schematic_scout_shared_item_camp_improved = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3426650174
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_improved, 3426650174)
@@ -582,7 +608,9 @@ object_draft_schematic_scout_shared_item_camp_luxury = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 253213515
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_luxury, 253213515)
@@ -621,7 +649,9 @@ object_draft_schematic_scout_shared_item_camp_multi = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3178673319
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_multi, 3178673319)
@@ -660,7 +690,9 @@ object_draft_schematic_scout_shared_item_camp_quality = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1609906001
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_camp_quality, 1609906001)
@@ -699,7 +731,9 @@ object_draft_schematic_scout_shared_item_trap_drowsy_dart = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1724840642
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_drowsy_dart, 1724840642)
@@ -738,7 +772,9 @@ object_draft_schematic_scout_shared_item_trap_enraging_spur = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 253853379
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_enraging_spur, 253853379)
@@ -777,7 +813,9 @@ object_draft_schematic_scout_shared_item_trap_flash_bomb = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1322113998
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_flash_bomb, 1322113998)
@@ -816,7 +854,9 @@ object_draft_schematic_scout_shared_item_trap_melee_def_1 = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4212347810
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_def_1, 4212347810)
@@ -855,7 +895,9 @@ object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2226010853
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_melee_ranged_def_1, 2226010853)
@@ -894,7 +936,9 @@ object_draft_schematic_scout_shared_item_trap_noise_maker = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4127661828
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_noise_maker, 4127661828)
@@ -933,7 +977,9 @@ object_draft_schematic_scout_shared_item_trap_ranged_def_1 = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3312435007
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_ranged_def_1, 3312435007)
@@ -972,7 +1018,9 @@ object_draft_schematic_scout_shared_item_trap_sonic_pulse = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2585913329
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_sonic_pulse, 2585913329)
@@ -1011,7 +1059,9 @@ object_draft_schematic_scout_shared_item_trap_state_def_1 = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1618982847
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_state_def_1, 1618982847)
@@ -1050,7 +1100,9 @@ object_draft_schematic_scout_shared_item_trap_tranq_dart = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4155383645
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_tranq_dart, 4155383645)
@@ -1089,7 +1141,9 @@ object_draft_schematic_scout_shared_item_trap_webber = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2895113899
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_scout_shared_item_trap_webber, 2895113899)

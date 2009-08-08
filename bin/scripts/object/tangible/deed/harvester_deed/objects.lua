@@ -86,7 +86,9 @@ object_tangible_deed_harvester_deed_shared_harvester_creature_deed = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3801540743
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_creature_deed, 3801540743)
@@ -136,7 +138,9 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2840949012
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed, 2840949012)
@@ -186,7 +190,9 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4005897011
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy, 4005897011)
@@ -236,7 +242,9 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1378608973
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium, 1378608973)
@@ -286,7 +294,9 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2231503385
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed, 2231503385)
@@ -336,7 +346,9 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 277903692
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy, 277903692)
@@ -386,7 +398,9 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2991048014
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium, 2991048014)
@@ -436,7 +450,9 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3335458434
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed, 3335458434)
@@ -486,7 +502,9 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1336331736
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy, 1336331736)
@@ -536,7 +554,9 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3291170804
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium, 3291170804)
@@ -586,7 +606,9 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1578846375
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed, 1578846375)
@@ -636,7 +658,9 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 21472355
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy, 21472355)
@@ -686,7 +710,9 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 759835785
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium, 759835785)
@@ -736,7 +762,9 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3224287923
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed, 3224287923)
@@ -786,7 +814,9 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2126009375
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed, 2126009375)
@@ -836,7 +866,9 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4224231681
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed, 4224231681)

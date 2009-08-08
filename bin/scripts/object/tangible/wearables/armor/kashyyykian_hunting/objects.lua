@@ -86,7 +86,9 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2126287876
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_l, 2126287876)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 241815959
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_r, 241815959)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3776759545
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_chest_plate, 3776759545)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4053289243
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_leggings, 4053289243)

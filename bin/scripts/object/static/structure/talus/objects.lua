@@ -74,7 +74,9 @@ object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 181836729
 }
 
 ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_bannerpole_s01, 181836729)
@@ -112,7 +114,9 @@ object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 929058155
 }
 
 ObjectTemplates:addTemplate(object_static_structure_talus_shared_talus_imprv_flagpole_s01, 929058155)

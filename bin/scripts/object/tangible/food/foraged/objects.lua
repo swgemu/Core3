@@ -86,7 +86,9 @@ object_tangible_food_foraged_shared_edible_jar_berries = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1405655823
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_berries, 1405655823)
@@ -136,7 +138,9 @@ object_tangible_food_foraged_shared_edible_jar_bugs = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2220813342
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_bugs, 2220813342)
@@ -186,7 +190,9 @@ object_tangible_food_foraged_shared_edible_jar_fungus = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 404667969
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_fungus, 404667969)
@@ -236,7 +242,9 @@ object_tangible_food_foraged_shared_edible_jar_funk = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3997953331
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_funk, 3997953331)
@@ -286,7 +294,9 @@ object_tangible_food_foraged_shared_edible_jar_livers = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4279994826
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_edible_jar_livers, 4279994826)
@@ -336,7 +346,9 @@ object_tangible_food_foraged_shared_foraged_fruit_s1 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1125771498
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s1, 1125771498)
@@ -386,7 +398,9 @@ object_tangible_food_foraged_shared_foraged_fruit_s2 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2551070845
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s2, 2551070845)
@@ -436,7 +450,9 @@ object_tangible_food_foraged_shared_foraged_fruit_s3 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3506644976
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s3, 3506644976)
@@ -486,7 +502,9 @@ object_tangible_food_foraged_shared_foraged_fruit_s4 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 719326436
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s4, 719326436)
@@ -536,7 +554,9 @@ object_tangible_food_foraged_shared_foraged_fruit_s5 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1676503913
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_fruit_s5, 1676503913)
@@ -586,7 +606,9 @@ object_tangible_food_foraged_shared_foraged_vegetable_s2 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2375994584
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s2, 2375994584)
@@ -636,7 +658,9 @@ object_tangible_food_foraged_shared_foraged_vegetable_s3 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3298011989
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s3, 3298011989)
@@ -686,7 +710,9 @@ object_tangible_food_foraged_shared_foraged_vegetable_s4 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1064337473
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s4, 1064337473)
@@ -736,7 +762,9 @@ object_tangible_food_foraged_shared_foraged_vegetable_s5 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1987962828
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s5, 1987962828)

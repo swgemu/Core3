@@ -86,7 +86,9 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2895321218
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism, 2895321218)
@@ -136,7 +138,9 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1173220327
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage, 1173220327)
@@ -186,7 +190,9 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1842983256
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor, 1842983256)
@@ -236,7 +242,9 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2725337290
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect, 2725337290)
@@ -286,7 +294,9 @@ object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 577481974
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull, 577481974)

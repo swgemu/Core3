@@ -86,7 +86,9 @@ object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3243898728
 }
 
 ObjectTemplates:addTemplate(object_tangible_transport_base_shared_transport_base, 3243898728)

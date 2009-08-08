@@ -86,7 +86,9 @@ object_tangible_wearables_pants_shared_nightsister_pants_s01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2233956453
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_nightsister_pants_s01, 2233956453)
@@ -136,7 +138,9 @@ object_tangible_wearables_pants_shared_nightsister_pants_s02 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1580257522
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_nightsister_pants_s02, 1580257522)
@@ -186,7 +190,9 @@ object_tangible_wearables_pants_shared_pants_s01 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 729715050
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s01, 729715050)
@@ -236,7 +242,9 @@ object_tangible_wearables_pants_shared_pants_s02 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4033427965
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s02, 4033427965)
@@ -286,7 +294,9 @@ object_tangible_wearables_pants_shared_pants_s04 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1116173668
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s04, 1116173668)
@@ -336,7 +346,9 @@ object_tangible_wearables_pants_shared_pants_s05 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 193598185
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s05, 193598185)
@@ -386,7 +398,9 @@ object_tangible_wearables_pants_shared_pants_s06 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3499997822
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s06, 3499997822)
@@ -436,7 +450,9 @@ object_tangible_wearables_pants_shared_pants_s07 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2576408051
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s07, 2576408051)
@@ -486,7 +502,9 @@ object_tangible_wearables_pants_shared_pants_s08 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 597357025
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s08, 597357025)
@@ -536,7 +554,9 @@ object_tangible_wearables_pants_shared_pants_s09 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1788319340
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s09, 1788319340)
@@ -586,7 +606,9 @@ object_tangible_wearables_pants_shared_pants_s10 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2036071327
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s10, 2036071327)
@@ -636,7 +658,9 @@ object_tangible_wearables_pants_shared_pants_s11 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 810982418
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s11, 810982418)
@@ -686,7 +710,9 @@ object_tangible_wearables_pants_shared_pants_s12 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3946919045
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s12, 3946919045)
@@ -736,7 +762,9 @@ object_tangible_wearables_pants_shared_pants_s13 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2722910984
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s13, 2722910984)
@@ -786,7 +814,9 @@ object_tangible_wearables_pants_shared_pants_s14 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1504671772
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s14, 1504671772)
@@ -836,7 +866,9 @@ object_tangible_wearables_pants_shared_pants_s15 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 279060369
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s15, 279060369)
@@ -886,7 +918,9 @@ object_tangible_wearables_pants_shared_pants_s17 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2193150091
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s17, 2193150091)
@@ -936,7 +970,9 @@ object_tangible_wearables_pants_shared_pants_s18 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 951254169
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s18, 951254169)
@@ -986,7 +1022,9 @@ object_tangible_wearables_pants_shared_pants_s21 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 489589658
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s21, 489589658)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_pants_shared_pants_s22 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3325633293
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s22, 3325633293)
@@ -1086,7 +1126,9 @@ object_tangible_wearables_pants_shared_pants_s24 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1960275860
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s24, 1960275860)
@@ -1136,7 +1178,9 @@ object_tangible_wearables_pants_shared_pants_s25 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1037699097
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s25, 1037699097)
@@ -1186,7 +1230,9 @@ object_tangible_wearables_pants_shared_pants_s26 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3872235662
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s26, 3872235662)
@@ -1236,7 +1282,9 @@ object_tangible_wearables_pants_shared_pants_s27 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2948646659
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s27, 2948646659)
@@ -1286,7 +1334,9 @@ object_tangible_wearables_pants_shared_pants_s28 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 365619985
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s28, 365619985)
@@ -1336,7 +1386,9 @@ object_tangible_wearables_pants_shared_pants_s29 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1556581532
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s29, 1556581532)
@@ -1386,7 +1438,9 @@ object_tangible_wearables_pants_shared_pants_s30 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1326178671
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s30, 1326178671)
@@ -1436,7 +1490,9 @@ object_tangible_wearables_pants_shared_pants_s31 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 101091042
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s31, 101091042)
@@ -1486,7 +1542,9 @@ object_tangible_wearables_pants_shared_pants_s32 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3708890741
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s32, 3708890741)
@@ -1536,7 +1594,9 @@ object_tangible_wearables_pants_shared_pants_s33 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2484881912
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_pants_shared_pants_s33, 2484881912)

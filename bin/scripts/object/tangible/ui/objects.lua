@@ -86,7 +86,9 @@ object_tangible_ui_shared_ui_char_cust_pedestal = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 580259338
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, 580259338)
@@ -136,7 +138,9 @@ object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 565167488
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_corellia, 565167488)
@@ -186,7 +190,9 @@ object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3225920634
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_imperial, 3225920634)
@@ -236,7 +242,9 @@ object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3585856086
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_naboo, 3585856086)
@@ -286,7 +294,9 @@ object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4127966392
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_privateer, 4127966392)
@@ -336,7 +346,9 @@ object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3636261575
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rebel, 3636261575)
@@ -386,7 +398,9 @@ object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2331720771
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_rori, 2331720771)
@@ -436,7 +450,9 @@ object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3437864060
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_talus, 3437864060)
@@ -486,7 +502,9 @@ object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 502047775
 }
 
 ObjectTemplates:addTemplate(object_tangible_ui_shared_ui_planet_tatooine, 502047775)

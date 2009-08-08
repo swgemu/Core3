@@ -86,7 +86,9 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4005496660
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite, 4005496660)
@@ -136,7 +138,9 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3941953467
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite_2, 3941953467)
@@ -186,7 +190,9 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4043998830
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s1, 4043998830)
@@ -236,7 +242,9 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 706555641
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s2, 706555641)
@@ -286,7 +294,9 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1662011764
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s3, 1662011764)
@@ -336,7 +346,9 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 183086458
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s6, 183086458)
@@ -386,7 +398,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 587137384
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite, 587137384)
@@ -436,7 +450,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 172501282
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2, 172501282)
@@ -486,7 +502,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2092831252
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1, 2092831252)
@@ -536,7 +554,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2812918403
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2, 2812918403)
@@ -586,7 +606,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4003781902
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3, 4003781902)
@@ -636,7 +658,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 357037594
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4, 357037594)
@@ -686,7 +710,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1548390807
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5, 1548390807)
@@ -736,7 +762,9 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 491149550
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1, 491149550)
@@ -786,7 +814,9 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3651549547
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1, 3651549547)
@@ -836,7 +866,9 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 45191676
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2, 45191676)
@@ -886,7 +918,9 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2812483779
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2, 2812483779)
@@ -936,7 +970,9 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_e
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 673595337
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_elite, 673595337)
@@ -986,7 +1022,9 @@ object_tangible_ship_components_shield_generator_shared_shd_generic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 904269427
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_generic, 904269427)
@@ -1036,7 +1074,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 92167148
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark2, 92167148)
@@ -1086,7 +1126,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark5 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4271730936
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark5, 4271730936)
@@ -1136,7 +1178,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark9 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2676028541
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_mark9, 2676028541)
@@ -1186,7 +1230,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_adva
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3501222654
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_advanced, 3501222654)
@@ -1236,7 +1282,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 328452728
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4, 328452728)
@@ -1286,7 +1334,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3364119279
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7, 3364119279)
@@ -1336,7 +1386,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2507824966
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1, 2507824966)
@@ -1386,7 +1438,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1807948417
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12, 1807948417)
@@ -1436,7 +1490,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1315829713
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2, 1315829713)
@@ -1486,7 +1542,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3046038725
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5, 3046038725)
@@ -1536,7 +1594,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 664015839
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7, 664015839)
@@ -1586,7 +1646,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3566426176
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9, 3566426176)
@@ -1636,7 +1698,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2737456566
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1, 2737456566)
@@ -1686,7 +1750,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2212415029
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5, 2212415029)
@@ -1736,7 +1802,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 298060079
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7, 298060079)
@@ -1786,7 +1854,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2855050390
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1, 2855050390)
@@ -1836,7 +1906,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1899705345
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2, 1899705345)
@@ -1886,7 +1958,9 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_eli
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 754371356
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_elite, 754371356)
@@ -1936,7 +2010,9 @@ object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1716616411
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton, 1716616411)
@@ -1986,7 +2062,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygn
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 980498708
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygnus_experimental_system, 980498708)
@@ -2036,7 +2114,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3075481852
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_secret_ops, 3075481852)
@@ -2086,7 +2166,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 485167241
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_megapolyweb, 485167241)
@@ -2136,7 +2218,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_r
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3631366873
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_rayshield_overdriver, 3631366873)
@@ -2186,7 +2270,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2671377903
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuub_ion_mesh_projection, 2671377903)
@@ -2236,7 +2322,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3294081937
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown_proton_interweave_system, 3294081937)
@@ -2286,7 +2374,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_a
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3659868328
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_advanced, 3659868328)
@@ -2336,7 +2426,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_e
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4054911210
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_elite, 4054911210)
@@ -2386,7 +2478,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3189603642
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m1, 3189603642)
@@ -2436,7 +2530,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1695208877
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m2, 1695208877)
@@ -2486,7 +2582,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 738701856
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m3, 738701856)
@@ -2536,7 +2634,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1174296110
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m6, 1174296110)
@@ -2586,7 +2686,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3069779377
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m8, 3069779377)
@@ -2636,7 +2738,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_de
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2795036189
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_deflector_m1, 2795036189)
@@ -2686,7 +2790,9 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_de
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2846210589
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_deflector_advanced, 2846210589)
@@ -2736,7 +2842,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_elite = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1176481939
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_elite, 1176481939)
@@ -2786,7 +2894,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_militar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3332739328
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_military_mk1, 3332739328)
@@ -2836,7 +2946,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3352793075
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1, 3352793075)
@@ -2886,7 +2998,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 482355044
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2, 482355044)
@@ -2936,7 +3050,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk3 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4019567364
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk3, 4019567364)
@@ -2986,7 +3102,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk4 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 343314448
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk4, 343314448)
@@ -3036,7 +3154,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk5 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1568405405
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk5, 1568405405)
@@ -3086,7 +3206,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk6 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2255249162
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk6, 2255249162)
@@ -3136,7 +3258,9 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk7 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3479255175
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_kse_mk7, 3479255175)
@@ -3186,7 +3310,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 442744867
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protector_mk1, 442744867)
@@ -3236,7 +3362,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2330337362
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks25, 2330337362)
@@ -3286,7 +3414,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2144035461
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks5, 2144035461)
@@ -3336,7 +3466,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3989941663
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks7, 3989941663)
@@ -3386,7 +3518,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2869402958
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx1, 2869402958)
@@ -3436,7 +3570,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4072962412
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1, 4072962412)
@@ -3486,7 +3622,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2105182786
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks1, 2105182786)
@@ -3536,7 +3674,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1531190620
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks18, 1531190620)
@@ -3586,7 +3726,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4016063832
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks3, 4016063832)
@@ -3636,7 +3778,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2343498615
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_cygnus_holoscreen, 2343498615)
@@ -3686,7 +3830,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3141363443
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_rendili_dual_projector, 3141363443)
@@ -3736,7 +3882,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 868794909
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_armek_plasma_web, 868794909)
@@ -3786,7 +3934,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 489325202
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23, 489325202)
@@ -3836,7 +3986,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2160478208
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_incom_k77, 2160478208)
@@ -3886,7 +4038,9 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1836682734
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_taim_military_grade, 1836682734)
@@ -3936,7 +4090,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2199200859
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal, 2199200859)
@@ -3986,7 +4142,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1224559248
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_a, 1224559248)
@@ -4036,7 +4194,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2481644039
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_b, 2481644039)
@@ -4086,7 +4246,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 523179685
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a, 523179685)
@@ -4136,7 +4298,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4163014250
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanced, 4163014250)
@@ -4186,7 +4350,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1024099405
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite, 1024099405)
@@ -4236,7 +4402,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1650981306
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_2, 1650981306)
@@ -4286,7 +4454,9 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2894219316
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy, 2894219316)
@@ -4336,7 +4506,9 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx1
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3258399997
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx12, 3258399997)
@@ -4386,7 +4558,9 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx2
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2260127611
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx27, 2260127611)
@@ -4436,7 +4610,9 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx9
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 460805949
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx92, 460805949)
@@ -4486,7 +4662,9 @@ object_tangible_ship_components_shield_generator_shared_shd_prototype_shield = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 31928618
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_prototype_shield, 31928618)
@@ -4536,7 +4714,9 @@ object_tangible_ship_components_shield_generator_shared_shd_rendili = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1045720054
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_rendili, 1045720054)
@@ -4586,7 +4766,9 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3327697307
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite, 3327697307)
@@ -4636,7 +4818,9 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2029440203
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite, 2029440203)
@@ -4686,7 +4870,9 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elit
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1626448404
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elite, 1626448404)
@@ -4736,7 +4922,9 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3113022153
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite, 3113022153)
@@ -4786,7 +4974,9 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1936705340
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite, 1936705340)
@@ -4836,7 +5026,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2243790343
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_a1, 2243790343)
@@ -4886,7 +5078,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1330497147
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3, 1330497147)
@@ -4936,7 +5130,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1874413048
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7, 1874413048)
@@ -4986,7 +5182,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2098040456
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite, 2098040456)
@@ -5036,7 +5234,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 951174675
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p1, 951174675)
@@ -5086,7 +5286,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3276991751
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p6, 3276991751)
@@ -5136,7 +5338,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_eli
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3776811256
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_elite, 3776811256)
@@ -5186,7 +5390,9 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_sta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2608074768
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_standard, 2608074768)
@@ -5236,7 +5442,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 204265573
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced, 204265573)
@@ -5286,7 +5494,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_e
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4763553
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_elite, 4763553)
@@ -5336,7 +5546,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2062565953
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_standard, 2062565953)
@@ -5386,7 +5598,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3360322809
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy, 3360322809)
@@ -5436,7 +5650,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3818296715
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special_forces, 3818296715)
@@ -5486,7 +5702,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4149159567
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standard, 4149159567)
@@ -5536,7 +5754,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3598481390
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced, 3598481390)
@@ -5586,7 +5806,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1316308873
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_heavy, 1316308873)
@@ -5636,7 +5858,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1435911104
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_special_forces, 1435911104)
@@ -5686,7 +5910,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2004538016
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb_advanced, 2004538016)
@@ -5736,7 +5962,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 610167392
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4, 610167392)
@@ -5786,7 +6014,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3057952122
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6, 3057952122)
@@ -5836,7 +6066,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3475858867
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced, 3475858867)
@@ -5886,7 +6118,9 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1384192338
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite, 1384192338)
@@ -5936,7 +6170,9 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_advanced = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 549069337
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_advanced, 549069337)
@@ -5986,7 +6222,9 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_elite = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3533183005
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_elite, 3533183005)
@@ -6036,7 +6274,9 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 412063730
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanced, 412063730)
@@ -6086,7 +6326,9 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_heavy = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1125176420
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_heavy, 1125176420)
@@ -6136,7 +6378,9 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_standard = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3639474
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_taim_standard, 3639474)
@@ -6186,7 +6430,9 @@ object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 605684779
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic, 605684779)
@@ -6236,7 +6482,9 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 94312606
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1, 94312606)
@@ -6286,7 +6534,9 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3733499913
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2, 3733499913)
@@ -6336,7 +6586,9 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_proje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2554696462
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_projector, 2554696462)
@@ -6386,7 +6638,9 @@ object_tangible_ship_components_shield_generator_shared_shd_z95_basic = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1663130441
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shd_z95_basic, 1663130441)
@@ -6436,7 +6690,9 @@ object_tangible_ship_components_shield_generator_shared_shield_generator_test = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2405620850
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_shield_generator_shared_shield_generator_test, 2405620850)

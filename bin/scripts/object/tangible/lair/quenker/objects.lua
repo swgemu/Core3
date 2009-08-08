@@ -86,7 +86,9 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1829714494
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker, 1829714494)
@@ -136,7 +138,9 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 571906509
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, 571906509)

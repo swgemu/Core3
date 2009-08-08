@@ -86,7 +86,9 @@ object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4059441362
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s01, 4059441362)
@@ -136,7 +138,9 @@ object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1676470216
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03, 1676470216)
@@ -186,7 +190,9 @@ object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1103784358
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s03_quest, 1103784358)
@@ -236,7 +242,9 @@ object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2551172316
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s04, 2551172316)
@@ -286,7 +294,9 @@ object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3506613073
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s05, 3506613073)
@@ -336,7 +346,9 @@ object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 169149382
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06, 169149382)
@@ -386,7 +398,9 @@ object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1402459945
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_backpack_s06_quest, 1402459945)
@@ -436,7 +450,9 @@ object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1811378952
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack, 1811378952)

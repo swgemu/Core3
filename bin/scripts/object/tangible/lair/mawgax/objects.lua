@@ -86,7 +86,9 @@ object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3179863902
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax, 3179863902)
@@ -136,7 +138,9 @@ object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 767243941
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_grassland, 767243941)
@@ -186,7 +190,9 @@ object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 813716742
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_mountain, 813716742)

@@ -86,7 +86,9 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3536993046
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, 3536993046)
@@ -136,7 +138,9 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4213428417
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, 4213428417)
@@ -186,7 +190,9 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 151987616
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, 151987616)
@@ -236,7 +242,9 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1944425271
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, 1944425271)

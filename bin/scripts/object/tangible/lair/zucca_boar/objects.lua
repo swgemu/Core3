@@ -86,7 +86,9 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3052352906
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, 3052352906)
@@ -136,7 +138,9 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 415973727
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, 415973727)
@@ -186,7 +190,9 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3550514923
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, 3550514923)
@@ -236,7 +242,9 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 102331287
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, 102331287)

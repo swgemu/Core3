@@ -86,7 +86,9 @@ object_tangible_component_food_shared_container_barrel = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 208291925
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_barrel, 208291925)
@@ -136,7 +138,9 @@ object_tangible_component_food_shared_container_cask = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 225597999
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_cask, 225597999)
@@ -186,7 +190,9 @@ object_tangible_component_food_shared_container_large_glass = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1157356093
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_large_glass, 1157356093)
@@ -236,7 +242,9 @@ object_tangible_component_food_shared_container_small_glass = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4135258442
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_shared_container_small_glass, 4135258442)
@@ -286,7 +294,9 @@ object_tangible_component_food_shared_ingredient_ball_of_dough = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4273682590
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_shared_ingredient_ball_of_dough, 4273682590)
@@ -336,7 +346,9 @@ object_tangible_component_food_shared_ingredient_carbosyrup = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3067661591
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_shared_ingredient_carbosyrup, 3067661591)

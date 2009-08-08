@@ -86,7 +86,9 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2069937842
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1, 2069937842)
@@ -136,7 +138,9 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2692159013
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2, 2692159013)

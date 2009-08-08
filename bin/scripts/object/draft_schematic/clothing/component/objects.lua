@@ -75,7 +75,9 @@ object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 217803170
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, 217803170)
@@ -114,7 +116,9 @@ object_draft_schematic_clothing_component_shared_clothing_component = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2902252643
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component, 2902252643)
@@ -153,7 +157,9 @@ object_draft_schematic_clothing_component_shared_clothing_component_base = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3235529113
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, 3235529113)
@@ -192,7 +198,9 @@ object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 656345238
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, 656345238)
@@ -231,7 +239,9 @@ object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3119926044
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, 3119926044)
@@ -270,7 +280,9 @@ object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 196841582
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, 196841582)
@@ -309,7 +321,9 @@ object_draft_schematic_clothing_component_shared_clothing_padding_segment = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1984198906
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, 1984198906)
@@ -348,7 +362,9 @@ object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panel
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 394655839
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, 394655839)
@@ -387,7 +403,9 @@ object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 794389103
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, 794389103)
@@ -426,7 +444,9 @@ object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 329274185
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, 329274185)
@@ -465,7 +485,9 @@ object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3996452682
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, 3996452682)

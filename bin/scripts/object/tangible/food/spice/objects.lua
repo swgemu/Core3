@@ -86,7 +86,9 @@ object_tangible_food_spice_shared_spice_base = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2073269551
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_base, 2073269551)
@@ -136,7 +138,9 @@ object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2516008025
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_booster_blue, 2516008025)
@@ -186,7 +190,9 @@ object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 96283804
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_crash_n_burn, 96283804)
@@ -236,7 +242,9 @@ object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1700944368
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_droid_lube, 1700944368)
@@ -286,7 +294,9 @@ object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1878192398
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_giggledust, 1878192398)
@@ -336,7 +346,9 @@ object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4012257661
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_grey_gabaki, 4012257661)
@@ -386,7 +398,9 @@ object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3162646760
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_gunjack, 3162646760)
@@ -436,7 +450,9 @@ object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2365942016
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_kliknik_boost, 2365942016)
@@ -486,7 +502,9 @@ object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3381348892
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_kwi_boost, 3381348892)
@@ -536,7 +554,9 @@ object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3112742541
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_muon_gold, 3112742541)
@@ -586,7 +606,9 @@ object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3750021953
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_neutron_pixey, 3750021953)
@@ -636,7 +658,9 @@ object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1073230239
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_pyrepenol, 1073230239)
@@ -686,7 +710,9 @@ object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3992242678
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_scramjet, 3992242678)
@@ -736,7 +762,9 @@ object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4072023421
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_sedative_h4b, 4072023421)
@@ -786,7 +814,9 @@ object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2778111395
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_shadowpaw, 2778111395)
@@ -836,7 +866,9 @@ object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1182200956
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_sweetblossom, 1182200956)
@@ -886,7 +918,9 @@ object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 732545867
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_thruster_head, 732545867)
@@ -936,7 +970,9 @@ object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 194250139
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_shared_spice_yarrock, 194250139)

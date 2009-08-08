@@ -86,7 +86,9 @@ object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 923373873
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_aakuan_ring, 923373873)
@@ -136,7 +138,9 @@ object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4136025825
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_base, 4136025825)
@@ -186,7 +190,9 @@ object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3368096094
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_mark_hero, 3368096094)
@@ -236,7 +242,9 @@ object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 186168033
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_nightsister, 186168033)
@@ -286,7 +294,9 @@ object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1300460406
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s01, 1300460406)
@@ -336,7 +346,9 @@ object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2526338017
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s02, 2526338017)
@@ -386,7 +398,9 @@ object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3751394412
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s03, 3751394412)
@@ -436,7 +450,9 @@ object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 266162342
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s03_quest, 266162342)
@@ -486,7 +502,9 @@ object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 612013944
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_shared_ring_s04, 612013944)

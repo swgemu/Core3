@@ -75,7 +75,9 @@ object_draft_schematic_vehicle_civilian_shared_civilian_a = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3547848737
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_a, 3547848737)
@@ -114,7 +116,9 @@ object_draft_schematic_vehicle_civilian_shared_civilian_aa = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 376694145
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_aa, 376694145)
@@ -153,7 +157,9 @@ object_draft_schematic_vehicle_civilian_shared_civilian_b = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 140527798
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_b, 140527798)
@@ -192,7 +198,9 @@ object_draft_schematic_vehicle_civilian_shared_civilian_c = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1097674555
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_c, 1097674555)
@@ -231,7 +239,9 @@ object_draft_schematic_vehicle_civilian_shared_civilian_d = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3129869359
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_d, 3129869359)
@@ -270,7 +280,9 @@ object_draft_schematic_vehicle_civilian_shared_civilian_e = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4085474210
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_civilian_e, 4085474210)
@@ -309,7 +321,9 @@ object_draft_schematic_vehicle_civilian_shared_jetpack = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3255217674
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_jetpack, 3255217674)
@@ -348,7 +362,9 @@ object_draft_schematic_vehicle_civilian_shared_landspeeder_av21 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2632559466
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_landspeeder_av21, 2632559466)
@@ -387,7 +403,9 @@ object_draft_schematic_vehicle_civilian_shared_landspeeder_x34 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3178368929
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_landspeeder_x34, 3178368929)
@@ -426,7 +444,9 @@ object_draft_schematic_vehicle_civilian_shared_speeder_bike = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3893680726
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_speeder_bike, 3893680726)
@@ -465,7 +485,9 @@ object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4231876597
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_shared_speeder_bike_swoop, 4231876597)

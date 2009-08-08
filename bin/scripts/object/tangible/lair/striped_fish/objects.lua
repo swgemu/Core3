@@ -86,7 +86,9 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 348164560
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish, 348164560)
@@ -136,7 +138,9 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1569350634
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater, 1569350634)

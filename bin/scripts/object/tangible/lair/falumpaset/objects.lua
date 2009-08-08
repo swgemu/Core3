@@ -86,7 +86,9 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4013916432
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, 4013916432)
@@ -136,7 +138,9 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3600280476
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, 3600280476)
@@ -186,7 +190,9 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3691403141
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, 3691403141)
@@ -236,7 +242,9 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 189239844
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, 189239844)

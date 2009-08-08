@@ -86,7 +86,9 @@ object_tangible_lair_nerf_shared_lair_nerf = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2431052313
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf, 2431052313)
@@ -136,7 +138,9 @@ object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2861606931
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, 2861606931)

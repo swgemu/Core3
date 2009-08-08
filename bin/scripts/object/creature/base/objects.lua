@@ -110,7 +110,9 @@ object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 697154328
 }
 
 ObjectTemplates:addTemplate(object_creature_base_shared_base_creature, 697154328)
@@ -184,7 +186,9 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 937448992
 }
 
 ObjectTemplates:addTemplate(object_creature_base_shared_creature_default, 937448992)

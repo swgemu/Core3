@@ -86,7 +86,9 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 917083893
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots, 917083893)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 30813288
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest, 30813288)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 290985679
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate, 290985679)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_qu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1738912430
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_quest, 1738912430)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1458475008
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet, 1458475008)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1049616094
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest, 1049616094)

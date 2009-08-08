@@ -86,7 +86,9 @@ object_tangible_lair_qurvel_shared_lair_qurvel = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1736818373
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_qurvel_shared_lair_qurvel, 1736818373)
@@ -136,7 +138,9 @@ object_tangible_lair_qurvel_shared_lair_qurvel_forest = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 107086842
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_forest, 107086842)
@@ -186,7 +190,9 @@ object_tangible_lair_qurvel_shared_lair_qurvel_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4099487001
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_mountain, 4099487001)

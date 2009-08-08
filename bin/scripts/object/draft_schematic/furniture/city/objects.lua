@@ -75,7 +75,9 @@ object_draft_schematic_furniture_city_shared_furniture_fountain = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1279874804
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_shared_furniture_fountain, 1279874804)
@@ -114,7 +116,9 @@ object_draft_schematic_furniture_city_shared_furniture_statue = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2671586006
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_shared_furniture_statue, 2671586006)
@@ -153,7 +157,9 @@ object_draft_schematic_furniture_city_shared_furniture_streetlamp = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1457349982
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_city_shared_furniture_streetlamp, 1457349982)

@@ -86,7 +86,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3479300551
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_01, 3479300551)
@@ -136,7 +138,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 343294288
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_02, 343294288)
@@ -186,7 +190,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1568351965
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_03, 1568351965)
@@ -236,7 +242,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2794982857
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_04, 2794982857)
@@ -286,7 +294,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4019546692
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_05, 4019546692)
@@ -336,7 +346,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880984787
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_06, 880984787)
@@ -386,7 +398,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2106565982
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_07, 2106565982)
@@ -436,7 +450,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3347417420
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_08, 3347417420)
@@ -486,7 +502,9 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2391338689
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_09, 2391338689)

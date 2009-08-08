@@ -75,7 +75,9 @@ object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1792719503
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, 1792719503)
@@ -114,7 +116,9 @@ object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 180189865
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, 180189865)
@@ -153,7 +157,9 @@ object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3769957782
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, 3769957782)
@@ -192,7 +198,9 @@ object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2193465881
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, 2193465881)
@@ -231,7 +239,9 @@ object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4258794187
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, 4258794187)
@@ -270,7 +280,9 @@ object_draft_schematic_armor_component_shared_armor_layer_environmental = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3965303725
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, 3965303725)
@@ -309,7 +321,9 @@ object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 408400742
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, 408400742)
@@ -348,7 +362,9 @@ object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4175436808
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, 4175436808)
@@ -387,7 +403,9 @@ object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3228456823
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, 3228456823)
@@ -426,7 +444,9 @@ object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1540900933
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, 1540900933)
@@ -465,7 +485,9 @@ object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2919500503
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, 2919500503)
@@ -504,7 +526,9 @@ object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3177230385
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, 3177230385)
@@ -543,7 +567,9 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3571137786
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, 3571137786)
@@ -582,7 +608,9 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_particl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3523195897
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, 3523195897)
@@ -621,7 +649,9 @@ object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1075484439
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, 1075484439)
@@ -660,7 +690,9 @@ object_draft_schematic_armor_component_shared_deflector_shield_overload_discharg
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 831687516
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, 831687516)
@@ -699,7 +731,9 @@ object_draft_schematic_armor_component_shared_deflector_shield_projector_plate =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 951632989
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, 951632989)
@@ -738,7 +772,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1874931611
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, 1874931611)
@@ -777,7 +813,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 116196802
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, 116196802)
@@ -816,7 +854,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3853478018
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, 3853478018)
@@ -855,7 +895,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 127633276
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, 127633276)
@@ -894,7 +936,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2561407663
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, 2561407663)
@@ -933,7 +977,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 690401981
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, 690401981)
@@ -972,7 +1018,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 491529842
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, 491529842)
@@ -1011,7 +1059,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 812701172
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, 812701172)
@@ -1050,7 +1100,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1695390575
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, 1695390575)
@@ -1089,7 +1141,9 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2870976451
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, 2870976451)

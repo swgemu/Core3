@@ -86,7 +86,9 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3680958140
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp, 3680958140)
@@ -136,7 +138,9 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3329199331
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland, 3329199331)

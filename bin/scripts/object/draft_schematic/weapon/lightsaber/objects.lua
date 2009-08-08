@@ -75,7 +75,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2209371727
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1, 2209371727)
@@ -114,7 +116,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1487404760
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2, 1487404760)
@@ -153,7 +157,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 296393045
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3, 296393045)
@@ -192,7 +198,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3930698305
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4, 3930698305)
@@ -231,7 +239,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2739197388
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5, 2739197388)
@@ -270,7 +280,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2055057421
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1, 2055057421)
@@ -309,7 +321,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2708084890
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2, 2708084890)
@@ -348,7 +362,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3899096855
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3, 3899096855)
@@ -387,7 +403,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 327439363
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4, 327439363)
@@ -426,7 +444,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1518941070
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5, 1518941070)
@@ -465,7 +485,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2234584747
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, 2234584747)
@@ -504,7 +526,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_training = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3899605882
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_training, 3899605882)
@@ -543,7 +567,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2495319493
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1, 2495319493)
@@ -582,7 +608,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1336681810
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2, 1336681810)
@@ -621,7 +649,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 111231711
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3, 111231711)
@@ -660,7 +690,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4248988107
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4, 4248988107)
@@ -699,7 +731,9 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3025079878
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5, 3025079878)

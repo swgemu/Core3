@@ -86,7 +86,9 @@ object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2318276825
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor, 2318276825)
@@ -136,7 +138,9 @@ object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2929914812
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, 2929914812)
@@ -186,7 +190,9 @@ object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2174078931
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, 2174078931)

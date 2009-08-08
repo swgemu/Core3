@@ -86,7 +86,9 @@ object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2186183651
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, 2186183651)
@@ -136,7 +138,9 @@ object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 33728532
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, 33728532)

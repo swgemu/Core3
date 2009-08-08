@@ -86,7 +86,9 @@ object_tangible_theme_park_shared_invisible_object = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3509014052
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_shared_invisible_object, 3509014052)

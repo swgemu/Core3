@@ -86,7 +86,9 @@ object_tangible_ship_components_base_shared_ship_component_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 489689344
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_component_base, 489689344)
@@ -136,7 +138,9 @@ object_tangible_ship_components_base_shared_ship_component_loot_base = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1282074761
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_component_loot_base, 1282074761)
@@ -186,7 +190,9 @@ object_tangible_ship_components_base_shared_ship_subcomponent_base = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1420884630
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_base_shared_ship_subcomponent_base, 1420884630)

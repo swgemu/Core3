@@ -86,7 +86,9 @@ object_tangible_sign_player_shared_house_address = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2527534357
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address, 2527534357)
@@ -136,7 +138,9 @@ object_tangible_sign_player_shared_house_address_corellia = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1770300189
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address_corellia, 1770300189)
@@ -186,7 +190,9 @@ object_tangible_sign_player_shared_house_address_naboo = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3585850510
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address_naboo, 3585850510)
@@ -236,7 +242,9 @@ object_tangible_sign_player_shared_house_address_tatooine = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1439154818
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_house_address_tatooine, 1439154818)
@@ -286,7 +294,9 @@ object_tangible_sign_player_shared_shop_sign_s01 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3889554743
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s01, 3889554743)
@@ -336,7 +346,9 @@ object_tangible_sign_player_shared_shop_sign_s02 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1019366816
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s02, 1019366816)
@@ -386,7 +398,9 @@ object_tangible_sign_player_shared_shop_sign_s03 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1976511021
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s03, 1976511021)
@@ -436,7 +450,9 @@ object_tangible_sign_player_shared_shop_sign_s04 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2385248569
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_shared_shop_sign_s04, 2385248569)

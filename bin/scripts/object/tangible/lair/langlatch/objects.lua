@@ -86,7 +86,9 @@ object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3783483774
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, 3783483774)
@@ -136,7 +138,9 @@ object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3329291401
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, 3329291401)
@@ -186,7 +190,9 @@ object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2238931411
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, 2238931411)
@@ -236,7 +242,9 @@ object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1403100093
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, 1403100093)

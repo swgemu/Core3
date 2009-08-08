@@ -86,7 +86,9 @@ object_tangible_lair_squall_shared_lair_squall = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 131581462
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_squall_shared_lair_squall, 131581462)
@@ -136,7 +138,9 @@ object_tangible_lair_squall_shared_lair_squall_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3621609063
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_squall_shared_lair_squall_grassland, 3621609063)

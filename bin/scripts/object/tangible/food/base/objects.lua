@@ -86,7 +86,9 @@ object_tangible_food_base_shared_alcoholic_drink_base = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 57637204
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_alcoholic_drink_base, 57637204)
@@ -136,7 +138,9 @@ object_tangible_food_base_shared_base_crafted_food = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3304775743
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_base_crafted_food, 3304775743)
@@ -186,7 +190,9 @@ object_tangible_food_base_shared_base_food = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3228094758
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_base_food, 3228094758)
@@ -236,7 +242,9 @@ object_tangible_food_base_shared_desert_base = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 314474339
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_desert_base, 314474339)
@@ -286,7 +294,9 @@ object_tangible_food_base_shared_dish_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3988054565
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_dish_base, 3988054565)
@@ -336,7 +346,9 @@ object_tangible_food_base_shared_drink_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 224626249
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_drink_base, 224626249)
@@ -386,7 +398,9 @@ object_tangible_food_base_shared_meal_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 549891041
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_meal_base, 549891041)
@@ -436,7 +450,9 @@ object_tangible_food_base_shared_meat_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 407188941
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_meat_base, 407188941)
@@ -486,7 +502,9 @@ object_tangible_food_base_shared_side_dish_base = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 666169127
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_side_dish_base, 666169127)
@@ -536,7 +554,9 @@ object_tangible_food_base_shared_veggie_base = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2342861658
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_base_shared_veggie_base, 2342861658)

@@ -86,7 +86,9 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2598164093
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, 2598164093)
@@ -136,7 +138,9 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3617713744
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, 3617713744)
@@ -186,7 +190,9 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4030433492
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, 4030433492)

@@ -86,7 +86,9 @@ object_tangible_lair_demo_shared_lair_demo = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 146696119
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_demo_shared_lair_demo, 146696119)

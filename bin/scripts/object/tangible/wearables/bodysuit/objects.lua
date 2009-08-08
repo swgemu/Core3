@@ -86,7 +86,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2562125101
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, 2562125101)
@@ -136,7 +138,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2859919047
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, 2859919047)
@@ -186,7 +190,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2920765612
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, 2920765612)
@@ -236,7 +242,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2675213661
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, 2675213661)
@@ -286,7 +294,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3519793019
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, 3519793019)
@@ -336,7 +346,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 707325039
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, 707325039)
@@ -386,7 +398,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1663405026
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, 1663405026)
@@ -436,7 +450,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3643779056
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, 3643779056)
@@ -486,7 +502,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 301228692
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, 301228692)
@@ -536,7 +554,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1492714777
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, 1492714777)
@@ -586,7 +606,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2736401933
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, 2736401933)
@@ -636,7 +658,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3927394688
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, 3927394688)
@@ -686,7 +710,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 822141207
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, 822141207)
@@ -736,7 +762,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2416523857
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, 2416523857)
@@ -786,7 +814,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 19224104
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, 19224104)
@@ -836,7 +866,9 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184136204
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, 184136204)

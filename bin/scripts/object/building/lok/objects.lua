@@ -89,7 +89,9 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1658229769
 }
 
 ObjectTemplates:addTemplate(object_building_lok_shared_cave_03_nym_pirates, 1658229769)
@@ -142,7 +144,9 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 223465819
 }
 
 ObjectTemplates:addTemplate(object_building_lok_shared_mining_cave_01, 223465819)
@@ -195,7 +199,9 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2289463992
 }
 
 ObjectTemplates:addTemplate(object_building_lok_shared_nym_stronghold, 2289463992)

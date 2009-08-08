@@ -86,7 +86,9 @@ object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1086540149
 }
 
 ObjectTemplates:addTemplate(object_tangible_gem_base_shared_gem_base, 1086540149)

@@ -86,7 +86,9 @@ object_tangible_furniture_shared_furniture_base = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 408550317
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_base, 408550317)
@@ -136,7 +138,9 @@ object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3326667567
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_shared_furniture_tatooine_cantina_seat_01, 3326667567)

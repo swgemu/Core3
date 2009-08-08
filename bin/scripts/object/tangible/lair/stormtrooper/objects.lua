@@ -86,7 +86,9 @@ object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2371032814
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc, 2371032814)

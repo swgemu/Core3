@@ -86,7 +86,9 @@ object_tangible_lair_brackaset_shared_lair_brackaset = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2129819322
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_brackaset_shared_lair_brackaset, 2129819322)
@@ -136,7 +138,9 @@ object_tangible_lair_brackaset_shared_lair_brackaset_desert = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3690646770
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_brackaset_shared_lair_brackaset_desert, 3690646770)

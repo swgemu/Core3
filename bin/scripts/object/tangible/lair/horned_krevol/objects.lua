@@ -86,7 +86,9 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3995926996
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, 3995926996)
@@ -136,7 +138,9 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 883847742
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, 883847742)
@@ -186,7 +190,9 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 524661947
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, 524661947)
@@ -236,7 +242,9 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2373765729
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, 2373765729)

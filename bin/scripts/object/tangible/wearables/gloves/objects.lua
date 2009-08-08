@@ -86,7 +86,9 @@ object_tangible_wearables_gloves_shared_gloves_corsec = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2451059154
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_corsec, 2451059154)
@@ -136,7 +138,9 @@ object_tangible_wearables_gloves_shared_gloves_s02 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1702772985
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s02, 1702772985)
@@ -186,7 +190,9 @@ object_tangible_wearables_gloves_shared_gloves_s03 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 745744244
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s03, 745744244)
@@ -236,7 +242,9 @@ object_tangible_wearables_gloves_shared_gloves_s06 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1166721914
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s06, 1166721914)
@@ -286,7 +294,9 @@ object_tangible_wearables_gloves_shared_gloves_s07 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 210216183
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s07, 210216183)
@@ -336,7 +346,9 @@ object_tangible_wearables_gloves_shared_gloves_s10 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3964437147
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s10, 3964437147)
@@ -386,7 +398,9 @@ object_tangible_wearables_gloves_shared_gloves_s11 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2772559126
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s11, 2772559126)
@@ -436,7 +450,9 @@ object_tangible_wearables_gloves_shared_gloves_s12 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2119585153
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s12, 2119585153)
@@ -486,7 +502,9 @@ object_tangible_wearables_gloves_shared_gloves_s13 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 928721420
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s13, 928721420)
@@ -536,7 +554,9 @@ object_tangible_wearables_gloves_shared_gloves_s14 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3434610968
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_s14, 3434610968)
@@ -586,7 +606,9 @@ object_tangible_wearables_gloves_shared_gloves_tusken_raider = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1738692931
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_gloves_shared_gloves_tusken_raider, 1738692931)

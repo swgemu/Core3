@@ -86,7 +86,9 @@ object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3312405691
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_arm_l_s01, 3312405691)
@@ -136,7 +138,9 @@ object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1995018857
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_arm_r_s01, 1995018857)
@@ -186,7 +190,9 @@ object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 641245984
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_forearm_l_s01, 641245984)
@@ -236,7 +242,9 @@ object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2512289266
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_forearm_r_s01, 2512289266)
@@ -286,7 +294,9 @@ object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1621320928
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_hand_l_s01, 1621320928)
@@ -336,7 +346,9 @@ object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3542465074
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_cyborg_shared_hand_r_s01, 3542465074)

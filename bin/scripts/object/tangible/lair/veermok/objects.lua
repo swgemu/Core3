@@ -86,7 +86,9 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2070384123
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok, 2070384123)
@@ -136,7 +138,9 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4273060059
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, 4273060059)
@@ -186,7 +190,9 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2554849898
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, 2554849898)

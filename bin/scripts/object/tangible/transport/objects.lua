@@ -86,7 +86,9 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2330152069
 }
 
 ObjectTemplates:addTemplate(object_tangible_transport_shared_door, 2330152069)
@@ -136,7 +138,9 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3646229980
 }
 
 ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_a, 3646229980)
@@ -186,7 +190,9 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 37922123
 }
 
 ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_b, 37922123)
@@ -236,7 +242,9 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1263518406
 }
 
 ObjectTemplates:addTemplate(object_tangible_transport_shared_strut_c, 1263518406)
@@ -286,7 +294,9 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3801530659
 }
 
 ObjectTemplates:addTemplate(object_tangible_transport_shared_transport, 3801530659)

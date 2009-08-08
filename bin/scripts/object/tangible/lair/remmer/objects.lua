@@ -86,7 +86,9 @@ object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1568679889
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer, 1568679889)
@@ -136,7 +138,9 @@ object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1785284401
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, 1785284401)
@@ -186,7 +190,9 @@ object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3159632907
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, 3159632907)

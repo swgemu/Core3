@@ -86,7 +86,9 @@ object_tangible_ship_crafted_armor_shared_adv_durasteel_plating = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3119994654
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_adv_durasteel_plating, 3119994654)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2997247202
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk1, 2997247202)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1773270133
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2, 1773270133)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk3 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 549229560
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk3, 549229560)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk4 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3680483564
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk4, 3680483564)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk5 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2454904673
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk5, 2454904673)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_armor_shared_base_armor = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2002100175
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor, 2002100175)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 773618140
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent, 773618140)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk1 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2949774675
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk1, 2949774675)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk2 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1959155140
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk2, 1959155140)
@@ -586,7 +606,9 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk3 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1036726857
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk3, 1036726857)
@@ -636,7 +658,9 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk4 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3324516701
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk4, 3324516701)
@@ -686,7 +710,9 @@ object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk5 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2401599184
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_base_armor_subcomponent_mk5, 2401599184)
@@ -736,7 +762,9 @@ object_tangible_ship_crafted_armor_shared_durasteel_plating = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1660462348
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_durasteel_plating, 1660462348)
@@ -786,7 +814,9 @@ object_tangible_ship_crafted_armor_shared_experimental_armor = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2006663885
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_experimental_armor, 2006663885)
@@ -836,7 +866,9 @@ object_tangible_ship_crafted_armor_shared_heavy_durasteel_plating = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3716397337
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_heavy_durasteel_plating, 3716397337)
@@ -886,7 +918,9 @@ object_tangible_ship_crafted_armor_shared_light_durasteel_plating = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2691365358
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_light_durasteel_plating, 2691365358)
@@ -936,7 +970,9 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3987898855
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1, 3987898855)
@@ -986,7 +1022,9 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 916793712
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk2, 916793712)
@@ -1036,7 +1074,9 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk3 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2141736701
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk3, 2141736701)
@@ -1086,7 +1126,9 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk4 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2219533801
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk4, 2219533801)
@@ -1136,7 +1178,9 @@ object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk5 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3443917412
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk5, 3443917412)

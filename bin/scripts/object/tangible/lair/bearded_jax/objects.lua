@@ -86,7 +86,9 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2902384723
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax, 2902384723)
@@ -136,7 +138,9 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1258386738
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland, 1258386738)

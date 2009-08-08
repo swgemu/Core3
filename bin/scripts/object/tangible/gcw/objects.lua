@@ -86,7 +86,9 @@ object_tangible_gcw_shared_flip_banner_imperial = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 310211091
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_imperial, 310211091)
@@ -136,7 +138,9 @@ object_tangible_gcw_shared_flip_banner_onpole_imperial = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1127107666
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_imperial, 1127107666)
@@ -186,7 +190,9 @@ object_tangible_gcw_shared_flip_banner_onpole_rebel = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2107736696
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_rebel, 2107736696)
@@ -236,7 +242,9 @@ object_tangible_gcw_shared_flip_banner_onpole_spawner = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 60973770
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_onpole_spawner, 60973770)
@@ -286,7 +294,9 @@ object_tangible_gcw_shared_flip_banner_rebel = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1184876615
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_rebel, 1184876615)
@@ -336,7 +346,9 @@ object_tangible_gcw_shared_flip_banner_spawner = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1768955620
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_flip_banner_spawner, 1768955620)
@@ -386,7 +398,9 @@ object_tangible_gcw_shared_gcw_city_spawner = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 757466723
 }
 
 ObjectTemplates:addTemplate(object_tangible_gcw_shared_gcw_city_spawner, 757466723)

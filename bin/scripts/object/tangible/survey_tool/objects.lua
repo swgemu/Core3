@@ -86,7 +86,9 @@ object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 255686868
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_all, 255686868)
@@ -136,7 +138,9 @@ object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1059021891
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_gas, 1059021891)
@@ -186,7 +190,9 @@ object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3427396409
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_inorganic, 3427396409)
@@ -236,7 +242,9 @@ object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2242363434
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_liquid, 2242363434)
@@ -286,7 +294,9 @@ object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1329114448
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_lumber, 1329114448)
@@ -336,7 +346,9 @@ object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2862265132
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_mineral, 2862265132)
@@ -386,7 +398,9 @@ object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2175673400
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_moisture, 2175673400)
@@ -436,7 +450,9 @@ object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 963146674
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_organic, 963146674)
@@ -486,7 +502,9 @@ object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2341848205
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_solar, 2341848205)
@@ -536,7 +554,9 @@ object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 566467536
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_shared_survey_tool_wind, 566467536)

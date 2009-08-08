@@ -86,7 +86,9 @@ object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1292354861
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_basic, 1292354861)
@@ -136,7 +138,9 @@ object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3731836900
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_elite, 3731836900)
@@ -186,7 +190,9 @@ object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2831120800
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_improved, 2831120800)
@@ -236,7 +242,9 @@ object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1082864410
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_luxury, 1082864410)
@@ -286,7 +294,9 @@ object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1695464329
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_multi, 1695464329)
@@ -336,7 +346,9 @@ object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3484724123
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camp_shared_camp_quality, 3484724123)

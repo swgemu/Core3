@@ -86,7 +86,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3487250459
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate, 3487250459)
@@ -136,7 +138,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4135561605
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid, 4135561605)
@@ -186,7 +190,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3164930997
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial, 3164930997)
@@ -236,7 +242,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2674191794
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan, 2674191794)
@@ -286,7 +294,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3565585514
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection, 3565585514)
@@ -336,7 +346,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2809463476
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit, 2809463476)
@@ -386,7 +398,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2471910625
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank, 2471910625)
@@ -436,7 +450,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4035920074
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base, 4035920074)
@@ -486,7 +502,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1405799440
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer, 1405799440)
@@ -536,7 +554,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3782407794
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward, 3782407794)
@@ -586,7 +606,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 431650444
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel, 431650444)
@@ -636,7 +658,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 765586613
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1, 765586613)
@@ -686,7 +710,9 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4139140130
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2, 4139140130)

@@ -86,7 +86,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3412992193
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_graul, 3412992193)
@@ -136,7 +138,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 743053980
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_kimogila, 743053980)
@@ -186,7 +190,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 449676358
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_krayt_dragon, 449676358)
@@ -236,7 +242,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2913519397
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_giant_exterior_rancor, 2913519397)
@@ -286,7 +294,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_d
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3125250632
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_condor_dragon, 3125250632)
@@ -336,7 +346,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 455779396
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_gulginaw, 455779396)
@@ -386,7 +398,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2139786863
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_kai_tok, 2139786863)
@@ -436,7 +450,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2915140501
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_large_exterior_perlek, 2915140501)
@@ -486,7 +502,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3985013510
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_gurk, 3985013510)
@@ -536,7 +554,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3103858464
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_hanadak, 3103858464)
@@ -586,7 +606,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1771703273
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_mamien, 1771703273)
@@ -636,7 +658,9 @@ object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3177863018
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_cave_medium_exterior_veermok, 3177863018)
@@ -686,7 +710,9 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrak
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 599219084
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_dalyrake, 599219084)
@@ -736,7 +762,9 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 59358224
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_kliknik, 59358224)
@@ -786,7 +814,9 @@ object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2811758761
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_exterior_shared_lair_hive_medium_exterior_merek, 2811758761)

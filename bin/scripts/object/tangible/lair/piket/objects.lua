@@ -86,7 +86,9 @@ object_tangible_lair_piket_shared_lair_piket = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 206631052
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket, 206631052)
@@ -136,7 +138,9 @@ object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1495135397
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, 1495135397)

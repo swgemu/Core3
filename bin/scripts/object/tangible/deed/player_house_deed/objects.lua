@@ -86,7 +86,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_deed = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2929915649
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_deed, 2929915649)
@@ -136,7 +138,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 235215989
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed, 235215989)
@@ -186,7 +190,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2084610037
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed, 2084610037)
@@ -236,7 +242,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_dee
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2451032772
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_deed, 2451032772)
@@ -286,7 +294,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_deed = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3995398562
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_deed, 3995398562)
@@ -336,7 +346,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4236382032
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed, 4236382032)
@@ -386,7 +398,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362914922
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed, 2362914922)
@@ -436,7 +450,9 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floo
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3176020474
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floor_02_deed, 3176020474)
@@ -486,7 +502,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_deed = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1741240035
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_deed, 1741240035)
@@ -536,7 +554,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3587608428
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed, 3587608428)
@@ -586,7 +606,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_deed = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1757551971
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_deed, 1757551971)
@@ -636,7 +658,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2069123916
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed, 2069123916)
@@ -686,7 +710,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_deed = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 659501120
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_deed, 659501120)
@@ -736,7 +762,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 659659849
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed, 659659849)
@@ -786,7 +814,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1459923827
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed, 1459923827)
@@ -836,7 +866,9 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1914522978
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor_02_deed, 1914522978)
@@ -886,7 +918,9 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2826097149
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed, 2826097149)
@@ -936,7 +970,9 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 755117283
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed, 755117283)
@@ -986,7 +1022,9 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2912062596
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed, 2912062596)
@@ -1036,7 +1074,9 @@ object_tangible_deed_player_house_deed_shared_naboo_house_large_deed = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2425408276
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_large_deed, 2425408276)
@@ -1086,7 +1126,9 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2797619055
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed, 2797619055)
@@ -1136,7 +1178,9 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3999622538
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed, 3999622538)
@@ -1186,7 +1230,9 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_deed = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3491155383
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_deed, 3491155383)
@@ -1236,7 +1282,9 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4010454053
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed, 4010454053)
@@ -1286,7 +1334,9 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 117213262
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed, 117213262)
@@ -1336,7 +1386,9 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4112018243
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed, 4112018243)
@@ -1386,7 +1438,9 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1182437101
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed, 1182437101)
@@ -1436,7 +1490,9 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2199454599
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed, 2199454599)

@@ -110,7 +110,9 @@ object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 20,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1613040434
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_jetpack, 1613040434)
@@ -184,7 +186,9 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 20,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2842025402
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_av21, 2842025402)
@@ -258,7 +262,9 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 634510067
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_base, 634510067)
@@ -332,7 +338,9 @@ object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 20,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 658152450
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_x31, 658152450)
@@ -406,7 +414,9 @@ object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 20,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1321433100
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_x34, 1321433100)
@@ -480,7 +490,9 @@ object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1064205223
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_landspeeder_xp38, 1064205223)
@@ -554,7 +566,9 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1922373615
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike, 1922373615)
@@ -628,7 +642,9 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2115869795
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_base, 2115869795)
@@ -702,7 +718,9 @@ object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 5125428
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_flash, 5125428)
@@ -776,7 +794,9 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2943197007
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_speederbike_swoop, 2943197007)
@@ -850,7 +870,9 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1605130582
 }
 
 ObjectTemplates:addTemplate(object_mobile_vehicle_shared_vehicle_base, 1605130582)

@@ -75,7 +75,9 @@ object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3897855130
 }
 
 ObjectTemplates:addTemplate(object_token_base_shared_base_token, 3897855130)
@@ -114,7 +116,9 @@ object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 599623444
 }
 
 ObjectTemplates:addTemplate(object_token_base_shared_token_default, 599623444)

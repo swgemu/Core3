@@ -86,7 +86,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 33998203
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01, 33998203)
@@ -136,7 +138,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3641798124
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02, 3641798124)
@@ -186,7 +190,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2417756769
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03, 2417756769)
@@ -236,7 +242,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1811882357
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04, 1811882357)
@@ -286,7 +294,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 586303224
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05, 586303224)
@@ -336,7 +346,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4192595567
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06, 4192595567)
@@ -386,7 +398,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2968029666
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07, 2968029666)
@@ -436,7 +450,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 182625776
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08, 182625776)
@@ -486,7 +502,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1139786365
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09, 1139786365)
@@ -536,7 +554,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1344515982
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10, 1344515982)
@@ -586,7 +606,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 422496259
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11, 422496259)
@@ -636,7 +658,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3258540180
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12, 3258540180)
@@ -686,7 +710,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2335442713
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13, 2335442713)
@@ -736,7 +762,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1893149709
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14, 1893149709)
@@ -786,7 +814,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1363440697
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01, 1363440697)
@@ -836,7 +866,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2320751790
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02, 2320751790)
@@ -886,7 +918,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3277765411
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03, 3277765411)
@@ -936,7 +970,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 951947319
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04, 951947319)
@@ -986,7 +1022,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1907423162
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05, 1907423162)
@@ -1036,7 +1074,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2863095597
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06, 2863095597)
@@ -1086,7 +1126,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3819583648
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07, 3819583648)
@@ -1136,7 +1178,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1503663282
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08, 1503663282)
@@ -1186,7 +1230,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 279802687
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09, 279802687)
@@ -1236,7 +1282,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 56696524
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10, 56696524)
@@ -1286,7 +1334,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1248622913
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11, 1248622913)
@@ -1336,7 +1386,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2440810966
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12, 2440810966)
@@ -1386,7 +1438,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3631658587
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13, 3631658587)
@@ -1436,7 +1490,9 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 597007695
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14, 597007695)

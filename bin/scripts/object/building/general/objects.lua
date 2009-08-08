@@ -89,7 +89,9 @@ object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 929068141
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_aircar_general, 929068141)
@@ -142,7 +144,9 @@ object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3257125986
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_arena_general, 3257125986)
@@ -195,7 +199,9 @@ object_building_general_shared_arena_large_general = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3322084706
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_arena_large_general, 3322084706)
@@ -248,7 +254,9 @@ object_building_general_shared_association_hall_civilian_general = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3632219938
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_association_hall_civilian_general, 3632219938)
@@ -301,7 +309,9 @@ object_building_general_shared_association_hall_general = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3960949370
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_association_hall_general, 3960949370)
@@ -354,7 +364,9 @@ object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2650754817
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bank_general, 2650754817)
@@ -407,7 +419,9 @@ object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 599067335
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_allum_mine, 599067335)
@@ -460,7 +474,9 @@ object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1938342630
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_blacksun_outpost_01, 1938342630)
@@ -513,7 +529,9 @@ object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3171223694
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_crimelord_retreat_01, 3171223694)
@@ -566,7 +584,9 @@ object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2982837298
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_01, 2982837298)
@@ -619,7 +639,9 @@ object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1792922789
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_02, 1792922789)
@@ -672,7 +694,9 @@ object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 600879912
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_03, 600879912)
@@ -725,7 +749,9 @@ object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 990897798
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_bunker_abandoned, 990897798)
@@ -778,7 +804,9 @@ object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2935243152
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_deep_chasm, 2935243152)
@@ -831,7 +859,9 @@ object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1672354378
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_detainment_center_01, 1672354378)
@@ -884,7 +914,9 @@ object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1661550307
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_prison_01, 1661550307)
@@ -937,7 +969,9 @@ object_building_general_shared_bunker_imperial_weapons_research_facility_01 = Sh
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 357299427
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_imperial_weapons_research_facility_01, 357299427)
@@ -990,7 +1024,9 @@ object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3223964695
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_mad_bio, 3223964695)
@@ -1043,7 +1079,9 @@ object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 102885585
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_01, 102885585)
@@ -1096,7 +1134,9 @@ object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3695355168
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_deep_chasm, 3695355168)
@@ -1149,7 +1189,9 @@ object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4133162154
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_spynet, 4133162154)
@@ -1202,7 +1244,9 @@ object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2551461683
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_rebel_weapons_depot, 2551461683)
@@ -1255,7 +1299,9 @@ object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2046272201
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_research_facility_01, 2046272201)
@@ -1308,7 +1354,9 @@ object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1060967532
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_small_outpost_01, 1060967532)
@@ -1361,7 +1409,9 @@ object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3828006139
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_small_outpost_02, 3828006139)
@@ -1414,7 +1464,9 @@ object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2130756010
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_talus_chunker_bunker, 2130756010)
@@ -1467,7 +1519,9 @@ object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2032341079
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_tok_retreat_01, 2032341079)
@@ -1520,7 +1574,9 @@ object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2436238099
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_bunker_warren_01, 2436238099)
@@ -1573,7 +1629,9 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4015930050
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cantina_general, 4015930050)
@@ -1626,7 +1684,9 @@ object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2926502766
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_capitol_general, 2926502766)
@@ -1679,7 +1739,9 @@ object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3160184163
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_01, 3160184163)
@@ -1732,7 +1794,9 @@ object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 952315499
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_01_damprock, 952315499)
@@ -1785,7 +1849,9 @@ object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2530583699
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_01_damprock_mirror, 2530583699)
@@ -1838,7 +1904,9 @@ object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3629542620
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_01_ice, 3629542620)
@@ -1891,7 +1959,9 @@ object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3887886541
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_01_mirror, 3887886541)
@@ -1944,7 +2014,9 @@ object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1732984308
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_02, 1732984308)
@@ -1997,7 +2069,9 @@ object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4040916264
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_02_damprock, 4040916264)
@@ -2050,7 +2124,9 @@ object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3705597680
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_02_damprock_mirror, 3705597680)
@@ -2103,7 +2179,9 @@ object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3398864833
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_02_ice, 3398864833)
@@ -2156,7 +2234,9 @@ object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4020721095
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_02_mirror, 4020721095)
@@ -2209,7 +2289,9 @@ object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 776362617
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_03, 776362617)
@@ -2262,7 +2344,9 @@ object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3073160169
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_03_damprock, 3073160169)
@@ -2315,7 +2399,9 @@ object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 426189756
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_03_damprock_mirror, 426189756)
@@ -2368,7 +2454,9 @@ object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 949364135
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_03_ice, 949364135)
@@ -2421,7 +2509,9 @@ object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3897669313
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_03_mirror, 3897669313)
@@ -2474,7 +2564,9 @@ object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 519460091
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_04_ice_s01, 519460091)
@@ -2527,7 +2619,9 @@ object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 759540329
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_05_ice_s02, 759540329)
@@ -2580,7 +2674,9 @@ object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 736190789
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_06_flatland_s01, 736190789)
@@ -2633,7 +2729,9 @@ object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3352052197
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_06_flatland_s01_damprock, 3352052197)
@@ -2686,7 +2784,9 @@ object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1663639712
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_06_flatland_s01_ice, 1663639712)
@@ -2739,7 +2839,9 @@ object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1905336231
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_07_flatland_s02, 1905336231)
@@ -2792,7 +2894,9 @@ object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3655237343
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_07_flatland_s02_damprock, 3655237343)
@@ -2845,7 +2949,9 @@ object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2188080207
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_07_flatland_s02_ice, 2188080207)
@@ -2898,7 +3004,9 @@ object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2882713804
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_08_flatland_s03, 2882713804)
@@ -2951,7 +3059,9 @@ object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 524918885
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_08_flatland_s03_damprock, 524918885)
@@ -3004,7 +3114,9 @@ object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 557190412
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_08_flatland_s03_ice, 557190412)
@@ -3057,7 +3169,9 @@ object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 153465138
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_lok_pirate_cave, 153465138)
@@ -3110,7 +3224,9 @@ object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1852639945
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cave_morag, 1852639945)
@@ -3163,7 +3279,9 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 327514443
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_cloning_facility_general, 327514443)
@@ -3216,7 +3334,9 @@ object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1102119105
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_corellia_afarathu_cave, 1102119105)
@@ -3269,7 +3389,9 @@ object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 88228892
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_corellia_drall_cave, 88228892)
@@ -3322,7 +3444,9 @@ object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 780046145
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_corellia_nyax_bunker, 780046145)
@@ -3375,7 +3499,9 @@ object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBu
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1263547301
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_dantooine_force_crystal_hunter_sd_cave, 1263547301)
@@ -3428,7 +3554,9 @@ object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1976190033
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_dantooine_janta_cave, 1976190033)
@@ -3481,7 +3609,9 @@ object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2274845407
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_dantooine_kunga_cave, 2274845407)
@@ -3534,7 +3664,9 @@ object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 711566567
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_dathomir_nsister_cave, 711566567)
@@ -3587,7 +3719,9 @@ object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1702144691
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_dathomir_nsister_rancor_cave, 1702144691)
@@ -3640,7 +3774,9 @@ object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 709151424
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_endor_jinda_cave, 709151424)
@@ -3693,7 +3829,9 @@ object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1189018300
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_endor_korga_cave, 1189018300)
@@ -3746,7 +3884,9 @@ object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3233389758
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_endor_marauder_orphans_cave, 3233389758)
@@ -3799,7 +3939,9 @@ object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1394323186
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_guild_combat_general_style_01, 1394323186)
@@ -3852,7 +3994,9 @@ object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingO
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 326541771
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_guild_commerce_general_style_01, 326541771)
@@ -3905,7 +4049,9 @@ object_building_general_shared_guild_university_general_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3594966040
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_guild_university_general_style_01, 3594966040)
@@ -3958,7 +4104,9 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2957667026
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_hotel_general_style_1, 2957667026)
@@ -4011,7 +4159,9 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1801306693
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_hotel_general_style_2, 1801306693)
@@ -4064,7 +4214,9 @@ object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1516155062
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_housing_general_style_1, 1516155062)
@@ -4117,7 +4269,9 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 766941896
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_landing_pad_s01, 766941896)
@@ -4170,7 +4324,9 @@ object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1736894341
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_lok_evil_droid_engineer_cave, 1736894341)
@@ -4223,7 +4379,9 @@ object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2736597128
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_lok_kimogila_cult_bunker, 2736597128)
@@ -4276,7 +4434,9 @@ object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2476588024
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_lok_mercenary_cave_01, 2476588024)
@@ -4329,7 +4489,9 @@ object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingOb
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 526484590
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_lok_nymstheme_mercenary_bunker, 526484590)
@@ -4382,7 +4544,9 @@ object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 18770566
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_lok_nymstheme_pirate_cave, 18770566)
@@ -4435,7 +4599,9 @@ object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3614150695
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_merchant_tent_all_s01, 3614150695)
@@ -4488,7 +4654,9 @@ object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1684189678
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_capitol_s01, 1684189678)
@@ -4541,7 +4709,9 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 432887298
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_cloning_s01, 432887298)
@@ -4594,7 +4764,9 @@ object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3789605488
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_combat_s01, 3789605488)
@@ -4647,7 +4819,9 @@ object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 49465033
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_commerce_s01, 49465033)
@@ -4700,7 +4874,9 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2335562190
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_theater_s01, 2335562190)
@@ -4753,7 +4929,9 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1179256079
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_guild_university_s01, 1179256079)
@@ -4806,7 +4984,9 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3942101786
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_hospital_s01, 3942101786)
@@ -4859,7 +5039,9 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 836770701
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_hospital_s02, 836770701)
@@ -4912,7 +5094,9 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 64245657
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_hotel_s01, 64245657)
@@ -4965,7 +5149,9 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2845231920
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_landing_pad_s01, 2845231920)
@@ -5018,7 +5204,9 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1399192891
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_mun_all_starport_s01, 1399192891)
@@ -5071,7 +5259,9 @@ object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1618666507
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_naboo_narglatch_cave, 1618666507)
@@ -5124,7 +5314,9 @@ object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2696571862
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_naboo_pirate_bunker, 2696571862)
@@ -5177,7 +5369,9 @@ object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1074091686
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_naboo_veermok_cave, 1074091686)
@@ -5230,7 +5424,9 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3771444529
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_newbie_hall, 3771444529)
@@ -5283,7 +5479,9 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1011239275
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_newbie_hall_skipped, 1011239275)
@@ -5336,7 +5534,9 @@ object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingOb
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2054952898
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_nightsister_slave_mine_sd_cave, 2054952898)
@@ -5389,7 +5589,9 @@ object_building_general_shared_parking_garage_general = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3151125
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_parking_garage_general, 3151125)
@@ -5442,7 +5644,9 @@ object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2779359080
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_ranchers_house_tatooine, 2779359080)
@@ -5495,7 +5699,9 @@ object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3374741880
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rebel_fuel_depot, 3374741880)
@@ -5548,7 +5754,9 @@ object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2008111071
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_bark_mite_cave, 2008111071)
@@ -5601,7 +5809,9 @@ object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2510037668
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_bat_cave, 2510037668)
@@ -5654,7 +5864,9 @@ object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2753493661
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_cobral_bunker, 2753493661)
@@ -5707,7 +5919,9 @@ object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2144664039
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_garyn_bunker, 2144664039)
@@ -5760,7 +5974,9 @@ object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2711352465
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_hyperdrive_research_facility, 2711352465)
@@ -5813,7 +6029,9 @@ object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 303008890
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_kobola_cave, 303008890)
@@ -5866,7 +6084,9 @@ object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1919200278
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_rori_torton_cave, 1919200278)
@@ -5919,7 +6139,9 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3656969600
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_shuttleport_general, 3656969600)
@@ -5972,7 +6194,9 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2945204994
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_corellian_corvette, 2945204994)
@@ -6025,7 +6249,9 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3935788511
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_corellian_corvette_imperial, 3935788511)
@@ -6078,7 +6304,9 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1523571122
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_corellian_corvette_rebel, 1523571122)
@@ -6131,7 +6359,9 @@ object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 692704019
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_hutt_asteroid, 692704019)
@@ -6184,7 +6414,9 @@ object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1431567153
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_space_dungeon_star_destroyer, 1431567153)
@@ -6237,7 +6469,9 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4229374013
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_starport_general, 4229374013)
@@ -6290,7 +6524,9 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2699737473
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_starport_general_style_1, 2699737473)
@@ -6343,7 +6579,9 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "terrain/starportb_circle.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2080182550
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_starport_general_style_2, 2080182550)
@@ -6396,7 +6634,9 @@ object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1823419741
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_aakuan_cave, 1823419741)
@@ -6449,7 +6689,9 @@ object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3978592584
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_aqualish_cave, 3978592584)
@@ -6502,7 +6744,9 @@ object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4022785523
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_binyare_bunker, 4022785523)
@@ -6555,7 +6799,9 @@ object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2459804029
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_giant_decay_mite_cave, 2459804029)
@@ -6608,7 +6854,9 @@ object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1300216386
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_giant_fynock_cave, 1300216386)
@@ -6661,7 +6909,9 @@ object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1743913196
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_kahmurra_bunker, 1743913196)
@@ -6714,7 +6964,9 @@ object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 330907884
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_talus_traitor_erran, 330907884)
@@ -6767,7 +7019,9 @@ object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1885974487
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_tatooine_beetle_cave, 1885974487)
@@ -6820,7 +7074,9 @@ object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 434980665
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_tatooine_hutt_cave, 434980665)
@@ -6873,7 +7129,9 @@ object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1109209534
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_tatooine_squill_cave, 1109209534)
@@ -6926,7 +7184,9 @@ object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2741312696
 }
 
 ObjectTemplates:addTemplate(object_building_general_shared_tatooine_tusken_bunker, 2741312696)

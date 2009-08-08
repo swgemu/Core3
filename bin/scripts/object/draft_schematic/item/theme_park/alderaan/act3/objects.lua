@@ -75,7 +75,9 @@ object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3578248809
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype, 3578248809)

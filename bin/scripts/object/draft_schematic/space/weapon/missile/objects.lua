@@ -75,7 +75,9 @@ object_draft_schematic_space_weapon_missile_shared_basic_chaff_launcher = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3598298958
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_basic_chaff_launcher, 3598298958)
@@ -114,7 +116,9 @@ object_draft_schematic_space_weapon_missile_shared_basic_chaff_pack = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2098216050
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_basic_chaff_pack, 2098216050)
@@ -153,7 +157,9 @@ object_draft_schematic_space_weapon_missile_shared_basic_launcher = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1802841048
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_basic_launcher, 1802841048)
@@ -192,7 +198,9 @@ object_draft_schematic_space_weapon_missile_shared_basic_missile_pack = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 126586241
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_basic_missile_pack, 126586241)
@@ -231,7 +239,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_launcher
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1669199220
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_launcher, 1669199220)
@@ -270,7 +280,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_pack = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 967427990
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_pack, 967427990)
@@ -309,7 +321,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_launc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1010014254
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_launcher, 1010014254)
@@ -348,7 +362,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_pack 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1096963488
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_pack, 1096963488)
@@ -387,7 +403,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_launcher
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3889493337
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_launcher, 3889493337)
@@ -426,7 +444,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_pack = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1710067156
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_pack, 1710067156)
@@ -465,7 +485,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_em_launcher = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2736033559
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_em_launcher, 2736033559)
@@ -504,7 +526,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_em_pack = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3044761439
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_em_pack, 3044761439)
@@ -543,7 +567,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_lau
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1406628129
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_launcher, 1406628129)
@@ -582,7 +608,9 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_pac
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3491272814
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_pack, 3491272814)
@@ -621,7 +649,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk1 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4275827372
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk1, 4275827372)
@@ -660,7 +690,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk2 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 634149435
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk2, 634149435)
@@ -699,7 +731,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk3 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1824603574
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk3, 1824603574)
@@ -738,7 +772,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk1 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2093977497
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk1, 2093977497)
@@ -777,7 +813,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk2 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2815960846
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk2, 2815960846)
@@ -816,7 +854,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk1 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1043274696
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk1, 1043274696)
@@ -855,7 +895,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk2 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3845698399
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk2, 3845698399)
@@ -894,7 +936,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk3 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2889209042
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk3, 2889209042)
@@ -933,7 +977,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk1 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 650835732
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk1, 650835732)
@@ -972,7 +1018,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk2 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4259143555
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk2, 4259143555)
@@ -1011,7 +1059,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk1 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3316343727
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk1, 3316343727)
@@ -1050,7 +1100,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk2 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 515689272
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk2, 515689272)
@@ -1089,7 +1141,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk3 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1471261877
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk3, 1471261877)
@@ -1128,7 +1182,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk4 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2891089825
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk4, 2891089825)
@@ -1167,7 +1223,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk1 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3651288032
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk1, 3651288032)
@@ -1206,7 +1264,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk2 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 45454199
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk2, 45454199)
@@ -1245,7 +1305,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk3 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1270412538
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk3, 1270412538)
@@ -1284,7 +1346,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3784031794
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk1, 3784031794)
@@ -1323,7 +1387,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 983307941
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk2, 983307941)
@@ -1362,7 +1428,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk1 = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 681902817
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk1, 681902817)
@@ -1401,7 +1469,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk2 = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4088572534
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk2, 4088572534)
@@ -1440,7 +1510,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk3 = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3133132283
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk3, 3133132283)
@@ -1479,7 +1551,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk4 = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1096607471
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk4, 1096607471)
@@ -1518,7 +1592,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk1 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3507837660
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk1, 3507837660)
@@ -1557,7 +1633,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk2 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 167965259
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk2, 167965259)
@@ -1596,7 +1674,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk3 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1125094854
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk3, 1125094854)
@@ -1635,7 +1715,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk1 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2352553481
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk1, 2352553481)
@@ -1674,7 +1756,9 @@ object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk2 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1462679198
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk2, 1462679198)

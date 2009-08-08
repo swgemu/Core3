@@ -86,7 +86,9 @@ object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 705221769
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_drowsy_dart, 705221769)
@@ -136,7 +138,9 @@ object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3897339231
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_enraging_spur, 3897339231)
@@ -186,7 +190,9 @@ object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 708754512
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_flash_bomb, 708754512)
@@ -236,7 +242,9 @@ object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3084221929
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_melee_def_1, 3084221929)
@@ -286,7 +294,9 @@ object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3453088617
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_melee_ranged_def_1, 3453088617)
@@ -336,7 +346,9 @@ object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3133223247
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_noise_maker, 3133223247)
@@ -386,7 +398,9 @@ object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 46866220
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_ranged_def_1, 46866220)
@@ -436,7 +450,9 @@ object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2460580704
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_ranged_speed_1, 2460580704)
@@ -486,7 +502,9 @@ object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3605514682
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_sonic_pulse, 3605514682)
@@ -536,7 +554,9 @@ object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 750361076
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_state_def_1, 750361076)
@@ -586,7 +606,9 @@ object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2472376515
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_tranq_dart, 2472376515)
@@ -636,7 +658,9 @@ object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3441092972
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_shared_trap_webber, 3441092972)

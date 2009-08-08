@@ -75,7 +75,9 @@ object_draft_schematic_armor_shared_armor_module_heavy = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 908240485
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_module_heavy, 908240485)
@@ -114,7 +116,9 @@ object_draft_schematic_armor_shared_armor_module_light = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4152007355
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_module_light, 4152007355)
@@ -153,7 +157,9 @@ object_draft_schematic_armor_shared_armor_segment = SharedDraftSchematicObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1286868407
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment, 1286868407)
@@ -192,7 +198,9 @@ object_draft_schematic_armor_shared_armor_segment_advanced = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 211004258
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_advanced, 211004258)
@@ -231,7 +239,9 @@ object_draft_schematic_armor_shared_armor_segment_bone = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1007340042
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_bone, 1007340042)
@@ -270,7 +280,9 @@ object_draft_schematic_armor_shared_armor_segment_bone_acklay = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2889266361
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_bone_acklay, 2889266361)
@@ -309,7 +321,9 @@ object_draft_schematic_armor_shared_armor_segment_bone_advanced = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1129609908
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_bone_advanced, 1129609908)
@@ -348,7 +362,9 @@ object_draft_schematic_armor_shared_armor_segment_chitin = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3865019752
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_chitin, 3865019752)
@@ -387,7 +403,9 @@ object_draft_schematic_armor_shared_armor_segment_chitin_advanced = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 892546099
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_chitin_advanced, 892546099)
@@ -426,7 +444,9 @@ object_draft_schematic_armor_shared_armor_segment_composite = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1778592860
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_composite, 1778592860)
@@ -465,7 +485,9 @@ object_draft_schematic_armor_shared_armor_segment_composite_advanced = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2060695348
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_composite_advanced, 2060695348)
@@ -504,7 +526,9 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 168895200
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn, 168895200)
@@ -543,7 +567,9 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 737525903
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, 737525903)
@@ -582,7 +608,9 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1171031092
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial, 1171031092)
@@ -621,7 +649,9 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advance
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1897422446
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, 1897422446)
@@ -660,7 +690,9 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4257597570
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting, 4257597570)
@@ -699,7 +731,9 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1703266289
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced, 1703266289)
@@ -738,7 +772,9 @@ object_draft_schematic_armor_shared_armor_segment_padded = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1432695926
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_padded, 1432695926)
@@ -777,7 +813,9 @@ object_draft_schematic_armor_shared_armor_segment_padded_advanced = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 626237841
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_padded_advanced, 626237841)
@@ -816,7 +854,9 @@ object_draft_schematic_armor_shared_armor_segment_ris = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2640774670
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ris, 2640774670)
@@ -855,7 +895,9 @@ object_draft_schematic_armor_shared_armor_segment_ris_acklay = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 103597235
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ris_acklay, 103597235)
@@ -894,7 +936,9 @@ object_draft_schematic_armor_shared_armor_segment_ubese = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3533039838
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ubese, 3533039838)
@@ -933,7 +977,9 @@ object_draft_schematic_armor_shared_armor_segment_ubese_advanced = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 83159329
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_ubese_advanced, 83159329)
@@ -972,7 +1018,9 @@ object_draft_schematic_armor_shared_armor_segment_zam = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1204507579
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_zam, 1204507579)
@@ -1011,7 +1059,9 @@ object_draft_schematic_armor_shared_armor_segment_zam_advanced = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2640349743
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_armor_segment_zam_advanced, 2640349743)
@@ -1050,7 +1100,9 @@ object_draft_schematic_armor_shared_shield_generator_facility = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1522717131
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_facility, 1522717131)
@@ -1089,7 +1141,9 @@ object_draft_schematic_armor_shared_shield_generator_personal = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 677114065
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal, 677114065)
@@ -1128,7 +1182,9 @@ object_draft_schematic_armor_shared_shield_generator_personal_b = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1759066430
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal_b, 1759066430)
@@ -1167,7 +1223,9 @@ object_draft_schematic_armor_shared_shield_generator_personal_c = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 567566003
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal_c, 567566003)
@@ -1206,7 +1264,9 @@ object_draft_schematic_armor_shared_shield_generator_personal_imperial_test = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2086068372
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_personal_imperial_test, 2086068372)
@@ -1245,7 +1305,9 @@ object_draft_schematic_armor_shared_shield_generator_vehicular = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1960728983
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shared_shield_generator_vehicular, 1960728983)

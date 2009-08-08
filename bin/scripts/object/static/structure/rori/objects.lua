@@ -74,7 +74,9 @@ object_static_structure_rori_shared_rori_imprv_bannerpole_s01 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 361465227
 }
 
 ObjectTemplates:addTemplate(object_static_structure_rori_shared_rori_imprv_bannerpole_s01, 361465227)
@@ -112,7 +114,9 @@ object_static_structure_rori_shared_rori_imprv_flagpole_s01 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3974035646
 }
 
 ObjectTemplates:addTemplate(object_static_structure_rori_shared_rori_imprv_flagpole_s01, 3974035646)

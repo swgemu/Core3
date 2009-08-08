@@ -75,7 +75,9 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2428076790
 }
 
 ObjectTemplates:addTemplate(object_universe_base_shared_base_universe, 2428076790)
@@ -114,7 +116,9 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3854968513
 }
 
 ObjectTemplates:addTemplate(object_universe_base_shared_universe_default, 3854968513)

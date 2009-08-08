@@ -75,7 +75,9 @@ object_draft_schematic_space_reverse_engineering_shared_analysis_tool = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4256991250
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_analysis_tool, 4256991250)
@@ -114,7 +116,9 @@ object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3368050000
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool, 3368050000)
@@ -153,7 +157,9 @@ object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1558712471
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool, 1558712471)
@@ -192,7 +198,9 @@ object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4158784961
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool, 4158784961)
@@ -231,7 +239,9 @@ object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1820998508
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis_tool, 1820998508)
@@ -270,7 +280,9 @@ object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3400518634
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool, 3400518634)
@@ -309,7 +321,9 @@ object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1274882415
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool, 1274882415)
@@ -348,7 +362,9 @@ object_draft_schematic_space_reverse_engineering_shared_retrofit_kit = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3323192675
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_retrofit_kit, 3323192675)
@@ -387,7 +403,9 @@ object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2342685561
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool, 2342685561)
@@ -426,7 +444,9 @@ object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3831959480
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool, 3831959480)

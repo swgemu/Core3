@@ -86,7 +86,9 @@ object_tangible_lair_bolma_shared_lair_bolma = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3974943996
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma, 3974943996)
@@ -136,7 +138,9 @@ object_tangible_lair_bolma_shared_lair_bolma_desert = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 907065118
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_desert, 907065118)
@@ -186,7 +190,9 @@ object_tangible_lair_bolma_shared_lair_bolma_dune = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184119716
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_dune, 184119716)
@@ -236,7 +242,9 @@ object_tangible_lair_bolma_shared_lair_bolma_mountain = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1763604762
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolma_shared_lair_bolma_mountain, 1763604762)

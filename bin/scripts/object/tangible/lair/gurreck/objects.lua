@@ -86,7 +86,9 @@ object_tangible_lair_gurreck_shared_lair_gurreck = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2258425428
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurreck_shared_lair_gurreck, 2258425428)
@@ -136,7 +138,9 @@ object_tangible_lair_gurreck_shared_lair_gurreck_mountain = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2418881242
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurreck_shared_lair_gurreck_mountain, 2418881242)

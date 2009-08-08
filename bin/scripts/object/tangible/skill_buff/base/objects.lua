@@ -86,7 +86,9 @@ object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 150738371
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, 150738371)

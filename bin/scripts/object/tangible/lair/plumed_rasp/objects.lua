@@ -86,7 +86,9 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3571980970
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp, 3571980970)
@@ -136,7 +138,9 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 847621417
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest, 847621417)
@@ -186,7 +190,9 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4105359353
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain, 4105359353)

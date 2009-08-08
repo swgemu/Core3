@@ -86,7 +86,9 @@ object_tangible_lair_roba_hill_shared_lair_roba_hill = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2140994340
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_roba_hill_shared_lair_roba_hill, 2140994340)

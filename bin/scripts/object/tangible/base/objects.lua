@@ -86,7 +86,9 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3825894482
 }
 
 ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_base, 3825894482)
@@ -136,7 +138,9 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1525014593
 }
 
 ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_craftable, 1525014593)
@@ -186,7 +190,9 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1350067174
 }
 
 ObjectTemplates:addTemplate(object_tangible_base_shared_tangible_default, 1350067174)

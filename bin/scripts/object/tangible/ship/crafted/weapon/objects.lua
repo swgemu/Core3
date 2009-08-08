@@ -86,7 +86,9 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2303674527
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1, 2303674527)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1381556232
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2, 1381556232)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 458590085
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3, 458590085)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3770068113
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4, 3770068113)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2847656732
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5, 2847656732)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2953001640
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon, 2953001640)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1696759306
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent, 1696759306)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4144294137
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1, 4144294137)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 739459182
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2, 739459182)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1696475107
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3, 1696475107)
@@ -586,7 +606,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2667384055
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4, 2667384055)
@@ -636,7 +658,9 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3622857594
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5, 3622857594)
@@ -686,7 +710,9 @@ object_tangible_ship_crafted_weapon_shared_basic_weapon = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3239954606
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_basic_weapon, 3239954606)
@@ -736,7 +762,9 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2497461315
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1, 2497461315)
@@ -786,7 +814,9 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1338741972
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2, 1338741972)
@@ -836,7 +866,9 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 113701721
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3, 113701721)
@@ -886,7 +918,9 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4247115853
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4, 4247115853)
@@ -936,7 +970,9 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3022569408
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5, 3022569408)
@@ -986,7 +1022,9 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 610130248
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1, 610130248)
@@ -1036,7 +1074,9 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4283068895
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2, 4283068895)
@@ -1086,7 +1126,9 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3058112082
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3, 3058112082)
@@ -1136,7 +1178,9 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1302609222
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4, 1302609222)
@@ -1186,7 +1230,9 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 78207691
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5, 78207691)
@@ -1236,7 +1282,9 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1346962133
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1, 1346962133)
@@ -1286,7 +1334,9 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2338236994
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2, 2338236994)
@@ -1336,7 +1386,9 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3260272079
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3, 3260272079)
@@ -1386,7 +1438,9 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 967894747
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4, 967894747)
@@ -1436,7 +1490,9 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1891467606
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5, 1891467606)
@@ -1486,7 +1542,9 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1809056781
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1, 1809056781)
@@ -1536,7 +1594,9 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2965613722
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2, 2965613722)
@@ -1586,7 +1646,9 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4191079191
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3, 4191079191)
@@ -1636,7 +1698,9 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 36560899
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4, 36560899)
@@ -1686,7 +1750,9 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1260423054
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5, 1260423054)
@@ -1736,7 +1802,9 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 560730926
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1, 560730926)
@@ -1786,7 +1854,9 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4202412985
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2, 4202412985)
@@ -1836,7 +1906,9 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3010911284
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3, 3010911284)
@@ -1886,7 +1958,9 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1217787680
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4, 1217787680)
@@ -1936,7 +2010,9 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 26775725
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5, 26775725)
@@ -1986,7 +2062,9 @@ object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2853736517
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor, 2853736517)
@@ -2036,7 +2114,9 @@ object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1179374625
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon, 1179374625)
@@ -2086,7 +2166,9 @@ object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2659812079
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster, 2659812079)
@@ -2136,7 +2218,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 442446187
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster, 442446187)
@@ -2186,7 +2270,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1237633285
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green, 1237633285)
@@ -2236,7 +2322,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 155333164
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor, 155333164)
@@ -2286,7 +2374,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1500710454
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon, 1500710454)
@@ -2336,7 +2426,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2125855304
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster, 2125855304)
@@ -2386,7 +2478,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2441037978
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green, 2441037978)
@@ -2436,7 +2530,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 209959232
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor, 209959232)
@@ -2486,7 +2582,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1555205466
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon, 1555205466)
@@ -2536,7 +2634,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2536076684
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster, 2536076684)
@@ -2586,7 +2686,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2144438671
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green, 2144438671)
@@ -2636,7 +2738,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 678304198
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor, 678304198)
@@ -2686,7 +2790,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2019503580
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon, 2019503580)
@@ -2736,7 +2842,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_blaster = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 449015883
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_blaster, 449015883)
@@ -2786,7 +2894,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2431967026
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green, 2431967026)
@@ -2836,7 +2946,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1483969238
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor, 1483969238)
@@ -2886,7 +2998,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 138585804
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon, 138585804)
@@ -2936,7 +3050,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3503157273
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster, 3503157273)
@@ -2986,7 +3102,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 928727391
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green, 928727391)
@@ -3036,7 +3154,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 232741717
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor, 232741717)
@@ -3086,7 +3206,9 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1575907151
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon, 1575907151)

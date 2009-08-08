@@ -86,7 +86,9 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3742650204
 }
 
 ObjectTemplates:addTemplate(object_tangible_gem_shared_armor, 3742650204)
@@ -136,7 +138,9 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3237805620
 }
 
 ObjectTemplates:addTemplate(object_tangible_gem_shared_clothing, 3237805620)
@@ -186,7 +190,9 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 330070250
 }
 
 ObjectTemplates:addTemplate(object_tangible_gem_shared_default, 330070250)

@@ -86,7 +86,9 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4155092607
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp, 4155092607)
@@ -136,7 +138,9 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3519101848
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland, 3519101848)
@@ -186,7 +190,9 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3173314157
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain, 3173314157)

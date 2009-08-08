@@ -86,7 +86,9 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3055118687
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, 3055118687)
@@ -136,7 +138,9 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2372198483
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, 2372198483)
@@ -186,7 +190,9 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3537441951
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, 3537441951)
@@ -236,7 +242,9 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2417244262
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, 2417244262)
@@ -286,7 +294,9 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2407802973
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, 2407802973)
@@ -336,7 +346,9 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3861915556
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, 3861915556)
@@ -386,7 +398,9 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2272557315
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, 2272557315)

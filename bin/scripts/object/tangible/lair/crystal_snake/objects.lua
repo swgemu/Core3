@@ -86,7 +86,9 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 890345407
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake, 890345407)
@@ -136,7 +138,9 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 348095194
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle, 348095194)
@@ -186,7 +190,9 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1011676096
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp, 1011676096)
@@ -236,7 +242,9 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 480132823
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater, 480132823)

@@ -75,7 +75,9 @@ object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3949582877
 }
 
 ObjectTemplates:addTemplate(object_intangible_base_shared_base_intangible, 3949582877)
@@ -114,7 +116,9 @@ object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplat
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1331018210
 }
 
 ObjectTemplates:addTemplate(object_intangible_base_shared_intangible_default, 1331018210)

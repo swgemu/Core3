@@ -86,7 +86,9 @@ object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2823165423
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_awing, 2823165423)
@@ -136,7 +138,9 @@ object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 770455739
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_hutt_light, 770455739)
@@ -186,7 +190,9 @@ object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2430870087
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_tiefighter, 2430870087)
@@ -236,7 +242,9 @@ object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 960125460
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_basic_z95, 960125460)
@@ -286,7 +294,9 @@ object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2406012699
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s01, 2406012699)
@@ -336,7 +346,9 @@ object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1417641868
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s02, 1417641868)
@@ -386,7 +398,9 @@ object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 494016513
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s03, 494016513)
@@ -436,7 +450,9 @@ object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3868275477
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_heavy_s04, 3868275477)
@@ -486,7 +502,9 @@ object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2468301121
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s01, 2468301121)
@@ -536,7 +554,9 @@ object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1208541654
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s02, 1208541654)
@@ -586,7 +606,9 @@ object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 17139291
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s03, 17139291)
@@ -636,7 +658,9 @@ object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4209421647
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_light_s04, 4209421647)
@@ -686,7 +710,9 @@ object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2060411448
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s01, 2060411448)
@@ -736,7 +762,9 @@ object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2715339439
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s02, 2715339439)
@@ -786,7 +814,9 @@ object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3906317602
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s03, 3906317602)
@@ -836,7 +866,9 @@ object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 322340406
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_blacksun_medium_s04, 322340406)
@@ -886,7 +918,9 @@ object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3129407218
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_bwing, 3129407218)
@@ -936,7 +970,9 @@ object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1738437900
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_corvette, 1738437900)
@@ -986,7 +1022,9 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3150522393
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_decimator, 3150522393)
@@ -1036,7 +1074,9 @@ object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4073039210
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_firespray, 4073039210)
@@ -1086,7 +1126,9 @@ object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 354676203
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s01, 354676203)
@@ -1136,7 +1178,9 @@ object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3459532156
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_heavy_s02, 3459532156)
@@ -1186,7 +1230,9 @@ object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 156529585
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s01, 156529585)
@@ -1236,7 +1282,9 @@ object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3527662374
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_light_s02, 3527662374)
@@ -1286,7 +1334,9 @@ object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 996310896
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s01, 996310896)
@@ -1336,7 +1386,9 @@ object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3765819367
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_medium_s02, 3765819367)
@@ -1386,7 +1438,9 @@ object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2830008910
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_hutt_turret_ship, 2830008910)
@@ -1436,7 +1490,9 @@ object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1541926498
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_hutt_light, 1541926498)
@@ -1486,7 +1542,9 @@ object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3874485406
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_tiefighter, 3874485406)
@@ -1536,7 +1594,9 @@ object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4125787031
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_prototype_z95, 4125787031)
@@ -1586,7 +1646,9 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4077746601
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_sorosuub_space_yacht, 4077746601)
@@ -1636,7 +1698,9 @@ object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 500982809
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_in, 500982809)
@@ -1686,7 +1750,9 @@ object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 349740221
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tie_light_duty, 349740221)
@@ -1736,7 +1802,9 @@ object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 537219045
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tieadvanced, 537219045)
@@ -1786,7 +1854,9 @@ object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3313666579
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tieaggressor, 3313666579)
@@ -1836,7 +1906,9 @@ object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1403833964
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tiebomber, 1403833964)
@@ -1886,7 +1958,9 @@ object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1253337464
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tiefighter, 1253337464)
@@ -1936,7 +2010,9 @@ object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4021866633
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tieinterceptor, 4021866633)
@@ -1986,7 +2062,9 @@ object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3411039109
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_tieoppressor, 3411039109)
@@ -2036,7 +2114,9 @@ object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3426854753
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_xwing, 3426854753)
@@ -2086,7 +2166,9 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4283603432
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_ykl37r, 4283603432)
@@ -2136,7 +2218,9 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2643423122
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300, 2643423122)
@@ -2186,7 +2270,9 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3619233988
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_yt1300_decorated_01, 3619233988)
@@ -2236,7 +2322,9 @@ object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1044450567
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing, 1044450567)
@@ -2286,7 +2374,9 @@ object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 711184758
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_ywing_longprobe, 711184758)
@@ -2336,7 +2426,9 @@ object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3298750759
 }
 
 ObjectTemplates:addTemplate(object_ship_player_shared_player_z95, 3298750759)

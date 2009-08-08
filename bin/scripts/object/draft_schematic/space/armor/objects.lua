@@ -75,7 +75,9 @@ object_draft_schematic_space_armor_shared_adv_durasteel_plating = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2102420108
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_adv_durasteel_plating, 2102420108)
@@ -114,7 +116,9 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2806408794
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1, 2806408794)
@@ -153,7 +157,9 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2085736141
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2, 2085736141)
@@ -192,7 +198,9 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 895265088
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3, 895265088)
@@ -231,7 +239,9 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3468657236
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4, 3468657236)
@@ -270,7 +280,9 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2276648409
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5, 2276648409)
@@ -309,7 +321,9 @@ object_draft_schematic_space_armor_shared_durasteel_plating = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4047177961
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_durasteel_plating, 4047177961)
@@ -348,7 +362,9 @@ object_draft_schematic_space_armor_shared_exp_durasteel_plating = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3426217899
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_exp_durasteel_plating, 3426217899)
@@ -387,7 +403,9 @@ object_draft_schematic_space_armor_shared_heavy_durasteel_plating = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2174167663
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_heavy_durasteel_plating, 2174167663)
@@ -426,7 +444,9 @@ object_draft_schematic_space_armor_shared_light_durasteel_plating = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4236143256
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_light_durasteel_plating, 4236143256)
@@ -465,7 +485,9 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 67761570
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1, 67761570)
@@ -504,7 +526,9 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3743309109
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2, 3743309109)
@@ -543,7 +567,9 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2517842616
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3, 2517842616)
@@ -582,7 +608,9 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1844449708
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4, 1844449708)
@@ -621,7 +649,9 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 620590625
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5, 620590625)

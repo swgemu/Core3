@@ -86,7 +86,9 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4243633165
 }
 
 ObjectTemplates:addTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, 4243633165)

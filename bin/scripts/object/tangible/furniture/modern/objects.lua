@@ -86,7 +86,9 @@ object_tangible_furniture_modern_shared_armoire_modern_style_01 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1825670087
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_armoire_modern_style_01, 1825670087)
@@ -136,7 +138,9 @@ object_tangible_furniture_modern_shared_bar_counter_s1 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3231704914
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_counter_s1, 3231704914)
@@ -186,7 +190,9 @@ object_tangible_furniture_modern_shared_bar_piece_curve_s1 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 825953959
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_curve_s1, 825953959)
@@ -236,7 +242,9 @@ object_tangible_furniture_modern_shared_bar_piece_curve_s2 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3928794672
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_curve_s2, 3928794672)
@@ -286,7 +294,9 @@ object_tangible_furniture_modern_shared_bar_piece_straight_s1 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 756303151
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_straight_s1, 756303151)
@@ -336,7 +346,9 @@ object_tangible_furniture_modern_shared_bar_piece_straight_s2 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4127452600
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bar_piece_straight_s2, 4127452600)
@@ -386,7 +398,9 @@ object_tangible_furniture_modern_shared_bestine_quest_rug = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3582039293
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bestine_quest_rug, 3582039293)
@@ -436,7 +450,9 @@ object_tangible_furniture_modern_shared_bookcase_modern_style_01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 947776958
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_bookcase_modern_style_01, 947776958)
@@ -486,7 +502,9 @@ object_tangible_furniture_modern_shared_cabinet_modern_style_01 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1509992400
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_cabinet_modern_style_01, 1509992400)
@@ -536,7 +554,9 @@ object_tangible_furniture_modern_shared_chair_modern_style_01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1425220436
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_chair_modern_style_01, 1425220436)
@@ -586,7 +606,9 @@ object_tangible_furniture_modern_shared_chest_modern_style_01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3089584009
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_chest_modern_style_01, 3089584009)
@@ -636,7 +658,9 @@ object_tangible_furniture_modern_shared_coffee_table_modern_style_01 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1875811519
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_coffee_table_modern_style_01, 1875811519)
@@ -686,7 +710,9 @@ object_tangible_furniture_modern_shared_coffee_table_modern_style_02 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3034133544
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_coffee_table_modern_style_02, 3034133544)
@@ -736,7 +762,9 @@ object_tangible_furniture_modern_shared_couch_modern_style_01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 997369378
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_couch_modern_style_01, 997369378)
@@ -786,7 +814,9 @@ object_tangible_furniture_modern_shared_couch_modern_style_02 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3764719285
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_couch_modern_style_02, 3764719285)
@@ -836,7 +866,9 @@ object_tangible_furniture_modern_shared_dining_table_modern_style_01 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3671645095
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_dining_table_modern_style_01, 3671645095)
@@ -886,7 +918,9 @@ object_tangible_furniture_modern_shared_end_table_large_modern_style_01 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 571124446
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_end_table_large_modern_style_01, 571124446)
@@ -936,7 +970,9 @@ object_tangible_furniture_modern_shared_end_table_small_modern_style_01 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1014144206
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_end_table_small_modern_style_01, 1014144206)
@@ -986,7 +1022,9 @@ object_tangible_furniture_modern_shared_love_seat_modern_style_01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1897101447
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_love_seat_modern_style_01, 1897101447)
@@ -1036,7 +1074,9 @@ object_tangible_furniture_modern_shared_rug_oval_lg_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 698741961
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_oval_lg_s01, 698741961)
@@ -1086,7 +1126,9 @@ object_tangible_furniture_modern_shared_rug_oval_m_s02 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1443324291
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_oval_m_s02, 1443324291)
@@ -1136,7 +1178,9 @@ object_tangible_furniture_modern_shared_rug_oval_sml_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3835781381
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_oval_sml_s01, 3835781381)
@@ -1186,7 +1230,9 @@ object_tangible_furniture_modern_shared_rug_rect_lg_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2938908953
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_lg_s01, 2938908953)
@@ -1236,7 +1282,9 @@ object_tangible_furniture_modern_shared_rug_rect_lg_s02 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1950062990
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_lg_s02, 1950062990)
@@ -1286,7 +1334,9 @@ object_tangible_furniture_modern_shared_rug_rect_m_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2115156746
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_m_s01, 2115156746)
@@ -1336,7 +1386,9 @@ object_tangible_furniture_modern_shared_rug_rect_sml_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 518921305
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rect_sml_s01, 518921305)
@@ -1386,7 +1438,9 @@ object_tangible_furniture_modern_shared_rug_rnd_lg_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 162987896
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rnd_lg_s01, 162987896)
@@ -1436,7 +1490,9 @@ object_tangible_furniture_modern_shared_rug_rnd_m_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1973381647
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rnd_m_s01, 1973381647)
@@ -1486,7 +1542,9 @@ object_tangible_furniture_modern_shared_rug_rnd_sml_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1871275749
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_rnd_sml_s01, 1871275749)
@@ -1536,7 +1594,9 @@ object_tangible_furniture_modern_shared_rug_sqr_m_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1959548191
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_rug_sqr_m_s01, 1959548191)
@@ -1586,7 +1646,9 @@ object_tangible_furniture_modern_shared_searchable_desk_01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2262472670
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_searchable_desk_01, 2262472670)
@@ -1636,7 +1698,9 @@ object_tangible_furniture_modern_shared_searchable_desk_02 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1573732169
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_searchable_desk_02, 1573732169)
@@ -1686,7 +1750,9 @@ object_tangible_furniture_modern_shared_searchable_squill_lair_01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3001683990
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_searchable_squill_lair_01, 3001683990)
@@ -1736,7 +1802,9 @@ object_tangible_furniture_modern_shared_sofa_chair_modern_style_01 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4052184792
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_sofa_chair_modern_style_01, 4052184792)
@@ -1786,7 +1854,9 @@ object_tangible_furniture_modern_shared_table_modern_style_01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1064046324
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_shared_table_modern_style_01, 1064046324)

@@ -86,7 +86,9 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2242761962
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, 2242761962)
@@ -136,7 +138,9 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1589279869
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, 1589279869)
@@ -186,7 +190,9 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1103585647
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, 1103585647)

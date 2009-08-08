@@ -86,7 +86,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 329570833
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bicep_l, 329570833)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1668390786
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r, 1668390786)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_boots = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3683772891
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_boots, 3683772891)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1303386413
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l, 1303386413)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1030053054
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_bracer_r, 1030053054)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2068279078
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_chest_plate, 2068279078)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_gloves = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 741736354
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_gloves, 741736354)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_helmet = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2599755434
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_helmet, 2599755434)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_composite_shared_armor_composite_leggings = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3264529458
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_shared_armor_composite_leggings, 3264529458)

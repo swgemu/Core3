@@ -86,7 +86,9 @@ object_tangible_component_structure_shared_capacitor_bank = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1675600168
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_capacitor_bank, 1675600168)
@@ -136,7 +138,9 @@ object_tangible_component_structure_shared_connections = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1644580711
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_connections, 1644580711)
@@ -186,7 +190,9 @@ object_tangible_component_structure_shared_fluidic_drilling_pumping_unit = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 499199094
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_fluidic_drilling_pumping_unit, 499199094)
@@ -236,7 +242,9 @@ object_tangible_component_structure_shared_generator_turbine = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1363328023
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_generator_turbine, 1363328023)
@@ -286,7 +294,9 @@ object_tangible_component_structure_shared_harvesting_mechanism = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2168038464
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_harvesting_mechanism, 2168038464)
@@ -336,7 +346,9 @@ object_tangible_component_structure_shared_heavy_harvesting_mechanism = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4202910010
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_heavy_harvesting_mechanism, 4202910010)
@@ -386,7 +398,9 @@ object_tangible_component_structure_shared_light_ore_mining_unit = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4100404133
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_light_ore_mining_unit, 4100404133)
@@ -436,7 +450,9 @@ object_tangible_component_structure_shared_light_power_core_unit = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1333204559
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_light_power_core_unit, 1333204559)
@@ -486,7 +502,9 @@ object_tangible_component_structure_shared_lightweight_turret = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 216556073
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret, 216556073)
@@ -536,7 +554,9 @@ object_tangible_component_structure_shared_lightweight_turret_electronics = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1039813801
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret_electronics, 1039813801)
@@ -586,7 +606,9 @@ object_tangible_component_structure_shared_lightweight_turret_hardware = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2213385801
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_lightweight_turret_hardware, 2213385801)
@@ -636,7 +658,9 @@ object_tangible_component_structure_shared_manufacturing_mechanism = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2031466188
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_manufacturing_mechanism, 2031466188)
@@ -686,7 +710,9 @@ object_tangible_component_structure_shared_ore_mining_unit = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 494485339
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_ore_mining_unit, 494485339)
@@ -736,7 +762,9 @@ object_tangible_component_structure_shared_power_core_unit = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2791905969
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_power_core_unit, 2791905969)
@@ -786,7 +814,9 @@ object_tangible_component_structure_shared_power_supply = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1750169887
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_power_supply, 1750169887)
@@ -836,7 +866,9 @@ object_tangible_component_structure_shared_primary_computer = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 872977107
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_primary_computer, 872977107)
@@ -886,7 +918,9 @@ object_tangible_component_structure_shared_refined_ardanium_ii = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1750151391
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_ardanium_ii, 1750151391)
@@ -936,7 +970,9 @@ object_tangible_component_structure_shared_refined_endrine = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4117820382
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_endrine, 4117820382)
@@ -986,7 +1022,9 @@ object_tangible_component_structure_shared_refined_rudic = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3234052884
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_refined_rudic, 3234052884)
@@ -1036,7 +1074,9 @@ object_tangible_component_structure_shared_regulator = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 334361877
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_regulator, 334361877)
@@ -1086,7 +1126,9 @@ object_tangible_component_structure_shared_reinforced_wall_module = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2157237478
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_reinforced_wall_module, 2157237478)
@@ -1136,7 +1178,9 @@ object_tangible_component_structure_shared_shield_housing = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4222934197
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_shield_housing, 4222934197)
@@ -1186,7 +1230,9 @@ object_tangible_component_structure_shared_structural_module = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 581097497
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structural_module, 581097497)
@@ -1236,7 +1282,9 @@ object_tangible_component_structure_shared_structure_small_storage_section = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3065121947
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structure_small_storage_section, 3065121947)
@@ -1286,7 +1334,9 @@ object_tangible_component_structure_shared_structure_storage_section = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2670328164
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_structure_storage_section, 2670328164)
@@ -1336,7 +1386,9 @@ object_tangible_component_structure_shared_turbo_fluidic_drilling_pumping_unit =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3576172943
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_turbo_fluidic_drilling_pumping_unit, 3576172943)
@@ -1386,7 +1438,9 @@ object_tangible_component_structure_shared_unit_computer = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3084238827
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_unit_computer, 3084238827)
@@ -1436,7 +1490,9 @@ object_tangible_component_structure_shared_wall_module = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 831970225
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_wall_module, 831970225)
@@ -1486,7 +1542,9 @@ object_tangible_component_structure_shared_weapon_high_power_module = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3919359812
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_weapon_high_power_module, 3919359812)
@@ -1536,7 +1594,9 @@ object_tangible_component_structure_shared_weapon_mount_heavy_stabilization_unit
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3638822414
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_shared_weapon_mount_heavy_stabilization_unit, 3638822414)

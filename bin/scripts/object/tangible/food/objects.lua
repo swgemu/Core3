@@ -86,7 +86,9 @@ object_tangible_food_shared_bread_loaf_full_s1 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 636907490
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_shared_bread_loaf_full_s1, 636907490)
@@ -136,7 +138,9 @@ object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1805453686
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_shared_fruit_melon, 1805453686)
@@ -186,7 +190,9 @@ object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1607939967
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_shared_meat_kabob, 1607939967)
@@ -236,7 +242,9 @@ object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1002178660
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_shared_meat_object, 1002178660)
@@ -286,7 +294,9 @@ object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2221635461
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_shared_nectar, 2221635461)

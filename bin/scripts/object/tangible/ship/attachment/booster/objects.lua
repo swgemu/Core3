@@ -86,7 +86,9 @@ object_tangible_ship_attachment_booster_shared_awing_booster_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3697647717
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_awing_booster_s01, 3697647717)
@@ -136,7 +138,9 @@ object_tangible_ship_attachment_booster_shared_awing_booster_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 124913906
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_awing_booster_s02, 124913906)
@@ -186,7 +190,9 @@ object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s01 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4140859891
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s01, 4140859891)
@@ -236,7 +242,9 @@ object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s02 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 768026980
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_heavy_booster_s02, 768026980)
@@ -286,7 +294,9 @@ object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s01 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1906842921
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s01, 1906842921)
@@ -336,7 +346,9 @@ object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s02 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2864690622
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_light_booster_s02, 2864690622)
@@ -386,7 +398,9 @@ object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s01 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 763756187
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s01, 763756187)
@@ -436,7 +450,9 @@ object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s02 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4136785420
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_blacksun_medium_booster_s02, 4136785420)
@@ -486,7 +502,9 @@ object_tangible_ship_attachment_booster_shared_bwing_booster_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2523851270
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_bwing_booster_s01, 2523851270)
@@ -536,7 +554,9 @@ object_tangible_ship_attachment_booster_shared_bwing_booster_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1299792529
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_bwing_booster_s02, 1299792529)
@@ -586,7 +606,9 @@ object_tangible_ship_attachment_booster_shared_decimator_booster_s01 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2076367365
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_decimator_booster_s01, 2076367365)
@@ -636,7 +658,9 @@ object_tangible_ship_attachment_booster_shared_decimator_booster_s02 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2698343058
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_decimator_booster_s02, 2698343058)
@@ -686,7 +710,9 @@ object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s01 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2708999938
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s01, 2708999938)
@@ -736,7 +762,9 @@ object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s02 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2054137749
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_heavy_booster_s02, 2054137749)
@@ -786,7 +814,9 @@ object_tangible_ship_attachment_booster_shared_hutt_light_booster_s01 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 637572056
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_light_booster_s01, 637572056)
@@ -836,7 +866,9 @@ object_tangible_ship_attachment_booster_shared_hutt_light_booster_s02 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4246158159
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_light_booster_s02, 4246158159)
@@ -886,7 +918,9 @@ object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s01 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3822843033
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s01, 3822843033)
@@ -936,7 +970,9 @@ object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s02 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 952917006
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_hutt_medium_booster_s02, 952917006)
@@ -986,7 +1022,9 @@ object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s01 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2347949328
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s01, 2347949328)
@@ -1036,7 +1074,9 @@ object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s02 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1357215111
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_kse_firespray_booster_s02, 1357215111)
@@ -1086,7 +1126,9 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1074005343
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01, 1074005343)
@@ -1136,7 +1178,9 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s01_neg = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 21603316
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01_neg, 21603316)
@@ -1186,7 +1230,9 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s01_pos = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2131148464
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s01_pos, 2131148464)
@@ -1236,7 +1282,9 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2601758152
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02, 2601758152)
@@ -1286,7 +1334,9 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s02_neg = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 327762153
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02_neg, 327762153)
@@ -1336,7 +1386,9 @@ object_tangible_ship_attachment_booster_shared_xwing_booster_s02_pos = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1841716653
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_xwing_booster_s02_pos, 1841716653)
@@ -1386,7 +1438,9 @@ object_tangible_ship_attachment_booster_shared_ykl37r_booster_s01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 17645535
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ykl37r_booster_s01, 17645535)
@@ -1436,7 +1490,9 @@ object_tangible_ship_attachment_booster_shared_ykl37r_booster_s02 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3659175752
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ykl37r_booster_s02, 3659175752)
@@ -1486,7 +1542,9 @@ object_tangible_ship_attachment_booster_shared_yt1300_booster_s01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1920544323
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_yt1300_booster_s01, 1920544323)
@@ -1536,7 +1594,9 @@ object_tangible_ship_attachment_booster_shared_yt1300_booster_s02 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2842592980
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_yt1300_booster_s02, 2842592980)
@@ -1586,7 +1646,9 @@ object_tangible_ship_attachment_booster_shared_ywing_booster_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2243807251
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ywing_booster_s01, 2243807251)
@@ -1636,7 +1698,9 @@ object_tangible_ship_attachment_booster_shared_ywing_booster_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1588224132
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_ywing_booster_s02, 1588224132)
@@ -1686,7 +1750,9 @@ object_tangible_ship_attachment_booster_shared_z95_booster_s01 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2678287878
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_z95_booster_s01, 2678287878)
@@ -1736,7 +1802,9 @@ object_tangible_ship_attachment_booster_shared_z95_booster_s02 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1152698001
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_booster_shared_z95_booster_s02, 1152698001)

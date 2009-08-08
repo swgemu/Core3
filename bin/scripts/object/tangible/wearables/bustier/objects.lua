@@ -86,7 +86,9 @@ object_tangible_wearables_bustier_shared_bustier_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2813298237
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s01, 2813298237)
@@ -136,7 +138,9 @@ object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2092445354
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s02, 2092445354)
@@ -186,7 +190,9 @@ object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 901073191
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bustier_shared_bustier_s03, 901073191)

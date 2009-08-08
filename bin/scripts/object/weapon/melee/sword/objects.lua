@@ -90,7 +90,9 @@ object_weapon_melee_sword_shared_bestine_quest_sword = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4064578026
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_bestine_quest_sword, 4064578026)
@@ -144,7 +146,9 @@ object_weapon_melee_sword_shared_sword_01 = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2166507187
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_01, 2166507187)
@@ -198,7 +202,9 @@ object_weapon_melee_sword_shared_sword_01_noob = SharedWeaponObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4026227863
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_01_noob, 4026227863)
@@ -252,7 +258,9 @@ object_weapon_melee_sword_shared_sword_02 = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1513483812
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_02, 1513483812)
@@ -306,7 +314,9 @@ object_weapon_melee_sword_shared_sword_blade_ryyk = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1543947481
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_blade_ryyk, 1543947481)
@@ -360,7 +370,9 @@ object_weapon_melee_sword_shared_sword_curved_nyax = SharedWeaponObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 686325746
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_curved_nyax, 686325746)
@@ -414,7 +426,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_anakin = SharedWeaponObjectTem
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4148631342
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_anakin, 4148631342)
@@ -468,7 +482,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_andael = SharedWeaponObjectTem
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 214802309
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_andael, 214802309)
@@ -522,7 +538,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_ben = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2309363184
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_ben, 2309363184)
@@ -576,7 +594,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_dugald = SharedWeaponObjectTem
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1815706117
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_dugald, 1815706117)
@@ -630,7 +650,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_leather = SharedWeaponObjectTe
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3799429195
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_leather, 3799429195)
@@ -684,7 +706,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 672927666
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_luke, 672927666)
@@ -738,7 +762,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3534521944
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test, 3534521944)
@@ -792,7 +818,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_mace = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1964241543
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_mace, 1964241543)
@@ -846,7 +874,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_nebu = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 949430622
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_nebu, 949430622)
@@ -900,7 +930,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_obi = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 913289864
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_obi, 913289864)
@@ -954,7 +986,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_quigon = SharedWeaponObjectTem
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2556113704
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_quigon, 2556113704)
@@ -1008,7 +1042,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleekblack = SharedWeaponObjec
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2429759563
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_sleekblack, 2429759563)
@@ -1062,7 +1098,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver = SharedWeaponObje
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3172079785
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver, 3172079785)
@@ -1116,7 +1154,9 @@ object_weapon_melee_sword_shared_sword_lightsaber_vader = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2913927315
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_lightsaber_vader, 2913927315)
@@ -1170,7 +1210,9 @@ object_weapon_melee_sword_shared_sword_nyax = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 371913339
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_nyax, 371913339)
@@ -1224,7 +1266,9 @@ object_weapon_melee_sword_shared_sword_rantok = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3125045014
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_shared_sword_rantok, 3125045014)

@@ -90,7 +90,9 @@ object_weapon_melee_knife_shared_knife_dagger = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4040009714
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_dagger, 4040009714)
@@ -144,7 +146,9 @@ object_weapon_melee_knife_shared_knife_donkuwah = SharedWeaponObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 532251396
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_donkuwah, 532251396)
@@ -198,7 +202,9 @@ object_weapon_melee_knife_shared_knife_janta = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2255187692
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_janta, 2255187692)
@@ -252,7 +258,9 @@ object_weapon_melee_knife_shared_knife_stone = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1218550121
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_stone, 1218550121)
@@ -306,7 +314,9 @@ object_weapon_melee_knife_shared_knife_stone_noob = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1606995338
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_stone_noob, 1606995338)
@@ -360,7 +370,9 @@ object_weapon_melee_knife_shared_knife_survival = SharedWeaponObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 530531036
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_survival, 530531036)
@@ -414,7 +426,9 @@ object_weapon_melee_knife_shared_knife_vibroblade = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4211610935
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_vibroblade, 4211610935)
@@ -468,7 +482,9 @@ object_weapon_melee_knife_shared_knife_vibroblade_quest = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3270607602
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_shared_knife_vibroblade_quest, 3270607602)

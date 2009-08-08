@@ -86,7 +86,9 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3515230028
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_base_shared_furniture_base, 3515230028)

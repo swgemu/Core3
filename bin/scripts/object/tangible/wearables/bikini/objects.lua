@@ -86,7 +86,9 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 389872487
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, 389872487)
@@ -136,7 +138,9 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 798815144
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s01, 798815144)
@@ -186,7 +190,9 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4102773567
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s02, 4102773567)
@@ -236,7 +242,9 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3179691186
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s03, 3179691186)
@@ -286,7 +294,9 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1181030310
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_shared_bikini_s04, 1181030310)

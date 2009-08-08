@@ -86,7 +86,9 @@ object_tangible_lair_laa_shared_lair_laa = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 986654540
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa, 986654540)
@@ -136,7 +138,9 @@ object_tangible_lair_laa_shared_lair_laa_underwater = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4014734204
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_laa_shared_lair_laa_underwater, 4014734204)

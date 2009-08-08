@@ -86,7 +86,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 23318879
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple, 23318879)
@@ -136,7 +138,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 392989916
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush, 392989916)
@@ -186,7 +190,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4037872612
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa, 4037872612)
@@ -236,7 +242,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 16908290
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01, 16908290)
@@ -286,7 +294,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3658852501
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02, 3658852501)
@@ -336,7 +346,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2467876632
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03, 2467876632)
@@ -386,7 +398,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_house = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1218019193
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_house, 1218019193)
@@ -436,7 +450,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3722135133
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton, 3722135133)
@@ -486,7 +502,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3503871911
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot, 3503871911)
@@ -536,7 +554,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2856187452
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry, 2856187452)
@@ -586,7 +606,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2819090865
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01, 2819090865)
@@ -636,7 +658,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1930445094
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02, 1930445094)
@@ -686,7 +710,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bus
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1673498889
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bush, 1673498889)
@@ -736,7 +762,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3594355154
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn, 3594355154)
@@ -786,7 +814,9 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 890845319
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka, 890845319)

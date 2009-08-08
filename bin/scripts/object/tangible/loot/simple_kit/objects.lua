@@ -86,7 +86,9 @@ object_tangible_loot_simple_kit_shared_battery_cheap_copper = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1558538770
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_battery_cheap_copper, 1558538770)
@@ -136,7 +138,9 @@ object_tangible_loot_simple_kit_shared_datadisk = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4025688379
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datadisk, 4025688379)
@@ -186,7 +190,9 @@ object_tangible_loot_simple_kit_shared_datadisk_repair_kit = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1751481295
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datadisk_repair_kit, 1751481295)
@@ -236,7 +242,9 @@ object_tangible_loot_simple_kit_shared_datapad_backlight = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4084040354
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_backlight, 4084040354)
@@ -286,7 +294,9 @@ object_tangible_loot_simple_kit_shared_datapad_battery = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3119448448
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_battery, 3119448448)
@@ -336,7 +346,9 @@ object_tangible_loot_simple_kit_shared_datapad_casing = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2404535278
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_casing, 2404535278)
@@ -386,7 +398,9 @@ object_tangible_loot_simple_kit_shared_datapad_connectors = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3704114882
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_datapad_connectors, 3704114882)
@@ -436,7 +450,9 @@ object_tangible_loot_simple_kit_shared_empty_datapad = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1084051270
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_empty_datapad, 1084051270)
@@ -486,7 +502,9 @@ object_tangible_loot_simple_kit_shared_feed_tubes = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2298400846
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_feed_tubes, 2298400846)
@@ -536,7 +554,9 @@ object_tangible_loot_simple_kit_shared_firework_casing = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 652853740
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_firework_casing, 652853740)
@@ -586,7 +606,9 @@ object_tangible_loot_simple_kit_shared_firework_fixer = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4181083610
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_firework_fixer, 4181083610)
@@ -636,7 +658,9 @@ object_tangible_loot_simple_kit_shared_flat_canvas = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 164033242
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_flat_canvas, 164033242)
@@ -686,7 +710,9 @@ object_tangible_loot_simple_kit_shared_heating_element = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 326778183
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_heating_element, 326778183)
@@ -736,7 +762,9 @@ object_tangible_loot_simple_kit_shared_magnetic_burner = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2586601937
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_magnetic_burner, 2586601937)
@@ -786,7 +814,9 @@ object_tangible_loot_simple_kit_shared_magnetic_reader = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 29814933
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_magnetic_reader, 29814933)
@@ -836,7 +866,9 @@ object_tangible_loot_simple_kit_shared_motor_small_blue = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3144713360
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_motor_small_blue, 3144713360)
@@ -886,7 +918,9 @@ object_tangible_loot_simple_kit_shared_motor_small_red = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1519193504
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_motor_small_red, 1519193504)
@@ -936,7 +970,9 @@ object_tangible_loot_simple_kit_shared_paint_cartridge = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1559578461
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_paint_cartridge, 1559578461)
@@ -986,7 +1022,9 @@ object_tangible_loot_simple_kit_shared_paint_disperser = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 433413834
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_paint_disperser, 433413834)
@@ -1036,7 +1074,9 @@ object_tangible_loot_simple_kit_shared_picture_printer = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3918612828
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_picture_printer, 3918612828)
@@ -1086,7 +1126,9 @@ object_tangible_loot_simple_kit_shared_powder_pack = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3790649571
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_powder_pack, 3790649571)
@@ -1136,7 +1178,9 @@ object_tangible_loot_simple_kit_shared_processor_attachments = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 802964254
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_processor_attachments, 802964254)
@@ -1186,7 +1230,9 @@ object_tangible_loot_simple_kit_shared_pulverizer = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 575747803
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_pulverizer, 575747803)
@@ -1236,7 +1282,9 @@ object_tangible_loot_simple_kit_shared_recovery_software = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3916637406
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_recovery_software, 3916637406)
@@ -1286,7 +1334,9 @@ object_tangible_loot_simple_kit_shared_spinning_blade = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3010431171
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_spinning_blade, 3010431171)
@@ -1336,7 +1386,9 @@ object_tangible_loot_simple_kit_shared_tumble_blender = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 737773540
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_tumble_blender, 737773540)
@@ -1386,7 +1438,9 @@ object_tangible_loot_simple_kit_shared_viewscreen_printer = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1346373524
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_viewscreen_printer, 1346373524)
@@ -1436,7 +1490,9 @@ object_tangible_loot_simple_kit_shared_viewscreen_reader = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3617524157
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_viewscreen_reader, 3617524157)
@@ -1486,7 +1542,9 @@ object_tangible_loot_simple_kit_shared_wiring = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1151739825
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_wiring, 1151739825)
@@ -1536,7 +1594,9 @@ object_tangible_loot_simple_kit_shared_wiring_blue = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1994052682
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_wiring_blue, 1994052682)
@@ -1586,7 +1646,9 @@ object_tangible_loot_simple_kit_shared_wiring_red = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2818101899
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_simple_kit_shared_wiring_red, 2818101899)

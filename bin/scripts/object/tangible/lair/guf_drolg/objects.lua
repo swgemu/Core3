@@ -86,7 +86,9 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2875084691
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, 2875084691)
@@ -136,7 +138,9 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4195556845
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, 4195556845)
@@ -186,7 +190,9 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3851962696
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, 3851962696)

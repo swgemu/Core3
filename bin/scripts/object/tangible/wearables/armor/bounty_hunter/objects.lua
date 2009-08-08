@@ -86,7 +86,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 148447404
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt, 148447404)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3816261065
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l, 3816261065)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2476916826
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r, 2476916826)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 564000134
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots, 564000134)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 391592996
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l, 391592996)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1736604087
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r, 1736604087)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_p
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1339202211
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate, 1339202211)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2249951613
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves, 2249951613)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 819685493
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet, 819685493)
@@ -536,7 +554,9 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_legging
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2557731131
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings, 2557731131)

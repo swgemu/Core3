@@ -86,7 +86,9 @@ object_tangible_lair_torton_shared_lair_torton = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1086986057
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton, 1086986057)
@@ -136,7 +138,9 @@ object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2619306263
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, 2619306263)

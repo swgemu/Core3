@@ -86,7 +86,9 @@ object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3833889530
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_rebel_shared_lair_rebel_npc, 3833889530)

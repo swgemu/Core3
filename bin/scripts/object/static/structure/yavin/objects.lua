@@ -74,7 +74,9 @@ object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2504717915
 }
 
 ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, 2504717915)
@@ -112,7 +114,9 @@ object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1455376607
 }
 
 ObjectTemplates:addTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, 1455376607)

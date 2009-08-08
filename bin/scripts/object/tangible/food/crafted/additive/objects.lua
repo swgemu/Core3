@@ -86,7 +86,9 @@ object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4284585922
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_base, 4284585922)
@@ -136,7 +138,9 @@ object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2284977295
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, 2284977295)
@@ -186,7 +190,9 @@ object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1231667281
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_light, 1231667281)
@@ -236,7 +242,9 @@ object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 282579048
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_shared_additive_medium, 282579048)

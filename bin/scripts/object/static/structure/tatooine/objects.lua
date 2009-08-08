@@ -75,7 +75,9 @@ object_static_structure_tatooine_shared_antenna_tatt_style_1 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1093255506
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_1, 1093255506)
@@ -114,7 +116,9 @@ object_static_structure_tatooine_shared_antenna_tatt_style_2 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2587781573
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_2, 2587781573)
@@ -153,7 +157,9 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4012796711
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01, 4012796711)
@@ -192,7 +198,9 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 876200880
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02, 876200880)
@@ -231,7 +239,9 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_01 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1188632964
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_01, 1188632964)
@@ -270,7 +280,9 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_02 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2647568659
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_02, 2647568659)
@@ -309,7 +321,9 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_03 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3569604254
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_03, 3569604254)
@@ -348,7 +362,9 @@ object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3926077524
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8, 3926077524)
@@ -387,7 +403,9 @@ object_static_structure_tatooine_shared_debris_tatt_crate_1 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2802480216
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_1, 2802480216)
@@ -426,7 +444,9 @@ object_static_structure_tatooine_shared_debris_tatt_crate_metal_1 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 640052328
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_metal_1, 640052328)
@@ -465,7 +485,9 @@ object_static_structure_tatooine_shared_debris_tatt_drum_dented_1 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2065777367
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_dented_1, 2065777367)
@@ -504,7 +526,9 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_1 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1759237578
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_1, 1759237578)
@@ -543,7 +567,9 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_2 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3016523101
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_2, 3016523101)
@@ -582,7 +608,9 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3869966709
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected, 3869966709)
@@ -621,7 +649,9 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2912961482
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1, 2912961482)
@@ -660,7 +690,9 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1991764829
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2, 1991764829)
@@ -699,7 +731,9 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 734378137
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth, 734378137)
@@ -738,7 +772,9 @@ object_static_structure_tatooine_shared_debris_tatt_radar_dish = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 509333295
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_debris_tatt_radar_dish, 509333295)
@@ -777,7 +813,9 @@ object_static_structure_tatooine_shared_guild_ball_free_style_01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4217839607
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_guild_ball_free_style_01, 4217839607)
@@ -816,7 +854,9 @@ object_static_structure_tatooine_shared_guild_banner_free_style_01 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3370382065
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_guild_banner_free_style_01, 3370382065)
@@ -855,7 +895,9 @@ object_static_structure_tatooine_shared_guild_statue_free_style_01 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3311933250
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_guild_statue_free_style_01, 3311933250)
@@ -894,7 +936,9 @@ object_static_structure_tatooine_shared_luke_farm_dome = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 833921892
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_luke_farm_dome, 833921892)
@@ -933,7 +977,9 @@ object_static_structure_tatooine_shared_luke_farm_garage = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2599767179
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_luke_farm_garage, 2599767179)
@@ -972,7 +1018,9 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2565487141
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_01, 2565487141)
@@ -1011,7 +1059,9 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_02 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1140691634
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_02, 1140691634)
@@ -1050,7 +1100,9 @@ object_static_structure_tatooine_shared_palette_tatooine_style_01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 964260108
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_palette_tatooine_style_01, 964260108)
@@ -1089,7 +1141,9 @@ object_static_structure_tatooine_shared_pillar_damaged_large_style_01 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 241421707
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_damaged_large_style_01, 241421707)
@@ -1128,7 +1182,9 @@ object_static_structure_tatooine_shared_pillar_pristine_large_style_01 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 4292692970
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_pristine_large_style_01, 4292692970)
@@ -1167,7 +1223,9 @@ object_static_structure_tatooine_shared_pillar_pristine_small_style_01 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3757161564
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_pristine_small_style_01, 3757161564)
@@ -1206,7 +1264,9 @@ object_static_structure_tatooine_shared_pillar_pristine_tall_style_01 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3787857912
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_pristine_tall_style_01, 3787857912)
@@ -1245,7 +1305,9 @@ object_static_structure_tatooine_shared_pillar_ruined_large_style_01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1598087847
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_ruined_large_style_01, 1598087847)
@@ -1284,7 +1346,9 @@ object_static_structure_tatooine_shared_pillar_ruined_small_style_01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2137789713
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_ruined_small_style_01, 2137789713)
@@ -1323,7 +1387,9 @@ object_static_structure_tatooine_shared_pillar_watto_junkshop = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 4197410545
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_pillar_watto_junkshop, 4197410545)
@@ -1362,7 +1428,9 @@ object_static_structure_tatooine_shared_planter_hanging_style_01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 965371099
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_planter_hanging_style_01, 965371099)
@@ -1401,7 +1469,9 @@ object_static_structure_tatooine_shared_planter_window_style_01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3602181980
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_planter_window_style_01, 3602181980)
@@ -1440,7 +1510,9 @@ object_static_structure_tatooine_shared_shed_junkshop_watto = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3540340474
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_shed_junkshop_watto, 3540340474)
@@ -1479,7 +1551,9 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_head = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2360757218
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_head, 2360757218)
@@ -1518,7 +1592,9 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1968966439
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large, 1968966439)
@@ -1557,7 +1633,9 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3765108574
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium, 3765108574)
@@ -1596,7 +1674,9 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1095212814
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small, 1095212814)
@@ -1635,7 +1715,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2765616042
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01, 2765616042)
@@ -1674,7 +1756,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2143312701
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02, 2143312701)
@@ -1713,7 +1797,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_foot = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3709855452
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_foot, 3709855452)
@@ -1752,7 +1838,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1206320755
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_01, 1206320755)
@@ -1791,7 +1879,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_02 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2633062116
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_02, 2633062116)
@@ -1830,7 +1920,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 244287544
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01, 244287544)
@@ -1869,7 +1961,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3583516847
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02, 3583516847)
@@ -1908,7 +2002,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_ribcage = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3011148946
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_ribcage, 3011148946)
@@ -1947,7 +2043,9 @@ object_static_structure_tatooine_shared_skeleton_krayt_tail = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2336540846
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_skeleton_krayt_tail, 2336540846)
@@ -1986,7 +2084,9 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_01 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1322132974
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_01, 1322132974)
@@ -2025,7 +2125,9 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_02 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2514062713
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_02, 2514062713)
@@ -2064,7 +2166,9 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_01 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1860358744
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_01, 1860358744)
@@ -2103,7 +2207,9 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_02 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3052763855
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_02, 3052763855)
@@ -2142,7 +2248,9 @@ object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3200019712
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01, 3200019712)
@@ -2181,7 +2289,9 @@ object_static_structure_tatooine_shared_streetsign_upright_style_01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1684082876
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_streetsign_upright_style_01, 1684082876)
@@ -2220,7 +2330,9 @@ object_static_structure_tatooine_shared_streetsign_wall_style_01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3198539542
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_streetsign_wall_style_01, 3198539542)
@@ -2258,7 +2370,9 @@ object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2616904837
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01, 2616904837)
@@ -2296,7 +2410,9 @@ object_static_structure_tatooine_shared_tato_imprv_flagpole_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1474884262
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_tato_imprv_flagpole_s01, 1474884262)
@@ -2335,7 +2451,9 @@ object_static_structure_tatooine_shared_tent_house_tatooine_style_01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1417975984
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_tent_house_tatooine_style_01, 1417975984)
@@ -2374,7 +2492,9 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 380331488
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01, 380331488)
@@ -2413,7 +2533,9 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 757634419
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01, 757634419)
@@ -2452,7 +2574,9 @@ object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3117988515
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01, 3117988515)
@@ -2491,7 +2615,9 @@ object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3482982112
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01, 3482982112)
@@ -2530,7 +2656,9 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3317597393
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_01, 3317597393)
@@ -2569,7 +2697,9 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_02 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 514403398
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_02, 514403398)
@@ -2608,7 +2738,9 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_03 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1470385099
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_03, 1470385099)
@@ -2647,7 +2779,9 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 107098437
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01, 107098437)
@@ -2686,7 +2820,9 @@ object_static_structure_tatooine_shared_wall_junkshop_watto = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3988863044
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_junkshop_watto, 3988863044)
@@ -2725,7 +2861,9 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2746619484
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01, 2746619484)
@@ -2764,7 +2902,9 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2023866059
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02, 2023866059)
@@ -2803,7 +2943,9 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2207965674
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01, 2207965674)
@@ -2842,7 +2984,9 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1229804318
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01, 1229804318)
@@ -2881,7 +3025,9 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3589895396
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01, 3589895396)
@@ -2920,7 +3066,9 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 250535027
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02, 250535027)
@@ -2959,7 +3107,9 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 4124410706
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01, 4124410706)

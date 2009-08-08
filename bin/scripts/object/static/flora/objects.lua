@@ -75,7 +75,9 @@ object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3282656608
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_base, 3282656608)
@@ -114,7 +116,9 @@ object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3380635776
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_dathomir_hwotha, 3380635776)
@@ -153,7 +157,9 @@ object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2385797177
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_endor_rainbowbush, 2385797177)
@@ -192,7 +198,9 @@ object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1622915798
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_talus_razorcoil, 1622915798)
@@ -231,7 +239,9 @@ object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4112833826
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_bush_yavin_blueleaf, 4112833826)
@@ -270,7 +280,9 @@ object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1303000302
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_azerontree, 1303000302)
@@ -309,7 +321,9 @@ object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1239955396
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_dath_blacktree, 1239955396)
@@ -348,7 +362,9 @@ object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3087503053
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_endr_destree_dead, 3087503053)
@@ -387,7 +403,9 @@ object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1850241596
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massassi, 1850241596)
@@ -426,7 +444,9 @@ object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1334140957
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_massassi_broke, 1334140957)
@@ -465,7 +485,9 @@ object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4131259780
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch, 4131259780)
@@ -504,7 +526,9 @@ object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2780610841
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch_broke, 2780610841)
@@ -543,7 +567,9 @@ object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2323835715
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_all_bauhin, 2323835715)
@@ -582,7 +608,9 @@ object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1951625577
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_endor_scrubwort, 1951625577)
@@ -621,7 +649,9 @@ object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3210762519
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel, 3210762519)
@@ -660,7 +690,9 @@ object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1114511484
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_med, 1114511484)
@@ -699,7 +731,9 @@ object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3419088004
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_flower_tato_funnel_sm, 3419088004)
@@ -738,7 +772,9 @@ object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3330222752
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil, 3330222752)
@@ -777,7 +813,9 @@ object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3257873338
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_falotil_bare, 3257873338)
@@ -816,7 +854,9 @@ object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 998793848
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_hubba, 998793848)
@@ -855,7 +895,9 @@ object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2097396056
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika, 2097396056)
@@ -894,7 +936,9 @@ object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 753105168
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_plant_tato_pika_tri, 753105168)
@@ -933,7 +977,9 @@ object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4134879921
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_shrb_dath_glingi, 4134879921)
@@ -972,7 +1018,9 @@ object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3776365618
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_lok_mkpud, 3776365618)
@@ -1011,7 +1059,9 @@ object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2866142506
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_fngi, 2866142506)
@@ -1050,7 +1100,9 @@ object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2535930087
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_sm, 2535930087)
@@ -1089,7 +1141,9 @@ object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 758632558
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_palm_thk, 758632558)
@@ -1128,7 +1182,9 @@ object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1443720376
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_mkpodtree, 1443720376)
@@ -1167,7 +1223,9 @@ object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4015418034
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s00, 4015418034)
@@ -1206,7 +1264,9 @@ object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2790985023
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s01, 2790985023)
@@ -1245,7 +1305,9 @@ object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2102175144
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s02, 2102175144)
@@ -1284,7 +1346,9 @@ object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 876724773
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_rori_windswept_s03, 876724773)
@@ -1323,7 +1387,9 @@ object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1020776426
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_flora_tree_tato_touchnot, 1020776426)
@@ -1362,7 +1428,9 @@ object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 248082179
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_orange, 248082179)
@@ -1401,7 +1469,9 @@ object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3892348345
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_flowers_purple, 3892348345)
@@ -1440,7 +1510,9 @@ object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 877469590
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_fern, 877469590)
@@ -1479,7 +1551,9 @@ object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1315610543
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_ivy, 1315610543)
@@ -1518,7 +1592,9 @@ object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 622948670
 }
 
 ObjectTemplates:addTemplate(object_static_flora_shared_potted_plant_leaves_small, 622948670)

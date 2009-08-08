@@ -75,7 +75,9 @@ object_static_space_spacestation_shared_corsec_outpost_01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2081400463
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_corsec_outpost_01, 2081400463)
@@ -114,7 +116,9 @@ object_static_space_spacestation_shared_destroyed_imperial_spacestation_01 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 51631832
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_destroyed_imperial_spacestation_01, 51631832)
@@ -153,7 +157,9 @@ object_static_space_spacestation_shared_destroyed_neutral_spacestation_01 = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1249810321
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_destroyed_neutral_spacestation_01, 1249810321)
@@ -192,7 +198,9 @@ object_static_space_spacestation_shared_destroyed_rebel_spacestation_01 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2680136017
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_destroyed_rebel_spacestation_01, 2680136017)
@@ -231,7 +239,9 @@ object_static_space_spacestation_shared_imperial_outpost_01 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2798221309
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_imperial_outpost_01, 2798221309)
@@ -270,7 +280,9 @@ object_static_space_spacestation_shared_imperial_spacestation_01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1432735117
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_imperial_spacestation_01, 1432735117)
@@ -309,7 +321,9 @@ object_static_space_spacestation_shared_mining_outpost_01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2821130357
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_mining_outpost_01, 2821130357)
@@ -348,7 +362,9 @@ object_static_space_spacestation_shared_neutral_spacestation_01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1020449754
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_neutral_spacestation_01, 1020449754)
@@ -387,7 +403,9 @@ object_static_space_spacestation_shared_pirate_outpost_01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1500513199
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_pirate_outpost_01, 1500513199)
@@ -426,7 +444,9 @@ object_static_space_spacestation_shared_pirate_outpost_asteroid = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1677357980
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_pirate_outpost_asteroid, 1677357980)
@@ -465,7 +485,9 @@ object_static_space_spacestation_shared_rebel_outpost_01 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2870024383
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_rebel_outpost_01, 2870024383)
@@ -504,7 +526,9 @@ object_static_space_spacestation_shared_rebel_spacestation_01 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2738509482
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_rebel_spacestation_01, 2738509482)
@@ -543,7 +567,9 @@ object_static_space_spacestation_shared_rsf_spacestation = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1595448737
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_rsf_spacestation, 1595448737)
@@ -582,7 +608,9 @@ object_static_space_spacestation_shared_tradefed_destroyed_hulk = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4274432492
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_tradefed_destroyed_hulk, 4274432492)
@@ -621,7 +649,9 @@ object_static_space_spacestation_shared_tradefed_outpost_01 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 58780545
 }
 
 ObjectTemplates:addTemplate(object_static_space_spacestation_shared_tradefed_outpost_01, 58780545)

@@ -86,7 +86,9 @@ object_tangible_item_new_player_shared_new_player_cloning_coupon = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2459202861
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_new_player_shared_new_player_cloning_coupon, 2459202861)
@@ -136,7 +138,9 @@ object_tangible_item_new_player_shared_new_player_travel_coupon = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 190401300
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_new_player_shared_new_player_travel_coupon, 190401300)
@@ -186,7 +190,9 @@ object_tangible_item_new_player_shared_new_player_vehicle_coupon = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 835581820
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_new_player_shared_new_player_vehicle_coupon, 835581820)

@@ -75,7 +75,9 @@ object_waypoint_shared_path_waypoint = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4195736526
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_path_waypoint, 4195736526)
@@ -114,7 +116,9 @@ object_waypoint_shared_waypoint = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4251347533
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_waypoint, 4251347533)
@@ -153,7 +157,9 @@ object_waypoint_shared_world_waypoint = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 629636525
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint, 629636525)
@@ -192,7 +198,9 @@ object_waypoint_shared_world_waypoint_blue = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3038003230
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_blue, 3038003230)
@@ -231,7 +239,9 @@ object_waypoint_shared_world_waypoint_green = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 211288739
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_green, 211288739)
@@ -270,7 +280,9 @@ object_waypoint_shared_world_waypoint_orange = SharedWaypointObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3990793280
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_orange, 3990793280)
@@ -309,7 +321,9 @@ object_waypoint_shared_world_waypoint_purple = SharedWaypointObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 186074874
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_purple, 186074874)
@@ -348,7 +362,9 @@ object_waypoint_shared_world_waypoint_space = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2672628441
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_space, 2672628441)
@@ -387,7 +403,9 @@ object_waypoint_shared_world_waypoint_white = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2818077908
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_white, 2818077908)
@@ -426,7 +444,9 @@ object_waypoint_shared_world_waypoint_yellow = SharedWaypointObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2960507421
 }
 
 ObjectTemplates:addTemplate(object_waypoint_shared_world_waypoint_yellow, 2960507421)

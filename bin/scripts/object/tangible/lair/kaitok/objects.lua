@@ -86,7 +86,9 @@ object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2306923855
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, 2306923855)
@@ -136,7 +138,9 @@ object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 977615987
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, 977615987)
@@ -186,7 +190,9 @@ object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3767339902
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, 3767339902)

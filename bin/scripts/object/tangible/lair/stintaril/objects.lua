@@ -86,7 +86,9 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3535581753
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, 3535581753)
@@ -136,7 +138,9 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3799137931
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, 3799137931)
@@ -186,7 +190,9 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3834490330
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, 3834490330)

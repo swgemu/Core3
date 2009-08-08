@@ -86,7 +86,9 @@ object_tangible_lair_bluefish_shared_lair_bluefish = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1606267256
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bluefish_shared_lair_bluefish, 1606267256)
@@ -136,7 +138,9 @@ object_tangible_lair_bluefish_shared_lair_bluefish_underwater = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2427174559
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bluefish_shared_lair_bluefish_underwater, 2427174559)

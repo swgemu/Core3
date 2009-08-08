@@ -90,7 +90,9 @@ object_weapon_melee_knife_base_shared_knife_base = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2605941713
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_base_shared_knife_base, 2605941713)

@@ -89,7 +89,9 @@ object_building_faction_perk_base_shared_factional_building_base = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 275299294
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_base_shared_factional_building_base, 275299294)

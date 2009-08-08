@@ -86,7 +86,9 @@ object_installation_mining_organic_base_shared_mining_organic_base = SharedInsta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1780958356
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_organic_base_shared_mining_organic_base, 1780958356)

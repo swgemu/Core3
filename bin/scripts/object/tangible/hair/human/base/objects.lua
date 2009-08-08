@@ -86,7 +86,9 @@ object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1278154793
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_base, 1278154793)
@@ -136,7 +138,9 @@ object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 504761774
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_female_base, 504761774)
@@ -186,7 +190,9 @@ object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2205118344
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_base_shared_hair_human_male_base, 2205118344)

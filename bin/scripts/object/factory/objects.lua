@@ -86,7 +86,9 @@ object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1598099833
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_armor, 1598099833)
@@ -136,7 +138,9 @@ object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3401438151
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_chemicals, 3401438151)
@@ -186,7 +190,9 @@ object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2342101395
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_clothing, 2342101395)
@@ -236,7 +242,9 @@ object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1584679689
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_electronics, 1584679689)
@@ -286,7 +294,9 @@ object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1184983851
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_food, 1184983851)
@@ -336,7 +346,9 @@ object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3880912033
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_furniture, 3880912033)
@@ -386,7 +398,9 @@ object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 685226208
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_generic_items, 685226208)
@@ -436,7 +450,9 @@ object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 577406456
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_installation, 577406456)
@@ -486,7 +502,9 @@ object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4077073151
 }
 
 ObjectTemplates:addTemplate(object_factory_shared_factory_crate_weapon, 4077073151)

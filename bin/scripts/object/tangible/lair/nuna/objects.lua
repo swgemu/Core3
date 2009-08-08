@@ -86,7 +86,9 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1870027501
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna, 1870027501)
@@ -136,7 +138,9 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3366083630
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, 3366083630)
@@ -186,7 +190,9 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2100068580
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, 2100068580)
@@ -236,7 +242,9 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 222503390
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, 222503390)

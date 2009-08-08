@@ -86,7 +86,9 @@ object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3480787913
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_food, 3480787913)
@@ -136,7 +138,9 @@ object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 600604858
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_medicine, 600604858)
@@ -186,7 +190,9 @@ object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1792262622
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_money, 1792262622)
@@ -236,7 +242,9 @@ object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1782676583
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_resource, 1782676583)
@@ -286,7 +294,9 @@ object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1453711903
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_warp, 1453711903)
@@ -336,7 +346,9 @@ object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 123483416
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_wound, 123483416)
@@ -386,7 +398,9 @@ object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3440875324
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_beta_terminal_xp, 3440875324)
@@ -436,7 +450,9 @@ object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3977978094
 }
 
 ObjectTemplates:addTemplate(object_tangible_beta_shared_donham_terminal, 3977978094)

@@ -86,7 +86,9 @@ object_tangible_event_perk_shared_banner_generic_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3101933618
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_banner_generic_s01, 3101933618)
@@ -136,7 +138,9 @@ object_tangible_event_perk_shared_banner_generic_s02 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1676961957
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_banner_generic_s02, 1676961957)
@@ -186,7 +190,9 @@ object_tangible_event_perk_shared_banner_imperial_style_01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1929704726
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_banner_imperial_style_01, 1929704726)
@@ -236,7 +242,9 @@ object_tangible_event_perk_shared_banner_rebel_style_01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2930743031
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_banner_rebel_style_01, 2930743031)
@@ -286,7 +294,9 @@ object_tangible_event_perk_shared_banner_tatooine_style_01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2687460548
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_banner_tatooine_style_01, 2687460548)
@@ -336,7 +346,9 @@ object_tangible_event_perk_shared_camp_pavilion_s1 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1187933000
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_camp_pavilion_s1, 1187933000)
@@ -386,7 +398,9 @@ object_tangible_event_perk_shared_camp_pavilion_s2 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2648294367
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_camp_pavilion_s2, 2648294367)
@@ -436,7 +450,9 @@ object_tangible_event_perk_shared_corl_banner_govt_tall_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1869770240
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_corl_banner_govt_tall_s01, 1869770240)
@@ -486,7 +502,9 @@ object_tangible_event_perk_shared_corl_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2962342728
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_corl_imprv_flagpole_s01, 2962342728)
@@ -536,7 +554,9 @@ object_tangible_event_perk_shared_dant_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2911399256
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_dant_imprv_flagpole_s01, 2911399256)
@@ -586,7 +606,9 @@ object_tangible_event_perk_shared_dath_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 918678625
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_dath_imprv_flagpole_s01, 918678625)
@@ -636,7 +658,9 @@ object_tangible_event_perk_shared_endr_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3602715696
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_endr_imprv_flagpole_s01, 3602715696)
@@ -686,7 +710,9 @@ object_tangible_event_perk_shared_filler_building_naboo_theed_style_9 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1351153142
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_filler_building_naboo_theed_style_9, 1351153142)
@@ -736,7 +762,9 @@ object_tangible_event_perk_shared_garden_gazebo_lg_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3435405037
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_garden_gazebo_lg_s01, 3435405037)
@@ -786,7 +814,9 @@ object_tangible_event_perk_shared_guild_banner_free_style_01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3768938649
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_guild_banner_free_style_01, 3768938649)
@@ -836,7 +866,9 @@ object_tangible_event_perk_shared_lambda_shuttle = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3953966640
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_lambda_shuttle, 3953966640)
@@ -886,7 +918,9 @@ object_tangible_event_perk_shared_lok_imprv_flagpole_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 206018055
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_lok_imprv_flagpole_s01, 206018055)
@@ -936,7 +970,9 @@ object_tangible_event_perk_shared_military_outpost_guard_tower_1 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1695234160
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_military_outpost_guard_tower_1, 1695234160)
@@ -986,7 +1022,9 @@ object_tangible_event_perk_shared_nboo_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2093214424
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_nboo_imprv_flagpole_s01, 2093214424)
@@ -1036,7 +1074,9 @@ object_tangible_event_perk_shared_player_shuttle = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1112601995
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_player_shuttle, 1112601995)
@@ -1086,7 +1126,9 @@ object_tangible_event_perk_shared_rori_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1059068095
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_rori_imprv_flagpole_s01, 1059068095)
@@ -1136,7 +1178,9 @@ object_tangible_event_perk_shared_sandcrawler = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1746956428
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_sandcrawler, 1746956428)
@@ -1186,7 +1230,9 @@ object_tangible_event_perk_shared_talus_imprv_flagpole_s01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 662043179
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_talus_imprv_flagpole_s01, 662043179)
@@ -1236,7 +1282,9 @@ object_tangible_event_perk_shared_tato_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3257229451
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_tato_imprv_flagpole_s01, 3257229451)
@@ -1286,7 +1334,9 @@ object_tangible_event_perk_shared_tie_bomber = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 776171698
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_tie_bomber, 776171698)
@@ -1336,7 +1386,9 @@ object_tangible_event_perk_shared_web_tree = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3088064120
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_web_tree, 3088064120)
@@ -1386,7 +1438,9 @@ object_tangible_event_perk_shared_xwing = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2918492733
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_xwing, 2918492733)
@@ -1436,7 +1490,9 @@ object_tangible_event_perk_shared_yavn_imprv_flagpole_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 585538778
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_shared_yavn_imprv_flagpole_s01, 585538778)

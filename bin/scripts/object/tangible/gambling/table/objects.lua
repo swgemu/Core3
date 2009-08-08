@@ -86,7 +86,9 @@ object_tangible_gambling_table_shared_table_base = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 294893544
 }
 
 ObjectTemplates:addTemplate(object_tangible_gambling_table_shared_table_base, 294893544)

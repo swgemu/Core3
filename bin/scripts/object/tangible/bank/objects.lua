@@ -86,7 +86,9 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1895633812
 }
 
 ObjectTemplates:addTemplate(object_tangible_bank_shared_character_bank, 1895633812)

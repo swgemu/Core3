@@ -86,7 +86,9 @@ object_tangible_lair_kimogila_shared_lair_kimogila = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1897213420
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kimogila_shared_lair_kimogila, 1897213420)
@@ -136,7 +138,9 @@ object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2372563176
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_grassland, 2372563176)
@@ -186,7 +190,9 @@ object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2905887997
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_mountain, 2905887997)

@@ -90,7 +90,9 @@ object_weapon_melee_baton_base_shared_baton_base = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3732005131
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_base_shared_baton_base, 3732005131)

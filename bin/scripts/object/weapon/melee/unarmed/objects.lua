@@ -90,7 +90,9 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1334573707
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default, 1334573707)
@@ -144,7 +146,9 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1891079953
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, 1891079953)

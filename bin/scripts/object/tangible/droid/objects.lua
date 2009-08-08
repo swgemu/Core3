@@ -86,7 +86,9 @@ object_tangible_droid_shared_droid_space_memory_module_1 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 240821599
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_1, 240821599)
@@ -136,7 +138,9 @@ object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2856908563
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_droid_space_memory_module_base, 2856908563)
@@ -186,7 +190,9 @@ object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1883811803
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_1, 1883811803)
@@ -236,7 +242,9 @@ object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2875131724
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_2, 2875131724)
@@ -286,7 +294,9 @@ object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3797049537
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_3, 3797049537)
@@ -336,7 +346,9 @@ object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 431049685
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_4, 431049685)
@@ -386,7 +398,9 @@ object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1354509400
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_5, 1354509400)
@@ -436,7 +450,9 @@ object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2343273679
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_6, 2343273679)
@@ -486,7 +502,9 @@ object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3955479203
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_shared_navicomputer_base, 3955479203)

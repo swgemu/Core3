@@ -86,7 +86,9 @@ object_tangible_region_shared_battlefield_marker = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3641759801
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_battlefield_marker, 3641759801)
@@ -136,7 +138,9 @@ object_tangible_region_shared_deliver_region_10 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2066164498
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_10, 2066164498)
@@ -186,7 +190,9 @@ object_tangible_region_shared_deliver_region_15 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 316591900
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_15, 316591900)
@@ -236,7 +242,9 @@ object_tangible_region_shared_deliver_region_20 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1449082010
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_20, 1449082010)
@@ -286,7 +294,9 @@ object_tangible_region_shared_deliver_region_25 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1067899028
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_25, 1067899028)
@@ -336,7 +346,9 @@ object_tangible_region_shared_deliver_region_30 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1299657186
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_30, 1299657186)
@@ -386,7 +398,9 @@ object_tangible_region_shared_deliver_region_5 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3353678877
 }
 
 ObjectTemplates:addTemplate(object_tangible_region_shared_deliver_region_5, 3353678877)

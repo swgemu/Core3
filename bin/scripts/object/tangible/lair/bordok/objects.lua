@@ -86,7 +86,9 @@ object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2816531423
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bordok_shared_lair_bordok, 2816531423)
@@ -136,7 +138,9 @@ object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4096042384
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, 4096042384)

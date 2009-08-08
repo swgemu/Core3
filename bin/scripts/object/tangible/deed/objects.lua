@@ -86,7 +86,9 @@ object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3516023581
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_shared_test_deed, 3516023581)

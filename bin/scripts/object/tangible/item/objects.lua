@@ -86,7 +86,9 @@ object_tangible_item_shared_con_drinking_glass_01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2860245091
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_shared_con_drinking_glass_01, 2860245091)
@@ -136,7 +138,9 @@ object_tangible_item_shared_droid_customization = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3401469915
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_shared_droid_customization, 3401469915)
@@ -186,7 +190,9 @@ object_tangible_item_shared_loot_credit_chip = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4287269962
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_shared_loot_credit_chip, 4287269962)
@@ -236,7 +242,9 @@ object_tangible_item_shared_lytus_family_artefact = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3055843193
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_shared_lytus_family_artefact, 3055843193)
@@ -286,7 +294,9 @@ object_tangible_item_shared_vehicle_customization = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3528062501
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_shared_vehicle_customization, 3528062501)

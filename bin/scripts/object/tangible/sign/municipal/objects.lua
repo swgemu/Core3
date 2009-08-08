@@ -86,7 +86,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3236011689
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, 3236011689)
@@ -136,7 +138,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3410306211
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, 3410306211)
@@ -186,7 +190,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3771237737
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, 3771237737)
@@ -236,7 +242,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3647827532
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, 3647827532)
@@ -286,7 +294,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1785001308
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, 1785001308)
@@ -336,7 +346,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1680490925
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, 1680490925)
@@ -386,7 +398,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3811548404
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, 3811548404)
@@ -436,7 +450,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 101788547
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, 101788547)
@@ -486,7 +502,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2041501823
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, 2041501823)
@@ -536,7 +554,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2402289971
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, 2402289971)
@@ -586,7 +606,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 555356506
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, 555356506)
@@ -636,7 +658,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1423370292
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, 1423370292)
@@ -686,7 +710,9 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2713174086
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, 2713174086)

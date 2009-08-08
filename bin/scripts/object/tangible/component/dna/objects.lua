@@ -86,7 +86,9 @@ object_tangible_component_dna_shared_dna_sample_above_average = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3272908463
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_above_average, 3272908463)
@@ -136,7 +138,9 @@ object_tangible_component_dna_shared_dna_sample_average = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2524715920
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_average, 2524715920)
@@ -186,7 +190,9 @@ object_tangible_component_dna_shared_dna_sample_below_average = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 675784259
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_below_average, 675784259)
@@ -236,7 +242,9 @@ object_tangible_component_dna_shared_dna_sample_high = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3034626514
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_high, 3034626514)
@@ -286,7 +294,9 @@ object_tangible_component_dna_shared_dna_sample_low = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2579345010
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_low, 2579345010)
@@ -336,7 +346,9 @@ object_tangible_component_dna_shared_dna_sample_very_high = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 299885620
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_very_high, 299885620)
@@ -386,7 +398,9 @@ object_tangible_component_dna_shared_dna_sample_very_low = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1076609940
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_sample_very_low, 1076609940)
@@ -436,7 +450,9 @@ object_tangible_component_dna_shared_dna_template_angler = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 461916189
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_angler, 461916189)
@@ -486,7 +502,9 @@ object_tangible_component_dna_shared_dna_template_bantha = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 726704759
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bantha, 726704759)
@@ -536,7 +554,9 @@ object_tangible_component_dna_shared_dna_template_bearded_jax = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 727178963
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bearded_jax, 727178963)
@@ -586,7 +606,9 @@ object_tangible_component_dna_shared_dna_template_blurrg = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1265107329
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_blurrg, 1265107329)
@@ -636,7 +658,9 @@ object_tangible_component_dna_shared_dna_template_bol = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 706373854
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bol, 706373854)
@@ -686,7 +710,9 @@ object_tangible_component_dna_shared_dna_template_bolle_bol = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 214227430
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bolle_bol, 214227430)
@@ -736,7 +762,9 @@ object_tangible_component_dna_shared_dna_template_bolma = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1395080056
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_bolma, 1395080056)
@@ -786,7 +814,9 @@ object_tangible_component_dna_shared_dna_template_brackaset = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3633553517
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_brackaset, 3633553517)
@@ -836,7 +866,9 @@ object_tangible_component_dna_shared_dna_template_carrion_spat = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1875152726
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_carrion_spat, 1875152726)
@@ -886,7 +918,9 @@ object_tangible_component_dna_shared_dna_template_choku = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 262963315
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_choku, 262963315)
@@ -936,7 +970,9 @@ object_tangible_component_dna_shared_dna_template_dalyrake = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1214055048
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_dalyrake, 1214055048)
@@ -986,7 +1022,9 @@ object_tangible_component_dna_shared_dna_template_dewback = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1144992157
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_dewback, 1144992157)
@@ -1036,7 +1074,9 @@ object_tangible_component_dna_shared_dna_template_eopie = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1680199838
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_eopie, 1680199838)
@@ -1086,7 +1126,9 @@ object_tangible_component_dna_shared_dna_template_falumpaset = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 671613943
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_falumpaset, 671613943)
@@ -1136,7 +1178,9 @@ object_tangible_component_dna_shared_dna_template_fambaa = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1331331454
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_fambaa, 1331331454)
@@ -1186,7 +1230,9 @@ object_tangible_component_dna_shared_dna_template_generic = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 836379806
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_generic, 836379806)
@@ -1236,7 +1282,9 @@ object_tangible_component_dna_shared_dna_template_gualama = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 17241294
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_gualama, 17241294)
@@ -1286,7 +1334,9 @@ object_tangible_component_dna_shared_dna_template_guf_drolg = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 774185499
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_guf_drolg, 774185499)
@@ -1336,7 +1386,9 @@ object_tangible_component_dna_shared_dna_template_gurrcat = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1857431024
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_gurrcat, 1857431024)
@@ -1386,7 +1438,9 @@ object_tangible_component_dna_shared_dna_template_gurreck = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3322704079
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_gurreck, 3322704079)
@@ -1436,7 +1490,9 @@ object_tangible_component_dna_shared_dna_template_kaadu = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1112595757
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kaadu, 1112595757)
@@ -1486,7 +1542,9 @@ object_tangible_component_dna_shared_dna_template_kahmurra = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1394407158
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kahmurra, 1394407158)
@@ -1536,7 +1594,9 @@ object_tangible_component_dna_shared_dna_template_kimogila = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2155310796
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kimogila, 2155310796)
@@ -1586,7 +1646,9 @@ object_tangible_component_dna_shared_dna_template_krahbu = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 67998893
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_krahbu, 67998893)
@@ -1636,7 +1698,9 @@ object_tangible_component_dna_shared_dna_template_kusak = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4199501468
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_kusak, 4199501468)
@@ -1686,7 +1750,9 @@ object_tangible_component_dna_shared_dna_template_narglatch = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2079919048
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_narglatch, 2079919048)
@@ -1736,7 +1802,9 @@ object_tangible_component_dna_shared_dna_template_pugoriss = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3819931989
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_pugoriss, 3819931989)
@@ -1786,7 +1854,9 @@ object_tangible_component_dna_shared_dna_template_rancor = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 324550464
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_rancor, 324550464)
@@ -1836,7 +1906,9 @@ object_tangible_component_dna_shared_dna_template_ronto = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1390548887
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_ronto, 1390548887)
@@ -1886,7 +1958,9 @@ object_tangible_component_dna_shared_dna_template_sand_panther = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2605574472
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_sand_panther, 2605574472)
@@ -1936,7 +2010,9 @@ object_tangible_component_dna_shared_dna_template_snorbal = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3055149098
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_snorbal, 3055149098)
@@ -1986,7 +2062,9 @@ object_tangible_component_dna_shared_dna_template_torton = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1232171307
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_torton, 1232171307)
@@ -2036,7 +2114,9 @@ object_tangible_component_dna_shared_dna_template_tybis = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3076355230
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_tybis, 3076355230)
@@ -2086,7 +2166,9 @@ object_tangible_component_dna_shared_dna_template_veermok = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3141045747
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_veermok, 3141045747)
@@ -2136,7 +2218,9 @@ object_tangible_component_dna_shared_dna_template_zucca_boar = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 228699959
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_shared_dna_template_zucca_boar, 228699959)

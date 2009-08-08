@@ -86,7 +86,9 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2505702624
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_base, 2505702624)
@@ -136,7 +138,9 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1402579310
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base, 1402579310)
@@ -186,7 +190,9 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 848817616
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base, 848817616)

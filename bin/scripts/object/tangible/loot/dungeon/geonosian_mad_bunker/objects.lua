@@ -86,7 +86,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1212603957
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad, 1212603957)
@@ -136,7 +138,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3779706256
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key, 3779706256)
@@ -186,7 +190,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4110674252
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey, 4110674252)
@@ -236,7 +242,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1953839447
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab, 1953839447)
@@ -286,7 +294,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2836503277
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab, 2836503277)
@@ -336,7 +346,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1253190673
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe, 1253190673)
@@ -386,7 +398,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 395732955
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit, 395732955)
@@ -436,7 +450,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3247484355
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball, 3247484355)
@@ -486,7 +502,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_contain
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2674127359
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_container, 2674127359)
@@ -536,7 +554,9 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1965831716
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit, 1965831716)

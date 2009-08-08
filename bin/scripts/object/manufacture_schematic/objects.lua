@@ -75,7 +75,9 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 941212681
 }
 
 ObjectTemplates:addTemplate(object_manufacture_schematic_shared_generic_schematic, 941212681)

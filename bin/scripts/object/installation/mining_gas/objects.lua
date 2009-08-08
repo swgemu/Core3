@@ -86,7 +86,9 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInsta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3446200775
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_1, 3446200775)
@@ -136,7 +138,9 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInsta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 377450832
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_2, 377450832)
@@ -186,7 +190,9 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInsta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1601312477
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_3, 1601312477)

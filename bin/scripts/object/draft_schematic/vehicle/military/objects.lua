@@ -75,7 +75,9 @@ object_draft_schematic_vehicle_military_shared_military_a = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2402380717
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_military_a, 2402380717)
@@ -114,7 +116,9 @@ object_draft_schematic_vehicle_military_shared_military_b = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1411826490
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_military_b, 1411826490)
@@ -153,7 +157,9 @@ object_draft_schematic_vehicle_military_shared_military_c = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 489399479
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_military_c, 489399479)
@@ -192,7 +198,9 @@ object_draft_schematic_vehicle_military_shared_military_d = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3871903651
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_military_d, 3871903651)
@@ -231,7 +239,9 @@ object_draft_schematic_vehicle_military_shared_military_e = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2948982830
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_military_e, 2948982830)
@@ -270,7 +280,9 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_a = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4100515758
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_starship_impl_tie_a, 4100515758)
@@ -309,7 +321,9 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_b = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 796872505
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_starship_impl_tie_b, 796872505)
@@ -348,7 +362,9 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1330578969
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a, 1330578969)
@@ -387,7 +403,9 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2488839822
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b, 2488839822)

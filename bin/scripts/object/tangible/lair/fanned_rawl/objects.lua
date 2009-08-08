@@ -86,7 +86,9 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3965462331
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl, 3965462331)
@@ -136,7 +138,9 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1138635179
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp, 1138635179)

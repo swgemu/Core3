@@ -90,7 +90,9 @@ object_weapon_ranged_heavy_base_shared_heavy_weapon_base = SharedWeaponObjectTem
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2361541818
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_base_shared_heavy_weapon_base, 2361541818)

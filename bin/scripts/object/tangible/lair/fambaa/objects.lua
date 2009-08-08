@@ -86,7 +86,9 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2348330712
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, 2348330712)
@@ -136,7 +138,9 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3030660529
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, 3030660529)

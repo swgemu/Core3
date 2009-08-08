@@ -86,7 +86,9 @@ object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1819099855
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, 1819099855)
@@ -136,7 +138,9 @@ object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3825333189
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, 3825333189)
@@ -186,7 +190,9 @@ object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3488232768
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, 3488232768)
@@ -236,7 +242,9 @@ object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 377228821
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, 377228821)

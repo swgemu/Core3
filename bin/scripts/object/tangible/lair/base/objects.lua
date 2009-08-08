@@ -86,7 +86,9 @@ object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 326994159
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_dark, 326994159)
@@ -136,7 +138,9 @@ object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1286978231
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_antpile_light, 1286978231)
@@ -186,7 +190,9 @@ object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2767616602
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_dark, 2767616602)
@@ -236,7 +242,9 @@ object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1681838796
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_bramble_light, 1681838796)
@@ -286,7 +294,9 @@ object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1710583853
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_dark, 1710583853)
@@ -336,7 +346,9 @@ object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1048520930
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_cave_small_light, 1048520930)
@@ -386,7 +398,9 @@ object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2097596216
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_dark, 2097596216)
@@ -436,7 +450,9 @@ object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2815494954
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_earthmound_light, 2815494954)
@@ -486,7 +502,9 @@ object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3530316477
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base, 3530316477)
@@ -536,7 +554,9 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3488597328
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_dark, 3488597328)
@@ -586,7 +606,9 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4201633082
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_light, 4201633082)
@@ -636,7 +658,9 @@ object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 552648551
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_dark, 552648551)
@@ -686,7 +710,9 @@ object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 418609662
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_light, 418609662)
@@ -736,7 +762,9 @@ object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3148303792
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_dark, 3148303792)
@@ -786,7 +814,9 @@ object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1096244737
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_crevice_light, 1096244737)
@@ -836,7 +866,9 @@ object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3561390098
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_dark, 3561390098)
@@ -886,7 +918,9 @@ object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 879789867
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_light, 879789867)
@@ -936,7 +970,9 @@ object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 734574174
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_hovel, 734574174)
@@ -986,7 +1022,9 @@ object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3776501697
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_imperial_guard, 3776501697)
@@ -1036,7 +1074,9 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2387382663
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_dark, 2387382663)
@@ -1086,7 +1126,9 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1769762810
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_light, 1769762810)
@@ -1136,7 +1178,9 @@ object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3360926461
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_dark, 3360926461)
@@ -1186,7 +1230,9 @@ object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1481058367
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_light, 1481058367)
@@ -1236,7 +1282,9 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1671618921
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark, 1671618921)
@@ -1286,7 +1334,9 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1936204112
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_light, 1936204112)
@@ -1336,7 +1386,9 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3610220706
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark, 3610220706)
@@ -1386,7 +1438,9 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1344999922
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_light, 1344999922)
@@ -1436,7 +1490,9 @@ object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 738621096
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_dark, 738621096)
@@ -1486,7 +1542,9 @@ object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3677760922
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_rancor_light, 3677760922)
@@ -1536,7 +1594,9 @@ object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 960523007
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_dark, 960523007)
@@ -1586,7 +1646,9 @@ object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3338586753
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_lair_base_trash_light, 3338586753)
@@ -1636,7 +1698,9 @@ object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1002824904
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_nest_tree, 1002824904)
@@ -1686,7 +1750,9 @@ object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1575829275
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_corellia, 1575829275)
@@ -1736,7 +1802,9 @@ object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1806591986
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_1, 1806591986)
@@ -1786,7 +1854,9 @@ object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2964967269
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_generic_2, 2964967269)
@@ -1836,7 +1906,9 @@ object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3154468577
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_imperial, 3154468577)
@@ -1886,7 +1958,9 @@ object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3574902738
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_rebel, 3574902738)
@@ -1936,7 +2010,9 @@ object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1638817412
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_banner_tatooine, 1638817412)
@@ -1986,7 +2062,9 @@ object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1367098929
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_fire_pit, 1367098929)
@@ -2036,7 +2114,9 @@ object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 426269176
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_dantari_monolith, 426269176)
@@ -2086,7 +2166,9 @@ object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1140811690
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_data_terminal, 1140811690)
@@ -2136,7 +2218,9 @@ object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2446722637
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_gungan_statue, 2446722637)
@@ -2186,7 +2270,9 @@ object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3090575675
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_main_terminal, 3090575675)
@@ -2236,7 +2322,9 @@ object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4290984139
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_mts_clan_monolith, 4290984139)
@@ -2286,7 +2374,9 @@ object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 468482047
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_generator, 468482047)
@@ -2336,7 +2426,9 @@ object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2086368006
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_node, 2086368006)
@@ -2386,7 +2478,9 @@ object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3115996224
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_objective_power_transformer, 3115996224)
@@ -2436,7 +2530,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3142299424
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones, 3142299424)
@@ -2486,7 +2582,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2845871690
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green, 2845871690)
@@ -2536,7 +2634,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1770695820
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red, 1770695820)
@@ -2586,7 +2686,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3803873203
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small, 3803873203)
@@ -2636,7 +2738,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 430580141
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray, 430580141)
@@ -2686,7 +2790,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 965028408
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_green, 965028408)
@@ -2736,7 +2842,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3554933816
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard, 3554933816)
@@ -2786,7 +2894,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1163934021
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_red, 1163934021)
@@ -2836,7 +2946,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1362281265
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large, 1362281265)
@@ -2886,7 +2998,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3202178196
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green, 3202178196)
@@ -2936,7 +3050,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 287273685
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red, 287273685)
@@ -2986,7 +3102,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4123503981
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small, 4123503981)
@@ -3036,7 +3154,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2627450629
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray, 2627450629)
@@ -3086,7 +3206,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1994000829
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green, 1994000829)
@@ -3136,7 +3258,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1283439590
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard, 1283439590)
@@ -3186,7 +3310,9 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4286037128
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red, 4286037128)
@@ -3236,7 +3362,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2971623955
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large, 2971623955)
@@ -3286,7 +3414,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3450920549
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green, 3450920549)
@@ -3336,7 +3466,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3728817132
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red, 3728817132)
@@ -3386,7 +3518,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2259300252
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small, 2259300252)
@@ -3436,7 +3570,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1837327181
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog, 1837327181)
@@ -3486,7 +3622,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1099426587
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray, 1099426587)
@@ -3536,7 +3674,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1255201415
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green, 1255201415)
@@ -3586,7 +3726,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1330750206
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard, 1330750206)
@@ -3636,7 +3778,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3991876404
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red, 3991876404)
@@ -3686,7 +3830,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2231694906
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small, 2231694906)
@@ -3736,7 +3882,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3553159285
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green, 3553159285)
@@ -3786,7 +3934,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1553145843
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red, 1553145843)
@@ -3836,7 +3986,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2563905932
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small, 2563905932)
@@ -3886,7 +4038,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1638603949
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray, 1638603949)
@@ -3936,7 +4090,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4261730919
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green, 4261730919)
@@ -3986,7 +4142,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3128216527
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard, 3128216527)
@@ -4036,7 +4194,9 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1159215224
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red, 1159215224)
@@ -4086,7 +4246,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 759277072
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large, 759277072)
@@ -4136,7 +4298,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3507525090
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green, 3507525090)
@@ -4186,7 +4350,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2858454846
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red, 2858454846)
@@ -4236,7 +4402,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2584372251
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small, 2584372251)
@@ -4286,7 +4454,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1743001105
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray, 1743001105)
@@ -4336,7 +4506,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2877828053
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green, 2877828053)
@@ -4386,7 +4558,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3521947503
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard, 3521947503)
@@ -4436,7 +4610,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3824541289
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red, 3824541289)
@@ -4486,7 +4662,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 425341497
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small, 425341497)
@@ -4536,7 +4714,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3479741426
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green, 3479741426)
@@ -4586,7 +4766,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 682797857
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red, 682797857)
@@ -4636,7 +4818,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2222084619
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small, 2222084619)
@@ -4686,7 +4870,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1204347303
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray, 1204347303)
@@ -4736,7 +4922,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 526134069
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green, 526134069)
@@ -4786,7 +4974,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 617205342
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard, 617205342)
@@ -4836,7 +5026,9 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1258476837
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red, 1258476837)
@@ -4886,7 +5078,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2517129351
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large, 2517129351)
@@ -4936,7 +5130,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2898447287
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green, 2898447287)
@@ -4986,7 +5182,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 182921096
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red, 182921096)
@@ -5036,7 +5234,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3889707598
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small, 3889707598)
@@ -5086,7 +5286,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 823883732
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray, 823883732)
@@ -5136,7 +5338,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 922224736
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green, 922224736)
@@ -5186,7 +5390,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2638567972
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard, 2638567972)
@@ -5236,7 +5442,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2777489717
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red, 2777489717)
@@ -5286,7 +5494,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2719206574
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small, 2719206574)
@@ -5336,7 +5546,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2998599079
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green, 2998599079)
@@ -5386,7 +5598,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2285175703
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red, 2285175703)
@@ -5436,7 +5650,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4188015710
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small, 4188015710)
@@ -5486,7 +5702,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 288850018
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray, 288850018)
@@ -5536,7 +5754,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2183923840
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green, 2183923840)
@@ -5586,7 +5806,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1751134997
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard, 1751134997)
@@ -5636,7 +5858,9 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 226110073
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red, 226110073)
@@ -5686,7 +5910,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2912626123
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large, 2912626123)
@@ -5736,7 +5962,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1861288469
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green, 1861288469)
@@ -5786,7 +6014,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2385068823
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red, 2385068823)
@@ -5836,7 +6066,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 636220396
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small, 636220396)
@@ -5886,7 +6118,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1730491297
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray, 1730491297)
@@ -5936,7 +6170,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1789762517
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green, 1789762517)
@@ -5986,7 +6222,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4292415468
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard, 4292415468)
@@ -6036,7 +6274,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2995341818
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red, 2995341818)
@@ -6086,7 +6326,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2575348194
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small, 2575348194)
@@ -6136,7 +6378,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1888039941
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green, 1888039941)
@@ -6186,7 +6430,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 217802504
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red, 217802504)
@@ -6236,7 +6482,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 999540220
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small, 999540220)
@@ -6286,7 +6534,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1191822359
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray, 1191822359)
@@ -6336,7 +6586,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3732511541
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green, 3732511541)
@@ -6386,7 +6638,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184313565
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard, 184313565)
@@ -6436,7 +6690,9 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 444482230
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red, 444482230)
@@ -6486,7 +6742,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 228848137
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large, 228848137)
@@ -6536,7 +6794,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 289667785
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green, 289667785)
@@ -6586,7 +6846,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2898038316
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red, 2898038316)
@@ -6636,7 +6898,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1515785008
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small, 1515785008)
@@ -6686,7 +6950,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1207051318
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray, 1207051318)
@@ -6736,7 +7002,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 630831669
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green, 630831669)
@@ -6786,7 +7054,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3855500740
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard, 3855500740)
@@ -6836,7 +7106,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3523558187
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red, 3523558187)
@@ -6886,7 +7158,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3643744513
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_medium, 3643744513)
@@ -6936,7 +7210,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 968386080
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small, 968386080)
@@ -6986,7 +7262,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 255577305
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green, 255577305)
@@ -7036,7 +7314,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 779004467
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red, 779004467)
@@ -7086,7 +7366,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1143029024
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small, 1143029024)
@@ -7136,7 +7418,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1742656384
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray, 1742656384)
@@ -7186,7 +7470,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2437790421
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green, 2437790421)
@@ -7236,7 +7522,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 283847925
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard, 283847925)
@@ -7286,7 +7574,9 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2062692455
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red, 2062692455)
@@ -7336,7 +7626,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 420187503
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large, 420187503)
@@ -7386,7 +7678,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1540415537
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green, 1540415537)
@@ -7436,7 +7730,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3337919854
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red, 3337919854)
@@ -7486,7 +7782,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 281678280
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small, 281678280)
@@ -7536,7 +7834,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2881445329
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray, 2881445329)
@@ -7586,7 +7886,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2554716200
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green, 2554716200)
@@ -7636,7 +7938,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 877609923
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard, 877609923)
@@ -7686,7 +7990,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2718548559
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red, 2718548559)
@@ -7736,7 +8042,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 756029766
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small, 756029766)
@@ -7786,7 +8094,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1168692769
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green, 1168692769)
@@ -7836,7 +8146,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1143388529
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red, 1143388529)
@@ -7886,7 +8198,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 246556632
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small, 246556632)
@@ -7936,7 +8250,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2341710439
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray, 2341710439)
@@ -7986,7 +8302,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 747757768
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green, 747757768)
@@ -8036,7 +8354,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3244960498
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard, 3244960498)
@@ -8086,7 +8406,9 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184469763
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red, 184469763)
@@ -8136,7 +8458,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2815445201
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large, 2815445201)
@@ -8186,7 +8510,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1869084369
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green, 1869084369)
@@ -8236,7 +8562,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 622648314
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red, 622648314)
@@ -8286,7 +8614,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 612173608
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small, 612173608)
@@ -8336,7 +8666,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2401663752
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray, 2401663752)
@@ -8386,7 +8718,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2319776020
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green, 2319776020)
@@ -8436,7 +8770,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2568051560
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard, 2568051560)
@@ -8486,7 +8822,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2703235151
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red, 2703235151)
@@ -8536,7 +8874,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2479611128
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small, 2479611128)
@@ -8586,7 +8926,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1897906369
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green, 1897906369)
@@ -8636,7 +8978,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2815360997
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red, 2815360997)
@@ -8686,7 +9030,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 973418808
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small, 973418808)
@@ -8736,7 +9082,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2936704190
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray, 2936704190)
@@ -8786,7 +9134,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1049688564
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green, 1049688564)
@@ -8836,7 +9186,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1815360089
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard, 1815360089)
@@ -8886,7 +9238,9 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 165090051
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red, 165090051)
@@ -8936,7 +9290,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4005767247
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large, 4005767247)
@@ -8986,7 +9342,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 643219996
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green, 643219996)
@@ -9036,7 +9394,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 58803054
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red, 58803054)
@@ -9086,7 +9446,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1833710565
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small, 1833710565)
@@ -9136,7 +9498,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 534560840
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray, 534560840)
@@ -9186,7 +9550,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1440907914
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green, 1440907914)
@@ -9236,7 +9602,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1731875387
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard, 1731875387)
@@ -9286,7 +9654,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1658858306
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red, 1658858306)
@@ -9336,7 +9706,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3671637094
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small, 3671637094)
@@ -9386,7 +9758,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 942601228
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green, 942601228)
@@ -9436,7 +9810,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2169726833
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red, 2169726833)
@@ -9486,7 +9862,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1932789237
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small, 1932789237)
@@ -9536,7 +9914,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1072707582
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray, 1072707582)
@@ -9586,7 +9966,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3778445930
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green, 3778445930)
@@ -9636,7 +10018,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2451520266
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard, 2451520266)
@@ -9686,7 +10070,9 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3390513166
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red, 3390513166)
@@ -9736,7 +10122,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2207500291
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large, 2207500291)
@@ -9786,7 +10174,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2753825733
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green, 2753825733)
@@ -9836,7 +10226,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 708322841
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red, 708322841)
@@ -9886,7 +10278,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4013881916
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small, 4013881916)
@@ -9936,7 +10330,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4032828716
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray, 4032828716)
@@ -9986,7 +10382,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 349273422
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green, 349273422)
@@ -10036,7 +10434,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3536893154
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard, 3536893154)
@@ -10086,7 +10486,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1849334540
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red, 1849334540)
@@ -10136,7 +10538,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3079167018
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small, 3079167018)
@@ -10186,7 +10590,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3126607317
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green, 3126607317)
@@ -10236,7 +10642,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2833908230
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red, 2833908230)
@@ -10286,7 +10694,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4047948844
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small, 4047948844)
@@ -10336,7 +10746,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3494699674
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray, 3494699674)
@@ -10386,7 +10798,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2684714414
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green, 2684714414)
@@ -10436,7 +10850,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 670424531
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard, 670424531)
@@ -10486,7 +10902,9 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3335360576
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red, 3335360576)
@@ -10536,7 +10954,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1820503108
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large, 1820503108)
@@ -10586,7 +11006,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3034883500
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray, 3034883500)
@@ -10636,7 +11058,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3085171685
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green, 3085171685)
@@ -10686,7 +11110,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3961426279
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red, 3961426279)
@@ -10736,7 +11162,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4244179484
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small, 4244179484)
@@ -10786,7 +11214,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 939589773
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray, 939589773)
@@ -10836,7 +11266,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 239509871
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green, 239509871)
@@ -10886,7 +11318,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 255891767
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard, 255891767)
@@ -10936,7 +11370,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 619312831
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red, 619312831)
@@ -10986,7 +11422,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1486436461
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small, 1486436461)
@@ -11036,7 +11474,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2845560309
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green, 2845560309)
@@ -11086,7 +11526,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1858909560
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red, 1858909560)
@@ -11136,7 +11578,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3800120332
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small, 3800120332)
@@ -11186,7 +11630,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 405665595
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray, 405665595)
@@ -11236,7 +11682,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3130171791
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green, 3130171791)
@@ -11286,7 +11734,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4200984582
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard, 4200984582)
@@ -11336,7 +11786,9 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2350841331
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red, 2350841331)
@@ -11386,7 +11838,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4287958045
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large, 4287958045)
@@ -11436,7 +11890,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 637821318
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green, 637821318)
@@ -11486,7 +11942,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 28715451
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red, 28715451)
@@ -11536,7 +11994,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1830719615
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small, 1830719615)
@@ -11586,7 +12046,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2592614872
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray, 2592614872)
@@ -11636,7 +12098,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2143459599
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green, 2143459599)
@@ -11686,7 +12150,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4001697696
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard, 4001697696)
@@ -11736,7 +12202,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1387351494
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red, 1387351494)
@@ -11786,7 +12254,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3415119924
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small, 3415119924)
@@ -11836,7 +12306,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 947672982
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green, 947672982)
@@ -11886,7 +12358,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2204372388
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red, 2204372388)
@@ -11936,7 +12410,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1936107119
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small, 1936107119)
@@ -11986,7 +12462,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3131367022
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray, 3131367022)
@@ -12036,7 +12514,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3407256047
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green, 3407256047)
@@ -12086,7 +12566,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 463496849
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard, 463496849)
@@ -12136,7 +12618,9 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4198909578
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red, 4198909578)
@@ -12186,7 +12670,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1183728413
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden, 1183728413)
@@ -12236,7 +12722,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4124016419
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed, 4124016419)
@@ -12286,7 +12774,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 329214614
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green, 329214614)
@@ -12336,7 +12826,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 238872353
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red, 238872353)
@@ -12386,7 +12878,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1485151087
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small, 1485151087)
@@ -12436,7 +12930,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2993244082
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray, 2993244082)
@@ -12486,7 +12982,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 545761367
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green, 545761367)
@@ -12536,7 +13034,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 269409995
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard, 269409995)
@@ -12586,7 +13086,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4267544421
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red, 4267544421)
@@ -12636,7 +13138,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3398422442
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green, 3398422442)
@@ -12686,7 +13190,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2885574443
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red, 2885574443)
@@ -12736,7 +13242,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2174041683
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small, 2174041683)
@@ -12786,7 +13294,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2521819744
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray, 2521819744)
@@ -12836,7 +13346,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2366487147
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green, 2366487147)
@@ -12886,7 +13398,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4226721130
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard, 4226721130)
@@ -12936,7 +13450,9 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1520141032
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red, 1520141032)
@@ -12986,7 +13502,9 @@ object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2089078932
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_dark, 2089078932)
@@ -13036,7 +13554,9 @@ object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 554154653
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_rancor_light, 554154653)
@@ -13086,7 +13606,9 @@ object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 496750489
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_base_shared_trash_dark, 496750489)

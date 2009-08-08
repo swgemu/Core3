@@ -75,7 +75,9 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1225468655
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, 1225468655)
@@ -114,7 +116,9 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 425747428
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, 425747428)
@@ -153,7 +157,9 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1575116633
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, 1575116633)
@@ -192,7 +198,9 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2888384407
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, 2888384407)
@@ -231,7 +239,9 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2390191987
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, 2390191987)

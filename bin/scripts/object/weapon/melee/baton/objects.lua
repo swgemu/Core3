@@ -90,7 +90,9 @@ object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1521219232
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, 1521219232)
@@ -144,7 +146,9 @@ object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2740869510
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_baton_stun, 2740869510)
@@ -198,7 +202,9 @@ object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 926540761
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, 926540761)

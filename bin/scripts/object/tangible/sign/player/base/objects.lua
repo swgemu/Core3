@@ -86,7 +86,9 @@ object_tangible_sign_player_base_shared_player_sign_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1607004274
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_base_shared_player_sign_base, 1607004274)
@@ -136,7 +138,9 @@ object_tangible_sign_player_base_shared_shop_sign_base = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1431689328
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_base_shared_shop_sign_base, 1431689328)

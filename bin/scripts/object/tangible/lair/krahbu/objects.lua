@@ -86,7 +86,9 @@ object_tangible_lair_krahbu_shared_lair_krahbu = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2273906310
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krahbu_shared_lair_krahbu, 2273906310)
@@ -136,7 +138,9 @@ object_tangible_lair_krahbu_shared_lair_krahbu_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2706872784
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krahbu_shared_lair_krahbu_grassland, 2706872784)

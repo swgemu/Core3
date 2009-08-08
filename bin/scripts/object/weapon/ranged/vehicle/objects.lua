@@ -90,7 +90,9 @@ object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt_turret",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2231868029
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_vehicle_shared_vehicle_atst_ranged, 2231868029)

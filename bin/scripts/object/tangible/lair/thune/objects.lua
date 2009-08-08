@@ -86,7 +86,9 @@ object_tangible_lair_thune_shared_lair_thune = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 827416388
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_thune_shared_lair_thune, 827416388)
@@ -136,7 +138,9 @@ object_tangible_lair_thune_shared_lair_thune_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4176654445
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_thune_shared_lair_thune_grassland, 4176654445)

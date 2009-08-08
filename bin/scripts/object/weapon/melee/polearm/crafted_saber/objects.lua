@@ -90,7 +90,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1 =
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3485705147
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1, 3485705147)
@@ -144,7 +146,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2 =
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 349440812
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2, 349440812)
@@ -198,7 +202,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3 =
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1574530209
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3, 1574530209)
@@ -252,7 +258,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4 =
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2788837301
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4, 2788837301)
@@ -306,7 +314,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5 =
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4013367352
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5, 4013367352)
@@ -360,7 +370,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1 = S
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3840733128
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1, 3840733128)
@@ -414,7 +426,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3146329948
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen1, 3146329948)
@@ -468,7 +482,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1621002187
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen2, 1621002187)
@@ -522,7 +538,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 697557062
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen3, 697557062)
@@ -576,7 +594,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3530607442
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen4, 3530607442)
@@ -630,7 +650,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2 = S
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1073432415
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2, 1073432415)
@@ -684,7 +706,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1056559682
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen1, 1056559682)
@@ -738,7 +762,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3857611477
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen2, 3857611477)
@@ -792,7 +818,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2900565336
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen3, 2900565336)
@@ -846,7 +874,9 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1459631692
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen4, 1459631692)

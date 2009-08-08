@@ -75,7 +75,9 @@ object_mission_base_shared_base_mission = SharedMissionObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3240843527
 }
 
 ObjectTemplates:addTemplate(object_mission_base_shared_base_mission, 3240843527)
@@ -114,7 +116,9 @@ object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2210569821
 }
 
 ObjectTemplates:addTemplate(object_mission_base_shared_mission_default, 2210569821)

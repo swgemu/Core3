@@ -86,7 +86,9 @@ object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2852692407
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, 2852692407)
@@ -136,7 +138,9 @@ object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1811104039
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, 1811104039)
@@ -186,7 +190,9 @@ object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3642693212
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_assembled_base, 3642693212)
@@ -236,7 +242,9 @@ object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 378623221
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_shared_message_fragment_base, 378623221)

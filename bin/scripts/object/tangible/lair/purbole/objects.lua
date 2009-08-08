@@ -86,7 +86,9 @@ object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1874608603
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole, 1874608603)
@@ -136,7 +138,9 @@ object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2529340012
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, 2529340012)

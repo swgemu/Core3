@@ -75,7 +75,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2910061894
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a, 2910061894)
@@ -114,7 +116,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1986244049
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b, 1986244049)
@@ -153,7 +157,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1064225372
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c, 1064225372)
@@ -192,7 +198,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3297632584
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d, 3297632584)
@@ -231,7 +239,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 996406481
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a, 996406481)
@@ -270,7 +280,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3765722182
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b, 3765722182)
@@ -309,7 +321,9 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2843294667
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c, 2843294667)

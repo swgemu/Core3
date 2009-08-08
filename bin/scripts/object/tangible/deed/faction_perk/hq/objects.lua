@@ -86,7 +86,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_deed_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2279437035
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_deed_base, 2279437035)
@@ -136,7 +138,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 814071482
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01, 814071482)
@@ -186,7 +190,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1776913046
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp, 1776913046)
@@ -236,7 +242,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3952219693
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02, 3952219693)
@@ -286,7 +294,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2066311563
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp, 2066311563)
@@ -336,7 +346,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2728358304
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03, 2728358304)
@@ -386,7 +398,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2301215725
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp, 2301215725)
@@ -436,7 +450,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1501321908
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04, 1501321908)
@@ -486,7 +502,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1588113329
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp, 1588113329)
@@ -536,7 +554,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 275856697
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05, 275856697)
@@ -586,7 +606,9 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2896692695
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp, 2896692695)

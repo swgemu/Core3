@@ -90,7 +90,9 @@ object_weapon_ranged_carbine_base_shared_carbine_base = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 2810105369
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_base_shared_carbine_base, 2810105369)

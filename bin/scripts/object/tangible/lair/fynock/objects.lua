@@ -86,7 +86,9 @@ object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2394100347
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fynock_shared_lair_fynock, 2394100347)
@@ -136,7 +138,9 @@ object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 577876063
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, 577876063)

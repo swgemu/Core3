@@ -86,7 +86,9 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1988238968
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler, 1988238968)
@@ -136,7 +138,9 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 20648312
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, 20648312)
@@ -186,7 +190,9 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2297908648
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, 2297908648)
@@ -236,7 +242,9 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3099411810
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, 3099411810)

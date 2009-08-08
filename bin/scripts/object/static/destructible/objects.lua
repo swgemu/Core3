@@ -86,7 +86,9 @@ object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 918998876
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_cave_wall_damprock, 918998876)
@@ -136,7 +138,9 @@ object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4179770460
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_item_barrel, 4179770460)
@@ -186,7 +190,9 @@ object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2104939815
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_cave_rock_lg, 2104939815)
@@ -236,7 +242,9 @@ object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3390669674
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_cave_rock_med, 3390669674)
@@ -286,7 +294,9 @@ object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4003304122
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_crate1, 4003304122)
@@ -336,7 +346,9 @@ object_static_destructible_shared_destructible_tato_drum_dented = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 316155043
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_drum_dented, 316155043)
@@ -386,7 +398,9 @@ object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2157671754
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_destructible_tato_drum_storage1, 2157671754)
@@ -436,7 +450,9 @@ object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 196750544
 }
 
 ObjectTemplates:addTemplate(object_static_destructible_shared_gungan_sacred_head, 196750544)

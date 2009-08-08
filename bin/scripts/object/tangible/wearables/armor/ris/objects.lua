@@ -86,7 +86,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1200831709
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l, 1200831709)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 927365454
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r, 927365454)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1126436738
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_boots, 1126436738)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 298125558
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l, 298125558)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1628458341
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r, 1628458341)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1813559161
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate, 1813559161)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2596696196
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_gloves, 2596696196)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 738627980
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_helmet, 738627980)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2665600489
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_leggings, 2665600489)

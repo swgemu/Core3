@@ -86,7 +86,9 @@ object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 551874414
 }
 
 ObjectTemplates:addTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, 551874414)

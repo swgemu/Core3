@@ -86,7 +86,9 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1834451270
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_medical_shared_medbag_base, 1834451270)

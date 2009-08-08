@@ -86,7 +86,9 @@ object_tangible_container_base_shared_base_container = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1607613666
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container, 1607613666)
@@ -136,7 +138,9 @@ object_tangible_container_base_shared_base_container_slotted = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2617825065
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container_slotted, 2617825065)
@@ -186,7 +190,9 @@ object_tangible_container_base_shared_base_container_volume = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2281415090
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_base_shared_base_container_volume, 2281415090)

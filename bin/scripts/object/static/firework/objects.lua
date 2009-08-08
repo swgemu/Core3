@@ -75,7 +75,9 @@ object_static_firework_shared_fx_01 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4015660279
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_01, 4015660279)
@@ -114,7 +116,9 @@ object_static_firework_shared_fx_02 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 877507680
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_02, 877507680)
@@ -153,7 +157,9 @@ object_static_firework_shared_fx_03 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2101400557
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_03, 2101400557)
@@ -192,7 +198,9 @@ object_static_firework_shared_fx_04 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2258893049
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_04, 2258893049)
@@ -231,7 +239,9 @@ object_static_firework_shared_fx_05 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3484327796
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_05, 3484327796)
@@ -270,7 +280,9 @@ object_static_firework_shared_fx_10 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3179247106
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_10, 3179247106)
@@ -309,7 +321,9 @@ object_static_firework_shared_fx_11 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4101116303
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_11, 4101116303)
@@ -348,7 +362,9 @@ object_static_firework_shared_fx_18 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4237717764
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_fx_18, 4237717764)
@@ -387,7 +403,9 @@ object_static_firework_shared_show_launcher = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4092821074
 }
 
 ObjectTemplates:addTemplate(object_static_firework_shared_show_launcher, 4092821074)

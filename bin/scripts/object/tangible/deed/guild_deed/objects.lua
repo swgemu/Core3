@@ -86,7 +86,9 @@ object_tangible_deed_guild_deed_shared_corellia_guild_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4111019383
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_corellia_guild_deed, 4111019383)
@@ -136,7 +138,9 @@ object_tangible_deed_guild_deed_shared_generic_guild_deed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3345639792
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_generic_guild_deed, 3345639792)
@@ -186,7 +190,9 @@ object_tangible_deed_guild_deed_shared_naboo_guild_deed = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2398572808
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_naboo_guild_deed, 2398572808)
@@ -236,7 +242,9 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 847751074
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_deed, 847751074)
@@ -286,7 +294,9 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1677139943
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed, 1677139943)

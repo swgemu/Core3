@@ -75,7 +75,9 @@ object_draft_schematic_space_engine_shared_basic_engine = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 541354942
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_basic_engine, 541354942)
@@ -114,7 +116,9 @@ object_draft_schematic_space_engine_shared_eng_mk1 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1997394294
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk1, 1997394294)
@@ -153,7 +157,9 @@ object_draft_schematic_space_engine_shared_eng_mk2 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2887416289
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk2, 2887416289)
@@ -192,7 +198,9 @@ object_draft_schematic_space_engine_shared_eng_mk3 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3843497580
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk3, 3843497580)
@@ -231,7 +239,9 @@ object_draft_schematic_space_engine_shared_eng_mk4 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 519320952
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk4, 519320952)
@@ -270,7 +280,9 @@ object_draft_schematic_space_engine_shared_eng_mk5 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1475957493
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_eng_mk5, 1475957493)
@@ -309,7 +321,9 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk1 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3601967388
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk1, 3601967388)
@@ -348,7 +362,9 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk2 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 228983179
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk2, 228983179)
@@ -387,7 +403,9 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk3 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1152083462
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk3, 1152083462)
@@ -426,7 +444,9 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk4 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3209186578
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk4, 3209186578)
@@ -465,7 +485,9 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk5 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4131728031
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk5, 4131728031)
@@ -504,7 +526,9 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk1 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4012002136
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk1, 4012002136)
@@ -543,7 +567,9 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk2 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 875946959
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk2, 875946959)
@@ -582,7 +608,9 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk3 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2100855874
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk3, 2100855874)
@@ -621,7 +649,9 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk4 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2262544214
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk4, 2262544214)
@@ -660,7 +690,9 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk5 = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3486959835
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk5, 3486959835)

@@ -75,7 +75,9 @@ object_draft_schematic_test_shared_dan_test_component = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 945497402
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_test_shared_dan_test_component, 945497402)
@@ -114,7 +116,9 @@ object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1485880165
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_test_shared_dan_test_pistol, 1485880165)

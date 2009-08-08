@@ -86,7 +86,9 @@ object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2693069296
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc, 2693069296)

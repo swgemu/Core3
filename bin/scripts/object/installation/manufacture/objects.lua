@@ -86,7 +86,9 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2037216595
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_shared_clothing_factory, 2037216595)
@@ -136,7 +138,9 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2484565682
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_shared_food_factory, 2484565682)
@@ -186,7 +190,9 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1556571915
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_shared_structure_factory, 1556571915)
@@ -236,7 +242,9 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1304272380
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_shared_weapon_factory, 1304272380)
@@ -286,7 +294,9 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 415547091
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_shared_weapon_installation, 415547091)

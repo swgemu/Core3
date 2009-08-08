@@ -86,7 +86,9 @@ object_tangible_lair_skreeg_shared_lair_skreeg = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3525197879
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg, 3525197879)
@@ -136,7 +138,9 @@ object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 962440956
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_jungle, 962440956)
@@ -186,7 +190,9 @@ object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2757887034
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_swamp, 2757887034)

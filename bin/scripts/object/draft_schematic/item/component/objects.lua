@@ -75,7 +75,9 @@ object_draft_schematic_item_component_shared_item_electronic_control_unit = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 989624055
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_control_unit, 989624055)
@@ -114,7 +116,9 @@ object_draft_schematic_item_component_shared_item_electronic_energy_distributor 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1152098080
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_energy_distributor, 1152098080)
@@ -153,7 +157,9 @@ object_draft_schematic_item_component_shared_item_electronic_power_conditioner =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3615264224
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronic_power_conditioner, 3615264224)
@@ -192,7 +198,9 @@ object_draft_schematic_item_component_shared_item_electronics_gp_module = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4228360112
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_gp_module, 4228360112)
@@ -231,7 +239,9 @@ object_draft_schematic_item_component_shared_item_electronics_memory_module = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2170102415
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_electronics_memory_module, 2170102415)
@@ -270,7 +280,9 @@ object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 622519855
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_shared_item_micro_sensor_suite, 622519855)

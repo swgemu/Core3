@@ -86,7 +86,9 @@ object_tangible_lair_borgle_shared_lair_borgle = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2434310431
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle, 2434310431)
@@ -136,7 +138,9 @@ object_tangible_lair_borgle_shared_lair_borgle_jungle = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1961458957
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_borgle_shared_lair_borgle_jungle, 1961458957)

@@ -86,7 +86,9 @@ object_tangible_sign_player_banner_shared_banner_base = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2165019612
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_banner_shared_banner_base, 2165019612)
@@ -136,7 +138,9 @@ object_tangible_sign_player_banner_shared_pa_hall = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1294986677
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_player_banner_shared_pa_hall, 1294986677)

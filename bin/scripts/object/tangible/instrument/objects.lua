@@ -86,7 +86,9 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 838757271
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_bandfill, 838757271)
@@ -136,7 +138,9 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2024043623
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_fanfar, 2024043623)
@@ -186,7 +190,9 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 197364379
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_fizz, 197364379)
@@ -236,7 +242,9 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1186559398
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_flute_droopy, 1186559398)
@@ -286,7 +294,9 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2221793724
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, 2221793724)
@@ -336,7 +346,9 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3369165758
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, 3369165758)
@@ -386,7 +398,9 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4261135292
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_kloo_horn, 4261135292)
@@ -436,7 +450,9 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1784205003
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_mandoviol, 1784205003)
@@ -486,7 +502,9 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2412019728
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_nalargon, 2412019728)
@@ -536,7 +554,9 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2010287603
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_ommni_box, 2010287603)
@@ -586,7 +606,9 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1225824678
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_organ_max_rebo, 1225824678)
@@ -636,7 +658,9 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3533891079
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_slitherhorn, 3533891079)
@@ -686,7 +710,9 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 395515554
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_shared_traz, 395515554)

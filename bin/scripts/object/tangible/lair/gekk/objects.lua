@@ -86,7 +86,9 @@ object_tangible_lair_gekk_shared_lair_gekk = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 451691491
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk, 451691491)
@@ -136,7 +138,9 @@ object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1243506243
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gekk_shared_lair_gekk_forest, 1243506243)

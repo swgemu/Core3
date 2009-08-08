@@ -86,7 +86,9 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1395090938
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite, 1395090938)
@@ -136,7 +138,9 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 9878364
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_forest, 9878364)
@@ -186,7 +190,9 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 865403242
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain, 865403242)

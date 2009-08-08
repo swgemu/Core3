@@ -75,7 +75,9 @@ object_draft_schematic_space_repair_shared_armor_repair_kit = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 159626494
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_armor_repair_kit, 159626494)
@@ -114,7 +116,9 @@ object_draft_schematic_space_repair_shared_booster_repair_kit = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2182505796
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_booster_repair_kit, 2182505796)
@@ -153,7 +157,9 @@ object_draft_schematic_space_repair_shared_capacitor_repair_kit = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3561061070
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_capacitor_repair_kit, 3561061070)
@@ -192,7 +198,9 @@ object_draft_schematic_space_repair_shared_chassis_repair_kit = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2046246395
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_chassis_repair_kit, 2046246395)
@@ -231,7 +239,9 @@ object_draft_schematic_space_repair_shared_droid_interface_repair_kit = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1979319803
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_droid_interface_repair_kit, 1979319803)
@@ -270,7 +280,9 @@ object_draft_schematic_space_repair_shared_engine_repair_kit = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2834161708
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_engine_repair_kit, 2834161708)
@@ -309,7 +321,9 @@ object_draft_schematic_space_repair_shared_generic_repair_kit = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2504809285
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_generic_repair_kit, 2504809285)
@@ -348,7 +362,9 @@ object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4277810100
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit, 4277810100)
@@ -387,7 +403,9 @@ object_draft_schematic_space_repair_shared_reactor_repair_kit = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 383068437
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_reactor_repair_kit, 383068437)
@@ -426,7 +444,9 @@ object_draft_schematic_space_repair_shared_shield_repair_kit = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2463568618
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_shield_repair_kit, 2463568618)
@@ -465,7 +485,9 @@ object_draft_schematic_space_repair_shared_weapon_repair_kit = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 974874513
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_shared_weapon_repair_kit, 974874513)

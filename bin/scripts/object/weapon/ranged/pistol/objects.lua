@@ -90,7 +90,9 @@ object_weapon_ranged_pistol_shared_pistol_cdef = SharedWeaponObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 937103853
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_cdef, 937103853)
@@ -144,7 +146,9 @@ object_weapon_ranged_pistol_shared_pistol_cdef_corsec = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 1753490887
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_cdef_corsec, 1753490887)
@@ -198,7 +202,9 @@ object_weapon_ranged_pistol_shared_pistol_cdef_noob = SharedWeaponObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 3483007032
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_cdef_noob, 3483007032)
@@ -252,7 +258,9 @@ object_weapon_ranged_pistol_shared_pistol_d18 = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 3466260217
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_d18, 3466260217)
@@ -306,7 +314,9 @@ object_weapon_ranged_pistol_shared_pistol_de_10 = SharedWeaponObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 2
+	weaponEffectIndex = 2,
+
+	clientObjectCRC = 3368548007
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_de_10, 3368548007)
@@ -360,7 +370,9 @@ object_weapon_ranged_pistol_shared_pistol_dh17 = SharedWeaponObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 1034640003
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dh17, 1034640003)
@@ -414,7 +426,9 @@ object_weapon_ranged_pistol_shared_pistol_dl44 = SharedWeaponObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 2829612927
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dl44, 2829612927)
@@ -468,7 +482,9 @@ object_weapon_ranged_pistol_shared_pistol_dl44_metal = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 1831044635
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dl44_metal, 1831044635)
@@ -522,7 +538,9 @@ object_weapon_ranged_pistol_shared_pistol_dx2 = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 10
+	weaponEffectIndex = 10,
+
+	clientObjectCRC = 260330479
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_dx2, 260330479)
@@ -576,7 +594,9 @@ object_weapon_ranged_pistol_shared_pistol_fwg5 = SharedWeaponObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 1508397938
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_fwg5, 1508397938)
@@ -630,7 +650,9 @@ object_weapon_ranged_pistol_shared_pistol_fwg5_quest = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 1350493335
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_fwg5_quest, 1350493335)
@@ -684,7 +706,9 @@ object_weapon_ranged_pistol_shared_pistol_geonosian_sonic_blaster_loot = SharedW
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 24
+	weaponEffectIndex = 24,
+
+	clientObjectCRC = 2311570538
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_geonosian_sonic_blaster_loot, 2311570538)
@@ -738,7 +762,9 @@ object_weapon_ranged_pistol_shared_pistol_launcher = SharedWeaponObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 17
+	weaponEffectIndex = 17,
+
+	clientObjectCRC = 650380647
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_launcher, 650380647)
@@ -792,7 +818,9 @@ object_weapon_ranged_pistol_shared_pistol_power5 = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 148689854
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_power5, 148689854)
@@ -846,7 +874,9 @@ object_weapon_ranged_pistol_shared_pistol_republic_blaster = SharedWeaponObjectT
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 19
+	weaponEffectIndex = 19,
+
+	clientObjectCRC = 258355020
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_republic_blaster, 258355020)
@@ -900,7 +930,9 @@ object_weapon_ranged_pistol_shared_pistol_republic_blaster_quest = SharedWeaponO
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 19
+	weaponEffectIndex = 19,
+
+	clientObjectCRC = 4154566547
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_republic_blaster_quest, 4154566547)
@@ -954,7 +986,9 @@ object_weapon_ranged_pistol_shared_pistol_scatter = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 18
+	weaponEffectIndex = 18,
+
+	clientObjectCRC = 3345683635
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scatter, 3345683635)
@@ -1008,7 +1042,9 @@ object_weapon_ranged_pistol_shared_pistol_scout_blaster = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 3883785442
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster, 3883785442)
@@ -1062,7 +1098,9 @@ object_weapon_ranged_pistol_shared_pistol_scout_blaster_ammo_test_2 = SharedWeap
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1438704896
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster_ammo_test_2, 1438704896)
@@ -1116,7 +1154,9 @@ object_weapon_ranged_pistol_shared_pistol_scout_blaster_corsec = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 1727125782
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_scout_blaster_corsec, 1727125782)
@@ -1170,7 +1210,9 @@ object_weapon_ranged_pistol_shared_pistol_srcombat = SharedWeaponObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 874294352
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_srcombat, 874294352)
@@ -1224,7 +1266,9 @@ object_weapon_ranged_pistol_shared_pistol_striker = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "projectile_pistol",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 1505820957
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_striker, 1505820957)
@@ -1278,7 +1322,9 @@ object_weapon_ranged_pistol_shared_pistol_striker_noob = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 1701084599
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_striker_noob, 1701084599)
@@ -1332,7 +1378,9 @@ object_weapon_ranged_pistol_shared_pistol_tangle = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "projectile_pistol",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 2758629867
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_shared_pistol_tangle, 2758629867)

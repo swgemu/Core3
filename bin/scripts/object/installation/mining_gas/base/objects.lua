@@ -86,7 +86,9 @@ object_installation_mining_gas_base_shared_mining_gas_base = SharedInstallationO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1518209965
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_gas_base_shared_mining_gas_base, 1518209965)

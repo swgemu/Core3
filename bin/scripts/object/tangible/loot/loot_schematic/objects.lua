@@ -86,7 +86,9 @@ object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3973368814
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, 3973368814)
@@ -136,7 +138,9 @@ object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 33357504
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, 33357504)
@@ -186,7 +190,9 @@ object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2176567440
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, 2176567440)
@@ -236,7 +242,9 @@ object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 275009907
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, 275009907)
@@ -286,7 +294,9 @@ object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2981833750
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, 2981833750)
@@ -336,7 +346,9 @@ object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 49511220
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, 49511220)
@@ -386,7 +398,9 @@ object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1843384540
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, 1843384540)
@@ -436,7 +450,9 @@ object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2666433962
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, 2666433962)
@@ -486,7 +502,9 @@ object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2499138491
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, 2499138491)
@@ -536,7 +554,9 @@ object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 352538230
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, 352538230)
@@ -586,7 +606,9 @@ object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2177174238
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, 2177174238)
@@ -636,7 +658,9 @@ object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1817381441
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, 1817381441)
@@ -686,7 +710,9 @@ object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1634921548
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, 1634921548)
@@ -736,7 +762,9 @@ object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3816949248
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, 3816949248)
@@ -786,7 +814,9 @@ object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1441840530
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, 1441840530)
@@ -836,7 +866,9 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2788504736
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, 2788504736)
@@ -886,7 +918,9 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_sc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2378673848
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, 2378673848)
@@ -936,7 +970,9 @@ object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3464694105
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, 3464694105)
@@ -986,7 +1022,9 @@ object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2109385771
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, 2109385771)
@@ -1036,7 +1074,9 @@ object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3869986987
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, 3869986987)
@@ -1086,7 +1126,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schema
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3186214418
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, 3186214418)
@@ -1136,7 +1178,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_sch
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4262840848
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, 4262840848)
@@ -1186,7 +1230,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_sch
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 712860035
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, 712860035)
@@ -1236,7 +1282,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2564896139
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, 2564896139)
@@ -1286,7 +1334,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_sc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4001355238
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, 4001355238)
@@ -1336,7 +1386,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_sc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 974618229
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, 974618229)
@@ -1386,7 +1438,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3084811322
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, 3084811322)
@@ -1436,7 +1490,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_sche
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4286535235
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, 4286535235)
@@ -1486,7 +1542,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_sche
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4021975943
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, 4021975943)
@@ -1536,7 +1594,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_sc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 204385497
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, 204385497)
@@ -1586,7 +1646,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_sc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 818256163
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, 818256163)
@@ -1636,7 +1698,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schemat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2390933673
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, 2390933673)
@@ -1686,7 +1750,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schemati
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3163168550
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, 3163168550)
@@ -1736,7 +1802,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3952203976
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, 3952203976)
@@ -1786,7 +1854,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1073312603
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, 1073312603)
@@ -1836,7 +1906,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schemat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4294515772
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, 4294515772)
@@ -1886,7 +1958,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_sche
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 834256381
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, 834256381)
@@ -1936,7 +2010,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_sche
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3855685230
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, 3855685230)
@@ -1986,7 +2062,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2354501114
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, 2354501114)
@@ -2036,7 +2114,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schema
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1437890513
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, 1437890513)
@@ -2086,7 +2166,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schema
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1165056533
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, 1165056533)
@@ -2136,7 +2218,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 571889949
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, 571889949)
@@ -2186,7 +2270,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_sche
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3555247298
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, 3555247298)
@@ -2236,7 +2322,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 44057344
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, 44057344)
@@ -2286,7 +2374,9 @@ object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 56986758
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, 56986758)
@@ -2336,7 +2426,9 @@ object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 74183997
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, 74183997)
@@ -2386,7 +2478,9 @@ object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3014709176
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, 3014709176)
@@ -2436,7 +2530,9 @@ object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 443254179
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, 443254179)
@@ -2486,7 +2582,9 @@ object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1275187305
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, 1275187305)
@@ -2536,7 +2634,9 @@ object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1892700204
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, 1892700204)
@@ -2586,7 +2686,9 @@ object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4233888471
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, 4233888471)
@@ -2636,7 +2738,9 @@ object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 131416383
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, 131416383)
@@ -2686,7 +2790,9 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3869697913
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, 3869697913)
@@ -2736,7 +2842,9 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schemat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1435106538
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, 1435106538)
@@ -2786,7 +2894,9 @@ object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schemati
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2842219763
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, 2842219763)
@@ -2836,7 +2946,9 @@ object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3191519467
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, 3191519467)
@@ -2886,7 +2998,9 @@ object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2133560437
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, 2133560437)
@@ -2936,7 +3050,9 @@ object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 910955791
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, 910955791)
@@ -2986,7 +3102,9 @@ object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1451271511
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, 1451271511)
@@ -3036,7 +3154,9 @@ object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 138305507
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, 138305507)
@@ -3086,7 +3206,9 @@ object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 620571036
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, 620571036)
@@ -3136,7 +3258,9 @@ object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1194071997
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, 1194071997)
@@ -3186,7 +3310,9 @@ object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2736953476
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, 2736953476)
@@ -3236,7 +3362,9 @@ object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 385386900
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, 385386900)
@@ -3286,7 +3414,9 @@ object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4049237306
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, 4049237306)
@@ -3336,7 +3466,9 @@ object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2780825325
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, 2780825325)
@@ -3386,7 +3518,9 @@ object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1601376740
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, 1601376740)
@@ -3436,7 +3570,9 @@ object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4283977315
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, 4283977315)
@@ -3486,7 +3622,9 @@ object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2074723143
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, 2074723143)
@@ -3536,7 +3674,9 @@ object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4016619674
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, 4016619674)
@@ -3586,7 +3726,9 @@ object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2882303083
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, 2882303083)
@@ -3636,7 +3778,9 @@ object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3338971500
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, 3338971500)
@@ -3686,7 +3830,9 @@ object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2023724464
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, 2023724464)
@@ -3736,7 +3882,9 @@ object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 46984344
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, 46984344)
@@ -3786,7 +3934,9 @@ object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1657163664
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, 1657163664)
@@ -3836,7 +3986,9 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 189791805
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, 189791805)
@@ -3886,7 +4038,9 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1755234332
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, 1755234332)
@@ -3936,7 +4090,9 @@ object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1445555733
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, 1445555733)
@@ -3986,7 +4142,9 @@ object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 911123298
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, 911123298)
@@ -4036,7 +4194,9 @@ object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1436523843
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, 1436523843)
@@ -4086,7 +4246,9 @@ object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3095520200
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, 3095520200)
@@ -4136,7 +4298,9 @@ object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2145052130
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, 2145052130)
@@ -4186,7 +4350,9 @@ object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2313370154
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, 2313370154)

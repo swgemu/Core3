@@ -75,7 +75,9 @@ object_draft_schematic_space_reactor_shared_basic_reactor = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 366234772
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_basic_reactor, 366234772)
@@ -114,7 +116,9 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk1 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3664496596
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk1, 3664496596)
@@ -153,7 +157,9 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk2 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 24932163
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk2, 24932163)
@@ -192,7 +198,9 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk3 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1215367374
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk3, 1215367374)
@@ -231,7 +239,9 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk4 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3012699098
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk4, 3012699098)
@@ -270,7 +280,9 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk5 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4204741719
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk5, 4204741719)
@@ -309,7 +321,9 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk1 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3282952808
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk1, 3282952808)
@@ -348,7 +362,9 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk2 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 414862079
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk2, 414862079)
@@ -387,7 +403,9 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk3 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1370959218
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk3, 1370959218)
@@ -426,7 +444,9 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk4 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2857633382
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk4, 2857633382)
@@ -465,7 +485,9 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk5 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3814285803
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk5, 3814285803)
@@ -504,7 +526,9 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1 = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 287048772
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1, 287048772)
@@ -543,7 +567,9 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2 = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3389762771
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2, 3389762771)
@@ -582,7 +608,9 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3 = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2198260574
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3, 2198260574)
@@ -621,7 +649,9 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4 = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2028331082
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4, 2028331082)
@@ -660,7 +690,9 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5 = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 837322695
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5, 837322695)

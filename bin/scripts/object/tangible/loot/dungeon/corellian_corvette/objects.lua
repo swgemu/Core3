@@ -86,7 +86,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1943652029
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk, 1943652029)
@@ -136,7 +138,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2778523039
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01, 2778523039)
@@ -186,7 +190,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2123058440
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02, 2123058440)
@@ -236,7 +242,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1409729686
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel, 1409729686)
@@ -286,7 +294,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2615503998
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01, 2615503998)
@@ -336,7 +346,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1089651945
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02, 1089651945)
@@ -386,7 +398,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3271133983
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel, 3271133983)
@@ -436,7 +450,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1429810306
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01, 1429810306)
@@ -486,7 +502,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2385413141
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02, 2385413141)
@@ -536,7 +554,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1800721654
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel, 1800721654)
@@ -586,7 +606,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1226514463
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01, 1226514463)
@@ -636,7 +658,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2450294920
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02, 2450294920)
@@ -686,7 +710,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2214959298
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel, 2214959298)
@@ -736,7 +762,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 426337632
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01, 426337632)
@@ -786,7 +814,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3263090167
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02, 3263090167)
@@ -836,7 +866,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 486562997
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel, 486562997)
@@ -886,7 +918,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1207841643
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01, 1207841643)
@@ -936,7 +970,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2632555516
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02, 2632555516)
@@ -986,7 +1022,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2256488833
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel, 2256488833)
@@ -1036,7 +1074,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3223256133
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01, 3223256133)
@@ -1086,7 +1126,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 453596370
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02, 453596370)
@@ -1136,7 +1178,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1608051965
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel, 1608051965)
@@ -1186,7 +1230,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1714985756
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01, 1714985756)
@@ -1236,7 +1282,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3173987211
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02, 3173987211)
@@ -1286,7 +1334,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3353710684
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel, 3353710684)
@@ -1336,7 +1386,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2690288867
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01, 2690288867)
@@ -1386,7 +1438,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2068653172
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02, 2068653172)
@@ -1436,7 +1490,9 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1454651142
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel, 1454651142)

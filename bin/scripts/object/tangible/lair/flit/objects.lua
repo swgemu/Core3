@@ -86,7 +86,9 @@ object_tangible_lair_flit_shared_lair_flit = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 148367825
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit, 148367825)
@@ -136,7 +138,9 @@ object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1679618703
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_forest, 1679618703)
@@ -186,7 +190,9 @@ object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 402738321
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flit_shared_lair_flit_mountain, 402738321)

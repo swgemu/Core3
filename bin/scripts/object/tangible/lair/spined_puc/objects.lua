@@ -86,7 +86,9 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3786767749
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc, 3786767749)
@@ -136,7 +138,9 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2429481167
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater, 2429481167)

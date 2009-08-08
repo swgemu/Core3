@@ -110,7 +110,9 @@ object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObject
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1605343560
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_2_1b_surgical_droid_base, 1605343560)
@@ -184,7 +186,9 @@ object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2915624318
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_3po_base, 2915624318)
@@ -258,7 +262,9 @@ object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObject
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3197073485
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_bomarr_monk_spider_droid, 3197073485)
@@ -332,7 +338,9 @@ object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureO
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2746759604
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_cll_8_binary_load_lifter_base, 2746759604)
@@ -406,7 +414,9 @@ object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObje
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3007882000
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_dark_trooper_phase_ii_base, 3007882000)
@@ -480,7 +490,9 @@ object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1363686436
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_droideka_base, 1363686436)
@@ -554,7 +566,9 @@ object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObj
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1822521972
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_dz_70_fugitive_tracker_base, 1822521972)
@@ -628,7 +642,9 @@ object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4263326196
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_eg_6_power_droid_base, 4263326196)
@@ -702,7 +718,9 @@ object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTe
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2147155885
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_ig_assassin_droid_base, 2147155885)
@@ -776,7 +794,9 @@ object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemp
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 855701230
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_imperial_probot_base, 855701230)
@@ -850,7 +870,9 @@ object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTe
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2404177386
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_it_o_interrogator_base, 2404177386)
@@ -924,7 +946,9 @@ object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObject
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1824587153
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_jedi_training_droid_base, 1824587153)
@@ -998,7 +1022,9 @@ object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3636727392
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_le_repair_droid, 3636727392)
@@ -1072,7 +1098,9 @@ object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectT
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3586538841
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_lin_demolitionmech_base, 3586538841)
@@ -1146,7 +1174,9 @@ object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1281145336
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_maul_probe_droid_base, 1281145336)
@@ -1220,7 +1250,9 @@ object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3289977441
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_mse_6_base, 3289977441)
@@ -1294,7 +1326,9 @@ object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2822086398
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r2_base, 2822086398)
@@ -1368,7 +1402,9 @@ object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 681918105
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r3_base, 681918105)
@@ -1442,7 +1478,9 @@ object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2786425205
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r4_base, 2786425205)
@@ -1516,7 +1554,9 @@ object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 646306066
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_r5_base, 646306066)
@@ -1590,7 +1630,9 @@ object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 148666614
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_ra7_bug_droid_base, 148666614)
@@ -1664,7 +1706,9 @@ object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 368181993
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_red_protocol_base, 368181993)
@@ -1738,7 +1782,9 @@ object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3380886881
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_robo_bartender_base, 3380886881)
@@ -1812,7 +1858,9 @@ object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemp
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2083758013
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_silver_protocol_base, 2083758013)
@@ -1886,7 +1934,9 @@ object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1547923813
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_tt_8l_base, 1547923813)
@@ -1960,7 +2010,9 @@ object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1384722195
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_tt_8l_y7_base, 1384722195)
@@ -2034,7 +2086,9 @@ object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1639908569
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_shared_wed_treadwell_base, 1639908569)

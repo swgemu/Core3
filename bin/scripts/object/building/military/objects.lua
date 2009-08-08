@@ -89,7 +89,9 @@ object_building_military_shared_military_abandoned_police_station_rebel = Shared
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 61695795
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_abandoned_police_station_rebel, 61695795)
@@ -142,7 +144,9 @@ object_building_military_shared_military_base_gate_house_imperial = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3485179638
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_gate_house_imperial, 3485179638)
@@ -195,7 +199,9 @@ object_building_military_shared_military_base_gate_house_rebel = SharedBuildingO
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 301400937
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_gate_house_rebel, 301400937)
@@ -248,7 +254,9 @@ object_building_military_shared_military_base_police_station_imperial_lok_otto =
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 603572205
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_police_station_imperial_lok_otto, 603572205)
@@ -301,7 +309,9 @@ object_building_military_shared_military_base_police_station_imperial_style_01 =
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3633066758
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_police_station_imperial_style_01, 3633066758)
@@ -354,7 +364,9 @@ object_building_military_shared_military_base_police_station_rebel_style_01 = Sh
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2265285311
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_police_station_rebel_style_01, 2265285311)
@@ -407,7 +419,9 @@ object_building_military_shared_military_base_shed_imperial_barracks_s01 = Share
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4255048531
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_barracks_s01, 4255048531)
@@ -460,7 +474,9 @@ object_building_military_shared_military_base_shed_imperial_style_01 = SharedBui
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 196947849
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_01, 196947849)
@@ -513,7 +529,9 @@ object_building_military_shared_military_base_shed_imperial_style_bank_s01 = Sha
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3577026459
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_bank_s01, 3577026459)
@@ -566,7 +584,9 @@ object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4151796568
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_cantina_s01, 4151796568)
@@ -619,7 +639,9 @@ object_building_military_shared_military_base_shed_imperial_style_hospital_01 = 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3493400176
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_hospital_01, 3493400176)
@@ -672,7 +694,9 @@ object_building_military_shared_military_base_shed_imperial_style_officer_s01 = 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 279599580
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_officer_s01, 279599580)
@@ -725,7 +749,9 @@ object_building_military_shared_military_base_shed_imperial_style_prison_01 = Sh
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3201291643
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_imperial_style_prison_01, 3201291643)
@@ -778,7 +804,9 @@ object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBu
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1836586352
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_rebel_abandoned_01, 1836586352)
@@ -831,7 +859,9 @@ object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3606723543
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_base_shed_rebel_style_01, 3606723543)
@@ -884,7 +914,9 @@ object_building_military_shared_military_imperial_detachment_hq = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3881652814
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_detachment_hq, 3881652814)
@@ -937,7 +969,9 @@ object_building_military_shared_military_imperial_field_hospital = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1587777178
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_field_hospital, 1587777178)
@@ -990,7 +1024,9 @@ object_building_military_shared_military_imperial_forward_outpost = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3707185089
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_forward_outpost, 3707185089)
@@ -1043,7 +1079,9 @@ object_building_military_shared_military_imperial_strategic_base = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1767088646
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_strategic_base, 1767088646)
@@ -1096,7 +1134,9 @@ object_building_military_shared_military_imperial_tactical_center = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3834889912
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_imperial_tactical_center, 3834889912)
@@ -1149,7 +1189,9 @@ object_building_military_shared_military_outpost_guard_house_imperial = SharedBu
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1294596356
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_outpost_guard_house_imperial, 1294596356)
@@ -1202,7 +1244,9 @@ object_building_military_shared_military_outpost_guard_house_rebel = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4257226961
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_outpost_guard_house_rebel, 4257226961)
@@ -1255,7 +1299,9 @@ object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingO
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3846575780
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_outpost_guard_tower_1, 3846575780)
@@ -1308,7 +1354,9 @@ object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 27534614
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_detachment_hq, 27534614)
@@ -1361,7 +1409,9 @@ object_building_military_shared_military_rebel_field_hospital = SharedBuildingOb
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2029763921
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_field_hospital, 2029763921)
@@ -1414,7 +1464,9 @@ object_building_military_shared_military_rebel_forward_outpost = SharedBuildingO
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 107026323
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_forward_outpost, 107026323)
@@ -1467,7 +1519,9 @@ object_building_military_shared_military_rebel_strategic_base = SharedBuildingOb
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1326158285
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_strategic_base, 1326158285)
@@ -1520,7 +1574,9 @@ object_building_military_shared_military_rebel_tactical_center = SharedBuildingO
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1040578282
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_military_rebel_tactical_center, 1040578282)
@@ -1573,7 +1629,9 @@ object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBu
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4049657385
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_mun_all_military_tower_impl_guard_s01, 4049657385)
@@ -1626,7 +1684,9 @@ object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1152524774
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_cloning_facility, 1152524774)
@@ -1679,7 +1739,9 @@ object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1476076676
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_cloning_facility_s02, 1476076676)
@@ -1732,7 +1794,9 @@ object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 519455497
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_cloning_facility_s03, 519455497)
@@ -1785,7 +1849,9 @@ object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1037564192
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed, 1037564192)
@@ -1838,7 +1904,9 @@ object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3955868475
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s02, 3955868475)
@@ -1891,7 +1959,9 @@ object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2730796214
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s03, 2730796214)
@@ -1944,7 +2014,9 @@ object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1495764898
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s04, 1495764898)
@@ -1997,7 +2069,9 @@ object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 271247407
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_shed_s05, 271247407)
@@ -2050,7 +2124,9 @@ object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3035022053
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_outpost_starport, 3035022053)
@@ -2103,7 +2179,9 @@ object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2804382550
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_pirate_outpost, 2804382550)
@@ -2156,7 +2234,9 @@ object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "terrain/mun_all_military_shed.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2437476511
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_pirate_warehouse, 2437476511)
@@ -2209,7 +2289,9 @@ object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 568013580
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_poi_all_alum_mine_s01, 568013580)
@@ -2262,7 +2344,9 @@ object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 339089158
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_poi_all_impl_bunker_recon_outpost, 339089158)
@@ -2315,7 +2399,9 @@ object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 149503406
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_poi_all_jedi_temple_ruined, 149503406)
@@ -2368,7 +2454,9 @@ object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2675557351
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_poi_all_mad_bio_mine_s01, 2675557351)
@@ -2421,7 +2509,9 @@ object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1446333372
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_rebel_hideout_themepark, 1446333372)
@@ -2474,7 +2564,9 @@ object_building_military_shared_small_imperial_cloning_facility = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2082976950
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_small_imperial_cloning_facility, 2082976950)
@@ -2527,7 +2619,9 @@ object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 972900942
 }
 
 ObjectTemplates:addTemplate(object_building_military_shared_small_imperial_cloning_facility_s02, 972900942)

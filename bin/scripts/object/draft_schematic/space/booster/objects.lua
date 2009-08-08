@@ -75,7 +75,9 @@ object_draft_schematic_space_booster_shared_advanced_fuel_ignition = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 216548376
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_advanced_fuel_ignition, 216548376)
@@ -114,7 +116,9 @@ object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1157928076
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk1, 1157928076)
@@ -153,7 +157,9 @@ object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2652060699
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk2, 2652060699)
@@ -192,7 +198,9 @@ object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3609090966
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk3, 3609090966)
@@ -231,7 +239,9 @@ object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 754806914
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk4, 754806914)
@@ -270,7 +280,9 @@ object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1710233359
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_mk5, 1710233359)
@@ -309,7 +321,9 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1287538938
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk1, 1287538938)
@@ -348,7 +362,9 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2544492653
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk2, 2544492653)
@@ -387,7 +403,9 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3735324640
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk3, 3735324640)
@@ -426,7 +444,9 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 625454324
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk4, 625454324)
@@ -465,7 +485,9 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1816841081
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk5, 1816841081)
@@ -504,7 +526,9 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1033968628
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1, 1033968628)
@@ -543,7 +567,9 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3870733155
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2, 3870733155)
@@ -582,7 +608,9 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2948322542
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3, 2948322542)
@@ -621,7 +649,9 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1415118842
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4, 1415118842)
@@ -660,7 +690,9 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 492148855
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5, 492148855)
@@ -699,7 +731,9 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2613161095
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1, 2613161095)
@@ -738,7 +772,9 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1087767568
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2, 1087767568)
@@ -777,7 +813,9 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 165372829
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3, 165372829)
@@ -816,7 +854,9 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4063774857
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4, 4063774857)
@@ -855,7 +895,9 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3140824836
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5, 3140824836)
@@ -894,7 +936,9 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3915024240
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1, 3915024240)
@@ -933,7 +977,9 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 843919335
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2, 843919335)
@@ -972,7 +1018,9 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2067810410
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3, 2067810410)
@@ -1011,7 +1059,9 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2158191486
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4, 2158191486)
@@ -1050,7 +1100,9 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3383624947
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5, 3383624947)
@@ -1089,7 +1141,9 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1520819528
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk1, 1520819528)
@@ -1128,7 +1182,9 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2175956447
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk2, 2175956447)

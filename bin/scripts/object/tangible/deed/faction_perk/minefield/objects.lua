@@ -86,7 +86,9 @@ object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1563479543
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed, 1563479543)

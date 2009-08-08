@@ -75,7 +75,9 @@ object_draft_schematic_food_additive_shared_additive_heavy = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3572109934
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_heavy, 3572109934)
@@ -114,7 +116,9 @@ object_draft_schematic_food_additive_shared_additive_light = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 363998896
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_light, 363998896)
@@ -153,7 +157,9 @@ object_draft_schematic_food_additive_shared_additive_medium = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2258764043
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_additive_shared_additive_medium, 2258764043)

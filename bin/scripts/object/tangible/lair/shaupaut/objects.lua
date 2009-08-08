@@ -86,7 +86,9 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 56634783
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, 56634783)
@@ -136,7 +138,9 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1064337645
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, 1064337645)
@@ -186,7 +190,9 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2989589042
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, 2989589042)

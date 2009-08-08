@@ -86,7 +86,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_l = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2085871516
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_l, 2085871516)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 210147855
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bicep_r, 210147855)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 802627120
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_boots, 802627120)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 778039047
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l, 778039047)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1586145940
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_r, 1586145940)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3552584942
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_chest_plate, 3552584942)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4034830199
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_gloves, 4034830199)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1186889343
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_helmet, 1186889343)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2709205528
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings, 2709205528)
@@ -537,7 +555,9 @@ object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3237390515
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_shared_armor_smc_s01_bicep_l, 3237390515)

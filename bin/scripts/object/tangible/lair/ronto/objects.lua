@@ -86,7 +86,9 @@ object_tangible_lair_ronto_shared_lair_ronto = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2470399210
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto, 2470399210)
@@ -136,7 +138,9 @@ object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 28411685
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_desert, 28411685)
@@ -186,7 +190,9 @@ object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3699812531
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_ronto_shared_lair_ronto_dune, 3699812531)

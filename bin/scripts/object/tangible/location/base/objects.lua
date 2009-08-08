@@ -86,7 +86,9 @@ object_tangible_location_base_shared_location_base = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2015057562
 }
 
 ObjectTemplates:addTemplate(object_tangible_location_base_shared_location_base, 2015057562)

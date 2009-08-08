@@ -86,7 +86,9 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1027555264
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, 1027555264)
@@ -136,7 +138,9 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3923122581
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, 3923122581)
@@ -186,7 +190,9 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 518156641
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, 518156641)

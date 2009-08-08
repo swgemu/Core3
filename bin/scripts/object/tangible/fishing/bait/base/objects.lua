@@ -86,7 +86,9 @@ object_tangible_fishing_bait_base_shared_bait_base = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3482306960
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_bait_base_shared_bait_base, 3482306960)

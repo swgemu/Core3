@@ -75,7 +75,9 @@ object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 1412682900
 }
 
 ObjectTemplates:addTemplate(object_static_structure_endor_shared_endor_cap, 1412682900)
@@ -114,7 +116,9 @@ object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 2834035953
 }
 
 ObjectTemplates:addTemplate(object_static_structure_endor_shared_endor_catwalk, 2834035953)
@@ -152,7 +156,9 @@ object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2166795982
 }
 
 ObjectTemplates:addTemplate(object_static_structure_endor_shared_endr_imprv_bannerpole_s01, 2166795982)
@@ -190,7 +196,9 @@ object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4084104443
 }
 
 ObjectTemplates:addTemplate(object_static_structure_endor_shared_endr_imprv_flagpole_s01, 4084104443)

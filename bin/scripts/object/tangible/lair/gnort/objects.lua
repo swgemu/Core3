@@ -86,7 +86,9 @@ object_tangible_lair_gnort_shared_lair_gnort = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3151166549
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort, 3151166549)
@@ -136,7 +138,9 @@ object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 622467939
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort_grassland, 622467939)
@@ -186,7 +190,9 @@ object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2282996299
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gnort_shared_lair_gnort_mountain, 2282996299)

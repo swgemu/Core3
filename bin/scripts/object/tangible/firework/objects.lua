@@ -86,7 +86,9 @@ object_tangible_firework_shared_default = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4158245667
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_default, 4158245667)
@@ -136,7 +138,9 @@ object_tangible_firework_shared_firework_five = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3899934399
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_five, 3899934399)
@@ -186,7 +190,9 @@ object_tangible_firework_shared_firework_four = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 437197310
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_four, 437197310)
@@ -236,7 +242,9 @@ object_tangible_firework_shared_firework_one = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4192390072
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_one, 4192390072)
@@ -286,7 +294,9 @@ object_tangible_firework_shared_firework_s01 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 363719141
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s01, 363719141)
@@ -336,7 +346,9 @@ object_tangible_firework_shared_firework_s02 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3468312946
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s02, 3468312946)
@@ -386,7 +398,9 @@ object_tangible_firework_shared_firework_s03 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2276927231
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s03, 2276927231)
@@ -436,7 +450,9 @@ object_tangible_firework_shared_firework_s04 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2085883371
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s04, 2085883371)
@@ -486,7 +502,9 @@ object_tangible_firework_shared_firework_s05 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 895052390
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s05, 895052390)
@@ -536,7 +554,9 @@ object_tangible_firework_shared_firework_s10 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1200128784
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s10, 1200128784)
@@ -586,7 +606,9 @@ object_tangible_firework_shared_firework_s11 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 243655837
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s11, 243655837)
@@ -636,7 +658,9 @@ object_tangible_firework_shared_firework_s18 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 107054102
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_s18, 107054102)
@@ -686,7 +710,9 @@ object_tangible_firework_shared_firework_three = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1356885356
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_three, 1356885356)
@@ -736,7 +762,9 @@ object_tangible_firework_shared_firework_two = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 445291314
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_firework_two, 445291314)
@@ -786,7 +814,9 @@ object_tangible_firework_shared_show = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4211144857
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_show, 4211144857)
@@ -836,7 +866,9 @@ object_tangible_firework_shared_test = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2699059676
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_shared_test, 2699059676)

@@ -86,7 +86,9 @@ object_resource_container_shared_resource_container_energy_gas = SharedResourceC
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2640304325
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_gas, 2640304325)
@@ -136,7 +138,9 @@ object_resource_container_shared_resource_container_energy_gas_lg = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1023265709
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_gas_lg, 1023265709)
@@ -186,7 +190,9 @@ object_resource_container_shared_resource_container_energy_liquid = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 505491474
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_liquid, 505491474)
@@ -236,7 +242,9 @@ object_resource_container_shared_resource_container_energy_liquid_lg = SharedRes
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4165569512
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_liquid_lg, 4165569512)
@@ -286,7 +294,9 @@ object_resource_container_shared_resource_container_energy_radioactive = SharedR
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3244320243
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_radioactive, 3244320243)
@@ -336,7 +346,9 @@ object_resource_container_shared_resource_container_energy_radioactive_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1769828233
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_radioactive_lg, 1769828233)
@@ -386,7 +398,9 @@ object_resource_container_shared_resource_container_energy_solid = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3912559902
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_solid, 3912559902)
@@ -436,7 +450,9 @@ object_resource_container_shared_resource_container_energy_solid_lg = SharedReso
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3935977713
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_energy_solid_lg, 3935977713)
@@ -486,7 +502,9 @@ object_resource_container_shared_resource_container_inorganic_bottle_water = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 125850083
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_bottle_water, 125850083)
@@ -536,7 +554,9 @@ object_resource_container_shared_resource_container_inorganic_chemicals = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 422061124
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_chemicals, 422061124)
@@ -586,7 +606,9 @@ object_resource_container_shared_resource_container_inorganic_chemicals_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2886132575
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_chemicals_lg, 2886132575)
@@ -636,7 +658,9 @@ object_resource_container_shared_resource_container_inorganic_gas = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2204725480
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_gas, 2204725480)
@@ -686,7 +710,9 @@ object_resource_container_shared_resource_container_inorganic_gas_lg = SharedRes
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 73541074
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_gas_lg, 73541074)
@@ -736,7 +762,9 @@ object_resource_container_shared_resource_container_inorganic_minerals = SharedR
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2295225965
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_minerals, 2295225965)
@@ -786,7 +814,9 @@ object_resource_container_shared_resource_container_inorganic_minerals_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3162714701
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_minerals_lg, 3162714701)
@@ -836,7 +866,9 @@ object_resource_container_shared_resource_container_inorganic_petrochem_liquid =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3404372557
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_petrochem_liquid, 3404372557)
@@ -886,7 +918,9 @@ object_resource_container_shared_resource_container_inorganic_water = SharedReso
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 759021360
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_water, 759021360)
@@ -936,7 +970,9 @@ object_resource_container_shared_resource_container_inorganic_water_lg = SharedR
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1891729994
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_inorganic_water_lg, 1891729994)
@@ -986,7 +1022,9 @@ object_resource_container_shared_resource_container_organic_bean = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4263974406
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bean, 4263974406)
@@ -1036,7 +1074,9 @@ object_resource_container_shared_resource_container_organic_bottle_milk = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3072418635
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bottle_milk, 3072418635)
@@ -1086,7 +1126,9 @@ object_resource_container_shared_resource_container_organic_bristley_hide = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2077617394
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_bristley_hide, 2077617394)
@@ -1136,7 +1178,9 @@ object_resource_container_shared_resource_container_organic_corn = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3542662327
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_corn, 3542662327)
@@ -1186,7 +1230,9 @@ object_resource_container_shared_resource_container_organic_food = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 699752337
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_food, 699752337)
@@ -1236,7 +1282,9 @@ object_resource_container_shared_resource_container_organic_food_lg = SharedReso
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 466521573
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_food_lg, 466521573)
@@ -1286,7 +1334,9 @@ object_resource_container_shared_resource_container_organic_fruit = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1967870892
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_fruit, 1967870892)
@@ -1336,7 +1386,9 @@ object_resource_container_shared_resource_container_organic_fungi = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2670708128
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_fungi, 2670708128)
@@ -1386,7 +1438,9 @@ object_resource_container_shared_resource_container_organic_green_vegetables = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2909750726
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_green_vegetables, 2909750726)
@@ -1436,7 +1490,9 @@ object_resource_container_shared_resource_container_organic_hide = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 976954288
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_hide, 976954288)
@@ -1486,7 +1542,9 @@ object_resource_container_shared_resource_container_organic_hide_lg = SharedReso
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 495391475
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_hide_lg, 495391475)
@@ -1536,7 +1594,9 @@ object_resource_container_shared_resource_container_organic_leathery_hide = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2514079067
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_leathery_hide, 2514079067)
@@ -1586,7 +1646,9 @@ object_resource_container_shared_resource_container_organic_oats = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1222368053
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_oats, 1222368053)
@@ -1636,7 +1698,9 @@ object_resource_container_shared_resource_container_organic_rice = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3052716729
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_rice, 3052716729)
@@ -1686,7 +1750,9 @@ object_resource_container_shared_resource_container_organic_scaley_hide = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 355985042
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_scaley_hide, 355985042)
@@ -1736,7 +1802,9 @@ object_resource_container_shared_resource_container_organic_structure = SharedRe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1326787440
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_structure, 1326787440)
@@ -1786,7 +1854,9 @@ object_resource_container_shared_resource_container_organic_structure_lg = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3803992658
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_structure_lg, 3803992658)
@@ -1836,7 +1906,9 @@ object_resource_container_shared_resource_container_organic_tuber = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 41151102
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_tuber, 41151102)
@@ -1886,7 +1958,9 @@ object_resource_container_shared_resource_container_organic_wheat = SharedResour
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1848360314
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_wheat, 1848360314)
@@ -1936,7 +2010,9 @@ object_resource_container_shared_resource_container_organic_wooly_hide = SharedR
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3648978698
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_resource_container_organic_wooly_hide, 3648978698)
@@ -1986,7 +2062,9 @@ object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4049825392
 }
 
 ObjectTemplates:addTemplate(object_resource_container_shared_simple, 4049825392)

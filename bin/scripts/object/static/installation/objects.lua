@@ -75,7 +75,9 @@ object_static_installation_shared_mockup_factory_clothing_style_1 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1376116358
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_clothing_style_1, 1376116358)
@@ -114,7 +116,9 @@ object_static_installation_shared_mockup_factory_item_style_1 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1702691941
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_item_style_1, 1702691941)
@@ -153,7 +157,9 @@ object_static_installation_shared_mockup_factory_machine_style_1 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1996893062
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_machine_style_1, 1996893062)
@@ -192,7 +198,9 @@ object_static_installation_shared_mockup_factory_organic_style_1 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1851420525
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_factory_organic_style_1, 1851420525)
@@ -231,7 +239,9 @@ object_static_installation_shared_mockup_farm_creature_style_1 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2670476003
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_farm_creature_style_1, 2670476003)
@@ -270,7 +280,9 @@ object_static_installation_shared_mockup_farm_flora_style_1 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 455333563
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_farm_flora_style_1, 455333563)
@@ -309,7 +321,9 @@ object_static_installation_shared_mockup_mining_gas_harvester_style_1 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 952651135
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_gas_harvester_style_1, 952651135)
@@ -348,7 +362,9 @@ object_static_installation_shared_mockup_mining_liquid_harvester_style_1 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2973636894
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_liquid_harvester_style_1, 2973636894)
@@ -387,7 +403,9 @@ object_static_installation_shared_mockup_mining_liquid_moisture_harvester = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3774495712
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_liquid_moisture_harvester, 3774495712)
@@ -426,7 +444,9 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_1 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3112884760
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_1, 3112884760)
@@ -465,7 +485,9 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_2 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1654485647
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_2, 1654485647)
@@ -504,7 +526,9 @@ object_static_installation_shared_mockup_power_generator_fusion_style_1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2278647849
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_fusion_style_1, 2278647849)
@@ -543,7 +567,9 @@ object_static_installation_shared_mockup_power_generator_photo_bio_style_1 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1650901824
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_photo_bio_style_1, 1650901824)
@@ -582,7 +608,9 @@ object_static_installation_shared_mockup_power_generator_solar_style_1 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2423687218
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_solar_style_1, 2423687218)
@@ -621,7 +649,9 @@ object_static_installation_shared_mockup_power_generator_wind_style_1 = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 467258209
 }
 
 ObjectTemplates:addTemplate(object_static_installation_shared_mockup_power_generator_wind_style_1, 467258209)

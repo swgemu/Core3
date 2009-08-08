@@ -86,7 +86,9 @@ object_tangible_wearables_necklace_shared_bestine_quest_badge = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3954123718
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_bestine_quest_badge, 3954123718)
@@ -136,7 +138,9 @@ object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1050230351
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_adorned_beads, 1050230351)
@@ -186,7 +190,9 @@ object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3453591411
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_base, 3453591411)
@@ -236,7 +242,9 @@ object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3584437673
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_blue_gadget, 3584437673)
@@ -286,7 +294,9 @@ object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4150202535
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_brass_charm, 4150202535)
@@ -336,7 +346,9 @@ object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3040940329
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_bright_bauble, 3040940329)
@@ -386,7 +398,9 @@ object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 974368601
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_complex_pattern, 974368601)
@@ -436,7 +450,9 @@ object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2325808611
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_convoluted_adornment, 2325808611)
@@ -486,7 +502,9 @@ object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1155738012
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_crushed_brooch, 1155738012)
@@ -536,7 +554,9 @@ object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 283875663
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_elaborate_necklet, 283875663)
@@ -586,7 +606,9 @@ object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2530110745
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_flashy_choker, 2530110745)
@@ -636,7 +658,9 @@ object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3024190115
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_hologram_locket, 3024190115)
@@ -686,7 +710,9 @@ object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3734395119
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_ice_pendant, 3734395119)
@@ -736,7 +762,9 @@ object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4144828811
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_iron_brooch, 4144828811)
@@ -786,7 +814,9 @@ object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 840414348
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_iron_choker, 840414348)
@@ -836,7 +866,9 @@ object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 218269484
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_jeweled_pendant, 218269484)
@@ -886,7 +918,9 @@ object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3512942236
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_knickknack, 3512942236)
@@ -936,7 +970,9 @@ object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3087789204
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_living_chains, 3087789204)
@@ -986,7 +1022,9 @@ object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2122077046
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere, 2122077046)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3448479035
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_nyax, 3448479035)
@@ -1086,7 +1126,9 @@ object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 118177721
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_opulent_cameo, 118177721)
@@ -1136,7 +1178,9 @@ object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2206646823
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet, 2206646823)
@@ -1186,7 +1230,9 @@ object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1137026386
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_pawl_chain, 1137026386)
@@ -1236,7 +1282,9 @@ object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2922514792
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_platinum_pin, 2922514792)
@@ -1286,7 +1334,9 @@ object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3826079370
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_reebo_charm, 3826079370)
@@ -1336,7 +1386,9 @@ object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2107115657
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_rosy_pearl, 2107115657)
@@ -1386,7 +1438,9 @@ object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 509359350
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_rusty_beads, 509359350)
@@ -1436,7 +1490,9 @@ object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 705351361
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s01, 705351361)
@@ -1486,7 +1542,9 @@ object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4045235798
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s02, 4045235798)
@@ -1536,7 +1594,9 @@ object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3088056795
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s03, 3088056795)
@@ -1586,7 +1646,9 @@ object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1140009679
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s04, 1140009679)
@@ -1636,7 +1698,9 @@ object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184438082
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s05, 184438082)
@@ -1686,7 +1750,9 @@ object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3521766869
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s06, 3521766869)
@@ -1736,7 +1802,9 @@ object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2565112408
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s07, 2565112408)
@@ -1786,7 +1854,9 @@ object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 586067530
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s08, 586067530)
@@ -1836,7 +1906,9 @@ object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1810090439
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s09, 1810090439)
@@ -1886,7 +1958,9 @@ object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4204967934
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s09_quest, 4204967934)
@@ -1936,7 +2010,9 @@ object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2016388148
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s10, 2016388148)
@@ -1986,7 +2062,9 @@ object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 824361913
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s11, 824361913)
@@ -2036,7 +2114,9 @@ object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3929369390
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_s12, 3929369390)
@@ -2086,7 +2166,9 @@ object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4111333468
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_sparkling_bijou, 4111333468)
@@ -2136,7 +2218,9 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3192072783
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, 3192072783)

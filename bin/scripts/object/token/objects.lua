@@ -75,7 +75,9 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"token_waypoint"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4231471595
 }
 
 ObjectTemplates:addTemplate(object_token_shared_token, 4231471595)

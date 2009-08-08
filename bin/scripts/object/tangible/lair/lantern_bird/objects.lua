@@ -86,7 +86,9 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3672751802
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird, 3672751802)
@@ -136,7 +138,9 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 615980885
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest, 615980885)

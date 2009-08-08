@@ -86,7 +86,9 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1441198347
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, 1441198347)
@@ -136,7 +138,9 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1951814673
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, 1951814673)

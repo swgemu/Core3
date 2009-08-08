@@ -86,7 +86,9 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2944625946
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa, 2944625946)
@@ -136,7 +138,9 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_dune = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3403514963
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_dune, 3403514963)
@@ -186,7 +190,9 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3513164342
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain, 3513164342)
@@ -236,7 +242,9 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 770810726
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland, 770810726)

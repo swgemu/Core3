@@ -86,7 +86,9 @@ object_tangible_item_quest_force_sensitive_shared_bacta_tank = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 910140533
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_bacta_tank, 910140533)
@@ -136,7 +138,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_buff_item = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 940923132
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_buff_item, 940923132)
@@ -186,7 +190,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 486918968
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer, 486918968)
@@ -236,7 +242,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1614838947
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator, 1614838947)
@@ -286,7 +294,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_process
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1790922527
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor, 1790922527)
@@ -336,7 +346,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 704474859
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip, 704474859)
@@ -386,7 +398,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2604518454
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver, 2604518454)
@@ -436,7 +450,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2081471563
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp, 2081471563)
@@ -486,7 +502,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_ar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3351448820
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array, 3351448820)
@@ -536,7 +554,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2439008129
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal, 2439008129)
@@ -586,7 +606,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 821838739
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core, 821838739)
@@ -636,7 +658,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 997112719
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite, 997112719)
@@ -686,7 +710,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2568094988
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack, 2568094988)
@@ -736,7 +762,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2794758303
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm, 2794758303)
@@ -786,7 +814,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 622337164
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate, 622337164)
@@ -836,7 +866,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2534792856
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1, 2534792856)
@@ -886,7 +918,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1275229711
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2, 1275229711)
@@ -936,7 +970,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 84873602
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3, 84873602)
@@ -986,7 +1022,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4276894358
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4, 4276894358)
@@ -1036,7 +1074,9 @@ object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 392556278
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01, 392556278)

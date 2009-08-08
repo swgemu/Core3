@@ -86,7 +86,9 @@ object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2009793095
 }
 
 ObjectTemplates:addTemplate(object_tangible_spawning_shared_fs_village_npc_spawner, 2009793095)
@@ -136,7 +138,9 @@ object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3065118291
 }
 
 ObjectTemplates:addTemplate(object_tangible_spawning_shared_quest_spawner, 3065118291)
@@ -186,7 +190,9 @@ object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1732078563
 }
 
 ObjectTemplates:addTemplate(object_tangible_spawning_shared_remote_theater_spawner, 1732078563)
@@ -236,7 +242,9 @@ object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 85728691
 }
 
 ObjectTemplates:addTemplate(object_tangible_spawning_shared_spawn_egg, 85728691)

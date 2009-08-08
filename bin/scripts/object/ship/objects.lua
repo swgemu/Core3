@@ -86,7 +86,9 @@ object_ship_shared_assaultship = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3844148531
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_assaultship, 3844148531)
@@ -136,7 +138,9 @@ object_ship_shared_awing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1006768204
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_awing, 1006768204)
@@ -186,7 +190,9 @@ object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2304550097
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_awing_tier1, 2304550097)
@@ -236,7 +242,9 @@ object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1380650054
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_awing_tier2, 1380650054)
@@ -286,7 +294,9 @@ object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 457599947
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_awing_tier3, 457599947)
@@ -336,7 +346,9 @@ object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3768926431
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_awing_tier4, 3768926431)
@@ -386,7 +398,9 @@ object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2846369618
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_awing_tier5, 2846369618)
@@ -436,7 +450,9 @@ object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 762962365
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_basic_hutt_light, 762962365)
@@ -486,7 +502,9 @@ object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2423388993
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_basic_tiefighter, 2423388993)
@@ -536,7 +554,9 @@ object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 237307345
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_basic_z95, 237307345)
@@ -586,7 +606,9 @@ object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1689683950
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01, 1689683950)
@@ -636,7 +658,9 @@ object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 42858675
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier1, 42858675)
@@ -686,7 +710,9 @@ object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3650768932
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier2, 3650768932)
@@ -736,7 +762,9 @@ object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2425829289
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier3, 2425829289)
@@ -786,7 +814,9 @@ object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1802771645
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier4, 1802771645)
@@ -836,7 +866,9 @@ object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 578386736
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s01_tier5, 578386736)
@@ -886,7 +918,9 @@ object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3215011705
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02, 3215011705)
@@ -936,7 +970,9 @@ object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 213478710
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier1, 213478710)
@@ -986,7 +1022,9 @@ object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3618555297
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier2, 3618555297)
@@ -1036,7 +1074,9 @@ object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2661524012
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier3, 2661524012)
@@ -1086,7 +1126,9 @@ object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1698728248
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier4, 1698728248)
@@ -1136,7 +1178,9 @@ object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 743304885
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s02_tier5, 743304885)
@@ -1186,7 +1230,9 @@ object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4138486004
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03, 4138486004)
@@ -1236,7 +1282,9 @@ object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4111854296
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier1, 4111854296)
@@ -1286,7 +1334,9 @@ object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 771899983
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier2, 771899983)
@@ -1336,7 +1386,9 @@ object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1729045954
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier3, 1729045954)
@@ -1386,7 +1438,9 @@ object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2632715990
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier4, 2632715990)
@@ -1436,7 +1490,9 @@ object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3588319579
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s03_tier5, 3588319579)
@@ -1486,7 +1542,9 @@ object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 223306720
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04, 223306720)
@@ -1536,7 +1594,9 @@ object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 282084924
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier1, 282084924)
@@ -1586,7 +1646,9 @@ object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3418877611
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier2, 3418877611)
@@ -1636,7 +1698,9 @@ object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2194311462
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier3, 2194311462)
@@ -1686,7 +1750,9 @@ object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2032771634
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier4, 2032771634)
@@ -1736,7 +1802,9 @@ object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 807716287
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_heavy_s04_tier5, 807716287)
@@ -1786,7 +1854,9 @@ object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2025920948
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01, 2025920948)
@@ -1836,7 +1906,9 @@ object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1922069411
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier1, 1922069411)
@@ -1886,7 +1958,9 @@ object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2844252980
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier2, 2844252980)
@@ -1936,7 +2010,9 @@ object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3767188665
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier3, 3767188665)
@@ -1986,7 +2062,9 @@ object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 459904941
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier4, 459904941)
@@ -2036,7 +2114,9 @@ object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1382346784
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s01_tier5, 1382346784)
@@ -2086,7 +2166,9 @@ object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2748756259
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02, 2748756259)
@@ -2136,7 +2218,9 @@ object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2091181606
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier1, 2091181606)
@@ -2186,7 +2270,9 @@ object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2813546161
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier2, 2813546161)
@@ -2236,7 +2322,9 @@ object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4005439804
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier3, 4005439804)
@@ -2286,7 +2374,9 @@ object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 358416936
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier4, 358416936)
@@ -2336,7 +2426,9 @@ object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1548772773
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s02_tier5, 1548772773)
@@ -2386,7 +2478,9 @@ object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3940275886
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03, 3940275886)
@@ -2436,7 +2530,9 @@ object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2231919048
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier1, 2231919048)
@@ -2486,7 +2582,9 @@ object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1579141471
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier2, 1579141471)
@@ -2536,7 +2634,9 @@ object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 387100370
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier3, 387100370)
@@ -2586,7 +2686,9 @@ object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3975251398
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier4, 3975251398)
@@ -2636,7 +2738,9 @@ object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2784813643
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s03_tier5, 2784813643)
@@ -2686,7 +2790,9 @@ object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 288947642
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04, 288947642)
@@ -2736,7 +2842,9 @@ object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1624100140
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier1, 1624100140)
@@ -2786,7 +2894,9 @@ object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3151652283
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier2, 3151652283)
@@ -2836,7 +2946,9 @@ object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4074177078
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier3, 4074177078)
@@ -2886,7 +2998,9 @@ object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 154413346
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier4, 154413346)
@@ -2936,7 +3050,9 @@ object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1077497519
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_light_s04_tier5, 1077497519)
@@ -2986,7 +3102,9 @@ object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1249737248
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01, 1249737248)
@@ -3036,7 +3154,9 @@ object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3687774721
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier1, 3687774721)
@@ -3086,7 +3206,9 @@ object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 14242454
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier2, 14242454)
@@ -3136,7 +3258,9 @@ object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1238643995
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier3, 1238643995)
@@ -3186,7 +3310,9 @@ object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2989956623
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier4, 2989956623)
@@ -3236,7 +3362,9 @@ object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4214913410
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s01_tier5, 4214913410)
@@ -3286,7 +3414,9 @@ object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2439697079
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02, 2439697079)
@@ -3336,7 +3466,9 @@ object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3589959556
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier1, 3589959556)
@@ -3386,7 +3518,9 @@ object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 250464019
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier2, 250464019)
@@ -3436,7 +3570,9 @@ object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1205903518
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier3, 1205903518)
@@ -3486,7 +3622,9 @@ object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3154348938
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier4, 3154348938)
@@ -3536,7 +3674,9 @@ object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4111395847
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s02_tier5, 4111395847)
@@ -3586,7 +3726,9 @@ object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3630675258
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03, 3630675258)
@@ -3636,7 +3778,9 @@ object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 743893098
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier1, 743893098)
@@ -3686,7 +3830,9 @@ object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4148248829
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier2, 4148248829)
@@ -3736,7 +3882,9 @@ object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3192661872
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier3, 3192661872)
@@ -3786,7 +3934,9 @@ object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1169099876
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier4, 1169099876)
@@ -3836,7 +3986,9 @@ object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 211971049
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s03_tier5, 211971049)
@@ -3886,7 +4038,9 @@ object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 595893806
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04, 595893806)
@@ -3936,7 +4090,9 @@ object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3381871758
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier1, 3381871758)
@@ -3986,7 +4142,9 @@ object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 310701081
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier2, 310701081)
@@ -4036,7 +4194,9 @@ object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1535740820
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier3, 1535740820)
@@ -4086,7 +4246,9 @@ object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2691342464
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier4, 2691342464)
@@ -4136,7 +4298,9 @@ object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3915892493
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_medium_s04_tier5, 3915892493)
@@ -4186,7 +4350,9 @@ object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 806145873
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport, 806145873)
@@ -4236,7 +4402,9 @@ object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3217548599
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier1, 3217548599)
@@ -4286,7 +4454,9 @@ object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1691372960
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier2, 1691372960)
@@ -4336,7 +4506,9 @@ object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 769468973
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier3, 769468973)
@@ -4386,7 +4558,9 @@ object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3594387769
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier4, 3594387769)
@@ -4436,7 +4610,9 @@ object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2670945972
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_blacksun_transport_tier5, 2670945972)
@@ -4486,7 +4662,9 @@ object_ship_shared_bwing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 784528209
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_bwing, 784528209)
@@ -4536,7 +4714,9 @@ object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3935148784
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_bwing_tier1, 3935148784)
@@ -4586,7 +4766,9 @@ object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 832189031
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_bwing_tier2, 832189031)
@@ -4636,7 +4818,9 @@ object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2023183850
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_bwing_tier3, 2023183850)
@@ -4686,7 +4870,9 @@ object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2205449982
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_bwing_tier4, 2205449982)
@@ -4736,7 +4922,9 @@ object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3396934003
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_bwing_tier5, 3396934003)
@@ -4786,7 +4974,9 @@ object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 907129698
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_civshuttle, 907129698)
@@ -4836,7 +5026,9 @@ object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4120399097
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_civspeeder1, 4120399097)
@@ -4886,7 +5078,9 @@ object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 781182062
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_civspeeder2, 781182062)
@@ -4936,7 +5130,9 @@ object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3717426532
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_civtaxi, 3717426532)
@@ -4986,7 +5182,9 @@ object_ship_shared_civtransport = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 952499678
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_civtransport, 952499678)
@@ -5036,7 +5234,9 @@ object_ship_shared_corvette = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 562522734
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_corvette, 562522734)
@@ -5086,7 +5286,9 @@ object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3035559423
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_corvette_interior, 3035559423)
@@ -5136,7 +5338,9 @@ object_ship_shared_decimator = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362865628
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_decimator, 2362865628)
@@ -5186,7 +5390,9 @@ object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2353591998
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_decimator_tier1, 2353591998)
@@ -5236,7 +5442,9 @@ object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1465867817
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_decimator_tier2, 1465867817)
@@ -5286,7 +5494,9 @@ object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 508705188
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_decimator_tier3, 508705188)
@@ -5336,7 +5546,9 @@ object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3853587120
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_decimator_tier4, 3853587120)
@@ -5386,7 +5598,9 @@ object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2898031933
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_decimator_tier5, 2898031933)
@@ -5436,7 +5650,9 @@ object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2308789341
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_droid_fighter, 2308789341)
@@ -5486,7 +5702,9 @@ object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 14973297
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier1, 14973297)
@@ -5536,7 +5754,9 @@ object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3690189286
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier2, 3690189286)
@@ -5586,7 +5806,9 @@ object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2466166379
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier3, 2466166379)
@@ -5636,7 +5858,9 @@ object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1763548543
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier4, 1763548543)
@@ -5686,7 +5910,9 @@ object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 537983730
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_droid_fighter_tier5, 537983730)
@@ -5736,7 +5962,9 @@ object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2997532055
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_escape_pod, 2997532055)
@@ -5786,7 +6014,9 @@ object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2280868888
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier1, 2280868888)
@@ -5836,7 +6066,9 @@ object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1558504591
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier2, 1558504591)
@@ -5886,7 +6118,9 @@ object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 367624962
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier3, 367624962)
@@ -5936,7 +6170,9 @@ object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3993675798
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier4, 3993675798)
@@ -5986,7 +6222,9 @@ object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2802306971
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_escape_pod_tier5, 2802306971)
@@ -6036,7 +6274,9 @@ object_ship_shared_firespray = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3319462575
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_firespray, 3319462575)
@@ -6086,7 +6326,9 @@ object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1391589453
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_firespray_tier1, 1391589453)
@@ -6136,7 +6378,9 @@ object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2313572570
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_firespray_tier2, 2313572570)
@@ -6186,7 +6430,9 @@ object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3236640599
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_firespray_tier3, 3236640599)
@@ -6236,7 +6482,9 @@ object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 990387267
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_firespray_tier4, 990387267)
@@ -6286,7 +6534,9 @@ object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1912961998
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_firespray_tier5, 1912961998)
@@ -6336,7 +6586,9 @@ object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2210460492
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterheavy, 2210460492)
@@ -6386,7 +6638,9 @@ object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 237176683
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier1, 237176683)
@@ -6436,7 +6690,9 @@ object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3576999932
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier2, 3576999932)
@@ -6486,7 +6742,9 @@ object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2621032561
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier3, 2621032561)
@@ -6536,7 +6794,9 @@ object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1742398309
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier4, 1742398309)
@@ -6586,7 +6846,9 @@ object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 785876200
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterheavy_tier5, 785876200)
@@ -6636,7 +6898,9 @@ object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1117310866
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterlight, 1117310866)
@@ -6686,7 +6950,9 @@ object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2981606241
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier1, 2981606241)
@@ -6736,7 +7002,9 @@ object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1788877814
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier2, 1788877814)
@@ -6786,7 +7054,9 @@ object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 598572155
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier3, 598572155)
@@ -6836,7 +7106,9 @@ object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3629012847
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier4, 3629012847)
@@ -6886,7 +7158,9 @@ object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2437099746
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freighterlight_tier5, 2437099746)
@@ -6936,7 +7210,9 @@ object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3398686729
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freightermedium, 3398686729)
@@ -6986,7 +7262,9 @@ object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1092912234
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier1, 1092912234)
@@ -7036,7 +7314,9 @@ object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2587045117
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier2, 2587045117)
@@ -7086,7 +7366,9 @@ object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3544075120
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier3, 3544075120)
@@ -7136,7 +7418,9 @@ object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 685596772
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier4, 685596772)
@@ -7186,7 +7470,9 @@ object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1641023465
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_freightermedium_tier5, 1641023465)
@@ -7236,7 +7522,9 @@ object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1217600546
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01, 1217600546)
@@ -7286,7 +7574,9 @@ object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3993388117
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier1, 3993388117)
@@ -7336,7 +7626,9 @@ object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 890367170
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier2, 890367170)
@@ -7386,7 +7678,9 @@ object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2082245455
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier3, 2082245455)
@@ -7436,7 +7730,9 @@ object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2281676891
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier4, 2281676891)
@@ -7486,7 +7782,9 @@ object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3472017366
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s01_tier5, 3472017366)
@@ -7536,7 +7834,9 @@ object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2474947765
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02, 2474947765)
@@ -7586,7 +7886,9 @@ object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3761426896
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier1, 3761426896)
@@ -7636,7 +7938,9 @@ object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 992311623
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier2, 992311623)
@@ -7686,7 +7990,9 @@ object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1915231946
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier3, 1915231946)
@@ -7736,7 +8042,9 @@ object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2311796190
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier4, 2311796190)
@@ -7786,7 +8094,9 @@ object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3234222675
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_heavy_s02_tier5, 3234222675)
@@ -7836,7 +8146,9 @@ object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1424261752
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01, 1424261752)
@@ -7886,7 +8198,9 @@ object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2652622661
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier1, 2652622661)
@@ -7936,7 +8250,9 @@ object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1158440914
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier2, 1158440914)
@@ -7986,7 +8302,9 @@ object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 201392223
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier3, 201392223)
@@ -8036,7 +8354,9 @@ object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4158794571
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier4, 4158794571)
@@ -8086,7 +8406,9 @@ object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3203353798
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s01_tier5, 3203353798)
@@ -8136,7 +8458,9 @@ object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2415078127
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02, 2415078127)
@@ -8186,7 +8510,9 @@ object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2419022528
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier1, 2419022528)
@@ -8236,7 +8562,9 @@ object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1262023255
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier2, 1262023255)
@@ -8286,7 +8614,9 @@ object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 37066202
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier3, 37066202)
@@ -8336,7 +8666,9 @@ object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4191600334
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier4, 4191600334)
@@ -8386,7 +8718,9 @@ object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2967198019
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_light_s02_tier5, 2967198019)
@@ -8436,7 +8770,9 @@ object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3267992484
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01, 3267992484)
@@ -8486,7 +8822,9 @@ object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2698486044
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier1, 2698486044)
@@ -8536,7 +8874,9 @@ object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2076182923
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier2, 2076182923)
@@ -8586,7 +8926,9 @@ object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 852323846
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier3, 852323846)
@@ -8636,7 +8978,9 @@ object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3375252754
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier4, 3375252754)
@@ -8686,7 +9030,9 @@ object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2149786271
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s01_tier5, 2149786271)
@@ -8736,7 +9082,9 @@ object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 433992499
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02, 433992499)
@@ -8786,7 +9134,9 @@ object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2934125721
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier1, 2934125721)
@@ -8836,7 +9186,9 @@ object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1978965006
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier2, 1978965006)
@@ -8886,7 +9238,9 @@ object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1023015811
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier3, 1023015811)
@@ -8936,7 +9290,9 @@ object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3340423319
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier4, 3340423319)
@@ -8986,7 +9342,9 @@ object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2383918874
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_medium_s02_tier5, 2383918874)
@@ -9036,7 +9394,9 @@ object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 472470685
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_transport, 472470685)
@@ -9086,7 +9446,9 @@ object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1397512657
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier1, 1397512657)
@@ -9136,7 +9498,9 @@ object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2287726918
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier2, 2287726918)
@@ -9186,7 +9550,9 @@ object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3243677387
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier3, 3243677387)
@@ -9236,7 +9602,9 @@ object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 984989151
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier4, 984989151)
@@ -9286,7 +9654,9 @@ object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1941494354
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_transport_tier5, 1941494354)
@@ -9336,7 +9706,9 @@ object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2822462280
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_hutt_turret_ship, 2822462280)
@@ -9386,7 +9758,9 @@ object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3259306099
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat, 3259306099)
@@ -9436,7 +9810,9 @@ object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1910102521
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier1, 1910102521)
@@ -9486,7 +9862,9 @@ object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2865656174
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier2, 2865656174)
@@ -9536,7 +9914,9 @@ object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3821213411
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier3, 3821213411)
@@ -9586,7 +9966,9 @@ object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 404766199
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier4, 404766199)
@@ -9636,7 +10018,9 @@ object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1361926778
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_imperial_gunboat_tier5, 1361926778)
@@ -9686,7 +10070,9 @@ object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 979946526
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle, 979946526)
@@ -9736,7 +10122,9 @@ object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1746838902
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier1, 1746838902)
@@ -9786,7 +10174,9 @@ object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3003715041
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier2, 3003715041)
@@ -9836,7 +10226,9 @@ object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4194593388
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier3, 4194593388)
@@ -9886,7 +10278,9 @@ object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 31932792
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier4, 31932792)
@@ -9936,7 +10330,9 @@ object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1223304949
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_lambdashuttle_tier5, 1223304949)
@@ -9986,7 +10382,9 @@ object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2543011646
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier1, 2543011646)
@@ -10036,7 +10434,9 @@ object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1283780521
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier2, 1283780521)
@@ -10086,7 +10486,9 @@ object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 92899364
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier3, 92899364)
@@ -10136,7 +10538,9 @@ object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4268401456
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier4, 4268401456)
@@ -10186,7 +10590,9 @@ object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3077031101
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_light_tier5, 3077031101)
@@ -10236,7 +10642,9 @@ object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4266302506
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium, 4266302506)
@@ -10286,7 +10694,9 @@ object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3883212856
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier1, 3883212856)
@@ -10336,7 +10746,9 @@ object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1013090479
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier2, 1013090479)
@@ -10386,7 +10798,9 @@ object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1970269986
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier3, 1970269986)
@@ -10436,7 +10850,9 @@ object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2391589942
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier4, 2391589942)
@@ -10486,7 +10902,9 @@ object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3347162043
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_merchant_cruiser_medium_tier5, 3347162043)
@@ -10536,7 +10954,9 @@ object_ship_shared_nebulon = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2407618193
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_nebulon, 2407618193)
@@ -10586,7 +11006,9 @@ object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 327912933
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod, 327912933)
@@ -10636,7 +11058,9 @@ object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2888320846
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier1, 2888320846)
@@ -10686,7 +11110,9 @@ object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2000678873
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier2, 2000678873)
@@ -10736,7 +11162,9 @@ object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1043499092
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier3, 1043499092)
@@ -10786,7 +11214,9 @@ object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3318850368
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier4, 3318850368)
@@ -10836,7 +11266,9 @@ object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2363278541
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_probe_droid_pod_tier5, 2363278541)
@@ -10886,7 +11318,9 @@ object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1036884978
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_prototype_hutt_light, 1036884978)
@@ -10936,7 +11370,9 @@ object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2160427278
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_prototype_tiefighter, 2160427278)
@@ -10986,7 +11422,9 @@ object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1141820662
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_prototype_z95, 1141820662)
@@ -11036,7 +11474,9 @@ object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3542721164
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat, 3542721164)
@@ -11086,7 +11526,9 @@ object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 137363241
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier1, 137363241)
@@ -11136,7 +11578,9 @@ object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3543685054
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier2, 3543685054)
@@ -11186,7 +11630,9 @@ object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2587177011
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier3, 2587177011)
@@ -11236,7 +11682,9 @@ object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1641421607
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier4, 1641421607)
@@ -11286,7 +11734,9 @@ object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 685472938
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_gunboat_tier5, 685472938)
@@ -11336,7 +11786,9 @@ object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 282943774
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier1, 282943774)
@@ -11386,7 +11838,9 @@ object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3419064713
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier2, 3419064713)
@@ -11436,7 +11890,9 @@ object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2194124292
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier3, 2194124292)
@@ -11486,7 +11942,9 @@ object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2032436496
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier4, 2032436496)
@@ -11536,7 +11994,9 @@ object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 808051357
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_rebel_shuttle_tier5, 808051357)
@@ -11586,7 +12046,9 @@ object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1243384778
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier1, 1243384778)
@@ -11636,7 +12098,9 @@ object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2433426269
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier2, 2433426269)
@@ -11686,7 +12150,9 @@ object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3624289488
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier3, 3624289488)
@@ -11736,7 +12202,9 @@ object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 602238916
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier4, 602238916)
@@ -11786,7 +12254,9 @@ object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1793591369
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_smuggler_warlord_ship_tier5, 1793591369)
@@ -11836,7 +12306,9 @@ object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2502364217
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_sorosuub_space_yacht, 2502364217)
@@ -11886,7 +12358,9 @@ object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3165332223
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_spacestation_imperial, 3165332223)
@@ -11936,7 +12410,9 @@ object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4164831037
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_spacestation_neutral, 4164831037)
@@ -11986,7 +12462,9 @@ object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 431716433
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_spacestation_rebel, 431716433)
@@ -12036,7 +12514,9 @@ object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3207599336
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_star_destroyer, 3207599336)
@@ -12086,7 +12566,9 @@ object_ship_shared_supplyship = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4043601537
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_supplyship, 4043601537)
@@ -12136,7 +12618,9 @@ object_ship_shared_tie_in = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1874889307
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tie_in, 1874889307)
@@ -12186,7 +12670,9 @@ object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1231580532
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tie_light_duty, 1231580532)
@@ -12236,7 +12722,9 @@ object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 212073063
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieadvanced, 212073063)
@@ -12286,7 +12774,9 @@ object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4294368666
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier1, 4294368666)
@@ -12336,7 +12826,9 @@ object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 618755341
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier2, 618755341)
@@ -12386,7 +12878,9 @@ object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1844187776
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier3, 1844187776)
@@ -12436,7 +12930,9 @@ object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2517580180
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier4, 2517580180)
@@ -12486,7 +12982,9 @@ object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3741474329
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieadvanced_tier5, 3741474329)
@@ -12536,7 +13034,9 @@ object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3457688983
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieaggressor, 3457688983)
@@ -12586,7 +13086,9 @@ object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1918801119
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier1, 1918801119)
@@ -12636,7 +13138,9 @@ object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2840149064
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier2, 2840149064)
@@ -12686,7 +13190,9 @@ object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3762576325
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier3, 3762576325)
@@ -12736,7 +13242,9 @@ object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 463958225
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier4, 463958225)
@@ -12786,7 +13294,9 @@ object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1386878812
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieaggressor_tier5, 1386878812)
@@ -12836,7 +13346,9 @@ object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1689489833
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiebomber, 1689489833)
@@ -12886,7 +13398,9 @@ object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 800011159
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier1, 800011159)
@@ -12936,7 +13450,9 @@ object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4105739008
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier2, 4105739008)
@@ -12986,7 +13502,9 @@ object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3182820493
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier3, 3182820493)
@@ -13036,7 +13554,9 @@ object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1180096409
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier4, 1180096409)
@@ -13086,7 +13606,9 @@ object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 257667092
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiebomber_tier5, 257667092)
@@ -13136,7 +13658,9 @@ object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2677969389
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiefighter, 2677969389)
@@ -13186,7 +13710,9 @@ object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 719737899
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier1, 719737899)
@@ -13236,7 +13762,9 @@ object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4059167932
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier2, 4059167932)
@@ -13286,7 +13814,9 @@ object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3103562545
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier3, 3103562545)
@@ -13336,7 +13866,9 @@ object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1126150181
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier4, 1126150181)
@@ -13386,7 +13918,9 @@ object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 169007016
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tiefighter_tier5, 169007016)
@@ -13436,7 +13970,9 @@ object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2986877248
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor, 2986877248)
@@ -13486,7 +14022,9 @@ object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3034789135
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier1, 3034789135)
@@ -13536,7 +14074,9 @@ object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1878302104
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier2, 1878302104)
@@ -13586,7 +14126,9 @@ object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 653916693
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier3, 653916693)
@@ -13636,7 +14178,9 @@ object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3709522177
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier4, 3709522177)
@@ -13686,7 +14230,9 @@ object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2484582028
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieinterceptor_tier5, 2484582028)
@@ -13736,7 +14282,9 @@ object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3234528257
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieoppressor, 3234528257)
@@ -13786,7 +14334,9 @@ object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3138516559
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier1, 3138516559)
@@ -13836,7 +14386,9 @@ object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1611030232
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier2, 1611030232)
@@ -13886,7 +14438,9 @@ object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 688601429
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier3, 688601429)
@@ -13936,7 +14490,9 @@ object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3538424385
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier4, 3538424385)
@@ -13986,7 +14542,9 @@ object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2615506380
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_tieoppressor_tier5, 2615506380)
@@ -14036,7 +14594,9 @@ object_ship_shared_transport_science = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1879411884
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_transport_science, 1879411884)
@@ -14086,7 +14646,9 @@ object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1650455622
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier1, 1650455622)
@@ -14136,7 +14698,9 @@ object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3108527313
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier2, 3108527313)
@@ -14186,7 +14750,9 @@ object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4031069020
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier3, 4031069020)
@@ -14236,7 +14802,9 @@ object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 195432520
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier4, 195432520)
@@ -14286,7 +14854,9 @@ object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1118533573
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_transport_science_tier5, 1118533573)
@@ -14336,7 +14906,9 @@ object_ship_shared_xwing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1476764354
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_xwing, 1476764354)
@@ -14386,7 +14958,9 @@ object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1201246834
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_xwing_tier1, 1201246834)
@@ -14436,7 +15010,9 @@ object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2626566885
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_xwing_tier2, 2626566885)
@@ -14486,7 +15062,9 @@ object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3582156136
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_xwing_tier3, 3582156136)
@@ -14536,7 +15114,9 @@ object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 778073724
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_xwing_tier4, 778073724)
@@ -14586,7 +15166,9 @@ object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1735201265
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_xwing_tier5, 1735201265)
@@ -14636,7 +15218,9 @@ object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2370729898
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ykl37r, 2370729898)
@@ -14686,7 +15270,9 @@ object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 212362802
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier1, 212362802)
@@ -14736,7 +15322,9 @@ object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3619671717
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier2, 3619671717)
@@ -14786,7 +15374,9 @@ object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2662508840
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier3, 2662508840)
@@ -14836,7 +15426,9 @@ object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1699840572
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier4, 1699840572)
@@ -14886,7 +15478,9 @@ object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 744285617
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ykl37r_tier5, 744285617)
@@ -14936,7 +15530,9 @@ object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4019421648
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300, 4019421648)
@@ -14986,7 +15582,9 @@ object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1347113891
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300_interior, 1347113891)
@@ -15036,7 +15634,9 @@ object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3582257391
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier1, 3582257391)
@@ -15086,7 +15686,9 @@ object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 244531320
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier2, 244531320)
@@ -15136,7 +15738,9 @@ object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1201547253
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier3, 1201547253)
@@ -15186,7 +15790,9 @@ object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3162311905
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier4, 3162311905)
@@ -15236,7 +15842,9 @@ object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4117785452
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_yt1300_tier5, 4117785452)
@@ -15286,7 +15894,9 @@ object_ship_shared_ywing = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2852456612
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing, 2852456612)
@@ -15336,7 +15946,9 @@ object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3553113506
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing_longprobe, 3553113506)
@@ -15386,7 +15998,9 @@ object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2593551104
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing_tier1, 2593551104)
@@ -15436,7 +16050,9 @@ object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1099029399
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing_tier2, 1099029399)
@@ -15486,7 +16102,9 @@ object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 143440922
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing_tier3, 143440922)
@@ -15536,7 +16154,9 @@ object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4084176654
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing_tier4, 4084176654)
@@ -15586,7 +16206,9 @@ object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3127046275
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_ywing_tier5, 3127046275)
@@ -15636,7 +16258,9 @@ object_ship_shared_z95 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3963433956
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_z95, 3963433956)
@@ -15686,7 +16310,9 @@ object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 603334641
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_z95_tier1, 603334641)
@@ -15736,7 +16362,9 @@ object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4175531878
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_z95_tier2, 4175531878)
@@ -15786,7 +16414,9 @@ object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2985093355
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_z95_tier3, 2985093355)
@@ -15836,7 +16466,9 @@ object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1242547199
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_z95_tier4, 1242547199)
@@ -15886,7 +16518,9 @@ object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 50504818
 }
 
 ObjectTemplates:addTemplate(object_ship_shared_z95_tier5, 50504818)

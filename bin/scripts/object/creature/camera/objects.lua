@@ -110,7 +110,9 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2217042692
 }
 
 ObjectTemplates:addTemplate(object_creature_camera_shared_intro_camera, 2217042692)
@@ -184,7 +186,9 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1416223243
 }
 
 ObjectTemplates:addTemplate(object_creature_camera_shared_intro_controller, 1416223243)

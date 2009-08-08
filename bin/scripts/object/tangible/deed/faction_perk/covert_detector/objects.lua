@@ -86,7 +86,9 @@ object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3347458445
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed, 3347458445)

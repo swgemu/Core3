@@ -90,7 +90,9 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt_turret",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4214506567
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_turret_shared_turret_block_large, 4214506567)

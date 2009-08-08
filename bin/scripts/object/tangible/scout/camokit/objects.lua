@@ -86,7 +86,9 @@ object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2196629790
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_corellia, 2196629790)
@@ -136,7 +138,9 @@ object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1054553582
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dantooine, 1054553582)
@@ -186,7 +190,9 @@ object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 372534846
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_dathomir, 372534846)
@@ -236,7 +242,9 @@ object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2201297332
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_endor, 2201297332)
@@ -286,7 +294,9 @@ object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3919662514
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_lok, 3919662514)
@@ -336,7 +346,9 @@ object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1097832374
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_naboo, 1097832374)
@@ -386,7 +398,9 @@ object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2868366256
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_rori, 2868366256)
@@ -436,7 +450,9 @@ object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1480450460
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_talus, 1480450460)
@@ -486,7 +502,9 @@ object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3199109249
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_tatooine, 3199109249)
@@ -536,7 +554,9 @@ object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1119412885
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_shared_camokit_yavin, 1119412885)

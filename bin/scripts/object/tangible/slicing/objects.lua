@@ -86,7 +86,9 @@ object_tangible_slicing_shared_slicing_armor_upgrade_kit = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2423629000
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_armor_upgrade_kit, 2423629000)
@@ -136,7 +138,9 @@ object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 352400896
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_flow_analyzer, 352400896)
@@ -186,7 +190,9 @@ object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3905355100
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_laser_knife, 3905355100)
@@ -236,7 +242,9 @@ object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2663745100
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_molecular_clamp, 2663745100)
@@ -286,7 +294,9 @@ object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3282826133
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_shared_slicing_weapon_upgrade_kit, 3282826133)

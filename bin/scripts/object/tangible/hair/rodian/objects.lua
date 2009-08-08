@@ -86,7 +86,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1932780925
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s01, 1932780925)
@@ -136,7 +138,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s02 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2820951530
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s02, 2820951530)
@@ -186,7 +190,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s03 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3777571431
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s03, 3777571431)
@@ -236,7 +242,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s04 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 449446259
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s04, 449446259)
@@ -286,7 +294,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s05 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1405576958
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s05, 1405576958)
@@ -336,7 +346,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s06 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2295385705
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s06, 2295385705)
@@ -386,7 +398,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s07 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3252529636
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s07, 3252529636)
@@ -436,7 +450,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s08 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2077722102
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s08, 2077722102)
@@ -486,7 +502,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s09 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 853205627
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s09, 853205627)
@@ -536,7 +554,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s10 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 555126664
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s10, 555126664)
@@ -586,7 +606,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s12 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3003924626
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s12, 3003924626)
@@ -636,7 +658,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s13 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4194379551
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s13, 4194379551)
@@ -686,7 +710,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s14 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 31591435
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s14, 31591435)
@@ -736,7 +762,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s15 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1223650182
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s15, 1223650182)
@@ -786,7 +814,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s16 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2482553617
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s16, 2482553617)
@@ -836,7 +866,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s17 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3673531548
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s17, 3673531548)
@@ -886,7 +918,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s18 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1627359374
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s18, 1627359374)
@@ -936,7 +970,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s19 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 703786755
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s19, 703786755)
@@ -986,7 +1022,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s20 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 208574464
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s20, 208574464)
@@ -1036,7 +1074,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s21 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1164181389
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s21, 1164181389)
@@ -1086,7 +1126,9 @@ object_tangible_hair_rodian_shared_hair_rodian_female_s22 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2658424602
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_female_s22, 2658424602)
@@ -1136,7 +1178,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1850856365
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s01, 1850856365)
@@ -1186,7 +1230,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s02 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3041295162
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s02, 3041295162)
@@ -1236,7 +1282,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s03 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4232780983
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s03, 4232780983)
@@ -1286,7 +1334,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s04 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 128464803
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s04, 128464803)
@@ -1336,7 +1386,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s05 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1319456814
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s05, 1319456814)
@@ -1386,7 +1438,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s06 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2511534265
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s06, 2511534265)
@@ -1436,7 +1490,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s07 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3703545652
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s07, 3703545652)
@@ -1486,7 +1542,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s08 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1723183910
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s08, 1723183910)
@@ -1536,7 +1594,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s09 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 800642219
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s09, 800642219)
@@ -1586,7 +1646,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s10 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1014282584
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s10, 1014282584)
@@ -1636,7 +1698,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s11 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1970921173
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s11, 1970921173)
@@ -1686,7 +1750,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s12 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2926474818
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s12, 2926474818)
@@ -1736,7 +1802,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s13 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3882029519
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s13, 3882029519)
@@ -1786,7 +1854,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s14 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 478165723
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s14, 478165723)
@@ -1836,7 +1906,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s15 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1435327830
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s15, 1435327830)
@@ -1886,7 +1958,9 @@ object_tangible_hair_rodian_shared_hair_rodian_male_s16 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2392520129
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_rodian_shared_hair_rodian_male_s16, 2392520129)

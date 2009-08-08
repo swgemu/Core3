@@ -86,7 +86,9 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1942668017
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large, 1942668017)
@@ -136,7 +138,9 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1814389996
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium, 1814389996)
@@ -186,7 +190,9 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1204901592
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small, 1204901592)
@@ -236,7 +242,9 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2805227646
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large, 2805227646)
@@ -286,7 +294,9 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2417546969
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium, 2417546969)
@@ -336,7 +346,9 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2469393495
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small, 2469393495)

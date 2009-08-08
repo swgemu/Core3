@@ -75,7 +75,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3554417607
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple, 3554417607)
@@ -114,7 +116,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3868739773
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush, 3868739773)
@@ -153,7 +157,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3812766941
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa, 3812766941)
@@ -192,7 +198,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2798774405
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_01, 2798774405)
@@ -231,7 +239,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2110144530
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_02, 2110144530)
@@ -270,7 +280,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 885729183
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_03, 885729183)
@@ -309,7 +321,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_house = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1534476352
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_house, 1534476352)
@@ -348,7 +362,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3028784545
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton, 3028784545)
@@ -387,7 +403,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1610627862
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot, 1610627862)
@@ -426,7 +444,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3967202686
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry, 3967202686)
@@ -465,7 +485,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3453343183
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01, 3453343183)
@@ -504,7 +526,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02 =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 381844824
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02, 381844824)
@@ -543,7 +567,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_b
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 33582333
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_bush, 33582333)
@@ -582,7 +608,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3011444247
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn, 3011444247)
@@ -621,7 +649,9 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 653658046
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka, 653658046)

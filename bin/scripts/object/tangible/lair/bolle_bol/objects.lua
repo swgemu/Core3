@@ -86,7 +86,9 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3363205545
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol, 3363205545)
@@ -136,7 +138,9 @@ object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 457571636
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bolle_bol_shared_lair_bolle_bol_grassland, 457571636)

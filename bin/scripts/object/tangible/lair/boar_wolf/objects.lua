@@ -86,7 +86,9 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2734437911
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf, 2734437911)
@@ -136,7 +138,9 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 150445531
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain, 150445531)

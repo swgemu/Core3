@@ -86,7 +86,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1407650214
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_01, 1407650214)
@@ -136,7 +138,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2297471281
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02, 2297471281)
@@ -186,7 +190,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3254634172
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_03, 3254634172)
@@ -236,7 +242,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1492422801
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_01, 1492422801)
@@ -286,7 +294,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2212706310
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_02, 2212706310)
@@ -336,7 +346,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3404619659
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03, 3404619659)
@@ -386,7 +398,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2560812636
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_01, 2560812636)
@@ -436,7 +450,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1135955659
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_02, 1135955659)
@@ -486,7 +502,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 179841350
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_03, 179841350)
@@ -536,7 +554,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3272388566
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_01, 3272388566)
@@ -586,7 +606,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 404424513
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_02, 404424513)
@@ -636,7 +658,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1360421068
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_03, 1360421068)
@@ -686,7 +710,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 264621119
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_01, 264621119)
@@ -736,7 +762,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3570558120
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_02, 3570558120)
@@ -786,7 +814,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2648638245
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_03, 2648638245)
@@ -836,7 +866,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3687584342
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_01, 3687584342)
@@ -886,7 +918,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 14400193
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_02, 14400193)
@@ -936,7 +970,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1238818124
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_03, 1238818124)
@@ -986,7 +1022,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 542981184
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_01, 542981184)
@@ -1036,7 +1074,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4215968983
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_02, 4215968983)
@@ -1086,7 +1126,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2991059802
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_03, 2991059802)
@@ -1136,7 +1178,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 645261248
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_01, 645261248)
@@ -1186,7 +1230,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4251078487
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02, 4251078487)
@@ -1236,7 +1282,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3027183834
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_03, 3027183834)
@@ -1286,7 +1334,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1089205389
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_01, 1089205389)
@@ -1336,7 +1386,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2617007130
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_02, 2617007130)
@@ -1386,7 +1438,9 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3539024791
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_03, 3539024791)
