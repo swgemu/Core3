@@ -17,7 +17,7 @@ namespace zone {
 
 namespace packets {
 
-	class MessageCallback {
+	class MessageCallback : public Task {
 	protected:
 		ReferenceSlot<ZoneClientSession*> client;
 		ZoneProcessServerImplementation* server;
@@ -33,8 +33,6 @@ namespace packets {
 		}
 
 		virtual void parse(Message* message) = 0;
-
-		virtual void execute() = 0;
 
 		inline ZoneClientSession* getClient() {
 			return client.get();

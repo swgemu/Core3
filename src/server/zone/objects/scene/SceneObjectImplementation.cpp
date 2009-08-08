@@ -84,6 +84,9 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 
 	gameObjectType = templateData->getIntField("gameObjectType");
 
+	clientObjectCRC = templateData->getIntField("clientObjectCRC");
+	serverObjectCRC = 0;
+
 	arrangementDescriptors = new Vector<String>();
 
 	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
@@ -143,7 +146,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		return;
 
 	StringBuffer msg;
-	msg << "sending 0x" << hex << getObjectCRC() << " oid 0x" << hex << getObjectID();
+	msg << "sending 0x" << hex << getClientObjectCRC() << " oid 0x" << hex << getObjectID();
 	info(msg.toString());
 
 	create(client);

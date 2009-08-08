@@ -180,7 +180,9 @@ public:
 
 	float getDirectionW();
 
-	unsigned int getObjectCRC();
+	unsigned int getClientObjectCRC();
+
+	unsigned int getServerObjectCRC();
 
 	StringId* getObjectName();
 
@@ -228,7 +230,9 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void setObjectCRC(unsigned int objCRC);
+	void setClientObjectCRC(unsigned int objCRC);
+
+	void setServerObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
 
@@ -281,7 +285,9 @@ protected:
 
 	VectorMap<unsigned long long, SceneObject* >* containerObjects;
 
-	unsigned int objectCRC;
+	unsigned int serverObjectCRC;
+
+	unsigned int clientObjectCRC;
 
 	Quaternion* direction;
 
@@ -736,7 +742,9 @@ public:
 
 	float getDirectionW();
 
-	unsigned int getObjectCRC();
+	unsigned int getClientObjectCRC();
+
+	unsigned int getServerObjectCRC();
 
 	StringId* getObjectName();
 
@@ -784,7 +792,9 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void setObjectCRC(unsigned int objCRC);
+	void setClientObjectCRC(unsigned int objCRC);
+
+	void setServerObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
 
@@ -905,7 +915,9 @@ public:
 
 	float getDirectionW();
 
-	unsigned int getObjectCRC();
+	unsigned int getClientObjectCRC();
+
+	unsigned int getServerObjectCRC();
 
 	int getArrangementDescriptorSize();
 
@@ -949,7 +961,9 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void setObjectCRC(unsigned int objCRC);
+	void setClientObjectCRC(unsigned int objCRC);
+
+	void setServerObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
 

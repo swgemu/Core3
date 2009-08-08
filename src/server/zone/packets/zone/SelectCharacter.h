@@ -81,7 +81,7 @@ public:
 		characterID = message->parseLong(6);
 	}
 
-	void execute() {
+	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
 
 		SceneObject* obj = zoneServer->getObject(characterID, true);

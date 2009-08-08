@@ -98,7 +98,7 @@ public:
 		positionY = message->parseFloat();
 	}
 
-	void execute() {
+	void run() {
 		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
 
 		object->info("received data transform");

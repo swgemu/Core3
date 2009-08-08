@@ -109,9 +109,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
-	MessageCallback* data = messageCallbackFactory.createObject(opcode, client, processServer);
+	MessageCallback* messageCallback = messageCallbackFactory.createObject(opcode, client, processServer);
 
-	if (data == NULL) {
+	if (messageCallback == NULL) {
 		StringBuffer msg;
 		msg << "unknown opcode 0x" << hex << opcode;
 		info(msg);
@@ -119,27 +119,36 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		return;
 	}
 
+	if (parseMessage(pack, messageCallback))
+		runMessage(messageCallback);
+
+	delete messageCallback;
+}
+
+bool ZonePacketHandler::parseMessage(Message* pack, MessageCallback* messageCallback) {
 	try {
 
-		data->parse(pack);
+		messageCallback->parse(pack);
 
 	} catch (Exception& e) {
 		error("exception while parsing message in ZonePacketHandler");
 		error(e.getMessage());
 		e.printStackTrace();
 
-		delete data;
-		return;
+		return false;
 	} catch (...) {
 		error("unknown exception while parsing message in ZonePacketHandler");
 
-		delete data;
-		return;
+		return false;
 	}
 
+	return true;
+}
+
+void ZonePacketHandler::runMessage(MessageCallback* messageCallback) {
 	try {
 
-		data->execute();
+		messageCallback->run();
 
 	} catch (Exception& e) {
 		error("exception while executing message callback in ZonePacketHandler");
@@ -148,7 +157,5 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	} catch (...) {
 		error("unknown exception while executing message callback in ZonePacketHandler");
 	}
-
-	delete data;
 }
 

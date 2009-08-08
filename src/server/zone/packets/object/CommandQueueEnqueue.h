@@ -87,7 +87,7 @@ public:
 		message->parseUnicode(arguments);
 	}
 
-	void execute() {
+	void run() {
 		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
 
 		if (player == NULL)

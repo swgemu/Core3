@@ -74,7 +74,7 @@ public:
 
 	}
 
-	void execute() {
+	void run() {
 		BaseMessage* msg = new CmdSceneReady();
 		client->sendMessage(msg);
 

@@ -73,7 +73,7 @@ public:
 
 	void parse(Message* message);
 
-	void execute();
+	void run();
 
 	inline uint32 getPriority() {
 		return priority;

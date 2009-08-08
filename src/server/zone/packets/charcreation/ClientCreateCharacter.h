@@ -77,7 +77,7 @@ public:
 
 	void parse(Message* message);
 
-	void execute();
+	void run();
 
 	void getRaceFile(String& file) {
 		file = racefile;

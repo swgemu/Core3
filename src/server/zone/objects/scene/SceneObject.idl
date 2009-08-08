@@ -82,7 +82,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected VectorMap<string, SceneObject> containmentSlots;
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
 	
-	protected unsigned int objectCRC;
+	protected unsigned int serverObjectCRC;
+	protected unsigned int clientObjectCRC;
 	
 	protected Quaternion direction;
 	protected unsigned int movementCounter;
@@ -427,8 +428,12 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return direction.getW();
 	}
 	
-	public unsigned int getObjectCRC() {
-		return objectCRC;
+	public unsigned int getClientObjectCRC() {
+		return clientObjectCRC;
+	}
+	
+	public unsigned int getServerObjectCRC() {
+		return serverObjectCRC;
 	}
 	
 	public local StringId getObjectName() {
@@ -523,8 +528,12 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		gameObjectType = type;
 	}
 	
-	public void setObjectCRC(unsigned int objCRC) {
-		objectCRC = objCRC;
+	public void setClientObjectCRC(unsigned int objCRC) {
+		clientObjectCRC = objCRC;
+	}
+	
+	public void setServerObjectCRC(unsigned int objCRC) {
+		serverObjectCRC = objCRC;
 	}
 	
 	public void setParent(SceneObject par) {

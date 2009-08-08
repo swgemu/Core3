@@ -86,16 +86,18 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 		e.printStackTrace();
 
 		delete objectControllerCallback;
+		objectControllerCallback = NULL;
 		throw;
 	} catch (...) {
 		System::out << "unknown exception caught in ObjectControllerMessageCallback::parse";
 		delete objectControllerCallback;
+		objectControllerCallback = NULL;
 		throw;
 	}
 
 }
 
-void ObjectControllerMessageCallback::execute() {
+void ObjectControllerMessageCallback::run() {
 	SceneObject* player = client->getPlayer();
 
 	if (player == NULL)
@@ -113,7 +115,7 @@ void ObjectControllerMessageCallback::execute() {
 		}
 
 		if (objectControllerCallback != NULL)
-			objectControllerCallback->execute();
+			objectControllerCallback->run();
 
 		player->unlock();
 
