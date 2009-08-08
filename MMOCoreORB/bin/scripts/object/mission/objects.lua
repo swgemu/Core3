@@ -75,7 +75,9 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3205608574
 }
 
 ObjectTemplates:addTemplate(object_mission_shared_mission_data_object, 3205608574)
@@ -114,7 +116,9 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"token_creator", "token_end_location", "token_target", "token_start_location"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2729425872
 }
 
 ObjectTemplates:addTemplate(object_mission_shared_mission_list_entry_object, 2729425872)
@@ -153,7 +157,9 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3741732474
 }
 
 ObjectTemplates:addTemplate(object_mission_shared_mission_object, 3741732474)

@@ -86,7 +86,9 @@ object_tangible_lair_mamien_shared_lair_mamien = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1262287323
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien, 1262287323)
@@ -136,7 +138,9 @@ object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 222781865
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mamien_shared_lair_mamien_jungle, 222781865)

@@ -86,7 +86,9 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2069689133
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish, 2069689133)
@@ -136,7 +138,9 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2279018496
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater, 2279018496)

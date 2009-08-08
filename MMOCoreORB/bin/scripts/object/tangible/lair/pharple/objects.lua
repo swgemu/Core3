@@ -86,7 +86,9 @@ object_tangible_lair_pharple_shared_lair_pharple = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3003958462
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple, 3003958462)
@@ -136,7 +138,9 @@ object_tangible_lair_pharple_shared_lair_pharple_wasteland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4033646950
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pharple_shared_lair_pharple_wasteland, 4033646950)

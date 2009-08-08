@@ -90,7 +90,9 @@ object_weapon_ranged_droid_shared_droid_astromech_ranged = SharedWeaponObjectTem
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "rocket",
-	weaponEffectIndex = 3
+	weaponEffectIndex = 3,
+
+	clientObjectCRC = 1112246409
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_droid_shared_droid_astromech_ranged, 1112246409)
@@ -144,7 +146,9 @@ object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3685860278
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_droid_shared_droid_droideka_ranged, 3685860278)
@@ -198,7 +202,9 @@ object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 12
+	weaponEffectIndex = 12,
+
+	clientObjectCRC = 380494511
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_droid_shared_droid_probot_ranged, 380494511)

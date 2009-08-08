@@ -86,7 +86,9 @@ object_ship_base_shared_ship_base = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3840320293
 }
 
 ObjectTemplates:addTemplate(object_ship_base_shared_ship_base, 3840320293)
@@ -136,7 +138,9 @@ object_ship_base_shared_ship_capital_base = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2714493516
 }
 
 ObjectTemplates:addTemplate(object_ship_base_shared_ship_capital_base, 2714493516)
@@ -186,7 +190,9 @@ object_ship_base_shared_ship_fighter_base = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1221795395
 }
 
 ObjectTemplates:addTemplate(object_ship_base_shared_ship_fighter_base, 1221795395)
@@ -236,7 +242,9 @@ object_ship_base_shared_ship_station_base = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 92011496
 }
 
 ObjectTemplates:addTemplate(object_ship_base_shared_ship_station_base, 92011496)
@@ -286,7 +294,9 @@ object_ship_base_shared_ship_transport_base = SharedShipObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4138284526
 }
 
 ObjectTemplates:addTemplate(object_ship_base_shared_ship_transport_base, 4138284526)

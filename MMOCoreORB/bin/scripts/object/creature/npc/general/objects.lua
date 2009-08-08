@@ -110,7 +110,9 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2389040637
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_general_shared_skill_trainer, 2389040637)

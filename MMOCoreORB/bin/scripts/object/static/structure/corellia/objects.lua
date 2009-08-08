@@ -75,7 +75,9 @@ object_static_structure_corellia_shared_corl_banner_govt_angled_s01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3488732557
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_banner_govt_angled_s01, 3488732557)
@@ -114,7 +116,9 @@ object_static_structure_corellia_shared_corl_banner_govt_tall_s01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 662555920
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_banner_govt_tall_s01, 662555920)
@@ -153,7 +157,9 @@ object_static_structure_corellia_shared_corl_fountain_brazier_round_s01 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3994724911
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_round_s01, 3994724911)
@@ -192,7 +198,9 @@ object_static_structure_corellia_shared_corl_fountain_brazier_square_s01 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 632694927
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_square_s01, 632694927)
@@ -231,7 +239,9 @@ object_static_structure_corellia_shared_corl_fountain_circle_s01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2676149866
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_circle_s01, 2676149866)
@@ -270,7 +280,9 @@ object_static_structure_corellia_shared_corl_fountain_rectangle_s01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1330147903
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_rectangle_s01, 1330147903)
@@ -309,7 +321,9 @@ object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2625105516
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01, 2625105516)
@@ -348,7 +362,9 @@ object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 593244797
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01, 593244797)
@@ -387,7 +403,9 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3523876965
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s01, 3523876965)
@@ -426,7 +444,9 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s02 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 152940786
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s02, 152940786)
@@ -465,7 +485,9 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 180063211
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s01, 180063211)
@@ -504,7 +526,9 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s02 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3517719420
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s02, 3517719420)
@@ -543,7 +567,9 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s03 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2560705777
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s03, 2560705777)
@@ -581,7 +607,9 @@ object_static_structure_corellia_shared_corl_imprv_bannerpole_s01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4106256117
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bannerpole_s01, 4106256117)
@@ -620,7 +648,9 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3451992127
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01, 3451992127)
@@ -659,7 +689,9 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 383160488
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02, 383160488)
@@ -698,7 +730,9 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 514306461
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01, 514306461)
@@ -737,7 +771,9 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3316652298
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02, 3316652298)
@@ -776,7 +812,9 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3323339283
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01, 3323339283)
@@ -815,7 +853,9 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 486640260
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02, 486640260)
@@ -854,7 +894,9 @@ object_static_structure_corellia_shared_corl_imprv_column_s01 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2435499985
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s01, 2435499985)
@@ -893,7 +935,9 @@ object_static_structure_corellia_shared_corl_imprv_column_s02 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1245540166
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s02, 1245540166)
@@ -932,7 +976,9 @@ object_static_structure_corellia_shared_corl_imprv_column_s03 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 53479627
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s03, 53479627)
@@ -971,7 +1017,9 @@ object_static_structure_corellia_shared_corl_imprv_column_s04 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4174586847
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_column_s04, 4174586847)
@@ -1009,7 +1057,9 @@ object_static_structure_corellia_shared_corl_imprv_flagpole_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 92914717
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_flagpole_s01, 92914717)
@@ -1048,7 +1098,9 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1792479271
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s01, 1792479271)
@@ -1087,7 +1139,9 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s02 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2982197424
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s02, 2982197424)
@@ -1126,7 +1180,9 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s03 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4174241597
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s03, 4174241597)
@@ -1165,7 +1221,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 440351692
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01, 440351692)
@@ -1204,7 +1262,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3240661851
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02, 3240661851)
@@ -1243,7 +1303,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2284188886
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03, 2284188886)
@@ -1282,7 +1344,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1942413250
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04, 1942413250)
@@ -1321,7 +1385,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3667847668
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01, 3667847668)
@@ -1360,7 +1426,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 25772387
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02, 25772387)
@@ -1399,7 +1467,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1216620270
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03, 1216620270)
@@ -1438,7 +1508,9 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3009875450
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04, 3009875450)
@@ -1477,7 +1549,9 @@ object_static_structure_corellia_shared_corl_power_arial_prime = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1209853320
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_arial_prime, 1209853320)
@@ -1516,7 +1590,9 @@ object_static_structure_corellia_shared_corl_power_arial_thin = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3856785881
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_arial_thin, 3856785881)
@@ -1555,7 +1631,9 @@ object_static_structure_corellia_shared_corl_power_box_node = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4203234536
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_box_node, 4203234536)
@@ -1594,7 +1672,9 @@ object_static_structure_corellia_shared_corl_power_bubble_node = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3942637523
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_bubble_node, 3942637523)
@@ -1633,7 +1713,9 @@ object_static_structure_corellia_shared_corl_power_connector = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2265922541
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_connector, 2265922541)
@@ -1672,7 +1754,9 @@ object_static_structure_corellia_shared_corl_power_transformer_s01 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3364711462
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_transformer_s01, 3364711462)
@@ -1711,7 +1795,9 @@ object_static_structure_corellia_shared_corl_power_transformer_s02 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 328910001
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_power_transformer_s02, 328910001)
@@ -1750,7 +1836,9 @@ object_static_structure_corellia_shared_corl_stair_large_s01 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2489724749
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_stair_large_s01, 2489724749)
@@ -1789,7 +1877,9 @@ object_static_structure_corellia_shared_corl_stair_medium_s01 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3099330896
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_stair_medium_s01, 3099330896)
@@ -1828,7 +1918,9 @@ object_static_structure_corellia_shared_corl_stair_small_s01 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2304472342
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_stair_small_s01, 2304472342)
@@ -1867,7 +1959,9 @@ object_static_structure_corellia_shared_corl_tent_hut_s01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1857626571
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_hut_s01, 1857626571)
@@ -1906,7 +2000,9 @@ object_static_structure_corellia_shared_corl_tent_large = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2517417479
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_large, 2517417479)
@@ -1945,7 +2041,9 @@ object_static_structure_corellia_shared_corl_tent_med = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 962796496
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_med, 962796496)
@@ -1984,7 +2082,9 @@ object_static_structure_corellia_shared_corl_tent_small = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2719427118
 }
 
 ObjectTemplates:addTemplate(object_static_structure_corellia_shared_corl_tent_small, 2719427118)

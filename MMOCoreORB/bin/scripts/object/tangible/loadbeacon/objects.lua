@@ -86,7 +86,9 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1191572337
 }
 
 ObjectTemplates:addTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, 1191572337)

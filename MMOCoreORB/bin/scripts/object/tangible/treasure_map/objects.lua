@@ -86,7 +86,9 @@ object_tangible_treasure_map_shared_treasure_map_base = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2463455571
 }
 
 ObjectTemplates:addTemplate(object_tangible_treasure_map_shared_treasure_map_base, 2463455571)
@@ -136,7 +138,9 @@ object_tangible_treasure_map_shared_treasure_map_quest = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 239886061
 }
 
 ObjectTemplates:addTemplate(object_tangible_treasure_map_shared_treasure_map_quest, 239886061)

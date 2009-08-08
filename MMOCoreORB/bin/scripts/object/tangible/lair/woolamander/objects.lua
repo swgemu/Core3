@@ -86,7 +86,9 @@ object_tangible_lair_woolamander_shared_lair_woolamander = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2207514475
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_woolamander_shared_lair_woolamander, 2207514475)
@@ -136,7 +138,9 @@ object_tangible_lair_woolamander_shared_lair_woolamander_jungle = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2613243319
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_woolamander_shared_lair_woolamander_jungle, 2613243319)

@@ -86,7 +86,9 @@ object_tangible_lair_gurk_shared_lair_gurk = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2774815419
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk, 2774815419)
@@ -136,7 +138,9 @@ object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3262874974
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_mountain, 3262874974)
@@ -186,7 +190,9 @@ object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1904490191
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurk_shared_lair_gurk_wasteland, 1904490191)

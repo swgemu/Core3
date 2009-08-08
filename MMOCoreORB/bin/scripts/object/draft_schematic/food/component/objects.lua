@@ -75,7 +75,9 @@ object_draft_schematic_food_component_shared_container_barrel = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1809601710
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_barrel, 1809601710)
@@ -114,7 +116,9 @@ object_draft_schematic_food_component_shared_container_cask = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2983185528
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_cask, 2983185528)
@@ -153,7 +157,9 @@ object_draft_schematic_food_component_shared_container_large_glass = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3740654207
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_large_glass, 3740654207)
@@ -192,7 +198,9 @@ object_draft_schematic_food_component_shared_container_small_glass = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1819609352
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_container_small_glass, 1819609352)
@@ -231,7 +239,9 @@ object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 797799084
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_ball_of_dough, 797799084)
@@ -270,7 +280,9 @@ object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 752274773
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_shared_ingredient_carbosyrup, 752274773)

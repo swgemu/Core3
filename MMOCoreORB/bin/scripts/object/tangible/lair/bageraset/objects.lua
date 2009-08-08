@@ -86,7 +86,9 @@ object_tangible_lair_bageraset_shared_lair_bageraset = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4218860200
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bageraset_shared_lair_bageraset, 4218860200)
@@ -136,7 +138,9 @@ object_tangible_lair_bageraset_shared_lair_bageraset_forest = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 46513624
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bageraset_shared_lair_bageraset_forest, 46513624)

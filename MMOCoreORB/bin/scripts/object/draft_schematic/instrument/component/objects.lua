@@ -75,7 +75,9 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 658217892
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, 658217892)

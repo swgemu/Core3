@@ -75,7 +75,9 @@ object_draft_schematic_vehicle_shared_vehicle_customization_kit = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4170918716
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_shared_vehicle_customization_kit, 4170918716)

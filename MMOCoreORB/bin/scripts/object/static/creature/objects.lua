@@ -75,7 +75,9 @@ object_static_creature_shared_corellia_bageraset = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2705862416
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_bageraset, 2705862416)
@@ -114,7 +116,9 @@ object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 477184105
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_carrion_spat, 477184105)
@@ -153,7 +157,9 @@ object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2747990145
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_dalyrake, 2747990145)
@@ -192,7 +198,9 @@ object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3048728047
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_durni, 3048728047)
@@ -231,7 +239,9 @@ object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2954563063
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_gulingaw, 2954563063)
@@ -270,7 +280,9 @@ object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2683543667
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_krahbu, 2683543667)
@@ -309,7 +321,9 @@ object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2344476589
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_murra, 2344476589)
@@ -348,7 +362,9 @@ object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1375326208
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_paralope, 1375326208)
@@ -387,7 +403,9 @@ object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3137870482
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_slice_hound, 3137870482)
@@ -426,7 +444,9 @@ object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4063038895
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_corellia_wrix, 4063038895)
@@ -465,7 +485,9 @@ object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 854757845
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_bol, 854757845)
@@ -504,7 +526,9 @@ object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1931905486
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_huurton, 1931905486)
@@ -543,7 +567,9 @@ object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2303273158
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_picket, 2303273158)
@@ -582,7 +608,9 @@ object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2156453868
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_quenker, 2156453868)
@@ -621,7 +649,9 @@ object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3211038446
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_thune, 3211038446)
@@ -660,7 +690,9 @@ object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2989515482
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dantooine_voritor_lizard, 2989515482)
@@ -699,7 +731,9 @@ object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3739778750
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_baz_nitch, 3739778750)
@@ -738,7 +772,9 @@ object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2130373686
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_bolma, 2130373686)
@@ -777,7 +813,9 @@ object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 148699511
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_brackaset, 148699511)
@@ -816,7 +854,9 @@ object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2407684045
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_gaping_spider, 2407684045)
@@ -855,7 +895,9 @@ object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2475425069
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_kwi, 2475425069)
@@ -894,7 +936,9 @@ object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1615874421
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_purbole, 1615874421)
@@ -933,7 +977,9 @@ object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1734426995
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_dathomir_rancor, 1734426995)
@@ -972,7 +1018,9 @@ object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 634197524
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_21b_medical, 634197524)
@@ -1011,7 +1059,9 @@ object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3764580571
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_c118, 3764580571)
@@ -1050,7 +1100,9 @@ object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1268246832
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_dz70, 1268246832)
@@ -1089,7 +1141,9 @@ object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3476817295
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_eg6, 3476817295)
@@ -1128,7 +1182,9 @@ object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 470452239
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_imperial_it0, 470452239)
@@ -1167,7 +1223,9 @@ object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1273875386
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_le_repair, 1273875386)
@@ -1206,7 +1264,9 @@ object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3987492608
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_lin_demolition, 3987492608)
@@ -1245,7 +1305,9 @@ object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1766014260
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_mse_droid, 1766014260)
@@ -1284,7 +1346,9 @@ object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3769609842
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_protocol_droid_gold, 3769609842)
@@ -1323,7 +1387,9 @@ object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1386398217
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2, 1386398217)
@@ -1362,7 +1428,9 @@ object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 74591773
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_r2_waiter, 74591773)
@@ -1401,7 +1469,9 @@ object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2839669021
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_droids_r5, 2839669021)
@@ -1440,7 +1510,9 @@ object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4031936600
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_arachne, 4031936600)
@@ -1479,7 +1551,9 @@ object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2777768022
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_blurrg, 2777768022)
@@ -1518,7 +1592,9 @@ object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2997015768
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_boar_wolf, 2997015768)
@@ -1557,7 +1633,9 @@ object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4030049897
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_bolma, 4030049897)
@@ -1596,7 +1674,9 @@ object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 153161597
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_bordok, 153161597)
@@ -1635,7 +1715,9 @@ object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1525067606
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_gurrek, 1525067606)
@@ -1674,7 +1756,9 @@ object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3844520985
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_endor_roba, 3844520985)
@@ -1713,7 +1797,9 @@ object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3191722300
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_imperial_at_st, 3191722300)
@@ -1752,7 +1838,9 @@ object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 315951279
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurk, 315951279)
@@ -1791,7 +1879,9 @@ object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4271066089
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_gurnaset, 4271066089)
@@ -1830,7 +1920,9 @@ object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3580345318
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_kusak, 3580345318)
@@ -1869,7 +1961,9 @@ object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2773469649
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_langlatch, 2773469649)
@@ -1908,7 +2002,9 @@ object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 357241664
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_pharple, 357241664)
@@ -1947,7 +2043,9 @@ object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1617735804
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_snorbal, 1617735804)
@@ -1986,7 +2084,9 @@ object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 14297223
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_lok_vesp, 14297223)
@@ -2025,7 +2125,9 @@ object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1767558298
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_bolle_bol, 1767558298)
@@ -2064,7 +2166,9 @@ object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 226349579
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_falumpaset, 226349579)
@@ -2103,7 +2207,9 @@ object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2354504429
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_fambaa, 2354504429)
@@ -2142,7 +2248,9 @@ object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1571631502
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_gualama, 1571631502)
@@ -2181,7 +2289,9 @@ object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2364724606
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_kaadu, 2364724606)
@@ -2220,7 +2330,9 @@ object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1920843509
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_shaupaut, 1920843509)
@@ -2259,7 +2371,9 @@ object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3593979400
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_tusk_cat, 3593979400)
@@ -2298,7 +2412,9 @@ object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3885148339
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_naboo_veermok, 3885148339)
@@ -2337,7 +2453,9 @@ object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1608440478
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_rori_bearded_jax, 1608440478)
@@ -2376,7 +2494,9 @@ object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3736933444
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_rori_forest_mite, 3736933444)
@@ -2415,7 +2535,9 @@ object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 115117462
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_rori_pugoriss, 115117462)
@@ -2454,7 +2576,9 @@ object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2689990897
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_rori_squall, 2689990897)
@@ -2493,7 +2617,9 @@ object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2296435059
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_rori_vrobal, 2296435059)
@@ -2532,7 +2658,9 @@ object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3737643958
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_talus_guf_drolg, 3737643958)
@@ -2571,7 +2699,9 @@ object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 595006750
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_talus_kima, 595006750)
@@ -2610,7 +2740,9 @@ object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 347380569
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_talus_sludge_panther, 347380569)
@@ -2649,7 +2781,9 @@ object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3938599478
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_nosaddle, 3938599478)
@@ -2688,7 +2822,9 @@ object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3837912821
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_bantha_saddle, 3837912821)
@@ -2727,7 +2863,9 @@ object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1883442736
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_cu_pa, 1883442736)
@@ -2766,7 +2904,9 @@ object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 720218946
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback, 720218946)
@@ -2805,7 +2945,9 @@ object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 73737599
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_dewback_nosaddle, 73737599)
@@ -2844,7 +2986,9 @@ object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2624628846
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_eopie, 2624628846)
@@ -2883,7 +3027,9 @@ object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 10526857
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_jawa, 10526857)
@@ -2922,7 +3068,9 @@ object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2864148327
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_ronto, 2864148327)
@@ -2961,7 +3109,9 @@ object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 424564253
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_sarlacc, 424564253)
@@ -3000,7 +3150,9 @@ object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1422492223
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_squill, 1422492223)
@@ -3039,7 +3191,9 @@ object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3864955184
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_womp_rat, 3864955184)
@@ -3078,7 +3232,9 @@ object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1929245972
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_tatooine_worrt, 1929245972)
@@ -3117,7 +3273,9 @@ object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3688075301
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_choku, 3688075301)
@@ -3156,7 +3314,9 @@ object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4080884107
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_kliknik, 4080884107)
@@ -3195,7 +3355,9 @@ object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3561928854
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mamien, 3561928854)
@@ -3234,7 +3396,9 @@ object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2479758005
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_mawgax, 2479758005)
@@ -3273,7 +3437,9 @@ object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 836656341
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_skreeg, 836656341)
@@ -3312,7 +3478,9 @@ object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1663198408
 }
 
 ObjectTemplates:addTemplate(object_static_creature_shared_yavin4_tybis, 1663198408)

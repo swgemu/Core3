@@ -86,7 +86,9 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1304408300
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_large, 1304408300)
@@ -136,7 +138,9 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4058756214
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_medium, 4058756214)
@@ -186,7 +190,9 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2040800453
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_small, 2040800453)
@@ -236,7 +242,9 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2843941257
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_large, 2843941257)
@@ -286,7 +294,9 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 468681171
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_medium, 468681171)
@@ -336,7 +346,9 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2644020640
 }
 
 ObjectTemplates:addTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_small, 2644020640)

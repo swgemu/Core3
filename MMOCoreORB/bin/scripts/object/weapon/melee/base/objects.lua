@@ -90,7 +90,9 @@ object_weapon_melee_base_shared_base_melee = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1158062481
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_base_shared_base_melee, 1158062481)

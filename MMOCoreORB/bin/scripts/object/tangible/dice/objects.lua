@@ -86,7 +86,9 @@ object_tangible_dice_shared_eqp_chance_cube = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 572459271
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_chance_cube, 572459271)
@@ -136,7 +138,9 @@ object_tangible_dice_shared_eqp_configurable_group_dice = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1212860070
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_configurable_group_dice, 1212860070)
@@ -186,7 +190,9 @@ object_tangible_dice_shared_eqp_one_hundred_sided_dice_set = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2182985448
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_one_hundred_sided_dice_set, 2182985448)
@@ -236,7 +242,9 @@ object_tangible_dice_shared_eqp_six_sided_dice_set = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3211047396
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_six_sided_dice_set, 3211047396)
@@ -286,7 +294,9 @@ object_tangible_dice_shared_eqp_ten_sided_dice_set = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3051569698
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_ten_sided_dice_set, 3051569698)
@@ -336,7 +346,9 @@ object_tangible_dice_shared_eqp_twelve_sided_dice_set = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2176227197
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_twelve_sided_dice_set, 2176227197)
@@ -386,7 +398,9 @@ object_tangible_dice_shared_eqp_twenty_sided_dice_set = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3564430823
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_shared_eqp_twenty_sided_dice_set, 3564430823)

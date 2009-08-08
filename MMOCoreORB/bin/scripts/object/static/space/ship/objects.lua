@@ -75,7 +75,9 @@ object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 141305204
 }
 
 ObjectTemplates:addTemplate(object_static_space_ship_shared_cargo_freighter, 141305204)
@@ -114,7 +116,9 @@ object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 785804943
 }
 
 ObjectTemplates:addTemplate(object_static_space_ship_shared_corellian_corvette, 785804943)
@@ -153,7 +157,9 @@ object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4161425774
 }
 
 ObjectTemplates:addTemplate(object_static_space_ship_shared_nebulon_frigate, 4161425774)

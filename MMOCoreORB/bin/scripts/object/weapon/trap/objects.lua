@@ -86,7 +86,9 @@ object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1619506188
 }
 
 ObjectTemplates:addTemplate(object_weapon_trap_shared_eqp_weapon_auto_laser_trap, 1619506188)

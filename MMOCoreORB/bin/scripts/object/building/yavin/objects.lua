@@ -89,7 +89,9 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2882030964
 }
 
 ObjectTemplates:addTemplate(object_building_yavin_shared_dark_enclave, 2882030964)
@@ -142,7 +144,9 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3550315323
 }
 
 ObjectTemplates:addTemplate(object_building_yavin_shared_light_enclave, 3550315323)
@@ -195,7 +199,9 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1060389087
 }
 
 ObjectTemplates:addTemplate(object_building_yavin_shared_temple_blueleaf, 1060389087)
@@ -248,7 +254,9 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3687664408
 }
 
 ObjectTemplates:addTemplate(object_building_yavin_shared_temple_exar_kun, 3687664408)
@@ -301,7 +309,9 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2078872520
 }
 
 ObjectTemplates:addTemplate(object_building_yavin_shared_temple_massassi, 2078872520)
@@ -354,7 +364,9 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1136920717
 }
 
 ObjectTemplates:addTemplate(object_building_yavin_shared_temple_woolamander, 1136920717)

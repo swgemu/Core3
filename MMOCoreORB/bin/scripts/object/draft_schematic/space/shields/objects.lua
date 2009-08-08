@@ -75,7 +75,9 @@ object_draft_schematic_space_shields_shared_adv_deflector_shields = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1117582132
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_adv_deflector_shields, 1117582132)
@@ -114,7 +116,9 @@ object_draft_schematic_space_shields_shared_basic_shields = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3884245261
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_basic_shields, 3884245261)
@@ -153,7 +157,9 @@ object_draft_schematic_space_shields_shared_deflector_shields = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1694654678
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_deflector_shields, 1694654678)
@@ -192,7 +198,9 @@ object_draft_schematic_space_shields_shared_exp_deflector_shields = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4093345299
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_exp_deflector_shields, 4093345299)
@@ -231,7 +239,9 @@ object_draft_schematic_space_shields_shared_heavy_deflector_shields = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2667507411
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_heavy_deflector_shields, 2667507411)
@@ -270,7 +280,9 @@ object_draft_schematic_space_shields_shared_light_deflector_shields = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3809979940
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_light_deflector_shields, 3809979940)
@@ -309,7 +321,9 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1723995512
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1, 1723995512)
@@ -348,7 +362,9 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3184901615
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2, 3184901615)
@@ -387,7 +403,9 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4107852386
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3, 4107852386)
@@ -426,7 +444,9 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 255586678
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4, 255586678)
@@ -465,7 +485,9 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1177982715
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5, 1177982715)
@@ -504,7 +526,9 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk1 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1539385043
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk1, 1539385043)
@@ -543,7 +567,9 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk2 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2161544772
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk2, 2161544772)
@@ -582,7 +608,9 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk3 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3386632649
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk3, 3386632649)
@@ -621,7 +649,9 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk4 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 842580701
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk4, 842580701)
@@ -660,7 +690,9 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk5 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2067113296
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk5, 2067113296)
@@ -699,7 +731,9 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk1 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2950186363
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk1, 2950186363)
@@ -738,7 +772,9 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk2 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1959783916
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk2, 1959783916)
@@ -777,7 +813,9 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk3 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1036159585
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk3, 1036159585)
@@ -816,7 +854,9 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk4 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3324092789
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk4, 3324092789)
@@ -855,7 +895,9 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk5 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2402076408
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk5, 2402076408)
@@ -894,7 +936,9 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk1 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 759499849
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk1, 759499849)
@@ -933,7 +977,9 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk2 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4132611294
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk2, 4132611294)
@@ -972,7 +1018,9 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk3 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3210724179
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk3, 3210724179)
@@ -1011,7 +1059,9 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk4 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1153230919
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk4, 1153230919)
@@ -1050,7 +1100,9 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk5 = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 229740490
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk5, 229740490)

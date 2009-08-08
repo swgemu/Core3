@@ -110,7 +110,9 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 957124474
 }
 
 ObjectTemplates:addTemplate(object_creature_player_base_shared_base_player, 957124474)

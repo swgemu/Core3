@@ -86,7 +86,9 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1773382797
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_food_shared_lunchbox_base, 1773382797)

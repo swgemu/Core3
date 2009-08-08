@@ -86,7 +86,9 @@ object_tangible_component_shared_barrel_blaster = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3456087885
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_shared_barrel_blaster, 3456087885)
@@ -136,7 +138,9 @@ object_tangible_component_shared_blaster_barrel = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2450471928
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_shared_blaster_barrel, 2450471928)
@@ -186,7 +190,9 @@ object_tangible_component_shared_blaster_pistol_barrel = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3845827705
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_shared_blaster_pistol_barrel, 3845827705)
@@ -236,7 +242,9 @@ object_tangible_component_shared_blaster_power_handler = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2638681735
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_shared_blaster_power_handler, 2638681735)
@@ -286,7 +294,9 @@ object_tangible_component_shared_scope_weapon = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3899287284
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_shared_scope_weapon, 3899287284)

@@ -86,7 +86,9 @@ object_tangible_furniture_elegant_shared_armoire_elegant_s01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 56090695
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_armoire_elegant_s01, 56090695)
@@ -136,7 +138,9 @@ object_tangible_furniture_elegant_shared_bookcase_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1814465035
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_bookcase_s01, 1814465035)
@@ -186,7 +190,9 @@ object_tangible_furniture_elegant_shared_cabinet_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2940457110
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_cabinet_s01, 2940457110)
@@ -236,7 +242,9 @@ object_tangible_furniture_elegant_shared_chair_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 824180051
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_chair_s01, 824180051)
@@ -286,7 +294,9 @@ object_tangible_furniture_elegant_shared_chest_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3255615837
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_chest_s01, 3255615837)
@@ -336,7 +346,9 @@ object_tangible_furniture_elegant_shared_coffee_table_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1775305785
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_coffee_table_s01, 1775305785)
@@ -386,7 +398,9 @@ object_tangible_furniture_elegant_shared_couch_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 185587571
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_couch_s01, 185587571)
@@ -436,7 +450,9 @@ object_tangible_furniture_elegant_shared_end_table_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 551627081
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_end_table_s01, 551627081)
@@ -486,7 +502,9 @@ object_tangible_furniture_elegant_shared_love_seat_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 409403906
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_shared_love_seat_s01, 409403906)

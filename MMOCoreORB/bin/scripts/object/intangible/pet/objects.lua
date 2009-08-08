@@ -75,7 +75,9 @@ object_intangible_pet_shared_21b_surgical_droid = SharedIntangibleObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1339278002
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_21b_surgical_droid, 1339278002)
@@ -114,7 +116,9 @@ object_intangible_pet_shared_3po_protocol_droid = SharedIntangibleObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1151045797
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid, 1151045797)
@@ -153,7 +157,9 @@ object_intangible_pet_shared_3po_protocol_droid_crafted = SharedIntangibleObject
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 23365206
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_crafted, 23365206)
@@ -192,7 +198,9 @@ object_intangible_pet_shared_3po_protocol_droid_red = SharedIntangibleObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1404851907
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_red, 1404851907)
@@ -231,7 +239,9 @@ object_intangible_pet_shared_3po_protocol_droid_silver = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2910857037
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_3po_protocol_droid_silver, 2910857037)
@@ -270,7 +280,9 @@ object_intangible_pet_shared_angler_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 589316378
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_angler_hue, 589316378)
@@ -309,7 +321,9 @@ object_intangible_pet_shared_astromech_waiter = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1324343534
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_astromech_waiter, 1324343534)
@@ -348,7 +362,9 @@ object_intangible_pet_shared_bageraset_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3823818603
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bageraset_hue, 3823818603)
@@ -387,7 +403,9 @@ object_intangible_pet_shared_bantha_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4245924782
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bantha_hue, 4245924782)
@@ -426,7 +444,9 @@ object_intangible_pet_shared_bark_mite_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2460317493
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bark_mite_hue, 2460317493)
@@ -465,7 +485,9 @@ object_intangible_pet_shared_bearded_jax_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2105300149
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bearded_jax_hue, 2105300149)
@@ -504,7 +526,9 @@ object_intangible_pet_shared_blurrg_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2907258996
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_blurrg_hue, 2907258996)
@@ -543,7 +567,9 @@ object_intangible_pet_shared_boar_wolf_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3961986832
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_boar_wolf_hue, 3961986832)
@@ -582,7 +608,9 @@ object_intangible_pet_shared_bocatt_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1462408235
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bocatt_hue, 1462408235)
@@ -621,7 +649,9 @@ object_intangible_pet_shared_bol_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3365864788
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bol_hue, 3365864788)
@@ -660,7 +690,9 @@ object_intangible_pet_shared_bolle_bol_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3465438553
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bolle_bol_hue, 3465438553)
@@ -699,7 +731,9 @@ object_intangible_pet_shared_bolma_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2112020105
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bolma_hue, 2112020105)
@@ -738,7 +772,9 @@ object_intangible_pet_shared_bomarr_monk_spider_droid = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2304397641
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bomarr_monk_spider_droid, 2304397641)
@@ -777,7 +813,9 @@ object_intangible_pet_shared_bordok_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3248156228
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_bordok_hue, 3248156228)
@@ -816,7 +854,9 @@ object_intangible_pet_shared_borgle_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3776791504
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_borgle_hue, 3776791504)
@@ -855,7 +895,9 @@ object_intangible_pet_shared_brackaset_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 932343786
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_brackaset_hue, 932343786)
@@ -894,7 +936,9 @@ object_intangible_pet_shared_capper_spineflap_hue = SharedIntangibleObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 85637661
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_capper_spineflap_hue, 85637661)
@@ -933,7 +977,9 @@ object_intangible_pet_shared_carrion_spat_hue = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1876009660
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_carrion_spat_hue, 1876009660)
@@ -972,7 +1018,9 @@ object_intangible_pet_shared_choku_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1603716876
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_choku_hue, 1603716876)
@@ -1011,7 +1059,9 @@ object_intangible_pet_shared_chuba_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2478782544
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_chuba_hue, 2478782544)
@@ -1050,7 +1100,9 @@ object_intangible_pet_shared_cll8_binary_load_lifter = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1945863130
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_cll8_binary_load_lifter, 1945863130)
@@ -1089,7 +1141,9 @@ object_intangible_pet_shared_condor_dragon_hue = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4157866050
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_condor_dragon_hue, 4157866050)
@@ -1128,7 +1182,9 @@ object_intangible_pet_shared_corellian_butterfly_hue = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1485452335
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_butterfly_hue, 1485452335)
@@ -1167,7 +1223,9 @@ object_intangible_pet_shared_corellian_sand_panther_hue = SharedIntangibleObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 261977165
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_sand_panther_hue, 261977165)
@@ -1206,7 +1264,9 @@ object_intangible_pet_shared_corellian_slice_hound_hue = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 636628481
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_corellian_slice_hound_hue, 636628481)
@@ -1245,7 +1305,9 @@ object_intangible_pet_shared_crystal_snake = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2696046285
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_crystal_snake, 2696046285)
@@ -1284,7 +1346,9 @@ object_intangible_pet_shared_cu_pa_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2229022652
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_cu_pa_hue, 2229022652)
@@ -1323,7 +1387,9 @@ object_intangible_pet_shared_dalyrake_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3738155310
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_dalyrake_hue, 3738155310)
@@ -1362,7 +1428,9 @@ object_intangible_pet_shared_darth_maul_probe_droid = SharedIntangibleObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3870771439
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_darth_maul_probe_droid, 3870771439)
@@ -1401,7 +1469,9 @@ object_intangible_pet_shared_dewback_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2745422351
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_dewback_hue, 2745422351)
@@ -1440,7 +1510,9 @@ object_intangible_pet_shared_droid_pet = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2217571195
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_droid_pet, 2217571195)
@@ -1479,7 +1551,9 @@ object_intangible_pet_shared_droideka = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3107311581
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_droideka, 3107311581)
@@ -1518,7 +1592,9 @@ object_intangible_pet_shared_dune_lizard_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2377707050
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_dune_lizard_hue, 2377707050)
@@ -1557,7 +1633,9 @@ object_intangible_pet_shared_durni_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 779257516
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_durni_hue, 779257516)
@@ -1596,7 +1674,9 @@ object_intangible_pet_shared_dwarf_nuna_hue = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2326969858
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_dwarf_nuna_hue, 2326969858)
@@ -1635,7 +1715,9 @@ object_intangible_pet_shared_dz70_fugitive_tracker_droid = SharedIntangibleObjec
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 215765850
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_dz70_fugitive_tracker_droid, 215765850)
@@ -1674,7 +1756,9 @@ object_intangible_pet_shared_eg6_power_droid = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4040278264
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_eg6_power_droid, 4040278264)
@@ -1713,7 +1797,9 @@ object_intangible_pet_shared_eg6_power_droid_crafted = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1381576162
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_eg6_power_droid_crafted, 1381576162)
@@ -1752,7 +1838,9 @@ object_intangible_pet_shared_eopie_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3150571270
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_eopie_hue, 3150571270)
@@ -1791,7 +1879,9 @@ object_intangible_pet_shared_ev_9d9 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2257725045
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_ev_9d9, 2257725045)
@@ -1830,7 +1920,9 @@ object_intangible_pet_shared_falumpaset_hue = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2686405669
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_falumpaset_hue, 2686405669)
@@ -1869,7 +1961,9 @@ object_intangible_pet_shared_fambaa_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3353974211
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_fambaa_hue, 3353974211)
@@ -1908,7 +2002,9 @@ object_intangible_pet_shared_fanned_rawl_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1856953327
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_fanned_rawl_hue, 1856953327)
@@ -1947,7 +2043,9 @@ object_intangible_pet_shared_flewt_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3804467322
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_flewt_hue, 3804467322)
@@ -1986,7 +2084,9 @@ object_intangible_pet_shared_flit_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2923608669
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_flit_hue, 2923608669)
@@ -2025,7 +2125,9 @@ object_intangible_pet_shared_fynock_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2285917811
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_fynock_hue, 2285917811)
@@ -2064,7 +2166,9 @@ object_intangible_pet_shared_gackle_bat_hue = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 184038036
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gackle_bat_hue, 184038036)
@@ -2103,7 +2207,9 @@ object_intangible_pet_shared_gaping_spider_hue = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3334930732
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gaping_spider_hue, 3334930732)
@@ -2142,7 +2248,9 @@ object_intangible_pet_shared_gnort_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2858510328
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gnort_hue, 2858510328)
@@ -2181,7 +2289,9 @@ object_intangible_pet_shared_graul_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 580835531
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_graul_hue, 580835531)
@@ -2220,7 +2330,9 @@ object_intangible_pet_shared_gronda_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3080189549
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gronda_hue, 3080189549)
@@ -2259,7 +2371,9 @@ object_intangible_pet_shared_gualama_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 943256525
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gualama_hue, 943256525)
@@ -2298,7 +2412,9 @@ object_intangible_pet_shared_gubbur_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2671246669
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gubbur_hue, 2671246669)
@@ -2337,7 +2453,9 @@ object_intangible_pet_shared_guf_drolg_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2334338028
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_guf_drolg_hue, 2334338028)
@@ -2376,7 +2494,9 @@ object_intangible_pet_shared_gulginaw_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 896340341
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gulginaw_hue, 896340341)
@@ -2415,7 +2535,9 @@ object_intangible_pet_shared_gurk_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3720963355
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gurk_hue, 3720963355)
@@ -2454,7 +2576,9 @@ object_intangible_pet_shared_gurnaset_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 223844542
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gurnaset_hue, 223844542)
@@ -2493,7 +2617,9 @@ object_intangible_pet_shared_gurreck_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2145605419
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_gurreck_hue, 2145605419)
@@ -2532,7 +2658,9 @@ object_intangible_pet_shared_hanadak_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 697606401
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_hanadak_hue, 697606401)
@@ -2571,7 +2699,9 @@ object_intangible_pet_shared_hermit_spider_hue = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2367204663
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_hermit_spider_hue, 2367204663)
@@ -2610,7 +2740,9 @@ object_intangible_pet_shared_horned_krevol_hue = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2396316832
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_horned_krevol_hue, 2396316832)
@@ -2649,7 +2781,9 @@ object_intangible_pet_shared_horned_rasp_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3500397762
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_horned_rasp_hue, 3500397762)
@@ -2688,7 +2822,9 @@ object_intangible_pet_shared_huf_dun_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3089599434
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_huf_dun_hue, 3089599434)
@@ -2727,7 +2863,9 @@ object_intangible_pet_shared_huurton_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1969470414
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_huurton_hue, 1969470414)
@@ -2766,7 +2904,9 @@ object_intangible_pet_shared_ig_assassin_droid = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1786377662
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_ig_assassin_droid, 1786377662)
@@ -2805,7 +2945,9 @@ object_intangible_pet_shared_ikopi_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 936658701
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_ikopi_hue, 936658701)
@@ -2844,7 +2986,9 @@ object_intangible_pet_shared_ito_interrogator = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1276251054
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_ito_interrogator, 1276251054)
@@ -2883,7 +3027,9 @@ object_intangible_pet_shared_kaadu_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1791601248
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kaadu_hue, 1791601248)
@@ -2922,7 +3068,9 @@ object_intangible_pet_shared_kai_tok_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3450820067
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kai_tok_hue, 3450820067)
@@ -2961,7 +3109,9 @@ object_intangible_pet_shared_kima_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3208771572
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kima_hue, 3208771572)
@@ -3000,7 +3150,9 @@ object_intangible_pet_shared_kimogila_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4021952384
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kimogila_hue, 4021952384)
@@ -3039,7 +3191,9 @@ object_intangible_pet_shared_kliknik_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2970580359
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kliknik_hue, 2970580359)
@@ -3078,7 +3232,9 @@ object_intangible_pet_shared_krahbu_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2054788993
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_krahbu_hue, 2054788993)
@@ -3117,7 +3273,9 @@ object_intangible_pet_shared_kusak_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1739916137
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kusak_hue, 1739916137)
@@ -3156,7 +3314,9 @@ object_intangible_pet_shared_kwi_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3989984964
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_kwi_hue, 3989984964)
@@ -3195,7 +3355,9 @@ object_intangible_pet_shared_langlatch_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2731995998
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_langlatch_hue, 2731995998)
@@ -3234,7 +3396,9 @@ object_intangible_pet_shared_lantern_bird_hue = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 554540263
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_lantern_bird_hue, 554540263)
@@ -3273,7 +3437,9 @@ object_intangible_pet_shared_le_repair_droid = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1013378354
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_le_repair_droid, 1013378354)
@@ -3312,7 +3478,9 @@ object_intangible_pet_shared_lin_demolitionmech = SharedIntangibleObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 771860722
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_lin_demolitionmech, 771860722)
@@ -3351,7 +3519,9 @@ object_intangible_pet_shared_malkloc_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 754217676
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_malkloc_hue, 754217676)
@@ -3390,7 +3560,9 @@ object_intangible_pet_shared_mamien_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3067716749
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_mamien_hue, 3067716749)
@@ -3429,7 +3601,9 @@ object_intangible_pet_shared_mawgax_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 10709435
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_mawgax_hue, 10709435)
@@ -3468,7 +3642,9 @@ object_intangible_pet_shared_merek_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2431435109
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_merek_hue, 2431435109)
@@ -3507,7 +3683,9 @@ object_intangible_pet_shared_mott_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 604608091
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_mott_hue, 604608091)
@@ -3546,7 +3724,9 @@ object_intangible_pet_shared_mouse_droid = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1597090102
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_mouse_droid, 1597090102)
@@ -3585,7 +3765,9 @@ object_intangible_pet_shared_mouse_droid_crafted = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3582700290
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_mouse_droid_crafted, 3582700290)
@@ -3624,7 +3806,9 @@ object_intangible_pet_shared_murra_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 548542319
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_murra_hue, 548542319)
@@ -3663,7 +3847,9 @@ object_intangible_pet_shared_mynock_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1986283606
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_mynock_hue, 1986283606)
@@ -3702,7 +3888,9 @@ object_intangible_pet_shared_narglatch_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3888571684
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_narglatch_hue, 3888571684)
@@ -3741,7 +3929,9 @@ object_intangible_pet_shared_nhelper_droid = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3421430045
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_nhelper_droid, 3421430045)
@@ -3780,7 +3970,9 @@ object_intangible_pet_shared_nuna_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3091853501
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_nuna_hue, 3091853501)
@@ -3819,7 +4011,9 @@ object_intangible_pet_shared_peko_peko_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 392393668
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_peko_peko_hue, 392393668)
@@ -3858,7 +4052,9 @@ object_intangible_pet_shared_perlek_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1839464306
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_perlek_hue, 1839464306)
@@ -3897,7 +4093,9 @@ object_intangible_pet_shared_pet_control = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1094694212
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_pet_control, 1094694212)
@@ -3936,7 +4134,9 @@ object_intangible_pet_shared_pet_deed = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3291887021
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_pet_deed, 3291887021)
@@ -3975,7 +4175,9 @@ object_intangible_pet_shared_piket_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3554017920
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_piket_hue, 3554017920)
@@ -4014,7 +4216,9 @@ object_intangible_pet_shared_plumed_rasp_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2974753647
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_plumed_rasp_hue, 2974753647)
@@ -4053,7 +4257,9 @@ object_intangible_pet_shared_probot = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 535952493
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_probot, 535952493)
@@ -4092,7 +4298,9 @@ object_intangible_pet_shared_pugoriss_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4000809563
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_pugoriss_hue, 4000809563)
@@ -4131,7 +4339,9 @@ object_intangible_pet_shared_purbole_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3982156177
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_purbole_hue, 3982156177)
@@ -4170,7 +4380,9 @@ object_intangible_pet_shared_quenker_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2267633287
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_quenker_hue, 2267633287)
@@ -4209,7 +4421,9 @@ object_intangible_pet_shared_r2 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2191450852
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r2, 2191450852)
@@ -4248,7 +4462,9 @@ object_intangible_pet_shared_r2_crafted = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 442194865
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r2_crafted, 442194865)
@@ -4287,7 +4503,9 @@ object_intangible_pet_shared_r2d2 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 387302363
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r2d2, 387302363)
@@ -4326,7 +4544,9 @@ object_intangible_pet_shared_r3 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3415442793
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r3, 3415442793)
@@ -4365,7 +4585,9 @@ object_intangible_pet_shared_r3_crafted = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4076801460
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r3_crafted, 4076801460)
@@ -4404,7 +4626,9 @@ object_intangible_pet_shared_r4 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 812691069
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r4, 812691069)
@@ -4443,7 +4667,9 @@ object_intangible_pet_shared_r4_crafted = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1610650817
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r4_crafted, 1610650817)
@@ -4482,7 +4708,9 @@ object_intangible_pet_shared_r5 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2038286832
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r5, 2038286832)
@@ -4521,7 +4749,9 @@ object_intangible_pet_shared_r5_crafted = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2292499140
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_r5_crafted, 2292499140)
@@ -4560,7 +4790,9 @@ object_intangible_pet_shared_ra7_bug_droid = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 50664012
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_ra7_bug_droid, 50664012)
@@ -4599,7 +4831,9 @@ object_intangible_pet_shared_rancor_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1377624567
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_rancor_hue, 1377624567)
@@ -4638,7 +4872,9 @@ object_intangible_pet_shared_reptilian_flier_hue = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2028852617
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_reptilian_flier_hue, 2028852617)
@@ -4677,7 +4913,9 @@ object_intangible_pet_shared_roba_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2100700576
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_roba_hue, 2100700576)
@@ -4716,7 +4954,9 @@ object_intangible_pet_shared_robo_bartender = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2925451769
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_robo_bartender, 2925451769)
@@ -4755,7 +4995,9 @@ object_intangible_pet_shared_rock_mite_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1336305960
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_rock_mite_hue, 1336305960)
@@ -4794,7 +5036,9 @@ object_intangible_pet_shared_ronto_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 794949628
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_ronto_hue, 794949628)
@@ -4833,7 +5077,9 @@ object_intangible_pet_shared_salt_mynock_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2085682547
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_salt_mynock_hue, 2085682547)
@@ -4872,7 +5118,9 @@ object_intangible_pet_shared_sharnaff_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 273179059
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_sharnaff_hue, 273179059)
@@ -4911,7 +5159,9 @@ object_intangible_pet_shared_shaupaut_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2159009522
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_shaupaut_hue, 2159009522)
@@ -4950,7 +5200,9 @@ object_intangible_pet_shared_shear_mite_hue = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2966894198
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_shear_mite_hue, 2966894198)
@@ -4989,7 +5241,9 @@ object_intangible_pet_shared_skreeg_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3842631555
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_skreeg_hue, 3842631555)
@@ -5028,7 +5282,9 @@ object_intangible_pet_shared_snorbal_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3901518942
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_snorbal_hue, 3901518942)
@@ -5067,7 +5323,9 @@ object_intangible_pet_shared_spined_puc_hue = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4255586723
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_spined_puc_hue, 4255586723)
@@ -5106,7 +5364,9 @@ object_intangible_pet_shared_spined_snake_hue = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2113307554
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_spined_snake_hue, 2113307554)
@@ -5145,7 +5405,9 @@ object_intangible_pet_shared_squall_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 713872273
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_squall_hue, 713872273)
@@ -5184,7 +5446,9 @@ object_intangible_pet_shared_squill_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4189043940
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_squill_hue, 4189043940)
@@ -5223,7 +5487,9 @@ object_intangible_pet_shared_stintaril_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 748019304
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_stintaril_hue, 748019304)
@@ -5262,7 +5528,9 @@ object_intangible_pet_shared_swirl_prong_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2871755001
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_swirl_prong_hue, 2871755001)
@@ -5301,7 +5569,9 @@ object_intangible_pet_shared_tanc_mite_hue = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3342328122
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_tanc_mite_hue, 3342328122)
@@ -5340,7 +5610,9 @@ object_intangible_pet_shared_thune_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1854611752
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_thune_hue, 1854611752)
@@ -5379,7 +5651,9 @@ object_intangible_pet_shared_tip_solicitor_droid = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 969518136
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_tip_solicitor_droid, 969518136)
@@ -5418,7 +5692,9 @@ object_intangible_pet_shared_torton_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2899651011
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_torton_hue, 2899651011)
@@ -5457,7 +5733,9 @@ object_intangible_pet_shared_training_remote = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3182158026
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_training_remote, 3182158026)
@@ -5496,7 +5774,9 @@ object_intangible_pet_shared_tt8l = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1553023360
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_tt8l, 1553023360)
@@ -5535,7 +5815,9 @@ object_intangible_pet_shared_tt8l_y7 = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 218724646
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_tt8l_y7, 218724646)
@@ -5574,7 +5856,9 @@ object_intangible_pet_shared_tusk_cat_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2290289692
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_tusk_cat_hue, 2290289692)
@@ -5613,7 +5897,9 @@ object_intangible_pet_shared_tybis_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3794077692
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_tybis_hue, 3794077692)
@@ -5652,7 +5938,9 @@ object_intangible_pet_shared_veermok_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3304145962
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_veermok_hue, 3304145962)
@@ -5691,7 +5979,9 @@ object_intangible_pet_shared_vehicular_prototype = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3441960181
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_vehicular_prototype, 3441960181)
@@ -5730,7 +6020,9 @@ object_intangible_pet_shared_vehicular_prototype_bike = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2843250911
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_vehicular_prototype_bike, 2843250911)
@@ -5769,7 +6061,9 @@ object_intangible_pet_shared_verne_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2036157279
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_verne_hue, 2036157279)
@@ -5808,7 +6102,9 @@ object_intangible_pet_shared_vesp_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 58797746
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_vesp_hue, 58797746)
@@ -5847,7 +6143,9 @@ object_intangible_pet_shared_vir_vur_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 844441928
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_vir_vur_hue, 844441928)
@@ -5886,7 +6184,9 @@ object_intangible_pet_shared_voritor_lizard_hue = SharedIntangibleObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1578601916
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_voritor_lizard_hue, 1578601916)
@@ -5925,7 +6225,9 @@ object_intangible_pet_shared_vynock_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3828927679
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_vynock_hue, 3828927679)
@@ -5964,7 +6266,9 @@ object_intangible_pet_shared_wed_treadwell = SharedIntangibleObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1347741729
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_wed_treadwell, 1347741729)
@@ -6003,7 +6307,9 @@ object_intangible_pet_shared_womp_rat_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 273820215
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_womp_rat_hue, 273820215)
@@ -6042,7 +6348,9 @@ object_intangible_pet_shared_woolamander_hue = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3182931850
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_woolamander_hue, 3182931850)
@@ -6081,7 +6389,9 @@ object_intangible_pet_shared_worrt_hue = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2024101379
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_worrt_hue, 2024101379)
@@ -6120,7 +6430,9 @@ object_intangible_pet_shared_zucca_boar_hue = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 49929061
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_shared_zucca_boar_hue, 49929061)

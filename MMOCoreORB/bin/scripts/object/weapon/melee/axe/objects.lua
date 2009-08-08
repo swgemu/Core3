@@ -90,7 +90,9 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3808952162
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, 3808952162)
@@ -144,7 +146,9 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1835485114
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, 1835485114)

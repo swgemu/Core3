@@ -86,7 +86,9 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 382017471
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite, 382017471)
@@ -136,7 +138,9 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3158646685
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland, 3158646685)
@@ -186,7 +190,9 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1801002251
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_hills, 1801002251)

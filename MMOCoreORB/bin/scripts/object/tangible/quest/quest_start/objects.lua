@@ -86,7 +86,9 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 186615068
 }
 
 ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter, 186615068)
@@ -136,7 +138,9 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_conta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2168280310
 }
 
 ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container, 2168280310)
@@ -186,7 +190,9 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3381934181
 }
 
 ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap, 3381934181)
@@ -236,7 +242,9 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4074372055
 }
 
 ObjectTemplates:addTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container, 4074372055)

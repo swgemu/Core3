@@ -86,7 +86,9 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2584119077
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01, 2584119077)
@@ -136,7 +138,9 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1091645362
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02, 1091645362)
@@ -186,7 +190,9 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 136071231
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03, 136071231)
@@ -236,7 +242,9 @@ object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s0
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2007410332
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01, 2007410332)

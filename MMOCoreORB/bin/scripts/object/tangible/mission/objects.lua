@@ -86,7 +86,9 @@ object_tangible_mission_shared_assassin_missions_device = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2808148877
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_assassin_missions_device, 2808148877)
@@ -136,7 +138,9 @@ object_tangible_mission_shared_mission_bounty_droid_probot = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 492694456
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_droid_probot, 492694456)
@@ -186,7 +190,9 @@ object_tangible_mission_shared_mission_bounty_droid_seeker = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1438002131
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_droid_seeker, 1438002131)
@@ -236,7 +242,9 @@ object_tangible_mission_shared_mission_bounty_target = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3104954918
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_bounty_target, 3104954918)
@@ -286,7 +294,9 @@ object_tangible_mission_shared_mission_datadisk = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3784432555
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_datadisk, 3784432555)
@@ -336,7 +346,9 @@ object_tangible_mission_shared_mission_informant_spawner_easy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 528020933
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_easy, 528020933)
@@ -386,7 +398,9 @@ object_tangible_mission_shared_mission_informant_spawner_hard = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1257863890
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_hard, 1257863890)
@@ -436,7 +450,9 @@ object_tangible_mission_shared_mission_informant_spawner_medium = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3708162000
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_informant_spawner_medium, 3708162000)
@@ -486,7 +502,9 @@ object_tangible_mission_shared_mission_recon_target = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1165528802
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_recon_target, 1165528802)
@@ -536,7 +554,9 @@ object_tangible_mission_shared_mission_terminal = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1188112429
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_shared_mission_terminal, 1188112429)

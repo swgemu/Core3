@@ -86,7 +86,9 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1570783223
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_base_shared_hair_base, 1570783223)

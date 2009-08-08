@@ -75,7 +75,9 @@ object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 80681620
 }
 
 ObjectTemplates:addTemplate(object_waypoint_base_shared_base_waypoint, 80681620)
@@ -114,7 +116,9 @@ object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new 
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2511311124
 }
 
 ObjectTemplates:addTemplate(object_waypoint_base_shared_waypoint_default, 2511311124)

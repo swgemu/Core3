@@ -86,7 +86,9 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1767218829
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, 1767218829)
@@ -136,7 +138,9 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 989527915
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, 989527915)
@@ -186,7 +190,9 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4098043121
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, 4098043121)

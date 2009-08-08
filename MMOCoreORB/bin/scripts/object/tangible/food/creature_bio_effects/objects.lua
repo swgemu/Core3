@@ -86,7 +86,9 @@ object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2415963091
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, 2415963091)
@@ -136,7 +138,9 @@ object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1615742669
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, 1615742669)

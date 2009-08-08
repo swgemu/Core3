@@ -86,7 +86,9 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3508293768
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset, 3508293768)
@@ -136,7 +138,9 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 535348522
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland, 535348522)
@@ -186,7 +190,9 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3153084894
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain, 3153084894)

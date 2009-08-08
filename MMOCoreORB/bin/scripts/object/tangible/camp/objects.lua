@@ -86,7 +86,9 @@ object_tangible_camp_shared_camp_chair_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3093106291
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_chair_s1, 3093106291)
@@ -136,7 +138,9 @@ object_tangible_camp_shared_camp_chair_s2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1665836772
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_chair_s2, 1665836772)
@@ -186,7 +190,9 @@ object_tangible_camp_shared_camp_chair_s3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 709345641
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_chair_s3, 709345641)
@@ -236,7 +242,9 @@ object_tangible_camp_shared_camp_control_panel = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1403576504
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_control_panel, 1403576504)
@@ -286,7 +294,9 @@ object_tangible_camp_shared_camp_cot = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1118144576
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot, 1118144576)
@@ -336,7 +346,9 @@ object_tangible_camp_shared_camp_cot_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2382295007
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot_s1, 2382295007)
@@ -386,7 +398,9 @@ object_tangible_camp_shared_camp_cot_s2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1458128712
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot_s2, 1458128712)
@@ -436,7 +450,9 @@ object_tangible_camp_shared_camp_cot_s3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 535044293
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_cot_s3, 535044293)
@@ -486,7 +502,9 @@ object_tangible_camp_shared_camp_crate_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3025871349
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_crate_s1, 3025871349)
@@ -536,7 +554,9 @@ object_tangible_camp_shared_camp_lantern_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1758920925
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lantern_s1, 1758920925)
@@ -586,7 +606,9 @@ object_tangible_camp_shared_camp_lantern_s2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3015747658
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lantern_s2, 3015747658)
@@ -636,7 +658,9 @@ object_tangible_camp_shared_camp_lantern_s3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4207792071
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lantern_s3, 4207792071)
@@ -686,7 +710,9 @@ object_tangible_camp_shared_camp_lawn_chair = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2201158823
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_lawn_chair, 2201158823)
@@ -736,7 +762,9 @@ object_tangible_camp_shared_camp_light_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1218683481
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_light_s1, 1218683481)
@@ -786,7 +814,9 @@ object_tangible_camp_shared_camp_light_s2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2478049998
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_light_s2, 2478049998)
@@ -836,7 +866,9 @@ object_tangible_camp_shared_camp_light_s3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3669585219
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_light_s3, 3669585219)
@@ -886,7 +918,9 @@ object_tangible_camp_shared_camp_pavilion_s1 = SharedTangibleObjectTemplate:new 
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3526587554
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_pavilion_s1, 3526587554)
@@ -936,7 +970,9 @@ object_tangible_camp_shared_camp_pavilion_s2 = SharedTangibleObjectTemplate:new 
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 153410613
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_pavilion_s2, 153410613)
@@ -986,7 +1022,9 @@ object_tangible_camp_shared_camp_spit = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3348365284
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit, 3348365284)
@@ -1036,7 +1074,9 @@ object_tangible_camp_shared_camp_spit_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3905285557
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit_s1, 3905285557)
@@ -1086,7 +1126,9 @@ object_tangible_camp_shared_camp_spit_s2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 869418274
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit_s2, 869418274)
@@ -1136,7 +1178,9 @@ object_tangible_camp_shared_camp_spit_s3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2061443759
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_spit_s3, 2061443759)
@@ -1186,7 +1230,9 @@ object_tangible_camp_shared_camp_stool_short = SharedTangibleObjectTemplate:new 
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1063678177
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_stool_short, 1063678177)
@@ -1236,7 +1282,9 @@ object_tangible_camp_shared_camp_stool_tall = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3243108837
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_stool_tall, 3243108837)
@@ -1286,7 +1334,9 @@ object_tangible_camp_shared_camp_tent_s1 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2127813712
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s1, 2127813712)
@@ -1336,7 +1386,9 @@ object_tangible_camp_shared_camp_tent_s2 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2781115591
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s2, 2781115591)
@@ -1386,7 +1438,9 @@ object_tangible_camp_shared_camp_tent_s3 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3972600650
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s3, 3972600650)
@@ -1436,7 +1490,9 @@ object_tangible_camp_shared_camp_tent_s4 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 388642910
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s4, 388642910)
@@ -1486,7 +1542,9 @@ object_tangible_camp_shared_camp_tent_s5 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1579638739
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s5, 1579638739)
@@ -1536,7 +1594,9 @@ object_tangible_camp_shared_camp_tent_s6 = SharedTangibleObjectTemplate:new {
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2234578756
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_camp_tent_s6, 2234578756)
@@ -1586,7 +1646,9 @@ object_tangible_camp_shared_campfire_logs_ash = SharedTangibleObjectTemplate:new
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1850708683
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_ash, 1850708683)
@@ -1636,7 +1698,9 @@ object_tangible_camp_shared_campfire_logs_burnt = SharedTangibleObjectTemplate:n
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3245417317
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_burnt, 3245417317)
@@ -1686,7 +1750,9 @@ object_tangible_camp_shared_campfire_logs_fresh = SharedTangibleObjectTemplate:n
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1992640015
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_fresh, 1992640015)
@@ -1736,7 +1802,9 @@ object_tangible_camp_shared_campfire_logs_smoldering = SharedTangibleObjectTempl
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 343626744
 }
 
 ObjectTemplates:addTemplate(object_tangible_camp_shared_campfire_logs_smoldering, 343626744)

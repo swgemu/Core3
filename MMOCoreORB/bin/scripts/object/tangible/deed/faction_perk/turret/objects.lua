@@ -86,7 +86,9 @@ object_tangible_deed_faction_perk_turret_shared_block_lg_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 629647552
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_block_lg_deed, 629647552)
@@ -136,7 +138,9 @@ object_tangible_deed_faction_perk_turret_shared_block_med_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4221569030
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_block_med_deed, 4221569030)
@@ -186,7 +190,9 @@ object_tangible_deed_faction_perk_turret_shared_block_sm_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2743566481
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_block_sm_deed, 2743566481)
@@ -236,7 +242,9 @@ object_tangible_deed_faction_perk_turret_shared_dish_lg_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4034604910
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_dish_lg_deed, 4034604910)
@@ -286,7 +294,9 @@ object_tangible_deed_faction_perk_turret_shared_dish_sm_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1987774271
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_dish_sm_deed, 1987774271)
@@ -336,7 +346,9 @@ object_tangible_deed_faction_perk_turret_shared_tower_lg_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3732331701
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_tower_lg_deed, 3732331701)
@@ -386,7 +398,9 @@ object_tangible_deed_faction_perk_turret_shared_tower_med_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2821147502
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_tower_med_deed, 2821147502)
@@ -436,7 +450,9 @@ object_tangible_deed_faction_perk_turret_shared_tower_sm_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1484190948
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_shared_tower_sm_deed, 1484190948)

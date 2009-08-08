@@ -86,7 +86,9 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1578605257
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, 1578605257)
@@ -136,7 +138,9 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1004695364
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_mission_objects_shared_transfer_auth, 1004695364)

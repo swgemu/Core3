@@ -86,7 +86,9 @@ object_tangible_lair_worrt_shared_lair_worrt = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3340605461
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_worrt_shared_lair_worrt, 3340605461)
@@ -136,7 +138,9 @@ object_tangible_lair_worrt_shared_lair_worrt_desert = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 870158284
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_worrt_shared_lair_worrt_desert, 870158284)

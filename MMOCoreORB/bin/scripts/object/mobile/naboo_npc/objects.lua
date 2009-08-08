@@ -110,7 +110,9 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 721694525
 }
 
 ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_thrawn, 721694525)
@@ -184,7 +186,9 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 548983473
 }
 
 ObjectTemplates:addTemplate(object_mobile_naboo_npc_shared_veers, 548983473)

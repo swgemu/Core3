@@ -75,7 +75,9 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 956566051
 }
 
 ObjectTemplates:addTemplate(object_static_test_shared_test_blast, 956566051)
@@ -114,7 +116,9 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1262353977
 }
 
 ObjectTemplates:addTemplate(object_static_test_shared_test_blaster_bolt, 1262353977)
@@ -153,7 +157,9 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4068306658
 }
 
 ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_1, 4068306658)
@@ -192,7 +198,9 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 694863477
 }
 
 ObjectTemplates:addTemplate(object_static_test_shared_test_sound_obelisk_2, 694863477)
@@ -231,7 +239,9 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 82674764
 }
 
 ObjectTemplates:addTemplate(object_static_test_shared_test_static_sandcrawler, 82674764)

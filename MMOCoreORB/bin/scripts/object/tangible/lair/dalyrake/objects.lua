@@ -86,7 +86,9 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1654178930
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, 1654178930)
@@ -136,7 +138,9 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2587304882
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, 2587304882)

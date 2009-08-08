@@ -86,7 +86,9 @@ object_tangible_medicine_pet_shared_droid_damage_kit_a = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2350997777
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_a, 2350997777)
@@ -136,7 +138,9 @@ object_tangible_medicine_pet_shared_droid_damage_kit_b = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1463208326
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_b, 1463208326)
@@ -186,7 +190,9 @@ object_tangible_medicine_pet_shared_droid_damage_kit_c = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 507227659
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_c, 507227659)
@@ -236,7 +242,9 @@ object_tangible_medicine_pet_shared_droid_damage_kit_d = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3856172319
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_d, 3856172319)
@@ -286,7 +294,9 @@ object_tangible_medicine_pet_shared_droid_stimpack_a = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3944772347
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_a, 3944772347)
@@ -336,7 +346,9 @@ object_tangible_medicine_pet_shared_droid_stimpack_b = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 808966764
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_b, 808966764)
@@ -386,7 +398,9 @@ object_tangible_medicine_pet_shared_droid_stimpack_c = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2033892833
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_c, 2033892833)
@@ -436,7 +450,9 @@ object_tangible_medicine_pet_shared_droid_stimpack_d = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2195298037
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_stimpack_d, 2195298037)
@@ -486,7 +502,9 @@ object_tangible_medicine_pet_shared_droid_vitapack_a = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2100790124
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_vitapack_a, 2100790124)
@@ -536,7 +554,9 @@ object_tangible_medicine_pet_shared_droid_vitapack_b = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2787126267
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_vitapack_b, 2787126267)
@@ -586,7 +606,9 @@ object_tangible_medicine_pet_shared_droid_vitapack_c = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4012723318
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_vitapack_c, 4012723318)
@@ -636,7 +658,9 @@ object_tangible_medicine_pet_shared_droid_wound_kit_a = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1025129359
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_a, 1025129359)
@@ -686,7 +710,9 @@ object_tangible_medicine_pet_shared_droid_wound_kit_b = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3859649304
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_b, 3859649304)
@@ -736,7 +762,9 @@ object_tangible_medicine_pet_shared_droid_wound_kit_c = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2936075413
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_c, 2936075413)
@@ -786,7 +814,9 @@ object_tangible_medicine_pet_shared_droid_wound_kit_d = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1424220033
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_d, 1424220033)
@@ -836,7 +866,9 @@ object_tangible_medicine_pet_shared_pet_stimpack_a = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1789607514
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_a, 1789607514)
@@ -886,7 +918,9 @@ object_tangible_medicine_pet_shared_pet_stimpack_b = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2981926605
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_b, 2981926605)
@@ -936,7 +970,9 @@ object_tangible_medicine_pet_shared_pet_stimpack_c = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4172411200
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_c, 4172411200)
@@ -986,7 +1022,9 @@ object_tangible_medicine_pet_shared_pet_stimpack_d = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 55761492
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_stimpack_d, 55761492)
@@ -1036,7 +1074,9 @@ object_tangible_medicine_pet_shared_pet_vitapack_a = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4240232397
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_vitapack_a, 4240232397)
@@ -1086,7 +1126,9 @@ object_tangible_medicine_pet_shared_pet_vitapack_b = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 665544538
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_vitapack_b, 665544538)
@@ -1136,7 +1178,9 @@ object_tangible_medicine_pet_shared_pet_vitapack_c = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1856372951
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_shared_pet_vitapack_c, 1856372951)

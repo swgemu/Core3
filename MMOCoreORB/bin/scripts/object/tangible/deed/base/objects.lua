@@ -86,7 +86,9 @@ object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3216787509
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_base, 3216787509)
@@ -136,7 +138,9 @@ object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2878588829
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_building_base, 2878588829)
@@ -186,7 +190,9 @@ object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3225611811
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_base_shared_deed_installation_base, 3225611811)
@@ -236,7 +242,9 @@ object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2503565638
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_deed_base, 2503565638)
@@ -286,7 +294,9 @@ object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4079953693
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, 4079953693)

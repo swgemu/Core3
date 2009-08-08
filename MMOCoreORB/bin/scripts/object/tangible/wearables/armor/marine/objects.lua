@@ -86,7 +86,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1616221801
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_backpack, 1616221801)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 377642897
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l, 377642897)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1716984322
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r, 1716984322)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 168220197
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_boots, 168220197)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2560891493
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate, 2560891493)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3425564515
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel, 3425564515)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 412137204
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_helmet, 412137204)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4090769241
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_leggings, 4090769241)

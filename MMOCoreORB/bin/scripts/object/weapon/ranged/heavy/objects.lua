@@ -90,7 +90,9 @@ object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "rocket",
-	weaponEffectIndex = 2
+	weaponEffectIndex = 2,
+
+	clientObjectCRC = 337224478
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_acid_beam, 337224478)
@@ -144,7 +146,9 @@ object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 20
+	weaponEffectIndex = 20,
+
+	clientObjectCRC = 1073082434
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_lightning_beam, 1073082434)
@@ -198,7 +202,9 @@ object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "rocket",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 1442646668
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_particle_beam, 1442646668)
@@ -252,7 +258,9 @@ object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "rocket",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3022005655
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_heavy_rocket_launcher, 3022005655)
@@ -306,7 +314,9 @@ object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2595978283
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_shared_launcher, 2595978283)

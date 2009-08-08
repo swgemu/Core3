@@ -86,7 +86,9 @@ object_installation_base_shared_construction_installation_base = SharedInstallat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 544424204
 }
 
 ObjectTemplates:addTemplate(object_installation_base_shared_construction_installation_base, 544424204)
@@ -136,7 +138,9 @@ object_installation_base_shared_installation_base = SharedInstallationObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1610526259
 }
 
 ObjectTemplates:addTemplate(object_installation_base_shared_installation_base, 1610526259)
@@ -186,7 +190,9 @@ object_installation_base_shared_installation_default = SharedInstallationObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4138250553
 }
 
 ObjectTemplates:addTemplate(object_installation_base_shared_installation_default, 4138250553)

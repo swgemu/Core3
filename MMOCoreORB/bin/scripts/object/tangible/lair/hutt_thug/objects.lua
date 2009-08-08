@@ -86,7 +86,9 @@ object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2374143434
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc, 2374143434)

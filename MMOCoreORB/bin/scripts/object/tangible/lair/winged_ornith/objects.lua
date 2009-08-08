@@ -86,7 +86,9 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2324552203
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, 2324552203)
@@ -136,7 +138,9 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3499819428
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, 3499819428)
@@ -186,7 +190,9 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3275441058
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, 3275441058)

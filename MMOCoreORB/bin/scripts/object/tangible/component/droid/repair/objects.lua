@@ -86,7 +86,9 @@ object_tangible_component_droid_repair_shared_capacitor_high_discharge = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 475400384
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_capacitor_high_discharge, 475400384)
@@ -136,7 +138,9 @@ object_tangible_component_droid_repair_shared_capacitor_low_discharge = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3184279961
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_capacitor_low_discharge, 3184279961)
@@ -186,7 +190,9 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1770332803
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit, 1770332803)
@@ -236,7 +242,9 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1133144792
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced, 1133144792)
@@ -286,7 +294,9 @@ object_tangible_component_droid_repair_shared_power_supply_redundant = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2336135433
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant, 2336135433)
@@ -336,7 +346,9 @@ object_tangible_component_droid_repair_shared_power_supply_redundant_advanced = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1755831948
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant_advanced, 1755831948)
@@ -386,7 +398,9 @@ object_tangible_component_droid_repair_shared_repair_unit_casing = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2421721438
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing, 2421721438)
@@ -436,7 +450,9 @@ object_tangible_component_droid_repair_shared_repair_unit_casing_advanced = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 295372848
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing_advanced, 295372848)
@@ -486,7 +502,9 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3230177189
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge, 3230177189)
@@ -536,7 +554,9 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1878973727
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced, 1878973727)

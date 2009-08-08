@@ -86,7 +86,9 @@ object_tangible_loot_quest_shared_2h_sword_scythe_schematic = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1779384495
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_2h_sword_scythe_schematic, 1779384495)
@@ -136,7 +138,9 @@ object_tangible_loot_quest_shared_anakin_helmet = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 619337831
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_anakin_helmet, 619337831)
@@ -186,7 +190,9 @@ object_tangible_loot_quest_shared_ardanium_ii = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 144495220
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_ardanium_ii, 144495220)
@@ -236,7 +242,9 @@ object_tangible_loot_quest_shared_bantha_doll = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3429421231
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_bantha_doll, 3429421231)
@@ -286,7 +294,9 @@ object_tangible_loot_quest_shared_carved_stone = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1855025689
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_carved_stone, 1855025689)
@@ -336,7 +346,9 @@ object_tangible_loot_quest_shared_crude_stone = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1540822606
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_crude_stone, 1540822606)
@@ -386,7 +398,9 @@ object_tangible_loot_quest_shared_droid_brain_anakin = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 513781670
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_droid_brain_anakin, 513781670)
@@ -436,7 +450,9 @@ object_tangible_loot_quest_shared_edb_quest_heirloom_bowl = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2926434751
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_edb_quest_heirloom_bowl, 2926434751)
@@ -486,7 +502,9 @@ object_tangible_loot_quest_shared_endrine = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 561758267
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_endrine, 561758267)
@@ -536,7 +554,9 @@ object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3113427386
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01, 3113427386)
@@ -586,7 +606,9 @@ object_tangible_loot_quest_shared_frn_quest_krayt_skull_01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2961420204
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_frn_quest_krayt_skull_01, 2961420204)
@@ -636,7 +658,9 @@ object_tangible_loot_quest_shared_huff_quest_borvos_money = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1225123257
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_borvos_money, 1225123257)
@@ -686,7 +710,9 @@ object_tangible_loot_quest_shared_huff_quest_corsec_badge = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3663409611
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_corsec_badge, 3663409611)
@@ -736,7 +762,9 @@ object_tangible_loot_quest_shared_huff_quest_top_secret_documents = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 940267990
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_huff_quest_top_secret_documents, 940267990)
@@ -786,7 +814,9 @@ object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2337201287
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken, 2337201287)
@@ -836,7 +866,9 @@ object_tangible_loot_quest_shared_lance_nightsister_schematic = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4063290190
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_lance_nightsister_schematic, 4063290190)
@@ -886,7 +918,9 @@ object_tangible_loot_quest_shared_lifeday_orb = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3441146756
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_lifeday_orb, 3441146756)
@@ -936,7 +970,9 @@ object_tangible_loot_quest_shared_nym_droid_memory_chip = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2300896857
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_droid_memory_chip, 2300896857)
@@ -986,7 +1022,9 @@ object_tangible_loot_quest_shared_nym_filtered_gas = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1171264370
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_filtered_gas, 1171264370)
@@ -1036,7 +1074,9 @@ object_tangible_loot_quest_shared_nym_hard_drive = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 701926242
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_hard_drive, 701926242)
@@ -1086,7 +1126,9 @@ object_tangible_loot_quest_shared_nym_imggc = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1123957010
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_nym_imggc, 1123957010)
@@ -1136,7 +1178,9 @@ object_tangible_loot_quest_shared_ostrine = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2924880449
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_ostrine, 2924880449)
@@ -1186,7 +1230,9 @@ object_tangible_loot_quest_shared_quest_item_goru_calling_card = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2547815080
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_goru_calling_card, 2547815080)
@@ -1236,7 +1282,9 @@ object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3548721475
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar, 3548721475)
@@ -1286,7 +1334,9 @@ object_tangible_loot_quest_shared_quest_item_spice_jar = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2368845489
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_spice_jar, 2368845489)
@@ -1336,7 +1386,9 @@ object_tangible_loot_quest_shared_quest_item_zicx_bug_jar = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2624714198
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_item_zicx_bug_jar, 2624714198)
@@ -1386,7 +1438,9 @@ object_tangible_loot_quest_shared_quest_satchel_charge = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2224923865
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_satchel_charge, 2224923865)
@@ -1436,7 +1490,9 @@ object_tangible_loot_quest_shared_quest_stimpack_a_schematic = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 916480864
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_quest_stimpack_a_schematic, 916480864)
@@ -1490,7 +1546,9 @@ object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "projectile_rifle",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 1695535287
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_rifle_quest_tusken, 1695535287)
@@ -1540,7 +1598,9 @@ object_tangible_loot_quest_shared_rudic = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880694768
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_rudic, 880694768)
@@ -1590,7 +1650,9 @@ object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1815099947
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest, 1815099947)
@@ -1640,7 +1702,9 @@ object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2800706287
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_backpack_s03_quest, 2800706287)
@@ -1690,7 +1754,9 @@ object_tangible_loot_quest_shared_schematic_backpack_s06_quest = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3031620704
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_backpack_s06_quest, 3031620704)
@@ -1740,7 +1806,9 @@ object_tangible_loot_quest_shared_schematic_bandolier_s02_quest = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2807969436
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s02_quest, 2807969436)
@@ -1790,7 +1858,9 @@ object_tangible_loot_quest_shared_schematic_bandolier_s04_quest = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3140951446
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s04_quest, 3140951446)
@@ -1840,7 +1910,9 @@ object_tangible_loot_quest_shared_schematic_belt_s05_quest = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3011414562
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_belt_s05_quest, 3011414562)
@@ -1890,7 +1962,9 @@ object_tangible_loot_quest_shared_schematic_carbine_e11_quest = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3738946257
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_carbine_e11_quest, 3738946257)
@@ -1940,7 +2014,9 @@ object_tangible_loot_quest_shared_schematic_dress_s08_quest = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4276949463
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_dress_s08_quest, 4276949463)
@@ -1990,7 +2066,9 @@ object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4044312600
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest, 4044312600)
@@ -2040,7 +2118,9 @@ object_tangible_loot_quest_shared_schematic_republic_blaster_quest = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3517653342
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_schematic_republic_blaster_quest, 3517653342)
@@ -2090,7 +2170,9 @@ object_tangible_loot_quest_shared_sean_campaign_disk = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2394816327
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_campaign_disk, 2394816327)
@@ -2140,7 +2222,9 @@ object_tangible_loot_quest_shared_sean_history_disk = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1553800313
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_history_disk, 1553800313)
@@ -2190,7 +2274,9 @@ object_tangible_loot_quest_shared_sean_questn_alog = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 560125063
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_alog, 560125063)
@@ -2240,7 +2326,9 @@ object_tangible_loot_quest_shared_sean_questn_gpapers = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1604016241
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_gpapers, 1604016241)
@@ -2290,7 +2378,9 @@ object_tangible_loot_quest_shared_sean_questn_tdisk = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3604298808
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questn_tdisk, 3604298808)
@@ -2340,7 +2430,9 @@ object_tangible_loot_quest_shared_sean_questp_ctestimony = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3591581058
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_ctestimony, 3591581058)
@@ -2390,7 +2482,9 @@ object_tangible_loot_quest_shared_sean_questp_htestimony = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 674706343
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_htestimony, 674706343)
@@ -2440,7 +2534,9 @@ object_tangible_loot_quest_shared_sean_questp_mdisk = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3743353236
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_sean_questp_mdisk, 3743353236)
@@ -2490,7 +2586,9 @@ object_tangible_loot_quest_shared_shellfish_harvester_schematic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2894170579
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_shellfish_harvester_schematic, 2894170579)
@@ -2540,7 +2638,9 @@ object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schema
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 856720284
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic, 856720284)
@@ -2590,7 +2690,9 @@ object_tangible_loot_quest_shared_smooth_stone = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1409323836
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_smooth_stone, 1409323836)
@@ -2640,7 +2742,9 @@ object_tangible_loot_quest_shared_treasure_map_hedon = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1380874599
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_treasure_map_hedon, 1380874599)
@@ -2690,7 +2794,9 @@ object_tangible_loot_quest_shared_tusken_head = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2221778773
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_tusken_head, 2221778773)
@@ -2740,7 +2846,9 @@ object_tangible_loot_quest_shared_valarian_dagger = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2259444048
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_valarian_dagger, 2259444048)
@@ -2790,7 +2898,9 @@ object_tangible_loot_quest_shared_victor_campaign_disk = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1885312788
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_campaign_disk, 1885312788)
@@ -2840,7 +2950,9 @@ object_tangible_loot_quest_shared_victor_questn_dseal = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1528043292
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_dseal, 1528043292)
@@ -2890,7 +3002,9 @@ object_tangible_loot_quest_shared_victor_questn_hlist = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3882415492
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_hlist, 3882415492)
@@ -2940,7 +3054,9 @@ object_tangible_loot_quest_shared_victor_questn_journal = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 367939380
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questn_journal, 367939380)
@@ -2990,7 +3106,9 @@ object_tangible_loot_quest_shared_victor_questp_jregistry = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1576962769
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_jregistry, 1576962769)
@@ -3040,7 +3158,9 @@ object_tangible_loot_quest_shared_victor_questp_receipt = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1884397294
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_receipt, 1884397294)
@@ -3090,7 +3210,9 @@ object_tangible_loot_quest_shared_victor_questp_testimony = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1434128341
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_victor_questp_testimony, 1434128341)
@@ -3140,7 +3262,9 @@ object_tangible_loot_quest_shared_wind_crystal = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1481000655
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_shared_wind_crystal, 1481000655)

@@ -75,7 +75,9 @@ object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTe
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2590979892
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_destroyed_large_a, 2590979892)
@@ -114,7 +116,9 @@ object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTe
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 483044281
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_destroyed_small_a, 483044281)
@@ -153,7 +157,9 @@ object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3524446459
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_cargo_pristine_large_a, 3524446459)
@@ -192,7 +198,9 @@ object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2077093717
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_a, 2077093717)
@@ -231,7 +239,9 @@ object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2698659778
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_b, 2698659778)
@@ -270,7 +280,9 @@ object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3923189839
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_c, 3923189839)
@@ -309,7 +321,9 @@ object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 305400667
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_d, 305400667)
@@ -348,7 +362,9 @@ object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1530490070
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_e, 1530490070)
@@ -387,7 +403,9 @@ object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2150548545
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_f, 2150548545)
@@ -426,7 +444,9 @@ object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3374556108
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_g, 3374556108)
@@ -465,7 +485,9 @@ object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1932103646
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_h, 1932103646)
@@ -504,7 +526,9 @@ object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 975497299
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_death_star_debris_i, 975497299)
@@ -543,7 +567,9 @@ object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3253175573
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s01, 3253175573)
@@ -582,7 +608,9 @@ object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 451947906
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s02, 451947906)
@@ -621,7 +649,9 @@ object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1409108495
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s03, 1409108495)
@@ -660,7 +690,9 @@ object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2820563227
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_droid_fighter_debris_s04, 2820563227)
@@ -699,7 +731,9 @@ object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3891582202
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_a, 3891582202)
@@ -738,7 +772,9 @@ object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1021541485
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_b, 1021541485)
@@ -777,7 +813,9 @@ object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1978538976
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_c, 1978538976)
@@ -816,7 +854,9 @@ object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2383229172
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_d, 2383229172)
@@ -855,7 +895,9 @@ object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3338688377
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_e, 3338688377)
@@ -894,7 +936,9 @@ object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 471334894
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_f, 471334894)
@@ -933,7 +977,9 @@ object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1427806307
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tie_fighter_debris_g, 1427806307)
@@ -972,7 +1018,9 @@ object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3363541547
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s01, 3363541547)
@@ -1011,7 +1059,9 @@ object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 325860028
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s02, 325860028)
@@ -1050,7 +1100,9 @@ object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1516330289
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s03, 1516330289)
@@ -1089,7 +1141,9 @@ object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2709681701
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s04, 2709681701)
@@ -1128,7 +1182,9 @@ object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3548707546
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_a, 3548707546)
@@ -1167,7 +1223,9 @@ object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 143872589
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_b, 143872589)
@@ -1206,7 +1264,9 @@ object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1100887488
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_c, 1100887488)
@@ -1245,7 +1305,9 @@ object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3128762068
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_d, 3128762068)
@@ -1284,7 +1346,9 @@ object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4084234585
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_e, 4084234585)
@@ -1323,7 +1387,9 @@ object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 677892558
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_f, 677892558)
@@ -1362,7 +1428,9 @@ object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:ne
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1634383427
 }
 
 ObjectTemplates:addTemplate(object_static_space_debris_shared_xwing_debris_g, 1634383427)

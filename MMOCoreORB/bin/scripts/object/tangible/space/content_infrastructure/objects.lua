@@ -86,7 +86,9 @@ object_tangible_space_content_infrastructure_shared_basic_corridor_point = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1336476935
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, 1336476935)
@@ -136,7 +138,9 @@ object_tangible_space_content_infrastructure_shared_basic_generic_point = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2123564231
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, 2123564231)
@@ -186,7 +190,9 @@ object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 233417941
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, 233417941)
@@ -236,7 +242,9 @@ object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 283550594
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, 283550594)
@@ -286,7 +294,9 @@ object_tangible_space_content_infrastructure_shared_content_manager = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2712609943
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_content_manager, 2712609943)
@@ -336,7 +346,9 @@ object_tangible_space_content_infrastructure_shared_corridor_end_spawner = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2186464753
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, 2186464753)
@@ -386,7 +398,9 @@ object_tangible_space_content_infrastructure_shared_corridor_start_spawner = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4139087673
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, 4139087673)
@@ -436,7 +450,9 @@ object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2261680514
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, 2261680514)
@@ -486,7 +502,9 @@ object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4256567837
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, 4256567837)
@@ -536,7 +554,9 @@ object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 493351489
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, 493351489)
@@ -586,7 +606,9 @@ object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 339299356
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, 339299356)
@@ -636,7 +658,9 @@ object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3763775974
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, 3763775974)

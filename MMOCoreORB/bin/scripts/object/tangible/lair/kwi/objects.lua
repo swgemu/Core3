@@ -86,7 +86,9 @@ object_tangible_lair_kwi_shared_lair_kwi = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2075620240
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi, 2075620240)
@@ -136,7 +138,9 @@ object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3436978198
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, 3436978198)
@@ -186,7 +190,9 @@ object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3879200403
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, 3879200403)
@@ -236,7 +242,9 @@ object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1326626395
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, 1326626395)

@@ -86,7 +86,9 @@ object_tangible_lair_mynock_shared_lair_mynock = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 573653561
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mynock_shared_lair_mynock, 573653561)

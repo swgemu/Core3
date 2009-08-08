@@ -86,7 +86,9 @@ object_installation_generators_shared_power_generator_fusion_style_1 = SharedIns
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1283788286
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_fusion_style_1, 1283788286)
@@ -136,7 +138,9 @@ object_installation_generators_shared_power_generator_photo_bio_style_1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2363771835
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_photo_bio_style_1, 2363771835)
@@ -186,7 +190,9 @@ object_installation_generators_shared_power_generator_solar_style_1 = SharedInst
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 859942951
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_solar_style_1, 859942951)
@@ -236,7 +242,9 @@ object_installation_generators_shared_power_generator_wind_style_1 = SharedInsta
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2932869055
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_shared_power_generator_wind_style_1, 2932869055)

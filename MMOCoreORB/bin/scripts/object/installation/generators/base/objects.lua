@@ -86,7 +86,9 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3676361903
 }
 
 ObjectTemplates:addTemplate(object_installation_generators_base_shared_power_generator_base, 3676361903)

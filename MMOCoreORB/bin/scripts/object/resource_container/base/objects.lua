@@ -86,7 +86,9 @@ object_resource_container_base_shared_base_resource_container = SharedResourceCo
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1272540468
 }
 
 ObjectTemplates:addTemplate(object_resource_container_base_shared_base_resource_container, 1272540468)
@@ -136,7 +138,9 @@ object_resource_container_base_shared_resource_container_default = SharedResourc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 741847407
 }
 
 ObjectTemplates:addTemplate(object_resource_container_base_shared_resource_container_default, 741847407)

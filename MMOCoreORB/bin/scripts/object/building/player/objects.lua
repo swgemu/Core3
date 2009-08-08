@@ -86,7 +86,9 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4003827328
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_construction_structure, 4003827328)
@@ -136,7 +138,9 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3533693421
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_garage_corellia_style_01, 3533693421)
@@ -186,7 +190,9 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2162635930
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_garage_naboo_style_01, 2162635930)
@@ -236,7 +242,9 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2075679353
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_garage_tatooine_style_01, 2075679353)
@@ -289,7 +297,9 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1038468412
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_corellia_style_01, 1038468412)
@@ -342,7 +352,9 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1861851362
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_generic_style_01, 1861851362)
@@ -395,7 +407,9 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3197026082
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_naboo_style_01, 3197026082)
@@ -448,7 +462,9 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2495774376
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, 2495774376)
@@ -501,7 +517,9 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1339414079
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, 1339414079)
@@ -554,7 +572,9 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2427663942
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_large_style_01, 2427663942)
@@ -607,7 +627,9 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1269079761
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_large_style_02, 1269079761)
@@ -660,7 +682,9 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4245590836
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_medium_style_01, 4245590836)
@@ -713,7 +737,9 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 639187875
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_medium_style_02, 639187875)
@@ -766,7 +792,9 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2963259888
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_01, 2963259888)
@@ -819,7 +847,9 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4102677864
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, 4102677864)
@@ -872,7 +902,9 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1804101991
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_02, 1804101991)
@@ -925,7 +957,9 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1944093248
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, 1944093248)
@@ -978,7 +1012,9 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2966981875
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_large_style_01, 2966981875)
@@ -1031,7 +1067,9 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1808737380
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_large_style_02, 1808737380)
@@ -1084,7 +1122,9 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 244814036
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_medium_style_01, 244814036)
@@ -1137,7 +1177,9 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3581950019
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_medium_style_02, 3581950019)
@@ -1190,7 +1232,9 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2431941445
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_01, 2431941445)
@@ -1243,7 +1287,9 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4015966289
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, 4015966289)
@@ -1296,7 +1342,9 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1273222098
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_02, 1273222098)
@@ -1349,7 +1397,9 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1748479865
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, 1748479865)
@@ -1402,7 +1452,9 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1926074883
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_large_style_01, 1926074883)
@@ -1455,7 +1507,9 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1333906211
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_medium_style_01, 1333906211)
@@ -1508,7 +1562,9 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1390503349
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_small_style_01, 1390503349)
@@ -1561,7 +1617,9 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2314652962
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_naboo_small_style_02, 2314652962)
@@ -1614,7 +1672,9 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3018624136
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_large_style_01, 3018624136)
@@ -1667,7 +1727,9 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 936693005
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, 936693005)
@@ -1720,7 +1782,9 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2478865214
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_small_style_01, 2478865214)
@@ -1773,7 +1837,9 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1222103977
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_house_tatooine_small_style_02, 1222103977)
@@ -1826,7 +1892,9 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2671747310
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_01, 2671747310)
@@ -1879,7 +1947,9 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1143474297
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_02, 1143474297)
@@ -1932,7 +2002,9 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 220557300
 }
 
 ObjectTemplates:addTemplate(object_building_player_shared_player_merchant_tent_style_03, 220557300)

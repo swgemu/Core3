@@ -75,7 +75,9 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1100063237
 }
 
 ObjectTemplates:addTemplate(object_soundobject_base_shared_soundobject_base, 1100063237)

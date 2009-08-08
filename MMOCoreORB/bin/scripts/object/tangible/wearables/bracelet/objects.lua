@@ -86,7 +86,9 @@ object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1474382637
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_l, 1474382637)
@@ -136,7 +138,9 @@ object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 657723070
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_r, 657723070)
@@ -186,7 +190,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3949931361
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_l, 3949931361)
@@ -236,7 +242,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2612686578
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_r, 2612686578)
@@ -286,7 +294,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2755150704
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_l, 2755150704)
@@ -336,7 +346,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3572303587
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_r, 3572303587)
@@ -386,7 +398,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1281181360
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_l, 1281181360)
@@ -436,7 +450,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1015546659
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_r, 1015546659)
@@ -486,7 +502,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 50998945
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_l, 50998945)
@@ -536,7 +554,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1944021810
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_r, 1944021810)
@@ -586,7 +606,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3539179154
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_l, 3539179154)
@@ -636,7 +658,9 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2720453377
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_r, 2720453377)

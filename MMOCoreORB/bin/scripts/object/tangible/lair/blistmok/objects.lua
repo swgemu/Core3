@@ -86,7 +86,9 @@ object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 642963853
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, 642963853)
@@ -136,7 +138,9 @@ object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 920509188
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, 920509188)
@@ -186,7 +190,9 @@ object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1298589466
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, 1298589466)

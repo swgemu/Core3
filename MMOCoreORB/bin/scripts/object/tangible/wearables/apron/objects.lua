@@ -86,7 +86,9 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1238323119
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, 1238323119)
@@ -136,7 +138,9 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3631236476
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_porcellus, 3631236476)
@@ -186,7 +190,9 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 129788759
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01, 129788759)
@@ -236,7 +242,9 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3378416176
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, 3378416176)

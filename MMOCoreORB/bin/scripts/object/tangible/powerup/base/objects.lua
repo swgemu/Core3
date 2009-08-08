@@ -86,7 +86,9 @@ object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2900653287
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_armor_base, 2900653287)
@@ -136,7 +138,9 @@ object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 486380582
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_base, 486380582)
@@ -186,7 +190,9 @@ object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1015299597
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_base_shared_weapon_base, 1015299597)

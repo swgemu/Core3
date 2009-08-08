@@ -90,7 +90,9 @@ object_weapon_mine_base_shared_mine_base = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 482351684
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_base_shared_mine_base, 482351684)

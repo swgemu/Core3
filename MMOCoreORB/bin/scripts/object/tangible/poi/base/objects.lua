@@ -86,7 +86,9 @@ object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2572869140
 }
 
 ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base, 2572869140)
@@ -136,7 +138,9 @@ object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 165055566
 }
 
 ObjectTemplates:addTemplate(object_tangible_poi_base_shared_poi_base_nosnap, 165055566)

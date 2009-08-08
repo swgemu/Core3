@@ -86,7 +86,9 @@ object_tangible_sign_shared_all_sign_city_s01 = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 533444800
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_city_s01, 533444800)
@@ -136,7 +138,9 @@ object_tangible_sign_shared_all_sign_city_s02 = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3302756439
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_city_s02, 3302756439)
@@ -186,7 +190,9 @@ object_tangible_sign_shared_all_sign_city_s03 = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2379315162
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_city_s03, 2379315162)
@@ -236,7 +242,9 @@ object_tangible_sign_shared_all_sign_street_s01 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1023580937
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_all_sign_street_s01, 1023580937)
@@ -286,7 +294,9 @@ object_tangible_sign_shared_streetsign_upright_style_01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 281440325
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_streetsign_upright_style_01, 281440325)
@@ -336,7 +346,9 @@ object_tangible_sign_shared_streetsign_wall_style_01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1744336727
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_streetsign_wall_style_01, 1744336727)
@@ -386,7 +398,9 @@ object_tangible_sign_shared_tatooine_moraj_marker = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 166858799
 }
 
 ObjectTemplates:addTemplate(object_tangible_sign_shared_tatooine_moraj_marker, 166858799)

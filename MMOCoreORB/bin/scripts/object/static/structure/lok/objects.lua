@@ -74,7 +74,9 @@ object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3199681465
 }
 
 ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_bannerpole_s01, 3199681465)
@@ -112,7 +114,9 @@ object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2646498442
 }
 
 ObjectTemplates:addTemplate(object_static_structure_lok_shared_lok_imprv_flagpole_s01, 2646498442)

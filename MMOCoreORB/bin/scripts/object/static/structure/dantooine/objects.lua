@@ -75,7 +75,9 @@ object_static_structure_dantooine_shared_dant_boundary_post = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2924198126
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_boundary_post, 2924198126)
@@ -114,7 +116,9 @@ object_static_structure_dantooine_shared_dant_cooking_stone = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1600616690
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_cooking_stone, 1600616690)
@@ -153,7 +157,9 @@ object_static_structure_dantooine_shared_dant_fence_4m = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 1600034556
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fence_4m, 1600034556)
@@ -192,7 +198,9 @@ object_static_structure_dantooine_shared_dant_fence_8m = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 3938371804
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fence_8m, 3938371804)
@@ -231,7 +239,9 @@ object_static_structure_dantooine_shared_dant_fire_pit = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4033600287
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fire_pit, 4033600287)
@@ -270,7 +280,9 @@ object_static_structure_dantooine_shared_dant_fish_rack = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 440746262
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_fish_rack, 440746262)
@@ -309,7 +321,9 @@ object_static_structure_dantooine_shared_dant_gate = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 7139239
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_gate, 7139239)
@@ -348,7 +362,9 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2151826436
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s01, 2151826436)
@@ -387,7 +403,9 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s02 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1532357779
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s02, 1532357779)
@@ -425,7 +443,9 @@ object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01 = SharedStati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2238403752
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01, 2238403752)
@@ -463,7 +483,9 @@ object_static_structure_dantooine_shared_dant_imprv_flagpole_s01 = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3453851559
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_imprv_flagpole_s01, 3453851559)
@@ -502,7 +524,9 @@ object_static_structure_dantooine_shared_dant_jedi_main_structure = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3200541181
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_main_structure, 3200541181)
@@ -541,7 +565,9 @@ object_static_structure_dantooine_shared_dant_jedi_temple_altar = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3549254078
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_altar, 3549254078)
@@ -580,7 +606,9 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3410738140
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar, 3410738140)
@@ -619,7 +647,9 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base = SharedSt
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3737353832
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base, 3737353832)
@@ -658,7 +688,9 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1808475957
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen, 1808475957)
@@ -697,7 +729,9 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 4036421930
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med, 4036421930)
@@ -736,7 +770,9 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1127667832
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm, 1127667832)
@@ -775,7 +811,9 @@ object_static_structure_dantooine_shared_dant_jedi_wall_1 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3556125150
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_1, 3556125150)
@@ -814,7 +852,9 @@ object_static_structure_dantooine_shared_dant_jedi_wall_2 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 148996425
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_2, 148996425)
@@ -853,7 +893,9 @@ object_static_structure_dantooine_shared_dant_large_communal = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2822062306
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_communal, 2822062306)
@@ -892,7 +934,9 @@ object_static_structure_dantooine_shared_dant_large_communal_dest = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 888416774
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_communal_dest, 888416774)
@@ -931,7 +975,9 @@ object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 5395298
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m, 5395298)
@@ -970,7 +1016,9 @@ object_static_structure_dantooine_shared_dant_large_hut = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3738317565
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_hut, 3738317565)
@@ -1009,7 +1057,9 @@ object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2953965200
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m, 2953965200)
@@ -1048,7 +1098,9 @@ object_static_structure_dantooine_shared_dant_large_mudhut = SharedStaticObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3375506333
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_mudhut, 3375506333)
@@ -1087,7 +1139,9 @@ object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3829973531
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m, 3829973531)
@@ -1126,7 +1180,9 @@ object_static_structure_dantooine_shared_dant_large_rock_hut = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1876585046
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut, 1876585046)
@@ -1165,7 +1221,9 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2097574138
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest, 2097574138)
@@ -1204,7 +1262,9 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2552639748
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01, 2552639748)
@@ -1243,7 +1303,9 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1127324051
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02, 1127324051)
@@ -1282,7 +1344,9 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 171769374
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03, 171769374)
@@ -1321,7 +1385,9 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1673544289
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m, 1673544289)
@@ -1360,7 +1426,9 @@ object_static_structure_dantooine_shared_dant_mud_oven = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2326141197
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_mud_oven, 2326141197)
@@ -1399,7 +1467,9 @@ object_static_structure_dantooine_shared_dant_rack_spears = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 2133865913
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_rack_spears, 2133865913)
@@ -1438,7 +1508,9 @@ object_static_structure_dantooine_shared_dant_skull_bol = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3964846407
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_skull_bol, 3964846407)
@@ -1477,7 +1549,9 @@ object_static_structure_dantooine_shared_dant_skull_lizard = SharedStaticObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3296364307
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_skull_lizard, 3296364307)
@@ -1516,7 +1590,9 @@ object_static_structure_dantooine_shared_dant_skull_thune = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2732329939
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_skull_thune, 2732329939)
@@ -1555,7 +1631,9 @@ object_static_structure_dantooine_shared_dant_small_mudhut = SharedStaticObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 4250788493
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_small_mudhut, 4250788493)
@@ -1594,7 +1672,9 @@ object_static_structure_dantooine_shared_dant_totem_pole = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 880635575
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dantooine_shared_dant_totem_pole, 880635575)

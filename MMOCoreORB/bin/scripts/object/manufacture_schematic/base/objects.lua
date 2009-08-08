@@ -75,7 +75,9 @@ object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManu
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3062041799
 }
 
 ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_base_manufacture_schematic, 3062041799)
@@ -114,7 +116,9 @@ object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedM
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 933697332
 }
 
 ObjectTemplates:addTemplate(object_manufacture_schematic_base_shared_manufacture_schematic_default, 933697332)

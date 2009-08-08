@@ -90,7 +90,9 @@ object_weapon_melee_polearm_shared_lance_controllerfp = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1316875243
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_controllerfp, 1316875243)
@@ -144,7 +146,9 @@ object_weapon_melee_polearm_shared_lance_controllerfp_nightsister = SharedWeapon
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3796866830
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_controllerfp_nightsister, 3796866830)
@@ -198,7 +202,9 @@ object_weapon_melee_polearm_shared_lance_lightsaber_01 = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3828775483
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_01, 3828775483)
@@ -252,7 +258,9 @@ object_weapon_melee_polearm_shared_lance_lightsaber_02 = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1059181228
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_lightsaber_02, 1059181228)
@@ -306,7 +314,9 @@ object_weapon_melee_polearm_shared_lance_nightsister = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1613461036
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_nightsister, 1613461036)
@@ -360,7 +370,9 @@ object_weapon_melee_polearm_shared_lance_nightsister_npc_version = SharedWeaponO
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 770226321
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_nightsister_npc_version, 770226321)
@@ -414,7 +426,9 @@ object_weapon_melee_polearm_shared_lance_staff_janta = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1705789500
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_janta, 1705789500)
@@ -468,7 +482,9 @@ object_weapon_melee_polearm_shared_lance_staff_metal = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 978782032
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_metal, 978782032)
@@ -522,7 +538,9 @@ object_weapon_melee_polearm_shared_lance_staff_wood_s1 = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1200142292
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_s1, 1200142292)
@@ -576,7 +594,9 @@ object_weapon_melee_polearm_shared_lance_staff_wood_s2 = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2627673923
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_staff_wood_s2, 2627673923)
@@ -630,7 +650,9 @@ object_weapon_melee_polearm_shared_lance_vibrolance = SharedWeaponObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 22784428
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_lance_vibrolance, 22784428)
@@ -684,7 +706,9 @@ object_weapon_melee_polearm_shared_polearm_vibro_axe = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1723256113
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_shared_polearm_vibro_axe, 1723256113)

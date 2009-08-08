@@ -86,7 +86,9 @@ object_tangible_lair_gronda_shared_lair_gronda = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 658868181
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gronda_shared_lair_gronda, 658868181)
@@ -136,7 +138,9 @@ object_tangible_lair_gronda_shared_lair_gronda_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1050006158
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gronda_shared_lair_gronda_grassland, 1050006158)

@@ -86,7 +86,9 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3800711792
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_plant_shared_force_melon, 3800711792)

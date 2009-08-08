@@ -75,7 +75,9 @@ object_object_base_shared_base_object = SharedObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2637095427
 }
 
 ObjectTemplates:addTemplate(object_object_base_shared_base_object, 2637095427)
@@ -114,7 +116,9 @@ object_object_base_shared_object_default = SharedObjectTemplate:new {
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1571647223
 }
 
 ObjectTemplates:addTemplate(object_object_base_shared_object_default, 1571647223)

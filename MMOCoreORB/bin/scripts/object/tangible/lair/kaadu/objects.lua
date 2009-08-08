@@ -86,7 +86,9 @@ object_tangible_lair_kaadu_shared_lair_kaadu = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3251401603
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu, 3251401603)
@@ -136,7 +138,9 @@ object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1694176520
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_forest, 1694176520)
@@ -186,7 +190,9 @@ object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2596368393
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_grassland, 2596368393)
@@ -236,7 +242,9 @@ object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2515299649
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_swamp, 2515299649)

@@ -90,7 +90,9 @@ object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4031568609
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_bug_bomb, 4031568609)
@@ -144,7 +146,9 @@ object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2139866976
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_cryoban, 2139866976)
@@ -198,7 +202,9 @@ object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1363204393
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fallback, 1363204393)
@@ -252,7 +258,9 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTe
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2723525196
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation, 2723525196)
@@ -306,7 +314,9 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponOb
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2839802123
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation_light, 2839802123)
@@ -360,7 +370,9 @@ object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 595784365
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_glop, 595784365)
@@ -414,7 +426,9 @@ object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4036235024
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_imperial_detonator, 4036235024)
@@ -468,7 +482,9 @@ object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2714007859
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_poison, 2714007859)
@@ -522,7 +538,9 @@ object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 904042039
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_proton, 904042039)
@@ -576,7 +594,9 @@ object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObje
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4094720749
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_shared_grenade_thermal_detonator, 4094720749)

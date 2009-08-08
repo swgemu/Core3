@@ -86,7 +86,9 @@ object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 535228363
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, 535228363)
@@ -136,7 +138,9 @@ object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2972904337
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, 2972904337)
@@ -186,7 +190,9 @@ object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3049740856
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, 3049740856)
@@ -236,7 +242,9 @@ object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3130494948
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, 3130494948)
@@ -286,7 +294,9 @@ object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2042144998
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, 2042144998)
@@ -336,7 +346,9 @@ object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1900348707
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, 1900348707)

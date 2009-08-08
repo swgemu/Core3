@@ -86,7 +86,9 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 66686181
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch, 66686181)
@@ -136,7 +138,9 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 544226811
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest, 544226811)
@@ -186,7 +190,9 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1253989511
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain, 1253989511)

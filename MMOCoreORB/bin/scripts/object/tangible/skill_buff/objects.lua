@@ -86,7 +86,9 @@ object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3070103050
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, 3070103050)
@@ -136,7 +138,9 @@ object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2417642005
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, 2417642005)
@@ -186,7 +190,9 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1148030361
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, 1148030361)
@@ -236,7 +242,9 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2003739536
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, 2003739536)
@@ -286,7 +294,9 @@ object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2803312333
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, 2803312333)
@@ -336,7 +346,9 @@ object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 687567212
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, 687567212)
@@ -386,7 +398,9 @@ object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3148321230
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, 3148321230)
@@ -436,7 +450,9 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 336832987
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, 336832987)
@@ -486,7 +502,9 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3043511880
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, 3043511880)
@@ -536,7 +554,9 @@ object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4053673313
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, 4053673313)
@@ -586,7 +606,9 @@ object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3705181543
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, 3705181543)
@@ -636,7 +658,9 @@ object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2877612542
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, 2877612542)
@@ -686,7 +710,9 @@ object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2574942749
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, 2574942749)
@@ -736,7 +762,9 @@ object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2321374102
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, 2321374102)
@@ -786,7 +814,9 @@ object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 655697476
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, 655697476)
@@ -836,7 +866,9 @@ object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1676691901
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, 1676691901)
@@ -886,7 +918,9 @@ object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1002436514
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, 1002436514)
@@ -936,7 +970,9 @@ object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 675038361
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, 675038361)
@@ -986,7 +1022,9 @@ object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2671557576
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, 2671557576)
@@ -1036,7 +1074,9 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1962907578
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, 1962907578)
@@ -1086,7 +1126,9 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2007596912
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, 2007596912)
@@ -1136,7 +1178,9 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2213257613
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, 2213257613)
@@ -1186,7 +1230,9 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2704330106
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, 2704330106)

@@ -86,7 +86,9 @@ object_tangible_vendor_base_shared_base_vendor = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2776424308
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_base_shared_base_vendor, 2776424308)

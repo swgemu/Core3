@@ -86,7 +86,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1211170670
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l, 1211170670)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 954579709
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r, 954579709)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2071589825
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots, 2071589825)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2320041547
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l, 2320041547)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4204544984
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r, 4204544984)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_pla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1560721233
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_plate, 1560721233)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 889238444
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves, 889238444)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2210419364
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet, 2210419364)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 91085652
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings, 91085652)

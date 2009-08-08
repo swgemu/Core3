@@ -75,7 +75,9 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall1 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2786092096
 }
 
 ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall1, 2786092096)
@@ -114,7 +116,9 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2097663191
 }
 
 ObjectTemplates:addTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall2, 2097663191)

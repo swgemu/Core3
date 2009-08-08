@@ -86,7 +86,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1255925428
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt, 1255925428)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 509585055
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots, 509585055)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3303691594
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate, 3303691594)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2543046725
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest, 2543046725)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2822062160
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves, 2822062160)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 519414104
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet, 519414104)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2324855644
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest, 2324855644)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2684655133
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants, 2684655133)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3252715807
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest, 3252715807)

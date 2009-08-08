@@ -86,7 +86,9 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3843288645
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, 3843288645)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4282694391
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, 4282694391)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3064505654
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, 3064505654)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4258529862
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, 4258529862)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1484781854
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, 1484781854)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2204651913
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, 2204651913)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3395630596
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, 3395630596)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 830872848
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, 830872848)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2022406813
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, 2022406813)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1364868080
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, 1364868080)
@@ -586,7 +606,9 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 277361603
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, 277361603)
@@ -636,7 +658,9 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3416234836
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, 3416234836)
@@ -686,7 +710,9 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2190671065
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, 2190671065)
@@ -736,7 +762,9 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2037503949
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, 2037503949)
@@ -786,7 +814,9 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 813477952
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, 813477952)
@@ -836,7 +866,9 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 598079079
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, 598079079)
@@ -886,7 +918,9 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4172439280
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, 4172439280)
@@ -936,7 +970,9 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2982099325
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, 2982099325)
@@ -986,7 +1022,9 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1247548009
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, 1247548009)
@@ -1036,7 +1074,9 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 55670244
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, 55670244)
@@ -1086,7 +1126,9 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1281522685
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, 1281522685)
@@ -1136,7 +1178,9 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2541081450
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, 2541081450)
@@ -1186,7 +1230,9 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3732452583
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, 3732452583)
@@ -1236,7 +1282,9 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 630956019
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, 630956019)
@@ -1286,7 +1334,9 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1821833342
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, 1821833342)
@@ -1336,7 +1386,9 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1987626722
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, 1987626722)
@@ -1386,7 +1438,9 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2909761141
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, 2909761141)
@@ -1436,7 +1490,9 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3831630328
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, 3831630328)
@@ -1486,7 +1542,9 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 528556780
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, 528556780)
@@ -1536,7 +1594,9 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1452033377
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, 1452033377)
@@ -1586,7 +1646,9 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1831490574
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, 1831490574)
@@ -1636,7 +1698,9 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3057515673
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, 3057515673)
@@ -1686,7 +1750,9 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4281375508
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, 4281375508)
@@ -1736,7 +1802,9 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 80982016
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, 80982016)
@@ -1786,7 +1854,9 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1306449805
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, 1306449805)
@@ -1836,7 +1906,9 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3218110775
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, 3218110775)
@@ -1886,7 +1958,9 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4261874664
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, 4261874664)

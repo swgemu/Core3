@@ -75,7 +75,9 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2096609656
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_jetpack_pcd, 2096609656)
@@ -114,7 +116,9 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3762629621
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, 3762629621)
@@ -153,7 +157,9 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3148893162
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, 3148893162)
@@ -192,7 +198,9 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2364632781
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, 2364632781)
@@ -231,7 +239,9 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1448247515
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, 1448247515)
@@ -270,7 +280,9 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3659586517
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_pcd, 3659586517)
@@ -309,7 +321,9 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2233671002
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, 2233671002)
@@ -348,7 +362,9 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2853503513
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, 2853503513)

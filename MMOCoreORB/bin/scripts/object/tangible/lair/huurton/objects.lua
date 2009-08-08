@@ -86,7 +86,9 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1349396449
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton, 1349396449)
@@ -136,7 +138,9 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3768282762
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, 3768282762)

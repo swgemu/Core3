@@ -90,7 +90,9 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4081145715
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base, 4081145715)
@@ -144,7 +146,9 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1355297704
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_lance_lightsaber_base, 1355297704)
@@ -198,7 +202,9 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4212036933
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_base_shared_polearm_base, 4212036933)

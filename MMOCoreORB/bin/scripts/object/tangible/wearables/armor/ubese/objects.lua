@@ -86,7 +86,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3989520572
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier, 3989520572)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_boots = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1207105731
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_boots, 1207105731)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4128606087
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_l, 4128606087)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2260779540
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_bracer_r, 2260779540)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1597327192
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_gloves, 1597327192)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3925190224
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet, 3925190224)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1916840424
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_helmet_quest, 1916840424)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3696152390
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket, 3696152390)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3409085291
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_jacket_quest, 3409085291)
@@ -536,7 +554,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4188653633
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants, 4188653633)
@@ -586,7 +606,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1051305101
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_pants_quest, 1051305101)
@@ -636,7 +658,9 @@ object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 758262636
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_shared_armor_ubese_shirt, 758262636)

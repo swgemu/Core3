@@ -86,7 +86,9 @@ object_tangible_datapad_shared_character_datapad = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1941590017
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_character_datapad, 1941590017)
@@ -136,7 +138,9 @@ object_tangible_datapad_shared_droid_datapad_1 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3496173420
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_1, 3496173420)
@@ -186,7 +190,9 @@ object_tangible_datapad_shared_droid_datapad_2 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 192215035
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_2, 192215035)
@@ -236,7 +242,9 @@ object_tangible_datapad_shared_droid_datapad_3 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1115263094
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_3, 1115263094)
@@ -286,7 +294,9 @@ object_tangible_datapad_shared_droid_datapad_4 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3113925474
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_4, 3113925474)
@@ -336,7 +346,9 @@ object_tangible_datapad_shared_droid_datapad_5 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4036484335
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_5, 4036484335)
@@ -386,7 +398,9 @@ object_tangible_datapad_shared_droid_datapad_6 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 729838712
 }
 
 ObjectTemplates:addTemplate(object_tangible_datapad_shared_droid_datapad_6, 729838712)

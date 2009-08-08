@@ -86,7 +86,9 @@ object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 320002597
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku, 320002597)
@@ -136,7 +138,9 @@ object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1812548247
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, 1812548247)

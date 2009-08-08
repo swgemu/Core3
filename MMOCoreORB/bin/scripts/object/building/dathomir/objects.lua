@@ -89,7 +89,9 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3733495054
 }
 
 ObjectTemplates:addTemplate(object_building_dathomir_shared_mtn_clan_stronghold, 3733495054)
@@ -142,7 +144,9 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1104863563
 }
 
 ObjectTemplates:addTemplate(object_building_dathomir_shared_night_sister_stronghold, 1104863563)

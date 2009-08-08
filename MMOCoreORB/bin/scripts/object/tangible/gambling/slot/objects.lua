@@ -86,7 +86,9 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1978853321
 }
 
 ObjectTemplates:addTemplate(object_tangible_gambling_slot_shared_standard, 1978853321)

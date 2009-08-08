@@ -86,7 +86,9 @@ object_tangible_location_shared_location_32 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 742219640
 }
 
 ObjectTemplates:addTemplate(object_tangible_location_shared_location_32, 742219640)
@@ -136,7 +138,9 @@ object_tangible_location_shared_location_48 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3189159180
 }
 
 ObjectTemplates:addTemplate(object_tangible_location_shared_location_48, 3189159180)
@@ -186,7 +190,9 @@ object_tangible_location_shared_location_64 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3915066233
 }
 
 ObjectTemplates:addTemplate(object_tangible_location_shared_location_64, 3915066233)
@@ -236,7 +242,9 @@ object_tangible_location_shared_location_80 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1243606058
 }
 
 ObjectTemplates:addTemplate(object_tangible_location_shared_location_80, 1243606058)
@@ -286,7 +294,9 @@ object_tangible_location_shared_location_96 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3822693835
 }
 
 ObjectTemplates:addTemplate(object_tangible_location_shared_location_96, 3822693835)

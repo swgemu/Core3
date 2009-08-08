@@ -86,7 +86,9 @@ object_tangible_wearables_hat_shared_hat_chef_s01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4237787733
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s01, 4237787733)
@@ -136,7 +138,9 @@ object_tangible_wearables_hat_shared_hat_chef_s02 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 662710978
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_chef_s02, 662710978)
@@ -186,7 +190,9 @@ object_tangible_wearables_hat_shared_hat_imp_s01 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1674058111
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_imp_s01, 1674058111)
@@ -236,7 +242,9 @@ object_tangible_wearables_hat_shared_hat_s02 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 522601046
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s02, 522601046)
@@ -286,7 +294,9 @@ object_tangible_wearables_hat_shared_hat_s04 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2915569359
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s04, 2915569359)
@@ -336,7 +346,9 @@ object_tangible_wearables_hat_shared_hat_s10 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2517925940
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s10, 2517925940)
@@ -386,7 +398,9 @@ object_tangible_wearables_hat_shared_hat_s12 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 68046638
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s12, 68046638)
@@ -436,7 +450,9 @@ object_tangible_wearables_hat_shared_hat_s13 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1292052643
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s13, 1292052643)
@@ -486,7 +502,9 @@ object_tangible_wearables_hat_shared_hat_s14 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3068134327
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_s14, 3068134327)
@@ -536,7 +554,9 @@ object_tangible_wearables_hat_shared_hat_twilek_s01 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 305393881
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s01, 305393881)
@@ -586,7 +606,9 @@ object_tangible_wearables_hat_shared_hat_twilek_s02 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3374602318
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s02, 3374602318)
@@ -636,7 +658,9 @@ object_tangible_wearables_hat_shared_hat_twilek_s03 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2150186947
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s03, 2150186947)
@@ -686,7 +710,9 @@ object_tangible_wearables_hat_shared_hat_twilek_s04 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2076841175
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s04, 2076841175)
@@ -736,7 +762,9 @@ object_tangible_wearables_hat_shared_hat_twilek_s05 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 851931994
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_hat_twilek_s05, 851931994)
@@ -786,7 +814,9 @@ object_tangible_wearables_hat_shared_nightsister_hat_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3899232766
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s01, 3899232766)
@@ -836,7 +866,9 @@ object_tangible_wearables_hat_shared_nightsister_hat_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 863910249
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s02, 863910249)
@@ -886,7 +918,9 @@ object_tangible_wearables_hat_shared_nightsister_hat_s03 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2054381284
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_nightsister_hat_s03, 2054381284)
@@ -936,7 +970,9 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3818307792
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s01, 3818307792)
@@ -986,7 +1022,9 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 948004935
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_hat_s02, 948004935)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1653166773
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_hat_shared_singing_mountain_clan_mask_s01, 1653166773)

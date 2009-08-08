@@ -86,7 +86,9 @@ object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3941503205
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba, 3941503205)
@@ -136,7 +138,9 @@ object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2016717177
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, 2016717177)
@@ -186,7 +190,9 @@ object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 745493888
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, 745493888)

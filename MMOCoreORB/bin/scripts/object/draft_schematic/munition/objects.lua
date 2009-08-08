@@ -75,7 +75,9 @@ object_draft_schematic_munition_shared_base_munition = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 565719631
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_base_munition, 565719631)
@@ -114,7 +116,9 @@ object_draft_schematic_munition_shared_base_munition_enhancer = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2705118881
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_base_munition_enhancer, 2705118881)
@@ -153,7 +157,9 @@ object_draft_schematic_munition_shared_bomb_field_antigravity = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4027709871
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_bomb_field_antigravity, 4027709871)
@@ -192,7 +198,9 @@ object_draft_schematic_munition_shared_detonator_thermal_class_a = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3371484020
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_detonator_thermal_class_a, 3371484020)
@@ -231,7 +239,9 @@ object_draft_schematic_munition_shared_detonator_thermal_imperial_issue = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 273841684
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_detonator_thermal_imperial_issue, 273841684)
@@ -270,7 +280,9 @@ object_draft_schematic_munition_shared_grenade_cryoban_ww_41 = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1932295981
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_cryoban_ww_41, 1932295981)
@@ -309,7 +321,9 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_12 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 11395638
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_fragmentation_c_12, 11395638)
@@ -348,7 +362,9 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_22 = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 768996798
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_fragmentation_c_22, 768996798)
@@ -387,7 +403,9 @@ object_draft_schematic_munition_shared_grenade_glop = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3560497923
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_glop, 3560497923)
@@ -426,7 +444,9 @@ object_draft_schematic_munition_shared_grenade_proton = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1913629188
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_grenade_proton, 1913629188)
@@ -465,7 +485,9 @@ object_draft_schematic_munition_shared_mine_anti_vehicle = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 225539159
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_mine_anti_vehicle, 225539159)
@@ -504,7 +526,9 @@ object_draft_schematic_munition_shared_mine_dxr55 = SharedDraftSchematicObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1052443447
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_mine_dxr55, 1052443447)
@@ -543,7 +567,9 @@ object_draft_schematic_munition_shared_mine_xg = SharedDraftSchematicObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1813474007
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_munition_shared_mine_xg, 1813474007)

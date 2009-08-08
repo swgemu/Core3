@@ -75,7 +75,9 @@ object_draft_schematic_instrument_shared_instrument_bandfill = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1069929316
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_bandfill, 1069929316)
@@ -114,7 +116,9 @@ object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3133647251
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_base, 3133647251)
@@ -153,7 +157,9 @@ object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 592945841
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_drums, 592945841)
@@ -192,7 +198,9 @@ object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1598981907
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_fanfar, 1598981907)
@@ -231,7 +239,9 @@ object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1476982860
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_fizz, 1476982860)
@@ -270,7 +280,9 @@ object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3913461118
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_flute_droopy, 3913461118)
@@ -309,7 +321,9 @@ object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4207775926
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_kloo_horn, 4207775926)
@@ -348,7 +362,9 @@ object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1835965889
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_mandoviol, 1835965889)
@@ -387,7 +403,9 @@ object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2180987107
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_nalargon, 2180987107)
@@ -426,7 +444,9 @@ object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3365239168
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_omni_box, 3365239168)
@@ -465,7 +485,9 @@ object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 12716542
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_organ_figrin_dan, 12716542)
@@ -504,7 +526,9 @@ object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 747863128
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_organ_max_rebo, 747863128)
@@ -543,7 +567,9 @@ object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2027141215
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_slitherhorn, 2027141215)
@@ -582,7 +608,9 @@ object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1146643573
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_shared_instrument_traz, 1146643573)

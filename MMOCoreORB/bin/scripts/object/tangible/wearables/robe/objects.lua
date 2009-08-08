@@ -86,7 +86,9 @@ object_tangible_wearables_robe_shared_aakuan_robe = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 518208123
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_aakuan_robe, 518208123)
@@ -136,7 +138,9 @@ object_tangible_wearables_robe_shared_robe_inquisitor = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3169107890
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_inquisitor, 3169107890)
@@ -186,7 +190,9 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3047595977
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s01, 3047595977)
@@ -236,7 +242,9 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1857107806
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s02, 1857107806)
@@ -286,7 +294,9 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s03 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 666652883
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s03, 666652883)
@@ -336,7 +346,9 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s04 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3697245127
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s04, 3697245127)
@@ -386,7 +398,9 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s05 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2505186378
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_dark_s05, 2505186378)
@@ -436,7 +450,9 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3064236439
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s01, 3064236439)
@@ -486,7 +502,9 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s02 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1840455936
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s02, 1840455936)
@@ -536,7 +554,9 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s03 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 616449677
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s03, 616449677)
@@ -586,7 +606,9 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s04 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3747442073
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s04, 3747442073)
@@ -636,7 +658,9 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s05 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2521827860
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_light_s05, 2521827860)
@@ -686,7 +710,9 @@ object_tangible_wearables_robe_shared_robe_jedi_padawan = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 901202930
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_padawan, 901202930)
@@ -736,7 +762,9 @@ object_tangible_wearables_robe_shared_robe_jedi_test = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2041848180
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_jedi_test, 2041848180)
@@ -786,7 +814,9 @@ object_tangible_wearables_robe_shared_robe_prefect_talmont = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1197214887
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_prefect_talmont, 1197214887)
@@ -836,7 +866,9 @@ object_tangible_wearables_robe_shared_robe_s01 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1986706266
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s01, 1986706266)
@@ -886,7 +918,9 @@ object_tangible_wearables_robe_shared_robe_s04 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 529751892
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s04, 529751892)
@@ -936,7 +970,9 @@ object_tangible_wearables_robe_shared_robe_s05 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1453209817
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s05, 1453209817)
@@ -986,7 +1022,9 @@ object_tangible_wearables_robe_shared_robe_s05_h1 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 956309254
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s05_h1, 956309254)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_robe_shared_robe_s12 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3059031733
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s12, 3059031733)
@@ -1086,7 +1126,9 @@ object_tangible_wearables_robe_shared_robe_s18 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1705432745
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s18, 1705432745)
@@ -1136,7 +1178,9 @@ object_tangible_wearables_robe_shared_robe_s27 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4074040627
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_s27, 4074040627)
@@ -1186,7 +1230,9 @@ object_tangible_wearables_robe_shared_robe_tusken_raider_s01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1357876030
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_tusken_raider_s01, 1357876030)
@@ -1236,7 +1282,9 @@ object_tangible_wearables_robe_shared_robe_tusken_raider_s02 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2348295081
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_shared_robe_tusken_raider_s02, 2348295081)

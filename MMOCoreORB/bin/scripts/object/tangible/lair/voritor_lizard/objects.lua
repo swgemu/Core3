@@ -86,7 +86,9 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 908714854
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, 908714854)
@@ -136,7 +138,9 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3526592210
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, 3526592210)
@@ -186,7 +190,9 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1883986886
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, 1883986886)

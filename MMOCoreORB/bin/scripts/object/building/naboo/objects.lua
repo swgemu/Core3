@@ -89,7 +89,9 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4161211751
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_association_hall_civilian_naboo, 4161211751)
@@ -142,7 +144,9 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3658850000
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_bank_naboo, 3658850000)
@@ -195,7 +199,9 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4092578549
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_large_style_1, 4092578549)
@@ -248,7 +254,9 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4060997575
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_1, 4060997575)
@@ -301,7 +309,9 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 689590096
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_medium_style_2, 689590096)
@@ -354,7 +364,9 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1528349113
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_bubble_naboo_small_style_1, 1528349113)
@@ -407,7 +419,9 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1964795921
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_cantina_naboo, 1964795921)
@@ -460,7 +474,9 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2574224334
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_capitol_naboo_theed, 2574224334)
@@ -513,7 +529,9 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1114686474
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_cloning_facility_naboo, 1114686474)
@@ -566,7 +584,9 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 120523031
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_emperors_retreat, 120523031)
@@ -619,7 +639,9 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3073450826
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_10, 3073450826)
@@ -672,7 +694,9 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4265362631
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_11, 4265362631)
@@ -725,7 +749,9 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 343147098
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_2, 343147098)
@@ -778,7 +804,9 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1568237015
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_3, 1568237015)
@@ -831,7 +859,9 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2795130563
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_4, 2795130563)
@@ -884,7 +914,9 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4019661134
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_5, 4019661134)
@@ -937,7 +969,9 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880837081
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_6, 880837081)
@@ -990,7 +1024,9 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3347565126
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_8, 3347565126)
@@ -1043,7 +1079,9 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2391453131
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_building_naboo_style_9, 2391453131)
@@ -1096,7 +1134,9 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1370920904
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_01, 1370920904)
@@ -1149,7 +1189,9 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2325823327
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_02, 2325823327)
@@ -1202,7 +1244,9 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2522453461
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_s02, 2522453461)
@@ -1255,7 +1299,9 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 166100265
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_style_01, 166100265)
@@ -1308,7 +1354,9 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2162092176
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_guild_combat_naboo_style_01, 2162092176)
@@ -1361,7 +1409,9 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 754152794
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_guild_commerce_naboo_style_01, 754152794)
@@ -1414,7 +1464,9 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2364526054
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_guild_theater_naboo_s01, 2364526054)
@@ -1467,7 +1519,9 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1500355509
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_guild_university_naboo_style_01, 1500355509)
@@ -1520,7 +1574,9 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3224368648
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_hangar_naboo_theed, 3224368648)
@@ -1573,7 +1629,9 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3288048289
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo, 3288048289)
@@ -1626,7 +1684,9 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1309649332
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_hospital_naboo_s02, 1309649332)
@@ -1679,7 +1739,9 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2256796740
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_hotel_naboo_theed, 2256796740)
@@ -1732,7 +1794,9 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1207237066
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_1, 1207237066)
@@ -1785,7 +1849,9 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3589158608
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_housing_naboo_style_3, 3589158608)
@@ -1838,7 +1904,9 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3127135334
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_merchant_tent_naboo_s01, 3127135334)
@@ -1891,7 +1959,9 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 243325651
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_palace_naboo_theed, 243325651)
@@ -1944,7 +2014,9 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4129354478
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_parking_garage_naboo_style_1, 4129354478)
@@ -1997,7 +2069,9 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3110745453
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_lg_s01_fp1, 3110745453)
@@ -2050,7 +2124,9 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2671892606
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s01_fp1, 2671892606)
@@ -2103,7 +2179,9 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2374056803
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_m_s02_fp1, 2374056803)
@@ -2156,7 +2234,9 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 146028409
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s01_fp1, 146028409)
@@ -2209,7 +2289,9 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 443864164
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_ply_nboo_house_s_s02_fp1, 443864164)
@@ -2262,7 +2344,9 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2419077761
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_power_generator_naboo_theed, 2419077761)
@@ -2315,7 +2399,9 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4115268904
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_salon_corellia, 4115268904)
@@ -2368,7 +2454,9 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 135005575
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_salon_naboo, 135005575)
@@ -2421,7 +2509,9 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3818763165
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_shuttleport_naboo, 3818763165)
@@ -2474,7 +2564,9 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1265259890
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shared_starport_naboo, 1265259890)

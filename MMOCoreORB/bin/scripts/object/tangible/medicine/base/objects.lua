@@ -86,7 +86,9 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 832067310
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_base_shared_base_medicine, 832067310)

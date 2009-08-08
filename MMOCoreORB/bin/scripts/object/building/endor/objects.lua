@@ -89,7 +89,9 @@ object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1092202767
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_catwalk, 1092202767)
@@ -142,7 +144,9 @@ object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1451215471
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_catwalk_cap, 1451215471)
@@ -195,7 +199,9 @@ object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2759537117
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_forest_hut, 2759537117)
@@ -248,7 +254,9 @@ object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2543574892
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_giant_catwalk, 2543574892)
@@ -301,7 +309,9 @@ object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3384806373
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_giant_village_tree_s01, 3384806373)
@@ -354,7 +364,9 @@ object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 790353916
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_hut, 790353916)
@@ -407,7 +419,9 @@ object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1488414842
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_hut_s02, 1488414842)
@@ -460,7 +474,9 @@ object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2419475197
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_platform, 2419475197)
@@ -513,7 +529,9 @@ object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1002562347
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_platform_cap, 1002562347)
@@ -566,7 +584,9 @@ object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1339123676
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_walkway_square, 1339123676)
@@ -619,7 +639,9 @@ object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3597287151
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_lake_walkway_straight, 3597287151)
@@ -672,7 +694,9 @@ object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4148017771
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_tiki_torch, 4148017771)
@@ -725,7 +749,9 @@ object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1111623449
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_village_tree, 1111623449)
@@ -778,7 +804,9 @@ object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4074943330
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endor_village_tree_viewpoint, 4074943330)
@@ -817,7 +845,9 @@ object_building_endor_shared_endr_lake_rail16m = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 2748322568
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail16m, 2748322568)
@@ -856,7 +886,9 @@ object_building_endor_shared_endr_lake_rail2m = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 380245173
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail2m, 380245173)
@@ -895,7 +927,9 @@ object_building_endor_shared_endr_lake_rail4m = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 1280981925
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail4m, 1280981925)
@@ -934,7 +968,9 @@ object_building_endor_shared_endr_lake_rail8m = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 3
+	surfaceType = 3,
+
+	clientObjectCRC = 4189742469
 }
 
 ObjectTemplates:addTemplate(object_building_endor_shared_endr_lake_rail8m, 4189742469)

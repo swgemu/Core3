@@ -86,7 +86,9 @@ object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2280159140
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed, 2280159140)

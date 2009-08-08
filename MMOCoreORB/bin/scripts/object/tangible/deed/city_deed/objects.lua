@@ -86,7 +86,9 @@ object_tangible_deed_city_deed_shared_bank_corellia_deed = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 401261440
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_bank_corellia_deed, 401261440)
@@ -136,7 +138,9 @@ object_tangible_deed_city_deed_shared_bank_naboo_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3557805385
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_bank_naboo_deed, 3557805385)
@@ -186,7 +190,9 @@ object_tangible_deed_city_deed_shared_bank_tatooine_deed = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 613943705
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_bank_tatooine_deed, 613943705)
@@ -236,7 +242,9 @@ object_tangible_deed_city_deed_shared_cantina_corellia_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2192147369
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cantina_corellia_deed, 2192147369)
@@ -286,7 +294,9 @@ object_tangible_deed_city_deed_shared_cantina_naboo_deed = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1331321297
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cantina_naboo_deed, 1331321297)
@@ -336,7 +346,9 @@ object_tangible_deed_city_deed_shared_cantina_tatooine_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2983938480
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cantina_tatooine_deed, 2983938480)
@@ -386,7 +398,9 @@ object_tangible_deed_city_deed_shared_cityhall_corellia_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2784919551
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cityhall_corellia_deed, 2784919551)
@@ -436,7 +450,9 @@ object_tangible_deed_city_deed_shared_cityhall_naboo_deed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3662935696
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cityhall_naboo_deed, 3662935696)
@@ -486,7 +502,9 @@ object_tangible_deed_city_deed_shared_cityhall_tatooine_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2525804006
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cityhall_tatooine_deed, 2525804006)
@@ -536,7 +554,9 @@ object_tangible_deed_city_deed_shared_cloning_corellia_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1835066567
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cloning_corellia_deed, 1835066567)
@@ -586,7 +606,9 @@ object_tangible_deed_city_deed_shared_cloning_naboo_deed = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2532276742
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cloning_naboo_deed, 2532276742)
@@ -636,7 +658,9 @@ object_tangible_deed_city_deed_shared_cloning_tatooine_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1578249950
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_cloning_tatooine_deed, 1578249950)
@@ -686,7 +710,9 @@ object_tangible_deed_city_deed_shared_garage_corellia_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2847017824
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garage_corellia_deed, 2847017824)
@@ -736,7 +762,9 @@ object_tangible_deed_city_deed_shared_garage_naboo_deed = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3208167004
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garage_naboo_deed, 3208167004)
@@ -786,7 +814,9 @@ object_tangible_deed_city_deed_shared_garage_tatooine_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2596323705
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garage_tatooine_deed, 2596323705)
@@ -836,7 +866,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2592373233
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed, 2592373233)
@@ -886,7 +918,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 536118511
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed, 536118511)
@@ -936,7 +970,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2674140296
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed, 2674140296)
@@ -986,7 +1022,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 299131748
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed, 299131748)
@@ -1036,7 +1074,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2437202691
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed, 2437202691)
@@ -1086,7 +1126,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3319304199
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed, 3319304199)
@@ -1136,7 +1178,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1084779801
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed, 1084779801)
@@ -1186,7 +1230,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3224948094
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed, 3224948094)
@@ -1236,7 +1282,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1317571218
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed, 1317571218)
@@ -1286,7 +1334,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3457690357
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed, 3457690357)
@@ -1336,7 +1386,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2095683295
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed, 2095683295)
@@ -1386,7 +1438,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4187581377
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed, 4187581377)
@@ -1436,7 +1490,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2030685094
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed, 2030685094)
@@ -1486,7 +1542,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4156132426
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed, 4156132426)
@@ -1536,7 +1594,9 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1999186989
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed, 1999186989)
@@ -1586,7 +1646,9 @@ object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1153184823
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed, 1153184823)
@@ -1636,7 +1698,9 @@ object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 467721665
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed, 467721665)
@@ -1686,7 +1750,9 @@ object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2731662105
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed, 2731662105)
@@ -1736,7 +1802,9 @@ object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3330359214
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed, 3330359214)
@@ -1786,7 +1854,9 @@ object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2581452376
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed, 2581452376)
@@ -1836,7 +1906,9 @@ object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 552390784
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed, 552390784)
@@ -1886,7 +1958,9 @@ object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4266378949
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed, 4266378949)
@@ -1936,7 +2010,9 @@ object_tangible_deed_city_deed_shared_garden_endor_med_01_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2702651187
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_endor_med_01_deed, 2702651187)
@@ -1986,7 +2062,9 @@ object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 405154283
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed, 405154283)
@@ -2036,7 +2114,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 410853409
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed, 410853409)
@@ -2086,7 +2166,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2634931519
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed, 2634931519)
@@ -2136,7 +2218,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 496860504
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed, 496860504)
@@ -2186,7 +2270,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2469214900
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed, 2469214900)
@@ -2236,7 +2322,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 331193043
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed, 331193043)
@@ -2286,7 +2374,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1193396695
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed, 1193396695)
@@ -2336,7 +2426,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3260101833
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed, 3260101833)
@@ -2386,7 +2478,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1119982766
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed, 1119982766)
@@ -2436,7 +2530,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3430011714
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed, 3430011714)
@@ -2486,7 +2582,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1289843493
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed, 1289843493)
@@ -2536,7 +2634,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4262514447
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed, 4262514447)
@@ -2586,7 +2686,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2069901841
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed, 2069901841)
@@ -2636,7 +2738,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4226847350
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed, 4226847350)
@@ -2686,7 +2790,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1967183258
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed, 1967183258)
@@ -2736,7 +2842,9 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4124079613
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed, 4124079613)
@@ -2786,7 +2894,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1472425069
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed, 1472425069)
@@ -2836,7 +2946,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3534983539
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed, 3534983539)
@@ -2886,7 +2998,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1378038036
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed, 1378038036)
@@ -2936,7 +3050,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3700651768
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed, 3700651768)
@@ -2986,7 +3102,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1543755423
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed, 1543755423)
@@ -3036,7 +3154,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 144672155
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed, 144672155)
@@ -3086,7 +3206,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2381281413
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed, 2381281413)
@@ -3136,7 +3258,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 226482402
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed, 226482402)
@@ -3186,7 +3310,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2211421966
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed, 2211421966)
@@ -3236,7 +3362,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 56573801
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed, 56573801)
@@ -3286,7 +3414,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2981004099
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed, 2981004099)
@@ -3336,7 +3466,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 886996573
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed, 886996573)
@@ -3386,7 +3518,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3025067578
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed, 3025067578)
@@ -3436,7 +3570,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 989764054
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed, 989764054)
@@ -3486,7 +3622,9 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3127785905
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed, 3127785905)
@@ -3536,7 +3674,9 @@ object_tangible_deed_city_deed_shared_hospital_corellia_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2836026000
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_hospital_corellia_deed, 2836026000)
@@ -3586,7 +3726,9 @@ object_tangible_deed_city_deed_shared_hospital_naboo_deed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1107375302
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_hospital_naboo_deed, 1107375302)
@@ -3636,7 +3778,9 @@ object_tangible_deed_city_deed_shared_hospital_tatooine_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2591594633
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_hospital_tatooine_deed, 2591594633)
@@ -3686,7 +3830,9 @@ object_tangible_deed_city_deed_shared_shuttleport_corellia_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3681788535
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_shuttleport_corellia_deed, 3681788535)
@@ -3736,7 +3882,9 @@ object_tangible_deed_city_deed_shared_shuttleport_naboo_deed = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1379109301
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_shuttleport_naboo_deed, 1379109301)
@@ -3786,7 +3934,9 @@ object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3892406382
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed, 3892406382)
@@ -3836,7 +3986,9 @@ object_tangible_deed_city_deed_shared_theater_corellia_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 613379311
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_theater_corellia_deed, 613379311)
@@ -3886,7 +4038,9 @@ object_tangible_deed_city_deed_shared_theater_naboo_deed = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3022502254
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_theater_naboo_deed, 3022502254)
@@ -3936,7 +4090,9 @@ object_tangible_deed_city_deed_shared_theater_tatooine_deed = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 402499318
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_shared_theater_tatooine_deed, 402499318)

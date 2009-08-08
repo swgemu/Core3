@@ -90,7 +90,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3488117788
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe, 3488117788)
@@ -144,7 +146,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjec
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2823273971
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest, 2823273971)
@@ -198,7 +202,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectT
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1699236305
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack, 1699236305)
@@ -252,7 +258,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1737909268
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_cleaver, 1737909268)
@@ -306,7 +314,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1688331731
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana, 1688331731)
@@ -360,7 +370,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTe
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2213862016
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana_quest, 2213862016)
@@ -414,7 +426,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 248141391
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_maul, 248141391)
@@ -468,7 +482,9 @@ object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3006583634
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_shared_2h_sword_scythe, 3006583634)

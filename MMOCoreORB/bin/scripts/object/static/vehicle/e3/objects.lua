@@ -75,7 +75,9 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2401779536
 }
 
 ObjectTemplates:addTemplate(object_static_vehicle_e3_shared_landspeeder, 2401779536)

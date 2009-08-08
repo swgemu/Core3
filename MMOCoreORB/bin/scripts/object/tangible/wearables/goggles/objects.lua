@@ -86,7 +86,9 @@ object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 970341305
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s01, 970341305)
@@ -136,7 +138,9 @@ object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3804336942
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s02, 3804336942)
@@ -186,7 +190,9 @@ object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2882335907
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s03, 2882335907)
@@ -236,7 +242,9 @@ object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1345314743
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s04, 1345314743)
@@ -286,7 +294,9 @@ object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 421705786
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s05, 421705786)
@@ -336,7 +346,9 @@ object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3258257581
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_goggles_s06, 3258257581)
@@ -386,7 +398,9 @@ object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 53819294
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_shared_rebreather, 53819294)

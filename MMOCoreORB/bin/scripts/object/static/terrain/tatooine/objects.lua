@@ -75,7 +75,9 @@ object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2387521344
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine, 2387521344)
@@ -114,7 +116,9 @@ object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3940129403
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor, 3940129403)
@@ -153,7 +157,9 @@ object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3663567208
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1, 3663567208)
@@ -192,7 +198,9 @@ object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3478274265
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1, 3478274265)
@@ -231,7 +239,9 @@ object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1 = SharedS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3539268114
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1, 3539268114)
@@ -270,7 +280,9 @@ object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 611566460
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1, 611566460)
@@ -309,7 +321,9 @@ object_static_terrain_tatooine_shared_rock_spire_fin_tatooine = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1526101729
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_fin_tatooine, 1526101729)
@@ -348,7 +362,9 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3421956208
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine, 3421956208)
@@ -387,7 +403,9 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1746495727
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1, 1746495727)
@@ -426,7 +444,9 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3004088440
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2, 3004088440)
@@ -465,7 +485,9 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 505839558
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine, 505839558)
@@ -504,7 +526,9 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 24378186
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1, 24378186)
@@ -543,7 +567,9 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3664008157
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2, 3664008157)
@@ -582,7 +608,9 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine = SharedStaticO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3455314010
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine, 3455314010)
@@ -621,7 +649,9 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 323068853
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1, 323068853)
@@ -660,7 +690,9 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3361082146
 }
 
 ObjectTemplates:addTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2, 3361082146)

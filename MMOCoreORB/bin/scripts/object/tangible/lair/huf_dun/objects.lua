@@ -86,7 +86,9 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 323029276
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun, 323029276)
@@ -136,7 +138,9 @@ object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1957462040
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_huf_dun_shared_lair_huf_dun_grassland, 1957462040)

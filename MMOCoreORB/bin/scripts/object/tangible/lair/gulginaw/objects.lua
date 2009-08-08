@@ -86,7 +86,9 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 129775004
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, 129775004)
@@ -136,7 +138,9 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3528407820
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, 3528407820)

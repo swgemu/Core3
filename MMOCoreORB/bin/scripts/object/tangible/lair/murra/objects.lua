@@ -86,7 +86,9 @@ object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1522261205
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra, 1522261205)
@@ -136,7 +138,9 @@ object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1680788890
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, 1680788890)
@@ -186,7 +190,9 @@ object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3942109536
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, 3942109536)

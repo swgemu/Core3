@@ -86,7 +86,9 @@ object_tangible_component_food_base_shared_drink_container_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1975147691
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_base_shared_drink_container_base, 1975147691)

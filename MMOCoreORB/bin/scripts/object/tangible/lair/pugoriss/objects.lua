@@ -86,7 +86,9 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1270614001
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, 1270614001)
@@ -136,7 +138,9 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3218295663
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, 3218295663)

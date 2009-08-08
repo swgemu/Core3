@@ -86,7 +86,9 @@ object_tangible_deed_factory_deed_shared_factory_clothing_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1812501477
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_clothing_deed, 1812501477)
@@ -136,7 +138,9 @@ object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3488359653
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_food_deed, 3488359653)
@@ -186,7 +190,9 @@ object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4246665338
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_item_deed, 4246665338)
@@ -236,7 +242,9 @@ object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2385714184
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_shared_factory_structure_deed, 2385714184)

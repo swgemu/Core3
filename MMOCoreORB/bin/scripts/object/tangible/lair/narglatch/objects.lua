@@ -86,7 +86,9 @@ object_tangible_lair_narglatch_shared_lair_narglatch = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1786171158
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_narglatch_shared_lair_narglatch, 1786171158)
@@ -136,7 +138,9 @@ object_tangible_lair_narglatch_shared_lair_narglatch_swamp = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1005548587
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_narglatch_shared_lair_narglatch_swamp, 1005548587)

@@ -86,7 +86,9 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4003634872
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, 4003634872)
@@ -136,7 +138,9 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1455751773
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, 1455751773)

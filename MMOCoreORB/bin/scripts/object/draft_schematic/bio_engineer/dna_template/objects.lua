@@ -75,7 +75,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4075558247
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler, 4075558247)
@@ -114,7 +116,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3258253069
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha, 3258253069)
@@ -153,7 +157,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1415032707
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax, 1415032707)
@@ -192,7 +198,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2718719227
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg, 2718719227)
@@ -231,7 +239,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 359532674
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol, 359532674)
@@ -270,7 +280,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3039475182
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol, 3039475182)
@@ -309,7 +321,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1304346718
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma, 1304346718)
@@ -348,7 +362,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1635634277
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset, 1635634277)
@@ -387,7 +403,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spa
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3075374860
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spat, 3075374860)
@@ -426,7 +444,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 288717653
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku, 288717653)
@@ -465,7 +485,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 297710271
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake, 297710271)
@@ -504,7 +526,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3338837483
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback, 3338837483)
@@ -543,7 +567,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2059152312
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie, 2059152312)
@@ -582,7 +608,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1502836358
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset, 1502836358)
@@ -621,7 +649,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2789137412
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa, 2789137412)
@@ -660,7 +690,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3001518312
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic, 3001518312)
@@ -699,7 +731,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2184886456
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama, 2184886456)
@@ -738,7 +772,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2546683411
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg, 2546683411)
@@ -777,7 +813,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3985344902
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat, 3985344902)
@@ -816,7 +854,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1160895673
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck, 1160895673)
@@ -855,7 +895,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1556686347
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu, 1556686347)
@@ -894,7 +936,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 184501953
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra, 184501953)
@@ -933,7 +977,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3650412283
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila, 3650412283)
@@ -972,7 +1018,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3983133143
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu, 3983133143)
@@ -1011,7 +1059,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3839276474
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak, 3839276474)
@@ -1050,7 +1100,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3256313792
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch, 3256313792)
@@ -1089,7 +1141,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3125557602
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss, 3125557602)
@@ -1128,7 +1182,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4198261306
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor, 4198261306)
@@ -1167,7 +1223,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1283189937
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto, 1283189937)
@@ -1206,7 +1264,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panthe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1137121554
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panther, 1137121554)
@@ -1245,7 +1305,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 891571292
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal, 891571292)
@@ -1284,7 +1346,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2685742161
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton, 2685742161)
@@ -1323,7 +1387,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2848231352
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis, 2848231352)
@@ -1362,7 +1428,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 939860357
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok, 939860357)
@@ -1401,7 +1469,9 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2084231750
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar, 2084231750)

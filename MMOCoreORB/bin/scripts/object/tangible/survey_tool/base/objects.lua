@@ -86,7 +86,9 @@ object_tangible_survey_tool_base_shared_survey_tool_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2568376858
 }
 
 ObjectTemplates:addTemplate(object_tangible_survey_tool_base_shared_survey_tool_base, 2568376858)

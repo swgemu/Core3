@@ -75,7 +75,9 @@ object_draft_schematic_weapon_component_shared_blade_vibro_unit = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 642464593
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blade_vibro_unit, 642464593)
@@ -114,7 +116,9 @@ object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2591525916
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blade_vibro_unit_advanced, 2591525916)
@@ -153,7 +157,9 @@ object_draft_schematic_weapon_component_shared_blaster_pistol_barrel = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1763890276
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_pistol_barrel, 1763890276)
@@ -192,7 +198,9 @@ object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2411109221
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_pistol_barrel_advanced, 2411109221)
@@ -231,7 +239,9 @@ object_draft_schematic_weapon_component_shared_blaster_power_handler = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 291466906
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_power_handler, 291466906)
@@ -270,7 +280,9 @@ object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 669027229
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_power_handler_advanced, 669027229)
@@ -309,7 +321,9 @@ object_draft_schematic_weapon_component_shared_blaster_rifle_barrel = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3017432687
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_rifle_barrel, 3017432687)
@@ -348,7 +362,9 @@ object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2415303462
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_blaster_rifle_barrel_advanced, 2415303462)
@@ -387,7 +403,9 @@ object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4093058849
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism, 4093058849)
@@ -426,7 +444,9 @@ object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_adv
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3692236674
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_chemical_dispersion_mechanism_advanced, 3692236674)
@@ -465,7 +485,9 @@ object_draft_schematic_weapon_component_shared_energization_crystals = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3330558458
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_energization_crystals, 3330558458)
@@ -504,7 +526,9 @@ object_draft_schematic_weapon_component_shared_galven_tube_circuits = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1314707956
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_galven_tube_circuits, 1314707956)
@@ -543,7 +567,9 @@ object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4113789241
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_cannon_cooling_sleeve, 4113789241)
@@ -582,7 +608,9 @@ object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2303806735
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_cannon_gun_tube, 2303806735)
@@ -621,7 +649,9 @@ object_draft_schematic_weapon_component_shared_laser_generator = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4238408983
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_generator, 4238408983)
@@ -660,7 +690,9 @@ object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supresso
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3558702385
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_laser_magnetic_flashback_supressor, 3558702385)
@@ -699,7 +731,9 @@ object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_compute
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3824855701
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_parallel_weapon_targeting_computer, 3824855701)
@@ -738,7 +772,9 @@ object_draft_schematic_weapon_component_shared_projectile_feed_mechanism = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3297087256
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_feed_mechanism, 3297087256)
@@ -777,7 +813,9 @@ object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advance
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 262118266
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_feed_mechanism_advanced, 262118266)
@@ -816,7 +854,9 @@ object_draft_schematic_weapon_component_shared_projectile_pistol_barrel = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2418709976
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_pistol_barrel, 2418709976)
@@ -855,7 +895,9 @@ object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3111961622
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_pistol_barrel_advanced, 3111961622)
@@ -894,7 +936,9 @@ object_draft_schematic_weapon_component_shared_projectile_rifle_barrel = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 365494069
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_rifle_barrel, 365494069)
@@ -933,7 +977,9 @@ object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1631155967
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_projectile_rifle_barrel_advanced, 1631155967)
@@ -972,7 +1018,9 @@ object_draft_schematic_weapon_component_shared_reinforcement_core = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2874693612
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core, 2874693612)
@@ -1011,7 +1059,9 @@ object_draft_schematic_weapon_component_shared_reinforcement_core_advanced = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1668239813
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core_advanced, 1668239813)
@@ -1050,7 +1100,9 @@ object_draft_schematic_weapon_component_shared_reinforcement_core_geo = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1540459451
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_reinforcement_core_geo, 1540459451)
@@ -1089,7 +1141,9 @@ object_draft_schematic_weapon_component_shared_scope_weapon = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3596514252
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_scope_weapon, 3596514252)
@@ -1128,7 +1182,9 @@ object_draft_schematic_weapon_component_shared_scope_weapon_advanced = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3611829706
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_scope_weapon_advanced, 3611829706)
@@ -1167,7 +1223,9 @@ object_draft_schematic_weapon_component_shared_stock = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 507005578
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_stock, 507005578)
@@ -1206,7 +1264,9 @@ object_draft_schematic_weapon_component_shared_stock_advanced = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1592695997
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_stock_advanced, 1592695997)
@@ -1245,7 +1305,9 @@ object_draft_schematic_weapon_component_shared_sword_core = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4049686729
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_sword_core, 4049686729)
@@ -1284,7 +1346,9 @@ object_draft_schematic_weapon_component_shared_sword_core_advanced = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4271255485
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_sword_core_advanced, 4271255485)
@@ -1323,7 +1387,9 @@ object_draft_schematic_weapon_component_shared_sword_core_geo = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2844636480
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_sword_core_geo, 2844636480)
@@ -1362,7 +1428,9 @@ object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 522996520
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_turbo_laser_gun_tube, 522996520)
@@ -1401,7 +1469,9 @@ object_draft_schematic_weapon_component_shared_weapon_mount = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3571298637
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_mount, 3571298637)
@@ -1440,7 +1510,9 @@ object_draft_schematic_weapon_component_shared_weapon_mount_light = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3504836884
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_mount_light, 3504836884)
@@ -1479,7 +1551,9 @@ object_draft_schematic_weapon_component_shared_weapon_targeting_computer = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2837944775
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_targeting_computer, 2837944775)
@@ -1518,7 +1592,9 @@ object_draft_schematic_weapon_component_shared_weapon_trajectory_computer = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3402034090
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_shared_weapon_trajectory_computer, 3402034090)

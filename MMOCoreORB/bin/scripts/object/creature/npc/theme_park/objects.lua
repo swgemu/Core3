@@ -110,7 +110,9 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1686537229
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport, 1686537229)
@@ -184,7 +186,9 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3010351388
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, 3010351388)
@@ -258,7 +262,9 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3752954766
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, 3752954766)
@@ -332,7 +338,9 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3655546204
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, 3655546204)
@@ -406,7 +414,9 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1984806965
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_shuttle, 1984806965)
@@ -480,7 +490,9 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1196401137
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport, 1196401137)
@@ -554,7 +566,9 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 773296996
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_shared_player_transport_theed_hangar, 773296996)

@@ -86,7 +86,9 @@ object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3826434758
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock, 3826434758)
@@ -136,7 +138,9 @@ object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 453779300
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, 453779300)
@@ -186,7 +190,9 @@ object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2882460738
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, 2882460738)
@@ -236,7 +242,9 @@ object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1253121111
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, 1253121111)

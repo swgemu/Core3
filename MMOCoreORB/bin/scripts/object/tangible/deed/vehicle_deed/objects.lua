@@ -86,7 +86,9 @@ object_tangible_deed_vehicle_deed_shared_jetpack_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2560190060
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_jetpack_deed, 2560190060)
@@ -136,7 +138,9 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3746524983
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed, 3746524983)
@@ -186,7 +190,9 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3199159464
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed, 3199159464)
@@ -236,7 +242,9 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 905926205
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed, 905926205)
@@ -286,7 +294,9 @@ object_tangible_deed_vehicle_deed_shared_speederbike_deed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4075476273
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_deed, 4075476273)
@@ -336,7 +346,9 @@ object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1892530279
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed, 1892530279)
@@ -386,7 +398,9 @@ object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 495473751
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed, 495473751)
@@ -436,7 +450,9 @@ object_tangible_deed_vehicle_deed_shared_vehicle_deed_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 504910832
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicle_deed_base, 504910832)
@@ -486,7 +502,9 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1262265566
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed, 1262265566)
@@ -536,7 +554,9 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3990622047
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed, 3990622047)

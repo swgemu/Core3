@@ -86,7 +86,9 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 107997252
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_l, 107997252)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1991945687
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r, 1991945687)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2342857990
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate, 2342857990)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2303407451
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings, 2303407451)

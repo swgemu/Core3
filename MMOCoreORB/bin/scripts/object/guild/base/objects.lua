@@ -75,7 +75,9 @@ object_guild_base_shared_base_guild = SharedGuildObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2854935626
 }
 
 ObjectTemplates:addTemplate(object_guild_base_shared_base_guild, 2854935626)
@@ -114,7 +116,9 @@ object_guild_base_shared_guild_default = SharedGuildObjectTemplate:new {
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3744093888
 }
 
 ObjectTemplates:addTemplate(object_guild_base_shared_guild_default, 3744093888)

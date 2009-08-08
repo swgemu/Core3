@@ -86,7 +86,9 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 772926850
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap, 772926850)
@@ -136,7 +138,9 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1110501147
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest, 1110501147)

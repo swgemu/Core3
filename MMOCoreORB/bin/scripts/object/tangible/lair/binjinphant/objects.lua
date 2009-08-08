@@ -86,7 +86,9 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 40317031
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant, 40317031)
@@ -136,7 +138,9 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant_forest = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 165640576
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant_forest, 165640576)

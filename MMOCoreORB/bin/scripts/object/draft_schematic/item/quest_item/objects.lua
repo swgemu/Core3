@@ -75,7 +75,9 @@ object_draft_schematic_item_quest_item_shared_attunement_grid = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4038906353
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_attunement_grid, 4038906353)
@@ -114,7 +116,9 @@ object_draft_schematic_item_quest_item_shared_current_alternator = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4250243198
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_current_alternator, 4250243198)
@@ -153,7 +157,9 @@ object_draft_schematic_item_quest_item_shared_feedback_controller = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3237757933
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_feedback_controller, 3237757933)
@@ -192,7 +198,9 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4025902927
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor, 4025902927)
@@ -231,7 +239,9 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1486639811
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip, 1486639811)
@@ -270,7 +280,9 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1039066742
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver, 1039066742)
@@ -309,7 +321,9 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2171554059
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp, 2171554059)
@@ -348,7 +362,9 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4028815217
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array, 4028815217)
@@ -387,7 +403,9 @@ object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1522512719
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack, 1522512719)
@@ -426,7 +444,9 @@ object_draft_schematic_item_quest_item_shared_output_governor = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 863982881
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_output_governor, 863982881)
@@ -465,7 +485,9 @@ object_draft_schematic_item_quest_item_shared_power_regulator = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2816707854
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_quest_item_shared_power_regulator, 2816707854)

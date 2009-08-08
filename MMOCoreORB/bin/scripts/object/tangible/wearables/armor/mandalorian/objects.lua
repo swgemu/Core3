@@ -86,7 +86,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1505873604
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, 1505873604)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2184224460
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, 2184224460)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4075150175
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, 4075150175)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4163428868
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, 4163428868)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2298324887
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, 2298324887)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 609377308
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, 609377308)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2170849590
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, 2170849590)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 933521470
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, 933521470)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1997291291
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, 1997291291)
@@ -536,7 +554,9 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2225952259
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, 2225952259)

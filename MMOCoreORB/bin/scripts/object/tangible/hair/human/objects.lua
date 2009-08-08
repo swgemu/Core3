@@ -86,7 +86,9 @@ object_tangible_hair_human_shared_hair_human_female_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3485410635
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s01, 3485410635)
@@ -136,7 +138,9 @@ object_tangible_hair_human_shared_hair_human_female_s02 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 346590684
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s02, 346590684)
@@ -186,7 +190,9 @@ object_tangible_hair_human_shared_hair_human_female_s03 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1571154513
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s03, 1571154513)
@@ -236,7 +242,9 @@ object_tangible_hair_human_shared_hair_human_female_s04 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2789654853
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s04, 2789654853)
@@ -286,7 +294,9 @@ object_tangible_hair_human_shared_hair_human_female_s05 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4014712520
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s05, 4014712520)
@@ -336,7 +346,9 @@ object_tangible_hair_human_shared_hair_human_female_s06 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 878448223
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s06, 878448223)
@@ -386,7 +398,9 @@ object_tangible_hair_human_shared_hair_human_female_s07 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2102487506
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s07, 2102487506)
@@ -436,7 +450,9 @@ object_tangible_hair_human_shared_hair_human_female_s08 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3344647616
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s08, 3344647616)
@@ -486,7 +502,9 @@ object_tangible_hair_human_shared_hair_human_female_s09 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2388009549
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s09, 2388009549)
@@ -536,7 +554,9 @@ object_tangible_hair_human_shared_hair_human_female_s10 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2644135870
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s10, 2644135870)
@@ -586,7 +606,9 @@ object_tangible_hair_human_shared_hair_human_female_s11 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3566676019
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s11, 3566676019)
@@ -636,7 +658,9 @@ object_tangible_hair_human_shared_hair_human_female_s12 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 260079780
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s12, 260079780)
@@ -686,7 +710,9 @@ object_tangible_hair_human_shared_hair_human_female_s14 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3178155069
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s14, 3178155069)
@@ -736,7 +762,9 @@ object_tangible_hair_human_shared_hair_human_female_s15 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4100172720
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s15, 4100172720)
@@ -786,7 +814,9 @@ object_tangible_hair_human_shared_hair_human_female_s16 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 796132135
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s16, 796132135)
@@ -836,7 +866,9 @@ object_tangible_hair_human_shared_hair_human_female_s17 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1719231658
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s17, 1719231658)
@@ -886,7 +918,9 @@ object_tangible_hair_human_shared_hair_human_female_s18 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3698542776
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s18, 3698542776)
@@ -936,7 +970,9 @@ object_tangible_hair_human_shared_hair_human_female_s19 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2508074805
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s19, 2508074805)
@@ -986,7 +1022,9 @@ object_tangible_hair_human_shared_hair_human_female_s20 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2967623734
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s20, 2967623734)
@@ -1036,7 +1074,9 @@ object_tangible_hair_human_shared_hair_human_female_s21 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4193206203
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s21, 4193206203)
@@ -1086,7 +1126,9 @@ object_tangible_hair_human_shared_hair_human_female_s22 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 586716972
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s22, 586716972)
@@ -1136,7 +1178,9 @@ object_tangible_hair_human_shared_hair_human_female_s23 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1811280033
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s23, 1811280033)
@@ -1186,7 +1230,9 @@ object_tangible_hair_human_shared_hair_human_female_s24 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2417417141
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s24, 2417417141)
@@ -1236,7 +1282,9 @@ object_tangible_hair_human_shared_hair_human_female_s25 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3642473528
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s25, 3642473528)
@@ -1286,7 +1334,9 @@ object_tangible_hair_human_shared_hair_human_female_s26 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 34346159
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s26, 34346159)
@@ -1336,7 +1386,9 @@ object_tangible_hair_human_shared_hair_human_female_s27 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1258386210
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s27, 1258386210)
@@ -1386,7 +1438,9 @@ object_tangible_hair_human_shared_hair_human_female_s30 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2882164046
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s30, 2882164046)
@@ -1436,7 +1490,9 @@ object_tangible_hair_human_shared_hair_human_female_s31 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3804705475
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s31, 3804705475)
@@ -1486,7 +1542,9 @@ object_tangible_hair_human_shared_hair_human_female_s32 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 969972308
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s32, 969972308)
@@ -1536,7 +1594,9 @@ object_tangible_hair_human_shared_hair_human_female_s34 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2336151245
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s34, 2336151245)
@@ -1586,7 +1646,9 @@ object_tangible_hair_human_shared_hair_human_female_s35 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3258167616
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s35, 3258167616)
@@ -1636,7 +1698,9 @@ object_tangible_hair_human_shared_hair_human_female_s36 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 421796311
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s36, 421796311)
@@ -1686,7 +1750,9 @@ object_tangible_hair_human_shared_hair_human_female_s37 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1344896602
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s37, 1344896602)
@@ -1736,7 +1802,9 @@ object_tangible_hair_human_shared_hair_human_female_s38 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3928183368
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s38, 3928183368)
@@ -1786,7 +1854,9 @@ object_tangible_hair_human_shared_hair_human_female_s39 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2737714629
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s39, 2737714629)
@@ -1836,7 +1906,9 @@ object_tangible_hair_human_shared_hair_human_female_s40 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3927078694
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s40, 3927078694)
@@ -1886,7 +1958,9 @@ object_tangible_hair_human_shared_hair_human_female_s41 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2736722091
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s41, 2736722091)
@@ -1936,7 +2010,9 @@ object_tangible_hair_human_shared_hair_human_female_s42 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2013837372
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_female_s42, 2013837372)
@@ -1986,7 +2062,9 @@ object_tangible_hair_human_shared_hair_human_male_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2377331336
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s01, 2377331336)
@@ -2036,7 +2114,9 @@ object_tangible_hair_human_shared_hair_human_male_s02 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1453627935
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s02, 1453627935)
@@ -2086,7 +2166,9 @@ object_tangible_hair_human_shared_hair_human_male_s03 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 531234194
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s03, 531234194)
@@ -2136,7 +2218,9 @@ object_tangible_hair_human_shared_hair_human_male_s04 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3830109830
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s04, 3830109830)
@@ -2186,7 +2270,9 @@ object_tangible_hair_human_shared_hair_human_male_s05 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2907156747
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s05, 2907156747)
@@ -2236,7 +2322,9 @@ object_tangible_hair_human_shared_hair_human_male_s06 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1984960924
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s06, 1984960924)
@@ -2286,7 +2374,9 @@ object_tangible_hair_human_shared_hair_human_male_s07 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1063091729
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s07, 1063091729)
@@ -2336,7 +2426,9 @@ object_tangible_hair_human_shared_hair_human_male_s08 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2237092355
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s08, 2237092355)
@@ -2386,7 +2478,9 @@ object_tangible_hair_human_shared_hair_human_male_s09 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3428464014
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s09, 3428464014)
@@ -2436,7 +2530,9 @@ object_tangible_hair_human_shared_hair_human_male_s10 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3751172221
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s10, 3751172221)
@@ -2486,7 +2582,9 @@ object_tangible_hair_human_shared_hair_human_male_s11 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2526756848
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s11, 2526756848)
@@ -2536,7 +2634,9 @@ object_tangible_hair_human_shared_hair_human_male_s12 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1301059431
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s12, 1301059431)
@@ -2586,7 +2686,9 @@ object_tangible_hair_human_shared_hair_human_male_s13 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 75624682
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s13, 75624682)
@@ -2636,7 +2738,9 @@ object_tangible_hair_human_shared_hair_human_male_s14 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4284668926
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s14, 4284668926)
@@ -2686,7 +2790,9 @@ object_tangible_hair_human_shared_hair_human_male_s15 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3060776051
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s15, 3060776051)
@@ -2736,7 +2842,9 @@ object_tangible_hair_human_shared_hair_human_male_s16 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1836586212
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s16, 1836586212)
@@ -2786,7 +2894,9 @@ object_tangible_hair_human_shared_hair_human_male_s17 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 611677033
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s17, 611677033)
@@ -2836,7 +2946,9 @@ object_tangible_hair_human_shared_hair_human_male_s18 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2659147643
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s18, 2659147643)
@@ -2886,7 +2998,9 @@ object_tangible_hair_human_shared_hair_human_male_s19 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3614587126
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s19, 3614587126)
@@ -2936,7 +3050,9 @@ object_tangible_hair_human_shared_hair_human_male_s20 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4075704309
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s20, 4075704309)
@@ -2986,7 +3102,9 @@ object_tangible_hair_human_shared_hair_human_male_s21 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3152226424
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s21, 3152226424)
@@ -3036,7 +3154,9 @@ object_tangible_hair_human_shared_hair_human_male_s22 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1626636527
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s22, 1626636527)
@@ -3086,7 +3206,9 @@ object_tangible_hair_human_shared_hair_human_male_s23 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 704243554
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s23, 704243554)
@@ -3136,7 +3258,9 @@ object_tangible_hair_human_shared_hair_human_male_s24 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3524971638
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s24, 3524971638)
@@ -3186,7 +3310,9 @@ object_tangible_hair_human_shared_hair_human_male_s25 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2602019835
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s25, 2602019835)
@@ -3236,7 +3362,9 @@ object_tangible_hair_human_shared_hair_human_male_s26 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1073742700
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s26, 1073742700)
@@ -3286,7 +3414,9 @@ object_tangible_hair_human_shared_hair_human_male_s27 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 151872737
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s27, 151872737)
@@ -3336,7 +3466,9 @@ object_tangible_hair_human_shared_hair_human_male_s28 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3003599091
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s28, 3003599091)
@@ -3386,7 +3518,9 @@ object_tangible_hair_human_shared_hair_human_male_s29 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4194971518
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s29, 4194971518)
@@ -3436,7 +3570,9 @@ object_tangible_hair_human_shared_hair_human_male_s30 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3922084493
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s30, 3922084493)
@@ -3486,7 +3622,9 @@ object_tangible_hair_human_shared_hair_human_male_s31 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2697667840
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s31, 2697667840)
@@ -3536,7 +3674,9 @@ object_tangible_hair_human_shared_hair_human_male_s32 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2078051735
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s32, 2078051735)
@@ -3586,7 +3726,9 @@ object_tangible_hair_human_shared_hair_human_male_s33 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 852617754
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s33, 852617754)
@@ -3636,7 +3778,9 @@ object_tangible_hair_human_shared_hair_human_male_s34 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3375546638
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s34, 3375546638)
@@ -3686,7 +3830,9 @@ object_tangible_hair_human_shared_hair_human_male_s35 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2151655043
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s35, 2151655043)
@@ -3736,7 +3882,9 @@ object_tangible_hair_human_shared_hair_human_male_s37 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 304441753
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s37, 304441753)
@@ -3786,7 +3934,9 @@ object_tangible_hair_human_shared_hair_human_male_s38 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2821670283
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s38, 2821670283)
@@ -3836,7 +3986,9 @@ object_tangible_hair_human_shared_hair_human_male_s39 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3777110534
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s39, 3777110534)
@@ -3886,7 +4038,9 @@ object_tangible_hair_human_shared_hair_human_male_s40 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2820563173
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s40, 2820563173)
@@ -3936,7 +4090,9 @@ object_tangible_hair_human_shared_hair_human_male_s41 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3776120680
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_human_shared_hair_human_male_s41, 3776120680)

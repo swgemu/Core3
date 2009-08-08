@@ -75,7 +75,9 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1450417289
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_large, 1450417289)
@@ -114,7 +116,9 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3551226366
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_med, 3551226366)
@@ -153,7 +157,9 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1650985120
 }
 
 ObjectTemplates:addTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_small, 1650985120)

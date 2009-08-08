@@ -86,7 +86,9 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2218940295
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, 2218940295)

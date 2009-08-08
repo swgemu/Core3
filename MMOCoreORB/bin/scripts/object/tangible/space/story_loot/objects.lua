@@ -86,7 +86,9 @@ object_tangible_space_story_loot_shared_loot_all_freighter = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3579895697
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_all_freighter, 3579895697)
@@ -136,7 +138,9 @@ object_tangible_space_story_loot_shared_loot_all_freighter_2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3551864923
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_all_freighter_2, 3551864923)
@@ -186,7 +190,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_anthro = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1723215073
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_anthro, 1723215073)
@@ -236,7 +242,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_anthro2 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 592143953
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_anthro2, 592143953)
@@ -286,7 +294,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_blacksun = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3245065394
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_blacksun, 3245065394)
@@ -336,7 +346,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_blacksun2 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 298529626
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_blacksun2, 298529626)
@@ -386,7 +398,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_force = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4024561732
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_force, 4024561732)
@@ -436,7 +450,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_imp = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2359349823
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_imp, 2359349823)
@@ -486,7 +502,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_imp2 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3751168254
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_imp2, 3751168254)
@@ -536,7 +554,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_junk = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 506610356
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk, 506610356)
@@ -586,7 +606,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_junk2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1637466894
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk2, 1637466894)
@@ -636,7 +658,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_junk3 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 680830083
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_junk3, 680830083)
@@ -686,7 +710,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_mining = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1853798346
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_mining, 1853798346)
@@ -736,7 +762,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_mining2 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3453526249
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_mining2, 3453526249)
@@ -786,7 +814,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_rebel = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3847010341
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_rebel, 3847010341)
@@ -836,7 +866,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_rebel2 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3180356710
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_rebel2, 3180356710)
@@ -886,7 +918,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_scavengers = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1838597503
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers, 1838597503)
@@ -936,7 +970,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_scavengers2 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 686371632
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers2, 686371632)
@@ -986,7 +1022,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_scavengers3 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1642353853
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_scavengers3, 1642353853)
@@ -1036,7 +1074,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_slave = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3661960880
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_slave, 3661960880)
@@ -1086,7 +1126,9 @@ object_tangible_space_story_loot_shared_loot_dantooine_warren = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1982024474
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_dantooine_warren, 1982024474)
@@ -1136,7 +1178,9 @@ object_tangible_space_story_loot_shared_loot_endor_artisan = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 843112558
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_endor_artisan, 843112558)
@@ -1186,7 +1230,9 @@ object_tangible_space_story_loot_shared_loot_endor_artisan2 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3188995210
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_endor_artisan2, 3188995210)
@@ -1236,7 +1282,9 @@ object_tangible_space_story_loot_shared_loot_endor_series_tinrilo = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4247652196
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_endor_series_tinrilo, 4247652196)
@@ -1286,7 +1334,9 @@ object_tangible_space_story_loot_shared_loot_naboo_borvo = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1520410243
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_borvo, 1520410243)
@@ -1336,7 +1386,9 @@ object_tangible_space_story_loot_shared_loot_naboo_civspeeder = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2417494884
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_civspeeder, 2417494884)
@@ -1386,7 +1438,9 @@ object_tangible_space_story_loot_shared_loot_naboo_droid = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1611326943
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_droid, 1611326943)
@@ -1436,7 +1490,9 @@ object_tangible_space_story_loot_shared_loot_naboo_imperial = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 854700506
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_imperial, 854700506)
@@ -1486,7 +1542,9 @@ object_tangible_space_story_loot_shared_loot_naboo_miner = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1114974083
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_miner, 1114974083)
@@ -1536,7 +1594,9 @@ object_tangible_space_story_loot_shared_loot_naboo_rsf = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 355997813
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_rsf, 355997813)
@@ -1586,7 +1646,9 @@ object_tangible_space_story_loot_shared_loot_naboo_series_tinrilo = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3063834510
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_naboo_series_tinrilo, 3063834510)
@@ -1636,7 +1698,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_bestine_pirates = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3042526533
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_bestine_pirates, 3042526533)
@@ -1686,7 +1750,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_blacksun = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2091210633
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_blacksun, 2091210633)
@@ -1736,7 +1802,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_blacksun2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1403716599
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_blacksun2, 1403716599)
@@ -1786,7 +1854,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_hutt = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1733541614
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_hutt, 1733541614)
@@ -1836,7 +1906,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_imp = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 804394387
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_imp, 804394387)
@@ -1886,7 +1958,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_mining = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2776381679
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_mining, 2776381679)
@@ -1936,7 +2010,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_rebel = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2201065761
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_rebel, 2201065761)
@@ -1986,7 +2062,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_series_tinrilo = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1420399460
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_series_tinrilo, 1420399460)
@@ -2036,7 +2114,9 @@ object_tangible_space_story_loot_shared_loot_tatooine_valarian = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1385044449
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_tatooine_valarian, 1385044449)
@@ -2086,7 +2166,9 @@ object_tangible_space_story_loot_shared_loot_template = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4061585871
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_story_loot_shared_loot_template, 4061585871)

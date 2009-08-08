@@ -86,7 +86,9 @@ object_tangible_lair_vir_vir_shared_lair_vir_vir = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1439526693
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir, 1439526693)
@@ -136,7 +138,9 @@ object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1627499859
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland, 1627499859)

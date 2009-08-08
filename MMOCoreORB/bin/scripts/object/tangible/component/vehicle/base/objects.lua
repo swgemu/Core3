@@ -86,7 +86,9 @@ object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3466579247
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_armor_panel, 3466579247)
@@ -136,7 +138,9 @@ object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3375082309
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull, 3375082309)
@@ -186,7 +190,9 @@ object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1342686472
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull_hvy, 1342686472)
@@ -236,7 +242,9 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3126672435
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon, 3126672435)
@@ -286,7 +294,9 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4158223239
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy, 4158223239)

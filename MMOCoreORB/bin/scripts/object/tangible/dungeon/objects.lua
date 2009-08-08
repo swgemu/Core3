@@ -86,7 +86,9 @@ object_tangible_dungeon_shared_cave_stalagmite_ice_style_01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1546847010
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_cave_stalagmite_ice_style_01, 1546847010)
@@ -136,7 +138,9 @@ object_tangible_dungeon_shared_chemical_storage = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2171896668
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_chemical_storage, 2171896668)
@@ -186,7 +190,9 @@ object_tangible_dungeon_shared_coal_bin_container = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1342811705
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_coal_bin_container, 1342811705)
@@ -236,7 +242,9 @@ object_tangible_dungeon_shared_computer_desktop = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1483156059
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_computer_desktop, 1483156059)
@@ -286,7 +294,9 @@ object_tangible_dungeon_shared_computer_mainframe = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2299324292
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_computer_mainframe, 2299324292)
@@ -336,7 +346,9 @@ object_tangible_dungeon_shared_droid_maint_module = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3106365328
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_droid_maint_module, 3106365328)
@@ -386,7 +398,9 @@ object_tangible_dungeon_shared_keypad_terminal = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 307119363
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_keypad_terminal, 307119363)
@@ -436,7 +450,9 @@ object_tangible_dungeon_shared_poison_gas_cloud = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1380579021
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_poison_gas_cloud, 1380579021)
@@ -486,7 +502,9 @@ object_tangible_dungeon_shared_poison_stabilizer = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2249389472
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_poison_stabilizer, 2249389472)
@@ -536,7 +554,9 @@ object_tangible_dungeon_shared_terminal_free_s1 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2707720646
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_terminal_free_s1, 2707720646)
@@ -586,7 +606,9 @@ object_tangible_dungeon_shared_trash_container = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1529401041
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_trash_container, 1529401041)
@@ -636,7 +658,9 @@ object_tangible_dungeon_shared_wall_terminal_s1 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4069617127
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s1, 4069617127)
@@ -686,7 +710,9 @@ object_tangible_dungeon_shared_wall_terminal_s2 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 696698224
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s2, 696698224)
@@ -736,7 +762,9 @@ object_tangible_dungeon_shared_wall_terminal_s3 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1619763965
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s3, 1619763965)
@@ -786,7 +814,9 @@ object_tangible_dungeon_shared_wall_terminal_s4 = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2607319529
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_shared_wall_terminal_s4, 2607319529)

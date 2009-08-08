@@ -86,7 +86,9 @@ object_tangible_hair_bothan_base_shared_hair_bothan_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2550508164
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_base, 2550508164)
@@ -136,7 +138,9 @@ object_tangible_hair_bothan_base_shared_hair_bothan_female_base = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4122368933
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_female_base, 4122368933)
@@ -186,7 +190,9 @@ object_tangible_hair_bothan_base_shared_hair_bothan_male_base = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4062977600
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_male_base, 4062977600)

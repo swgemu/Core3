@@ -86,7 +86,9 @@ object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880238924
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tybis_shared_lair_tybis, 880238924)
@@ -136,7 +138,9 @@ object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4004634433
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, 4004634433)

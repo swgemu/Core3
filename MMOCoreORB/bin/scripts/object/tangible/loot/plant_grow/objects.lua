@@ -86,7 +86,9 @@ object_tangible_loot_plant_grow_shared_plant_stage_1 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3550223157
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_1, 3550223157)
@@ -136,7 +138,9 @@ object_tangible_loot_plant_grow_shared_plant_stage_2 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 143373218
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_2, 143373218)
@@ -186,7 +190,9 @@ object_tangible_loot_plant_grow_shared_plant_stage_3 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1099355183
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_3, 1099355183)
@@ -236,7 +242,9 @@ object_tangible_loot_plant_grow_shared_plant_stage_dead = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3320437812
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_plant_grow_shared_plant_stage_dead, 3320437812)

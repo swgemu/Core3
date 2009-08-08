@@ -86,7 +86,9 @@ object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4140396271
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_atat, 4140396271)
@@ -136,7 +138,9 @@ object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 430117123
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, 430117123)
@@ -186,7 +190,9 @@ object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2580358001
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, 2580358001)
@@ -236,7 +242,9 @@ object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1909608537
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, 1909608537)
@@ -286,7 +294,9 @@ object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4143277653
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, 4143277653)
@@ -336,7 +346,9 @@ object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1007682682
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_s06, 1007682682)
@@ -386,7 +398,9 @@ object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 49314199
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, 49314199)
@@ -436,7 +450,9 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4156063051
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, 4156063051)
@@ -486,7 +502,9 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 749721052
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, 749721052)

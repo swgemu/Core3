@@ -86,7 +86,9 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3190753462
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, 3190753462)
@@ -136,7 +138,9 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1664191883
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, 1664191883)

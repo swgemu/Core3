@@ -86,7 +86,9 @@ object_installation_faction_perk_turret_shared_block_lg = SharedInstallationObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2286796965
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block_lg, 2286796965)
@@ -136,7 +138,9 @@ object_installation_faction_perk_turret_shared_block_med = SharedInstallationObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1869715208
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block_med, 1869715208)
@@ -186,7 +190,9 @@ object_installation_faction_perk_turret_shared_block_sm = SharedInstallationObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1969720102
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_block_sm, 1969720102)
@@ -236,7 +242,9 @@ object_installation_faction_perk_turret_shared_dish_lg = SharedInstallationObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1581064772
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_dish_lg, 1581064772)
@@ -286,7 +294,9 @@ object_installation_faction_perk_turret_shared_dish_sm = SharedInstallationObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2736220615
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_dish_sm, 2736220615)
@@ -336,7 +346,9 @@ object_installation_faction_perk_turret_shared_tower_lg = SharedInstallationObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3604402557
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower_lg, 3604402557)
@@ -386,7 +398,9 @@ object_installation_faction_perk_turret_shared_tower_med = SharedInstallationObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2960737285
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower_med, 2960737285)
@@ -436,7 +450,9 @@ object_installation_faction_perk_turret_shared_tower_sm = SharedInstallationObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 737975038
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_shared_tower_sm, 737975038)

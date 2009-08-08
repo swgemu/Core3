@@ -86,7 +86,9 @@ object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 963242043
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_character_inventory, 963242043)
@@ -136,7 +138,9 @@ object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 554727708
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory, 554727708)
@@ -186,7 +190,9 @@ object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4169639267
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_1, 4169639267)
@@ -236,7 +242,9 @@ object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 596643316
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_2, 596643316)
@@ -286,7 +294,9 @@ object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1788701305
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_3, 1788701305)
@@ -336,7 +346,9 @@ object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2440970605
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_4, 2440970605)
@@ -386,7 +398,9 @@ object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3631425248
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_5, 3631425248)
@@ -436,7 +450,9 @@ object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 56921719
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_creature_inventory_6, 56921719)
@@ -486,7 +502,9 @@ object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3089628208
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_1, 3089628208)
@@ -536,7 +554,9 @@ object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1664111783
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_2, 1664111783)
@@ -586,7 +606,9 @@ object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 708653866
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_3, 708653866)
@@ -636,7 +658,9 @@ object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3520993342
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_4, 3520993342)
@@ -686,7 +710,9 @@ object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1036860999
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_base, 1036860999)
@@ -736,7 +762,9 @@ object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3030613257
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_lightsaber_inventory_training, 3030613257)
@@ -786,7 +814,9 @@ object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2721032514
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_shared_vendor_inventory, 2721032514)

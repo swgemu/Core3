@@ -86,7 +86,9 @@ object_tangible_gravestone_shared_gravestone01 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 479064205
 }
 
 ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone01, 479064205)
@@ -136,7 +138,9 @@ object_tangible_gravestone_shared_gravestone02 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3348781082
 }
 
 ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone02, 3348781082)
@@ -186,7 +190,9 @@ object_tangible_gravestone_shared_gravestone03 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2392276887
 }
 
 ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone03, 2392276887)
@@ -236,7 +242,9 @@ object_tangible_gravestone_shared_gravestone04 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1970541699
 }
 
 ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone04, 1970541699)
@@ -286,7 +294,9 @@ object_tangible_gravestone_shared_gravestone05 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1014592270
 }
 
 ObjectTemplates:addTemplate(object_tangible_gravestone_shared_gravestone05, 1014592270)

@@ -86,7 +86,9 @@ object_tangible_lair_bantha_shared_lair_bantha = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2351102801
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha, 2351102801)
@@ -136,7 +138,9 @@ object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 810600832
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_desert, 810600832)
@@ -186,7 +190,9 @@ object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3458718751
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_dune, 3458718751)
@@ -236,7 +242,9 @@ object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3384005907
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bantha_shared_lair_bantha_wasteland, 3384005907)

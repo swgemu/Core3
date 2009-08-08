@@ -86,7 +86,9 @@ object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3769226262
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_armor_repair, 3769226262)
@@ -136,7 +138,9 @@ object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4032677980
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_clothing_repair, 4032677980)
@@ -186,7 +190,9 @@ object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 737990049
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_clothing_station, 737990049)
@@ -236,7 +242,9 @@ object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 753735496
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_clothing_tool, 753735496)
@@ -286,7 +294,9 @@ object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3945578306
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_droid_repair, 3945578306)
@@ -336,7 +346,9 @@ object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3133859016
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_food_station, 3133859016)
@@ -386,7 +398,9 @@ object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2849609519
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_food_tool, 2849609519)
@@ -436,7 +450,9 @@ object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1055200365
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_generic_tool, 1055200365)
@@ -486,7 +502,9 @@ object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 754074226
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_jedi_tool, 754074226)
@@ -536,7 +554,9 @@ object_tangible_crafting_station_shared_public_clothing_station = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2936644592
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_clothing_station, 2936644592)
@@ -586,7 +606,9 @@ object_tangible_crafting_station_shared_public_food_station = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 804779915
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_food_station, 804779915)
@@ -636,7 +658,9 @@ object_tangible_crafting_station_shared_public_space_station = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 395482180
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_space_station, 395482180)
@@ -686,7 +710,9 @@ object_tangible_crafting_station_shared_public_structure_station = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 464244555
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_structure_station, 464244555)
@@ -736,7 +762,9 @@ object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1920049130
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_public_weapon_station, 1920049130)
@@ -786,7 +814,9 @@ object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 408520625
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_space_station, 408520625)
@@ -836,7 +866,9 @@ object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2903391664
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_space_tool, 2903391664)
@@ -886,7 +918,9 @@ object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1513899009
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_structure_repair, 1513899009)
@@ -936,7 +970,9 @@ object_tangible_crafting_station_shared_structure_station = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2496989305
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_structure_station, 2496989305)
@@ -986,7 +1022,9 @@ object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4275700789
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_structure_tool, 4275700789)
@@ -1036,7 +1074,9 @@ object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2607871827
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_weapon_repair, 2607871827)
@@ -1086,7 +1126,9 @@ object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2167265111
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_weapon_station, 2167265111)
@@ -1136,7 +1178,9 @@ object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1693896753
 }
 
 ObjectTemplates:addTemplate(object_tangible_crafting_station_shared_weapon_tool, 1693896753)

@@ -86,7 +86,9 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 982220507
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s01, 982220507)
@@ -136,7 +138,9 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3785152076
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s02, 3785152076)
@@ -186,7 +190,9 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2828120513
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s03, 2828120513)
@@ -236,7 +242,9 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1400019669
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s04, 1400019669)
@@ -286,7 +294,9 @@ object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 143220595
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01, 143220595)
@@ -336,7 +346,9 @@ object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 773028987
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s01, 773028987)
@@ -386,7 +398,9 @@ object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4110734572
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s02, 4110734572)
@@ -436,7 +450,9 @@ object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3154752353
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s03, 3154752353)
@@ -486,7 +502,9 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1294873415
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe, 1294873415)
@@ -536,7 +554,9 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2316465710
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f, 2316465710)
@@ -586,7 +606,9 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 283957695
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m, 283957695)
@@ -636,7 +658,9 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2791438893
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s01, 2791438893)
@@ -686,7 +710,9 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2104906426
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s02, 2104906426)
@@ -736,7 +762,9 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880489783
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s03, 880489783)
@@ -786,7 +814,9 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3482852899
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s04, 3482852899)
@@ -836,7 +866,9 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1209883613
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01, 1209883613)
@@ -886,7 +918,9 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2466968394
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02, 2466968394)
@@ -936,7 +970,9 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2927288103
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s01, 2927288103)
@@ -986,7 +1022,9 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1970108336
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s02, 1970108336)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1012928573
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s03, 1012928573)
@@ -1086,7 +1126,9 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3347266345
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s04, 3347266345)

@@ -86,7 +86,9 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1593900791
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat, 1593900791)
@@ -136,7 +138,9 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 664931344
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland, 664931344)

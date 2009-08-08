@@ -86,7 +86,9 @@ object_tangible_component_armor_shared_armor_layer = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3871435906
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer, 3871435906)
@@ -136,7 +138,9 @@ object_tangible_component_armor_shared_armor_layer_acid = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3368394489
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_acid, 3368394489)
@@ -186,7 +190,9 @@ object_tangible_component_armor_shared_armor_layer_blast = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3979633097
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_blast, 3979633097)
@@ -236,7 +242,9 @@ object_tangible_component_armor_shared_armor_layer_cold = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1118558688
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_cold, 1118558688)
@@ -286,7 +294,9 @@ object_tangible_component_armor_shared_armor_layer_electrical = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2194125131
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_electrical, 2194125131)
@@ -336,7 +346,9 @@ object_tangible_component_armor_shared_armor_layer_energy = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2938969271
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_energy, 2938969271)
@@ -386,7 +398,9 @@ object_tangible_component_armor_shared_armor_layer_environmental = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2751814176
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_environmental, 2751814176)
@@ -436,7 +450,9 @@ object_tangible_component_armor_shared_armor_layer_heat = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3125319440
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_heat, 3125319440)
@@ -486,7 +502,9 @@ object_tangible_component_armor_shared_armor_layer_kinetic = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2095312993
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_kinetic, 2095312993)
@@ -536,7 +554,9 @@ object_tangible_component_armor_shared_armor_layer_nightsister = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3536633958
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_nightsister, 3536633958)
@@ -586,7 +606,9 @@ object_tangible_component_armor_shared_armor_layer_restraint = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3874261151
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_restraint, 3874261151)
@@ -636,7 +658,9 @@ object_tangible_component_armor_shared_armor_layer_ris = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2996647863
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_ris, 2996647863)
@@ -686,7 +710,9 @@ object_tangible_component_armor_shared_armor_layer_stun = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 203108001
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_layer_stun, 203108001)
@@ -736,7 +762,9 @@ object_tangible_component_armor_shared_armor_module_heavy = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1321171754
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_module_heavy, 1321171754)
@@ -786,7 +814,9 @@ object_tangible_component_armor_shared_armor_module_light = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2414299124
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_module_light, 2414299124)
@@ -836,7 +866,9 @@ object_tangible_component_armor_shared_armor_segment = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1357044619
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment, 1357044619)
@@ -886,7 +918,9 @@ object_tangible_component_armor_shared_armor_segment_advanced = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 34830358
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_advanced, 34830358)
@@ -936,7 +970,9 @@ object_tangible_component_armor_shared_armor_segment_bone = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1150752581
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone, 1150752581)
@@ -986,7 +1022,9 @@ object_tangible_component_armor_shared_armor_segment_bone_acklay = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1282707003
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_acklay, 1282707003)
@@ -1036,7 +1074,9 @@ object_tangible_component_armor_shared_armor_segment_bone_advanced = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2814096223
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_advanced, 2814096223)
@@ -1086,7 +1126,9 @@ object_tangible_component_armor_shared_armor_segment_bone_donkuwah = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1936004642
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_donkuwah, 1936004642)
@@ -1136,7 +1178,9 @@ object_tangible_component_armor_shared_armor_segment_bone_kimogila = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2307142178
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_kimogila, 2307142178)
@@ -1186,7 +1230,9 @@ object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 534961284
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard, 534961284)
@@ -1236,7 +1282,9 @@ object_tangible_component_armor_shared_armor_segment_chitin = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3560749582
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin, 3560749582)
@@ -1286,7 +1334,9 @@ object_tangible_component_armor_shared_armor_segment_chitin_advanced = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2809337004
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_advanced, 2809337004)
@@ -1336,7 +1386,9 @@ object_tangible_component_armor_shared_armor_segment_chitin_brackaset = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3248573794
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_brackaset, 3248573794)
@@ -1386,7 +1438,9 @@ object_tangible_component_armor_shared_armor_segment_chitin_kliknick = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2446761645
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick, 2446761645)
@@ -1436,7 +1490,9 @@ object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2037172516
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv, 2037172516)
@@ -1486,7 +1542,9 @@ object_tangible_component_armor_shared_armor_segment_chitin_sharnaff = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1708779648
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_chitin_sharnaff, 1708779648)
@@ -1536,7 +1594,9 @@ object_tangible_component_armor_shared_armor_segment_composite = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3596548182
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_composite, 3596548182)
@@ -1586,7 +1646,9 @@ object_tangible_component_armor_shared_armor_segment_composite_advanced = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2764212654
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_composite_advanced, 2764212654)
@@ -1636,7 +1698,9 @@ object_tangible_component_armor_shared_armor_segment_composite_krayt = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2649372559
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_composite_krayt, 2649372559)
@@ -1686,7 +1750,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_brackaset = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 591672738
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_brackaset, 591672738)
@@ -1736,7 +1802,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_dragonet = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 433071916
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_dragonet, 433071916)
@@ -1786,7 +1854,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_fambaa = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 409289522
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_fambaa, 409289522)
@@ -1836,7 +1906,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_janta = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184239884
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_janta, 184239884)
@@ -1886,7 +1958,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_kimogila = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3365812164
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_kimogila, 3365812164)
@@ -1936,7 +2010,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_krayt = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1719593091
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_krayt, 1719593091)
@@ -1986,7 +2062,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_nightsister = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2132900638
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_nightsister, 2132900638)
@@ -2036,7 +2114,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_rancor = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1147665676
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_rancor, 1147665676)
@@ -2086,7 +2166,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 604719765
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff, 604719765)
@@ -2136,7 +2218,9 @@ object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2169359198
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard, 2169359198)
@@ -2186,7 +2270,9 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 923046063
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn, 923046063)
@@ -2236,7 +2322,9 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4080254682
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, 4080254682)
@@ -2286,7 +2374,9 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3045138551
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial, 3045138551)
@@ -2336,7 +2426,9 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_adva
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2163584319
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, 2163584319)
@@ -2386,7 +2478,9 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3253647713
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting, 3253647713)
@@ -2436,7 +2530,9 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advance
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2762649224
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advanced, 2762649224)
@@ -2486,7 +2582,9 @@ object_tangible_component_armor_shared_armor_segment_padded = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1728449296
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded, 1728449296)
@@ -2536,7 +2634,9 @@ object_tangible_component_armor_shared_armor_segment_padded_acklay = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 962320502
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_acklay, 962320502)
@@ -2586,7 +2686,9 @@ object_tangible_component_armor_shared_armor_segment_padded_advanced = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3071514894
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_advanced, 3071514894)
@@ -2636,7 +2738,9 @@ object_tangible_component_armor_shared_armor_segment_padded_dune_lizard = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2051360405
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_dune_lizard, 2051360405)
@@ -2686,7 +2790,9 @@ object_tangible_component_armor_shared_armor_segment_padded_fambaa = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2619219671
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_fambaa, 2619219671)
@@ -2736,7 +2842,9 @@ object_tangible_component_armor_shared_armor_segment_padded_rancor = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3223101673
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_padded_rancor, 3223101673)
@@ -2786,7 +2894,9 @@ object_tangible_component_armor_shared_armor_segment_ris = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1466801045
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ris, 1466801045)
@@ -2836,7 +2946,9 @@ object_tangible_component_armor_shared_armor_segment_ris_acklay = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3553286313
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ris_acklay, 3553286313)
@@ -2886,7 +2998,9 @@ object_tangible_component_armor_shared_armor_segment_ubese = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2314491777
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ubese, 2314491777)
@@ -2936,7 +3050,9 @@ object_tangible_component_armor_shared_armor_segment_ubese_advanced = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1032868484
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_ubese_advanced, 1032868484)
@@ -2986,7 +3102,9 @@ object_tangible_component_armor_shared_armor_segment_zam = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2378288672
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_zam, 2378288672)
@@ -3036,7 +3154,9 @@ object_tangible_component_armor_shared_armor_segment_zam_advanced = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 452144726
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_armor_segment_zam_advanced, 452144726)
@@ -3086,7 +3206,9 @@ object_tangible_component_armor_shared_base_armor_segment_enhancement = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 524566894
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_base_armor_segment_enhancement, 524566894)
@@ -3136,7 +3258,9 @@ object_tangible_component_armor_shared_bone_fragment_woolamander_harrower = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4007249575
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_bone_fragment_woolamander_harrower, 4007249575)
@@ -3186,7 +3310,9 @@ object_tangible_component_armor_shared_deflector_shield_emitter_assembly = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3438496009
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_emitter_assembly, 3438496009)
@@ -3236,7 +3362,9 @@ object_tangible_component_armor_shared_deflector_shield_generator_energy_ray = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1857960052
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_generator_energy_ray, 1857960052)
@@ -3286,7 +3414,9 @@ object_tangible_component_armor_shared_deflector_shield_generator_particle = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2738138651
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_generator_particle, 2738138651)
@@ -3336,7 +3466,9 @@ object_tangible_component_armor_shared_deflector_shield_ion_feed_unit = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2607341358
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_ion_feed_unit, 2607341358)
@@ -3386,7 +3518,9 @@ object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2649973177
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit, 2649973177)
@@ -3436,7 +3570,9 @@ object_tangible_component_armor_shared_deflector_shield_projector_plate = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2995769746
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_deflector_shield_projector_plate, 2995769746)
@@ -3486,7 +3622,9 @@ object_tangible_component_armor_shared_feather_peko_albatross = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2381585751
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_feather_peko_albatross, 2381585751)
@@ -3536,7 +3674,9 @@ object_tangible_component_armor_shared_heavy_armor_layer = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3619749395
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer, 3619749395)
@@ -3586,7 +3726,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_acid = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1874541769
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_acid, 1874541769)
@@ -3636,7 +3778,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_blast = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2097043394
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_blast, 2097043394)
@@ -3686,7 +3830,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_cold = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3855973328
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_cold, 3855973328)
@@ -3736,7 +3882,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_electrical = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2909170926
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_electrical, 2909170926)
@@ -3786,7 +3934,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_energy = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1153905054
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_energy, 1153905054)
@@ -3836,7 +3986,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_environmental = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1639844661
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_environmental, 1639844661)
@@ -3886,7 +4038,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_heat = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 490091808
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_heat, 490091808)
@@ -3936,7 +4090,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_kinetic = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2016162937
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_kinetic, 2016162937)
@@ -3986,7 +4142,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_restraint = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 34964498
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_restraint, 34964498)
@@ -4036,7 +4194,9 @@ object_tangible_component_armor_shared_heavy_armor_layer_stun = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2875559057
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_heavy_armor_layer_stun, 2875559057)
@@ -4086,7 +4246,9 @@ object_tangible_component_armor_shared_hide_gurk_king = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 605934535
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_hide_gurk_king, 605934535)
@@ -4136,7 +4298,9 @@ object_tangible_component_armor_shared_scale_giant_dune_kimogila = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3177620881
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_scale_giant_dune_kimogila, 3177620881)
@@ -4186,7 +4350,9 @@ object_tangible_component_armor_shared_shield_generator_facility = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3129011017
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_facility, 3129011017)
@@ -4236,7 +4402,9 @@ object_tangible_component_armor_shared_shield_generator_personal = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3357133395
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal, 3357133395)
@@ -4286,7 +4454,9 @@ object_tangible_component_armor_shared_shield_generator_personal_b = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2352410837
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal_b, 2352410837)
@@ -4336,7 +4506,9 @@ object_tangible_component_armor_shared_shield_generator_personal_c = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3309016920
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal_c, 3309016920)
@@ -4386,7 +4558,9 @@ object_tangible_component_armor_shared_shield_generator_personal_imperial_test =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1034696189
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_personal_imperial_test, 1034696189)
@@ -4436,7 +4610,9 @@ object_tangible_component_armor_shared_shield_generator_vehicular = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4081974766
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shared_shield_generator_vehicular, 4081974766)

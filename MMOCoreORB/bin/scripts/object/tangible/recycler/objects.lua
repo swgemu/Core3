@@ -86,7 +86,9 @@ object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1627417847
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_shared_chemical_recycler, 1627417847)
@@ -136,7 +138,9 @@ object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2601090218
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_shared_creature_recycler, 2601090218)
@@ -186,7 +190,9 @@ object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 372626307
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_shared_flora_recycler, 372626307)
@@ -236,7 +242,9 @@ object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 860237131
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_shared_metal_recycler, 860237131)
@@ -286,7 +294,9 @@ object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4105541227
 }
 
 ObjectTemplates:addTemplate(object_tangible_recycler_shared_ore_recycler, 4105541227)

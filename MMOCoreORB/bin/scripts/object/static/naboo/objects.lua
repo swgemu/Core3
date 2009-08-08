@@ -75,7 +75,9 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2421347186
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_200m, 2421347186)
@@ -114,7 +116,9 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2586864352
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_thin_forked, 2586864352)
@@ -153,7 +157,9 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1454317490
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_all_wide_short, 1454317490)
@@ -192,7 +198,9 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4151923875
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_lg, 4151923875)
@@ -231,7 +239,9 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3240630762
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_mist_small, 3240630762)
@@ -270,7 +280,9 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4101701818
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, 4101701818)
@@ -309,7 +321,9 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 282497930
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, 282497930)
@@ -348,7 +362,9 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 370991757
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_hangar, 370991757)
@@ -387,7 +403,9 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3951584767
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_keren, 3951584767)
@@ -426,7 +444,9 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4195612510
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, 4195612510)
@@ -465,7 +485,9 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3625221420
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, 3625221420)
@@ -504,7 +526,9 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4015665582
 }
 
 ObjectTemplates:addTemplate(object_static_naboo_shared_whitewater_6meter, 4015665582)

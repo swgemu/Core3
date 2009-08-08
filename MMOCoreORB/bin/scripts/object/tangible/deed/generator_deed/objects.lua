@@ -86,7 +86,9 @@ object_tangible_deed_generator_deed_shared_generator_fusion_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3852530581
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_fusion_deed, 3852530581)
@@ -136,7 +138,9 @@ object_tangible_deed_generator_deed_shared_generator_photo_bio_deed = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 651572803
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_photo_bio_deed, 651572803)
@@ -186,7 +190,9 @@ object_tangible_deed_generator_deed_shared_generator_solar_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1181332776
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_solar_deed, 1181332776)
@@ -236,7 +242,9 @@ object_tangible_deed_generator_deed_shared_generator_wind_deed = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3871805863
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_shared_generator_wind_deed, 3871805863)

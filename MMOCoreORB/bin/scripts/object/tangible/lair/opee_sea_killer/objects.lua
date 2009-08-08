@@ -86,7 +86,9 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 486155425
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, 486155425)
@@ -136,7 +138,9 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 662717072
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, 662717072)

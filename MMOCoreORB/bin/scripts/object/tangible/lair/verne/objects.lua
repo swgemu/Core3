@@ -86,7 +86,9 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1856597850
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne, 1856597850)
@@ -136,7 +138,9 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2461392200
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_verne_shared_lair_verne_forest, 2461392200)

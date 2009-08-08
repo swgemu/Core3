@@ -86,7 +86,9 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3062251189
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, 3062251189)
@@ -136,7 +138,9 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2258056519
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, 2258056519)

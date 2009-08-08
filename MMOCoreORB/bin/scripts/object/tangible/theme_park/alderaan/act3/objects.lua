@@ -86,7 +86,9 @@ object_tangible_theme_park_alderaan_act3_shared_alderaan_flora = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4208054945
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_alderaan_flora, 4208054945)
@@ -136,7 +138,9 @@ object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1332386213
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit, 1332386213)
@@ -186,7 +190,9 @@ object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2963865200
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype, 2963865200)
@@ -236,7 +242,9 @@ object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3516039098
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk, 3516039098)
@@ -286,7 +294,9 @@ object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3076162697
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit, 3076162697)
@@ -336,7 +346,9 @@ object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1247686243
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit, 1247686243)
@@ -375,7 +387,9 @@ object_tangible_theme_park_alderaan_act3_shared_research_facility = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 843852525
 }
 
 ObjectTemplates:addTemplate(object_tangible_theme_park_alderaan_act3_shared_research_facility, 843852525)

@@ -75,7 +75,9 @@ object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1636783685
 }
 
 ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_hyperspace, 1636783685)
@@ -114,7 +116,9 @@ object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3111086071
 }
 
 ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_mission_critical, 3111086071)
@@ -153,7 +157,9 @@ object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 68001236
 }
 
 ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_poi_waypoint, 68001236)
@@ -192,7 +198,9 @@ object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 3977491959
 }
 
 ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_spacestation, 3977491959)
@@ -231,7 +239,9 @@ object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2973438501
 }
 
 ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_waypoint, 2973438501)
@@ -270,7 +280,9 @@ object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 464932918
 }
 
 ObjectTemplates:addTemplate(object_static_space_zonemap_shared_ui_waypoint_active, 464932918)

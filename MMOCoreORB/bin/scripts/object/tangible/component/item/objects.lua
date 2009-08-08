@@ -86,7 +86,9 @@ object_tangible_component_item_shared_electronic_control_unit = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 814846904
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronic_control_unit, 814846904)
@@ -136,7 +138,9 @@ object_tangible_component_item_shared_electronic_energy_distributor = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3328520335
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronic_energy_distributor, 3328520335)
@@ -186,7 +190,9 @@ object_tangible_component_item_shared_electronic_power_conditioner = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1024745663
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronic_power_conditioner, 1024745663)
@@ -236,7 +242,9 @@ object_tangible_component_item_shared_electronics_gp_module = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3786408832
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronics_gp_module, 3786408832)
@@ -286,7 +294,9 @@ object_tangible_component_item_shared_electronics_memory_module = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3552886678
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_electronics_memory_module, 3552886678)
@@ -336,7 +346,9 @@ object_tangible_component_item_shared_large_sensor_package = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 366580459
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_large_sensor_package, 366580459)
@@ -386,7 +398,9 @@ object_tangible_component_item_shared_micro_sensor_suite = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3198540321
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_shared_micro_sensor_suite, 3198540321)

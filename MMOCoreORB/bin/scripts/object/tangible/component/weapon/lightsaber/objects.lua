@@ -86,7 +86,9 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3404051263
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module, 3404051263)
@@ -136,7 +138,9 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2816851382
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module, 2816851382)
@@ -186,7 +190,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1896638798
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal, 1896638798)
@@ -236,7 +242,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 384190732
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed, 384190732)
@@ -286,7 +294,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2224509400
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color, 2224509400)
@@ -336,7 +346,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3690389169
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage, 3690389169)
@@ -386,7 +398,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_cryst
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4273612814
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal, 4273612814)
@@ -436,7 +450,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3573227590
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost, 3573227590)
@@ -486,7 +502,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_drago
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2322379839
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl, 2322379839)
@@ -536,7 +554,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1396643279
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance, 1396643279)
@@ -586,7 +606,9 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4078172805
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, 4078172805)

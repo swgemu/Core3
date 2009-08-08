@@ -86,7 +86,9 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2989290041
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, 2989290041)
@@ -136,7 +138,9 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2377863666
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, 2377863666)

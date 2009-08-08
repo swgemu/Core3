@@ -75,7 +75,9 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1789110379
 }
 
 ObjectTemplates:addTemplate(object_intangible_holocron_shared_newbie_mission, 1789110379)

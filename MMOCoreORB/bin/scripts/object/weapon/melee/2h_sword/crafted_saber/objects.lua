@@ -90,7 +90,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1123043338
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen1, 1123043338)
@@ -144,7 +146,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2582110365
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen2, 2582110365)
@@ -198,7 +202,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3505030928
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen3, 3505030928)
@@ -252,7 +258,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 722054148
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen4, 722054148)
@@ -306,7 +314,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_ge
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1644481417
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen5, 1644481417)
@@ -360,7 +370,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3520543309
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1, 3520543309)
@@ -414,7 +426,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1933498416
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10, 1933498416)
@@ -468,7 +482,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2821972348
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen1, 2821972348)
@@ -522,7 +538,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1931758059
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen2, 1931758059)
@@ -576,7 +594,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 975777382
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen3, 975777382)
@@ -630,7 +650,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3251242354
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s10_gen4, 3251242354)
@@ -684,7 +706,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 976469949
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11, 976469949)
@@ -738,7 +762,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 681787675
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen1, 681787675)
@@ -792,7 +818,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4088719756
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen2, 4088719756)
@@ -846,7 +874,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3132722689
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen3, 3132722689)
@@ -900,7 +930,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1096459541
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s11_gen4, 1096459541)
@@ -954,7 +986,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3777238826
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12, 3777238826)
@@ -1008,7 +1042,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2916334597
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen1, 2916334597)
@@ -1062,7 +1098,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1992561810
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen2, 1992561810)
@@ -1116,7 +1154,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1070166815
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen3, 1070166815)
@@ -1170,7 +1210,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3291109387
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s12_gen4, 3291109387)
@@ -1224,7 +1266,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2821288103
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13, 2821288103)
@@ -1278,7 +1322,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 759372898
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen1, 759372898)
@@ -1332,7 +1378,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4132746485
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen2, 4132746485)
@@ -1386,7 +1434,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3210335096
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen3, 3210335096)
@@ -1440,7 +1490,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1153103980
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s13_gen4, 1153103980)
@@ -1494,7 +1546,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1113262465
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen1, 1113262465)
@@ -1548,7 +1602,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2571936022
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen2, 2571936022)
@@ -1602,7 +1658,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3493971611
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen3, 3493971611)
@@ -1656,7 +1714,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 732097935
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s1_gen4, 732097935)
@@ -1710,7 +1770,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 180392666
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2, 180392666)
@@ -1764,7 +1826,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3341546655
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen1, 3341546655)
@@ -1818,7 +1882,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 473717768
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen2, 473717768)
@@ -1872,7 +1938,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1429289861
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen3, 1429289861)
@@ -1926,7 +1994,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2933002385
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s2_gen4, 2933002385)
@@ -1980,7 +2050,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1137571159
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3, 1137571159)
@@ -2034,7 +2106,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1203459320
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen1, 1203459320)
@@ -2088,7 +2162,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2628582511
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen2, 2628582511)
@@ -2142,7 +2218,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3584138210
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen3, 3584138210)
@@ -2196,7 +2274,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 776122614
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s3_gen4, 776122614)
@@ -2250,7 +2330,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3090079299
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4, 3090079299)
@@ -2304,7 +2386,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3372946196
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen1, 3372946196)
@@ -2358,7 +2442,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 303872899
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen2, 303872899)
@@ -2412,7 +2498,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1527897102
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen3, 1527897102)
@@ -2466,7 +2554,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2700277530
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s4_gen4, 2700277530)
@@ -2520,7 +2610,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4045650382
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5, 4045650382)
@@ -2574,7 +2666,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1234940787
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen1, 1234940787)
@@ -2628,7 +2722,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2458655716
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen2, 2458655716)
@@ -2682,7 +2778,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3682696297
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen3, 3682696297)
@@ -2736,7 +2834,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 543315837
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s5_gen4, 543315837)
@@ -2790,7 +2890,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 708055385
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6, 708055385)
@@ -2844,7 +2946,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3437973101
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen1, 3437973101)
@@ -2898,7 +3002,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 402450170
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen2, 402450170)
@@ -2952,7 +3058,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1592885623
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen3, 1592885623)
@@ -3006,7 +3114,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2769463907
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s6_gen4, 2769463907)
@@ -3060,7 +3170,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1664710356
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7, 1664710356)
@@ -3114,7 +3226,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1283190282
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen1, 1283190282)
@@ -3168,7 +3282,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2540455581
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen2, 2540455581)
@@ -3222,7 +3338,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3730907408
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen3, 3730907408)
@@ -3276,7 +3394,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 629279236
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s7_gen4, 629279236)
@@ -3330,7 +3450,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3644021446
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8, 3644021446)
@@ -3384,7 +3506,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3578452994
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen1, 3578452994)
@@ -3438,7 +3562,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 241005717
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen2, 241005717)
@@ -3492,7 +3618,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1196430104
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen3, 1196430104)
@@ -3546,7 +3674,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3165861900
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s8_gen4, 3165861900)
@@ -3600,7 +3730,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2419998027
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9, 2419998027)
@@ -3654,7 +3786,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1440382053
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen1, 1440382053)
@@ -3708,7 +3842,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 2395854066
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen2, 2395854066)
@@ -3762,7 +3898,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3351294847
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen3, 3351294847)
@@ -3816,7 +3954,9 @@ object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1008965739
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_s9_gen4, 1008965739)

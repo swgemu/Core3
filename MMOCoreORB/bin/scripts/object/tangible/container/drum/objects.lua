@@ -86,7 +86,9 @@ object_tangible_container_drum_shared_large_plain_crate_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1685311950
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s01, 1685311950)
@@ -136,7 +138,9 @@ object_tangible_container_drum_shared_large_plain_crate_s02 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3211032921
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s02, 3211032921)
@@ -186,7 +190,9 @@ object_tangible_container_drum_shared_large_plain_crate_s03 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4134084308
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s03, 4134084308)
@@ -236,7 +242,9 @@ object_tangible_container_drum_shared_large_plain_crate_s04 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 227161536
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_large_plain_crate_s04, 227161536)
@@ -286,7 +294,9 @@ object_tangible_container_drum_shared_pob_ship_loot_box = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1962311443
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_pob_ship_loot_box, 1962311443)
@@ -336,7 +346,9 @@ object_tangible_container_drum_shared_poi_prize_box_off = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2325798188
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_poi_prize_box_off, 2325798188)
@@ -386,7 +398,9 @@ object_tangible_container_drum_shared_poi_prize_box_on = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 856439167
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_poi_prize_box_on, 856439167)
@@ -436,7 +450,9 @@ object_tangible_container_drum_shared_tatt_drum_1 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3342593323
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_tatt_drum_1, 3342593323)
@@ -486,7 +502,9 @@ object_tangible_container_drum_shared_treasure_drum = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3112160566
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_treasure_drum, 3112160566)
@@ -536,7 +554,9 @@ object_tangible_container_drum_shared_warren_core_rod_storage = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3188177313
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_core_rod_storage, 3188177313)
@@ -586,7 +606,9 @@ object_tangible_container_drum_shared_warren_drum_loot = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3257388271
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_loot, 3257388271)
@@ -636,7 +658,9 @@ object_tangible_container_drum_shared_warren_drum_skeleton = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1100233944
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_skeleton, 1100233944)
@@ -686,7 +710,9 @@ object_tangible_container_drum_shared_warren_drum_tech_armoire = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 738307164
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_tech_armoire, 738307164)
@@ -736,7 +762,9 @@ object_tangible_container_drum_shared_warren_drum_tech_chest = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2500254490
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_drum_tech_chest, 2500254490)
@@ -786,7 +814,9 @@ object_tangible_container_drum_shared_warren_reactor_core = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2456580913
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_drum_shared_warren_reactor_core, 2456580913)

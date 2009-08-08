@@ -86,7 +86,9 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2758659354
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, 2758659354)
@@ -136,7 +138,9 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2456561117
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, 2456561117)
@@ -186,7 +190,9 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1635796730
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, 1635796730)

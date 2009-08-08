@@ -75,7 +75,9 @@ object_draft_schematic_structure_city_shared_bank_corellia = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1957527431
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_corellia, 1957527431)
@@ -114,7 +116,9 @@ object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1356737706
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_naboo, 1356737706)
@@ -153,7 +157,9 @@ object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1223564824
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_bank_tatooine, 1223564824)
@@ -192,7 +198,9 @@ object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 922879724
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_corellia, 922879724)
@@ -231,7 +239,9 @@ object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1642793186
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_naboo, 1642793186)
@@ -270,7 +280,9 @@ object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 188835699
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cantina_tatooine, 188835699)
@@ -309,7 +321,9 @@ object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4052243419
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_corellia, 4052243419)
@@ -348,7 +362,9 @@ object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4095160852
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_naboo, 4095160852)
@@ -387,7 +403,9 @@ object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3452645956
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cityhall_tatooine, 3452645956)
@@ -426,7 +444,9 @@ object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3102761064
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_corellia, 3102761064)
@@ -465,7 +485,9 @@ object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2637377287
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_naboo, 2637377287)
@@ -504,7 +526,9 @@ object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2226323959
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_cloning_tatooine, 2226323959)
@@ -543,7 +567,9 @@ object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2511913384
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_corellia, 2511913384)
@@ -582,7 +608,9 @@ object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3583461183
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_naboo, 3583461183)
@@ -621,7 +649,9 @@ object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2851840055
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garage_tatooine, 2851840055)
@@ -660,7 +690,9 @@ object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 191116922
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dantooine, 191116922)
@@ -699,7 +731,9 @@ object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2283291302
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dathomir, 2283291302)
@@ -738,7 +772,9 @@ object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 197575835
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_exotic_endor, 197575835)
@@ -777,7 +813,9 @@ object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1276792416
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_large, 1276792416)
@@ -816,7 +854,9 @@ object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1356080577
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_medium, 1356080577)
@@ -855,7 +895,9 @@ object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2013387337
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_garden_small, 2013387337)
@@ -894,7 +936,9 @@ object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3104967184
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_corellia, 3104967184)
@@ -933,7 +977,9 @@ object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1804532749
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_naboo, 1804532749)
@@ -972,7 +1018,9 @@ object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2236705679
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_hospital_tatooine, 2236705679)
@@ -1011,7 +1059,9 @@ object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2673430783
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_corellia, 2673430783)
@@ -1050,7 +1100,9 @@ object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 881536708
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_naboo, 881536708)
@@ -1089,7 +1141,9 @@ object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2736402784
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_shuttleport_tatooine, 2736402784)
@@ -1128,7 +1182,9 @@ object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 758724611
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_corellia, 758724611)
@@ -1167,7 +1223,9 @@ object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3113591979
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_naboo, 3113591979)
@@ -1206,7 +1264,9 @@ object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 293231004
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_shared_theater_tatooine, 293231004)

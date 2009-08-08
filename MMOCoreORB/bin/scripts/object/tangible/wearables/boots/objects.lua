@@ -86,7 +86,9 @@ object_tangible_wearables_boots_shared_boots_corsec = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 803130691
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_corsec, 803130691)
@@ -136,7 +138,9 @@ object_tangible_wearables_boots_shared_boots_s03 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1907982508
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s03, 1907982508)
@@ -186,7 +190,9 @@ object_tangible_wearables_boots_shared_boots_s04 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2321198008
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s04, 2321198008)
@@ -236,7 +242,9 @@ object_tangible_wearables_boots_shared_boots_s05 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3277311029
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s05, 3277311029)
@@ -286,7 +294,9 @@ object_tangible_wearables_boots_shared_boots_s12 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 597486169
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s12, 597486169)
@@ -336,7 +346,9 @@ object_tangible_wearables_boots_shared_boots_s14 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2440210112
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s14, 2440210112)
@@ -386,7 +398,9 @@ object_tangible_wearables_boots_shared_boots_s15 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3632251213
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s15, 3632251213)
@@ -436,7 +450,9 @@ object_tangible_wearables_boots_shared_boots_s19 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3110225352
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s19, 3110225352)
@@ -486,7 +502,9 @@ object_tangible_wearables_boots_shared_boots_s21 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3589494086
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s21, 3589494086)
@@ -536,7 +554,9 @@ object_tangible_wearables_boots_shared_boots_s22 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 249888209
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s22, 249888209)
@@ -586,7 +606,9 @@ object_tangible_wearables_boots_shared_boots_s34 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2804071472
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_s34, 2804071472)
@@ -636,7 +658,9 @@ object_tangible_wearables_boots_shared_boots_tusken_raider = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 688070269
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_boots_tusken_raider, 688070269)
@@ -686,7 +710,9 @@ object_tangible_wearables_boots_shared_nightsister_boots = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1068365842
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_nightsister_boots, 1068365842)
@@ -736,7 +762,9 @@ object_tangible_wearables_boots_shared_singing_mountain_clan_boots = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 610961345
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_boots_shared_singing_mountain_clan_boots, 610961345)

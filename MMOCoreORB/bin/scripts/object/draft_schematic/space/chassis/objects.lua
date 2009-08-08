@@ -75,7 +75,9 @@ object_draft_schematic_space_chassis_shared_awing = SharedDraftSchematicObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4088349067
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_awing, 4088349067)
@@ -114,7 +116,9 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s01 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1739966126
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s01, 1739966126)
@@ -153,7 +157,9 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s02 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3164761657
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s02, 3164761657)
@@ -192,7 +198,9 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s03 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4121889204
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s03, 4121889204)
@@ -231,7 +239,9 @@ object_draft_schematic_space_chassis_shared_blacksun_heavy_s04 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 239870624
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_heavy_s04, 239870624)
@@ -270,7 +280,9 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s01 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2076334324
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s01, 2076334324)
@@ -309,7 +321,9 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s02 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2698375267
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s02, 2698375267)
@@ -348,7 +362,9 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s03 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3923285998
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s03, 3923285998)
@@ -387,7 +403,9 @@ object_draft_schematic_space_chassis_shared_blacksun_light_s04 = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 305904890
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_light_s04, 305904890)
@@ -426,7 +444,9 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s01 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1149181177
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s01, 1149181177)
@@ -465,7 +485,9 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s02 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2674439278
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s02, 2674439278)
@@ -504,7 +526,9 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s03 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3596997603
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s03, 3596997603)
@@ -543,7 +567,9 @@ object_draft_schematic_space_chassis_shared_blacksun_medium_s04 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 763820279
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_blacksun_medium_s04, 763820279)
@@ -582,7 +608,9 @@ object_draft_schematic_space_chassis_shared_bwing = SharedDraftSchematicObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3782189718
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_bwing, 3782189718)
@@ -621,7 +649,9 @@ object_draft_schematic_space_chassis_shared_decimator = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 28631849
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_decimator, 28631849)
@@ -660,7 +690,9 @@ object_draft_schematic_space_chassis_shared_firespray = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1220046426
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_firespray, 1220046426)
@@ -699,7 +731,9 @@ object_draft_schematic_space_chassis_shared_hutt_heavy_s01 = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2018297747
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s01, 2018297747)
@@ -738,7 +772,9 @@ object_draft_schematic_space_chassis_shared_hutt_heavy_s02 = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2740678404
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_heavy_s02, 2740678404)
@@ -777,7 +813,9 @@ object_draft_schematic_space_chassis_shared_hutt_light_s01 = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1681611209
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s01, 1681611209)
@@ -816,7 +854,9 @@ object_draft_schematic_space_chassis_shared_hutt_light_s02 = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3207393630
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_light_s02, 3207393630)
@@ -855,7 +895,9 @@ object_draft_schematic_space_chassis_shared_hutt_medium_s01 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3374335796
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s01, 3374335796)
@@ -894,7 +936,9 @@ object_draft_schematic_space_chassis_shared_hutt_medium_s02 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 305655715
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_medium_s02, 305655715)
@@ -933,7 +977,9 @@ object_draft_schematic_space_chassis_shared_hutt_turret_ship = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1789657129
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_hutt_turret_ship, 1789657129)
@@ -972,7 +1018,9 @@ object_draft_schematic_space_chassis_shared_texture_kit_s01 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3565914279
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s01, 3565914279)
@@ -1011,7 +1059,9 @@ object_draft_schematic_space_chassis_shared_texture_kit_s02 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 261890096
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s02, 261890096)
@@ -1050,7 +1100,9 @@ object_draft_schematic_space_chassis_shared_texture_kit_s03 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1183926205
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s03, 1183926205)
@@ -1089,7 +1141,9 @@ object_draft_schematic_space_chassis_shared_texture_kit_s04 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3178392745
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s04, 3178392745)
@@ -1128,7 +1182,9 @@ object_draft_schematic_space_chassis_shared_texture_kit_s05 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4101966628
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s05, 4101966628)
@@ -1167,7 +1223,9 @@ object_draft_schematic_space_chassis_shared_texture_kit_s06 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 795386803
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_texture_kit_s06, 795386803)
@@ -1206,7 +1264,9 @@ object_draft_schematic_space_chassis_shared_tie_in = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2807324799
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_in, 2807324799)
@@ -1245,7 +1305,9 @@ object_draft_schematic_space_chassis_shared_tie_light_duty = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2042083013
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tie_light_duty, 2042083013)
@@ -1284,7 +1346,9 @@ object_draft_schematic_space_chassis_shared_tieadvanced = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2726853665
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieadvanced, 2726853665)
@@ -1323,7 +1387,9 @@ object_draft_schematic_space_chassis_shared_tieaggressor = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 675255699
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieaggressor, 675255699)
@@ -1362,7 +1428,9 @@ object_draft_schematic_space_chassis_shared_tiebomber = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3922789724
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiebomber, 3922789724)
@@ -1401,7 +1469,9 @@ object_draft_schematic_space_chassis_shared_tiefighter = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2781545168
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter, 2781545168)
@@ -1440,7 +1510,9 @@ object_draft_schematic_space_chassis_shared_tiefighter_body = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1164496814
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tiefighter_body, 1164496814)
@@ -1479,7 +1551,9 @@ object_draft_schematic_space_chassis_shared_tieinterceptor = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2195192561
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieinterceptor, 2195192561)
@@ -1518,7 +1592,9 @@ object_draft_schematic_space_chassis_shared_tieoppressor = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 653085701
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_tieoppressor, 653085701)
@@ -1557,7 +1633,9 @@ object_draft_schematic_space_chassis_shared_xwing = SharedDraftSchematicObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2544431877
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing, 2544431877)
@@ -1596,7 +1674,9 @@ object_draft_schematic_space_chassis_shared_xwing_body = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4124324408
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_body, 4124324408)
@@ -1635,7 +1715,9 @@ object_draft_schematic_space_chassis_shared_xwing_cockpit = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1518980580
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_cockpit, 1518980580)
@@ -1674,7 +1756,9 @@ object_draft_schematic_space_chassis_shared_xwing_customization_kit = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2412810817
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_customization_kit, 2412810817)
@@ -1713,7 +1797,9 @@ object_draft_schematic_space_chassis_shared_xwing_wing_l = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 385814820
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_l, 385814820)
@@ -1752,7 +1838,9 @@ object_draft_schematic_space_chassis_shared_xwing_wing_r = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1714050231
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_xwing_wing_r, 1714050231)
@@ -1791,7 +1879,9 @@ object_draft_schematic_space_chassis_shared_ykl37r = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1171955086
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ykl37r, 1171955086)
@@ -1830,7 +1920,9 @@ object_draft_schematic_space_chassis_shared_yt1300 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 654797812
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_yt1300, 654797812)
@@ -1869,7 +1961,9 @@ object_draft_schematic_space_chassis_shared_ywing = SharedDraftSchematicObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1705531747
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing, 1705531747)
@@ -1908,7 +2002,9 @@ object_draft_schematic_space_chassis_shared_ywing_longprobe = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3626101042
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_ywing_longprobe, 3626101042)
@@ -1947,7 +2043,9 @@ object_draft_schematic_space_chassis_shared_z95 = SharedDraftSchematicObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2357203295
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95, 2357203295)
@@ -1986,7 +2084,9 @@ object_draft_schematic_space_chassis_shared_z95_body = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 646958322
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_body, 646958322)
@@ -2025,7 +2125,9 @@ object_draft_schematic_space_chassis_shared_z95_cockpit = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 160769152
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_cockpit, 160769152)
@@ -2064,7 +2166,9 @@ object_draft_schematic_space_chassis_shared_z95_wing_l = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 446234966
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_l, 446234966)
@@ -2103,7 +2207,9 @@ object_draft_schematic_space_chassis_shared_z95_wing_r = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1783383237
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_chassis_shared_z95_wing_r, 1783383237)

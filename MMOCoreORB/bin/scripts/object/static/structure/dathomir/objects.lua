@@ -74,7 +74,9 @@ object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 218376108
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01, 218376108)
@@ -112,7 +114,9 @@ object_static_structure_dathomir_shared_dath_imprv_flagpole_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1208818658
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_dath_imprv_flagpole_s01, 1208818658)
@@ -151,7 +155,9 @@ object_static_structure_dathomir_shared_imp_prison = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 4186513770
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_imp_prison, 4186513770)
@@ -190,7 +196,9 @@ object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1840196313
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01, 1840196313)
@@ -229,7 +237,9 @@ object_static_structure_dathomir_shared_mtn_clan_gate_s01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 65550249
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_gate_s01, 65550249)
@@ -268,7 +278,9 @@ object_static_structure_dathomir_shared_mtn_clan_hut_s01 = SharedStaticObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2024122595
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_hut_s01, 2024122595)
@@ -307,7 +319,9 @@ object_static_structure_dathomir_shared_mtn_clan_pillar_s01 = SharedStaticObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 351866084
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_pillar_s01, 351866084)
@@ -346,7 +360,9 @@ object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01 = SharedStatic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2457942136
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01, 2457942136)
@@ -385,7 +401,9 @@ object_static_structure_dathomir_shared_mtn_clan_tent_house_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1938207181
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_mtn_clan_tent_house_s01, 1938207181)
@@ -424,7 +442,9 @@ object_static_structure_dathomir_shared_night_sister_banner_s01 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1990407384
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s01, 1990407384)
@@ -463,7 +483,9 @@ object_static_structure_dathomir_shared_night_sister_banner_s02 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2914294863
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s02, 2914294863)
@@ -502,7 +524,9 @@ object_static_structure_dathomir_shared_night_sister_banner_s03 = SharedStaticOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3837393858
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_night_sister_banner_s03, 3837393858)
@@ -541,7 +565,9 @@ object_static_structure_dathomir_shared_nsister_fence_style_01 = SharedStaticObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 446202967
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_fence_style_01, 446202967)
@@ -580,7 +606,9 @@ object_static_structure_dathomir_shared_nsister_gate_style_01 = SharedStaticObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2480168117
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_gate_style_01, 2480168117)
@@ -619,7 +647,9 @@ object_static_structure_dathomir_shared_nsister_guard_tower_style_01 = SharedSta
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1729146517
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_guard_tower_style_01, 1729146517)
@@ -658,7 +688,9 @@ object_static_structure_dathomir_shared_nsister_hut_style_01 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1535014405
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_hut_style_01, 1535014405)
@@ -697,7 +729,9 @@ object_static_structure_dathomir_shared_nsister_tent_house_style_01 = SharedStat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2686708811
 }
 
 ObjectTemplates:addTemplate(object_static_structure_dathomir_shared_nsister_tent_house_style_01, 2686708811)

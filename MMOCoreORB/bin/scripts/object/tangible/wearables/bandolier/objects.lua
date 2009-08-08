@@ -86,7 +86,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2100666153
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s01, 2100666153)
@@ -136,7 +138,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2787260350
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02, 2787260350)
@@ -186,7 +190,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1876108427
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02_quest, 1876108427)
@@ -236,7 +242,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4012855347
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s03, 4012855347)
@@ -286,7 +294,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 348945191
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04, 348945191)
@@ -336,7 +346,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1941573505
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04_quest, 1941573505)
@@ -386,7 +398,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1572936874
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s05, 1572936874)
@@ -436,7 +450,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2262217789
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s06, 2262217789)
@@ -486,7 +502,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3487290288
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s07, 3487290288)
@@ -536,7 +554,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1976696738
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s08, 1976696738)
@@ -586,7 +606,9 @@ object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1021089839
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_s09, 1021089839)
@@ -636,7 +658,9 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362441992
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01, 2362441992)
@@ -686,7 +710,9 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1472702879
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02, 1472702879)
@@ -736,7 +762,9 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 516607506
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03, 516607506)
@@ -786,7 +814,9 @@ object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1293966476
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_double_bandolier, 1293966476)
@@ -836,7 +866,9 @@ object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1065147216
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_ith_double_bandolier, 1065147216)
@@ -886,7 +918,9 @@ object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3570000539
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier, 3570000539)
@@ -936,7 +970,9 @@ object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 721380424
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier, 721380424)
@@ -986,7 +1022,9 @@ object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3002918794
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_mercenary_bandolier, 3002918794)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1747617663
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_shared_multipocket_bandolier, 1747617663)

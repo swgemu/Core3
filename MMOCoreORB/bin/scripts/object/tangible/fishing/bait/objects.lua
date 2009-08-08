@@ -86,7 +86,9 @@ object_tangible_fishing_bait_shared_bait_chum = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1907354318
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_chum, 1907354318)
@@ -136,7 +138,9 @@ object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2852582475
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_grub, 2852582475)
@@ -186,7 +190,9 @@ object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 574609963
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_insect, 574609963)
@@ -236,7 +242,9 @@ object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 529269810
 }
 
 ObjectTemplates:addTemplate(object_tangible_fishing_bait_shared_bait_worm, 529269810)

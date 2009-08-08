@@ -75,7 +75,9 @@ object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1894914263
 }
 
 ObjectTemplates:addTemplate(object_player_base_shared_base_player, 1894914263)
@@ -114,7 +116,9 @@ object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1016063662
 }
 
 ObjectTemplates:addTemplate(object_player_base_shared_player_default, 1016063662)

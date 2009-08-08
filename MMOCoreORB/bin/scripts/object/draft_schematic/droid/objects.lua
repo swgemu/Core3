@@ -75,7 +75,9 @@ object_draft_schematic_droid_shared_bounty_probot_transmitter = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1941968174
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_bounty_probot_transmitter, 1941968174)
@@ -114,7 +116,9 @@ object_draft_schematic_droid_shared_bounty_seeker_transmitter = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2758845308
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_bounty_seeker_transmitter, 2758845308)
@@ -153,7 +157,9 @@ object_draft_schematic_droid_shared_droid_3p0 = SharedDraftSchematicObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1389615347
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_3p0, 1389615347)
@@ -192,7 +198,9 @@ object_draft_schematic_droid_shared_droid_3p0_advanced = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1306893282
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_3p0_advanced, 1306893282)
@@ -231,7 +239,9 @@ object_draft_schematic_droid_shared_droid_binary_load_lifter = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4286041096
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_binary_load_lifter, 4286041096)
@@ -270,7 +280,9 @@ object_draft_schematic_droid_shared_droid_binary_load_lifter_advanced = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3404292567
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_binary_load_lifter_advanced, 3404292567)
@@ -309,7 +321,9 @@ object_draft_schematic_droid_shared_droid_customization_kit = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2443661159
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_customization_kit, 2443661159)
@@ -348,7 +362,9 @@ object_draft_schematic_droid_shared_droid_damage_repair_kit_a = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2525304754
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_damage_repair_kit_a, 2525304754)
@@ -387,7 +403,9 @@ object_draft_schematic_droid_shared_droid_damage_repair_kit_b = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1301462821
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_damage_repair_kit_b, 1301462821)
@@ -426,7 +444,9 @@ object_draft_schematic_droid_shared_droid_damage_repair_kit_c = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 77584552
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_damage_repair_kit_c, 77584552)
@@ -465,7 +485,9 @@ object_draft_schematic_droid_shared_droid_damage_repair_kit_d = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4286378940
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_damage_repair_kit_d, 4286378940)
@@ -504,7 +526,9 @@ object_draft_schematic_droid_shared_droid_dz70 = SharedDraftSchematicObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 708846051
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_dz70, 708846051)
@@ -543,7 +567,9 @@ object_draft_schematic_droid_shared_droid_dz70_advanced = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2942797773
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_dz70_advanced, 2942797773)
@@ -582,7 +608,9 @@ object_draft_schematic_droid_shared_droid_interplanetary_survey = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 5645596
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_interplanetary_survey, 5645596)
@@ -621,7 +649,9 @@ object_draft_schematic_droid_shared_droid_le_repair = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2934220330
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_le_repair, 2934220330)
@@ -660,7 +690,9 @@ object_draft_schematic_droid_shared_droid_le_repair_advanced = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2527796117
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_le_repair_advanced, 2527796117)
@@ -699,7 +731,9 @@ object_draft_schematic_droid_shared_droid_mse = SharedDraftSchematicObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 901463605
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_mse, 901463605)
@@ -738,7 +772,9 @@ object_draft_schematic_droid_shared_droid_mse_advanced = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 118884910
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_mse_advanced, 118884910)
@@ -777,7 +813,9 @@ object_draft_schematic_droid_shared_droid_power = SharedDraftSchematicObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 385422826
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_power, 385422826)
@@ -816,7 +854,9 @@ object_draft_schematic_droid_shared_droid_power_advanced = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 495736923
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_power_advanced, 495736923)
@@ -855,7 +895,9 @@ object_draft_schematic_droid_shared_droid_probot = SharedDraftSchematicObjectTem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 270329060
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_probot, 270329060)
@@ -894,7 +936,9 @@ object_draft_schematic_droid_shared_droid_probot_advanced = SharedDraftSchematic
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3398676938
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_probot_advanced, 3398676938)
@@ -933,7 +977,9 @@ object_draft_schematic_droid_shared_droid_r2 = SharedDraftSchematicObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 823031027
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r2, 823031027)
@@ -972,7 +1018,9 @@ object_draft_schematic_droid_shared_droid_r2_advanced = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 783926207
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r2_advanced, 783926207)
@@ -1011,7 +1059,9 @@ object_draft_schematic_droid_shared_droid_r3 = SharedDraftSchematicObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2013467518
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r3, 2013467518)
@@ -1050,7 +1100,9 @@ object_draft_schematic_droid_shared_droid_r3_advanced = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1766722942
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r3_advanced, 1766722942)
@@ -1089,7 +1141,9 @@ object_draft_schematic_droid_shared_droid_r4 = SharedDraftSchematicObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2212509802
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r4, 2212509802)
@@ -1128,7 +1182,9 @@ object_draft_schematic_droid_shared_droid_r4_advanced = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3125311630
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r4_advanced, 3125311630)
@@ -1167,7 +1223,9 @@ object_draft_schematic_droid_shared_droid_r5 = SharedDraftSchematicObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3404554215
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r5, 3404554215)
@@ -1206,7 +1264,9 @@ object_draft_schematic_droid_shared_droid_r5_advanced = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4257199695
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_r5_advanced, 4257199695)
@@ -1245,7 +1305,9 @@ object_draft_schematic_droid_shared_droid_stimpack_a = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 670345241
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_stimpack_a, 670345241)
@@ -1284,7 +1346,9 @@ object_draft_schematic_droid_shared_droid_stimpack_b = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4242735246
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_stimpack_b, 4242735246)
@@ -1323,7 +1387,9 @@ object_draft_schematic_droid_shared_droid_stimpack_c = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3052300035
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_stimpack_c, 3052300035)
@@ -1362,7 +1428,9 @@ object_draft_schematic_droid_shared_droid_stimpack_d = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1309494295
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_stimpack_d, 1309494295)
@@ -1401,7 +1469,9 @@ object_draft_schematic_droid_shared_droid_surgical = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4168988413
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_surgical, 4168988413)
@@ -1440,7 +1510,9 @@ object_draft_schematic_droid_shared_droid_surgical_advanced = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4113263864
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_surgical_advanced, 4113263864)
@@ -1479,7 +1551,9 @@ object_draft_schematic_droid_shared_droid_treadwell = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 201412072
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_treadwell, 201412072)
@@ -1518,7 +1592,9 @@ object_draft_schematic_droid_shared_droid_treadwell_advanced = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3172777822
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_treadwell_advanced, 3172777822)
@@ -1557,7 +1633,9 @@ object_draft_schematic_droid_shared_droid_vitapack_a = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2984466830
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_vitapack_a, 2984466830)
@@ -1596,7 +1674,9 @@ object_draft_schematic_droid_shared_droid_vitapack_b = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1794437401
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_vitapack_b, 1794437401)
@@ -1635,7 +1715,9 @@ object_draft_schematic_droid_shared_droid_vitapack_c = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 603559572
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_vitapack_c, 603559572)
@@ -1674,7 +1756,9 @@ object_draft_schematic_droid_shared_droid_wound_repair_kit_a = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 376516854
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_wound_repair_kit_a, 376516854)
@@ -1713,7 +1797,9 @@ object_draft_schematic_droid_shared_droid_wound_repair_kit_b = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3446052961
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_wound_repair_kit_b, 3446052961)
@@ -1752,7 +1838,9 @@ object_draft_schematic_droid_shared_droid_wound_repair_kit_c = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2221670380
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_wound_repair_kit_c, 2221670380)
@@ -1791,7 +1879,9 @@ object_draft_schematic_droid_shared_droid_wound_repair_kit_d = SharedDraftSchema
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2139673848
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_droid_wound_repair_kit_d, 2139673848)
@@ -1830,7 +1920,9 @@ object_draft_schematic_droid_shared_navicomputer_1 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 783582353
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_navicomputer_1, 783582353)
@@ -1869,7 +1961,9 @@ object_draft_schematic_droid_shared_navicomputer_2 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4121111558
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_navicomputer_2, 4121111558)
@@ -1908,7 +2002,9 @@ object_draft_schematic_droid_shared_navicomputer_3 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3165539211
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_navicomputer_3, 3165539211)
@@ -1947,7 +2043,9 @@ object_draft_schematic_droid_shared_navicomputer_4 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1196253343
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_navicomputer_4, 1196253343)
@@ -1986,7 +2084,9 @@ object_draft_schematic_droid_shared_navicomputer_5 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 239077138
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_navicomputer_5, 239077138)
@@ -2025,7 +2125,9 @@ object_draft_schematic_droid_shared_navicomputer_6 = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3579293573
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_droid_shared_navicomputer_6, 3579293573)

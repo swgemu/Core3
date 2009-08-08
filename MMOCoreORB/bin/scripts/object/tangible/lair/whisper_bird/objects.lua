@@ -86,7 +86,9 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3979491544
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird, 3979491544)
@@ -136,7 +138,9 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3994387683
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle, 3994387683)
@@ -186,7 +190,9 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 522402134
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp, 522402134)

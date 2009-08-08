@@ -86,7 +86,9 @@ object_building_player_construction_shared_construction_player_guildhall_corelli
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 366457799
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_guildhall_corellia_style_01, 366457799)
@@ -136,7 +138,9 @@ object_building_player_construction_shared_construction_player_guildhall_naboo_s
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2900055352
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_guildhall_naboo_style_01, 2900055352)
@@ -186,7 +190,9 @@ object_building_player_construction_shared_construction_player_guildhall_tatooin
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 3169847379
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_guildhall_tatooine_style_01, 3169847379)
@@ -236,7 +242,9 @@ object_building_player_construction_shared_construction_player_guildhall_tatooin
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1743233220
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_guildhall_tatooine_style_02, 1743233220)
@@ -286,7 +294,9 @@ object_building_player_construction_shared_construction_player_house_corellia_la
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2433947084
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_corellia_large_style_01, 2433947084)
@@ -336,7 +346,9 @@ object_building_player_construction_shared_construction_player_house_corellia_la
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1241824603
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_corellia_large_style_02, 1241824603)
@@ -386,7 +398,9 @@ object_building_player_construction_shared_construction_player_house_corellia_me
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1508639875
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_corellia_medium_style_01, 1508639875)
@@ -436,7 +450,9 @@ object_building_player_construction_shared_construction_player_house_corellia_me
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2197531668
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_corellia_medium_style_02, 2197531668)
@@ -486,7 +502,9 @@ object_building_player_construction_shared_construction_player_house_corellia_sm
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2973753978
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_corellia_small_style_01, 2973753978)
@@ -536,7 +554,9 @@ object_building_player_construction_shared_construction_player_house_corellia_sm
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1781025517
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_corellia_small_style_02, 1781025517)
@@ -586,7 +606,9 @@ object_building_player_construction_shared_construction_player_house_generic_lar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1015360683
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_generic_large_style_01, 1015360683)
@@ -636,7 +658,9 @@ object_building_player_construction_shared_construction_player_house_generic_lar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 3885139004
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_generic_large_style_02, 3885139004)
@@ -686,7 +710,9 @@ object_building_player_construction_shared_construction_player_house_generic_med
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 255308638
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_generic_medium_style_01, 255308638)
@@ -736,7 +762,9 @@ object_building_player_construction_shared_construction_player_house_generic_med
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 3558874057
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_generic_medium_style_02, 3558874057)
@@ -786,7 +814,9 @@ object_building_player_construction_shared_construction_player_house_generic_sma
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 480893725
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_generic_small_style_01, 480893725)
@@ -836,7 +866,9 @@ object_building_player_construction_shared_construction_player_house_generic_sma
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 3351147402
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_generic_small_style_02, 3351147402)
@@ -886,7 +918,9 @@ object_building_player_construction_shared_construction_player_house_naboo_large
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1193695091
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_naboo_large_style_01, 1193695091)
@@ -936,7 +970,9 @@ object_building_player_construction_shared_construction_player_house_naboo_mediu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1739832792
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_naboo_medium_style_01, 1739832792)
@@ -986,7 +1022,9 @@ object_building_player_construction_shared_construction_player_house_naboo_small
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 1728749765
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_naboo_small_style_01, 1728749765)
@@ -1036,7 +1074,9 @@ object_building_player_construction_shared_construction_player_house_naboo_small
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 3156019282
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_naboo_small_style_02, 3156019282)
@@ -1086,7 +1126,9 @@ object_building_player_construction_shared_construction_player_house_tatooine_la
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2991369986
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_tatooine_large_style_01, 2991369986)
@@ -1136,7 +1178,9 @@ object_building_player_construction_shared_construction_player_house_tatooine_me
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2469812922
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_tatooine_medium_style_01, 2469812922)
@@ -1186,7 +1230,9 @@ object_building_player_construction_shared_construction_player_house_tatooine_sm
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 1
+	useStructureFootprintOutline = 1,
+
+	clientObjectCRC = 2455787700
 }
 
 ObjectTemplates:addTemplate(object_building_player_construction_shared_construction_player_house_tatooine_small_style_01, 2455787700)

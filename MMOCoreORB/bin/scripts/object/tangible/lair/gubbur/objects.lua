@@ -86,7 +86,9 @@ object_tangible_lair_gubbur_shared_lair_gubbur = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2954623268
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gubbur_shared_lair_gubbur, 2954623268)
@@ -136,7 +138,9 @@ object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 162663967
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gubbur_shared_lair_gubbur_underwater, 162663967)

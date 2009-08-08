@@ -86,7 +86,9 @@ object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barra
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 529503793
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks, 529503793)
@@ -136,7 +138,9 @@ object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 745421256
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks, 745421256)
@@ -186,7 +190,9 @@ object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3854704940
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks, 3854704940)
@@ -236,7 +242,9 @@ object_installation_battlefield_destructible_barracks_shared_storm_trooper_barra
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3586973666
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks, 3586973666)

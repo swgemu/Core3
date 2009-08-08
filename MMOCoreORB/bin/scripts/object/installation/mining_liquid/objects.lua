@@ -86,7 +86,9 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_1 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2015682736
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_1, 2015682736)
@@ -136,7 +138,9 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2738047015
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_2, 2738047015)
@@ -186,7 +190,9 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3929943978
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_3, 3929943978)
@@ -236,7 +242,9 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2235626870
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester, 2235626870)
@@ -286,7 +294,9 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1305511934
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy, 1305511934)
@@ -336,7 +346,9 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3152239258
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium, 3152239258)
@@ -386,7 +398,9 @@ object_installation_mining_liquid_shared_resource_harvester = SharedInstallation
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 860426391
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_shared_resource_harvester, 860426391)

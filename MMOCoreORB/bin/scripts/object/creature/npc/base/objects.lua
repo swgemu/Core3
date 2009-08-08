@@ -110,7 +110,9 @@ object_creature_npc_base_shared_aqualish_base_female = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2762844902
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_base_female, 2762844902)
@@ -184,7 +186,9 @@ object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 643792170
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_base_male, 643792170)
@@ -258,7 +262,9 @@ object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectT
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1130200645
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s02_base_female, 1130200645)
@@ -332,7 +338,9 @@ object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1420546336
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s02_base_male, 1420546336)
@@ -406,7 +414,9 @@ object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectT
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1418612504
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s03_base_female, 1418612504)
@@ -480,7 +490,9 @@ object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2309238866
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_aqualish_s03_base_male, 2309238866)
@@ -554,7 +566,9 @@ object_creature_npc_base_shared_base_droid = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3496555527
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_base_droid, 3496555527)
@@ -628,7 +642,9 @@ object_creature_npc_base_shared_base_npc = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 636692298
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_base_npc, 636692298)
@@ -702,7 +718,9 @@ object_creature_npc_base_shared_base_npc_theme_park = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 654644587
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_base_npc_theme_park, 654644587)
@@ -776,7 +794,9 @@ object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2412520178
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_bith_base_female, 2412520178)
@@ -850,7 +870,9 @@ object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1042888288
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_bith_base_male, 1042888288)
@@ -924,7 +946,9 @@ object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3759013611
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_bothan_base_female, 3759013611)
@@ -998,7 +1022,9 @@ object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1590149475
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_bothan_base_male, 1590149475)
@@ -1072,7 +1098,9 @@ object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 896393245
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_chadra_fan_base_female, 896393245)
@@ -1146,7 +1174,9 @@ object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 313334022
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_chadra_fan_base_male, 313334022)
@@ -1220,7 +1250,9 @@ object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3185808736
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_dantari_base_male, 3185808736)
@@ -1294,7 +1326,9 @@ object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4086632991
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_devaronian_base_male, 4086632991)
@@ -1368,7 +1402,9 @@ object_creature_npc_base_shared_drall_base_female = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1636192846
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_drall_base_female, 1636192846)
@@ -1442,7 +1478,9 @@ object_creature_npc_base_shared_drall_base_male = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 999880424
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_drall_base_male, 999880424)
@@ -1516,7 +1554,9 @@ object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2138236706
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_dulok_base_female, 2138236706)
@@ -1590,7 +1630,9 @@ object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 748671429
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_dulok_base_male, 748671429)
@@ -1664,7 +1706,9 @@ object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1504641037
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_ewok_base_female, 1504641037)
@@ -1738,7 +1782,9 @@ object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2588984693
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_ewok_base_male, 2588984693)
@@ -1812,7 +1858,9 @@ object_creature_npc_base_shared_gamorrean_base_male = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3906894721
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_gamorrean_base_male, 3906894721)
@@ -1886,7 +1934,9 @@ object_creature_npc_base_shared_geonosian_base_male = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 595885541
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_geonosian_base_male, 595885541)
@@ -1960,7 +2010,9 @@ object_creature_npc_base_shared_gorax_base_male = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2975619975
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_gorax_base_male, 2975619975)
@@ -2034,7 +2086,9 @@ object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3900679321
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_gran_base_male, 3900679321)
@@ -2108,7 +2162,9 @@ object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2826781885
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_gungan_base_male, 2826781885)
@@ -2182,7 +2238,9 @@ object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 53721594
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_human_base_female, 53721594)
@@ -2256,7 +2314,9 @@ object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2134943660
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_human_base_male, 2134943660)
@@ -2330,7 +2390,9 @@ object_creature_npc_base_shared_hutt_base_female = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 36831134
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_hutt_base_female, 36831134)
@@ -2404,7 +2466,9 @@ object_creature_npc_base_shared_hutt_base_male = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3532419442
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_hutt_base_male, 3532419442)
@@ -2478,7 +2542,9 @@ object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3055229554
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_ishi_tib_base_male, 3055229554)
@@ -2552,7 +2618,9 @@ object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1397449143
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_ithorian_base_male, 1397449143)
@@ -2626,7 +2694,9 @@ object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3349422050
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_jawa_base_male, 3349422050)
@@ -2700,7 +2770,9 @@ object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4291004780
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_jinda_base_female, 4291004780)
@@ -2774,7 +2846,9 @@ object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 242045215
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_jinda_base_male, 242045215)
@@ -2848,7 +2922,9 @@ object_creature_npc_base_shared_klatooinian_base_male = SharedCreatureObjectTemp
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3370318767
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_klatooinian_base_male, 3370318767)
@@ -2922,7 +2998,9 @@ object_creature_npc_base_shared_marauder_base_female = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2355090288
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_marauder_base_female, 2355090288)
@@ -2996,7 +3074,9 @@ object_creature_npc_base_shared_marauder_base_male = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1688940240
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_marauder_base_male, 1688940240)
@@ -3070,7 +3150,9 @@ object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1371353669
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_moncal_base_female, 1371353669)
@@ -3144,7 +3226,9 @@ object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1617753563
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_moncal_base_male, 1617753563)
@@ -3218,7 +3302,9 @@ object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2839443196
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_nikto_base_male, 2839443196)
@@ -3292,7 +3378,9 @@ object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2606234616
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_quarren_base_male, 2606234616)
@@ -3366,7 +3454,9 @@ object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2803462038
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_rodian_base_female, 2803462038)
@@ -3440,7 +3530,9 @@ object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 873111919
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_rodian_base_male, 873111919)
@@ -3514,7 +3606,9 @@ object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4114788784
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_selonian_base_female, 4114788784)
@@ -3588,7 +3682,9 @@ object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 1841868410
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_selonian_base_male, 1841868410)
@@ -3662,7 +3758,9 @@ object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 381383099
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_sullustan_base_male, 381383099)
@@ -3736,7 +3834,9 @@ object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTem
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2585187332
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_trandoshan_base_female, 2585187332)
@@ -3810,7 +3910,9 @@ object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTempl
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 193024850
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_trandoshan_base_male, 193024850)
@@ -3884,7 +3986,9 @@ object_creature_npc_base_shared_tusken_raider_base_male = SharedCreatureObjectTe
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 344809642
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_tusken_raider_base_male, 344809642)
@@ -3958,7 +4062,9 @@ object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 4167458949
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_twilek_base_female, 4167458949)
@@ -4032,7 +4138,9 @@ object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3121839578
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_twilek_base_male, 3121839578)
@@ -4106,7 +4214,9 @@ object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3478426739
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_weequay_base_male, 3478426739)
@@ -4180,7 +4290,9 @@ object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 858760919
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_whiphid_base_female, 858760919)
@@ -4254,7 +4366,9 @@ object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 929953104
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_whiphid_base_male, 929953104)
@@ -4328,7 +4442,9 @@ object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTempla
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 3361749167
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_wookiee_base_female, 3361749167)
@@ -4402,7 +4518,9 @@ object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 627149744
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_wookiee_base_male, 627149744)
@@ -4476,7 +4594,9 @@ object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplat
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2580396153
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_zabrak_base_female, 2580396153)
@@ -4550,7 +4670,9 @@ object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.5
+	waterModPercent = 0.5,
+
+	clientObjectCRC = 2904879514
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_base_shared_zabrak_base_male, 2904879514)

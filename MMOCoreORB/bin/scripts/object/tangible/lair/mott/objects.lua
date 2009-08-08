@@ -86,7 +86,9 @@ object_tangible_lair_mott_shared_lair_mott = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1868006233
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott, 1868006233)
@@ -136,7 +138,9 @@ object_tangible_lair_mott_shared_lair_mott_grassland = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1621695491
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_mott_shared_lair_mott_grassland, 1621695491)

@@ -86,7 +86,9 @@ object_tangible_component_weapon_shared_acklay_bone_reinforcement_core = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4088226280
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_acklay_bone_reinforcement_core, 4088226280)
@@ -136,7 +138,9 @@ object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3003199598
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement, 3003199598)
@@ -186,7 +190,9 @@ object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhanceme
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2928380904
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement, 2928380904)
@@ -236,7 +242,9 @@ object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1563728747
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_base_vibro_unit_enhancement, 1563728747)
@@ -286,7 +294,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1710329756
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01, 1710329756)
@@ -336,7 +346,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2092661773
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg, 2092661773)
@@ -386,7 +398,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3202754315
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02, 3202754315)
@@ -436,7 +450,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2421758291
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg, 2421758291)
@@ -486,7 +502,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4159389830
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03, 4159389830)
@@ -536,7 +554,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3422078361
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg, 3422078361)
@@ -586,7 +606,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 201878418
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04, 201878418)
@@ -636,7 +658,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1297927768
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg, 1297927768)
@@ -686,7 +710,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1157958687
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05, 1157958687)
@@ -736,7 +762,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 385684114
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg, 385684114)
@@ -786,7 +814,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2652021896
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06, 2652021896)
@@ -836,7 +866,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4196366284
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg, 4196366284)
@@ -886,7 +918,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3609182981
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07, 3609182981)
@@ -936,7 +970,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2713627398
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg, 2713627398)
@@ -986,7 +1022,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4222005055
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01, 4222005055)
@@ -1036,7 +1074,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3666495250
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg, 3666495250)
@@ -1086,7 +1126,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 548472744
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02, 548472744)
@@ -1136,7 +1178,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 912794188
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg, 912794188)
@@ -1186,7 +1230,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1773953061
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03, 1773953061)
@@ -1236,7 +1282,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1841954438
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg, 1841954438)
@@ -1286,7 +1334,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2455718705
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04, 2455718705)
@@ -1336,7 +1386,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3949851975
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg, 3949851975)
@@ -1386,7 +1438,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3679595708
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05, 3679595708)
@@ -1436,7 +1490,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2966169997
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg, 2966169997)
@@ -1486,7 +1542,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4555819
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06, 4555819)
@@ -1536,7 +1594,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1546538195
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg, 1546538195)
@@ -1586,7 +1646,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1229513638
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07, 1229513638)
@@ -1636,7 +1698,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 126849049
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg, 126849049)
@@ -1686,7 +1750,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3175095314
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01, 3175095314)
@@ -1736,7 +1802,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 867179315
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg, 867179315)
@@ -1786,7 +1854,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1717023877
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02, 1717023877)
@@ -1836,7 +1906,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3746725485
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg, 3746725485)
@@ -1886,7 +1958,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 794481416
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03, 794481416)
@@ -1936,7 +2010,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2230559399
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg, 2230559399)
@@ -1986,7 +2062,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3568957468
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04, 3568957468)
@@ -2036,7 +2114,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 39299430
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg, 39299430)
@@ -2086,7 +2166,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2645860241
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05, 2645860241)
@@ -2136,7 +2218,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1509324204
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg, 1509324204)
@@ -2186,7 +2270,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1185101574
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06, 1185101574)
@@ -2236,7 +2322,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3037991154
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg, 3037991154)
@@ -2286,7 +2374,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 263082123
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07, 263082123)
@@ -2336,7 +2426,9 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4004891704
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg, 4004891704)
@@ -2386,7 +2478,9 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3001062270
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel, 3001062270)
@@ -2436,7 +2530,9 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4250066631
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced, 4250066631)
@@ -2486,7 +2582,9 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2263958541
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_quest, 2263958541)
@@ -2536,7 +2634,9 @@ object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3399297408
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler, 3399297408)
@@ -2586,7 +2686,9 @@ object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1426378303
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_advanced, 1426378303)
@@ -2636,7 +2738,9 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durabi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1717492287
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability, 1717492287)
@@ -2686,7 +2790,9 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3981194570
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt, 3981194570)
@@ -2736,7 +2842,9 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_da
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3285791160
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage, 3285791160)
@@ -2786,7 +2894,9 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_da
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4158958561
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage, 4158958561)
@@ -2836,7 +2946,9 @@ object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3074802434
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, 3074802434)
@@ -2886,7 +2998,9 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 260681278
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel, 260681278)
@@ -2936,7 +3050,9 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 992626072
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced, 992626072)
@@ -2986,7 +3102,9 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1194049951
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism, 1194049951)
@@ -3036,7 +3154,9 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1411275981
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced, 1411275981)
@@ -3086,7 +3206,9 @@ object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3758372574
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_corvette_rifle_barrel, 3758372574)
@@ -3136,7 +3258,9 @@ object_tangible_component_weapon_shared_energization_crystals = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 491130592
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_energization_crystals, 491130592)
@@ -3186,7 +3310,9 @@ object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4061079973
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_galven_tube_circuits, 4061079973)
@@ -3236,7 +3362,9 @@ object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2313307226
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube, 2313307226)
@@ -3286,7 +3414,9 @@ object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4092441918
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_base, 4092441918)
@@ -3336,7 +3466,9 @@ object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2570329564
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_green, 2570329564)
@@ -3386,7 +3518,9 @@ object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 98191878
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_red, 98191878)
@@ -3436,7 +3570,9 @@ object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 783478248
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_yellow, 783478248)
@@ -3486,7 +3622,9 @@ object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362781931
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_reinforcement_core, 2362781931)
@@ -3536,7 +3674,9 @@ object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3710952248
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_solidifying_agent, 3710952248)
@@ -3586,7 +3726,9 @@ object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 927591163
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_geonosian_sword_core, 927591163)
@@ -3636,7 +3778,9 @@ object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2251276199
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve, 2251276199)
@@ -3686,7 +3830,9 @@ object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1385368085
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_cannon_gun_tube, 1385368085)
@@ -3736,7 +3882,9 @@ object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 695643472
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_generator, 695643472)
@@ -3786,7 +3934,9 @@ object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 741674762
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor, 741674762)
@@ -3836,7 +3986,9 @@ object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3988462144
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_melee_core_enhancement, 3988462144)
@@ -3886,7 +4038,9 @@ object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 466802862
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_parallel_weapon_targeting_computer, 466802862)
@@ -3936,7 +4090,9 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1361510729
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism, 1361510729)
@@ -3986,7 +4142,9 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4156025153
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced, 4156025153)
@@ -4036,7 +4194,9 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_du
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1517204001
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability, 1517204001)
@@ -4086,7 +4246,9 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_go
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 255106526
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax, 255106526)
@@ -4136,7 +4298,9 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_ma
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4293482918
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage, 4293482918)
@@ -4186,7 +4350,9 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_mi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3419718655
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage, 3419718655)
@@ -4236,7 +4402,9 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1216914672
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel, 1216914672)
@@ -4286,7 +4454,9 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3447151631
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced, 3447151631)
@@ -4336,7 +4506,9 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1641350102
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_quest, 1641350102)
@@ -4386,7 +4558,9 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 769812356
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel, 769812356)
@@ -4436,7 +4610,9 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 594573612
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced, 594573612)
@@ -4486,7 +4662,9 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2968083189
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest, 2968083189)
@@ -4536,7 +4714,9 @@ object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3366067371
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth, 3366067371)
@@ -4586,7 +4766,9 @@ object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 829703922
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_rancor_tooth_quest, 829703922)
@@ -4636,7 +4818,9 @@ object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 600823841
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core, 600823841)
@@ -4686,7 +4870,9 @@ object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 276012891
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_reinforcement_core_advanced, 276012891)
@@ -4736,7 +4922,9 @@ object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 46230492
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon, 46230492)
@@ -4786,7 +4974,9 @@ object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 210395856
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced, 210395856)
@@ -4836,7 +5026,9 @@ object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3286610922
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced_quest, 3286610922)
@@ -4886,7 +5078,9 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1450202343
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s01, 1450202343)
@@ -4936,7 +5130,9 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2372402288
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s02, 2372402288)
@@ -4986,7 +5182,9 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3295321085
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s03, 3295321085)
@@ -5036,7 +5234,9 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2395064169
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s01, 2395064169)
@@ -5086,7 +5286,9 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1440116734
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s02, 1440116734)
@@ -5136,7 +5338,9 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 484116595
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s03, 484116595)
@@ -5186,7 +5390,9 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3879215975
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s04, 3879215975)
@@ -5236,7 +5442,9 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2922726634
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s05, 2922726634)
@@ -5286,7 +5494,9 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1965223037
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s06, 1965223037)
@@ -5336,7 +5546,9 @@ object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1418250527
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_spider_spine, 1418250527)
@@ -5386,7 +5598,9 @@ object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2306652479
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock, 2306652479)
@@ -5436,7 +5650,9 @@ object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3440579824
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced, 3440579824)
@@ -5486,7 +5702,9 @@ object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 473297139
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_stock_advanced_quest, 473297139)
@@ -5536,7 +5754,9 @@ object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3001742780
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core, 3001742780)
@@ -5586,7 +5806,9 @@ object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 639496171
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_advanced, 639496171)
@@ -5636,7 +5858,9 @@ object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 937100583
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_sword_core_quest, 937100583)
@@ -5686,7 +5910,9 @@ object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2743057273
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_turbo_laser_gun_tube, 2743057273)
@@ -5736,7 +5962,9 @@ object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2075249202
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit, 2075249202)
@@ -5786,7 +6014,9 @@ object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1094994187
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_advanced, 1094994187)
@@ -5836,7 +6066,9 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 719270332
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_durability, 719270332)
@@ -5886,7 +6118,9 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2404964923
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage, 2404964923)
@@ -5936,7 +6170,9 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3143975010
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage, 3143975010)
@@ -5986,7 +6222,9 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1279704725
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding, 1279704725)
@@ -6036,7 +6274,9 @@ object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3670724056
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_nightsister, 3670724056)
@@ -6086,7 +6326,9 @@ object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2177771940
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_vibro_unit_quest, 2177771940)
@@ -6136,7 +6378,9 @@ object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3845302346
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_carbine_laser_stock, 3845302346)
@@ -6186,7 +6430,9 @@ object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 784421487
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dlt20_stock, 784421487)
@@ -6236,7 +6482,9 @@ object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3265377487
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_dxr6_stock, 3265377487)
@@ -6286,7 +6534,9 @@ object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2778389108
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_closed, 2778389108)
@@ -6336,7 +6586,9 @@ object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3082135386
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_open, 3082135386)
@@ -6386,7 +6638,9 @@ object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 119190783
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_ee3_stock, 119190783)
@@ -6436,7 +6690,9 @@ object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2199807561
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_elite_stock, 2199807561)
@@ -6486,7 +6742,9 @@ object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4368733
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount, 4368733)
@@ -6536,7 +6794,9 @@ object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1483742937
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_mount_light, 1483742937)
@@ -6586,7 +6846,9 @@ object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2098038776
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_rifle_laser_stock, 2098038776)
@@ -6636,7 +6898,9 @@ object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1060795790
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_t21_stock, 1060795790)
@@ -6686,7 +6950,9 @@ object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1015355286
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_targeting_computer, 1015355286)
@@ -6736,7 +7002,9 @@ object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1519446623
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_shared_weapon_trajectory_computer, 1519446623)

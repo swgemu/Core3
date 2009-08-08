@@ -86,7 +86,9 @@ object_tangible_lair_vesp_shared_lair_vesp = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2116978464
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp, 2116978464)
@@ -136,7 +138,9 @@ object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2079570981
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_desert, 2079570981)
@@ -186,7 +190,9 @@ object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4143757009
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vesp_shared_lair_vesp_mountain, 4143757009)

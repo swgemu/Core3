@@ -86,7 +86,9 @@ object_tangible_ship_crafted_reactor_shared_advanced_fusion_core = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2957310385
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_advanced_fusion_core, 2957310385)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_reactor_shared_advanced_power_distributor = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4065301062
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_advanced_power_distributor, 4065301062)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4073763603
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor, 4073763603)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2892822392
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent, 2892822392)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3936392569
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk1, 3936392569)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 834092526
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk2, 834092526)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2025478755
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk3, 2025478755)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk4 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2203677047
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk4, 2203677047)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk5 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3394508538
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_base_reactor_subcomponent_mk5, 3394508538)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_reactor_shared_basic_reactor = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1900869763
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_basic_reactor, 1900869763)
@@ -586,7 +606,9 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk1 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3172827767
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk1, 3172827767)
@@ -636,7 +658,9 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk2 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1711942368
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk2, 1711942368)
@@ -686,7 +710,9 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk3 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 789007725
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk3, 789007725)
@@ -736,7 +762,9 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk4 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3571738233
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk4, 3571738233)
@@ -786,7 +814,9 @@ object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2649293300
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_fusion_reactor_mk5, 2649293300)
@@ -836,7 +866,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk1 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 118151162
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk1, 118151162)
@@ -886,7 +918,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3692920685
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk2, 3692920685)
@@ -936,7 +970,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk3 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2500860128
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk3, 2500860128)
@@ -986,7 +1022,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk4 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1861432308
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk4, 1861432308)
@@ -1036,7 +1074,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 670979193
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_limiter_mk5, 670979193)
@@ -1086,7 +1126,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk1 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1124351052
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk1, 1124351052)
@@ -1136,7 +1178,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk2 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2551420123
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk2, 2551420123)
@@ -1186,7 +1230,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3508466518
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3, 3508466518)
@@ -1236,7 +1282,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk4 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 721279042
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk4, 721279042)
@@ -1286,7 +1334,9 @@ object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk5 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1676722127
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk5, 1676722127)
@@ -1336,7 +1386,9 @@ object_tangible_ship_crafted_reactor_shared_standard_fusion_core = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3532622984
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_standard_fusion_core, 3532622984)
@@ -1386,7 +1438,9 @@ object_tangible_ship_crafted_reactor_shared_standard_power_distributor = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2827748660
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reactor_shared_standard_power_distributor, 2827748660)

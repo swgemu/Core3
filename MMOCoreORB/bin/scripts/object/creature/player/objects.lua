@@ -110,7 +110,9 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 491942670
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_bothan_female, 491942670)
@@ -184,7 +186,9 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1542946611
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_bothan_male, 1542946611)
@@ -258,7 +262,9 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4294949865
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_human_female, 4294949865)
@@ -332,7 +338,9 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2937962913
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_human_male, 2937962913)
@@ -406,7 +414,9 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3017834515
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_female, 3017834515)
@@ -480,7 +490,9 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 951764932
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_ithorian_male, 951764932)
@@ -554,7 +566,9 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2553266142
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_moncal_female, 2553266142)
@@ -628,7 +642,9 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3116914088
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_moncal_male, 3116914088)
@@ -702,7 +718,9 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3261342811
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_rodian_female, 3261342811)
@@ -776,7 +794,9 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 200920476
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_rodian_male, 200920476)
@@ -850,7 +870,9 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 359871514
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_female, 359871514)
@@ -924,7 +946,9 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 194222500
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_sullustan_male, 194222500)
@@ -998,7 +1022,9 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 406594758
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_female, 406594758)
@@ -1072,7 +1098,9 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 1355045775
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_trandoshan_male, 1355045775)
@@ -1146,7 +1174,9 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2224509660
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_twilek_female, 2224509660)
@@ -1220,7 +1250,9 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 4068532859
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_twilek_male, 4068532859)
@@ -1294,7 +1326,9 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 229336546
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_female, 229336546)
@@ -1368,7 +1402,9 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 90470685
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_wookiee_male, 90470685)
@@ -1442,7 +1478,9 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 2850250749
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_female, 2850250749)
@@ -1516,7 +1554,9 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	warpTolerance = 17,
-	waterModPercent = 0.75
+	waterModPercent = 0.75,
+
+	clientObjectCRC = 3791955286
 }
 
 ObjectTemplates:addTemplate(object_creature_player_shared_zabrak_male, 3791955286)

@@ -75,7 +75,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_angler = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2194731916
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_angler, 2194731916)
@@ -114,7 +116,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bageraset = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4215503445
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bageraset, 4215503445)
@@ -153,7 +157,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bantha = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2986875366
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bantha, 2986875366)
@@ -192,7 +198,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4105804770
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax, 4105804770)
@@ -231,7 +239,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_blurrg = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3526408720
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_blurrg, 3526408720)
@@ -270,7 +280,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4013578304
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf, 4013578304)
@@ -309,7 +321,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bocatt = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2241064889
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bocatt, 2241064889)
@@ -348,7 +362,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bol = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 194404346
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bol, 194404346)
@@ -387,7 +403,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 774858939
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol, 774858939)
@@ -426,7 +444,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolma = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3401168648
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolma, 3401168648)
@@ -465,7 +485,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bordok = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2122372411
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bordok, 2122372411)
@@ -504,7 +526,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_brackaset = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4202172720
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_brackaset, 4202172720)
@@ -543,7 +567,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2824161282
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat, 2824161282)
@@ -582,7 +608,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_choku = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2519862275
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_choku, 2519862275)
@@ -621,7 +649,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 294189744
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa, 294189744)
@@ -660,7 +690,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1742701874
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake, 1742701874)
@@ -699,7 +731,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dewback = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 458255116
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dewback, 458255116)
@@ -738,7 +772,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1538963680
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard, 1538963680)
@@ -777,7 +813,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_durni = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2143765286
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_durni, 2143765286)
@@ -816,7 +854,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_eopie = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4256914670
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_eopie, 4256914670)
@@ -855,7 +895,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1377358713
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset, 1377358713)
@@ -894,7 +936,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_fambaa = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3590470383
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_fambaa, 3590470383)
@@ -933,7 +977,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gnort = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3008536395
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gnort, 3008536395)
@@ -972,7 +1018,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_graul = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4155029108
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_graul, 4155029108)
@@ -1011,7 +1059,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gronda = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3598263633
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gronda, 3598263633)
@@ -1050,7 +1100,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gualama = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1583894111
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gualama, 1583894111)
@@ -1089,7 +1141,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 214864710
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg, 214864710)
@@ -1128,7 +1182,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2942082056
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset, 2942082056)
@@ -1167,7 +1223,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 836337505
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat, 836337505)
@@ -1206,7 +1264,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurreck = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2573412958
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurreck, 2573412958)
@@ -1245,7 +1305,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3982863564
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider, 3982863564)
@@ -1284,7 +1346,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 42281249
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun, 42281249)
@@ -1323,7 +1387,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huurton = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 221814880
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huurton, 221814880)
@@ -1362,7 +1428,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ikopi = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3034849253
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ikopi, 3034849253)
@@ -1401,7 +1469,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kaadu = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3687731549
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kaadu, 3687731549)
@@ -1440,7 +1510,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2090758476
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra, 2090758476)
@@ -1479,7 +1551,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kima = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4083743117
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kima, 4083743117)
@@ -1518,7 +1592,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kimogila = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2952128886
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kimogila, 2952128886)
@@ -1557,7 +1633,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kliknik = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4064324910
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kliknik, 4064324910)
@@ -1596,7 +1674,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_krahbu = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2639605564
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_krahbu, 2639605564)
@@ -1635,7 +1715,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kusak = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1674691308
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kusak, 1674691308)
@@ -1674,7 +1756,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kwi = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 822086132
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kwi, 822086132)
@@ -1713,7 +1797,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_langlatch = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 382639713
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_langlatch, 382639713)
@@ -1752,7 +1838,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_malkloc = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3222156358
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_malkloc, 3222156358)
@@ -1791,7 +1879,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mawgax = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1998178833
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mawgax, 1998178833)
@@ -1830,7 +1920,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_merek = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3363831532
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_merek, 3363831532)
@@ -1869,7 +1961,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mott = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 391972314
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mott, 391972314)
@@ -1908,7 +2002,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_narglatch = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1494399637
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_narglatch, 1494399637)
@@ -1947,7 +2043,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_piket = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 876066471
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_piket, 876066471)
@@ -1986,7 +2084,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3425505007
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss, 3425505007)
@@ -2025,7 +2125,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_rancor = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2315289809
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_rancor, 2315289809)
@@ -2064,7 +2166,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_roba = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3996613579
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_roba, 3996613579)
@@ -2103,7 +2207,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ronto = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3413941223
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ronto, 3413941223)
@@ -2142,7 +2248,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1557933596
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther, 1557933596)
@@ -2181,7 +2289,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1130402855
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff, 1130402855)
@@ -2220,7 +2330,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2912736913
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite, 2912736913)
@@ -2259,7 +2371,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3198942193
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound, 3198942193)
@@ -2298,7 +2412,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_snorbal = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3916872379
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_snorbal, 3916872379)
@@ -2337,7 +2453,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_squall = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1147183865
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_squall, 1147183865)
@@ -2376,7 +2494,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1889951794
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong, 1889951794)
@@ -2415,7 +2535,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_thune = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2789806366
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_thune, 2789806366)
@@ -2454,7 +2576,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_torton = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3492399802
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_torton, 3492399802)
@@ -2493,7 +2617,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_tybis = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 784595182
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_tybis, 784595182)
@@ -2532,7 +2658,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_veermok = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3830962018
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_veermok, 3830962018)
@@ -2571,7 +2699,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_verne = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1267151566
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_verne, 1267151566)
@@ -2610,7 +2740,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vesp = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 240128094
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vesp, 240128094)
@@ -2649,7 +2781,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 454865702
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur, 454865702)
@@ -2688,7 +2822,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_woolamander = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2302146856
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_woolamander, 2302146856)
@@ -2727,7 +2863,9 @@ object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2008121273
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar, 2008121273)

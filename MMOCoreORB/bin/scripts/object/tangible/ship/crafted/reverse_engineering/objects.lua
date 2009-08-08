@@ -86,7 +86,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_analysis_tool = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1581832074
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_analysis_tool, 1581832074)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_armor_analysis_tool = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3210363983
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_armor_analysis_tool, 3210363983)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_booster_analysis_tool = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 152781532
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_booster_analysis_tool, 152781532)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_capacitor_analysis_tool 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3883452731
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_capacitor_analysis_tool, 3883452731)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_droid_interface_analysis
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3288485718
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_droid_interface_analysis_tool, 3288485718)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_engine_analysis_tool = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2923796744
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_engine_analysis_tool, 2923796744)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_reactor_analysis_tool = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 504265508
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_reactor_analysis_tool, 504265508)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_retrofit_kit = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2940108042
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_retrofit_kit, 2940108042)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_shields_analysis_tool = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3729905970
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_shields_analysis_tool, 3729905970)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_reverse_engineering_shared_weapon_analysis_tool = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2156748122
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_shared_weapon_analysis_tool, 2156748122)

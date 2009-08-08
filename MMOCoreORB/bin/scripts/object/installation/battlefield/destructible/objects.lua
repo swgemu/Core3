@@ -86,7 +86,9 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_1 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1010668003
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_1, 1010668003)
@@ -136,7 +138,9 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3878304116
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_2, 3878304116)
@@ -186,7 +190,9 @@ object_installation_battlefield_destructible_shared_battlefield_constructor = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2493653890
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_battlefield_constructor, 2493653890)
@@ -236,7 +242,9 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2039684051
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl, 2039684051)
@@ -286,7 +294,9 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 520990553
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl, 520990553)
@@ -336,7 +346,9 @@ object_installation_battlefield_destructible_shared_bfield_base_gate_impl = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2617968651
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_base_gate_impl, 2617968651)
@@ -386,7 +398,9 @@ object_installation_battlefield_destructible_shared_bfield_column_imperial = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2654774665
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_imperial, 2654774665)
@@ -436,7 +450,9 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_med = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1286651525
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_med, 1286651525)
@@ -486,7 +502,9 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_weak = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2786325575
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_weak, 2786325575)
@@ -536,7 +554,9 @@ object_installation_battlefield_destructible_shared_bfield_column_rebel = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3243521441
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebel, 3243521441)
@@ -586,7 +606,9 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_med = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4256393755
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_med, 4256393755)
@@ -636,7 +658,9 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2202504027
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_strong, 2202504027)
@@ -686,7 +710,9 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 473496206
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_weak, 473496206)
@@ -736,7 +762,9 @@ object_installation_battlefield_destructible_shared_bfield_column_strong = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3725708837
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_column_strong, 3725708837)
@@ -786,7 +814,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3467497655
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg, 3467497655)
@@ -836,7 +866,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2072399894
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch, 2072399894)
@@ -886,7 +918,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_l
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3127732580
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg, 3127732580)
@@ -936,7 +970,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_a
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3148938953
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch, 3148938953)
@@ -986,7 +1022,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2861241123
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged, 2861241123)
@@ -1036,7 +1074,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3046900101
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined, 3046900101)
@@ -1086,7 +1126,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_relic = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3317620099
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_relic, 3317620099)
@@ -1136,7 +1178,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3260516219
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a, 3260516219)
@@ -1186,7 +1230,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 423636972
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b, 423636972)
@@ -1236,7 +1282,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4012871923
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a, 4012871923)
@@ -1286,7 +1334,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 876099684
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b, 876099684)
@@ -1336,7 +1386,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2410944935
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen, 2410944935)
@@ -1386,7 +1438,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4289393973
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01, 4289393973)
@@ -1436,7 +1490,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 616390050
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02, 616390050)
@@ -1486,7 +1542,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 656107195
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01, 656107195)
@@ -1536,7 +1594,9 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4228697644
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02, 4228697644)
@@ -1586,7 +1646,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_fence = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1198047599
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_fence, 1198047599)
@@ -1636,7 +1698,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 712214351
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01, 712214351)
@@ -1686,7 +1750,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4049874904
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02, 4049874904)
@@ -1736,7 +1802,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3093907541
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03, 3093907541)
@@ -1786,7 +1854,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_gate = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2788699463
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_gate, 2788699463)
@@ -1836,7 +1906,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_hut = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1444171901
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_hut, 1444171901)
@@ -1886,7 +1958,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3112050906
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar, 3112050906)
@@ -1936,7 +2010,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 483726355
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal, 483726355)
@@ -1986,7 +2062,9 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_to
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3796911801
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower, 3796911801)
@@ -2036,7 +2114,9 @@ object_installation_battlefield_destructible_shared_bfield_target_power_generato
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2393390431
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_generator, 2393390431)
@@ -2086,7 +2166,9 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3659920532
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01, 3659920532)
@@ -2136,7 +2218,9 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 20077571
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02, 20077571)
@@ -2186,7 +2270,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedI
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4261137937
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_barbed, 4261137937)
@@ -2236,7 +2322,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_connector = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2122168983
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_connector, 2122168983)
@@ -2286,7 +2374,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3072454055
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_impl_weak, 3072454055)
@@ -2336,7 +2426,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInst
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2827387119
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_med, 2827387119)
@@ -2386,7 +2478,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3711597492
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_med, 3711597492)
@@ -2436,7 +2530,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2237630314
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong, 2237630314)
@@ -2486,7 +2582,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 218817390
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak, 218817390)
@@ -2536,7 +2634,9 @@ object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedI
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1471201695
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_bfield_wall_strong, 1471201695)
@@ -2586,7 +2686,9 @@ object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedI
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2515256237
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_gungan_sacred_head, 2515256237)
@@ -2636,7 +2738,9 @@ object_installation_battlefield_destructible_shared_imperial_gate_house = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4180449547
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_imperial_gate_house, 4180449547)
@@ -2686,7 +2790,9 @@ object_installation_battlefield_destructible_shared_rebel_gate_house = SharedIns
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3637065132
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_rebel_gate_house, 3637065132)
@@ -2736,7 +2842,9 @@ object_installation_battlefield_destructible_shared_small_turret = SharedInstall
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 422378636
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_small_turret, 422378636)
@@ -2786,7 +2894,9 @@ object_installation_battlefield_destructible_shared_turret_dish_small = SharedIn
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 209537017
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_turret_dish_small, 209537017)
@@ -2836,7 +2946,9 @@ object_installation_battlefield_destructible_shared_turret_tower_small = SharedI
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 718314234
 }
 
 ObjectTemplates:addTemplate(object_installation_battlefield_destructible_shared_turret_tower_small, 718314234)

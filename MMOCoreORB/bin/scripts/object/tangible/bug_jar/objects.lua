@@ -86,7 +86,9 @@ object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3865262015
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, 3865262015)
@@ -136,7 +138,9 @@ object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 649283460
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bats, 649283460)
@@ -186,7 +190,9 @@ object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2990947640
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bees, 2990947640)
@@ -236,7 +242,9 @@ object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1650774020
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_bugs, 1650774020)
@@ -286,7 +294,9 @@ object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3511677766
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_butterflies, 3511677766)
@@ -336,7 +346,9 @@ object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1920617264
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_flies, 1920617264)
@@ -386,7 +398,9 @@ object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 543867771
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_glowzees, 543867771)
@@ -436,7 +450,9 @@ object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1330824406
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_shared_sample_moths, 1330824406)

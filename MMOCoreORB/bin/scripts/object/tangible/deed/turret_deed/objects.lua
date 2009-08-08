@@ -86,7 +86,9 @@ object_tangible_deed_turret_deed_shared_turret_block_large_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 662025863
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_turret_deed_shared_turret_block_large_deed, 662025863)
@@ -136,7 +138,9 @@ object_tangible_deed_turret_deed_shared_turret_block_medium_deed = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3770943764
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_turret_deed_shared_turret_block_medium_deed, 3770943764)
@@ -186,7 +190,9 @@ object_tangible_deed_turret_deed_shared_turret_block_small_deed = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1744023588
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_turret_deed_shared_turret_block_small_deed, 1744023588)

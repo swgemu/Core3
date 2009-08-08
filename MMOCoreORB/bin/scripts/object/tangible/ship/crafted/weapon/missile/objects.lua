@@ -86,7 +86,9 @@ object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3245525817
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure, 3245525817)
@@ -136,7 +138,9 @@ object_tangible_ship_crafted_weapon_missile_shared_base_pack = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1672702928
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_pack, 1672702928)
@@ -186,7 +190,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3047216132
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher, 3047216132)
@@ -236,7 +242,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1564710260
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack, 1564710260)
@@ -286,7 +294,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launc
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2635857595
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launcher, 2635857595)
@@ -336,7 +346,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1375246682
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack, 1375246682)
@@ -386,7 +398,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 822727721
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher, 822727721)
@@ -436,7 +450,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 17293110
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack, 17293110)
@@ -486,7 +502,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4142390620
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher, 4142390620)
@@ -536,7 +554,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3439723072
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack, 3439723072)
@@ -586,7 +606,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_lau
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4217308443
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_launcher, 4217308443)
@@ -636,7 +658,9 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pac
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 103083573
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pack, 103083573)
@@ -686,7 +710,9 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2943273728
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher, 2943273728)
@@ -736,7 +762,9 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1453812677
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack, 1453812677)
@@ -786,7 +814,9 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2657624858
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher, 2657624858)
@@ -836,7 +866,9 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1873034308
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack, 1873034308)
@@ -886,7 +918,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2871566567
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1, 2871566567)
@@ -936,7 +970,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1883179120
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2, 1883179120)
@@ -986,7 +1022,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 959606781
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3, 959606781)
@@ -1036,7 +1074,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 190158470
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1, 190158470)
@@ -1086,7 +1126,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3494002193
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2, 3494002193)
@@ -1136,7 +1178,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2721026212
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1, 2721026212)
@@ -1186,7 +1230,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2033727539
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2, 2033727539)
@@ -1236,7 +1282,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 808804286
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3, 808804286)
@@ -1286,7 +1334,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1109435894
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1, 1109435894)
@@ -1336,7 +1386,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2570521953
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2, 2570521953)
@@ -1386,7 +1438,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2118814960
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1, 2118814960)
@@ -1436,7 +1490,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2774344807
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2, 2774344807)
@@ -1486,7 +1542,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3964683242
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3, 3964683242)
@@ -1536,7 +1594,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 397633790
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4, 397633790)
@@ -1586,7 +1646,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2922914559
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1, 2922914559)
@@ -1636,7 +1698,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1966049896
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2, 1966049896)
@@ -1686,7 +1750,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1008922085
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3, 1008922085)
@@ -1736,7 +1802,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3027823737
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1, 3027823737)
@@ -1786,7 +1854,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1869563118
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2, 1869563118)
@@ -1836,7 +1906,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1356357630
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1, 1356357630)
@@ -1886,7 +1958,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2345662313
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2, 2345662313)
@@ -1936,7 +2010,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3267530980
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3, 3267530980)
@@ -1986,7 +2062,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 958512112
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4, 958512112)
@@ -2036,7 +2114,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1794422147
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1, 1794422147)
@@ -2086,7 +2166,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2984451348
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2, 2984451348)
@@ -2136,7 +2218,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4176378521
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3, 4176378521)
@@ -2186,7 +2270,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3906161899
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1, 3906161899)
@@ -2236,7 +2322,9 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 868541564
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2, 868541564)

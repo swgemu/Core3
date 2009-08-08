@@ -86,7 +86,9 @@ object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 594764698
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, 594764698)
@@ -136,7 +138,9 @@ object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3306801185
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, 3306801185)
@@ -186,7 +190,9 @@ object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 482728149
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, 482728149)

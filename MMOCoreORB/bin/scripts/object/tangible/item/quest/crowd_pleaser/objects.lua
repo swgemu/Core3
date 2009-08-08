@@ -86,7 +86,9 @@ object_tangible_item_quest_crowd_pleaser_shared_dance_reward = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 972371039
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_crowd_pleaser_shared_dance_reward, 972371039)
@@ -136,7 +138,9 @@ object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1862695356
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_quest_crowd_pleaser_shared_music_reward, 1862695356)

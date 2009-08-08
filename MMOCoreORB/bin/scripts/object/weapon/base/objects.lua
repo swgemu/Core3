@@ -90,7 +90,9 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1343110417
 }
 
 ObjectTemplates:addTemplate(object_weapon_base_shared_base_weapon, 1343110417)
@@ -144,7 +146,9 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3295718930
 }
 
 ObjectTemplates:addTemplate(object_weapon_base_shared_weapon_default, 3295718930)

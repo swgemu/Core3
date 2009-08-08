@@ -86,7 +86,9 @@ object_tangible_vendor_shared_vendor_droid_bartender = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 887599030
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_bartender, 887599030)
@@ -136,7 +138,9 @@ object_tangible_vendor_shared_vendor_droid_power = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1459672491
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_power, 1459672491)
@@ -186,7 +190,9 @@ object_tangible_vendor_shared_vendor_droid_protocol = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 844125696
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_protocol, 844125696)
@@ -236,7 +242,9 @@ object_tangible_vendor_shared_vendor_droid_surgical = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 946679884
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_surgical, 946679884)
@@ -286,7 +294,9 @@ object_tangible_vendor_shared_vendor_droid_wed = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1745672602
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_droid_wed, 1745672602)
@@ -336,7 +346,9 @@ object_tangible_vendor_shared_vendor_terminal_basic = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1946512190
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_basic, 1946512190)
@@ -386,7 +398,9 @@ object_tangible_vendor_shared_vendor_terminal_bulky = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2831480672
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_bulky, 2831480672)
@@ -436,7 +450,9 @@ object_tangible_vendor_shared_vendor_terminal_fancy = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3992259223
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_fancy, 3992259223)
@@ -486,7 +502,9 @@ object_tangible_vendor_shared_vendor_terminal_slim = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3179269297
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_slim, 3179269297)
@@ -536,7 +554,9 @@ object_tangible_vendor_shared_vendor_terminal_small = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2513721920
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_small, 2513721920)
@@ -586,7 +606,9 @@ object_tangible_vendor_shared_vendor_terminal_standard = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 90585643
 }
 
 ObjectTemplates:addTemplate(object_tangible_vendor_shared_vendor_terminal_standard, 90585643)

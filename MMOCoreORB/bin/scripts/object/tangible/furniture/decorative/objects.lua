@@ -86,7 +86,9 @@ object_tangible_furniture_decorative_shared_bacta_tank = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 778917674
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bacta_tank, 778917674)
@@ -136,7 +138,9 @@ object_tangible_furniture_decorative_shared_basket_closed = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1552726710
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_basket_closed, 1552726710)
@@ -186,7 +190,9 @@ object_tangible_furniture_decorative_shared_bottle_fat = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2472176746
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_fat, 2472176746)
@@ -236,7 +242,9 @@ object_tangible_furniture_decorative_shared_bottle_pear = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3744745457
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_pear, 3744745457)
@@ -286,7 +294,9 @@ object_tangible_furniture_decorative_shared_bottle_tall = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1391690326
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bottle_tall, 1391690326)
@@ -336,7 +346,9 @@ object_tangible_furniture_decorative_shared_bubble_tank = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3911421124
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_bubble_tank, 3911421124)
@@ -386,7 +398,9 @@ object_tangible_furniture_decorative_shared_cafe_chair = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4161463527
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_cafe_chair, 4161463527)
@@ -436,7 +450,9 @@ object_tangible_furniture_decorative_shared_campfire = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2302774503
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_campfire, 2302774503)
@@ -486,7 +502,9 @@ object_tangible_furniture_decorative_shared_carved_bowl = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 339149947
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_carved_bowl, 339149947)
@@ -536,7 +554,9 @@ object_tangible_furniture_decorative_shared_corellian_flagpole = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1081449691
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_corellian_flagpole, 1081449691)
@@ -586,7 +606,9 @@ object_tangible_furniture_decorative_shared_diagnostic_screen = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2673191290
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_diagnostic_screen, 2673191290)
@@ -636,7 +658,9 @@ object_tangible_furniture_decorative_shared_foodcart = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 247713361
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_foodcart, 247713361)
@@ -686,7 +710,9 @@ object_tangible_furniture_decorative_shared_fruit_assorted = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2967222212
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_fruit_assorted, 2967222212)
@@ -736,7 +762,9 @@ object_tangible_furniture_decorative_shared_hanging_planter = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3845808441
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_hanging_planter, 3845808441)
@@ -786,7 +814,9 @@ object_tangible_furniture_decorative_shared_kitchen_utensils = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2914356187
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_kitchen_utensils, 2914356187)
@@ -836,7 +866,9 @@ object_tangible_furniture_decorative_shared_microphone_s01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1371805603
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s01, 1371805603)
@@ -886,7 +918,9 @@ object_tangible_furniture_decorative_shared_microphone_s02 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2329132852
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_microphone_s02, 2329132852)
@@ -936,7 +970,9 @@ object_tangible_furniture_decorative_shared_park_bench = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3230914916
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_park_bench, 3230914916)
@@ -986,7 +1022,9 @@ object_tangible_furniture_decorative_shared_pitcher_full = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3027440534
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_pitcher_full, 3027440534)
@@ -1036,7 +1074,9 @@ object_tangible_furniture_decorative_shared_plain_bowl = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 265330510
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_plain_bowl, 265330510)
@@ -1086,7 +1126,9 @@ object_tangible_furniture_decorative_shared_portable_stove = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1276845581
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_portable_stove, 1276845581)
@@ -1136,7 +1178,9 @@ object_tangible_furniture_decorative_shared_professor_desk = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3449846247
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_professor_desk, 3449846247)
@@ -1186,7 +1230,9 @@ object_tangible_furniture_decorative_shared_radio = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1925051927
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_radio, 1925051927)
@@ -1236,7 +1282,9 @@ object_tangible_furniture_decorative_shared_shisa = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2687763225
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_shisa, 2687763225)
@@ -1286,7 +1334,9 @@ object_tangible_furniture_decorative_shared_slave_brazier = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3637045167
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_slave_brazier, 3637045167)
@@ -1336,7 +1386,9 @@ object_tangible_furniture_decorative_shared_spear_rack = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 584986683
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_spear_rack, 584986683)
@@ -1386,7 +1438,9 @@ object_tangible_furniture_decorative_shared_streetlamp = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1025826272
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_streetlamp, 1025826272)
@@ -1436,7 +1490,9 @@ object_tangible_furniture_decorative_shared_stuffed_fish = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3754610369
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_stuffed_fish, 3754610369)
@@ -1486,7 +1542,9 @@ object_tangible_furniture_decorative_shared_tanning_hide_s01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 92142046
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s01, 92142046)
@@ -1536,7 +1594,9 @@ object_tangible_furniture_decorative_shared_tanning_hide_s02 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3731509577
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s02, 3731509577)
@@ -1586,7 +1646,9 @@ object_tangible_furniture_decorative_shared_tatooine_tapestry = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2550512766
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_decorative_shared_tatooine_tapestry, 2550512766)

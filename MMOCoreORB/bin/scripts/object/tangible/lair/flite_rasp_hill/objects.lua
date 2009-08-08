@@ -86,7 +86,9 @@ object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 182559338
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill, 182559338)

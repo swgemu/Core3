@@ -86,7 +86,9 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1389700188
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, 1389700188)

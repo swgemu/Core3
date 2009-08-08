@@ -75,7 +75,9 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 206832110
 }
 
 ObjectTemplates:addTemplate(object_cell_shared_cell, 206832110)

@@ -86,7 +86,9 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3720772749
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, 3720772749)
@@ -136,7 +138,9 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 202240792
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, 202240792)
@@ -186,7 +190,9 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1727414364
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, 1727414364)

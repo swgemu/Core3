@@ -86,7 +86,9 @@ object_tangible_lair_bocatt_shared_lair_bocatt = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 465155974
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt, 465155974)
@@ -136,7 +138,9 @@ object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3263722419
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_grassland, 3263722419)
@@ -186,7 +190,9 @@ object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3197548002
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_hills, 3197548002)

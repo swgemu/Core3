@@ -86,7 +86,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1193954837
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_belt, 1193954837)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 912959243
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_l, 912959243)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1186980504
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bicep_r, 1186980504)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 204201638
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_l, 204201638)
@@ -286,7 +294,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2097060661
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_bracer_r, 2097060661)
@@ -336,7 +346,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2919726583
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_chest_plate, 2919726583)
@@ -386,7 +398,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2425881545
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_gloves, 2425881545)
@@ -436,7 +450,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 643359425
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_helmet, 643359425)
@@ -486,7 +502,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2198799289
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s01_leggings, 2198799289)
@@ -536,7 +554,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 189218995
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_l, 189218995)
@@ -586,7 +606,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2073167136
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bicep_r, 2073167136)
@@ -636,7 +658,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3490583753
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_boots, 3490583753)
@@ -686,7 +710,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3291712997
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_l, 3291712997)
@@ -736,7 +762,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3035023478
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_bracer_r, 3035023478)
@@ -786,7 +814,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2524065296
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate, 2524065296)
@@ -836,7 +866,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_q
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 990779747
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_chest_plate_quest, 990779747)
@@ -886,7 +918,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1259819258
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s02_leggings, 1259819258)
@@ -936,7 +970,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_dou
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 711641234
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bandolier_double, 711641234)
@@ -986,7 +1022,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3823310518
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_l, 3823310518)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2469810981
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bicep_r, 2469810981)
@@ -1086,7 +1126,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 698520359
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_boots, 698520359)
@@ -1136,7 +1178,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2210677540
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_l, 2210677540)
@@ -1186,7 +1230,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4077979319
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_bracer_r, 4077979319)
@@ -1236,7 +1282,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2174820173
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_chest_plate, 2174820173)
@@ -1286,7 +1334,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2675295685
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_gloves, 2675295685)
@@ -1336,7 +1386,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 699737293
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_helmet, 699737293)
@@ -1386,7 +1438,9 @@ object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 216047163
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_marauder_shared_armor_marauder_s03_leggings, 216047163)

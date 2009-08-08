@@ -86,7 +86,9 @@ object_installation_mining_liquid_base_shared_mining_liquid_base = SharedInstall
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2659189194
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_liquid_base_shared_mining_liquid_base, 2659189194)

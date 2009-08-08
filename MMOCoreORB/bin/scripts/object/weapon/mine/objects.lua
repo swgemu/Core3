@@ -90,7 +90,9 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1109205423
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, 1109205423)
@@ -144,7 +146,9 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 1308699589
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_drx55, 1308699589)
@@ -198,7 +202,9 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 350273897
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_shared_wp_mine_xg, 350273897)

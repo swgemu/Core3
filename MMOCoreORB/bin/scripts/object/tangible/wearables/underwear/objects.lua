@@ -86,7 +86,9 @@ object_tangible_wearables_underwear_shared_underwear_bottom = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3623370478
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_underwear_shared_underwear_bottom, 3623370478)
@@ -136,7 +138,9 @@ object_tangible_wearables_underwear_shared_underwear_top = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 467062673
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_underwear_shared_underwear_top, 467062673)

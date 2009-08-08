@@ -86,7 +86,9 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2278316907
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s01, 2278316907)
@@ -136,7 +138,9 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1557918716
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s02, 1557918716)
@@ -186,7 +190,9 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2209400056
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s01, 2209400056)
@@ -236,7 +242,9 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1487367279
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s02, 1487367279)
@@ -286,7 +294,9 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 900489122
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s01, 900489122)
@@ -336,7 +346,9 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4005295925
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s02, 4005295925)

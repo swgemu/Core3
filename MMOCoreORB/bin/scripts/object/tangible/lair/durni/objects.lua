@@ -86,7 +86,9 @@ object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3048400862
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni, 3048400862)
@@ -136,7 +138,9 @@ object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2005132249
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni_grassland, 2005132249)
@@ -186,7 +190,9 @@ object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3607200677
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_durni_shared_lair_durni_mountain, 3607200677)

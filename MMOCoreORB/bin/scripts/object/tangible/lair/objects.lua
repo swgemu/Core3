@@ -86,7 +86,9 @@ object_tangible_lair_shared_npc_lair = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1938568983
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_shared_npc_lair, 1938568983)

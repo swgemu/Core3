@@ -90,7 +90,9 @@ object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 583942574
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_cdef, 583942574)
@@ -144,7 +146,9 @@ object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemp
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 227072559
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_cdef_corsec, 227072559)
@@ -198,7 +202,9 @@ object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 683543232
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17, 683543232)
@@ -252,7 +258,9 @@ object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTempl
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 648744456
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_black, 648744456)
@@ -306,7 +314,9 @@ object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTe
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 1881783933
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_snubnose, 1881783933)
@@ -360,7 +370,9 @@ object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:ne
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 10
+	weaponEffectIndex = 10,
+
+	clientObjectCRC = 2050793147
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_dxr6, 2050793147)
@@ -414,7 +426,9 @@ object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 9
+	weaponEffectIndex = 9,
+
+	clientObjectCRC = 3034123480
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11, 3034123480)
@@ -468,7 +482,9 @@ object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 9
+	weaponEffectIndex = 9,
+
+	clientObjectCRC = 861424280
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11_quest, 861424280)
@@ -522,7 +538,9 @@ object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjec
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 28
+	weaponEffectIndex = 28,
+
+	clientObjectCRC = 1297312489
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_e11_victor_quest, 1297312489)
@@ -576,7 +594,9 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 9
+	weaponEffectIndex = 9,
+
+	clientObjectCRC = 749154215
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, 749154215)
@@ -630,7 +650,9 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 5
+	weaponEffectIndex = 5,
+
+	clientObjectCRC = 971375722
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_elite, 971375722)
@@ -684,7 +706,9 @@ object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:n
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 5
+	weaponEffectIndex = 5,
+
+	clientObjectCRC = 2121432077
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_laser, 2121432077)
@@ -738,7 +762,9 @@ object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObject
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "projectile_rifle",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 1757923070
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_shared_carbine_nym_slugthrower, 1757923070)

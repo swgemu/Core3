@@ -75,7 +75,9 @@ object_draft_schematic_structure_shared_corellia_house_guild_hall = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3665444927
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_guild_hall, 3665444927)
@@ -114,7 +116,9 @@ object_draft_schematic_structure_shared_corellia_house_player_large = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3370388037
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_large, 3370388037)
@@ -153,7 +157,9 @@ object_draft_schematic_structure_shared_corellia_house_player_large_style_02 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3853219478
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_large_style_02, 3853219478)
@@ -192,7 +198,9 @@ object_draft_schematic_structure_shared_corellia_house_player_medium = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3566769907
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium, 3566769907)
@@ -231,7 +239,9 @@ object_draft_schematic_structure_shared_corellia_house_player_medium_style_02 = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3830483623
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium_style_02, 3830483623)
@@ -270,7 +280,9 @@ object_draft_schematic_structure_shared_corellia_house_player_small = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4244610668
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small, 4244610668)
@@ -309,7 +321,9 @@ object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2371857542
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02, 2371857542)
@@ -348,7 +362,9 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3313991968
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02, 3313991968)
@@ -387,7 +403,9 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02_flo
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2455024554
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02_floorplan_02, 2455024554)
@@ -426,7 +444,9 @@ object_draft_schematic_structure_shared_generic_house_guild_hall = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 745024084
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_guild_hall, 745024084)
@@ -465,7 +485,9 @@ object_draft_schematic_structure_shared_generic_house_player_large = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4059188252
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_large, 4059188252)
@@ -504,7 +526,9 @@ object_draft_schematic_structure_shared_generic_house_player_large_style_02 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1458415719
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_large_style_02, 1458415719)
@@ -543,7 +567,9 @@ object_draft_schematic_structure_shared_generic_house_player_medium = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 874861164
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_medium, 874861164)
@@ -582,7 +608,9 @@ object_draft_schematic_structure_shared_generic_house_player_medium_style_02 = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 317968384
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_medium_style_02, 317968384)
@@ -621,7 +649,9 @@ object_draft_schematic_structure_shared_generic_house_player_small = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3320436789
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small, 3320436789)
@@ -660,7 +690,9 @@ object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 364360184
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02, 364360184)
@@ -699,7 +731,9 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02 = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1992384465
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02, 1992384465)
@@ -738,7 +772,9 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02_floo
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3838920320
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02_floorplan_02, 3838920320)
@@ -777,7 +813,9 @@ object_draft_schematic_structure_shared_house_guild_hall = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 40573621
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_guild_hall, 40573621)
@@ -816,7 +854,9 @@ object_draft_schematic_structure_shared_house_player_large = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2204999703
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_large, 2204999703)
@@ -855,7 +895,9 @@ object_draft_schematic_structure_shared_house_player_medium = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1124040677
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_medium, 1124040677)
@@ -894,7 +936,9 @@ object_draft_schematic_structure_shared_house_player_small = SharedDraftSchemati
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3077977150
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_small, 3077977150)
@@ -933,7 +977,9 @@ object_draft_schematic_structure_shared_house_player_small_style_02 = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2529898048
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_house_player_small_style_02, 2529898048)
@@ -972,7 +1018,9 @@ object_draft_schematic_structure_shared_installation_factory_clothing = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3925546520
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_clothing, 3925546520)
@@ -1011,7 +1059,9 @@ object_draft_schematic_structure_shared_installation_factory_food = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3287078704
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_food, 3287078704)
@@ -1050,7 +1100,9 @@ object_draft_schematic_structure_shared_installation_factory_structure = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 100159664
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_structure, 100159664)
@@ -1089,7 +1141,9 @@ object_draft_schematic_structure_shared_installation_factory_weapon = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1608711350
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_factory_weapon, 1608711350)
@@ -1128,7 +1182,9 @@ object_draft_schematic_structure_shared_installation_generator_fusion = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1430182849
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_generator_fusion, 1430182849)
@@ -1167,7 +1223,9 @@ object_draft_schematic_structure_shared_installation_generator_solar = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 464777341
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_generator_solar, 464777341)
@@ -1206,7 +1264,9 @@ object_draft_schematic_structure_shared_installation_generator_wind = SharedDraf
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3011453668
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_generator_wind, 3011453668)
@@ -1245,7 +1305,9 @@ object_draft_schematic_structure_shared_installation_mining_gas = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 189297844
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_gas, 189297844)
@@ -1284,7 +1346,9 @@ object_draft_schematic_structure_shared_installation_mining_gas_heavy = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3372573215
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_gas_heavy, 3372573215)
@@ -1323,7 +1387,9 @@ object_draft_schematic_structure_shared_installation_mining_gas_light = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 140336833
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_gas_light, 140336833)
@@ -1362,7 +1428,9 @@ object_draft_schematic_structure_shared_installation_mining_liquid = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2039707891
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid, 2039707891)
@@ -1401,7 +1469,9 @@ object_draft_schematic_structure_shared_installation_mining_liquid_heavy = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 362692246
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_heavy, 362692246)
@@ -1440,7 +1510,9 @@ object_draft_schematic_structure_shared_installation_mining_liquid_light = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3569746504
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_light, 3569746504)
@@ -1479,7 +1551,9 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2343309848
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor, 2343309848)
@@ -1518,7 +1592,9 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1643145278
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy, 1643145278)
@@ -1557,7 +1633,9 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2695386336
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light, 2695386336)
@@ -1596,7 +1674,9 @@ object_draft_schematic_structure_shared_installation_mining_ore = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3530854520
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_ore, 3530854520)
@@ -1635,7 +1715,9 @@ object_draft_schematic_structure_shared_installation_mining_ore_heavy = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1543208719
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_ore_heavy, 1543208719)
@@ -1674,7 +1756,9 @@ object_draft_schematic_structure_shared_installation_mining_ore_light = SharedDr
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2594390993
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_ore_light, 2594390993)
@@ -1713,7 +1797,9 @@ object_draft_schematic_structure_shared_installation_mining_organic_creature = S
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3915458084
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_creature, 3915458084)
@@ -1752,7 +1838,9 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1656287178
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora, 1656287178)
@@ -1791,7 +1879,9 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2861455405
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy, 2861455405)
@@ -1830,7 +1920,9 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_light 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1809212659
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_light, 1809212659)
@@ -1869,7 +1961,9 @@ object_draft_schematic_structure_shared_merchant_tent = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2724074378
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_merchant_tent, 2724074378)
@@ -1908,7 +2002,9 @@ object_draft_schematic_structure_shared_naboo_house_guild_hall = SharedDraftSche
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1974589873
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_guild_hall, 1974589873)
@@ -1947,7 +2043,9 @@ object_draft_schematic_structure_shared_naboo_house_player_large = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 939754027
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_large, 939754027)
@@ -1986,7 +2084,9 @@ object_draft_schematic_structure_shared_naboo_house_player_medium = SharedDraftS
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3131573754
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_medium, 3131573754)
@@ -2025,7 +2125,9 @@ object_draft_schematic_structure_shared_naboo_house_player_small = SharedDraftSc
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 202905090
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_small, 202905090)
@@ -2064,7 +2166,9 @@ object_draft_schematic_structure_shared_naboo_house_player_small_style_02 = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 903806834
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_naboo_house_player_small_style_02, 903806834)
@@ -2103,7 +2207,9 @@ object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02 = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1463325777
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02, 1463325777)

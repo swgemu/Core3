@@ -75,7 +75,9 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2022504856
 }
 
 ObjectTemplates:addTemplate(object_group_shared_group_object, 2022504856)

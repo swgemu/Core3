@@ -86,7 +86,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3692198825
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s01, 3692198825)
@@ -136,7 +138,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s02 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 117822270
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s02, 117822270)
@@ -186,7 +190,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s03 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1309193395
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s03, 1309193395)
@@ -236,7 +242,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s04 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3052117927
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s04, 3052117927)
@@ -286,7 +294,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s05 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4242995242
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s05, 4242995242)
@@ -336,7 +346,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s06 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 670126269
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s06, 670126269)
@@ -386,7 +398,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s07 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1862022960
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s07, 1862022960)
@@ -436,7 +450,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s08 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3572898594
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s08, 3572898594)
@@ -486,7 +502,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s09 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2650504367
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s09, 2650504367)
@@ -536,7 +554,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s10 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2385973596
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s10, 2385973596)
@@ -586,7 +606,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s11 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3342497489
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s11, 3342497489)
@@ -636,7 +658,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s12 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 472768070
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s12, 472768070)
@@ -686,7 +710,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s13 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1428208075
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s13, 1428208075)
@@ -736,7 +762,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s14 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2932052703
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s14, 2932052703)
@@ -786,7 +814,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s15 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3889100114
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s15, 3889100114)
@@ -836,7 +866,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s16 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1020878277
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s16, 1020878277)
@@ -886,7 +918,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s17 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1976842824
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s17, 1976842824)
@@ -936,7 +970,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s18 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3487438426
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s18, 3487438426)
@@ -986,7 +1022,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s19 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2262004183
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s19, 2262004183)
@@ -1036,7 +1074,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_female_s20 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2739865300
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_female_s20, 2739865300)
@@ -1086,7 +1126,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3250935101
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s01, 3250935101)
@@ -1136,7 +1178,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s02 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 450035114
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s02, 450035114)
@@ -1186,7 +1230,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s03 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1407162919
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s03, 1407162919)
@@ -1236,7 +1282,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s04 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2822549811
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s04, 2822549811)
@@ -1286,7 +1334,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s05 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3778139838
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s05, 3778139838)
@@ -1336,7 +1386,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s06 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 975601193
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s06, 975601193)
@@ -1386,7 +1438,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s07 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1932204452
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s07, 1932204452)
@@ -1436,7 +1490,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s08 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3374396854
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s08, 3374396854)
@@ -1486,7 +1542,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s09 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2150388283
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s09, 2150388283)
@@ -1536,7 +1594,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s10 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2480947144
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s10, 2480947144)
@@ -1586,7 +1646,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s11 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3672987717
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s11, 3672987717)
@@ -1636,7 +1698,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s12 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 33222866
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s12, 33222866)
@@ -1686,7 +1750,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s13 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1224185695
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s13, 1224185695)
@@ -1736,7 +1802,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s14 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3004480587
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s14, 3004480587)
@@ -1786,7 +1854,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s15 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4195998662
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s15, 4195998662)
@@ -1836,7 +1906,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s16 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 554595153
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s16, 554595153)
@@ -1886,7 +1958,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s17 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1745032412
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s17, 1745032412)
@@ -1936,7 +2010,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s18 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3523819726
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s18, 3523819726)
@@ -1986,7 +2062,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s19 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2600755011
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s19, 2600755011)
@@ -2036,7 +2114,9 @@ object_tangible_hair_zabrak_shared_hair_zabrak_male_s20 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3197642816
 }
 
 ObjectTemplates:addTemplate(object_tangible_hair_zabrak_shared_hair_zabrak_male_s20, 3197642816)

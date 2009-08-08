@@ -86,7 +86,9 @@ object_tangible_lair_blackfish_shared_lair_blackfish = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4281161854
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish, 4281161854)
@@ -136,7 +138,9 @@ object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3015378000
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_blackfish_shared_lair_blackfish_underwater, 3015378000)

@@ -86,7 +86,9 @@ object_tangible_container_jar_base_shared_jar_base = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3203126472
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_jar_base_shared_jar_base, 3203126472)

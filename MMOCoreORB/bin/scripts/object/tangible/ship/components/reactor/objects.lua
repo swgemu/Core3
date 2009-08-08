@@ -86,7 +86,9 @@ object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1363026125
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_tiefighter_basic, 1363026125)
@@ -136,7 +138,9 @@ object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3484082121
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_rct_z95_basic, 3484082121)
@@ -186,7 +190,9 @@ object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1838799948
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder, 1838799948)
@@ -236,7 +242,9 @@ object_tangible_ship_components_reactor_shared_rct_armek_super_collider = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 655443437
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_armek_super_collider, 655443437)
@@ -286,7 +294,9 @@ object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 479861884
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider, 479861884)
@@ -336,7 +346,9 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2144194829
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3, 2144194829)
@@ -386,7 +398,9 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3441663380
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5, 3441663380)
@@ -436,7 +450,9 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4106488287
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_advanced, 4106488287)
@@ -486,7 +502,9 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2061868907
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk1, 2061868907)
@@ -536,7 +554,9 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2717005820
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk2, 2717005820)
@@ -586,7 +606,9 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2482451537
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2, 2482451537)
@@ -636,7 +658,9 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2632377171
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1, 2632377171)
@@ -686,7 +710,9 @@ object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 274444164
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1, 274444164)
@@ -736,7 +762,9 @@ object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2089644371
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_level1, 2089644371)
@@ -786,7 +814,9 @@ object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3762511133
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1, 3762511133)
@@ -836,7 +866,9 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1756278622
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1, 1756278622)
@@ -886,7 +918,9 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3015247817
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2, 3015247817)
@@ -936,7 +970,9 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4206125124
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3, 4206125124)
@@ -986,7 +1022,9 @@ object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 393073933
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_generic, 393073933)
@@ -1036,7 +1074,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 469546362
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_advanced, 469546362)
@@ -1086,7 +1126,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 273987032
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2, 273987032)
@@ -1136,7 +1178,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1003263168
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_elite, 1003263168)
@@ -1186,7 +1230,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3090093197
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1, 3090093197)
@@ -1236,7 +1282,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2674049481
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark1, 2674049481)
@@ -1286,7 +1334,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1148545374
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark2, 1148545374)
@@ -1336,7 +1386,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 225971923
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark3, 225971923)
@@ -1386,7 +1438,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4137362887
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark4, 4137362887)
@@ -1436,7 +1490,9 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3214295626
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark5, 3214295626)
@@ -1486,7 +1542,9 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermast
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3711183726
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster, 3711183726)
@@ -1536,7 +1594,9 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_op
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3454365984
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops, 3454365984)
@@ -1586,7 +1646,9 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_f
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 159411222
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces, 159411222)
@@ -1636,7 +1698,9 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3518404345
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite, 3518404345)
@@ -1686,7 +1750,9 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 110330195
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax, 110330195)
@@ -1736,7 +1802,9 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_outpu
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1643853797
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental, 1643853797)
@@ -1786,7 +1854,9 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1619443827
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova, 1619443827)
@@ -1836,7 +1906,9 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_m
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4212259517
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2, 4212259517)
@@ -1886,7 +1958,9 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2993433692
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova, 2993433692)
@@ -1936,7 +2010,9 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4233117404
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced, 4233117404)
@@ -1986,7 +2062,9 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1605967841
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2, 1605967841)
@@ -2036,7 +2114,9 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 380926060
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3, 380926060)
@@ -2086,7 +2166,9 @@ object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 396907608
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11, 396907608)
@@ -2136,7 +2218,9 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3490595180
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx11, 3490595180)
@@ -2186,7 +2270,9 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4252391140
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx21, 4252391140)
@@ -2236,7 +2322,9 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 379835158
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_x, 379835158)
@@ -2286,7 +2374,9 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2226723852
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_z, 2226723852)
@@ -2336,7 +2426,9 @@ object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3961940522
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_kse_supreme, 3961940522)
@@ -2386,7 +2478,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3433957122
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced, 3433957122)
@@ -2436,7 +2530,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 917671788
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr, 917671788)
@@ -2486,7 +2582,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1602175062
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr2, 1602175062)
@@ -2536,7 +2634,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 376580059
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr3, 376580059)
@@ -2586,7 +2686,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3985706191
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr4, 3985706191)
@@ -2636,7 +2738,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2761714498
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr5, 2761714498)
@@ -2686,7 +2790,9 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2139866069
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr6, 2139866069)
@@ -2736,7 +2842,9 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2046773021
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax, 2046773021)
@@ -2786,7 +2894,9 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3008300066
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite, 3008300066)
@@ -2836,7 +2946,9 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_a
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2253318306
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military, 2253318306)
@@ -2886,7 +2998,9 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_h
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1448525431
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output, 1448525431)
@@ -2936,7 +3050,9 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2954387594
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military, 2954387594)
@@ -2986,7 +3102,9 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hy
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2609742784
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex, 2609742784)
@@ -3036,7 +3154,9 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4111600702
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1, 4111600702)
@@ -3086,7 +3206,9 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 772121769
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2, 772121769)
@@ -3136,7 +3258,9 @@ object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2835039376
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_prototype_reactor, 2835039376)
@@ -3186,7 +3310,9 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2057207911
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type5, 2057207911)
@@ -3236,7 +3362,9 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3900985213
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type7, 3900985213)
@@ -3286,7 +3414,9 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1521298929
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite, 1521298929)
@@ -3336,7 +3466,9 @@ object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4229165572
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_armek_elite, 4229165572)
@@ -3386,7 +3518,9 @@ object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1119723348
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_incom_elite, 1119723348)
@@ -3436,7 +3570,9 @@ object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3567473688
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite, 3567473688)
@@ -3486,7 +3622,9 @@ object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2500440467
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite, 2500440467)
@@ -3536,7 +3674,9 @@ object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1252227058
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_reward_taim_elite, 1252227058)
@@ -3586,7 +3726,9 @@ object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1571711759
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rss_advanced, 1571711759)
@@ -3636,7 +3778,9 @@ object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 682785613
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x12, 682785613)
@@ -3686,7 +3830,9 @@ object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 729478764
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x8, 729478764)
@@ -3736,7 +3882,9 @@ object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1687773799
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sds_elite, 1687773799)
@@ -3786,7 +3934,9 @@ object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1892978886
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sds_imperial_1, 1892978886)
@@ -3836,7 +3986,9 @@ object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3970052034
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1, 3970052034)
@@ -3886,7 +4038,9 @@ object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 293975026
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1, 293975026)
@@ -3936,7 +4090,9 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 78015690
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level1, 78015690)
@@ -3986,7 +4142,9 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3752969309
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level2, 3752969309)
@@ -4036,7 +4194,9 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2528945104
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level3, 2528945104)
@@ -4086,7 +4246,9 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1834977476
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level4, 1834977476)
@@ -4136,7 +4298,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 928581541
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_advanced, 928581541)
@@ -4186,7 +4350,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1802806379
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_elite, 1802806379)
@@ -4236,7 +4402,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1601368700
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1, 1601368700)
@@ -4286,7 +4454,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2221234923
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2, 2221234923)
@@ -4336,7 +4506,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3446160742
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3, 3446160742)
@@ -4386,7 +4558,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 915084914
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4, 915084914)
@@ -4436,7 +4610,9 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2139517439
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5, 2139517439)
@@ -4486,7 +4662,9 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3699990858
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k, 3699990858)
@@ -4536,7 +4714,9 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2256096858
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k, 2256096858)
@@ -4586,7 +4766,9 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1273339609
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1, 1273339609)
@@ -4636,7 +4818,9 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2431792718
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2, 2431792718)
@@ -4686,7 +4870,9 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3657388483
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3, 3657388483)
@@ -4736,7 +4922,9 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 572291799
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4, 572291799)
@@ -4786,7 +4974,9 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3916801975
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1, 3916801975)
@@ -4836,7 +5026,9 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 845287200
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2, 845287200)
@@ -4886,7 +5078,9 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2070898861
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3, 2070898861)
@@ -4936,7 +5130,9 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3299280915
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3, 3299280915)
@@ -4986,7 +5182,9 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4221084087
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced, 4221084087)
@@ -5036,7 +5234,9 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3380404850
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora, 3380404850)
@@ -5086,7 +5286,9 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 630252106
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max, 630252106)
@@ -5136,7 +5338,9 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3288337981
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna1, 3288337981)
@@ -5186,7 +5390,9 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 521643690
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna2, 521643690)
@@ -5236,7 +5442,9 @@ object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3847523590
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2, 3847523590)
@@ -5286,7 +5494,9 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1580359384
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1, 1580359384)
@@ -5336,7 +5546,9 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2233857615
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2, 2233857615)
@@ -5386,7 +5598,9 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3425210818
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3, 3425210818)
@@ -5436,7 +5650,9 @@ object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3319963808
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_tiefighter_basic, 3319963808)
@@ -5486,7 +5702,9 @@ object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 951546180
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum, 951546180)
@@ -5536,7 +5754,9 @@ object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 33823730
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_multicore, 33823730)
@@ -5586,7 +5806,9 @@ object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2573145892
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber, 2573145892)
@@ -5636,7 +5858,9 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1703778737
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_2, 1703778737)
@@ -5686,7 +5910,9 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 746651196
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_3, 746651196)
@@ -5736,7 +5962,9 @@ object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2051660015
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_rct_z95_basic, 2051660015)
@@ -5786,7 +6014,9 @@ object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1943796009
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_reactor_shared_reactor_test, 1943796009)

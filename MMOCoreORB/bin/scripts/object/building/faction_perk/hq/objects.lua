@@ -89,7 +89,9 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4204337141
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01, 4204337141)
@@ -142,7 +144,9 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2419085158
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, 2419085158)
@@ -195,7 +199,9 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 554924775
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, 554924775)
@@ -248,7 +254,9 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2016142793
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pvp, 2016142793)
@@ -301,7 +309,9 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1119051291
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel, 1119051291)
@@ -354,7 +364,9 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 769008513
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_pvp, 769008513)
@@ -407,7 +419,9 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 563003234
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02, 563003234)
@@ -460,7 +474,9 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2094148152
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, 2094148152)
@@ -513,7 +529,9 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 869505530
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, 869505530)
@@ -566,7 +584,9 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1158021745
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pvp, 1158021745)
@@ -619,7 +639,9 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1283967902
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel, 1283967902)
@@ -672,7 +694,9 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1309089184
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_pvp, 1309089184)
@@ -725,7 +749,9 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1753471215
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03, 1753471215)
@@ -778,7 +804,9 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 661911282
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, 661911282)
@@ -831,7 +859,9 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3251843996
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, 3251843996)
@@ -884,7 +914,9 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2913096820
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pvp, 2913096820)
@@ -937,7 +969,9 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3039513712
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel, 3039513712)
@@ -990,7 +1024,9 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2466839762
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_pvp, 2466839762)
@@ -1043,7 +1079,9 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2472604667
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04, 2472604667)
@@ -1096,7 +1134,9 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2715286835
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, 2715286835)
@@ -1149,7 +1189,9 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 374497216
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, 374497216)
@@ -1202,7 +1244,9 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1063111937
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pvp, 1063111937)
@@ -1255,7 +1299,9 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1357832340
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel, 1357832340)
@@ -1308,7 +1354,9 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2309317090
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_pvp, 2309317090)
@@ -1361,7 +1409,9 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3664614518
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05, 3664614518)
@@ -1414,7 +1464,9 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4202045945
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, 4202045945)
@@ -1467,7 +1519,9 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3830642086
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, 3830642086)
@@ -1520,7 +1574,9 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3623459588
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pvp, 3623459588)
@@ -1573,7 +1629,9 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2839701370
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel, 2839701370)
@@ -1626,7 +1684,9 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1420460176
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel_pvp, 1420460176)

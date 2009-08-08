@@ -86,7 +86,9 @@ object_tangible_lair_flewt_shared_lair_flewt = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2542789035
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt, 2542789035)
@@ -136,7 +138,9 @@ object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1133603735
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt_forest, 1133603735)
@@ -186,7 +190,9 @@ object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2897911206
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_flewt_shared_lair_flewt_grassland, 2897911206)

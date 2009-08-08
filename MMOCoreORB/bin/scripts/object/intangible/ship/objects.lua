@@ -75,7 +75,9 @@ object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3231609067
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_awing_pcd, 3231609067)
@@ -114,7 +116,9 @@ object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3117731697
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_hutt_light_pcd, 3117731697)
@@ -153,7 +157,9 @@ object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3542586269
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_tiefighter_pcd, 3542586269)
@@ -192,7 +198,9 @@ object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1951744339
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_basic_z95_pcd, 1951744339)
@@ -231,7 +239,9 @@ object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1920551856
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s01_pcd, 1920551856)
@@ -270,7 +280,9 @@ object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1622780077
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s02_pcd, 1622780077)
@@ -309,7 +321,9 @@ object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2461598411
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s03_pcd, 2461598411)
@@ -348,7 +362,9 @@ object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1161326231
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_heavy_s04_pcd, 1161326231)
@@ -387,7 +403,9 @@ object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4287843959
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s01_pcd, 4287843959)
@@ -426,7 +444,9 @@ object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3981684074
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s02_pcd, 3981684074)
@@ -465,7 +485,9 @@ object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 525534988
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s03_pcd, 525534988)
@@ -504,7 +526,9 @@ object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTem
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3369233232
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_light_s04_pcd, 3369233232)
@@ -543,7 +567,9 @@ object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3830604387
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s01_pcd, 3830604387)
@@ -582,7 +608,9 @@ object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4136796542
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s02_pcd, 4136796542)
@@ -621,7 +649,9 @@ object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 76688152
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s03_pcd, 76688152)
@@ -660,7 +690,9 @@ object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTe
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3541256004
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_blacksun_medium_s04_pcd, 3541256004)
@@ -699,7 +731,9 @@ object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4256405331
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_bwing_pcd, 4256405331)
@@ -738,7 +772,9 @@ object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 816398955
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_decimator_pcd, 816398955)
@@ -777,7 +813,9 @@ object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3214165542
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_firespray_pcd, 3214165542)
@@ -816,7 +854,9 @@ object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2913916856
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_heavy_s01_pcd, 2913916856)
@@ -855,7 +895,9 @@ object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3211670693
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_heavy_s02_pcd, 3211670693)
@@ -894,7 +936,9 @@ object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 541381247
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_light_s01_pcd, 541381247)
@@ -933,7 +977,9 @@ object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 847524194
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_light_s02_pcd, 847524194)
@@ -972,7 +1018,9 @@ object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 437951543
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_medium_s01_pcd, 437951543)
@@ -1011,7 +1059,9 @@ object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 148537130
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_medium_s02_pcd, 148537130)
@@ -1050,7 +1100,9 @@ object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTempl
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3431555714
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_hutt_turret_ship_pcd, 3431555714)
@@ -1089,7 +1141,9 @@ object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3404705593
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_1, 3404705593)
@@ -1128,7 +1182,9 @@ object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 301467566
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_2, 301467566)
@@ -1167,7 +1223,9 @@ object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1492475939
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_3, 1492475939)
@@ -1206,7 +1264,9 @@ object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2736147255
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_4, 2736147255)
@@ -1245,7 +1305,9 @@ object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3927649466
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_5, 3927649466)
@@ -1284,7 +1346,9 @@ object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 822903853
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_6, 822903853)
@@ -1323,7 +1387,9 @@ object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {"inventory", "datapad"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1537107009
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_navicomputer_base, 1537107009)
@@ -1362,7 +1428,9 @@ object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3320786901
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_hutt_light_pcd, 3320786901)
@@ -1401,7 +1469,9 @@ object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2937877305
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_tiefighter_pcd, 2937877305)
@@ -1440,7 +1510,9 @@ object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3760715561
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_prototype_z95_pcd, 3760715561)
@@ -1479,7 +1551,9 @@ object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectT
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 264594860
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_sorosuub_space_yacht_pcd, 264594860)
@@ -1518,7 +1592,9 @@ object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4072676654
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tie_in_pcd, 4072676654)
@@ -1557,7 +1633,9 @@ object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3211390
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tie_light_duty_pcd, 3211390)
@@ -1596,7 +1674,9 @@ object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3041041630
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tieadvanced_pcd, 3041041630)
@@ -1635,7 +1715,9 @@ object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3555369555
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tieaggressor_pcd, 3555369555)
@@ -1674,7 +1756,9 @@ object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3994408379
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tiebomber_pcd, 3994408379)
@@ -1713,7 +1797,9 @@ object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2741040950
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tiefighter_pcd, 2741040950)
@@ -1752,7 +1838,9 @@ object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4152772827
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tieinterceptor_pcd, 4152772827)
@@ -1791,7 +1879,9 @@ object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3673716446
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_tieoppressor_pcd, 3673716446)
@@ -1830,7 +1920,9 @@ object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3314812569
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_xwing_pcd, 3314812569)
@@ -1869,7 +1961,9 @@ object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1454524572
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_ykl37r_pcd, 1454524572)
@@ -1908,7 +2002,9 @@ object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2265582340
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_yt1300_pcd, 2265582340)
@@ -1947,7 +2043,9 @@ object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3884767324
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_ywing_longprobe_pcd, 3884767324)
@@ -1986,7 +2084,9 @@ object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 758141084
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_ywing_pcd, 758141084)
@@ -2025,7 +2125,9 @@ object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 	sendToClient = 1,
 	slotDescriptors = {"ship_control_device"},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 628864673
 }
 
 ObjectTemplates:addTemplate(object_intangible_ship_shared_z95_pcd, 628864673)

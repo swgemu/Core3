@@ -89,7 +89,9 @@ object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3483054122
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_association_hall_civilian_tatooine, 3483054122)
@@ -142,7 +144,9 @@ object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBu
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3781643094
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_association_hall_civilian_tatooine_02, 3781643094)
@@ -195,7 +199,9 @@ object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 533531985
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_bank_tatooine, 533531985)
@@ -248,7 +254,9 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1072782602
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_cantina_tatooine, 1072782602)
@@ -301,7 +309,9 @@ object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1064279242
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_capitol_tatooine, 1064279242)
@@ -354,7 +364,9 @@ object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3062222401
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_cave_tatooine_style_01, 3062222401)
@@ -407,7 +419,9 @@ object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1838311126
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_cave_tatooine_style_02, 1838311126)
@@ -460,7 +474,9 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 749651154
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_cloning_facility_tatooine, 749651154)
@@ -513,7 +529,9 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1267595977
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_cloning_facility_tatooine_small, 1267595977)
@@ -566,7 +584,9 @@ object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBui
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1977133003
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_block_64x16_style_01, 1977133003)
@@ -619,7 +639,9 @@ object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBui
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2932805468
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_block_64x16_style_02, 2932805468)
@@ -672,7 +694,9 @@ object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBui
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3491257899
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_block_64x32_style_01, 3491257899)
@@ -725,7 +749,9 @@ object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBui
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 185595580
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_block_64x32_style_02, 185595580)
@@ -778,7 +804,9 @@ object_building_tatooine_shared_filler_building_slave_quarters_style_01 = Shared
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3086665699
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_slave_quarters_style_01, 3086665699)
@@ -831,7 +859,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2338066597
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_01, 2338066597)
@@ -884,7 +914,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1347139634
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_02, 1347139634)
@@ -937,7 +969,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 424075199
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_03, 424075199)
@@ -990,7 +1024,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3802526891
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_04, 3802526891)
@@ -1043,7 +1079,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2879951654
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_05, 2879951654)
@@ -1096,7 +1134,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1891580849
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_06, 1891580849)
@@ -1149,7 +1189,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 967990332
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_07, 967990332)
@@ -1202,7 +1244,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2209902638
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_08, 2209902638)
@@ -1255,7 +1299,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3400865699
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_09, 3400865699)
@@ -1308,7 +1354,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3648617040
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_10, 3648617040)
@@ -1361,7 +1409,9 @@ object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2423528925
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_filler_building_tatt_style01_11, 2423528925)
@@ -1414,7 +1464,9 @@ object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1194412824
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_fort_tusken, 1194412824)
@@ -1467,7 +1519,9 @@ object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingO
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1273926318
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_guild_combat_tatooine_style_01, 1273926318)
@@ -1520,7 +1574,9 @@ object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildin
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 113904481
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_guild_commerce_tatooine_style_01, 113904481)
@@ -1573,7 +1629,9 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3289028168
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_guild_theater_tatooine_style_01, 3289028168)
@@ -1626,7 +1684,9 @@ object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 970934772
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_guild_university_tatooine_style_01, 970934772)
@@ -1679,7 +1739,9 @@ object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuild
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3804815715
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_guild_university_tatooine_style_02, 3804815715)
@@ -1732,7 +1794,9 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4066183619
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_hospital_tatooine, 4066183619)
@@ -1785,7 +1849,9 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2745462757
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_hospital_tatooine_s02, 2745462757)
@@ -1838,7 +1904,9 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 776066139
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_hotel_tatooine_general, 776066139)
@@ -1891,7 +1959,9 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4181798094
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_hotel_tatooine_style_01, 4181798094)
@@ -1944,7 +2014,9 @@ object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3970726045
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style01_large, 3970726045)
@@ -1997,7 +2069,9 @@ object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2662523338
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style01_med, 2662523338)
@@ -2050,7 +2124,9 @@ object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3635932340
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style01_small, 3635932340)
@@ -2103,7 +2179,9 @@ object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3801672984
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style02_large, 3801672984)
@@ -2156,7 +2234,9 @@ object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2356282071
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style02_med, 2356282071)
@@ -2209,7 +2289,9 @@ object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3598940465
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style02_small, 3598940465)
@@ -2262,7 +2344,9 @@ object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 456420086
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style03_large, 456420086)
@@ -2315,7 +2399,9 @@ object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectT
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2121443505
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style03_med, 2121443505)
@@ -2368,7 +2454,9 @@ object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjec
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 791674591
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_housing_tatt_style03_small, 791674591)
@@ -2421,7 +2509,9 @@ object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4014265599
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_junkshop_watto, 4014265599)
@@ -2474,7 +2564,9 @@ object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObject
 	targetable = 0,
 	terrainModificationFileName = "terrain/lair_env_tatooine.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2616325223
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_lair_environment_tatooine, 2616325223)
@@ -2527,7 +2619,9 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1100188829
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_lucky_despot, 1100188829)
@@ -2580,7 +2674,9 @@ object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTem
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2745583203
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_merchant_tent_tato_s01, 2745583203)
@@ -2633,7 +2729,9 @@ object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemp
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4034000230
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_palace_tatooine_jabba, 4034000230)
@@ -2686,7 +2784,9 @@ object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuilding
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2278884651
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_parking_garage_tatooine_style_1, 2278884651)
@@ -2739,7 +2839,9 @@ object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTe
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1014253665
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_poi_tato_farm_32x32_s01, 1014253665)
@@ -2792,7 +2894,9 @@ object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 616531993
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_salon_tatooine, 616531993)
@@ -2845,7 +2949,9 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3505295527
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_shuttleport_tatooine, 3505295527)
@@ -2898,7 +3004,9 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 351600928
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_starport_tatooine, 351600928)
@@ -2951,7 +3059,9 @@ object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2860552089
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shared_tower_jabbas_palace, 2860552089)

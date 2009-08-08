@@ -86,7 +86,9 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1494270747
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk1, 1494270747)
@@ -136,7 +138,9 @@ object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2181524364
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_cruiser_grade_mk2, 2181524364)
@@ -186,7 +190,9 @@ object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1126310988
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_corellian_deluxe_cruiser_grade_mk1, 1126310988)
@@ -236,7 +242,9 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd3 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1087324097
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd3, 1087324097)
@@ -286,7 +294,9 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd7 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1614527554
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd7, 1614527554)
@@ -336,7 +346,9 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd8 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3660681296
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd8, 3660681296)
@@ -386,7 +398,9 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hd_5 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 775508572
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hd_5, 775508572)
@@ -436,7 +450,9 @@ object_tangible_ship_components_engine_shared_eng_cygnus_hdx = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3707474702
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_cygnus_hdx, 3707474702)
@@ -486,7 +502,9 @@ object_tangible_ship_components_engine_shared_eng_freitek_dual_jet = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2546925520
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_freitek_dual_jet, 2546925520)
@@ -536,7 +554,9 @@ object_tangible_ship_components_engine_shared_eng_gallofree_advanced = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4109218739
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_advanced, 4109218739)
@@ -586,7 +606,9 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3029000329
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx2, 3029000329)
@@ -636,7 +658,9 @@ object_tangible_ship_components_engine_shared_eng_gallofree_jx3 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4253517572
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_gallofree_jx3, 4253517572)
@@ -686,7 +710,9 @@ object_tangible_ship_components_engine_shared_eng_generic = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2137568563
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_generic, 2137568563)
@@ -736,7 +762,9 @@ object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3688131239
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_haor_chall_old_engine, 3688131239)
@@ -786,7 +814,9 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1656121527
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced, 1656121527)
@@ -836,7 +866,9 @@ object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1530662903
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_advanced_fusialthrust, 1530662903)
@@ -886,7 +918,9 @@ object_tangible_ship_components_engine_shared_eng_incom_elite = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1983861509
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_elite, 1983861509)
@@ -936,7 +970,9 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1150814129
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust, 1150814129)
@@ -986,7 +1022,9 @@ object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3839998653
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_fusialthrust_2, 3839998653)
@@ -1036,7 +1074,9 @@ object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1860270722
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_heavy_fusialthrust, 1860270722)
@@ -1086,7 +1126,9 @@ object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3821177042
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_improved_fusialthrust_2, 3821177042)
@@ -1136,7 +1178,9 @@ object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1630933097
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_incom_light_fusialthrust, 1630933097)
@@ -1186,7 +1230,9 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3350954365
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_rendili_hyperion_drive, 3350954365)
@@ -1236,7 +1282,9 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_fo
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 267311659
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sds_special_forces, 267311659)
@@ -1286,7 +1334,9 @@ object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_fo
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2153536772
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_imperial_sfs_special_forces, 2153536772)
@@ -1336,7 +1386,9 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1686514173
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_incom_t11_elite, 1686514173)
@@ -1386,7 +1438,9 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhol
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2912460069
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_blackhole_elite, 2912460069)
@@ -1436,7 +1490,9 @@ object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3829446933
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kessel_rebel_novaldex_grb1138, 3829446933)
@@ -1486,7 +1542,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_advanced = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2950758561
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_advanced, 2950758561)
@@ -1536,7 +1594,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2074333945
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_dual_small_ionjet, 2074333945)
@@ -1586,7 +1646,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_elite = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 856779265
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_elite, 856779265)
@@ -1636,7 +1698,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_i
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2994323720
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_enhanced_dual_small_ionjet, 2994323720)
@@ -1686,7 +1750,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 399309085
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_heavy_ionjet, 399309085)
@@ -1736,7 +1802,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1091345516
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_small_ionjet, 1091345516)
@@ -1786,7 +1854,9 @@ object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 225753299
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_koensayr_tuned_small_ionjet, 225753299)
@@ -1836,7 +1906,9 @@ object_tangible_ship_components_engine_shared_eng_kse_a2x = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3609646499
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a2x, 3609646499)
@@ -1886,7 +1958,9 @@ object_tangible_ship_components_engine_shared_eng_kse_a5x = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2533291979
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a5x, 2533291979)
@@ -1936,7 +2010,9 @@ object_tangible_ship_components_engine_shared_eng_kse_a7x = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2695818555
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a7x, 2695818555)
@@ -1986,7 +2062,9 @@ object_tangible_ship_components_engine_shared_eng_kse_a8x = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 943105171
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_a8x, 943105171)
@@ -2036,7 +2114,9 @@ object_tangible_ship_components_engine_shared_eng_kse_advanced = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4154059461
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_advanced, 4154059461)
@@ -2086,7 +2166,9 @@ object_tangible_ship_components_engine_shared_eng_kse_elite = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3273736550
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_elite, 3273736550)
@@ -2136,7 +2218,9 @@ object_tangible_ship_components_engine_shared_eng_kse_improved_a2x = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1881362164
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_kse_improved_a2x, 1881362164)
@@ -2186,7 +2270,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_advanced = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2801444011
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_advanced, 2801444011)
@@ -2236,7 +2322,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_elite = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1878143653
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_elite, 1878143653)
@@ -2286,7 +2374,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3570273187
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_enhanced_heavy, 3570273187)
@@ -2336,7 +2426,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3541249894
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm, 3541249894)
@@ -2386,7 +2478,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 727952579
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_firestorm_2, 727952579)
@@ -2436,7 +2530,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_heavy = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4269473500
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_heavy, 4269473500)
@@ -2486,7 +2582,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1398811681
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x37_vandal, 1398811681)
@@ -2536,7 +2634,9 @@ object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 691790673
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mandal_x57_vandal, 691790673)
@@ -2586,7 +2686,9 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 116254934
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_imperial_cygnus_megadrive, 116254934)
@@ -2636,7 +2738,9 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_ch
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1833143091
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_haor_chall_military, 1833143091)
@@ -2686,7 +2790,9 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2762799874
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_neutral_mandal_inferno, 2762799874)
@@ -2736,7 +2842,9 @@ object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_mil
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3414312899
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_mission_reward_rebel_incom_military, 3414312899)
@@ -2786,7 +2894,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_charged_standard = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2970369817
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_charged_standard, 2970369817)
@@ -2836,7 +2946,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2303167784
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_enhanced_light, 2303167784)
@@ -2886,7 +2998,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_heavy = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1507745225
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_heavy, 1507745225)
@@ -2936,7 +3050,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs32 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 81343226
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs32, 81343226)
@@ -2986,7 +3102,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_ifs64 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3250538235
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_ifs64, 3250538235)
@@ -3036,7 +3154,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3680559351
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_improved_heavy, 3680559351)
@@ -3086,7 +3206,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_light = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2558943511
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_light, 2558943511)
@@ -3136,7 +3258,9 @@ object_tangible_ship_components_engine_shared_eng_moncal_standard = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1515726133
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_moncal_standard, 1515726133)
@@ -3186,7 +3310,9 @@ object_tangible_ship_components_engine_shared_eng_novaldex_advanced = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3212374131
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_advanced, 3212374131)
@@ -3236,7 +3362,9 @@ object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 954786503
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_eventhorizon, 954786503)
@@ -3286,7 +3414,9 @@ object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4190415358
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_light_eventhorizon, 4190415358)
@@ -3336,7 +3466,9 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x6 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1243009933
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x6, 1243009933)
@@ -3386,7 +3518,9 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x7 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 52147200
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x7, 52147200)
@@ -3436,7 +3570,9 @@ object_tangible_ship_components_engine_shared_eng_novaldex_x9 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4028432287
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_novaldex_x9, 4028432287)
@@ -3486,7 +3622,9 @@ object_tangible_ship_components_engine_shared_eng_prototype_engine = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 938019795
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_prototype_engine, 938019795)
@@ -3536,7 +3674,9 @@ object_tangible_ship_components_engine_shared_eng_qualdex_a13 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1058854056
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_a13, 1058854056)
@@ -3586,7 +3726,9 @@ object_tangible_ship_components_engine_shared_eng_qualdex_advanced = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1072902230
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_advanced, 1072902230)
@@ -3636,7 +3778,9 @@ object_tangible_ship_components_engine_shared_eng_qualdex_b10 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 905102348
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_b10, 905102348)
@@ -3686,7 +3830,9 @@ object_tangible_ship_components_engine_shared_eng_qualdex_elite = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2316920034
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_elite, 2316920034)
@@ -3736,7 +3882,9 @@ object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3668146278
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_kyromaster, 3668146278)
@@ -3786,7 +3934,9 @@ object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4106286177
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_qualdex_small_kyromaster, 4106286177)
@@ -3836,7 +3986,9 @@ object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2203700275
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_demon_mk1, 2203700275)
@@ -3886,7 +4038,9 @@ object_tangible_ship_components_engine_shared_eng_rendili_elite = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3783532255
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rendili_elite, 3783532255)
@@ -3936,7 +4090,9 @@ object_tangible_ship_components_engine_shared_eng_reward_incom_elite = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1914888370
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_incom_elite, 1914888370)
@@ -3986,7 +4142,9 @@ object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1042959246
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_koensayr_elite, 1042959246)
@@ -4036,7 +4194,9 @@ object_tangible_ship_components_engine_shared_eng_reward_kuat_elite = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3024393485
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_kuat_elite, 3024393485)
@@ -4086,7 +4246,9 @@ object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1822981655
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_novaldex_elite, 1822981655)
@@ -4136,7 +4298,9 @@ object_tangible_ship_components_engine_shared_eng_reward_surronian_elite = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1593887000
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_reward_surronian_elite, 1593887000)
@@ -4186,7 +4350,9 @@ object_tangible_ship_components_engine_shared_eng_rss_advanced = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2871154859
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_advanced, 2871154859)
@@ -4236,7 +4402,9 @@ object_tangible_ship_components_engine_shared_eng_rss_elite = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2026233667
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_elite, 2026233667)
@@ -4286,7 +4454,9 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4106763643
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner, 4106763643)
@@ -4336,7 +4506,9 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 348283927
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_2, 348283927)
@@ -4386,7 +4558,9 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1573847962
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_3, 1573847962)
@@ -4436,7 +4610,9 @@ object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2787911822
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_rss_imperial_skyrunner_4, 2787911822)
@@ -4486,7 +4662,9 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_1 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 161369355
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_1, 161369355)
@@ -4536,7 +4714,9 @@ object_tangible_ship_components_engine_shared_eng_sds_imperial_2 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3532252572
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_imperial_2, 3532252572)
@@ -4586,7 +4766,9 @@ object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3869362638
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sds_limited_imperial_1, 3869362638)
@@ -4636,7 +4818,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_advanced = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3251975169
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_advanced, 3251975169)
@@ -4686,7 +4870,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_elite = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4146255416
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_elite, 4146255416)
@@ -4736,7 +4922,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_1 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 641216433
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_1, 641216433)
@@ -4786,7 +4974,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_2 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4247750438
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_2, 4247750438)
@@ -4836,7 +5026,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_3 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3022184619
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_3, 3022184619)
@@ -4886,7 +5078,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_4 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1338100671
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_4, 1338100671)
@@ -4936,7 +5130,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_imperial_5 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 114076722
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_imperial_5, 114076722)
@@ -4986,7 +5182,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3416202828
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_modified_imperial_3, 3416202828)
@@ -5036,7 +5234,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4285524122
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_performance_imperial_1, 4285524122)
@@ -5086,7 +5286,9 @@ object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3062194398
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sfs_tuned_imperial_2, 3062194398)
@@ -5136,7 +5338,9 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2256977477
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_l_337_ion_engine, 2256977477)
@@ -5186,7 +5390,9 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engin
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2014640684
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_tuned_l_337_ion_engine, 2014640684)
@@ -5236,7 +5442,9 @@ object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1154791429
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_sorosuub_u83r_ion_drive, 1154791429)
@@ -5286,7 +5494,9 @@ object_tangible_ship_components_engine_shared_eng_subpro_light_engines = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2953087891
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_subpro_light_engines, 2953087891)
@@ -5336,7 +5546,9 @@ object_tangible_ship_components_engine_shared_eng_tiefighter_basic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 717637110
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_tiefighter_basic, 717637110)
@@ -5386,7 +5598,9 @@ object_tangible_ship_components_engine_shared_eng_z95_basic = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3860835004
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_eng_z95_basic, 3860835004)
@@ -5436,7 +5650,9 @@ object_tangible_ship_components_engine_shared_engine_cygnus_hd7 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4025396591
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_cygnus_hd7, 4025396591)
@@ -5486,7 +5702,9 @@ object_tangible_ship_components_engine_shared_engine_damorian_rx7 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3590792483
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_damorian_rx7, 3590792483)
@@ -5536,7 +5754,9 @@ object_tangible_ship_components_engine_shared_engine_incom_e16 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1073664893
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_e16, 1073664893)
@@ -5586,7 +5806,9 @@ object_tangible_ship_components_engine_shared_engine_incom_fusialthrust = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3226309687
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_incom_fusialthrust, 3226309687)
@@ -5636,7 +5858,9 @@ object_tangible_ship_components_engine_shared_engine_koensayr_ionjet = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1396982474
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_koensayr_ionjet, 1396982474)
@@ -5686,7 +5910,9 @@ object_tangible_ship_components_engine_shared_engine_kongar_defender = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1377789974
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kongar_defender, 1377789974)
@@ -5736,7 +5962,9 @@ object_tangible_ship_components_engine_shared_engine_kuat_a9x = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 528919760
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_a9x, 528919760)
@@ -5786,7 +6014,9 @@ object_tangible_ship_components_engine_shared_engine_kuat_f31 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 383630325
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_f31, 383630325)
@@ -5836,7 +6066,9 @@ object_tangible_ship_components_engine_shared_engine_kuat_tc40 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 630949966
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_kuat_tc40, 630949966)
@@ -5886,7 +6118,9 @@ object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 958710190
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_eventhorizon, 958710190)
@@ -5936,7 +6170,9 @@ object_tangible_ship_components_engine_shared_engine_novaldex_singularity = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1145254225
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_singularity, 1145254225)
@@ -5986,7 +6222,9 @@ object_tangible_ship_components_engine_shared_engine_novaldex_x12 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1195098255
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_novaldex_x12, 1195098255)
@@ -6036,7 +6274,9 @@ object_tangible_ship_components_engine_shared_engine_nubian_221 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 408364665
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221, 408364665)
@@ -6086,7 +6326,9 @@ object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3449726708
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_nubian_221_racing_mod, 3449726708)
@@ -6136,7 +6378,9 @@ object_tangible_ship_components_engine_shared_engine_qualdex_a10 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1616448620
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_a10, 1616448620)
@@ -6186,7 +6430,9 @@ object_tangible_ship_components_engine_shared_engine_qualdex_igt = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 157942210
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_igt, 157942210)
@@ -6236,7 +6482,9 @@ object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1584851936
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_qualdex_kyromaster, 1584851936)
@@ -6286,7 +6534,9 @@ object_tangible_ship_components_engine_shared_engine_seinar_ps56 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 425327830
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_seinar_ps56, 425327830)
@@ -6336,7 +6586,9 @@ object_tangible_ship_components_engine_shared_engine_surronian_a2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3679552737
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a2, 3679552737)
@@ -6386,7 +6638,9 @@ object_tangible_ship_components_engine_shared_engine_surronian_a25 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3019065064
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_surronian_a25, 3019065064)
@@ -6436,7 +6690,9 @@ object_tangible_ship_components_engine_shared_engine_test = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3349337615
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_test, 3349337615)
@@ -6486,7 +6742,9 @@ object_tangible_ship_components_engine_shared_engine_ubrikkian_n2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2229515854
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_engine_ubrikkian_n2, 2229515854)
@@ -6536,7 +6794,9 @@ object_tangible_ship_components_engine_shared_xwing_engine_s01_test = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1817330955
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s01_test, 1817330955)
@@ -6586,7 +6846,9 @@ object_tangible_ship_components_engine_shared_xwing_engine_s02_test = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3911366677
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_components_engine_shared_xwing_engine_s02_test, 3911366677)

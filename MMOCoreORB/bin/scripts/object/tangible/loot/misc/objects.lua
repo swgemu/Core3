@@ -86,7 +86,9 @@ object_tangible_loot_misc_shared_artifact_rare_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 865298765
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_artifact_rare_s01, 865298765)
@@ -136,7 +138,9 @@ object_tangible_loot_misc_shared_basket_expensive_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4077046979
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_basket_expensive_s01, 4077046979)
@@ -186,7 +190,9 @@ object_tangible_loot_misc_shared_bowl_s01 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2848209064
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_bowl_s01, 2848209064)
@@ -236,7 +242,9 @@ object_tangible_loot_misc_shared_briefcase_s01 = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1815409445
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_briefcase_s01, 1815409445)
@@ -286,7 +294,9 @@ object_tangible_loot_misc_shared_brown_rug = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3249408869
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_brown_rug, 3249408869)
@@ -336,7 +346,9 @@ object_tangible_loot_misc_shared_cage_s01 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 842587466
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_cage_s01, 842587466)
@@ -386,7 +398,9 @@ object_tangible_loot_misc_shared_camera_s01 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 327865364
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_camera_s01, 327865364)
@@ -436,7 +450,9 @@ object_tangible_loot_misc_shared_casserole_binna_jode = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3603005332
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_casserole_binna_jode, 3603005332)
@@ -486,7 +502,9 @@ object_tangible_loot_misc_shared_casual_rug = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 759121721
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_casual_rug, 759121721)
@@ -536,7 +554,9 @@ object_tangible_loot_misc_shared_corsec_id_badge = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3380245587
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_corsec_id_badge, 3380245587)
@@ -586,7 +606,9 @@ object_tangible_loot_misc_shared_damaged_datapad = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2077895809
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_damaged_datapad, 2077895809)
@@ -636,7 +658,9 @@ object_tangible_loot_misc_shared_datadisk_corrupt = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1598786934
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_datadisk_corrupt, 1598786934)
@@ -686,7 +710,9 @@ object_tangible_loot_misc_shared_decryptor_broken_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4256936356
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_decryptor_broken_s01, 4256936356)
@@ -736,7 +762,9 @@ object_tangible_loot_misc_shared_dermal_analyxer = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1425405589
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_dermal_analyxer, 1425405589)
@@ -786,7 +814,9 @@ object_tangible_loot_misc_shared_firework_dud_s1 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 706975394
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_firework_dud_s1, 706975394)
@@ -836,7 +866,9 @@ object_tangible_loot_misc_shared_firework_dud_s2 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4046732853
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_firework_dud_s2, 4046732853)
@@ -886,7 +918,9 @@ object_tangible_loot_misc_shared_force_crystal = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2901988249
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_force_crystal, 2901988249)
@@ -936,7 +970,9 @@ object_tangible_loot_misc_shared_glass_heirloom_s01 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3730613962
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_glass_heirloom_s01, 3730613962)
@@ -986,7 +1022,9 @@ object_tangible_loot_misc_shared_green_rug = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2290214914
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_green_rug, 2290214914)
@@ -1036,7 +1074,9 @@ object_tangible_loot_misc_shared_gungan_lance = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2604517877
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_gungan_lance, 2604517877)
@@ -1086,7 +1126,9 @@ object_tangible_loot_misc_shared_gungan_signet = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 374420297
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_gungan_signet, 374420297)
@@ -1136,7 +1178,9 @@ object_tangible_loot_misc_shared_holocron_splinters_sith_s01 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1021999255
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_holocron_splinters_sith_s01, 1021999255)
@@ -1186,7 +1230,9 @@ object_tangible_loot_misc_shared_hyperdrive_part_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1159518109
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_hyperdrive_part_s01, 1159518109)
@@ -1236,7 +1282,9 @@ object_tangible_loot_misc_shared_inkpen_engraved_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 239625063
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_inkpen_engraved_s01, 239625063)
@@ -1286,7 +1334,9 @@ object_tangible_loot_misc_shared_insects_rare_s01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1419164698
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_insects_rare_s01, 1419164698)
@@ -1336,7 +1386,9 @@ object_tangible_loot_misc_shared_jawa_beads = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1637830141
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_jawa_beads, 1637830141)
@@ -1386,7 +1438,9 @@ object_tangible_loot_misc_shared_keepsakes = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 634814302
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_keepsakes, 634814302)
@@ -1436,7 +1490,9 @@ object_tangible_loot_misc_shared_key_electronic_s01 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1312940379
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_key_electronic_s01, 1312940379)
@@ -1486,7 +1542,9 @@ object_tangible_loot_misc_shared_ledger_s01 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1032597494
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ledger_s01, 1032597494)
@@ -1536,7 +1594,9 @@ object_tangible_loot_misc_shared_loot_krayt_arm1 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3424112691
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_arm1, 3424112691)
@@ -1586,7 +1646,9 @@ object_tangible_loot_misc_shared_loot_krayt_arm2 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 385906852
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_arm2, 385906852)
@@ -1636,7 +1698,9 @@ object_tangible_loot_misc_shared_loot_krayt_foot = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4031807386
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_foot, 4031807386)
@@ -1686,7 +1750,9 @@ object_tangible_loot_misc_shared_loot_krayt_leg1 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3363519588
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_leg1, 3363519588)
@@ -1736,7 +1802,9 @@ object_tangible_loot_misc_shared_loot_krayt_leg2 = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 325883123
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_leg2, 325883123)
@@ -1786,7 +1854,9 @@ object_tangible_loot_misc_shared_loot_krayt_spine1 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3374450491
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_spine1, 3374450491)
@@ -1836,7 +1906,9 @@ object_tangible_loot_misc_shared_loot_krayt_spine2 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 305508268
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_spine2, 305508268)
@@ -1886,7 +1958,9 @@ object_tangible_loot_misc_shared_loot_krayt_spine3 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1530447905
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_krayt_spine3, 1530447905)
@@ -1936,7 +2010,9 @@ object_tangible_loot_misc_shared_loot_skull_bith = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 707837564
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_bith, 707837564)
@@ -1986,7 +2062,9 @@ object_tangible_loot_misc_shared_loot_skull_bol = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2725183958
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_bol, 2725183958)
@@ -2036,7 +2114,9 @@ object_tangible_loot_misc_shared_loot_skull_human = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 632440114
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_human, 632440114)
@@ -2086,7 +2166,9 @@ object_tangible_loot_misc_shared_loot_skull_ithorian = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 128900324
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_ithorian, 128900324)
@@ -2136,7 +2218,9 @@ object_tangible_loot_misc_shared_loot_skull_krayt1 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3855703718
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_krayt1, 3855703718)
@@ -2186,7 +2270,9 @@ object_tangible_loot_misc_shared_loot_skull_krayt2 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1053226545
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_krayt2, 1053226545)
@@ -2236,7 +2322,9 @@ object_tangible_loot_misc_shared_loot_skull_thune = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2842325032
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_thune, 2842325032)
@@ -2286,7 +2374,9 @@ object_tangible_loot_misc_shared_loot_skull_voritor = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3032461432
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_loot_skull_voritor, 3032461432)
@@ -2336,7 +2426,9 @@ object_tangible_loot_misc_shared_majestic_rug = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 317779620
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_majestic_rug, 317779620)
@@ -2386,7 +2478,9 @@ object_tangible_loot_misc_shared_medallion_black_sun_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 706045997
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_medallion_black_sun_s01, 706045997)
@@ -2436,7 +2530,9 @@ object_tangible_loot_misc_shared_medallion_dark_jedi_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 689527148
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_medallion_dark_jedi_s01, 689527148)
@@ -2486,7 +2582,9 @@ object_tangible_loot_misc_shared_mt_casserole = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4152880530
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_casserole, 4152880530)
@@ -2536,7 +2634,9 @@ object_tangible_loot_misc_shared_mt_flatbread = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2434258915
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_flatbread, 2434258915)
@@ -2586,7 +2686,9 @@ object_tangible_loot_misc_shared_mt_pie = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 468840680
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_pie, 468840680)
@@ -2636,7 +2738,9 @@ object_tangible_loot_misc_shared_mt_soup = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3702520473
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mt_soup, 3702520473)
@@ -2686,7 +2790,9 @@ object_tangible_loot_misc_shared_mystical_orb = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3480466055
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mystical_orb, 3480466055)
@@ -2736,7 +2842,9 @@ object_tangible_loot_misc_shared_mystical_powered_orb = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1931809434
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_mystical_powered_orb, 1931809434)
@@ -2786,7 +2894,9 @@ object_tangible_loot_misc_shared_ornamental_sconce = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3678039981
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ornamental_sconce, 3678039981)
@@ -2836,7 +2946,9 @@ object_tangible_loot_misc_shared_palm_frond = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1764965839
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_palm_frond, 1764965839)
@@ -2886,7 +2998,9 @@ object_tangible_loot_misc_shared_personal_effects = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2137101597
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_personal_effects, 2137101597)
@@ -2936,7 +3050,9 @@ object_tangible_loot_misc_shared_petrified_avian_egg = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3152449908
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_petrified_avian_egg, 3152449908)
@@ -2986,7 +3102,9 @@ object_tangible_loot_misc_shared_picture_handheld_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1021103631
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_picture_handheld_s01, 1021103631)
@@ -3036,7 +3154,9 @@ object_tangible_loot_misc_shared_picture_handheld_s02 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3888866968
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_picture_handheld_s02, 3888866968)
@@ -3086,7 +3206,9 @@ object_tangible_loot_misc_shared_proclamation_s01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 720417432
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_proclamation_s01, 720417432)
@@ -3136,7 +3258,9 @@ object_tangible_loot_misc_shared_recording_rod_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3573709036
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_recording_rod_s01, 3573709036)
@@ -3186,7 +3310,9 @@ object_tangible_loot_misc_shared_shisa_decorative_s01 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1359996863
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_shisa_decorative_s01, 1359996863)
@@ -3236,7 +3362,9 @@ object_tangible_loot_misc_shared_slave_collar = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3986073325
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_slave_collar, 3986073325)
@@ -3286,7 +3414,9 @@ object_tangible_loot_misc_shared_speaker_s01 = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 141936959
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_speaker_s01, 141936959)
@@ -3336,7 +3466,9 @@ object_tangible_loot_misc_shared_spectrum_recorder = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2986929439
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_spectrum_recorder, 2986929439)
@@ -3386,7 +3518,9 @@ object_tangible_loot_misc_shared_sports_award_s01 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3850821437
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_sports_award_s01, 3850821437)
@@ -3436,7 +3570,9 @@ object_tangible_loot_misc_shared_ticket_collectors_item_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1896550802
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ticket_collectors_item_s01, 1896550802)
@@ -3486,7 +3622,9 @@ object_tangible_loot_misc_shared_ticket_expired = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2280007490
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_ticket_expired, 2280007490)
@@ -3536,7 +3674,9 @@ object_tangible_loot_misc_shared_toxic_rations = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 381474584
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_toxic_rations, 381474584)
@@ -3586,7 +3726,9 @@ object_tangible_loot_misc_shared_worklight = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 667280512
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_misc_shared_worklight, 667280512)

@@ -86,7 +86,9 @@ object_tangible_component_bio_shared_base_bio_component_clothing_casual = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 219382584
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_casual, 219382584)
@@ -136,7 +138,9 @@ object_tangible_component_bio_shared_base_bio_component_clothing_field = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2494958129
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_field, 2494958129)
@@ -186,7 +190,9 @@ object_tangible_component_bio_shared_base_bio_component_clothing_formal = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3815377986
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_formal, 3815377986)
@@ -236,7 +242,9 @@ object_tangible_component_bio_shared_base_bio_component_food = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2633814515
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_base_bio_component_food, 2633814515)
@@ -286,7 +294,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_charisma = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1272895118
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma, 1272895118)
@@ -336,7 +346,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2790898256
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2, 2790898256)
@@ -386,7 +398,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1970227985
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer, 1970227985)
@@ -436,7 +450,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3713366872
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2, 3713366872)
@@ -486,7 +502,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_medic = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 55693017
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic, 55693017)
@@ -536,7 +554,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2 = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 608421917
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2, 608421917)
@@ -586,7 +606,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_taming = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3483367767
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming, 3483367767)
@@ -636,7 +658,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2121215649
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2, 2121215649)
@@ -686,7 +710,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_training = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 861669010
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training, 861669010)
@@ -736,7 +762,9 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_training_2 = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3979863035
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training_2, 3979863035)
@@ -786,7 +814,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_armor = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1523403607
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor, 1523403607)
@@ -836,7 +866,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_armor_2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3097107766
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor_2, 3097107766)
@@ -886,7 +918,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_bleeding = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4173771067
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding, 4173771067)
@@ -936,7 +970,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1801496294
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2, 1801496294)
@@ -986,7 +1022,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_camo = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3468672511
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo, 3468672511)
@@ -1036,7 +1074,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_camo_2 = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1895651741
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo_2, 1895651741)
@@ -1086,7 +1126,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_cover = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1495044005
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover, 1495044005)
@@ -1136,7 +1178,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_cover_2 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 467211451
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover_2, 467211451)
@@ -1186,7 +1230,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_defense = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4223028089
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense, 4223028089)
@@ -1236,7 +1282,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_defense_2 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 58582226
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense_2, 58582226)
@@ -1286,7 +1334,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_intimidate = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2984936227
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate, 2984936227)
@@ -1336,7 +1386,9 @@ object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2 =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3980420512
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2, 3980420512)
@@ -1386,7 +1438,9 @@ object_tangible_component_bio_shared_bio_component_food_heavy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2498712826
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy, 2498712826)
@@ -1436,7 +1490,9 @@ object_tangible_component_bio_shared_bio_component_food_heavy_filling = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1999617734
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_filling, 1999617734)
@@ -1486,7 +1542,9 @@ object_tangible_component_bio_shared_bio_component_food_heavy_flavor = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3777049958
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_flavor, 3777049958)
@@ -1536,7 +1594,9 @@ object_tangible_component_bio_shared_bio_component_food_heavy_nutrition = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3750501285
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_nutrition, 3750501285)
@@ -1586,7 +1646,9 @@ object_tangible_component_bio_shared_bio_component_food_heavy_quantity = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3677884855
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_quantity, 3677884855)
@@ -1636,7 +1698,9 @@ object_tangible_component_bio_shared_bio_component_food_light = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1438083108
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light, 1438083108)
@@ -1686,7 +1750,9 @@ object_tangible_component_bio_shared_bio_component_food_light_filling = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4207262465
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_filling, 4207262465)
@@ -1736,7 +1802,9 @@ object_tangible_component_bio_shared_bio_component_food_light_flavor = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4041478053
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_flavor, 4041478053)
@@ -1786,7 +1854,9 @@ object_tangible_component_bio_shared_bio_component_food_light_nutrition = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2945552565
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_nutrition, 2945552565)
@@ -1836,7 +1906,9 @@ object_tangible_component_bio_shared_bio_component_food_light_quantity = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1778167946
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_light_quantity, 1778167946)
@@ -1886,7 +1958,9 @@ object_tangible_component_bio_shared_bio_component_food_medium = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3076711804
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium, 3076711804)
@@ -1936,7 +2010,9 @@ object_tangible_component_bio_shared_bio_component_food_medium_filling = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 856029112
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_filling, 856029112)
@@ -1986,7 +2062,9 @@ object_tangible_component_bio_shared_bio_component_food_medium_flavor = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1373118882
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_flavor, 1373118882)
@@ -2036,7 +2114,9 @@ object_tangible_component_bio_shared_bio_component_food_medium_nutrition = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 624506486
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_nutrition, 624506486)
@@ -2086,7 +2166,9 @@ object_tangible_component_bio_shared_bio_component_food_medium_quantity = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3606276380
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_shared_bio_component_food_medium_quantity, 3606276380)

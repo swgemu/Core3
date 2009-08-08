@@ -89,7 +89,9 @@ object_building_poi_base_shared_base_poi_building = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3227957177
 }
 
 ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_building, 3227957177)
@@ -142,7 +144,9 @@ object_building_poi_base_shared_base_poi_large = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3975774939
 }
 
 ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_large, 3975774939)
@@ -195,7 +199,9 @@ object_building_poi_base_shared_base_poi_medium = SharedBuildingObjectTemplate:n
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_medium.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1110952143
 }
 
 ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_medium, 1110952143)
@@ -248,7 +254,9 @@ object_building_poi_base_shared_base_poi_small = SharedBuildingObjectTemplate:ne
 	targetable = 0,
 	terrainModificationFileName = "terrain/poi_small.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3638695666
 }
 
 ObjectTemplates:addTemplate(object_building_poi_base_shared_base_poi_small, 3638695666)

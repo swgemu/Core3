@@ -86,7 +86,9 @@ object_tangible_painting_shared_bestine_history_quest_painting = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3716079022
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_history_quest_painting, 3716079022)
@@ -136,7 +138,9 @@ object_tangible_painting_shared_bestine_quest_painting = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 550655936
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_bestine_quest_painting, 550655936)
@@ -186,7 +190,9 @@ object_tangible_painting_shared_painting_agrilat_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2365303481
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_agrilat_s01, 2365303481)
@@ -236,7 +242,9 @@ object_tangible_painting_shared_painting_armor_blueprint = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2522220824
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_armor_blueprint, 2522220824)
@@ -286,7 +294,9 @@ object_tangible_painting_shared_painting_bestine_blueleaf_temple = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2092717443
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blueleaf_temple, 2092717443)
@@ -336,7 +346,9 @@ object_tangible_painting_shared_painting_bestine_blumbush = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2399181727
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_blumbush, 2399181727)
@@ -386,7 +398,9 @@ object_tangible_painting_shared_painting_bestine_boffa = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1521577134
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_boffa, 1521577134)
@@ -436,7 +450,9 @@ object_tangible_painting_shared_painting_bestine_golden_flower_01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 268388150
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_01, 268388150)
@@ -486,7 +502,9 @@ object_tangible_painting_shared_painting_bestine_golden_flower_02 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3572035489
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_02, 3572035489)
@@ -536,7 +554,9 @@ object_tangible_painting_shared_painting_bestine_golden_flower_03 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2649065516
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_03, 2649065516)
@@ -586,7 +606,9 @@ object_tangible_painting_shared_painting_bestine_house = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3800373299
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_house, 3800373299)
@@ -636,7 +658,9 @@ object_tangible_painting_shared_painting_bestine_krayt_skeleton = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3652558255
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_krayt_skeleton, 3652558255)
@@ -686,7 +710,9 @@ object_tangible_painting_shared_painting_bestine_lucky_despot = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2981494109
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_lucky_despot, 2981494109)
@@ -736,7 +762,9 @@ object_tangible_painting_shared_painting_bestine_mattberry = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4207518182
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_mattberry, 4207518182)
@@ -786,7 +814,9 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_01 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1833552017
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_01, 1833552017)
@@ -836,7 +866,9 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_02 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3059638278
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_02, 3059638278)
@@ -886,7 +918,9 @@ object_tangible_painting_shared_painting_bestine_rainbow_berry_bush = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4083160615
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_rainbow_berry_bush, 4083160615)
@@ -936,7 +970,9 @@ object_tangible_painting_shared_painting_bestine_raventhorn = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1526591701
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_raventhorn, 1526591701)
@@ -986,7 +1022,9 @@ object_tangible_painting_shared_painting_bestine_ronka = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2667929549
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bestine_ronka, 2667929549)
@@ -1036,7 +1074,9 @@ object_tangible_painting_shared_painting_bioengineer_orange = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 232377496
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bioengineer_orange, 232377496)
@@ -1086,7 +1126,9 @@ object_tangible_painting_shared_painting_bothan_f = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 854788635
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_f, 854788635)
@@ -1136,7 +1178,9 @@ object_tangible_painting_shared_painting_bothan_m = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2819466634
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bothan_m, 2819466634)
@@ -1186,7 +1230,9 @@ object_tangible_painting_shared_painting_bw_stormtrooper = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2585541648
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_bw_stormtrooper, 2585541648)
@@ -1236,7 +1282,9 @@ object_tangible_painting_shared_painting_cargoport = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 8552875
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_cargoport, 8552875)
@@ -1286,7 +1334,9 @@ object_tangible_painting_shared_painting_dance_party = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 105361220
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_dance_party, 105361220)
@@ -1336,7 +1386,9 @@ object_tangible_painting_shared_painting_double_helix = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2823052972
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_double_helix, 2823052972)
@@ -1386,7 +1438,9 @@ object_tangible_painting_shared_painting_droid_bright = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2843033838
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_droid_bright, 2843033838)
@@ -1436,7 +1490,9 @@ object_tangible_painting_shared_painting_endor_style_01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 633275539
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_endor_style_01, 633275539)
@@ -1486,7 +1542,9 @@ object_tangible_painting_shared_painting_fighter_pilot_human_01 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4258475485
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_fighter_pilot_human_01, 4258475485)
@@ -1536,7 +1594,9 @@ object_tangible_painting_shared_painting_food_baking_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3144090584
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking_s01, 3144090584)
@@ -1586,7 +1646,9 @@ object_tangible_painting_shared_painting_food_baking_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1617996623
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_food_baking_s02, 1617996623)
@@ -1636,7 +1698,9 @@ object_tangible_painting_shared_painting_freedom = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3648739651
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_freedom, 3648739651)
@@ -1686,7 +1750,9 @@ object_tangible_painting_shared_painting_han_wanted = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2218996276
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_han_wanted, 2218996276)
@@ -1736,7 +1802,9 @@ object_tangible_painting_shared_painting_human_f = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3589238977
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_human_f, 3589238977)
@@ -1786,7 +1854,9 @@ object_tangible_painting_shared_painting_kite_plant = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1814671481
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_kite_plant, 1814671481)
@@ -1836,7 +1906,9 @@ object_tangible_painting_shared_painting_leia_wanted = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3845142344
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_leia_wanted, 3845142344)
@@ -1886,7 +1958,9 @@ object_tangible_painting_shared_painting_luke_wanted = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1125814305
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_luke_wanted, 1125814305)
@@ -1936,7 +2010,9 @@ object_tangible_painting_shared_painting_nebula_flower = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4178650060
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_nebula_flower, 4178650060)
@@ -1986,7 +2062,9 @@ object_tangible_painting_shared_painting_palowick_ad_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1851630183
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s01, 1851630183)
@@ -2036,7 +2114,9 @@ object_tangible_painting_shared_painting_palowick_ad_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3041528560
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s02, 3041528560)
@@ -2086,7 +2166,9 @@ object_tangible_painting_shared_painting_palowick_ad_s03 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4232539517
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s03, 4232539517)
@@ -2136,7 +2218,9 @@ object_tangible_painting_shared_painting_palowick_ad_s04 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 128206441
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_palowick_ad_s04, 128206441)
@@ -2186,7 +2270,9 @@ object_tangible_painting_shared_painting_planet_s01 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1235349261
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_planet_s01, 1235349261)
@@ -2236,7 +2322,9 @@ object_tangible_painting_shared_painting_rodian_f = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2426371029
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f, 2426371029)
@@ -2286,7 +2374,9 @@ object_tangible_painting_shared_painting_rodian_f_ad_01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3837717304
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_f_ad_01, 3837717304)
@@ -2336,7 +2426,9 @@ object_tangible_painting_shared_painting_rodian_m = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 174183492
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_rodian_m, 174183492)
@@ -2386,7 +2478,9 @@ object_tangible_painting_shared_painting_schematic_droid = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1382937840
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_droid, 1382937840)
@@ -2436,7 +2530,9 @@ object_tangible_painting_shared_painting_schematic_transport_ship = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 648855104
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_transport_ship, 648855104)
@@ -2486,7 +2582,9 @@ object_tangible_painting_shared_painting_schematic_weapon = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2579175131
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_weapon, 2579175131)
@@ -2536,7 +2634,9 @@ object_tangible_painting_shared_painting_schematic_weapon_s03 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 716865001
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_schematic_weapon_s03, 716865001)
@@ -2586,7 +2686,9 @@ object_tangible_painting_shared_painting_skyscraper = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4253954885
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_skyscraper, 4253954885)
@@ -2636,7 +2738,9 @@ object_tangible_painting_shared_painting_smoking_ad = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 200259882
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_smoking_ad, 200259882)
@@ -2686,7 +2790,9 @@ object_tangible_painting_shared_painting_starmap = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2644531826
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_starmap, 2644531826)
@@ -2736,7 +2842,9 @@ object_tangible_painting_shared_painting_tato_s03 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2441069764
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s03, 2441069764)
@@ -2786,7 +2894,9 @@ object_tangible_painting_shared_painting_tato_s04 = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1788669904
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tato_s04, 1788669904)
@@ -2836,7 +2946,9 @@ object_tangible_painting_shared_painting_teras_kasi = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4110008393
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi, 4110008393)
@@ -2886,7 +2998,9 @@ object_tangible_painting_shared_painting_teras_kasi_2 = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 956503088
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_teras_kasi_2, 956503088)
@@ -2936,7 +3050,9 @@ object_tangible_painting_shared_painting_trandoshan_m = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2913821862
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_m, 2913821862)
@@ -2986,7 +3102,9 @@ object_tangible_painting_shared_painting_trandoshan_m_01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1179174055
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_m_01, 1179174055)
@@ -3036,7 +3154,9 @@ object_tangible_painting_shared_painting_trandoshan_wanted = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3605402564
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trandoshan_wanted, 3605402564)
@@ -3086,7 +3206,9 @@ object_tangible_painting_shared_painting_tree = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3334758805
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_tree, 3334758805)
@@ -3136,7 +3258,9 @@ object_tangible_painting_shared_painting_trees_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1783509906
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_trees_s01, 1783509906)
@@ -3186,7 +3310,9 @@ object_tangible_painting_shared_painting_twilek_f = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1175481538
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f, 1175481538)
@@ -3236,7 +3362,9 @@ object_tangible_painting_shared_painting_twilek_f_lg_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 380699826
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s01, 380699826)
@@ -3286,7 +3414,9 @@ object_tangible_painting_shared_painting_twilek_f_lg_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3450252325
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s02, 3450252325)
@@ -3336,7 +3466,9 @@ object_tangible_painting_shared_painting_twilek_f_lg_s03 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2225851304
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s03, 2225851304)
@@ -3386,7 +3518,9 @@ object_tangible_painting_shared_painting_twilek_f_lg_s04 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2135482556
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s04, 2135482556)
@@ -3436,7 +3570,9 @@ object_tangible_painting_shared_painting_twilek_f_sm_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3456145212
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s01, 3456145212)
@@ -3486,7 +3622,9 @@ object_tangible_painting_shared_painting_twilek_f_sm_s02 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 353845163
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s02, 353845163)
@@ -3536,7 +3674,9 @@ object_tangible_painting_shared_painting_twilek_f_sm_s03 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1545230374
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s03, 1545230374)
@@ -3586,7 +3726,9 @@ object_tangible_painting_shared_painting_twilek_f_sm_s04 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2818143026
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s04, 2818143026)
@@ -3636,7 +3778,9 @@ object_tangible_painting_shared_painting_twilek_m = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3706635091
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_twilek_m, 3706635091)
@@ -3686,7 +3830,9 @@ object_tangible_painting_shared_painting_vader_victory = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3566316574
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_vader_victory, 3566316574)
@@ -3736,7 +3882,9 @@ object_tangible_painting_shared_painting_valley_view = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2895682928
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_valley_view, 2895682928)
@@ -3786,7 +3934,9 @@ object_tangible_painting_shared_painting_victorious_reign = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2421149115
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_victorious_reign, 2421149115)
@@ -3836,7 +3986,9 @@ object_tangible_painting_shared_painting_waterfall = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4064843162
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_waterfall, 4064843162)
@@ -3886,7 +4038,9 @@ object_tangible_painting_shared_painting_wookiee_f = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3402224478
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_f, 3402224478)
@@ -3936,7 +4090,9 @@ object_tangible_painting_shared_painting_wookiee_m = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1345813711
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_wookiee_m, 1345813711)
@@ -3986,7 +4142,9 @@ object_tangible_painting_shared_painting_zabrak_f = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2622418438
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_f, 2622418438)
@@ -4036,7 +4194,9 @@ object_tangible_painting_shared_painting_zabrak_m = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 112214423
 }
 
 ObjectTemplates:addTemplate(object_tangible_painting_shared_painting_zabrak_m, 112214423)

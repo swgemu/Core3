@@ -86,7 +86,9 @@ object_battlefield_marker_shared_battlefield_marker = SharedBattlefieldMarkerObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 400647243
 }
 
 ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker, 400647243)
@@ -136,7 +138,9 @@ object_battlefield_marker_shared_battlefield_marker_128m = SharedBattlefieldMark
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 772486765
 }
 
 ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_128m, 772486765)
@@ -186,7 +190,9 @@ object_battlefield_marker_shared_battlefield_marker_192m = SharedBattlefieldMark
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1675330696
 }
 
 ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_192m, 1675330696)
@@ -236,7 +242,9 @@ object_battlefield_marker_shared_battlefield_marker_256m = SharedBattlefieldMark
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2839286307
 }
 
 ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_256m, 2839286307)
@@ -286,7 +294,9 @@ object_battlefield_marker_shared_battlefield_marker_384m = SharedBattlefieldMark
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3242162717
 }
 
 ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_384m, 3242162717)
@@ -336,7 +346,9 @@ object_battlefield_marker_shared_battlefield_marker_512m = SharedBattlefieldMark
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2057605617
 }
 
 ObjectTemplates:addTemplate(object_battlefield_marker_shared_battlefield_marker_512m, 2057605617)

@@ -86,7 +86,9 @@ object_tangible_lair_scurrier_shared_lair_scurrier = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3654226862
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier, 3654226862)
@@ -136,7 +138,9 @@ object_tangible_lair_scurrier_shared_lair_scurrier_desert = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1092043415
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_desert, 1092043415)
@@ -186,7 +190,9 @@ object_tangible_lair_scurrier_shared_lair_scurrier_dune = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 129638931
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_dune, 129638931)
@@ -236,7 +242,9 @@ object_tangible_lair_scurrier_shared_lair_scurrier_mountain = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3299579420
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_mountain, 3299579420)
@@ -286,7 +294,9 @@ object_tangible_lair_scurrier_shared_lair_scurrier_wasteland = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3138468221
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_wasteland, 3138468221)

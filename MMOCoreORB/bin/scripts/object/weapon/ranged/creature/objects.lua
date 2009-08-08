@@ -90,7 +90,9 @@ object_weapon_ranged_creature_shared_creature_spit_heavy_flame = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 21
+	weaponEffectIndex = 21,
+
+	clientObjectCRC = 3638052260
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_heavy_flame, 3638052260)
@@ -144,7 +146,9 @@ object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 4293058545
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_green, 4293058545)
@@ -198,7 +202,9 @@ object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjec
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 3
+	weaponEffectIndex = 3,
+
+	clientObjectCRC = 3761745120
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_red, 3761745120)
@@ -252,7 +258,9 @@ object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeap
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 6
+	weaponEffectIndex = 6,
+
+	clientObjectCRC = 3595296227
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen, 3595296227)
@@ -306,7 +314,9 @@ object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponOb
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 9
+	weaponEffectIndex = 9,
+
+	clientObjectCRC = 1314081741
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_large_yellow, 1314081741)
@@ -360,7 +370,9 @@ object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeapon
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 20
+	weaponEffectIndex = 20,
+
+	clientObjectCRC = 4140159842
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_lightning_ball, 4140159842)
@@ -414,7 +426,9 @@ object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponO
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "rocket",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 2889945643
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_particle_beam, 2889945643)
@@ -468,7 +482,9 @@ object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 1
+	weaponEffectIndex = 1,
+
+	clientObjectCRC = 1298271366
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_green, 1298271366)
@@ -522,7 +538,9 @@ object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjec
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 4
+	weaponEffectIndex = 4,
+
+	clientObjectCRC = 4245354171
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_red, 4245354171)
@@ -576,7 +594,9 @@ object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeap
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 7
+	weaponEffectIndex = 7,
+
+	clientObjectCRC = 2893137473
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen, 2893137473)
@@ -630,7 +650,9 @@ object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponOb
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 10
+	weaponEffectIndex = 10,
+
+	clientObjectCRC = 2050788061
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_small_yellow, 2050788061)
@@ -684,7 +706,9 @@ object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObj
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 2
+	weaponEffectIndex = 2,
+
+	clientObjectCRC = 1466506816
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_green, 1466506816)
@@ -738,7 +762,9 @@ object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjec
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 5
+	weaponEffectIndex = 5,
+
+	clientObjectCRC = 3130570406
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_red, 3130570406)
@@ -792,7 +818,9 @@ object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeap
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 8
+	weaponEffectIndex = 8,
+
+	clientObjectCRC = 1575661625
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen, 1575661625)
@@ -846,7 +874,9 @@ object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponOb
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "spit",
-	weaponEffectIndex = 11
+	weaponEffectIndex = 11,
+
+	clientObjectCRC = 313868667
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_yellow, 313868667)

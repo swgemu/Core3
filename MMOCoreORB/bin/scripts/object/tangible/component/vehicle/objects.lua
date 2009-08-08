@@ -86,7 +86,9 @@ object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3865021906
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler, 3865021906)
@@ -136,7 +138,9 @@ object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1510776729
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech, 1510776729)
@@ -186,7 +190,9 @@ object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1581441816
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_vehicle_module, 1581441816)
@@ -236,7 +242,9 @@ object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 786572723
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_vehicle_structure_frame, 786572723)
@@ -286,7 +294,9 @@ object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1382684326
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_adv_warhead_launcher, 1382684326)
@@ -336,7 +346,9 @@ object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3241531623
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_acid, 3241531623)
@@ -386,7 +398,9 @@ object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1069256646
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_blast, 1069256646)
@@ -436,7 +450,9 @@ object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1264295934
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_cold, 1264295934)
@@ -486,7 +502,9 @@ object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3441847905
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_electrical, 3441847905)
@@ -536,7 +554,9 @@ object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 953836336
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_energy, 953836336)
@@ -586,7 +606,9 @@ object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3015233806
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_heat, 3015233806)
@@ -636,7 +658,9 @@ object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2965773562
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_panel_kinetic, 2965773562)
@@ -686,7 +710,9 @@ object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1681561469
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plating_mk1, 1681561469)
@@ -736,7 +762,9 @@ object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3207413738
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plating_mk2, 3207413738)
@@ -786,7 +814,9 @@ object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4129314919
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_armor_plating_mk3, 4129314919)
@@ -836,7 +866,9 @@ object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1669906342
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_auto_blaster_cannon, 1669906342)
@@ -886,7 +918,9 @@ object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3207704663
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_blaster_cannon, 3207704663)
@@ -933,7 +967,9 @@ object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4196904136
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_a, 4196904136)
@@ -980,7 +1016,9 @@ object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTempl
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4241836654
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_aa, 4241836654)
@@ -1027,7 +1065,9 @@ object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 556794975
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_b, 556794975)
@@ -1074,7 +1114,9 @@ object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1748853714
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_c, 1748853714)
@@ -1121,7 +1163,9 @@ object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2480818374
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_d, 2480818374)
@@ -1168,7 +1212,9 @@ object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3671273291
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_civilian_e, 3671273291)
@@ -1218,7 +1264,9 @@ object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4011041142
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_command_center, 4011041142)
@@ -1268,7 +1316,9 @@ object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2526466923
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_disperser, 2526466923)
@@ -1318,7 +1368,9 @@ object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1758294677
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_dx_disruptor_array, 1758294677)
@@ -1368,7 +1420,9 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2423684763
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks, 2423684763)
@@ -1418,7 +1472,9 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1508560129
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy, 1508560129)
@@ -1468,7 +1524,9 @@ object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 875276992
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_a, 875276992)
@@ -1518,7 +1576,9 @@ object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4013687383
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_b, 4013687383)
@@ -1568,7 +1628,9 @@ object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2788255194
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_c, 2788255194)
@@ -1618,7 +1680,9 @@ object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2771769499
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_a, 2771769499)
@@ -1668,7 +1732,9 @@ object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2116186124
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_b, 2116186124)
@@ -1718,7 +1784,9 @@ object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 925833089
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_fuel_cell_c, 925833089)
@@ -1768,7 +1836,9 @@ object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1799983183
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_hvy_blaster_power_handler, 1799983183)
@@ -1818,7 +1888,9 @@ object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 873571042
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_hvy_projectile_feed_mech, 873571042)
@@ -1868,7 +1940,9 @@ object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 23811175
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_laser_cannon, 23811175)
@@ -1918,7 +1992,9 @@ object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2036478700
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_launcher, 2036478700)
@@ -1968,7 +2044,9 @@ object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3252736157
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_launcher_pod, 3252736157)
@@ -2018,7 +2096,9 @@ object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3394427130
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_mass_driver, 3394427130)
@@ -2065,7 +2145,9 @@ object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3996260675
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_a, 3996260675)
@@ -2112,7 +2194,9 @@ object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 891662804
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_b, 891662804)
@@ -2159,7 +2243,9 @@ object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2083051097
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_c, 2083051097)
@@ -2206,7 +2292,9 @@ object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2278292813
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_d, 2278292813)
@@ -2253,7 +2341,9 @@ object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTempla
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3469122240
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_military_e, 3469122240)
@@ -2303,7 +2393,9 @@ object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 679614064
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_mini_launcher_pod, 679614064)
@@ -2353,7 +2445,9 @@ object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1469492977
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_proton_torpedo_array, 1469492977)
@@ -2403,7 +2497,9 @@ object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3412711253
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_reactor_unit, 3412711253)
@@ -2453,7 +2549,9 @@ object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 193714292
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_storage_bay, 193714292)
@@ -2503,7 +2601,9 @@ object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1158767213
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_structural_reinforcements, 1158767213)
@@ -2553,7 +2653,9 @@ object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2107974846
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_structural_reinforcements_hvy, 2107974846)
@@ -2603,7 +2705,9 @@ object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 988089930
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_av21, 988089930)
@@ -2653,7 +2757,9 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2595754938
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk1, 2595754938)
@@ -2703,7 +2809,9 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1102035757
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk2, 1102035757)
@@ -2753,7 +2861,9 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 144891040
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk3, 144891040)
@@ -2803,7 +2913,9 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1124134870
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk1, 1124134870)
@@ -2853,7 +2965,9 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2551662401
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk2, 2551662401)
@@ -2903,7 +3017,9 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3508150476
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk3, 3508150476)
@@ -2953,7 +3069,9 @@ object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2537869251
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_vehicle_module, 2537869251)
@@ -3003,7 +3121,9 @@ object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2570010963
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_vehicle_structure_frame, 2570010963)
@@ -3053,7 +3173,9 @@ object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4289490254
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_warhead_launcher, 4289490254)
@@ -3103,7 +3225,9 @@ object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4201896584
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_weapon_array, 4201896584)
@@ -3153,7 +3277,9 @@ object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1550314035
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_vehicle_shared_weapon_link, 1550314035)

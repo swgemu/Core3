@@ -86,7 +86,9 @@ object_tangible_furniture_all_shared_bestine_quest_imp_banner = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1531961782
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_bestine_quest_imp_banner, 1531961782)
@@ -136,7 +138,9 @@ object_tangible_furniture_all_shared_bestine_quest_statue = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 382776042
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_bestine_quest_statue, 382776042)
@@ -186,7 +190,9 @@ object_tangible_furniture_all_shared_event_flag_game_imp_banner = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3069965117
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_event_flag_game_imp_banner, 3069965117)
@@ -236,7 +242,9 @@ object_tangible_furniture_all_shared_event_flag_game_neut_banner = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1888446421
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_event_flag_game_neut_banner, 1888446421)
@@ -286,7 +294,9 @@ object_tangible_furniture_all_shared_event_flag_game_reb_banner = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 255943061
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_event_flag_game_reb_banner, 255943061)
@@ -336,7 +346,9 @@ object_tangible_furniture_all_shared_frn_all_banner_rebel = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1081367784
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_banner_rebel, 1081367784)
@@ -386,7 +398,9 @@ object_tangible_furniture_all_shared_frn_all_bed_lg_s1 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2766782450
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_lg_s1, 2766782450)
@@ -436,7 +450,9 @@ object_tangible_furniture_all_shared_frn_all_bed_lg_s2 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2147358565
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_lg_s2, 2147358565)
@@ -486,7 +502,9 @@ object_tangible_furniture_all_shared_frn_all_bed_sm_s1 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2258677740
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_sm_s1, 2258677740)
@@ -536,7 +554,9 @@ object_tangible_furniture_all_shared_frn_all_bed_sm_s2 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1572276091
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_bed_sm_s2, 1572276091)
@@ -586,7 +606,9 @@ object_tangible_furniture_all_shared_frn_all_chair_kitchen_s1 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3227489016
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_kitchen_s1, 3227489016)
@@ -636,7 +658,9 @@ object_tangible_furniture_all_shared_frn_all_chair_kitchen_s2 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 457718383
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_kitchen_s2, 457718383)
@@ -686,7 +710,9 @@ object_tangible_furniture_all_shared_frn_all_chair_meatal_wheeled_s1 = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 481905908
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_meatal_wheeled_s1, 481905908)
@@ -736,7 +762,9 @@ object_tangible_furniture_all_shared_frn_all_chair_metal_s1 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1199580943
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_metal_s1, 1199580943)
@@ -786,7 +814,9 @@ object_tangible_furniture_all_shared_frn_all_chair_recliner_s1 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1014994447
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_recliner_s1, 1014994447)
@@ -836,7 +866,9 @@ object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3584752217
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1, 3584752217)
@@ -886,7 +918,9 @@ object_tangible_furniture_all_shared_frn_all_chair_wooden_s1 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 521624148
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_wooden_s1, 521624148)
@@ -936,7 +970,9 @@ object_tangible_furniture_all_shared_frn_all_chair_wooden_s2 = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3288396483
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_chair_wooden_s2, 3288396483)
@@ -986,7 +1022,9 @@ object_tangible_furniture_all_shared_frn_all_command_console = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1808903036
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_command_console, 1808903036)
@@ -1036,7 +1074,9 @@ object_tangible_furniture_all_shared_frn_all_couch_divan_s1 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1193418540
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_divan_s1, 1193418540)
@@ -1086,7 +1126,9 @@ object_tangible_furniture_all_shared_frn_all_couch_futon_s1 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2092553247
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_futon_s1, 2092553247)
@@ -1136,7 +1178,9 @@ object_tangible_furniture_all_shared_frn_all_couch_lg_s1 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1042763570
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_lg_s1, 1042763570)
@@ -1186,7 +1230,9 @@ object_tangible_furniture_all_shared_frn_all_couch_lg_s2 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3845187493
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_lg_s2, 3845187493)
@@ -1236,7 +1282,9 @@ object_tangible_furniture_all_shared_frn_all_couch_love_seat_s1 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2658048255
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_love_seat_s1, 2658048255)
@@ -1286,7 +1334,9 @@ object_tangible_furniture_all_shared_frn_all_couch_love_seat_s2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1165570152
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_love_seat_s2, 1165570152)
@@ -1336,7 +1386,9 @@ object_tangible_furniture_all_shared_frn_all_couch_ottoman_s1 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1218810982
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_ottoman_s1, 1218810982)
@@ -1386,7 +1438,9 @@ object_tangible_furniture_all_shared_frn_all_couch_sm_s1 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 476995372
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_couch_sm_s1, 476995372)
@@ -1436,7 +1490,9 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_free_s1 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2558376117
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_free_s1, 2558376117)
@@ -1486,7 +1542,9 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_free_s2 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1131024418
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_free_s2, 1131024418)
@@ -1536,7 +1594,9 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s1 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2588623479
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s1, 2588623479)
@@ -1586,7 +1646,9 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s2 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1096608480
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s2, 1096608480)
@@ -1636,7 +1698,9 @@ object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s3 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 139562349
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_data_terminal_wall_s3, 139562349)
@@ -1686,7 +1750,9 @@ object_tangible_furniture_all_shared_frn_all_decorative_lg_s1 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3436169521
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_lg_s1, 3436169521)
@@ -1736,7 +1802,9 @@ object_tangible_furniture_all_shared_frn_all_decorative_lg_s2 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 400056742
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_lg_s2, 400056742)
@@ -1786,7 +1854,9 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s1 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4001814831
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s1, 4001814831)
@@ -1836,7 +1906,9 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s2 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 898724280
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s2, 898724280)
@@ -1886,7 +1958,9 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s3 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2090604085
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s3, 2090604085)
@@ -1936,7 +2010,9 @@ object_tangible_furniture_all_shared_frn_all_decorative_sm_s4 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2273262881
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_decorative_sm_s4, 2273262881)
@@ -1986,7 +2062,9 @@ object_tangible_furniture_all_shared_frn_all_desk_map_table = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2805336181
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_desk_map_table, 2805336181)
@@ -2036,7 +2114,9 @@ object_tangible_furniture_all_shared_frn_all_desk_map_table_insert = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1189355734
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_desk_map_table_insert, 1189355734)
@@ -2086,7 +2166,9 @@ object_tangible_furniture_all_shared_frn_all_desk_radar_topology_screen = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3848687606
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_desk_radar_topology_screen, 3848687606)
@@ -2136,7 +2218,9 @@ object_tangible_furniture_all_shared_frn_all_gaming_kiosk_s01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1694461731
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_gaming_kiosk_s01, 1694461731)
@@ -2186,7 +2270,9 @@ object_tangible_furniture_all_shared_frn_all_jedi_council_seat = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2800172243
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_jedi_council_seat, 2800172243)
@@ -2236,7 +2322,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3521956956
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01, 3521956956)
@@ -2286,7 +2374,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01_lit = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3324544895
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s01_lit, 3324544895)
@@ -2336,7 +2426,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 184247499
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02, 184247499)
@@ -2386,7 +2478,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02_lit = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3571999842
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_free_s02_lit, 3571999842)
@@ -2436,7 +2530,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s01 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4181620046
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s01, 4181620046)
@@ -2486,7 +2582,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s02 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 573169113
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s02, 573169113)
@@ -2536,7 +2634,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s03 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1797569108
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_candlestick_tbl_s03, 1797569108)
@@ -2586,7 +2686,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2360472234
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s01, 2360472234)
@@ -2636,7 +2738,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s01_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 382797400
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s01_lit, 382797400)
@@ -2686,7 +2790,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s02 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1470519869
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s02, 1470519869)
@@ -2736,7 +2842,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_desk_s02_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 68281669
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_desk_s02_lit, 68281669)
@@ -2786,7 +2894,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1325371987
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s01, 1325371987)
@@ -2836,7 +2946,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s01_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1805089359
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s01_lit, 1805089359)
@@ -2886,7 +2998,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s02 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2515024580
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s02, 2515024580)
@@ -2936,7 +3050,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s02_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2035784018
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s02_lit, 2035784018)
@@ -2986,7 +3102,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s03 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3706019145
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s03, 3706019145)
@@ -3036,7 +3154,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s03_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2337747764
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s03_lit, 2337747764)
@@ -3086,7 +3206,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s04 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 654734941
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s04, 654734941)
@@ -3136,7 +3258,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_free_s04_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1557553000
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_free_s04_lit, 1557553000)
@@ -3186,7 +3310,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_table_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2424631679
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s01, 2424631679)
@@ -3236,7 +3362,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_table_s02 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1267948008
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s02, 1267948008)
@@ -3286,7 +3414,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_table_s03 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 43925093
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_table_s03, 43925093)
@@ -3336,7 +3466,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3608725747
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01, 3608725747)
@@ -3386,7 +3518,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01_lit = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 822321525
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tatt_s01_lit, 822321525)
@@ -3436,7 +3570,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4035162080
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01, 4035162080)
@@ -3486,7 +3622,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 761322007
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s01_lit, 761322007)
@@ -3536,7 +3674,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 731121527
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02, 731121527)
@@ -3586,7 +3726,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02_lit = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1067464970
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s02_lit, 1067464970)
@@ -3636,7 +3778,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03 = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1654219002
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03, 1654219002)
@@ -3686,7 +3830,9 @@ object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03_lit = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3449852780
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_lamp_tbl_s03_lit, 3449852780)
@@ -3736,7 +3882,9 @@ object_tangible_furniture_all_shared_frn_all_light_death_watch = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4031925830
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_death_watch, 4031925830)
@@ -3786,7 +3934,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s01 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1579415490
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s01, 1579415490)
@@ -3836,7 +3986,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s02 = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2234802005
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_free_s02, 2234802005)
@@ -3886,7 +4038,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s01 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1771349838
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s01, 1771349838)
@@ -3936,7 +4090,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2994933721
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02, 2994933721)
@@ -3986,7 +4142,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02_red 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 284598381
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02_red, 284598381)
@@ -4036,7 +4194,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s03 = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4220414036
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s03, 4220414036)
@@ -4086,7 +4246,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2383392501
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s01, 2383392501)
@@ -4136,7 +4298,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1427637858
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_desk_s02, 1427637858)
@@ -4186,7 +4350,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1279381004
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s01, 1279381004)
@@ -4236,7 +4402,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2539021979
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s02, 2539021979)
@@ -4286,7 +4454,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s03 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3730506006
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s03, 3730506006)
@@ -4336,7 +4506,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 632826370
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04, 632826370)
@@ -4386,7 +4558,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_table_s01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 660247825
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s01, 660247825)
@@ -4436,7 +4610,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_table_s02 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4232920454
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s02, 4232920454)
@@ -4486,7 +4662,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_table_s03 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3040893451
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_table_s03, 3040893451)
@@ -4536,7 +4714,9 @@ object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3584464044
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_light_lamp_tatt_s01, 3584464044)
@@ -4586,7 +4766,9 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s1 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2264087913
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s1, 2264087913)
@@ -4636,7 +4818,9 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s2 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1575261694
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s2, 1575261694)
@@ -4686,7 +4870,9 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s3 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 350876275
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s3, 350876275)
@@ -4736,7 +4922,9 @@ object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s4 = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4010465639
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_plant_potted_lg_s4, 4010465639)
@@ -4786,7 +4974,9 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s01 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1722056472
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s01, 1722056472)
@@ -4836,7 +5026,9 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s02 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3182679951
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s02, 3182679951)
@@ -4886,7 +5078,9 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s03 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4106137602
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s03, 4106137602)
@@ -4936,7 +5130,9 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s04 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 257792790
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s04, 257792790)
@@ -4986,7 +5182,9 @@ object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s05 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1179712667
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_potted_plants_sml_s05, 1179712667)
@@ -5036,7 +5234,9 @@ object_tangible_furniture_all_shared_frn_all_professor_desk = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4069121058
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_professor_desk, 4069121058)
@@ -5086,7 +5286,9 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_01 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2466207088
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_01, 2466207088)
@@ -5136,7 +5338,9 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_02 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1240006119
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_02, 1240006119)
@@ -5186,7 +5390,9 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_03 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 15047274
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_03, 15047274)
@@ -5236,7 +5442,9 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_04 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4211519870
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_04, 4211519870)
@@ -5286,7 +5494,9 @@ object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_05 = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2987120371
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_rug_rectangle_large_style_05, 2987120371)
@@ -5336,7 +5546,9 @@ object_tangible_furniture_all_shared_frn_all_table_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3131467531
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_table_s01, 3131467531)
@@ -5386,7 +5598,9 @@ object_tangible_furniture_all_shared_frn_all_table_s02 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1639042972
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_table_s02, 1639042972)
@@ -5436,7 +5650,9 @@ object_tangible_furniture_all_shared_frn_all_table_s03 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 683452433
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_table_s03, 683452433)
@@ -5486,7 +5702,9 @@ object_tangible_furniture_all_shared_frn_all_technical_console_s01 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 891789876
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_technical_console_s01, 891789876)
@@ -5536,7 +5754,9 @@ object_tangible_furniture_all_shared_frn_all_technical_console_s02 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3996125859
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_technical_console_s02, 3996125859)
@@ -5586,7 +5806,9 @@ object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 554677542
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s01, 554677542)
@@ -5636,7 +5858,9 @@ object_tangible_furniture_all_shared_frn_all_throwpillow_med_s02 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4195884465
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s02, 4195884465)
@@ -5686,7 +5910,9 @@ object_tangible_furniture_all_shared_frn_all_throwpillow_med_s03 = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3004529212
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_throwpillow_med_s03, 3004529212)
@@ -5736,7 +5962,9 @@ object_tangible_furniture_all_shared_frn_all_tiki_torch_s1 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3066089836
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_tiki_torch_s1, 3066089836)
@@ -5786,7 +6014,9 @@ object_tangible_furniture_all_shared_frn_all_toolchest_lg_s01 = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4055857984
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_toolchest_lg_s01, 4055857984)
@@ -5836,7 +6066,9 @@ object_tangible_furniture_all_shared_frn_all_toolchest_med_s01 = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1035190183
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_toolchest_med_s01, 1035190183)
@@ -5886,7 +6118,9 @@ object_tangible_furniture_all_shared_frn_all_tree_potted_s1 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1995765132
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_tree_potted_s1, 1995765132)
@@ -5936,7 +6170,9 @@ object_tangible_furniture_all_shared_frn_all_tree_potted_s2 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2917358875
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_all_tree_potted_s2, 2917358875)
@@ -5986,7 +6222,9 @@ object_tangible_furniture_all_shared_frn_bench_generic = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1802643293
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_shared_frn_bench_generic, 1802643293)

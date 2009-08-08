@@ -89,7 +89,9 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2883928313
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_lrg, 2883928313)
@@ -142,7 +144,9 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3359402016
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_med, 3359402016)
@@ -195,7 +199,9 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1295187033
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_hutt_sm, 1295187033)
@@ -248,7 +254,9 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1970934894
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_lrg, 1970934894)
@@ -301,7 +309,9 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 379796663
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_med, 379796663)
@@ -354,7 +364,9 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 759219915
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_imperial_sm, 759219915)
@@ -407,7 +419,9 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1900138383
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_lrg, 1900138383)
@@ -460,7 +474,9 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 312010582
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_med, 312010582)
@@ -513,7 +529,9 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	targetable = 0,
 	terrainModificationFileName = "terrain/tatooine_flora_large.lay",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2752460800
 }
 
 ObjectTemplates:addTemplate(object_building_poi_hq_shared_rebel_sm, 2752460800)

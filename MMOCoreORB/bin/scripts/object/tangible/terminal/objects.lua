@@ -86,7 +86,9 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 909741262
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ballot_box, 909741262)
@@ -136,7 +138,9 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1989986645
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bank, 1989986645)
@@ -186,7 +190,9 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3631323563
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bazaar, 3631323563)
@@ -236,7 +242,9 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 234637781
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, 234637781)
@@ -286,7 +294,9 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3605782850
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, 3605782850)
@@ -336,7 +346,9 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2682685135
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, 2682685135)
@@ -386,7 +398,9 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4023071175
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_bounty_droid, 4023071175)
@@ -436,7 +450,9 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1444012427
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_character_builder, 1444012427)
@@ -486,7 +502,9 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 379393128
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city, 379393128)
@@ -536,7 +554,9 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1204497275
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_city_vote, 1204497275)
@@ -586,7 +606,9 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3781560082
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_cloning, 3781560082)
@@ -636,7 +658,9 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 245813721
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_command_console, 245813721)
@@ -686,7 +710,9 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1992103782
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, 1992103782)
@@ -736,7 +762,9 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2329382269
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, 2329382269)
@@ -786,7 +814,9 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 278443635
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator, 278443635)
@@ -836,7 +866,9 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3298826986
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_down, 3298826986)
@@ -886,7 +918,9 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 115529514
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_elevator_up, 115529514)
@@ -936,7 +970,9 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3878794306
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_geo_bunker, 3878794306)
@@ -986,7 +1022,9 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 724271921
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_guild, 724271921)
@@ -1036,7 +1074,9 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 489350492
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq, 489350492)
@@ -1086,7 +1126,9 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3161971452
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_imperial, 3161971452)
@@ -1136,7 +1178,9 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1176471647
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_rebel, 1176471647)
@@ -1186,7 +1230,9 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2229698005
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, 2229698005)
@@ -1236,7 +1282,9 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2511005752
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_imagedesign, 2511005752)
@@ -1286,7 +1334,9 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1029213671
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_insurance, 1029213671)
@@ -1336,7 +1386,9 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 249891408
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_jukebox, 249891408)
@@ -1386,7 +1438,9 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2945424908
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, 2945424908)
@@ -1436,7 +1490,9 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1384984494
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, 1384984494)
@@ -1486,7 +1542,9 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2907007746
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission, 2907007746)
@@ -1536,7 +1594,9 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3927829015
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_artisan, 3927829015)
@@ -1586,7 +1646,9 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3951925654
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_bounty, 3951925654)
@@ -1636,7 +1698,9 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2410700040
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, 2410700040)
@@ -1686,7 +1750,9 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4186402280
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_imperial, 4186402280)
@@ -1736,7 +1802,9 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2666426537
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_newbie, 2666426537)
@@ -1786,7 +1854,9 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2082896080
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_rebel, 2082896080)
@@ -1836,7 +1906,9 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 581658756
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_scout, 581658756)
@@ -1886,7 +1958,9 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4114889569
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_mission_statue, 4114889569)
@@ -1936,7 +2010,9 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4290085920
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, 4290085920)
@@ -1986,7 +2062,9 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2721518483
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_food, 2721518483)
@@ -2036,7 +2114,9 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3665675874
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, 3665675874)
@@ -2086,7 +2166,9 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1668873424
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, 1668873424)
@@ -2136,7 +2218,9 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4182051530
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newbie_tool, 4182051530)
@@ -2186,7 +2270,9 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 757402672
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_newsnet, 757402672)
@@ -2236,7 +2322,9 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3880062907
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_nym_cave, 3880062907)
@@ -2286,7 +2374,9 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4023332994
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure, 4023332994)
@@ -2336,7 +2426,9 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 437907033
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, 437907033)
@@ -2386,7 +2478,9 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2775644177
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, 2775644177)
@@ -2436,7 +2530,9 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1004751674
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pm_register, 1004751674)
@@ -2486,7 +2582,9 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3308349953
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_pob_ship, 3308349953)
@@ -2536,7 +2634,9 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 965433242
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, 965433242)
@@ -2586,7 +2686,9 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1225472505
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_shipping, 1225472505)
@@ -2636,7 +2738,9 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 328711509
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_skill, 328711509)
@@ -2686,7 +2790,9 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1701113915
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_space, 1701113915)
@@ -2736,7 +2842,9 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1946349820
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_travel, 1946349820)
@@ -2786,7 +2894,9 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4062337637
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_terminal_water_pressure, 4062337637)
@@ -2836,7 +2946,9 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3876933537
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_shared_test, 3876933537)

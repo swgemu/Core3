@@ -86,7 +86,9 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1099269046
 }
 
 ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, 1099269046)
@@ -136,7 +138,9 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3561123970
 }
 
 ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, 3561123970)
@@ -186,7 +190,9 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3749452237
 }
 
 ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, 3749452237)
@@ -236,7 +242,9 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3271748526
 }
 
 ObjectTemplates:addTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, 3271748526)

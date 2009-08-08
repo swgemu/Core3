@@ -86,7 +86,9 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2521145726
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01, 2521145726)
@@ -136,7 +138,9 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1297222121
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02, 1297222121)
@@ -186,7 +190,9 @@ object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3613873422
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01, 3613873422)
@@ -236,7 +242,9 @@ object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 927756693
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_section_s01, 927756693)

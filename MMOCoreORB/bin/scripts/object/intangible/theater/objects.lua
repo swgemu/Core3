@@ -75,7 +75,9 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2322781790
 }
 
 ObjectTemplates:addTemplate(object_intangible_theater_shared_base_theater, 2322781790)

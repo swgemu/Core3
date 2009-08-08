@@ -86,7 +86,9 @@ object_tangible_ship_interior_components_shared_alarm_interior = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3974262189
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_alarm_interior, 3974262189)
@@ -136,7 +138,9 @@ object_tangible_ship_interior_components_shared_booster_interior = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1352184706
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_booster_interior, 1352184706)
@@ -186,7 +190,9 @@ object_tangible_ship_interior_components_shared_capacitor_interior = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2832895610
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_capacitor_interior, 2832895610)
@@ -236,7 +242,9 @@ object_tangible_ship_interior_components_shared_droid_interface_interior = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3377520816
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_droid_interface_interior, 3377520816)
@@ -286,7 +294,9 @@ object_tangible_ship_interior_components_shared_engine_interior = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2189154037
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_engine_interior, 2189154037)
@@ -336,7 +346,9 @@ object_tangible_ship_interior_components_shared_escape_pod_hatch = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3990614703
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_escape_pod_hatch, 3990614703)
@@ -386,7 +398,9 @@ object_tangible_ship_interior_components_shared_hull_access_interior = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3234906407
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_hull_access_interior, 3234906407)
@@ -436,7 +450,9 @@ object_tangible_ship_interior_components_shared_hyperdrive_interior = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3880861694
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_hyperdrive_interior, 3880861694)
@@ -486,7 +502,9 @@ object_tangible_ship_interior_components_shared_interior_component_base = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1650278519
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_interior_component_base, 1650278519)
@@ -536,7 +554,9 @@ object_tangible_ship_interior_components_shared_life_support_interior = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3443371299
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_life_support_interior, 3443371299)
@@ -586,7 +606,9 @@ object_tangible_ship_interior_components_shared_missile_launcher_interior = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3763171458
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_missile_launcher_interior, 3763171458)
@@ -636,7 +658,9 @@ object_tangible_ship_interior_components_shared_plasma_conduit_interior = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3308870721
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_plasma_conduit_interior, 3308870721)
@@ -686,7 +710,9 @@ object_tangible_ship_interior_components_shared_reactor_interior = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2128920004
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_reactor_interior, 2128920004)
@@ -736,7 +762,9 @@ object_tangible_ship_interior_components_shared_shield_generator_interior = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1208361503
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_shield_generator_interior, 1208361503)
@@ -786,7 +814,9 @@ object_tangible_ship_interior_components_shared_targeting_station_interior = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2082379213
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_targeting_station_interior, 2082379213)
@@ -836,7 +866,9 @@ object_tangible_ship_interior_components_shared_weapon_interior = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1599351425
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_shared_weapon_interior, 1599351425)

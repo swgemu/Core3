@@ -75,7 +75,9 @@ object_draft_schematic_space_capacitor_shared_basic_capacitor = SharedDraftSchem
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1279300072
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_basic_capacitor, 1279300072)
@@ -114,7 +116,9 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk1 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2202770982
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk1, 2202770982)
@@ -153,7 +157,9 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk2 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1482438321
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk2, 1482438321)
@@ -192,7 +198,9 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk3 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 290541884
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk3, 290541884)
@@ -231,7 +239,9 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk4 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3937565224
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk4, 3937565224)
@@ -270,7 +280,9 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk5 = SharedDraftSchemat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2747211173
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk5, 2747211173)
@@ -309,7 +321,9 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1 = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 731258544
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1, 731258544)
@@ -348,7 +362,9 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2 = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4035032615
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2, 4035032615)
@@ -387,7 +403,9 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3 = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3113013674
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3, 3113013674)
@@ -426,7 +444,9 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4 = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1114634942
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4, 1114634942)
@@ -465,7 +485,9 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5 = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 191012147
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5, 191012147)
@@ -504,7 +526,9 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1501708613
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1, 1501708613)
@@ -543,7 +567,9 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2190862802
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2, 2190862802)
@@ -582,7 +608,9 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3415772767
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3, 3415772767)
@@ -621,7 +649,9 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 813409611
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4, 813409611)
@@ -660,7 +690,9 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5 = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2037826246
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5, 2037826246)
@@ -699,7 +731,9 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk1 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3001021296
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk1, 3001021296)
@@ -738,7 +772,9 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk2 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1774738407
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk2, 1774738407)
@@ -777,7 +813,9 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk3 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 549796970
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk3, 549796970)
@@ -816,7 +854,9 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk4 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3676706686
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk4, 3676706686)
@@ -855,7 +895,9 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk5 = SharedDraftSch
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2452320499
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk5, 2452320499)
@@ -894,7 +936,9 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3603192853
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1, 3603192853)
@@ -933,7 +977,9 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 231994498
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2, 231994498)
@@ -972,7 +1018,9 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1155437327
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3, 1155437327)
@@ -1011,7 +1059,9 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3208493083
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4, 3208493083)
@@ -1050,7 +1100,9 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5 = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4130398102
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5, 4130398102)

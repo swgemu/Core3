@@ -86,7 +86,9 @@ object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3684259216
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_acklay_venom, 3684259216)
@@ -136,7 +138,9 @@ object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4029895422
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile, 4029895422)
@@ -186,7 +190,9 @@ object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1717162905
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, 1717162905)
@@ -236,7 +242,9 @@ object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1098837027
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_base_munition_enhancer, 1098837027)
@@ -286,7 +294,9 @@ object_tangible_component_munition_shared_enhanced_charge_composition = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1739187546
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, 1739187546)
@@ -336,7 +346,9 @@ object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 411019932
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, 411019932)
@@ -386,7 +398,9 @@ object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3545355156
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, 3545355156)
@@ -436,7 +450,9 @@ object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 628465189
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, 628465189)
@@ -486,7 +502,9 @@ object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3311758812
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_kliknick_gland, 3311758812)
@@ -536,7 +554,9 @@ object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3966888720
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_chemical, 3966888720)
@@ -586,7 +606,9 @@ object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 896289962
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, 896289962)
@@ -636,7 +658,9 @@ object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2416425450
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_heavy, 2416425450)
@@ -686,7 +710,9 @@ object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1365214516
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_light, 1365214516)
@@ -736,7 +762,9 @@ object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1284211616
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_medium, 1284211616)
@@ -786,7 +814,9 @@ object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1000887058
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_shared_warhead_stabilizer, 1000887058)

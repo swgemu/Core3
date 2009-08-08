@@ -86,7 +86,9 @@ object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4291838693
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle, 4291838693)
@@ -136,7 +138,9 @@ object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2947041437
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, 2947041437)
@@ -186,7 +190,9 @@ object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4088792736
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, 4088792736)

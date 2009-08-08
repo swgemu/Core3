@@ -86,7 +86,9 @@ object_tangible_terminal_base_shared_base_terminal = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 88218105
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_base_shared_base_terminal, 88218105)

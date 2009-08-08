@@ -75,7 +75,9 @@ object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTe
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2175205203
 }
 
 ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_generator_01, 2175205203)
@@ -114,7 +116,9 @@ object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2042724339
 }
 
 ObjectTemplates:addTemplate(object_static_space_beacon_shared_hyperspace_route_beacon_01, 2042724339)

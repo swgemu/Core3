@@ -86,7 +86,9 @@ object_tangible_wearables_base_shared_armor_base = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1118410205
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_armor_base, 1118410205)
@@ -136,7 +138,9 @@ object_tangible_wearables_base_shared_base_back = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2810806644
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_back, 2810806644)
@@ -186,7 +190,9 @@ object_tangible_wearables_base_shared_base_backpack = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3185007320
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_backpack, 3185007320)
@@ -236,7 +242,9 @@ object_tangible_wearables_base_shared_base_bandolier = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3970091966
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bandolier, 3970091966)
@@ -286,7 +294,9 @@ object_tangible_wearables_base_shared_base_belt = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1062557489
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_belt, 1062557489)
@@ -336,7 +346,9 @@ object_tangible_wearables_base_shared_base_bicep_both = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2712137924
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_both, 2712137924)
@@ -386,7 +398,9 @@ object_tangible_wearables_base_shared_base_bicep_l = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4008734029
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_l, 4008734029)
@@ -436,7 +450,9 @@ object_tangible_wearables_base_shared_base_bicep_r = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2653235422
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bicep_r, 2653235422)
@@ -486,7 +502,9 @@ object_tangible_wearables_base_shared_base_bracer_both = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 837302752
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_both, 837302752)
@@ -536,7 +554,9 @@ object_tangible_wearables_base_shared_base_bracer_l = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2708618999
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_l, 2708618999)
@@ -586,7 +606,9 @@ object_tangible_wearables_base_shared_base_bracer_r = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3517414244
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_r, 3517414244)
@@ -636,7 +658,9 @@ object_tangible_wearables_base_shared_base_bracer_upper_both = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2675265298
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_both, 2675265298)
@@ -686,7 +710,9 @@ object_tangible_wearables_base_shared_base_bracer_upper_l = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4140306303
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_l, 4140306303)
@@ -736,7 +762,9 @@ object_tangible_wearables_base_shared_base_bracer_upper_r = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2250066668
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_bracer_upper_r, 2250066668)
@@ -786,7 +814,9 @@ object_tangible_wearables_base_shared_base_cape = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2484521886
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cape, 2484521886)
@@ -836,7 +866,9 @@ object_tangible_wearables_base_shared_base_cloak = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2056216974
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak, 2056216974)
@@ -886,7 +918,9 @@ object_tangible_wearables_base_shared_base_cloak_hooded = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 31223610
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak_hooded, 31223610)
@@ -936,7 +970,9 @@ object_tangible_wearables_base_shared_base_cloak_noback = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2091266362
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_cloak_noback, 2091266362)
@@ -986,7 +1022,9 @@ object_tangible_wearables_base_shared_base_costume_allow_jewelry = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2707266953
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_costume_allow_jewelry, 2707266953)
@@ -1036,7 +1074,9 @@ object_tangible_wearables_base_shared_base_costume_full = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2269371502
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_costume_full, 2269371502)
@@ -1086,7 +1126,9 @@ object_tangible_wearables_base_shared_base_dress = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2799882789
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress, 2799882789)
@@ -1136,7 +1178,9 @@ object_tangible_wearables_base_shared_base_dress_formal = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3251571586
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal, 3251571586)
@@ -1186,7 +1230,9 @@ object_tangible_wearables_base_shared_base_dress_formal_gloved = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3497114818
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal_gloved, 3497114818)
@@ -1236,7 +1282,9 @@ object_tangible_wearables_base_shared_base_dress_formal_hooded = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 593250873
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_formal_hooded, 593250873)
@@ -1286,7 +1334,9 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_allow_gauntlets = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4147701623
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_allow_gauntlets, 4147701623)
@@ -1336,7 +1386,9 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_full = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 470480709
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_full, 470480709)
@@ -1386,7 +1438,9 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_lower = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1881919920
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_lower, 1881919920)
@@ -1436,7 +1490,9 @@ object_tangible_wearables_base_shared_base_dress_poofysleeve_upper = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 62461898
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_dress_poofysleeve_upper, 62461898)
@@ -1486,7 +1542,9 @@ object_tangible_wearables_base_shared_base_ear_both = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 169169891
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_both, 169169891)
@@ -1536,7 +1594,9 @@ object_tangible_wearables_base_shared_base_ear_either = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1514339438
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_either, 1514339438)
@@ -1586,7 +1646,9 @@ object_tangible_wearables_base_shared_base_ear_l = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4290100541
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_l, 4290100541)
@@ -1636,7 +1698,9 @@ object_tangible_wearables_base_shared_base_ear_r = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2405497006
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ear_r, 2405497006)
@@ -1686,7 +1750,9 @@ object_tangible_wearables_base_shared_base_eyes = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 749543557
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_eyes, 749543557)
@@ -1736,7 +1802,9 @@ object_tangible_wearables_base_shared_base_gauntlets = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3961745252
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gauntlets, 3961745252)
@@ -1786,7 +1854,9 @@ object_tangible_wearables_base_shared_base_gauntlets_long = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 199720665
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gauntlets_long, 199720665)
@@ -1836,7 +1906,9 @@ object_tangible_wearables_base_shared_base_gloves = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2864390584
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gloves, 2864390584)
@@ -1886,7 +1958,9 @@ object_tangible_wearables_base_shared_base_gloves_long = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1997625980
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_gloves_long, 1997625980)
@@ -1936,7 +2010,9 @@ object_tangible_wearables_base_shared_base_hat = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2527263770
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_hat, 2527263770)
@@ -1986,7 +2062,9 @@ object_tangible_wearables_base_shared_base_held_both = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4046540417
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_both, 4046540417)
@@ -2036,7 +2114,9 @@ object_tangible_wearables_base_shared_base_held_l = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3544049811
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_l, 3544049811)
@@ -2086,7 +2166,9 @@ object_tangible_wearables_base_shared_base_held_r = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2749934848
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_held_r, 2749934848)
@@ -2136,7 +2218,9 @@ object_tangible_wearables_base_shared_base_helmet_closed_eyes = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362107763
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_eyes, 2362107763)
@@ -2186,7 +2270,9 @@ object_tangible_wearables_base_shared_base_helmet_closed_full = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3510435998
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_full, 3510435998)
@@ -2236,7 +2322,9 @@ object_tangible_wearables_base_shared_base_helmet_closed_full_ventilated = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2962747437
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_full_ventilated, 2962747437)
@@ -2286,7 +2374,9 @@ object_tangible_wearables_base_shared_base_helmet_closed_mouth = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3128780769
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_closed_mouth, 3128780769)
@@ -2336,7 +2426,9 @@ object_tangible_wearables_base_shared_base_helmet_open = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2025938864
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_helmet_open, 2025938864)
@@ -2386,7 +2478,9 @@ object_tangible_wearables_base_shared_base_jacket_halfsleeve = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2465585907
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_halfsleeve, 2465585907)
@@ -2436,7 +2530,9 @@ object_tangible_wearables_base_shared_base_jacket_longsleeve = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1586795263
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_longsleeve, 1586795263)
@@ -2486,7 +2582,9 @@ object_tangible_wearables_base_shared_base_jacket_shortsleeve = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1538565730
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jacket_shortsleeve, 1538565730)
@@ -2536,7 +2634,9 @@ object_tangible_wearables_base_shared_base_jewelry_set = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1811884613
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jewelry_set, 1811884613)
@@ -2586,7 +2686,9 @@ object_tangible_wearables_base_shared_base_jumpsuit = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3014962433
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit, 3014962433)
@@ -2636,7 +2738,9 @@ object_tangible_wearables_base_shared_base_jumpsuit_gloved = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1949399047
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_gloved, 1949399047)
@@ -2686,7 +2790,9 @@ object_tangible_wearables_base_shared_base_jumpsuit_longsleeve = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2013984551
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_longsleeve, 2013984551)
@@ -2736,7 +2842,9 @@ object_tangible_wearables_base_shared_base_jumpsuit_shortsleeve = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1198818608
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_jumpsuit_shortsleeve, 1198818608)
@@ -2786,7 +2894,9 @@ object_tangible_wearables_base_shared_base_mask_face = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3305679722
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_mask_face, 3305679722)
@@ -2836,7 +2946,9 @@ object_tangible_wearables_base_shared_base_mouth = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 748013551
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_mouth, 748013551)
@@ -2886,7 +2998,9 @@ object_tangible_wearables_base_shared_base_neck = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 551522086
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_neck, 551522086)
@@ -2936,7 +3050,9 @@ object_tangible_wearables_base_shared_base_pants = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3653526929
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pants, 3653526929)
@@ -2986,7 +3102,9 @@ object_tangible_wearables_base_shared_base_pauldron_both = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 415713156
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_both, 415713156)
@@ -3036,7 +3154,9 @@ object_tangible_wearables_base_shared_base_pauldron_l = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3883644082
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_l, 3883644082)
@@ -3086,7 +3206,9 @@ object_tangible_wearables_base_shared_base_pauldron_r = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2544824609
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_pauldron_r, 2544824609)
@@ -3136,7 +3258,9 @@ object_tangible_wearables_base_shared_base_ring_both = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2610078742
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_both, 2610078742)
@@ -3186,7 +3310,9 @@ object_tangible_wearables_base_shared_base_ring_either = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2587414226
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_either, 2587414226)
@@ -3236,7 +3362,9 @@ object_tangible_wearables_base_shared_base_ring_l = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3286738453
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_l, 3286738453)
@@ -3286,7 +3414,9 @@ object_tangible_wearables_base_shared_base_ring_r = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3006456710
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_ring_r, 3006456710)
@@ -3336,7 +3466,9 @@ object_tangible_wearables_base_shared_base_robe_longsleeve = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3859006116
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_longsleeve, 3859006116)
@@ -3386,7 +3518,9 @@ object_tangible_wearables_base_shared_base_robe_longsleeve_hooded = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3926887891
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_longsleeve_hooded, 3926887891)
@@ -3436,7 +3570,9 @@ object_tangible_wearables_base_shared_base_robe_shortsleeve = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1473420708
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_shortsleeve, 1473420708)
@@ -3486,7 +3622,9 @@ object_tangible_wearables_base_shared_base_robe_shortsleeve_hooded = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1105969450
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_robe_shortsleeve_hooded, 1105969450)
@@ -3536,7 +3674,9 @@ object_tangible_wearables_base_shared_base_shirt = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 224364220
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt, 224364220)
@@ -3586,7 +3726,9 @@ object_tangible_wearables_base_shared_base_shirt_poofysleeve_full = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3144684645
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_full, 3144684645)
@@ -3636,7 +3778,9 @@ object_tangible_wearables_base_shared_base_shirt_poofysleeve_lower = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3852531643
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_lower, 3852531643)
@@ -3686,7 +3830,9 @@ object_tangible_wearables_base_shared_base_shirt_poofysleeve_upper = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2519871937
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shirt_poofysleeve_upper, 2519871937)
@@ -3736,7 +3882,9 @@ object_tangible_wearables_base_shared_base_shoes = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2786535462
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_shoes, 2786535462)
@@ -3786,7 +3934,9 @@ object_tangible_wearables_base_shared_base_skirt = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3787318242
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_skirt, 3787318242)
@@ -3836,7 +3986,9 @@ object_tangible_wearables_base_shared_base_sleeve_both = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1904536543
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_both, 1904536543)
@@ -3886,7 +4038,9 @@ object_tangible_wearables_base_shared_base_sleeve_l = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3578472162
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_l, 3578472162)
@@ -3936,7 +4090,9 @@ object_tangible_wearables_base_shared_base_sleeve_r = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2778620785
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_sleeve_r, 2778620785)
@@ -3986,7 +4142,9 @@ object_tangible_wearables_base_shared_base_vest = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3591511546
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_vest, 3591511546)
@@ -4036,7 +4194,9 @@ object_tangible_wearables_base_shared_base_wrist_both = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3301034284
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_both, 3301034284)
@@ -4086,7 +4246,9 @@ object_tangible_wearables_base_shared_base_wrist_either = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1850116475
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_either, 1850116475)
@@ -4136,7 +4298,9 @@ object_tangible_wearables_base_shared_base_wrist_l = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3290100944
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_l, 3290100944)
@@ -4186,7 +4350,9 @@ object_tangible_wearables_base_shared_base_wrist_r = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3033510211
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_base_wrist_r, 3033510211)
@@ -4236,7 +4402,9 @@ object_tangible_wearables_base_shared_wearables_base = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3547164646
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_base_shared_wearables_base, 3547164646)

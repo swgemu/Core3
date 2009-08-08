@@ -86,7 +86,9 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = S
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 866782264
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, 866782264)
@@ -136,7 +138,9 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_for
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2443001594
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, 2443001594)
@@ -186,7 +190,9 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_gra
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3854748687
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, 3854748687)

@@ -86,7 +86,9 @@ object_tangible_veteran_reward_shared_antidecay = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3168887145
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_antidecay, 3168887145)
@@ -136,7 +138,9 @@ object_tangible_veteran_reward_shared_data_terminal_s1 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4198944772
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s1, 4198944772)
@@ -186,7 +190,9 @@ object_tangible_veteran_reward_shared_data_terminal_s2 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 558987411
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s2, 558987411)
@@ -236,7 +242,9 @@ object_tangible_veteran_reward_shared_data_terminal_s3 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1750867742
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s3, 1750867742)
@@ -286,7 +294,9 @@ object_tangible_veteran_reward_shared_data_terminal_s4 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2478781450
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_data_terminal_s4, 2478781450)
@@ -336,7 +346,9 @@ object_tangible_veteran_reward_shared_emote_group_1 = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3623049861
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_emote_group_1, 3623049861)
@@ -386,7 +398,9 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01 = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3759715763
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01, 3759715763)
@@ -436,7 +450,9 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01 = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2195321088
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01, 2195321088)
@@ -486,7 +502,9 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_a = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1297213500
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_a, 1297213500)
@@ -536,7 +554,9 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_b = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2521186475
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_b, 2521186475)
@@ -586,7 +606,9 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_c = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3746244390
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_c, 3746244390)
@@ -636,7 +658,9 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_d = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 614992946
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_d, 614992946)
@@ -686,7 +710,9 @@ object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3960625723
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy, 3960625723)
@@ -736,7 +762,9 @@ object_tangible_veteran_reward_shared_frn_vet_jabba_toy = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3416831363
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_jabba_toy, 3416831363)
@@ -786,7 +814,9 @@ object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy = SharedTangibl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2349778145
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy, 2349778145)
@@ -836,7 +866,9 @@ object_tangible_veteran_reward_shared_frn_vet_r2_toy = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2578350384
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_r2_toy, 2578350384)
@@ -886,7 +918,9 @@ object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1449977976
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy, 1449977976)
@@ -936,7 +970,9 @@ object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1917299992
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy, 1917299992)
@@ -986,7 +1022,9 @@ object_tangible_veteran_reward_shared_frn_vet_x_wing_toy = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 918916770
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_frn_vet_x_wing_toy, 918916770)
@@ -1036,7 +1074,9 @@ object_tangible_veteran_reward_shared_harvester = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4154009202
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_harvester, 4154009202)
@@ -1086,7 +1126,9 @@ object_tangible_veteran_reward_shared_resource = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2099830307
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_shared_resource, 2099830307)

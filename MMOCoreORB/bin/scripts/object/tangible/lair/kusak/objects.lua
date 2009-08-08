@@ -86,7 +86,9 @@ object_tangible_lair_kusak_shared_lair_kusak = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4037110317
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kusak_shared_lair_kusak, 4037110317)
@@ -136,7 +138,9 @@ object_tangible_lair_kusak_shared_lair_kusak_wasteland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3071582373
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kusak_shared_lair_kusak_wasteland, 3071582373)

@@ -86,7 +86,9 @@ object_building_player_city_shared_bank_corellia = SharedInstallationObjectTempl
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1845141471
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_bank_corellia, 1845141471)
@@ -136,7 +138,9 @@ object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3868143603
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_bank_naboo, 3868143603)
@@ -186,7 +190,9 @@ object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTempl
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1371143744
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_bank_tatooine, 1371143744)
@@ -239,7 +245,9 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3739527551
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cantina_corellia, 3739527551)
@@ -292,7 +300,9 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2025646266
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cantina_naboo, 2025646266)
@@ -345,7 +355,9 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3802646752
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cantina_tatooine, 3802646752)
@@ -398,7 +410,9 @@ object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4031190701
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cityhall_corellia, 4031190701)
@@ -451,7 +465,9 @@ object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3442426219
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cityhall_naboo, 3442426219)
@@ -504,7 +520,9 @@ object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3422844722
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cityhall_tatooine, 3422844722)
@@ -557,7 +575,9 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1360449531
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cloning_corellia, 1360449531)
@@ -610,7 +630,9 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2221199199
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cloning_naboo, 2221199199)
@@ -663,7 +685,9 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1834331748
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_cloning_tatooine, 1834331748)
@@ -713,7 +737,9 @@ object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3782826017
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_01, 3782826017)
@@ -763,7 +789,9 @@ object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 980349110
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_02, 980349110)
@@ -813,7 +841,9 @@ object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1935906619
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_03, 1935906619)
@@ -863,7 +893,9 @@ object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2290138159
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_04, 2290138159)
@@ -913,7 +945,9 @@ object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3247299490
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_lrg_05, 3247299490)
@@ -963,7 +997,9 @@ object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1120922265
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_01, 1120922265)
@@ -1013,7 +1049,9 @@ object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2581086734
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_02, 2581086734)
@@ -1063,7 +1101,9 @@ object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3503629699
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_03, 3503629699)
@@ -1113,7 +1153,9 @@ object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 724962967
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_04, 724962967)
@@ -1163,7 +1205,9 @@ object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1648060698
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_med_05, 1648060698)
@@ -1213,7 +1257,9 @@ object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 782388533
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_01, 782388533)
@@ -1263,7 +1309,9 @@ object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4122338722
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_02, 4122338722)
@@ -1313,7 +1361,9 @@ object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3166208559
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_03, 3166208559)
@@ -1363,7 +1413,9 @@ object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1197189435
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_04, 1197189435)
@@ -1413,7 +1465,9 @@ object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 240570038
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_corellia_sml_05, 240570038)
@@ -1463,7 +1517,9 @@ object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationO
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2412094562
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dantooine_lrg_01, 2412094562)
@@ -1513,7 +1569,9 @@ object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationO
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 745739994
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dantooine_med_01, 745739994)
@@ -1563,7 +1621,9 @@ object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationO
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1075753334
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dantooine_sml_01, 1075753334)
@@ -1613,7 +1673,9 @@ object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 247337676
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dathomir_lrg_01, 247337676)
@@ -1663,7 +1725,9 @@ object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2903023732
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dathomir_med_01, 2903023732)
@@ -1713,7 +1777,9 @@ object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3244623832
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_dathomir_sml_01, 3244623832)
@@ -1763,7 +1829,9 @@ object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2039109063
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_endor_lrg_01, 2039109063)
@@ -1813,7 +1881,9 @@ object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3661424511
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_endor_med_01, 3661424511)
@@ -1863,7 +1933,9 @@ object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3058778323
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_endor_sml_01, 3058778323)
@@ -1913,7 +1985,9 @@ object_building_player_city_shared_garden_naboo_large = SharedInstallationObject
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2557845591
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_large, 2557845591)
@@ -1963,7 +2037,9 @@ object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1417631619
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_01, 1417631619)
@@ -2013,7 +2089,9 @@ object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2406022932
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_02, 2406022932)
@@ -2063,7 +2141,9 @@ object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3328546969
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_03, 3328546969)
@@ -2113,7 +2193,9 @@ object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1032237965
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_04, 1032237965)
@@ -2163,7 +2245,9 @@ object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1955320832
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_lrg_05, 1955320832)
@@ -2213,7 +2297,9 @@ object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4157203771
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_01, 4157203771)
@@ -2263,7 +2349,9 @@ object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 752766380
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_02, 752766380)
@@ -2313,7 +2401,9 @@ object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1708337697
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_03, 1708337697)
@@ -2363,7 +2453,9 @@ object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2653946165
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_04, 2653946165)
@@ -2413,7 +2505,9 @@ object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3611125432
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_med_05, 3611125432)
@@ -2463,7 +2557,9 @@ object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2611233431
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_01, 2611233431)
@@ -2513,7 +2609,9 @@ object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1085532672
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_02, 1085532672)
@@ -2563,7 +2661,9 @@ object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 163483021
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_03, 163483021)
@@ -2613,7 +2713,9 @@ object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4066223769
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_04, 4066223769)
@@ -2663,7 +2765,9 @@ object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjec
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3142631700
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_naboo_sml_05, 3142631700)
@@ -2713,7 +2817,9 @@ object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2152696910
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_01, 2152696910)
@@ -2763,7 +2869,9 @@ object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1532503257
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_02, 1532503257)
@@ -2813,7 +2921,9 @@ object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 307577684
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_03, 307577684)
@@ -2863,7 +2973,9 @@ object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3921045568
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_04, 3921045568)
@@ -2913,7 +3025,9 @@ object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2696613837
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_lrg_05, 2696613837)
@@ -2963,7 +3077,9 @@ object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 603537142
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_01, 603537142)
@@ -3013,7 +3129,9 @@ object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4176385633
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_02, 4176385633)
@@ -3063,7 +3181,9 @@ object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2984505836
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_03, 2984505836)
@@ -3113,7 +3233,9 @@ object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1241570040
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_04, 1241570040)
@@ -3163,7 +3285,9 @@ object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 51232117
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_med_05, 51232117)
@@ -3213,7 +3337,9 @@ object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1335138650
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_01, 1335138650)
@@ -3263,7 +3389,9 @@ object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2491625933
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_02, 2491625933)
@@ -3313,7 +3441,9 @@ object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3717092928
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_03, 3717092928)
@@ -3363,7 +3493,9 @@ object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 644709716
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_04, 644709716)
@@ -3413,7 +3545,9 @@ object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationOb
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1868569305
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_garden_tatooine_sml_05, 1868569305)
@@ -3466,7 +3600,9 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3101511526
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_hospital_corellia, 3101511526)
@@ -3519,7 +3655,9 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1387695986
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_hospital_naboo, 1387695986)
@@ -3572,7 +3710,9 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2224959225
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_hospital_tatooine, 2224959225)
@@ -3622,7 +3762,9 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3046076056
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_shuttleport_corellia, 3046076056)
@@ -3672,7 +3814,9 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 893676466
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_shuttleport_naboo, 893676466)
@@ -3722,7 +3866,9 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 
 	targetable = 0,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2311851783
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_shuttleport_tatooine, 2311851783)
@@ -3775,7 +3921,9 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3302987664
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_theater_corellia, 3302987664)
@@ -3828,7 +3976,9 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2697086195
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_theater_naboo, 2697086195)
@@ -3881,7 +4031,9 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 	targetable = 0,
 	terrainModificationFileName = "",
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4171036175
 }
 
 ObjectTemplates:addTemplate(object_building_player_city_shared_theater_tatooine, 4171036175)

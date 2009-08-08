@@ -86,7 +86,9 @@ object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4070737588
 }
 
 ObjectTemplates:addTemplate(object_tangible_newbie_tutorial_shared_debris, 4070737588)

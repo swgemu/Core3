@@ -86,7 +86,9 @@ object_tangible_component_clothing_shared_cargo_pocket = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3621976108
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_cargo_pocket, 3621976108)
@@ -136,7 +138,9 @@ object_tangible_component_clothing_shared_clasp_heavy_duty = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 948917712
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_clasp_heavy_duty, 948917712)
@@ -186,7 +190,9 @@ object_tangible_component_clothing_shared_clothing_treatment_crystalline = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1281925235
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_clothing_treatment_crystalline, 1281925235)
@@ -236,7 +242,9 @@ object_tangible_component_clothing_shared_component_base = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 347363744
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_component_base, 347363744)
@@ -286,7 +294,9 @@ object_tangible_component_clothing_shared_fiberplast_panel = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 967991397
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_fiberplast_panel, 967991397)
@@ -336,7 +346,9 @@ object_tangible_component_clothing_shared_jewelry_setting = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3580972841
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_jewelry_setting, 3580972841)
@@ -386,7 +398,9 @@ object_tangible_component_clothing_shared_leather_heavy_duty = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2558785369
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_leather_heavy_duty, 2558785369)
@@ -436,7 +450,9 @@ object_tangible_component_clothing_shared_metal_fasteners = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1732023387
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_metal_fasteners, 1732023387)
@@ -486,7 +502,9 @@ object_tangible_component_clothing_shared_padding_segment = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 449019087
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_padding_segment, 449019087)
@@ -536,7 +554,9 @@ object_tangible_component_clothing_shared_reinforced_fiber_panels = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 142903413
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_reinforced_fiber_panels, 142903413)
@@ -586,7 +606,9 @@ object_tangible_component_clothing_shared_shoe_sole = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 845264699
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_shoe_sole, 845264699)
@@ -636,7 +658,9 @@ object_tangible_component_clothing_shared_synthetic_cloth = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2133284732
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_synthetic_cloth, 2133284732)
@@ -686,7 +710,9 @@ object_tangible_component_clothing_shared_trim = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3684307948
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_shared_trim, 3684307948)

@@ -86,7 +86,9 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4164574755
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_l, 4164574755)
@@ -136,7 +138,9 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2297371568
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r, 2297371568)
@@ -186,7 +190,9 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1037485621
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l, 1037485621)
@@ -236,7 +242,9 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1292075942
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r, 1292075942)

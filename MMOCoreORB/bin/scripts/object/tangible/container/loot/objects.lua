@@ -86,7 +86,9 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 84456311
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_astromech_container, 84456311)
@@ -136,7 +138,9 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2996080617
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_computer_container, 2996080617)
@@ -186,7 +190,9 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 349560727
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_gas_filter_container, 349560727)
@@ -236,7 +242,9 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1268006083
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_loot_crate, 1268006083)
@@ -286,7 +294,9 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2362384973
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate, 2362384973)
@@ -336,7 +346,9 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2636682415
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, 2636682415)
@@ -386,7 +398,9 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2665565001
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, 2665565001)
@@ -436,7 +450,9 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2780389059
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, 2780389059)
@@ -486,7 +502,9 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2410892657
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, 2410892657)
@@ -536,7 +554,9 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4025920030
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, 4025920030)
@@ -586,7 +606,9 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2638627675
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, 2638627675)
@@ -636,7 +658,9 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3460646661
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_shared_player_loot_crate, 3460646661)

@@ -75,7 +75,9 @@ object_draft_schematic_community_crafting_component_shared_connections = SharedD
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4055607250
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_connections, 4055607250)
@@ -114,7 +116,9 @@ object_draft_schematic_community_crafting_component_shared_endrost = SharedDraft
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2475941003
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_endrost, 2475941003)
@@ -153,7 +157,9 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret = 
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2447534688
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret, 2447534688)
@@ -192,7 +198,9 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_el
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3176161507
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_electronics, 3176161507)
@@ -231,7 +239,9 @@ object_draft_schematic_community_crafting_component_shared_lightweight_turret_ha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3801620264
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_lightweight_turret_hardware, 3801620264)
@@ -270,7 +280,9 @@ object_draft_schematic_community_crafting_component_shared_power_supply = Shared
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4259828056
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_power_supply, 4259828056)
@@ -309,7 +321,9 @@ object_draft_schematic_community_crafting_component_shared_primary_computer = Sh
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 165554499
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_primary_computer, 165554499)
@@ -348,7 +362,9 @@ object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii =
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1988740242
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_ardanium_ii, 1988740242)
@@ -387,7 +403,9 @@ object_draft_schematic_community_crafting_component_shared_refined_endrine = Sha
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3315144456
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_endrine, 3315144456)
@@ -426,7 +444,9 @@ object_draft_schematic_community_crafting_component_shared_refined_rudic = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1152625889
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_refined_rudic, 1152625889)
@@ -465,7 +485,9 @@ object_draft_schematic_community_crafting_component_shared_regulator = SharedDra
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3007982575
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_regulator, 3007982575)
@@ -504,7 +526,9 @@ object_draft_schematic_community_crafting_component_shared_reinforced_wall_modul
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 426210556
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_reinforced_wall_module, 426210556)
@@ -543,7 +567,9 @@ object_draft_schematic_community_crafting_component_shared_shield_housing = Shar
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4054564743
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_shield_housing, 4054564743)
@@ -582,7 +608,9 @@ object_draft_schematic_community_crafting_component_shared_unit_computer = Share
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 866494494
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_community_crafting_component_shared_unit_computer, 866494494)

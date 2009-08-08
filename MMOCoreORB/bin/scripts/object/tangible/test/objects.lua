@@ -86,7 +86,9 @@ object_tangible_test_shared_inventory_filler = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2308658089
 }
 
 ObjectTemplates:addTemplate(object_tangible_test_shared_inventory_filler, 2308658089)
@@ -136,7 +138,9 @@ object_tangible_test_shared_test_barrel_a = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3742060699
 }
 
 ObjectTemplates:addTemplate(object_tangible_test_shared_test_barrel_a, 3742060699)
@@ -186,7 +190,9 @@ object_tangible_test_shared_test_barrel_b = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 69007372
 }
 
 ObjectTemplates:addTemplate(object_tangible_test_shared_test_barrel_b, 69007372)
@@ -236,7 +242,9 @@ object_tangible_test_shared_test_jwatson = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4013228996
 }
 
 ObjectTemplates:addTemplate(object_tangible_test_shared_test_jwatson, 4013228996)
@@ -286,7 +294,9 @@ object_tangible_test_shared_test_pastry_01 = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1611558615
 }
 
 ObjectTemplates:addTemplate(object_tangible_test_shared_test_pastry_01, 1611558615)
@@ -336,7 +346,9 @@ object_tangible_test_shared_test_terminal = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1340334223
 }
 
 ObjectTemplates:addTemplate(object_tangible_test_shared_test_terminal, 1340334223)

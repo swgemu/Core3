@@ -90,7 +90,9 @@ object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTempla
 	useStructureFootprintOutline = 0,
 
 	weaponEffect = "bolt",
-	weaponEffectIndex = 0
+	weaponEffectIndex = 0,
+
+	clientObjectCRC = 3903774700
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_base_shared_grenade_base, 3903774700)

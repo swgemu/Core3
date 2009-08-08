@@ -86,7 +86,9 @@ object_installation_mining_organic_shared_mining_organic_creature_farm = SharedI
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3544083954
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_creature_farm, 3544083954)
@@ -136,7 +138,9 @@ object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInst
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3438944708
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm, 3438944708)
@@ -186,7 +190,9 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = Shar
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 880917767
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_heavy, 880917767)
@@ -236,7 +242,9 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_medium = Sha
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 681856626
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_medium, 681856626)

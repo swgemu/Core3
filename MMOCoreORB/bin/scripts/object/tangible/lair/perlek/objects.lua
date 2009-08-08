@@ -86,7 +86,9 @@ object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 804817169
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek, 804817169)
@@ -136,7 +138,9 @@ object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4089303997
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, 4089303997)
@@ -186,7 +190,9 @@ object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3319913083
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, 3319913083)

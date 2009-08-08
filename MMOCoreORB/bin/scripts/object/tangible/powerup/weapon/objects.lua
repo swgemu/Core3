@@ -86,7 +86,9 @@ object_tangible_powerup_weapon_shared_heavy = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 717357125
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_heavy, 717357125)
@@ -136,7 +138,9 @@ object_tangible_powerup_weapon_shared_melee = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1636293712
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee, 1636293712)
@@ -186,7 +190,9 @@ object_tangible_powerup_weapon_shared_melee_generic = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1375892401
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_generic, 1375892401)
@@ -236,7 +242,9 @@ object_tangible_powerup_weapon_shared_melee_lightsaber = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1890042255
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_melee_lightsaber, 1890042255)
@@ -286,7 +294,9 @@ object_tangible_powerup_weapon_shared_mine = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2304219525
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine, 2304219525)
@@ -336,7 +346,9 @@ object_tangible_powerup_weapon_shared_mine_explosive = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3665923080
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_mine_explosive, 3665923080)
@@ -386,7 +398,9 @@ object_tangible_powerup_weapon_shared_ranged = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1637218728
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged, 1637218728)
@@ -436,7 +450,9 @@ object_tangible_powerup_weapon_shared_ranged_barrel = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 137262486
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_barrel, 137262486)
@@ -486,7 +502,9 @@ object_tangible_powerup_weapon_shared_ranged_grip = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1312422379
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_grip, 1312422379)
@@ -536,7 +554,9 @@ object_tangible_powerup_weapon_shared_ranged_muzzle = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 555906025
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_muzzle, 555906025)
@@ -586,7 +606,9 @@ object_tangible_powerup_weapon_shared_ranged_power = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1622710306
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_power, 1622710306)
@@ -636,7 +658,9 @@ object_tangible_powerup_weapon_shared_ranged_scope = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3758199555
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_scope, 3758199555)
@@ -686,7 +710,9 @@ object_tangible_powerup_weapon_shared_ranged_stock = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2739120425
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_ranged_stock, 2739120425)
@@ -736,7 +762,9 @@ object_tangible_powerup_weapon_shared_thrown = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 540983335
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown, 540983335)
@@ -786,7 +814,9 @@ object_tangible_powerup_weapon_shared_thrown_explosive = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2781934180
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_explosive, 2781934180)
@@ -836,7 +866,9 @@ object_tangible_powerup_weapon_shared_thrown_wiring = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 569969360
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_shared_thrown_wiring, 569969360)

@@ -75,7 +75,9 @@ object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 4
+	surfaceType = 4,
+
+	clientObjectCRC = 2146976297
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_large_01, 2146976297)
@@ -114,7 +116,9 @@ object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 4
+	surfaceType = 4,
+
+	clientObjectCRC = 2767186622
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_large_02, 2767186622)
@@ -153,7 +157,9 @@ object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 4
+	surfaceType = 4,
+
+	clientObjectCRC = 162308775
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_01, 162308775)
@@ -192,7 +198,9 @@ object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 4
+	surfaceType = 4,
+
+	clientObjectCRC = 3535473200
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_02, 3535473200)
@@ -231,7 +239,9 @@ object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 4
+	surfaceType = 4,
+
+	clientObjectCRC = 2850972277
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_small_01, 2850972277)
@@ -270,7 +280,9 @@ object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 4
+	surfaceType = 4,
+
+	clientObjectCRC = 1928973026
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_acid_small_02, 1928973026)
@@ -309,7 +321,9 @@ object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTe
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 1920047316
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_large_01, 1920047316)
@@ -348,7 +362,9 @@ object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTe
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 2842046531
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_large_02, 2842046531)
@@ -387,7 +403,9 @@ object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 2981878132
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_01, 2981878132)
@@ -426,7 +444,9 @@ object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 1789686243
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_02, 1789686243)
@@ -465,7 +485,9 @@ object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTe
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 2758260872
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_small_01, 2758260872)
@@ -504,7 +526,9 @@ object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTe
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 2138050591
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_ice_small_02, 2138050591)
@@ -543,7 +567,9 @@ object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1650332563
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_large_01, 1650332563)
@@ -582,7 +608,9 @@ object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3108616964
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_large_02, 3108616964)
@@ -621,7 +649,9 @@ object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3525395716
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_01, 3525395716)
@@ -660,7 +690,9 @@ object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 154594707
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_02, 154594707)
@@ -699,7 +731,9 @@ object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1077643806
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_03, 1077643806)
@@ -738,7 +772,9 @@ object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3024630735
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_small_01, 3024630735)
@@ -777,7 +813,9 @@ object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectT
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1868536664
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_iron_small_02, 1868536664)
@@ -816,7 +854,9 @@ object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1475082056
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_large_01, 1475082056)
@@ -855,7 +895,9 @@ object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2365349855
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_large_02, 2365349855)
@@ -894,7 +936,9 @@ object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemp
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2771529923
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_mammoth_01, 2771529923)
@@ -933,7 +977,9 @@ object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemp
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2116393044
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_mammoth_02, 2116393044)
@@ -972,7 +1018,9 @@ object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2754779391
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_medium_01, 2754779391)
@@ -1011,7 +1059,9 @@ object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTempl
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2133143656
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_medium_02, 2133143656)
@@ -1050,7 +1100,9 @@ object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 513619551
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_large_01, 513619551)
@@ -1089,7 +1141,9 @@ object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3314196168
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_large_02, 3314196168)
@@ -1128,7 +1182,9 @@ object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjec
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3300659079
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_01, 3300659079)
@@ -1167,7 +1223,9 @@ object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjec
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 531343120
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_02, 531343120)
@@ -1206,7 +1264,9 @@ object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 3364558339
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_small_01, 3364558339)
@@ -1245,7 +1305,9 @@ object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObject
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 329039508
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_metal_small_02, 329039508)
@@ -1284,7 +1346,9 @@ object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjec
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 319418639
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_large_01, 319418639)
@@ -1323,7 +1387,9 @@ object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjec
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 3357432216
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_large_02, 3357432216)
@@ -1362,7 +1428,9 @@ object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObje
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 1639373140
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_01, 1639373140)
@@ -1401,7 +1469,9 @@ object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObje
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 3131142595
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_02, 3131142595)
@@ -1440,7 +1510,9 @@ object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjec
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 3307196755
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_small_01, 3307196755)
@@ -1479,7 +1551,9 @@ object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjec
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 503871940
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_molten_small_02, 503871940)
@@ -1518,7 +1592,9 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObj
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 7
+	surfaceType = 7,
+
+	clientObjectCRC = 1492758381
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_01, 1492758381)
@@ -1557,7 +1633,9 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObj
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 7
+	surfaceType = 7,
+
+	clientObjectCRC = 2213414906
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_02, 2213414906)
@@ -1596,7 +1674,9 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticOb
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 7
+	surfaceType = 7,
+
+	clientObjectCRC = 2384789570
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_01, 2384789570)
@@ -1635,7 +1715,9 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticOb
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 7
+	surfaceType = 7,
+
+	clientObjectCRC = 1429383381
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_02, 1429383381)
@@ -1674,7 +1756,9 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObj
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 7
+	surfaceType = 7,
+
+	clientObjectCRC = 2398064433
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_01, 2398064433)
@@ -1713,7 +1797,9 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObj
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 7
+	surfaceType = 7,
+
+	clientObjectCRC = 1442326438
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_02, 1442326438)
@@ -1752,7 +1838,9 @@ object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 2180896532
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_small_01, 2180896532)
@@ -1791,7 +1879,9 @@ object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTempla
 	sendToClient = 0,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 2
+	surfaceType = 2,
+
+	clientObjectCRC = 1525317507
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_asteroid_small_02, 1525317507)
@@ -1830,7 +1920,9 @@ object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplat
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 5
+	surfaceType = 5,
+
+	clientObjectCRC = 3193266020
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_ice_01, 3193266020)
@@ -1869,7 +1961,9 @@ object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTempla
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2558377422
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_iron_01, 2558377422)
@@ -1908,7 +2002,9 @@ object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemp
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 6
+	surfaceType = 6,
+
+	clientObjectCRC = 2070404336
 }
 
 ObjectTemplates:addTemplate(object_static_space_asteroid_shared_planetoid_molten_01, 2070404336)

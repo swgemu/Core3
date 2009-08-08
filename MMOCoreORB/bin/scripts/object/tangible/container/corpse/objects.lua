@@ -86,7 +86,9 @@ object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3090831505
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_corpse_shared_player_corpse, 3090831505)

@@ -86,7 +86,9 @@ object_tangible_deed_pet_deed_shared_acklay_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1956514459
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_acklay_deed, 1956514459)
@@ -136,7 +138,9 @@ object_tangible_deed_pet_deed_shared_angler_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2482798836
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_angler_deed, 2482798836)
@@ -186,7 +190,9 @@ object_tangible_deed_pet_deed_shared_bageraset_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3630864640
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bageraset_deed, 3630864640)
@@ -236,7 +242,9 @@ object_tangible_deed_pet_deed_shared_bantha_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2365841175
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bantha_deed, 2365841175)
@@ -286,7 +294,9 @@ object_tangible_deed_pet_deed_shared_bearded_jax_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 78102585
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bearded_jax_deed, 78102585)
@@ -336,7 +346,9 @@ object_tangible_deed_pet_deed_shared_blurrg_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2944380432
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_blurrg_deed, 2944380432)
@@ -386,7 +398,9 @@ object_tangible_deed_pet_deed_shared_boar_wolf_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 770531261
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_boar_wolf_deed, 770531261)
@@ -436,7 +450,9 @@ object_tangible_deed_pet_deed_shared_bocatt_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1788467919
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bocatt_deed, 1788467919)
@@ -486,7 +502,9 @@ object_tangible_deed_pet_deed_shared_bol_deed = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3319053761
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bol_deed, 3319053761)
@@ -536,7 +554,9 @@ object_tangible_deed_pet_deed_shared_bolle_bol_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 355900211
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bolle_bol_deed, 355900211)
@@ -586,7 +606,9 @@ object_tangible_deed_pet_deed_shared_bolma_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3293690275
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bolma_deed, 3293690275)
@@ -636,7 +658,9 @@ object_tangible_deed_pet_deed_shared_bordok_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3849896931
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_bordok_deed, 3849896931)
@@ -686,7 +710,9 @@ object_tangible_deed_pet_deed_shared_brackaset_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2722964789
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_brackaset_deed, 2722964789)
@@ -736,7 +762,9 @@ object_tangible_deed_pet_deed_shared_carrion_spat_deed = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1539923178
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_carrion_spat_deed, 1539923178)
@@ -786,7 +814,9 @@ object_tangible_deed_pet_deed_shared_choku_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 568963373
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_choku_deed, 568963373)
@@ -836,7 +866,9 @@ object_tangible_deed_pet_deed_shared_cu_pa_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1372684709
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_cu_pa_deed, 1372684709)
@@ -886,7 +918,9 @@ object_tangible_deed_pet_deed_shared_dalyrake_deed = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3912913130
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dalyrake_deed, 3912913130)
@@ -936,7 +970,9 @@ object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3377218847
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_advanced_basic, 3377218847)
@@ -986,7 +1022,9 @@ object_tangible_deed_pet_deed_shared_deed_3p0_basic = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1415490905
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_3p0_basic, 1415490905)
@@ -1036,7 +1074,9 @@ object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2057798202
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_advanced_basic, 2057798202)
@@ -1086,7 +1126,9 @@ object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2601281504
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic, 2601281504)
@@ -1136,7 +1178,9 @@ object_tangible_deed_pet_deed_shared_deed_droid_basic_base = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3223531426
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_droid_basic_base, 3223531426)
@@ -1186,7 +1230,9 @@ object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 582239250
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_advanced_basic, 582239250)
@@ -1236,7 +1282,9 @@ object_tangible_deed_pet_deed_shared_deed_dz70_basic = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3167973020
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_dz70_basic, 3167973020)
@@ -1286,7 +1334,9 @@ object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1844616075
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_advanced_basic, 1844616075)
@@ -1336,7 +1386,9 @@ object_tangible_deed_pet_deed_shared_deed_le_repair_basic = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 882669301
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_le_repair_basic, 882669301)
@@ -1386,7 +1438,9 @@ object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3093478182
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_mse_advanced_basic, 3093478182)
@@ -1436,7 +1490,9 @@ object_tangible_deed_pet_deed_shared_deed_mse_basic = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 710547098
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_mse_basic, 710547098)
@@ -1486,7 +1542,9 @@ object_tangible_deed_pet_deed_shared_deed_power_advanced_basic = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3935000008
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_power_advanced_basic, 3935000008)
@@ -1536,7 +1594,9 @@ object_tangible_deed_pet_deed_shared_deed_power_basic = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3515669510
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_power_basic, 3515669510)
@@ -1586,7 +1646,9 @@ object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2316266352
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic, 2316266352)
@@ -1636,7 +1698,9 @@ object_tangible_deed_pet_deed_shared_deed_probot_basic = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3430959224
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_probot_basic, 3430959224)
@@ -1686,7 +1750,9 @@ object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1405017351
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r2_advanced_basic, 1405017351)
@@ -1736,7 +1802,9 @@ object_tangible_deed_pet_deed_shared_deed_r2_basic = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3138660886
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r2_basic, 3138660886)
@@ -1786,7 +1854,9 @@ object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1740395217
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r3_advanced_basic, 1740395217)
@@ -1836,7 +1906,9 @@ object_tangible_deed_pet_deed_shared_deed_r3_basic = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1119399416
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r3_basic, 1119399416)
@@ -1886,7 +1958,9 @@ object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3954310643
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r4_advanced_basic, 3954310643)
@@ -1936,7 +2010,9 @@ object_tangible_deed_pet_deed_shared_deed_r4_basic = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2809987356
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r4_basic, 2809987356)
@@ -1986,7 +2062,9 @@ object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3753079333
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r5_advanced_basic, 3753079333)
@@ -2036,7 +2114,9 @@ object_tangible_deed_pet_deed_shared_deed_r5_basic = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1590789874
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_r5_basic, 1590789874)
@@ -2086,7 +2166,9 @@ object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1818683217
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic, 1818683217)
@@ -2136,7 +2218,9 @@ object_tangible_deed_pet_deed_shared_deed_surgical_basic = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3195886758
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_surgical_basic, 3195886758)
@@ -2186,7 +2270,9 @@ object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 560171017
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic, 560171017)
@@ -2236,7 +2322,9 @@ object_tangible_deed_pet_deed_shared_deed_treadwell_basic = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 868926943
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_deed_treadwell_basic, 868926943)
@@ -2286,7 +2374,9 @@ object_tangible_deed_pet_deed_shared_dewback_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1201174852
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dewback_deed, 1201174852)
@@ -2336,7 +2426,9 @@ object_tangible_deed_pet_deed_shared_dune_lizard_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1235591728
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_dune_lizard_deed, 1235591728)
@@ -2386,7 +2478,9 @@ object_tangible_deed_pet_deed_shared_durni_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 568136061
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_durni_deed, 568136061)
@@ -2436,7 +2530,9 @@ object_tangible_deed_pet_deed_shared_eopie_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2825186184
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_eopie_deed, 2825186184)
@@ -2486,7 +2582,9 @@ object_tangible_deed_pet_deed_shared_falumpaset_deed = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1479198736
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_falumpaset_deed, 1479198736)
@@ -2536,7 +2634,9 @@ object_tangible_deed_pet_deed_shared_fambaa_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2357528913
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_fambaa_deed, 2357528913)
@@ -2586,7 +2686,9 @@ object_tangible_deed_pet_deed_shared_gnort_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1211421519
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gnort_deed, 1211421519)
@@ -2636,7 +2738,9 @@ object_tangible_deed_pet_deed_shared_graul_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4170181913
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_graul_deed, 4170181913)
@@ -2686,7 +2790,9 @@ object_tangible_deed_pet_deed_shared_gronda_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 307411638
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gronda_deed, 307411638)
@@ -2736,7 +2842,9 @@ object_tangible_deed_pet_deed_shared_gualama_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3538897851
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gualama_deed, 3538897851)
@@ -2786,7 +2894,9 @@ object_tangible_deed_pet_deed_shared_guf_drolg_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2604348719
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_guf_drolg_deed, 2604348719)
@@ -2836,7 +2946,9 @@ object_tangible_deed_pet_deed_shared_gurnaset_deed = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1841540570
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurnaset_deed, 1841540570)
@@ -2886,7 +2998,9 @@ object_tangible_deed_pet_deed_shared_gurrcat_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1914113142
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurrcat_deed, 1914113142)
@@ -2936,7 +3050,9 @@ object_tangible_deed_pet_deed_shared_gurreck_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 596282825
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_gurreck_deed, 596282825)
@@ -2986,7 +3102,9 @@ object_tangible_deed_pet_deed_shared_hermit_spider_deed = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4141996678
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_hermit_spider_deed, 4141996678)
@@ -3036,7 +3154,9 @@ object_tangible_deed_pet_deed_shared_huf_dun_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2761665621
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_huf_dun_deed, 2761665621)
@@ -3086,7 +3206,9 @@ object_tangible_deed_pet_deed_shared_huurton_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2364325407
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_huurton_deed, 2364325407)
@@ -3136,7 +3258,9 @@ object_tangible_deed_pet_deed_shared_ikopi_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3921976066
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_ikopi_deed, 3921976066)
@@ -3186,7 +3310,9 @@ object_tangible_deed_pet_deed_shared_kaadu_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3178486742
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kaadu_deed, 3178486742)
@@ -3236,7 +3362,9 @@ object_tangible_deed_pet_deed_shared_kahmurra_deed = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1489129172
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kahmurra_deed, 1489129172)
@@ -3286,7 +3414,9 @@ object_tangible_deed_pet_deed_shared_kima_deed = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1283047253
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kima_deed, 1283047253)
@@ -3336,7 +3466,9 @@ object_tangible_deed_pet_deed_shared_kimogila_deed = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1282379469
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kimogila_deed, 1282379469)
@@ -3386,7 +3518,9 @@ object_tangible_deed_pet_deed_shared_kliknik_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2930512218
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kliknik_deed, 2930512218)
@@ -3436,7 +3570,9 @@ object_tangible_deed_pet_deed_shared_krahbu_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2423537916
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_krahbu_deed, 2423537916)
@@ -3486,7 +3622,9 @@ object_tangible_deed_pet_deed_shared_kusak_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4028060677
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kusak_deed, 4028060677)
@@ -3536,7 +3674,9 @@ object_tangible_deed_pet_deed_shared_kwi_deed = SharedTangibleObjectTemplate:new
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 123859018
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_kwi_deed, 123859018)
@@ -3586,7 +3726,9 @@ object_tangible_deed_pet_deed_shared_langlatch_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3557409216
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_langlatch_deed, 3557409216)
@@ -3636,7 +3778,9 @@ object_tangible_deed_pet_deed_shared_malkloc_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1098639127
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_malkloc_deed, 1098639127)
@@ -3686,7 +3830,9 @@ object_tangible_deed_pet_deed_shared_mawgax_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2243211725
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_mawgax_deed, 2243211725)
@@ -3736,7 +3882,9 @@ object_tangible_deed_pet_deed_shared_merek_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1043002633
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_merek_deed, 1043002633)
@@ -3786,7 +3934,9 @@ object_tangible_deed_pet_deed_shared_mott_deed = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 172941482
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_mott_deed, 172941482)
@@ -3836,7 +3986,9 @@ object_tangible_deed_pet_deed_shared_narglatch_deed = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3881607388
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_narglatch_deed, 3881607388)
@@ -3886,7 +4038,9 @@ object_tangible_deed_pet_deed_shared_piket_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1026311847
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_piket_deed, 1026311847)
@@ -3936,7 +4090,9 @@ object_tangible_deed_pet_deed_shared_pugoriss_deed = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2234730618
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_pugoriss_deed, 2234730618)
@@ -3986,7 +4142,9 @@ object_tangible_deed_pet_deed_shared_rancor_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1261006244
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_rancor_deed, 1261006244)
@@ -4036,7 +4194,9 @@ object_tangible_deed_pet_deed_shared_roba_deed = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1872969890
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_roba_deed, 1872969890)
@@ -4086,7 +4246,9 @@ object_tangible_deed_pet_deed_shared_ronto_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 913136842
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_ronto_deed, 913136842)
@@ -4136,7 +4298,9 @@ object_tangible_deed_pet_deed_shared_sand_panther_deed = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1167578973
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_sand_panther_deed, 1167578973)
@@ -4186,7 +4350,9 @@ object_tangible_deed_pet_deed_shared_sharnaff_deed = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 266796409
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_sharnaff_deed, 266796409)
@@ -4236,7 +4402,9 @@ object_tangible_deed_pet_deed_shared_shear_mite_deed = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3695263840
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_shear_mite_deed, 3695263840)
@@ -4286,7 +4454,9 @@ object_tangible_deed_pet_deed_shared_slice_hound_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3038018529
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_slice_hound_deed, 3038018529)
@@ -4336,7 +4506,9 @@ object_tangible_deed_pet_deed_shared_snorbal_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2012451666
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_snorbal_deed, 2012451666)
@@ -4386,7 +4558,9 @@ object_tangible_deed_pet_deed_shared_squall_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 497548283
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_squall_deed, 497548283)
@@ -4436,7 +4610,9 @@ object_tangible_deed_pet_deed_shared_swirl_prong_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1483639394
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_swirl_prong_deed, 1483639394)
@@ -4486,7 +4662,9 @@ object_tangible_deed_pet_deed_shared_thune_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3975996682
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_thune_deed, 3975996682)
@@ -4536,7 +4714,9 @@ object_tangible_deed_pet_deed_shared_torton_deed = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 936838311
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_torton_deed, 936838311)
@@ -4586,7 +4766,9 @@ object_tangible_deed_pet_deed_shared_tybis_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 517622400
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_tybis_deed, 517622400)
@@ -4636,7 +4818,9 @@ object_tangible_deed_pet_deed_shared_veermok_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2817313494
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_veermok_deed, 2817313494)
@@ -4686,7 +4870,9 @@ object_tangible_deed_pet_deed_shared_vehicular_prototype = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3969410602
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vehicular_prototype, 3969410602)
@@ -4736,7 +4922,9 @@ object_tangible_deed_pet_deed_shared_vehicular_prototype_bike = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1133365907
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vehicular_prototype_bike, 1133365907)
@@ -4786,7 +4974,9 @@ object_tangible_deed_pet_deed_shared_verne_deed = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1757419903
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_verne_deed, 1757419903)
@@ -4836,7 +5026,9 @@ object_tangible_deed_pet_deed_shared_vesp_deed = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 76738383
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vesp_deed, 76738383)
@@ -4886,7 +5078,9 @@ object_tangible_deed_pet_deed_shared_vir_vur_deed = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2428442733
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_vir_vur_deed, 2428442733)
@@ -4936,7 +5130,9 @@ object_tangible_deed_pet_deed_shared_woolamander_deed = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2463526816
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_woolamander_deed, 2463526816)
@@ -4986,7 +5182,9 @@ object_tangible_deed_pet_deed_shared_zucca_boar_deed = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1175512432
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shared_zucca_boar_deed, 1175512432)

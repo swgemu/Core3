@@ -86,7 +86,9 @@ object_tangible_furniture_technical_shared_armoire_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2668054876
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_armoire_s01, 2668054876)
@@ -136,7 +138,9 @@ object_tangible_furniture_technical_shared_bookcase_s01 = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1097959135
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_bookcase_s01, 1097959135)
@@ -186,7 +190,9 @@ object_tangible_furniture_technical_shared_cabinet_s01 = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4062698935
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_cabinet_s01, 4062698935)
@@ -236,7 +242,9 @@ object_tangible_furniture_technical_shared_chair_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 563858030
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_chair_s01, 563858030)
@@ -286,7 +294,9 @@ object_tangible_furniture_technical_shared_chest_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3532191328
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_chest_s01, 3532191328)
@@ -336,7 +346,9 @@ object_tangible_furniture_technical_shared_coffee_table_s01 = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2031353243
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_coffee_table_s01, 2031353243)
@@ -386,7 +398,9 @@ object_tangible_furniture_technical_shared_couch_s01 = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 462151758
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_couch_s01, 462151758)
@@ -436,7 +450,9 @@ object_tangible_furniture_technical_shared_end_table_s01 = SharedTangibleObjectT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3724791162
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_technical_shared_end_table_s01, 3724791162)

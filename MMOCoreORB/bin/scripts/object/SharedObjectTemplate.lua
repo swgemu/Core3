@@ -70,5 +70,7 @@ SharedObjectTemplate = Object:new {
 	 surfaceType = 0,
 	 noBuildRadius = 0,
 	 onlyVisibleInTools = 0,
-	 locationReservationRadius = 0
+	 locationReservationRadius = 0,
+
+	 clientObjectCRC = 0
 }

@@ -75,7 +75,9 @@ object_draft_schematic_spices_shared_spice_booster_blue = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1461060097
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_booster_blue, 1461060097)
@@ -114,7 +116,9 @@ object_draft_schematic_spices_shared_spice_crash_n_burn = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3344700100
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_crash_n_burn, 3344700100)
@@ -153,7 +157,9 @@ object_draft_schematic_spices_shared_spice_droid_lube = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3232550663
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_droid_lube, 3232550663)
@@ -192,7 +198,9 @@ object_draft_schematic_spices_shared_spice_giggledust = SharedDraftSchematicObje
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3392956409
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_giggledust, 3392956409)
@@ -231,7 +239,9 @@ object_draft_schematic_spices_shared_spice_grey_gabaki = SharedDraftSchematicObj
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3344628504
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_grey_gabaki, 3344628504)
@@ -270,7 +280,9 @@ object_draft_schematic_spices_shared_spice_gunjack = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1606899928
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_gunjack, 1606899928)
@@ -309,7 +321,9 @@ object_draft_schematic_spices_shared_spice_muon_gold = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2071554224
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_muon_gold, 2071554224)
@@ -348,7 +362,9 @@ object_draft_schematic_spices_shared_spice_neutron_pixey = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1790064822
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_neutron_pixey, 1790064822)
@@ -387,7 +403,9 @@ object_draft_schematic_spices_shared_spice_pyrepenol = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 4245288866
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_pyrepenol, 4245288866)
@@ -426,7 +444,9 @@ object_draft_schematic_spices_shared_spice_scramjet = SharedDraftSchematicObject
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1617885526
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_scramjet, 1617885526)
@@ -465,7 +485,9 @@ object_draft_schematic_spices_shared_spice_sedative_h4b = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 811014949
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sedative_h4b, 811014949)
@@ -504,7 +526,9 @@ object_draft_schematic_spices_shared_spice_shadowpaw = SharedDraftSchematicObjec
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 1734826910
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_shadowpaw, 1734826910)
@@ -543,7 +567,9 @@ object_draft_schematic_spices_shared_spice_sweetblossom = SharedDraftSchematicOb
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2224540196
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_sweetblossom, 2224540196)
@@ -582,7 +608,9 @@ object_draft_schematic_spices_shared_spice_thruster_head = SharedDraftSchematicO
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 2661232828
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_thruster_head, 2661232828)
@@ -621,7 +649,9 @@ object_draft_schematic_spices_shared_spice_yarrock = SharedDraftSchematicObjectT
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 0,
-	surfaceType = 0
+	surfaceType = 0,
+
+	clientObjectCRC = 3906041259
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_spices_shared_spice_yarrock, 3906041259)

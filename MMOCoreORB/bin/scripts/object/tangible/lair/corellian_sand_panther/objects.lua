@@ -86,7 +86,9 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1294781391
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, 1294781391)
@@ -136,7 +138,9 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_g
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3907598549
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, 3907598549)

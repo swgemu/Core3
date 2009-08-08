@@ -86,7 +86,9 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2904726131
 }
 
 ObjectTemplates:addTemplate(object_counting_base_shared_base_counting, 2904726131)
@@ -136,7 +138,9 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3211286444
 }
 
 ObjectTemplates:addTemplate(object_counting_base_shared_counting_default, 3211286444)

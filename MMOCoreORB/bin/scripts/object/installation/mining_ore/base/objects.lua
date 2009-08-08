@@ -86,7 +86,9 @@ object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1937734566
 }
 
 ObjectTemplates:addTemplate(object_installation_mining_ore_base_shared_mining_ore_base, 1937734566)

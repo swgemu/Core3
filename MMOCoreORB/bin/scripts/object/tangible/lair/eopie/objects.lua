@@ -86,7 +86,9 @@ object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 390824199
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie, 390824199)
@@ -136,7 +138,9 @@ object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2432430820
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, 2432430820)
@@ -186,7 +190,9 @@ object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 769893304
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, 769893304)
@@ -236,7 +242,9 @@ object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemp
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2248131866
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, 2248131866)
@@ -286,7 +294,9 @@ object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3741668029
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, 3741668029)

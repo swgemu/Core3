@@ -86,7 +86,9 @@ object_tangible_component_chemistry_shared_biologic_effect_controller = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3704098001
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller, 3704098001)
@@ -136,7 +138,9 @@ object_tangible_component_chemistry_shared_biologic_effect_controller_advanced =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2300334388
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller_advanced, 2300334388)
@@ -186,7 +190,9 @@ object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1107717367
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_chemistry_component, 1107717367)
@@ -236,7 +242,9 @@ object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2561274877
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism, 2561274877)
@@ -286,7 +294,9 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1183326232
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_advanced, 1183326232)
@@ -336,7 +346,9 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3662200732
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_quest, 3662200732)
@@ -386,7 +398,9 @@ object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1566810278
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_endrost, 1566810278)
@@ -436,7 +450,9 @@ object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1679113487
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_infection_amplifier, 1679113487)
@@ -486,7 +502,9 @@ object_tangible_component_chemistry_shared_infection_amplifier_advanced = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1129599787
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_infection_amplifier_advanced, 1129599787)
@@ -536,7 +554,9 @@ object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2542466646
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_infection_amplifier_donkuwah, 2542466646)
@@ -586,7 +606,9 @@ object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1058893195
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_janta_blood, 1058893195)
@@ -636,7 +658,9 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3358009919
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension, 3358009919)
@@ -686,7 +710,9 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1862978449
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced, 1862978449)
@@ -736,7 +762,9 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = Sh
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2125828642
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest, 2125828642)
@@ -786,7 +814,9 @@ object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObje
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 478044743
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_quest_stimpack_a, 478044743)
@@ -836,7 +866,9 @@ object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 317047330
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_rancor_bile, 317047330)
@@ -886,7 +918,9 @@ object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1870489005
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration, 1870489005)
@@ -936,7 +970,9 @@ object_tangible_component_chemistry_shared_release_mechanism_duration_advanced =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 282084455
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration_advanced, 282084455)
@@ -986,7 +1022,9 @@ object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleO
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2132263971
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_resilience_compound, 2132263971)
@@ -1036,7 +1074,9 @@ object_tangible_component_chemistry_shared_resilience_compound_advanced = Shared
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 101893931
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_resilience_compound_advanced, 101893931)
@@ -1086,7 +1126,9 @@ object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangible
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2203679790
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell, 2203679790)
@@ -1136,7 +1178,9 @@ object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2952575979
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell_advanced, 2952575979)
@@ -1186,7 +1230,9 @@ object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3428815879
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_shared_spider_venom, 3428815879)

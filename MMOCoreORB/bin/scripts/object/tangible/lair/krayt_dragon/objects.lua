@@ -86,7 +86,9 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 131974925
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon, 131974925)
@@ -136,7 +138,9 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert = SharedTangib
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3458672072
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert, 3458672072)
@@ -186,7 +190,9 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2174313207
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland, 2174313207)

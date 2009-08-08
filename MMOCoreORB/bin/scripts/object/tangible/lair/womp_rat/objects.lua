@@ -86,7 +86,9 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2053935761
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat, 2053935761)
@@ -136,7 +138,9 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObject
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 703016558
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat_desert, 703016558)

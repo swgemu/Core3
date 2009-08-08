@@ -86,7 +86,9 @@ object_tangible_lair_gaping_spider_shared_lair_gaping_spider = SharedTangibleObj
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3319780027
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gaping_spider_shared_lair_gaping_spider, 3319780027)
@@ -136,7 +138,9 @@ object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest = SharedTang
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1706419842
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gaping_spider_shared_lair_gaping_spider_forest, 1706419842)

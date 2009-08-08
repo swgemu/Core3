@@ -86,7 +86,9 @@ object_tangible_furniture_imperial_shared_bunker_table_giant_style_01 = SharedTa
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 396719577
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_bunker_table_giant_style_01, 396719577)
@@ -136,7 +138,9 @@ object_tangible_furniture_imperial_shared_data_terminal_s1 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2690468155
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s1, 2690468155)
@@ -186,7 +190,9 @@ object_tangible_furniture_imperial_shared_data_terminal_s2 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2068505004
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s2, 2068505004)
@@ -236,7 +242,9 @@ object_tangible_furniture_imperial_shared_data_terminal_s3 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 843548193
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s3, 843548193)
@@ -286,7 +294,9 @@ object_tangible_furniture_imperial_shared_data_terminal_s4 = SharedTangibleObjec
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3383012661
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_data_terminal_s4, 3383012661)
@@ -336,7 +346,9 @@ object_tangible_furniture_imperial_shared_table_s1 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1484080816
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_table_s1, 1484080816)
@@ -386,7 +398,9 @@ object_tangible_furniture_imperial_shared_warren_computer_terminal = SharedTangi
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3872577518
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_computer_terminal, 3872577518)
@@ -436,7 +450,9 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2156516600
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01, 2156516600)
@@ -486,7 +502,9 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1537113199
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02, 1537113199)
@@ -536,7 +554,9 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 311630818
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03, 311630818)
@@ -586,7 +606,9 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04 = SharedT
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3916443894
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04, 3916443894)
@@ -636,7 +658,9 @@ object_tangible_furniture_imperial_shared_warren_experiment_terminal = SharedTan
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1918381408
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_experiment_terminal, 1918381408)
@@ -686,7 +710,9 @@ object_tangible_furniture_imperial_shared_warren_warning_sign = SharedTangibleOb
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 811537804
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_imperial_shared_warren_warning_sign, 811537804)

@@ -86,7 +86,9 @@ object_tangible_trophy_shared_picture_handheld_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2296040317
 }
 
 ObjectTemplates:addTemplate(object_tangible_trophy_shared_picture_handheld_s01, 2296040317)
@@ -136,7 +138,9 @@ object_tangible_trophy_shared_picture_handheld_s02 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1405969386
 }
 
 ObjectTemplates:addTemplate(object_tangible_trophy_shared_picture_handheld_s02, 1405969386)
@@ -186,7 +190,9 @@ object_tangible_trophy_shared_shisa_decorative_s01 = SharedTangibleObjectTemplat
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3842630349
 }
 
 ObjectTemplates:addTemplate(object_tangible_trophy_shared_shisa_decorative_s01, 3842630349)

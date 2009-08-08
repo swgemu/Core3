@@ -75,7 +75,9 @@ object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1784128829
 }
 
 ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_128, 1784128829)
@@ -114,7 +116,9 @@ object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 1076938945
 }
 
 ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_32, 1076938945)
@@ -153,7 +157,9 @@ object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:ne
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2917289526
 }
 
 ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_4, 2917289526)
@@ -192,7 +198,9 @@ object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:n
 	sendToClient = 1,
 	slotDescriptors = {},
 	snapToTerrain = 1,
-	surfaceType = 1
+	surfaceType = 1,
+
+	clientObjectCRC = 2237054144
 }
 
 ObjectTemplates:addTemplate(object_static_structure_nobuild_shared_nobuild_64, 2237054144)

@@ -86,7 +86,9 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly = Share
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3008925530
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly, 3008925530)
@@ -136,7 +138,9 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1882452150
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest, 1882452150)
@@ -186,7 +190,9 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountai
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4011982198
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain, 4011982198)

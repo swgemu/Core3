@@ -86,7 +86,9 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3460199396
 }
 
 ObjectTemplates:addTemplate(object_installation_manufacture_base_shared_manufacture_base, 3460199396)

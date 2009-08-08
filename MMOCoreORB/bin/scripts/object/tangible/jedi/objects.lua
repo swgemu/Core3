@@ -86,7 +86,9 @@ object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3757784174
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_force_shrine_stone, 3757784174)
@@ -136,7 +138,9 @@ object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2292501440
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_dark, 2292501440)
@@ -186,7 +190,9 @@ object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2610980168
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_jedi_holocron_light, 2610980168)
@@ -236,7 +242,9 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTem
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2325658238
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, 2325658238)
@@ -286,7 +294,9 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTe
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2824069158
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, 2824069158)
@@ -336,7 +346,9 @@ object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTempla
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3447451409
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, 3447451409)
@@ -386,7 +398,9 @@ object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2994720477
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine, 2994720477)
@@ -436,7 +450,9 @@ object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2808368973
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_shared_power_shrine_red, 2808368973)

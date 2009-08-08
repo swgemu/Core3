@@ -86,7 +86,9 @@ object_path_waypoint_shared_path_waypoint = SharedTangibleObjectTemplate:new {
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2053891523
 }
 
 ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint, 2053891523)
@@ -136,7 +138,9 @@ object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTempl
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3534396119
 }
 
 ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn, 3534396119)
@@ -186,7 +190,9 @@ object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:ne
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3085605223
 }
 
 ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_city, 3085605223)
@@ -236,7 +242,9 @@ object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:n
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3986061853
 }
 
 ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_droid, 3986061853)
@@ -286,7 +294,9 @@ object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1010698515
 }
 
 ObjectTemplates:addTemplate(object_path_waypoint_shared_path_waypoint_patrol, 1010698515)

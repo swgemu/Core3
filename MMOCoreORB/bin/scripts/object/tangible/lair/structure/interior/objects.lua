@@ -86,7 +86,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2016356298
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul, 2016356298)
@@ -136,7 +138,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1660029328
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila, 1660029328)
@@ -186,7 +190,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dr
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1633798217
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dragon, 1633798217)
@@ -236,7 +242,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 1557292930
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor, 1557292930)
@@ -286,7 +294,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2312630242
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_condor_dragon, 2312630242)
@@ -336,7 +346,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2074553503
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_gulginaw, 2074553503)
@@ -386,7 +398,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 729911354
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_kai_tok, 729911354)
@@ -436,7 +450,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3681532635
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_perlek, 3681532635)
@@ -486,7 +502,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk = 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2976215460
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk, 2976215460)
@@ -536,7 +554,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3339660099
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak, 3339660099)
@@ -586,7 +606,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien 
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 900308717
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien, 900308717)
@@ -636,7 +658,9 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 3278136073
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok, 3278136073)
@@ -686,7 +710,9 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrak
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 4055467361
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrake, 4055467361)
@@ -736,7 +762,9 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 2106034291
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik, 2106034291)
@@ -786,7 +814,9 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek =
 
 	targetable = 1,
 
-	useStructureFootprintOutline = 0
+	useStructureFootprintOutline = 0,
+
+	clientObjectCRC = 151624394
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek, 151624394)
