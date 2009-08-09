@@ -65,6 +65,8 @@ class ClientCreateCharacterCallback : public MessageCallback {
 	String haircust;
 	String profession;
 
+	int species;
+
 	float height;
 	UnicodeString bio;
 	uint8 tutflag;
@@ -79,47 +81,51 @@ public:
 
 	void run();
 
-	void getRaceFile(String& file) {
+	inline void getRaceFile(String& file) {
 		file = racefile;
 	}
 
-	void getCustomizationString(String& customizationString) {
+	inline void getCustomizationString(String& customizationString) {
 		customizationString = customization;
 	}
 
-	void getLocation(String& location) {
+	inline void getLocation(String& location) {
 		location = ClientCreateCharacterCallback::location;
 	}
 
-	void getHairObject(String& hair) {
+	inline void getHairObject(String& hair) {
 		hair = hairobj;
 	}
 
-	void getHairCustomization(String& hairCustomization) {
+	inline void getHairCustomization(String& hairCustomization) {
 		hairCustomization = haircust;
 	}
 
-	void getPorfession(String& profession) {
+	inline void getProfession(String& profession) {
 		profession = this->profession;
 	}
 
-	float getHeight() {
+	inline float getHeight() {
 		return height;
 	}
 
-	void getBiography(UnicodeString& biography) {
+	inline void getBiography(UnicodeString& biography) {
 		biography = bio;
 	}
 
-	bool getTutorialFlag() {
+	inline bool getTutorialFlag() {
 		if (tutflag)
 			return true;
 		else
 			return false;
 	}
 
-	void getCharacterName(UnicodeString& name) {
+	inline void getCharacterName(UnicodeString& name) {
 		name = characterName;
+	}
+
+	inline int getSpecies() {
+		return species;
 	}
 };
 

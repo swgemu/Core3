@@ -37,12 +37,33 @@ bool PlayerManager::createPlayer(MessageCallback* callback) {
 		return ((PlayerManagerImplementation*) _impl)->createPlayer(callback);
 }
 
-TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+bool PlayerManager::checkPlayerName(MessageCallback* callback) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerManagerImplementation*) _impl)->checkPlayerName(callback);
+}
+
+bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addAsciiParameter(firstName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->checkExistentNameInDatabase(firstName);
+}
+
+TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addAsciiParameter(hairObjectFile);
 		method.addAsciiParameter(hairCustomization);
 
@@ -56,7 +77,7 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -69,7 +90,7 @@ CommandQueueManager* PlayerManager::getCommandQueueManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return (CommandQueueManager*) method.executeWithObjectReturn();
 	} else
@@ -103,7 +124,7 @@ void PlayerManagerImplementation::_serializationHelperMethod() {
 }
 
 CommandQueueManager* PlayerManagerImplementation::getCommandQueueManager() {
-	// server/zone/managers/player/PlayerManager.idl(75):  return commandQueueManager;
+	// server/zone/managers/player/PlayerManager.idl(77):  return commandQueueManager;
 	return commandQueueManager;
 }
 
@@ -119,12 +140,15 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
 		break;
 	case 7:
-		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
 		break;
 	case 8:
+		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 9:
 		resp->insertLong(getCommandQueueManager()->_getObjectID());
 		break;
 	default:
@@ -132,6 +156,10 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
+}
+
+bool PlayerManagerAdapter::checkExistentNameInDatabase(const String& firstName) {
+	return ((PlayerManagerImplementation*) impl)->checkExistentNameInDatabase(firstName);
 }
 
 TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectFile, const String& hairCustomization) {

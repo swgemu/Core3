@@ -112,6 +112,17 @@ class CreatureObject extends TangibleObject {
 	protected byte frozen;
 	
 	protected string templateString;
+	
+	public static final int HUMAN = 0;
+	public static final int RODIAN = 1;
+	public static final int TRANDOSHAN = 2;
+	public static final int MONCAL = 3;
+	public static final int WOOKIE = 4;
+	public static final int BOTHAN = 5;
+	public static final int TWILEK = 6;
+	public static final int ZABRAK = 7;
+	public static final int ITHORIAN = 0x21;
+	public static final int SULLUSTAN = 0x31;
 
 	public native CreatureObject(LuaObject templateData);
 	
@@ -259,6 +270,10 @@ class CreatureObject extends TangibleObject {
 	
 	public float getHeight() {
 		return height;
+	}
+	
+	public int getSpecies() {
+		return species;
 	}
 	
 	public void setHeight(float heigh) {

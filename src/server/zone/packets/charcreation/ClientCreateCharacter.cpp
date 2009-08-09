@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/objects/player/Races.h"
+
 
 ClientCreateCharacter::ClientCreateCharacter(const UnicodeString& name) {
 	insertShort(12);
@@ -90,6 +92,9 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 	message->parseUnicode(bio); //get the biography.
 
 	tutflag = message->parseByte(); //tutorial bool.
+
+	int raceID = Races::getRaceID(racefile);
+	species = Races::getSpeciesID(raceID);
 }
 
 void ClientCreateCharacterCallback::run() {
