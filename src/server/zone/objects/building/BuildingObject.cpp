@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -142,12 +144,25 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 		((BuildingObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-bool BuildingObject::isStaticBuilding() {
+void BuildingObject::sendCellsTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->sendCellsTo(player);
+}
+
+bool BuildingObject::isStaticBuilding() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -159,7 +174,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -172,7 +187,7 @@ void BuildingObject::addCell(CellObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(cell);
 
 		method.executeWithVoidReturn();
@@ -185,7 +200,7 @@ void BuildingObject::setStaticBuilding(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -220,24 +235,24 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(76):  return staticBuilding;
+	// server/zone/objects/building/BuildingObject.idl(77):  return staticBuilding;
 	return staticBuilding;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(80):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(81):  return cells.get(idx);
 	return cells->get(idx);
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
-	// server/zone/objects/building/BuildingObject.idl(84):  cell.setParent(this);
+	// server/zone/objects/building/BuildingObject.idl(85):  cell.setParent(this);
 	cell->setParent(_this);
-	// server/zone/objects/building/BuildingObject.idl(86):  cells.put(cell);
+	// server/zone/objects/building/BuildingObject.idl(87):  cells.put(cell);
 	cells->put(cell);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(90):  staticBuilding = value;
+	// server/zone/objects/building/BuildingObject.idl(91):  staticBuilding = value;
 	staticBuilding = value;
 }
 
@@ -280,15 +295,18 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertBoolean(isStaticBuilding());
+		sendCellsTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(isStaticBuilding());
 		break;
 	case 17:
-		addCell((CellObject*) inv->getObjectParameter());
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 18:
+		addCell((CellObject*) inv->getObjectParameter());
+		break;
+	case 19:
 		setStaticBuilding(inv->getBooleanParameter());
 		break;
 	default:
@@ -332,6 +350,10 @@ void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {
 
 void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	return ((BuildingObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void BuildingObjectAdapter::sendCellsTo(SceneObject* player) {
+	return ((BuildingObjectImplementation*) impl)->sendCellsTo(player);
 }
 
 bool BuildingObjectAdapter::isStaticBuilding() {

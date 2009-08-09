@@ -23,6 +23,20 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -32,8 +46,6 @@ using namespace server::zone::objects::cell;
 #include "engine/util/QuadTreeEntry.h"
 
 #include "system/util/SortedVector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {
@@ -61,6 +73,8 @@ public:
 	void sendTo(SceneObject* player, bool doClose = true);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendCellsTo(SceneObject* player);
 
 	bool isStaticBuilding();
 
@@ -117,6 +131,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendCellsTo(SceneObject* player);
+
 	bool isStaticBuilding();
 
 	CellObject* getCell(int idx);
@@ -163,6 +179,8 @@ public:
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendCellsTo(SceneObject* player);
 
 	bool isStaticBuilding();
 

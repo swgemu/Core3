@@ -152,6 +152,11 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	create(client);
 
 	if (parent != NULL) {
+		if (parent->isCell()) {
+			SceneObject* building = parent->getParent();
+			building->sendTo(player);
+		}
+
 		link(client.get(), containmentType);
 	}
 

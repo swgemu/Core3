@@ -65,7 +65,7 @@ public:
 		//System::out << msg.toString();
 	}
 
-	BuildingObjectMessage6(CampSite *camp)
+	/*BuildingObjectMessage6(CampSite *camp)
 			: BaseLineMessage(camp->getObjectID(), 0x4255494F, 6, 0x02) {
 		// BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt)
 		//insertInt(0x4A);
@@ -79,6 +79,6 @@ public:
 		//StringBuffer msg;
 		//msg << hex << "BuildingObjectMessage6 [Object = " << buio->getObjectID() << "]\n";
 		//System::out << msg.toString();
-	}
+	}*/
 };
 #endif /*BUILDINGOBJECTMESSAGE6_H_*/

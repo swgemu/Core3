@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/chat/ChatManager.h"
 
+
 class SelectCharacter : public BaseMessage {
 public:
 	SelectCharacter(uint64 charid) {
@@ -83,6 +84,7 @@ public:
 
 	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
+		//ObjectManager* objectManager = zoneServer->getObjectManager();
 
 		SceneObject* obj = zoneServer->getObject(characterID, true);
 
