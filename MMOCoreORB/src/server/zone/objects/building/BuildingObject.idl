@@ -71,6 +71,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public native void sendTo(SceneObject player, boolean doClose = true);
 	public native void sendBaselinesTo(SceneObject player);
+	public native void sendCellsTo(SceneObject player);
 	
 	public boolean isStaticBuilding() {
 		return staticBuilding;
