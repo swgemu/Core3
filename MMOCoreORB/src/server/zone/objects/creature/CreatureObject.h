@@ -98,6 +98,8 @@ public:
 
 	float getHeight();
 
+	int getSpecies();
+
 	void setHeight(float heigh);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
@@ -204,6 +206,26 @@ protected:
 	String templateString;
 
 public:
+	static const int HUMAN = 0;
+
+	static const int RODIAN = 1;
+
+	static const int TRANDOSHAN = 2;
+
+	static const int MONCAL = 3;
+
+	static const int WOOKIE = 4;
+
+	static const int BOTHAN = 5;
+
+	static const int TWILEK = 6;
+
+	static const int ZABRAK = 7;
+
+	static const int ITHORIAN = 0x21;
+
+	static const int SULLUSTAN = 0x31;
+
 	CreatureObjectImplementation(LuaObject* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -277,6 +299,8 @@ public:
 	byte getFrozen();
 
 	float getHeight();
+
+	int getSpecies();
 
 	void setHeight(float heigh);
 
@@ -374,6 +398,8 @@ public:
 	byte getFrozen();
 
 	float getHeight();
+
+	int getSpecies();
 
 	void setHeight(float heigh);
 

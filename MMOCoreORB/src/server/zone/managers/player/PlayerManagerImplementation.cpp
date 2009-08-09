@@ -10,10 +10,13 @@
 #include "../object/ObjectManager.h"
 #include "../../packets/charcreation/ClientCreateCharacter.h"
 #include "../../packets/charcreation/ClientCreateCharacterSuccess.h"
+#include "../../packets/charcreation/ClientCreateCharacterFailed.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/managers/command/CommandQueueManager.h"
-
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/managers/name/NameManager.h"
+#include "server/db/ServerDatabase.h"
+
 
 PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv) :
 	Logger("PlayerManager") {
@@ -29,6 +32,94 @@ PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, 
 	setLogging(true);
 }
 
+bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name) {
+	if (name.isEmpty())
+		return false;
+
+	try {
+		String fname = name.toLowerCase();
+		MySqlDatabase::escapeString(fname);
+		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
+					   + fname + "\"";
+
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		bool nameExists = res->next();
+
+		delete res;
+
+		return !nameExists;
+	} catch (DatabaseException& e) {
+		return false;
+	}
+}
+
+bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallback) {
+	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) messageCallback;
+	ZoneClientSession* client = callback->getClient();
+
+	NameManager* nm = server->getNameManager();
+	BaseMessage* msg = NULL;
+
+	String firstName;
+
+	UnicodeString unicodeName;
+	callback->getCharacterName(unicodeName);
+
+	String name = unicodeName.toString();
+
+	//Get the firstname
+	int idx = name.indexOf(" ");
+	if (idx != -1)
+		firstName = name.subString(0, idx);
+	else
+		firstName = name;
+
+	//Does this name already exist?
+	if (!checkExistentNameInDatabase(firstName)) {
+		msg = new ClientCreateCharacterFailed("name_declined_in_use");
+		client->sendMessage(msg);
+
+		return false;
+	}
+
+	//Check to see if name is valid
+	int res = nm->validateName(name, callback->getSpecies());
+
+	if (res != NameManagerResult::ACCEPTED) {
+		switch (res) {
+		case NameManagerResult::DECLINED_EMPTY:
+			msg = new ClientCreateCharacterFailed("name_declined_empty");
+			break;
+		case NameManagerResult::DECLINED_DEVELOPER:
+			msg = new ClientCreateCharacterFailed("name_declined_developer");
+			break;
+		case NameManagerResult::DECLINED_FICT_RESERVED:
+			msg = new ClientCreateCharacterFailed("name_declined_fictionally_reserved");
+			break;
+		case NameManagerResult::DECLINED_PROFANE:
+			msg = new ClientCreateCharacterFailed("name_declined_profane");
+			break;
+		case NameManagerResult::DECLINED_RACE_INAPP:
+			msg = new ClientCreateCharacterFailed("name_declined_racially_inappropriate");
+			break;
+		case NameManagerResult::DECLINED_SYNTAX:
+			msg = new ClientCreateCharacterFailed("name_declined_syntax");
+			break;
+		case NameManagerResult::DECLINED_RESERVED:
+			msg = new ClientCreateCharacterFailed("name_declined_reserved");
+			break;
+		default:
+			msg = new ClientCreateCharacterFailed("name_declined_retry");
+			break;
+		}
+
+		client->sendMessage(msg); //Name failed filters
+		return false;
+	}
+
+	return true;
+}
+
 bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
 
@@ -38,6 +129,14 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	int raceID = Races::getRaceID(race);
 	uint32 playerCRC = Races::getRaceCRC(raceID);
+
+	UnicodeString name;
+	callback->getCharacterName(name);
+
+	if (!checkPlayerName(callback)) {
+		info("invalid name " + name.toString());
+		return false;
+	}
 
 	SceneObject* player = objectManager->createObject(playerCRC); // player
 
@@ -61,8 +160,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	callback->getCustomizationString(playerCustomization);
 	playerCreature->setCustomizationString(playerCustomization);
 
-	UnicodeString name;
-	callback->getCharacterName(name);
 	playerCreature->setObjectName(name);
 
 	//hair

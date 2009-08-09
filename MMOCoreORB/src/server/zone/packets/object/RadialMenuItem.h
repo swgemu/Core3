@@ -110,8 +110,12 @@ public:
 
 			if (item->getItemIndex() == index)
 				return item;
-			else
+			else {
 				returnItem = item->getItem(index);
+
+				if (returnItem != NULL)
+					return returnItem;
+			}
 		}
 
 		return returnItem;

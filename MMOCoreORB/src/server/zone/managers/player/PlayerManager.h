@@ -78,6 +78,10 @@ public:
 
 	bool createPlayer(MessageCallback* callback);
 
+	bool checkPlayerName(MessageCallback* callback);
+
+	bool checkExistentNameInDatabase(const String& firstName);
+
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
@@ -118,6 +122,10 @@ public:
 
 	bool createPlayer(MessageCallback* callback);
 
+	bool checkPlayerName(MessageCallback* callback);
+
+	bool checkExistentNameInDatabase(const String& firstName);
+
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
@@ -145,6 +153,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	bool checkExistentNameInDatabase(const String& firstName);
+
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
@@ -152,6 +162,7 @@ public:
 	CommandQueueManager* getCommandQueueManager();
 
 protected:
+	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
 	String _param1_createHairObject__String_String_;
 };

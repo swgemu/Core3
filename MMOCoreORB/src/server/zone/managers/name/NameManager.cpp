@@ -147,14 +147,14 @@ inline bool NameManager::isReserved(String name) {
 }
 
 int NameManager::validateName(CreatureObject* obj) {
-	/*String name = (obj->getCharacterName()).toString();
-	String species = obj->getStfName();
+	StringId* objectName = obj->getObjectName();
+	UnicodeString name = objectName->getCustomString();
+	int species = obj->getSpecies();
 
-	return validateName(name, species);*/
-	return NameManagerResult::ACCEPTED;
+	return validateName(name.toString(), species);
 }
 
-int NameManager::validateName(const String& name, const String& species) {
+int NameManager::validateName(const String& name, int species) {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
@@ -190,17 +190,17 @@ int NameManager::validateName(const String& name, const String& species) {
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	//Wookies are not allowed to have last names.
-	if (!lname.isEmpty() && species == "wookiee")
+	if (!lname.isEmpty() && species == CreatureObjectImplementation::WOOKIE)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	//If the name has a hyphen or apostrophe, make sure they are the proper species.
 	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
 		//Must be a human, twilek, or moncal to have a hyphen or apostrophe.
-		if (species != "human" && species != "twilek" && species != "moncal")
+		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
 		//Moncal's aren't allowed to have apostrophes.
-		if (species == "moncal" && name.indexOf("'") != -1)
+		if (species == CreatureObjectImplementation::MONCAL && name.indexOf("'") != -1)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
 		//Make sure they only have one hyphen and apostrophe in firstname.

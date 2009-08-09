@@ -70,6 +70,29 @@ const static char* Species[] = {
     "ithorian"  // DA E7   -   ithorian female
 };
 
+const static int TemplateSpecies[] = {
+		0,
+		2,
+		6,
+		5,
+		7,
+		1,
+		3,
+		4,
+		0x31,
+		0x21,
+		0,
+		2,
+		6,
+		5,
+		7,
+		1,
+		3,
+		4,
+		0x31,
+		0x21
+};
+
 const static char* Gender[] = {
     "male", // human male
     "male", // trandoshan male
@@ -373,6 +396,10 @@ class Races {
 public:
 	inline const static char* getRace(int raceid) {
 		return RaceStrs[raceid];
+	}
+
+	inline const static int getSpeciesID(int raceid) {
+		return TemplateSpecies[raceid];
 	}
 
 	inline const static char* getMood(int moodid) {
