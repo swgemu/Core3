@@ -64,11 +64,15 @@ public:
 
 	unsigned long long getListenID();
 
-	float getSpeed();
+	float getRunSpeed();
+
+	float getWalkSpeed();
 
 	float getTerrainNegotiation();
 
-	float getAcceleration();
+	float getRunAcceleration();
+
+	float getWalkAcceleration();
 
 	int getLevel();
 
@@ -90,6 +94,8 @@ public:
 
 	byte getMoodID();
 
+	float getSlopeModPercent();
+
 	int getPerformanceCounter();
 
 	int getInstrumentID();
@@ -103,6 +109,8 @@ public:
 	void setHeight(float heigh);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
+
+	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -159,13 +167,21 @@ protected:
 
 	unsigned int encumbrancesUpdateCounter;
 
-	float speed;
+	float runSpeed;
+
+	float walkSpeed;
 
 	float terrainNegotiation;
 
-	float acceleration;
+	float runAcceleration;
+
+	float walkAcceleration;
 
 	float height;
+
+	float slopeModPercent;
+
+	float slopeModAngle;
 
 	unsigned long long listenToID;
 
@@ -226,6 +242,10 @@ public:
 
 	static const int SULLUSTAN = 0x31;
 
+	static const int MALE = 0;
+
+	static const int FEMALE = 1;
+
 	CreatureObjectImplementation(LuaObject* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -266,11 +286,15 @@ public:
 
 	unsigned long long getListenID();
 
-	float getSpeed();
+	float getRunSpeed();
+
+	float getWalkSpeed();
 
 	float getTerrainNegotiation();
 
-	float getAcceleration();
+	float getRunAcceleration();
+
+	float getWalkAcceleration();
 
 	int getLevel();
 
@@ -292,6 +316,8 @@ public:
 
 	byte getMoodID();
 
+	float getSlopeModPercent();
+
 	int getPerformanceCounter();
 
 	int getInstrumentID();
@@ -305,6 +331,8 @@ public:
 	void setHeight(float heigh);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
+
+	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	CreatureObject* _this;
 
@@ -365,11 +393,15 @@ public:
 
 	unsigned long long getListenID();
 
-	float getSpeed();
+	float getRunSpeed();
+
+	float getWalkSpeed();
 
 	float getTerrainNegotiation();
 
-	float getAcceleration();
+	float getRunAcceleration();
+
+	float getWalkAcceleration();
 
 	int getLevel();
 
@@ -391,6 +423,8 @@ public:
 
 	byte getMoodID();
 
+	float getSlopeModPercent();
+
 	int getPerformanceCounter();
 
 	int getInstrumentID();
@@ -404,6 +438,8 @@ public:
 	void setHeight(float heigh);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient);
+
+	void setTargetID(unsigned long long targetID, bool notifyClient);
 
 };
 

@@ -356,6 +356,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 	
 	public native abstract void sendTo(SceneObject player, boolean doClose = true);
+	public native abstract void sendDestroyTo(SceneObject player);
 	public native abstract void sendBaselinesTo(SceneObject player) {
 	}
 	
@@ -371,7 +372,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void updateZone(boolean lightUpdate);
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate);
 	
-	public native void broadcastMessage(BasePacket message, boolean lockZone = true);
+	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone);
 	
 	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)
@@ -500,6 +501,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return parent;
 	}
 	
+	public string getLoggingName() {
+		return Logger.getLoggingName();
+	}
+	
 	public boolean isPlayerCreature() {
 		return gameObjectType == PLAYERCREATURE;
 	}
@@ -570,6 +575,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public void setContainmentType(unsigned int type) {
 		containmentType = type;
+	}
+	
+	public void setLoggingName(final string name) {
+		Logger.setLoggingName(name);
 	}
 
 }

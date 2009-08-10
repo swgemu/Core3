@@ -60,6 +60,8 @@ which carries forward this exception.
 #include "packets/object/DataTransformWithParent.h"
 #include "packets/object/CommandQueueEnqueue.h"
 #include "packets/object/ObjectMenuRequest.h"
+#include "packets/object/TargetUpdate.h"
+
 
 #include "packets/chat/ChatRoomList.h"
 
@@ -92,8 +94,8 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
 	objectMessageControllerFactory->registerObject<CommandQueueEnqueueCallback>(0x116);
+	objectMessageControllerFactory->registerObject<TargetUpdateCallback>(0x126);
 	objectMessageControllerFactory->registerObject<ObjectMenuRequestCallback>(0x146);
-
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {

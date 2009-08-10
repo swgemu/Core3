@@ -33,17 +33,23 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	}
 }
 
+void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
+	if (!isStaticBuilding()) {
+		info("sending building object destroy");
+
+		SceneObjectImplementation::destroy(player->getClient());
+	}
+}
+
 void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
 	info("sending building baselines");
 
-	BaseMessage* buio3 = new TangibleObjectMessage3((BuildingObject*) _this);
+	BaseMessage* buio3 = new TangibleObjectMessage3(_this);
 	player->sendMessage(buio3);
 
-	BaseMessage* buio6 = new TangibleObjectMessage6((BuildingObject*) _this);
+	BaseMessage* buio6 = new TangibleObjectMessage6(_this);
 	player->sendMessage(buio6);
-
-	//sendCellsTo(player);
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {

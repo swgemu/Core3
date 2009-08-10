@@ -73,8 +73,8 @@ class ObjectMenuResponse : public ObjectControllerMessage {
 		insertByte(item->getCallback());
 		insertUnicode(item->getText());
 
-		System::out << "inserting item idx:" << item->getItemIndex() << " parent: " << item->getParentIndex()
-					<< " radialid: " << item->getRadialID() << "\n";
+		/*System::out << "inserting item idx:" << item->getItemIndex() << " parent: " << item->getParentIndex()
+					<< " radialid: " << item->getRadialID() << "\n";*/
 
 		++listSize;
 	}

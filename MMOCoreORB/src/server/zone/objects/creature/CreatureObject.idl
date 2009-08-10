@@ -80,10 +80,14 @@ class CreatureObject extends TangibleObject {
 	
 	// skillmods
 	
-	protected float speed;
+	protected float runSpeed;
+	protected float walkSpeed;
 	protected float terrainNegotiation;
-	protected float acceleration;
+	protected float runAcceleration;
+	protected float walkAcceleration;
 	protected float height;
+	protected float slopeModPercent;
+	protected float slopeModAngle;
 	
 	protected unsigned long listenToID;
 	
@@ -123,6 +127,9 @@ class CreatureObject extends TangibleObject {
 	public static final int ZABRAK = 7;
 	public static final int ITHORIAN = 0x21;
 	public static final int SULLUSTAN = 0x31;
+	
+	public static final int MALE = 0;
+	public static final int FEMALE = 1;
 
 	public native CreatureObject(LuaObject templateData);
 	
@@ -204,16 +211,24 @@ class CreatureObject extends TangibleObject {
 		return listenToID;
 	}
 	
-	public float getSpeed() {
-		return speed;
+	public float getRunSpeed() {
+		return runSpeed;
+	}
+	
+	public float getWalkSpeed() {
+		return walkSpeed;
 	}
 	
 	public float getTerrainNegotiation() {
 		return terrainNegotiation;	
 	}
 	
-	public float getAcceleration() {
-		return acceleration;
+	public float getRunAcceleration() {
+		return runAcceleration;
+	}
+	
+	public float getWalkAcceleration() {
+		return walkAcceleration;
 	}
 	
 	public int getLevel() {
@@ -256,6 +271,10 @@ class CreatureObject extends TangibleObject {
 		return moodID;
 	}
 	
+	public float getSlopeModPercent() {
+		return slopeModPercent;
+	}
+	
 	public int getPerformanceCounter() {
 		return performanceCounter;
 	}
@@ -281,5 +300,6 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
+	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
 	
 }
