@@ -54,7 +54,7 @@ import server.zone.objects.scene.SceneObject;
 
 
 class BuildingObject extends TangibleObject implements QuadTree {
-	protected SortedVector<CellObject> cells;
+	protected Vector<CellObject> cells;
 	protected boolean staticBuilding;
 
 	public native BuildingObject(LuaObject templateData);
@@ -71,7 +71,8 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public native void sendTo(SceneObject player, boolean doClose = true);
 	public native void sendBaselinesTo(SceneObject player);
-	public native void sendCellsTo(SceneObject player);
+	
+	public native void addCell(CellObject cell);
 	
 	public boolean isStaticBuilding() {
 		return staticBuilding;
@@ -79,12 +80,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public CellObject getCell(int idx) {
 		return cells.get(idx);
-	}
-	
-	public void addCell(CellObject cell) {
-		cell.setParent(this);
-		
-		cells.put(cell);
 	}
 	
 	public void setStaticBuilding(boolean value) {

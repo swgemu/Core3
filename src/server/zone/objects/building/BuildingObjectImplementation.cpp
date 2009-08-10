@@ -11,21 +11,16 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 
-#include "server/zone/packets/cell/CellObjectMessage3.h"
-#include "server/zone/packets/cell/CellObjectMessage6.h"
-#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
-
-#include "server/zone/packets/scene/UpdateContainmentMessage.h"
-#include "../../packets/scene/SceneObjectCreateMessage.h"
-#include "../../packets/scene/SceneObjectDestroyMessage.h"
-#include "../../packets/scene/SceneObjectCloseMessage.h"
-
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
-	cells = new SortedVector<CellObject*>();
+	cells = new Vector<CellObject*>();
 
 	staticBuilding = false;
+
+	containerVolumeLimit = 0xFFFFFFFF;
+
+	containerType = 2;
 
 	setLoggingName("BuildingObject");
 }
@@ -48,56 +43,8 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* buio6 = new TangibleObjectMessage6((BuildingObject*) _this);
 	player->sendMessage(buio6);
 
-	sendCellsTo(player);
+	//sendCellsTo(player);
 }
-
-void BuildingObjectImplementation::sendCellsTo(SceneObject* player) {
-	info("BuildingObjectImplementation::sendCellsTo");
-
-	StringBuffer msg;
-	msg << "BuildingObjectImplementation::sendCellsTo(): " << cells->size() << endl;
-	info(msg.toString());
-
-	UpdateContainmentMessage* link;
-	CellObjectMessage3* cellMsg3;
-	CellObjectMessage6* cellMsg6;
-	UpdateCellPermissionsMessage* perm;
-	CellObject * cell;
-
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
-
-	for (int i = 1; i <= cells->size(); ++i) {
-		cell = cells->get(i-1);
-
-		BaseMessage* msg = new SceneObjectCreateMessage(cell);
-		player->sendMessage(msg);
-
-		link = new UpdateContainmentMessage(cell->getObjectID(), _this->getObjectID(), 0xFFFFFFFF);
-		player->sendMessage(link);
-
-		cellMsg3 = new CellObjectMessage3(cell->getObjectID(), /*cell->getCellNumber()*/ i);
-		player->sendMessage(cellMsg3);
-
-		cellMsg6 = new CellObjectMessage6(cell->getObjectID());
-		player->sendMessage(cellMsg6);
-
-		/*bool allow = false;
-
-		//Players can enter so long as the structure is public or they are on the entry list.
-		//However, if they are on the ban list, they cannot enter.
-		if ((isPublicStructure() || isOnEntryList(player)) && !isOnBanList(player))
-			allow = true;*/
-
-		perm = new UpdateCellPermissionsMessage(cell->getObjectID());
-		player->sendMessage(perm);
-
-		BaseMessage* close = new SceneObjectCloseMessage(cell);
-		player->sendMessage(close);
-	}
-}
-
 
 void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone");
@@ -161,4 +108,12 @@ void BuildingObjectImplementation::update(QuadTreeEntry* entry) {
 
 void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
 	QuadTree::inRange(entry, range);
+}
+
+void BuildingObjectImplementation::addCell(CellObject* cell) {
+	cells->add(cell);
+
+	cell->setCellNumber(cells->size());
+
+	addObject(cell, -1);
 }

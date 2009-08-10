@@ -21,12 +21,25 @@ CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 CellObject::~CellObject() {
 }
 
-int CellObject::getCellNumber() {
+void CellObject::sendBaselinesTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->sendBaselinesTo(player);
+}
+
+int CellObject::getCellNumber() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -38,7 +51,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -73,12 +86,12 @@ void CellObjectImplementation::_serializationHelperMethod() {
 }
 
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(78):  return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(80):  return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(82):  cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(84):  cellNumber = number;
 	cellNumber = number;
 }
 
@@ -94,9 +107,12 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertSignedInt(getCellNumber());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
+		resp->insertSignedInt(getCellNumber());
+		break;
+	case 8:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
 	default:
@@ -104,6 +120,10 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	return ((CellObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 int CellObjectAdapter::getCellNumber() {

@@ -54,6 +54,8 @@ class CellObject extends SceneObject {
 	
 	public native CellObject(LuaObject templateData);
 	
+	public native void sendBaselinesTo(SceneObject player);
+	
 	/*public boolean addObject(SceneObject object) {
 		boolean result = containmentObjects.put(object.getObjectID(), object);
 	
