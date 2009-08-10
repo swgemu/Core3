@@ -727,10 +727,6 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, forcedLog);
 
-	StringBuffer msg2;
-	msg2 << "Scheduler - size = " << taskManager->getScheduledTaskSize();
-	info(msg2, forcedLog);
-
 	float packetloss;
 	if (totalSentPackets + totalSentPackets == 0)
 		packetloss = 0.0f;

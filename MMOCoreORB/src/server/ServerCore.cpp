@@ -229,6 +229,8 @@ void ServerCore::handleCommands() {
 			} else if (command == "logQuadTree") {
 				QuadTree::setLogging(!QuadTree::doLog());
 			} else if (command == "info") {
+				TaskManager::instance()->printInfo();
+
 				if (loginServer != NULL)
 					loginServer->printInfo();
 
