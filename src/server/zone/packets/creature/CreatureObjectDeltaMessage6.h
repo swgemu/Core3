@@ -64,6 +64,10 @@ public:
 		addLongUpdate(0x05, creo->getWeaponID());
 	}
 
+	void updateTarget() {
+		addLongUpdate(0x09, creo->getTargetID());
+	}
+
 	/*void updateGroupID() {
 		addLongUpdate(0x06, creo->getGroupID());
 	}

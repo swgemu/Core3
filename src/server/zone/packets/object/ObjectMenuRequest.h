@@ -43,9 +43,9 @@ public:
 				UnicodeString command;
 				message->parseUnicode(command);
 
-				StringBuffer infoMsg;
+				/*StringBuffer infoMsg;
 				infoMsg << "idx: " << index << " parent: " << parentid << " radialid: " << radialid;
-				client->getPlayer()->info(infoMsg.toString());
+				client->getPlayer()->info(infoMsg.toString());*/
 
 				//if (radialid == 20)
 				//callback = 3;
@@ -63,6 +63,11 @@ public:
 
 		uint8 counter = message->parseByte();
 		menuResponse->setCounter(counter);
+
+		SceneObject* player = client->getPlayer();
+
+		if (player != NULL)
+			player->info("receivec object menu request");
 
 	}
 

@@ -22,7 +22,7 @@
 
 
 PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv) :
-	Logger("PlayerManager") {
+	ManagedObjectImplementation(), Logger("PlayerManager") {
 	objectManager = objMan;
 
 	server = srv;
@@ -124,112 +124,124 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 }
 
 bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
-	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+	try {
+		wlock();
 
-	String race;
-	callback->getRaceFile(race);
-	info("trying to create " + race);
+		ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
 
-	int raceID = Races::getRaceID(race);
-	uint32 playerCRC = Races::getRaceCRC(raceID);
+		String race;
+		callback->getRaceFile(race);
+		info("trying to create " + race);
 
-	UnicodeString name;
-	callback->getCharacterName(name);
+		int raceID = Races::getRaceID(race);
+		uint32 playerCRC = Races::getRaceCRC(raceID);
 
-	if (!checkPlayerName(callback)) {
-		info("invalid name " + name.toString());
-		return false;
-	}
+		UnicodeString name;
+		callback->getCharacterName(name);
 
-	SceneObject* player = objectManager->createObject(playerCRC); // player
-
-	if (player == NULL) {
-		error("could not create player... could not create player object");
-		return false;
-	}
-
-	if (!player->isPlayerCreature()) {
-		player->finalize();
-		error("could not create player... wrong object type");
-		return false;
-	}
-
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
-	createAllPlayerObjects(playerCreature);
-
-	playerCreature->setRaceID((byte)raceID);
-
-	String playerCustomization;
-	callback->getCustomizationString(playerCustomization);
-	playerCreature->setCustomizationString(playerCustomization);
-
-	playerCreature->setObjectName(name);
-
-	//hair
-	String hairObjectFile;
-	callback->getHairObject(hairObjectFile);
-
-	String hairCustomization;
-	callback->getHairCustomization(hairCustomization);
-
-	TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
-
-	if (hair != NULL) {
-		player->addObject(hair, 4);
-
-		info("created hair object");
-	}
-
-	playerCreature->setHeight(callback->getHeight());
-
-	UnicodeString biography;
-	callback->getBiography(biography);
-	playerCreature->setBiography(biography);
-
-	ZoneClientSession* client = data->getClient();
-
-	playerCreature->setClient(client);
-	client->setPlayer(player);
-
-	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
-	playerCreature->sendMessage(msg);
-
-	ZoneServer* zoneServer = server->getZoneServer();
-	if (callback->getTutorialFlag()) {
-		Zone* zone = zoneServer->getZone(42);
-
-		String tut = "object/building/general/shared_newbie_hall.iff";
-		String cell = "object/cell/shared_cell.iff";
-
-		BuildingObject* tutorial = (BuildingObject*) objectManager->createObject(tut.hashCode());
-		tutorial->setStaticBuilding(false);
-
-		SceneObject* cellTut = NULL;
-
-		for (int i = 0; i < 14; ++i) {
-			cellTut = objectManager->createObject(cell.hashCode());
-
-			tutorial->addCell((CellObject*)cellTut);
-
-			if (i == 10)
-				cellTut->addObject(player, -1);
+		if (!checkPlayerName(callback)) {
+			info("invalid name " + name.toString());
+			unlock();
+			return false;
 		}
 
-		tutorial->insertToZone(zone);
+		SceneObject* player = objectManager->createObject(playerCRC); // player
 
-		player->initializePosition(27.0f, -3.5f, -165.0f);
-		player->setZone(zone);
-	} else {
-		Zone* zone = zoneServer->getZone(8);
-		player->setZone(zone);
-	}
+		if (player == NULL) {
+			error("could not create player... could not create player object");
+			unlock();
+			return false;
+		}
 
-	StringBuffer infoMsg;
-	infoMsg << "player " << name.toString() << " successfully created";
-	info(infoMsg);
+		if (!player->isPlayerCreature()) {
+			player->finalize();
+			error("could not create player... wrong object type");
+			unlock();
+			return false;
+		}
 
-	/*Zone* zone = server->getZoneServer()->getZone(8);
+		PlayerCreature* playerCreature = (PlayerCreature*) player;
+		createAllPlayerObjects(playerCreature);
+
+		playerCreature->setRaceID((byte)raceID);
+
+		String playerCustomization;
+		callback->getCustomizationString(playerCustomization);
+		playerCreature->setCustomizationString(playerCustomization);
+
+		playerCreature->setObjectName(name);
+
+		//hair
+		String hairObjectFile;
+		callback->getHairObject(hairObjectFile);
+
+		String hairCustomization;
+		callback->getHairCustomization(hairCustomization);
+
+		TangibleObject* hair = createHairObject(hairObjectFile, hairCustomization);
+
+		if (hair != NULL) {
+			player->addObject(hair, 4);
+
+			info("created hair object");
+		}
+
+		playerCreature->setHeight(callback->getHeight());
+
+		UnicodeString biography;
+		callback->getBiography(biography);
+		playerCreature->setBiography(biography);
+
+		ZoneClientSession* client = data->getClient();
+
+		playerCreature->setClient(client);
+		client->setPlayer(player);
+
+		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
+		playerCreature->sendMessage(msg);
+
+		ZoneServer* zoneServer = server->getZoneServer();
+		if (callback->getTutorialFlag()) {
+			Zone* zone = zoneServer->getZone(42);
+
+			String tut = "object/building/general/shared_newbie_hall.iff";
+			String cell = "object/cell/shared_cell.iff";
+
+			BuildingObject* tutorial = (BuildingObject*) objectManager->createObject(tut.hashCode());
+			tutorial->setStaticBuilding(false);
+
+			SceneObject* cellTut = NULL;
+
+			for (int i = 0; i < 14; ++i) {
+				cellTut = objectManager->createObject(cell.hashCode());
+
+				tutorial->addCell((CellObject*)cellTut);
+
+				if (i == 10)
+					cellTut->addObject(player, -1);
+			}
+
+			tutorial->insertToZone(zone);
+
+			player->initializePosition(27.0f, -3.5f, -165.0f);
+			player->setZone(zone);
+		} else {
+			Zone* zone = zoneServer->getZone(8);
+			player->setZone(zone);
+		}
+
+		StringBuffer infoMsg;
+		infoMsg << "player " << name.toString() << " successfully created";
+		info(infoMsg);
+
+		/*Zone* zone = server->getZoneServer()->getZone(8);
 	player->setZone(zone);*/
+
+		unlock();
+	} catch (...) {
+		error("unreported exception caught while creating player");
+		unlock();
+	}
 
 	return true;
 }

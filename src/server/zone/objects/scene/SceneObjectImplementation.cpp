@@ -180,6 +180,10 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		SceneObjectImplementation::close(client);
 }
 
+void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
+	destroy(player->getClient());
+}
+
 void SceneObjectImplementation::sendAttributeListTo(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
@@ -213,7 +217,7 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZone) {
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
 	if (zone == NULL) {
 		SceneObject* grandParent = parent;
 
@@ -221,7 +225,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZ
 			while (grandParent->getParent() != NULL)
 				grandParent = grandParent->getParent();
 
-			grandParent->broadcastMessage(message);
+			grandParent->broadcastMessage(message, sendSelf, lockZone);
 
 			return;
 		} else {
@@ -236,6 +240,9 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZ
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
 			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+			if (!sendSelf && scno == this)
+				continue;
 
 			if (scno->isPlayerCreature()) {
 				scno->sendMessage(message->clone());
@@ -257,7 +264,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 		return;
 	}
 
-    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), false);
+    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), true, false);
 
     parent->removeObject(_this);
 
@@ -286,10 +293,10 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, true, false);
 		} else {
 			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, true, false);
 		}
 
 		zone->unlock();
@@ -340,7 +347,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 			parent->addObject(_this, 0xFFFFFFFF);
 
 			//linkType = 0x04;
-			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), false);
+			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
 		}
 
@@ -356,10 +363,10 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 		if (lightUpdate) {
 			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, true, false);
 		} else {
 			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, false);
+			broadcastMessage(message, true, false);
 		}
 		zone->unlock();
 	} catch (...) {
@@ -406,7 +413,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		building->notifyInsertToZone(_this);
 
-		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), false);
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
 		info("sent cell link to everyone else");
 	} catch (...) {
@@ -483,7 +490,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 	//object->setZone(zone);
 
 	if (notifyClient)
-		broadcastMessage(object->link(objectID, containmentType));
+		broadcastMessage(object->link(objectID, containmentType), true, true);
 
 	return true;
 }

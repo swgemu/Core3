@@ -136,6 +136,8 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose = true);
 
+	void sendDestroyTo(SceneObject* player);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose = true);
@@ -154,7 +156,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool lockZone = true);
+	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
 
 	void sendMessage(BasePacket* msg);
 
@@ -216,6 +218,8 @@ public:
 
 	SceneObject* getParent();
 
+	String getLoggingName();
+
 	bool isPlayerCreature();
 
 	bool isBuildingObject();
@@ -252,12 +256,15 @@ public:
 
 	void setContainmentType(unsigned int type);
 
+	void setLoggingName(const String& name);
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
 	virtual ~SceneObject();
 
 	String _return_getArrangementDescriptor;
+	String _return_getLoggingName;
 	String _return_getSlotDescriptor;
 
 	friend class SceneObjectHelper;
@@ -700,6 +707,8 @@ public:
 
 	virtual void sendTo(SceneObject* player, bool doClose = true);
 
+	virtual void sendDestroyTo(SceneObject* player);
+
 	virtual void sendBaselinesTo(SceneObject* player);
 
 	virtual void sendToOwner(bool doClose = true);
@@ -718,7 +727,7 @@ public:
 
 	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool lockZone = true);
+	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
 
 	virtual void sendMessage(BasePacket* msg);
 
@@ -780,6 +789,8 @@ public:
 
 	SceneObject* getParent();
 
+	String getLoggingName();
+
 	bool isPlayerCreature();
 
 	bool isBuildingObject();
@@ -815,6 +826,8 @@ public:
 	void setMovementCounter(unsigned int count);
 
 	void setContainmentType(unsigned int type);
+
+	void setLoggingName(const String& name);
 
 	SceneObject* _this;
 
@@ -877,6 +890,8 @@ public:
 
 	void sendTo(SceneObject* player, bool doClose);
 
+	void sendDestroyTo(SceneObject* player);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
@@ -895,7 +910,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
 
 	void sendMessage(BasePacket* msg);
 
@@ -951,6 +966,8 @@ public:
 
 	SceneObject* getParent();
 
+	String getLoggingName();
+
 	bool isPlayerCreature();
 
 	bool isBuildingObject();
@@ -985,11 +1002,14 @@ public:
 
 	void setContainmentType(unsigned int type);
 
+	void setLoggingName(const String& name);
+
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
 	String _param0_getSlot__String_;
 	UnicodeString _param0_setObjectName__UnicodeString_;
+	String _param0_setLoggingName__String_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

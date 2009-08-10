@@ -70,6 +70,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 	gender = templateData->getIntField("gender");
 	species = templateData->getIntField("species");
+	slopeModPercent = templateData->getFloatField("slopeModPercent");
+	slopeModAngle = templateData->getFloatField("slopeModAngle");
 
 	stateBitmask = 0;
 	terrainNegotiation = 0.f;
@@ -87,6 +89,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 	moodID = 0;
 	performanceCounter = 0;
 	instrumentID = 0;
+
+	optionsBitmask = 0x80;
 
 	encumbrances = new Vector<int>(3, 1);
 
@@ -132,19 +136,25 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 	LuaObject accel = templateData->getObjectField("acceleration");
 
-	if (accel.getTableSize() > 0)
-		acceleration = accel.getFloatAt(1);
-	else
-		acceleration = 0;
+	if (accel.getTableSize() > 0) {
+		runAcceleration = accel.getFloatAt(1);
+		walkAcceleration = accel.getFloatAt(2);
+	} else {
+		runAcceleration = 0;
+		walkAcceleration = 0;
+	}
 
 	accel.pop();
 
 	LuaObject speedTempl = templateData->getObjectField("speed");
 
-	if (speedTempl.getTableSize() > 0)
-		speed = speedTempl.getFloatAt(1);
-	else
-		speed = 0;
+	if (speedTempl.getTableSize() > 0) {
+		runSpeed = speedTempl.getFloatAt(1);
+		walkSpeed = speedTempl.getFloatAt(2);
+	} else {
+		runSpeed = 0;
+		walkSpeed = 0;
+	}
 
 	speedTempl.pop();
 
@@ -176,6 +186,18 @@ void CreatureObjectImplementation::setWeaponID(uint64 objectID, bool notifyClien
 		msg->updateWeapon();
 		msg->close();
 
-		broadcastMessage(msg);
+		broadcastMessage(msg, true, true);
+	}
+}
+
+void CreatureObjectImplementation::setTargetID(uint64 targetID, bool notifyClient) {
+	CreatureObjectImplementation::targetID = targetID;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
+		msg->updateTarget();
+		msg->close();
+
+		broadcastMessage(msg, false, true);
 	}
 }

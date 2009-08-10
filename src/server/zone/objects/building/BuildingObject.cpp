@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -142,12 +144,25 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 		((BuildingObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-void BuildingObject::addCell(CellObject* cell) {
+void BuildingObject::sendDestroyTo(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->sendDestroyTo(player);
+}
+
+void BuildingObject::addCell(CellObject* cell) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(cell);
 
 		method.executeWithVoidReturn();
@@ -160,7 +175,7 @@ bool BuildingObject::isStaticBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -172,7 +187,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -185,7 +200,7 @@ void BuildingObject::setStaticBuilding(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -220,17 +235,17 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(78):  return staticBuilding;
+	// server/zone/objects/building/BuildingObject.idl(80):  return staticBuilding;
 	return staticBuilding;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(82):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(84):  return cells.get(idx);
 	return cells->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(86):  staticBuilding = value;
+	// server/zone/objects/building/BuildingObject.idl(88):  staticBuilding = value;
 	staticBuilding = value;
 }
 
@@ -273,15 +288,18 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 15:
-		addCell((CellObject*) inv->getObjectParameter());
+		sendDestroyTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertBoolean(isStaticBuilding());
+		addCell((CellObject*) inv->getObjectParameter());
 		break;
 	case 17:
-		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(isStaticBuilding());
 		break;
 	case 18:
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 19:
 		setStaticBuilding(inv->getBooleanParameter());
 		break;
 	default:
@@ -325,6 +343,10 @@ void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {
 
 void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	return ((BuildingObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
+	return ((BuildingObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
 void BuildingObjectAdapter::addCell(CellObject* cell) {

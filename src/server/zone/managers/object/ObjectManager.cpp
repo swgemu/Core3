@@ -226,6 +226,11 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		object = objectFactory.createObject(gameObjectType, &result);
 		object->setServerObjectCRC(objectCRC);
 
+	} catch (Exception& e) {
+		error("exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");
+		error(e.getMessage());
+
+		e.printStackTrace();
 	} catch (...) {
 		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");
 	}
@@ -253,8 +258,17 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
 
 		object->setObjectID(oid);
 
+		String logName = object->getLoggingName();
+
+		StringBuffer deployName;
+		deployName << logName << " 0x" << hex << oid;
+
+		object->setLoggingName(deployName.toString());
+
 		if (add(object) != NULL)
 			error("panic conflicted object id in object manager");
+
+		object->deploy(deployName.toString());
 
 		unlock();
 	} catch (Exception& e) {

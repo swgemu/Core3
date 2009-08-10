@@ -75,7 +75,7 @@ public:
 		// listenToID
 		insertLong(creo->getListenID());
 
-		insertFloat(creo->getSpeed());
+		insertFloat(creo->getRunSpeed());
 
 		insertFloat(1.00625f);
 
@@ -84,8 +84,8 @@ public:
 		// turn radius
 		insertFloat(1);
 
-		insertFloat(creo->getAcceleration());
-		insertFloat(0.0125f);
+		insertFloat(creo->getWalkSpeed());
+		insertFloat(creo->getSlopeModPercent());
 
 		//
 		insertInt(0);

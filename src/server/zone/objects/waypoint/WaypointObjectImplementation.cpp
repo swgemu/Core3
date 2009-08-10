@@ -14,6 +14,7 @@ WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateDa
 
 	//setObjectName("New Waypoint");
 
+	setLoggingName("WaypointObject");
 }
 
 unsigned int WaypointObjectImplementation::getPlanetCRC() {

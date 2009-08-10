@@ -78,7 +78,7 @@ void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
 
 	if (scno != _this)
-		scno->destroy(owner);
+		scno->sendDestroyTo(_this);
 }
 
 void PlayerCreatureImplementation::logout(bool doLock) {
@@ -198,8 +198,8 @@ String PlayerCreatureImplementation::getFirstName() {
     int idx = fullName.indexOf(' ');
 
     if (idx != -1) {
-       return fullName.subString(0, idx).toString();
+    	return fullName.subString(0, idx).toString();
     } else {
-        return fullName.toString();
+    	return fullName.toString();
     }
 }
