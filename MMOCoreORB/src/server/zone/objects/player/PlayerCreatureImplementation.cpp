@@ -65,7 +65,12 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
 
-	if (scno != _this)
+	if (parent != NULL) {
+		if (scno->isBuildingObject() && parent->isCellObject() && parent->getParent() == scno)
+			return;
+	}
+
+	if (scno != _this && scno != parent)
 		scno->sendTo(_this, true);
 }
 

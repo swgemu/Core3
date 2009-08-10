@@ -24,6 +24,8 @@ class CellObject : public SceneObject {
 public:
 	CellObject(LuaObject* templateData);
 
+	void sendBaselinesTo(SceneObject* player);
+
 	int getCellNumber();
 
 	void setCellNumber(int number);
@@ -54,6 +56,8 @@ class CellObjectImplementation : public SceneObjectImplementation {
 public:
 	CellObjectImplementation(LuaObject* templateData);
 
+	void sendBaselinesTo(SceneObject* player);
+
 	int getCellNumber();
 
 	void setCellNumber(int number);
@@ -78,6 +82,8 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendBaselinesTo(SceneObject* player);
 
 	int getCellNumber();
 

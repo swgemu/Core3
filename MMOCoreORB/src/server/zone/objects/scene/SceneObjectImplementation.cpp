@@ -152,7 +152,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	create(client);
 
 	if (parent != NULL) {
-		if (parent->isCell()) {
+		if (parent->isCellObject()) {
 			SceneObject* building = parent->getParent();
 			building->sendTo(player);
 		}
@@ -166,7 +166,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		object->sendTo(player);
 	}
 
-	if (parent == player) {
+	if (parent == player || isBuildingObject()) {
 		for (int j = 0; j < containerObjects->size(); ++j) {
 			SceneObject* containerObject = containerObjects->get(j);
 
@@ -249,7 +249,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool lockZ
 }
 
 void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
-	if (!isInQuadTree() || !parent->isCell())
+	if (!isInQuadTree() || !parent->isCellObject())
 		return;
 
 	if (building != parent->getParent()) {
@@ -271,7 +271,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	try {
 		zone->lock();
 
-        if (parent != NULL && parent->isCell()) {
+        if (parent != NULL && parent->isCellObject()) {
             CellObject* cell = (CellObject*)parent.get();
 
             removeFromBuilding((BuildingObject*)cell->getParent());
@@ -312,7 +312,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 				zone->remove(this);
 				insert = true;
 			} else {
-				if (parent->isCell()) {
+				if (parent->isCellObject()) {
 					BuildingObject* building = (BuildingObject*) parent->getParent();
 					SceneObject* newObj = newParent->getParent();
 
@@ -378,10 +378,10 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		sendToOwner(true);
 
-		if (parent == NULL || !parent->isCell()) {
+		if (parent == NULL || !parent->isCellObject()) {
 			zone->insert(this);
 			zone->inRange(this, 128);
-		} else if (parent->isCell()) {
+		} else if (parent->isCellObject()) {
             BuildingObject* building = (BuildingObject*) parent->getParent();
             insertToBuilding(building);
 		}
@@ -393,7 +393,7 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 }
 
 void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
-	if (isInQuadTree() || !parent->isCell())
+	if (isInQuadTree() || !parent->isCellObject())
 		return;
 
 	try {
@@ -425,7 +425,7 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 
 		ManagedReference<SceneObject*> par = parent;
 
-		if (parent != NULL && parent->isCell()) {
+		if (parent != NULL && parent->isCellObject()) {
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			par = parent;

@@ -218,11 +218,13 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isBuildingObject();
+
 	bool isWeaponObject();
 
 	bool isArmorObject();
 
-	bool isCell();
+	bool isCellObject();
 
 	void setPosition(float x, float z, float y);
 
@@ -780,11 +782,13 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isBuildingObject();
+
 	bool isWeaponObject();
 
 	bool isArmorObject();
 
-	bool isCell();
+	bool isCellObject();
 
 	void setPosition(float x, float z, float y);
 
@@ -949,11 +953,13 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isBuildingObject();
+
 	bool isWeaponObject();
 
 	bool isArmorObject();
 
-	bool isCell();
+	bool isCellObject();
 
 	void setPosition(float x, float z, float y);
 

@@ -123,7 +123,7 @@ public:
 		if (newParent == NULL)
 			return;
 
-		if (!newParent->isCell())
+		if (!newParent->isCellObject())
 			return;
 
 		object->setMovementCounter(movementCounter);
