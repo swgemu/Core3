@@ -167,9 +167,5 @@ void LoginServer::printInfo() {
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, true);
 
-	StringBuffer msg2;
-	msg2 << "Scheduler - size = " << taskManager->getScheduledTaskSize();
-	info(msg2, true);
-
 	unlock();
 }
