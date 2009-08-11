@@ -63,7 +63,8 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/tangible/weapon/WeaponObject.idl \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.idl \
 				server/zone/objects/tangible/wearables/WearableObject.idl \
-				server/zone/objects/tangible/wearables/ArmorObject.idl
+				server/zone/objects/tangible/wearables/ArmorObject.idl \
+				server/zone/objects/tangible/terminal/Terminal.idl
 
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)

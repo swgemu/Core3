@@ -2608,7 +2608,7 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 
 	detailedDescription = "@terminal_detail:door_security_terminal",
 
-	gameObjectType = 4,
+	gameObjectType = 16399,
 
 	locationReservationRadius = 0,
 	lookAtText = "@terminal_lookat:base_terminal",

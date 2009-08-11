@@ -192,6 +192,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int SHIPPINGTERMINAL = 0x4009;
 	public static final int SPACETERMINAL = 0x400B;
 	public static final int INTERACTIVETERMINAL = 0x400C;
+	public static final int NEWBIETUTORIALTERMINAL = 0x400F;
 
 	public static final int TOOL = 0x8000;
 	public static final int CRAFTINGTOOL = 0x8001;

@@ -42,12 +42,29 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.objects.tangible.terminal;
+include "engine/service/Message";
 
-import engine.lua.LuaObject;
-import server.zone.objects.tangible.TangibleObject;
+import "../../player/Player";
 
-class Terminal extends TangibleObject {
+import "../TangibleObject";
+
+interface Terminal implements TangibleObject {
+	Terminal(unsigned int objCRC, unsigned long oid, const UnicodeString n, const String tempn, 
+			float x, float z, float y, unsigned char terminaltype) {
+		super(oid, int tp);
+	}
 	
-	public native Terminal(LuaObject templateData);
+	int useObject(Player player);
+	
+	unsigned char getTerminalType();
+	
+	boolean isTravelTerminal();
+	boolean isGuildTerminal();
+	boolean isMissionTerminal();
+	boolean isCloningTerminal();
+	boolean isInsuranceTerminal();
+	boolean isBazaarTerminal();
+	boolean isBankTerminal();
+	boolean isStartingLocationTerminal();
+	boolean isPlayerStructureTerminal();
 }

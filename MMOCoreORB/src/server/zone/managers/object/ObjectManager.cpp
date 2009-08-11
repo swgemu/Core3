@@ -44,19 +44,19 @@ which carries forward this exception.
 
 #include "ObjectManager.h"
 
-#include "../../objects/creature/CreatureObject.h"
-#include "../../objects/intangible/IntangibleObject.h"
-#include "../../objects/tangible/Container.h"
-#include "../../objects/tangible/TangibleObject.h"
-#include "../../objects/player/PlayerCreature.h"
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/waypoint/WaypointObject.h"
-#include "../../objects/cell/CellObject.h"
-#include "../../objects/tangible/weapon/WeaponObject.h"
-#include "../../objects/tangible/weapon/MeleeWeaponObject.h"
-#include "../../objects/building/BuildingObject.h"
-#include "../../objects/tangible/wearables/ArmorObject.h"
-
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/tangible/Container.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
@@ -134,6 +134,9 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
+
+
+	objectFactory.registerObject<Terminal>(SceneObjectImplementation::NEWBIETUTORIALTERMINAL);
 
 
 	//temporary

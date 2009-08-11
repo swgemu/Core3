@@ -76,7 +76,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
-				server/zone/objects/tangible/wearables/ArmorObject.cpp
+				server/zone/objects/tangible/wearables/ArmorObject.cpp \
+				server/zone/objects/tangible/terminal/Terminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
@@ -122,5 +123,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
+		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		main.cpp
 		
