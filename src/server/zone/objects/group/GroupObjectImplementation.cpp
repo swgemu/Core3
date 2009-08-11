@@ -1,91 +1,33 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ * GroupObjectImplementation.cpp
+ *
+ *  Created on: 10/08/2009
+ *      Author: victor
+ */
 
-This File is part of Core3.
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
+#include "GroupObject.h"
+#include "server/zone/packets/group/GroupObjectMessage3.h"
+#include "server/zone/packets/group/GroupObjectMessage6.h"
+#include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+#include "server/zone/objects/player/PlayerCreature.h"
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+GroupObjectImplementation::GroupObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+	setLoggingName("GroupObject");
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
-
-#include "../../Zone.h"
-#include "../../ZoneClientSession.h"
-#include "../creature/CreatureObject.h"
-
-#include "../../packets.h"
-
-#include "GroupObjectImplementation.h"
-
-#include "../../../chat/ChatManager.h"
-
-GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader) : GroupObjectServant(oid, GROUP) {
-	objectCRC = 0x788CF998; //0x98, 0xF9, 0x8C, 0x78,
-
-	objectType = SceneObjectImplementation::GROUP;
+	leader = NULL;
+	groupMembers = new Vector<SceneObject*>();
 
 	listCount = 0;
 
-	leader = Leader;
-
-	groupMembers.add(Leader);
-	addSquadLeaderBonuses(Leader);
-
-	StringBuffer name;
-	name << "Group :" << oid;
-	setLoggingName(name.toString());
-
-	setLogging(false);
-	setGlobalLogging(true);
-
-	startChannel();
+	groupLevel = 0;
 }
 
-void GroupObjectImplementation::startChannel() {
-	ChatManager* chatManager = leader->getZone()->getChatManager();
-
-	groupChannel = chatManager->createGroupRoom(objectID, leader);
-}
-
-void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
+void GroupObjectImplementation::sendTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
-
-	create(client);
 
 	BaseMessage* grup3 = new GroupObjectMessage3((GroupObject*) _this);
 	client->sendMessage(grup3);
@@ -93,17 +35,14 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 	BaseMessage* grup6 = new GroupObjectMessage6((GroupObject*) _this);
 	client->sendMessage(grup6);
 
-	if (doClose)
-		close(client);
-
-	if (groupChannel != NULL)
-		groupChannel->sendTo(player);
+	if (player->isPlayerCreature() && groupChannel != NULL)
+		groupChannel->sendTo((PlayerCreature*)player);
 }
 
-void GroupObjectImplementation::addPlayer(Player* player) {
+void GroupObjectImplementation::addPlayer(SceneObject* player) {
 	int index = groupMembers.size();
 
-	groupMembers.add(player);
+	groupMembers->add(player);
 	calcGroupLevel();
 	addSquadLeaderBonuses(player);
 
@@ -124,21 +63,28 @@ void GroupObjectImplementation::calcGroupLevel() {
 	groupLevel = 0;
 
 	for (int i = 0; i < getGroupSize(); i++) {
-		int currentlevel = groupLevel - getGroupSize();
-		int memberlevel = getGroupMember(i)->getLevel();
-		if (memberlevel > currentlevel)
-			groupLevel = memberlevel + getGroupSize();
+		SceneObject* member = getGroupMember(i);
+
+		if (member->isCreatureObject()) {
+			CreatureObject* creature = (CreatureObject*) member;
+
+			int currentlevel = groupLevel - getGroupSize();
+			int memberlevel = creature->getLevel();
+
+			if (memberlevel > currentlevel)
+				groupLevel = memberlevel + getGroupSize();
+		}
 	}
 }
 
-void GroupObjectImplementation::removePlayer(Player* player) {
-	int size = groupMembers.size();
+void GroupObjectImplementation::removePlayer(SceneObject* player) {
+	int size = groupMembers->size();
 
 	for (int i = 0; i < size; i++) {
-		Player* play = groupMembers.get(i);
+		SceneObject* play = groupMembers->get(i);
 
 		if (play == player) {
-			groupMembers.remove(i);
+			groupMembers->remove(i);
 
 			calcGroupLevel();
 			removeSquadLeaderBonuses(play);
@@ -154,15 +100,15 @@ void GroupObjectImplementation::removePlayer(Player* player) {
 		}
 	}
 
-	if ((player == leader) && groupMembers.size() > 0)
-		leader = groupMembers.get(0);
+	if ((player == leader) && groupMembers->size() > 0)
+		leader = groupMembers->get(0);
 
 	calcGroupLevel();
 }
 
 bool GroupObjectImplementation::hasMember(Player* player) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+	for (int i = 0; i < groupMembers->size(); i++) {
+		SceneObject* play = groupMembers->get(i);
 
 		if (play == player)
 			return true;
@@ -172,15 +118,20 @@ bool GroupObjectImplementation::hasMember(Player* player) {
 
 void GroupObjectImplementation::disband() {
 	// this locked
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+	for (int i = 0; i < groupMembers->size(); ++i) {
+		SceneObject* play = groupMembers->get(i);
+
 		try {
 			play->wlock((GroupObject*) _this);
 
-			play->removeChatRoom(groupChannel);
+			if (play->isPlayerCreature()) {
+				PlayerCreature* playerCreature = (PlayerCreature*) play;
+				playerCreature->removeChatRoom(groupChannel);
 
-			play->setGroup(NULL);
-			play->updateGroupId(0);
+				playerCreature->setGroup(NULL);
+				playerCreature->updateGroupId(0);
+			}
+
 			removeSquadLeaderBonuses(play);
 
 			BaseMessage* msg = new SceneObjectDestroyMessage((GroupObject*) _this);
@@ -207,88 +158,91 @@ void GroupObjectImplementation::disband() {
 		groupChannel = NULL;
 	}
 
-	groupMembers.removeAll();
+	groupMembers->removeAll();
 }
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+	for (int i = 0; i < groupMembers->size(); i++) {
+		Player* play = groupMembers->get(i);
 
 		play->sendMessage(msg->clone());
 	}
 
-	delete msg;
+	msg->finalize();
 }
 
-void GroupObjectImplementation::sendSystemMessage(Player* player,
+void GroupObjectImplementation::sendSystemMessage(SceneObject* player,
 		const String& message, bool sendToSelf) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+	for (int i = 0; i < groupMembers->size(); i++) {
+		SceneObject* play = groupMembers->get(i);
 
-		if (play != player) {
+		if (play->isPlayerCreature()) {
+			SceneObject* playerCreature = (PlayerCreature*) play;
 
-			play->sendSystemMessage(message);
-
-		} else {
-
-			if (sendToSelf)
-				play->sendSystemMessage(message);
+			if (playerCreature != player) {
+				playerCreature->sendSystemMessage(message);
+			} else {
+				if (sendToSelf)
+					playerCreature->sendSystemMessage(message);
+			}
 		}
 	}
 }
 
-void GroupObjectImplementation::sendSystemMessage(Player* player,
+void GroupObjectImplementation::sendSystemMessage(SceneObject* player,
 		const String& file, const String& str, uint64 targetid, bool sendToSelf) {
-	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+	for (int i = 0; i < groupMembers->size(); i++) {
+		SceneObject* play = groupMembers->get(i);
 
-		if (play != player) {
+		if (play->isPlayerCreature()) {
+			SceneObject* playerCreature = (PlayerCreature*) play;
 
-			play->sendSystemMessage(file, str, targetid);
-
-		} else {
-
-			if (sendToSelf)
-				play->sendSystemMessage(file, str, targetid);
+			if (playerCreature != player) {
+				playerCreature->sendSystemMessage(file, str, targetid);
+			} else {
+				if (sendToSelf)
+					playerCreature->sendSystemMessage(file, str, targetid);
+			}
 		}
 	}
 }
 
-void GroupObjectImplementation::sendSystemMessage(Player* player,
+void GroupObjectImplementation::sendSystemMessage(SceneObject* player,
 		const String& file, const String& str, StfParameter* param,
 		bool sendToSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		Player* play = groupMembers.get(i);
+		SceneObject* play = groupMembers.get(i);
 
-		if (play != player) {
+		if (play->isPlayerCreature()) {
+			SceneObject* playerCreature = (PlayerCreature*) play;
 
-			play->sendSystemMessage(file, str, param);
-
-		} else {
-
-			if (sendToSelf)
-				play->sendSystemMessage(file, str, param);
+			if (playerCreature != player) {
+				playerCreature->sendSystemMessage(file, str, param);
+			} else {
+				if (sendToSelf)
+					playerCreature->sendSystemMessage(file, str, param);
+			}
 		}
 	}
 }
 
-void GroupObjectImplementation::makeLeader(Player* player) {
-	if (groupMembers.size() < 2)
+void GroupObjectImplementation::makeLeader(SceneObject* player) {
+	if (groupMembers->size() < 2)
 		return;
 
-	for(int i = 0; i < groupMembers.size(); i++) {
-		removeSquadLeaderBonuses(groupMembers.get(i));
+	for (int i = 0; i < groupMembers->size(); ++i) {
+		removeSquadLeaderBonuses(groupMembers->get(i));
 	}
 
-	Player* temp = leader;
+	SceneObject* temp = leader;
 	leader = player;
 	int i = 0;
-	for (; i < groupMembers.size(); i++) {
-		addSquadLeaderBonuses(groupMembers.get(i));
+	for (; i < groupMembers->size(); i++) {
+		addSquadLeaderBonuses(groupMembers->get(i));
 
-		if (groupMembers.get(i) == player) {
-			groupMembers.set(0, player);
-			groupMembers.set(i, temp);
+		if (groupMembers->get(i) == player) {
+			groupMembers->set(0, player);
+			groupMembers->set(i, temp);
 			break;
 		}
 	}
@@ -300,7 +254,7 @@ void GroupObjectImplementation::makeLeader(Player* player) {
 	broadcastMessage(grp);
 }
 
-float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
+float GroupObjectImplementation::getRangerBonusForHarvesting(SceneObject* player) {
 	Player* temp;
 	String skillBox = "outdoors_ranger_novice";
 	String skillBox2 = "outdoors_ranger_master";

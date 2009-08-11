@@ -67,6 +67,20 @@ class ChatManager;
 
 using namespace server::chat;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+
+class ObjectController;
+
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -170,6 +184,8 @@ public:
 
 	ObjectManager* getObjectManager();
 
+	ObjectController* getObjectController();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 	unsigned long long getNextID(bool doLock = true);
@@ -225,6 +241,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<PlayerManager* > playerManager;
 
 	ManagedReference<ChatManager* > chatManager;
+
+	ManagedReference<ObjectController* > objectController;
 
 	int totalSentPackets;
 
@@ -335,6 +353,8 @@ public:
 
 	ObjectManager* getObjectManager();
 
+	ObjectController* getObjectController();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 	unsigned long long getNextID(bool doLock = true);
@@ -443,6 +463,8 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
+
+	ObjectController* getObjectController();
 
 	unsigned long long getNextCreatureID(bool doLock);
 

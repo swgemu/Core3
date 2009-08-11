@@ -47,17 +47,17 @@ using namespace server::zone::packets;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace command {
+namespace objects {
+namespace tangible {
 
-class CommandQueueManager;
+class TangibleObject;
 
-} // namespace command
-} // namespace managers
+} // namespace tangible
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::command;
+using namespace server::zone::objects::tangible;
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
@@ -65,7 +65,7 @@ using namespace server::zone::managers::command;
 
 #include "engine/log/Logger.h"
 
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "engine/core/ManagedObject.h"
 
 namespace server {
 namespace zone {
@@ -85,8 +85,6 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
-
-	CommandQueueManager* getCommandQueueManager();
 
 protected:
 	PlayerManager(DummyConstructorParameter* param);
@@ -115,8 +113,6 @@ class PlayerManagerImplementation : public ManagedObjectImplementation, public L
 
 	ObjectManager* objectManager;
 
-	ManagedReference<CommandQueueManager* > commandQueueManager;
-
 public:
 	PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv);
 
@@ -129,8 +125,6 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
-
-	CommandQueueManager* getCommandQueueManager();
 
 	PlayerManager* _this;
 
@@ -158,8 +152,6 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
-
-	CommandQueueManager* getCommandQueueManager();
 
 protected:
 	String _param0_checkExistentNameInDatabase__String_;

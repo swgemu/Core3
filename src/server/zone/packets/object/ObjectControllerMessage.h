@@ -50,6 +50,8 @@ which carries forward this exception.
 
 #include "../MessageCallback.h"
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 class ObjectControllerMessage : public BaseMessage {
 public:
 	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true);
@@ -66,6 +68,8 @@ class ObjectControllerMessageCallback : public MessageCallback {
 public:
 	ObjectControllerMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
 		MessageCallback(client, server) {
+
+		objectControllerCallback = NULL;
 
 	}
 
@@ -86,6 +90,7 @@ public:
 	inline uint64 getObjectID() {
 		return objectID;
 	}
+
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

@@ -42,57 +42,86 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/service/proto/BaseMessage";
+package server.zone.objects.group;
 
-import "../scene/SceneObject";
+import server.zone.objects.scene.SceneObject;
+import system.util.Vector;
+import server.chat.room.ChatRoom;
+import server.zone.packets.object.StfParameter;
+import engine.lua.LuaObject;
+import engine.service.proto.BaseMessage;
 
-import "../player/Player";
 
-import "../../../chat/room/ChatRoom";
+class GroupObject extends SceneObject {
+	SceneObject leader;
+	
+	Vector<SceneObject> groupMembers;
+	unsigned int listCount;
+	
+	ChatRoom groupChannel;
+	
+	int groupLevel;
+	
+	public native GroupObject(LuaObject templateData);
+	
+	public native void sendBaselinesTo(SceneObject player);
+	public native void broadcastMessage(BaseMessage msg);
 
-include "../../packets/object/StfParameter";
+	public native void sendSystemMessage(SceneObject player, final string message, boolean sendToSelf = false);
+	public native void sendSystemMessage(SceneObject player, final string file, final string str, unsigned long targetid = 0, boolean sendToSelf = false);
+	public native void sendSystemMessage(SceneObject player, final string file, final string str, StfParameter param, boolean sendToSelf = false);
 
-interface GroupObject implements SceneObject {
-	GroupObject(unsigned long oid, Player leader) {
-		super(oid, int type);
+	public native void addSceneObject(SceneObject player);
+	public native void removeSceneObject(SceneObject player);
+
+	public native void disband();
+	public native void makeLeader(SceneObject player);
+
+	public native boolean hasMember(SceneObject player);
+
+	public native void startChannel();
+
+	public native float getRangerBonusForHarvesting(SceneObject player);
+
+	public native void addSquadLeaderBonuses(CreatureObject groupMember);
+	public native void removeSquadLeaderBonuses(CreatureObject groupMember);
+
+	public native void calcGroupLevel();
+
+	public int getGroupLevel() {
+		return groupLevel;
 	}
 
-	void sendTo(Player player);
+	public ChatRoom getGroupChannel() {
+		return groupChannel;
+	}
 
-	void broadcastMessage(BaseMessage msg);
-	
-	void sendSystemMessage(Player player, const String message, boolean sendToSelf = false);
-	void sendSystemMessage(Player player, const String file, const String str, unsigned long targetid = 0, boolean sendToSelf = false);
-	void sendSystemMessage(Player player, const String file, const String str, StfParameter param, boolean sendToSelf = false);
+	public int getListSize() {
+		return groupMembers.size();
+	}
 
-	void addPlayer(Player player);
-	void removePlayer(Player player);
+	public int getGroupSize() {
+		return groupMembers.size();
+	}
 
-	void disband();
-	void makeLeader(Player player);
+	public SceneObject getGroupMember(int index) {
+		return groupMembers.get(index);
+	}
 
-	boolean hasMember(Player player);
+	void addMember(SceneObject player) {
+		groupMembers.add(player);
+	}
 
-	void startChannel();
+	public SceneObject getLeader() {
+		return leader;
+	}
 
-	ChatRoom getGroupChannel();
+	public unsigned int getListCount() {
+		return listCount;
+	}
 
-	int getListSize();
+	public unsigned int getNewListCount(int cnt) {
+		return listCount += cnt;
+	}
 
-	int getGroupSize();
-
-	Player getGroupMember(int index);
-
-	void addMember(Player player);
-
-	Player getLeader();
-
-	unsigned int getListCount();
-	unsigned int getNewListCount(int cnt);
-
-	float getRangerBonusForHarvesting(Player player);
-
-	void calcGroupLevel();
-	
-	int getGroupLevel();
 }

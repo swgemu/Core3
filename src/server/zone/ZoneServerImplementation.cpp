@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "../db/ServerDatabase.h"
 
 #include "managers/object/ObjectManager.h"
+#include "managers/objectcontroller/ObjectController.h"
 #include "managers/player/PlayerManager.h"
 
 #include "server/chat/ChatManager.h"
@@ -71,6 +72,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	objectManager = NULL;
 	playerManager = NULL;
 	chatManager = NULL;
+	objectController = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -377,6 +379,9 @@ void ZoneServerImplementation::init() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
+
+	objectController = new ObjectController(processor);
+	objectController->deploy("ObjectController");
 
 	playerManager = new PlayerManager(objectManager, processor);
 	playerManager->deploy("PlayerManager");

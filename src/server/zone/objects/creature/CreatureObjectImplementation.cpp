@@ -51,6 +51,9 @@ which carries forward this exception.
 #include "server/zone/packets/creature/CreatureObjectMessage4.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/object/CommandQueueRemove.h"
+
 
 
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
@@ -176,6 +179,46 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this);
 	player->sendMessage(msg6);
+}
+
+void CreatureObjectImplementation::sendSystemMessage(const String& message) {
+	if (!isPlayerCreature())
+		return;
+
+	UnicodeString msg(message);
+	sendSystemMessage(msg);
+}
+
+void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& str, uint64 targetid) {
+	if (!isPlayerCreature())
+		return;
+
+	ChatSystemMessage* msg = new ChatSystemMessage(file, str, targetid);
+	sendMessage(msg);
+}
+
+void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& str, StfParameter* param) {
+	if (!isPlayerCreature())
+		return;
+
+	ChatSystemMessage* msg = new ChatSystemMessage(file, str, param);
+	sendMessage(msg);
+}
+
+void CreatureObjectImplementation::sendSystemMessage(UnicodeString& message) {
+	if (!isPlayerCreature())
+		return;
+
+	ChatSystemMessage* smsg = new ChatSystemMessage(message);
+	sendMessage(smsg);
+}
+
+void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr, float timer, uint32 tab1, uint32 tab2) {
+	if (!isPlayerCreature())
+		return;
+
+	BaseMessage* queuemsg = new CommandQueueRemove(_this, actioncntr, timer, tab1, tab2);
+	sendMessage(queuemsg);
 }
 
 void CreatureObjectImplementation::setWeaponID(uint64 objectID, bool notifyClient) {

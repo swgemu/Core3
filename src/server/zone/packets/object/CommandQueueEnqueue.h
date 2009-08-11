@@ -48,8 +48,8 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
 #include "../MessageCallback.h"
 
-#include "server/zone/managers/command/CommandQueueManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/objectcontroller/command/CommandQueueManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class CommandQueueEnqueue : public ObjectControllerMessage {
 public:
@@ -70,10 +70,14 @@ class CommandQueueEnqueueCallback : public MessageCallback {
 	uint64 targetID;
 
 	UnicodeString arguments;
+
+	ObjectControllerMessageCallback* objectControllerMain;
+
 public:
 	CommandQueueEnqueueCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 
+		objectControllerMain = objectControllerCallback;
 	}
 
 	void parse(Message* message) {
@@ -93,8 +97,8 @@ public:
 		if (player == NULL)
 			return;
 
-		PlayerManager* playerManager = server->getPlayerManager();
-		CommandQueueManager* commandQueueManager = playerManager->getCommandQueueManager();
+		ObjectController* objectController = server->getZoneServer()->getObjectController();
+		CommandQueueManager* commandQueueManager = objectController->getCommandQueueManager();
 
 		QueueCommand* sc = commandQueueManager->getQueueCommand(actionCRC);
 
@@ -105,7 +109,7 @@ public:
 		if (sc != NULL) {
 			player->info("activating queue command");
 
-			bool completed = sc->doSlashCommand(player, targetID, arguments);
+			bool completed = sc->doQueueCommand(player, targetID, arguments);
 
 			if (!completed)
 				sc->onFail(actionCount, player);

@@ -509,6 +509,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == PLAYERCREATURE;
 	}
 	
+	public boolean isCreatureObject() {
+		return gameObjectType & CREATURE;
+	}
+	
 	public boolean isBuildingObject() {
 		return gameObjectType & BUILDING;
 	}

@@ -47,6 +47,7 @@ package server.zone.objects.creature;
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
+import server.zone.packets.object.StfParameter;
 
 //import server.zone.objects.player.professions.SkillBox;
 
@@ -133,7 +134,13 @@ class CreatureObject extends TangibleObject {
 
 	public native CreatureObject(LuaObject templateData);
 	
+	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+
 	public native void sendBaselinesTo(SceneObject player);
+	public native void sendSystemMessage(final string message);
+	public native void sendSystemMessage(unicode message);
+	public native void sendSystemMessage(final string file, final string str, unsigned long targetid = 0);
+	public local native void sendSystemMessage(final string file, final string str, StfParameter param);
 	
 	public int getBankCredits() {
 		return bankCredits;

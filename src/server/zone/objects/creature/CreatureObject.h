@@ -9,6 +9,20 @@
 
 #include "engine/core/ManagedReference.h"
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class StfParameter;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -26,7 +40,17 @@ class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(LuaObject* templateData);
 
+	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendSystemMessage(const String& message);
+
+	void sendSystemMessage(UnicodeString& message);
+
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
+
+	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
 	int getBankCredits();
 
@@ -248,7 +272,17 @@ public:
 
 	CreatureObjectImplementation(LuaObject* templateData);
 
+	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendSystemMessage(const String& message);
+
+	void sendSystemMessage(UnicodeString& message);
+
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
+
+	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
 	int getBankCredits();
 
@@ -355,7 +389,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
+
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendSystemMessage(const String& message);
+
+	void sendSystemMessage(UnicodeString& message);
+
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
 
 	int getBankCredits();
 
@@ -441,6 +483,11 @@ public:
 
 	void setTargetID(unsigned long long targetID, bool notifyClient);
 
+protected:
+	String _param0_sendSystemMessage__String_;
+	UnicodeString _param0_sendSystemMessage__UnicodeString_;
+	String _param0_sendSystemMessage__String_String_long_;
+	String _param1_sendSystemMessage__String_String_long_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

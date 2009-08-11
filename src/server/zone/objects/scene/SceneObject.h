@@ -222,6 +222,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isCreatureObject();
+
 	bool isBuildingObject();
 
 	bool isWeaponObject();
@@ -793,6 +795,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isCreatureObject();
+
 	bool isBuildingObject();
 
 	bool isWeaponObject();
@@ -969,6 +973,8 @@ public:
 	String getLoggingName();
 
 	bool isPlayerCreature();
+
+	bool isCreatureObject();
 
 	bool isBuildingObject();
 
