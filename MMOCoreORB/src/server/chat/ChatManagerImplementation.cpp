@@ -99,13 +99,13 @@ void ChatManagerImplementation::initiateRooms() {
 	addRoom(nabooPlanetary);
 }
 
-void ChatManagerImplementation::wlock() {
+/*void ChatManagerImplementation::wlock() {
 	ManagedObjectImplementation::wlock(true);
 }
 
 void ChatManagerImplementation::unlock() {
 	ManagedObjectImplementation::unlock(true);
-}
+}*/
 
 void ChatManagerImplementation::destroyRooms() {
 	wlock();

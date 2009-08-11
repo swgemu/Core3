@@ -96,12 +96,6 @@ public:
 
 	void error(const String& msg);
 
-	void wlock(bool doLock = true);
-
-	void wlock(SceneObject* crossLock);
-
-	void unlock(bool doLock = true);
-
 	int inRangeObjectCount();
 
 	QuadTreeEntry* getInRangeObject(int index);
@@ -669,12 +663,6 @@ public:
 
 	void error(const String& msg);
 
-	void wlock(bool doLock = true);
-
-	void wlock(SceneObject* crossLock);
-
-	void unlock(bool doLock = true);
-
 	int inRangeObjectCount();
 
 	QuadTreeEntry* getInRangeObject(int index);
@@ -857,12 +845,6 @@ public:
 	void info(const String& msg, bool forced);
 
 	void error(const String& msg);
-
-	void wlock(bool doLock);
-
-	void wlock(SceneObject* crossLock);
-
-	void unlock(bool doLock);
 
 	int inRangeObjectCount();
 

@@ -197,7 +197,7 @@ void SceneObjectImplementation::sendAttributeListTo(SceneObject* object) {
 	object->sendMessage(alm);
 }
 
-void SceneObjectImplementation::wlock(bool doLock) {
+/*void SceneObjectImplementation::wlock(bool doLock) {
 	ManagedObjectImplementation::wlock(doLock);
 }
 
@@ -207,7 +207,7 @@ void SceneObjectImplementation::wlock(SceneObject* crossLock) {
 
 void SceneObjectImplementation::unlock(bool doLock) {
 	ManagedObjectImplementation::unlock(doLock);
-}
+}*/
 
 void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	if (client == NULL)

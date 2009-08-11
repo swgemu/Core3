@@ -105,13 +105,13 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 	//parent->addSubRoom((ChatRoom*) _this);
 }
 
-void ChatRoomImplementation::wlock() {
+/*void ChatRoomImplementation::wlock() {
 	ManagedObjectImplementation::wlock(true);
 }
 
 void ChatRoomImplementation::unlock() {
 	ManagedObjectImplementation::unlock(true);
-}
+}*/
 
 void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
