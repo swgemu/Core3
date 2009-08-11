@@ -104,8 +104,8 @@ class PlayerCreature extends CreatureObject {
 	
 	public native PlayerCreature(LuaObject templateData);
 	
-	public native void notifyInsert(QuadTreeEntry entry);
-	public native void notifyDissapear(QuadTreeEntry entry);
+	public local native void notifyInsert(QuadTreeEntry entry);
+	public local native void notifyDissapear(QuadTreeEntry entry);
 	
 	public native void disconnect(boolean closeClient, boolean doLock);
 	

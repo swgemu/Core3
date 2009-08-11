@@ -35,26 +35,16 @@ PlayerCreature::~PlayerCreature() {
 
 void PlayerCreature::notifyInsert(QuadTreeEntry* entry) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(entry);
-
-		method.executeWithVoidReturn();
 	} else
 		((PlayerCreatureImplementation*) _impl)->notifyInsert(entry);
 }
 
 void PlayerCreature::notifyDissapear(QuadTreeEntry* entry) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(entry);
-
-		method.executeWithVoidReturn();
 	} else
 		((PlayerCreatureImplementation*) _impl)->notifyDissapear(entry);
 }
@@ -64,7 +54,7 @@ void PlayerCreature::disconnect(bool closeClient, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 		method.addBooleanParameter(closeClient);
 		method.addBooleanParameter(doLock);
 
@@ -78,7 +68,7 @@ void PlayerCreature::unload() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -90,7 +80,7 @@ void PlayerCreature::logout(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 8);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -103,7 +93,7 @@ void PlayerCreature::activateRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 9);
 
 		method.executeWithVoidReturn();
 	} else
@@ -115,7 +105,7 @@ void PlayerCreature::doRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 10);
 
 		method.executeWithVoidReturn();
 	} else
@@ -127,7 +117,7 @@ void PlayerCreature::sendMessage(BasePacket* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -140,7 +130,7 @@ void PlayerCreature::sendToOwner(bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 12);
 		method.addBooleanParameter(doClose);
 
 		method.executeWithVoidReturn();
@@ -153,7 +143,7 @@ bool PlayerCreature::isOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -165,7 +155,7 @@ bool PlayerCreature::isOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -177,7 +167,7 @@ bool PlayerCreature::isLoading() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -189,7 +179,7 @@ bool PlayerCreature::isLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -201,7 +191,7 @@ bool PlayerCreature::isLoggingIn() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -213,7 +203,7 @@ bool PlayerCreature::isLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -225,7 +215,7 @@ ZoneClientSession* PlayerCreature::getClient() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 19);
 
 		return (ZoneClientSession*) method.executeWithObjectReturn();
 	} else
@@ -237,7 +227,7 @@ byte PlayerCreature::getRaceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithByteReturn();
 	} else
@@ -249,7 +239,7 @@ String PlayerCreature::getFirstName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 21);
 
 		method.executeWithAsciiReturn(_return_getFirstName);
 		return _return_getFirstName;
@@ -262,7 +252,7 @@ void PlayerCreature::setClient(ZoneClientSession* cli) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(cli);
 
 		method.executeWithVoidReturn();
@@ -275,7 +265,7 @@ void PlayerCreature::setBiography(const UnicodeString& bio) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 23);
 		method.addUnicodeParameter(bio);
 
 		method.executeWithVoidReturn();
@@ -288,7 +278,7 @@ void PlayerCreature::setRaceID(byte id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 24);
 		method.addByteParameter(id);
 
 		method.executeWithVoidReturn();
@@ -301,7 +291,7 @@ void PlayerCreature::setOffline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 25);
 
 		method.executeWithVoidReturn();
 	} else
@@ -313,7 +303,7 @@ void PlayerCreature::setLinkDead() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 26);
 
 		method.executeWithVoidReturn();
 	} else
@@ -325,7 +315,7 @@ void PlayerCreature::setOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 27);
 
 		method.executeWithVoidReturn();
 	} else
@@ -337,7 +327,7 @@ void PlayerCreature::setLoggingOut() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 28);
 
 		method.executeWithVoidReturn();
 	} else
@@ -349,7 +339,7 @@ void PlayerCreature::clearDisconnectEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 29);
 
 		method.executeWithVoidReturn();
 	} else
@@ -361,7 +351,7 @@ void PlayerCreature::clearRecoveryEvent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 30);
 
 		method.executeWithVoidReturn();
 	} else
@@ -373,7 +363,7 @@ void PlayerCreature::addChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -386,7 +376,7 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -566,90 +556,84 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		notifyInsert((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 7:
-		notifyDissapear((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 8:
 		disconnect(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case 9:
+	case 7:
 		unload();
 		break;
-	case 10:
+	case 8:
 		logout(inv->getBooleanParameter());
 		break;
-	case 11:
+	case 9:
 		activateRecovery();
 		break;
-	case 12:
+	case 10:
 		doRecovery();
 		break;
-	case 13:
+	case 11:
 		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
-	case 14:
+	case 12:
 		sendToOwner(inv->getBooleanParameter());
 		break;
-	case 15:
+	case 13:
 		resp->insertBoolean(isOnline());
 		break;
-	case 16:
+	case 14:
 		resp->insertBoolean(isOffline());
 		break;
-	case 17:
+	case 15:
 		resp->insertBoolean(isLoading());
 		break;
-	case 18:
+	case 16:
 		resp->insertBoolean(isLinkDead());
 		break;
-	case 19:
+	case 17:
 		resp->insertBoolean(isLoggingIn());
 		break;
-	case 20:
+	case 18:
 		resp->insertBoolean(isLoggingOut());
 		break;
-	case 21:
+	case 19:
 		resp->insertLong(getClient()->_getObjectID());
 		break;
-	case 22:
+	case 20:
 		resp->insertByte(getRaceID());
 		break;
-	case 23:
+	case 21:
 		resp->insertAscii(getFirstName());
 		break;
-	case 24:
+	case 22:
 		setClient((ZoneClientSession*) inv->getObjectParameter());
 		break;
-	case 25:
+	case 23:
 		setBiography(inv->getUnicodeParameter(_param0_setBiography__UnicodeString_));
 		break;
-	case 26:
+	case 24:
 		setRaceID(inv->getByteParameter());
 		break;
-	case 27:
+	case 25:
 		setOffline();
 		break;
-	case 28:
+	case 26:
 		setLinkDead();
 		break;
-	case 29:
+	case 27:
 		setOnline();
 		break;
-	case 30:
+	case 28:
 		setLoggingOut();
 		break;
-	case 31:
+	case 29:
 		clearDisconnectEvent();
 		break;
-	case 32:
+	case 30:
 		clearRecoveryEvent();
 		break;
-	case 33:
+	case 31:
 		addChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
-	case 34:
+	case 32:
 		removeChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	default:
@@ -657,14 +641,6 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	}
 
 	return resp;
-}
-
-void PlayerCreatureAdapter::notifyInsert(QuadTreeEntry* entry) {
-	return ((PlayerCreatureImplementation*) impl)->notifyInsert(entry);
-}
-
-void PlayerCreatureAdapter::notifyDissapear(QuadTreeEntry* entry) {
-	return ((PlayerCreatureImplementation*) impl)->notifyDissapear(entry);
 }
 
 void PlayerCreatureAdapter::disconnect(bool closeClient, bool doLock) {

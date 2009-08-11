@@ -60,15 +60,15 @@ class BuildingObject extends TangibleObject implements QuadTree {
 
 	public native BuildingObject(LuaObject templateData);
 	
-	public native void notifyInsert(QuadTreeEntry obj);
-	public native void notifyDissapear(QuadTreeEntry obj);
+	public local native void notifyInsert(QuadTreeEntry obj);
+	public local native void notifyDissapear(QuadTreeEntry obj);
 
 	public native void notifyInsertToZone(SceneObject object);
 	
-	public native void insert(QuadTreeEntry obj);
-	public native void remove(QuadTreeEntry obj);
-	public native void update(QuadTreeEntry obj);
-	public native void inRange(QuadTreeEntry obj, float range);
+	public local native void insert(QuadTreeEntry obj);
+	public local native void remove(QuadTreeEntry obj);
+	public local native void update(QuadTreeEntry obj);
+	public local native void inRange(QuadTreeEntry obj, float range);
 	
 	public native void sendTo(SceneObject player, boolean doClose = true);
 	public native void sendBaselinesTo(SceneObject player);
