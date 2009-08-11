@@ -90,8 +90,8 @@ class ChatManager extends ManagedObject {
 	public native void addRoom(ChatRoom channel);
 	public native void removeRoom(ChatRoom channel);
 	
-	public native void wlock();
-	public native void unlock();
+	/*public native void wlock();
+	public native void unlock();*/
 	
 	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
 	

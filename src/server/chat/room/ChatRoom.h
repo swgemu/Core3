@@ -51,10 +51,6 @@ public:
 
 	ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid);
 
-	void wlock();
-
-	void unlock();
-
 	void sendTo(PlayerCreature* player);
 
 	void sendDestroyTo(PlayerCreature* player);
@@ -177,10 +173,6 @@ public:
 
 	ChatRoomImplementation(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid);
 
-	void wlock();
-
-	void unlock();
-
 	void sendTo(PlayerCreature* player);
 
 	void sendDestroyTo(PlayerCreature* player);
@@ -269,10 +261,6 @@ public:
 	ChatRoomAdapter(ChatRoomImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void wlock();
-
-	void unlock();
 
 	void sendTo(PlayerCreature* player);
 

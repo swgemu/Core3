@@ -300,10 +300,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		Logger.error(msg);
 	}
 	
-	public native void wlock(boolean doLock = true);
+	/*public native void wlock(boolean doLock = true);
 	public native void wlock(SceneObject crossLock);
 	
-	public native void unlock(boolean doLock = true);
+	public native void unlock(boolean doLock = true);*/
 	
 	public int inRangeObjectCount() {
 		return QuadTreeEntry.inRangeObjectCount();

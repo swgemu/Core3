@@ -32,36 +32,12 @@ ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
 ChatRoom::~ChatRoom() {
 }
 
-void ChatRoom::wlock() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-
-		method.executeWithVoidReturn();
-	} else
-		((ChatRoomImplementation*) _impl)->wlock();
-}
-
-void ChatRoom::unlock() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithVoidReturn();
-	} else
-		((ChatRoomImplementation*) _impl)->unlock();
-}
-
 void ChatRoom::sendTo(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -74,7 +50,7 @@ void ChatRoom::sendDestroyTo(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -87,7 +63,7 @@ void ChatRoom::addSubRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -100,7 +76,7 @@ void ChatRoom::removeSubRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -113,7 +89,7 @@ ChatRoom* ChatRoom::getSubRoom(int i) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(i);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -126,7 +102,7 @@ ChatRoom* ChatRoom::getSubRoom(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(name);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -139,7 +115,7 @@ void ChatRoom::addPlayer(PlayerCreature* player, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -153,7 +129,7 @@ void ChatRoom::removePlayer(PlayerCreature* player, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -167,7 +143,7 @@ void ChatRoom::removePlayer(const String& player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(player);
 
 		method.executeWithVoidReturn();
@@ -180,7 +156,7 @@ void ChatRoom::broadcastMessage(BaseMessage* msg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(msg);
 
 		method.executeWithVoidReturn();
@@ -201,7 +177,7 @@ bool ChatRoom::hasPlayer(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -214,7 +190,7 @@ bool ChatRoom::hasPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 17);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -227,7 +203,7 @@ void ChatRoom::removeAllPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 18);
 
 		method.executeWithVoidReturn();
 	} else
@@ -239,7 +215,7 @@ void ChatRoom::setPrivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -251,7 +227,7 @@ void ChatRoom::setPublic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 20);
 
 		method.executeWithVoidReturn();
 	} else
@@ -263,7 +239,7 @@ bool ChatRoom::isPublic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -275,7 +251,7 @@ bool ChatRoom::isPrivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -287,7 +263,7 @@ PlayerCreature* ChatRoom::getPlayer(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 23);
 		method.addSignedIntParameter(idx);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -300,7 +276,7 @@ int ChatRoom::getPlayerSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -312,7 +288,7 @@ void ChatRoom::setName(const String& Name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 25);
 		method.addAsciiParameter(Name);
 
 		method.executeWithVoidReturn();
@@ -325,7 +301,7 @@ String ChatRoom::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 26);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -338,7 +314,7 @@ String ChatRoom::getFullPath() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 27);
 
 		method.executeWithAsciiReturn(_return_getFullPath);
 		return _return_getFullPath;
@@ -351,7 +327,7 @@ String ChatRoom::getOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 28);
 
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
@@ -364,7 +340,7 @@ String ChatRoom::getCreator() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 29);
 
 		method.executeWithAsciiReturn(_return_getCreator);
 		return _return_getCreator;
@@ -377,7 +353,7 @@ UnicodeString ChatRoom::getTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 30);
 
 		method.executeWithUnicodeReturn(_return_getTitle);
 		return _return_getTitle;
@@ -390,7 +366,7 @@ String ChatRoom::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 31);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -403,7 +379,7 @@ void ChatRoom::setOwner(const String& Owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 32);
 		method.addAsciiParameter(Owner);
 
 		method.executeWithVoidReturn();
@@ -416,7 +392,7 @@ void ChatRoom::setCreator(const String& Creator) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 33);
 		method.addAsciiParameter(Creator);
 
 		method.executeWithVoidReturn();
@@ -429,7 +405,7 @@ void ChatRoom::setTitle(const String& Title) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(Title);
 
 		method.executeWithVoidReturn();
@@ -442,7 +418,7 @@ unsigned int ChatRoom::getRoomID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -454,7 +430,7 @@ int ChatRoom::getSubRoomsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -466,7 +442,7 @@ ChatRoom* ChatRoom::getParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 37);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -478,7 +454,7 @@ int ChatRoom::compareTo(ChatRoom* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 38);
 		method.addObjectParameter(obj);
 
 		return method.executeWithSignedIntReturn();
@@ -635,108 +611,102 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		wlock();
-		break;
-	case 7:
-		unlock();
-		break;
-	case 8:
 		sendTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 9:
+	case 7:
 		sendDestroyTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 10:
+	case 8:
 		addSubRoom((ChatRoom*) inv->getObjectParameter());
 		break;
-	case 11:
+	case 9:
 		removeSubRoom((ChatRoom*) inv->getObjectParameter());
 		break;
-	case 12:
+	case 10:
 		resp->insertLong(getSubRoom(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 13:
+	case 11:
 		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__String_))->_getObjectID());
 		break;
-	case 14:
+	case 12:
 		addPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 15:
+	case 13:
 		removePlayer((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 16:
+	case 14:
 		removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_));
 		break;
-	case 17:
+	case 15:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
-	case 18:
+	case 16:
 		resp->insertBoolean(hasPlayer((PlayerCreature*) inv->getObjectParameter()));
 		break;
-	case 19:
+	case 17:
 		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__String_)));
 		break;
-	case 20:
+	case 18:
 		removeAllPlayers();
 		break;
-	case 21:
+	case 19:
 		setPrivate();
 		break;
-	case 22:
+	case 20:
 		setPublic();
 		break;
-	case 23:
+	case 21:
 		resp->insertBoolean(isPublic());
 		break;
-	case 24:
+	case 22:
 		resp->insertBoolean(isPrivate());
 		break;
-	case 25:
+	case 23:
 		resp->insertLong(getPlayer(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 26:
+	case 24:
 		resp->insertSignedInt(getPlayerSize());
 		break;
-	case 27:
+	case 25:
 		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
-	case 28:
+	case 26:
 		resp->insertAscii(getName());
 		break;
-	case 29:
+	case 27:
 		resp->insertAscii(getFullPath());
 		break;
-	case 30:
+	case 28:
 		resp->insertAscii(getOwner());
 		break;
-	case 31:
+	case 29:
 		resp->insertAscii(getCreator());
 		break;
-	case 32:
+	case 30:
 		resp->insertUnicode(getTitle());
 		break;
-	case 33:
+	case 31:
 		resp->insertAscii(getServerName());
 		break;
-	case 34:
+	case 32:
 		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
-	case 35:
+	case 33:
 		setCreator(inv->getAsciiParameter(_param0_setCreator__String_));
 		break;
-	case 36:
+	case 34:
 		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
-	case 37:
+	case 35:
 		resp->insertInt(getRoomID());
 		break;
-	case 38:
+	case 36:
 		resp->insertSignedInt(getSubRoomsSize());
 		break;
-	case 39:
+	case 37:
 		resp->insertLong(getParent()->_getObjectID());
 		break;
-	case 40:
+	case 38:
 		resp->insertSignedInt(compareTo((ChatRoom*) inv->getObjectParameter()));
 		break;
 	default:
@@ -744,14 +714,6 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-void ChatRoomAdapter::wlock() {
-	return ((ChatRoomImplementation*) impl)->wlock();
-}
-
-void ChatRoomAdapter::unlock() {
-	return ((ChatRoomImplementation*) impl)->unlock();
 }
 
 void ChatRoomAdapter::sendTo(PlayerCreature* player) {

@@ -101,6 +101,20 @@ using namespace server::zone::managers::player;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace chat {
 
@@ -119,8 +133,6 @@ using namespace server::zone::packets::chat;
 
 #include "system/util/VectorMap.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 namespace server {
 namespace chat {
 
@@ -135,10 +147,6 @@ public:
 	void addRoom(ChatRoom* channel);
 
 	void removeRoom(ChatRoom* channel);
-
-	void wlock();
-
-	void unlock();
 
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
 
@@ -202,10 +210,6 @@ public:
 
 	void removeRoom(ChatRoom* channel);
 
-	void wlock();
-
-	void unlock();
-
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
 
 	void sendRoomList(PlayerCreature* player);
@@ -250,10 +254,6 @@ public:
 	void addRoom(ChatRoom* channel);
 
 	void removeRoom(ChatRoom* channel);
-
-	void wlock();
-
-	void unlock();
 
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
 
