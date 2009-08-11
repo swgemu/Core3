@@ -56,7 +56,7 @@ namespace objectcontroller {
 namespace command {
 
 
-class CommandList : public HashTable<uint32, QueueCommand*> , public HashTableIterator<uint32, QueueCommand*>{
+class CommandList : public HashTable<uint32, QueueCommand*> , public HashTableIterator<uint32, QueueCommand*>, public Logger {
 	int hash(const uint32& key) {
         return key;
 	}
@@ -64,18 +64,29 @@ class CommandList : public HashTable<uint32, QueueCommand*> , public HashTableIt
 public:
 	CommandList() : HashTable<uint32, QueueCommand*>(700), HashTableIterator<uint32, QueueCommand*>(this) {
 		setNullValue(NULL);
+		setLoggingName("CommandList");
+
+		setGlobalLogging(true);
+		setLogging(false);
 	}
 
 	void put(QueueCommand* value) {
 		uint32 crc = value->getNameCRC();
-		//System::out << "adding queueCommand 0x" << hex << crc << "\n";
+
+		StringBuffer infoMsg;
+		infoMsg << "adding queueCommand 0x" << hex << crc << " " << value->getSlashCommandName();
+		info(infoMsg);
 
 		HashTable<uint32, QueueCommand*>::put(crc, value);
 	}
 
 	void put(const String& name, QueueCommand* value) {
-		//System::out << "adding queueCommand " << name << "\n";
 		uint32 crc = name.hashCode();
+
+		StringBuffer infoMsg;
+		infoMsg << "adding queueCommand 0x" << hex << crc << " " << name;
+		info(infoMsg);
+
 		HashTable<uint32, QueueCommand*>::put(crc, value);
 	}
 

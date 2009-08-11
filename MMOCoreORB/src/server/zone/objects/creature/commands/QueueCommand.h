@@ -56,7 +56,7 @@ which carries forward this exception.
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 namespace commands {
 
 
@@ -325,6 +325,10 @@ public:
 
 	}
 
+	inline String& getSlashCommandName() {
+		return slashCommandName;
+	}
+
 };
 
 
@@ -334,7 +338,7 @@ public:
 }
 }
 
-using namespace server::zone::objects::player::commands;
+using namespace server::zone::objects::creature::commands;
 
 #endif //SLASHCOMMAND_H_
 

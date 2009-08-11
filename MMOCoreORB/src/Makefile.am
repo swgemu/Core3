@@ -71,7 +71,6 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
-				server/zone/managers/objectcontroller/command/CommandQueueManager.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
@@ -116,7 +115,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
-		server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \

@@ -45,20 +45,30 @@ which carries forward this exception.
 package server.zone.managers.objectcontroller;
 
 import engine.core.ManagedObject;
-import server.zone.managers.objectcontroller.command.CommandQueueManager;
+import server.zone.managers.objectcontroller.command.CommandList;
+import server.zone.managers.objectcontroller.command.CommandConfigManager;
+import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.ZoneServer;
 import engine.log.Logger;
 import server.zone.ZoneProcessServerImplementation;
-
+import server.zone.objects.scene.SceneObject;
 
 class ObjectController extends ManagedObject implements Logger {
-	ZoneProcessServerImplementation server;
-	CommandQueueManager commandQueueManager;
+	private ZoneProcessServerImplementation server;
+	
+	//private CommandQueueManager commandQueueManager;
+	private CommandConfigManager configManager;
+	private CommandList queueCommands;
 	
 	public native ObjectController(ZoneProcessServerImplementation server);
 	
-	public CommandQueueManager getCommandQueueManager() {
+	/*public CommandQueueManager getCommandQueueManager() {
 		return commandQueueManager;
-	}
+	}*/
+	
+	public native local void addQueueCommand(QueueCommand command);
+	
+	public native local QueueCommand getQueueCommand(final string name);
+	public native local QueueCommand getQueueCommand(unsigned int crc);
 	
 }

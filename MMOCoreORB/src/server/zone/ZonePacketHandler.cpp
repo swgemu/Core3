@@ -78,6 +78,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 }
 
 void ZonePacketHandler::registerMessages() {
+	info("registering Messages");
 	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
 	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
 	messageCallbackFactory.registerObject<ClientRandomNameRequest>(0xD6D1B6D1);
@@ -88,6 +89,7 @@ void ZonePacketHandler::registerMessages() {
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
+	info("registering ObjectController Messages");
 	ObjectControllerMessageCallback::objectMessageControllerFactory = new ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
 	ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
 

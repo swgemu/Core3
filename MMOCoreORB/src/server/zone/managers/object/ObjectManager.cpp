@@ -107,6 +107,7 @@ ObjectManager::~ObjectManager() {
 }
 
 void ObjectManager::registerObjectTypes() {
+	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::CREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::NPCCREATURE);
