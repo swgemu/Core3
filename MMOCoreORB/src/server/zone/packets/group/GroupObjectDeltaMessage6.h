@@ -59,7 +59,7 @@ public:
 	}
 
 
-	void addMember(Player* player, int idx) {
+	void addMember(SceneObject* player, int idx) {
 		startUpdate(0x01);
 
 		startList(1, grup->getNewListCount(1));
@@ -67,7 +67,7 @@ public:
 		insertByte(1);
 		insertShort(idx);
 		insertLong(player->getObjectID());
-		insertAscii(player->getCharacterName().toString());
+		insertAscii(player->getgetObjectName()->getCustomString().toString());
 	}
 	
 	void removeMember(int idx) {
@@ -78,7 +78,7 @@ public:
 		insertShort(idx);
 	}
 	
-	void updateLeader(Player* newLeader, Player* oldLeader, int oldLeaderIdx) {
+	void updateLeader(SceneObject* newLeader, SceneObject* oldLeader, int oldLeaderIdx) {
 		startUpdate(0x01);
 		
 		startList(2, grup->getNewListCount(2));
@@ -86,12 +86,12 @@ public:
 		insertByte(2);
 		insertShort(oldLeaderIdx);
 		insertLong(oldLeader->getObjectID());
-		insertAscii(oldLeader->getCharacterName().toString());
+		insertAscii(oldLeader->getObjectName()->getCustomString().toString());
 		
 		insertByte(2);
 		insertShort(0);
 		insertLong(newLeader->getObjectID());
-		insertAscii(newLeader->getCharacterName().toString());
+		insertAscii(newLeader->getObjectName()->getCustomString().toString());
 	}
 	
 	void updateLevel(uint16 value) {

@@ -60,6 +60,7 @@ import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.Zone;
 import server.chat.ChatManager;
+import server.zone.managers.objectcontroller.ObjectController;
 
 import server.zone.objects.scene.SceneObject;
 
@@ -77,6 +78,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	ObjectManager objectManager;
 	PlayerManager playerManager;
 	ChatManager chatManager;
+	ObjectController objectController;
 
 	int totalSentPackets;
 	
@@ -206,6 +208,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public local ObjectManager getObjectManager() {
 		return objectManager;
+	}
+	
+	public ObjectController getObjectController() {
+		return objectController;
 	}
 
 	/*public time_t getStartTimestamp() {
