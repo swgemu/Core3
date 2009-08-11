@@ -48,8 +48,8 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
 #include "../MessageCallback.h"
 
-#include "server/zone/managers/objectcontroller/command/CommandQueueManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
 class CommandQueueEnqueue : public ObjectControllerMessage {
 public:
@@ -98,9 +98,8 @@ public:
 			return;
 
 		ObjectController* objectController = server->getZoneServer()->getObjectController();
-		CommandQueueManager* commandQueueManager = objectController->getCommandQueueManager();
 
-		QueueCommand* sc = commandQueueManager->getQueueCommand(actionCRC);
+		QueueCommand* sc = objectController->getQueueCommand(actionCRC);
 
 		StringBuffer infoMsg;
 		infoMsg << "trying to activate queue command 0x" << hex << actionCRC << " size? 0x" << hex << size;
@@ -123,8 +122,8 @@ public:
 			return;
 		} else {
 			StringBuffer msg;
-			msg << "null queue command 0x" << hex << actionCRC;
-			player->info(msg.toString());
+			msg << "unregistered queue command 0x" << hex << actionCRC << " arguments: " << arguments.toString();
+			player->error(msg.toString());
 		}
 
 		player->clearQueueAction(actionCount, 0, 2, 0);

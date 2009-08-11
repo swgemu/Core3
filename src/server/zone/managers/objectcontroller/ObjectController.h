@@ -15,7 +15,7 @@ namespace managers {
 namespace objectcontroller {
 namespace command {
 
-class CommandQueueManager;
+class CommandList;
 
 } // namespace command
 } // namespace objectcontroller
@@ -24,6 +24,38 @@ class CommandQueueManager;
 } // namespace server
 
 using namespace server::zone::managers::objectcontroller::command;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace objectcontroller {
+namespace command {
+
+class CommandConfigManager;
+
+} // namespace command
+} // namespace objectcontroller
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::objectcontroller::command;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace commands {
+
+class QueueCommand;
+
+} // namespace commands
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::commands;
 
 namespace server {
 namespace zone {
@@ -45,6 +77,20 @@ class ZoneProcessServerImplementation;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
@@ -58,7 +104,11 @@ class ObjectController : public ManagedObject {
 public:
 	ObjectController(ZoneProcessServerImplementation* server);
 
-	CommandQueueManager* getCommandQueueManager();
+	void addQueueCommand(QueueCommand* command);
+
+	QueueCommand* getQueueCommand(const String& name);
+
+	QueueCommand* getQueueCommand(unsigned int crc);
 
 protected:
 	ObjectController(DummyConstructorParameter* param);
@@ -83,12 +133,18 @@ namespace objectcontroller {
 class ObjectControllerImplementation : public ManagedObjectImplementation, public Logger {
 	ZoneProcessServerImplementation* server;
 
-	ManagedReference<CommandQueueManager* > commandQueueManager;
+	CommandConfigManager* configManager;
+
+	CommandList* queueCommands;
 
 public:
 	ObjectControllerImplementation(ZoneProcessServerImplementation* server);
 
-	CommandQueueManager* getCommandQueueManager();
+	void addQueueCommand(QueueCommand* command);
+
+	QueueCommand* getQueueCommand(const String& name);
+
+	QueueCommand* getQueueCommand(unsigned int crc);
 
 	ObjectController* _this;
 
@@ -110,8 +166,6 @@ public:
 	ObjectControllerAdapter(ObjectControllerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	CommandQueueManager* getCommandQueueManager();
 
 };
 

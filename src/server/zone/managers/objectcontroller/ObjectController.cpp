@@ -4,11 +4,17 @@
 
 #include "ObjectController.h"
 
-#include "server/zone/managers/objectcontroller/command/CommandQueueManager.h"
+#include "server/zone/managers/objectcontroller/command/CommandList.h"
+
+#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
+
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 /*
  *	ObjectControllerStub
@@ -27,16 +33,28 @@ ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedOb
 ObjectController::~ObjectController() {
 }
 
-CommandQueueManager* ObjectController::getCommandQueueManager() {
+void ObjectController::addQueueCommand(QueueCommand* command) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 6);
-
-		return (CommandQueueManager*) method.executeWithObjectReturn();
 	} else
-		return ((ObjectControllerImplementation*) _impl)->getCommandQueueManager();
+		((ObjectControllerImplementation*) _impl)->addQueueCommand(command);
+}
+
+QueueCommand* ObjectController::getQueueCommand(const String& name) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(name);
+}
+
+QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((ObjectControllerImplementation*) _impl)->getQueueCommand(crc);
 }
 
 /*
@@ -62,12 +80,6 @@ ObjectControllerImplementation::operator const ObjectController*() {
 void ObjectControllerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("commandQueueManager", commandQueueManager);
-}
-
-CommandQueueManager* ObjectControllerImplementation::getCommandQueueManager() {
-	// server/zone/managers/objectcontroller/ObjectController.idl(61):  return commandQueueManager;
-	return commandQueueManager;
 }
 
 /*
@@ -81,18 +93,11 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		resp->insertLong(getCommandQueueManager()->_getObjectID());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-CommandQueueManager* ObjectControllerAdapter::getCommandQueueManager() {
-	return ((ObjectControllerImplementation*) impl)->getCommandQueueManager();
 }
 
 /*

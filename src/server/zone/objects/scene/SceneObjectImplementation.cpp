@@ -251,6 +251,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 		zone->unlock(lockZone);
 	} catch (...) {
+		error("unreported exception caught in SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone)");
 		zone->unlock(lockZone);
 	}
 }
