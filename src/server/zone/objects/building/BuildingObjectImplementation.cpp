@@ -65,6 +65,15 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 			obj->addInRangeObject(creoImpl, true);
 		//}
 	}
+
+	/*addInRangeObject(creoImpl, false);
+
+
+	creoImpl->addInRangeObject(this, false);
+
+	StringBuffer infoMsg;
+	infoMsg << "adding this building with pointer:" << hex << this << " to creoImpl:" << creoImpl->getLoggingName();
+	info(infoMsg.toString());*/
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {

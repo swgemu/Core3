@@ -152,12 +152,13 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	create(client);
 
 	if (parent != NULL) {
-		if (parent->isCellObject()) {
+		/*if (parent->isCellObject()) {
 			SceneObject* building = parent->getParent();
 			building->sendTo(player);
-		}
+		}*/
 
 		link(client.get(), containmentType);
+		info("linking on sendTo");
 	}
 
 	for (int i = 0; i < containmentSlots->size(); ++i) {
@@ -166,13 +167,13 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		object->sendTo(player);
 	}
 
-	if (parent == player || isBuildingObject()) {
+	//if (player == parent || isBuildingObject()) {
 		for (int j = 0; j < containerObjects->size(); ++j) {
 			SceneObject* containerObject = containerObjects->get(j);
 
 			containerObject->sendTo(player);
 		}
-	}
+	//}
 
 	sendBaselinesTo(player);
 
@@ -196,18 +197,6 @@ void SceneObjectImplementation::sendAttributeListTo(SceneObject* object) {
 
 	object->sendMessage(alm);
 }
-
-/*void SceneObjectImplementation::wlock(bool doLock) {
-	ManagedObjectImplementation::wlock(doLock);
-}
-
-void SceneObjectImplementation::wlock(SceneObject* crossLock) {
-	ManagedObjectImplementation::wlock(crossLock);
-}
-
-void SceneObjectImplementation::unlock(bool doLock) {
-	ManagedObjectImplementation::unlock(doLock);
-}*/
 
 void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	if (client == NULL)
@@ -382,7 +371,7 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 	try {
 		zone->lock();
 
-		initializePosition(positionX, zone->getHeight(positionX, positionY), positionY);
+		initializePosition(positionX, positionZ, positionY);
 
 		sendToOwner(true);
 
@@ -407,7 +396,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	try {
 		info("SceneObjectImplementation::insertToBuilding");
 
-		parent->addObject(_this, 0xFFFFFFFF);
+		//parent->addObject(_this, 0xFFFFFFFF);
 
 		building->insert(this);
 		building->inRange(this, 128);

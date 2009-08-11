@@ -255,11 +255,11 @@ void ServerCore::handleCommands() {
 				if (zoneServer != NULL)
 					zoneServer->fixScheduler();
 			} else if (command == "crash") {
-				/*zoneServer = NULL;
+				zoneServer = NULL;
 
-				zoneServer->fixScheduler();*/
+				zoneServer->fixScheduler();
 
-				SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
+				/*SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
 				String data;
 				object->serialize(data);
 				System::out << data << "\n";
@@ -267,7 +267,7 @@ void ServerCore::handleCommands() {
 				data = "";
 				object->serialize(data);
 				System::out << data;
-				object->finalize();
+				object->finalize();*/
 				/*String name;
 				object->getFullObjectName(name);
 

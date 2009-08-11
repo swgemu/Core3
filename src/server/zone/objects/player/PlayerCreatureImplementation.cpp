@@ -59,18 +59,31 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	BaseMessage* parameters = new ParametersMessage();
 	owner->sendMessage(parameters);
 
-	sendTo(_this, doClose);
+	if (parent != NULL) {
+		SceneObject* grandParent = parent;
+
+		while (grandParent->getParent() != NULL)
+			grandParent = grandParent->getParent();
+
+		grandParent->sendTo(_this);
+	} else
+		sendTo(_this, doClose);
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
 
 	if (parent != NULL) {
-		if (scno->isBuildingObject() && parent->isCellObject() && parent->getParent() == scno)
+		SceneObject* grandParent = parent;
+
+		while (grandParent->getParent() != NULL)
+			grandParent = grandParent->getParent();
+
+		if (grandParent == scno) // we already sent our grandParent to owner
 			return;
 	}
 
-	if (scno != _this && scno != parent)
+	if (scno != _this)
 		scno->sendTo(_this, true);
 }
 

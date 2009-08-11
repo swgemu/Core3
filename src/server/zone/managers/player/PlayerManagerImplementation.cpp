@@ -207,6 +207,8 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 			BuildingObject* tutorial = (BuildingObject*) objectManager->createObject(tut.hashCode());
 			tutorial->setStaticBuilding(false);
 
+			SceneObject* travelTutorialTerminal = objectManager->createObject(965433242);
+
 			SceneObject* cellTut = NULL;
 
 			for (int i = 0; i < 14; ++i) {
@@ -214,11 +216,15 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 				tutorial->addCell((CellObject*)cellTut);
 
-				if (i == 10)
+				if (i == 10) {
 					cellTut->addObject(player, -1);
+					cellTut->addObject(travelTutorialTerminal, -1);
+				}
 			}
 
 			tutorial->insertToZone(zone);
+			travelTutorialTerminal->initializePosition(27.0f, -3.5f, -165.0f);
+			travelTutorialTerminal->insertToZone(zone);
 
 			player->initializePosition(27.0f, -3.5f, -165.0f);
 			player->setZone(zone);
