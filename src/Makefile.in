@@ -95,10 +95,11 @@ am__objects_1 = ZoneServer.$(OBJEXT) ZoneClientSession.$(OBJEXT) \
 	PlayerObject.$(OBJEXT) PlayerCreature.$(OBJEXT) \
 	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
-	ChatManager.$(OBJEXT) CommandQueueManager.$(OBJEXT) \
-	WaypointObject.$(OBJEXT) WeaponObject.$(OBJEXT) \
-	MeleeWeaponObject.$(OBJEXT) StructureManager.$(OBJEXT) \
-	WearableObject.$(OBJEXT) ArmorObject.$(OBJEXT)
+	ChatManager.$(OBJEXT) ObjectController.$(OBJEXT) \
+	CommandQueueManager.$(OBJEXT) WaypointObject.$(OBJEXT) \
+	WeaponObject.$(OBJEXT) MeleeWeaponObject.$(OBJEXT) \
+	StructureManager.$(OBJEXT) WearableObject.$(OBJEXT) \
+	ArmorObject.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ConfigManager.$(OBJEXT) \
 	Features.$(OBJEXT) ForumsDatabase.$(OBJEXT) \
 	ServerDatabase.$(OBJEXT) LoginMessageProcessorThread.$(OBJEXT) \
@@ -125,6 +126,7 @@ am_core3_OBJECTS = $(am__objects_1) ConfigManager.$(OBJEXT) \
 	ObjectControllerMessage.$(OBJEXT) \
 	ChatRoomImplementation.$(OBJEXT) \
 	ChatManagerImplementation.$(OBJEXT) \
+	ObjectControllerImplementation.$(OBJEXT) \
 	CommandQueueManagerImplementation.$(OBJEXT) \
 	CommandConfigManager.$(OBJEXT) \
 	WaypointObjectImplementation.$(OBJEXT) \
@@ -276,7 +278,8 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
-				server/zone/managers/command/CommandQueueManager.cpp \
+				server/zone/managers/objectcontroller/ObjectController.cpp \
+				server/zone/managers/objectcontroller/command/CommandQueueManager.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
@@ -320,8 +323,9 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
-		server/zone/managers/command/CommandQueueManagerImplementation.cpp \
-		server/zone/managers/command/CommandConfigManager.cpp \
+		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
+		server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp \
+		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \
@@ -428,6 +432,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MeleeWeaponObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MeleeWeaponObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/NameManager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectController.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectControllerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectControllerMessage.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PingServer.Po@am__quote@
@@ -687,19 +693,33 @@ ChatManager.obj: server/chat/ChatManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ChatManager.obj `if test -f 'server/chat/ChatManager.cpp'; then $(CYGPATH_W) 'server/chat/ChatManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/chat/ChatManager.cpp'; fi`
 
-CommandQueueManager.o: server/zone/managers/command/CommandQueueManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManager.o -MD -MP -MF $(DEPDIR)/CommandQueueManager.Tpo -c -o CommandQueueManager.o `test -f 'server/zone/managers/command/CommandQueueManager.cpp' || echo '$(srcdir)/'`server/zone/managers/command/CommandQueueManager.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManager.Tpo $(DEPDIR)/CommandQueueManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/command/CommandQueueManager.cpp' object='CommandQueueManager.o' libtool=no @AMDEPBACKSLASH@
+ObjectController.o: server/zone/managers/objectcontroller/ObjectController.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectController.o -MD -MP -MF $(DEPDIR)/ObjectController.Tpo -c -o ObjectController.o `test -f 'server/zone/managers/objectcontroller/ObjectController.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/ObjectController.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectController.Tpo $(DEPDIR)/ObjectController.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/ObjectController.cpp' object='ObjectController.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManager.o `test -f 'server/zone/managers/command/CommandQueueManager.cpp' || echo '$(srcdir)/'`server/zone/managers/command/CommandQueueManager.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectController.o `test -f 'server/zone/managers/objectcontroller/ObjectController.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/ObjectController.cpp
 
-CommandQueueManager.obj: server/zone/managers/command/CommandQueueManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManager.obj -MD -MP -MF $(DEPDIR)/CommandQueueManager.Tpo -c -o CommandQueueManager.obj `if test -f 'server/zone/managers/command/CommandQueueManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/command/CommandQueueManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/command/CommandQueueManager.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManager.Tpo $(DEPDIR)/CommandQueueManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/command/CommandQueueManager.cpp' object='CommandQueueManager.obj' libtool=no @AMDEPBACKSLASH@
+ObjectController.obj: server/zone/managers/objectcontroller/ObjectController.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectController.obj -MD -MP -MF $(DEPDIR)/ObjectController.Tpo -c -o ObjectController.obj `if test -f 'server/zone/managers/objectcontroller/ObjectController.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/ObjectController.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/ObjectController.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectController.Tpo $(DEPDIR)/ObjectController.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/ObjectController.cpp' object='ObjectController.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManager.obj `if test -f 'server/zone/managers/command/CommandQueueManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/command/CommandQueueManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/command/CommandQueueManager.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectController.obj `if test -f 'server/zone/managers/objectcontroller/ObjectController.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/ObjectController.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/ObjectController.cpp'; fi`
+
+CommandQueueManager.o: server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManager.o -MD -MP -MF $(DEPDIR)/CommandQueueManager.Tpo -c -o CommandQueueManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManager.Tpo $(DEPDIR)/CommandQueueManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' object='CommandQueueManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
+
+CommandQueueManager.obj: server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManager.obj -MD -MP -MF $(DEPDIR)/CommandQueueManager.Tpo -c -o CommandQueueManager.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManager.Tpo $(DEPDIR)/CommandQueueManager.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' object='CommandQueueManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManager.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; fi`
 
 WaypointObject.o: server/zone/objects/waypoint/WaypointObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WaypointObject.o -MD -MP -MF $(DEPDIR)/WaypointObject.Tpo -c -o WaypointObject.o `test -f 'server/zone/objects/waypoint/WaypointObject.cpp' || echo '$(srcdir)/'`server/zone/objects/waypoint/WaypointObject.cpp
@@ -1275,33 +1295,47 @@ ChatManagerImplementation.obj: server/chat/ChatManagerImplementation.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ChatManagerImplementation.obj `if test -f 'server/chat/ChatManagerImplementation.cpp'; then $(CYGPATH_W) 'server/chat/ChatManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/chat/ChatManagerImplementation.cpp'; fi`
 
-CommandQueueManagerImplementation.o: server/zone/managers/command/CommandQueueManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManagerImplementation.o -MD -MP -MF $(DEPDIR)/CommandQueueManagerImplementation.Tpo -c -o CommandQueueManagerImplementation.o `test -f 'server/zone/managers/command/CommandQueueManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/command/CommandQueueManagerImplementation.cpp
+ObjectControllerImplementation.o: server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectControllerImplementation.o -MD -MP -MF $(DEPDIR)/ObjectControllerImplementation.Tpo -c -o ObjectControllerImplementation.o `test -f 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectControllerImplementation.Tpo $(DEPDIR)/ObjectControllerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp' object='ObjectControllerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectControllerImplementation.o `test -f 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp
+
+ObjectControllerImplementation.obj: server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ObjectControllerImplementation.obj -MD -MP -MF $(DEPDIR)/ObjectControllerImplementation.Tpo -c -o ObjectControllerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ObjectControllerImplementation.Tpo $(DEPDIR)/ObjectControllerImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp' object='ObjectControllerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectControllerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; fi`
+
+CommandQueueManagerImplementation.o: server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManagerImplementation.o -MD -MP -MF $(DEPDIR)/CommandQueueManagerImplementation.Tpo -c -o CommandQueueManagerImplementation.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManagerImplementation.Tpo $(DEPDIR)/CommandQueueManagerImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/command/CommandQueueManagerImplementation.cpp' object='CommandQueueManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' object='CommandQueueManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManagerImplementation.o `test -f 'server/zone/managers/command/CommandQueueManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/command/CommandQueueManagerImplementation.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManagerImplementation.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
 
-CommandQueueManagerImplementation.obj: server/zone/managers/command/CommandQueueManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManagerImplementation.obj -MD -MP -MF $(DEPDIR)/CommandQueueManagerImplementation.Tpo -c -o CommandQueueManagerImplementation.obj `if test -f 'server/zone/managers/command/CommandQueueManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/command/CommandQueueManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/command/CommandQueueManagerImplementation.cpp'; fi`
+CommandQueueManagerImplementation.obj: server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManagerImplementation.obj -MD -MP -MF $(DEPDIR)/CommandQueueManagerImplementation.Tpo -c -o CommandQueueManagerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; fi`
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManagerImplementation.Tpo $(DEPDIR)/CommandQueueManagerImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/command/CommandQueueManagerImplementation.cpp' object='CommandQueueManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' object='CommandQueueManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManagerImplementation.obj `if test -f 'server/zone/managers/command/CommandQueueManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/command/CommandQueueManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/command/CommandQueueManagerImplementation.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManagerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; fi`
 
-CommandConfigManager.o: server/zone/managers/command/CommandConfigManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandConfigManager.o -MD -MP -MF $(DEPDIR)/CommandConfigManager.Tpo -c -o CommandConfigManager.o `test -f 'server/zone/managers/command/CommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/command/CommandConfigManager.cpp
+CommandConfigManager.o: server/zone/managers/objectcontroller/command/CommandConfigManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandConfigManager.o -MD -MP -MF $(DEPDIR)/CommandConfigManager.Tpo -c -o CommandConfigManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandConfigManager.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandConfigManager.Tpo $(DEPDIR)/CommandConfigManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/command/CommandConfigManager.cpp' object='CommandConfigManager.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandConfigManager.cpp' object='CommandConfigManager.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandConfigManager.o `test -f 'server/zone/managers/command/CommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/command/CommandConfigManager.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandConfigManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandConfigManager.cpp
 
-CommandConfigManager.obj: server/zone/managers/command/CommandConfigManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandConfigManager.obj -MD -MP -MF $(DEPDIR)/CommandConfigManager.Tpo -c -o CommandConfigManager.obj `if test -f 'server/zone/managers/command/CommandConfigManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/command/CommandConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/command/CommandConfigManager.cpp'; fi`
+CommandConfigManager.obj: server/zone/managers/objectcontroller/command/CommandConfigManager.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandConfigManager.obj -MD -MP -MF $(DEPDIR)/CommandConfigManager.Tpo -c -o CommandConfigManager.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp'; fi`
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandConfigManager.Tpo $(DEPDIR)/CommandConfigManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/command/CommandConfigManager.cpp' object='CommandConfigManager.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandConfigManager.cpp' object='CommandConfigManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandConfigManager.obj `if test -f 'server/zone/managers/command/CommandConfigManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/command/CommandConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/command/CommandConfigManager.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandConfigManager.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp'; fi`
 
 WaypointObjectImplementation.o: server/zone/objects/waypoint/WaypointObjectImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WaypointObjectImplementation.o -MD -MP -MF $(DEPDIR)/WaypointObjectImplementation.Tpo -c -o WaypointObjectImplementation.o `test -f 'server/zone/objects/waypoint/WaypointObjectImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/waypoint/WaypointObjectImplementation.cpp

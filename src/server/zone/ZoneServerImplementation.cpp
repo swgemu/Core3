@@ -338,11 +338,9 @@ void ZoneServerImplementation::init() {
 	info("Initializing zones", true);
 
 	for (int i = 0; i < 45; ++i) {
-		Zone * zone;
+		Zone* zone = NULL;
 
-		if (i > 10 && i != 42) {
-			zone = NULL;
-		} else {
+		if (i <= 10 || i == 42) {
 			zone = new Zone(_this, processor, i);
 			zone->deploy("Zone", i);
 

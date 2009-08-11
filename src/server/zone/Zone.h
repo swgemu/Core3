@@ -62,10 +62,6 @@ class Zone : public ManagedObject {
 public:
 	Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
-	void lock(bool doLock = true);
-
-	void unlock(bool doLock = true);
-
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -146,10 +142,6 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 public:
 	ZoneImplementation(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
-	void lock(bool doLock = true);
-
-	void unlock(bool doLock = true);
-
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -208,10 +200,6 @@ public:
 	ZoneAdapter(ZoneImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
 
 	void startManagers();
 

@@ -159,14 +159,6 @@ float ZoneImplementation::getHeight(float x, float y) {
 	return heightMap->getHeight(x, y);
 }
 
-void ZoneImplementation::lock(bool doLock) {
-	ManagedObjectImplementation::lock(doLock);
-}
-
-void ZoneImplementation::unlock(bool doLock) {
-	ManagedObjectImplementation::unlock(doLock);
-}
-
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
 	QuadTree::insert(entry);
 }

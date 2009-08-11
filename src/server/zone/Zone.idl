@@ -81,9 +81,6 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	native public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
 	
-	public native void lock(boolean doLock = true);
-	public native void unlock(boolean doLock = true);
-	
 	public local native void insert(QuadTreeEntry entry);
 	public local native void remove(QuadTreeEntry entry);
 	public local native void update(QuadTreeEntry entry);
