@@ -332,10 +332,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void notifyInsert(QuadTreeEntry* entry);
-
-	void notifyDissapear(QuadTreeEntry* entry);
-
 	void disconnect(bool closeClient, bool doLock);
 
 	void unload();

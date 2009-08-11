@@ -25,26 +25,16 @@ BuildingObject::~BuildingObject() {
 
 void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
 	} else
 		((BuildingObjectImplementation*) _impl)->notifyInsert(obj);
 }
 
 void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
 	} else
 		((BuildingObjectImplementation*) _impl)->notifyDissapear(obj);
 }
@@ -54,7 +44,7 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -64,53 +54,32 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 
 void BuildingObject::insert(QuadTreeEntry* obj) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
 	} else
 		((BuildingObjectImplementation*) _impl)->insert(obj);
 }
 
 void BuildingObject::remove(QuadTreeEntry* obj) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
 	} else
 		((BuildingObjectImplementation*) _impl)->remove(obj);
 }
 
 void BuildingObject::update(QuadTreeEntry* obj) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 11);
-		method.addObjectParameter(obj);
-
-		method.executeWithVoidReturn();
 	} else
 		((BuildingObjectImplementation*) _impl)->update(obj);
 }
 
 void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 12);
-		method.addObjectParameter(obj);
-		method.addFloatParameter(range);
-
-		method.executeWithVoidReturn();
 	} else
 		((BuildingObjectImplementation*) _impl)->inRange(obj, range);
 }
@@ -120,7 +89,7 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -134,7 +103,7 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -147,7 +116,7 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -160,7 +129,7 @@ void BuildingObject::addCell(CellObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(cell);
 
 		method.executeWithVoidReturn();
@@ -173,7 +142,7 @@ bool BuildingObject::isStaticBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -185,7 +154,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -198,7 +167,7 @@ void BuildingObject::setStaticBuilding(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 13);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -259,45 +228,27 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		notifyInsert((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 7:
-		notifyDissapear((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 8:
 		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
 		break;
-	case 9:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 10:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 11:
-		update((QuadTreeEntry*) inv->getObjectParameter());
-		break;
-	case 12:
-		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
-		break;
-	case 13:
+	case 7:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 14:
+	case 8:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 15:
+	case 9:
 		sendDestroyTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case 10:
 		addCell((CellObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case 11:
 		resp->insertBoolean(isStaticBuilding());
 		break;
-	case 18:
+	case 12:
 		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case 19:
+	case 13:
 		setStaticBuilding(inv->getBooleanParameter());
 		break;
 	default:
@@ -307,32 +258,8 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void BuildingObjectAdapter::notifyInsert(QuadTreeEntry* obj) {
-	return ((BuildingObjectImplementation*) impl)->notifyInsert(obj);
-}
-
-void BuildingObjectAdapter::notifyDissapear(QuadTreeEntry* obj) {
-	return ((BuildingObjectImplementation*) impl)->notifyDissapear(obj);
-}
-
 void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
 	return ((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
-}
-
-void BuildingObjectAdapter::insert(QuadTreeEntry* obj) {
-	return ((BuildingObjectImplementation*) impl)->insert(obj);
-}
-
-void BuildingObjectAdapter::remove(QuadTreeEntry* obj) {
-	return ((BuildingObjectImplementation*) impl)->remove(obj);
-}
-
-void BuildingObjectAdapter::update(QuadTreeEntry* obj) {
-	return ((BuildingObjectImplementation*) impl)->update(obj);
-}
-
-void BuildingObjectAdapter::inRange(QuadTreeEntry* obj, float range) {
-	return ((BuildingObjectImplementation*) impl)->inRange(obj, range);
 }
 
 void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {

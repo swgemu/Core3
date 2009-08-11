@@ -152,19 +152,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void notifyInsert(QuadTreeEntry* obj);
-
-	void notifyDissapear(QuadTreeEntry* obj);
-
 	void notifyInsertToZone(SceneObject* object);
-
-	void insert(QuadTreeEntry* obj);
-
-	void remove(QuadTreeEntry* obj);
-
-	void update(QuadTreeEntry* obj);
-
-	void inRange(QuadTreeEntry* obj, float range);
 
 	void sendTo(SceneObject* player, bool doClose);
 
