@@ -44,7 +44,11 @@
 ObjectTemplates = { }
 
 function ObjectTemplates:addTemplate(obj, crc)
-	self[crc] = obj
+	if self[crc] == nil then
+		self[crc] = obj 
+	else
+		print("error conflicting server template crc " .. crc)
+	end
 end
 
 function getTemplate(crc)

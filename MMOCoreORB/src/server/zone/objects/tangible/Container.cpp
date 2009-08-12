@@ -21,6 +21,19 @@ Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
 Container::~Container() {
 }
 
+void Container::sendContainerObjectsTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ContainerImplementation*) _impl)->sendContainerObjectsTo(player);
+}
+
 /*
  *	ContainerImplementation
  */
@@ -57,11 +70,18 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ContainerAdapter::sendContainerObjectsTo(SceneObject* player) {
+	return ((ContainerImplementation*) impl)->sendContainerObjectsTo(player);
 }
 
 /*

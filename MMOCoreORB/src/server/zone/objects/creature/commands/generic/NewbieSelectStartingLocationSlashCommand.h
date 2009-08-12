@@ -64,14 +64,11 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
-		/*
-		packet->shiftOffset(8);
-		UnicodeString startingcity;
-		packet->parseUnicode(startingcity);
-		String city = startingcity.toString();
+
+		String city = arguments.toString();
 		//"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
 		//"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
-		*//*
+		/*
 		 (1,'bestine',8,-1290.000000,0.000000,-3590.000000,'Bestine, Tatooine',3,180),
 		 (2,'mos_espa',8,-2902.000000,0.000000,2130.000000,'Mos Espa, Tatooine',3,180),
 		 (3,'mos_eisley',8,3528.000000,0.000000,-4804.000000,'Mos Eisley, Tatooine',3,180),
@@ -89,32 +86,26 @@ public:
 		 (15,'keren',5,1441.000000,0.000000,2771.000000,'Keren, Naboo',3,180),
 		 (16,'kaadara',5,5209.000000,0.000000,6677.000000,'Kaadara, Naboo',3,180),
 		 (17,'tutorial',41,0.000000,0.000000,0.000000,'Tutorial',3,180);
-		 *//*
+		 */
 		if (city == "mos_eisley") {
-			player->setPosition(3528.0f, 0, -4804.0f);
-			player->switchMap(8);
+			creature->switchZone(8, 3528.0f, 0, -4804.0f);
 
 		} else if (city == "bestine") {
-			player->setPosition(-1290.0f, 0, -3590.0f);
-			player->switchMap(8);
+			creature->switchZone(8, -1290.0f, 0, -3590.0f);
 
 		} else if (city == "theed") {
-			player->setPosition(-4908.0f, 6, 4101.0f);
-			player->switchMap(5);
+			creature->switchZone(5, -4908.0f, 6, 4101.0f);
 
 		} else if (city == "moenia") {
-			player->setPosition(4800.0f, 0, -4700.0f);
-			player->switchMap(5);
+			creature->switchZone(5, 4800.0f, 0, -4700.0f);
 
 		} else if (city == "coronet") {
-			player->setPosition(-137.00f, 0, -4723.0f);
-			player->switchMap(0);
+			creature->switchZone(0, -137.00f, 0, -4723.0f);
 
 		} else if (city == "tyrena") {
-			player->setPosition(-5045.0f, 0, -2294.0f);
-			player->switchMap(0);
+			creature->switchZone(0, -5045.0f, 0, -2294.0f);
+		}
 
-		}*/
 		return true;
 	}
 

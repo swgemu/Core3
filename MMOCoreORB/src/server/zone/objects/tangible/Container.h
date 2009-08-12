@@ -24,6 +24,8 @@ class Container : public TangibleObject {
 public:
 	Container(LuaObject* templateData);
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 protected:
 	Container(DummyConstructorParameter* param);
 
@@ -49,6 +51,8 @@ class ContainerImplementation : public TangibleObjectImplementation {
 public:
 	ContainerImplementation(LuaObject* templateData);
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	Container* _this;
 
 	operator const Container*();
@@ -69,6 +73,8 @@ public:
 	ContainerAdapter(ContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void sendContainerObjectsTo(SceneObject* player);
 
 };
 

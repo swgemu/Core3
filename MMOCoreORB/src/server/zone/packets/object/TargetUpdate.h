@@ -29,7 +29,7 @@ public:
 	void run() {
 		CreatureObject* object = (CreatureObject*) client->getPlayer();
 
-		object->info("received target update");
+		//object->info("received target update");
 
 		object->setTargetID(target, true);
 	}

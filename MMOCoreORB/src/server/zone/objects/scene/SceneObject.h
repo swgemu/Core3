@@ -53,6 +53,20 @@ class BuildingObject;
 
 using namespace server::zone::objects::building;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/core/ManagedObject.h"
@@ -80,8 +94,6 @@ using namespace server::zone::objects::building;
 #include "engine/service/proto/BasePacket.h"
 
 #include "engine/service/proto/BaseMessage.h"
-
-#include "engine/core/ManagedReference.h"
 
 namespace server {
 namespace zone {
@@ -134,15 +146,23 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	void sendToOwner(bool doClose = true);
 
 	void sendAttributeListTo(SceneObject* object);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+
+	int useObject(SceneObject* object);
 
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
 
-	void removeFromZone(bool lockZone);
+	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
+
+	void removeFromZone(bool lockZone = true);
 
 	void removeFromBuilding(BuildingObject* building);
 
@@ -211,6 +231,10 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	SceneObject* getGrandParent();
+
+	bool isASubChildOf(SceneObject* object);
 
 	String getLoggingName();
 
@@ -703,15 +727,23 @@ public:
 
 	virtual void sendBaselinesTo(SceneObject* player);
 
+	virtual void sendContainerObjectsTo(SceneObject* player);
+
 	virtual void sendToOwner(bool doClose = true);
 
 	virtual void sendAttributeListTo(SceneObject* object);
+
+	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+
+	virtual int useObject(SceneObject* object);
 
 	virtual void insertToZone(Zone* zone);
 
 	virtual void insertToBuilding(BuildingObject* building);
 
-	virtual void removeFromZone(bool lockZone);
+	virtual void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
+
+	virtual void removeFromZone(bool lockZone = true);
 
 	virtual void removeFromBuilding(BuildingObject* building);
 
@@ -780,6 +812,10 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	SceneObject* getGrandParent();
+
+	bool isASubChildOf(SceneObject* object);
 
 	String getLoggingName();
 
@@ -882,13 +918,21 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendContainerObjectsTo(SceneObject* player);
+
 	void sendToOwner(bool doClose);
 
 	void sendAttributeListTo(SceneObject* object);
 
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+
+	int useObject(SceneObject* object);
+
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
+
+	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
 	void removeFromZone(bool lockZone);
 
@@ -953,6 +997,10 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	SceneObject* getGrandParent();
+
+	bool isASubChildOf(SceneObject* object);
 
 	String getLoggingName();
 
