@@ -10,6 +10,8 @@
 
 #include "server/zone/packets/MessageCallback.h"
 
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 /*
  *	PlayerManagerStub
  */
@@ -83,6 +85,19 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		return ((PlayerManagerImplementation*) _impl)->createAllPlayerObjects(player);
 }
 
+void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerManagerImplementation*) _impl)->createTutorialBuilding(player);
+}
+
 /*
  *	PlayerManagerImplementation
  */
@@ -128,6 +143,9 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case 8:
 		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
 		break;
+	case 9:
+		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -145,6 +163,10 @@ TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectF
 
 bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
 	return ((PlayerManagerImplementation*) impl)->createAllPlayerObjects(player);
+}
+
+void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {
+	return ((PlayerManagerImplementation*) impl)->createTutorialBuilding(player);
 }
 
 /*
