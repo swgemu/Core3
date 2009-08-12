@@ -101,7 +101,7 @@ public:
 	void run() {
 		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
 
-		object->info("received data transform");
+		//object->info("received data transform");
 
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);

@@ -42,15 +42,14 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../../player/Player";
+package server.zone.objects.tangible.terminal.startinglocation;
 
-import "../Terminal";
+import server.zone.objects.tangible.terminal.Terminal;
+import server.zone.objects.scene.SceneObject;
+import engine.lua.LuaObject;
 
-interface StartingLocationTerminal implements Terminal {
-	StartingLocationTerminal(unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, unsigned char terminaltype); 
-	}
-
-	int useObject(Player player);
+class StartingLocationTerminal extends Terminal {
 	
+	public native StartingLocationTerminal(LuaObject templateData);
+	public native int useObject(SceneObject object);
 }

@@ -102,7 +102,11 @@ public:
 		QueueCommand* sc = objectController->getQueueCommand(actionCRC);
 
 		StringBuffer infoMsg;
-		infoMsg << "trying to activate queue command 0x" << hex << actionCRC << " size? 0x" << hex << size;
+		infoMsg << "trying to activate queue command 0x" << hex << actionCRC;
+
+		if (sc != NULL)
+			infoMsg << " " << sc->getSlashCommandName();
+
 		player->info(infoMsg.toString());
 
 		if (sc != NULL) {

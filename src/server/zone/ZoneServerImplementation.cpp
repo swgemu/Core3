@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "managers/object/ObjectManager.h"
 #include "managers/objectcontroller/ObjectController.h"
 #include "managers/player/PlayerManager.h"
+#include "managers/radial/RadialManager.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -73,6 +74,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	playerManager = NULL;
 	chatManager = NULL;
 	objectController = NULL;
+	radialManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -383,6 +385,9 @@ void ZoneServerImplementation::startManagers() {
 
 	playerManager = new PlayerManager(objectManager, processor);
 	playerManager->deploy("PlayerManager");
+
+	radialManager = new RadialManager(_this);
+	radialManager->deploy("RadialManager");
 
 	chatManager = new ChatManager(_this, 10000);
 	chatManager->deploy("ChatManager");

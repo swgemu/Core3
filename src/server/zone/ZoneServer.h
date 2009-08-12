@@ -81,6 +81,20 @@ class ObjectController;
 
 using namespace server::zone::managers::objectcontroller;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace radial {
+
+class RadialManager;
+
+} // namespace radial
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::radial;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -186,6 +200,8 @@ public:
 
 	ObjectController* getObjectController();
 
+	RadialManager* getRadialManager();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 	unsigned long long getNextID(bool doLock = true);
@@ -243,6 +259,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ManagedReference<ChatManager* > chatManager;
 
 	ManagedReference<ObjectController* > objectController;
+
+	ManagedReference<RadialManager* > radialManager;
 
 	int totalSentPackets;
 
@@ -355,6 +373,8 @@ public:
 
 	ObjectController* getObjectController();
 
+	RadialManager* getRadialManager();
+
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 	unsigned long long getNextID(bool doLock = true);
@@ -465,6 +485,8 @@ public:
 	ChatManager* getChatManager();
 
 	ObjectController* getObjectController();
+
+	RadialManager* getRadialManager();
 
 	unsigned long long getNextCreatureID(bool doLock);
 

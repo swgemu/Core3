@@ -7,6 +7,7 @@
 
 #include "ObjectControllerMessage.h"
 #include "ObjectMenuResponse.h"
+#include "server/zone/managers/radial/RadialManager.h"
 
 class ObjectMenuRequestCallback : public MessageCallback {
 	int unknownSize;
@@ -64,17 +65,21 @@ public:
 		uint8 counter = message->parseByte();
 		menuResponse->setCounter(counter);
 
-		SceneObject* player = client->getPlayer();
+		/*SceneObject* player = client->getPlayer();
 
 		if (player != NULL)
-			player->info("receivec object menu request");
+			player->info("received object menu request");*/
 
 	}
 
 	void run() {
 		if (menuResponse != NULL) {
-			menuResponse->finish();
-			client->sendMessage(menuResponse);
+			ManagedReference<PlayerCreature*> player = (PlayerCreature*)client->getPlayer();
+
+			if (player != NULL) {
+				RadialManager* radialManager = server->getZoneServer()->getRadialManager();
+				radialManager->handleObjectMenuRequest(player, menuResponse, objectID);
+			}
 		}
 	}
 };

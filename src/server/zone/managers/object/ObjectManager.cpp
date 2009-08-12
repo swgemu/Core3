@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
@@ -136,7 +137,11 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
 
 
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::NEWBIETUTORIALTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectImplementation::TERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectImplementation::SPACETERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectImplementation::SHIPPINGTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObjectImplementation::INTERACTIVETERMINAL);
+	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectImplementation::NEWBIETUTORIALTERMINAL);
 
 
 	//temporary

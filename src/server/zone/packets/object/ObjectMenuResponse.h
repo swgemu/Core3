@@ -48,9 +48,15 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/player/PlayerCreature.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "RadialMenuItem.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
 
 class ObjectMenuResponse : public ObjectControllerMessage {
 	int listSize;
@@ -145,5 +151,12 @@ public:
 	}
 };
 
-#endif
 
+}
+}
+}
+}
+
+using namespace server::zone::packets::object;
+
+#endif

@@ -151,34 +151,31 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 	create(client);
 
-	if (parent != NULL) {
-		/*if (parent->isCellObject()) {
-			SceneObject* building = parent->getParent();
-			building->sendTo(player);
-		}*/
-
+	if (parent != NULL)
 		link(client.get(), containmentType);
-		info("linking on sendTo");
-	}
 
+	//is there a case where we dont send the slotted equipped items?
 	for (int i = 0; i < containmentSlots->size(); ++i) {
 		SceneObject* object = containmentSlots->get(i);
 
 		object->sendTo(player);
 	}
 
-	//if (player == parent || isBuildingObject()) {
-		for (int j = 0; j < containerObjects->size(); ++j) {
-			SceneObject* containerObject = containerObjects->get(j);
-
-			containerObject->sendTo(player);
-		}
-	//}
+	sendContainerObjectsTo(player);
 
 	sendBaselinesTo(player);
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
+}
+
+void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
+	//sending all objects by default
+	for (int j = 0; j < containerObjects->size(); ++j) {
+		SceneObject* containerObject = containerObjects->get(j);
+
+		containerObject->sendTo(player);
+	}
 }
 
 void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
@@ -208,12 +205,9 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
 	if (zone == NULL) {
-		SceneObject* grandParent = parent;
+		SceneObject* grandParent = getGrandParent();
 
 		if (grandParent != NULL) {
-			while (grandParent->getParent() != NULL)
-				grandParent = grandParent->getParent();
-
 			grandParent->broadcastMessage(message, sendSelf, lockZone);
 
 			return;
@@ -333,10 +327,9 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 			//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
 			// add to new cell
-			parent = newParent;
-			parent->addObject(_this, 0xFFFFFFFF);
+			//parent = newParent;
+			newParent->addObject(_this, -1);
 
-			//linkType = 0x04;
 			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
 		}
@@ -387,6 +380,20 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 	} catch (...) {
 		zone->unlock();
 	}
+}
+
+void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
+	if (zone == NULL)
+		return;
+
+	removeFromZone();
+
+	ZoneServer* server = zone->getZoneServer();
+	Zone* zone = server->getZone(newZoneID);
+
+	initializePosition(newPostionX, newPositionZ, newPositionY);
+
+	insertToZone(zone);
 }
 
 void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
@@ -520,3 +527,33 @@ void SceneObjectImplementation::getContainmentObjects(VectorMap<String, SceneObj
 	objects = *containmentSlots;
 }
 
+SceneObject* SceneObjectImplementation::getGrandParent() {
+	if (parent == NULL)
+		return NULL;
+
+	SceneObject* grandParent = parent;
+
+	while (grandParent->getParent() != NULL)
+		grandParent = grandParent->getParent();
+
+	return grandParent;
+}
+
+bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
+	if (parent == NULL)
+		return false;
+
+	if (parent == object)
+		return true;
+
+	SceneObject* grandParent = parent;
+
+	while (grandParent->getParent() != NULL) {
+		grandParent = grandParent->getParent();
+
+		if (grandParent == object)
+			return true;
+	}
+
+	return false;
+}

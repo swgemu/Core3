@@ -98,7 +98,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 }
 
 void ObjectControllerMessageCallback::run() {
-	SceneObject* player = client->getPlayer();
+	ManagedReference<SceneObject*> player = client->getPlayer();
 
 	if (player == NULL)
 		return;

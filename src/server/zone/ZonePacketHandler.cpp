@@ -61,6 +61,7 @@ which carries forward this exception.
 #include "packets/object/CommandQueueEnqueue.h"
 #include "packets/object/ObjectMenuRequest.h"
 #include "packets/object/TargetUpdate.h"
+#include "packets/object/ObjectMenuSelect.h"
 
 
 #include "packets/chat/ChatRoomList.h"
@@ -79,6 +80,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplement
 
 void ZonePacketHandler::registerMessages() {
 	info("registering Messages");
+
 	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
 	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
 	messageCallbackFactory.registerObject<ClientRandomNameRequest>(0xD6D1B6D1);
@@ -86,10 +88,12 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<CmdSceneReadyCallback>(0x43FD1C22);
 	messageCallbackFactory.registerObject<ObjectControllerMessageCallback>(0x80CE5E46);
 	messageCallbackFactory.registerObject<ChatRequestRoomListCallback>(0x4C3D2CFA);
+	messageCallbackFactory.registerObject<ObjectMenuSelectCallback>(0x7CA18726);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
 	info("registering ObjectController Messages");
+
 	ObjectControllerMessageCallback::objectMessageControllerFactory = new ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>();
 	ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory = ObjectControllerMessageCallback::objectMessageControllerFactory;
 
