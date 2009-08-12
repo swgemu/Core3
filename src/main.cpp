@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "server/zone/managers/planet/HeightMap.h"
 
 int main(int argc, char* argv[]) {
-	TaskManager* taskManager = TaskManager::instance();
+	/*TaskManager* taskManager = TaskManager::instance();
 	taskManager->initialize();
 
 	taskManager->testScheduler();
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
 
 	taskManager->shutdown();
 
-	return 0;
+	return 0;*/
 
 	try {
 		Vector<String> arguments;

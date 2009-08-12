@@ -10,8 +10,6 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 /*
  *	RadialManagerStub
  */

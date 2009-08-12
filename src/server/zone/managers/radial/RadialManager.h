@@ -47,23 +47,11 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
 #include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {
