@@ -50,6 +50,8 @@ public:
 
 	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
 
+	void sendSlottedObjectsTo(SceneObject* player);
+
 	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
 	int getBankCredits();
@@ -282,6 +284,8 @@ public:
 
 	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
 
+	void sendSlottedObjectsTo(SceneObject* player);
+
 	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
 	int getBankCredits();
@@ -398,6 +402,8 @@ public:
 	void sendSystemMessage(UnicodeString& message);
 
 	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
+
+	void sendSlottedObjectsTo(SceneObject* player);
 
 	int getBankCredits();
 

@@ -147,26 +147,29 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 	StringBuffer msg;
 	msg << "sending 0x" << hex << getClientObjectCRC() << " oid 0x" << hex << getObjectID();
-	info(msg.toString());
+	//info(msg.toString());
 
 	create(client);
 
 	if (parent != NULL)
 		link(client.get(), containmentType);
 
-	//is there a case where we dont send the slotted equipped items?
-	for (int i = 0; i < containmentSlots->size(); ++i) {
-		SceneObject* object = containmentSlots->get(i);
-
-		object->sendTo(player);
-	}
-
+	sendSlottedObjectsTo(player);
 	sendContainerObjectsTo(player);
 
 	sendBaselinesTo(player);
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
+}
+
+void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
+	//sending all slotted objects by default
+	for (int i = 0; i < containmentSlots->size(); ++i) {
+		SceneObject* object = containmentSlots->get(i);
+
+		object->sendTo(player);
+	}
 }
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
@@ -378,6 +381,7 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->unlock();
 	} catch (...) {
+		error("unreported exception caught in SceneObjectImplementation::insertToZone(Zone* zone)");
 		zone->unlock();
 	}
 }
