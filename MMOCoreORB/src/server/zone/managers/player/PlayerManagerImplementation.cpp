@@ -194,57 +194,20 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		playerCreature->setClient(client);
 		client->setPlayer(player);
 
-		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
-		playerCreature->sendMessage(msg);
-
-		ZoneServer* zoneServer = server->getZoneServer();
-		/*if (callback->getTutorialFlag()) {
-			Zone* zone = zoneServer->getZone(42);
-
-			String tut = "object/building/general/shared_newbie_hall.iff";
-			String cell = "object/cell/shared_cell.iff";
-
-			BuildingObject* tutorial = (BuildingObject*) objectManager->createObject(tut.hashCode());
-			tutorial->setStaticBuilding(false);
-
-			SceneObject* travelTutorialTerminal = objectManager->createObject(4258705837uL);
-
-			SceneObject* cellTut = NULL;
-
-			for (int i = 0; i < 14; ++i) {
-				cellTut = objectManager->createObject(cell.hashCode());
-
-				tutorial->addCell((CellObject*)cellTut);
-
-				if (i == 10) {
-					cellTut->addObject(player, -1);
-					cellTut->addObject(travelTutorialTerminal, -1);
-				}
-			}
-
-			tutorial->insertToZone(zone);
-			travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
-			travelTutorialTerminal->insertToZone(zone);
-
-			player->initializePosition(27.0f, -3.5f, -165.0f);
-			player->setZone(zone);
-		} else {*/
+		if (callback->getTutorialFlag()) {
+			createTutorialBuilding(playerCreature);
+		} else {
+			ZoneServer* zoneServer = server->getZoneServer();
 			Zone* zone = zoneServer->getZone(8);
 			player->setZone(zone);
-
-			/*for (int i = 0; i < 100; ++i) {
-				SceneObject* npc = objectManager->createObject(1542946611);
-				npc->initializePosition(0, 195.0f, float(i));
-				npc->insertToZone(zone);
-			}*/
-		//}
+		}
 
 		StringBuffer infoMsg;
 		infoMsg << "player " << name.toString() << " successfully created";
 		info(infoMsg);
 
-		/*Zone* zone = server->getZoneServer()->getZone(8);
-	player->setZone(zone);*/
+		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
+		playerCreature->sendMessage(msg);
 
 		unlock();
 	} catch (...) {
@@ -353,4 +316,37 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	inventory->addObject(backpackObject, -1);
 
 	return true;
+}
+
+void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player) {
+	ZoneServer* zoneServer = server->getZoneServer();
+	Zone* zone = zoneServer->getZone(42);
+
+	String tut = "object/building/general/shared_newbie_hall.iff";
+	String cell = "object/cell/shared_cell.iff";
+
+	BuildingObject* tutorial = (BuildingObject*) objectManager->createObject(tut.hashCode());
+	tutorial->setStaticBuilding(false);
+
+	SceneObject* travelTutorialTerminal = objectManager->createObject(4258705837uL);
+
+	SceneObject* cellTut = NULL;
+
+	for (int i = 0; i < 14; ++i) {
+		cellTut = objectManager->createObject(cell.hashCode());
+
+		tutorial->addCell((CellObject*)cellTut);
+
+		if (i == 10) {
+			cellTut->addObject(player, -1);
+			cellTut->addObject(travelTutorialTerminal, -1);
+		}
+	}
+
+	tutorial->insertToZone(zone);
+	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
+	travelTutorialTerminal->insertToZone(zone);
+
+	player->initializePosition(27.0f, -3.5f, -165.0f);
+	player->setZone(zone);
 }

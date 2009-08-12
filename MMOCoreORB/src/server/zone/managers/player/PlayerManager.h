@@ -45,13 +45,25 @@ class MessageCallback;
 
 using namespace server::zone::packets;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/managers/player/PlayerMap.h"
 
 #include "engine/log/Logger.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -73,6 +85,8 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
+
+	void createTutorialBuilding(PlayerCreature* player);
 
 protected:
 	PlayerManager(DummyConstructorParameter* param);
@@ -114,6 +128,8 @@ public:
 
 	bool createAllPlayerObjects(PlayerCreature* player);
 
+	void createTutorialBuilding(PlayerCreature* player);
+
 	PlayerManager* _this;
 
 	operator const PlayerManager*();
@@ -140,6 +156,8 @@ public:
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(PlayerCreature* player);
+
+	void createTutorialBuilding(PlayerCreature* player);
 
 protected:
 	String _param0_checkExistentNameInDatabase__String_;

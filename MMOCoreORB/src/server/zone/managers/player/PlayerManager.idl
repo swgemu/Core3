@@ -70,4 +70,6 @@ class PlayerManager extends ManagedObject implements Logger {
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
 	public native boolean createAllPlayerObjects(PlayerCreature player);
+	
+	public native void createTutorialBuilding(PlayerCreature player);
 }
