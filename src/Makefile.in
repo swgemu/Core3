@@ -96,10 +96,10 @@ am__objects_1 = ZoneServer.$(OBJEXT) ZoneClientSession.$(OBJEXT) \
 	CellObject.$(OBJEXT) BuildingObject.$(OBJEXT) \
 	PlayerManager.$(OBJEXT) ChatRoom.$(OBJEXT) \
 	ChatManager.$(OBJEXT) ObjectController.$(OBJEXT) \
-	CommandQueueManager.$(OBJEXT) WaypointObject.$(OBJEXT) \
-	WeaponObject.$(OBJEXT) MeleeWeaponObject.$(OBJEXT) \
-	StructureManager.$(OBJEXT) WearableObject.$(OBJEXT) \
-	ArmorObject.$(OBJEXT)
+	WaypointObject.$(OBJEXT) WeaponObject.$(OBJEXT) \
+	MeleeWeaponObject.$(OBJEXT) StructureManager.$(OBJEXT) \
+	WearableObject.$(OBJEXT) ArmorObject.$(OBJEXT) \
+	Terminal.$(OBJEXT)
 am_core3_OBJECTS = $(am__objects_1) ConfigManager.$(OBJEXT) \
 	Features.$(OBJEXT) ForumsDatabase.$(OBJEXT) \
 	ServerDatabase.$(OBJEXT) LoginMessageProcessorThread.$(OBJEXT) \
@@ -127,14 +127,14 @@ am_core3_OBJECTS = $(am__objects_1) ConfigManager.$(OBJEXT) \
 	ChatRoomImplementation.$(OBJEXT) \
 	ChatManagerImplementation.$(OBJEXT) \
 	ObjectControllerImplementation.$(OBJEXT) \
-	CommandQueueManagerImplementation.$(OBJEXT) \
 	CommandConfigManager.$(OBJEXT) \
 	WaypointObjectImplementation.$(OBJEXT) \
 	WeaponObjectImplementation.$(OBJEXT) \
 	MeleeWeaponObjectImplementation.$(OBJEXT) \
 	StructureManagerImplementation.$(OBJEXT) \
 	WearableObjectImplementation.$(OBJEXT) \
-	ArmorObjectImplementation.$(OBJEXT) main.$(OBJEXT)
+	ArmorObjectImplementation.$(OBJEXT) \
+	TerminalImplementation.$(OBJEXT) main.$(OBJEXT)
 core3_OBJECTS = $(am_core3_OBJECTS)
 core3_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
@@ -279,13 +279,13 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
-				server/zone/managers/objectcontroller/command/CommandQueueManager.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
-				server/zone/objects/tangible/wearables/ArmorObject.cpp
+				server/zone/objects/tangible/wearables/ArmorObject.cpp \
+				server/zone/objects/tangible/terminal/Terminal.cpp
 
 core3_SOURCES = $(core3_IDLS) \
 		server/conf/ConfigManager.cpp \
@@ -324,7 +324,6 @@ core3_SOURCES = $(core3_IDLS) \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
-		server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
@@ -332,6 +331,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
+		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		main.cpp
 
 all: all-am
@@ -412,8 +412,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ChatRoomImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ClientCreateCharacter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CommandConfigManager.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CommandQueueManager.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CommandQueueManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ConfigManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Container.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ContainerImplementation.Po@am__quote@
@@ -452,6 +450,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StructureManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TerminalImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WaypointObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WaypointObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WeaponObject.Po@am__quote@
@@ -707,20 +707,6 @@ ObjectController.obj: server/zone/managers/objectcontroller/ObjectController.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectController.obj `if test -f 'server/zone/managers/objectcontroller/ObjectController.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/ObjectController.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/ObjectController.cpp'; fi`
 
-CommandQueueManager.o: server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManager.o -MD -MP -MF $(DEPDIR)/CommandQueueManager.Tpo -c -o CommandQueueManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManager.Tpo $(DEPDIR)/CommandQueueManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' object='CommandQueueManager.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
-
-CommandQueueManager.obj: server/zone/managers/objectcontroller/command/CommandQueueManager.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManager.obj -MD -MP -MF $(DEPDIR)/CommandQueueManager.Tpo -c -o CommandQueueManager.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManager.Tpo $(DEPDIR)/CommandQueueManager.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManager.cpp' object='CommandQueueManager.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManager.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManager.cpp'; fi`
-
 WaypointObject.o: server/zone/objects/waypoint/WaypointObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT WaypointObject.o -MD -MP -MF $(DEPDIR)/WaypointObject.Tpo -c -o WaypointObject.o `test -f 'server/zone/objects/waypoint/WaypointObject.cpp' || echo '$(srcdir)/'`server/zone/objects/waypoint/WaypointObject.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/WaypointObject.Tpo $(DEPDIR)/WaypointObject.Po
@@ -804,6 +790,20 @@ ArmorObject.obj: server/zone/objects/tangible/wearables/ArmorObject.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/wearables/ArmorObject.cpp' object='ArmorObject.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ArmorObject.obj `if test -f 'server/zone/objects/tangible/wearables/ArmorObject.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/wearables/ArmorObject.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/wearables/ArmorObject.cpp'; fi`
+
+Terminal.o: server/zone/objects/tangible/terminal/Terminal.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Terminal.o -MD -MP -MF $(DEPDIR)/Terminal.Tpo -c -o Terminal.o `test -f 'server/zone/objects/tangible/terminal/Terminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/Terminal.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Terminal.Tpo $(DEPDIR)/Terminal.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/Terminal.cpp' object='Terminal.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Terminal.o `test -f 'server/zone/objects/tangible/terminal/Terminal.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/Terminal.cpp
+
+Terminal.obj: server/zone/objects/tangible/terminal/Terminal.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Terminal.obj -MD -MP -MF $(DEPDIR)/Terminal.Tpo -c -o Terminal.obj `if test -f 'server/zone/objects/tangible/terminal/Terminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/Terminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/Terminal.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Terminal.Tpo $(DEPDIR)/Terminal.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/Terminal.cpp' object='Terminal.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Terminal.obj `if test -f 'server/zone/objects/tangible/terminal/Terminal.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/Terminal.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/Terminal.cpp'; fi`
 
 ConfigManager.o: server/conf/ConfigManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ConfigManager.o -MD -MP -MF $(DEPDIR)/ConfigManager.Tpo -c -o ConfigManager.o `test -f 'server/conf/ConfigManager.cpp' || echo '$(srcdir)/'`server/conf/ConfigManager.cpp
@@ -1309,20 +1309,6 @@ ObjectControllerImplementation.obj: server/zone/managers/objectcontroller/Object
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ObjectControllerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp'; fi`
 
-CommandQueueManagerImplementation.o: server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManagerImplementation.o -MD -MP -MF $(DEPDIR)/CommandQueueManagerImplementation.Tpo -c -o CommandQueueManagerImplementation.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManagerImplementation.Tpo $(DEPDIR)/CommandQueueManagerImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' object='CommandQueueManagerImplementation.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManagerImplementation.o `test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
-
-CommandQueueManagerImplementation.obj: server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandQueueManagerImplementation.obj -MD -MP -MF $(DEPDIR)/CommandQueueManagerImplementation.Tpo -c -o CommandQueueManagerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandQueueManagerImplementation.Tpo $(DEPDIR)/CommandQueueManagerImplementation.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp' object='CommandQueueManagerImplementation.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o CommandQueueManagerImplementation.obj `if test -f 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; then $(CYGPATH_W) 'server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/objectcontroller/command/CommandQueueManagerImplementation.cpp'; fi`
-
 CommandConfigManager.o: server/zone/managers/objectcontroller/command/CommandConfigManager.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CommandConfigManager.o -MD -MP -MF $(DEPDIR)/CommandConfigManager.Tpo -c -o CommandConfigManager.o `test -f 'server/zone/managers/objectcontroller/command/CommandConfigManager.cpp' || echo '$(srcdir)/'`server/zone/managers/objectcontroller/command/CommandConfigManager.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/CommandConfigManager.Tpo $(DEPDIR)/CommandConfigManager.Po
@@ -1420,6 +1406,20 @@ ArmorObjectImplementation.obj: server/zone/objects/tangible/wearables/ArmorObjec
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp' object='ArmorObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ArmorObjectImplementation.obj `if test -f 'server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp'; fi`
+
+TerminalImplementation.o: server/zone/objects/tangible/terminal/TerminalImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TerminalImplementation.o -MD -MP -MF $(DEPDIR)/TerminalImplementation.Tpo -c -o TerminalImplementation.o `test -f 'server/zone/objects/tangible/terminal/TerminalImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/TerminalImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TerminalImplementation.Tpo $(DEPDIR)/TerminalImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/TerminalImplementation.cpp' object='TerminalImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TerminalImplementation.o `test -f 'server/zone/objects/tangible/terminal/TerminalImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/terminal/TerminalImplementation.cpp
+
+TerminalImplementation.obj: server/zone/objects/tangible/terminal/TerminalImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TerminalImplementation.obj -MD -MP -MF $(DEPDIR)/TerminalImplementation.Tpo -c -o TerminalImplementation.obj `if test -f 'server/zone/objects/tangible/terminal/TerminalImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/TerminalImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/TerminalImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TerminalImplementation.Tpo $(DEPDIR)/TerminalImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/terminal/TerminalImplementation.cpp' object='TerminalImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TerminalImplementation.obj `if test -f 'server/zone/objects/tangible/terminal/TerminalImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/terminal/TerminalImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/terminal/TerminalImplementation.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
