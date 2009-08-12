@@ -49,9 +49,16 @@ which carries forward this exception.
 #include "server/zone/managers/planet/HeightMap.h"
 
 int main(int argc, char* argv[]) {
-	/*HeightMap::convert("tatooine.hmap");
+	TaskManager* taskManager = TaskManager::instance();
+	taskManager->initialize();
 
-	return 0;*/
+	taskManager->testScheduler();
+
+	Thread::sleep(4000);
+
+	taskManager->shutdown();
+
+	return 0;
 
 	try {
 		Vector<String> arguments;
