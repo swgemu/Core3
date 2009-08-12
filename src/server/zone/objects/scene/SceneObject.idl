@@ -356,6 +356,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public native abstract void sendContainerObjectsTo(SceneObject player);
+	public native abstract void sendSlottedObjectsTo(SceneObject player);
 	
 	public abstract void sendToOwner(boolean doClose = true) {
 	}

@@ -77,6 +77,13 @@ void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 			return;
 	}
 
+	if (scno->getParent() != NULL) {
+		SceneObject* scnoGrandParent = scno->getGrandParent();
+
+		if (isInRange(scnoGrandParent, 128))
+			return;
+	}
+
 	if (scno != _this)
 		scno->sendTo(_this, true);
 }

@@ -140,6 +140,7 @@ class CreatureObject extends TangibleObject {
 	public native void sendSystemMessage(final string message);
 	public native void sendSystemMessage(unicode message);
 	public native void sendSystemMessage(final string file, final string str, unsigned long targetid = 0);
+	public native void sendSlottedObjectsTo(SceneObject player);
 	public local native void sendSystemMessage(final string file, final string str, StfParameter param);
 	
 	public int getBankCredits() {

@@ -198,7 +198,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		playerCreature->sendMessage(msg);
 
 		ZoneServer* zoneServer = server->getZoneServer();
-		if (callback->getTutorialFlag()) {
+		/*if (callback->getTutorialFlag()) {
 			Zone* zone = zoneServer->getZone(42);
 
 			String tut = "object/building/general/shared_newbie_hall.iff";
@@ -228,10 +228,16 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 			player->initializePosition(27.0f, -3.5f, -165.0f);
 			player->setZone(zone);
-		} else {
+		} else {*/
 			Zone* zone = zoneServer->getZone(8);
 			player->setZone(zone);
-		}
+
+			/*for (int i = 0; i < 100; ++i) {
+				SceneObject* npc = objectManager->createObject(1542946611);
+				npc->initializePosition(0, 195.0f, float(i));
+				npc->insertToZone(zone);
+			}*/
+		//}
 
 		StringBuffer infoMsg;
 		infoMsg << "player " << name.toString() << " successfully created";

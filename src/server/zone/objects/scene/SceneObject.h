@@ -148,6 +148,8 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	void sendSlottedObjectsTo(SceneObject* player);
+
 	void sendToOwner(bool doClose = true);
 
 	void sendAttributeListTo(SceneObject* object);
@@ -729,6 +731,8 @@ public:
 
 	virtual void sendContainerObjectsTo(SceneObject* player);
 
+	virtual void sendSlottedObjectsTo(SceneObject* player);
+
 	virtual void sendToOwner(bool doClose = true);
 
 	virtual void sendAttributeListTo(SceneObject* object);
@@ -919,6 +923,8 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void sendSlottedObjectsTo(SceneObject* player);
 
 	void sendToOwner(bool doClose);
 

@@ -26,10 +26,19 @@ BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateDa
 }
 
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (!isStaticBuilding()) {
+	if (!isStaticBuilding()) { // send Baselines etc..
 		info("sending building object create");
 
 		SceneObjectImplementation::sendTo(player, doClose);
+	} else { // just send the objects that are in the building
+		for (int i = 0; i < cells->size(); ++i) {
+			CellObject* cell = cells->get(i);
+
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				SceneObject* childStub = cell->getContainerObject(j);
+				childStub->sendTo(player);
+			}
+		}
 	}
 }
 
