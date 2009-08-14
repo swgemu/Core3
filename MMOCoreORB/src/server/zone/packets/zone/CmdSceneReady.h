@@ -77,8 +77,6 @@ public:
 	void run() {
 		BaseMessage* msg = new CmdSceneReady();
 		client->sendMessage(msg);
-
-		client->resetPacketCheckupTime();
 	}
 };
 #endif /*CMDSCENEREADY_H_*/

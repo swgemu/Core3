@@ -50,6 +50,8 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	if (owner == NULL)
 		return;
 
+	owner->balancePacketCheckupTime();
+
 	BaseMessage* byteFlag = new unkByteFlag();
 	owner->sendMessage(byteFlag);
 
@@ -65,6 +67,8 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 		grandParent->sendTo(_this);
 	} else
 		sendTo(_this, doClose);
+
+	owner->resetPacketCheckupTime();
 }
 
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
