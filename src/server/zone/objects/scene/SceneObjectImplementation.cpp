@@ -145,19 +145,19 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (client == NULL)
 		return;
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "sending 0x" << hex << getClientObjectCRC() << " oid 0x" << hex << getObjectID();
-	//info(msg.toString());
+	info(msg.toString());*/
 
 	create(client);
 
 	if (parent != NULL)
 		link(client.get(), containmentType);
 
+	sendBaselinesTo(player);
+
 	sendSlottedObjectsTo(player);
 	sendContainerObjectsTo(player);
-
-	sendBaselinesTo(player);
 
 	if (doClose)
 		SceneObjectImplementation::close(client);
