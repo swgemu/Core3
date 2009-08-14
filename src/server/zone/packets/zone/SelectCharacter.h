@@ -94,8 +94,6 @@ public:
 			player->setClient(client);
 			client->setPlayer(obj);
 
-			client->balancePacketCheckupTime();
-
 			try {
 				player->wlock();
 

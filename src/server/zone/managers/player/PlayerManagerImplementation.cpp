@@ -333,12 +333,12 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	SceneObject* cellTut = NULL;
 
 	for (int i = 0; i < 14; ++i) {
-		cellTut = objectManager->createObject(cell.hashCode());
+		SceneObject* newCell = objectManager->createObject(cell.hashCode());
 
-		tutorial->addCell((CellObject*)cellTut);
+		tutorial->addCell((CellObject*)newCell);
 
 		if (i == 10) {
-			cellTut->addObject(player, -1);
+			cellTut = newCell;
 			cellTut->addObject(travelTutorialTerminal, -1);
 		}
 	}
@@ -349,4 +349,5 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
+	cellTut->addObject(player, -1);
 }
