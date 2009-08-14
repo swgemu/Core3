@@ -238,6 +238,8 @@ public:
 
 	bool isASubChildOf(SceneObject* object);
 
+	bool isInQuadTree();
+
 	String getLoggingName();
 
 	bool isPlayerCreature();
@@ -821,6 +823,8 @@ public:
 
 	bool isASubChildOf(SceneObject* object);
 
+	bool isInQuadTree();
+
 	String getLoggingName();
 
 	bool isPlayerCreature();
@@ -1007,6 +1011,8 @@ public:
 	SceneObject* getGrandParent();
 
 	bool isASubChildOf(SceneObject* object);
+
+	bool isInQuadTree();
 
 	String getLoggingName();
 

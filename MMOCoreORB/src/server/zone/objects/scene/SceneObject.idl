@@ -509,6 +509,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native SceneObject getGrandParent();
 	public native boolean isASubChildOf(SceneObject object);
 	
+	public boolean isInQuadTree() {
+		return QuadTreeEntry.isInQuadTree();
+	}
+	
 	public string getLoggingName() {
 		return Logger.getLoggingName();
 	}

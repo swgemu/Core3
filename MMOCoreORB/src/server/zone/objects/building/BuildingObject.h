@@ -23,6 +23,20 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -34,8 +48,6 @@ using namespace server::zone::objects::cell;
 #include "system/util/SortedVector.h"
 
 #include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {
@@ -74,6 +86,12 @@ public:
 
 	void setStaticBuilding(bool value);
 
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
+
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -97,6 +115,8 @@ namespace building {
 class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
 protected:
 	Vector<CellObject* >* cells;
+
+	SortedVector<SceneObject* >* notifiedObjects;
 
 	bool staticBuilding;
 
@@ -130,6 +150,12 @@ public:
 	CellObject* getCell(int idx);
 
 	void setStaticBuilding(bool value);
+
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
 
 	BuildingObject* _this;
 
@@ -167,6 +193,12 @@ public:
 	CellObject* getCell(int idx);
 
 	void setStaticBuilding(bool value);
+
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
 
 };
 

@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -175,6 +177,45 @@ void BuildingObject::setStaticBuilding(bool value) {
 		((BuildingObjectImplementation*) _impl)->setStaticBuilding(value);
 }
 
+bool BuildingObject::hasNotifiedObject(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->hasNotifiedObject(object);
+}
+
+void BuildingObject::addNotifiedObject(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->addNotifiedObject(object);
+}
+
+void BuildingObject::removeNotifiedObject(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->removeNotifiedObject(object);
+}
+
 /*
  *	BuildingObjectImplementation
  */
@@ -202,18 +243,33 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(80):  return staticBuilding;
+	// server/zone/objects/building/BuildingObject.idl(81):  return staticBuilding;
 	return staticBuilding;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(84):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(85):  return cells.get(idx);
 	return cells->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(88):  staticBuilding = value;
+	// server/zone/objects/building/BuildingObject.idl(89):  staticBuilding = value;
 	staticBuilding = value;
+}
+
+bool BuildingObjectImplementation::hasNotifiedObject(SceneObject* object) {
+	// server/zone/objects/building/BuildingObject.idl(93):  return notifiedObjects.contains(object);
+	return notifiedObjects->contains(object);
+}
+
+void BuildingObjectImplementation::addNotifiedObject(SceneObject* object) {
+	// server/zone/objects/building/BuildingObject.idl(97):  notifiedObjects.put(object);
+	notifiedObjects->put(object);
+}
+
+void BuildingObjectImplementation::removeNotifiedObject(SceneObject* object) {
+	// server/zone/objects/building/BuildingObject.idl(101):  notifiedObjects.drop(object);
+	notifiedObjects->drop(object);
 }
 
 /*
@@ -250,6 +306,15 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 13:
 		setStaticBuilding(inv->getBooleanParameter());
+		break;
+	case 14:
+		resp->insertBoolean(hasNotifiedObject((SceneObject*) inv->getObjectParameter()));
+		break;
+	case 15:
+		addNotifiedObject((SceneObject*) inv->getObjectParameter());
+		break;
+	case 16:
+		removeNotifiedObject((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -288,6 +353,18 @@ CellObject* BuildingObjectAdapter::getCell(int idx) {
 
 void BuildingObjectAdapter::setStaticBuilding(bool value) {
 	return ((BuildingObjectImplementation*) impl)->setStaticBuilding(value);
+}
+
+bool BuildingObjectAdapter::hasNotifiedObject(SceneObject* object) {
+	return ((BuildingObjectImplementation*) impl)->hasNotifiedObject(object);
+}
+
+void BuildingObjectAdapter::addNotifiedObject(SceneObject* object) {
+	return ((BuildingObjectImplementation*) impl)->addNotifiedObject(object);
+}
+
+void BuildingObjectAdapter::removeNotifiedObject(SceneObject* object) {
+	return ((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
 }
 
 /*

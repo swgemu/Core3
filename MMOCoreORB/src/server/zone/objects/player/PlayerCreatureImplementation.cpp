@@ -19,6 +19,7 @@
 #include "events/PlayerRecoveryEvent.h"
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
@@ -74,29 +75,55 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
 
-	if (parent != NULL) {
-		SceneObject* grandParent = getGrandParent();
+	if (scno == _this)
+		return;
 
-		if (grandParent == scno) // we already sent our grandParent to owner
+	SceneObject* grandParent = getGrandParent();
+
+	if (parent != NULL) {
+		if (grandParent == scno) { // we already should have sent our grandParent to owner
+
+			if (grandParent->isBuildingObject())
+				((BuildingObject*)grandParent)->addNotifiedObject(_this);
+
 			return;
+		}
 	}
 
 	if (scno->getParent() != NULL) {
+		//check the parent if its building
+		//check if the building has me as notified
+		//if it has me than send the object without the buio
+		//if it hasnt me than dont send me and wait for the building to be sent
+		//TODO: check if we need this for every object or only for buildings
+
 		SceneObject* scnoGrandParent = scno->getGrandParent();
 
-		if (isInRange(scnoGrandParent, 128))
+		if (scnoGrandParent->isBuildingObject()) {
+			BuildingObject* building = (BuildingObject*)scnoGrandParent;
+
+			if (!building->hasNotifiedObject(_this))
+				return;
+		} else // we wait for the Objects parent to get sent
 			return;
 	}
 
-	if (scno != _this)
-		scno->sendTo(_this, true);
+	if (scno->isBuildingObject())
+		((BuildingObject*)scno)->addNotifiedObject(_this);
+
+	scno->sendTo(_this, true);
 }
 
 void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) entry)->_getStub());
 
-	if (scno != _this)
-		scno->sendDestroyTo(_this);
+	if (scno == _this)
+		return;
+
+	if (scno->isBuildingObject())
+		((BuildingObject*)scno)->removeNotifiedObject(_this);
+
+	scno->sendDestroyTo(_this);
 }
 
 void PlayerCreatureImplementation::logout(bool doLock) {

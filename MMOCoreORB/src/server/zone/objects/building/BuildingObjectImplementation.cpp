@@ -7,6 +7,8 @@
 
 #include "BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+
 
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
@@ -15,6 +17,8 @@ BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateDa
 	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
 	cells = new Vector<CellObject*>();
+	notifiedObjects = new SortedVector<SceneObject*>();
+	notifiedObjects->setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 
 	staticBuilding = false;
 
@@ -30,7 +34,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		info("sending building object create");
 
 		SceneObjectImplementation::sendTo(player, doClose);
-	} else { // just send the objects that are in the building
+	} else { // just send the objects that are in the building, without the cells because they are static in the client
 		for (int i = 0; i < cells->size(); ++i) {
 			CellObject* cell = cells->get(i);
 
@@ -69,20 +73,9 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 		QuadTreeEntry* obj = getInRangeObject(i);
 		SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
-		//if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
-			creoImpl->addInRangeObject(obj, false);
-			obj->addInRangeObject(creoImpl, true);
-		//}
+		creoImpl->addInRangeObject(obj, false);
+		obj->addInRangeObject(creoImpl, true);
 	}
-
-	/*addInRangeObject(creoImpl, false);
-
-
-	creoImpl->addInRangeObject(this, false);
-
-	StringBuffer infoMsg;
-	infoMsg << "adding this building with pointer:" << hex << this << " to creoImpl:" << creoImpl->getLoggingName();
-	info(infoMsg.toString());*/
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
