@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 
 	taskManager->testScheduler();
 
-	Thread::sleep(4000);
+	Thread::sleep(10000000);
 
 	taskManager->shutdown();
 

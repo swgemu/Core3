@@ -304,13 +304,10 @@ public:
 
 	inline void removeBuffEvent() {
 		if (buffEvent != NULL) {
-			if (buffEvent->isQueued()) {
-				if (server != NULL)
-					server->removeEvent(buffEvent);
+			buffEvent->cancel();
 
-				delete buffEvent;
-				buffEvent = NULL;
-			}
+			delete buffEvent;
+			buffEvent = NULL;
 		}
 	}
 
@@ -512,7 +509,7 @@ public:
 	}
 
 	inline bool isActive() {
-		return buffEvent->isQueued();
+		return buffEvent->isScheduled();
 	}
 };
 

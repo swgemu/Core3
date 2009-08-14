@@ -214,8 +214,7 @@ bool ResourceManagerImplementation::loadConfigData() {
 void ResourceManagerImplementation::stop() {
 	lock();
 
-	if (spawnResourcesEvent->isQueued())
-		serv->removeEvent(spawnResourcesEvent);
+	spawnResourcesEvent->cancel();
 
 	if (resourceIDNameMap != NULL)
 		resourceIDNameMap->removeAll();
@@ -228,6 +227,7 @@ void ResourceManagerImplementation::theShift() {
 	// Much of this method can be removed, the output statements
 	// Make it easier to see what the spawner is doing and what
 	// To expect what it runs.
+
 	numQueries = 0;
 	numFunctions = 0;
 	numInsert = 0;

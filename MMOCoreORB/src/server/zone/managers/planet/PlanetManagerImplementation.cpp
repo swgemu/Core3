@@ -298,11 +298,8 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 
 void PlanetManagerImplementation::clearShuttles() {
-	if (shuttleTakeOffEvent->isQueued())
-		server->removeEvent(shuttleTakeOffEvent);
-
-	if (shuttleLandingEvent->isQueued())
-		server->removeEvent(shuttleLandingEvent);
+	shuttleTakeOffEvent->cancel();
+	shuttleLandingEvent->cancel();
 
 	shuttleMap->removeAll();
 }
@@ -1262,21 +1259,12 @@ void PlanetManagerImplementation::weatherUpdatePlayers() {
 }
 
 void PlanetManagerImplementation::weatherRemoveEvents() {
-	if (weatherChangeEvent->isQueued()) {
-		server->removeEvent(weatherChangeEvent);
-	}
-
-	if (weatherIncreaseEvent->isQueued()) {
-		server->removeEvent(weatherIncreaseEvent);
-	}
-
-	if (weatherDecreaseEvent->isQueued()) {
-		server->removeEvent(weatherDecreaseEvent);
-	}
+	weatherChangeEvent->cancel();
+	weatherIncreaseEven->cancel();
+	weatherDecreaseEvent->cancel();
 }
 
 ActiveAreaTrigger* PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
-
 	lock();
 
 	ActiveAreaTrigger * trigger = new ActiveAreaTrigger(area);

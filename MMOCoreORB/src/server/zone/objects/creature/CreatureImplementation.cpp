@@ -513,10 +513,7 @@ void CreatureImplementation::scheduleDespawnCreature(int time) {
 	if (server == NULL)
 		return;
 
-	if (creatureRemoveEvent->isQueued())
-		server->removeEvent(creatureRemoveEvent);
-
-	server->addEvent(creatureRemoveEvent, time);
+	creatureRemoveEvent->reschedule(time);
 }
 
 void CreatureImplementation::clearLootItems() {
@@ -1122,7 +1119,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 				//((CreatureObject*)_this)->showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
 
-				if (isQueued())
+				if (isScheduled())
 					creatureManager->dequeueActivity(this);
 
 				creatureManager->queueActivity(this, 10);
@@ -1135,7 +1132,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 			//System::out << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
 
-			if (!isQueued())
+			if (!isScheduled())
 				creatureManager->queueActivity(this, System::random(30000)
 						+ 1000);
 		}
@@ -1246,7 +1243,7 @@ bool CreatureImplementation::activate() {
 }
 
 void CreatureImplementation::removeFromQueue() {
-	if (isQueued())
+	if (isScheduled())
 		creatureManager->dequeueActivity(this);
 }
 

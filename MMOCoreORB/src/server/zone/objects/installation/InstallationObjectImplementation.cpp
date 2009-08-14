@@ -92,8 +92,7 @@ InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid, D
 InstallationObjectImplementation::~InstallationObjectImplementation() {
 
 	if (syncEvent != NULL) {
-		if (syncEvent->isQueued())
-			server->removeEvent(syncEvent);
+		syncEvent->cancel();
 
 		delete syncEvent;
 		syncEvent = NULL;
@@ -604,8 +603,8 @@ void InstallationObjectImplementation::clearCombatState(bool removedefenders) {
 }
 
 void InstallationObjectImplementation::activateSync() {
-	if (syncEvent != NULL && !syncEvent->isQueued())
-		server->addEvent(syncEvent, 5000); // 5 seconds
+	if (syncEvent != NULL && !syncEvent->isScheduled())
+		server->scheduleTask(syncEvent, 5000); // 5 seconds
 }
 
 int InstallationObjectImplementation::getObjectSubType() {

@@ -45,8 +45,7 @@ FactoryObjectImplementation::FactoryObjectImplementation(uint64 oid, FactoryDeed
 
 FactoryObjectImplementation::~FactoryObjectImplementation(){
 	if (createItemEvent != NULL) {
-		if (createItemEvent->isQueued())
-			server->removeEvent(createItemEvent);
+		createItemEvent->cancel();
 
 		delete createItemEvent;
 		createItemEvent = NULL;
@@ -213,13 +212,11 @@ void FactoryObjectImplementation::setOperating(bool state){
 
 	InstallationObjectImplementation::setOperating(state);
 
-	if(state == true)
+	if (state) {
 		scheduleItemCreation();
-	else{
-		if(createItemEvent != NULL && createItemEvent->isQueued()){
-			server->removeEvent(createItemEvent);
-			createItemEvent->setQueued(false);
-		}
+	} else {
+		if (createItemEvent != NULL)
+			creatureItemEvent->cancel();
 	}
 }
 
@@ -243,9 +240,8 @@ void FactoryObjectImplementation::scheduleItemCreation(){
 		complexity = manufSchem->getComplexity();
 
 	if(_this->isOperating()){
-		if (createItemEvent != NULL && !createItemEvent->isQueued()){
-			server->addEvent(createItemEvent, 8000*complexity); // 8*complexity
-			createItemEvent->setQueued(true);
+		if (createItemEvent != NULL && !createItemEvent->isScheduled()){
+			server->scheduleTask(createItemEvent, 8000 * complexity); // 8*complexity
 		}
 	}
 
