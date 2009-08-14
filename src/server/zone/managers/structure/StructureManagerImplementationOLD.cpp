@@ -75,8 +75,7 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 
 StructureManagerImplementation::~StructureManagerImplementation() {
 	if (structureManagerSaveStateEvent != NULL) {
-		if (structureManagerSaveStateEvent->isQueued())
-			server->removeEvent(structureManagerSaveStateEvent);
+		structureManagerSaveStateEvent->cancel();
 
 		delete structureManagerSaveStateEvent;
 		structureManagerSaveStateEvent = NULL;
@@ -150,8 +149,8 @@ void StructureManagerImplementation::saveStructures(bool doSchedule) {
 		structureManagerSaveStateEvent->setStructureManager(_this);
 		server->addEvent(structureManagerSaveStateEvent, 300000);
 	} else {
-		if (structureManagerSaveStateEvent->isQueued())
-			server->removeEvent(structureManagerSaveStateEvent);
+		structureManagerSaveStateEvent->cancel();
+
 		structureManagerSaveStateEvent->setStructureManager(NULL);
 	}
 

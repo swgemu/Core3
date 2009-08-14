@@ -187,7 +187,7 @@ public:
 	bool activate();
 
 	inline bool isActive() {
-		return isQueued();
+		return isScheduled();
 	}
 	void removeFromQueue();
 
@@ -455,13 +455,12 @@ public:
 
 	inline void wasLooted(){
 		looted = true;
-		if (playerCanHarvest.size() == 0) {
 
-			if (server != NULL && creatureRemoveEvent != NULL && creatureRemoveEvent->isQueued())
-				server->removeEvent(creatureRemoveEvent);
+		if (playerCanHarvest.isEmpty()) {
+			if (creatureRemoveEvent != NULL)
+				creatureRemoveEvent->cancel();
 
 			scheduleDespawnCreature(500);
-
 		}
 	}
 

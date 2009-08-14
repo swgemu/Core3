@@ -148,8 +148,7 @@ BazaarManagerImplementation::~BazaarManagerImplementation() {
 	delete bazaarTerminals;
 	bazaarTerminals = NULL;
 
-	if (checkEvent->isQueued())
-		processServer->removeEvent(checkEvent);
+	checkEvent->cancel();
 
 	delete checkEvent;
 	checkEvent = NULL;
