@@ -707,7 +707,7 @@ String SceneObject::getSlotDescriptor(int idx) {
 		return ((SceneObjectImplementation*) _impl)->getSlotDescriptor(idx);
 }
 
-SceneObject* SceneObject::getSlot(String& slot) {
+SceneObject* SceneObject::getSlottedObject(const String& slot) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -717,7 +717,7 @@ SceneObject* SceneObject::getSlot(String& slot) {
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((SceneObjectImplementation*) _impl)->getSlot(slot);
+		return ((SceneObjectImplementation*) _impl)->getSlottedObject(slot);
 }
 
 int SceneObject::getSlotDescriptorSize() {
@@ -1364,7 +1364,7 @@ String SceneObjectImplementation::getSlotDescriptor(int idx) {
 	return slotDescriptors->get(idx);
 }
 
-SceneObject* SceneObjectImplementation::getSlot(String& slot) {
+SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
 	// server/zone/objects/scene/SceneObject.idl(466):  return containmentSlots.get(slot);
 	return containmentSlots->get(slot);
 }
@@ -1688,7 +1688,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertAscii(getSlotDescriptor(inv->getSignedIntParameter()));
 		break;
 	case 55:
-		resp->insertLong(getSlot(inv->getAsciiParameter(_param0_getSlot__String_))->_getObjectID());
+		resp->insertLong(getSlottedObject(inv->getAsciiParameter(_param0_getSlottedObject__String_))->_getObjectID());
 		break;
 	case 56:
 		resp->insertSignedInt(getSlotDescriptorSize());
@@ -1992,8 +1992,8 @@ String SceneObjectAdapter::getSlotDescriptor(int idx) {
 	return ((SceneObjectImplementation*) impl)->getSlotDescriptor(idx);
 }
 
-SceneObject* SceneObjectAdapter::getSlot(String& slot) {
-	return ((SceneObjectImplementation*) impl)->getSlot(slot);
+SceneObject* SceneObjectAdapter::getSlottedObject(const String& slot) {
+	return ((SceneObjectImplementation*) impl)->getSlottedObject(slot);
 }
 
 int SceneObjectAdapter::getSlotDescriptorSize() {

@@ -113,6 +113,20 @@ class ChatRoomList;
 
 using namespace server::zone::packets::chat;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace chat {
+
+class ChatInstantMessageToCharacter;
+
+} // namespace chat
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::chat;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/service/proto/BaseMessage.h"
@@ -146,9 +160,11 @@ public:
 
 	PlayerCreature* removePlayer(const String& name);
 
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
-	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
 	unsigned int getNextRoomID();
 
@@ -208,9 +224,11 @@ public:
 
 	PlayerCreature* removePlayer(const String& name);
 
+	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
-	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
 	unsigned int getNextRoomID();
 
@@ -253,17 +271,17 @@ public:
 
 	PlayerCreature* removePlayer(const String& name);
 
-	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
-
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
+
+	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
 	unsigned int getNextRoomID();
 
 protected:
 	String _param0_getPlayer__String_;
 	String _param0_removePlayer__String_;
-	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
 	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
+	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

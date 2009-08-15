@@ -56,6 +56,7 @@ import server.zone.managers.player.PlayerManager;
 import system.util.VectorMap;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.chat.ChatRoomList;
+import server.zone.packets.chat.ChatInstantMessageToCharacter;
 
 
 class ChatManager extends ManagedObject {
@@ -90,9 +91,6 @@ class ChatManager extends ManagedObject {
 	public native void addRoom(ChatRoom channel);
 	public native void removeRoom(ChatRoom channel);
 	
-	/*public native void wlock();
-	public native void unlock();*/
-	
 	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
 	
 	public native void sendRoomList(PlayerCreature player);
@@ -101,8 +99,10 @@ class ChatManager extends ManagedObject {
 	public native PlayerCreature getPlayer(final string name);
 	public native PlayerCreature removePlayer(final string name);
 	
-	public native void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
 	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	
+	public native void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
+	public local native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 
 	/*public native void sendMail(final string sendername, unicode header, unicode body, final string name);
 	public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);

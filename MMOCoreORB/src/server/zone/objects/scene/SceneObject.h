@@ -212,7 +212,7 @@ public:
 
 	String getSlotDescriptor(int idx);
 
-	SceneObject* getSlot(String& slot);
+	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
@@ -797,7 +797,7 @@ public:
 
 	String getSlotDescriptor(int idx);
 
-	SceneObject* getSlot(String& slot);
+	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
@@ -986,7 +986,7 @@ public:
 
 	String getSlotDescriptor(int idx);
 
-	SceneObject* getSlot(String& slot);
+	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
@@ -1057,7 +1057,7 @@ public:
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
-	String _param0_getSlot__String_;
+	String _param0_getSlottedObject__String_;
 	UnicodeString _param0_setObjectName__UnicodeString_;
 	String _param0_setLoggingName__String_;
 };

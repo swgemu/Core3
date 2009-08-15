@@ -47,9 +47,28 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class ChatInstantMessageToCharacter : public BaseMessage {
+#include "../MessageCallback.h"
+#include "server/chat/ChatManager.h"
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace chat {
+
+class ChatInstantMessageToCharacter : public MessageCallback {
+	String game;
+	String galaxy;
+	String name;
+	UnicodeString message;
+
+	uint32 sequence;
 public:
-	static uint32 parse(Message* pack, String& game, String& galaxy, String& name, UnicodeString& message) {
+	ChatInstantMessageToCharacter(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* pack) {
 		pack->parseAscii(game);
 		pack->parseAscii(galaxy);
 
@@ -59,9 +78,44 @@ public:
 		
 		pack->shiftOffset(4);
 		
-		return pack->parseInt();
+		sequence = pack->parseInt();
 	}
 	
+	void run() {
+		ZoneServer* zoneServer = server->getZoneServer();
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		chatManager->handleChatInstantMessageToCharacter(this);
+	}
+
+	inline String& getName() {
+		return name;
+	}
+
+	inline String& getGalaxy() {
+		return galaxy;
+	}
+
+	inline String& getGame() {
+		return game;
+	}
+
+	inline UnicodeString& getMessage() {
+		return message;
+	}
+
+	inline int getSequence() {
+		return sequence;
+	}
+
 };
 
+
+}
+}
+}
+
+}
+
+using namespace server::zone::packets::chat;
 #endif /*CHATINSTANTMESSAGETOCHARACTER_H_*/

@@ -12,6 +12,11 @@
 #include "server/zone/managers/player/PlayerMap.h"
 #include "server/zone/packets/chat/ChatRoomList.h"
 #include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
+#include "server/zone/packets/chat/ChatInstantMessageToClient.h"
+#include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
+
+
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
@@ -287,5 +292,23 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 	} catch (...) {
 		System::out << "unreported exception caught in ChatManagerImplementation::handleMessage\n";
 	}
+}
+
+void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
+	ManagedReference<PlayerCreature*> sender = (PlayerCreature*) message->getClient()->getPlayer();
+	PlayerCreature* receiver = getPlayer(message->getName());
+
+	if (receiver == NULL || !receiver->isOnline()) {
+		BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), true);
+		sender->sendMessage(amsg);
+
+		return;
+	}
+
+	BaseMessage* msg = new ChatInstantMessageToClient(message->getGame(), message->getGalaxy(), sender->getFirstName(), message->getMessage());
+	receiver->sendMessage(msg);
+
+	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), false);
+	sender->sendMessage(amsg);
 }
 
