@@ -405,7 +405,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		return;
 
 	try {
-		info("SceneObjectImplementation::insertToBuilding");
+		//info("SceneObjectImplementation::insertToBuilding");
 
 		//parent->addObject(_this, 0xFFFFFFFF);
 
@@ -416,7 +416,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
-		info("sent cell link to everyone else");
+		//info("sent cell link to everyone else");
 	} catch (...) {
 		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
 	}

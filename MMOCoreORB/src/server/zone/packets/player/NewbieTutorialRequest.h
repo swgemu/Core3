@@ -8,6 +8,8 @@
 #ifndef NEWBIETUTORIALREQUEST_H_
 #define NEWBIETUTORIALREQUEST_H_
 
+#include "../MessageCallback.h"
+
 class NewbieTutorialRequest : public BaseMessage {
 public:
    NewbieTutorialRequest(const String& test) : BaseMessage() {
@@ -16,6 +18,24 @@ public:
 
 		insertAscii(test); //try openContainer openStatMigration etc.
    }
+
+};
+
+class NewbieTutorialResponseCallback : public MessageCallback {
+	String response;
+public:
+	NewbieTutorialResponseCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+		message->parseAscii(response);
+	}
+
+	void run() {
+
+	}
 
 };
 

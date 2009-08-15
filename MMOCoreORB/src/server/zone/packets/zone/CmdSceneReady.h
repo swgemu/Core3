@@ -79,4 +79,5 @@ public:
 		client->sendMessage(msg);
 	}
 };
+
 #endif /*CMDSCENEREADY_H_*/

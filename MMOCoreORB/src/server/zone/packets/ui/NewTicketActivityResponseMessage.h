@@ -22,4 +22,23 @@ public:
    }
 
 };
+
+class NewTicketActivityMessageCalback : public MessageCallback {
+	int ticketID;
+public:
+	NewTicketActivityMessageCalback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+		ticketID = message->parseInt();
+	}
+
+	void run() {
+		NewTicketActivityResponseMessage* ntar = new NewTicketActivityResponseMessage(0, ticketID);
+		client->sendMessage(ntar);
+	}
+};
+
 #endif /* NEWTICKETACTIVITYRESPONSEMESSAGE_H_ */

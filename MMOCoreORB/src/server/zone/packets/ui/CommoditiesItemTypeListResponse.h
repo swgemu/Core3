@@ -20,4 +20,22 @@ public:
 
 };
 
+class CommoditiesItemTypeListRequestCallback : public MessageCallback {
+	String request;
+public:
+	CommoditiesItemTypeListRequestCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+		message->parseAscii(request);
+	}
+
+	void run() {
+		CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
+		client->sendMessage(citlr);
+	}
+};
+
 #endif /* COMMODITIESITEMTYPELISTRESPONSE_H_ */

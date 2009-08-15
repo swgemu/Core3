@@ -56,4 +56,24 @@ public:
    }
 
 };
+
+class RequestCategoriesMessageCallback : public MessageCallback {
+	String language;
+public:
+	RequestCategoriesMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
+		MessageCallback(client, server) {
+
+	}
+
+	void parse(Message* message) {
+		message->parseAscii(language);
+	}
+
+	void run() {
+		RequestCategoriesResponseMessage* rcrm = new RequestCategoriesResponseMessage();
+		rcrm->addMainCategory("Account/Billing", 0xB808, 1, 1, 1);
+		client->sendMessage(rcrm);
+	}
+};
+
 #endif /* REQUESTCATEGORIESRESPONSEMESSAGE_H_ */
