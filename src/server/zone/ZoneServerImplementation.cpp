@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "managers/radial/RadialManager.h"
 
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
 #include "ZoneProcessServerImplementation.h"
 
@@ -383,7 +384,7 @@ void ZoneServerImplementation::startManagers() {
 	objectController = new ObjectController(processor);
 	objectController->deploy("ObjectController");
 
-	playerManager = new PlayerManager(objectManager, processor);
+	playerManager = new PlayerManager(_this, processor);
 	playerManager->deploy("PlayerManager");
 
 	radialManager = new RadialManager(_this);
@@ -566,16 +567,58 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
 	try {
-		lock(doLock);
+		//lock(doLock); ObjectManager has its own mutex
 
 		obj = objectManager->get(oid);
 
-		unlock(doLock);
+		//unlock(doLock);
+	} catch (Exception& e) {
+		//unlock(doLock);
+		error(e.getMessage());
+		e.printStackTrace();
 	} catch (...) {
-		unlock(doLock);
+		//unlock(doLock);
+		error("unreported exception caught in ZoneServerImplementation::getObject");
 	}
 
 	return obj;
+}
+
+SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, uint64 oid) {
+	SceneObject* obj = NULL;
+
+	try {
+		//lock(); ObjectManager has its own mutex
+
+		obj = objectManager->createObject(templateCRC, oid);
+
+		if (obj != NULL && obj->isPlayerCreature())
+			chatManager->addPlayer((PlayerCreature*)obj);
+
+		//unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+
+		//unlock();
+	} catch (...) {
+		error("unreported exception caught in ZoneServerImplementation::createObject");
+		//unlock();
+	}
+
+	return obj;
+}
+
+void ZoneServerImplementation::destroyObject(uint64 objectID) {
+	ManagedReference<SceneObject*> object = getObject(objectID);
+
+	if (object == NULL)
+		return;
+
+	if (object->isPlayerCreature())
+		chatManager->removePlayer(((PlayerCreature*)object.get())->getFirstName());
+
+	objectManager->destroyObject(objectID);
 }
 /*
 SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {

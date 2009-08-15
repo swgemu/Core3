@@ -31,6 +31,22 @@ ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedOb
 ObjectController::~ObjectController() {
 }
 
+bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+		method.addObjectParameter(objectToTransfer);
+		method.addObjectParameter(destinationObject);
+		method.addSignedIntParameter(containmentType);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+}
+
 void ObjectController::addQueueCommand(QueueCommand* command) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -91,11 +107,18 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+	return ((ObjectControllerImplementation*) impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
 /*

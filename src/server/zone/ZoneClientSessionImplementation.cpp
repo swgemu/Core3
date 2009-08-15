@@ -162,7 +162,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 
 			server = srv;
 
-			player = NULL;
+			setPlayer(NULL);
 		}
 
 		BaseClient::disconnect(false);

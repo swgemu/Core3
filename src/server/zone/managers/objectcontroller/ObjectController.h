@@ -92,6 +92,8 @@ class ObjectController : public ManagedObject {
 public:
 	ObjectController(ZoneProcessServerImplementation* server);
 
+	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
+
 	void addQueueCommand(QueueCommand* command);
 
 	QueueCommand* getQueueCommand(const String& name);
@@ -128,6 +130,8 @@ class ObjectControllerImplementation : public ManagedObjectImplementation, publi
 public:
 	ObjectControllerImplementation(ZoneProcessServerImplementation* server);
 
+	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
+
 	void addQueueCommand(QueueCommand* command);
 
 	QueueCommand* getQueueCommand(const String& name);
@@ -154,6 +158,8 @@ public:
 	ObjectControllerAdapter(ObjectControllerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient);
 
 };
 

@@ -236,6 +236,10 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 
 		zone->unlock(lockZone);
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+		zone->unlock(lockZone);
 	} catch (...) {
 		error("unreported exception caught in SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone)");
 		zone->unlock(lockZone);
@@ -280,14 +284,20 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-			broadcastMessage(message, true, false);
+			broadcastMessage(message, false, false);
 		} else {
 			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
-			broadcastMessage(message, true, false);
+			broadcastMessage(message, false, false);
 		}
 
 		zone->unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+
+		zone->unlock();
 	} catch (...) {
+		error("unreported exception caught in SceneObjectImplementation::updateZone(bool lightUpdate)");
 		zone->unlock();
 	}
 }
@@ -349,12 +359,16 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 		if (lightUpdate) {
 			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, true, false);
+			broadcastMessage(message, false, false);
 		} else {
 			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, true, false);
+			broadcastMessage(message, false, false);
 		}
 		zone->unlock();
+	} catch (Exception& e) {
+		zone->unlock();
+		error(e.getMessage());
+		e.printStackTrace();
 	} catch (...) {
 		zone->unlock();
 		error("Exception in PlayerImplementation::updateZoneWithParent");
@@ -379,6 +393,10 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
             insertToBuilding(building);
 		}
 
+		zone->unlock();
+	}  catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 		zone->unlock();
 	} catch (...) {
 		error("unreported exception caught in SceneObjectImplementation::insertToZone(Zone* zone)");
@@ -417,6 +435,9 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
 		//info("sent cell link to everyone else");
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 	} catch (...) {
 		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
 	}
@@ -452,7 +473,12 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 		removeInRangeObjects();
 
 		zone->unlock(lockZone);
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+		zone->unlock(lockZone);
 	} catch (...) {
+		error("unreported exception caught in SceneObjectImplementation::removeFromZone");
 		zone->unlock(lockZone);
 	}
 

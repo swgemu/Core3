@@ -63,6 +63,7 @@ import engine.service.proto.BaseMessage;
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.ZoneClientSession;
 import server.zone.Zone;
+import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
@@ -504,6 +505,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public SceneObject getParent() {
 		return parent;
+	}
+	
+	public ZoneServer getZoneServer() {
+		return server.getZoneServer();
 	}
 	
 	public native SceneObject getGrandParent();

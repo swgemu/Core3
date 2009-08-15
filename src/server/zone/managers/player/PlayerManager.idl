@@ -54,15 +54,15 @@ import server.zone.managers.object.ObjectManager;
 import server.zone.packets.MessageCallback;
 import server.zone.objects.tangible.TangibleObject;
 import engine.core.ManagedObject;
+import server.zone.ZoneServer;
 
 class PlayerManager extends ManagedObject implements Logger {
-	ZoneProcessServerImplementation server;
+	ZoneProcessServerImplementation processor;
+	ZoneServer server;
 	
 	PlayerMap playerMap;
-	
-	ObjectManager objectManager;
-		
-	public native PlayerManager(ObjectManager objMan, ZoneProcessServerImplementation srv);
+			
+	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
 	
 	public local native boolean createPlayer(MessageCallback callback);
 	public local native boolean checkPlayerName(MessageCallback callback);

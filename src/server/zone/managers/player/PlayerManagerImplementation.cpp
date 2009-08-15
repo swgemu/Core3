@@ -7,11 +7,11 @@
 
 #include "PlayerManager.h"
 
-#include "../object/ObjectManager.h"
 #include "../../packets/charcreation/ClientCreateCharacter.h"
 #include "../../packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "../../packets/charcreation/ClientCreateCharacterFailed.h"
 #include "server/zone/objects/player/Races.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/db/ServerDatabase.h"
@@ -21,11 +21,10 @@
 #include "server/zone/objects/cell/CellObject.h"
 
 
-PlayerManagerImplementation::PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv) :
+PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) :
 	ManagedObjectImplementation(), Logger("PlayerManager") {
-	objectManager = objMan;
-
-	server = srv;
+	server = zoneServer;
+	processor = impl;
 
 	playerMap = new PlayerMap(3000);
 
@@ -58,7 +57,7 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) messageCallback;
 	ZoneClientSession* client = callback->getClient();
 
-	NameManager* nm = server->getNameManager();
+	NameManager* nm = processor->getNameManager();
 	BaseMessage* msg = NULL;
 
 	String firstName;
@@ -143,7 +142,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 			return false;
 		}
 
-		SceneObject* player = objectManager->createObject(playerCRC); // player
+		SceneObject* player = server->createObject(playerCRC); // player
 
 		if (player == NULL) {
 			error("could not create player... could not create player object");
@@ -198,8 +197,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		if (callback->getTutorialFlag()) {
 			createTutorialBuilding(playerCreature);
 		} else {
-			ZoneServer* zoneServer = server->getZoneServer();
-			Zone* zone = zoneServer->getZone(8);
+			Zone* zone = server->getZone(8);
 			player->setZone(zone);
 		}
 
@@ -210,8 +208,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
 		playerCreature->sendMessage(msg);
 
-		ZoneServer* zoneServer = server->getZoneServer();
-		ChatManager* chatManager = zoneServer->getChatManager();
+		ChatManager* chatManager = server->getChatManager();
 
 		chatManager->addPlayer(playerCreature);
 
@@ -235,7 +232,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 	String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
 	info("trying to create hair object " + sharedHairObjectFile);
-	SceneObject* hair = objectManager->createObject(sharedHairObjectFile.hashCode());
+	SceneObject* hair = server->createObject(sharedHairObjectFile.hashCode());
 
 	if (hair == NULL) {
 		info("objectManager returned NULL hair object");
@@ -259,7 +256,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 }
 
 bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player) {
-	SceneObject* inventory = objectManager->createObject(0x3969E83B); // character_inventory
+	SceneObject* inventory = server->createObject(0x3969E83B); // character_inventory
 
 	if (inventory == NULL) {
 		error("could not create player inventory");
@@ -268,7 +265,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(inventory, 4);
 
-	SceneObject* datapad = objectManager->createObject(0x73BA5001); //datapad
+	SceneObject* datapad = server->createObject(0x73BA5001); //datapad
 
 	if (datapad == NULL) {
 		error("could not create player datapad");
@@ -277,7 +274,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(datapad, 4);
 
-	SceneObject* playerObject = objectManager->createObject(0x619BAE21); //player object
+	SceneObject* playerObject = server->createObject(0x619BAE21); //player object
 
 	if (playerObject == NULL) {
 		error("could not create player object");
@@ -286,7 +283,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(playerObject, 4);
 
-	SceneObject* bank = objectManager->createObject(0x70FD1394); //bank
+	SceneObject* bank = server->createObject(0x70FD1394); //bank
 
 	if (bank == NULL) {
 		error("could not create bank");
@@ -295,7 +292,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(bank, 4);
 
-	SceneObject* missionBag = objectManager->createObject(0x3D7F6F9F); //mission bag
+	SceneObject* missionBag = server->createObject(0x3D7F6F9F); //mission bag
 
 	if (missionBag == NULL) {
 		error("could not create mission bag");
@@ -306,30 +303,29 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	// temp
 
-	SceneObject* vibro = objectManager->createObject(0x652688CE);
+	SceneObject* vibro = server->createObject(0x652688CE);
 	player->addObject(vibro, 4);
 	player->setWeaponID(vibro->getObjectID());
 
-	SceneObject* vibro2 = objectManager->createObject(0x652688CE);
+	SceneObject* vibro2 = server->createObject(0x652688CE);
 	inventory->addObject(vibro2, -1);
 
 	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
-	SceneObject* armor = objectManager->createObject(bharmor.hashCode());
+	SceneObject* armor = server->createObject(bharmor.hashCode());
 	inventory->addObject(armor, -1);
 
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
-	SceneObject* backpackObject = objectManager->createObject(backpack.hashCode());
+	SceneObject* backpackObject = server->createObject(backpack.hashCode());
 	inventory->addObject(backpackObject, -1);
 
 	return true;
 }
 
 void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player) {
-	ZoneServer* zoneServer = server->getZoneServer();
-	Zone* zone = zoneServer->getZone(42);
+	Zone* zone = server->getZone(42);
 
+	SceneObject* oldPlayer = server->getObject(0x1500000001uLL);
 
-	SceneObject* oldPlayer = zoneServer->getObject(0x1500000001uLL);
 	if (player!= oldPlayer && oldPlayer != NULL) {
 		SceneObject* tutCell = oldPlayer->getParent();
 
@@ -346,15 +342,15 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	String tut = "object/building/general/shared_newbie_hall.iff";
 	String cell = "object/cell/shared_cell.iff";
 
-	BuildingObject* tutorial = (BuildingObject*) objectManager->createObject(tut.hashCode());
+	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode());
 	tutorial->setStaticBuilding(false);
 
-	SceneObject* travelTutorialTerminal = objectManager->createObject(4258705837uL);
+	SceneObject* travelTutorialTerminal = server->createObject(4258705837uL);
 
 	SceneObject* cellTut = NULL;
 
 	for (int i = 0; i < 14; ++i) {
-		SceneObject* newCell = objectManager->createObject(cell.hashCode());
+		SceneObject* newCell = server->createObject(cell.hashCode());
 
 		tutorial->addCell((CellObject*)newCell);
 

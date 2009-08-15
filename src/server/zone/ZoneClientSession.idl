@@ -51,6 +51,7 @@ import system.net.SocketAddress;
 import system.net.Socket;
 import engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.ZoneServer;
 
 class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	SceneObject player;
@@ -85,6 +86,18 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 
 	// setters and getters
 	public void setPlayer(SceneObject playerCreature) {
+		if (playerCreature != player) {
+			if (playerCreature == null && player != null) {
+				ZoneServer zoneServer = player.getZoneServer();
+				
+				zoneServer.decreaseOnlinePlayers();
+			} else if (playerCreature != player) {
+				ZoneServer zoneServer = playerCreature.getZoneServer();
+				
+				zoneServer.increaseOnlinePlayers();
+			}
+		}
+		
 		player = playerCreature;
 	}
 

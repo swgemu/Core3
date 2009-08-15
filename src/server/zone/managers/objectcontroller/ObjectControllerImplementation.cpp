@@ -30,6 +30,30 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
 	info(infoMsg.toString(), true);
 }
 
+bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+	ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
+
+	if (parent == NULL) {
+		error("objectToTransfer parent is NULL in ObjectManager::transferObject");
+		return false;
+	}
+
+	uint32 oldContainmentType = objectToTransfer->getContainmentType();
+
+	if (!parent->removeObject(objectToTransfer)) {
+		error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
+		return false;
+	}
+
+	if (!destinationObject->addObject(objectToTransfer, containmentType, notifyClient)) {
+		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
+		parent->addObject(objectToTransfer, oldContainmentType);
+		return false;
+	}
+
+	return true;
+}
+
 void ObjectControllerImplementation::addQueueCommand(QueueCommand* command) {
 	queueCommands->put(command);
 }

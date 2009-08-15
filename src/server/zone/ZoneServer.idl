@@ -141,6 +141,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void unlock(boolean doLock);
 	
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
+	public native SceneObject createObject(unsigned int templateCRC, unsigned long objectID = 0);
+	public native void destroyObject(unsigned long objectID);
 
 	public void fixScheduler() {
 		//scheduler.fixQueue();
@@ -149,6 +151,25 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void changeUserCap(int amount = 50);
 
 	public native int getConnectionCount();
+	
+	public void increaseOnlinePlayers() {
+		lock();
+
+		if (++currentPlayers > maximumPlayers)
+			maximumPlayers = currentPlayers;
+
+		++totalPlayers;
+
+		unlock();
+	}
+	
+	public void decreaseOnlinePlayers() {
+		lock();
+		
+		currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
+		
+		unlock();
+	}
 
 	public void increaseTotalDeletedPlayers() {
 		this.lock();
@@ -206,10 +227,6 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public ChatManager getChatManager() {
 		return chatManager;
-	}
-	
-	public local ObjectManager getObjectManager() {
-		return objectManager;
 	}
 	
 	public ObjectController getObjectController() {

@@ -296,30 +296,35 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
 	return object;
 }
 
-bool ObjectManager::transferObject(ManagedReference<SceneObject*> objectToTransfer, ManagedReference<SceneObject*> destinationObject, int containmentType, bool notifyClient) {
-	ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
+void ObjectManager::destroyObject(uint64 objectID) {
+	lock();
 
-	if (parent == NULL) {
-		error("objectToTransfer parent is NULL in ObjectManager::transferObject");
-		return false;
+	try {
+		ManagedReference<SceneObject*> object = remove(objectID);
+
+		if (object == NULL) {
+			unlock();
+			return;
+		}
+
+		if (object->isPlayerCreature()) {
+			unlock();
+			return;
+		}
+
+		ManagedReference<SceneObject*> parent = object->getParent();
+
+		if (parent != NULL)
+			error("warning trying to destroy object with parent");
+
+		object->finalize();
+
+	} catch (...) {
+		error("unreported exception caught in void ObjectManager::destroyObject(uint64 objectID)");
 	}
 
-	uint32 oldContainmentType = objectToTransfer->getContainmentType();
-
-	if (!parent->removeObject(objectToTransfer)) {
-		error("could not remove objectToTransfer from parent in ObjectManager::transferObject");
-		return false;
-	}
-
-	if (!destinationObject->addObject(objectToTransfer, containmentType, notifyClient)) {
-		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
-		parent->addObject(objectToTransfer, oldContainmentType);
-		return false;
-	}
-
-	return true;
+	unlock();
 }
-
 
 void ObjectManager::registerFunctions() {
 	//lua generic

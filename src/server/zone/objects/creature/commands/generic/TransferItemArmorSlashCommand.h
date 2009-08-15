@@ -48,7 +48,7 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class TransferItemArmorSlashCommand : public QueueCommand {
 public:
@@ -111,7 +111,7 @@ public:
 			}
 
 			ZoneServer* zoneServer = server->getZoneServer();
-			ObjectManager* objectManager = zoneServer->getObjectManager();
+			ObjectController* objectController = zoneServer->getObjectController();
 
 			if (!destinationObject->canAddObject(objectToTransfer)) {
 				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
@@ -121,12 +121,12 @@ public:
 
 					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
-					if (!objectManager->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
+					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
 						return false;
 				}
 			}
 
-			if (!objectManager->transferObject(objectToTransfer, destinationObject, transferType, true))
+			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 				return false;
 
 		} /*else if (transferType == 4) {
