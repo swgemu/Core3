@@ -66,9 +66,9 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		StringBuffer infoMsg;
+		/*StringBuffer infoMsg;
 		infoMsg << "received getattributesbatch target 0x" << hex << target << " args " << arguments.toString();
-		creature->info(infoMsg.toString());
+		creature->info(infoMsg.toString());*/
 
 		StringTokenizer ids(arguments.toString());
 

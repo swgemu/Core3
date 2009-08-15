@@ -327,11 +327,14 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	if (player!= oldPlayer && oldPlayer != NULL) {
 		SceneObject* tutCell = oldPlayer->getParent();
 
-		player->initializePosition(27.0f, -3.5f, -165.0f);
-		player->setZone(zone);
+		if (tutCell != NULL) {
+			player->initializePosition(27.0f, -3.5f, -165.0f);
+			player->setZone(zone);
 
-		tutCell->addObject(player, -1);
-		return;
+			tutCell->addObject(player, -1);
+
+			return;
+		}
 	}
 
 	String tut = "object/building/general/shared_newbie_hall.iff";

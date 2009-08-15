@@ -23,7 +23,9 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 }
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	info("sending cell baselines");
+	StringBuffer msg;
+	msg << "sending cell number " << cellNumber << " baselines";
+	info(msg.toString());
 
 	BaseMessage* cellMsg3 = new CellObjectMessage3(objectID, cellNumber);
 	player->sendMessage(cellMsg3);

@@ -51,6 +51,10 @@ which carries forward this exception.
 #include "packets/zone/ClientIDMessage.h"
 #include "packets/zone/SelectCharacter.h"
 #include "packets/zone/CmdSceneReady.h"
+#include "packets/zone/ClientInactivityMessage.h"
+#include "packets/zone/ConnectPlayerResponseMessage.h"
+#include "packets/zone/GalaxyLoopTimes.h"
+#include "packets/zone/LagReport.h"
 
 #include "packets/charcreation/ClientCreateCharacter.h"
 #include "packets/charcreation/ClientRandomNameRequest.h"
@@ -63,6 +67,11 @@ which carries forward this exception.
 #include "packets/object/TargetUpdate.h"
 #include "packets/object/ObjectMenuSelect.h"
 
+#include "packets/ui/RequestCategoriesResponseMessage.h"
+#include "packets/ui/NewTicketActivityResponseMessage.h"
+#include "packets/ui/CommoditiesItemTypeListResponse.h"
+
+#include "packets/player/NewbieTutorialRequest.h"
 
 #include "packets/chat/ChatRoomList.h"
 
@@ -89,6 +98,16 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ObjectControllerMessageCallback>(0x80CE5E46);
 	messageCallbackFactory.registerObject<ChatRequestRoomListCallback>(0x4C3D2CFA);
 	messageCallbackFactory.registerObject<ObjectMenuSelectCallback>(0x7CA18726);
+	messageCallbackFactory.registerObject<ClientInactivityMessageCallback>(0x0F5D5325);
+	messageCallbackFactory.registerObject<ConnectPlayerMessageCallback>(0x2E365218);
+	messageCallbackFactory.registerObject<RequestGalaxyLoopTimesCallback>(0x7D842D68);
+	messageCallbackFactory.registerObject<RequestCategoriesMessageCallback>(0xF898E25F);
+	messageCallbackFactory.registerObject<NewTicketActivityMessageCalback>(0x274F4E78);
+	messageCallbackFactory.registerObject<CommoditiesItemTypeListRequestCallback>(0x48F493C5);
+	messageCallbackFactory.registerObject<NewbieTutorialResponseCallback>(0xca88fbad);
+	messageCallbackFactory.registerObject<LagRequestCallback>(0x31805ee0);
+	messageCallbackFactory.registerObject<LagReportCallback>(0xc5ed2f85);
+
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
@@ -122,7 +141,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	if (messageCallback == NULL) {
 		StringBuffer msg;
 		msg << "unknown opcode 0x" << hex << opcode;
-		info(msg);
+		info(msg, true);
 
 		return;
 	}
