@@ -184,11 +184,9 @@ void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
 	if (zone != NULL) {
-
 		if (isInQuadTree()) {
 			removeFromZone(true);
 		}
-
 	}
 }
 

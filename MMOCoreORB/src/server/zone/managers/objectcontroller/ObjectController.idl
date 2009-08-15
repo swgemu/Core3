@@ -56,15 +56,12 @@ import server.zone.objects.scene.SceneObject;
 class ObjectController extends ManagedObject implements Logger {
 	private ZoneProcessServerImplementation server;
 	
-	//private CommandQueueManager commandQueueManager;
 	private CommandConfigManager configManager;
 	private CommandList queueCommands;
 	
 	public native ObjectController(ZoneProcessServerImplementation server);
 	
-	/*public CommandQueueManager getCommandQueueManager() {
-		return commandQueueManager;
-	}*/
+	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false);
 	
 	public native local void addQueueCommand(QueueCommand command);
 	

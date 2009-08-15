@@ -10,12 +10,14 @@
 
 #include "server/zone/packets/MessageCallback.h"
 
+#include "server/zone/ZoneServer.h"
+
 /*
  *	PlayerManagerStub
  */
 
-PlayerManager::PlayerManager(ObjectManager* objMan, ZoneProcessServerImplementation* srv) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new PlayerManagerImplementation(objMan, srv);
+PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new PlayerManagerImplementation(zoneServer, impl);
 	_impl->_setStub(this);
 
 	((PlayerManagerImplementation*) _impl)->_serializationHelperMethod();
@@ -119,6 +121,7 @@ PlayerManagerImplementation::operator const PlayerManager*() {
 void PlayerManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
+	addSerializableVariable("server", server);
 }
 
 /*

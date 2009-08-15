@@ -18,8 +18,6 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 	StructureManagerImplementation::zone = zone;
 	StructureManagerImplementation::server = processor;
 
-	objectManager = processor->getZoneServer()->getObjectManager();
-
 	setGlobalLogging(true);
 	setLogging(false);
 }
@@ -57,7 +55,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 			//info("Loading Structures for zone: " + zone->getZoneID());
 
 			if (file.indexOf("object/cell/") != -1) {
-				BuildingObject* buio = (BuildingObject*) objectManager->get(parentId);
+				BuildingObject* buio = (BuildingObject*) server->getZoneServer()->getObject(parentId);
 
 				if (buio == NULL)
 					buio = loadStaticBuilding(parentId, planetid);
@@ -70,7 +68,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 				cell->deploy();
 
 				cell->setObjectCRC(file.hashCode());*/
-				SceneObject* cell = objectManager->createObject(file.hashCode(), oid);
+				SceneObject* cell = server->getZoneServer()->createObject(file.hashCode(), oid);
 				cell->initializePosition(x, z, y);
 				cell->setDirection(oX, oZ, oY, oW);
 
@@ -149,7 +147,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 
 			info("trying to create " + file);
 
-			buio = (BuildingObject*) objectManager->createObject(file.hashCode(), oid);
+			buio = (BuildingObject*) server->getZoneServer()->createObject(file.hashCode(), oid);
 
 			buio->initializePosition(x, z, y);
 			buio->setDirection(oX, oZ, oY, oW);

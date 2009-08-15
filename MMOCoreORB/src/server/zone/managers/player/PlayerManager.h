@@ -45,6 +45,16 @@ class MessageCallback;
 
 using namespace server::zone::packets;
 
+namespace server {
+namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/managers/player/PlayerMap.h"
@@ -62,7 +72,7 @@ namespace player {
 
 class PlayerManager : public ManagedObject {
 public:
-	PlayerManager(ObjectManager* objMan, ZoneProcessServerImplementation* srv);
+	PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
 
 	bool createPlayer(MessageCallback* callback);
 
@@ -97,14 +107,14 @@ namespace managers {
 namespace player {
 
 class PlayerManagerImplementation : public ManagedObjectImplementation, public Logger {
-	ZoneProcessServerImplementation* server;
+	ZoneProcessServerImplementation* processor;
+
+	ManagedReference<ZoneServer* > server;
 
 	PlayerMap* playerMap;
 
-	ObjectManager* objectManager;
-
 public:
-	PlayerManagerImplementation(ObjectManager* objMan, ZoneProcessServerImplementation* srv);
+	PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
 
 	bool createPlayer(MessageCallback* callback);
 

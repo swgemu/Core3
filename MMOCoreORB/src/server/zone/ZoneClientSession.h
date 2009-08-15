@@ -9,6 +9,16 @@
 
 #include "engine/core/ManagedReference.h"
 
+namespace server {
+namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/BasePacket.h"

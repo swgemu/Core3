@@ -162,11 +162,19 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
+	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID = 0);
+
+	void destroyObject(unsigned long long objectID);
+
 	void fixScheduler();
 
 	void changeUserCap(int amount = 50);
 
 	int getConnectionCount();
+
+	void increaseOnlinePlayers();
+
+	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
 
@@ -195,8 +203,6 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
-
-	ObjectManager* getObjectManager();
 
 	ObjectController* getObjectController();
 
@@ -335,11 +341,19 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
+	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID = 0);
+
+	void destroyObject(unsigned long long objectID);
+
 	void fixScheduler();
 
 	void changeUserCap(int amount = 50);
 
 	int getConnectionCount();
+
+	void increaseOnlinePlayers();
+
+	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
 
@@ -368,8 +382,6 @@ public:
 	PlayerManager* getPlayerManager();
 
 	ChatManager* getChatManager();
-
-	ObjectManager* getObjectManager();
 
 	ObjectController* getObjectController();
 
@@ -450,11 +462,19 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
+	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID);
+
+	void destroyObject(unsigned long long objectID);
+
 	void fixScheduler();
 
 	void changeUserCap(int amount);
 
 	int getConnectionCount();
+
+	void increaseOnlinePlayers();
+
+	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
 

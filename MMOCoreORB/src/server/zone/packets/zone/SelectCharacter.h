@@ -106,8 +106,6 @@ public:
 				player->unlock();
 			}
 
-			ChatManager* chatManager = zoneServer->getChatManager();
-			chatManager->addPlayer(player);
 		}
 	}
 };

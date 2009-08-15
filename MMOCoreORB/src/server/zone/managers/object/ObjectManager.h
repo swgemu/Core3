@@ -78,6 +78,12 @@ namespace zone {
 		void registerObjectTypes();
 		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
 
+		bool destroy(SceneObject* obj);
+
+		SceneObject* getCachedObject(uint64 oid);
+		SceneObject* remove(uint64 oid);
+		SceneObject* removeCachedObject(uint64 oid);
+
 	public:
 		ObjectManager();
 
@@ -85,20 +91,10 @@ namespace zone {
 
 		// object methods
 		SceneObject* add(SceneObject* obj);
-
 		SceneObject* get(uint64 oid);
 
-		SceneObject* remove(uint64 oid);
-
-		bool destroy(SceneObject* obj);
-
-		SceneObject* getCachedObject(uint64 oid);
-
-		SceneObject* removeCachedObject(uint64 oid);
-
 		SceneObject* createObject(uint32 objectCRC, uint64 oid = 0);
-
-		bool transferObject(ManagedReference<SceneObject*> objectToTransfer, ManagedReference<SceneObject*> destinationObject, int containmentType, bool notifyClient = false);
+		void destroyObject(uint64 objectID);
 
 		/*template<typename ClassType> void createObject() {
 
@@ -112,6 +108,7 @@ namespace zone {
 		void registerFunctions();
 
 		static int includeFile(lua_State* L);
+
 	};
 
 }

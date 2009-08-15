@@ -4,6 +4,8 @@
 
 #include "ZoneClientSession.h"
 
+#include "server/zone/ZoneServer.h"
+
 /*
  *	ZoneClientSessionStub
  */
@@ -215,37 +217,55 @@ void ZoneClientSessionImplementation::_serializationHelperMethod() {
 }
 
 void ZoneClientSessionImplementation::balancePacketCheckupTime() {
-	// server/zone/ZoneClientSession.idl(70):  BaseClientProxy.balancePacketCheckupTime();
+	// server/zone/ZoneClientSession.idl(71):  BaseClientProxy.balancePacketCheckupTime();
 	BaseClientProxy::balancePacketCheckupTime();
 }
 
 void ZoneClientSessionImplementation::resetPacketCheckupTime() {
-	// server/zone/ZoneClientSession.idl(74):  BaseClientProxy.resetPacketCheckupTime();
+	// server/zone/ZoneClientSession.idl(75):  BaseClientProxy.resetPacketCheckupTime();
 	BaseClientProxy::resetPacketCheckupTime();
 }
 
 String ZoneClientSessionImplementation::getAddress() {
-	// server/zone/ZoneClientSession.idl(80):  return BaseClientProxy.getAddress();
+	// server/zone/ZoneClientSession.idl(81):  return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
-	// server/zone/ZoneClientSession.idl(88):  player = playerCreature;
+	// server/zone/ZoneClientSession.idl(89):  player 
+	if (playerCreature != player){
+	// server/zone/ZoneClientSession.idl(90):  
+	if (playerCreature == NULL && player != NULL){
+	// server/zone/ZoneClientSession.idl(91):  ZoneServer zoneServer = player.getZoneServer();
+	ZoneServer* zoneServer = player->getZoneServer();
+	// server/zone/ZoneClientSession.idl(93):  zoneServer.decreaseOnlinePlayers();
+	zoneServer->decreaseOnlinePlayers();
+}
+
+	else 	// server/zone/ZoneClientSession.idl(94):  }
+	if (playerCreature != player){
+	// server/zone/ZoneClientSession.idl(95):  ZoneServer zoneServer = playerCreature.getZoneServer();
+	ZoneServer* zoneServer = playerCreature->getZoneServer();
+	// server/zone/ZoneClientSession.idl(97):  zoneServer.increaseOnlinePlayers();
+	zoneServer->increaseOnlinePlayers();
+}
+}
+	// server/zone/ZoneClientSession.idl(101):  = playerCreature;
 	player = playerCreature;
 }
 
 void ZoneClientSessionImplementation::setSessionKey(unsigned int key) {
-	// server/zone/ZoneClientSession.idl(92):  sessionKey = key;
+	// server/zone/ZoneClientSession.idl(105):  sessionKey = key;
 	sessionKey = key;
 }
 
 SceneObject* ZoneClientSessionImplementation::getPlayer() {
-	// server/zone/ZoneClientSession.idl(96):  return player;
+	// server/zone/ZoneClientSession.idl(109):  return player;
 	return player;
 }
 
 unsigned int ZoneClientSessionImplementation::getSessionKey() {
-	// server/zone/ZoneClientSession.idl(100):  return sessionKey;
+	// server/zone/ZoneClientSession.idl(113):  return sessionKey;
 	return sessionKey;
 }
 

@@ -56,9 +56,7 @@ class StructureManager extends ManagedObject implements Logger {
 	private Zone zone;
 	
 	private ZoneProcessServerImplementation server;
-	
-	private ObjectManager objectManager;
-	
+		
 	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	
 	public void loadStructures() {

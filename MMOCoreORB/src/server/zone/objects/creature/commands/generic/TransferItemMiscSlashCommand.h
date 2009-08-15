@@ -48,7 +48,7 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class TransferItemMiscSlashCommand : public QueueCommand {
 public:
@@ -98,9 +98,9 @@ public:
 		}
 
 		ZoneServer* zoneServer = server->getZoneServer();
-		ObjectManager* objectManager = zoneServer->getObjectManager();
+		ObjectController* objectController = zoneServer->getObjectController();
 
-		if (!objectManager->transferObject(objectToTransfer, destinationObject, transferType, true))
+		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
 			return false;
 
 		if (objectToTransfer->isWeaponObject() && creature == objectToTransfer->getParent())

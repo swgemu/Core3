@@ -115,8 +115,6 @@ class StructureManagerImplementation : public ManagedObjectImplementation, publi
 
 	ZoneProcessServerImplementation* server;
 
-	ObjectManager* objectManager;
-
 public:
 	StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor);
 

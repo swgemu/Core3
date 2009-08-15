@@ -41,6 +41,16 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace building {
 
@@ -233,6 +243,8 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	ZoneServer* getZoneServer();
 
 	SceneObject* getGrandParent();
 
@@ -819,6 +831,8 @@ public:
 
 	SceneObject* getParent();
 
+	ZoneServer* getZoneServer();
+
 	SceneObject* getGrandParent();
 
 	bool isASubChildOf(SceneObject* object);
@@ -1007,6 +1021,8 @@ public:
 	unsigned int getMovementCounter();
 
 	SceneObject* getParent();
+
+	ZoneServer* getZoneServer();
 
 	SceneObject* getGrandParent();
 
