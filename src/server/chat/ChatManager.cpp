@@ -20,6 +20,8 @@
 
 #include "server/zone/packets/chat/ChatRoomList.h"
 
+#include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
+
 /*
  *	ChatManagerStub
  */
@@ -153,26 +155,12 @@ PlayerCreature* ChatManager::removePlayer(const String& name) {
 		return ((ChatManagerImplementation*) _impl)->removePlayer(name);
 }
 
-void ChatManager::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(player);
-		method.addUnicodeParameter(args);
-
-		method.executeWithVoidReturn();
-	} else
-		((ChatManagerImplementation*) _impl)->handleSpatialChatInternalMessage(player, args);
-}
-
 void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 		method.addUnsignedLongParameter(target);
@@ -182,6 +170,28 @@ void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& 
 		method.executeWithVoidReturn();
 	} else
 		((ChatManagerImplementation*) _impl)->broadcastMessage(player, message, target, moodid, mood2);
+}
+
+void ChatManager::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(player);
+		method.addUnicodeParameter(args);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->handleSpatialChatInternalMessage(player, args);
+}
+
+void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ChatManagerImplementation*) _impl)->handleChatInstantMessageToCharacter(message);
 }
 
 unsigned int ChatManager::getNextRoomID() {
@@ -271,10 +281,10 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
 		break;
 	case 15:
-		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 16:
-		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
 		break;
 	case 17:
 		resp->insertInt(getNextRoomID());
@@ -322,12 +332,12 @@ PlayerCreature* ChatManagerAdapter::removePlayer(const String& name) {
 	return ((ChatManagerImplementation*) impl)->removePlayer(name);
 }
 
-void ChatManagerAdapter::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
-	return ((ChatManagerImplementation*) impl)->handleSpatialChatInternalMessage(player, args);
-}
-
 void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessage(player, message, target, moodid, mood2);
+}
+
+void ChatManagerAdapter::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
+	return ((ChatManagerImplementation*) impl)->handleSpatialChatInternalMessage(player, args);
 }
 
 unsigned int ChatManagerAdapter::getNextRoomID() {

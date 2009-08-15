@@ -25,6 +25,8 @@
 
 #include "professions/SkillBox.h"
 
+#include "PlayerObject.h"
+
 PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
 	CreatureObjectImplementation(templateData) {
 
@@ -242,4 +244,18 @@ String PlayerCreatureImplementation::getFirstName() {
     } else {
     	return fullName.toString();
     }
+}
+
+void PlayerCreatureImplementation::setLinkDead() {
+	onlineStatus = LINKDEAD;
+
+	logoutTimeStamp->updateToCurrentTime();
+	logoutTimeStamp->addMiliTime(30000);
+
+	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
+
+	if (playerObject != NULL)
+		playerObject->setCharacterBit(PlayerObjectImplementation::LD, true);
+
+	activateRecovery();
 }

@@ -119,7 +119,7 @@ public:
 			if (arrangementSize > 0) {
 				String childArrangement = objectToTransfer->getArrangementDescriptor(0);
 
-				ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlot(childArrangement);
+				ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
 				if (!objectManager->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
 					return false;

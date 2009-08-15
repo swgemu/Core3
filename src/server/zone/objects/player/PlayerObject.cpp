@@ -4,6 +4,10 @@
 
 #include "PlayerObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "server/zone/ZoneClientSession.h"
 
 /*
@@ -86,12 +90,40 @@ void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
 		((PlayerObjectImplementation*) _impl)->setCharacterBitmask(bitmask);
 }
 
-void PlayerObject::setTitle(const String& characterTitle) {
+bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addUnsignedIntParameter(bit);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->setCharacterBit(bit, notifyClient);
+}
+
+bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedIntParameter(bit);
+		method.addBooleanParameter(notifyClient);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->clearCharacterBit(bit, notifyClient);
+}
+
+void PlayerObject::setTitle(const String& characterTitle) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(characterTitle);
 
 		method.executeWithVoidReturn();
@@ -148,7 +180,7 @@ void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(98):  title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(101):  title = characterTitle;
 	title = characterTitle;
 }
 
@@ -179,6 +211,12 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		setCharacterBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 11:
+		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 12:
+		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 13:
 		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	default:
@@ -206,6 +244,14 @@ unsigned int PlayerObjectAdapter::getAdminLevel() {
 
 void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {
 	return ((PlayerObjectImplementation*) impl)->setCharacterBitmask(bitmask);
+}
+
+bool PlayerObjectAdapter::setCharacterBit(unsigned int bit, bool notifyClient) {
+	return ((PlayerObjectImplementation*) impl)->setCharacterBit(bit, notifyClient);
+}
+
+bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool notifyClient) {
+	return ((PlayerObjectImplementation*) impl)->clearCharacterBit(bit, notifyClient);
 }
 
 void PlayerObjectAdapter::setTitle(const String& characterTitle) {

@@ -115,7 +115,7 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 	initializePosition(0.f, 0.f, 0.f);
 
 	setGlobalLogging(true);
-	setLogging(true);
+	setLogging(false);
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {

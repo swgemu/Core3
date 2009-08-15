@@ -501,46 +501,35 @@ void PlayerCreatureImplementation::setOffline() {
 	onlineStatus = OFFLINE;
 }
 
-void PlayerCreatureImplementation::setLinkDead() {
-	// server/zone/objects/player/PlayerCreature.idl(186):  onlineStatus = LINKDEAD;
-	onlineStatus = LINKDEAD;
-	// server/zone/objects/player/PlayerCreature.idl(188):  logoutTimeStamp.updateToCurrentTime();
-	logoutTimeStamp->updateToCurrentTime();
-	// server/zone/objects/player/PlayerCreature.idl(189):  logoutTimeStamp.addMiliTime(30000);
-	logoutTimeStamp->addMiliTime(30000);
-	// server/zone/objects/player/PlayerCreature.idl(191):  activateRecovery();
-	activateRecovery();
-}
-
 void PlayerCreatureImplementation::setOnline() {
-	// server/zone/objects/player/PlayerCreature.idl(195):  onlineStatus = ONLINE;
+	// server/zone/objects/player/PlayerCreature.idl(188):  onlineStatus = ONLINE;
 	onlineStatus = ONLINE;
-	// server/zone/objects/player/PlayerCreature.idl(197):  doRecovery();
+	// server/zone/objects/player/PlayerCreature.idl(190):  doRecovery();
 	doRecovery();
 }
 
 void PlayerCreatureImplementation::setLoggingOut() {
-	// server/zone/objects/player/PlayerCreature.idl(201):  onlineStatus = LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(194):  onlineStatus = LOGGINGOUT;
 	onlineStatus = LOGGINGOUT;
 }
 
 void PlayerCreatureImplementation::clearDisconnectEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(205):  disconnectEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(198):  disconnectEvent = null;
 	disconnectEvent = NULL;
 }
 
 void PlayerCreatureImplementation::clearRecoveryEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(209):  recoveryEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(202):  recoveryEvent = null;
 	recoveryEvent = NULL;
 }
 
 void PlayerCreatureImplementation::addChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(213):  chatRooms.put(room);
+	// server/zone/objects/player/PlayerCreature.idl(206):  chatRooms.put(room);
 	chatRooms->put(room);
 }
 
 void PlayerCreatureImplementation::removeChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(217):  chatRooms.drop(room);
+	// server/zone/objects/player/PlayerCreature.idl(210):  chatRooms.drop(room);
 	chatRooms->drop(room);
 }
 

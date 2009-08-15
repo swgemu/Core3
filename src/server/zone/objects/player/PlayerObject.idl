@@ -94,6 +94,9 @@ class PlayerObject extends IntangibleObject {
 		characterBitmask = bitmask;
 	}
 	
+	public native boolean setCharacterBit(unsigned int bit, boolean notifyClient = false);
+	public native boolean clearCharacterBit(unsigned int bit, boolean notifyClient = false);
+	
 	public void setTitle(final string characterTitle) {
 		title = characterTitle;
 	}

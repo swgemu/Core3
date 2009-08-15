@@ -462,7 +462,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return slotDescriptors.get(idx);
 	}
 	
-	public SceneObject getSlot(string slot) {
+	public SceneObject getSlottedObject(final string slot) {
 		return containmentSlots.get(slot);
 	}
 	

@@ -15,6 +15,7 @@
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/db/ServerDatabase.h"
+#include "server/chat/ChatManager.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
@@ -208,6 +209,11 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 		ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(player->getObjectID());
 		playerCreature->sendMessage(msg);
+
+		ZoneServer* zoneServer = server->getZoneServer();
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		chatManager->addPlayer(playerCreature);
 
 		unlock();
 	} catch (...) {

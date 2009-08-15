@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "../../managers/object/ObjectManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
+
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 
 
@@ -69,4 +71,37 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* play6 = new PlayerObjectMessage6(_this);
 	player->sendMessage(play6);
+}
+
+bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) {
+	if (!(characterBitmask & bit)) {
+		characterBitmask |= bit;
+
+		if (notifyClient) {
+			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
+			delta->updateCharacterBitmask(characterBitmask);
+			delta->close();
+
+			broadcastMessage(delta, true, true);
+		}
+		return true;
+	} else
+		return false;
+}
+
+bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient) {
+	if (characterBitmask & bit) {
+		characterBitmask &= ~bit;
+
+		if (notifyClient) {
+			PlayerObjectDeltaMessage3* delta = new PlayerObjectDeltaMessage3((PlayerObject*) _this);
+			delta->updateCharacterBitmask(characterBitmask);
+			delta->close();
+
+			broadcastMessage(delta, true, true);
+		}
+
+		return true;
+	} else
+		return false;
 }
