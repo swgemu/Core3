@@ -51,6 +51,7 @@ import server.zone.managers.object.ObjectManager;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.cell.CellObject;
+import system.thread.Thread;
 
 class StructureManager extends ManagedObject implements Logger {
 	private Zone zone;

@@ -186,11 +186,6 @@ void ServerCore::shutdown() {
 		pingServer = NULL;
 	}
 
-	if (database != NULL) {
-		delete database;
-		database = NULL;
-	}
-
 	if (forumDatabase != NULL) {
 		delete forumDatabase;
 		forumDatabase = NULL;
@@ -199,6 +194,11 @@ void ServerCore::shutdown() {
 	if (features != NULL) {
 		delete features;
 		features = NULL;
+	}
+
+	if (database != NULL) {
+		delete database;
+		database = NULL;
 	}
 
 	DistributedObjectBroker::finalize();

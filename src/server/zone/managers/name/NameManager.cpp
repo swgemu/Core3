@@ -158,6 +158,9 @@ int NameManager::validateName(const String& name, int species) {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
+	if (name.length() < 3)
+		return NameManagerResult::DECLINED_RACE_INAPP;
+
 	if (isProfane(name))
 		return NameManagerResult::DECLINED_PROFANE;
 

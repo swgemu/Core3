@@ -47,6 +47,20 @@ using namespace server::zone::packets;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
+namespace server {
+namespace zone {
 
 class ZoneServer;
 
@@ -60,8 +74,6 @@ using namespace server::zone;
 #include "server/zone/managers/player/PlayerMap.h"
 
 #include "engine/log/Logger.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/core/ManagedObject.h"
 
