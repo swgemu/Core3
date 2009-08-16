@@ -75,6 +75,8 @@ using namespace server::zone::objects::cell;
 
 #include "engine/log/Logger.h"
 
+#include "system/thread/Thread.h"
+
 namespace server {
 namespace zone {
 namespace managers {

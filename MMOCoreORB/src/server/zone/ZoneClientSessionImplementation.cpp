@@ -162,7 +162,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 
 			server = srv;
 
-			setPlayer(NULL);
+			setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter
 		}
 
 		BaseClient::disconnect(false);

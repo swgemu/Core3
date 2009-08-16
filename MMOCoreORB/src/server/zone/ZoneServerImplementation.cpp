@@ -85,9 +85,6 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	totalPlayers = 0;
 	totalDeletedPlayers = 0;
 
-	nextCreatureID = 0x10000000;
-	nextCellID = 9995371; // last objectid in static objects // 0x00;
-
 	serverState = OFFLINE;
 
 	setLogging(false);
@@ -803,34 +800,4 @@ void ZoneServerImplementation::printEvents() {
 	//scheduler->printEvents();
 
 	unlock();
-}
-
-uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
-	lock(doLock);
-
-	uint64 nextID = (nextCreatureID += 0x10000);
-
-	unlock(doLock);
-
-	return nextID;
-}
-
-uint64 ZoneServerImplementation::getNextID(bool doLock) {
-	lock(doLock);
-
-	uint64 nextID = (nextCreatureID += 0x01);
-
-	unlock(doLock);
-
-	return nextID;
-}
-
-uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
-	lock(doLock);
-
-	uint64 nextID = (nextCellID += 0x1);
-
-	unlock(doLock);
-
-	return nextID;
 }

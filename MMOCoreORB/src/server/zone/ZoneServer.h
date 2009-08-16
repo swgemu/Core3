@@ -208,12 +208,6 @@ public:
 
 	RadialManager* getRadialManager();
 
-	unsigned long long getNextCreatureID(bool doLock = true);
-
-	unsigned long long getNextID(bool doLock = true);
-
-	unsigned long long getNextCellID(bool doLock = true);
-
 	void setServerName(const String& servername);
 
 	void setGalaxyID(int galaxyid);
@@ -279,10 +273,6 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	int totalPlayers;
 
 	int totalDeletedPlayers;
-
-	unsigned long long nextCreatureID;
-
-	unsigned long long nextCellID;
 
 	int serverState;
 
@@ -386,12 +376,6 @@ public:
 	ObjectController* getObjectController();
 
 	RadialManager* getRadialManager();
-
-	unsigned long long getNextCreatureID(bool doLock = true);
-
-	unsigned long long getNextID(bool doLock = true);
-
-	unsigned long long getNextCellID(bool doLock = true);
 
 	void setServerName(const String& servername);
 
@@ -507,12 +491,6 @@ public:
 	ObjectController* getObjectController();
 
 	RadialManager* getRadialManager();
-
-	unsigned long long getNextCreatureID(bool doLock);
-
-	unsigned long long getNextID(bool doLock);
-
-	unsigned long long getNextCellID(bool doLock);
 
 	void setServerName(const String& servername);
 

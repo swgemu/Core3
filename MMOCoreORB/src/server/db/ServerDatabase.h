@@ -50,7 +50,8 @@ which carries forward this exception.
 #include "../conf/ConfigManager.h"
 
 class ServerDatabase {
-	static Database* impl;
+	static Vector<Database*>* databases;
+	static uint32 currentDB;
 
 public:
 	ServerDatabase(ConfigManager* configManager) {
@@ -60,16 +61,35 @@ public:
         String& dbName = configManager->getDBName();
         uint16& dbPort = configManager->getDBPort();
 
-		impl = new MySqlDatabase(String("ServerDatabase"), dbHost);
-		impl->connect(dbName, dbUser, dbPass, dbPort);
+        databases = new Vector<Database*>();
+
+        for (int i = 0; i < DEAFULT_SERVERDATABASE_INSTANCES; ++i) {
+        	Database* db = new MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
+        	db->connect(dbName, dbUser, dbPass, dbPort);
+
+        	databases->add(db);
+        }
+
 	}
 
+	const static int DEAFULT_SERVERDATABASE_INSTANCES = 5;
+
 	~ServerDatabase() {
-		delete impl;
+		while (!databases->isEmpty()) {
+			Database* db = databases->remove(0);
+
+			delete db;
+		}
+
+		delete databases;
+		databases = NULL;
 	}
 
 	inline static Database* instance() {
-		return impl;
+		int i = currentDB % databases->size();
+		Atomic::incrementInt(&currentDB);
+
+		return databases->get(i);
 	}
 };
 

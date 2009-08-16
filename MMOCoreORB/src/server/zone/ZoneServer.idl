@@ -90,10 +90,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	int maximumPlayers;
 	int totalPlayers;
 	int totalDeletedPlayers;
-
-	unsigned long nextCreatureID;
-	unsigned long nextCellID;
-
+	
 	int serverState;
 
 	string name;
@@ -240,10 +237,6 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	/*public time_t getStartTimestamp() {
 		return startTimestamp;
 	}*/
-	
-	public native unsigned long getNextCreatureID(boolean doLock = true);
-	public native unsigned long getNextID(boolean doLock = true);
-	public native unsigned long getNextCellID(boolean doLock = true);
 	
 	public native void setServerName(final string servername);
 

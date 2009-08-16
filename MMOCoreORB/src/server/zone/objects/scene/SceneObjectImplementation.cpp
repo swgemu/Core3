@@ -114,6 +114,10 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 
 	initializePosition(0.f, 0.f, 0.f);
 
+	//temporary till idlc compiles these by itself
+	/*addSerializableVariable("zone", &zone);
+	addSerializableVariable("parent", &parent);*/
+
 	setGlobalLogging(true);
 	setLogging(false);
 }
