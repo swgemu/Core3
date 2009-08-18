@@ -152,14 +152,6 @@ public:
 
 	void printEvents();
 
-	void lock();
-
-	void unlock();
-
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
-
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
 	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID = 0);
@@ -177,6 +169,10 @@ public:
 	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
+
+	void lock(bool doLock = true);
+
+	void unlock(bool doLock = true);
 
 	int getGalaxyID();
 
@@ -321,14 +317,6 @@ public:
 
 	void printEvents();
 
-	void lock();
-
-	void unlock();
-
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
-
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
 	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID = 0);
@@ -346,6 +334,10 @@ public:
 	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
+
+	void lock(bool doLock = true);
+
+	void unlock(bool doLock = true);
 
 	int getGalaxyID();
 
@@ -436,14 +428,6 @@ public:
 
 	void printEvents();
 
-	void lock();
-
-	void unlock();
-
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
-
 	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
 	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID);
@@ -461,6 +445,10 @@ public:
 	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
+
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
 
 	int getGalaxyID();
 

@@ -54,9 +54,6 @@ interface GuildManager {
 		super(server);
 	}
 	
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
 	void load();
 
 	boolean createGuild(Player player, String tag, String name);

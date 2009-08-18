@@ -74,9 +74,6 @@ class ChatRoom extends ManagedObject {
 	public native ChatRoom(ZoneServer server, final string name, unsigned int cid);
 	public native ChatRoom(ZoneServer server, ChatRoom parent, final string name, unsigned int cid);
 	
-	/*public native void wlock();
-	public native void unlock();*/
-	
 	public native void sendTo(PlayerCreature player);
 	public native void sendDestroyTo(PlayerCreature player);
 

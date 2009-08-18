@@ -131,12 +131,6 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void printInfo(boolean forcedLog = true);
 	public native void printEvents();
 	
-	public native void lock();
-	public native void unlock();
-	
-	public native void lock(boolean doLock);
-	public native void unlock(boolean doLock);
-	
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
 	public native SceneObject createObject(unsigned int templateCRC, unsigned long objectID = 0);
 	public native void destroyObject(unsigned long objectID);
@@ -175,7 +169,11 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 		this.unlock();
 	}
+
+	public native void lock(boolean doLock = true);
 	
+	public native void unlock(boolean doLock = true);
+
 	public int getGalaxyID() {
 		return galaxyID;
 	}

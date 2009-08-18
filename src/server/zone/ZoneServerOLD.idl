@@ -84,9 +84,6 @@ interface ZoneServer {
 	void addTotalSentPacket(int count);
 	void addTotalResentPacket(int count);
 
-	void lock();
-	void unlock();
-	
 	void increaseTotalDeletedPlayers();
 
 	void printInfo();
