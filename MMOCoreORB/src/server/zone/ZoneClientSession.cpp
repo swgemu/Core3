@@ -99,25 +99,12 @@ void ZoneClientSession::closeConnection(bool lockPlayer, bool doLock) {
 		((ZoneClientSessionImplementation*) _impl)->closeConnection(lockPlayer, doLock);
 }
 
-String ZoneClientSession::getAddress() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		method.executeWithAsciiReturn(_return_getAddress);
-		return _return_getAddress;
-	} else
-		return ((ZoneClientSessionImplementation*) _impl)->getAddress();
-}
-
 void ZoneClientSession::lock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -130,12 +117,25 @@ void ZoneClientSession::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
 		((ZoneClientSessionImplementation*) _impl)->unlock(doLock);
+}
+
+String ZoneClientSession::getAddress() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithAsciiReturn(_return_getAddress);
+		return _return_getAddress;
+	} else
+		return ((ZoneClientSessionImplementation*) _impl)->getAddress();
 }
 
 void ZoneClientSession::setPlayer(SceneObject* playerCreature) {
@@ -227,7 +227,7 @@ void ZoneClientSessionImplementation::resetPacketCheckupTime() {
 }
 
 String ZoneClientSessionImplementation::getAddress() {
-	// server/zone/ZoneClientSession.idl(81):  return BaseClientProxy.getAddress();
+	// server/zone/ZoneClientSession.idl(84):  return BaseClientProxy.getAddress();
 	return BaseClientProxy::getAddress();
 }
 
@@ -299,13 +299,13 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		closeConnection(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 12:
-		resp->insertAscii(getAddress());
-		break;
-	case 13:
 		lock(inv->getBooleanParameter());
 		break;
-	case 14:
+	case 13:
 		unlock(inv->getBooleanParameter());
+		break;
+	case 14:
+		resp->insertAscii(getAddress());
 		break;
 	case 15:
 		setPlayer((SceneObject*) inv->getObjectParameter());
@@ -350,16 +350,16 @@ void ZoneClientSessionAdapter::closeConnection(bool lockPlayer, bool doLock) {
 	return ((ZoneClientSessionImplementation*) impl)->closeConnection(lockPlayer, doLock);
 }
 
-String ZoneClientSessionAdapter::getAddress() {
-	return ((ZoneClientSessionImplementation*) impl)->getAddress();
-}
-
 void ZoneClientSessionAdapter::lock(bool doLock) {
 	return ((ZoneClientSessionImplementation*) impl)->lock(doLock);
 }
 
 void ZoneClientSessionAdapter::unlock(bool doLock) {
 	return ((ZoneClientSessionImplementation*) impl)->unlock(doLock);
+}
+
+String ZoneClientSessionAdapter::getAddress() {
+	return ((ZoneClientSessionImplementation*) impl)->getAddress();
 }
 
 void ZoneClientSessionAdapter::setPlayer(SceneObject* playerCreature) {

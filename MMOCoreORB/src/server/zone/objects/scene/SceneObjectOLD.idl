@@ -311,17 +311,6 @@ class SceneObject extends ManagedObject, native ContainerObject, native QuadTree
 
 	public void randomizePosition(float radius);
 
-	//TODO: figure out why gcc don't fookin see these shit from ManagedObjectImplementation directly
-	public void lock(boolean doLock = true);
-	public void lock(ManagedObject obj);
-
-	public void wlock(boolean doLock = true);
-	public void wlock(ManagedObject obj);
-
-	public void unlock(boolean doLock = true);
-
-	public void setLockName(final string name);
-
 	/* comment for TA: there are no inline methods. */
 	// setters and getters
 	public void setMovementCounter(unsigned int cnt) {

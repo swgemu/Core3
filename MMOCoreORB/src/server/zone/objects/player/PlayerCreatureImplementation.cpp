@@ -192,10 +192,10 @@ void PlayerCreatureImplementation::unload() {
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
 	try {
-		_this->wlock(doLock);
+		wlock(doLock);
 
 		if (!isOnline()) {
-			_this->unlock(doLock);
+			unlock(doLock);
 			return;
 		}
 
@@ -226,9 +226,9 @@ void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
 
 		owner = NULL;
 
-		_this->unlock();
+		unlock();
 	} catch (...) {
-		_this->unlock();
+		unlock();
 	}
 }
 

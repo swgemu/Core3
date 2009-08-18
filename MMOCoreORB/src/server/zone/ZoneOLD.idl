@@ -57,9 +57,6 @@ interface Zone {
 	
 	void stopManagers();
 
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
 	/*void registerObject(SceneObject obj);
 	
 	SceneObject lookupObject(unsigned long oid);

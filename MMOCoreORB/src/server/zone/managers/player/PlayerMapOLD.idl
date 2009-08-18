@@ -64,7 +64,4 @@ interface PlayerMap {
 	boolean hasNext(boolean doLock = true);
 
 	void resetIterator(boolean doLock = true);
-
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
 }

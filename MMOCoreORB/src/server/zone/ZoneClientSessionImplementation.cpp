@@ -70,8 +70,7 @@ void ZoneClientSessionImplementation::disconnect() {
 	BaseClient::disconnect();
 }
 
-void ZoneClientSessionImplementation::lock(
-		bool doLock) {
+void ZoneClientSessionImplementation::lock(bool doLock) {
 	BaseClient::lock(doLock);
 }
 

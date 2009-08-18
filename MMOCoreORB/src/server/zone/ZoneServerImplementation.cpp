@@ -104,14 +104,6 @@ void ZoneServerImplementation::stop() {
 	DatagramServiceThread::stop();
 }
 
-void ZoneServerImplementation::lock() {
-	DatagramServiceThread::lock();
-}
-
-void ZoneServerImplementation::unlock() {
-	DatagramServiceThread::unlock();
-}
-
 void ZoneServerImplementation::lock(bool doLock) {
 	DatagramServiceThread::lock(doLock);
 }

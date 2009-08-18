@@ -110,9 +110,6 @@ interface BuildingObject implements SceneObject {
 	
 	String getTemplateName();
 	
-	void lock(boolean doLock = true);
-	void unlock(boolean doLock = true);
-	
 	void setSize(float minx, float miny, float maxx, float maxy);
 	void insert(QuadTreeEntry obj);
 	void remove(QuadTreeEntry obj);

@@ -52,11 +52,11 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock = true);
 
-	String getAddress();
-
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
+
+	String getAddress();
 
 	void setPlayer(SceneObject* playerCreature);
 
@@ -106,11 +106,11 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock = true);
 
-	String getAddress();
-
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
+
+	String getAddress();
 
 	void setPlayer(SceneObject* playerCreature);
 
@@ -153,11 +153,11 @@ public:
 
 	void closeConnection(bool lockPlayer, bool doLock);
 
-	String getAddress();
-
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
+
+	String getAddress();
 
 	void setPlayer(SceneObject* playerCreature);
 
