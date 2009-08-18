@@ -68,8 +68,10 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
 				server/zone/managers/radial/RadialManager.idl
 
+IDL_CLASSPATH = ../../MMOEngine/src 
+
 all:
-	cd src && $(IDLC) $(IDL_SOURCES)
+	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
 	cd build/unix && make -j4
 	cp build/unix/src/core3* bin
 	#done
@@ -85,4 +87,4 @@ clean: cleanidl
 	#done
 
 cleanidl:
-	cd src && $(IDLC) -rebuild $(IDL_SOURCES)
+	cd src && $(IDLC) -rebuild -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
