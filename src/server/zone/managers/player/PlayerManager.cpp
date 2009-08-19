@@ -118,6 +118,34 @@ PlayerManagerImplementation::operator const PlayerManager*() {
 	return _this;
 }
 
+void PlayerManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void PlayerManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void PlayerManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void PlayerManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void PlayerManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void PlayerManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void PlayerManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void PlayerManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

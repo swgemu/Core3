@@ -66,37 +66,41 @@ import server.zone.managers.radial.RadialManager;
 import server.zone.objects.scene.SceneObject;
 
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
-	BasePacketHandler phandler;
+	private BasePacketHandler phandler;
 	
-	ZoneProcessServerImplementation processor;
+	private ZoneProcessServerImplementation processor;
 
-	int procThreadCount;
+	private int procThreadCount;
 	
-	native TaskManager taskManager;
+	private native TaskManager taskManager;
 	
-	Vector<Zone> zones;
+	private Vector<Zone> zones;
 	
-	ObjectManager objectManager;
-	PlayerManager playerManager;
-	ChatManager chatManager;
-	ObjectController objectController;
-	RadialManager radialManager;
+	private ObjectManager objectManager;
+	
+	private PlayerManager playerManager;
+	
+	private ChatManager chatManager;
+	
+	private ObjectController objectController;
+	
+	private RadialManager radialManager;
 
-	int totalSentPackets;
+	private int totalSentPackets;
 	
-	int totalResentPackets;
+	private int totalResentPackets;
 
-	int currentPlayers;
-	int maximumPlayers;
-	int totalPlayers;
-	int totalDeletedPlayers;
+	private int currentPlayers;
+	private int maximumPlayers;
+	private int totalPlayers;
+	private int totalDeletedPlayers;
 	
-	int serverState;
+	private int serverState;
 
-	string name;
-	string messageoftheDay;
+	private string name;
+	private string messageoftheDay;
 
-	int galaxyID;
+	private int galaxyID;
 	
 	public static final int OFFLINE = 0;
 	public static final int LOADING = 1;

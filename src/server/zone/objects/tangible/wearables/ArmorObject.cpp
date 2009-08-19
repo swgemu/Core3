@@ -41,6 +41,34 @@ ArmorObjectImplementation::operator const ArmorObject*() {
 	return _this;
 }
 
+void ArmorObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void ArmorObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void ArmorObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void ArmorObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void ArmorObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void ArmorObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void ArmorObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void ArmorObjectImplementation::_serializationHelperMethod() {
 	WearableObjectImplementation::_serializationHelperMethod();
 

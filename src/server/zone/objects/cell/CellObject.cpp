@@ -79,6 +79,34 @@ CellObjectImplementation::operator const CellObject*() {
 	return _this;
 }
 
+void CellObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void CellObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void CellObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void CellObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void CellObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void CellObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void CellObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void CellObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 

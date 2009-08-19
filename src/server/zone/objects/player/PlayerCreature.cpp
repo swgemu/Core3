@@ -404,6 +404,34 @@ PlayerCreatureImplementation::operator const PlayerCreature*() {
 	return _this;
 }
 
+void PlayerCreatureImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void PlayerCreatureImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void PlayerCreatureImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void PlayerCreatureImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void PlayerCreatureImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void PlayerCreatureImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void PlayerCreatureImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void PlayerCreatureImplementation::_serializationHelperMethod() {
 	CreatureObjectImplementation::_serializationHelperMethod();
 

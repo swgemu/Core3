@@ -234,6 +234,34 @@ BuildingObjectImplementation::operator const BuildingObject*() {
 	return _this;
 }
 
+void BuildingObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void BuildingObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void BuildingObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void BuildingObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void BuildingObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void BuildingObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void BuildingObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void BuildingObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 

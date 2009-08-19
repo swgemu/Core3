@@ -226,6 +226,34 @@ ChatManagerImplementation::operator const ChatManager*() {
 	return _this;
 }
 
+void ChatManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void ChatManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void ChatManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void ChatManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void ChatManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void ChatManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void ChatManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void ChatManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

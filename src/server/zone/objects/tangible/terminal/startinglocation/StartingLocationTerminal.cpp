@@ -54,6 +54,34 @@ StartingLocationTerminalImplementation::operator const StartingLocationTerminal*
 	return _this;
 }
 
+void StartingLocationTerminalImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void StartingLocationTerminalImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void StartingLocationTerminalImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void StartingLocationTerminalImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void StartingLocationTerminalImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void StartingLocationTerminalImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void StartingLocationTerminalImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 	TerminalImplementation::_serializationHelperMethod();
 

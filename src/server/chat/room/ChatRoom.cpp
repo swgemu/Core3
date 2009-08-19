@@ -482,6 +482,34 @@ ChatRoomImplementation::operator const ChatRoom*() {
 	return _this;
 }
 
+void ChatRoomImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void ChatRoomImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void ChatRoomImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void ChatRoomImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void ChatRoomImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void ChatRoomImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void ChatRoomImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void ChatRoomImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

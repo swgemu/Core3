@@ -91,6 +91,34 @@ RadialManagerImplementation::operator const RadialManager*() {
 	return _this;
 }
 
+void RadialManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void RadialManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void RadialManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void RadialManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void RadialManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void RadialManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void RadialManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void RadialManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

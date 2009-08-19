@@ -89,6 +89,34 @@ StructureManagerImplementation::operator const StructureManager*() {
 	return _this;
 }
 
+void StructureManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void StructureManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void StructureManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void StructureManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void StructureManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void StructureManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void StructureManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void StructureManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

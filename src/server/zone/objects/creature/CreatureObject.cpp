@@ -650,6 +650,34 @@ CreatureObjectImplementation::operator const CreatureObject*() {
 	return _this;
 }
 
+void CreatureObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void CreatureObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void CreatureObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void CreatureObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void CreatureObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void CreatureObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void CreatureObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void CreatureObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 
