@@ -66,6 +66,34 @@ IntangibleObjectImplementation::operator const IntangibleObject*() {
 	return _this;
 }
 
+void IntangibleObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void IntangibleObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void IntangibleObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void IntangibleObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void IntangibleObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void IntangibleObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void IntangibleObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void IntangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 

@@ -1181,6 +1181,34 @@ SceneObjectImplementation::operator const SceneObject*() {
 	return _this;
 }
 
+void SceneObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void SceneObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void SceneObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void SceneObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void SceneObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void SceneObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void SceneObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void SceneObjectImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

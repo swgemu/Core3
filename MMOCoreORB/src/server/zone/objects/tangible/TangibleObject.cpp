@@ -188,6 +188,34 @@ TangibleObjectImplementation::operator const TangibleObject*() {
 	return _this;
 }
 
+void TangibleObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void TangibleObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void TangibleObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void TangibleObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void TangibleObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void TangibleObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void TangibleObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void TangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 

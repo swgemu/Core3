@@ -41,6 +41,34 @@ TerminalImplementation::operator const Terminal*() {
 	return _this;
 }
 
+void TerminalImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void TerminalImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void TerminalImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void TerminalImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void TerminalImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void TerminalImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void TerminalImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void TerminalImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 

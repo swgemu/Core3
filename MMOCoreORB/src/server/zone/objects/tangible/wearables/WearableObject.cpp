@@ -41,6 +41,34 @@ WearableObjectImplementation::operator const WearableObject*() {
 	return _this;
 }
 
+void WearableObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void WearableObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void WearableObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void WearableObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void WearableObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void WearableObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void WearableObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void WearableObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 

@@ -59,27 +59,27 @@ import server.zone.managers.structure.StructureManager;
 include server.zone.managers.planet.HeightMap;
 
 class Zone extends ManagedObject implements QuadTree {
-	int zoneID;
+	private int zoneID;
 
-	ZoneProcessServerImplementation processor;
+	private ZoneProcessServerImplementation processor;
 
-	TaskManager taskManager;
+	private TaskManager taskManager;
 	
-	StructureManager structureManager; // move to planet manager when converted
+	private StructureManager structureManager; // move to planet manager when converted
 	
-	ZoneServer server;
+	private ZoneServer server;
 
-	Time galacticTime;
+	private Time galacticTime;
 	
-	HeightMap heightMap;
+	private HeightMap heightMap;
 
 	//Weather
-	float weatherWindX; //1.0 = east, -1.0 = west
-	float weatherWindY; //1.0 = north, -1.0 = south
-	unsigned int weatherID;
-	boolean weatherEnabled;
+	private float weatherWindX; //1.0 = east, -1.0 = west
+	private float weatherWindY; //1.0 = north, -1.0 = south
+	private unsigned int weatherID;
+	private boolean weatherEnabled;
 	
-	native public Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
+	public native Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
 	
 	public local native void insert(QuadTreeEntry entry);
 	public local native void remove(QuadTreeEntry entry);

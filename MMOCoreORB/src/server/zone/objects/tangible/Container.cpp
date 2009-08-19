@@ -54,6 +54,34 @@ ContainerImplementation::operator const Container*() {
 	return _this;
 }
 
+void ContainerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void ContainerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void ContainerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void ContainerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void ContainerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void ContainerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void ContainerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void ContainerImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 

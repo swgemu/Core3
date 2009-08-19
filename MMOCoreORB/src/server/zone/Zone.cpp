@@ -266,6 +266,34 @@ ZoneImplementation::operator const Zone*() {
 	return _this;
 }
 
+void ZoneImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void ZoneImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void ZoneImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void ZoneImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void ZoneImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void ZoneImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void ZoneImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void ZoneImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

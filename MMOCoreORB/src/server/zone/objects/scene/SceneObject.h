@@ -891,6 +891,20 @@ protected:
 
 	void _setStub(DistributedObjectStub* stub);
 
+	void lock(bool doLock = true);
+
+	void lock(ManagedObject* obj);
+
+	void rlock(bool doLock = true);
+
+	void wlock(bool doLock = true);
+
+	void wlock(ManagedObject* obj);
+
+	void unlock(bool doLock = true);
+
+	void runlock(bool doLock = true);
+
 	void _serializationHelperMethod();
 
 	friend class SceneObject;

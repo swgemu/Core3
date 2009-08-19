@@ -41,6 +41,34 @@ MeleeWeaponObjectImplementation::operator const MeleeWeaponObject*() {
 	return _this;
 }
 
+void MeleeWeaponObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void MeleeWeaponObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void MeleeWeaponObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void MeleeWeaponObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void MeleeWeaponObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void MeleeWeaponObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void MeleeWeaponObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 	WeaponObjectImplementation::_serializationHelperMethod();
 

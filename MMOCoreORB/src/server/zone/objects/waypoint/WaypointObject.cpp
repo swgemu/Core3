@@ -142,6 +142,34 @@ WaypointObjectImplementation::operator const WaypointObject*() {
 	return _this;
 }
 
+void WaypointObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void WaypointObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void WaypointObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void WaypointObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void WaypointObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void WaypointObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void WaypointObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void WaypointObjectImplementation::_serializationHelperMethod() {
 	IntangibleObjectImplementation::_serializationHelperMethod();
 

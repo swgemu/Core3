@@ -91,6 +91,34 @@ ObjectControllerImplementation::operator const ObjectController*() {
 	return _this;
 }
 
+void ObjectControllerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void ObjectControllerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void ObjectControllerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void ObjectControllerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void ObjectControllerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void ObjectControllerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void ObjectControllerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void ObjectControllerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 

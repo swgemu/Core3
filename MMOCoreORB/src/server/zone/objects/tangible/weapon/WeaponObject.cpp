@@ -66,6 +66,34 @@ WeaponObjectImplementation::operator const WeaponObject*() {
 	return _this;
 }
 
+void WeaponObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
+}
+
+void WeaponObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
+}
+
+void WeaponObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
+}
+
+void WeaponObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
+}
+
+void WeaponObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
+}
+
+void WeaponObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
+}
+
+void WeaponObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
+}
+
 void WeaponObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 
