@@ -71,7 +71,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessages(Vector<BaseMessage* >* messages);
+	void broadcastMessages(Vector<BaseMessage*>* messages);
 
 	bool hasPlayer(PlayerCreature* player);
 
@@ -162,9 +162,9 @@ class ChatRoomImplementation : public ManagedObjectImplementation {
 
 	ManagedReference<ChatRoom* > parent;
 
-	VectorMap<String, PlayerCreature* >* playerList;
+	VectorMap<String, ManagedReference<PlayerCreature* > >* playerList;
 
-	VectorMap<String, ChatRoom* >* subRooms;
+	VectorMap<String, ManagedReference<ChatRoom* > >* subRooms;
 
 	bool isPublicRoom;
 
@@ -193,7 +193,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessages(Vector<BaseMessage* >* messages);
+	void broadcastMessages(Vector<BaseMessage*>* messages);
 
 	bool hasPlayer(PlayerCreature* player);
 

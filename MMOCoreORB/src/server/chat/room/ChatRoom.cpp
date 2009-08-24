@@ -164,7 +164,7 @@ void ChatRoom::broadcastMessage(BaseMessage* msg) {
 		((ChatRoomImplementation*) _impl)->broadcastMessage(msg);
 }
 
-void ChatRoom::broadcastMessages(Vector<BaseMessage* >* messages) {
+void ChatRoom::broadcastMessages(Vector<BaseMessage*>* messages) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

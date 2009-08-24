@@ -92,7 +92,7 @@ protected:
 
 	byte unknownByte;
 
-	Vector<SceneObject* >* defenderList;
+	Vector<ManagedReference<SceneObject* > >* defenderList;
 
 	unsigned int defenderListUpdateCounter;
 

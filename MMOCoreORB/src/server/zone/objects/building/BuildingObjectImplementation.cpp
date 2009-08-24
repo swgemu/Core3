@@ -16,8 +16,9 @@
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
-	cells = new Vector<CellObject*>();
-	notifiedObjects = new SortedVector<SceneObject*>();
+	cells = new Vector<ManagedReference<CellObject*> >();
+
+	notifiedObjects = new SortedVector<ManagedReference<SceneObject*> >();
 	notifiedObjects->setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 
 	staticBuilding = false;

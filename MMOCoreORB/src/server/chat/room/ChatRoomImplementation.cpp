@@ -70,11 +70,11 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& N
 
 	isPublicRoom = true;
 
-	subRooms = new VectorMap<String, ChatRoom*>();
+	subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 	subRooms->setNullValue(NULL);
 	subRooms->setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
-	playerList = new VectorMap<String, PlayerCreature*>();
+	playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
 	playerList->setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
 }
 
@@ -95,11 +95,11 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 
 	isPublicRoom = true;
 
-	subRooms = new VectorMap<String, ChatRoom*>();
+	subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 	subRooms->setNullValue(NULL);
 	subRooms->setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
-	playerList = new VectorMap<String, PlayerCreature*>();
+	playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
 	playerList->setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
 
 	//parent->addSubRoom((ChatRoom*) _this);

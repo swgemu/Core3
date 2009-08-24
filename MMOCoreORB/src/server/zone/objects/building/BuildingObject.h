@@ -102,9 +102,9 @@ namespace building {
 
 class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
 protected:
-	Vector<CellObject* >* cells;
+	Vector<ManagedReference<CellObject* > >* cells;
 
-	SortedVector<SceneObject* >* notifiedObjects;
+	SortedVector<ManagedReference<SceneObject* > >* notifiedObjects;
 
 	bool staticBuilding;
 
