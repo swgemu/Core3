@@ -69,7 +69,7 @@ which carries forward this exception.
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject"){
 	SceneObjectImplementation::parent = NULL;
 
-	containmentSlots = new VectorMap<String, SceneObject*>();
+	containmentSlots = new VectorMap<String, ManagedReference<SceneObject*> >();
 	containmentSlots->setNullValue(NULL);
 
 	direction = new Quaternion();
@@ -80,7 +80,7 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 	containerType = templateData->getIntField("containerType");
 	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
 
-	containerObjects = new VectorMap<uint64, SceneObject*>(containerVolumeLimit >> 2, containerVolumeLimit / 10);
+	containerObjects = new VectorMap<uint64, ManagedReference<SceneObject*> >(containerVolumeLimit >> 2, containerVolumeLimit / 10);
 
 	gameObjectType = templateData->getIntField("gameObjectType");
 
@@ -557,7 +557,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 	return true;
 }
 
-void SceneObjectImplementation::getContainmentObjects(VectorMap<String, SceneObject* >& objects) {
+void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
 	objects = *containmentSlots;
 }
 

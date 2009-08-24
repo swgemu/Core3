@@ -513,7 +513,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 		return ((SceneObjectImplementation*) _impl)->compareTo(obj);
 }
 
-void SceneObject::getContainmentObjects(VectorMap<String, SceneObject* >& objects) {
+void SceneObject::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
 

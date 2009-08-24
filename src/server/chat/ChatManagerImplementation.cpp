@@ -40,7 +40,7 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	roomID = 0;
 
-	gameRooms = new VectorMap<String, ChatRoom*>();
+	gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
 	//gameCommandHandler = new GameCommandHandler();
 }

@@ -246,7 +246,7 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	int procThreadCount;
 
-	Vector<Zone* >* zones;
+	Vector<ManagedReference<Zone* > >* zones;
 
 	ObjectManager* objectManager;
 

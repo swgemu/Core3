@@ -188,7 +188,7 @@ public:
 
 	int compareTo(SceneObject* obj);
 
-	void getContainmentObjects(VectorMap<String, SceneObject* >& objects);
+	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
 
@@ -326,9 +326,9 @@ protected:
 
 	ManagedReference<SceneObject* > parent;
 
-	VectorMap<String, SceneObject* >* containmentSlots;
+	VectorMap<String, ManagedReference<SceneObject* > >* containmentSlots;
 
-	VectorMap<unsigned long long, SceneObject* >* containerObjects;
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* containerObjects;
 
 	unsigned int serverObjectCRC;
 
@@ -338,9 +338,9 @@ protected:
 
 	unsigned int movementCounter;
 
-	Vector<String >* arrangementDescriptors;
+	Vector<String>* arrangementDescriptors;
 
-	Vector<String >* slotDescriptors;
+	Vector<String>* slotDescriptors;
 
 	StringId* objectName;
 
@@ -775,7 +775,7 @@ public:
 
 	int compareTo(SceneObject* obj);
 
-	void getContainmentObjects(VectorMap<String, SceneObject* >& objects);
+	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
 

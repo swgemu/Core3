@@ -191,7 +191,7 @@ class ChatManagerImplementation : public ManagedObjectImplementation {
 
 	PlayerMap* playerMap;
 
-	VectorMap<String, ChatRoom* >* gameRooms;
+	VectorMap<String, ManagedReference<ChatRoom* > >* gameRooms;
 
 	ManagedReference<ChatRoom* > groupRoom;
 

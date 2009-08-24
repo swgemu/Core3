@@ -228,7 +228,7 @@ protected:
 
 	Time* nextTip;
 
-	SortedVector<ChatRoom* >* chatRooms;
+	SortedVector<ManagedReference<ChatRoom* > >* chatRooms;
 
 	byte incapacitationCounter;
 

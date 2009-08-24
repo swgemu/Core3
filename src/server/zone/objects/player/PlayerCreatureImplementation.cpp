@@ -44,7 +44,7 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 
 	logoutTimeStamp = new Time();
 
-	chatRooms = new SortedVector<ChatRoom*>();
+	chatRooms = new SortedVector<ManagedReference<ChatRoom*> >();
 
 	setOffline();
 }
