@@ -16,10 +16,10 @@
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
-	cells = new Vector<ManagedReference<CellObject*> >();
+	//cells = new Vector<ManagedReference<CellObject*> >();
 
-	notifiedObjects = new SortedVector<ManagedReference<SceneObject*> >();
-	notifiedObjects->setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+	//notifiedObjects = new SortedVector<ManagedReference<SceneObject*> >();
+	notifiedObjects.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
 
 	staticBuilding = false;
 
@@ -36,8 +36,8 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 		SceneObjectImplementation::sendTo(player, doClose);
 	} else { // just send the objects that are in the building, without the cells because they are static in the client
-		for (int i = 0; i < cells->size(); ++i) {
-			CellObject* cell = cells->get(i);
+		for (int i = 0; i < cells.size(); ++i) {
+			CellObject* cell = cells.get(i);
 
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				SceneObject* childStub = cell->getContainerObject(j);
@@ -83,8 +83,8 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//info("BuildingObjectImplementation::notifyInsert");
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
-	for (int i = 0; i < cells->size(); ++i) {
-		CellObject* cell = cells->get(i);
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* childStub = cell->getContainerObject(j);
@@ -99,8 +99,8 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
-	for (int i = 0; i < cells->size(); ++i) {
-		CellObject* cell = cells->get(i);
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* childStub = cell->getContainerObject(j);
@@ -129,9 +129,9 @@ void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
-	cells->add(cell);
+	cells.add(cell);
 
-	cell->setCellNumber(cells->size());
+	cell->setCellNumber(cells.size());
 
 	addObject(cell, -1);
 }

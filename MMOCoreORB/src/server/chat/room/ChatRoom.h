@@ -162,9 +162,9 @@ class ChatRoomImplementation : public ManagedObjectImplementation {
 
 	ManagedReference<ChatRoom* > parent;
 
-	VectorMap<String, ManagedReference<PlayerCreature* > >* playerList;
+	VectorMap<String, ManagedReference<PlayerCreature* > > playerList;
 
-	VectorMap<String, ManagedReference<ChatRoom* > >* subRooms;
+	VectorMap<String, ManagedReference<ChatRoom* > > subRooms;
 
 	bool isPublicRoom;
 

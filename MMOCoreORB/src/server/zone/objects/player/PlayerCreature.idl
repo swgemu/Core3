@@ -62,11 +62,9 @@ class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
 	
 	protected int onlineStatus;
-	protected Time logoutTimeStamp;
-
-	protected unsigned long accountID;
-	protected unsigned long characterID;
-	protected unsigned long baseID;
+	protected dereferenced Time logoutTimeStamp;
+	
+	protected unsigned int accountID;
 
 	protected string raceFile; //race iff, defines the race file of the character being created.
 	protected byte raceID;
@@ -78,19 +76,19 @@ class PlayerCreature extends CreatureObject {
 
 	protected byte lotsRemaining;
 	
-	protected PlayerDisconnectEvent disconnectEvent;
-	protected PlayerRecoveryEvent recoveryEvent;
+	protected transient PlayerDisconnectEvent disconnectEvent;
+	protected transient PlayerRecoveryEvent recoveryEvent;
 
 	// player objects
 
 	//Vector<CommandQueueAction> commandQueue;
-	protected Time nextAction;
-	protected Time nextTip;
+	protected dereferenced Time nextAction;
+	protected dereferenced Time nextTip;
 	
-	protected SortedVector<ChatRoom> chatRooms;
+	protected dereferenced SortedVector<ChatRoom> chatRooms;
 
 	protected byte incapacitationCounter;
-	protected Time firstIncapacitationTime;
+	protected dereferenced Time firstIncapacitationTime;
 	protected int pvpRating;
 
 	protected int factionStatus;
@@ -152,6 +150,10 @@ class PlayerCreature extends CreatureObject {
 		return onlineStatus == LOGGINGOUT;
 	}
 	
+	public unsigned int getAccountID() {
+		return accountID;
+	}
+	
 	public ZoneClientSession getClient() {
 		return owner;
 	}
@@ -192,6 +194,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setLoggingOut() {
 		onlineStatus = LOGGINGOUT;
+	}
+	
+	public void setAccountID(unsigned int id) {
+		accountID = id;
 	}
 	
 	public void clearDisconnectEvent() {

@@ -44,7 +44,20 @@ which carries forward this exception.
 
 #include "StringId.h"
 
-StringId::StringId(const String& fullPath) {
+StringId::StringId() : Serializable() {
+	addSerializableVariables();
+}
+
+StringId::StringId(const StringId& id) : Object(), Serializable() {
+	file = id.file;
+	stringID = id.stringID;
+
+	customName = id.customName;
+
+	addSerializableVariables();
+}
+
+StringId::StringId(const String& fullPath) : Serializable() {
 	if (fullPath.isEmpty())
 		return;
 
@@ -59,14 +72,14 @@ StringId::StringId(const String& fullPath) {
 	addSerializableVariables();
 }
 
-StringId::StringId(const String& fil, const String& stringId) {
+StringId::StringId(const String& fil, const String& stringId) : Serializable() {
 	file = fil;
 	stringID = stringId;
 
 	addSerializableVariables();
 }
 
-StringId::StringId(const UnicodeString& custom) {
+StringId::StringId(const UnicodeString& custom) : Serializable() {
 	customName = custom;
 
 	addSerializableVariables();

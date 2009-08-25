@@ -66,8 +66,8 @@ class ChatRoom extends ManagedObject {
 
 	ChatRoom parent;
 
-	VectorMap<string, PlayerCreature> playerList;
-	VectorMap<string, ChatRoom> subRooms;
+	dereferenced VectorMap<string, PlayerCreature> playerList;
+	dereferenced VectorMap<string, ChatRoom> subRooms;
 
 	boolean isPublicRoom;
 	

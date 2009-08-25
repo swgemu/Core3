@@ -20,6 +20,8 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 	containerVolumeLimit = 0xFFFFFFFF;
 
 	containerType = 2;
+
+	_classHelper = CellObjectHelper::instance();
 }
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -27,12 +29,12 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	msg << "sending cell number " << cellNumber << " baselines";
 	info(msg.toString());
 
-	BaseMessage* cellMsg3 = new CellObjectMessage3(objectID, cellNumber);
+	BaseMessage* cellMsg3 = new CellObjectMessage3(getObjectID(), cellNumber);
 	player->sendMessage(cellMsg3);
 
-	BaseMessage* cellMsg6 = new CellObjectMessage6(objectID);
+	BaseMessage* cellMsg6 = new CellObjectMessage6(getObjectID());
 	player->sendMessage(cellMsg6);
 
-	BaseMessage* perm = new UpdateCellPermissionsMessage(objectID);
+	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID());
 	player->sendMessage(perm);
 }

@@ -62,9 +62,13 @@ public:
 
 	void setSessionKey(unsigned int key);
 
+	void setAccountID(unsigned int id);
+
 	SceneObject* getPlayer();
 
 	unsigned int getSessionKey();
+
+	unsigned int getAccountID();
 
 protected:
 	ZoneClientSession(DummyConstructorParameter* param);
@@ -88,6 +92,8 @@ class ZoneClientSessionImplementation : public ManagedObjectImplementation, publ
 	ManagedReference<SceneObject* > player;
 
 	unsigned int sessionKey;
+
+	unsigned int accountID;
 
 	bool disconnecting;
 
@@ -116,9 +122,13 @@ public:
 
 	void setSessionKey(unsigned int key);
 
+	void setAccountID(unsigned int id);
+
 	SceneObject* getPlayer();
 
 	unsigned int getSessionKey();
+
+	unsigned int getAccountID();
 
 	ZoneClientSession* _this;
 
@@ -163,9 +173,13 @@ public:
 
 	void setSessionKey(unsigned int key);
 
+	void setAccountID(unsigned int id);
+
 	SceneObject* getPlayer();
 
 	unsigned int getSessionKey();
+
+	unsigned int getAccountID();
 
 };
 

@@ -298,8 +298,8 @@ void ZoneImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
 	addSerializableVariable("zoneID", &zoneID);
-	addSerializableVariable("structureManager", structureManager);
-	addSerializableVariable("server", server);
+	addSerializableVariable("server", &server);
+	addSerializableVariable("galacticTime", &galacticTime);
 	addSerializableVariable("weatherWindX", &weatherWindX);
 	addSerializableVariable("weatherWindY", &weatherWindY);
 	addSerializableVariable("weatherID", &weatherID);
@@ -318,7 +318,7 @@ ZoneServer* ZoneImplementation::getZoneServer() {
 
 unsigned long long ZoneImplementation::getGalacticTime() {
 	// server/zone/Zone.idl(107):  return galacticTime.miliDifference() / 1000;
-	return galacticTime->miliDifference() / 1000;
+	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {

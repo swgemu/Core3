@@ -222,12 +222,14 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("targetable", &targetable);
 	addSerializableVariable("complexity", &complexity);
 	addSerializableVariable("volume", &volume);
+	addSerializableVariable("customizationVariables", &customizationVariables);
 	addSerializableVariable("conditionDamage", &conditionDamage);
 	addSerializableVariable("maxCondition", &maxCondition);
 	addSerializableVariable("objectCount", &objectCount);
 	addSerializableVariable("optionsBitmask", &optionsBitmask);
 	addSerializableVariable("pvpStatusBitmask", &pvpStatusBitmask);
 	addSerializableVariable("unknownByte", &unknownByte);
+	addSerializableVariable("defenderList", &defenderList);
 	addSerializableVariable("defenderListUpdateCounter", &defenderListUpdateCounter);
 }
 
@@ -278,12 +280,12 @@ unsigned int TangibleObjectImplementation::getDefenderListUpdateCounter() {
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
 	// server/zone/objects/tangible/TangibleObject.idl(120):  customizationVariables.getData(variables);
-	customizationVariables->getData(variables);
+	(&customizationVariables)->getData(variables);
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
 	// server/zone/objects/tangible/TangibleObject.idl(124):  customizationVariables.parseFromClientString(vars);
-	customizationVariables->parseFromClientString(vars);
+	(&customizationVariables)->parseFromClientString(vars);
 }
 
 /*

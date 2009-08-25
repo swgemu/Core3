@@ -171,7 +171,7 @@ protected:
 
 	int species;
 
-	Vector<int>* baseHealth;
+	Vector<int> baseHealth;
 
 	unsigned int baseHealthUpdateCounter;
 
@@ -183,13 +183,13 @@ protected:
 
 	float shockWounds;
 
-	Vector<int>* wounds;
+	Vector<int> wounds;
 
 	unsigned int woundsUpdateCounter;
 
 	unsigned long long stateBitmask;
 
-	Vector<int>* encumbrances;
+	Vector<int> encumbrances;
 
 	unsigned int encumbrancesUpdateCounter;
 
@@ -235,11 +235,11 @@ protected:
 
 	int instrumentID;
 
-	Vector<int>* hamList;
+	Vector<int> hamList;
 
 	unsigned int hamListUpdateCounter;
 
-	Vector<int>* maxHamList;
+	Vector<int> maxHamList;
 
 	unsigned int maxHamListUpdateCounter;
 

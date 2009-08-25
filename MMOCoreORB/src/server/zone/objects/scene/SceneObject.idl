@@ -66,37 +66,39 @@ import server.zone.Zone;
 import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.scene.events.ObjectUpdateToDatabaseTask;
 
 include server.zone.objects.scene.variables.StringId;
 
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
-	protected ZoneProcessServerImplementation server;
+	protected transient ZoneProcessServerImplementation server;
 	
 	protected Zone zone;
-	
-	protected native unsigned long objectID;
+		
+	protected boolean persistent;
+	protected transient ObjectUpdateToDatabaseTask updateToDatabaseTask;
 	
 	protected SceneObject parent;
 	
-	protected VectorMap<string, SceneObject> containmentSlots;
-	protected VectorMap<unsigned long, SceneObject> containerObjects;
+	protected dereferenced VectorMap<string, SceneObject> containmentSlots;
+	protected dereferenced VectorMap<unsigned long, SceneObject> containerObjects;
 	
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;
 	
-	protected Quaternion direction;
+	protected dereferenced Quaternion direction;
 	protected unsigned int movementCounter;
 	
 	protected native float positionX;
 	protected native float positionZ;
 	protected native float positionY;
 	
-	protected Vector<string> arrangementDescriptors;
-	protected Vector<string> slotDescriptors;
+	protected dereferenced Vector<string> arrangementDescriptors;
+	protected dereferenced Vector<string> slotDescriptors;
 	
-	protected StringId objectName;
-	protected StringId detailedDescription;
+	protected dereferenced StringId objectName;
+	protected dereferenced StringId detailedDescription;
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType;
@@ -345,6 +347,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return true;
 	}
 	
+	public native void updateToDatabase();
+	public native void queueUpdateToDatabaseTask();
+	
 	public native void create(ZoneClientSession client);
 	public native void destroy(ZoneClientSession client);
 	public native void close(ZoneClientSession client);
@@ -386,9 +391,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public int compareTo(SceneObject obj) {
-		if (objectID < obj.getObjectID())
+		if (getObjectID() < obj.getObjectID())
 			return 1;
-		else if (objectID > obj.getObjectID())
+		else if (getObjectID() > obj.getObjectID())
 			return -1;
 		else
 			return 0;
@@ -403,9 +408,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return 0;
 	}
 	
-	public unsigned long getObjectID() {
-		return QuadTreeEntry.objectID;
-	}
+	public native unsigned long getObjectID();
 	
 	public float getPositionX() {
 		return QuadTreeEntry.getPositionX();
@@ -546,6 +549,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == CELLOBJECT;
 	}
 	
+	public boolean isPersistent() {
+		return persistent;
+	}
+	
 	public void setPosition(float x, float z, float y) {
 		QuadTreeEntry.setPosition(x, z, y);
 	}
@@ -573,11 +580,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public local void setZoneProcessServer(ZoneProcessServerImplementation srv) {
 		server = srv;
 	}
-	
-	public void setObjectID(unsigned long objectid) {
-		QuadTreeEntry.objectID = objectid;
-	}
-	
+		
 	public void setObjectName(final unicode name) {
 		objectName.setCustomString(name);
 	}
@@ -600,6 +603,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
+	}
+	
+	public void setPersistent(boolean value) {
+		persistent = value;
+	}
+	
+	public void clearUpdateToDatabaseTask() {
+		updateToDatabaseTask = null;
 	}
 
 }

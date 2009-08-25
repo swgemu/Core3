@@ -149,7 +149,7 @@ void PlayerManagerImplementation::runlock(bool doLock) {
 void PlayerManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("server", server);
+	addSerializableVariable("server", &server);
 }
 
 /*

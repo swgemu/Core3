@@ -40,7 +40,7 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	roomID = 0;
 
-	gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
+	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
 	//gameCommandHandler = new GameCommandHandler();
 }
@@ -59,13 +59,13 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 }*/
 
 void ChatManagerImplementation::initiateRooms() {
-	gameRooms->setNullValue(NULL);
+	gameRooms.setNullValue(NULL);
 
 	ChatRoom* mainRoom = new ChatRoom(server, "SWG", getNextRoomID());
 	mainRoom->deploy();
 	mainRoom->setPrivate();
 	addRoom(mainRoom);
-	gameRooms->put("SWG", mainRoom);
+	gameRooms.put("SWG", mainRoom);
 
 	ChatRoom* core3Room = new ChatRoom(server, mainRoom, server->getServerName(), getNextRoomID());
 	core3Room->deploy();
@@ -124,7 +124,7 @@ void ChatManagerImplementation::destroyRooms() {
 
 	roomMap->removeAll();
 
-	gameRooms->removeAll();
+	gameRooms.removeAll();
 
 	unlock();
 }
@@ -160,7 +160,7 @@ void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
 
 	String game = "SWG";
-	populateRoomListMessage(gameRooms->get(game), crl);
+	populateRoomListMessage(gameRooms.get(game), crl);
 
  	crl->insertChannelListCount();
  	player->sendMessage(crl);

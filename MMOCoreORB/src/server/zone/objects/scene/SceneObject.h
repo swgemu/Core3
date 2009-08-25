@@ -77,6 +77,22 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace events {
+
+class ObjectUpdateToDatabaseTask;
+
+} // namespace events
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::events;
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/core/ManagedObject.h"
@@ -139,6 +155,10 @@ public:
 	bool removeObject(SceneObject* object, bool notifyClient = false);
 
 	bool canAddObject(SceneObject* object);
+
+	void updateToDatabase();
+
+	void queueUpdateToDatabaseTask();
 
 	void create(ZoneClientSession* client);
 
@@ -266,6 +286,8 @@ public:
 
 	bool isCellObject();
 
+	bool isPersistent();
+
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -280,8 +302,6 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
-	void setObjectID(unsigned long long objectid);
-
 	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
@@ -293,6 +313,10 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
+
+	void setPersistent(bool value);
+
+	void clearUpdateToDatabaseTask();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -324,27 +348,31 @@ protected:
 
 	ManagedReference<Zone* > zone;
 
+	bool persistent;
+
+	ObjectUpdateToDatabaseTask* updateToDatabaseTask;
+
 	ManagedReference<SceneObject* > parent;
 
-	VectorMap<String, ManagedReference<SceneObject* > >* containmentSlots;
+	VectorMap<String, ManagedReference<SceneObject* > > containmentSlots;
 
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* containerObjects;
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 
 	unsigned int serverObjectCRC;
 
 	unsigned int clientObjectCRC;
 
-	Quaternion* direction;
+	Quaternion direction;
 
 	unsigned int movementCounter;
 
-	Vector<String>* arrangementDescriptors;
+	Vector<String> arrangementDescriptors;
 
-	Vector<String>* slotDescriptors;
+	Vector<String> slotDescriptors;
 
-	StringId* objectName;
+	StringId objectName;
 
-	StringId* detailedDescription;
+	StringId detailedDescription;
 
 	unsigned int containerType;
 
@@ -727,6 +755,10 @@ public:
 
 	virtual bool canAddObject(SceneObject* object);
 
+	void updateToDatabase();
+
+	void queueUpdateToDatabaseTask();
+
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -853,6 +885,8 @@ public:
 
 	bool isCellObject();
 
+	bool isPersistent();
+
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -867,8 +901,6 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* srv);
 
-	void setObjectID(unsigned long long objectid);
-
 	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
@@ -880,6 +912,10 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
+
+	void setPersistent(bool value);
+
+	void clearUpdateToDatabaseTask();
 
 	SceneObject* _this;
 
@@ -937,6 +973,10 @@ public:
 	bool removeObject(SceneObject* object, bool notifyClient);
 
 	bool canAddObject(SceneObject* object);
+
+	void updateToDatabase();
+
+	void queueUpdateToDatabaseTask();
 
 	void create(ZoneClientSession* client);
 
@@ -1058,6 +1098,8 @@ public:
 
 	bool isCellObject();
 
+	bool isPersistent();
+
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -1070,8 +1112,6 @@ public:
 
 	void setParent(SceneObject* par);
 
-	void setObjectID(unsigned long long objectid);
-
 	void setObjectName(const UnicodeString& name);
 
 	void setZone(Zone* zon);
@@ -1083,6 +1123,10 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
+
+	void setPersistent(bool value);
+
+	void clearUpdateToDatabaseTask();
 
 protected:
 	String _param0_info__String_bool_;

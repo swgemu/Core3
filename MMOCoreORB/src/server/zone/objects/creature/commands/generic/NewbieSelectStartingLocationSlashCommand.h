@@ -95,6 +95,7 @@ public:
 
 		} else if (city == "theed") {
 			creature->switchZone(5, -4908.0f, 6, 4101.0f);
+			//creature->switchZone(5, 2098.0f, 30, 2526.0f);
 
 		} else if (city == "moenia") {
 			creature->switchZone(5, 4800.0f, 0, -4700.0f);

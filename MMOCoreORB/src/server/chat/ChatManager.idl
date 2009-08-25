@@ -71,13 +71,13 @@ class ChatManager extends ManagedObject {
 
 	//ResourceManager* resourceManager;
 
-	PlayerMap playerMap;
+	transient PlayerMap playerMap;
 
-	VectorMap<string, ChatRoom> gameRooms;
+	dereferenced VectorMap<string, ChatRoom> gameRooms;
 
 	ChatRoom groupRoom;
 	ChatRoom guildRoom;
-	ChatRoomMap roomMap;
+	transient ChatRoomMap roomMap;
 
 	unsigned int roomID;
 

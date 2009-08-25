@@ -63,7 +63,7 @@ public:
 
         databases = new Vector<Database*>();
 
-        for (int i = 0; i < DEAFULT_SERVERDATABASE_INSTANCES; ++i) {
+        for (int i = 0; i < DEFAULT_SERVERDATABASE_INSTANCES; ++i) {
         	Database* db = new MySqlDatabase(String("ServerDatabase" + String::valueOf(i)), dbHost);
         	db->connect(dbName, dbUser, dbPass, dbPort);
 
@@ -72,7 +72,7 @@ public:
 
 	}
 
-	const static int DEAFULT_SERVERDATABASE_INSTANCES = 5;
+	const static int DEFAULT_SERVERDATABASE_INSTANCES = 1;
 
 	~ServerDatabase() {
 		while (!databases->isEmpty()) {

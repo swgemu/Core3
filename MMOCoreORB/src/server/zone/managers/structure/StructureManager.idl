@@ -56,7 +56,7 @@ import system.thread.Thread;
 class StructureManager extends ManagedObject implements Logger {
 	private Zone zone;
 	
-	private ZoneProcessServerImplementation server;
+	private transient ZoneProcessServerImplementation server;
 		
 	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	

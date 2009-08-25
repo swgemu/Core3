@@ -101,6 +101,20 @@ using namespace server::zone::managers::player;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace chat {
 
@@ -132,8 +146,6 @@ using namespace server::zone::packets::chat;
 #include "engine/service/proto/BaseMessage.h"
 
 #include "system/util/VectorMap.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace chat {
@@ -191,7 +203,7 @@ class ChatManagerImplementation : public ManagedObjectImplementation {
 
 	PlayerMap* playerMap;
 
-	VectorMap<String, ManagedReference<ChatRoom* > >* gameRooms;
+	VectorMap<String, ManagedReference<ChatRoom* > > gameRooms;
 
 	ManagedReference<ChatRoom* > groupRoom;
 

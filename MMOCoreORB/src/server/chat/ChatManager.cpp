@@ -18,6 +18,8 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "server/zone/packets/chat/ChatRoomList.h"
 
 #include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
@@ -257,10 +259,11 @@ void ChatManagerImplementation::runlock(bool doLock) {
 void ChatManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("server", server);
-	addSerializableVariable("playerManager", playerManager);
-	addSerializableVariable("groupRoom", groupRoom);
-	addSerializableVariable("guildRoom", guildRoom);
+	addSerializableVariable("server", &server);
+	addSerializableVariable("playerManager", &playerManager);
+	addSerializableVariable("gameRooms", &gameRooms);
+	addSerializableVariable("groupRoom", &groupRoom);
+	addSerializableVariable("guildRoom", &guildRoom);
 	addSerializableVariable("roomID", &roomID);
 	addSerializableVariable("mute", &mute);
 }

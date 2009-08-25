@@ -57,6 +57,8 @@ private:
 	inline void addSerializableVariables();
 
 public:
+	StringId();
+	StringId(const StringId& id);
 	StringId(const String& fullPath);
 	StringId(const String& fil, const String& stringId);
 	StringId(const UnicodeString& custom);
@@ -79,6 +81,19 @@ public:
 
 	void setCustomString(const UnicodeString& custom) {
 		customName = custom;
+	}
+
+	void setStringId(const String& fullPath) {
+		if (fullPath.isEmpty())
+			return;
+
+		if (fullPath.charAt(0) == '@') {
+			StringTokenizer tokenizer(fullPath.subString(1));
+			tokenizer.setDelimeter(":");
+
+			tokenizer.getStringToken(file);
+			tokenizer.getStringToken(stringID);
+		}
 	}
 
 };

@@ -62,11 +62,10 @@ public:
 	    	insertUnicode(name);
 
 	    	insertInt(characters->getCharacterRaceCRC()); //Player Race CRC
-    		insertInt(0x15); //magic 0x15 that makes the login screen work
-	    	insertInt(characters->getCharacterID()); //Player ID
+	    	insertLong(characters->getObjectID()); //Player ID
 
 	    	insertInt(characters->getGalaxyID()); //Server ID That Character Is On
-	    	insertInt(0x00000001);
+	    	insertInt(0x00000001); // server status?
 	    }
 	}
 

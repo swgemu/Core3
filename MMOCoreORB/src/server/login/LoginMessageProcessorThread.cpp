@@ -59,14 +59,20 @@ void LoginMessageProcessorThread::run() {
 			StringBuffer str;
 			str << "incorrect packet - " << msg->toStringData();
 			error(str);
+
+			e.printStackTrace();
 		} catch (DatabaseException& e) {
 			StringBuffer msg;
 			msg << e.getMessage();
 			error(msg);
+
+			e.printStackTrace();
 		} catch (ArrayIndexOutOfBoundsException& e) {
 			StringBuffer msg;
 			msg << e.getMessage();
 			error(msg);
+
+			e.printStackTrace();
 		} catch (...) {
 			System::out << "[LoginMessageProcessor] unreported Exception caught\n";
 		}

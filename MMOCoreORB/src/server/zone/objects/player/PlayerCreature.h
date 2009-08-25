@@ -144,6 +144,8 @@ public:
 
 	bool isLoggingOut();
 
+	unsigned int getAccountID();
+
 	ZoneClientSession* getClient();
 
 	byte getRaceID();
@@ -163,6 +165,8 @@ public:
 	void setOnline();
 
 	void setLoggingOut();
+
+	void setAccountID(unsigned int id);
 
 	void clearDisconnectEvent();
 
@@ -200,13 +204,9 @@ protected:
 
 	int onlineStatus;
 
-	Time* logoutTimeStamp;
+	Time logoutTimeStamp;
 
-	unsigned long long accountID;
-
-	unsigned long long characterID;
-
-	unsigned long long baseID;
+	unsigned int accountID;
 
 	String raceFile;
 
@@ -224,15 +224,15 @@ protected:
 
 	PlayerRecoveryEvent* recoveryEvent;
 
-	Time* nextAction;
+	Time nextAction;
 
-	Time* nextTip;
+	Time nextTip;
 
-	SortedVector<ManagedReference<ChatRoom* > >* chatRooms;
+	SortedVector<ManagedReference<ChatRoom* > > chatRooms;
 
 	byte incapacitationCounter;
 
-	Time* firstIncapacitationTime;
+	Time firstIncapacitationTime;
 
 	int pvpRating;
 
@@ -283,6 +283,8 @@ public:
 
 	bool isLoggingOut();
 
+	unsigned int getAccountID();
+
 	ZoneClientSession* getClient();
 
 	byte getRaceID();
@@ -302,6 +304,8 @@ public:
 	void setOnline();
 
 	void setLoggingOut();
+
+	void setAccountID(unsigned int id);
 
 	void clearDisconnectEvent();
 
@@ -372,6 +376,8 @@ public:
 
 	bool isLoggingOut();
 
+	unsigned int getAccountID();
+
 	ZoneClientSession* getClient();
 
 	byte getRaceID();
@@ -391,6 +397,8 @@ public:
 	void setOnline();
 
 	void setLoggingOut();
+
+	void setAccountID(unsigned int id);
 
 	void clearDisconnectEvent();
 

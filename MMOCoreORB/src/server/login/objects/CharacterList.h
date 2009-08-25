@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../db/ServerDatabase.h"
 
-#include "Species.h"
+#include "server/zone/objects/player/Races.h"
 
 class CharacterList {
 	ResultSet* characters;
@@ -55,7 +55,7 @@ class CharacterList {
 public:
 	CharacterList(uint32 accountid) {
 		StringBuffer query;
-		query << "SELECT * FROM characters WHERE account_id = " << accountid;
+		query << "SELECT * FROM objects WHERE data LIKE '%accountID=" << accountid << "%';";
 
 		characters = ServerDatabase::instance()->executeQuery(query);
 	}
@@ -69,27 +69,48 @@ public:
 		return characters->next();
 	}
 
-	uint64 getCharacterID() {
-		return (uint64) (characters->getUnsignedInt(0));
+	uint64 getObjectID() {
+		return (uint64) (characters->getUnsignedLong(0));
 	}
 
 	uint32 getGalaxyID() {
-		return characters->getUnsignedInt(2);
+		return 2;
 	}
 
 	void getCharacterName(UnicodeString& name) {
-		name.append(characters->getString(3));
+		UnicodeString charName;
+		String data = characters->getString(1);
 
-		String surname = characters->getString(4);
+		data = data.subString(data.indexOf("customName"));
+		data = data.subString(data.indexOf("\"") + 1);
 
-		if (surname.length() > 0) {
-			name.append(" ");
-			name.append(surname);
-		}
+		data = data.subString(0, data.indexOf("\""));
+
+		name = data;
 	}
 
 	uint32 getCharacterRaceCRC() {
-		return String(Race[characters->getUnsignedInt(7)]).hashCode();
+		String objectData = characters->getString(1);
+
+		int idx = objectData.indexOf("clientObjectCRC=");
+
+		if (idx == -1)
+			return 0;
+
+		String objectCRC = objectData.subString(idx);
+
+		int comma = objectCRC.indexOf(",");
+
+		if (comma == -1) {
+			return 0;
+		}
+
+		objectCRC = objectCRC.subString(16, comma);
+		uint32 sharedCRC = UnsignedInteger::valueOf(objectCRC);
+
+		String race = Races::getCompleteRace(sharedCRC);
+
+		return String(Races::getCompleteRace(sharedCRC)).hashCode();
 	}
 
 	inline int size() {

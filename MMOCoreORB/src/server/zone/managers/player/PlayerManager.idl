@@ -57,10 +57,10 @@ import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 
 class PlayerManager extends ManagedObject implements Logger {
-	ZoneProcessServerImplementation processor;
+	transient ZoneProcessServerImplementation processor;
 	ZoneServer server;
 	
-	PlayerMap playerMap;
+	transient PlayerMap playerMap;
 			
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
 	

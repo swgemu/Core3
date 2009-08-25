@@ -44,66 +44,66 @@ which carries forward this exception.
 
 #include "SceneObject.h"
 
-#include "../../managers/object/ObjectManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
-#include "../../packets/scene/SceneObjectCreateMessage.h"
-#include "../../packets/scene/SceneObjectDestroyMessage.h"
-#include "../../packets/scene/SceneObjectCloseMessage.h"
-#include "../../packets/scene/UpdateContainmentMessage.h"
-#include "../../packets/scene/UpdateTransformMessage.h"
-#include "../../packets/scene/UpdateTransformWithParentMessage.h"
-#include "../../packets/scene/LightUpdateTransformMessage.h"
-#include "../../packets/scene/LightUpdateTransformWithParentMessage.h"
-#include "../../packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/scene/SceneObjectCreateMessage.h"
+#include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
+#include "server/zone/packets/scene/SceneObjectCloseMessage.h"
+#include "server/zone/packets/scene/UpdateContainmentMessage.h"
+#include "server/zone/packets/scene/UpdateTransformMessage.h"
+#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
+#include "server/zone/packets/scene/LightUpdateTransformMessage.h"
+#include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 
+#include "variables/SceneObjectReference.h"
 
-#include "../../ZoneClientSession.h"
-#include "../../Zone.h"
-#include "../../ZoneServer.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 
 #include "variables/StringId.h"
+#include "events/ObjectUpdateToDatabaseTask.h"
 
-#include "../cell/CellObject.h"
-#include "../building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
-SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject"){
+SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject") {
 	SceneObjectImplementation::parent = NULL;
 
-	containmentSlots = new VectorMap<String, ManagedReference<SceneObject*> >();
-	containmentSlots->setNullValue(NULL);
+	containmentSlots.setNullValue(NULL);
+	objectName.setStringId(String(templateData->getStringField("objectName")));
 
-	direction = new Quaternion();
-
-	objectName = new StringId(String(templateData->getStringField("objectName")));
-	detailedDescription = new StringId(String(templateData->getStringField("detailedDescription")));
+	detailedDescription.setStringId(String(templateData->getStringField("detailedDescription")));
 
 	containerType = templateData->getIntField("containerType");
 	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
 
-	containerObjects = new VectorMap<uint64, ManagedReference<SceneObject*> >(containerVolumeLimit >> 2, containerVolumeLimit / 10);
+	//containerObjects = new VectorMap<uint64, ManagedReference<SceneObject*> >(containerVolumeLimit >> 2, containerVolumeLimit / 10);
+	//addSerializableVariable("containerObjects", containerObjects);
 
 	gameObjectType = templateData->getIntField("gameObjectType");
 
 	clientObjectCRC = templateData->getIntField("clientObjectCRC");
 	serverObjectCRC = 0;
 
-	arrangementDescriptors = new Vector<String>();
+	//arrangementDescriptors = new Vector<String>();
 
 	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
 
 	for (int i = 1; i <= arrangements.getTableSize(); ++i) {
-		arrangementDescriptors->add(arrangements.getStringAt(i));
+		arrangementDescriptors.add(arrangements.getStringAt(i));
 	}
 
 	arrangements.pop();
 
 
-	slotDescriptors = new Vector<String>();
+	//slotDescriptors = new Vector<String>();
 
 	LuaObject slots = templateData->getObjectField("slotDescriptors");
 
 	for (int i = 1; i <= slots.getTableSize(); ++i) {
-		slotDescriptors->add(slots.getStringAt(i));
+		slotDescriptors.add(slots.getStringAt(i));
 	}
 
 	slots.pop();
@@ -114,9 +114,17 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 
 	initializePosition(0.f, 0.f, 0.f);
 
+	persistent = false;
+
+	updateToDatabaseTask = NULL;
+
+	movementCounter = 0;
+
 	//temporary till idlc compiles these by itself
-	/*addSerializableVariable("zone", &zone);
-	addSerializableVariable("parent", &parent);*/
+	//addSerializableVariable("zone", &zone);
+	//addSerializableVariable("parent", &parent);
+	//addSerializableVariable("objectName", objectName);
+
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -141,6 +149,24 @@ void SceneObjectImplementation::link(ZoneClientSession* client, uint32 containme
 
 BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containmentType) {
 	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
+}
+
+void SceneObjectImplementation::updateToDatabase() {
+	ZoneServer* server = getZoneServer();
+	server->updateObjectToDatabase(_this);
+	queueUpdateToDatabaseTask();
+}
+
+void SceneObjectImplementation::queueUpdateToDatabaseTask() {
+	if (updateToDatabaseTask != NULL)
+		return;
+
+	updateToDatabaseTask = new ObjectUpdateToDatabaseTask(_this);
+	updateToDatabaseTask->schedule();
+}
+
+uint64 SceneObjectImplementation::getObjectID() {
+	return _this->_getObjectID();
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
@@ -169,8 +195,8 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	//sending all slotted objects by default
-	for (int i = 0; i < containmentSlots->size(); ++i) {
-		SceneObject* object = containmentSlots->get(i);
+	for (int i = 0; i < containmentSlots.size(); ++i) {
+		SceneObject* object = containmentSlots.get(i);
 
 		object->sendTo(player);
 	}
@@ -178,8 +204,8 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//sending all objects by default
-	for (int j = 0; j < containerObjects->size(); ++j) {
-		SceneObject* containerObject = containerObjects->get(j);
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		SceneObject* containerObject = containerObjects.get(j);
 
 		containerObject->sendTo(player);
 	}
@@ -496,21 +522,21 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (containmentSlots->contains(childArrangement))
+			if (containmentSlots.contains(childArrangement))
 				return false;
 		}
 
 		for (int i = 0; i < arrangementSize; ++i) {
-			containmentSlots->put(object->getArrangementDescriptor(i), object);
+			containmentSlots.put(object->getArrangementDescriptor(i), object);
 		}
 	} else if (containerType == 2) {
-		if (containerObjects->size() >= containerVolumeLimit)
+		if (containerObjects.size() >= containerVolumeLimit)
 			return false;
 
-		if (containerObjects->contains(object->getObjectID()))
+		if (containerObjects.contains(object->getObjectID()))
 			return false;
 
-		containerObjects->put(object->getObjectID(), object);
+		containerObjects.put(object->getObjectID(), object);
 	} else {
 		error("unkown container type");
 		return false;
@@ -521,7 +547,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 	//object->setZone(zone);
 
 	if (notifyClient)
-		broadcastMessage(object->link(objectID, containmentType), true, true);
+		broadcastMessage(object->link(getObjectID(), containmentType), true, true);
 
 	return true;
 }
@@ -533,17 +559,17 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (containmentSlots->get(childArrangement) != object)
+			if (containmentSlots.get(childArrangement) != object)
 				return false;
 		}
 
 		for (int i = 0; i < arrangementSize; ++i)
-			containmentSlots->drop(object->getArrangementDescriptor(i));
+			containmentSlots.drop(object->getArrangementDescriptor(i));
 	} else if (containerType == 2) {
-		if (!containerObjects->contains(object->getObjectID()))
+		if (!containerObjects.contains(object->getObjectID()))
 			return false;
 
-		containerObjects->drop(object->getObjectID());
+		containerObjects.drop(object->getObjectID());
 	} else {
 		error("unkown container type");
 		return false;
@@ -558,7 +584,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 }
 
 void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
-	objects = *containmentSlots;
+	objects = containmentSlots;
 }
 
 SceneObject* SceneObjectImplementation::getGrandParent() {
