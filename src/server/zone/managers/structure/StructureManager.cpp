@@ -120,7 +120,7 @@ void StructureManagerImplementation::runlock(bool doLock) {
 void StructureManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("zone", zone);
+	addSerializableVariable("zone", &zone);
 }
 
 void StructureManagerImplementation::loadStructures() {

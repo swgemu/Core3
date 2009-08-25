@@ -127,7 +127,7 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ManagedReference<ZoneServer* > server;
 
-	Time* galacticTime;
+	Time galacticTime;
 
 	HeightMap* heightMap;
 

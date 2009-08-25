@@ -418,6 +418,21 @@ public:
 		return SharedRace[raceid];
 	}
 
+	inline static const char* getCompleteRace(uint32 sharedRaceCRC) {
+		int race = -1;
+		for (int i = 0; i < 20; ++i) {
+			if (SharedRace[i] == sharedRaceCRC) {
+				race = i;
+				break;
+			}
+		}
+
+		if (race == -1)
+			return "";
+		else
+			return CCRaceStrs[race];
+	}
+
 	inline static int getRaceID(const String& name) {
     	for (int i = 0; i < 20; i++) {
         	if (strcmp(name.toCharArray(), CCRaceStrs[i]) == 0)
@@ -438,11 +453,11 @@ public:
 
 	inline const static char* getMoodStr(const String& name) {
 		for (int i = 0; i < 190; i++) {
-		        	if (strcmp(name.toCharArray(), MoodStr[i][0]) == 0)
-		            	return MoodStr[i][1];
-		    	}
+			if (strcmp(name.toCharArray(), MoodStr[i][0]) == 0)
+				return MoodStr[i][1];
+		}
 
-		    	return MoodStr[0][1];
+		return MoodStr[0][1];
 	}
 
 	inline static unsigned int * getAttribLimits(int raceid) {

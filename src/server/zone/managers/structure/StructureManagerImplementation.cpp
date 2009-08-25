@@ -64,11 +64,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 				msg << "StructureManagerImplementation::loadStaticBuildings(), loading cell (" << oid << " for building: " << parentId << endl;
 				info(msg.toString());
 
-/*				CellObject* cell = new CellObject(oid, buio);
-				cell->deploy();
-
-				cell->setObjectCRC(file.hashCode());*/
-				SceneObject* cell = server->getZoneServer()->createObject(file.hashCode(), oid);
+				SceneObject* cell = server->getZoneServer()->createObject(file.hashCode(), false, oid);
 				cell->initializePosition(x, z, y);
 				cell->setDirection(oX, oZ, oY, oW);
 
@@ -147,7 +143,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 
 			info("trying to create " + file);
 
-			buio = (BuildingObject*) server->getZoneServer()->createObject(file.hashCode(), oid);
+			buio = (BuildingObject*) server->getZoneServer()->createObject(file.hashCode(), false, oid);
 
 			buio->initializePosition(x, z, y);
 			buio->setDirection(oX, oZ, oY, oW);

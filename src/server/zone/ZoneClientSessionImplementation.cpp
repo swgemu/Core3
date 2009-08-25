@@ -56,6 +56,7 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 
 	player = NULL;
 	sessionKey = 0;
+	accountID = 0;
 
 	disconnecting = false;
 

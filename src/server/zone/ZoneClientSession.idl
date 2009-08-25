@@ -57,6 +57,7 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	SceneObject player;
 	
 	unsigned int sessionKey;
+	unsigned int accountID;
 	
 	boolean disconnecting;
 	
@@ -104,6 +105,10 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	public void setSessionKey(unsigned int key) {
 		sessionKey = key;
 	}
+	
+	public void setAccountID(unsigned int id) {
+		accountID = id;
+	}
 
 	public SceneObject getPlayer() {
 		return player;
@@ -111,6 +116,10 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 
 	public unsigned int getSessionKey() {
 		return sessionKey;
+	}
+	
+	public unsigned int getAccountID() {
+		return accountID;
 	}
 
 }

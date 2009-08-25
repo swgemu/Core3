@@ -70,12 +70,12 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& N
 
 	isPublicRoom = true;
 
-	subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
-	subRooms->setNullValue(NULL);
-	subRooms->setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
+	//subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
+	subRooms.setNullValue(NULL);
+	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
-	playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
-	playerList->setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
+	//playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
+	playerList.setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
 }
 
 ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent,
@@ -95,12 +95,12 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 
 	isPublicRoom = true;
 
-	subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
-	subRooms->setNullValue(NULL);
-	subRooms->setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
+	//subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
+	subRooms.setNullValue(NULL);
+	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
-	playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
-	playerList->setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
+	//playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
+	playerList.setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
 
 	//parent->addSubRoom((ChatRoom*) _this);
 }
@@ -129,7 +129,7 @@ void ChatRoomImplementation::sendDestroyTo(PlayerCreature* player) {
 void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 	wlock();
 
-	if (playerList->put(player->getFirstName(), player) == -1) {
+	if (playerList.put(player->getFirstName(), player) == -1) {
 		unlock();
 		return;
 	}
@@ -154,7 +154,7 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 void ChatRoomImplementation::removePlayer(PlayerCreature* player, bool doLock) {
 	wlock();
 
-	playerList->drop(player->getFirstName());
+	playerList.drop(player->getFirstName());
 
 	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, player);
 	player->sendMessage(msg);
@@ -172,8 +172,8 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
 	wlock();
 
-	PlayerCreature* play = playerList->get(player);
-	playerList->drop(player);
+	PlayerCreature* play = playerList.get(player);
+	playerList.drop(player);
 
 	unlock();
 
@@ -198,7 +198,7 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 bool ChatRoomImplementation::hasPlayer(PlayerCreature* player) {
 	wlock();
 
-	bool result = playerList->contains(player->getFirstName());
+	bool result = playerList.contains(player->getFirstName());
 
 	unlock();
 
@@ -208,7 +208,7 @@ bool ChatRoomImplementation::hasPlayer(PlayerCreature* player) {
 bool ChatRoomImplementation::hasPlayer(const String& name) {
 	wlock();
 
-	bool result = playerList->contains(name);
+	bool result = playerList.contains(name);
 
 	unlock();
 
@@ -218,8 +218,8 @@ bool ChatRoomImplementation::hasPlayer(const String& name) {
 void ChatRoomImplementation::removeAllPlayers() {
 	wlock();
 
-	for (int i = 0; i < playerList->size(); i++) {
-		PlayerCreature* player = playerList->get(i);
+	for (int i = 0; i < playerList.size(); i++) {
+		PlayerCreature* player = playerList.get(i);
 
 		try {
 			player->wlock(_this);
@@ -234,7 +234,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 
 	}
 
-	playerList->removeAll();
+	playerList.removeAll();
 	unlock();
 }
 
@@ -242,7 +242,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
 	wlock();
 
-	ChatRoom* channel = subRooms->get(i);
+	ChatRoom* channel = subRooms.get(i);
 
 	unlock();
 
@@ -252,7 +252,7 @@ ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
 ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
 	wlock();
 
-	ChatRoom* channel = subRooms->get(name);
+	ChatRoom* channel = subRooms.get(name);
 
 	unlock();
 
@@ -262,7 +262,7 @@ ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
 void ChatRoomImplementation::addSubRoom(ChatRoom* channel) {
 	wlock();
 
-	subRooms->put(channel->getName(), channel);
+	subRooms.put(channel->getName(), channel);
 
 	unlock();
 }
@@ -270,7 +270,7 @@ void ChatRoomImplementation::addSubRoom(ChatRoom* channel) {
 void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
 	wlock();
 
-	subRooms->drop(channel->getName());
+	subRooms.drop(channel->getName());
 
 	unlock();
 }
@@ -278,8 +278,8 @@ void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	wlock();
 
-	for (int i = 0; i < playerList->size(); i++) {
-		PlayerCreature* player = playerList->get(i);
+	for (int i = 0; i < playerList.size(); i++) {
+		PlayerCreature* player = playerList.get(i);
 		player->sendMessage(msg->clone());
 	}
 
@@ -291,8 +291,8 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 	wlock();
 
-	for (int i = 0; i < playerList->size(); ++i) {
-		PlayerCreature* player = playerList->get(i);
+	for (int i = 0; i < playerList.size(); ++i) {
+		PlayerCreature* player = playerList.get(i);
 
 		for (int j = 0; j < messages->size(); ++j) {
 			BaseMessage* msg = messages->get(j);

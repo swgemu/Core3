@@ -44,6 +44,7 @@ which carries forward this exception.
 
 package server.zone;
 
+import server.zone.objects.scene.SceneObject;
 import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
 import system.net.Socket;
@@ -63,20 +64,18 @@ import server.chat.ChatManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
 
-import server.zone.objects.scene.SceneObject;
-
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
-	private BasePacketHandler phandler;
+	private transient BasePacketHandler phandler;
 	
-	private ZoneProcessServerImplementation processor;
+	private transient ZoneProcessServerImplementation processor;
 
 	private int procThreadCount;
 	
-	private native TaskManager taskManager;
+	private native transient TaskManager taskManager;
 	
-	private Vector<Zone> zones;
+	private dereferenced Vector<Zone> zones;
 	
-	private ObjectManager objectManager;
+	private transient ObjectManager objectManager;
 	
 	private PlayerManager playerManager;
 	
@@ -136,8 +135,15 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void printEvents();
 	
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
-	public native SceneObject createObject(unsigned int templateCRC, unsigned long objectID = 0);
+	public native SceneObject createObject(unsigned int templateCRC, boolean persistent, unsigned long objectID = 0);
+	public native void updateObjectToDatabase(SceneObject object);
 	public native void destroyObject(unsigned long objectID);
+	
+	public native void lock(boolean doLock = true);
+	public native void unlock(boolean doLock = true);
+	
+	/*public native void lock();
+	public native void unlock();*/
 
 	public void fixScheduler() {
 		//scheduler.fixQueue();
@@ -173,10 +179,6 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 		this.unlock();
 	}
-
-	public native void lock(boolean doLock = true);
-	
-	public native void unlock(boolean doLock = true);
 
 	public int getGalaxyID() {
 		return galaxyID;

@@ -95,42 +95,42 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 	optionsBitmask = 0x80;
 
-	encumbrances = new Vector<int>(3, 1);
+	//encumbrances = new Vector<int>(3, 1);
 
 	for (int i = 0; i < 3; ++i) {
-		encumbrances->add(0);
+		encumbrances.add(0);
 	}
 
 	encumbrancesUpdateCounter = 0;
 
-	baseHealth = new Vector<int>(9, 1);
+	//baseHealth = new Vector<int>(9, 1);
 
 	for (int i = 0; i < 9; ++i) {
-		baseHealth->add(100);
+		baseHealth.add(100);
 	}
 
 	baseHealthUpdateCounter = 0;
 
-	wounds = new Vector<int>(9, 1);
+	//wounds = new Vector<int>(9, 1);
 
 	for (int i = 0; i < 9; ++i) {
-		wounds->add(0);
+		wounds.add(0);
 	}
 
 	woundsUpdateCounter = 0;
 
-	hamList = new Vector<int>(9, 1);
+	//hamList = new Vector<int>(9, 1);
 
 	for (int i = 0; i < 9; ++i) {
-		hamList->add(100);
+		hamList.add(100);
 	}
 
 	hamListUpdateCounter = 0;
 
-	maxHamList = new Vector<int>(9, 1);
+	//maxHamList = new Vector<int>(9, 1);
 
 	for (int i = 0; i < 9; ++i) {
-		maxHamList->add(100);
+		maxHamList.add(100);
 	}
 
 	maxHamListUpdateCounter = 0;
@@ -182,8 +182,8 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
-	for (int i = 0; i < containmentSlots->size(); ++i) {
-		SceneObject* object = containmentSlots->get(i);
+	for (int i = 0; i < containmentSlots.size(); ++i) {
+		SceneObject* object = containmentSlots.get(i);
 
 		int arrangementSize = object->getArrangementDescriptorSize();
 

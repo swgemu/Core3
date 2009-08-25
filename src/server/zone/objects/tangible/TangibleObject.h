@@ -78,7 +78,7 @@ protected:
 
 	int volume;
 
-	CustomizationVariables* customizationVariables;
+	CustomizationVariables customizationVariables;
 
 	int conditionDamage;
 
@@ -92,7 +92,7 @@ protected:
 
 	byte unknownByte;
 
-	Vector<ManagedReference<SceneObject* > >* defenderList;
+	Vector<ManagedReference<SceneObject* > > defenderList;
 
 	unsigned int defenderListUpdateCounter;
 

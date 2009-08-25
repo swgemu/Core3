@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -265,6 +267,8 @@ void BuildingObjectImplementation::runlock(bool doLock) {
 void BuildingObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 
+	addSerializableVariable("cells", &cells);
+	addSerializableVariable("notifiedObjects", &notifiedObjects);
 	addSerializableVariable("staticBuilding", &staticBuilding);
 }
 
@@ -275,7 +279,7 @@ bool BuildingObjectImplementation::isStaticBuilding() {
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
 	// server/zone/objects/building/BuildingObject.idl(85):  return cells.get(idx);
-	return cells->get(idx);
+	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
@@ -285,17 +289,17 @@ void BuildingObjectImplementation::setStaticBuilding(bool value) {
 
 bool BuildingObjectImplementation::hasNotifiedObject(SceneObject* object) {
 	// server/zone/objects/building/BuildingObject.idl(93):  return notifiedObjects.contains(object);
-	return notifiedObjects->contains(object);
+	return (&notifiedObjects)->contains(object);
 }
 
 void BuildingObjectImplementation::addNotifiedObject(SceneObject* object) {
 	// server/zone/objects/building/BuildingObject.idl(97):  notifiedObjects.put(object);
-	notifiedObjects->put(object);
+	(&notifiedObjects)->put(object);
 }
 
 void BuildingObjectImplementation::removeNotifiedObject(SceneObject* object) {
 	// server/zone/objects/building/BuildingObject.idl(101):  notifiedObjects.drop(object);
-	notifiedObjects->drop(object);
+	(&notifiedObjects)->drop(object);
 }
 
 /*

@@ -91,7 +91,8 @@ public:
 	}
 
 	void run() {
-		client->setSessionKey(accountId);
+		client->setSessionKey(sessionKey);
+		client->setAccountID(accountId);
 
 		BaseMessage* cpm = new ClientPermissionsMessage();
 		client->sendMessage(cpm);

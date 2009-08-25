@@ -54,10 +54,10 @@ import server.zone.ZoneProcessServerImplementation;
 import server.zone.objects.scene.SceneObject;
 
 class ObjectController extends ManagedObject implements Logger {
-	private ZoneProcessServerImplementation server;
+	private transient ZoneProcessServerImplementation server;
 	
-	private CommandConfigManager configManager;
-	private CommandList queueCommands;
+	private transient CommandConfigManager configManager;
+	private transient CommandList queueCommands;
 	
 	public native ObjectController(ZoneProcessServerImplementation server);
 	

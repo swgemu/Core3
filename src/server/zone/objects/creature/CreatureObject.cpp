@@ -685,13 +685,16 @@ void CreatureObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cashCredits", &cashCredits);
 	addSerializableVariable("gender", &gender);
 	addSerializableVariable("species", &species);
+	addSerializableVariable("baseHealth", &baseHealth);
 	addSerializableVariable("baseHealthUpdateCounter", &baseHealthUpdateCounter);
 	addSerializableVariable("posture", &posture);
 	addSerializableVariable("factionRank", &factionRank);
 	addSerializableVariable("creatureLinkID", &creatureLinkID);
 	addSerializableVariable("shockWounds", &shockWounds);
+	addSerializableVariable("wounds", &wounds);
 	addSerializableVariable("woundsUpdateCounter", &woundsUpdateCounter);
 	addSerializableVariable("stateBitmask", &stateBitmask);
+	addSerializableVariable("encumbrances", &encumbrances);
 	addSerializableVariable("encumbrancesUpdateCounter", &encumbrancesUpdateCounter);
 	addSerializableVariable("runSpeed", &runSpeed);
 	addSerializableVariable("walkSpeed", &walkSpeed);
@@ -714,7 +717,9 @@ void CreatureObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("moodID", &moodID);
 	addSerializableVariable("performanceCounter", &performanceCounter);
 	addSerializableVariable("instrumentID", &instrumentID);
+	addSerializableVariable("hamList", &hamList);
 	addSerializableVariable("hamListUpdateCounter", &hamListUpdateCounter);
+	addSerializableVariable("maxHamList", &maxHamList);
 	addSerializableVariable("maxHamListUpdateCounter", &maxHamListUpdateCounter);
 	addSerializableVariable("frozen", &frozen);
 	addSerializableVariable("templateString", &templateString);
@@ -732,7 +737,7 @@ int CreatureObjectImplementation::getCashCredits() {
 
 int CreatureObjectImplementation::getBaseHealth(int idx) {
 	// server/zone/objects/creature/CreatureObject.idl(159):  return baseHealth.get(idx);
-	return baseHealth->get(idx);
+	return (&baseHealth)->get(idx);
 }
 
 unsigned int CreatureObjectImplementation::getBaseHealthUpdateCounter() {
@@ -742,7 +747,7 @@ unsigned int CreatureObjectImplementation::getBaseHealthUpdateCounter() {
 
 int CreatureObjectImplementation::getWounds(int idx) {
 	// server/zone/objects/creature/CreatureObject.idl(167):  return wounds.get(idx);
-	return wounds->get(idx);
+	return (&wounds)->get(idx);
 }
 
 unsigned int CreatureObjectImplementation::getWoundsUpdateCounter() {
@@ -762,7 +767,7 @@ unsigned int CreatureObjectImplementation::getHamListUpdateCounter() {
 
 int CreatureObjectImplementation::getHAM(int idx) {
 	// server/zone/objects/creature/CreatureObject.idl(183):  return hamList.get(idx);
-	return hamList->get(idx);
+	return (&hamList)->get(idx);
 }
 
 unsigned int CreatureObjectImplementation::getMaxHamListUpdateCounter() {
@@ -772,12 +777,12 @@ unsigned int CreatureObjectImplementation::getMaxHamListUpdateCounter() {
 
 int CreatureObjectImplementation::getMaxHAM(int idx) {
 	// server/zone/objects/creature/CreatureObject.idl(191):  return maxHamList.get(idx);
-	return maxHamList->get(idx);
+	return (&maxHamList)->get(idx);
 }
 
 int CreatureObjectImplementation::getEncumbrance(int idx) {
 	// server/zone/objects/creature/CreatureObject.idl(195):  return encumbrances.get(idx);
-	return encumbrances->get(idx);
+	return (&encumbrances)->get(idx);
 }
 
 byte CreatureObjectImplementation::getPosture() {

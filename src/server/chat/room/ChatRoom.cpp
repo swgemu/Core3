@@ -513,14 +513,16 @@ void ChatRoomImplementation::runlock(bool doLock) {
 void ChatRoomImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("server", server);
+	addSerializableVariable("server", &server);
 	addSerializableVariable("name", &name);
 	addSerializableVariable("fullPath", &fullPath);
 	addSerializableVariable("owner", &owner);
 	addSerializableVariable("creator", &creator);
 	addSerializableVariable("title", &title);
 	addSerializableVariable("roomID", &roomID);
-	addSerializableVariable("parent", parent);
+	addSerializableVariable("parent", &parent);
+	addSerializableVariable("playerList", &playerList);
+	addSerializableVariable("subRooms", &subRooms);
 	addSerializableVariable("isPublicRoom", &isPublicRoom);
 }
 
@@ -546,12 +548,12 @@ bool ChatRoomImplementation::isPrivate() {
 
 PlayerCreature* ChatRoomImplementation::getPlayer(int idx) {
 	// server/chat/room/ChatRoom.idl(116):  return playerList.get(idx);
-	return playerList->get(idx);
+	return (&playerList)->get(idx);
 }
 
 int ChatRoomImplementation::getPlayerSize() {
 	// server/chat/room/ChatRoom.idl(120):  return playerList.size();
-	return playerList->size();
+	return (&playerList)->size();
 }
 
 void ChatRoomImplementation::setName(const String& Name) {
@@ -606,7 +608,7 @@ unsigned int ChatRoomImplementation::getRoomID() {
 
 int ChatRoomImplementation::getSubRoomsSize() {
 	// server/chat/room/ChatRoom.idl(166):  return subRooms.size();
-	return subRooms->size();
+	return (&subRooms)->size();
 }
 
 ChatRoom* ChatRoomImplementation::getParent() {

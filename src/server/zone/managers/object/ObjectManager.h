@@ -61,28 +61,19 @@ namespace zone {
 	namespace managers {
 	namespace object {
 
-	class ObjectManager : public Logger, public Mutex, public Singleton<ObjectManager> {
-		ObjectMap* objectMap;
-		ObjectMap* objectCacheMap;
-
+	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
 
-		uint64 newObjectID;
-
 	public:
-		static ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
 
 		static Lua* luaTemplatesInstance;
 
 	private:
+		void loadLastUsedObjectID();
+
 		void registerObjectTypes();
 		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
-
-		bool destroy(SceneObject* obj);
-
-		SceneObject* getCachedObject(uint64 oid);
-		SceneObject* remove(uint64 oid);
-		SceneObject* removeCachedObject(uint64 oid);
 
 	public:
 		ObjectManager();
@@ -90,11 +81,12 @@ namespace zone {
 		~ObjectManager();
 
 		// object methods
-		SceneObject* add(SceneObject* obj);
-		SceneObject* get(uint64 oid);
+		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0, bool doLock = true);
 
-		SceneObject* createObject(uint32 objectCRC, uint64 oid = 0);
-		void destroyObject(uint64 objectID);
+		DistributedObjectStub* loadPersistentObject(uint64 objectID);
+		int updatePersistentObject(DistributedObject* object);
+
+		int destroyObject(uint64 objectID);
 
 		/*template<typename ClassType> void createObject() {
 

@@ -47,8 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../../../ServerCore.h"
-#include "../SceneObject.h"
+#include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
 
 template<class O> class SceneObjectReference : public ManagedReference<O> {
 public:
@@ -58,19 +58,29 @@ public:
 	SceneObjectReference(const SceneObjectReference& ref) : ManagedReference<O>(ref) {
 	}
 
-	SceneObjectReference(O* obj) : ManagedReference<O>(obj) {
+	SceneObjectReference(O obj) : ManagedReference<O>(obj) {
 	}
 
-	int compareTo(const SceneObjectReference& val) const {
-		O* obj1 = ReferenceSlot<O>::get();
-		O* obj2 = val.object;
+	void operator=(const SceneObjectReference& ref) {
+		ReferenceSlot<O>::setObject(ref.object);
+	}
 
-		return obj1->compareTo(obj2);
+	void operator=(O obj) {
+		ReferenceSlot<O>::updateObject(obj);
+	}
+
+	int compareTo(const SceneObjectReference& ref) const {
+		if (ReferenceSlot<O>::object->getObjectID() < ref.ReferenceSlot<O>::object->getObjectID())
+			return 1;
+		else if (ReferenceSlot<O>::object->getObjectID() > ref.ReferenceSlot<O>::object->getObjectID())
+			return -1;
+		else
+			return 0;
 	}
 
 	bool toString(String& str) {
 		if (ReferenceSlot<O>::get() != NULL)
-			str = String::valueOf(((SceneObject*)ReferenceSlot<O>::get())->getObjectID());
+			str = String::valueOf((ReferenceSlot<O>::get())->getObjectID());
 		else
 			str = String::valueOf(0);
 
@@ -78,8 +88,8 @@ public:
 	}
 
 	bool parseFromString(const String& str, int version = 0) {
-		SceneObject* obj = ServerCore::getZoneServer()->getObject(UnsignedLong::valueOf(str));
-		*this = (O*)obj;
+		O obj = ServerCore::getZoneServer()->getObject(UnsignedLong::valueOf(str));
+		*this = obj;
 
 		if (obj == NULL)
 			return false;
@@ -88,7 +98,7 @@ public:
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
-		SceneObject* object = ReferenceSlot<O>::get();
+		O object = ReferenceSlot<O>::get();
 
 		if (object != NULL) {
 			stream->writeLong(object->getObjectID());
@@ -102,8 +112,8 @@ public:
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
 		uint64 oid = stream->readLong();
 
-		SceneObject* obj = ServerCore::getZoneServer()->getObject(oid);
-		*this = (O*)obj;
+		O obj = ServerCore::getZoneServer()->getObject(oid);
+		*this = obj;
 
 		if (obj == NULL)
 			return false;

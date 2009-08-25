@@ -11,6 +11,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 
 class ZoneProcessServerImplementation;
 
@@ -115,8 +129,6 @@ using namespace server::zone::managers::radial;
 
 #include "system/util/Vector.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 namespace server {
 namespace zone {
 
@@ -154,9 +166,15 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
+
+	void updateObjectToDatabase(SceneObject* object);
 
 	void destroyObject(unsigned long long objectID);
+
+	void lock(bool doLock = true);
+
+	void unlock(bool doLock = true);
 
 	void fixScheduler();
 
@@ -169,10 +187,6 @@ public:
 	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
-
-	void lock(bool doLock = true);
-
-	void unlock(bool doLock = true);
 
 	int getGalaxyID();
 
@@ -246,7 +260,7 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 
 	int procThreadCount;
 
-	Vector<ManagedReference<Zone* > >* zones;
+	Vector<ManagedReference<Zone* > > zones;
 
 	ObjectManager* objectManager;
 
@@ -319,9 +333,15 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
+
+	void updateObjectToDatabase(SceneObject* object);
 
 	void destroyObject(unsigned long long objectID);
+
+	void lock(bool doLock = true);
+
+	void unlock(bool doLock = true);
 
 	void fixScheduler();
 
@@ -334,10 +354,6 @@ public:
 	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
-
-	void lock(bool doLock = true);
-
-	void unlock(bool doLock = true);
 
 	int getGalaxyID();
 
@@ -430,9 +446,15 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
-	SceneObject* createObject(unsigned int templateCRC, unsigned long long objectID);
+	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID);
+
+	void updateObjectToDatabase(SceneObject* object);
 
 	void destroyObject(unsigned long long objectID);
+
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
 
 	void fixScheduler();
 
@@ -445,10 +467,6 @@ public:
 	void decreaseOnlinePlayers();
 
 	void increaseTotalDeletedPlayers();
-
-	void lock(bool doLock);
-
-	void unlock(bool doLock);
 
 	int getGalaxyID();
 

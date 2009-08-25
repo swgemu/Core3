@@ -93,7 +93,9 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	taskManager = TaskManager::instance();
 	taskManager->setLogging(false);
 
-	zones = new Vector<ManagedReference<Zone*> >();
+	//zones = new Vector<ManagedReference<Zone*> >();
+
+	_classHelper = ZoneServerHelper::instance();
 }
 
 void ZoneServerImplementation::start(int a, int b) {
@@ -103,6 +105,14 @@ void ZoneServerImplementation::start(int a, int b) {
 void ZoneServerImplementation::stop() {
 	DatagramServiceThread::stop();
 }
+
+/*void ZoneServerImplementation::lock() {
+	DatagramServiceThread::lock();
+}
+
+void ZoneServerImplementation::unlock() {
+	DatagramServiceThread::unlock();
+}*/
 
 void ZoneServerImplementation::lock(bool doLock) {
 	DatagramServiceThread::lock(doLock);
@@ -334,12 +344,18 @@ void ZoneServerImplementation::init() {
 
 		if (i <= 10 || i == 42) {
 			zone = new Zone(_this, processor, i);
+			uint64 zoneObjectID = 0;
+
+			zoneObjectID = ~zoneObjectID;
+			zoneObjectID -= i;
+			zone->_setObjectID(zoneObjectID);
+
 			zone->deploy("Zone", i);
 
 			zone->startManagers();
 		}
 
-		zones->add(zone);
+		zones.add(zone);
 	}
 
 	startManagers();
@@ -447,7 +463,7 @@ void ZoneServerImplementation::shutdown() {
 	info("shutting down zones", true);
 
 	for (int i = 0; i < 45; ++i) {
-		Zone* zone = zones->get(i);
+		Zone* zone = zones.get(i);
 		if (zone != NULL)
 			zone->stopManagers();
 	}
@@ -558,7 +574,15 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	try {
 		//lock(doLock); ObjectManager has its own mutex
 
-		obj = objectManager->get(oid);
+		DistributedObject* distributedObject = DistributedObjectBroker::instance()->lookUp(oid);
+
+		if (distributedObject != NULL) {
+			obj = dynamic_cast<SceneObject*>(distributedObject); // only for debug purposes
+
+			if (obj == NULL) {
+				error("trying to lookup object that is not an SceneObject");
+			}
+		}
 
 		//unlock(doLock);
 	} catch (Exception& e) {
@@ -573,13 +597,17 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 	return obj;
 }
 
-SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, uint64 oid) {
+void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
+	objectManager->updatePersistentObject(object);
+}
+
+SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool persistent, uint64 oid) {
 	SceneObject* obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, oid);
+		obj = objectManager->createObject(templateCRC, persistent, oid);
 
 		if (obj != NULL && obj->isPlayerCreature())
 			chatManager->addPlayer((PlayerCreature*)obj);

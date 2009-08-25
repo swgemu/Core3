@@ -61,17 +61,17 @@ include server.zone.managers.planet.HeightMap;
 class Zone extends ManagedObject implements QuadTree {
 	private int zoneID;
 
-	private ZoneProcessServerImplementation processor;
+	private transient ZoneProcessServerImplementation processor;
 
-	private TaskManager taskManager;
+	private transient TaskManager taskManager;
 	
-	private StructureManager structureManager; // move to planet manager when converted
+	private transient StructureManager structureManager; // move to planet manager when converted
 	
 	private ZoneServer server;
 
-	private Time galacticTime;
+	private dereferenced Time galacticTime;
 	
-	private HeightMap heightMap;
+	private transient HeightMap heightMap;
 
 	//Weather
 	private float weatherWindX; //1.0 = east, -1.0 = west

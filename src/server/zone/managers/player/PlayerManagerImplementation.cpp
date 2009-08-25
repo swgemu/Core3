@@ -142,7 +142,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 			return false;
 		}
 
-		SceneObject* player = server->createObject(playerCRC); // player
+		SceneObject* player = server->createObject(playerCRC, true); // player
 
 		if (player == NULL) {
 			error("could not create player... could not create player object");
@@ -151,7 +151,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		}
 
 		if (!player->isPlayerCreature()) {
-			player->finalize();
+			//player->finalize(); destroy object
 			error("could not create player... wrong object type");
 			unlock();
 			return false;
@@ -179,6 +179,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 		if (hair != NULL) {
 			player->addObject(hair, 4);
+			hair->updateToDatabase();
 
 			info("created hair object");
 		}
@@ -194,12 +195,16 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		playerCreature->setClient(client);
 		client->setPlayer(player);
 
+		playerCreature->setAccountID(client->getAccountID());
+
 		if (callback->getTutorialFlag()) {
 			createTutorialBuilding(playerCreature);
 		} else {
 			Zone* zone = server->getZone(8);
 			player->setZone(zone);
 		}
+
+		server->updateObjectToDatabase(player);
 
 		StringBuffer infoMsg;
 		infoMsg << "player " << name.toString() << " successfully created";
@@ -232,7 +237,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 	String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
 	info("trying to create hair object " + sharedHairObjectFile);
-	SceneObject* hair = server->createObject(sharedHairObjectFile.hashCode());
+	SceneObject* hair = server->createObject(sharedHairObjectFile.hashCode(), true);
 
 	if (hair == NULL) {
 		info("objectManager returned NULL hair object");
@@ -256,7 +261,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 }
 
 bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player) {
-	SceneObject* inventory = server->createObject(0x3969E83B); // character_inventory
+	SceneObject* inventory = server->createObject(0x3969E83B, true); // character_inventory
 
 	if (inventory == NULL) {
 		error("could not create player inventory");
@@ -265,7 +270,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(inventory, 4);
 
-	SceneObject* datapad = server->createObject(0x73BA5001); //datapad
+	SceneObject* datapad = server->createObject(0x73BA5001, true); //datapad
 
 	if (datapad == NULL) {
 		error("could not create player datapad");
@@ -273,8 +278,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(datapad, 4);
+	datapad->updateToDatabase();
 
-	SceneObject* playerObject = server->createObject(0x619BAE21); //player object
+	SceneObject* playerObject = server->createObject(0x619BAE21, true); //player object
 
 	if (playerObject == NULL) {
 		error("could not create player object");
@@ -282,8 +288,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(playerObject, 4);
+	playerObject->updateToDatabase();
 
-	SceneObject* bank = server->createObject(0x70FD1394); //bank
+	SceneObject* bank = server->createObject(0x70FD1394, true); //bank
 
 	if (bank == NULL) {
 		error("could not create bank");
@@ -291,8 +298,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(bank, 4);
+	bank->updateToDatabase();
 
-	SceneObject* missionBag = server->createObject(0x3D7F6F9F); //mission bag
+	SceneObject* missionBag = server->createObject(0x3D7F6F9F, true); //mission bag
 
 	if (missionBag == NULL) {
 		error("could not create mission bag");
@@ -300,23 +308,29 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(missionBag, 4);
+	missionBag->updateToDatabase();
 
 	// temp
 
-	SceneObject* vibro = server->createObject(0x652688CE);
+	SceneObject* vibro = server->createObject(0x652688CE, true);
 	player->addObject(vibro, 4);
 	player->setWeaponID(vibro->getObjectID());
+	vibro->updateToDatabase();
 
-	SceneObject* vibro2 = server->createObject(0x652688CE);
+	SceneObject* vibro2 = server->createObject(0x652688CE, true);
 	inventory->addObject(vibro2, -1);
+	vibro2->updateToDatabase();
 
 	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
-	SceneObject* armor = server->createObject(bharmor.hashCode());
+	SceneObject* armor = server->createObject(bharmor.hashCode(), true);
 	inventory->addObject(armor, -1);
+	armor->updateToDatabase();
 
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
-	SceneObject* backpackObject = server->createObject(backpack.hashCode());
+	SceneObject* backpackObject = server->createObject(backpack.hashCode(), true);
 	inventory->addObject(backpackObject, -1);
+	backpackObject->updateToDatabase();
+	inventory->updateToDatabase();
 
 	return true;
 }
@@ -342,15 +356,15 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	String tut = "object/building/general/shared_newbie_hall.iff";
 	String cell = "object/cell/shared_cell.iff";
 
-	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode());
+	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), true);
 	tutorial->setStaticBuilding(false);
 
-	SceneObject* travelTutorialTerminal = server->createObject(4258705837uL);
+	SceneObject* travelTutorialTerminal = server->createObject(4258705837uL, true);
 
 	SceneObject* cellTut = NULL;
 
 	for (int i = 0; i < 14; ++i) {
-		SceneObject* newCell = server->createObject(cell.hashCode());
+		SceneObject* newCell = server->createObject(cell.hashCode(), true);
 
 		tutorial->addCell((CellObject*)newCell);
 

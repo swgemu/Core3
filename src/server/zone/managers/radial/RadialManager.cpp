@@ -122,7 +122,7 @@ void RadialManagerImplementation::runlock(bool doLock) {
 void RadialManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
 
-	addSerializableVariable("zoneServer", zoneServer);
+	addSerializableVariable("zoneServer", &zoneServer);
 }
 
 /*

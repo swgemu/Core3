@@ -68,9 +68,12 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 	maxCondition = 6000;
 
 	optionsBitmask = 0;
+	pvpStatusBitmask = 0;
 
-	defenderList = new Vector<ManagedReference<SceneObject*> >();
-	customizationVariables = new CustomizationVariables();
+	//defenderList = new Vector<ManagedReference<SceneObject*> >();
+	defenderListUpdateCounter = 0;
+	//customizationVariables = new CustomizationVariables();
+	//addSerializableVariable("customizationVariables", customizationVariables);
 
 }
 

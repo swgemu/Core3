@@ -42,9 +42,11 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 
-	logoutTimeStamp = new Time();
+	//logoutTimeStamp = new Time();
 
-	chatRooms = new SortedVector<ManagedReference<ChatRoom*> >();
+	//chatRooms = new SortedVector<ManagedReference<ChatRoom*> >();
+
+	accountID = 0;
 
 	setOffline();
 }
@@ -153,7 +155,7 @@ void PlayerCreatureImplementation::logout(bool doLock) {
 
 void PlayerCreatureImplementation::doRecovery() {
 	if (isLinkDead()) {
-		if (logoutTimeStamp->isPast()) {
+		if (logoutTimeStamp.isPast()) {
 			info("unloading dead link player");
 
 			unload();
@@ -233,7 +235,7 @@ void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
 }
 
 String PlayerCreatureImplementation::getFirstName() {
-	UnicodeString fullName = objectName->getCustomString();
+	UnicodeString fullName = objectName.getCustomString();
 
     int idx = fullName.indexOf(' ');
 
@@ -247,8 +249,8 @@ String PlayerCreatureImplementation::getFirstName() {
 void PlayerCreatureImplementation::setLinkDead() {
 	onlineStatus = LINKDEAD;
 
-	logoutTimeStamp->updateToCurrentTime();
-	logoutTimeStamp->addMiliTime(30000);
+	logoutTimeStamp.updateToCurrentTime();
+	logoutTimeStamp.addMiliTime(30000);
 
 	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
 

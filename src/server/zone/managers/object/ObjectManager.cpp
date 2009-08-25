@@ -58,17 +58,13 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "server/db/ServerDatabase.h"
+#include "ObjectMap.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
-ObjectFactory<SceneObject* (LuaObject*), unsigned int> ObjectManager::objectFactory;
 
-ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager") {
-	objectMap = new ObjectMap(100000);
-	objectCacheMap = new ObjectMap(20000);
-
+ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
-	newObjectID = 0x15;
-	newObjectID = newObjectID << 32;
 
 	registerObjectTypes();
 
@@ -79,30 +75,13 @@ ObjectManager::ObjectManager() : Logger("ObjectManager"), Mutex("ObjectManager")
 	registerFunctions();
 	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
+	loadLastUsedObjectID();
+
 	setLogging(false);
 	setGlobalLogging(true);
 }
 
 ObjectManager::~ObjectManager() {
-	delete objectMap;
-	objectMap = NULL;
-
-	info("cleaning up objects..");
-
-	objectCacheMap->resetIterator();
-
-	while (objectCacheMap->hasNext()) {
-		SceneObject* object = objectCacheMap->next();
-
-		/*if (object->isPlayer())
-			info("object \'" + object->_getName() + "\' was not cleaned up properly");*/
-	}
-
-	info("objects cleaned up", true);
-
-	delete objectCacheMap;
-	objectCacheMap = NULL;
-
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
 }
@@ -149,72 +128,138 @@ void ObjectManager::registerObjectTypes() {
 
 }
 
-SceneObject* ObjectManager::add(SceneObject* obj) {
-	uint64 oid = obj->getObjectID();
+void ObjectManager::loadLastUsedObjectID() {
+	info("loading last used object id");
 
-	if (objectCacheMap->remove(oid) != NULL) {
-		obj->redeploy();
+	StringBuffer query;
 
-		return objectMap->put(oid, obj);
-	} else {
-		return objectMap->put(oid, obj);
+	query << "SELECT COUNT(*) FROM objects;";
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	if (!result->next()) {
+		delete result;
+		return;
 	}
 
-	return NULL;
-}
+	if (result->getInt(0) > 0) {
+		delete result;
 
-SceneObject* ObjectManager::get(uint64 oid) {
-	return objectMap->get(oid);
-}
+		query.deleteAll();
 
-SceneObject* ObjectManager::remove(uint64 oid) {
-	SceneObject* obj = NULL;
+		query << "SELECT MAX(objectid) FROM objects;";
+		result = ServerDatabase::instance()->executeQuery(query);
 
-	obj = objectMap->remove(oid);
-	if (obj == NULL)
-		return NULL;
+		if (!result->next()) {
+			delete result;
+			return;
+		}
 
-	//obj->info("removed from ObjectManager");
+		nextObjectID = result->getUnsignedLong(0) + 1;
 
-	if (obj->isPlayerCreature()) {
-		objectCacheMap->put(oid, obj);
-
-		obj->scheduleUndeploy();
+		delete result;
 	}
 
-	return obj;
+	info("done loading last use object id");
 }
 
-bool ObjectManager::destroy(SceneObject* obj) {
-	uint64 oid = obj->getObjectID();
 
-	if (!objectCacheMap->containsKey(oid) && objectMap->containsKey(oid))
-		return false;
+DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
+	SceneObject* object = NULL;
+	String objectData;
 
-	objectCacheMap->remove(oid);
+	try {
+		lock();
 
-	return true;
-}
+		DistributedObject* dobject = getObject(objectID, false);
 
-SceneObject* ObjectManager::getCachedObject(uint64 oid) {
-	SceneObject* obj = objectCacheMap->get(oid);
+		if (dobject != NULL) {
+			object = dynamic_cast<SceneObject*>(dobject);
 
-	if (obj != NULL) {
-		objectCacheMap->remove(oid);
+			if (object == NULL) {
+				error("different object already in database");
+				unlock();
 
-		obj->redeploy();
+				return NULL;
+			} else {
+				unlock();
+
+				return object;
+			}
+		}
+
+		StringBuffer query;
+		query << "SELECT data FROM objects WHERE objectid = " << objectID;
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		if (!result->next()) {
+			//error("object not found in database");
+			delete result;
+
+			unlock();
+
+			return NULL;
+		}
+
+		objectData = result->getString(0);
+		delete result;
+
+		int idx = objectData.indexOf("serverObjectCRC=");
+
+		if (idx == -1) {
+			error("no object CRC found");
+
+			unlock();
+			return NULL;
+		}
+
+		String objectCRC = objectData.subString(idx);
+
+		int comma = objectCRC.indexOf(",");
+
+		if (comma == -1) {
+			error("unable to parse object crc template");
+			unlock();
+			return NULL;
+		}
+
+		objectCRC = objectCRC.subString(16, comma);
+
+		object = createObject(UnsignedInteger::valueOf(objectCRC), false, objectID, false);
+
+		if (object == NULL) {
+			error("could not load object from database");
+			unlock();
+			return NULL;
+		}
+
+		unlock();
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in SceneObject* ObjectManager::loadFromDatabase(uint64 objectID)");
 	}
 
-	return obj;
-}
+	try {
+		object->wlock();
 
-SceneObject* ObjectManager::removeCachedObject(uint64 oid) {
-	SceneObject* obj = objectCacheMap->remove(oid);
+		object->setPersistent(true);
+		object->deSerialize(objectData);
 
-	/*if (obj != NULL)
-		obj->info("removed from ObjectManager cache");*/
+		object->queueUpdateToDatabaseTask();
 
-	return obj;
+		object->unlock();
+	} catch (Exception& e) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	} catch (...) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	}
+
+	object->info("loaded from db", true);
+
+	return object;
 }
 
 SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
@@ -236,59 +281,85 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		object->setServerObjectCRC(objectCRC);
 
 	} catch (Exception& e) {
-		error("exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");
+		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
 		error(e.getMessage());
 
 		e.printStackTrace();
 	} catch (...) {
-		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC)");
+		error("unreported exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
 	}
 
 	return object;
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
+int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	try {
+		String objectData;
+		((ManagedObject*)object)->serialize(objectData);
+		objectData.escapeString();
+
+		StringBuffer query;
+		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (...) {
+		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
+	}
+
+	return 1;
+}
+
+SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint64 oid, bool doLock) {
 	SceneObject* object = NULL;
 
 	try {
-		lock();
+		lock(doLock);
 
 		object = loadObjectFromTemplate(objectCRC);
 
 		if (object == NULL) {
-			unlock();
+			unlock(doLock);
 			return NULL;
 		}
 
 		object->setZoneProcessServer(server);
+		object->setPersistent(persistent);
 
 		if (oid == 0)
-			oid = ++newObjectID;
+			oid = getNextFreeObjectID(false);
 
-		object->setObjectID(oid);
+		object->_setObjectID(oid);
 
 		String logName = object->getLoggingName();
 
-		StringBuffer deployName;
-		deployName << logName << " 0x" << hex << oid;
+		StringBuffer newLogName;
+		newLogName << logName << " 0x" << hex << oid;
 
-		object->setLoggingName(deployName.toString());
+		object->setLoggingName(newLogName.toString());
 
-		if (add(object) != NULL)
-			error("panic conflicted object id in object manager");
+		object->deploy(newLogName.toString());
 
-		object->deploy(deployName.toString());
+		if (persistent) {
+			String objectData;
+			object->serialize(objectData);
+			objectData.escapeString();
 
-		unlock();
+			StringBuffer query;
+			query << "INSERT INTO `objects` (`objectid`, `data`) VALUES (" << object->getObjectID() << ", '" << objectData << "');";
+			ServerDatabase::instance()->executeStatement(query);
+
+			object->queueUpdateToDatabaseTask();
+		}
+
+		unlock(doLock);
 	} catch (Exception& e) {
-		unlock();
+		unlock(doLock);
 
 		error("exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid)");
 		error(e.getMessage());
 
 		e.printStackTrace();
 	} catch (...) {
-		unlock();
+		unlock(doLock);
 
 		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid)");
 	}
@@ -296,10 +367,10 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid) {
 	return object;
 }
 
-void ObjectManager::destroyObject(uint64 objectID) {
+int ObjectManager::destroyObject(uint64 objectID) {
 	lock();
 
-	try {
+	/*try {
 		ManagedReference<SceneObject*> object = remove(objectID);
 
 		if (object == NULL) {
@@ -319,11 +390,15 @@ void ObjectManager::destroyObject(uint64 objectID) {
 
 		object->finalize();
 
+		// remove from db
+
 	} catch (...) {
 		error("unreported exception caught in void ObjectManager::destroyObject(uint64 objectID)");
-	}
+	}*/
 
 	unlock();
+
+	return 1;
 }
 
 void ObjectManager::registerFunctions() {

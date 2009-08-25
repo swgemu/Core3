@@ -82,7 +82,7 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 
 	heightMap = new HeightMap();
 
-	galacticTime = new Time();
+	//galacticTime = new Time();
 
 	structureManager = NULL;
 }

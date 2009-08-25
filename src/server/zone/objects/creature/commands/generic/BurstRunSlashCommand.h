@@ -58,14 +58,14 @@ public:
 	}
 
 	bool doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return false;
 
 		if (!checkInvalidPostures(creature))
 			return false;
 
-			//player->activateBurstRun();
+
+		//player->activateBurstRun();
 		return true;
 	}
 

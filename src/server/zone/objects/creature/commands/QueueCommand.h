@@ -49,6 +49,8 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreaturePosture.h"
+
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 //#include "../../../managers/combat/CombatManager.h"
@@ -75,6 +77,8 @@ protected:
 	bool disabled;
 	bool addToQueue;
 
+	uint32 cooldown; // in msec
+
 	ZoneProcessServerImplementation* server;
 
 public:
@@ -95,6 +99,7 @@ public:
 		disabled = false;
 		addToQueue = false;
 
+		cooldown = 0;
 	}
 
 	virtual ~QueueCommand() {
