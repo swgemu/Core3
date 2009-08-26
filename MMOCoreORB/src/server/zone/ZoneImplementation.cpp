@@ -98,7 +98,7 @@ void ZoneImplementation::startManagers() {
 	}
 
 	structureManager = new StructureManager(_this, processor);
-	structureManager->loadStaticBuildings();
+	structureManager->loadStructures();
 	/*creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 

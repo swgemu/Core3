@@ -48,6 +48,9 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 
 	accountID = 0;
 
+	savedZoneID = -1;
+	savedParentID = 0;
+
 	setOffline();
 }
 
@@ -185,11 +188,20 @@ void PlayerCreatureImplementation::activateRecovery() {
 void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
+	if (parent != NULL)
+		savedParentID = parent->getObjectID();
+	else
+		savedParentID = 0;
+
+
 	if (zone != NULL) {
+		savedZoneID = zone->getZoneID();
+
 		if (isInQuadTree()) {
 			removeFromZone(true);
 		}
 	}
+
 }
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {

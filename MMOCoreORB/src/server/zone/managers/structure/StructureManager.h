@@ -86,9 +86,11 @@ class StructureManager : public ManagedObject {
 public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
-	void loadStructures();
-
 	void loadStaticBuildings();
+
+	void loadPlayerStructures();
+
+	void loadStructures();
 
 	BuildingObject* loadStaticBuilding(unsigned long long oid, int planet);
 
@@ -120,9 +122,11 @@ class StructureManagerImplementation : public ManagedObjectImplementation, publi
 public:
 	StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor);
 
-	void loadStructures();
-
 	void loadStaticBuildings();
+
+	void loadPlayerStructures();
+
+	void loadStructures();
 
 	BuildingObject* loadStaticBuilding(unsigned long long oid, int planet);
 
@@ -161,9 +165,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void loadStructures();
-
 	void loadStaticBuildings();
+
+	void loadPlayerStructures();
+
+	void loadStructures();
 
 	BuildingObject* loadStaticBuilding(unsigned long long oid, int planet);
 

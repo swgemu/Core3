@@ -60,11 +60,13 @@ class StructureManager extends ManagedObject implements Logger {
 		
 	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	
+	public native void loadStaticBuildings();
+	public native void loadPlayerStructures();
+	
 	public void loadStructures() {
 		loadStaticBuildings();
+		loadPlayerStructures();
 	}
-	
-	public native void loadStaticBuildings();
 	
 	public native BuildingObject loadStaticBuilding(unsigned long oid, int planet);
 }

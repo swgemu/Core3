@@ -86,18 +86,46 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		//ObjectManager* objectManager = zoneServer->getObjectManager();
 
-		SceneObject* obj = zoneServer->getObject(characterID, true);
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
 		if (obj != NULL && obj->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) obj;
-
-			player->setClient(client);
-			client->setPlayer(obj);
+			PlayerCreature* player = (PlayerCreature*) obj.get();
 
 			try {
 				player->wlock();
 
-				player->insertToZone(player->getZone());
+				player->setClient(client);
+				client->setPlayer(obj);
+
+				Zone* zone = player->getZone();
+
+				if (zone != NULL) {
+					//reload
+
+					player->insertToZone(zone);
+
+				} else {
+					int zoneID = player->getSavedZoneID();
+					uint64 savedParentID = player->getSavedParentID();
+
+					ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
+
+					if (parent != NULL) {
+						try {
+							parent->wlock(player);
+
+							parent->addObject(player, -1);
+
+							parent->unlock();
+						} catch (...) {
+							parent->unlock();
+						}
+					}
+
+					zone = zoneServer->getZone(zoneID);
+
+					player->insertToZone(zone);
+				}
 
 				player->setOnline();
 

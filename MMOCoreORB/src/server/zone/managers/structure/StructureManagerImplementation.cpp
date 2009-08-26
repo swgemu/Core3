@@ -169,3 +169,41 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 	return buio;
 }
 
+void StructureManagerImplementation::loadPlayerStructures() {
+
+	StringBuffer msg;
+	msg << "StructureManagerImplementation::loadPlayerStructures()";
+	info(msg.toString());
+
+	try {
+	int planetid = zone->getZoneID();
+
+	StringBuffer query;
+	query << "SELECT objectid FROM objects WHERE data LIKE '%gameObjectType=512%' AND data LIKE '%zone=" << zone->_getObjectID() << "%';";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
+
+	while (result->next()) {
+		uint64 objectID = result->getUnsignedLong(0);
+
+		SceneObject* object = server->getZoneServer()->getObject(objectID);
+
+		if (object != NULL)
+			object->info("loaded building into world", true);
+		else {
+			error("could not load building " + String::valueOf(objectID));
+		}
+	}
+
+	delete result;
+
+	} catch (DatabaseException& e) {
+		StringBuffer err;
+		err << "Loading Player Structures, exception: " << e.getMessage();
+		error(err);
+		return;
+	} catch (...) {
+		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
+	}
+}
+

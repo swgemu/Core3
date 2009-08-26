@@ -70,11 +70,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 	optionsBitmask = 0;
 	pvpStatusBitmask = 0;
 
-	//defenderList = new Vector<ManagedReference<SceneObject*> >();
 	defenderListUpdateCounter = 0;
-	//customizationVariables = new CustomizationVariables();
-	//addSerializableVariable("customizationVariables", customizationVariables);
-
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {

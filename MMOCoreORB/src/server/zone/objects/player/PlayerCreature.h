@@ -150,7 +150,15 @@ public:
 
 	byte getRaceID();
 
+	unsigned long long getSavedParentID();
+
+	int getSavedZoneID();
+
 	String getFirstName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedZoneID(int id);
 
 	void setClient(ZoneClientSession* cli);
 
@@ -201,6 +209,10 @@ namespace player {
 class PlayerCreatureImplementation : public CreatureObjectImplementation {
 protected:
 	ManagedReference<ZoneClientSession* > owner;
+
+	int savedZoneID;
+
+	unsigned long long savedParentID;
 
 	int onlineStatus;
 
@@ -289,7 +301,15 @@ public:
 
 	byte getRaceID();
 
+	unsigned long long getSavedParentID();
+
+	int getSavedZoneID();
+
 	String getFirstName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedZoneID(int id);
 
 	void setClient(ZoneClientSession* cli);
 
@@ -382,7 +402,15 @@ public:
 
 	byte getRaceID();
 
+	unsigned long long getSavedParentID();
+
+	int getSavedZoneID();
+
 	String getFirstName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedZoneID(int id);
 
 	void setClient(ZoneClientSession* cli);
 
