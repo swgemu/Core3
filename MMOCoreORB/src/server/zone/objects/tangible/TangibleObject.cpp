@@ -11,6 +11,7 @@
 TangibleObject::TangibleObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new TangibleObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(TangibleObjectHelper::instance());
 
 	((TangibleObjectImplementation*) _impl)->_serializationHelperMethod();
 }

@@ -11,6 +11,7 @@
 Container::Container(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new ContainerImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ContainerHelper::instance());
 
 	((ContainerImplementation*) _impl)->_serializationHelperMethod();
 }

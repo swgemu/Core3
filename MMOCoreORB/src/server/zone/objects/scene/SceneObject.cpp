@@ -25,6 +25,7 @@
 SceneObject::SceneObject(LuaObject* templateData) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new SceneObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(SceneObjectHelper::instance());
 
 	((SceneObjectImplementation*) _impl)->_serializationHelperMethod();
 }

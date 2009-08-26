@@ -21,6 +21,7 @@
 ObjectController::ObjectController(ZoneProcessServerImplementation* server) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ObjectControllerImplementation(server);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ObjectControllerHelper::instance());
 
 	((ObjectControllerImplementation*) _impl)->_serializationHelperMethod();
 }

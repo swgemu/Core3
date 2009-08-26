@@ -17,6 +17,7 @@
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new RadialManagerImplementation(server);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(RadialManagerHelper::instance());
 
 	((RadialManagerImplementation*) _impl)->_serializationHelperMethod();
 }

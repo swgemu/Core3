@@ -11,6 +11,7 @@
 Terminal::Terminal(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TerminalImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(TerminalHelper::instance());
 
 	((TerminalImplementation*) _impl)->_serializationHelperMethod();
 }

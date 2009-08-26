@@ -23,6 +23,7 @@
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerCreatureImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(PlayerCreatureHelper::instance());
 
 	((PlayerCreatureImplementation*) _impl)->_serializationHelperMethod();
 }

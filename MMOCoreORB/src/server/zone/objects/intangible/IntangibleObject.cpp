@@ -11,6 +11,7 @@
 IntangibleObject::IntangibleObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new IntangibleObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(IntangibleObjectHelper::instance());
 
 	((IntangibleObjectImplementation*) _impl)->_serializationHelperMethod();
 }

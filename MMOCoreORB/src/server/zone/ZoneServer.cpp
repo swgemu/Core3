@@ -25,6 +25,7 @@
 ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneServerImplementation(processingThreads, galaxyid);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ZoneServerHelper::instance());
 
 	((ZoneServerImplementation*) _impl)->_serializationHelperMethod();
 }

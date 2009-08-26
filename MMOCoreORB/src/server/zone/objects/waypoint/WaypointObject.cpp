@@ -11,6 +11,7 @@
 WaypointObject::WaypointObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WaypointObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(WaypointObjectHelper::instance());
 
 	((WaypointObjectImplementation*) _impl)->_serializationHelperMethod();
 }

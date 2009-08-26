@@ -11,6 +11,7 @@
 StartingLocationTerminal::StartingLocationTerminal(LuaObject* templateData) : Terminal(DummyConstructorParameter::instance()) {
 	_impl = new StartingLocationTerminalImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(StartingLocationTerminalHelper::instance());
 
 	((StartingLocationTerminalImplementation*) _impl)->_serializationHelperMethod();
 }

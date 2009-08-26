@@ -17,6 +17,7 @@
 Zone::Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneImplementation(zserv, processor, zoneid);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ZoneHelper::instance());
 
 	((ZoneImplementation*) _impl)->_serializationHelperMethod();
 }
