@@ -79,15 +79,10 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 	containerType = templateData->getIntField("containerType");
 	containerVolumeLimit = templateData->getIntField("containerVolumeLimit");
 
-	//containerObjects = new VectorMap<uint64, ManagedReference<SceneObject*> >(containerVolumeLimit >> 2, containerVolumeLimit / 10);
-	//addSerializableVariable("containerObjects", containerObjects);
-
 	gameObjectType = templateData->getIntField("gameObjectType");
 
 	clientObjectCRC = templateData->getIntField("clientObjectCRC");
 	serverObjectCRC = 0;
-
-	//arrangementDescriptors = new Vector<String>();
 
 	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
 
@@ -96,9 +91,6 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 	}
 
 	arrangements.pop();
-
-
-	//slotDescriptors = new Vector<String>();
 
 	LuaObject slots = templateData->getObjectField("slotDescriptors");
 
@@ -119,12 +111,6 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 	updateToDatabaseTask = NULL;
 
 	movementCounter = 0;
-
-	//temporary till idlc compiles these by itself
-	//addSerializableVariable("zone", &zone);
-	//addSerializableVariable("parent", &parent);
-	//addSerializableVariable("objectName", objectName);
-
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -154,6 +140,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 void SceneObjectImplementation::updateToDatabase() {
 	ZoneServer* server = getZoneServer();
 	server->updateObjectToDatabase(_this);
+
 	queueUpdateToDatabaseTask();
 }
 
@@ -290,6 +277,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
     parent->removeObject(_this);
 
     building->remove(this);
+    building->removeNotifiedObject(_this);
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate) {
@@ -304,7 +292,7 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
             removeFromBuilding((BuildingObject*)cell->getParent());
 
-            parent = NULL;
+            setParent(NULL);
 
             zone->insert(this);
         } else
@@ -511,6 +499,8 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 		error("unreported exception caught in SceneObjectImplementation::removeFromZone");
 		zone->unlock(lockZone);
 	}
+
+	zone = NULL;
 
 	info("removed from zone");
 }

@@ -31,7 +31,7 @@ StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedOb
 StructureManager::~StructureManager() {
 }
 
-void StructureManager::loadStructures() {
+void StructureManager::loadStaticBuildings() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -40,10 +40,10 @@ void StructureManager::loadStructures() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureManagerImplementation*) _impl)->loadStructures();
+		((StructureManagerImplementation*) _impl)->loadStaticBuildings();
 }
 
-void StructureManager::loadStaticBuildings() {
+void StructureManager::loadPlayerStructures() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -52,7 +52,19 @@ void StructureManager::loadStaticBuildings() {
 
 		method.executeWithVoidReturn();
 	} else
-		((StructureManagerImplementation*) _impl)->loadStaticBuildings();
+		((StructureManagerImplementation*) _impl)->loadPlayerStructures();
+}
+
+void StructureManager::loadStructures() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->loadStructures();
 }
 
 BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid, int planet) {
@@ -60,7 +72,7 @@ BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid, int
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addUnsignedLongParameter(oid);
 		method.addSignedIntParameter(planet);
 
@@ -124,8 +136,10 @@ void StructureManagerImplementation::_serializationHelperMethod() {
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(64):  loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(67):  loadStaticBuildings();
 	loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(68):  loadPlayerStructures();
+	loadPlayerStructures();
 }
 
 /*
@@ -140,12 +154,15 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		loadStructures();
-		break;
-	case 7:
 		loadStaticBuildings();
 		break;
+	case 7:
+		loadPlayerStructures();
+		break;
 	case 8:
+		loadStructures();
+		break;
+	case 9:
 		resp->insertLong(loadStaticBuilding(inv->getUnsignedLongParameter(), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
@@ -155,12 +172,16 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
-void StructureManagerAdapter::loadStructures() {
-	return ((StructureManagerImplementation*) impl)->loadStructures();
-}
-
 void StructureManagerAdapter::loadStaticBuildings() {
 	return ((StructureManagerImplementation*) impl)->loadStaticBuildings();
+}
+
+void StructureManagerAdapter::loadPlayerStructures() {
+	return ((StructureManagerImplementation*) impl)->loadPlayerStructures();
+}
+
+void StructureManagerAdapter::loadStructures() {
+	return ((StructureManagerImplementation*) impl)->loadStructures();
 }
 
 BuildingObject* StructureManagerAdapter::loadStaticBuilding(unsigned long long oid, int planet) {

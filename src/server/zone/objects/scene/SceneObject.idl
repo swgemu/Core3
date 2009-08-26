@@ -75,7 +75,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
 	
 	protected Zone zone;
-		
+	
 	protected boolean persistent;
 	protected transient ObjectUpdateToDatabaseTask updateToDatabaseTask;
 	

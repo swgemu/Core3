@@ -14,8 +14,6 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 /*
  *	ObjectControllerStub
  */

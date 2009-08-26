@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/db/ServerDatabase.h"
 #include "ObjectMap.h"
+#include "server/zone/Zone.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
@@ -245,6 +246,11 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 		object->setPersistent(true);
 		object->deSerialize(objectData);
+
+		Zone* zone = object->getZone();
+
+		if (zone != NULL)
+			object->insertToZone(zone);
 
 		object->queueUpdateToDatabaseTask();
 

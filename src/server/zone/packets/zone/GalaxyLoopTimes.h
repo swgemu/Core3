@@ -33,8 +33,11 @@ public:
 	}
 
 	void run() {
-		GalaxyLoopTimesResponse* reply = new GalaxyLoopTimesResponse();
-		client->sendMessage(reply);
+		// this makes the client spam the server with GalaxyLoopTimes requests
+		// TODO: figure out the values in the Response
+
+		/*GalaxyLoopTimesResponse* reply = new GalaxyLoopTimesResponse();
+		client->sendMessage(reply);*/
 	}
 };
 

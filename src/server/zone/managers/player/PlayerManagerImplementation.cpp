@@ -7,9 +7,9 @@
 
 #include "PlayerManager.h"
 
-#include "../../packets/charcreation/ClientCreateCharacter.h"
-#include "../../packets/charcreation/ClientCreateCharacterSuccess.h"
-#include "../../packets/charcreation/ClientCreateCharacterFailed.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacter.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -19,6 +19,8 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+
+#include "server/zone/Zone.h"
 
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) :
@@ -381,4 +383,10 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
 	cellTut->addObject(player, -1);
+	player->setSavedZoneID(zone->getZoneID());
+	player->setSavedParentID(cellTut->getObjectID());
+
+	cellTut->updateToDatabase();
+	travelTutorialTerminal->updateToDatabase();
+	tutorial->updateToDatabase();
 }

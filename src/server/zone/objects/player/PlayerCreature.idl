@@ -61,6 +61,9 @@ import server.chat.room.ChatRoom;
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
 	
+	protected int savedZoneID;
+	protected unsigned long savedParentID;
+	
 	protected int onlineStatus;
 	protected dereferenced Time logoutTimeStamp;
 	
@@ -162,7 +165,23 @@ class PlayerCreature extends CreatureObject {
 		return raceID;
 	}
 	
+	public unsigned long getSavedParentID() {
+		return savedParentID;
+	}
+	
+	public int getSavedZoneID() {
+		return savedZoneID;
+	}
+	
 	public native string getFirstName();
+	
+	public void setSavedParentID(unsigned long id) {
+		savedParentID = id;
+	}
+	
+	public void setSavedZoneID(int id) {
+		savedZoneID = id;
+	}
 	
 	public void setClient(ZoneClientSession cli) {
 		owner = cli;
