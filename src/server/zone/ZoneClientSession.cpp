@@ -13,6 +13,7 @@
 ZoneClientSession::ZoneClientSession(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneClientSessionImplementation(serv, sock, addr);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ZoneClientSessionHelper::instance());
 
 	((ZoneClientSessionImplementation*) _impl)->_serializationHelperMethod();
 }

@@ -13,6 +13,7 @@
 PlayerObject::PlayerObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(PlayerObjectHelper::instance());
 
 	((PlayerObjectImplementation*) _impl)->_serializationHelperMethod();
 }

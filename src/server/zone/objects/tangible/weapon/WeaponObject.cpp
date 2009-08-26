@@ -11,6 +11,7 @@
 WeaponObject::WeaponObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WeaponObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(WeaponObjectHelper::instance());
 
 	((WeaponObjectImplementation*) _impl)->_serializationHelperMethod();
 }

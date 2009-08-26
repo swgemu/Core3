@@ -20,8 +20,6 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 	containerVolumeLimit = 0xFFFFFFFF;
 
 	containerType = 2;
-
-	_classHelper = CellObjectHelper::instance();
 }
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {

@@ -13,6 +13,7 @@
 BuildingObject::BuildingObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new BuildingObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(BuildingObjectHelper::instance());
 
 	((BuildingObjectImplementation*) _impl)->_serializationHelperMethod();
 }

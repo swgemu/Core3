@@ -15,6 +15,7 @@
 ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned int cid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatRoomImplementation(server, name, cid);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ChatRoomHelper::instance());
 
 	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }
@@ -22,6 +23,7 @@ ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned int cid) : M
 ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatRoomImplementation(server, parent, name, cid);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ChatRoomHelper::instance());
 
 	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }

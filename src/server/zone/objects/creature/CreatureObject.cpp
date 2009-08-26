@@ -13,6 +13,7 @@
 CreatureObject::CreatureObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CreatureObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(CreatureObjectHelper::instance());
 
 	((CreatureObjectImplementation*) _impl)->_serializationHelperMethod();
 }

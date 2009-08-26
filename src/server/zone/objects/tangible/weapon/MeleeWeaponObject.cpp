@@ -11,6 +11,7 @@
 MeleeWeaponObject::MeleeWeaponObject(LuaObject* templateData) : WeaponObject(DummyConstructorParameter::instance()) {
 	_impl = new MeleeWeaponObjectImplementation(templateData);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(MeleeWeaponObjectHelper::instance());
 
 	((MeleeWeaponObjectImplementation*) _impl)->_serializationHelperMethod();
 }

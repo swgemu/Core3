@@ -21,6 +21,7 @@
 StructureManager::StructureManager(Zone* zone, ZoneProcessServerImplementation* processor) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new StructureManagerImplementation(zone, processor);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(StructureManagerHelper::instance());
 
 	((StructureManagerImplementation*) _impl)->_serializationHelperMethod();
 }

@@ -29,6 +29,7 @@
 ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatManagerImplementation(serv, initsize);
 	_impl->_setStub(this);
+	_impl->_setClassHelper(ChatManagerHelper::instance());
 
 	((ChatManagerImplementation*) _impl)->_serializationHelperMethod();
 }

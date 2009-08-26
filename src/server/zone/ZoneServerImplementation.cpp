@@ -94,8 +94,6 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	taskManager->setLogging(false);
 
 	//zones = new Vector<ManagedReference<Zone*> >();
-
-	_classHelper = ZoneServerHelper::instance();
 }
 
 void ZoneServerImplementation::start(int a, int b) {
