@@ -71,7 +71,7 @@ which carries forward this exception.
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject") {
 	SceneObjectImplementation::parent = NULL;
 
-	containmentSlots.setNullValue(NULL);
+	slottedObjects.setNullValue(NULL);
 	objectName.setStringId(String(templateData->getStringField("objectName")));
 
 	detailedDescription.setStringId(String(templateData->getStringField("detailedDescription")));
@@ -141,11 +141,23 @@ void SceneObjectImplementation::updateToDatabase() {
 	ZoneServer* server = getZoneServer();
 	server->updateObjectToDatabase(_this);
 
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
+
+		object->updateToDatabase();
+	}
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
+
+		object->updateToDatabase();
+	}
+
 	queueUpdateToDatabaseTask();
 }
 
 void SceneObjectImplementation::queueUpdateToDatabaseTask() {
-	if (updateToDatabaseTask != NULL)
+	if (updateToDatabaseTask != NULL || !persistent)
 		return;
 
 	updateToDatabaseTask = new ObjectUpdateToDatabaseTask(_this);
@@ -182,8 +194,8 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	//sending all slotted objects by default
-	for (int i = 0; i < containmentSlots.size(); ++i) {
-		SceneObject* object = containmentSlots.get(i);
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		SceneObject* object = slottedObjects.get(i);
 
 		object->sendTo(player);
 	}
@@ -428,7 +440,7 @@ void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, flo
 
 	removeFromZone();
 
-	ZoneServer* server = zone->getZoneServer();
+	ZoneServer* server = getZoneServer();
 	Zone* zone = server->getZone(newZoneID);
 
 	initializePosition(newPostionX, newPositionZ, newPositionY);
@@ -512,12 +524,12 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (containmentSlots.contains(childArrangement))
+			if (slottedObjects.contains(childArrangement))
 				return false;
 		}
 
 		for (int i = 0; i < arrangementSize; ++i) {
-			containmentSlots.put(object->getArrangementDescriptor(i), object);
+			slottedObjects.put(object->getArrangementDescriptor(i), object);
 		}
 	} else if (containerType == 2) {
 		if (containerObjects.size() >= containerVolumeLimit)
@@ -534,7 +546,6 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 
 	object->setParent(_this);
 	object->setContainmentType(containmentType);
-	//object->setZone(zone);
 
 	if (notifyClient)
 		broadcastMessage(object->link(getObjectID(), containmentType), true, true);
@@ -549,12 +560,12 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 		for (int i = 0; i < arrangementSize; ++i) {
 			String childArrangement = object->getArrangementDescriptor(i);
 
-			if (containmentSlots.get(childArrangement) != object)
+			if (slottedObjects.get(childArrangement) != object)
 				return false;
 		}
 
 		for (int i = 0; i < arrangementSize; ++i)
-			containmentSlots.drop(object->getArrangementDescriptor(i));
+			slottedObjects.drop(object->getArrangementDescriptor(i));
 	} else if (containerType == 2) {
 		if (!containerObjects.contains(object->getObjectID()))
 			return false;
@@ -574,14 +585,14 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 }
 
 void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
-	objects = containmentSlots;
+	objects = slottedObjects;
 }
 
 SceneObject* SceneObjectImplementation::getGrandParent() {
 	if (parent == NULL)
 		return NULL;
 
-	SceneObject* grandParent = parent;
+	ManagedReference<SceneObject*> grandParent = parent;
 
 	while (grandParent->getParent() != NULL)
 		grandParent = grandParent->getParent();
@@ -596,7 +607,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	if (parent == object)
 		return true;
 
-	SceneObject* grandParent = parent;
+	ManagedReference<SceneObject*> grandParent = parent;
 
 	while (grandParent->getParent() != NULL) {
 		grandParent = grandParent->getParent();

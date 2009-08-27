@@ -181,7 +181,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 		if (hair != NULL) {
 			player->addObject(hair, 4);
-			hair->updateToDatabase();
 
 			info("created hair object");
 		}
@@ -206,7 +205,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 			player->setZone(zone);
 		}
 
-		server->updateObjectToDatabase(player);
+		player->updateToDatabase();
 
 		StringBuffer infoMsg;
 		infoMsg << "player " << name.toString() << " successfully created";
@@ -280,7 +279,6 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(datapad, 4);
-	datapad->updateToDatabase();
 
 	SceneObject* playerObject = server->createObject(0x619BAE21, true); //player object
 
@@ -290,7 +288,6 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(playerObject, 4);
-	playerObject->updateToDatabase();
 
 	SceneObject* bank = server->createObject(0x70FD1394, true); //bank
 
@@ -300,7 +297,6 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(bank, 4);
-	bank->updateToDatabase();
 
 	SceneObject* missionBag = server->createObject(0x3D7F6F9F, true); //mission bag
 
@@ -310,29 +306,23 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	}
 
 	player->addObject(missionBag, 4);
-	missionBag->updateToDatabase();
 
 	// temp
 
 	SceneObject* vibro = server->createObject(0x652688CE, true);
 	player->addObject(vibro, 4);
 	player->setWeaponID(vibro->getObjectID());
-	vibro->updateToDatabase();
 
 	SceneObject* vibro2 = server->createObject(0x652688CE, true);
 	inventory->addObject(vibro2, -1);
-	vibro2->updateToDatabase();
 
 	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
 	SceneObject* armor = server->createObject(bharmor.hashCode(), true);
 	inventory->addObject(armor, -1);
-	armor->updateToDatabase();
 
 	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
 	SceneObject* backpackObject = server->createObject(backpack.hashCode(), true);
 	inventory->addObject(backpackObject, -1);
-	backpackObject->updateToDatabase();
-	inventory->updateToDatabase();
 
 	return true;
 }
@@ -386,7 +376,5 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	player->setSavedZoneID(zone->getZoneID());
 	player->setSavedParentID(cellTut->getObjectID());
 
-	cellTut->updateToDatabase();
-	travelTutorialTerminal->updateToDatabase();
 	tutorial->updateToDatabase();
 }

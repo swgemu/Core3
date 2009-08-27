@@ -1266,12 +1266,11 @@ void SceneObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("zone", &zone);
 	addSerializableVariable("persistent", &persistent);
 	addSerializableVariable("parent", &parent);
-	addSerializableVariable("containmentSlots", &containmentSlots);
+	addSerializableVariable("slottedObjects", &slottedObjects);
 	addSerializableVariable("containerObjects", &containerObjects);
 	addSerializableVariable("serverObjectCRC", &serverObjectCRC);
 	addSerializableVariable("clientObjectCRC", &clientObjectCRC);
 	addSerializableVariable("direction", &direction);
-	addSerializableVariable("movementCounter", &movementCounter);
 	addSerializableVariable("positionX", &positionX);
 	addSerializableVariable("positionZ", &positionZ);
 	addSerializableVariable("positionY", &positionY);
@@ -1338,7 +1337,7 @@ bool SceneObjectImplementation::canAddObject(SceneObject* object) {
 	// server/zone/objects/scene/SceneObject.idl(341):  string childArrangement = object.getArrangementDescriptor(i);
 	String childArrangement = object->getArrangementDescriptor(i);
 	// server/zone/objects/scene/SceneObject.idl(343):  }
-	if ((&containmentSlots)->contains(childArrangement))	// server/zone/objects/scene/SceneObject.idl(344):  return false;
+	if ((&slottedObjects)->contains(childArrangement))	// server/zone/objects/scene/SceneObject.idl(344):  return false;
 	return false;
 }
 	// server/zone/objects/scene/SceneObject.idl(347):  return true;
@@ -1460,8 +1459,8 @@ String SceneObjectImplementation::getSlotDescriptor(int idx) {
 }
 
 SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
-	// server/zone/objects/scene/SceneObject.idl(470):  return containmentSlots.get(slot);
-	return (&containmentSlots)->get(slot);
+	// server/zone/objects/scene/SceneObject.idl(470):  return slottedObjects.get(slot);
+	return (&slottedObjects)->get(slot);
 }
 
 int SceneObjectImplementation::getSlotDescriptorSize() {

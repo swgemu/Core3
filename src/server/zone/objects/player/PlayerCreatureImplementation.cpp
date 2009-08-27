@@ -188,11 +188,14 @@ void PlayerCreatureImplementation::activateRecovery() {
 void PlayerCreatureImplementation::unload() {
 	info("unloading player");
 
-	if (parent != NULL)
-		savedParentID = parent->getObjectID();
-	else
-		savedParentID = 0;
+	ManagedReference<SceneObject*> savedParent = NULL;
 
+	if (parent != NULL) {
+		savedParentID = parent->getObjectID();
+
+		savedParent = parent;
+	} else
+		savedParentID = 0;
 
 	if (zone != NULL) {
 		savedZoneID = zone->getZoneID();
@@ -202,6 +205,10 @@ void PlayerCreatureImplementation::unload() {
 		}
 	}
 
+	updateToDatabase();
+
+	if (savedParent != NULL)
+		getZoneServer()->updateObjectToDatabase(savedParent);
 }
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
