@@ -354,7 +354,7 @@ protected:
 
 	ManagedReference<SceneObject* > parent;
 
-	VectorMap<String, ManagedReference<SceneObject* > > containmentSlots;
+	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 

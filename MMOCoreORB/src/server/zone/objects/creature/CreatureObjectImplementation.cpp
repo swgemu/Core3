@@ -182,8 +182,8 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
-	for (int i = 0; i < containmentSlots.size(); ++i) {
-		SceneObject* object = containmentSlots.get(i);
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		SceneObject* object = slottedObjects.get(i);
 
 		int arrangementSize = object->getArrangementDescriptorSize();
 

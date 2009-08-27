@@ -81,14 +81,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	protected SceneObject parent;
 	
-	protected dereferenced VectorMap<string, SceneObject> containmentSlots;
+	protected dereferenced VectorMap<string, SceneObject> slottedObjects;
 	protected dereferenced VectorMap<unsigned long, SceneObject> containerObjects;
 	
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;
 	
 	protected dereferenced Quaternion direction;
-	protected unsigned int movementCounter;
+	protected transient unsigned int movementCounter;
 	
 	protected native float positionX;
 	protected native float positionZ;
@@ -340,7 +340,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		for (int i = 0; i < arrangementSize; ++i) {
 			string childArrangement = object.getArrangementDescriptor(i);
 
-			if (containmentSlots.contains(childArrangement))
+			if (slottedObjects.contains(childArrangement))
 				return false;
 		}
 		
@@ -467,7 +467,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public SceneObject getSlottedObject(final string slot) {
-		return containmentSlots.get(slot);
+		return slottedObjects.get(slot);
 	}
 	
 	public int getSlotDescriptorSize() {
