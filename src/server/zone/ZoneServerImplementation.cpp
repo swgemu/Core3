@@ -129,27 +129,23 @@ void ZoneServerImplementation::setServerName(const String& na) {
 }
 
 void ZoneServerImplementation::setServerStateLocked() {
-	lock();
+	Locker locker(this);
 
 	serverState = LOCKED;
 
 	StringBuffer msg;
 	msg << dec << "server locked";
 	info(msg, true);
-
-	unlock();
 }
 
 void ZoneServerImplementation::setServerStateOnline() {
-	lock();
+	Locker locker(this);
 
 	serverState = ONLINE;
 
 	StringBuffer msg;
 	msg << dec << "server unlocked";
 	info(msg, true);
-
-	unlock();
 }
 
 String ZoneServerImplementation::getMessageoftheDay() {
@@ -157,7 +153,7 @@ String ZoneServerImplementation::getMessageoftheDay() {
 }
 
 void ZoneServerImplementation::loadMessageoftheDay() {
-	lock();
+	Locker locker(this);
 
 	File* file;
 	FileReader* reader;
@@ -176,12 +172,10 @@ void ZoneServerImplementation::loadMessageoftheDay() {
 		file = NULL;
 		reader = NULL;
 	}
-
-	unlock();
 }
 
 void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
-	lock();
+	Locker locker(this);
 
 	File* file;
 	FileWriter* writer;
@@ -216,8 +210,6 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 	}
 
 	messageoftheDay = finalMOTD;
-
-	unlock();
 }
 
 /*ZoneServerImplementation::~ZoneServerImplementation() {

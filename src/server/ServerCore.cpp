@@ -83,7 +83,6 @@ void ServerCore::init() {
 	processConfig();
 
 	try {
-
 		database = new ServerDatabase(&configManager);
 
 		if (configManager.getUseVBIngeration() == 1)
