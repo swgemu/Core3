@@ -153,31 +153,19 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	public native int getConnectionCount();
 	
-	public void increaseOnlinePlayers() {
-		lock();
-
+	public synchronized void increaseOnlinePlayers() {
 		if (++currentPlayers > maximumPlayers)
 			maximumPlayers = currentPlayers;
 
 		++totalPlayers;
-
-		unlock();
 	}
 	
-	public void decreaseOnlinePlayers() {
-		lock();
-		
+	public synchronized void decreaseOnlinePlayers() {
 		currentPlayers = currentPlayers - 1; // for some reason it doesnt like --currentPlayers;
-		
-		unlock();
 	}
 
-	public void increaseTotalDeletedPlayers() {
-		this.lock();
-
+	public synchronized void increaseTotalDeletedPlayers() {
 		++totalDeletedPlayers;
-
-		this.unlock();
 	}
 
 	public int getGalaxyID() {
@@ -248,12 +236,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 		galaxyID = galaxyid;
 	}
 
-	public void setServerState(int state) {
-		lock();
-
+	public synchronized void setServerState(int state) {
 		serverState = state;
-
-		unlock();
 	}
 	
 	public native void setServerStateLocked();
