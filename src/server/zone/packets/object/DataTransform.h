@@ -105,16 +105,16 @@ public:
 
 		/*StringBuffer movementMsg;
 		movementMsg << "received movement update 0x:" << hex << movementCounter;
-		object->info(movementMsg.toString(), true);
+		object->info(movementMsg.toString(), true);*/
 
 		uint32 objectMovementCounter = object->getMovementCounter();
 
 		if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter
-			StringBuffer msg;
+			/*StringBuffer msg;
 			msg << "trying to parse movement update: 0x" << hex << movementCounter << " but we already parsed 0x" << hex << objectMovementCounter;
-			object->info(msg.toString(), true);
+			object->info(msg.toString(), true);*/
 			return;
-		}*/
+		}
 
 		object->setMovementCounter(movementCounter);
 		object->setDirection(directionW, directionX, directionY, directionZ);

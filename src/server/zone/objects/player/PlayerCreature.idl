@@ -112,6 +112,8 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void unload();
 	
+	public native void reload();
+	
 	public native void logout(boolean doLock);
 	
 	public native void activateRecovery();

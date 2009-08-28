@@ -250,28 +250,17 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 	}
 
-	try {
-		zone->lock(lockZone);
+	Locker zoneLocker(zone, lockZone);
 
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
 
-			if (!sendSelf && scno == this)
-				continue;
+		if (!sendSelf && scno == this)
+			continue;
 
-			if (scno->isPlayerCreature()) {
-				scno->sendMessage(message->clone());
-			}
+		if (scno->isPlayerCreature()) {
+			scno->sendMessage(message->clone());
 		}
-
-		zone->unlock(lockZone);
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-		zone->unlock(lockZone);
-	} catch (...) {
-		error("unreported exception caught in SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone)");
-		zone->unlock(lockZone);
 	}
 }
 
@@ -296,40 +285,29 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 	if (zone == NULL)
 		return;
 
-	try {
-		zone->lock();
+	Locker zoneLocker(zone);
 
-        if (parent != NULL && parent->isCellObject()) {
-            CellObject* cell = (CellObject*)parent.get();
+	if (parent != NULL && parent->isCellObject()) {
+		CellObject* cell = (CellObject*)parent.get();
 
-            removeFromBuilding((BuildingObject*)cell->getParent());
+		removeFromBuilding((BuildingObject*)cell->getParent());
 
-            setParent(NULL);
+		setParent(NULL);
 
-            zone->insert(this);
-        } else
-        	zone->update(this);
+		zone->insert(this);
+	} else
+		zone->update(this);
 
-		zone->inRange(this, 128);
+	zone->inRange(this, 128);
 
-		if (lightUpdate) {
-			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-			broadcastMessage(message, false, false);
-		} else {
-			UpdateTransformMessage* message = new UpdateTransformMessage(_this);
-			broadcastMessage(message, false, false);
-		}
-
-		zone->unlock();
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-
-		zone->unlock();
-	} catch (...) {
-		error("unreported exception caught in SceneObjectImplementation::updateZone(bool lightUpdate)");
-		zone->unlock();
+	if (lightUpdate) {
+		LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
+		broadcastMessage(message, false, false);
+	} else {
+		UpdateTransformMessage* message = new UpdateTransformMessage(_this);
+		broadcastMessage(message, false, false);
 	}
+
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
@@ -338,99 +316,77 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 	bool insert = false;
 
-	try {
-		zone->lock();
+	Locker zoneLocker(zone);
 
-		if (newParent != parent) {
-			if (parent == NULL) {
-				zone->remove(this);
-				insert = true;
-			} else {
-				if (parent->isCellObject()) {
-					BuildingObject* building = (BuildingObject*) parent->getParent();
-					SceneObject* newObj = newParent->getParent();
+	if (newParent != parent) {
+		if (parent == NULL) {
+			zone->remove(this);
+			insert = true;
+		} else {
+			if (parent->isCellObject()) {
+				BuildingObject* building = (BuildingObject*) parent->getParent();
+				SceneObject* newObj = newParent->getParent();
 
-					BuildingObject* newBuilding = (BuildingObject*) newObj;
+				BuildingObject* newBuilding = (BuildingObject*) newObj;
 
-					if (building != newBuilding) {
-						//System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
+				if (building != newBuilding) {
+					//System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
 
-						removeFromBuilding(building);
+					removeFromBuilding(building);
 
-						insert = true;
-					}
-
-
-					// remove from old cell
-					if (parent != NULL)
-						parent->removeObject(_this);
-				} else
 					insert = true;
-			}
+				}
 
-			//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
-			// add to new cell
-			//parent = newParent;
-			newParent->addObject(_this, -1);
-
-			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
-
+				// remove from old cell
+				if (parent != NULL)
+					parent->removeObject(_this);
+			} else
+				insert = true;
 		}
 
-		BuildingObject* building = (BuildingObject*) parent->getParent();
+		//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
+		// add to new cell
+		//parent = newParent;
+		newParent->addObject(_this, -1);
 
-		if (insert) {
-			info("insertToBuilding from updateZoneWithParent");
-			insertToBuilding(building);
-		} else {
-			building->update(this);
-			building->inRange(this, 128);
-		}
-
-		if (lightUpdate) {
-			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, false, false);
-		} else {
-			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
-			broadcastMessage(message, false, false);
-		}
-		zone->unlock();
-	} catch (Exception& e) {
-		zone->unlock();
-		error(e.getMessage());
-		e.printStackTrace();
-	} catch (...) {
-		zone->unlock();
-		error("Exception in PlayerImplementation::updateZoneWithParent");
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 	}
+
+	BuildingObject* building = (BuildingObject*) parent->getParent();
+
+	if (insert) {
+		info("insertToBuilding from updateZoneWithParent");
+		insertToBuilding(building);
+	} else {
+		building->update(this);
+		building->inRange(this, 128);
+	}
+
+	if (lightUpdate) {
+		LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
+		broadcastMessage(message, false, false);
+	} else {
+		UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
+		broadcastMessage(message, false, false);
+	}
+
 }
 
 void SceneObjectImplementation::insertToZone(Zone* zone) {
 	SceneObjectImplementation::zone = zone;
 
-	try {
-		zone->lock();
+	Locker zoneLocker(zone);
 
-		initializePosition(positionX, positionZ, positionY);
+	initializePosition(positionX, positionZ, positionY);
 
-		sendToOwner(true);
+	sendToOwner(true);
 
-		if (parent == NULL || !parent->isCellObject()) {
-			zone->insert(this);
-			zone->inRange(this, 128);
-		} else if (parent->isCellObject()) {
-            BuildingObject* building = (BuildingObject*) parent->getParent();
-            insertToBuilding(building);
-		}
-
-		zone->unlock();
-	}  catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-		zone->unlock();
-	} catch (...) {
-		error("unreported exception caught in SceneObjectImplementation::insertToZone(Zone* zone)");
-		zone->unlock();
+	if (parent == NULL || !parent->isCellObject()) {
+		zone->insert(this);
+		zone->inRange(this, 128);
+	} else if (parent->isCellObject()) {
+		BuildingObject* building = (BuildingObject*) parent->getParent();
+		insertToBuilding(building);
 	}
 }
 
@@ -479,38 +435,27 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 
 	info("removing from zone");
 
-	try {
-		zone->lock(lockZone);
+	Locker zoneLocker(zone, lockZone);
 
-		ManagedReference<SceneObject*> par = parent;
+	ManagedReference<SceneObject*> par = parent;
 
-		if (parent != NULL && parent->isCellObject()) {
-			BuildingObject* building = (BuildingObject*)parent->getParent();
+	if (parent != NULL && parent->isCellObject()) {
+		BuildingObject* building = (BuildingObject*)parent->getParent();
 
-			par = parent;
+		par = parent;
 
-			removeFromBuilding(building);
-		} else
-			zone->remove(this);
+		removeFromBuilding(building);
+	} else
+		zone->remove(this);
 
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			QuadTreeEntry* obj = getInRangeObject(i);
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		QuadTreeEntry* obj = getInRangeObject(i);
 
-			if (obj != this)
-				obj->removeInRangeObject(this);
-		}
-
-		removeInRangeObjects();
-
-		zone->unlock(lockZone);
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-		zone->unlock(lockZone);
-	} catch (...) {
-		error("unreported exception caught in SceneObjectImplementation::removeFromZone");
-		zone->unlock(lockZone);
+		if (obj != this)
+			obj->removeInRangeObject(this);
 	}
+
+	removeInRangeObjects();
 
 	zone = NULL;
 

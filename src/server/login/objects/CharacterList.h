@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../../db/ServerDatabase.h"
 
 #include "server/zone/objects/player/Races.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
 class CharacterList {
 	ResultSet* characters;
@@ -81,32 +82,25 @@ public:
 		UnicodeString charName;
 		String data = characters->getString(1);
 
-		data = data.subString(data.indexOf("customName"));
-		data = data.subString(data.indexOf("\"") + 1);
+		VectorMap<String, String> characterData;
 
-		data = data.subString(0, data.indexOf("\""));
+		Serializable::getVariableDataMap(data, characterData);
 
-		name = data;
+		StringId objectName;
+		objectName.deSerialize(characterData.get("objectName"));
+
+		name = objectName.getCustomString();
 	}
 
 	uint32 getCharacterRaceCRC() {
 		String objectData = characters->getString(1);
 
-		int idx = objectData.indexOf("clientObjectCRC=");
+		VectorMap<String, String> characterData;
 
-		if (idx == -1)
-			return 0;
+		Serializable::getVariableDataMap(objectData, characterData);
 
-		String objectCRC = objectData.subString(idx);
-
-		int comma = objectCRC.indexOf(",");
-
-		if (comma == -1) {
-			return 0;
-		}
-
-		objectCRC = objectCRC.subString(16, comma);
-		uint32 sharedCRC = UnsignedInteger::valueOf(objectCRC);
+		UnsignedInteger sharedCRC;
+		sharedCRC.parseFromString(characterData.get("clientObjectCRC"));
 
 		String race = Races::getCompleteRace(sharedCRC);
 

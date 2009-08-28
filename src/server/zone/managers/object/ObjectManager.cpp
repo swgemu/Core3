@@ -204,28 +204,12 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		objectData = result->getString(0);
 		delete result;
 
-		int idx = objectData.indexOf("serverObjectCRC=");
+		VectorMap<String, String> variableDataMap;
+		Serializable::getVariableDataMap(objectData, variableDataMap);
 
-		if (idx == -1) {
-			error("no object CRC found");
+		uint32 serverObjectCRC = UnsignedInteger::valueOf(variableDataMap.get("serverObjectCRC"));
 
-			unlock();
-			return NULL;
-		}
-
-		String objectCRC = objectData.subString(idx);
-
-		int comma = objectCRC.indexOf(",");
-
-		if (comma == -1) {
-			error("unable to parse object crc template");
-			unlock();
-			return NULL;
-		}
-
-		objectCRC = objectCRC.subString(16, comma);
-
-		object = createObject(UnsignedInteger::valueOf(objectCRC), false, objectID, false);
+		object = createObject(serverObjectCRC, false, objectID, false);
 
 		if (object == NULL) {
 			error("could not load object from database");

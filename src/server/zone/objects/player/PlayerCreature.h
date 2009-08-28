@@ -122,6 +122,8 @@ public:
 
 	void unload();
 
+	void reload();
+
 	void logout(bool doLock);
 
 	void activateRecovery();
@@ -273,6 +275,8 @@ public:
 
 	void unload();
 
+	void reload();
+
 	void logout(bool doLock);
 
 	void activateRecovery();
@@ -373,6 +377,8 @@ public:
 	void disconnect(bool closeClient, bool doLock);
 
 	void unload();
+
+	void reload();
 
 	void logout(bool doLock);
 
