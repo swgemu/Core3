@@ -42,10 +42,6 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 
-	//logoutTimeStamp = new Time();
-
-	//chatRooms = new SortedVector<ManagedReference<ChatRoom*> >();
-
 	accountID = 0;
 
 	savedZoneID = -1;
@@ -143,9 +139,9 @@ void PlayerCreatureImplementation::logout(bool doLock) {
 			disconnectEvent = new PlayerDisconnectEvent(_this);
 
 			if (isLoggingOut()) {
-				server->scheduleTask(disconnectEvent, 10);
+				disconnectEvent->schedule(10);
 			} else {
-				server->scheduleTask(disconnectEvent, 1000);
+				disconnectEvent->schedule(1000);
 				setLoggingOut();
 			}
 		}
@@ -181,7 +177,7 @@ void PlayerCreatureImplementation::activateRecovery() {
 	if (recoveryEvent == NULL) {
 		recoveryEvent = new PlayerRecoveryEvent(_this);
 
-		server->scheduleTask(recoveryEvent, 3000);
+		recoveryEvent->schedule(3000);
 	}
 }
 
@@ -209,6 +205,12 @@ void PlayerCreatureImplementation::unload() {
 
 	if (savedParent != NULL)
 		getZoneServer()->updateObjectToDatabase(savedParent);
+}
+
+void PlayerCreatureImplementation::reload() {
+	insertToZone(zone);
+
+	setOnline();
 }
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {

@@ -102,7 +102,7 @@ public:
 				if (zone != NULL) {
 					//reload
 
-					player->insertToZone(zone);
+					player->reload();
 
 				} else {
 					int zoneID = player->getSavedZoneID();

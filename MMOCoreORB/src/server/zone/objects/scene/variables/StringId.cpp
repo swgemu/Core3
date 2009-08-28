@@ -58,16 +58,7 @@ StringId::StringId(const StringId& id) : Object(), Serializable() {
 }
 
 StringId::StringId(const String& fullPath) : Serializable() {
-	if (fullPath.isEmpty())
-		return;
-
-	if (fullPath.charAt(0) == '@') {
-		StringTokenizer tokenizer(fullPath.subString(1));
-		tokenizer.setDelimeter(":");
-
-		tokenizer.getStringToken(file);
-		tokenizer.getStringToken(stringID);
-	}
+	setStringId(fullPath);
 
 	addSerializableVariables();
 }

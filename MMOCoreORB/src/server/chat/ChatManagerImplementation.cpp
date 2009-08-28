@@ -229,29 +229,21 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		if (zone == NULL)
 			return;
 
-		try {
-			zone->lock();
+		Locker zoneLocker(zone);
 
-			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
 
-				if (object->isPlayerCreature()) {
-					PlayerCreature* creature = (PlayerCreature*) object;
+			if (object->isPlayerCreature()) {
+				PlayerCreature* creature = (PlayerCreature*) object;
 
-					if (player->isInRange(creature, 128)) {
-						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
-						creature->sendMessage(cmsg);
-					}
+				if (player->isInRange(creature, 128)) {
+					SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
+					creature->sendMessage(cmsg);
 				}
 			}
-
-			zone->unlock();
-		} catch (...) {
-
-			zone->unlock();
-
-			System::out << "exception ChatManagerImplementation::broadcastMessage(Player* player, UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
 		}
+
 	}
 }
 

@@ -54,10 +54,9 @@ which carries forward this exception.
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 
-
-
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
-	TangibleObjectImplementation(templateData) {
+	TangibleObjectImplementation(templateData), baseHealth(9, 1), wounds(9, 1), encumbrances(3, 1), hamList(9, 1),
+	maxHamList(9, 1) {
 
 	setLoggingName("CreatureObject");
 
@@ -95,15 +94,11 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 	optionsBitmask = 0x80;
 
-	//encumbrances = new Vector<int>(3, 1);
-
 	for (int i = 0; i < 3; ++i) {
 		encumbrances.add(0);
 	}
 
 	encumbrancesUpdateCounter = 0;
-
-	//baseHealth = new Vector<int>(9, 1);
 
 	for (int i = 0; i < 9; ++i) {
 		baseHealth.add(100);
@@ -111,23 +106,17 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 	baseHealthUpdateCounter = 0;
 
-	//wounds = new Vector<int>(9, 1);
-
 	for (int i = 0; i < 9; ++i) {
 		wounds.add(0);
 	}
 
 	woundsUpdateCounter = 0;
 
-	//hamList = new Vector<int>(9, 1);
-
 	for (int i = 0; i < 9; ++i) {
 		hamList.add(100);
 	}
 
 	hamListUpdateCounter = 0;
-
-	//maxHamList = new Vector<int>(9, 1);
 
 	for (int i = 0; i < 9; ++i) {
 		maxHamList.add(100);
@@ -160,7 +149,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 	}
 
 	speedTempl.pop();
-
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
