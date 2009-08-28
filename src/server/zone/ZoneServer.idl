@@ -194,7 +194,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 		return serverState;
 	}
 
-	public Zone getZone(int index) {
+	public synchronized Zone getZone(int index) {
 		return zones.get(index);
 	}
 
@@ -232,7 +232,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public native void setServerName(final string servername);
 
-	public void setGalaxyID(int galaxyid) {
+	public synchronized void setGalaxyID(int galaxyid) {
 		galaxyID = galaxyid;
 	}
 
