@@ -235,7 +235,7 @@ void CreatureObjectImplementation::setWeaponID(uint64 objectID, bool notifyClien
 		msg->updateWeapon();
 		msg->close();
 
-		broadcastMessage(msg, true, true);
+		broadcastMessage(msg, true);
 	}
 }
 
@@ -247,6 +247,6 @@ void CreatureObjectImplementation::setTargetID(uint64 targetID, bool notifyClien
 		msg->updateTarget();
 		msg->close();
 
-		broadcastMessage(msg, false, true);
+		broadcastMessage(msg, false);
 	}
 }

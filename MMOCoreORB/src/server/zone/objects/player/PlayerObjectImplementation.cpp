@@ -82,7 +82,7 @@ bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) 
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
 
-			broadcastMessage(delta, true, true);
+			broadcastMessage(delta, true);
 		}
 		return true;
 	} else
@@ -98,7 +98,7 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient
 			delta->updateCharacterBitmask(characterBitmask);
 			delta->close();
 
-			broadcastMessage(delta, true, true);
+			broadcastMessage(delta, true);
 		}
 
 		return true;

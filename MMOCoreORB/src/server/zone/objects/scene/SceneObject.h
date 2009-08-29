@@ -194,7 +194,7 @@ public:
 
 	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
-	void removeFromZone(bool lockZone = true);
+	void removeFromZone();
 
 	void removeFromBuilding(BuildingObject* building);
 
@@ -202,7 +202,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void sendMessage(BasePacket* msg);
 
@@ -793,7 +793,7 @@ public:
 
 	virtual void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
-	virtual void removeFromZone(bool lockZone = true);
+	virtual void removeFromZone();
 
 	virtual void removeFromBuilding(BuildingObject* building);
 
@@ -801,7 +801,7 @@ public:
 
 	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	virtual void sendMessage(BasePacket* msg);
 
@@ -1012,7 +1012,7 @@ public:
 
 	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
-	void removeFromZone(bool lockZone);
+	void removeFromZone();
 
 	void removeFromBuilding(BuildingObject* building);
 
@@ -1020,7 +1020,7 @@ public:
 
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
-	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone);
+	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void sendMessage(BasePacket* msg);
 

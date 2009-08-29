@@ -192,7 +192,7 @@ void PlayerCreatureImplementation::unload() {
 		savedZoneID = zone->getZoneID();
 
 		if (isInQuadTree()) {
-			removeFromZone(true);
+			removeFromZone();
 		}
 	}
 

@@ -235,12 +235,12 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	client->sendMessage(msg);
 }
 
-void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
 	if (zone == NULL) {
 		SceneObject* grandParent = getGrandParent();
 
 		if (grandParent != NULL) {
-			grandParent->broadcastMessage(message, sendSelf, lockZone);
+			grandParent->broadcastMessage(message, sendSelf);
 
 			return;
 		} else {
@@ -273,7 +273,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 		return;
 	}
 
-    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), true, false);
+    broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), true);
 
     parent->removeObject(_this);
 
@@ -302,10 +302,10 @@ void SceneObjectImplementation::updateZone(bool lightUpdate) {
 
 	if (lightUpdate) {
 		LightUpdateTransformMessage* message = new LightUpdateTransformMessage(_this);
-		broadcastMessage(message, false, false);
+		broadcastMessage(message, false);
 	} else {
 		UpdateTransformMessage* message = new UpdateTransformMessage(_this);
-		broadcastMessage(message, false, false);
+		broadcastMessage(message, false);
 	}
 
 }
@@ -349,7 +349,7 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 		//parent = newParent;
 		newParent->addObject(_this, -1);
 
-		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
 	}
 
 	BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -364,10 +364,10 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 	if (lightUpdate) {
 		LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(_this);
-		broadcastMessage(message, false, false);
+		broadcastMessage(message, false);
 	} else {
 		UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(_this);
-		broadcastMessage(message, false, false);
+		broadcastMessage(message, false);
 	}
 
 }
@@ -418,7 +418,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		building->notifyInsertToZone(_this);
 
-		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true, false);
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), true);
 
 		//info("sent cell link to everyone else");
 	} catch (Exception& e) {
@@ -429,7 +429,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	}
 }
 
-void SceneObjectImplementation::removeFromZone(bool lockZone) {
+void SceneObjectImplementation::removeFromZone() {
 	if (zone == NULL)
 		return;
 
@@ -493,7 +493,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 	object->setContainmentType(containmentType);
 
 	if (notifyClient)
-		broadcastMessage(object->link(getObjectID(), containmentType), true, true);
+		broadcastMessage(object->link(getObjectID(), containmentType), true);
 
 	return true;
 }
