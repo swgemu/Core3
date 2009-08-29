@@ -33,11 +33,6 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 	setLoggingName("PlayerCreature");
 
 	owner = NULL;
-	nextAction = NULL;
-
-	nextTip = NULL;
-
-	firstIncapacitationTime = NULL;
 
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;

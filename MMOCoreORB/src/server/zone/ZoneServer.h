@@ -11,6 +11,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 
 class ZoneProcessServerImplementation;
 
@@ -94,8 +108,6 @@ class RadialManager;
 } // namespace server
 
 using namespace server::zone::managers::radial;
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/service/proto/BasePacketHandler.h"
 
