@@ -377,13 +377,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public native abstract void insertToZone(Zone zone);
 	public native abstract void insertToBuilding(BuildingObject building);
+	
 	public native abstract void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
-	public native abstract void removeFromZone(boolean lockZone = true);
+	
+	public native abstract void removeFromZone();
 	public native abstract void removeFromBuilding(BuildingObject building);
+	
 	public native abstract void updateZone(boolean lightUpdate);
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate); 
 	
-	public native void broadcastMessage(BasePacket message, boolean sendSelf, boolean lockZone);
+	public native void broadcastMessage(BasePacket message, boolean sendSelf);
 	
 	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)
