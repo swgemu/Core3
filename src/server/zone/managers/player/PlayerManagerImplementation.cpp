@@ -330,7 +330,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player) {
 	Zone* zone = server->getZone(42);
 
-	SceneObject* oldPlayer = server->getObject(0x1500000001uLL);
+	/*SceneObject* oldPlayer = server->getObject(0x1500000001uLL);
 
 	if (player!= oldPlayer && oldPlayer != NULL) {
 		SceneObject* tutCell = oldPlayer->getParent();
@@ -343,7 +343,7 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 			return;
 		}
-	}
+	}*/
 
 	String tut = "object/building/general/shared_newbie_hall.iff";
 	String cell = "object/cell/shared_cell.iff";

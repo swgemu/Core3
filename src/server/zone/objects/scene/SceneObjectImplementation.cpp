@@ -250,7 +250,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 	}
 
-	Locker zoneLocker(zone, lockZone);
+	Locker zoneLocker(zone);
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
@@ -435,7 +435,7 @@ void SceneObjectImplementation::removeFromZone(bool lockZone) {
 
 	info("removing from zone");
 
-	Locker zoneLocker(zone, lockZone);
+	Locker zoneLocker(zone);
 
 	ManagedReference<SceneObject*> par = parent;
 
