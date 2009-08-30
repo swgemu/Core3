@@ -615,6 +615,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void clearUpdateToDatabaseTask() {
 		updateToDatabaseTask = null;
 	}
+	
+	public local VectorMap<unsigned long, SceneObject> getContainerObjects() {
+		return containerObjects;
+	}
 
 }
 

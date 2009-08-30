@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "../scene/variables/CustomizationVariables.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
+#include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
+
 
 TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData)
 		: SceneObjectImplementation(templateData) {
@@ -69,8 +71,6 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 
 	optionsBitmask = 0;
 	pvpStatusBitmask = 0;
-
-	defenderListUpdateCounter = 0;
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -81,4 +81,114 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* tano6 = new TangibleObjectMessage6(_this);
 	player->sendMessage(tano6);
+}
+
+void TangibleObjectImplementation::setDefender(SceneObject* defender) {
+	if (defender == _this)
+		return;
+
+	setCombatState();
+
+	if (defenderList.size() == 0) {
+		addDefender(defender);
+		return;
+	}
+
+	ManagedReference<SceneObject*> temp = NULL;
+
+	int i = 0;
+	for (; i < defenderList.size(); i++) {
+		if (defenderList.get(i) == defender) {
+			if (i == 0)
+				return;
+
+			temp = defenderList.get(0);
+
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+			dtano6->startUpdate(0x01);
+
+			defenderList.set(0, defender, dtano6, 2);
+			defenderList.set(i, temp, dtano6, 0);
+
+			dtano6->close();
+
+			broadcastMessage(dtano6, true);
+
+			break;
+		}
+	}
+}
+
+void TangibleObjectImplementation::addDefender(SceneObject* def) {
+	if (def == _this)
+		return;
+
+	ManagedReference<SceneObject*> defender = def;
+
+	setCombatState();
+
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defender == defenderList.get(i))
+			return;
+	}
+
+	info("adding defender", true);
+
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	dtano6->startUpdate(0x01);
+
+	defenderList.add(defender, dtano6);
+
+	dtano6->close();
+
+	broadcastMessage(dtano6, true);
+}
+
+void TangibleObjectImplementation::removeDefenders() {
+	//info("removing all defenders");
+	if (defenderList.size() == 0) {
+		//info("no defenders in list");
+		return;
+	}
+
+	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
+	dtano6->startUpdate(0x01);
+
+	defenderList.removeAll(dtano6);
+
+	dtano6->close();
+
+	broadcastMessage(dtano6, true);
+
+	//info("removed all defenders");
+}
+
+void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
+		//info("trying to remove defender");
+	for (int i = 0; i < defenderList.size(); ++i) {
+		if (defenderList.get(i) == defender) {
+			info("removing defender");
+
+			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this);
+
+			dtano6->startUpdate(0x01);
+
+			if (defenderList.size() == 1)
+				defenderList.removeAll(dtano6);
+			else
+				defenderList.remove(i, dtano6);
+
+			dtano6->close();
+
+			broadcastMessage(dtano6, true);
+
+			//info("defender found and removed");
+			break;
+		}
+	}
+
+	if (defenderList.size() == 0)
+		clearCombatState(false);
+
+	//info("finished removing defender");
 }

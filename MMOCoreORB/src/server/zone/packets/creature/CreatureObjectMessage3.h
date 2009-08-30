@@ -64,11 +64,8 @@ public:
 
 		insertLong(creo->getStateBitmask());
 
-		insertInt(9); // List Size
-		insertInt(creo->getWoundsUpdateCounter());
-		for (int i = 0; i < 9; ++i) {
-			insertInt(creo->getWounds(i));
-		}
+		DeltaVector<int>* wounds = creo->getWounds();
+		insertDeltaVector(wounds);
 
 		setSize();
 	}

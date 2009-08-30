@@ -46,6 +46,8 @@ which carries forward this exception.
 #define BASELINEMESSAGE_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 
 class BaseLineMessage : public BaseMessage {
 public:
@@ -86,6 +88,16 @@ public:
 		insertAscii(id->getStringID());
 
 		insertUnicode(id->getCustomString());
+	}
+
+	template<class E> void insertDeltaVector(DeltaVector<E>* vector) {
+		insertInt(vector->size());
+		insertInt(vector->getUpdateCounter());
+
+		for (int i = 0; i < vector->size(); ++i) {
+			E& value = vector->get(i);
+			TypeInfo<E>::toBinaryStream(&value, this);
+		}
 	}
 
 	//

@@ -12,6 +12,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class TargetUpdateCallback : public MessageCallback {
+	int size;
 	uint64 target;
 
 	ObjectControllerMessageCallback* objectControllerMain;
@@ -23,6 +24,7 @@ public:
 	}
 
 	void parse(Message* message) {
+		size = message->parseInt();
 		target = message->parseLong();
 	}
 

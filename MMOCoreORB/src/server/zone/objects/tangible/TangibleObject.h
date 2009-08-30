@@ -11,6 +11,8 @@
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -28,6 +30,20 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	void removeDefenders();
+
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders = true);
+
+	bool hasDefender(SceneObject* defender);
+
 	byte getUnknownByte();
 
 	int getObjectCount();
@@ -44,9 +60,9 @@ public:
 
 	unsigned int getPvpStatusBitmask();
 
-	unsigned int getDefenderListUpdateCounter();
-
 	void getCustomizationString(String& variables);
+
+	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
 
 	void setCustomizationString(const String& vars);
 
@@ -92,14 +108,26 @@ protected:
 
 	byte unknownByte;
 
-	Vector<ManagedReference<SceneObject* > > defenderList;
-
-	unsigned int defenderListUpdateCounter;
+	DeltaVector<ManagedReference<SceneObject* > > defenderList;
 
 public:
 	TangibleObjectImplementation(LuaObject* templateData);
 
 	virtual void sendBaselinesTo(SceneObject* player);
+
+	virtual void setDefender(SceneObject* defender);
+
+	virtual void addDefender(SceneObject* defender);
+
+	virtual void removeDefender(SceneObject* defender);
+
+	virtual void removeDefenders();
+
+	virtual void setCombatState();
+
+	virtual void clearCombatState(bool clearDefenders = true);
+
+	bool hasDefender(SceneObject* defender);
 
 	byte getUnknownByte();
 
@@ -117,9 +145,9 @@ public:
 
 	unsigned int getPvpStatusBitmask();
 
-	unsigned int getDefenderListUpdateCounter();
-
 	void getCustomizationString(String& variables);
+
+	DeltaVector<ManagedReference<SceneObject* > >* getDefenderList();
 
 	void setCustomizationString(const String& vars);
 
@@ -160,6 +188,20 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	void removeDefenders();
+
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders);
+
+	bool hasDefender(SceneObject* defender);
+
 	byte getUnknownByte();
 
 	int getObjectCount();
@@ -175,8 +217,6 @@ public:
 	unsigned int getOptionsBitmask();
 
 	unsigned int getPvpStatusBitmask();
-
-	unsigned int getDefenderListUpdateCounter();
 
 	void getCustomizationString(String& variables);
 

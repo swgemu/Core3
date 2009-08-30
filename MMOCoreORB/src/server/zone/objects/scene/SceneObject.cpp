@@ -1210,6 +1210,14 @@ void SceneObject::clearUpdateToDatabaseTask() {
 		((SceneObjectImplementation*) _impl)->clearUpdateToDatabaseTask();
 }
 
+VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((SceneObjectImplementation*) _impl)->getContainerObjects();
+}
+
 /*
  *	SceneObjectImplementation
  */
@@ -1634,6 +1642,11 @@ void SceneObjectImplementation::setPersistent(bool value) {
 void SceneObjectImplementation::clearUpdateToDatabaseTask() {
 	// server/zone/objects/scene/SceneObject.idl(616):  updateToDatabaseTask = null;
 	updateToDatabaseTask = NULL;
+}
+
+VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObjectImplementation::getContainerObjects() {
+	// server/zone/objects/scene/SceneObject.idl(620):  return containerObjects;
+	return (&containerObjects);
 }
 
 /*

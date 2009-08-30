@@ -318,6 +318,8 @@ public:
 
 	void clearUpdateToDatabaseTask();
 
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -916,6 +918,8 @@ public:
 	void setPersistent(bool value);
 
 	void clearUpdateToDatabaseTask();
+
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	SceneObject* _this;
 

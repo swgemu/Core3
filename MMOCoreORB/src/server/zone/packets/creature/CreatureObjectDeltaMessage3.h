@@ -60,17 +60,17 @@ public:
 		creo = cr;
 	}
 
-	void updateCharacterAppearance() {
+	/*void updateCharacterAppearance() {
 		String appearance;
 		creo->getCustomizationString(appearance);
 		addAsciiUpdate(4, appearance);
-	}
+	}*/
 
 	void updateCreatureBitmask(uint32 value) {
 		addIntUpdate(0x06, value);
 	}
 
-	void updateIncapacitationRecoveryTime(uint32 dur) {
+	/*void updateIncapacitationRecoveryTime(uint32 dur) {
 		addIntUpdate(0x07, dur);
 	}
 
@@ -80,13 +80,13 @@ public:
 
 	void updateFactionRank() {
 		addByteUpdate(0x0C, creo->getFactionRank());
-	}
+	}*/
 
 	void updateState() {
 		addLongUpdate(0x10, creo->getStateBitmask());
 	}
 
-	void updateCreatureBitmask() {
+	/*void updateCreatureBitmask() {
 		addIntUpdate(0x06, creo->getOptionsBitmask());
 	}
 
@@ -205,7 +205,7 @@ public:
 
 	void addBar(uint16 index, int32& value, int32 nvalue) {
 		removeListIntElement(index, value = nvalue);
-	}
+	}*/
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE3_H_*/

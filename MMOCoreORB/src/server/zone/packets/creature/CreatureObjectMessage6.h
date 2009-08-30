@@ -68,20 +68,11 @@ public:
 		insertInt(creo->getPerformanceCounter()); //might be switched
 		insertInt(creo->getInstrumentID()); //might be switched
 
-		insertInt(9);
-		insertInt(creo->getHamListUpdateCounter());
+		DeltaVector<int>* ham = creo->getHAM();
+		insertDeltaVector(ham);
 
-		for (int i = 0; i < 9; ++i) {
-			insertInt(creo->getHAM(i));
-		}
-
-		insertInt(9);
-		insertInt(creo->getMaxHamListUpdateCounter());
-
-		for (int i = 0; i < 9; ++i) {
-			insertInt(creo->getMaxHAM(i));
-		}
-
+		DeltaVector<int>* maxHam = creo->getMaxHAM();
+		insertDeltaVector(maxHam);
 
 		insertEquipmentList(creo);
 

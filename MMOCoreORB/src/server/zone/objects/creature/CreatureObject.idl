@@ -51,7 +51,8 @@ import server.zone.packets.object.StfParameter;
 
 //import server.zone.objects.player.professions.SkillBox;
 
-include server.zone.objects.scene.SceneObject;
+import server.zone.objects.scene.SceneObject;
+include server.zone.objects.scene.variables.DeltaVector;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -60,8 +61,7 @@ class CreatureObject extends TangibleObject {
 	protected int gender;
 	protected int species;
 	
-	protected dereferenced Vector<int> baseHealth;
-	protected unsigned int baseHealthUpdateCounter;
+	protected dereferenced DeltaVector<int> baseHealth;
 	
 	protected byte posture;
 	protected byte factionRank;
@@ -69,15 +69,13 @@ class CreatureObject extends TangibleObject {
 	protected unsigned long creatureLinkID;
 	protected float shockWounds;
 	
-	protected dereferenced Vector<int> wounds;
-	protected unsigned int woundsUpdateCounter;
+	protected dereferenced DeltaVector<int> wounds;
 	
 	protected unsigned long stateBitmask;
 	
 	//protected VectorMap<string, SkillBox> skillBoxes;
 	
-	protected dereferenced Vector<int> encumbrances;
-	protected unsigned int encumbrancesUpdateCounter;
+	protected dereferenced DeltaVector<int> encumbrances;
 	
 	// skillmods
 	
@@ -108,11 +106,8 @@ class CreatureObject extends TangibleObject {
 	protected int performanceCounter;
 	protected int instrumentID;
 	
-	protected dereferenced Vector<int> hamList;
-	protected unsigned int hamListUpdateCounter;
-	
-	protected dereferenced Vector<int> maxHamList;
-	protected unsigned int maxHamListUpdateCounter;
+	protected dereferenced DeltaVector<int> hamList;
+	protected dereferenced DeltaVector<int> maxHamList;
 	
 	protected byte frozen;
 	
@@ -143,6 +138,9 @@ class CreatureObject extends TangibleObject {
 	public native void sendSlottedObjectsTo(SceneObject player);
 	public local native void sendSystemMessage(final string file, final string str, StfParameter param);
 	
+	public native void setCombatState();
+	public native void clearCombatState(boolean clearDefenders);
+	
 	public int getBankCredits() {
 		return bankCredits;
 	}
@@ -151,48 +149,40 @@ class CreatureObject extends TangibleObject {
 		return cashCredits;
 	}
 	
-	/*public Vector<int> getBaseHealth() {
-		return baseHealth;
-	}*/
-	
 	public int getBaseHealth(int idx) {
 		return baseHealth.get(idx);
-	}
-	
-	public unsigned int getBaseHealthUpdateCounter() {
-		return baseHealthUpdateCounter;
 	}
 	
 	public int getWounds(int idx) {
 		return wounds.get(idx);
 	}
 	
-	public unsigned int getWoundsUpdateCounter() {
-		return woundsUpdateCounter;
-	}
-	
-	public unsigned int getEncumbrancesUpdateCounter() {
-		return encumbrancesUpdateCounter;
-	}
-	
-	public unsigned int getHamListUpdateCounter() {
-		return hamListUpdateCounter;
+	public local DeltaVector<int> getWounds() {
+		return wounds;
 	}
 	
 	public int getHAM(int idx) {
 		return hamList.get(idx);
 	}
 	
-	public unsigned int getMaxHamListUpdateCounter() {
-		return maxHamListUpdateCounter;
+	public local DeltaVector<int> getHAM() {
+		return hamList;
 	}
 	
 	public int getMaxHAM(int idx) {
 		return maxHamList.get(idx);
 	}
 	
+	public local DeltaVector<int> getMaxHAM() {
+		return maxHamList;
+	}
+	
 	public int getEncumbrance(int idx) {
 		return encumbrances.get(idx);
+	}
+	
+	public local DeltaVector<int> getEncumbrances() {
+		return encumbrances;
 	}
 	
 	public byte getPosture() {
@@ -303,9 +293,15 @@ class CreatureObject extends TangibleObject {
 		return species;
 	}
 	
+	public local DeltaVector<int> getBaseHealth() {
+		return baseHealth;
+	}
+	
 	public void setHeight(float heigh) {
 		height = heigh;
 	}
+	
+	public native void setHAM(int type, int value, boolean notifyClient = false);
 	
 	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);

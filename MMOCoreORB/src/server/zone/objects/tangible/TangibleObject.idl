@@ -50,7 +50,7 @@ import system.util.Vector;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 
-//include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.scene.variables.DeltaVector;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -69,12 +69,34 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	
-	protected dereferenced Vector<SceneObject> defenderList;
-	protected unsigned int defenderListUpdateCounter;
+	protected dereferenced DeltaVector<SceneObject> defenderList;
 	
 	public native TangibleObject(LuaObject templateData);
 	
 	public native abstract void sendBaselinesTo(SceneObject player);
+	
+	public native abstract void setDefender(SceneObject defender);
+	public native abstract void addDefender(SceneObject defender);
+	public native abstract void removeDefender(SceneObject defender);
+	public native abstract void removeDefenders();
+	
+	public abstract void setCombatState() {
+		
+	}
+	
+	public abstract void clearCombatState(boolean clearDefenders = true) {
+		if (clearDefenders)
+			removeDefenders();
+	}
+	
+	public boolean hasDefender(SceneObject defender) {
+		for (int i = 0; i < defenderList.size(); ++i) {
+			if (defenderList.get(i) == defender)
+				return true;
+		}
+		
+		return false;
+	}
 	
 	public byte getUnknownByte() {
 		return unknownByte;
@@ -112,12 +134,12 @@ class TangibleObject extends SceneObject {
 		return pvpStatusBitmask;
 	}
 	
-	public unsigned int getDefenderListUpdateCounter() {
-		return defenderListUpdateCounter;
-	}
-	
 	public void getCustomizationString(string variables) {
 		customizationVariables.getData(variables);
+	}
+	
+	public local DeltaVector<SceneObject> getDefenderList() {
+		return defenderList;
 	}
 	
 	public void setCustomizationString(final string vars) {
