@@ -46,9 +46,6 @@ which carries forward this exception.
 #define CREATUREOBJECTDELTAMESSAGE1_H_
 
 #include "../../packets/DeltaMessage.h"
-
-#include "../../objects/creature/CreatureObjectImplementation.h"
-
 #include "../../objects/creature/CreatureAttribute.h"
 
 class CreatureObjectDeltaMessage1 : public DeltaMessage {

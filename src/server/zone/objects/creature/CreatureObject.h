@@ -23,7 +23,21 @@ class StfParameter;
 
 using namespace server::zone::packets::object;
 
-#include "server/zone/objects/scene/SceneObject.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -54,29 +68,31 @@ public:
 
 	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders);
+
 	int getBankCredits();
 
 	int getCashCredits();
 
 	int getBaseHealth(int idx);
 
-	unsigned int getBaseHealthUpdateCounter();
-
 	int getWounds(int idx);
 
-	unsigned int getWoundsUpdateCounter();
-
-	unsigned int getEncumbrancesUpdateCounter();
-
-	unsigned int getHamListUpdateCounter();
+	DeltaVector<int>* getWounds();
 
 	int getHAM(int idx);
 
-	unsigned int getMaxHamListUpdateCounter();
+	DeltaVector<int>* getHAM();
 
 	int getMaxHAM(int idx);
 
+	DeltaVector<int>* getMaxHAM();
+
 	int getEncumbrance(int idx);
+
+	DeltaVector<int>* getEncumbrances();
 
 	byte getPosture();
 
@@ -132,7 +148,11 @@ public:
 
 	int getSpecies();
 
+	DeltaVector<int>* getBaseHealth();
+
 	void setHeight(float heigh);
+
+	void setHAM(int type, int value, bool notifyClient = false);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
@@ -171,9 +191,7 @@ protected:
 
 	int species;
 
-	Vector<int> baseHealth;
-
-	unsigned int baseHealthUpdateCounter;
+	DeltaVector<int> baseHealth;
 
 	byte posture;
 
@@ -183,15 +201,11 @@ protected:
 
 	float shockWounds;
 
-	Vector<int> wounds;
-
-	unsigned int woundsUpdateCounter;
+	DeltaVector<int> wounds;
 
 	unsigned long long stateBitmask;
 
-	Vector<int> encumbrances;
-
-	unsigned int encumbrancesUpdateCounter;
+	DeltaVector<int> encumbrances;
 
 	float runSpeed;
 
@@ -235,13 +249,9 @@ protected:
 
 	int instrumentID;
 
-	Vector<int> hamList;
+	DeltaVector<int> hamList;
 
-	unsigned int hamListUpdateCounter;
-
-	Vector<int> maxHamList;
-
-	unsigned int maxHamListUpdateCounter;
+	DeltaVector<int> maxHamList;
 
 	byte frozen;
 
@@ -288,29 +298,31 @@ public:
 
 	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders);
+
 	int getBankCredits();
 
 	int getCashCredits();
 
 	int getBaseHealth(int idx);
 
-	unsigned int getBaseHealthUpdateCounter();
-
 	int getWounds(int idx);
 
-	unsigned int getWoundsUpdateCounter();
-
-	unsigned int getEncumbrancesUpdateCounter();
-
-	unsigned int getHamListUpdateCounter();
+	DeltaVector<int>* getWounds();
 
 	int getHAM(int idx);
 
-	unsigned int getMaxHamListUpdateCounter();
+	DeltaVector<int>* getHAM();
 
 	int getMaxHAM(int idx);
 
+	DeltaVector<int>* getMaxHAM();
+
 	int getEncumbrance(int idx);
+
+	DeltaVector<int>* getEncumbrances();
 
 	byte getPosture();
 
@@ -366,7 +378,11 @@ public:
 
 	int getSpecies();
 
+	DeltaVector<int>* getBaseHealth();
+
 	void setHeight(float heigh);
+
+	void setHAM(int type, int value, bool notifyClient = false);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
@@ -419,25 +435,19 @@ public:
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders);
+
 	int getBankCredits();
 
 	int getCashCredits();
 
 	int getBaseHealth(int idx);
 
-	unsigned int getBaseHealthUpdateCounter();
-
 	int getWounds(int idx);
 
-	unsigned int getWoundsUpdateCounter();
-
-	unsigned int getEncumbrancesUpdateCounter();
-
-	unsigned int getHamListUpdateCounter();
-
 	int getHAM(int idx);
-
-	unsigned int getMaxHamListUpdateCounter();
 
 	int getMaxHAM(int idx);
 
@@ -498,6 +508,8 @@ public:
 	int getSpecies();
 
 	void setHeight(float heigh);
+
+	void setHAM(int type, int value, bool notifyClient);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient);
 

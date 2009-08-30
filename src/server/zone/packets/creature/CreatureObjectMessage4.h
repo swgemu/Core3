@@ -58,12 +58,8 @@ public:
 		insertFloat(1);
 
 		//Encumbrances
-		insertInt(3);
-		insertInt(creo->getEncumbrancesUpdateCounter());
-
-		for (int i = 0; i < 3; ++i) {
-			insertInt(creo->getEncumbrance(i));
-		}
+		DeltaVector<int>* encumbrances = creo->getEncumbrances();
+		insertDeltaVector(encumbrances);
 
 		// skill mods
 		insertSkillMods(creo);

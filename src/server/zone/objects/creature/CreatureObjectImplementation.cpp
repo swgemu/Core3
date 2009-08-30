@@ -43,16 +43,19 @@ which carries forward this exception.
 */
 
 #include "CreatureObject.h"
+#include "CreatureState.h"
 
-#include "../../managers/object/ObjectManager.h"
-#include "../../ZoneClientSession.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
 #include "server/zone/packets/creature/CreatureObjectMessage4.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
+#include "server/zone/ZoneServer.h"
 
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData), baseHealth(9, 1), wounds(9, 1), encumbrances(3, 1), hamList(9, 1),
@@ -98,31 +101,21 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 		encumbrances.add(0);
 	}
 
-	encumbrancesUpdateCounter = 0;
-
 	for (int i = 0; i < 9; ++i) {
 		baseHealth.add(100);
 	}
-
-	baseHealthUpdateCounter = 0;
 
 	for (int i = 0; i < 9; ++i) {
 		wounds.add(0);
 	}
 
-	woundsUpdateCounter = 0;
-
 	for (int i = 0; i < 9; ++i) {
 		hamList.add(100);
 	}
 
-	hamListUpdateCounter = 0;
-
 	for (int i = 0; i < 9; ++i) {
 		maxHamList.add(100);
 	}
-
-	maxHamListUpdateCounter = 0;
 
 	frozen = 0;
 
@@ -248,5 +241,64 @@ void CreatureObjectImplementation::setTargetID(uint64 targetID, bool notifyClien
 		msg->close();
 
 		broadcastMessage(msg, false);
+	}
+}
+
+void CreatureObjectImplementation::setCombatState() {
+	//lastCombatAction.update();
+
+	if (!(stateBitmask & CreatureState::COMBAT)) {
+		stateBitmask |= CreatureState::COMBAT;
+
+		if (stateBitmask & CreatureState::PEACE)
+			stateBitmask &= ~CreatureState::PEACE;
+
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+		dcreo3->updateCreatureBitmask(0x80);
+		dcreo3->updateState();
+		dcreo3->close();
+
+		broadcastMessage(dcreo3, true);
+
+		/*if (postureState == CreaturePosture::SITTING)
+			setPosture(CreaturePosture::UPRIGHT);*/
+	}
+}
+
+void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
+	//info("trying to clear CombatState");
+	if (stateBitmask & CreatureState::COMBAT) {
+		if (stateBitmask & CreatureState::PEACE)
+			stateBitmask &= ~CreatureState::PEACE;
+
+		stateBitmask &= ~CreatureState::COMBAT;
+
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+		dcreo3->updateCreatureBitmask(0x80);
+		dcreo3->updateState();
+		dcreo3->close();
+
+		broadcastMessage(dcreo3, true);
+	}
+
+	if (removedefenders)
+		removeDefenders();
+
+	//info("finished clearCombatState");
+}
+
+void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient) {
+	if (hamList.get(type) == value)
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
+		msg->startUpdate(0x0D);
+		hamList.set(type, value, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		hamList.set(type, value, NULL);
 	}
 }

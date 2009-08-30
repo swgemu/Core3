@@ -61,16 +61,8 @@ public:
 	}
 
 	void insertDefenders(TangibleObject* tano) {
-		/*int size = tano->getDefenderListSize();
-
-		insertInt(size);
-		insertInt(tano->getDefenderUpdateCounter());
-
-		for (int i = 0; i < size; ++i)
-			insertLong(tano->getDefender(i)->getObjectID());*/
-
-		insertInt(0);
-		insertInt(0);
+		DeltaVector<ManagedReference<SceneObject*> >* defenderList = tano->getDefenderList();
+		insertDeltaVector(defenderList);
 	}
 
 };

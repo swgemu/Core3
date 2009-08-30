@@ -58,33 +58,6 @@ public:
 		tano = ta;
 	}
 
-	/*void startDefenderUpdate(int updates) {
-		startUpdate(0x01);
-
-		uint32 counter = tano->getNewDefenderUpdateCounter(updates);
-		startList(updates, counter);
-	}
-
-	void addDefender(uint16 index, uint64 defenderID) {
-		insertByte(1);
-		insertShort(index);
-		insertLong(defenderID);
-	}
-
-	void setDefender(uint16 idx, uint64 defenderID) {
-		insertByte(2);
-		insertShort(idx);
-		insertLong(defenderID);
-	}
-
-	void removeDefender(uint16 index) {
-		insertByte(0);
-		insertShort(index);
-	}
-
-	void removeDefenders() {
-		insertByte(4);
-	}*/
 };
 
 

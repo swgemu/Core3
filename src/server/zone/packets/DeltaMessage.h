@@ -82,6 +82,25 @@ public:
 		insertShort(type);
 	}
 
+	/*template<class E> void addToDeltaVectorUpdate(uint16 type, DeltaVector<E>* vector) {
+		startUpdate(type);
+
+		startList(1, vector->getNewUpdateCounter(1));
+
+		insertByte(1);
+		insertShort(vector->size() - 1);
+		E& object = vector->get(vector->size() - 1);
+		TypeInfo<E>::toBinaryStream(&object, this);
+	}
+
+	template<class E> void removeFromDeltaVectorUpdate(uint16 type, DeltaVector<E>* vector, int removedIndex) {
+		startUpdate(type);
+
+		startList(1, grup->getNewUpdateCounter(1));
+		insertByte(0);
+		insertShort(removedIndex);
+	}*/
+
 	inline void addByteUpdate(uint16 type, uint8 value) {
 		startUpdate(type);
 		insertByte(value);
@@ -120,8 +139,6 @@ public:
 
 	inline void startList(uint32 cnt, uint32 updcnt) {
 		insertInt(cnt);
-
-		//updcnt += cnt;
 		insertInt(updcnt);
 	}
 

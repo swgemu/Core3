@@ -35,12 +35,101 @@ void TangibleObject::sendBaselinesTo(SceneObject* player) {
 		((TangibleObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-byte TangibleObject::getUnknownByte() {
+void TangibleObject::setDefender(SceneObject* defender) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(defender);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setDefender(defender);
+}
+
+void TangibleObject::addDefender(SceneObject* defender) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(defender);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->addDefender(defender);
+}
+
+void TangibleObject::removeDefender(SceneObject* defender) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(defender);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->removeDefender(defender);
+}
+
+void TangibleObject::removeDefenders() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->removeDefenders();
+}
+
+void TangibleObject::setCombatState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setCombatState();
+}
+
+void TangibleObject::clearCombatState(bool clearDefenders) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addBooleanParameter(clearDefenders);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->clearCombatState(clearDefenders);
+}
+
+bool TangibleObject::hasDefender(SceneObject* defender) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addObjectParameter(defender);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TangibleObjectImplementation*) _impl)->hasDefender(defender);
+}
+
+byte TangibleObject::getUnknownByte() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 
 		return method.executeWithByteReturn();
 	} else
@@ -52,7 +141,7 @@ int TangibleObject::getObjectCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -64,7 +153,7 @@ int TangibleObject::getMaxCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -76,7 +165,7 @@ int TangibleObject::getConditionDamage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -88,7 +177,7 @@ int TangibleObject::getVolume() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -100,7 +189,7 @@ float TangibleObject::getComplexity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -112,7 +201,7 @@ unsigned int TangibleObject::getOptionsBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -124,23 +213,11 @@ unsigned int TangibleObject::getPvpStatusBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((TangibleObjectImplementation*) _impl)->getPvpStatusBitmask();
-}
-
-unsigned int TangibleObject::getDefenderListUpdateCounter() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((TangibleObjectImplementation*) _impl)->getDefenderListUpdateCounter();
 }
 
 void TangibleObject::getCustomizationString(String& variables) {
@@ -148,7 +225,7 @@ void TangibleObject::getCustomizationString(String& variables) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 22);
 		method.addAsciiParameter(variables);
 
 		method.executeWithVoidReturn();
@@ -156,12 +233,20 @@ void TangibleObject::getCustomizationString(String& variables) {
 		((TangibleObjectImplementation*) _impl)->getCustomizationString(variables);
 }
 
+DeltaVector<ManagedReference<SceneObject* > >* TangibleObject::getDefenderList() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getDefenderList();
+}
+
 void TangibleObject::setCustomizationString(const String& vars) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 23);
 		method.addAsciiParameter(vars);
 
 		method.executeWithVoidReturn();
@@ -231,61 +316,83 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("pvpStatusBitmask", &pvpStatusBitmask);
 	addSerializableVariable("unknownByte", &unknownByte);
 	addSerializableVariable("defenderList", &defenderList);
-	addSerializableVariable("defenderListUpdateCounter", &defenderListUpdateCounter);
+}
+
+void TangibleObjectImplementation::setCombatState() {
+}
+
+void TangibleObjectImplementation::clearCombatState(bool clearDefenders) {
+	// server/zone/objects/tangible/TangibleObject.idl(88):  }
+	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(89):  removeDefenders();
+	removeDefenders();
+}
+
+bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
+	// server/zone/objects/tangible/TangibleObject.idl(93):  
+	for (	// server/zone/objects/tangible/TangibleObject.idl(93):  for (int i = 0;
+	int i = 0;
+	i < (&defenderList)->size();
+ ++i) {
+	// server/zone/objects/tangible/TangibleObject.idl(94):  }
+	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(95):  return true;
+	return true;
+}
+	// server/zone/objects/tangible/TangibleObject.idl(98):  return false;
+	return false;
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(80):  return unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl(102):  return unknownByte;
 	return unknownByte;
 }
 
 int TangibleObjectImplementation::getObjectCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(88):  return objectCount;
+	// server/zone/objects/tangible/TangibleObject.idl(110):  return objectCount;
 	return objectCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(92):  return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(114):  return maxCondition;
 	return maxCondition;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(96):  return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(118):  return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(100):  return volume;
+	// server/zone/objects/tangible/TangibleObject.idl(122):  return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(104):  return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(126):  return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(108):  return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(130):  return optionsBitmask;
 	return optionsBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(112):  return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(134):  return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
-unsigned int TangibleObjectImplementation::getDefenderListUpdateCounter() {
-	// server/zone/objects/tangible/TangibleObject.idl(116):  return defenderListUpdateCounter;
-	return defenderListUpdateCounter;
-}
-
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(120):  customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl(138):  customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
+DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
+	// server/zone/objects/tangible/TangibleObject.idl(142):  return defenderList;
+	return (&defenderList);
+}
+
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(124):  customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(146):  customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
@@ -304,36 +411,54 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertByte(getUnknownByte());
+		setDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(getObjectCount());
+		addDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertSignedInt(getMaxCondition());
+		removeDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		resp->insertSignedInt(getConditionDamage());
+		removeDefenders();
 		break;
 	case 11:
-		resp->insertSignedInt(getVolume());
+		setCombatState();
 		break;
 	case 12:
-		resp->insertFloat(getComplexity());
+		clearCombatState(inv->getBooleanParameter());
 		break;
 	case 13:
-		resp->insertInt(getOptionsBitmask());
+		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 14:
-		resp->insertInt(getPvpStatusBitmask());
+		resp->insertByte(getUnknownByte());
 		break;
 	case 15:
-		resp->insertInt(getDefenderListUpdateCounter());
+		resp->insertSignedInt(getObjectCount());
 		break;
 	case 16:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 17:
+		resp->insertSignedInt(getConditionDamage());
+		break;
+	case 18:
+		resp->insertSignedInt(getVolume());
+		break;
+	case 19:
+		resp->insertFloat(getComplexity());
+		break;
+	case 20:
+		resp->insertInt(getOptionsBitmask());
+		break;
+	case 21:
+		resp->insertInt(getPvpStatusBitmask());
+		break;
+	case 22:
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		break;
+	case 23:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	default:
@@ -345,6 +470,34 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void TangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	return ((TangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void TangibleObjectAdapter::setDefender(SceneObject* defender) {
+	return ((TangibleObjectImplementation*) impl)->setDefender(defender);
+}
+
+void TangibleObjectAdapter::addDefender(SceneObject* defender) {
+	return ((TangibleObjectImplementation*) impl)->addDefender(defender);
+}
+
+void TangibleObjectAdapter::removeDefender(SceneObject* defender) {
+	return ((TangibleObjectImplementation*) impl)->removeDefender(defender);
+}
+
+void TangibleObjectAdapter::removeDefenders() {
+	return ((TangibleObjectImplementation*) impl)->removeDefenders();
+}
+
+void TangibleObjectAdapter::setCombatState() {
+	return ((TangibleObjectImplementation*) impl)->setCombatState();
+}
+
+void TangibleObjectAdapter::clearCombatState(bool clearDefenders) {
+	return ((TangibleObjectImplementation*) impl)->clearCombatState(clearDefenders);
+}
+
+bool TangibleObjectAdapter::hasDefender(SceneObject* defender) {
+	return ((TangibleObjectImplementation*) impl)->hasDefender(defender);
 }
 
 byte TangibleObjectAdapter::getUnknownByte() {
@@ -377,10 +530,6 @@ unsigned int TangibleObjectAdapter::getOptionsBitmask() {
 
 unsigned int TangibleObjectAdapter::getPvpStatusBitmask() {
 	return ((TangibleObjectImplementation*) impl)->getPvpStatusBitmask();
-}
-
-unsigned int TangibleObjectAdapter::getDefenderListUpdateCounter() {
-	return ((TangibleObjectImplementation*) impl)->getDefenderListUpdateCounter();
 }
 
 void TangibleObjectAdapter::getCustomizationString(String& variables) {
