@@ -69,7 +69,8 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	private ZoneServer server;
 
-	private dereferenced Time galacticTime;
+	@dereferenced
+	private Time galacticTime;
 	
 	private transient HeightMap heightMap;
 

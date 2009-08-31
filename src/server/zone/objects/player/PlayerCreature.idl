@@ -65,7 +65,9 @@ class PlayerCreature extends CreatureObject {
 	protected unsigned long savedParentID;
 	
 	protected int onlineStatus;
-	protected dereferenced Time logoutTimeStamp;
+	
+	@dereferenced
+	protected Time logoutTimeStamp;
 	
 	protected unsigned int accountID;
 
@@ -85,13 +87,20 @@ class PlayerCreature extends CreatureObject {
 	// player objects
 
 	//Vector<CommandQueueAction> commandQueue;
-	protected dereferenced Time nextAction;
-	protected dereferenced Time nextTip;
+	@dereferenced
+	protected Time nextAction;
 	
-	protected dereferenced SortedVector<ChatRoom> chatRooms;
+	@dereferenced
+	protected Time nextTip;
+	
+	@dereferenced
+	protected SortedVector<ChatRoom> chatRooms;
 
 	protected byte incapacitationCounter;
-	protected dereferenced Time firstIncapacitationTime;
+	
+	@dereferenced
+	protected Time firstIncapacitationTime;
+	
 	protected int pvpRating;
 
 	protected int factionStatus;

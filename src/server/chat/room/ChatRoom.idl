@@ -53,21 +53,24 @@ import server.zone.objects.player.PlayerCreature;
 
 
 class ChatRoom extends ManagedObject {
-	ZoneServer server;
+	private ZoneServer server;
 
-	string name;
+	private string name;
 	string fullPath;
 
-	string owner;
-	string creator;
+	private string owner;
+	private string creator;
 
-	unicode title;
-	unsigned int roomID;
+	private unicode title;
+	private unsigned int roomID;
 
-	ChatRoom parent;
+	private ChatRoom parent;
 
-	dereferenced VectorMap<string, PlayerCreature> playerList;
-	dereferenced VectorMap<string, ChatRoom> subRooms;
+	@dereferenced 
+	private VectorMap<string, PlayerCreature> playerList;
+	
+	@dereferenced 
+	private VectorMap<string, ChatRoom> subRooms;
 
 	boolean isPublicRoom;
 	

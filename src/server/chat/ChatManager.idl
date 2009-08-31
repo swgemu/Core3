@@ -73,7 +73,8 @@ class ChatManager extends ManagedObject {
 
 	transient PlayerMap playerMap;
 
-	dereferenced VectorMap<string, ChatRoom> gameRooms;
+	@dereferenced 
+	private VectorMap<string, ChatRoom> gameRooms;
 
 	ChatRoom groupRoom;
 	ChatRoom guildRoom;

@@ -58,7 +58,8 @@ class TangibleObject extends SceneObject {
 	protected float complexity;
 	protected int volume;
 	
-	protected dereferenced CustomizationVariables customizationVariables;
+	@dereferenced
+	protected CustomizationVariables customizationVariables;
 	
 	protected int conditionDamage;
 	protected int maxCondition;
@@ -69,7 +70,8 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	
-	protected dereferenced DeltaVector<SceneObject> defenderList;
+	@dereferenced
+	protected DeltaVector<SceneObject> defenderList;
 	
 	public native TangibleObject(LuaObject templateData);
 	
