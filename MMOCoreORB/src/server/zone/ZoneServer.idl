@@ -73,7 +73,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	private native transient TaskManager taskManager;
 	
-	private dereferenced Vector<Zone> zones;
+	@dereferenced
+	private Vector<Zone> zones;
 	
 	private transient ObjectManager objectManager;
 	
@@ -108,7 +109,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public native ZoneServer(int processingThreads, int galaxyid = 2);
 	
-	public local native ServiceClient createConnection(Socket sock, dereferenced SocketAddress addr);
+	public local native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
 	
 	public native void init();
 
@@ -126,7 +127,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 
 	public local native void handleMessage(ServiceClient client, Packet message);
 
-	public local native boolean handleError(ServiceClient client, dereferenced Exception e);
+	public local native boolean handleError(ServiceClient client, @dereferenced Exception e);
 	
 	public native void addTotalSentPacket(int count);
 	public native void addTotalResentPacket(int count);

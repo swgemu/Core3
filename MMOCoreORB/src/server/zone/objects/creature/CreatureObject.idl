@@ -61,21 +61,24 @@ class CreatureObject extends TangibleObject {
 	protected int gender;
 	protected int species;
 	
-	protected dereferenced DeltaVector<int> baseHealth;
+	@dereferenced
+	protected DeltaVector<int> baseHealth;
 	
 	protected byte posture;
 	protected byte factionRank;
 	
 	protected unsigned long creatureLinkID;
 	protected float shockWounds;
-	
-	protected dereferenced DeltaVector<int> wounds;
+
+	@dereferenced
+	protected DeltaVector<int> wounds;
 	
 	protected unsigned long stateBitmask;
 	
 	//protected VectorMap<string, SkillBox> skillBoxes;
-	
-	protected dereferenced DeltaVector<int> encumbrances;
+
+	@dereferenced
+	protected DeltaVector<int> encumbrances;
 	
 	// skillmods
 	
@@ -105,9 +108,12 @@ class CreatureObject extends TangibleObject {
 	protected byte moodID;
 	protected int performanceCounter;
 	protected int instrumentID;
+
+	@dereferenced
+	protected DeltaVector<int> hamList;
 	
-	protected dereferenced DeltaVector<int> hamList;
-	protected dereferenced DeltaVector<int> maxHamList;
+	@dereferenced
+	protected DeltaVector<int> maxHamList;
 	
 	protected byte frozen;
 	

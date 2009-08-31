@@ -81,24 +81,36 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	protected SceneObject parent;
 	
-	protected dereferenced VectorMap<string, SceneObject> slottedObjects;
-	protected dereferenced VectorMap<unsigned long, SceneObject> containerObjects;
+	@dereferenced
+	protected VectorMap<string, SceneObject> slottedObjects;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, SceneObject> containerObjects;
 	
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;
 	
-	protected dereferenced Quaternion direction;
+	@dereferenced
+	protected Quaternion direction;
+	
 	protected transient unsigned int movementCounter;
 	
 	protected native float positionX;
 	protected native float positionZ;
 	protected native float positionY;
 	
-	protected dereferenced Vector<string> arrangementDescriptors;
-	protected dereferenced Vector<string> slotDescriptors;
+	@dereferenced
+	protected Vector<string> arrangementDescriptors;
 	
-	protected dereferenced StringId objectName;
-	protected dereferenced StringId detailedDescription;
+	@dereferenced
+	protected Vector<string> slotDescriptors;
+	
+	@dereferenced
+	protected StringId objectName;
+	
+	@dereferenced
+	protected StringId detailedDescription;
+	
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType;
@@ -402,7 +414,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return 0;
 	}
 	
-	public local native void getContainmentObjects(dereferenced VectorMap<string, SceneObject> objects);
+	public local native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
 	
 	public unsigned long getParentID() {
 		if (parent != null) {

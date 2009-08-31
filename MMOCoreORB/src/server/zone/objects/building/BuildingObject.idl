@@ -55,8 +55,12 @@ import server.zone.objects.scene.SceneObject;
 
 
 class BuildingObject extends TangibleObject implements QuadTree {
-	protected dereferenced Vector<CellObject> cells;
-	protected dereferenced SortedVector<SceneObject> notifiedObjects;
+	@dereferenced
+	protected Vector<CellObject> cells;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> notifiedObjects;
+	
 	protected boolean staticBuilding;
 
 	public native BuildingObject(LuaObject templateData);
