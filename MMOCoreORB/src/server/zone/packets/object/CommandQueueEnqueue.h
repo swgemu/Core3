@@ -98,33 +98,7 @@ public:
 			return;
 
 		ObjectController* objectController = server->getZoneServer()->getObjectController();
-
-		QueueCommand* sc = objectController->getQueueCommand(actionCRC);
-
-		if (sc != NULL) {
-			StringBuffer infoMsg;
-			infoMsg << "activating queue command 0x" << hex << actionCRC << " " << sc->getSlashCommandName();
-			player->info(infoMsg.toString());
-
-			bool completed = sc->doQueueCommand(player, targetID, arguments);
-
-			if (!completed)
-				sc->onFail(actionCount, player);
-			else {
-				sc->onComplete(actionCount, player);
-
-				if (sc->addToCombatQueue())
-					player->clearQueueAction(actionCount);
-			}
-
-			return;
-		} else {
-			StringBuffer msg;
-			msg << "unregistered queue command 0x" << hex << actionCRC << " arguments: " << arguments.toString();
-			player->error(msg.toString());
-		}
-
-		player->clearQueueAction(actionCount, 0, 2, 0);
+		objectController->enqueueCommand(player, actionCRC, actionCount, targetID, arguments);
 	}
 };
 

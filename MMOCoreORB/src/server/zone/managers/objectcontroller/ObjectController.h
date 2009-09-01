@@ -79,9 +79,13 @@ using namespace server::zone;
 
 #include "engine/core/ManagedObject.h"
 
+#include "engine/lua/Lua.h"
+
 #include "engine/log/Logger.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -93,6 +97,8 @@ public:
 	ObjectController(ZoneProcessServerImplementation* server);
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
+
+	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
 
 	void addQueueCommand(QueueCommand* command);
 
@@ -120,7 +126,7 @@ namespace zone {
 namespace managers {
 namespace objectcontroller {
 
-class ObjectControllerImplementation : public ManagedObjectImplementation, public Logger {
+class ObjectControllerImplementation : public ManagedObjectImplementation, public Lua {
 	ZoneProcessServerImplementation* server;
 
 	CommandConfigManager* configManager;
@@ -131,6 +137,8 @@ public:
 	ObjectControllerImplementation(ZoneProcessServerImplementation* server);
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
+
+	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
 
 	void addQueueCommand(QueueCommand* command);
 
@@ -175,6 +183,10 @@ public:
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient);
 
+	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
+
+protected:
+	UnicodeString _param4_enqueueCommand__CreatureObject_int_int_long_UnicodeString_;
 };
 
 class ObjectControllerHelper : public DistributedObjectClassHelper, public Singleton<ObjectControllerHelper> {

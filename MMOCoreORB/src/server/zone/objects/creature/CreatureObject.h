@@ -60,11 +60,13 @@ public:
 
 	void clearCombatState(bool clearDefenders);
 
+	void setPosture(int newPosture, bool notifyClient = true);
+
 	int getBankCredits();
 
 	int getCashCredits();
 
-	int getBaseHealth(int idx);
+	int getBaseHAM(int idx);
 
 	int getWounds(int idx);
 
@@ -136,15 +138,25 @@ public:
 
 	int getSpecies();
 
-	DeltaVector<int>* getBaseHealth();
+	DeltaVector<int>* getBaseHAM();
 
 	void setHeight(float heigh);
 
-	void setHAM(int type, int value, bool notifyClient = false);
+	void setHAM(int type, int value, bool notifyClient = true);
+
+	void setBaseHAM(int type, int value, bool notifyClient = true);
+
+	void setWounds(int type, int value, bool notifyClient = true);
+
+	void setMaxHAM(int type, int value, bool notifyClient = true);
+
+	void setEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
+
+	void setBankCredits(int credits, bool notifyClient = true);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -179,7 +191,7 @@ protected:
 
 	int species;
 
-	DeltaVector<int> baseHealth;
+	DeltaVector<int> baseHAM;
 
 	byte posture;
 
@@ -290,11 +302,13 @@ public:
 
 	void clearCombatState(bool clearDefenders);
 
+	virtual void setPosture(int newPosture, bool notifyClient = true);
+
 	int getBankCredits();
 
 	int getCashCredits();
 
-	int getBaseHealth(int idx);
+	int getBaseHAM(int idx);
 
 	int getWounds(int idx);
 
@@ -366,15 +380,25 @@ public:
 
 	int getSpecies();
 
-	DeltaVector<int>* getBaseHealth();
+	DeltaVector<int>* getBaseHAM();
 
 	void setHeight(float heigh);
 
-	void setHAM(int type, int value, bool notifyClient = false);
+	void setHAM(int type, int value, bool notifyClient = true);
+
+	void setBaseHAM(int type, int value, bool notifyClient = true);
+
+	void setWounds(int type, int value, bool notifyClient = true);
+
+	void setMaxHAM(int type, int value, bool notifyClient = true);
+
+	void setEncumbrance(int type, int value, bool notifyClient = true);
 
 	void setWeaponID(unsigned long long objectID, bool notifyClient = false);
 
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
+
+	void setBankCredits(int credits, bool notifyClient = true);
 
 	CreatureObject* _this;
 
@@ -427,11 +451,13 @@ public:
 
 	void clearCombatState(bool clearDefenders);
 
+	void setPosture(int newPosture, bool notifyClient);
+
 	int getBankCredits();
 
 	int getCashCredits();
 
-	int getBaseHealth(int idx);
+	int getBaseHAM(int idx);
 
 	int getWounds(int idx);
 
@@ -499,9 +525,19 @@ public:
 
 	void setHAM(int type, int value, bool notifyClient);
 
+	void setBaseHAM(int type, int value, bool notifyClient);
+
+	void setWounds(int type, int value, bool notifyClient);
+
+	void setMaxHAM(int type, int value, bool notifyClient);
+
+	void setEncumbrance(int type, int value, bool notifyClient);
+
 	void setWeaponID(unsigned long long objectID, bool notifyClient);
 
 	void setTargetID(unsigned long long targetID, bool notifyClient);
+
+	void setBankCredits(int credits, bool notifyClient);
 
 protected:
 	String _param0_sendSystemMessage__String_;

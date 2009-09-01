@@ -62,21 +62,21 @@ class CreatureObject extends TangibleObject {
 	protected int species;
 	
 	@dereferenced
-	protected DeltaVector<int> baseHealth;
+	protected DeltaVector<int> baseHAM;
 	
 	protected byte posture;
 	protected byte factionRank;
 	
 	protected unsigned long creatureLinkID;
 	protected float shockWounds;
-
+	
 	@dereferenced
 	protected DeltaVector<int> wounds;
 	
 	protected unsigned long stateBitmask;
 	
 	//protected VectorMap<string, SkillBox> skillBoxes;
-
+	
 	@dereferenced
 	protected DeltaVector<int> encumbrances;
 	
@@ -108,7 +108,7 @@ class CreatureObject extends TangibleObject {
 	protected byte moodID;
 	protected int performanceCounter;
 	protected int instrumentID;
-
+	
 	@dereferenced
 	protected DeltaVector<int> hamList;
 	
@@ -147,6 +147,8 @@ class CreatureObject extends TangibleObject {
 	public native void setCombatState();
 	public native void clearCombatState(boolean clearDefenders);
 	
+	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
+	
 	public int getBankCredits() {
 		return bankCredits;
 	}
@@ -155,8 +157,8 @@ class CreatureObject extends TangibleObject {
 		return cashCredits;
 	}
 	
-	public int getBaseHealth(int idx) {
-		return baseHealth.get(idx);
+	public int getBaseHAM(int idx) {
+		return baseHAM.get(idx);
 	}
 	
 	public int getWounds(int idx) {
@@ -299,17 +301,22 @@ class CreatureObject extends TangibleObject {
 		return species;
 	}
 	
-	public local DeltaVector<int> getBaseHealth() {
-		return baseHealth;
+	public local DeltaVector<int> getBaseHAM() {
+		return baseHAM;
 	}
 	
 	public void setHeight(float heigh) {
 		height = heigh;
 	}
 	
-	public native void setHAM(int type, int value, boolean notifyClient = false);
+	public native void setHAM(int type, int value, boolean notifyClient = true);
+	public native void setBaseHAM(int type, int value, boolean notifyClient = true);
+	public native void setWounds(int type, int value, boolean notifyClient = true);
+	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
+	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
 	
 	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
+	public native void setBankCredits(int credits, boolean notifyClient = true);
 	
 }
