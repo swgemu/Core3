@@ -65,7 +65,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		//player->changePosture(CreaturePosture::PRONE);
+		creature->setPosture(CreaturePosture::PRONE);
 		return true;
 	}
 

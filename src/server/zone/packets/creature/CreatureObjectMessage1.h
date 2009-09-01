@@ -57,7 +57,7 @@ public:
 		insertInt(creo->getCashCredits());
 
 		// Base HAM
-		DeltaVector<int>* baseHam  = creo->getBaseHealth();
+		DeltaVector<int>* baseHam  = creo->getBaseHAM();
 		insertDeltaVector(baseHam);
 
 		insertSkillBoxes(creo);

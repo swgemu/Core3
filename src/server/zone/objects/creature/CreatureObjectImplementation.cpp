@@ -51,14 +51,18 @@ which carries forward this exception.
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
 #include "server/zone/packets/creature/CreatureObjectMessage4.h"
 #include "server/zone/packets/creature/CreatureObjectMessage6.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage3.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
+#include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/ZoneServer.h"
 
 CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
-	TangibleObjectImplementation(templateData), baseHealth(9, 1), wounds(9, 1), encumbrances(3, 1), hamList(9, 1),
+	TangibleObjectImplementation(templateData), baseHAM(9, 1), wounds(9, 1), encumbrances(3, 1), hamList(9, 1),
 	maxHamList(9, 1) {
 
 	setLoggingName("CreatureObject");
@@ -102,7 +106,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 	}
 
 	for (int i = 0; i < 9; ++i) {
-		baseHealth.add(100);
+		baseHAM.add(100);
 	}
 
 	for (int i = 0; i < 9; ++i) {
@@ -300,5 +304,107 @@ void CreatureObjectImplementation::setHAM(int type, int value, bool notifyClient
 		broadcastMessage(msg, true);
 	} else {
 		hamList.set(type, value, NULL);
+	}
+}
+
+void CreatureObjectImplementation::setBaseHAM(int type, int value, bool notifyClient) {
+	if (baseHAM.get(type) == value)
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
+		msg->startUpdate(0x02);
+		baseHAM.set(type, value, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		baseHAM.set(type, value, NULL);
+	}
+}
+
+void CreatureObjectImplementation::setWounds(int type, int value, bool notifyClient) {
+	if (wounds.get(type) == value)
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage3* msg = new CreatureObjectDeltaMessage3(_this);
+		msg->startUpdate(0x11);
+		wounds.set(type, value, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		wounds.set(type, value, NULL);
+	}
+}
+
+void CreatureObjectImplementation::setMaxHAM(int type, int value, bool notifyClient) {
+	if (maxHamList.get(type) == value)
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this);
+		msg->startUpdate(0x0E);
+		maxHamList.set(type, value, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		maxHamList.set(type, value, NULL);
+	}
+}
+
+void CreatureObjectImplementation::setEncumbrance(int type, int value, bool notifyClient) {
+	if (encumbrances.get(type) == value)
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* msg = new CreatureObjectDeltaMessage4(this);
+		msg->startUpdate(0x02);
+		encumbrances.set(type, value, msg);
+		msg->close();
+
+		broadcastMessage(msg, true);
+	} else {
+		encumbrances.set(type, value, NULL);
+	}
+}
+
+void CreatureObjectImplementation::setBankCredits(int credits, bool notifyClient) {
+	if (bankCredits == credits)
+		return;
+
+	bankCredits = credits;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
+		delta->updateBankCredits();
+		delta->close();
+
+		broadcastMessage(delta, true);
+	}
+}
+
+void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient) {
+	if (posture == newPosture)
+		return;
+
+	posture = newPosture;
+
+	if (notifyClient) {
+		Vector<BasePacket*> messages;
+
+		PostureMessage* octrl = new PostureMessage(_this);
+		messages.add(octrl);
+
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
+		dcreo3->updatePosture();
+		dcreo3->updateState();
+		dcreo3->close();
+
+		messages.add(dcreo3);
+
+		broadcastMessages(&messages, true);
 	}
 }

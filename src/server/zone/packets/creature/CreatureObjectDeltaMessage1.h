@@ -57,7 +57,7 @@ public:
 		creo = cr;
 	}
 
-	void startSkillBoxListUpdate(int skillBoxesToUpdate) {
+	/*void startSkillBoxListUpdate(int skillBoxesToUpdate) {
 		startUpdate(0x03);
 		startList(skillBoxesToUpdate, creo->skillBoxesUpdateCounter += skillBoxesToUpdate);
 	}
@@ -70,96 +70,14 @@ public:
 	void removeSkillBox(const String& name) {
 		insertByte(0x00);
 		insertAscii(name.toCharArray());
-	}
+	}*/
 
 	void updateBankCredits() {
 		startUpdate(0x00);
 		insertInt(creo->getBankCredits());
 	}
 
-	void updateBaseStats()
-	{
-		startUpdate(0x02);
 
-		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(9);
-		startList(9, updatecount);
-
-		int32 healthCreo = creo->getBaseHealth();
-		addBar(0, healthCreo);
-		int32 strengthCreo = creo->getBaseStrength();
-		addBar(1, strengthCreo);
-		int32 constCreo = creo->getBaseConstitution();
-		addBar(2, constCreo);
-		int32 actionCreo = creo->getBaseAction();
-		addBar(3, actionCreo);
-		int32 quicknessCreo = creo->getBaseQuickness();
-		addBar(4, quicknessCreo);
-		int32 staminaCreo = creo->getBaseStamina();
-		addBar(5, staminaCreo);
-		int32 mindCreo = creo->getBaseMind();
-		addBar(6, mindCreo);
-		int32 focusCreo = creo->getBaseFocus();
-		addBar(7, focusCreo);
-		int32 willpowerCreo = creo->getBaseWillpower();
-		addBar(8, willpowerCreo);
-
-	}
-
-	void updateBaseAttributeBar(uint8 attribute, int32 value) {
-		startUpdate(0x02);
-
-		uint32 updatecount = creo->getNewHAMBaseUpdateCounter(1);
-		startList(1, updatecount);
-
-		int32 creoBaseAttribute = creo->getBaseAttribute(attribute);
-		addBar(attribute, creoBaseAttribute, value);
-
-		creo->setBaseAttribute(attribute, creoBaseAttribute);
-	}
-
-	void updateBaseHealthBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::HEALTH, value);
-	}
-
-	void updateBaseStrengthBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::STRENGTH, value);
-	}
-
-	void updateBaseConstitutionBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::CONSTITUTION, value);
-	}
-
-	void updateBaseActionBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::ACTION, value);
-	}
-
-	void updateBaseQuicknessBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::QUICKNESS, value);
-	}
-
-	void updateBaseStaminaBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::STAMINA, value);
-	}
-
-	void updateBaseMindBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::MIND, value);
-	}
-
-	void updateBaseFocusBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::FOCUS, value);
-	}
-
-	void updateBaseWillpowerBar(int32 value) {
-		updateBaseAttributeBar(CreatureAttribute::WILLPOWER, value);
-	}
-
-	void addBar(uint16 index, int32& value, int32 nvalue) {
-		removeListIntElement(index, value = nvalue);
-	}
-
-	void addBar(uint16 index, int32 value) {
-		removeListIntElement(index, value);
-	}
 
 	void updateCashCredits() {
 		startUpdate(0x01);

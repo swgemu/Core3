@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.managers.objectcontroller;
 
 import engine.core.ManagedObject;
+import engine.lua.Lua;
 import server.zone.managers.objectcontroller.command.CommandList;
 import server.zone.managers.objectcontroller.command.CommandConfigManager;
 import server.zone.objects.creature.commands.QueueCommand;
@@ -52,8 +53,9 @@ import server.zone.ZoneServer;
 import engine.log.Logger;
 import server.zone.ZoneProcessServerImplementation;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
 
-class ObjectController extends ManagedObject implements Logger {
+class ObjectController extends ManagedObject implements Lua {
 	private transient ZoneProcessServerImplementation server;
 	
 	private transient CommandConfigManager configManager;
@@ -62,6 +64,8 @@ class ObjectController extends ManagedObject implements Logger {
 	public native ObjectController(ZoneProcessServerImplementation server);
 	
 	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false);
+	
+	public native void enqueueCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, unicode arguments);
 	
 	public native local void addQueueCommand(QueueCommand command);
 	

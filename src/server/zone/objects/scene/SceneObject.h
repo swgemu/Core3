@@ -204,6 +204,8 @@ public:
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
+	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
+
 	void sendMessage(BasePacket* msg);
 
 	int compareTo(SceneObject* obj);
@@ -804,6 +806,8 @@ public:
 	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate);
 
 	void broadcastMessage(BasePacket* message, bool sendSelf);
+
+	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
 	virtual void sendMessage(BasePacket* msg);
 

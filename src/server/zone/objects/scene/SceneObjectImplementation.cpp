@@ -262,6 +262,46 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 			scno->sendMessage(message->clone());
 		}
 	}
+
+	message->finalize();
+}
+
+void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
+	if (zone == NULL) {
+		SceneObject* grandParent = getGrandParent();
+
+		if (grandParent != NULL) {
+			grandParent->broadcastMessages(messages, sendSelf);
+
+			return;
+		} else {
+			while (!messages->isEmpty()) {
+				messages->remove(0)->finalize();
+			}
+
+			return;
+		}
+	}
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if (scno->isPlayerCreature()) {
+			for (int j = 0; j < messages->size(); ++j) {
+				BasePacket* msg = messages->get(j);
+				scno->sendMessage(msg->clone());
+			}
+		}
+	}
+
+	while (!messages->isEmpty()) {
+		messages->remove(0)->finalize();
+	}
 }
 
 void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {

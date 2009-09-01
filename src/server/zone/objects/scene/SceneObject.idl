@@ -399,6 +399,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate); 
 	
 	public native void broadcastMessage(BasePacket message, boolean sendSelf);
+	public local native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
+
 	
 	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)

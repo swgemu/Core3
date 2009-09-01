@@ -65,7 +65,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-			//player->changePosture(CreaturePosture::CROUCHED);
+		creature->setPosture(CreaturePosture::CROUCHED);
 		return true;
 	}
 

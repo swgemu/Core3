@@ -43,7 +43,6 @@ which carries forward this exception.
 */
 
 #ifndef STANDSLASHCOMMAND_H_
-
 #define STANDSLASHCOMMAND_H_
 
 
@@ -65,7 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-			//player->changePosture(CreaturePosture::UPRIGHT);
+		creature->setPosture(CreaturePosture::UPRIGHT);
 		return true;
 	}
 

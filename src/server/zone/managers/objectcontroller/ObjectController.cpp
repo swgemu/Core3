@@ -48,6 +48,23 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
+void ObjectController::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(object);
+		method.addUnsignedIntParameter(actionCRC);
+		method.addUnsignedIntParameter(actionCount);
+		method.addUnsignedLongParameter(targetID);
+		method.addUnicodeParameter(arguments);
+
+		method.executeWithVoidReturn();
+	} else
+		((ObjectControllerImplementation*) _impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
+}
+
 void ObjectController::addQueueCommand(QueueCommand* command) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -139,6 +156,9 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 6:
 		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
+	case 7:
+		enqueueCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_enqueueCommand__CreatureObject_int_int_long_UnicodeString_));
+		break;
 	default:
 		return NULL;
 	}
@@ -148,6 +168,10 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
 	return ((ObjectControllerImplementation*) impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+}
+
+void ObjectControllerAdapter::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
+	return ((ObjectControllerImplementation*) impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*

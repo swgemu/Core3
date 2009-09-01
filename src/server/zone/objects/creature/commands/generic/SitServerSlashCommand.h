@@ -65,6 +65,8 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		creature->setPosture(CreaturePosture::SITTING);
+
 		/*
 		packet->shiftOffset(8); //Shift past the blank long.
 

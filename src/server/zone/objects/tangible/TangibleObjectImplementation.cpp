@@ -119,11 +119,9 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 	}
 }
 
-void TangibleObjectImplementation::addDefender(SceneObject* def) {
-	if (def == _this)
+void TangibleObjectImplementation::addDefender(SceneObject* defender) {
+	if (defender == _this)
 		return;
-
-	ManagedReference<SceneObject*> defender = def;
 
 	setCombatState();
 
@@ -132,7 +130,7 @@ void TangibleObjectImplementation::addDefender(SceneObject* def) {
 			return;
 	}
 
-	info("adding defender", true);
+	//info("adding defender");
 
 	TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6((TangibleObject*) _this);
 	dtano6->startUpdate(0x01);

@@ -70,13 +70,13 @@ public:
 		addIntUpdate(0x06, value);
 	}
 
-	/*void updateIncapacitationRecoveryTime(uint32 dur) {
-		addIntUpdate(0x07, dur);
-	}
-
 	void updatePosture() {
 		addByteUpdate(0x0B, creo->getPosture());
 	}
+
+	/*void updateIncapacitationRecoveryTime(uint32 dur) {
+		addIntUpdate(0x07, dur);
+
 
 	void updateFactionRank() {
 		addByteUpdate(0x0C, creo->getFactionRank());
@@ -110,101 +110,6 @@ public:
 		addLongUpdate(0x0D, creo->getCreatureLinkID());
 	}
 
-	void updateHAMWoundsBars(int32 healthWounds, int32 actionWounds, int32 mindWounds) {
-		startUpdate(0x11);
-
-		uint8 h = 0, a = 0, m = 0;
-
-		if (creo->getHealthWounds() != healthWounds)
-			h = 1;
-
-		if (creo->getActionWounds() != actionWounds)
-			a = 1;
-
-		if (creo->getMindWounds() != mindWounds)
-			m = 1;
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(h + a + m);
-		startList((h+a+m), updatecount);
-
-		if (h) {
-			int32 healthw = creo->getHealthWounds();
-			addBar(0, healthw, healthWounds);
-
-			creo->setHealthWounds(healthw);
-		}
-
-		if (a) {
-			int32 actionw = creo->getActionWounds();
-			addBar(3, actionw, actionWounds);
-
-			creo->setActionWounds(actionw);
-		}
-
-		if (m) {
-			int32 mindw = creo->getMindWounds();
-			addBar(6, mindw, mindWounds);
-
-			creo->setMindWounds(mindw);
-		}
-	}
-
-	void updateWoundsBar(uint8 attribute, int32 value) {
-		int32 creoWounds = creo->getWounds(attribute);
-
-		if (value == creoWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-		addBar(attribute, creoWounds, value);
-
-		creo->setWounds(attribute, creoWounds);
-	}
-
-	void updateHealthWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::HEALTH, value);
-	}
-
-	void updateStrengthWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::STRENGTH, value);
-	}
-
-	void updateConstitutionWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::CONSTITUTION, value);
-	}
-
-	void updateActionWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::ACTION, value);
-	}
-
-	void updateQuicknessWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::QUICKNESS, value);
-	}
-
-	void updateStaminaWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::STAMINA, value);
-	}
-
-	void updateMindWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::MIND, value);
-	}
-
-	void updateFocusWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::FOCUS, value);
-	}
-
-	void updateWillpowerWoundsBar(int32 value) {
-		updateWoundsBar(CreatureAttribute::WILLPOWER, value);
-	}
-
-	void addBar(uint16 index, int32& value, int32 nvalue) {
-		removeListIntElement(index, value = nvalue);
 	}*/
 };
 

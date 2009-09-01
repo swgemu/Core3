@@ -64,6 +64,10 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 	priority = message->parseInt();
 	type = message->parseInt();
 
+	/*StringBuffer priorityMsg;
+	priorityMsg << "received objc with priority 0x" << hex << priority;
+	client->getPlayer()->info(priorityMsg.toString(), true);*/
+
 	objectID = message->parseLong();
 
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
