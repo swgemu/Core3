@@ -111,6 +111,10 @@ public:
 		return player;
 	}
 
+	Zone* getZone() {
+		return zone;
+	}
+
 	uint32 getKey(){
 		return key;
 	}

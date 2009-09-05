@@ -57,7 +57,7 @@ which carries forward this exception.
 #include "packets/zone/GalaxyLoopTimes.h"
 #include "packets/zone/LagReport.h"
 
-#include "packets/charcreation/ClientCreateCharacter.h"
+#include "packets/charcreation/ClientCreateCharacterCallback.h"
 #include "packets/charcreation/ClientRandomNameRequest.h"
 
 #include "packets/object/ObjectControllerMessage.h"

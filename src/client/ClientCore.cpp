@@ -60,13 +60,19 @@ void ClientCore::run() {
 	login->runLoginClient();
 
 	uint32 selectedCharacter = login->getSelectedCharacter();
-	uint64 objid = login->getCharacterObjectID(selectedCharacter);
+	uint64 objid = 0;
+
+	if (selectedCharacter != -1) {
+		objid = login->getCharacterObjectID(selectedCharacter);
+
+		info("trying to login " + String::valueOf(objid), true);
+	}
+
 	uint32 acc = login->getAccountID();
 
 	login->disconnect();
 	login->finalize();
 
-	info("trying to login " + String::valueOf(objid), true);
 
 	Zone* zone = new Zone(objid, acc);
 	zone->start();

@@ -77,7 +77,7 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 
 	if (characters == 0) {
 		client->info("no characters found", true);
-
+		client->stopParsingPackets();
 		return;
 	}
 
@@ -88,6 +88,7 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 		uint32 crc = pack->parseInt();
 		uint64 oid = pack->parseLong();
 		uint32 galaxy = pack->parseInt();
+		uint32 serverStatus = pack->parseInt();
 
 		StringBuffer player;
 		player << "Character [" << i << "]: [" << name.toString() << "]";

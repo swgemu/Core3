@@ -53,20 +53,16 @@ class ZonePacketHandler : public Logger {
 	Zone* zone;
 
 public:
-	ZonePacketHandler();
-
 	ZonePacketHandler(const String& s, Zone * z);
 
 	~ZonePacketHandler() {
 	}
 
 	void handleMessage(Message* pack);
-
 	void handleSceneObjectCreateMessage(Message* pack);
-
 	void handleCharacterCreateSucessMessage(Message* pack);
-
 	void handleUpdateTransformMessage(Message* pack);
+	void handleCharacterCreateFailureMessage(Message* pack);
 };
 
 #endif /* ZONEPACKETHANDLER_H_ */

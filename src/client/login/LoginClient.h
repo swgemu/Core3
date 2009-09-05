@@ -62,6 +62,10 @@ public:
 		return characterObjectIds.get(id);
 	}
 
+	void stopParsingPackets() {
+		doRun = false;
+	}
+
 	/*void setZone(Zone* zone) {
 		LoginClient::zone = zone;
 	}

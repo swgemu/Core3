@@ -1,12 +1,11 @@
-//#include "Zone.h"
+#include "Zone.h"
 #include "ZonePacketHandler.h"
 
 /*#include "packets/scene/SceneObjectCreateMessage.h"
 #include "packets/scene/UpdateTransformMessage.h"*/
+#include "ZoneClient.h"
+#include "../../server/zone/packets/zone/SelectCharacter.h"
 
-ZonePacketHandler::ZonePacketHandler() : Logger("ZonePacketHandler") {
-	zone = NULL;
-}
 
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
@@ -27,11 +26,13 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		}
 		break;
 	case 03:
-		/*switch (opcode) {
-		case 0x1DB575CC: // char create success
-			handleCharacterCreateSucessMessage(pack);
+		switch (opcode) {
+
+		case 0xDF333C6E: // char create failure
+			handleCharacterCreateFailureMessage(pack);
 			break;
-		}*/
+
+		}
 		break;
 	case 05:
 		switch (opcode) {
@@ -71,10 +72,18 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleCharacterCreateSucessMessage(Message* pack) {
-	/*uint64 charid = pack->parseLong();
-	System::out << "Character succesfully created - ID = " << hex << charid << "\n";
+	ZoneClient* client = (ZoneClient*) pack->getClient();
 
-	zone->setCharacterID(charid);*/
+	uint64 charid = pack->parseLong();
+
+	StringBuffer msg;
+	msg << "Character succesfully created - ID = 0x" << hex << charid;
+	client->info(msg.toString(), true);
+
+	zone->setCharacterID(charid);
+
+	BaseMessage* selectChar = new SelectCharacter(charid);
+	client->sendMessage(selectChar);
 }
 
 void ZonePacketHandler::handleUpdateTransformMessage(Message* pack) {
@@ -86,4 +95,18 @@ void ZonePacketHandler::handleUpdateTransformMessage(Message* pack) {
 		return;
 
 	UpdateTransformMessage::parse(pack, scno);*/
+}
+
+void ZonePacketHandler::handleCharacterCreateFailureMessage(Message* pack) {
+	ZoneClient* client = (ZoneClient*) pack->getClient();
+	uint32 int1 = pack->parseInt();
+	String ui;
+	pack->parseAscii(ui);
+
+	uint32 int2 = pack->parseInt();
+
+	String error;
+	pack->parseAscii(error);
+
+	client->error(error);
 }
