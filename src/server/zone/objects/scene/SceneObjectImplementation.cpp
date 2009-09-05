@@ -516,7 +516,7 @@ bool SceneObjectImplementation::addObject(SceneObject* object, int containmentTy
 		for (int i = 0; i < arrangementSize; ++i) {
 			slottedObjects.put(object->getArrangementDescriptor(i), object);
 		}
-	} else if (containerType == 2) {
+	} else if (containerType == 2 || containerType == 3) {
 		if (containerObjects.size() >= containerVolumeLimit)
 			return false;
 

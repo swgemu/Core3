@@ -5,56 +5,83 @@
 /*#include "packets/zone/SelectCharacterMessage.h"
 #include "packets/zone/ClientCreateCharacter.h"
 #include "packets/zone/ClientIDMessage.h"*/
+#include "ZoneMessageProcessorThread.h"
+#include "ZoneClientThread.h"
 
-Zone::Zone(ScheduleManager* sched, LoginSession* login) : Thread(), Mutex("Zone") {
-	scheduler = sched;
+#include "engine/service/proto/packets/SessionIDRequestMessage.h"
+#include "../../server/zone/packets/zone/ClientIDMessage.h"
+#include "../../server/zone/packets/zone/SelectCharacter.h"
 
-	loginSession = login;
+Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
+	//loginSession = login;
 
+	characterID = characterObjectID;
+	accountID = account;
 	player = NULL;
 
-	client = new ZoneClient("127.0.0.1", 44463);
-	//client = new ZoneClient("80.99.84.166", 44463);
-	client->init(scheduler);
+	objectManager = new ObjectManager();
 
+	client = new ZoneClient("127.0.0.1", 44463);
+	client->setAccountID(accountID);
 	client->setZone(this);
+	client->initialize();
+
+	clientThread = new ZoneClientThread(client);
+	clientThread->start();
+
+	processor = new ZoneMessageProcessorThread("Zone", client);
+	processor->start();
 }
 
 void Zone::run() {
 	try {
-		characterID = 8; //loginSession->getCharacterID ( );
+		if (client->connect()) {
+			client->info("connected", true);
+		} else {
+			client->error("could not connect");
+			return;
+		}
+
+		BaseMessage* acc = new ClientIDMessage(accountID);
+		client->sendMessage(acc);
+
+		client->info("sent client id message", true);
+
+		BaseMessage* select = new SelectCharacter(characterID);
+		client->sendMessage(select);
+
 
 		if (client != NULL) {
-			if (characterID == 0) {
-				/*Message * idmsg = new ClientIDMessage ( loginSession->getAccountID ( ) );
-				client->sendMessage ( idmsg );*/
+			/*if (characterID == 0) {
+				*//*Message * idmsg = new ClientIDMessage ( loginSession->getAccountID ( ) );
+				client->sendMessage ( idmsg );*//*
 
 				String name;
 
 				System::out << "Creating Charater\nName: ";
-				cin >> name;
+				//std::cin >> name;
 
 				UnicodeString uname = name;
 
-				/*Message* msg = new ClientCreateCharacter (uname);
-				client->sendMessage(msg);*/
+				*//*Message* msg = new ClientCreateCharacter (uname);
+				client->sendMessage(msg);*//*
 
 				lock();
 
 				characterCreatedCondition.wait(this);
 
 				unlock();
-			}
+			}*/
 
 			/*Message* msg = new SelectCharacterMessage(characterID);
 			client->sendMessage(msg);*/
 		} else {
-			/*uint64 playerID = characterID;
+			uint64 playerID = characterID;
 
 			Player * player = createPlayer(playerID);
 			player->setPosition(0, 5, 0);
 
-			insertPlayer(player);*/
+			insertPlayer(player);
 		}
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";
@@ -105,6 +132,6 @@ SceneObject* Zone::getObject(uint64 objid) {
 	return obj;
 }
 
-void Zone::waitFor() {
+/*void Zone::waitFor() {
 	client->join();
-}
+}*/

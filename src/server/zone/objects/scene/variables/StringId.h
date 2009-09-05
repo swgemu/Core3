@@ -47,6 +47,12 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace variables {
+
 class StringId : public Serializable {
 	String file;
 	String stringID;
@@ -98,4 +104,12 @@ public:
 
 };
 
+
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::scene::variables;
 #endif /* STRINGID_H_ */

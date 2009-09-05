@@ -45,24 +45,65 @@ which carries forward this exception.
 #include "zone/Zone.h"
 
 #include "ClientCore.h"
+#include "login/LoginClient.h"
 
-ClientCore::ClientCore() : Logger("Core") {
+ClientCore::ClientCore() : Core("log/core3client.log"), Logger("CoreClient") {
 }
 
 void ClientCore::init() {
 	info("starting up client..");
-
-	scheduler = new ScheduleManager();
 }
 
 void ClientCore::run() {
-	scheduler->start();
+	LoginClient* login = new LoginClient("127.0.0.1", 44453);
+	login->initialize();
+	login->runLoginClient();
 
-	Zone* zone = new Zone(scheduler, NULL);
+	uint32 selectedCharacter = login->getSelectedCharacter();
+	uint64 objid = login->getCharacterObjectID(selectedCharacter);
+	uint32 acc = login->getAccountID();
 
-	zone->run();
+	login->disconnect();
+	login->finalize();
+
+	info("trying to login " + String::valueOf(objid), true);
+
+	Zone* zone = new Zone(objid, acc);
+	zone->start();
 
 	info("initialized", true);
+
+	handleCommands();
+}
+
+void ClientCore::handleCommands() {
+	while (true) {
+		try {
+			String command;
+
+			Thread::sleep(500);
+
+			System::out << "> ";
+
+			char line[256];
+			fgets(line, sizeof(line), stdin);
+
+			command = line;
+			command = command.replaceFirst("\n", "");
+
+			if (command == "exit") {
+				return;
+			} else {
+				Logger::console.error("unknown command");
+			}
+		} catch (SocketException& e) {
+			System::out << "[ServerCore] " << e.getMessage();
+		} catch (ArrayIndexOutOfBoundsException& e) {
+			System::out << "[ServerCore] " << e.getMessage() << "\n";
+		} catch (...) {
+			System::out << "[ServerCore] unreported Exception caught\n";
+		}
+	}
 }
 
 int main(int argc, char* argv[]) {
@@ -71,6 +112,8 @@ int main(int argc, char* argv[]) {
 		for (int i = 1; i < argc; ++i) {
 			arguments.add(argv[i]);
 		}
+
+		StackTrace::setBinaryName("core3client");
 
 		ClientCore core;
 

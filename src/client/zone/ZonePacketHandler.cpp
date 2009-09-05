@@ -4,7 +4,7 @@
 /*#include "packets/scene/SceneObjectCreateMessage.h"
 #include "packets/scene/UpdateTransformMessage.h"*/
 
-ZonePacketHandler::ZonePacketHandler() : Logger() {
+ZonePacketHandler::ZonePacketHandler() : Logger("ZonePacketHandler") {
 	zone = NULL;
 }
 
@@ -13,7 +13,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	info("parsing " + pack->toString(), true);
+	info("parsing " + pack->toStringData(), true);
 
 	sys::uint16 opcount = pack->parseShort();
 	sys::uint32 opcode = pack->parseInt();

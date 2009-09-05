@@ -49,7 +49,8 @@ which carries forward this exception.
 #include "ZoneProcessServerImplementation.h"
 
 #include "packets/zone/ClientIDMessage.h"
-#include "packets/zone/SelectCharacter.h"
+#include "packets/zone/ClientIDMessageCallback.h"
+#include "packets/zone/SelectCharacterCallback.h"
 #include "packets/zone/CmdSceneReady.h"
 #include "packets/zone/ClientInactivityMessage.h"
 #include "packets/zone/ConnectPlayerResponseMessage.h"

@@ -324,6 +324,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 	SceneObject* backpackObject = server->createObject(backpack.hashCode(), true);
 	inventory->addObject(backpackObject, -1);
 
+	SceneObject* mission = server->createObject(3741732474UL, true); // empty mission
+	datapad->addObject(mission, -1);
+
 	return true;
 }
 

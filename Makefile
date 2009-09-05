@@ -66,13 +66,15 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/tangible/wearables/ArmorObject.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
+				server/zone/objects/mission/MissionObject.idl \
 				server/zone/managers/radial/RadialManager.idl
 
 IDL_CLASSPATH = ../../MMOEngine/src 
 
 all:
 	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
-	cd build/unix && make -j4
+	cd build/unix && ../../configure && make -j4
+	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#done
 

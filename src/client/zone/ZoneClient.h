@@ -51,24 +51,25 @@ class Zone;
 
 class Player;
 
-class ZoneClient : public BaseClient, public Thread {
+class ZoneClient : public BaseClient {
 	Zone* zone;
 
 	Player* player;
 
 	uint32 key;
+	uint32 accountID;
+
+	//bool doRun;
+	//bool disconnecting;
+
+	BasePacketHandler* basePacketHandler;
 
 	MessageQueue messageQueue;
-
-	bool doRun;
-	bool disconnecting;
 
 public:
 	ZoneClient(const String& addr, int port);
 
 	~ZoneClient();
-
-	void run();
 
 	void sendMessage(Message* msg) {
 		BaseClient::sendPacket((BasePacket*) msg);
@@ -78,10 +79,24 @@ public:
 		BaseClient::sendPacket((BasePacket*) msg);
 	}
 
-	void disconnect(bool doLock = true);
+	void handleMessage(Packet* message);
+
+	bool hasMessages() {
+		return !messageQueue.isEmpty();
+	}
+
+	Message* getMessage() {
+		return messageQueue.pop();
+	}
+
+	//void disconnect(bool doLock = true);
 
 	void setZone(Zone* zone) {
 		ZoneClient::zone = zone;
+	}
+
+	void setAccountID(uint32 id) {
+		accountID = id;
 	}
 
 	void setPlayer(Player* p) {
@@ -99,6 +114,11 @@ public:
 	uint32 getKey(){
 		return key;
 	}
+
+	uint32 getAccountID() {
+		return accountID;
+	}
+
 };
 
 #endif /* ZONECLIENT_H_ */
