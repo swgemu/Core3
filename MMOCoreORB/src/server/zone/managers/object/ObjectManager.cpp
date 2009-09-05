@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "server/zone/objects/mission/MissionObject.h"
 #include "server/db/ServerDatabase.h"
 #include "ObjectMap.h"
 #include "server/zone/Zone.h"
@@ -115,6 +116,8 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
+
+	objectFactory.registerObject<MissionObject>(SceneObjectImplementation::MISSIONOBJECT);
 
 
 	objectFactory.registerObject<Terminal>(SceneObjectImplementation::TERMINAL);

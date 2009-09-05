@@ -49,22 +49,29 @@
 
 #include "ZoneClient.h"
 
-#include "objects/ObjectMap.h"
-
 #include "objects/player/Player.h"
+#include "objects/ObjectMap.h"
+#include "managers/object/ObjectManager.h"
 
 class LoginSession;
+class ZoneClientThread;
+class ZoneMessageProcessorThread;
 
 class Zone : public Thread, public Mutex, public Logger {
-	ScheduleManager* scheduler;
+	//ScheduleManager* scheduler;
+
+	//LoginSession* loginSession;
+	//uint64 characterObjectID;
+
 
 	ObjectMap objectMap;
 
-	LoginSession* loginSession;
-
 	uint64 characterID;
+	uint32 accountID;
 
 	ZoneClient* client;
+	ZoneClientThread* clientThread;
+	ZoneMessageProcessorThread* processor;
 
 	Player* player;
 
@@ -72,8 +79,10 @@ class Zone : public Thread, public Mutex, public Logger {
 
 	Vector<Player*> playerArray;
 
+	ObjectManager* objectManager;
+
 public:
-	Zone(ScheduleManager* sched, LoginSession* login);
+	Zone(uint64 characterObjectID, uint32 account);
 
 	void run();
 
@@ -83,11 +92,11 @@ public:
 	void insertPlayer();
 	void insertPlayer(Player* player);
 
-	void waitFor();
+	//void waitFor();
 
-	inline void addEvent(Event* event, uint64 time) {
+	/*inline void addEvent(Event* event, uint64 time) {
 		scheduler->addEvent(event, time);
-	}
+	}*/
 
 	bool isSelfPlayer(Player* pl) {
 		return player == pl;
@@ -110,6 +119,10 @@ public:
 
 	inline ZoneClient* getZoneClient() {
 		return client;
+	}
+
+	inline ObjectManager* getObjectManager() {
+		return objectManager->get();
 	}
 
 	Vector<Player*>* getNotInitiatedPlayers() {

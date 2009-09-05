@@ -48,8 +48,7 @@ which carries forward this exception.
 #include "system/lang.h"
 #include "engine/engine.h"
 
-class ClientCore : public Logger {
-	ScheduleManager* scheduler;
+class ClientCore : public Core, public Logger {
 
 public:
 	ClientCore();
@@ -57,6 +56,8 @@ public:
 	void init();
 
 	void run();
+
+	void handleCommands();
 };
 
 #endif /*CLIENTCORE_H_*/

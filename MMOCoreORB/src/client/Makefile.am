@@ -40,25 +40,31 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-write-Strings
+AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
 
 ENGINE3_PATH=../../../../../MMOEngine
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include
+	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql
 			
 LIBS =	$(SYSTEM_LIBS)  \
-	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
+	-L../../../build/unix/src/client \
+	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
 	-lmysqlclient -lz -lengine3 -llua
 
 bin_PROGRAMS = core3client
 
 core3client_SOURCES = \
 		ClientCore.cpp \
+		login/LoginClient.cpp \
+		login/LoginPacketHandler.cpp \
 		zone/Zone.cpp \
 		zone/ZoneClient.cpp \
 		zone/ZonePacketHandler.cpp \
+		zone/ZoneMessageProcessorThread.cpp \
+		zone/ZoneClientThread.cpp \
+		zone/managers/object/ObjectManager.cpp \
 		zone/objects/scene/SceneObject.cpp \
 		zone/objects/creature/CreatureObject.cpp \
 		zone/objects/player/Player.cpp  

@@ -42,132 +42,15 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../scene/SceneObject";
+package server.zone.objects.mission;
 
-import "../player/Player";
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
 
-import "../tangible/TangibleObject";
+include server.zone.objects.scene.variables.StringId;
 
-import "MissionObjective";
-
-interface MissionObject implements SceneObject {
-	MissionObject(unsigned long oid, Player owner = NULL) {
-		super(oid, int type);
-	}
+class MissionObject extends SceneObject {
+	public native MissionObject(LuaObject templateData);
 	
-	void init();
-	
-	void assetSetup();
-	void assetPart(boolean award);
-	
-	/////
-	//Network Sends:
-	/////
-	void sendTo(Player player, boolean doClose = true);
-	void sendDeltaTo(Player player);
-	void doLinkToPlayer(Player player);
-	void sendDestroyTo(Player player);
-	
-	/////
-
-	void setOwner(Player player);
-	Player getOwner();
-	
-	/////
-	//Internal Tracking Methods:
-	/////
-	
-	void setDBKey(const String tdbk);
-	String getDBKey();
-	
-	void applyTerminalMask(int tam);
-	int getTerminalMask();
-	
-	//Container: For giving to player to complete a delivery
-	void addDeliverItem(TangibleObject item);
-	TangibleObject getDeliverItem(unsigned long oid);
-	void removeDeliverItem(SceneObject item);
-
-	//Container: Items to award player on mission completion
-	void addAwardItem(TangibleObject item);
-	TangibleObject getAwardItem(unsigned long oid);
-	void removeAwardItem(SceneObject item);
-
-	/////
-	//Objectives
-	/////
-	
-	void setObjectiveDefaults(const String od);
-	String getObjectiveDefaults();
-	boolean isInstantComplete();
-	void setInstantComplete(boolean temp);
-	boolean isComplete();
-	boolean isFailure();
-
-	void addObjective(MissionObjective mo, boolean doLock = true);
-	void spawnObjectives(const String objectives, boolean doLock = true);
-	void serializeObjectives(String ret, boolean doLock = true);
-	int updateStatus(int type, unsigned int objCrc, const String str, String updateStr, int increment, boolean doLock = true);
-	void checkComplete(boolean doLock = false);
-
-
-
-	/////
-	//Generic Mission Information Variables:
-	//All are used in the MissionObject3 packet
-	/////
-	
-	void setTypeStr(const String tstr);
-	String getTypeStr();
-	
-	void setDescKey(int tdk);
-	unsigned int getDescKey();
-	
-	void setTitleKey(int ttk);
-	unsigned int getTitleKey();
-	
-	void setDifficultyLevel(unsigned int tdlv);
-	unsigned int getDifficultyLevel();
-	
-	void setDestX(float tdx);
-	float getDestX();
-	void setDestY(float tdy);
-	float getDestY();
-	void setDestPlanetCrc(unsigned int tpc);
-	unsigned int getDestPlanetCrc();
-	
-	void setCreatorName(const UnicodeString tcn);
-	UnicodeString getCreatorName();
-	
-	void setRewardCredits(unsigned int tr);
-	unsigned int getRewardCredits();
-	
-	void setTargetX(float ttx);
-	float getTargetX();
-	void setTargetY(float tty);
-	float getTargetY();
-	void setTargetPlanetCrc(unsigned int tpc);
-	unsigned int getTargetPlanetCrc();
-	void setTargetName(const String tds);
-	String getTargetName();
-	
-	void setDepictedObjCrc(unsigned int tsdc);
-	unsigned int getDepictedObjCrc();
-	
-	void setDescriptionStf(const String tds);
-	String getDescriptionStf();
-	void setDescription(const String tds);
-	String getDescription();
-	
-	void setTitleStf(const String tts);
-	String getTitleStf();
-	void setTitle(const String tts);
-	String getTitle();
-	
-	void setRefreshCount(unsigned int trc);
-	unsigned int getRefreshCount();
-	
-	void setTypeCrc(unsigned int ttc);
-	unsigned int getTypeCrc();
-	
+	public native void sendBaselinesTo(SceneObject player);
 }

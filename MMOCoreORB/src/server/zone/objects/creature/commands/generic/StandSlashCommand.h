@@ -65,6 +65,7 @@ public:
 			return false;
 
 		creature->setPosture(CreaturePosture::UPRIGHT);
+
 		return true;
 	}
 

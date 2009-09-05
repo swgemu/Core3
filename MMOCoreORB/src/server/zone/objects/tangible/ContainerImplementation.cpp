@@ -52,7 +52,7 @@ ContainerImplementation::ContainerImplementation(LuaObject* templateData) :
 
 void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
 	if (isASubChildOf(player)) {
-		info("sending container objects to parent player");
+		info("sending container objects to parent player", true);
 
 		SceneObjectImplementation::sendContainerObjectsTo(player);
 	}

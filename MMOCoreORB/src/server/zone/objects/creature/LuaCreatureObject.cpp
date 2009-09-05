@@ -33,8 +33,8 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 }
 
 int LuaCreatureObject::setHAM(lua_State* L) {
-	uint32 type = lua_tonumber(L, -2);
-	uint32 value = lua_tonumber(L, -1);
+	uint32 type = (uint32) lua_tonumber(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
 
 	realObject->setHAM(type, value);
 
@@ -42,7 +42,7 @@ int LuaCreatureObject::setHAM(lua_State* L) {
 }
 
 int LuaCreatureObject::setBankCredits(lua_State *L) {
-	uint32 credits = lua_tonumber(L, -1);
+	uint32 credits = (uint32) lua_tonumber(L, -1);
 
 	realObject->setBankCredits(credits);
 

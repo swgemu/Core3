@@ -46,7 +46,7 @@ ENGINE3_PATH=../../../../MMOEngine
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include
+	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
@@ -79,6 +79,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
+				server/zone/objects/mission/MissionObject.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
@@ -129,5 +130,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/TerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminalImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
+		server/zone/objects/mission/MissionObjectImplementation.cpp \
 		main.cpp
 		

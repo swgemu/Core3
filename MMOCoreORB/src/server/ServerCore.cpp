@@ -91,7 +91,7 @@ void ServerCore::init() {
 		String& orbaddr = configManager.getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr);
 
-		if (!orbaddr.isEmpty()) {
+		/*if (!orbaddr.isEmpty()) {
 			loginServer = NULL;
 			zoneServer = (ZoneServer*) DistributedObjectBroker::instance()->lookUp("ZoneServer");
 
@@ -123,7 +123,7 @@ void ServerCore::init() {
 
 
 
-		} else {
+		} else {*/
 			orb->setCustomObjectManager(ObjectManager::instance());
 
 			if (configManager.getMakeLogin()) {
@@ -142,7 +142,7 @@ void ServerCore::init() {
 			if (configManager.getMakePing()) {
 				pingServer = new PingServer();
 			}
-		}
+		//}
 
 	} catch (ServiceException& e) {
 		shutdown();
@@ -248,10 +248,11 @@ void ServerCore::handleCommands() {
 
 			System::out << "> ";
 
-			char line[4096];
-			gets(line);
+			char line[256];
+			fgets(line, sizeof(line), stdin);
 
 			command = line;
+			command = command.replaceFirst("\n", "");
 
 			if (command == "exit") {
 				return;
@@ -291,21 +292,6 @@ void ServerCore::handleCommands() {
 				zoneServer = NULL;
 
 				zoneServer->fixScheduler();
-
-				/*SceneObject* object = ObjectManager::instance()->createObject(0xA4ADAAE6);
-				String data;
-				object->serialize(data);
-				System::out << data << "\n";
-				object->deSerialize(data);
-				data = "";
-				object->serialize(data);
-				System::out << data;
-				object->finalize();*/
-				/*String name;
-				object->getFullObjectName(name);
-
-				System::out << "objectCRC : " << name << "\n";*/
-
 			} else if (command == "help") {
 				System::out << "available commands:\n";
 				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
