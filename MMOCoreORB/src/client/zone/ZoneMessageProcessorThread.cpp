@@ -8,6 +8,11 @@
 #include "ZoneMessageProcessorThread.h"
 #include "ZoneClient.h"
 
+ZoneMessageProcessorThread::ZoneMessageProcessorThread(const String& s, ZoneClient* zoneClient) : Logger(s), Thread() {
+	phandler = new ZonePacketHandler("ZonePacketHandler", zoneClient->getZone());
+	client = zoneClient;
+}
+
 void ZoneMessageProcessorThread::run() {
 	Message* msg;
 

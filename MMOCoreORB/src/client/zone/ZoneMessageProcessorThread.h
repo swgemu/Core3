@@ -18,10 +18,7 @@ class ZoneMessageProcessorThread : public Logger, public Thread {
 	ZoneClient* client;
 
 public:
-	ZoneMessageProcessorThread(const String& s, ZoneClient* zoneClient) : Logger(s), Thread() {
-		phandler = new ZonePacketHandler();
-		client = zoneClient;
-	}
+	ZoneMessageProcessorThread(const String& s, ZoneClient* zoneClient);
 
 	void run();
 };

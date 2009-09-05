@@ -8,6 +8,7 @@
 #include "PlayerManager.h"
 
 #include "server/zone/packets/charcreation/ClientCreateCharacter.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
 #include "server/zone/objects/player/Races.h"

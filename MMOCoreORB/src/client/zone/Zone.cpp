@@ -11,6 +11,8 @@
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 #include "../../server/zone/packets/zone/SelectCharacter.h"
+#include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
+
 
 Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	//loginSession = login;
@@ -47,42 +49,26 @@ void Zone::run() {
 
 		client->info("sent client id message", true);
 
-		BaseMessage* select = new SelectCharacter(characterID);
-		client->sendMessage(select);
+		if (characterID == 0) {
+			char name[256];
+			client->info("enter new Character Name to create", true);
+			gets(name);
 
-
-		if (client != NULL) {
-			/*if (characterID == 0) {
-				*//*Message * idmsg = new ClientIDMessage ( loginSession->getAccountID ( ) );
-				client->sendMessage ( idmsg );*//*
-
-				String name;
-
-				System::out << "Creating Charater\nName: ";
-				//std::cin >> name;
-
-				UnicodeString uname = name;
-
-				*//*Message* msg = new ClientCreateCharacter (uname);
-				client->sendMessage(msg);*//*
-
-				lock();
-
-				characterCreatedCondition.wait(this);
-
-				unlock();
-			}*/
-
-			/*Message* msg = new SelectCharacterMessage(characterID);
-			client->sendMessage(msg);*/
+			BaseMessage* msg = new ClientCreateCharacter(name);
+			client->sendMessage(msg);
 		} else {
+			BaseMessage* selectChar = new SelectCharacter(characterID);
+			client->sendMessage(selectChar);
+		}
+
+/*
 			uint64 playerID = characterID;
 
 			Player * player = createPlayer(playerID);
 			player->setPosition(0, 5, 0);
 
 			insertPlayer(player);
-		}
+		*/
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";
 		exit(0);

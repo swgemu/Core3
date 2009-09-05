@@ -47,86 +47,27 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../MessageCallback.h"
-
 class ClientCreateCharacter : public BaseMessage {
 public:
-	ClientCreateCharacter(const UnicodeString& name);
-};
+	ClientCreateCharacter(const UnicodeString& name) {
+		insertShort(12);
+		insertInt(0xB97F3074);
 
-class ClientCreateCharacterCallback : public MessageCallback {
-	String customization;
+		insertAscii(""); // customization
+		insertUnicode(name); // name
 
-	UnicodeString characterName;
-
-	String racefile;
-	String location;
-	String hairobj;
-	String haircust;
-	String profession;
-
-	int species;
-
-	float height;
-	UnicodeString bio;
-	uint8 tutflag;
-
-public:
-	ClientCreateCharacterCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
-		MessageCallback(client, server) {
-
-	}
-
-	void parse(Message* message);
-
-	void run();
-
-	inline void getRaceFile(String& file) {
-		file = racefile;
-	}
-
-	inline void getCustomizationString(String& customizationString) {
-		customizationString = customization;
-	}
-
-	inline void getLocation(String& location) {
-		location = ClientCreateCharacterCallback::location;
-	}
-
-	inline void getHairObject(String& hair) {
-		hair = hairobj;
-	}
-
-	inline void getHairCustomization(String& hairCustomization) {
-		hairCustomization = haircust;
-	}
-
-	inline void getProfession(String& profession) {
-		profession = this->profession;
-	}
-
-	inline float getHeight() {
-		return height;
-	}
-
-	inline void getBiography(UnicodeString& biography) {
-		biography = bio;
-	}
-
-	inline bool getTutorialFlag() {
-		if (tutflag)
-			return true;
-		else
-			return false;
-	}
-
-	inline void getCharacterName(UnicodeString& name) {
-		name = characterName;
-	}
-
-	inline int getSpecies() {
-		return species;
+		insertAscii("object/creature/player/human_male.iff"); // racefile
+		insertAscii(""); // location
+		insertAscii(""); // hairobj
+		insertAscii(""); // haircust
+		insertAscii(""); // profession
+		insertByte(0); // unknown byte
+		insertFloat(1); // height
+		insertInt(0); // bio
+		insertByte(0); // char
 	}
 };
+
+
 
 #endif /*CLIENTCREATECHARACTER_H_*/
