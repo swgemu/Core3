@@ -4,6 +4,8 @@
 #include "engine/engine.h"
 #include "variables/StringId.h"
 
+class ZoneClient;
+
 class SceneObject : public Coordinate, public Mutex, public Logger {
 protected:
 	uint64 objectID;
@@ -24,6 +26,8 @@ protected:
 	int containerVolumeLimit;
 	int gameObjectType;
 	int containmentType;
+
+	ZoneClient* client;
 
 public:
 	SceneObject(LuaObject* templateData);
@@ -222,6 +226,10 @@ public:
 	virtual void parseBaseline6(Message* message) {
 	}
 
+	StringId& getObjectName() {
+		return objectName;
+	}
+
 	inline uint64 getObjectID() {
 		return objectID;
 	}
@@ -232,6 +240,10 @@ public:
 
 	inline void setObjectID(uint64 oid) {
 		objectID = oid;
+	}
+
+	inline void setClient(ZoneClient* cl) {
+		client = cl;
 	}
 };
 

@@ -97,7 +97,8 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		if (player != NULL) {
 			unlock(true);
 
-			((PlayerCreature*)player.get())->disconnect(false, true);
+			if (player->getClient() == _this)
+				((PlayerCreature*)player.get())->disconnect(false, true);
 
 			lock(true);
 		}
@@ -106,13 +107,14 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	} else if (player != NULL) {
 		unlock(true);
 
-		if (((PlayerCreature*)player.get())->isLoggingOut())
+		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this)
 			((PlayerCreature*)player.get())->logout(true);
 		else {
 			try {
 				//player->wlock();
 
-				((PlayerCreature*)player.get())->setLinkDead();
+				if (player->getClient() == _this)
+					((PlayerCreature*)player.get())->setLinkDead();
 
 				//player->unlock();
 			} catch (...) {
@@ -150,7 +152,8 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 				if (play->getZone() != NULL)
 					srv = play->getZone()->getZoneServer();
 
-				play->setClient(NULL);
+				if (player->getClient() == _this)
+					play->setClient(NULL);
 
 				play->unlock(lockPlayer);
 			} catch (...) {

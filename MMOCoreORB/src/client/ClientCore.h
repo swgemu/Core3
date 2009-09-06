@@ -48,8 +48,10 @@ which carries forward this exception.
 #include "system/lang.h"
 #include "engine/engine.h"
 
-class ClientCore : public Core, public Logger {
+class Zone;
 
+class ClientCore : public Core, public Logger {
+	Zone* zone;
 public:
 	ClientCore();
 

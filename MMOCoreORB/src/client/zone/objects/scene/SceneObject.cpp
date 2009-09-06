@@ -45,6 +45,8 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 	String fullPath;
 	objectName.getFullPath(fullPath);
 
+	client = NULL;
+
 	info("created " + fullPath, true);
 }
 

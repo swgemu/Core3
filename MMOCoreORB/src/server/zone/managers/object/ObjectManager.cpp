@@ -62,6 +62,8 @@ which carries forward this exception.
 #include "server/db/ServerDatabase.h"
 #include "ObjectMap.h"
 #include "server/zone/Zone.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
@@ -228,6 +230,17 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		error("unreported exception caught in SceneObject* ObjectManager::loadFromDatabase(uint64 objectID)");
 	}
 
+	deSerializeObject(object, objectData);
+
+	object->info("loaded from db", true);
+
+	if (object->isPlayerCreature());
+		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
+
+	return object;
+}
+
+void ObjectManager::deSerializeObject(SceneObject* object, const String& objectData) {
 	try {
 		object->wlock();
 
@@ -249,10 +262,6 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		object->unlock();
 		error("could not deserialize object from DB");
 	}
-
-	object->info("loaded from db", true);
-
-	return object;
 }
 
 SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {

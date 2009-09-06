@@ -7,6 +7,8 @@
 
 #include "ObjectManager.h"
 #include "zone/objects/scene/SceneObject.h"
+#include "zone/objects/scene/variables/StringId.h"
+
 #include "zone/objects/player/PlayerCreature.h"
 #include "zone/objects/creature/CreatureObject.h"
 #include "zone/objects/ObjectMap.h"
@@ -119,6 +121,24 @@ SceneObject* ObjectManager::getObject(uint64 objectID) {
 	Locker _locker(this);
 
 	return objectMap->get(objectID);
+}
+
+SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
+	Locker _locker(this);
+
+	HashTableIterator<uint64, SceneObject*> iterator(objectMap);
+
+	while (iterator.hasNext()) {
+		SceneObject* object = iterator.next();
+
+		StringId name = object->getObjectName();
+		UnicodeString cust = name.getCustomString();
+
+		if (cust.toString() == customName.toString())
+			return object;
+	}
+
+	return NULL;
 }
 
 

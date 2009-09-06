@@ -74,6 +74,7 @@ namespace zone {
 
 		void registerObjectTypes();
 		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
+		void deSerializeObject(SceneObject* object, const String& data);
 
 	public:
 		ObjectManager();

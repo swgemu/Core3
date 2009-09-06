@@ -9,12 +9,23 @@ class PlayerCreature : public CreatureObject {
 protected:
 	Zone* zone;
 
+	SceneObject* follow;
+
 public:
 	PlayerCreature(LuaObject* templateData);
 
 	void insertToZone(Zone* zone);
+	void updatePosition(float x, float z, float y);
 
 	void activatePositionUpdate();
+
+	void setFollow(SceneObject* object) {
+		follow = object;
+	}
+
+	SceneObject* getFollowObject() {
+		return follow;
+	}
 
 };
 

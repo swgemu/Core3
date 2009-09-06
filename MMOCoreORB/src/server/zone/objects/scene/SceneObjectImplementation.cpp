@@ -415,17 +415,17 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	Locker zoneLocker(newZone);
 
-	if (zone != NULL && zone == newZone) {
-		for (int i = 0; i < inRangeObjectCount(); ++i) {
-			notifyInsert(getInRangeObject(i));
-		}
-	}
-
 	SceneObjectImplementation::zone = newZone;
 
 	initializePosition(positionX, positionZ, positionY);
 
 	sendToOwner(true);
+
+	if (isInQuadTree()) {
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			notifyInsert(getInRangeObject(i));
+		}
+	}
 
 	if (parent == NULL || !parent->isCellObject()) {
 		zone->insert(this);

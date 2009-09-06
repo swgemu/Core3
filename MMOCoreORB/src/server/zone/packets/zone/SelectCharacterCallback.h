@@ -47,7 +47,7 @@ public:
 				if (zone != NULL) {
 					//reload
 
-					player->reload();
+					player->reload(client);
 
 				} else {
 					int zoneID = player->getSavedZoneID();

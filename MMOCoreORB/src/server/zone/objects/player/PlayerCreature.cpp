@@ -76,16 +76,17 @@ void PlayerCreature::unload() {
 		((PlayerCreatureImplementation*) _impl)->unload();
 }
 
-void PlayerCreature::reload() {
+void PlayerCreature::reload(ZoneClientSession* client) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(client);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerCreatureImplementation*) _impl)->reload();
+		((PlayerCreatureImplementation*) _impl)->reload(client);
 }
 
 void PlayerCreature::logout(bool doLock) {
@@ -647,40 +648,33 @@ void PlayerCreatureImplementation::setOffline() {
 	onlineStatus = OFFLINE;
 }
 
-void PlayerCreatureImplementation::setOnline() {
-	// server/zone/objects/player/PlayerCreature.idl(220):  onlineStatus = ONLINE;
-	onlineStatus = ONLINE;
-	// server/zone/objects/player/PlayerCreature.idl(222):  doRecovery();
-	doRecovery();
-}
-
 void PlayerCreatureImplementation::setLoggingOut() {
-	// server/zone/objects/player/PlayerCreature.idl(226):  onlineStatus = LOGGINGOUT;
+	// server/zone/objects/player/PlayerCreature.idl(222):  onlineStatus = LOGGINGOUT;
 	onlineStatus = LOGGINGOUT;
 }
 
 void PlayerCreatureImplementation::setAccountID(unsigned int id) {
-	// server/zone/objects/player/PlayerCreature.idl(230):  accountID = id;
+	// server/zone/objects/player/PlayerCreature.idl(226):  accountID = id;
 	accountID = id;
 }
 
 void PlayerCreatureImplementation::clearDisconnectEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(234):  disconnectEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(230):  disconnectEvent = null;
 	disconnectEvent = NULL;
 }
 
 void PlayerCreatureImplementation::clearRecoveryEvent() {
-	// server/zone/objects/player/PlayerCreature.idl(238):  recoveryEvent = null;
+	// server/zone/objects/player/PlayerCreature.idl(234):  recoveryEvent = null;
 	recoveryEvent = NULL;
 }
 
 void PlayerCreatureImplementation::addChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(242):  chatRooms.put(room);
+	// server/zone/objects/player/PlayerCreature.idl(238):  chatRooms.put(room);
 	(&chatRooms)->put(room);
 }
 
 void PlayerCreatureImplementation::removeChatRoom(ChatRoom* room) {
-	// server/zone/objects/player/PlayerCreature.idl(246):  chatRooms.drop(room);
+	// server/zone/objects/player/PlayerCreature.idl(242):  chatRooms.drop(room);
 	(&chatRooms)->drop(room);
 }
 
@@ -702,7 +696,7 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		unload();
 		break;
 	case 8:
-		reload();
+		reload((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case 9:
 		logout(inv->getBooleanParameter());
@@ -812,8 +806,8 @@ void PlayerCreatureAdapter::unload() {
 	return ((PlayerCreatureImplementation*) impl)->unload();
 }
 
-void PlayerCreatureAdapter::reload() {
-	return ((PlayerCreatureImplementation*) impl)->reload();
+void PlayerCreatureAdapter::reload(ZoneClientSession* client) {
+	return ((PlayerCreatureImplementation*) impl)->reload(client);
 }
 
 void PlayerCreatureAdapter::logout(bool doLock) {
