@@ -1,4 +1,6 @@
 #include "SceneObject.h"
+#include "../../managers/object/ObjectManager.h"
+#include "../../Zone.h"
 
 SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 	parent = NULL;
@@ -48,6 +50,32 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 	client = NULL;
 
 	info("created " + fullPath, true);
+}
+
+SceneObject::~SceneObject() {
+	/*if (parent != NULL) {
+		error("DELETING OBJECT WITH PARENT NOT NULL");
+	}*/
+	info("destroying object", true);
+
+	while (slottedObjects.size() > 0) {
+		SceneObject* object = slottedObjects.get(0);
+		object->setParent(NULL);
+
+		removeObject(object);
+
+		zone->getObjectManager()->destroyObject(object->getObjectID());
+	}
+
+
+	while (containerObjects.size() > 0) {
+		SceneObject* object = containerObjects.get(0);
+		object->setParent(NULL);
+
+		containerObjects.drop(object->getObjectID());
+
+		zone->getObjectManager()->destroyObject(object->getObjectID());
+	}
 }
 
 bool SceneObject::addObject(SceneObject* object, int containmentType) {

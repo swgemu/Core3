@@ -72,4 +72,6 @@ core3client_SOURCES = \
 		zone/objects/scene/variables/StringId.cpp \
 		zone/objects/creature/CreatureObject.cpp \
 		zone/objects/tangible/TangibleObject.cpp \
+		zone/objects/intangible/IntangibleObject.cpp \
+		zone/objects/player/PlayerObject.cpp \
 		zone/objects/player/PlayerCreature.cpp  

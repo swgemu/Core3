@@ -46,15 +46,15 @@ which carries forward this exception.
 #define ZONECLIENT_H_
 
 #include "engine/engine.h"
+#include "objects/player/PlayerCreature.h"
+
 
 class Zone;
-
-class PlayerCreature;
 
 class ZoneClient : public BaseClient {
 	Zone* zone;
 
-	PlayerCreature* player;
+	ReferenceSlot<PlayerCreature*> player;
 
 	uint32 key;
 	uint32 accountID;

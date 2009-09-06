@@ -12,6 +12,7 @@
 
 class SceneObject;
 class ObjectMap;
+class Zone;
 
 class ObjectManager : public Mutex, public Logger {
 	Lua* luaInstance;
@@ -20,6 +21,8 @@ class ObjectManager : public Mutex, public Logger {
 
 	ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
 
+	Zone* zone;
+
 	void registerObjectTypes();
 
 public:
@@ -27,10 +30,15 @@ public:
 	virtual ~ObjectManager();
 
 	SceneObject* createObject(uint32 objectCRC, uint64 objectID);
+	void destroyObject(uint64 objectID);
 
 	SceneObject* getObject(uint64 objectID);
 
 	SceneObject* getObject(const UnicodeString& customName);
+
+	inline void setZone(Zone* zn) {
+		zone = zn;
+	}
 
 	// LUA templates
 	void registerFunctions();

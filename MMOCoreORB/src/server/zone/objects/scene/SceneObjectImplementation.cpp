@@ -235,6 +235,34 @@ void SceneObjectImplementation::destroy(ZoneClientSession* client) {
 	client->sendMessage(msg);
 }
 
+void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSelf) {
+	if (zone == NULL) {
+		SceneObject* grandParent = getGrandParent();
+
+		if (grandParent != NULL) {
+			grandParent->broadcastObject(object, sendSelf);
+
+			return;
+		} else {
+			return;
+		}
+	}
+
+	Locker zoneLocker(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		SceneObjectImplementation* scno = (SceneObjectImplementation*) getInRangeObject(i);
+
+		if (!sendSelf && scno == this)
+			continue;
+
+		if (scno->isPlayerCreature()) {
+			object->sendTo((SceneObject*) scno->_getStub());
+		}
+	}
+
+}
+
 void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
 	if (zone == NULL) {
 		SceneObject* grandParent = getGrandParent();
@@ -434,6 +462,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 		BuildingObject* building = (BuildingObject*) parent->getParent();
 		insertToBuilding(building);
 	}
+
+	movementCounter = 0;
 }
 
 void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {

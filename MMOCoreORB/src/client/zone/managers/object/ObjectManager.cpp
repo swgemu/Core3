@@ -10,14 +10,20 @@
 #include "zone/objects/scene/variables/StringId.h"
 
 #include "zone/objects/player/PlayerCreature.h"
+#include "zone/objects/player/PlayerObject.h"
 #include "zone/objects/creature/CreatureObject.h"
 #include "zone/objects/ObjectMap.h"
+
+#include "zone/Zone.h"
+
 
 ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager") {
 	luaInstance = new Lua();
 	luaInstance->init();
 
 	objectMap = new ObjectMap();
+
+	zone = NULL;
 
 	info("loading object templates...", true);
 	registerFunctions();
@@ -43,6 +49,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
 
 	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
+	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
 
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
@@ -108,6 +115,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 			return object;
 
 		object->setObjectID(objectID);
+		object->setZone(zone);
 
 		StringBuffer logName;
 		logName << object->getLoggingName() << " 0x" << hex << objectID;
@@ -136,7 +144,7 @@ SceneObject* ObjectManager::getObject(uint64 objectID) {
 SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
 	Locker _locker(this);
 
-	HashTableIterator<uint64, SceneObject*> iterator(objectMap);
+	HashTableIterator<uint64, SceneObject* > iterator(objectMap);
 
 	while (iterator.hasNext()) {
 		SceneObject* object = iterator.next();
@@ -149,6 +157,15 @@ SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
 	}
 
 	return NULL;
+}
+
+void ObjectManager::destroyObject(uint64 objectID) {
+	SceneObject* object = objectMap->remove(objectID);
+
+	if (object != NULL) {
+		object->info("finalizing object", true);
+		object->finalize();
+	}
 }
 
 

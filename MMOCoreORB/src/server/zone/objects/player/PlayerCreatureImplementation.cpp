@@ -221,6 +221,8 @@ void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 
 	setOnline();
 
+	movementCounter = 0;
+
 	insertToZone(zone);
 }
 

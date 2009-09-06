@@ -47,7 +47,6 @@ which carries forward this exception.
 
 #include "ZonePacketHandler.h"
 
-#include "objects/player/PlayerCreature.h"
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
