@@ -35,7 +35,10 @@ void ObjectController::handleSpatialChat(SceneObject* object, Message* pack) {
 	UnicodeString message;
 	pack->parseUnicode(message);
 
-	object->info("says " + message.toString(), true);
+	SceneObject* senderObject = zone->getObject(sender);
+
+	if (senderObject != NULL)
+		senderObject->info("says " + message.toString(), true);
 }
 
 bool ObjectController::doCommand(uint32 crc, const UnicodeString& arguments) {
