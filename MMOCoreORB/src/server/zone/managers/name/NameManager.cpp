@@ -73,7 +73,7 @@ NameManager::~NameManager() {
 }
 
 void NameManager::fillNames() {
-	File* restrictedFile = new File("restrictednames.lst");
+	File* restrictedFile = new File("conf/restrictednames.lst");
 
 	try {
 		FileReader restrictedReader(restrictedFile);

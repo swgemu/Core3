@@ -61,6 +61,12 @@ which carries forward this exception.
 
 #include "zone/objects/creature/CreatureObject.h"
 
+class TestManager : public ThreadLocal<ZoneServer> {
+public:
+	ZoneServer* initValue() {
+		return new ZoneServer(0, 0);
+	}
+};
 
 ZoneServer* ServerCore::zoneServer = NULL;
 

@@ -140,7 +140,7 @@ public:
 	}
 
 	bool loadConfigFile() {
-		return runFile("config.lua");
+		return runFile("conf/config.lua");
 	}
 
 	bool loadConfigData();
