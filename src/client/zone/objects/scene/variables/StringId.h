@@ -42,29 +42,68 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONEPACKETHANDLER_H_
-#define ZONEPACKETHANDLER_H_
+#ifndef STRINGID_H_
+#define STRINGID_H_
 
 #include "engine/engine.h"
 
-class Zone;
+class StringId : public Serializable {
+	String file;
+	String stringID;
 
-class ZonePacketHandler : public Logger {
-	Zone* zone;
+	UnicodeString customName;
+
+private:
+	inline void addSerializableVariables();
 
 public:
-	ZonePacketHandler(const String& s, Zone * z);
+	StringId();
+	StringId(const StringId& id);
+	StringId(const String& fullPath);
+	StringId(const String& fil, const String& stringId);
+	StringId(const UnicodeString& custom);
 
-	~ZonePacketHandler() {
+	void getFullPath(String& str) {
+		str = "@" + file + ":" + stringID;
 	}
 
-	void handleMessage(Message* pack);
-	void handleSceneObjectCreateMessage(Message* pack);
-	void handleCharacterCreateSucessMessage(Message* pack);
-	void handleUpdateTransformMessage(Message* pack);
-	void handleCharacterCreateFailureMessage(Message* pack);
-	void handleCmdStartScene(Message* pack);
-	void handleBaselineMessage(Message* pack);
+	String& getFile() {
+		return file;
+	}
+
+	String& getStringID() {
+		return stringID;
+	}
+
+	UnicodeString& getCustomString() {
+		return customName;
+	}
+
+	void setCustomString(const UnicodeString& custom) {
+		customName = custom;
+	}
+
+	void setStringId(const String& fullPath) {
+		if (fullPath.isEmpty())
+			return;
+
+		if (fullPath.charAt(0) == '@') {
+			StringTokenizer tokenizer(fullPath.subString(1));
+			tokenizer.setDelimeter(":");
+
+			tokenizer.getStringToken(file);
+			tokenizer.getStringToken(stringID);
+		}
+	}
+
+	void parse(Message* message) {
+		message->parseAscii(file);
+		message->parseInt();
+		message->parseAscii(stringID);
+		message->parseUnicode(customName);
+	}
+
 };
 
-#endif /* ZONEPACKETHANDLER_H_ */
+
+#endif /* STRINGID_H_ */

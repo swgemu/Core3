@@ -1,4 +1,11 @@
 #include "CreatureObject.h"
 
-CreatureObject::CreatureObject(uint64 oid) : SceneObject(oid) {
+CreatureObject::CreatureObject(LuaObject* templateData) : TangibleObject(templateData) {
 }
+
+void CreatureObject::parseBaseline3(Message* message) {
+	TangibleObject::parseBaseline3(message);
+
+
+}
+

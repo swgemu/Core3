@@ -10,23 +10,28 @@
 
 #include "engine/engine.h"
 
+class LoginSession;
+
 class LoginClient : public BaseClient {
 	MessageQueue messageQueue;
 
-	bool doRun;
-	bool disconnecting;
-
-	Vector<uint64> characterObjectIds;
-	uint32 selectedCharacter;
-
-	uint32 accountID;
+	BasePacketHandler* basePacketHandler;
+	LoginSession* loginSession;
 
 public:
 	LoginClient(const String& addr, int port);
 
 	~LoginClient();
 
-	void runLoginClient();
+	void setLoginSession(LoginSession* session) {
+		loginSession = session;
+	}
+
+	void handleMessage(Packet* message);
+
+	Message* getMessage() {
+		return messageQueue.pop();
+	}
 
 	void sendMessage(Message* msg) {
 		BaseClient::sendPacket((BasePacket*) msg);
@@ -36,55 +41,10 @@ public:
 		BaseClient::sendPacket((BasePacket*) msg);
 	}
 
-	//void disconnect(bool doLock = true);
-
-	void addCharacter(uint64 objectID) {
-		characterObjectIds.add(objectID);
+	LoginSession* getLoginSession() {
+		return loginSession;
 	}
 
-	void setSelectedCharacter(uint32 id) {
-		selectedCharacter = id;
-	}
-
-	void setAccountID(uint32 id) {
-		accountID = id;
-	}
-
-	uint32 getAccountID() {
-		return accountID;
-	}
-
-	uint32 getSelectedCharacter() {
-		return selectedCharacter;
-	}
-
-	uint64 getCharacterObjectID(uint32 id) {
-		return characterObjectIds.get(id);
-	}
-
-	void stopParsingPackets() {
-		doRun = false;
-	}
-
-	/*void setZone(Zone* zone) {
-		LoginClient::zone = zone;
-	}
-
-	void setPlayer(Player* p) {
-		player = p;
-	}
-
-	void setKey(uint32 key) {
-		LoginClient::key = key;
-	}
-
-	Player* getPlayer() {
-		return player;
-	}
-
-	uint32 getKey(){
-		return key;
-	}*/
 };
 
 

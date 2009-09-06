@@ -115,7 +115,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
-		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \		
+		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \

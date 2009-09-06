@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "ZonePacketHandler.h"
 
-#include "objects/player/Player.h"
+#include "objects/player/PlayerCreature.h"
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
@@ -61,10 +61,6 @@ ZoneClient::ZoneClient(const String& addr, int port) : BaseClient(addr, port) {
 
 	key = 0;
 	accountID = 0;
-
-	//
-
-	//disconnecting = false;
 
 	basePacketHandler = new BasePacketHandler("ZoneClient", &messageQueue);
 }

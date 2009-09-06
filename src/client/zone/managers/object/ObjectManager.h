@@ -11,9 +11,16 @@
 #include "engine/engine.h"
 
 class SceneObject;
+class ObjectMap;
 
-class ObjectManager : public Logger, public ThreadLocal<ObjectManager> {
+class ObjectManager : public Mutex, public Logger {
 	Lua* luaInstance;
+
+	ObjectMap* objectMap;
+
+	ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+
+	void registerObjectTypes();
 
 public:
 	ObjectManager();
@@ -21,10 +28,7 @@ public:
 
 	SceneObject* createObject(uint32 objectCRC, uint64 objectID);
 
-	ObjectManager* initValue() {
-		ObjectManager* obj = new ObjectManager();
-		return obj;
-	}
+	SceneObject* getObject(uint64 objectID);
 
 	// LUA templates
 	void registerFunctions();

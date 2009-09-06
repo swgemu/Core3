@@ -58,7 +58,9 @@ bin_PROGRAMS = core3client
 core3client_SOURCES = \
 		ClientCore.cpp \
 		login/LoginClient.cpp \
+		login/LoginSession.cpp \
 		login/LoginPacketHandler.cpp \
+		login/LoginMessageProcessorThread.cpp \
 		zone/Zone.cpp \
 		zone/ZoneClient.cpp \
 		zone/ZonePacketHandler.cpp \
@@ -66,5 +68,7 @@ core3client_SOURCES = \
 		zone/ZoneClientThread.cpp \
 		zone/managers/object/ObjectManager.cpp \
 		zone/objects/scene/SceneObject.cpp \
+		zone/objects/scene/variables/StringId.cpp \
 		zone/objects/creature/CreatureObject.cpp \
-		zone/objects/player/Player.cpp  
+		zone/objects/tangible/TangibleObject.cpp \
+		zone/objects/player/PlayerCreature.cpp  

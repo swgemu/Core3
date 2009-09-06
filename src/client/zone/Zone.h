@@ -49,7 +49,7 @@
 
 #include "ZoneClient.h"
 
-#include "objects/player/Player.h"
+#include "objects/player/PlayerCreature.h"
 #include "objects/ObjectMap.h"
 #include "managers/object/ObjectManager.h"
 
@@ -58,11 +58,7 @@ class ZoneClientThread;
 class ZoneMessageProcessorThread;
 
 class Zone : public Thread, public Mutex, public Logger {
-	//ScheduleManager* scheduler;
-
 	//LoginSession* loginSession;
-	//uint64 characterObjectID;
-
 
 	ObjectMap objectMap;
 
@@ -73,11 +69,11 @@ class Zone : public Thread, public Mutex, public Logger {
 	ZoneClientThread* clientThread;
 	ZoneMessageProcessorThread* processor;
 
-	Player* player;
+	PlayerCreature* player;
 
 	Condition characterCreatedCondition;
 
-	Vector<Player*> playerArray;
+	Vector<PlayerCreature*> playerArray;
 
 	ObjectManager* objectManager;
 
@@ -86,11 +82,10 @@ public:
 
 	void run();
 
-	Player* createPlayer(uint64 pid);
 	//LocalPlayer* createLocalPlayer(uint64 pid);
 
 	void insertPlayer();
-	void insertPlayer(Player* player);
+	void insertPlayer(PlayerCreature* player);
 
 	//void waitFor();
 
@@ -98,7 +93,7 @@ public:
 		scheduler->addEvent(event, time);
 	}*/
 
-	bool isSelfPlayer(Player* pl) {
+	bool isSelfPlayer(PlayerCreature* pl) {
 		return player == pl;
 	}
 
@@ -122,10 +117,10 @@ public:
 	}
 
 	inline ObjectManager* getObjectManager() {
-		return objectManager->get();
+		return objectManager;
 	}
 
-	Vector<Player*>* getNotInitiatedPlayers() {
+	Vector<PlayerCreature*>* getNotInitiatedPlayers() {
 		return &playerArray;
 	}
 };

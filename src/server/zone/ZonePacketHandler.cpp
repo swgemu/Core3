@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "packets/zone/ClientIDMessage.h"
 #include "packets/zone/ClientIDMessageCallback.h"
 #include "packets/zone/SelectCharacterCallback.h"
-#include "packets/zone/CmdSceneReady.h"
+#include "packets/zone/CmdSceneReadyCallback.h"
 #include "packets/zone/ClientInactivityMessage.h"
 #include "packets/zone/ConnectPlayerResponseMessage.h"
 #include "packets/zone/GalaxyLoopTimes.h"

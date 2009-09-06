@@ -49,89 +49,21 @@ which carries forward this exception.
 
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 //#include "objects/player/Player.h"
-#include "../../server/login/packets/AccountVersionMessage.h"
 
 LoginClient::LoginClient(const String& addr, int port) : BaseClient(addr, port) {
 	setLogging(false);
 	setLoggingName("LoginClient " + ip);
 
-	//player = NULL;
+	loginSession = NULL;
 
-	//key = 0;
-
-	doRun = true;
-	disconnecting = false;
-
-	selectedCharacter = -1;
-
-	accountID = 0;
+	basePacketHandler = new BasePacketHandler("LoginClient", &messageQueue);
 }
 
 LoginClient::~LoginClient() {
-	/*if (player != NULL)
-		delete player;*/
+	delete basePacketHandler;
+	basePacketHandler = NULL;
 }
 
-void LoginClient::runLoginClient() {
-	BasePacketHandler phandler("LoginClient", &messageQueue);
-	info("created Login BasePacketHandler", true);
-
-	LoginPacketHandler* loginPackethandler = new LoginPacketHandler("LoginPackethandler");
-
-	Packet pack;
-	SocketAddress fromAddr;
-
-	crcSeed = 1;
-
-	if (!connect()) {
-		error("could not connect to login server");
-		exit(1);
-		return;
-	}
-
-	info("connected to login server", true);
-
-	char user[32];
-	char password[32];
-
-	info("insert user", true);
-	gets(user);
-
-	info("insert password", true);
-	gets(password);
-
-	BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
-	sendMessage(acc);
-
-	info("sent account version message", true);
-
-	while (doRun && selectedCharacter == -1) {
-		try {
-			if (socket->recieveFrom(&pack, &fromAddr)) {
-				//info ("received message", true);
-
-   				phandler.handlePacket(this, &pack);
-
-				while (!messageQueue.isEmpty()) {
-					Message* msg = messageQueue.pop();
-
-					loginPackethandler->handleMessage(msg);
-				}
-			}
-		} catch (PacketIndexOutOfBoundsException& e) {
-			System::out << e.getMessage();
-
-			error("incorrect packet - " + pack.toStringData());
-		} catch (ArrayIndexOutOfBoundsException& e) {
-			error(e.getMessage());
-		} catch (SocketException& e) {
-			System::out << "socket exception\n";
-		} catch (...) {
-			System::out << "[LoginClient] unreported Exception caught\n";
-		}
-	}
+void LoginClient::handleMessage(Packet* message) {
+	basePacketHandler->handlePacket(this, message);
 }
-
-/*void LoginClient::disconnect(bool doLock) {
-	BaseClient::disconnect(doLock);
-}*/
