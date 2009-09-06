@@ -23,7 +23,7 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 		arrangementDescriptors.add(arrangements.getStringAt(i));
 	}
 
-	arrangements.pop();void parseBaseline(uint8 type, BaseMessage* message);
+	arrangements.pop();
 
 	LuaObject slots = templateData->getObjectField("slotDescriptors");
 
