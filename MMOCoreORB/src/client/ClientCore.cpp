@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "zone/Zone.h"
 
 #include "ClientCore.h"
-#include "login/LoginClient.h"
+#include "login/LoginSession.h"
 
 ClientCore::ClientCore() : Core("log/core3client.log"), Logger("CoreClient") {
 }
@@ -55,24 +55,19 @@ void ClientCore::init() {
 }
 
 void ClientCore::run() {
-	LoginClient* login = new LoginClient("127.0.0.1", 44453);
-	login->initialize();
-	login->runLoginClient();
+	LoginSession loginSession;
+	loginSession.run();
 
-	uint32 selectedCharacter = login->getSelectedCharacter();
+	uint32 selectedCharacter = loginSession.getSelectedCharacter();
 	uint64 objid = 0;
 
 	if (selectedCharacter != -1) {
-		objid = login->getCharacterObjectID(selectedCharacter);
+		objid = loginSession.getCharacterObjectID(selectedCharacter);
 
 		info("trying to login " + String::valueOf(objid), true);
 	}
 
-	uint32 acc = login->getAccountID();
-
-	login->disconnect();
-	login->finalize();
-
+	uint32 acc = loginSession.getAccountID();
 
 	Zone* zone = new Zone(objid, acc);
 	zone->start();

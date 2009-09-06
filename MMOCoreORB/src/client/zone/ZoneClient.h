@@ -49,12 +49,12 @@ which carries forward this exception.
 
 class Zone;
 
-class Player;
+class PlayerCreature;
 
 class ZoneClient : public BaseClient {
 	Zone* zone;
 
-	Player* player;
+	PlayerCreature* player;
 
 	uint32 key;
 	uint32 accountID;
@@ -99,7 +99,7 @@ public:
 		accountID = id;
 	}
 
-	void setPlayer(Player* p) {
+	void setPlayer(PlayerCreature* p) {
 		player = p;
 	}
 
@@ -107,7 +107,7 @@ public:
 		ZoneClient::key = key;
 	}
 
-	Player* getPlayer() {
+	PlayerCreature* getPlayer() {
 		return player;
 	}
 

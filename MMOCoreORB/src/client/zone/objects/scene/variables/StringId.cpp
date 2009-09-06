@@ -42,29 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ZONEPACKETHANDLER_H_
-#define ZONEPACKETHANDLER_H_
+#include "StringId.h"
 
-#include "engine/engine.h"
+StringId::StringId() : Serializable() {
+	addSerializableVariables();
+}
 
-class Zone;
+StringId::StringId(const StringId& id) : Object(), Serializable() {
+	file = id.file;
+	stringID = id.stringID;
 
-class ZonePacketHandler : public Logger {
-	Zone* zone;
+	customName = id.customName;
 
-public:
-	ZonePacketHandler(const String& s, Zone * z);
+	addSerializableVariables();
+}
 
-	~ZonePacketHandler() {
-	}
+StringId::StringId(const String& fullPath) : Serializable() {
+	setStringId(fullPath);
 
-	void handleMessage(Message* pack);
-	void handleSceneObjectCreateMessage(Message* pack);
-	void handleCharacterCreateSucessMessage(Message* pack);
-	void handleUpdateTransformMessage(Message* pack);
-	void handleCharacterCreateFailureMessage(Message* pack);
-	void handleCmdStartScene(Message* pack);
-	void handleBaselineMessage(Message* pack);
-};
+	addSerializableVariables();
+}
 
-#endif /* ZONEPACKETHANDLER_H_ */
+StringId::StringId(const String& fil, const String& stringId) : Serializable() {
+	file = fil;
+	stringID = stringId;
+
+	addSerializableVariables();
+}
+
+StringId::StringId(const UnicodeString& custom) : Serializable() {
+	customName = custom;
+
+	addSerializableVariables();
+}
+
+void StringId::addSerializableVariables() {
+	addSerializableVariable("file", &file);
+	addSerializableVariable("stringID", &stringID);
+	addSerializableVariable("customName", &customName);
+}

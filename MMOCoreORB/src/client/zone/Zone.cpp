@@ -77,24 +77,11 @@ void Zone::run() {
 	}
 }
 
-Player* Zone::createPlayer(uint64 pid) {
-	lock();
-
-	Player* pl = new Player(pid);
-
-	objectMap.put(pid, pl);
-
-	playerArray.add(pl);
-
-	unlock();
-	return pl;
-}
-
 void Zone::insertPlayer() {
 	insertPlayer(player);
 }
 
-void Zone::insertPlayer(Player* pl) {
+void Zone::insertPlayer(PlayerCreature* pl) {
 	lock();
 
 	if (player == NULL) {
@@ -115,6 +102,10 @@ SceneObject* Zone::getObject(uint64 objid) {
 	SceneObject* obj = objectMap.get(objid);
 
 	unlock();
+
+	if (obj == NULL)
+		obj = objectManager->getObject(objid);
+
 	return obj;
 }
 

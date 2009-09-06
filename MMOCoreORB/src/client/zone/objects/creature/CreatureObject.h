@@ -1,14 +1,16 @@
 #ifndef CREATUREOBJECT_H_
 #define CREATUREOBJECT_H_
 
-#include "../scene/SceneObject.h"
+#include "../tangible/TangibleObject.h"
 
-class CreatureObject : public SceneObject {
+class CreatureObject : public TangibleObject {
 protected:
-	String name;
 
 public:
-	CreatureObject(sys::uint64 oid);
+	CreatureObject(LuaObject* templateData);
+
+	void parseBaseline3(Message* message);
+
 };
 
 #endif /*CREATUREOBJECT_H_*/

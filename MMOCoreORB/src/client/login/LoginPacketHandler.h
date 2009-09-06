@@ -10,16 +10,14 @@
 
 #include "engine/engine.h"
 
+class LoginSession;
 
 class LoginPacketHandler : public Logger {
+	LoginSession* loginSession;
 
 public:
-	LoginPacketHandler() : Logger("LoginPacketHandler") {
-
-	}
-
-	LoginPacketHandler(const String& s) : Logger(s) {
-
+	LoginPacketHandler(LoginSession* session) : Logger("LoginPacketHandler") {
+		loginSession = session;
 	}
 
 	~LoginPacketHandler() {

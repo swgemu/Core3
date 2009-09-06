@@ -412,10 +412,16 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 }
 
-void SceneObjectImplementation::insertToZone(Zone* zone) {
-	SceneObjectImplementation::zone = zone;
+void SceneObjectImplementation::insertToZone(Zone* newZone) {
+	Locker zoneLocker(newZone);
 
-	Locker zoneLocker(zone);
+	if (zone != NULL && zone == newZone) {
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			notifyInsert(getInRangeObject(i));
+		}
+	}
+
+	SceneObjectImplementation::zone = newZone;
 
 	initializePosition(positionX, positionZ, positionY);
 

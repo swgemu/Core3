@@ -7,6 +7,7 @@
 
 #include "LoginPacketHandler.h"
 #include "LoginClient.h"
+#include "LoginSession.h"
 
 void LoginPacketHandler::handleMessage(Message* pack) {
 	info("parsing " + pack->toStringData(), true);
@@ -66,7 +67,7 @@ void LoginPacketHandler::handleLoginClientToken(Message* pack) {
 	uint32 session = pack->parseInt();
 	uint32 accountID = pack->parseInt();
 
-	client->setAccountID(accountID);
+	loginSession->setAccountID(accountID);
 }
 
 void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
@@ -77,7 +78,8 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 
 	if (characters == 0) {
 		client->info("no characters found", true);
-		client->stopParsingPackets();
+
+		loginSession->setSelectedCharacter(-1);
 		return;
 	}
 
@@ -94,7 +96,7 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 		player << "Character [" << i << "]: [" << name.toString() << "]";
 
 		client->info(player.toString(), true);
-		client->addCharacter(oid);
+		loginSession->addCharacter(oid);
 	}
 
 	client->info("please enter character to login", true);
@@ -108,5 +110,5 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 
 	client->info("selected character " + String::valueOf(selectedInt), true);
 
-	client->setSelectedCharacter(selectedInt);
+	loginSession->setSelectedCharacter(selectedInt);
 }
