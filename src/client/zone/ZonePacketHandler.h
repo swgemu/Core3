@@ -68,6 +68,7 @@ public:
 	void handleChatInstantMessageToClient(Message* pack);
 	void handleChatSystemMessage(Message* pack);
 	void handleObjectControllerMessage(Message* pack);
+	void handleUpdateContainmentMessage(Message* pack);
 
 };
 

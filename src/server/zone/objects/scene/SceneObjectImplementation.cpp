@@ -557,7 +557,7 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 
 		for (int i = 0; i < arrangementSize; ++i)
 			slottedObjects.drop(object->getArrangementDescriptor(i));
-	} else if (containerType == 2) {
+	} else if (containerType == 2 || containerType == 3) {
 		if (!containerObjects.contains(object->getObjectID()))
 			return false;
 

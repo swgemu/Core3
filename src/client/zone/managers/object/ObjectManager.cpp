@@ -44,14 +44,20 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
 
-	/*objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
-
-	objectFactory.registerObject<ArmorObject>(SceneObject::ARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObject::BODYARMOR); //chest plates
-
-	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
+
+	objectFactory.registerObject<TangibleObject>(SceneObject::ARMOR);
+	objectFactory.registerObject<TangibleObject>(SceneObject::BODYARMOR); //chest plates
+
+	objectFactory.registerObject<TangibleObject>(SceneObject::CONTAINER); //chest plates
+
+
+
+	/*objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
+
+
+	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
 
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
@@ -102,6 +108,10 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 			return object;
 
 		object->setObjectID(objectID);
+
+		StringBuffer logName;
+		logName << object->getLoggingName() << " 0x" << hex << objectID;
+		object->setLoggingName(logName.toString());
 
 		objectMap->put(objectID, object);
 

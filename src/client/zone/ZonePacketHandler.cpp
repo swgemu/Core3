@@ -39,6 +39,15 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 
 		}
 		break;
+
+	case 04:
+		switch (opcode) {
+
+		case 0x56CBDE9E:
+			handleUpdateContainmentMessage(pack);
+			break;
+		}
+		break;
 	case 05:
 		switch (opcode) {
 		case 0xFE89DDEA: // scene create
@@ -265,4 +274,34 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 
 	if (object != NULL)
 		ObjectController::instance()->handleObjectController(object, header1, header2, pack);
+}
+
+void ZonePacketHandler::handleUpdateContainmentMessage(Message* pack) {
+	uint64 obj = pack->parseLong();
+	uint64 par = pack->parseLong();
+
+	int type = pack->parseInt();
+
+	SceneObject* object = zone->getObject(obj);
+	SceneObject* parent = zone->getObject(par);
+
+	if (object == NULL)
+		return;
+
+	if (par == 0) {
+		// remove object from parent
+		parent = object->getParent();
+
+		if (parent != NULL) {
+			parent->removeObject(object);
+		} else {
+			object->setParent(NULL);
+		}
+
+		return;
+	} else if (parent == NULL) {
+		return;
+	}
+
+	parent->addObject(object, type);
 }

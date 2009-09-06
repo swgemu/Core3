@@ -50,3 +50,69 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 	info("created " + fullPath, true);
 }
 
+bool SceneObject::addObject(SceneObject* object, int containmentType) {
+	info("adding object " + object->getLoggingName(), true);
+
+	if (containerType == 1) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (slottedObjects.contains(childArrangement))
+				return false;
+		}
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			slottedObjects.put(object->getArrangementDescriptor(i), object);
+		}
+	} else if (containerType == 2 || containerType == 3) {
+		if (containerObjects.size() >= containerVolumeLimit)
+			return false;
+
+		if (containerObjects.contains(object->getObjectID()))
+			return false;
+
+		containerObjects.put(object->getObjectID(), object);
+	} else {
+		error("unkown container type");
+		return false;
+	}
+
+	object->setParent(this);
+	object->setContainmentType(containmentType);
+
+	return true;
+}
+
+bool SceneObject::removeObject(SceneObject* object) {
+	if (containerType == 1) {
+		int arrangementSize = object->getArrangementDescriptorSize();
+
+		for (int i = 0; i < arrangementSize; ++i) {
+			String childArrangement = object->getArrangementDescriptor(i);
+
+			if (slottedObjects.get(childArrangement) != object)
+				return false;
+		}
+
+		for (int i = 0; i < arrangementSize; ++i)
+			slottedObjects.drop(object->getArrangementDescriptor(i));
+	} else if (containerType == 2 || containerType == 3) {
+		if (!containerObjects.contains(object->getObjectID()))
+			return false;
+
+		containerObjects.drop(object->getObjectID());
+	} else {
+		error("unkown container type");
+		return false;
+	}
+
+	object->setParent(NULL);
+
+	/*if (notifyClient)
+		broadcastMessage(object->link(0, 0xFFFFFFFF));*/
+
+	return true;
+}
+

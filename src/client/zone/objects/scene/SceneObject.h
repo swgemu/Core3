@@ -226,6 +226,9 @@ public:
 	virtual void parseBaseline6(Message* message) {
 	}
 
+	bool addObject(SceneObject* object, int containmentType);
+	bool removeObject(SceneObject* object);
+
 	StringId& getObjectName() {
 		return objectName;
 	}
@@ -242,12 +245,32 @@ public:
 		return client;
 	}
 
+	inline SceneObject* getParent() {
+		return parent;
+	}
+
+	inline uint32 getArrangementDescriptorSize() {
+		return arrangementDescriptors.size();
+	}
+
+	inline String& getArrangementDescriptor(int idx) {
+		return arrangementDescriptors.get(idx);
+	}
+
 	inline void setObjectID(uint64 oid) {
 		objectID = oid;
 	}
 
 	inline void setClient(ZoneClient* cl) {
 		client = cl;
+	}
+
+	inline void setParent(SceneObject* par) {
+		parent = par;
+	}
+
+	inline void setContainmentType(int type) {
+		containmentType = type;
 	}
 };
 
