@@ -238,6 +238,10 @@ public:
 		return movementCounter;
 	}
 
+	inline ZoneClient* getClient() {
+		return client;
+	}
+
 	inline void setObjectID(uint64 oid) {
 		objectID = oid;
 	}

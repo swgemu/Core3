@@ -7,6 +7,7 @@
 #include "../../server/zone/packets/zone/SelectCharacter.h"
 #include "../../server/zone/packets/zone/CmdSceneReady.h"
 #include "managers/object/ObjectManager.h"
+#include "managers/objectcontroller/ObjectController.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
@@ -50,6 +51,14 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 
 		case 0x3C565CED: // instant msg
 			handleChatInstantMessageToClient(pack);
+			break;
+
+		case 0x6D2A6413: // chat system message
+			handleChatSystemMessage(pack);
+			break;
+
+		case 0x80CE5E46: // objc
+			handleObjectControllerMessage(pack);
 			break;
 		}
 		break;
@@ -187,7 +196,7 @@ void ZonePacketHandler::handleUpdateTransformMessage(Message* pack) {
 
 	if (scno != NULL) {
 		scno->setPosition(x, z, y);
-		scno->info("updating position", true);
+		scno->info("updating position");
 
 		PlayerCreature* player = zone->getSelfPlayer();
 
@@ -227,3 +236,33 @@ void ZonePacketHandler::handleChatInstantMessageToClient(Message* pack) {
 	client->info(infoMsg.toString(), true);
 }
 
+void ZonePacketHandler::handleChatSystemMessage(Message* pack) {
+	ZoneClient* client = (ZoneClient*) pack->getClient();
+
+	uint8 type = pack->parseByte();
+
+	if (type == 1) {
+		UnicodeString message;
+		pack->parseUnicode(message);
+
+		StringBuffer systemMessage;
+		systemMessage << "SystemMessage:[" << message.toString() << "]";
+
+		client->info(systemMessage.toString(), true);
+	}
+
+}
+
+void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
+	uint32 header1 = pack->parseInt();
+	uint32 header2 = pack->parseInt();
+
+	uint64 objectID = pack->parseLong();
+
+	pack->parseInt();
+
+	SceneObject* object = zone->getObject(objectID);
+
+	if (object != NULL)
+		ObjectController::instance()->handleObjectController(object, header1, header2, pack);
+}

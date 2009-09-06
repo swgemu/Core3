@@ -60,7 +60,7 @@ which carries forward this exception.
 #include "packets/charcreation/ClientCreateCharacterCallback.h"
 #include "packets/charcreation/ClientRandomNameRequest.h"
 
-#include "packets/object/ObjectControllerMessage.h"
+#include "packets/object/ObjectControllerMessageCallback.h"
 #include "packets/object/DataTransform.h"
 #include "packets/object/DataTransformWithParent.h"
 #include "packets/object/CommandQueueEnqueue.h"

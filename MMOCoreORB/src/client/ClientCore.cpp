@@ -108,7 +108,12 @@ void ClientCore::handleCommands() {
 			} else if (firstToken == "stopFollow") {
 				zone->stopFollow();
 			} else {
-				Logger::console.error("unknown command");
+				String args;
+				if (tokenizer.hasMoreTokens())
+					tokenizer.finalToken(args);
+
+				if (!zone->doCommand(firstToken, args))
+					Logger::console.error("unknown command");
 			}
 		} catch (SocketException& e) {
 			System::out << "[ServerCore] " << e.getMessage();

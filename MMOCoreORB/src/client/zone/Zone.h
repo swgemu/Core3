@@ -56,6 +56,7 @@
 class LoginSession;
 class ZoneClientThread;
 class ZoneMessageProcessorThread;
+class ObjectController;
 
 class Zone : public Thread, public Mutex, public Logger {
 	//LoginSession* loginSession;
@@ -70,6 +71,7 @@ class Zone : public Thread, public Mutex, public Logger {
 	ZoneMessageProcessorThread* processor;
 
 	PlayerCreature* player;
+	ObjectController* objectController;
 
 	Condition characterCreatedCondition;
 
@@ -81,11 +83,14 @@ public:
 	Zone(uint64 characterObjectID, uint32 account);
 
 	void run();
+	//void initConnection();
 
 	void disconnect();
 
 	void follow(const String& name);
 	void stopFollow();
+
+	bool doCommand(const String& command, const String& arguments);
 
 	//LocalPlayer* createLocalPlayer(uint64 pid);
 
