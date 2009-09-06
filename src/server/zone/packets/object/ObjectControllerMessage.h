@@ -46,52 +46,24 @@ which carries forward this exception.
 #define OBJECTCONTROLLERMESSAGE_H_
 
 #include "engine/engine.h"
-#include "engine/util/ObjectFactory.h"
-
-#include "../MessageCallback.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class ObjectControllerMessage : public BaseMessage {
 public:
-	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true);
+	ObjectControllerMessage(uint64 objid, uint32 header1, uint32 header2, bool comp = true) {
+
+		insertShort(0x05);
+		insertInt(0x80CE5E46); // CRC
+		insertInt(header1);
+		insertInt(header2);
+		insertLong(objid);
+		insertInt(0x00);
+
+		setCompression(comp);
+
+	}
 
 };
 
-class ObjectControllerMessageCallback : public MessageCallback {
-	uint32 priority;
-	uint32 type;
-
-	uint64 objectID;
-
-	MessageCallback* objectControllerCallback;
-public:
-	ObjectControllerMessageCallback(ZoneClientSession* client, ZoneProcessServerImplementation* server) :
-		MessageCallback(client, server) {
-
-		objectControllerCallback = NULL;
-
-	}
-
-	static ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* objectMessageControllerFactory;
-
-	void parse(Message* message);
-
-	void run();
-
-	inline uint32 getPriority() {
-		return priority;
-	}
-
-	inline uint32 getType() {
-		return type;
-	}
-
-	inline uint64 getObjectID() {
-		return objectID;
-	}
-
-};
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/
 

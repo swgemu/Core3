@@ -12,7 +12,7 @@
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 #include "../../server/zone/packets/zone/SelectCharacter.h"
 #include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
-
+#include "managers/objectcontroller/ObjectController.h"
 
 Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	//loginSession = login;
@@ -22,6 +22,9 @@ Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	player = NULL;
 
 	objectManager = new ObjectManager();
+
+	objectController = ObjectController::instance();
+	objectController->setZone(this);
 
 	client = new ZoneClient("127.0.0.1", 44463);
 	client->setAccountID(accountID);
@@ -112,10 +115,17 @@ void Zone::follow(const String& name) {
 		client->error(name + " not found");
 
 	getSelfPlayer()->setFollow(object);
+
+	client->info("started following " + name, true);
 }
 
 void Zone::stopFollow() {
 	getSelfPlayer()->setFollow(NULL);
+	client->info("stopped following", true);
+}
+
+bool Zone::doCommand(const String& command, const String& arguments) {
+	return objectController->doCommand(command.hashCode(), arguments);
 }
 
 /*void Zone::waitFor() {

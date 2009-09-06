@@ -66,6 +66,9 @@ public:
 	void handleCmdStartScene(Message* pack);
 	void handleBaselineMessage(Message* pack);
 	void handleChatInstantMessageToClient(Message* pack);
+	void handleChatSystemMessage(Message* pack);
+	void handleObjectControllerMessage(Message* pack);
+
 };
 
 #endif /* ZONEPACKETHANDLER_H_ */

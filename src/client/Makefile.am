@@ -67,6 +67,7 @@ core3client_SOURCES = \
 		zone/ZoneMessageProcessorThread.cpp \
 		zone/ZoneClientThread.cpp \
 		zone/managers/object/ObjectManager.cpp \
+		zone/managers/objectcontroller/ObjectController.cpp \
 		zone/objects/scene/SceneObject.cpp \
 		zone/objects/scene/variables/StringId.cpp \
 		zone/objects/creature/CreatureObject.cpp \

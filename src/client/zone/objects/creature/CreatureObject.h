@@ -5,11 +5,16 @@
 
 class CreatureObject : public TangibleObject {
 protected:
+	uint32 actionCount;
 
 public:
 	CreatureObject(LuaObject* templateData);
 
 	void parseBaseline3(Message* message);
+
+	uint32 getNewActionCount() {
+		return ++actionCount;
+	}
 
 };
 
