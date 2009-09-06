@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "login/LoginSession.h"
 
 ClientCore::ClientCore() : Core("log/core3client.log"), Logger("CoreClient") {
+	zone = NULL;
 }
 
 void ClientCore::init() {
@@ -69,7 +70,7 @@ void ClientCore::run() {
 
 	uint32 acc = loginSession.getAccountID();
 
-	Zone* zone = new Zone(objid, acc);
+	zone = new Zone(objid, acc);
 	zone->start();
 
 	info("initialized", true);
@@ -92,8 +93,20 @@ void ClientCore::handleCommands() {
 			command = line;
 			command = command.replaceFirst("\n", "");
 
-			if (command == "exit") {
+			StringTokenizer tokenizer(command);
+			String firstToken;
+			tokenizer.getStringToken(firstToken);
+
+			if (firstToken == "exit") {
+				zone->disconnect();
 				return;
+			} else if (firstToken == "follow") {
+				String name;
+				tokenizer.finalToken(name);
+
+				zone->follow(name);
+			} else if (firstToken == "stopFollow") {
+				zone->stopFollow();
 			} else {
 				Logger::console.error("unknown command");
 			}

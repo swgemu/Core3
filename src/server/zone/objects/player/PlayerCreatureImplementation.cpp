@@ -202,10 +202,26 @@ void PlayerCreatureImplementation::unload() {
 		getZoneServer()->updateObjectToDatabase(savedParent);
 }
 
-void PlayerCreatureImplementation::reload() {
-	insertToZone(zone);
+void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
+	if (isLoggingOut()) {
+		if (disconnectEvent != NULL) {
+
+			disconnectEvent->cancel();
+			delete disconnectEvent;
+			disconnectEvent = NULL;
+		}
+	} else if (isLoggingIn()) {
+		unlock();
+
+		if (owner != NULL && owner != client)
+			owner->disconnect();
+
+		wlock();
+	}
 
 	setOnline();
+
+	insertToZone(zone);
 }
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
@@ -274,4 +290,15 @@ void PlayerCreatureImplementation::setLinkDead() {
 		playerObject->setCharacterBit(PlayerObjectImplementation::LD, true);
 
 	activateRecovery();
+}
+
+void PlayerCreatureImplementation::setOnline() {
+	onlineStatus = ONLINE;
+
+	PlayerObject* playerObject = (PlayerObject*) getSlottedObject("ghost");
+
+	if (playerObject != NULL)
+		playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
+
+	doRecovery();
 }

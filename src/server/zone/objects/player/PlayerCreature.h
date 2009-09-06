@@ -122,7 +122,7 @@ public:
 
 	void unload();
 
-	void reload();
+	void reload(ZoneClientSession* client);
 
 	void logout(bool doLock);
 
@@ -275,7 +275,7 @@ public:
 
 	void unload();
 
-	void reload();
+	void reload(ZoneClientSession* client);
 
 	void logout(bool doLock);
 
@@ -378,7 +378,7 @@ public:
 
 	void unload();
 
-	void reload();
+	void reload(ZoneClientSession* client);
 
 	void logout(bool doLock);
 

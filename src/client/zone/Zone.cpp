@@ -61,14 +61,6 @@ void Zone::run() {
 			client->sendMessage(selectChar);
 		}
 
-/*
-			uint64 playerID = characterID;
-
-			Player * player = createPlayer(playerID);
-			player->setPosition(0, 5, 0);
-
-			insertPlayer(player);
-		*/
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";
 		exit(0);
@@ -107,6 +99,23 @@ SceneObject* Zone::getObject(uint64 objid) {
 		obj = objectManager->getObject(objid);
 
 	return obj;
+}
+
+void Zone::disconnect() {
+	client->disconnect();
+}
+
+void Zone::follow(const String& name) {
+	SceneObject* object = objectManager->getObject(name);
+
+	if (object == NULL)
+		client->error(name + " not found");
+
+	getSelfPlayer()->setFollow(object);
+}
+
+void Zone::stopFollow() {
+	getSelfPlayer()->setFollow(NULL);
 }
 
 /*void Zone::waitFor() {

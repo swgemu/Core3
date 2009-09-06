@@ -121,7 +121,7 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void unload();
 	
-	public native void reload();
+	public native void reload(ZoneClientSession client);
 	
 	public native void logout(boolean doLock);
 	
@@ -216,11 +216,7 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void setLinkDead();
 	
-	public void setOnline() {
-		onlineStatus = ONLINE;
-		
-		doRecovery();
-	}
+	public native void setOnline();
 	
 	public void setLoggingOut() {
 		onlineStatus = LOGGINGOUT;

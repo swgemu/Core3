@@ -65,6 +65,7 @@ public:
 	void handleCharacterCreateFailureMessage(Message* pack);
 	void handleCmdStartScene(Message* pack);
 	void handleBaselineMessage(Message* pack);
+	void handleChatInstantMessageToClient(Message* pack);
 };
 
 #endif /* ZONEPACKETHANDLER_H_ */

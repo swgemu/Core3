@@ -5,7 +5,40 @@
 #include "PlayerCreature.h"
 
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(templateData) {
+	setLoggingName("PlayerCreature");
 
+	follow = NULL;
+}
+
+void PlayerCreature::updatePosition(float x, float z, float y) {
+	if (client == NULL)
+		return;
+
+	setPosition(x, z, y);
+
+	BaseMessage* message = new BaseMessage();
+
+	message->insertShort(0x05);
+	message->insertInt(0x80CE5E46); // CRC
+	message->insertInt(0x0B);
+	message->insertInt(0x71);
+	message->insertLong(objectID);
+	message->insertInt(0x00);
+
+	message->insertInt(++movementCounter);
+
+	message->insertFloat(direction.getX());
+	message->insertFloat(direction.getY());
+	message->insertFloat(direction.getZ());
+	message->insertFloat(direction.getW());
+
+	message->insertFloat(x);
+	message->insertFloat(z);
+	message->insertFloat(y);
+
+	message->insertInt(0);
+
+	client->sendMessage(message);
 }
 
 void PlayerCreature::insertToZone(Zone* zone) {

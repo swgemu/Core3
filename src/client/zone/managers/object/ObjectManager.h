@@ -30,6 +30,8 @@ public:
 
 	SceneObject* getObject(uint64 objectID);
 
+	SceneObject* getObject(const UnicodeString& customName);
+
 	// LUA templates
 	void registerFunctions();
 	static int includeFile(lua_State* L);

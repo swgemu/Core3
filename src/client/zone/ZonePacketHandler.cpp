@@ -47,6 +47,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x68A75F0C: // baseline
 			handleBaselineMessage(pack);
 			break;
+
+		case 0x3C565CED: // instant msg
+			handleChatInstantMessageToClient(pack);
+			break;
 		}
 		break;
 	case 8:
@@ -116,21 +120,9 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 		return;
 	}
 
-	//scno->setPosition(x, z, y);
-	/*uint64 playerID = pack->parseLong ( );
-
-	Player * player;
-
-	if (zone->hasSelfPlayer())
-		player = zone->createPlayer(playerID);
-	else
-		player = zone->createPlayer(playerID);
-		//player = zone->createLocalPlayer(playerID);
-
-	SceneObjectCreateMessage::parseMessage(pack, player);
-
-	zone->insertPlayer(player);
-	System::out << "SceneObject [" << hex << playerID << "] created\n";*/
+	if (zone->isSelfPlayer(object)) {
+		object->setClient(client);
+	}
 }
 
 void ZonePacketHandler::handleBaselineMessage(Message* pack) {
@@ -181,14 +173,28 @@ void ZonePacketHandler::handleCharacterCreateSucessMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleUpdateTransformMessage(Message* pack) {
-	/*uint64 objid = pack->parseLong();
+	ZoneClient* client = (ZoneClient*) pack->getClient();
+
+	uint64 objid = pack->parseLong();
+
+	float x = pack->parseSignedShort() / 4;
+	float z = pack->parseSignedShort() / 4;
+	float y = pack->parseSignedShort() / 4;
+
+	uint32 counter = pack->parseInt();
 
 	SceneObject* scno = zone->getObject(objid);
 
-	if (zone->isSelfPlayer((Player*) scno))
-		return;
+	if (scno != NULL) {
+		scno->setPosition(x, z, y);
+		scno->info("updating position", true);
 
-	UpdateTransformMessage::parse(pack, scno);*/
+		PlayerCreature* player = zone->getSelfPlayer();
+
+		if (player->getFollowObject() == scno) {
+			player->updatePosition(x, z, y);
+		}
+	}
 }
 
 void ZonePacketHandler::handleCharacterCreateFailureMessage(Message* pack) {
@@ -204,3 +210,20 @@ void ZonePacketHandler::handleCharacterCreateFailureMessage(Message* pack) {
 
 	client->error(error);
 }
+
+void ZonePacketHandler::handleChatInstantMessageToClient(Message* pack) {
+	ZoneClient* client = (ZoneClient*) pack->getClient();
+
+	String game, galaxy, name;
+	UnicodeString message;
+
+	pack->parseAscii(game);
+	pack->parseAscii(galaxy);
+	pack->parseAscii(name);
+	pack->parseUnicode(message);
+
+	StringBuffer infoMsg;
+	infoMsg << "instant message from [" << name << "] : " << message.toString();
+	client->info(infoMsg.toString(), true);
+}
+

@@ -82,6 +82,11 @@ public:
 
 	void run();
 
+	void disconnect();
+
+	void follow(const String& name);
+	void stopFollow();
+
 	//LocalPlayer* createLocalPlayer(uint64 pid);
 
 	void insertPlayer();
@@ -93,12 +98,19 @@ public:
 		scheduler->addEvent(event, time);
 	}*/
 
-	bool isSelfPlayer(PlayerCreature* pl) {
-		return player == pl;
+	PlayerCreature* getSelfPlayer() {
+		return (PlayerCreature*)objectManager->getObject(characterID);
+	}
+
+	bool isSelfPlayer(SceneObject* pl) {
+		if (characterID == 0)
+			return false;
+
+		return pl->getObjectID() == characterID;
 	}
 
 	bool hasSelfPlayer() {
-		return player != NULL;
+		return characterID != 0;
 	}
 
 	SceneObject* getObject(uint64 objid);
