@@ -157,7 +157,7 @@ void ZoneServerImplementation::loadMessageoftheDay() {
 	FileReader* reader;
 
 	try {
-		file = new File("motd.txt");
+		file = new File("conf/motd.txt");
 		reader = new FileReader(file);
 
 		String line;
@@ -181,7 +181,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 	String finalMOTD = "";
 
 	try {
-		file = new File("motd.txt");
+		file = new File("conf/motd.txt");
 		writer = new FileWriter(file);
 
 		for(int i = 0; i < newMOTD.length(); i++) {

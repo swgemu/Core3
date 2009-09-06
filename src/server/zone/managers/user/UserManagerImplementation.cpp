@@ -75,7 +75,7 @@ UserManagerImplementation::~UserManagerImplementation() {
 }
 
 void UserManagerImplementation::parseBanList() {
-	File* banFile = new File("bannedusers.lst");
+	File* banFile = new File("conf/bannedusers.lst");
 
 	try {
 		FileReader banReader(banFile);
@@ -102,7 +102,7 @@ void UserManagerImplementation::parseBanList() {
 }
 
 void UserManagerImplementation::parseAdminList() {
-	File* adminFile = new File("adminusers.lst");
+	File* adminFile = new File("conf/adminusers.lst");
 
 	try {
 		FileReader adminReader(adminFile);
@@ -189,7 +189,7 @@ bool UserManagerImplementation::banUserByName(String& name, String& admin) {
 
 		String line = ip + " // " + name + " (" + admin + ")\n";
 
-		File* banFile = new File("bannedusers.lst");
+		File* banFile = new File("conf/bannedusers.lst");
 
 		try {
 			FileWriter banWriter(banFile);

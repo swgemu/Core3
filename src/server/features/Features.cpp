@@ -54,7 +54,7 @@ Features::~Features() {
 
 bool Features::loadFeatures() {
 	Lua* lua = new Lua();
-	if (!lua->runFile("features.lua"))
+	if (!lua->runFile("conf/features.lua"))
 		return false;
 
 	return true;
