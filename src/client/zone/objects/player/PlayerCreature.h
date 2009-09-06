@@ -7,8 +7,6 @@ class Zone;
 
 class PlayerCreature : public CreatureObject {
 protected:
-	Zone* zone;
-
 	SceneObject* follow;
 
 public:

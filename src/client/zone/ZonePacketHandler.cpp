@@ -37,6 +37,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			handleCharacterCreateFailureMessage(pack);
 			break;
 
+		case 0x4D45D504:
+			handleSceneObejctDestroyMessage(pack);
+			break;
+
 		}
 		break;
 
@@ -141,6 +145,13 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 	if (zone->isSelfPlayer(object)) {
 		object->setClient(client);
 	}
+}
+
+void ZonePacketHandler::handleSceneObejctDestroyMessage(Message* pack) {
+	uint64 oid = pack->parseLong();
+
+	ObjectManager* objectManager = zone->getObjectManager();
+	objectManager->destroyObject(oid);
 }
 
 void ZonePacketHandler::handleBaselineMessage(Message* pack) {

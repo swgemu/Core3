@@ -13,6 +13,8 @@
 #include "../../server/zone/packets/zone/SelectCharacter.h"
 #include "../../server/zone/packets/charcreation/ClientCreateCharacter.h"
 #include "managers/objectcontroller/ObjectController.h"
+#include "managers/object/ObjectManager.h"
+
 
 Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	//loginSession = login;
@@ -22,6 +24,7 @@ Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	player = NULL;
 
 	objectManager = new ObjectManager();
+	objectManager->setZone(this);
 
 	objectController = ObjectController::instance();
 	objectController->setZone(this);
@@ -102,6 +105,10 @@ SceneObject* Zone::getObject(uint64 objid) {
 		obj = objectManager->getObject(objid);
 
 	return obj;
+}
+
+PlayerCreature* Zone::getSelfPlayer() {
+	return (PlayerCreature*)objectManager->getObject(characterID);
 }
 
 void Zone::disconnect() {

@@ -51,12 +51,12 @@
 
 #include "objects/player/PlayerCreature.h"
 #include "objects/ObjectMap.h"
-#include "managers/object/ObjectManager.h"
 
 class LoginSession;
 class ZoneClientThread;
 class ZoneMessageProcessorThread;
 class ObjectController;
+class ObjectManager;
 
 class Zone : public Thread, public Mutex, public Logger {
 	//LoginSession* loginSession;
@@ -70,7 +70,7 @@ class Zone : public Thread, public Mutex, public Logger {
 	ZoneClientThread* clientThread;
 	ZoneMessageProcessorThread* processor;
 
-	PlayerCreature* player;
+	ReferenceSlot<PlayerCreature*> player;
 	ObjectController* objectController;
 
 	Condition characterCreatedCondition;
@@ -103,9 +103,7 @@ public:
 		scheduler->addEvent(event, time);
 	}*/
 
-	PlayerCreature* getSelfPlayer() {
-		return (PlayerCreature*)objectManager->getObject(characterID);
-	}
+	PlayerCreature* getSelfPlayer();
 
 	bool isSelfPlayer(SceneObject* pl) {
 		if (characterID == 0)

@@ -5,7 +5,7 @@
 
 #include "scene/SceneObject.h"
 
-class ObjectMap : public HashTable<uint64, SceneObject*> {
+class ObjectMap : public HashTable<uint64, SceneObject* > {
 	int maxConnections;
 
 	int hash(const uint64& key) {
@@ -13,7 +13,7 @@ class ObjectMap : public HashTable<uint64, SceneObject*> {
 	}
 
 public:
-	ObjectMap() : HashTable<uint64, SceneObject*>(1000) {
+	ObjectMap() : HashTable<uint64, SceneObject* >(1000) {
 		setNullValue(NULL);
 	}
 

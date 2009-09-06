@@ -47,6 +47,9 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		return false;
 	}
 
+	if (destinationObject->getZone() != NULL && objectToTransfer->getZone() == NULL)
+		destinationObject->broadcastObject(objectToTransfer, false);
+
 	uint32 oldContainmentType = objectToTransfer->getContainmentType();
 
 	if (!parent->removeObject(objectToTransfer)) {

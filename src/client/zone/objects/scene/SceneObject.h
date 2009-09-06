@@ -5,8 +5,9 @@
 #include "variables/StringId.h"
 
 class ZoneClient;
+class Zone;
 
-class SceneObject : public Coordinate, public Mutex, public Logger {
+class SceneObject : public Coordinate, public Mutex, public Logger, public Object {
 protected:
 	uint64 objectID;
 	uint32 objectCRC;
@@ -28,9 +29,11 @@ protected:
 	int containmentType;
 
 	ZoneClient* client;
+	Zone* zone;
 
 public:
 	SceneObject(LuaObject* templateData);
+	~SceneObject();
 
 	const static int CELLOBJECT = 11;
 	const static int PLAYEROBJECT = 12;
@@ -271,6 +274,10 @@ public:
 
 	inline void setContainmentType(int type) {
 		containmentType = type;
+	}
+
+	inline void setZone(Zone* zn) {
+		zone = zn;
 	}
 };
 
