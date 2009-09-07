@@ -15,11 +15,11 @@ class ObjectMap;
 class Zone;
 
 class ObjectManager : public Mutex, public Logger {
-	Lua* luaInstance;
-
 	ObjectMap* objectMap;
 
-	ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+	static ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
+	static Lua* luaInstance;
+	static Mutex luaMutex;
 
 	Zone* zone;
 
@@ -39,6 +39,8 @@ public:
 	inline void setZone(Zone* zn) {
 		zone = zn;
 	}
+
+	uint32 getObjectMapSize();
 
 	// LUA templates
 	void registerFunctions();

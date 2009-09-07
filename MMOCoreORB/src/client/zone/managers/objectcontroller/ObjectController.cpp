@@ -12,8 +12,8 @@
 
 #include "../../../../server/zone/packets/object/ObjectControllerMessage.h"
 
-ObjectController::ObjectController() {
-	zone = NULL;
+ObjectController::ObjectController(Zone* zn) {
+	zone = zn;
 }
 
 
@@ -57,10 +57,12 @@ bool ObjectController::doCommand(uint32 crc, const UnicodeString& arguments) {
 void ObjectController::doSayCommand(const UnicodeString& msg) {
 	PlayerCreature* object = zone->getSelfPlayer();
 
+	Locker _locker(object);
+
 	StringBuffer full;
 	full << "0 " << "0 " << "0 " << "0 " << "0 " << msg.toString();
 
-	BaseMessage* message = new ObjectControllerMessage(object->getObjectID(), 0x0B, 0x116);
+	BaseMessage* message = new ObjectControllerMessage(object->getObjectID(), 0x23, 0x116);
 
 	message->insertInt(object->getNewActionCount());
 	message->insertInt(String("spatialchatinternal").hashCode());

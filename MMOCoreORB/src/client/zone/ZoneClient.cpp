@@ -54,7 +54,7 @@ which carries forward this exception.
 
 ZoneClient::ZoneClient(const String& addr, int port) : BaseClient(addr, port) {
 	setLogging(false);
-	setLoggingName("ZoneClient " + ip);
+	setLoggingName("ZoneClient");
 
 	player = NULL;
 

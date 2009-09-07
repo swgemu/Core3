@@ -16,7 +16,7 @@
 #include "managers/object/ObjectManager.h"
 
 
-Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
+Zone::Zone(int instance, uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	//loginSession = login;
 
 	characterID = characterObjectID;
@@ -26,23 +26,43 @@ Zone::Zone(uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
 	objectManager = new ObjectManager();
 	objectManager->setZone(this);
 
-	objectController = ObjectController::instance();
-	objectController->setZone(this);
+	objectController = new ObjectController(this);
 
-	client = new ZoneClient("127.0.0.1", 44463);
-	client->setAccountID(accountID);
-	client->setZone(this);
-	client->initialize();
+	client = NULL;
+	clientThread = NULL;
+	processor = NULL;
 
-	clientThread = new ZoneClientThread(client);
-	clientThread->start();
+	Zone::instance = instance;
+}
 
-	processor = new ZoneMessageProcessorThread("Zone", client);
-	processor->start();
+Zone::~Zone() {
+	delete objectManager;
+	objectManager = NULL;
+
+	delete client;
+	client = NULL;
+
+	delete clientThread;
+	clientThread = NULL;
+
+	delete processor;
+	processor = NULL;
 }
 
 void Zone::run() {
 	try {
+		client = new ZoneClient("127.0.0.1", 44463);
+		client->setAccountID(accountID);
+		client->setZone(this);
+		client->setLoggingName("ZoneClient" + String::valueOf(instance));
+		client->initialize();
+
+		clientThread = new ZoneClientThread(client);
+		clientThread->start();
+
+		processor = new ZoneMessageProcessorThread("Zone", client);
+		processor->start();
+
 		if (client->connect()) {
 			client->info("connected", true);
 		} else {
@@ -80,29 +100,30 @@ void Zone::insertPlayer() {
 }
 
 void Zone::insertPlayer(PlayerCreature* pl) {
-	lock();
+	//lock();
 
-	if (player == NULL) {
+	/*if (player == NULL) {
 		player = pl;
 
 		player->insertToZone(this);
-	}
+	}*/
 
 //	System::out << hex << "inserting Player [" << pl->getObjectID() << "] to (" << dec << pl->getPositionX() << ", "
 //		 << pl->getPositionZ() << ", " << pl->getPositionY() << ")\n";
 
-	unlock();
+
+	//unlock();
 }
 
 SceneObject* Zone::getObject(uint64 objid) {
-	lock();
+	//lock();
 
-	SceneObject* obj = objectMap.get(objid);
+	//SceneObject* obj = objectMap.get(objid);
 
-	unlock();
+	//unlock();
 
-	if (obj == NULL)
-		obj = objectManager->getObject(objid);
+
+	SceneObject* obj = objectManager->getObject(objid);
 
 	return obj;
 }
@@ -113,21 +134,32 @@ PlayerCreature* Zone::getSelfPlayer() {
 
 void Zone::disconnect() {
 	client->disconnect();
+	//client->set
 }
 
 void Zone::follow(const String& name) {
 	SceneObject* object = objectManager->getObject(name);
 
-	if (object == NULL)
+	if (object == NULL) {
 		client->error(name + " not found");
 
-	getSelfPlayer()->setFollow(object);
+		return;
+	}
+
+	PlayerCreature* player = getSelfPlayer();
+
+	Locker _locker(player);
+	player->setFollow(object);
 
 	client->info("started following " + name, true);
 }
 
 void Zone::stopFollow() {
-	getSelfPlayer()->setFollow(NULL);
+	PlayerCreature* player = getSelfPlayer();
+
+	Locker _locker(player);
+
+	player->setFollow(NULL);
 	client->info("stopped following", true);
 }
 

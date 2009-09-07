@@ -13,10 +13,10 @@
 class Zone;
 class SceneObject;
 
-class ObjectController : public Singleton<ObjectController> {
+class ObjectController {
 	Zone* zone;
 public:
-	ObjectController();
+	ObjectController(Zone* zn);
 
 	void handleObjectController(SceneObject* object, uint32 header1, uint32 header2, Message* pack);
 

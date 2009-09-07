@@ -15,8 +15,9 @@
 #include "../../server/login/packets/AccountVersionMessage.h"
 
 
-LoginSession::LoginSession() : Logger("LoginSession") {
+LoginSession::LoginSession(int instance) : Logger("LoginSession" + String::valueOf(instance)) {
 	selectedCharacter = -1;
+	LoginSession::instance = instance;
 
 	accountID = 0;
 }
@@ -25,6 +26,7 @@ void LoginSession::run() {
 	LoginClient* login = new LoginClient("127.0.0.1", 44453);
 	login->setLoginSession(this);
 	login->initialize();
+	login->setLoggingName("LoginClient" + String::valueOf(instance));
 
 	LoginClientThread* loginThread = new LoginClientThread(login);
 	loginThread->start();

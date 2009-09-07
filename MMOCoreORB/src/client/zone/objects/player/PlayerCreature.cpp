@@ -3,6 +3,8 @@
 #include "zone/Zone.h"
 
 #include "PlayerCreature.h"
+#include "../../../../server/zone/packets/object/ObjectControllerMessage.h"
+
 
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(templateData) {
 	setLoggingName("PlayerCreature");
@@ -16,15 +18,7 @@ void PlayerCreature::updatePosition(float x, float z, float y) {
 
 	setPosition(x, z, y);
 
-	BaseMessage* message = new BaseMessage();
-
-	message->insertShort(0x05);
-	message->insertInt(0x80CE5E46); // CRC
-	message->insertInt(0x0B);
-	message->insertInt(0x71);
-	message->insertLong(objectID);
-	message->insertInt(0x00);
-
+	BaseMessage* message = new ObjectControllerMessage(objectID, 0x23, 0x71);
 	message->insertInt(++movementCounter);
 
 	message->insertFloat(direction.getX());

@@ -49,20 +49,27 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 
 	client = NULL;
 
-	info("created " + fullPath, true);
+	info("created " + fullPath);
 }
 
 SceneObject::~SceneObject() {
 	/*if (parent != NULL) {
 		error("DELETING OBJECT WITH PARENT NOT NULL");
 	}*/
-	info("destroying object", true);
+	info("destroying object");
 
-	while (slottedObjects.size() > 0) {
+	if (slottedObjects.size() > 0)
+		info("warning slottedObjects not 0 when destroying");
+
+	if (containerObjects.size() > 0)
+		info("warning slottedObjects not 0 when destroying");
+
+	/*while (slottedObjects.size() > 0) {
 		SceneObject* object = slottedObjects.get(0);
-		object->setParent(NULL);
 
 		removeObject(object);
+
+		object->setParent(NULL);
 
 		zone->getObjectManager()->destroyObject(object->getObjectID());
 	}
@@ -75,11 +82,11 @@ SceneObject::~SceneObject() {
 		containerObjects.drop(object->getObjectID());
 
 		zone->getObjectManager()->destroyObject(object->getObjectID());
-	}
+	}*/
 }
 
 bool SceneObject::addObject(SceneObject* object, int containmentType) {
-	info("adding object " + object->getLoggingName(), true);
+	info("adding object " + object->getLoggingName());
 
 	if (containerType == 1) {
 		int arrangementSize = object->getArrangementDescriptorSize();
