@@ -51,9 +51,11 @@ which carries forward this exception.
 class Zone;
 
 class ClientCore : public Core, public Logger {
-	Zone* zone;
+	int instances;
+	Vector<Zone*> zones;
+	//Zone* zone;
 public:
-	ClientCore();
+	ClientCore(int instances);
 
 	void init();
 

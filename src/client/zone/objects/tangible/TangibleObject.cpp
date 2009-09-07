@@ -35,10 +35,10 @@ void TangibleObject::parseBaseline3(Message* message) {
 	UnicodeString customName;
 	customName = objectName.getCustomString();
 
-	if (customName.length() > 0)
+	if (customName.length() > 0 && (getLoggingName().indexOf(customName.toString()) == -1))
 		setLoggingName(getLoggingName() + " [" + customName.toString() + "]");
 
-	info("parsed tano baseline 3 " + fullPath + " " + customName.toString(), true);
+	info("parsed tano baseline 3 " + fullPath + " " + customName.toString());
 }
 
 void TangibleObject::parseBaseline6(Message* message) {

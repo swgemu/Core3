@@ -52,7 +52,7 @@ which carries forward this exception.
 
 LoginClient::LoginClient(const String& addr, int port) : BaseClient(addr, port) {
 	setLogging(false);
-	setLoggingName("LoginClient " + ip);
+	setLoggingName("LoginClient");
 
 	loginSession = NULL;
 

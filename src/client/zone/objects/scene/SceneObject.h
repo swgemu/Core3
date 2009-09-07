@@ -256,6 +256,22 @@ public:
 		return arrangementDescriptors.size();
 	}
 
+	inline uint32 getSlottedObjectsSize() {
+		return slottedObjects.size();
+	}
+
+	inline SceneObject* getSlottedObject(int idx) {
+		return slottedObjects.get(idx);
+	}
+
+	inline uint32 getContainerObjectsSize() {
+		return containerObjects.size();
+	}
+
+	inline SceneObject* getContainerObject(int idx) {
+		return containerObjects.get(idx);
+	}
+
 	inline String& getArrangementDescriptor(int idx) {
 		return arrangementDescriptors.get(idx);
 	}

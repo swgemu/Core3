@@ -61,7 +61,7 @@ class ObjectManager;
 class Zone : public Thread, public Mutex, public Logger {
 	//LoginSession* loginSession;
 
-	ObjectMap objectMap;
+	//ObjectMap objectMap;
 
 	uint64 characterID;
 	uint32 accountID;
@@ -79,8 +79,11 @@ class Zone : public Thread, public Mutex, public Logger {
 
 	ObjectManager* objectManager;
 
+	int instance;
+
 public:
-	Zone(uint64 characterObjectID, uint32 account);
+	Zone(int instance, uint64 characterObjectID, uint32 account);
+	~Zone();
 
 	void run();
 	//void initConnection();
@@ -133,6 +136,10 @@ public:
 
 	inline ObjectManager* getObjectManager() {
 		return objectManager;
+	}
+
+	inline ObjectController* getObjectController() {
+		return objectController;
 	}
 
 	Vector<PlayerCreature*>* getNotInitiatedPlayers() {

@@ -18,8 +18,10 @@ class LoginSession : public Mutex, public Runnable, public Logger {
 	Vector<uint64> characterObjectIds;
 	uint32 selectedCharacter;
 
+	int instance;
+
 public:
-	LoginSession();
+	LoginSession(int instance);
 
 	void run();
 

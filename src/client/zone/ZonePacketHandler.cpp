@@ -17,7 +17,7 @@ ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	info("parsing " + pack->toStringData());
+	//info("parsing " + pack->toStringData());
 
 	sys::uint16 opcount = pack->parseShort();
 	sys::uint32 opcode = pack->parseInt();
@@ -138,7 +138,7 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 	if (object == NULL) {
 		StringBuffer infoMsg;
 		infoMsg << "unknown crc 0x" << hex << crc << " received in SceneObjectCreateMessage";
-		client->error(infoMsg.toString());
+		client->info(infoMsg.toString());
 		return;
 	}
 
@@ -168,7 +168,7 @@ void ZonePacketHandler::handleBaselineMessage(Message* pack) {
 	SceneObject* object = zone->getObject(oid);
 
 	if (object == NULL) {
-		client->info("received baseline for null object", true);
+		client->info("received baseline for null object");
 		return;
 	}
 
@@ -215,10 +215,15 @@ void ZonePacketHandler::handleUpdateTransformMessage(Message* pack) {
 	SceneObject* scno = zone->getObject(objid);
 
 	if (scno != NULL) {
+		Locker _locker(scno);
 		scno->setPosition(x, z, y);
-		scno->info("updating position");
+		//scno->info("updating position");
+
+		_locker.release();
 
 		PlayerCreature* player = zone->getSelfPlayer();
+
+		Locker _playerLocker(player);
 
 		if (player->getFollowObject() == scno) {
 			player->updatePosition(x, z, y);
@@ -284,7 +289,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	SceneObject* object = zone->getObject(objectID);
 
 	if (object != NULL)
-		ObjectController::instance()->handleObjectController(object, header1, header2, pack);
+		zone->getObjectController()->handleObjectController(object, header1, header2, pack);
 }
 
 void ZonePacketHandler::handleUpdateContainmentMessage(Message* pack) {

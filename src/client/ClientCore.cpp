@@ -43,12 +43,14 @@ which carries forward this exception.
 */
 
 #include "zone/Zone.h"
+#include "zone/managers/object/ObjectManager.h"
 
 #include "ClientCore.h"
 #include "login/LoginSession.h"
 
-ClientCore::ClientCore() : Core("log/core3client.log"), Logger("CoreClient") {
-	zone = NULL;
+ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
+	ClientCore::instances = instances;
+	//zone = NULL;
 }
 
 void ClientCore::init() {
@@ -56,26 +58,33 @@ void ClientCore::init() {
 }
 
 void ClientCore::run() {
-	LoginSession loginSession;
-	loginSession.run();
+	for (int i = 0; i < instances; ++i) {
+		LoginSession loginSession(i);
+		loginSession.run();
 
-	uint32 selectedCharacter = loginSession.getSelectedCharacter();
-	uint64 objid = 0;
+		uint32 selectedCharacter = loginSession.getSelectedCharacter();
+		uint64 objid = 0;
 
-	if (selectedCharacter != -1) {
-		objid = loginSession.getCharacterObjectID(selectedCharacter);
+		if (selectedCharacter != -1) {
+			objid = loginSession.getCharacterObjectID(selectedCharacter);
 
-		info("trying to login " + String::valueOf(objid), true);
+			info("trying to login " + String::valueOf(objid), true);
+		}
+
+		uint32 acc = loginSession.getAccountID();
+
+		Zone* zone = new Zone(i, objid, acc);
+		zone->start();
+
+		zones.add(zone);
+
+		info("initialized", true);
 	}
 
-	uint32 acc = loginSession.getAccountID();
-
-	zone = new Zone(objid, acc);
-	zone->start();
-
-	info("initialized", true);
-
 	handleCommands();
+
+	/*delete zone;
+	zone = NULL;*/
 }
 
 void ClientCore::handleCommands() {
@@ -98,22 +107,37 @@ void ClientCore::handleCommands() {
 			tokenizer.getStringToken(firstToken);
 
 			if (firstToken == "exit") {
-				zone->disconnect();
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->disconnect();
+
 				return;
 			} else if (firstToken == "follow") {
 				String name;
 				tokenizer.finalToken(name);
 
-				zone->follow(name);
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->follow(name);
+
 			} else if (firstToken == "stopFollow") {
-				zone->stopFollow();
+				for (int i = 0; i < zones.size(); ++i)
+					zones.get(i)->stopFollow();
+			} else if (firstToken == "info") {
+				for (int i = 0; i < zones.size(); ++i) {
+					uint32 size = zones.get(i)->getObjectManager()->getObjectMapSize();
+					StringBuffer msg;
+					msg << "[ObjectManager" << i << "] size: " << size;
+
+					info(msg.toString(), true);
+				}
+
 			} else {
 				String args;
 				if (tokenizer.hasMoreTokens())
 					tokenizer.finalToken(args);
 
-				if (!zone->doCommand(firstToken, args))
-					Logger::console.error("unknown command");
+				for (int i = 0; i < zones.size(); ++i)
+					if (!zones.get(i)->doCommand(firstToken, args))
+						Logger::console.error("unknown command");
 			}
 		} catch (SocketException& e) {
 			System::out << "[ServerCore] " << e.getMessage();
@@ -134,7 +158,12 @@ int main(int argc, char* argv[]) {
 
 		StackTrace::setBinaryName("core3client");
 
-		ClientCore core;
+		int instances = 1;
+
+		if (argc > 1)
+			instances = Integer::valueOf(arguments.get(0));
+
+		ClientCore core(instances);
 
 		core.init();
 

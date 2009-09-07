@@ -16,25 +16,34 @@
 
 #include "zone/Zone.h"
 
+ObjectFactory<SceneObject* (LuaObject*), uint32> ObjectManager::objectFactory;
+Lua* ObjectManager::luaInstance = NULL;
+Mutex ObjectManager::luaMutex;
 
 ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager") {
-	luaInstance = new Lua();
-	luaInstance->init();
+	luaMutex.lock();
+
+	if (luaInstance == NULL) {
+		luaInstance = new Lua();
+		luaInstance->init();
+
+		info("loading object templates...", true);
+		registerFunctions();
+		luaInstance->runFile("scripts/object/main.lua");
+
+		registerObjectTypes();
+	}
+
+	luaMutex.unlock();
 
 	objectMap = new ObjectMap();
 
 	zone = NULL;
-
-	info("loading object templates...", true);
-	registerFunctions();
-	luaInstance->runFile("scripts/object/main.lua");
-
-	registerObjectTypes();
 }
 
 ObjectManager::~ObjectManager() {
-	delete luaInstance;
-	luaInstance = NULL;
+	/*delete luaInstance;
+	luaInstance = NULL;*/
 
 	delete objectMap;
 	objectMap = NULL;
@@ -98,18 +107,24 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 	SceneObject* object = NULL;
 
 	try {
+		luaMutex.lock();
+
 		LuaFunction getTemplate(luaInstance->getLuaState(), "getTemplate", 1);
 		getTemplate << objectCRC; // push first argument
 		luaInstance->callFunction(&getTemplate);
 
 		LuaObject result(luaInstance->getLuaState());
 
-		if (!result.isValidTable())
+		if (!result.isValidTable()) {
+			luaMutex.unlock();
 			return NULL;
+		}
 
 		uint32 gameObjectType = result.getIntField("gameObjectType");
 
 		object = objectFactory.createObject(gameObjectType, &result);
+
+		luaMutex.unlock();
 
 		if (object == NULL)
 			return object;
@@ -160,12 +175,37 @@ SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
 }
 
 void ObjectManager::destroyObject(uint64 objectID) {
+	Locker _locker(this);
+
 	SceneObject* object = objectMap->remove(objectID);
 
 	if (object != NULL) {
-		object->info("finalizing object", true);
+		object->info("finalizing object");
+
+		while (object->getSlottedObjectsSize() > 0) {
+			SceneObject* obj = object->getSlottedObject(0);
+
+			object->removeObject(obj);
+
+			destroyObject(obj->getObjectID());
+		}
+
+		while (object->getContainerObjectsSize() > 0) {
+			SceneObject* obj = object->getContainerObject(0);
+
+			object->removeObject(obj);
+
+			destroyObject(obj->getObjectID());
+		}
+
 		object->finalize();
 	}
+}
+
+uint32 ObjectManager::getObjectMapSize() {
+	Locker _locker(this);
+
+	return objectMap->size();
 }
 
 
