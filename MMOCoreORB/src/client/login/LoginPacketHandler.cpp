@@ -99,12 +99,13 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 		loginSession->addCharacter(oid);
 	}
 
-	client->info("please enter character to login", true);
+	client->info("please enter character to login... -1 to create a new one", true);
 
-	char characterID[4096];
-	gets(characterID);
+	char characterID[32];
+	fgets(characterID, sizeof(characterID), stdin);
 
 	String selected = characterID;
+	selected = selected.replaceFirst("\n", "");
 
 	int selectedInt = Integer::valueOf(selected);
 

@@ -15,8 +15,8 @@ protected:
 	uint32 movementCounter;
 
 	SceneObject* parent;
-	VectorMap<String, SceneObject*> slottedObjects;
-	VectorMap<uint64, SceneObject*> containerObjects;
+	VectorMap<String, ReferenceSlot<SceneObject*> > slottedObjects;
+	VectorMap<uint64, ReferenceSlot<SceneObject*> > containerObjects;
 	Vector<String> arrangementDescriptors;
 	Vector<String> slotDescriptors;
 	StringId objectName;

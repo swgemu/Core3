@@ -234,7 +234,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 	object->info("loaded from db", true);
 
-	if (object->isPlayerCreature());
+	if (object->isPlayerCreature())
 		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
 
 	return object;

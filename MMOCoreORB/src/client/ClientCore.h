@@ -52,8 +52,8 @@ class Zone;
 
 class ClientCore : public Core, public Logger {
 	int instances;
+
 	Vector<Zone*> zones;
-	//Zone* zone;
 public:
 	ClientCore(int instances);
 

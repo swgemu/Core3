@@ -42,14 +42,21 @@ void LoginSession::run() {
 
 	info("connected to login server", true);
 
-	char user[32];
-	char password[32];
+	char userinput[32];
+	char passwordinput[32];
 
 	info("insert user", true);
-	gets(user);
+	fgets(userinput, sizeof(userinput), stdin);
 
 	info("insert password", true);
-	gets(password);
+	fgets(passwordinput, sizeof(passwordinput), stdin);
+
+	String user, password;
+	user = userinput;
+	user = user.replaceFirst("\n", "");
+
+	password = passwordinput;
+	password = password.replaceFirst("\n", "");
 
 	BaseMessage* acc = new AccountVersionMessage(user, password, "20050408-18:00");
 	login->sendMessage(acc);
