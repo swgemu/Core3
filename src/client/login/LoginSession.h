@@ -16,7 +16,7 @@ class LoginSession : public Mutex, public Runnable, public Logger {
 	uint32 accountID;
 
 	Vector<uint64> characterObjectIds;
-	uint32 selectedCharacter;
+	int selectedCharacter;
 
 	int instance;
 
@@ -29,7 +29,7 @@ public:
 		characterObjectIds.add(objectID);
 	}
 
-	void setSelectedCharacter(uint32 id) {
+	void setSelectedCharacter(int id) {
 		lock();
 
 		selectedCharacter = id;
@@ -47,7 +47,7 @@ public:
 		return accountID;
 	}
 
-	uint32 getSelectedCharacter() {
+	int getSelectedCharacter() {
 		return selectedCharacter;
 	}
 

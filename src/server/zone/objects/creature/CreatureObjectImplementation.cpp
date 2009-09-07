@@ -264,8 +264,8 @@ void CreatureObjectImplementation::setCombatState() {
 
 		broadcastMessage(dcreo3, true);
 
-		/*if (postureState == CreaturePosture::SITTING)
-			setPosture(CreaturePosture::UPRIGHT);*/
+		if (posture == CreaturePosture::SITTING)
+			setPosture(CreaturePosture::UPRIGHT);
 	}
 }
 

@@ -50,7 +50,6 @@ which carries forward this exception.
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
 	ClientCore::instances = instances;
-	//zone = NULL;
 }
 
 void ClientCore::init() {
@@ -77,9 +76,9 @@ void ClientCore::run() {
 		zone->start();
 
 		zones.add(zone);
-
-		info("initialized", true);
 	}
+
+	info("initialized", true);
 
 	handleCommands();
 
