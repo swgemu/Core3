@@ -252,7 +252,7 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((PlayerObjectImplementation*) impl)->sendBaselinesTo(player);
+	((PlayerObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 unsigned int PlayerObjectAdapter::getCharacterBitmask() {
@@ -268,7 +268,7 @@ unsigned int PlayerObjectAdapter::getAdminLevel() {
 }
 
 void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {
-	return ((PlayerObjectImplementation*) impl)->setCharacterBitmask(bitmask);
+	((PlayerObjectImplementation*) impl)->setCharacterBitmask(bitmask);
 }
 
 bool PlayerObjectAdapter::setCharacterBit(unsigned int bit, bool notifyClient) {
@@ -280,7 +280,7 @@ bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool notifyClient)
 }
 
 void PlayerObjectAdapter::setTitle(const String& characterTitle) {
-	return ((PlayerObjectImplementation*) impl)->setTitle(characterTitle);
+	((PlayerObjectImplementation*) impl)->setTitle(characterTitle);
 }
 
 /*

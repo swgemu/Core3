@@ -445,11 +445,11 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ZoneAdapter::startManagers() {
-	return ((ZoneImplementation*) impl)->startManagers();
+	((ZoneImplementation*) impl)->startManagers();
 }
 
 void ZoneAdapter::stopManagers() {
-	return ((ZoneImplementation*) impl)->stopManagers();
+	((ZoneImplementation*) impl)->stopManagers();
 }
 
 float ZoneAdapter::getHeight(float x, float y) {
@@ -473,11 +473,11 @@ unsigned int ZoneAdapter::getWeatherID() {
 }
 
 void ZoneAdapter::setWeatherID(unsigned int value) {
-	return ((ZoneImplementation*) impl)->setWeatherID(value);
+	((ZoneImplementation*) impl)->setWeatherID(value);
 }
 
 void ZoneAdapter::changeWeatherID(int value) {
-	return ((ZoneImplementation*) impl)->changeWeatherID(value);
+	((ZoneImplementation*) impl)->changeWeatherID(value);
 }
 
 bool ZoneAdapter::isWeatherEnabled() {
@@ -485,15 +485,15 @@ bool ZoneAdapter::isWeatherEnabled() {
 }
 
 void ZoneAdapter::setWeatherEnabled(bool value) {
-	return ((ZoneImplementation*) impl)->setWeatherEnabled(value);
+	((ZoneImplementation*) impl)->setWeatherEnabled(value);
 }
 
 void ZoneAdapter::setWeatherWindX(float value) {
-	return ((ZoneImplementation*) impl)->setWeatherWindX(value);
+	((ZoneImplementation*) impl)->setWeatherWindX(value);
 }
 
 void ZoneAdapter::setWeatherWindY(float value) {
-	return ((ZoneImplementation*) impl)->setWeatherWindY(value);
+	((ZoneImplementation*) impl)->setWeatherWindY(value);
 }
 
 float ZoneAdapter::getWeatherWindX() {

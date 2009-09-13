@@ -1204,39 +1204,39 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void CreatureObjectAdapter::clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2) {
-	return ((CreatureObjectImplementation*) impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
+	((CreatureObjectImplementation*) impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
 void CreatureObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((CreatureObjectImplementation*) impl)->sendBaselinesTo(player);
+	((CreatureObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 void CreatureObjectAdapter::sendSystemMessage(const String& message) {
-	return ((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
+	((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
 }
 
 void CreatureObjectAdapter::sendSystemMessage(UnicodeString& message) {
-	return ((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
+	((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
 }
 
 void CreatureObjectAdapter::sendSystemMessage(const String& file, const String& str, unsigned long long targetid) {
-	return ((CreatureObjectImplementation*) impl)->sendSystemMessage(file, str, targetid);
+	((CreatureObjectImplementation*) impl)->sendSystemMessage(file, str, targetid);
 }
 
 void CreatureObjectAdapter::sendSlottedObjectsTo(SceneObject* player) {
-	return ((CreatureObjectImplementation*) impl)->sendSlottedObjectsTo(player);
+	((CreatureObjectImplementation*) impl)->sendSlottedObjectsTo(player);
 }
 
 void CreatureObjectAdapter::setCombatState() {
-	return ((CreatureObjectImplementation*) impl)->setCombatState();
+	((CreatureObjectImplementation*) impl)->setCombatState();
 }
 
 void CreatureObjectAdapter::clearCombatState(bool clearDefenders) {
-	return ((CreatureObjectImplementation*) impl)->clearCombatState(clearDefenders);
+	((CreatureObjectImplementation*) impl)->clearCombatState(clearDefenders);
 }
 
 void CreatureObjectAdapter::setPosture(int newPosture, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setPosture(newPosture, notifyClient);
+	((CreatureObjectImplementation*) impl)->setPosture(newPosture, notifyClient);
 }
 
 int CreatureObjectAdapter::getBankCredits() {
@@ -1376,39 +1376,39 @@ int CreatureObjectAdapter::getSpecies() {
 }
 
 void CreatureObjectAdapter::setHeight(float heigh) {
-	return ((CreatureObjectImplementation*) impl)->setHeight(heigh);
+	((CreatureObjectImplementation*) impl)->setHeight(heigh);
 }
 
 void CreatureObjectAdapter::setHAM(int type, int value, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setHAM(type, value, notifyClient);
+	((CreatureObjectImplementation*) impl)->setHAM(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setBaseHAM(int type, int value, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setBaseHAM(type, value, notifyClient);
+	((CreatureObjectImplementation*) impl)->setBaseHAM(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setWounds(int type, int value, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setWounds(type, value, notifyClient);
+	((CreatureObjectImplementation*) impl)->setWounds(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setMaxHAM(int type, int value, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setMaxHAM(type, value, notifyClient);
+	((CreatureObjectImplementation*) impl)->setMaxHAM(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setEncumbrance(int type, int value, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setEncumbrance(type, value, notifyClient);
+	((CreatureObjectImplementation*) impl)->setEncumbrance(type, value, notifyClient);
 }
 
 void CreatureObjectAdapter::setWeaponID(unsigned long long objectID, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setWeaponID(objectID, notifyClient);
+	((CreatureObjectImplementation*) impl)->setWeaponID(objectID, notifyClient);
 }
 
 void CreatureObjectAdapter::setTargetID(unsigned long long targetID, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setTargetID(targetID, notifyClient);
+	((CreatureObjectImplementation*) impl)->setTargetID(targetID, notifyClient);
 }
 
 void CreatureObjectAdapter::setBankCredits(int credits, bool notifyClient) {
-	return ((CreatureObjectImplementation*) impl)->setBankCredits(credits, notifyClient);
+	((CreatureObjectImplementation*) impl)->setBankCredits(credits, notifyClient);
 }
 
 /*

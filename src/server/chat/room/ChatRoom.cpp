@@ -749,19 +749,19 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ChatRoomAdapter::sendTo(PlayerCreature* player) {
-	return ((ChatRoomImplementation*) impl)->sendTo(player);
+	((ChatRoomImplementation*) impl)->sendTo(player);
 }
 
 void ChatRoomAdapter::sendDestroyTo(PlayerCreature* player) {
-	return ((ChatRoomImplementation*) impl)->sendDestroyTo(player);
+	((ChatRoomImplementation*) impl)->sendDestroyTo(player);
 }
 
 void ChatRoomAdapter::addSubRoom(ChatRoom* channel) {
-	return ((ChatRoomImplementation*) impl)->addSubRoom(channel);
+	((ChatRoomImplementation*) impl)->addSubRoom(channel);
 }
 
 void ChatRoomAdapter::removeSubRoom(ChatRoom* channel) {
-	return ((ChatRoomImplementation*) impl)->removeSubRoom(channel);
+	((ChatRoomImplementation*) impl)->removeSubRoom(channel);
 }
 
 ChatRoom* ChatRoomAdapter::getSubRoom(int i) {
@@ -773,19 +773,19 @@ ChatRoom* ChatRoomAdapter::getSubRoom(const String& name) {
 }
 
 void ChatRoomAdapter::addPlayer(PlayerCreature* player, bool doLock) {
-	return ((ChatRoomImplementation*) impl)->addPlayer(player, doLock);
+	((ChatRoomImplementation*) impl)->addPlayer(player, doLock);
 }
 
 void ChatRoomAdapter::removePlayer(PlayerCreature* player, bool doLock) {
-	return ((ChatRoomImplementation*) impl)->removePlayer(player, doLock);
+	((ChatRoomImplementation*) impl)->removePlayer(player, doLock);
 }
 
 void ChatRoomAdapter::removePlayer(const String& player) {
-	return ((ChatRoomImplementation*) impl)->removePlayer(player);
+	((ChatRoomImplementation*) impl)->removePlayer(player);
 }
 
 void ChatRoomAdapter::broadcastMessage(BaseMessage* msg) {
-	return ((ChatRoomImplementation*) impl)->broadcastMessage(msg);
+	((ChatRoomImplementation*) impl)->broadcastMessage(msg);
 }
 
 bool ChatRoomAdapter::hasPlayer(PlayerCreature* player) {
@@ -797,15 +797,15 @@ bool ChatRoomAdapter::hasPlayer(const String& name) {
 }
 
 void ChatRoomAdapter::removeAllPlayers() {
-	return ((ChatRoomImplementation*) impl)->removeAllPlayers();
+	((ChatRoomImplementation*) impl)->removeAllPlayers();
 }
 
 void ChatRoomAdapter::setPrivate() {
-	return ((ChatRoomImplementation*) impl)->setPrivate();
+	((ChatRoomImplementation*) impl)->setPrivate();
 }
 
 void ChatRoomAdapter::setPublic() {
-	return ((ChatRoomImplementation*) impl)->setPublic();
+	((ChatRoomImplementation*) impl)->setPublic();
 }
 
 bool ChatRoomAdapter::isPublic() {
@@ -825,7 +825,7 @@ int ChatRoomAdapter::getPlayerSize() {
 }
 
 void ChatRoomAdapter::setName(const String& Name) {
-	return ((ChatRoomImplementation*) impl)->setName(Name);
+	((ChatRoomImplementation*) impl)->setName(Name);
 }
 
 String ChatRoomAdapter::getName() {
@@ -853,15 +853,15 @@ String ChatRoomAdapter::getServerName() {
 }
 
 void ChatRoomAdapter::setOwner(const String& Owner) {
-	return ((ChatRoomImplementation*) impl)->setOwner(Owner);
+	((ChatRoomImplementation*) impl)->setOwner(Owner);
 }
 
 void ChatRoomAdapter::setCreator(const String& Creator) {
-	return ((ChatRoomImplementation*) impl)->setCreator(Creator);
+	((ChatRoomImplementation*) impl)->setCreator(Creator);
 }
 
 void ChatRoomAdapter::setTitle(const String& Title) {
-	return ((ChatRoomImplementation*) impl)->setTitle(Title);
+	((ChatRoomImplementation*) impl)->setTitle(Title);
 }
 
 unsigned int ChatRoomAdapter::getRoomID() {

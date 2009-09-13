@@ -131,7 +131,7 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((IntangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+	((IntangibleObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 unsigned int IntangibleObjectAdapter::getStatus() {

@@ -353,23 +353,23 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
-	return ((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
+	((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
 }
 
 void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	return ((BuildingObjectImplementation*) impl)->sendTo(player, doClose);
+	((BuildingObjectImplementation*) impl)->sendTo(player, doClose);
 }
 
 void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((BuildingObjectImplementation*) impl)->sendBaselinesTo(player);
+	((BuildingObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
-	return ((BuildingObjectImplementation*) impl)->sendDestroyTo(player);
+	((BuildingObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
 void BuildingObjectAdapter::addCell(CellObject* cell) {
-	return ((BuildingObjectImplementation*) impl)->addCell(cell);
+	((BuildingObjectImplementation*) impl)->addCell(cell);
 }
 
 bool BuildingObjectAdapter::isStaticBuilding() {
@@ -381,7 +381,7 @@ CellObject* BuildingObjectAdapter::getCell(int idx) {
 }
 
 void BuildingObjectAdapter::setStaticBuilding(bool value) {
-	return ((BuildingObjectImplementation*) impl)->setStaticBuilding(value);
+	((BuildingObjectImplementation*) impl)->setStaticBuilding(value);
 }
 
 bool BuildingObjectAdapter::hasNotifiedObject(SceneObject* object) {
@@ -389,11 +389,11 @@ bool BuildingObjectAdapter::hasNotifiedObject(SceneObject* object) {
 }
 
 void BuildingObjectAdapter::addNotifiedObject(SceneObject* object) {
-	return ((BuildingObjectImplementation*) impl)->addNotifiedObject(object);
+	((BuildingObjectImplementation*) impl)->addNotifiedObject(object);
 }
 
 void BuildingObjectAdapter::removeNotifiedObject(SceneObject* object) {
-	return ((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
+	((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
 }
 
 /*

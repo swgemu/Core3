@@ -110,7 +110,7 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void ContainerAdapter::sendContainerObjectsTo(SceneObject* player) {
-	return ((ContainerImplementation*) impl)->sendContainerObjectsTo(player);
+	((ContainerImplementation*) impl)->sendContainerObjectsTo(player);
 }
 
 /*

@@ -133,7 +133,7 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 }
 
 void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((WeaponObjectImplementation*) impl)->sendBaselinesTo(player);
+	((WeaponObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 int WeaponObjectAdapter::getAttackType() {

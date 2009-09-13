@@ -196,7 +196,7 @@ bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
 }
 
 void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {
-	return ((PlayerManagerImplementation*) impl)->createTutorialBuilding(player);
+	((PlayerManagerImplementation*) impl)->createTutorialBuilding(player);
 }
 
 /*

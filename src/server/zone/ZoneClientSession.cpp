@@ -370,35 +370,35 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 }
 
 void ZoneClientSessionAdapter::sendMessage(BasePacket* msg) {
-	return ((ZoneClientSessionImplementation*) impl)->sendMessage(msg);
+	((ZoneClientSessionImplementation*) impl)->sendMessage(msg);
 }
 
 void ZoneClientSessionAdapter::disconnect() {
-	return ((ZoneClientSessionImplementation*) impl)->disconnect();
+	((ZoneClientSessionImplementation*) impl)->disconnect();
 }
 
 void ZoneClientSessionAdapter::disconnect(bool doLock) {
-	return ((ZoneClientSessionImplementation*) impl)->disconnect(doLock);
+	((ZoneClientSessionImplementation*) impl)->disconnect(doLock);
 }
 
 void ZoneClientSessionAdapter::balancePacketCheckupTime() {
-	return ((ZoneClientSessionImplementation*) impl)->balancePacketCheckupTime();
+	((ZoneClientSessionImplementation*) impl)->balancePacketCheckupTime();
 }
 
 void ZoneClientSessionAdapter::resetPacketCheckupTime() {
-	return ((ZoneClientSessionImplementation*) impl)->resetPacketCheckupTime();
+	((ZoneClientSessionImplementation*) impl)->resetPacketCheckupTime();
 }
 
 void ZoneClientSessionAdapter::closeConnection(bool lockPlayer, bool doLock) {
-	return ((ZoneClientSessionImplementation*) impl)->closeConnection(lockPlayer, doLock);
+	((ZoneClientSessionImplementation*) impl)->closeConnection(lockPlayer, doLock);
 }
 
 void ZoneClientSessionAdapter::lock(bool doLock) {
-	return ((ZoneClientSessionImplementation*) impl)->lock(doLock);
+	((ZoneClientSessionImplementation*) impl)->lock(doLock);
 }
 
 void ZoneClientSessionAdapter::unlock(bool doLock) {
-	return ((ZoneClientSessionImplementation*) impl)->unlock(doLock);
+	((ZoneClientSessionImplementation*) impl)->unlock(doLock);
 }
 
 String ZoneClientSessionAdapter::getAddress() {
@@ -406,15 +406,15 @@ String ZoneClientSessionAdapter::getAddress() {
 }
 
 void ZoneClientSessionAdapter::setPlayer(SceneObject* playerCreature) {
-	return ((ZoneClientSessionImplementation*) impl)->setPlayer(playerCreature);
+	((ZoneClientSessionImplementation*) impl)->setPlayer(playerCreature);
 }
 
 void ZoneClientSessionAdapter::setSessionKey(unsigned int key) {
-	return ((ZoneClientSessionImplementation*) impl)->setSessionKey(key);
+	((ZoneClientSessionImplementation*) impl)->setSessionKey(key);
 }
 
 void ZoneClientSessionAdapter::setAccountID(unsigned int id) {
-	return ((ZoneClientSessionImplementation*) impl)->setAccountID(id);
+	((ZoneClientSessionImplementation*) impl)->setAccountID(id);
 }
 
 SceneObject* ZoneClientSessionAdapter::getPlayer() {
