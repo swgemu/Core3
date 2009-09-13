@@ -149,7 +149,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/building/BuildingObjectImplementation.$(OBJEXT) \
 	server/zone/objects/player/PlayerCreatureImplementation.$(OBJEXT) \
 	server/zone/packets/charcreation/ClientCreateCharacterCallback.$(OBJEXT) \
-	server/zone/packets/object/ObjectControllerMessage.$(OBJEXT) \
+	server/zone/packets/object/ObjectControllerMessageCallback.$(OBJEXT) \
 	server/chat/room/ChatRoomImplementation.$(OBJEXT) \
 	server/chat/ChatManagerImplementation.$(OBJEXT) \
 	server/zone/managers/objectcontroller/ObjectControllerImplementation.$(OBJEXT) \
@@ -355,7 +355,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \
-		server/zone/packets/object/ObjectControllerMessage.cpp \
+		server/zone/packets/object/ObjectControllerMessageCallback.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
@@ -787,7 +787,7 @@ server/zone/packets/object/$(am__dirstamp):
 server/zone/packets/object/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/packets/object/$(DEPDIR)
 	@: > server/zone/packets/object/$(DEPDIR)/$(am__dirstamp)
-server/zone/packets/object/ObjectControllerMessage.$(OBJEXT):  \
+server/zone/packets/object/ObjectControllerMessageCallback.$(OBJEXT):  \
 	server/zone/packets/object/$(am__dirstamp) \
 	server/zone/packets/object/$(DEPDIR)/$(am__dirstamp)
 server/chat/room/ChatRoomImplementation.$(OBJEXT):  \
@@ -916,7 +916,7 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/waypoint/WaypointObject.$(OBJEXT)
 	-rm -f server/zone/objects/waypoint/WaypointObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/packets/charcreation/ClientCreateCharacterCallback.$(OBJEXT)
-	-rm -f server/zone/packets/object/ObjectControllerMessage.$(OBJEXT)
+	-rm -f server/zone/packets/object/ObjectControllerMessageCallback.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -995,7 +995,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/waypoint/$(DEPDIR)/WaypointObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/waypoint/$(DEPDIR)/WaypointObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/packets/charcreation/$(DEPDIR)/ClientCreateCharacterCallback.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@server/zone/packets/object/$(DEPDIR)/ObjectControllerMessage.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/packets/object/$(DEPDIR)/ObjectControllerMessageCallback.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
