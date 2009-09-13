@@ -110,7 +110,7 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void MissionObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((MissionObjectImplementation*) impl)->sendBaselinesTo(player);
+	((MissionObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 /*

@@ -152,7 +152,7 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 }
 
 void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((CellObjectImplementation*) impl)->sendBaselinesTo(player);
+	((CellObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 int CellObjectAdapter::getCellNumber() {
@@ -160,7 +160,7 @@ int CellObjectAdapter::getCellNumber() {
 }
 
 void CellObjectAdapter::setCellNumber(int number) {
-	return ((CellObjectImplementation*) impl)->setCellNumber(number);
+	((CellObjectImplementation*) impl)->setCellNumber(number);
 }
 
 /*

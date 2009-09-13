@@ -1957,11 +1957,11 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 }
 
 void SceneObjectAdapter::info(const String& msg, bool forced) {
-	return ((SceneObjectImplementation*) impl)->info(msg, forced);
+	((SceneObjectImplementation*) impl)->info(msg, forced);
 }
 
 void SceneObjectAdapter::error(const String& msg) {
-	return ((SceneObjectImplementation*) impl)->error(msg);
+	((SceneObjectImplementation*) impl)->error(msg);
 }
 
 int SceneObjectAdapter::inRangeObjectCount() {
@@ -1973,19 +1973,19 @@ bool SceneObjectAdapter::isInRange(SceneObject* obj, float range) {
 }
 
 void SceneObjectAdapter::redeploy() {
-	return ((SceneObjectImplementation*) impl)->redeploy();
+	((SceneObjectImplementation*) impl)->redeploy();
 }
 
 void SceneObjectAdapter::scheduleUndeploy() {
-	return ((SceneObjectImplementation*) impl)->scheduleUndeploy();
+	((SceneObjectImplementation*) impl)->scheduleUndeploy();
 }
 
 void SceneObjectAdapter::undeploy() {
-	return ((SceneObjectImplementation*) impl)->undeploy();
+	((SceneObjectImplementation*) impl)->undeploy();
 }
 
 void SceneObjectAdapter::removeUndeploymentEvent() {
-	return ((SceneObjectImplementation*) impl)->removeUndeploymentEvent();
+	((SceneObjectImplementation*) impl)->removeUndeploymentEvent();
 }
 
 bool SceneObjectAdapter::addObject(SceneObject* object, int containmentType, bool notifyClient) {
@@ -2001,27 +2001,27 @@ bool SceneObjectAdapter::canAddObject(SceneObject* object) {
 }
 
 void SceneObjectAdapter::updateToDatabase() {
-	return ((SceneObjectImplementation*) impl)->updateToDatabase();
+	((SceneObjectImplementation*) impl)->updateToDatabase();
 }
 
 void SceneObjectAdapter::queueUpdateToDatabaseTask() {
-	return ((SceneObjectImplementation*) impl)->queueUpdateToDatabaseTask();
+	((SceneObjectImplementation*) impl)->queueUpdateToDatabaseTask();
 }
 
 void SceneObjectAdapter::create(ZoneClientSession* client) {
-	return ((SceneObjectImplementation*) impl)->create(client);
+	((SceneObjectImplementation*) impl)->create(client);
 }
 
 void SceneObjectAdapter::destroy(ZoneClientSession* client) {
-	return ((SceneObjectImplementation*) impl)->destroy(client);
+	((SceneObjectImplementation*) impl)->destroy(client);
 }
 
 void SceneObjectAdapter::close(ZoneClientSession* client) {
-	return ((SceneObjectImplementation*) impl)->close(client);
+	((SceneObjectImplementation*) impl)->close(client);
 }
 
 void SceneObjectAdapter::link(ZoneClientSession* client, unsigned int containmentType) {
-	return ((SceneObjectImplementation*) impl)->link(client, containmentType);
+	((SceneObjectImplementation*) impl)->link(client, containmentType);
 }
 
 BaseMessage* SceneObjectAdapter::link(unsigned long long objectID, unsigned int containmentType) {
@@ -2029,35 +2029,35 @@ BaseMessage* SceneObjectAdapter::link(unsigned long long objectID, unsigned int 
 }
 
 void SceneObjectAdapter::sendTo(SceneObject* player, bool doClose) {
-	return ((SceneObjectImplementation*) impl)->sendTo(player, doClose);
+	((SceneObjectImplementation*) impl)->sendTo(player, doClose);
 }
 
 void SceneObjectAdapter::sendDestroyTo(SceneObject* player) {
-	return ((SceneObjectImplementation*) impl)->sendDestroyTo(player);
+	((SceneObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
 void SceneObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((SceneObjectImplementation*) impl)->sendBaselinesTo(player);
+	((SceneObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 void SceneObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
-	return ((SceneObjectImplementation*) impl)->sendContainerObjectsTo(player);
+	((SceneObjectImplementation*) impl)->sendContainerObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendSlottedObjectsTo(SceneObject* player) {
-	return ((SceneObjectImplementation*) impl)->sendSlottedObjectsTo(player);
+	((SceneObjectImplementation*) impl)->sendSlottedObjectsTo(player);
 }
 
 void SceneObjectAdapter::sendToOwner(bool doClose) {
-	return ((SceneObjectImplementation*) impl)->sendToOwner(doClose);
+	((SceneObjectImplementation*) impl)->sendToOwner(doClose);
 }
 
 void SceneObjectAdapter::sendAttributeListTo(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->sendAttributeListTo(object);
+	((SceneObjectImplementation*) impl)->sendAttributeListTo(object);
 }
 
 void SceneObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
-	return ((SceneObjectImplementation*) impl)->fillObjectMenuResponse(menuResponse);
+	((SceneObjectImplementation*) impl)->fillObjectMenuResponse(menuResponse);
 }
 
 int SceneObjectAdapter::useObject(SceneObject* object) {
@@ -2065,43 +2065,43 @@ int SceneObjectAdapter::useObject(SceneObject* object) {
 }
 
 void SceneObjectAdapter::insertToZone(Zone* zone) {
-	return ((SceneObjectImplementation*) impl)->insertToZone(zone);
+	((SceneObjectImplementation*) impl)->insertToZone(zone);
 }
 
 void SceneObjectAdapter::insertToBuilding(BuildingObject* building) {
-	return ((SceneObjectImplementation*) impl)->insertToBuilding(building);
+	((SceneObjectImplementation*) impl)->insertToBuilding(building);
 }
 
 void SceneObjectAdapter::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY) {
-	return ((SceneObjectImplementation*) impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY);
+	((SceneObjectImplementation*) impl)->switchZone(newZoneID, newPostionX, newPositionZ, newPositionY);
 }
 
 void SceneObjectAdapter::removeFromZone() {
-	return ((SceneObjectImplementation*) impl)->removeFromZone();
+	((SceneObjectImplementation*) impl)->removeFromZone();
 }
 
 void SceneObjectAdapter::removeFromBuilding(BuildingObject* building) {
-	return ((SceneObjectImplementation*) impl)->removeFromBuilding(building);
+	((SceneObjectImplementation*) impl)->removeFromBuilding(building);
 }
 
 void SceneObjectAdapter::updateZone(bool lightUpdate) {
-	return ((SceneObjectImplementation*) impl)->updateZone(lightUpdate);
+	((SceneObjectImplementation*) impl)->updateZone(lightUpdate);
 }
 
 void SceneObjectAdapter::updateZoneWithParent(SceneObject* newParent, bool lightUpdate) {
-	return ((SceneObjectImplementation*) impl)->updateZoneWithParent(newParent, lightUpdate);
+	((SceneObjectImplementation*) impl)->updateZoneWithParent(newParent, lightUpdate);
 }
 
 void SceneObjectAdapter::broadcastMessage(BasePacket* message, bool sendSelf) {
-	return ((SceneObjectImplementation*) impl)->broadcastMessage(message, sendSelf);
+	((SceneObjectImplementation*) impl)->broadcastMessage(message, sendSelf);
 }
 
 void SceneObjectAdapter::broadcastObject(SceneObject* object, bool sendSelf) {
-	return ((SceneObjectImplementation*) impl)->broadcastObject(object, sendSelf);
+	((SceneObjectImplementation*) impl)->broadcastObject(object, sendSelf);
 }
 
 void SceneObjectAdapter::sendMessage(BasePacket* msg) {
-	return ((SceneObjectImplementation*) impl)->sendMessage(msg);
+	((SceneObjectImplementation*) impl)->sendMessage(msg);
 }
 
 int SceneObjectAdapter::compareTo(SceneObject* obj) {
@@ -2257,59 +2257,59 @@ bool SceneObjectAdapter::isPersistent() {
 }
 
 void SceneObjectAdapter::setPosition(float x, float z, float y) {
-	return ((SceneObjectImplementation*) impl)->setPosition(x, z, y);
+	((SceneObjectImplementation*) impl)->setPosition(x, z, y);
 }
 
 void SceneObjectAdapter::initializePosition(float x, float z, float y) {
-	return ((SceneObjectImplementation*) impl)->initializePosition(x, z, y);
+	((SceneObjectImplementation*) impl)->initializePosition(x, z, y);
 }
 
 void SceneObjectAdapter::setGameObjectType(unsigned int type) {
-	return ((SceneObjectImplementation*) impl)->setGameObjectType(type);
+	((SceneObjectImplementation*) impl)->setGameObjectType(type);
 }
 
 void SceneObjectAdapter::setClientObjectCRC(unsigned int objCRC) {
-	return ((SceneObjectImplementation*) impl)->setClientObjectCRC(objCRC);
+	((SceneObjectImplementation*) impl)->setClientObjectCRC(objCRC);
 }
 
 void SceneObjectAdapter::setServerObjectCRC(unsigned int objCRC) {
-	return ((SceneObjectImplementation*) impl)->setServerObjectCRC(objCRC);
+	((SceneObjectImplementation*) impl)->setServerObjectCRC(objCRC);
 }
 
 void SceneObjectAdapter::setParent(SceneObject* par) {
-	return ((SceneObjectImplementation*) impl)->setParent(par);
+	((SceneObjectImplementation*) impl)->setParent(par);
 }
 
 void SceneObjectAdapter::setObjectName(const UnicodeString& name) {
-	return ((SceneObjectImplementation*) impl)->setObjectName(name);
+	((SceneObjectImplementation*) impl)->setObjectName(name);
 }
 
 void SceneObjectAdapter::setZone(Zone* zon) {
-	return ((SceneObjectImplementation*) impl)->setZone(zon);
+	((SceneObjectImplementation*) impl)->setZone(zon);
 }
 
 void SceneObjectAdapter::setDirection(float fw, float fx, float fy, float fz) {
-	return ((SceneObjectImplementation*) impl)->setDirection(fw, fx, fy, fz);
+	((SceneObjectImplementation*) impl)->setDirection(fw, fx, fy, fz);
 }
 
 void SceneObjectAdapter::setMovementCounter(unsigned int count) {
-	return ((SceneObjectImplementation*) impl)->setMovementCounter(count);
+	((SceneObjectImplementation*) impl)->setMovementCounter(count);
 }
 
 void SceneObjectAdapter::setContainmentType(unsigned int type) {
-	return ((SceneObjectImplementation*) impl)->setContainmentType(type);
+	((SceneObjectImplementation*) impl)->setContainmentType(type);
 }
 
 void SceneObjectAdapter::setLoggingName(const String& name) {
-	return ((SceneObjectImplementation*) impl)->setLoggingName(name);
+	((SceneObjectImplementation*) impl)->setLoggingName(name);
 }
 
 void SceneObjectAdapter::setPersistent(bool value) {
-	return ((SceneObjectImplementation*) impl)->setPersistent(value);
+	((SceneObjectImplementation*) impl)->setPersistent(value);
 }
 
 void SceneObjectAdapter::clearUpdateToDatabaseTask() {
-	return ((SceneObjectImplementation*) impl)->clearUpdateToDatabaseTask();
+	((SceneObjectImplementation*) impl)->clearUpdateToDatabaseTask();
 }
 
 /*

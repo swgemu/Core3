@@ -261,11 +261,11 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void WaypointObjectAdapter::changeStatus(bool status) {
-	return ((WaypointObjectImplementation*) impl)->changeStatus(status);
+	((WaypointObjectImplementation*) impl)->changeStatus(status);
 }
 
 void WaypointObjectAdapter::switchStatus() {
-	return ((WaypointObjectImplementation*) impl)->switchStatus();
+	((WaypointObjectImplementation*) impl)->switchStatus();
 }
 
 bool WaypointObjectAdapter::getStatus() {
@@ -273,11 +273,11 @@ bool WaypointObjectAdapter::getStatus() {
 }
 
 void WaypointObjectAdapter::setInternalNote(const String& message) {
-	return ((WaypointObjectImplementation*) impl)->setInternalNote(message);
+	((WaypointObjectImplementation*) impl)->setInternalNote(message);
 }
 
 void WaypointObjectAdapter::setPlanetName(const String& planet) {
-	return ((WaypointObjectImplementation*) impl)->setPlanetName(planet);
+	((WaypointObjectImplementation*) impl)->setPlanetName(planet);
 }
 
 unsigned int WaypointObjectAdapter::getPlanetCRC() {

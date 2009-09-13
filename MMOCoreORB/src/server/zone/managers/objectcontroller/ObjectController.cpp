@@ -171,7 +171,7 @@ bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, Scen
 }
 
 void ObjectControllerAdapter::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
-	return ((ObjectControllerImplementation*) impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
+	((ObjectControllerImplementation*) impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*

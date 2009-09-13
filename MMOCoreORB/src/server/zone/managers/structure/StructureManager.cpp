@@ -174,15 +174,15 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 }
 
 void StructureManagerAdapter::loadStaticBuildings() {
-	return ((StructureManagerImplementation*) impl)->loadStaticBuildings();
+	((StructureManagerImplementation*) impl)->loadStaticBuildings();
 }
 
 void StructureManagerAdapter::loadPlayerStructures() {
-	return ((StructureManagerImplementation*) impl)->loadPlayerStructures();
+	((StructureManagerImplementation*) impl)->loadPlayerStructures();
 }
 
 void StructureManagerAdapter::loadStructures() {
-	return ((StructureManagerImplementation*) impl)->loadStructures();
+	((StructureManagerImplementation*) impl)->loadStructures();
 }
 
 BuildingObject* StructureManagerAdapter::loadStaticBuilding(unsigned long long oid, int planet) {

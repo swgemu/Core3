@@ -799,35 +799,35 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void PlayerCreatureAdapter::disconnect(bool closeClient, bool doLock) {
-	return ((PlayerCreatureImplementation*) impl)->disconnect(closeClient, doLock);
+	((PlayerCreatureImplementation*) impl)->disconnect(closeClient, doLock);
 }
 
 void PlayerCreatureAdapter::unload() {
-	return ((PlayerCreatureImplementation*) impl)->unload();
+	((PlayerCreatureImplementation*) impl)->unload();
 }
 
 void PlayerCreatureAdapter::reload(ZoneClientSession* client) {
-	return ((PlayerCreatureImplementation*) impl)->reload(client);
+	((PlayerCreatureImplementation*) impl)->reload(client);
 }
 
 void PlayerCreatureAdapter::logout(bool doLock) {
-	return ((PlayerCreatureImplementation*) impl)->logout(doLock);
+	((PlayerCreatureImplementation*) impl)->logout(doLock);
 }
 
 void PlayerCreatureAdapter::activateRecovery() {
-	return ((PlayerCreatureImplementation*) impl)->activateRecovery();
+	((PlayerCreatureImplementation*) impl)->activateRecovery();
 }
 
 void PlayerCreatureAdapter::doRecovery() {
-	return ((PlayerCreatureImplementation*) impl)->doRecovery();
+	((PlayerCreatureImplementation*) impl)->doRecovery();
 }
 
 void PlayerCreatureAdapter::sendMessage(BasePacket* msg) {
-	return ((PlayerCreatureImplementation*) impl)->sendMessage(msg);
+	((PlayerCreatureImplementation*) impl)->sendMessage(msg);
 }
 
 void PlayerCreatureAdapter::sendToOwner(bool doClose) {
-	return ((PlayerCreatureImplementation*) impl)->sendToOwner(doClose);
+	((PlayerCreatureImplementation*) impl)->sendToOwner(doClose);
 }
 
 bool PlayerCreatureAdapter::isOnline() {
@@ -879,59 +879,59 @@ String PlayerCreatureAdapter::getFirstName() {
 }
 
 void PlayerCreatureAdapter::setSavedParentID(unsigned long long id) {
-	return ((PlayerCreatureImplementation*) impl)->setSavedParentID(id);
+	((PlayerCreatureImplementation*) impl)->setSavedParentID(id);
 }
 
 void PlayerCreatureAdapter::setSavedZoneID(int id) {
-	return ((PlayerCreatureImplementation*) impl)->setSavedZoneID(id);
+	((PlayerCreatureImplementation*) impl)->setSavedZoneID(id);
 }
 
 void PlayerCreatureAdapter::setClient(ZoneClientSession* cli) {
-	return ((PlayerCreatureImplementation*) impl)->setClient(cli);
+	((PlayerCreatureImplementation*) impl)->setClient(cli);
 }
 
 void PlayerCreatureAdapter::setBiography(const UnicodeString& bio) {
-	return ((PlayerCreatureImplementation*) impl)->setBiography(bio);
+	((PlayerCreatureImplementation*) impl)->setBiography(bio);
 }
 
 void PlayerCreatureAdapter::setRaceID(byte id) {
-	return ((PlayerCreatureImplementation*) impl)->setRaceID(id);
+	((PlayerCreatureImplementation*) impl)->setRaceID(id);
 }
 
 void PlayerCreatureAdapter::setOffline() {
-	return ((PlayerCreatureImplementation*) impl)->setOffline();
+	((PlayerCreatureImplementation*) impl)->setOffline();
 }
 
 void PlayerCreatureAdapter::setLinkDead() {
-	return ((PlayerCreatureImplementation*) impl)->setLinkDead();
+	((PlayerCreatureImplementation*) impl)->setLinkDead();
 }
 
 void PlayerCreatureAdapter::setOnline() {
-	return ((PlayerCreatureImplementation*) impl)->setOnline();
+	((PlayerCreatureImplementation*) impl)->setOnline();
 }
 
 void PlayerCreatureAdapter::setLoggingOut() {
-	return ((PlayerCreatureImplementation*) impl)->setLoggingOut();
+	((PlayerCreatureImplementation*) impl)->setLoggingOut();
 }
 
 void PlayerCreatureAdapter::setAccountID(unsigned int id) {
-	return ((PlayerCreatureImplementation*) impl)->setAccountID(id);
+	((PlayerCreatureImplementation*) impl)->setAccountID(id);
 }
 
 void PlayerCreatureAdapter::clearDisconnectEvent() {
-	return ((PlayerCreatureImplementation*) impl)->clearDisconnectEvent();
+	((PlayerCreatureImplementation*) impl)->clearDisconnectEvent();
 }
 
 void PlayerCreatureAdapter::clearRecoveryEvent() {
-	return ((PlayerCreatureImplementation*) impl)->clearRecoveryEvent();
+	((PlayerCreatureImplementation*) impl)->clearRecoveryEvent();
 }
 
 void PlayerCreatureAdapter::addChatRoom(ChatRoom* room) {
-	return ((PlayerCreatureImplementation*) impl)->addChatRoom(room);
+	((PlayerCreatureImplementation*) impl)->addChatRoom(room);
 }
 
 void PlayerCreatureAdapter::removeChatRoom(ChatRoom* room) {
-	return ((PlayerCreatureImplementation*) impl)->removeChatRoom(room);
+	((PlayerCreatureImplementation*) impl)->removeChatRoom(room);
 }
 
 /*

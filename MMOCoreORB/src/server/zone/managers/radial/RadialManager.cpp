@@ -154,15 +154,15 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 }
 
 void RadialManagerAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
-	return ((RadialManagerImplementation*) impl)->handleObjectMenuSelect(player, selectID, objectID);
+	((RadialManagerImplementation*) impl)->handleObjectMenuSelect(player, selectID, objectID);
 }
 
 void RadialManagerAdapter::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
-	return ((RadialManagerImplementation*) impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+	((RadialManagerImplementation*) impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 
 void RadialManagerAdapter::handleUseObject(PlayerCreature* player, SceneObject* object) {
-	return ((RadialManagerImplementation*) impl)->handleUseObject(player, object);
+	((RadialManagerImplementation*) impl)->handleUseObject(player, object);
 }
 
 /*

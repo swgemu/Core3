@@ -469,31 +469,31 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 }
 
 void TangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	return ((TangibleObjectImplementation*) impl)->sendBaselinesTo(player);
+	((TangibleObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 void TangibleObjectAdapter::setDefender(SceneObject* defender) {
-	return ((TangibleObjectImplementation*) impl)->setDefender(defender);
+	((TangibleObjectImplementation*) impl)->setDefender(defender);
 }
 
 void TangibleObjectAdapter::addDefender(SceneObject* defender) {
-	return ((TangibleObjectImplementation*) impl)->addDefender(defender);
+	((TangibleObjectImplementation*) impl)->addDefender(defender);
 }
 
 void TangibleObjectAdapter::removeDefender(SceneObject* defender) {
-	return ((TangibleObjectImplementation*) impl)->removeDefender(defender);
+	((TangibleObjectImplementation*) impl)->removeDefender(defender);
 }
 
 void TangibleObjectAdapter::removeDefenders() {
-	return ((TangibleObjectImplementation*) impl)->removeDefenders();
+	((TangibleObjectImplementation*) impl)->removeDefenders();
 }
 
 void TangibleObjectAdapter::setCombatState() {
-	return ((TangibleObjectImplementation*) impl)->setCombatState();
+	((TangibleObjectImplementation*) impl)->setCombatState();
 }
 
 void TangibleObjectAdapter::clearCombatState(bool clearDefenders) {
-	return ((TangibleObjectImplementation*) impl)->clearCombatState(clearDefenders);
+	((TangibleObjectImplementation*) impl)->clearCombatState(clearDefenders);
 }
 
 bool TangibleObjectAdapter::hasDefender(SceneObject* defender) {
@@ -533,11 +533,11 @@ unsigned int TangibleObjectAdapter::getPvpStatusBitmask() {
 }
 
 void TangibleObjectAdapter::getCustomizationString(String& variables) {
-	return ((TangibleObjectImplementation*) impl)->getCustomizationString(variables);
+	((TangibleObjectImplementation*) impl)->getCustomizationString(variables);
 }
 
 void TangibleObjectAdapter::setCustomizationString(const String& vars) {
-	return ((TangibleObjectImplementation*) impl)->setCustomizationString(vars);
+	((TangibleObjectImplementation*) impl)->setCustomizationString(vars);
 }
 
 /*
