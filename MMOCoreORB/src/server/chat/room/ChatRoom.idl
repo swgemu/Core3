@@ -92,7 +92,9 @@ class ChatRoom extends ManagedObject {
 	public native void removePlayer(final string player);
 
 	public native void broadcastMessage(BaseMessage msg);
-	public native local void broadcastMessages(Vector<BaseMessage> messages);
+	
+	@local 
+	public native void broadcastMessages(Vector<BaseMessage> messages);
 
 	public native boolean hasPlayer(PlayerCreature player);
 	public native boolean hasPlayer(final string name);

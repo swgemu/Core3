@@ -343,7 +343,8 @@ interface CreatureObject implements TangibleObject {
 
 	Armor getArmor(int type);
 
-	local void addSkill(Skill skill);
+	@local
+	void addSkill(Skill skill);
 
 	void addSkillMod(const String name, int mod, boolean updateClient = false);
 
