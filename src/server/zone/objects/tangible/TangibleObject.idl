@@ -104,7 +104,9 @@ class TangibleObject extends SceneObject {
 		return unknownByte;
 	}
 	
-	/*public local CustomizationVariables getCustomizationVariables() {
+	/*
+	@local
+	public CustomizationVariables getCustomizationVariables() {
 		return customizationVariables;
 	}*/
 	
@@ -140,7 +142,8 @@ class TangibleObject extends SceneObject {
 		customizationVariables.getData(variables);
 	}
 	
-	public local DeltaVector<SceneObject> getDefenderList() {
+	@local
+	public DeltaVector<SceneObject> getDefenderList() {
 		return defenderList;
 	}
 	

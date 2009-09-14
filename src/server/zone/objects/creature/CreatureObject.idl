@@ -142,7 +142,9 @@ class CreatureObject extends TangibleObject {
 	public native void sendSystemMessage(unicode message);
 	public native void sendSystemMessage(final string file, final string str, unsigned long targetid = 0);
 	public native void sendSlottedObjectsTo(SceneObject player);
-	public local native void sendSystemMessage(final string file, final string str, StfParameter param);
+	
+	@local
+	public native void sendSystemMessage(final string file, final string str, StfParameter param);
 	
 	public native void setCombatState();
 	public native void clearCombatState(boolean clearDefenders);
@@ -165,7 +167,8 @@ class CreatureObject extends TangibleObject {
 		return wounds.get(idx);
 	}
 	
-	public local DeltaVector<int> getWounds() {
+	@local
+	public DeltaVector<int> getWounds() {
 		return wounds;
 	}
 	
@@ -173,7 +176,8 @@ class CreatureObject extends TangibleObject {
 		return hamList.get(idx);
 	}
 	
-	public local DeltaVector<int> getHAM() {
+	@local
+	public DeltaVector<int> getHAM() {
 		return hamList;
 	}
 	
@@ -181,7 +185,8 @@ class CreatureObject extends TangibleObject {
 		return maxHamList.get(idx);
 	}
 	
-	public local DeltaVector<int> getMaxHAM() {
+	@local
+	public DeltaVector<int> getMaxHAM() {
 		return maxHamList;
 	}
 	
@@ -189,7 +194,8 @@ class CreatureObject extends TangibleObject {
 		return encumbrances.get(idx);
 	}
 	
-	public local DeltaVector<int> getEncumbrances() {
+	@local
+	public DeltaVector<int> getEncumbrances() {
 		return encumbrances;
 	}
 	
@@ -301,7 +307,8 @@ class CreatureObject extends TangibleObject {
 		return species;
 	}
 	
-	public local DeltaVector<int> getBaseHAM() {
+	@local
+	public DeltaVector<int> getBaseHAM() {
 		return baseHAM;
 	}
 	

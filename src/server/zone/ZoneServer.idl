@@ -109,7 +109,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public native ZoneServer(int processingThreads, int galaxyid = 2);
 	
-	public local native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
+	@local
+	public native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);
 	
 	public native void init();
 
@@ -125,9 +126,11 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public native void stop();
 
-	public local native void handleMessage(ServiceClient client, Packet message);
+	@local
+	public native void handleMessage(ServiceClient client, Packet message);
 
-	public local native boolean handleError(ServiceClient client, @dereferenced Exception e);
+	@local
+	public native boolean handleError(ServiceClient client, @dereferenced Exception e);
 	
 	public native void addTotalSentPacket(int count);
 	public native void addTotalResentPacket(int count);

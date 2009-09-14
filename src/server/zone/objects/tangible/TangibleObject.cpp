@@ -347,52 +347,52 @@ byte TangibleObjectImplementation::getUnknownByte() {
 }
 
 int TangibleObjectImplementation::getObjectCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(112):  return objectCount;
+	// server/zone/objects/tangible/TangibleObject.idl(114):  return objectCount;
 	return objectCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(116):  return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(118):  return maxCondition;
 	return maxCondition;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(120):  return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(122):  return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(124):  return volume;
+	// server/zone/objects/tangible/TangibleObject.idl(126):  return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(128):  return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(130):  return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(132):  return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(134):  return optionsBitmask;
 	return optionsBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(136):  return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(138):  return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(140):  customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl(142):  customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
-	// server/zone/objects/tangible/TangibleObject.idl(144):  return defenderList;
+	// server/zone/objects/tangible/TangibleObject.idl(147):  return defenderList;
 	return (&defenderList);
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(148):  customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(151):  customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 

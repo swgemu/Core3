@@ -272,32 +272,32 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(85):  return staticBuilding;
+	// server/zone/objects/building/BuildingObject.idl(95):  return staticBuilding;
 	return staticBuilding;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(89):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(99):  return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(93):  staticBuilding = value;
+	// server/zone/objects/building/BuildingObject.idl(103):  staticBuilding = value;
 	staticBuilding = value;
 }
 
 bool BuildingObjectImplementation::hasNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(97):  return notifiedObjects.contains(object);
+	// server/zone/objects/building/BuildingObject.idl(107):  return notifiedObjects.contains(object);
 	return (&notifiedObjects)->contains(object);
 }
 
 void BuildingObjectImplementation::addNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(101):  notifiedObjects.put(object);
+	// server/zone/objects/building/BuildingObject.idl(111):  notifiedObjects.put(object);
 	(&notifiedObjects)->put(object);
 }
 
 void BuildingObjectImplementation::removeNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(105):  notifiedObjects.drop(object);
+	// server/zone/objects/building/BuildingObject.idl(115):  notifiedObjects.drop(object);
 	(&notifiedObjects)->drop(object);
 }
 

@@ -529,105 +529,105 @@ void ChatRoomImplementation::_serializationHelperMethod() {
 }
 
 void ChatRoomImplementation::setPrivate() {
-	// server/chat/room/ChatRoom.idl(103):  isPublicRoom = false;
+	// server/chat/room/ChatRoom.idl(105):  isPublicRoom = false;
 	isPublicRoom = false;
 }
 
 void ChatRoomImplementation::setPublic() {
-	// server/chat/room/ChatRoom.idl(107):  isPublicRoom = true;
+	// server/chat/room/ChatRoom.idl(109):  isPublicRoom = true;
 	isPublicRoom = true;
 }
 
 bool ChatRoomImplementation::isPublic() {
-	// server/chat/room/ChatRoom.idl(111):  return isPublicRoom == true;
+	// server/chat/room/ChatRoom.idl(113):  return isPublicRoom == true;
 	return isPublicRoom == true;
 }
 
 bool ChatRoomImplementation::isPrivate() {
-	// server/chat/room/ChatRoom.idl(115):  return isPublicRoom == false;
+	// server/chat/room/ChatRoom.idl(117):  return isPublicRoom == false;
 	return isPublicRoom == false;
 }
 
 PlayerCreature* ChatRoomImplementation::getPlayer(int idx) {
-	// server/chat/room/ChatRoom.idl(119):  return playerList.get(idx);
+	// server/chat/room/ChatRoom.idl(121):  return playerList.get(idx);
 	return (&playerList)->get(idx);
 }
 
 int ChatRoomImplementation::getPlayerSize() {
-	// server/chat/room/ChatRoom.idl(123):  return playerList.size();
+	// server/chat/room/ChatRoom.idl(125):  return playerList.size();
 	return (&playerList)->size();
 }
 
 void ChatRoomImplementation::setName(const String& Name) {
-	// server/chat/room/ChatRoom.idl(127):  name = Name;
+	// server/chat/room/ChatRoom.idl(129):  name = Name;
 	name = Name;
 }
 
 String ChatRoomImplementation::getName() {
-	// server/chat/room/ChatRoom.idl(131):  return name;
+	// server/chat/room/ChatRoom.idl(133):  return name;
 	return name;
 }
 
 String ChatRoomImplementation::getFullPath() {
-	// server/chat/room/ChatRoom.idl(135):  return fullPath;
+	// server/chat/room/ChatRoom.idl(137):  return fullPath;
 	return fullPath;
 }
 
 String ChatRoomImplementation::getOwner() {
-	// server/chat/room/ChatRoom.idl(139):  return owner;
+	// server/chat/room/ChatRoom.idl(141):  return owner;
 	return owner;
 }
 
 String ChatRoomImplementation::getCreator() {
-	// server/chat/room/ChatRoom.idl(143):  return creator;
+	// server/chat/room/ChatRoom.idl(145):  return creator;
 	return creator;
 }
 
 UnicodeString ChatRoomImplementation::getTitle() {
-	// server/chat/room/ChatRoom.idl(147):  return title;
+	// server/chat/room/ChatRoom.idl(149):  return title;
 	return title;
 }
 
 void ChatRoomImplementation::setOwner(const String& Owner) {
-	// server/chat/room/ChatRoom.idl(153):  owner = Owner;
+	// server/chat/room/ChatRoom.idl(155):  owner = Owner;
 	owner = Owner;
 }
 
 void ChatRoomImplementation::setCreator(const String& Creator) {
-	// server/chat/room/ChatRoom.idl(157):  creator = Creator;
+	// server/chat/room/ChatRoom.idl(159):  creator = Creator;
 	creator = Creator;
 }
 
 void ChatRoomImplementation::setTitle(const String& Title) {
-	// server/chat/room/ChatRoom.idl(161):  title = Title;
+	// server/chat/room/ChatRoom.idl(163):  title = Title;
 	title = Title;
 }
 
 unsigned int ChatRoomImplementation::getRoomID() {
-	// server/chat/room/ChatRoom.idl(165):  return roomID;
+	// server/chat/room/ChatRoom.idl(167):  return roomID;
 	return roomID;
 }
 
 int ChatRoomImplementation::getSubRoomsSize() {
-	// server/chat/room/ChatRoom.idl(169):  return subRooms.size();
+	// server/chat/room/ChatRoom.idl(171):  return subRooms.size();
 	return (&subRooms)->size();
 }
 
 ChatRoom* ChatRoomImplementation::getParent() {
-	// server/chat/room/ChatRoom.idl(173):  return parent;
+	// server/chat/room/ChatRoom.idl(175):  return parent;
 	return parent;
 }
 
 int ChatRoomImplementation::compareTo(ChatRoom* obj) {
-	// server/chat/room/ChatRoom.idl(177):  
-	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(178):  return 1;
+	// server/chat/room/ChatRoom.idl(179):  
+	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(180):  return 1;
 	return 1;
 
-	else 	// server/chat/room/ChatRoom.idl(179):  
-	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(180):  return -1;
+	else 	// server/chat/room/ChatRoom.idl(181):  
+	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(182):  return -1;
 	return -1;
 
-	else 	// server/chat/room/ChatRoom.idl(183):  return 0;
+	else 	// server/chat/room/ChatRoom.idl(185):  return 0;
 	return 0;
 }
 

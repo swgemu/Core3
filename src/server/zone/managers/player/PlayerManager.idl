@@ -64,8 +64,12 @@ class PlayerManager extends ManagedObject implements Logger {
 			
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServerImplementation impl);
 	
-	public local native boolean createPlayer(MessageCallback callback);
-	public local native boolean checkPlayerName(MessageCallback callback);
+	@local
+	public native boolean createPlayer(MessageCallback callback);
+	
+	@local
+	public native boolean checkPlayerName(MessageCallback callback);
+	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);

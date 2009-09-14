@@ -268,7 +268,7 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
-	// server/chat/ChatManager.idl(159):  return ++roomID;
+	// server/chat/ChatManager.idl(162):  return ++roomID;
 	return  ++roomID;
 }
 

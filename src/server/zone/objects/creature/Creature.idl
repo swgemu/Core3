@@ -145,7 +145,8 @@ interface Creature implements CreatureObject {
 	boolean hasLootCreated();
 
 	// setters
-	local void setCreatureManager(CreatureManagerImplementation manager);
+	@local
+	void setCreatureManager(CreatureManagerImplementation manager);
 
 	void setLair(LairObject Lair);
 

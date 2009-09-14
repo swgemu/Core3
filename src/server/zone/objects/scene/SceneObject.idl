@@ -319,7 +319,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return QuadTreeEntry.inRangeObjectCount();
 	}
 	
-	public local QuadTreeEntry getInRangeObject(int index) {
+	@local
+	public QuadTreeEntry getInRangeObject(int index) {
 		return QuadTreeEntry.getInRangeObject(index);
 	}
 	
@@ -327,7 +328,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
 	}
 	
-	public local boolean isInRange(QuadTreeEntry obj, float range) {
+	@local
+	public boolean isInRange(QuadTreeEntry obj, float range) {
 		return QuadTreeEntry.isInRange(obj, range);
 	}
 	
@@ -400,8 +402,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public native void broadcastMessage(BasePacket message, boolean sendSelf);
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
-	public local native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
-
+	
+	@local
+	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
 	
 	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)
@@ -417,7 +420,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return 0;
 	}
 	
-	public local native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
+	@local
+	public native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
 	
 	public unsigned long getParentID() {
 		if (parent != null) {
@@ -464,11 +468,13 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return serverObjectCRC;
 	}
 	
-	public local StringId getObjectName() {
+	@local
+	public StringId getObjectName() {
 		return objectName;
 	}
 	
-	public local StringId getDetailedDescription() {
+	@local
+	public StringId getDetailedDescription() {
 		return detailedDescription;
 	}
 	
@@ -595,7 +601,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		parent = par;
 	}
 	
-	public local void setZoneProcessServer(ZoneProcessServerImplementation srv) {
+	@local
+	public void setZoneProcessServer(ZoneProcessServerImplementation srv) {
 		server = srv;
 	}
 		
@@ -631,7 +638,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		updateToDatabaseTask = null;
 	}
 	
-	public local VectorMap<unsigned long, SceneObject> getContainerObjects() {
+	@local
+	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
 		return containerObjects;
 	}
 

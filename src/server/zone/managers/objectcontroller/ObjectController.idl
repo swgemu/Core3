@@ -67,9 +67,13 @@ class ObjectController extends ManagedObject implements Lua {
 	
 	public native void enqueueCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, unicode arguments);
 	
-	public native local void addQueueCommand(QueueCommand command);
+	@local
+	public native void addQueueCommand(QueueCommand command);
 	
-	public native local QueueCommand getQueueCommand(final string name);
-	public native local QueueCommand getQueueCommand(unsigned int crc);
+	@local
+	public native QueueCommand getQueueCommand(final string name);
+
+	@local
+	public native QueueCommand getQueueCommand(unsigned int crc);
 	
 }
