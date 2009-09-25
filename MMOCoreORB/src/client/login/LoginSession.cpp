@@ -20,10 +20,11 @@ LoginSession::LoginSession(int instance) : Logger("LoginSession" + String::value
 	LoginSession::instance = instance;
 
 	accountID = 0;
+	sessionID = 0;
 }
 
 void LoginSession::run() {
-	LoginClient* login = new LoginClient("127.0.0.1", 44453);
+	LoginClient* login = new LoginClient("denver.swgemu.com", 44453);
 	login->setLoginSession(this);
 	login->initialize();
 	login->setLoggingName("LoginClient" + String::valueOf(instance));

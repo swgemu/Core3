@@ -68,6 +68,7 @@ void LoginPacketHandler::handleLoginClientToken(Message* pack) {
 	uint32 accountID = pack->parseInt();
 
 	loginSession->setAccountID(accountID);
+	loginSession->setSessionID(session);
 }
 
 void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {

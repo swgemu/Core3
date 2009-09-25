@@ -49,13 +49,13 @@ which carries forward this exception.
 
 class ClientIDMessage : public BaseMessage {
 public:
-	ClientIDMessage(uint32 accid) : BaseMessage() {
+	ClientIDMessage(uint32 accid, uint32 session) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0xD5899226);
 
 		insertInt(0); // unk
 		insertInt(0); // dataLen
-		insertInt(0); // session key
+		insertInt(session); // session key
 		insertInt(accid);
 	}
 
