@@ -16,11 +16,12 @@
 #include "managers/object/ObjectManager.h"
 
 
-Zone::Zone(int instance, uint64 characterObjectID, uint32 account) : Thread(), Mutex("Zone") {
+Zone::Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session) : Thread(), Mutex("Zone") {
 	//loginSession = login;
 
 	characterID = characterObjectID;
 	accountID = account;
+	sessionID = session;
 	player = NULL;
 
 	objectManager = new ObjectManager();
@@ -51,7 +52,7 @@ Zone::~Zone() {
 
 void Zone::run() {
 	try {
-		client = new ZoneClient("127.0.0.1", 44463);
+		client = new ZoneClient("denver.swgemu.com", 44463);
 		client->setAccountID(accountID);
 		client->setZone(this);
 		client->setLoggingName("ZoneClient" + String::valueOf(instance));
@@ -70,15 +71,18 @@ void Zone::run() {
 			return;
 		}
 
-		BaseMessage* acc = new ClientIDMessage(accountID);
+		BaseMessage* acc = new ClientIDMessage(accountID, sessionID);
 		client->sendMessage(acc);
 
 		client->info("sent client id message", true);
 
 		if (characterID == 0) {
-			char name[256];
 			client->info("enter new Character Name to create", true);
-			gets(name);
+			char name[256];
+			fgets(name, sizeof(name), stdin);
+
+			String charName = name;
+			charName = charName.replaceFirst("\n", "");
 
 			BaseMessage* msg = new ClientCreateCharacter(name);
 			client->sendMessage(msg);
@@ -164,6 +168,9 @@ void Zone::stopFollow() {
 }
 
 bool Zone::doCommand(const String& command, const String& arguments) {
+	if (command.length() == 0)
+		return false;
+
 	return objectController->doCommand(command.hashCode(), arguments);
 }
 

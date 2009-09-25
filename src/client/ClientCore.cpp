@@ -71,8 +71,9 @@ void ClientCore::run() {
 		}
 
 		uint32 acc = loginSession.getAccountID();
+		uint32 session = loginSession.getSessionID();
 
-		Zone* zone = new Zone(i, objid, acc);
+		Zone* zone = new Zone(i, objid, acc, session);
 		zone->start();
 
 		zones.add(zone);
@@ -139,11 +140,20 @@ void ClientCore::handleCommands() {
 						Logger::console.error("unknown command");
 			}
 		} catch (SocketException& e) {
-			System::out << "[ServerCore] " << e.getMessage();
+			System::out << "[ClientCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {
-			System::out << "[ServerCore] " << e.getMessage() << "\n";
+			System::out << "[ClientCore] " << e.getMessage() << "\n";
+			e.printStackTrace();
+
+		} catch (Exception& e) {
+			StringBuffer msg;
+			msg << "[ClientCore] Exception caught";
+			error(msg.toString());
+			error(e.getMessage());
+			e.printStackTrace();
+
 		} catch (...) {
-			System::out << "[ServerCore] unreported Exception caught\n";
+			System::out << "[ClientCore] unreported Exception caught\n";
 		}
 	}
 }

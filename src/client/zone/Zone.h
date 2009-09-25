@@ -65,6 +65,7 @@ class Zone : public Thread, public Mutex, public Logger {
 
 	uint64 characterID;
 	uint32 accountID;
+	uint32 sessionID;
 
 	ZoneClient* client;
 	ZoneClientThread* clientThread;
@@ -82,7 +83,7 @@ class Zone : public Thread, public Mutex, public Logger {
 	int instance;
 
 public:
-	Zone(int instance, uint64 characterObjectID, uint32 account);
+	Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session);
 	~Zone();
 
 	void run();

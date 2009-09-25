@@ -14,6 +14,7 @@ class LoginSession : public Mutex, public Runnable, public Logger {
 	Condition sessionFinalized;
 
 	uint32 accountID;
+	uint32 sessionID;
 
 	Vector<uint64> characterObjectIds;
 	int selectedCharacter;
@@ -43,8 +44,16 @@ public:
 		accountID = id;
 	}
 
+	void setSessionID(uint32 id) {
+		sessionID = id;
+	}
+
 	uint32 getAccountID() {
 		return accountID;
+	}
+
+	uint32 getSessionID() {
+		return sessionID;
 	}
 
 	int getSelectedCharacter() {
