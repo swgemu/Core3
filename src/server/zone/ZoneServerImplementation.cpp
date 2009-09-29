@@ -460,6 +460,10 @@ void ZoneServerImplementation::shutdown() {
 
 	info("zones shut down", true);
 
+	info("closing database...", true);
+
+	objectManager->closeDatabase();
+
 	printInfo(true);
 
 	info("shut down complete", true);
@@ -467,6 +471,9 @@ void ZoneServerImplementation::shutdown() {
 
 void ZoneServerImplementation::stopManagers() {
 	info("stopping managers..");
+
+	//info("saving objects...");
+
 
 	/*if (playerManager != NULL)
 		playerManager->stop();*/

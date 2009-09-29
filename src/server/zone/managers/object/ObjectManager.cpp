@@ -156,6 +156,22 @@ void ObjectManager::loadLastUsedObjectID() {
 	info("done loading last use object id " + String::valueOf(nextObjectID));
 }
 
+/*void ObjectManager::savePersistentObjects() {
+	Locker _locker(this);
+
+}*/
+
+void ObjectManager::closeDatabase() {
+	Locker _locker(this);
+
+	if (database != NULL) {
+		database->sync();
+
+		delete database;
+		database = NULL;
+	}
+}
+
 
 DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	SceneObject* object = NULL;

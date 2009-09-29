@@ -96,6 +96,10 @@ namespace zone {
 
 		}*/
 
+		//void savePersistentObjects();
+
+		void closeDatabase();
+
 		void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
 			server = srv;
 		}
