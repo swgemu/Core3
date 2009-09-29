@@ -56,9 +56,13 @@ class CharacterList {
 public:
 	CharacterList(uint32 accountid) {
 		StringBuffer query;
-		query << "SELECT * FROM objects WHERE data LIKE '%accountID=" << accountid << "%';";
+		query << "SELECT * FROM characters WHERE account_id = " << accountid;
 
-		characters = ServerDatabase::instance()->executeQuery(query);
+		try {
+			characters = ServerDatabase::instance()->executeQuery(query);
+		} catch (...) {
+			System::out << "unknown exception caught in ChracterList query" << endl;
+		}
 	}
 
 	~CharacterList() {
@@ -79,32 +83,20 @@ public:
 	}
 
 	void getCharacterName(UnicodeString& name) {
-		UnicodeString charName;
-		String data = characters->getString(1);
+		name.append(characters->getString(3));
 
-		VectorMap<String, String> characterData;
+		String surname = characters->getString(4);
 
-		Serializable::getVariableDataMap(data, characterData);
-
-		StringId objectName;
-		objectName.deSerialize(characterData.get("objectName"));
-
-		name = objectName.getCustomString();
+		if (surname.length() > 0) {
+			name.append(" ");
+			name.append(surname);
+		}
 	}
 
 	uint32 getCharacterRaceCRC() {
-		String objectData = characters->getString(1);
+		String temp = characters->getString(7);
 
-		VectorMap<String, String> characterData;
-
-		Serializable::getVariableDataMap(objectData, characterData);
-
-		UnsignedInteger sharedCRC;
-		sharedCRC.parseFromString(characterData.get("clientObjectCRC"));
-
-		String race = Races::getCompleteRace(sharedCRC);
-
-		return String(Races::getCompleteRace(sharedCRC)).hashCode();
+		return temp.hashCode();
 	}
 
 	inline int size() {

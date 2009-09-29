@@ -38,7 +38,8 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	mute = false;
 
-	roomID = 0;
+	roomID = 0xFFFFFFFF;
+	roomID = roomID << 32;
 
 	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 

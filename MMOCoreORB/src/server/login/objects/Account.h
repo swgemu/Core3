@@ -258,6 +258,7 @@ public:
 			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
 			client->sendMessage(lct);
 
+			//System::out << "send client token" << endl;
 			//send the sessionkey to the DB here
 
 			loadGalaxies(client);
@@ -266,6 +267,8 @@ public:
 
 			Message* eci = new EnumerateCharacterID(&characters);
 			client->sendMessage(eci);
+
+			//System::out << "sent character list" << endl;
 		}
 	}
 

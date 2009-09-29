@@ -12,7 +12,7 @@
  *	ChatRoomStub
  */
 
-ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned int cid) : ManagedObject(DummyConstructorParameter::instance()) {
+ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned long long cid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatRoomImplementation(server, name, cid);
 	_impl->_setStub(this);
 	_impl->_setClassHelper(ChatRoomHelper::instance());
@@ -20,7 +20,7 @@ ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned int cid) : M
 	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }
 
-ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid) : ManagedObject(DummyConstructorParameter::instance()) {
+ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatRoomImplementation(server, parent, name, cid);
 	_impl->_setStub(this);
 	_impl->_setClassHelper(ChatRoomHelper::instance());
@@ -212,12 +212,24 @@ void ChatRoom::removeAllPlayers() {
 		((ChatRoomImplementation*) _impl)->removeAllPlayers();
 }
 
-void ChatRoom::setPrivate() {
+void ChatRoom::deploy() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatRoomImplementation*) _impl)->deploy();
+}
+
+void ChatRoom::setPrivate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
 
 		method.executeWithVoidReturn();
 	} else
@@ -229,7 +241,7 @@ void ChatRoom::setPublic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		method.executeWithVoidReturn();
 	} else
@@ -241,7 +253,7 @@ bool ChatRoom::isPublic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -253,7 +265,7 @@ bool ChatRoom::isPrivate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -265,7 +277,7 @@ PlayerCreature* ChatRoom::getPlayer(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addSignedIntParameter(idx);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -278,7 +290,7 @@ int ChatRoom::getPlayerSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -290,7 +302,7 @@ void ChatRoom::setName(const String& Name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addAsciiParameter(Name);
 
 		method.executeWithVoidReturn();
@@ -303,7 +315,7 @@ String ChatRoom::getName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 
 		method.executeWithAsciiReturn(_return_getName);
 		return _return_getName;
@@ -316,7 +328,7 @@ String ChatRoom::getFullPath() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		method.executeWithAsciiReturn(_return_getFullPath);
 		return _return_getFullPath;
@@ -329,7 +341,7 @@ String ChatRoom::getOwner() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		method.executeWithAsciiReturn(_return_getOwner);
 		return _return_getOwner;
@@ -342,7 +354,7 @@ String ChatRoom::getCreator() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		method.executeWithAsciiReturn(_return_getCreator);
 		return _return_getCreator;
@@ -355,7 +367,7 @@ UnicodeString ChatRoom::getTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		method.executeWithUnicodeReturn(_return_getTitle);
 		return _return_getTitle;
@@ -368,7 +380,7 @@ String ChatRoom::getServerName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		method.executeWithAsciiReturn(_return_getServerName);
 		return _return_getServerName;
@@ -381,7 +393,7 @@ void ChatRoom::setOwner(const String& Owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addAsciiParameter(Owner);
 
 		method.executeWithVoidReturn();
@@ -394,7 +406,7 @@ void ChatRoom::setCreator(const String& Creator) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(Creator);
 
 		method.executeWithVoidReturn();
@@ -407,7 +419,7 @@ void ChatRoom::setTitle(const String& Title) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 		method.addAsciiParameter(Title);
 
 		method.executeWithVoidReturn();
@@ -420,7 +432,7 @@ unsigned int ChatRoom::getRoomID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -432,7 +444,7 @@ int ChatRoom::getSubRoomsSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -444,7 +456,7 @@ ChatRoom* ChatRoom::getParent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -456,7 +468,7 @@ int ChatRoom::compareTo(ChatRoom* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 		method.addObjectParameter(obj);
 
 		return method.executeWithSignedIntReturn();
@@ -529,105 +541,105 @@ void ChatRoomImplementation::_serializationHelperMethod() {
 }
 
 void ChatRoomImplementation::setPrivate() {
-	// server/chat/room/ChatRoom.idl(105):  isPublicRoom = false;
+	// server/chat/room/ChatRoom.idl(107):  isPublicRoom = false;
 	isPublicRoom = false;
 }
 
 void ChatRoomImplementation::setPublic() {
-	// server/chat/room/ChatRoom.idl(109):  isPublicRoom = true;
+	// server/chat/room/ChatRoom.idl(111):  isPublicRoom = true;
 	isPublicRoom = true;
 }
 
 bool ChatRoomImplementation::isPublic() {
-	// server/chat/room/ChatRoom.idl(113):  return isPublicRoom == true;
+	// server/chat/room/ChatRoom.idl(115):  return isPublicRoom == true;
 	return isPublicRoom == true;
 }
 
 bool ChatRoomImplementation::isPrivate() {
-	// server/chat/room/ChatRoom.idl(117):  return isPublicRoom == false;
+	// server/chat/room/ChatRoom.idl(119):  return isPublicRoom == false;
 	return isPublicRoom == false;
 }
 
 PlayerCreature* ChatRoomImplementation::getPlayer(int idx) {
-	// server/chat/room/ChatRoom.idl(121):  return playerList.get(idx);
+	// server/chat/room/ChatRoom.idl(123):  return playerList.get(idx);
 	return (&playerList)->get(idx);
 }
 
 int ChatRoomImplementation::getPlayerSize() {
-	// server/chat/room/ChatRoom.idl(125):  return playerList.size();
+	// server/chat/room/ChatRoom.idl(127):  return playerList.size();
 	return (&playerList)->size();
 }
 
 void ChatRoomImplementation::setName(const String& Name) {
-	// server/chat/room/ChatRoom.idl(129):  name = Name;
+	// server/chat/room/ChatRoom.idl(131):  name = Name;
 	name = Name;
 }
 
 String ChatRoomImplementation::getName() {
-	// server/chat/room/ChatRoom.idl(133):  return name;
+	// server/chat/room/ChatRoom.idl(135):  return name;
 	return name;
 }
 
 String ChatRoomImplementation::getFullPath() {
-	// server/chat/room/ChatRoom.idl(137):  return fullPath;
+	// server/chat/room/ChatRoom.idl(139):  return fullPath;
 	return fullPath;
 }
 
 String ChatRoomImplementation::getOwner() {
-	// server/chat/room/ChatRoom.idl(141):  return owner;
+	// server/chat/room/ChatRoom.idl(143):  return owner;
 	return owner;
 }
 
 String ChatRoomImplementation::getCreator() {
-	// server/chat/room/ChatRoom.idl(145):  return creator;
+	// server/chat/room/ChatRoom.idl(147):  return creator;
 	return creator;
 }
 
 UnicodeString ChatRoomImplementation::getTitle() {
-	// server/chat/room/ChatRoom.idl(149):  return title;
+	// server/chat/room/ChatRoom.idl(151):  return title;
 	return title;
 }
 
 void ChatRoomImplementation::setOwner(const String& Owner) {
-	// server/chat/room/ChatRoom.idl(155):  owner = Owner;
+	// server/chat/room/ChatRoom.idl(157):  owner = Owner;
 	owner = Owner;
 }
 
 void ChatRoomImplementation::setCreator(const String& Creator) {
-	// server/chat/room/ChatRoom.idl(159):  creator = Creator;
+	// server/chat/room/ChatRoom.idl(161):  creator = Creator;
 	creator = Creator;
 }
 
 void ChatRoomImplementation::setTitle(const String& Title) {
-	// server/chat/room/ChatRoom.idl(163):  title = Title;
+	// server/chat/room/ChatRoom.idl(165):  title = Title;
 	title = Title;
 }
 
 unsigned int ChatRoomImplementation::getRoomID() {
-	// server/chat/room/ChatRoom.idl(167):  return roomID;
+	// server/chat/room/ChatRoom.idl(169):  return roomID;
 	return roomID;
 }
 
 int ChatRoomImplementation::getSubRoomsSize() {
-	// server/chat/room/ChatRoom.idl(171):  return subRooms.size();
+	// server/chat/room/ChatRoom.idl(173):  return subRooms.size();
 	return (&subRooms)->size();
 }
 
 ChatRoom* ChatRoomImplementation::getParent() {
-	// server/chat/room/ChatRoom.idl(175):  return parent;
+	// server/chat/room/ChatRoom.idl(177):  return parent;
 	return parent;
 }
 
 int ChatRoomImplementation::compareTo(ChatRoom* obj) {
-	// server/chat/room/ChatRoom.idl(179):  
-	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(180):  return 1;
+	// server/chat/room/ChatRoom.idl(181):  
+	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(182):  return 1;
 	return 1;
 
-	else 	// server/chat/room/ChatRoom.idl(181):  
-	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(182):  return -1;
+	else 	// server/chat/room/ChatRoom.idl(183):  
+	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(184):  return -1;
 	return -1;
 
-	else 	// server/chat/room/ChatRoom.idl(185):  return 0;
+	else 	// server/chat/room/ChatRoom.idl(187):  return 0;
 	return 0;
 }
 
@@ -682,63 +694,66 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		removeAllPlayers();
 		break;
 	case 19:
-		setPrivate();
+		deploy();
 		break;
 	case 20:
-		setPublic();
+		setPrivate();
 		break;
 	case 21:
-		resp->insertBoolean(isPublic());
+		setPublic();
 		break;
 	case 22:
-		resp->insertBoolean(isPrivate());
+		resp->insertBoolean(isPublic());
 		break;
 	case 23:
-		resp->insertLong(getPlayer(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(isPrivate());
 		break;
 	case 24:
-		resp->insertSignedInt(getPlayerSize());
+		resp->insertLong(getPlayer(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 25:
-		setName(inv->getAsciiParameter(_param0_setName__String_));
+		resp->insertSignedInt(getPlayerSize());
 		break;
 	case 26:
-		resp->insertAscii(getName());
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 27:
-		resp->insertAscii(getFullPath());
+		resp->insertAscii(getName());
 		break;
 	case 28:
-		resp->insertAscii(getOwner());
+		resp->insertAscii(getFullPath());
 		break;
 	case 29:
-		resp->insertAscii(getCreator());
+		resp->insertAscii(getOwner());
 		break;
 	case 30:
-		resp->insertUnicode(getTitle());
+		resp->insertAscii(getCreator());
 		break;
 	case 31:
-		resp->insertAscii(getServerName());
+		resp->insertUnicode(getTitle());
 		break;
 	case 32:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
+		resp->insertAscii(getServerName());
 		break;
 	case 33:
-		setCreator(inv->getAsciiParameter(_param0_setCreator__String_));
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
 	case 34:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		setCreator(inv->getAsciiParameter(_param0_setCreator__String_));
 		break;
 	case 35:
-		resp->insertInt(getRoomID());
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	case 36:
-		resp->insertSignedInt(getSubRoomsSize());
+		resp->insertInt(getRoomID());
 		break;
 	case 37:
-		resp->insertLong(getParent()->_getObjectID());
+		resp->insertSignedInt(getSubRoomsSize());
 		break;
 	case 38:
+		resp->insertLong(getParent()->_getObjectID());
+		break;
+	case 39:
 		resp->insertSignedInt(compareTo((ChatRoom*) inv->getObjectParameter()));
 		break;
 	default:
@@ -798,6 +813,10 @@ bool ChatRoomAdapter::hasPlayer(const String& name) {
 
 void ChatRoomAdapter::removeAllPlayers() {
 	((ChatRoomImplementation*) impl)->removeAllPlayers();
+}
+
+void ChatRoomAdapter::deploy() {
+	((ChatRoomImplementation*) impl)->deploy();
 }
 
 void ChatRoomAdapter::setPrivate() {

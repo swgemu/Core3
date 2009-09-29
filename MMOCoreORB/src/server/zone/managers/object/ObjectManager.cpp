@@ -64,11 +64,14 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/db/ObjectDatabase.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
+
+	database = new ObjectDatabase();
 
 	registerObjectTypes();
 
@@ -137,35 +140,20 @@ void ObjectManager::registerObjectTypes() {
 void ObjectManager::loadLastUsedObjectID() {
 	info("loading last used object id");
 
-	StringBuffer query;
+	ObjectDatabaseIterator iterator(database);
 
-	query << "SELECT COUNT(*) FROM objects;";
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	uint64 maxObjectID = 0;
+	uint64 objectID;
 
-	if (!result->next()) {
-		delete result;
-		return;
+	while (iterator.getNextKey(objectID)) {
+		if (objectID > maxObjectID)
+			maxObjectID = objectID;
 	}
 
-	if (result->getInt(0) > 0) {
-		delete result;
+	if (nextObjectID < maxObjectID + 1)
+		nextObjectID = maxObjectID + 1;
 
-		query.deleteAll();
-
-		query << "SELECT MAX(objectid) FROM objects;";
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		if (!result->next()) {
-			delete result;
-			return;
-		}
-
-		nextObjectID = result->getUnsignedLong(0) + 1;
-
-		delete result;
-	}
-
-	info("done loading last use object id");
+	info("done loading last use object id " + String::valueOf(nextObjectID));
 }
 
 
@@ -193,21 +181,11 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			}
 		}
 
-		StringBuffer query;
-		query << "SELECT data FROM objects WHERE objectid = " << objectID;
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
-
-		if (!result->next()) {
-			//error("object not found in database");
-			delete result;
-
+		if (database->getData(objectID, objectData)) {
 			unlock();
 
 			return NULL;
 		}
-
-		objectData = result->getString(0);
-		delete result;
 
 		VectorMap<String, String> variableDataMap;
 		Serializable::getVariableDataMap(objectData, variableDataMap);
@@ -298,11 +276,15 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 	try {
 		String objectData;
 		((ManagedObject*)object)->serialize(objectData);
-		objectData.escapeString();
+
+		database->putData(object->_getObjectID(), objectData);
+		database->sync();
+
+		/*objectData.escapeString();
 
 		StringBuffer query;
 		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
-		ServerDatabase::instance()->executeStatement(query);
+		ServerDatabase::instance()->executeStatement(query);*/
 	} catch (...) {
 		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
 	}
@@ -343,11 +325,14 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint
 		if (persistent) {
 			String objectData;
 			object->serialize(objectData);
-			objectData.escapeString();
+			database->putData(object->getObjectID(), objectData);
+			database->sync();
+
+			/*objectData.escapeString();
 
 			StringBuffer query;
 			query << "INSERT INTO `objects` (`objectid`, `data`) VALUES (" << object->getObjectID() << ", '" << objectData << "');";
-			ServerDatabase::instance()->executeStatement(query);
+			ServerDatabase::instance()->executeStatement(query);*/
 
 			object->queueUpdateToDatabaseTask();
 		}

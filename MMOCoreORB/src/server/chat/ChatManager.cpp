@@ -195,14 +195,14 @@ void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharac
 		((ChatManagerImplementation*) _impl)->handleChatInstantMessageToCharacter(message);
 }
 
-unsigned int ChatManager::getNextRoomID() {
+unsigned long long ChatManager::getNextRoomID() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
 
-		return method.executeWithUnsignedIntReturn();
+		return method.executeWithUnsignedLongReturn();
 	} else
 		return ((ChatManagerImplementation*) _impl)->getNextRoomID();
 }
@@ -267,8 +267,8 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("mute", &mute);
 }
 
-unsigned int ChatManagerImplementation::getNextRoomID() {
-	// server/chat/ChatManager.idl(162):  return ++roomID;
+unsigned long long ChatManagerImplementation::getNextRoomID() {
+	// server/chat/ChatManager.idl(163):  return ++roomID;
 	return  ++roomID;
 }
 
@@ -317,7 +317,7 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
 		break;
 	case 17:
-		resp->insertInt(getNextRoomID());
+		resp->insertLong(getNextRoomID());
 		break;
 	default:
 		return NULL;
@@ -370,7 +370,7 @@ void ChatManagerAdapter::handleSpatialChatInternalMessage(PlayerCreature* player
 	((ChatManagerImplementation*) impl)->handleSpatialChatInternalMessage(player, args);
 }
 
-unsigned int ChatManagerAdapter::getNextRoomID() {
+unsigned long long ChatManagerAdapter::getNextRoomID() {
 	return ((ChatManagerImplementation*) impl)->getNextRoomID();
 }
 

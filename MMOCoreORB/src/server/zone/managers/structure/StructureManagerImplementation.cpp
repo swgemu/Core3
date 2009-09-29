@@ -12,6 +12,7 @@
 #include "server/db/ServerDatabase.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/db/ObjectDatabase.h"
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
 	ManagedObjectImplementation(), Logger("StructureManager") {
@@ -176,26 +177,58 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	info(msg.toString());
 
 	try {
-	int planetid = zone->getZoneID();
+		int planetid = zone->getZoneID();
+		uint64 currentZoneObjectID = zone->_getObjectID();
 
-	StringBuffer query;
-	query << "SELECT objectid FROM objects WHERE data LIKE '%gameObjectType=512%' AND data LIKE '%zone=" << zone->_getObjectID() << "%';";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
 
-	while (result->next()) {
-		uint64 objectID = result->getUnsignedLong(0);
+		/*StringBuffer query;
+		query << "SELECT objectid FROM objects WHERE data LIKE '%gameObjectType=512%' AND data LIKE '%zone=" << zone->_getObjectID() << "%';";
 
-		SceneObject* object = server->getZoneServer()->getObject(objectID);
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
 
-		if (object != NULL)
-			object->info("loaded building into world", true);
-		else {
-			error("could not load building " + String::valueOf(objectID));
+		while (result->next()) {
+			uint64 objectID = result->getUnsignedLong(0);
+
+			SceneObject* object = server->getZoneServer()->getObject(objectID);
+
+			if (object != NULL)
+				object->info("loaded building into world", true);
+			else {
+				error("could not load building " + String::valueOf(objectID));
+			}
 		}
-	}
 
-	delete result;
+		delete result;*/
+
+		// This is very unefficient, only do it on server load.
+		ObjectDatabase* objectDatabase = ObjectManager::instance()->getObjectDatabase();
+
+		ObjectDatabaseIterator iterator(objectDatabase);
+
+		uint64 objectID;
+		String objectData;
+
+		VectorMap<String, String> dataMap;
+
+		while (iterator.getNextKeyAndValue(objectID, objectData)) {
+			if (Serializable::getVariableDataMap(objectData, dataMap) == 0)
+				continue;
+
+			uint64 zoneObjectID = UnsignedLong::valueOf(dataMap.get("zone"));
+			int gameObjectType = UnsignedInteger::valueOf(dataMap.get("gameObjectType"));
+
+			if (zoneObjectID != currentZoneObjectID || gameObjectType != 512)
+				continue;
+
+			SceneObject* object = server->getZoneServer()->getObject(objectID);
+
+			if (object != NULL)
+				object->info("loaded player building into world", true);
+			else {
+				error("could not load player building " + String::valueOf(objectID));
+			}
+		}
 
 	} catch (DatabaseException& e) {
 		StringBuffer err;

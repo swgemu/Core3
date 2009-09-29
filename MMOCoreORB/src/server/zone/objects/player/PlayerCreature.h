@@ -158,6 +158,8 @@ public:
 
 	String getFirstName();
 
+	String getLastName();
+
 	void setSavedParentID(unsigned long long id);
 
 	void setSavedZoneID(int id);
@@ -192,6 +194,7 @@ protected:
 	virtual ~PlayerCreature();
 
 	String _return_getFirstName;
+	String _return_getLastName;
 
 	friend class PlayerCreatureHelper;
 };
@@ -311,6 +314,8 @@ public:
 
 	String getFirstName();
 
+	String getLastName();
+
 	void setSavedParentID(unsigned long long id);
 
 	void setSavedZoneID(int id);
@@ -413,6 +418,8 @@ public:
 	int getSavedZoneID();
 
 	String getFirstName();
+
+	String getLastName();
 
 	void setSavedParentID(unsigned long long id);
 

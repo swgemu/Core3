@@ -325,6 +325,12 @@ void ZoneServerImplementation::init() {
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
 
+	info("Initializing chat manager...", true);
+
+	chatManager = new ChatManager(_this, 10000);
+	chatManager->deploy("ChatManager");
+	chatManager->initiateRooms();
+
 	info("Initializing zones", true);
 
 	for (int i = 0; i < 45; ++i) {
@@ -382,10 +388,6 @@ void ZoneServerImplementation::startManagers() {
 
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");
-
-	chatManager = new ChatManager(_this, 10000);
-	chatManager->deploy("ChatManager");
-	chatManager->initiateRooms();
 
 	/*userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
@@ -569,6 +571,7 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 
 			if (obj == NULL) {
 				error("trying to lookup object that is not an SceneObject");
+				StackTrace::printStackTrace();
 			}
 		}
 

@@ -62,7 +62,7 @@ class ChatRoom extends ManagedObject {
 	private string creator;
 
 	private unicode title;
-	private unsigned int roomID;
+	private unsigned long roomID;
 
 	private ChatRoom parent;
 
@@ -74,8 +74,8 @@ class ChatRoom extends ManagedObject {
 
 	boolean isPublicRoom;
 	
-	public native ChatRoom(ZoneServer server, final string name, unsigned int cid);
-	public native ChatRoom(ZoneServer server, ChatRoom parent, final string name, unsigned int cid);
+	public native ChatRoom(ZoneServer server, final string name, unsigned long cid);
+	public native ChatRoom(ZoneServer server, ChatRoom parent, final string name, unsigned long cid);
 	
 	public native void sendTo(PlayerCreature player);
 	public native void sendDestroyTo(PlayerCreature player);
@@ -100,6 +100,8 @@ class ChatRoom extends ManagedObject {
 	public native boolean hasPlayer(final string name);
 
 	public native void removeAllPlayers();
+	
+	public native void deploy();
 
 	public void setPrivate() {
 		isPublicRoom = false;

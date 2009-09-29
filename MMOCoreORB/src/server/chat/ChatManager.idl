@@ -80,7 +80,7 @@ class ChatManager extends ManagedObject {
 	ChatRoom guildRoom;
 	transient ChatRoomMap roomMap;
 
-	unsigned int roomID;
+	unsigned long roomID;
 
 	boolean mute;
 	
@@ -157,9 +157,11 @@ class ChatManager extends ManagedObject {
 	public native ChatRoom getGameRoom(final string game);
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
 	 */
-	public unsigned int getNextRoomID() {
+	 
+	public unsigned long getNextRoomID() {
 		return ++roomID;
 	}
+	
 	/*
 	public int getPlayerCount() {
 		return playerMap.size();
