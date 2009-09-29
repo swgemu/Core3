@@ -22,8 +22,8 @@ ObjectDatabase::ObjectDatabase() : Logger("ObjectDatabase") {
 }
 
 ObjectDatabase::~ObjectDatabase() {
-	closeEnvironment();
 	closeDatabase();
+	closeEnvironment();
 
 	delete objectsDatabase;
 	objectsDatabase = NULL;
