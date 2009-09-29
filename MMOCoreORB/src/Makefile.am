@@ -46,12 +46,14 @@ ENGINE3_PATH=../../../../MMOEngine
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql
+	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql \
+	    -I/usr/local/BerkeleyDB.4.8/include
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
+	-L/usr/local/BerkeleyDB.4.8/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
-	-lmysqlclient -lz -lengine3 -llua
+	-lmysqlclient -lz -lengine3 -llua -ldb_cxx
 
 bin_PROGRAMS = core3
 
@@ -87,6 +89,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/features/Features.cpp \
 		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
+		server/db/ObjectDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServer.cpp \
