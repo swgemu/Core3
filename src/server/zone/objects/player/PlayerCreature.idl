@@ -188,6 +188,7 @@ class PlayerCreature extends CreatureObject {
 	}
 	
 	public native string getFirstName();
+	public native string getLastName();
 	
 	public void setSavedParentID(unsigned long id) {
 		savedParentID = id;

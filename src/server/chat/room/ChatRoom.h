@@ -47,9 +47,9 @@ namespace room {
 
 class ChatRoom : public ManagedObject {
 public:
-	ChatRoom(ZoneServer* server, const String& name, unsigned int cid);
+	ChatRoom(ZoneServer* server, const String& name, unsigned long long cid);
 
-	ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid);
+	ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid);
 
 	void sendTo(PlayerCreature* player);
 
@@ -78,6 +78,8 @@ public:
 	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
+
+	void deploy();
 
 	void setPrivate();
 
@@ -158,7 +160,7 @@ class ChatRoomImplementation : public ManagedObjectImplementation {
 
 	UnicodeString title;
 
-	unsigned int roomID;
+	unsigned long long roomID;
 
 	ManagedReference<ChatRoom* > parent;
 
@@ -169,9 +171,9 @@ class ChatRoomImplementation : public ManagedObjectImplementation {
 	bool isPublicRoom;
 
 public:
-	ChatRoomImplementation(ZoneServer* server, const String& name, unsigned int cid);
+	ChatRoomImplementation(ZoneServer* server, const String& name, unsigned long long cid);
 
-	ChatRoomImplementation(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid);
+	ChatRoomImplementation(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid);
 
 	void sendTo(PlayerCreature* player);
 
@@ -200,6 +202,8 @@ public:
 	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
+
+	void deploy();
 
 	void setPrivate();
 
@@ -301,6 +305,8 @@ public:
 	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
+
+	void deploy();
 
 	void setPrivate();
 

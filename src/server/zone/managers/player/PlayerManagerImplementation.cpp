@@ -128,6 +128,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		wlock();
 
 		ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+		ZoneClientSession* client = data->getClient();
 
 		String race;
 		callback->getRaceFile(race);
@@ -153,6 +154,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 			return false;
 		}
 
+
 		if (!player->isPlayerCreature()) {
 			//player->finalize(); destroy object
 			error("could not create player... wrong object type");
@@ -170,6 +172,26 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		playerCreature->setCustomizationString(playerCustomization);
 
 		playerCreature->setObjectName(name);
+
+		String firstName = playerCreature->getFirstName();
+		String lastName = playerCreature->getLastName();
+
+		firstName.escapeString();
+		lastName.escapeString();
+		race.escapeString();
+
+		try {
+			StringBuffer query;
+			query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
+			<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
+			<< "'" << firstName << "','" << lastName << "'," << raceID << "," <<  0 << ",'" << race << "')";
+
+			ServerDatabase::instance()->executeStatement(query);
+		} catch (Exception& e) {
+			error(e.getMessage());
+		} catch (...) {
+			error("unreported exception caught while creating character");
+		}
 
 		//hair
 		String hairObjectFile;
@@ -191,8 +213,6 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		UnicodeString biography;
 		callback->getBiography(biography);
 		playerCreature->setBiography(biography);
-
-		ZoneClientSession* client = data->getClient();
 
 		playerCreature->setClient(client);
 		client->setPlayer(player);
@@ -218,6 +238,11 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		ChatManager* chatManager = server->getChatManager();
 
 		chatManager->addPlayer(playerCreature);
+
+		unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 
 		unlock();
 	} catch (...) {

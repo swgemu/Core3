@@ -280,6 +280,21 @@ String PlayerCreatureImplementation::getFirstName() {
     }
 }
 
+String PlayerCreatureImplementation::getLastName() {
+	UnicodeString lastName;
+
+	UnicodeString fullName = objectName.getCustomString();
+	UnicodeTokenizer tokenizer(fullName);
+
+	if (tokenizer.hasMoreTokens())
+		tokenizer.shiftTokens(1);
+
+	if (tokenizer.hasMoreTokens())
+		tokenizer.getUnicodeToken(lastName);
+
+	return lastName.toString();
+}
+
 void PlayerCreatureImplementation::setLinkDead() {
 	onlineStatus = LINKDEAD;
 

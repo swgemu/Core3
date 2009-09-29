@@ -53,6 +53,8 @@ which carries forward this exception.
 
 #include "engine/util/ObjectFactory.h"
 
+class ObjectDatabase;
+
 namespace server {
 namespace zone {
 
@@ -63,6 +65,7 @@ namespace zone {
 
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
+		ObjectDatabase* database;
 
 	public:
 		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
@@ -95,6 +98,10 @@ namespace zone {
 
 		void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
 			server = srv;
+		}
+
+		inline ObjectDatabase* getObjectDatabase() {
+			return database;
 		}
 
 		// LUA

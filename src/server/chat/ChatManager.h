@@ -166,7 +166,7 @@ public:
 
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
-	unsigned int getNextRoomID();
+	unsigned long long getNextRoomID();
 
 protected:
 	ChatManager(DummyConstructorParameter* param);
@@ -199,7 +199,7 @@ class ChatManagerImplementation : public ManagedObjectImplementation {
 
 	ChatRoomMap* roomMap;
 
-	unsigned int roomID;
+	unsigned long long roomID;
 
 	bool mute;
 
@@ -230,7 +230,7 @@ public:
 
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
-	unsigned int getNextRoomID();
+	unsigned long long getNextRoomID();
 
 	ChatManager* _this;
 
@@ -289,7 +289,7 @@ public:
 
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
-	unsigned int getNextRoomID();
+	unsigned long long getNextRoomID();
 
 protected:
 	String _param0_getPlayer__String_;

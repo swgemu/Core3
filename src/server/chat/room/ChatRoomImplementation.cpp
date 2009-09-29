@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "../../zone/packets/chat/ChatOnLeaveRoom.h"
 #include "../../zone/packets/chat/ChatOnEnteredRoom.h"
 
-ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint32 channelId)
+ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint64 channelId)
 		: ManagedObjectImplementation() {
 	server = serv;
 
@@ -70,6 +70,8 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& N
 
 	isPublicRoom = true;
 
+	//_setObjectID(DistributedObjectBroker::getObjectManager()->getNextFreeObjectID());
+
 	//subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 	subRooms.setNullValue(NULL);
 	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
@@ -79,7 +81,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& N
 }
 
 ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent,
-		const String& Name, uint32 channelId) : ManagedObjectImplementation() {
+		const String& Name, uint64 channelId) : ManagedObjectImplementation() {
 	server = serv;
 
 	name = Name;
@@ -112,6 +114,12 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 void ChatRoomImplementation::unlock() {
 	ManagedObjectImplementation::unlock(true);
 }*/
+
+void ChatRoomImplementation::deploy() {
+	_this->_setObjectID(roomID);
+
+	((DistributedObjectStub*)_this)->deploy();
+}
 
 void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
