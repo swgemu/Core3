@@ -85,7 +85,7 @@ namespace zone {
 		~ObjectManager();
 
 		// object methods
-		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0, bool doLock = true);
+		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0);
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);

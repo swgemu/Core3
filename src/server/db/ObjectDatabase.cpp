@@ -139,7 +139,7 @@ int ObjectDatabase::getData(uint64 objKey, String& objectData) {
 	return ret;
 }
 
-int ObjectDatabase::putData(uint64 objKey, const String& objectData) {
+int ObjectDatabase::putData(uint64 objKey, const String& objectData, bool syncToDisk) {
 	int ret = -1;
 
 	try {
@@ -150,6 +150,9 @@ int ObjectDatabase::putData(uint64 objKey, const String& objectData) {
 
 		if (ret != 0)
 			error("Trying to open database error:" + String::valueOf(ret));
+
+		if (syncToDisk)
+			objectsDatabase->sync(0);
 
 	} catch(DbException &e) {
 		error("Error in putData");

@@ -177,51 +177,39 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	SceneObject* object = NULL;
 	String objectData;
 
-	try {
-		lock();
+	Locker _locker(this);
 
-		DistributedObject* dobject = getObject(objectID, false);
+	// only for debugging proposes
+	DistributedObject* dobject = getObject(objectID);
 
-		if (dobject != NULL) {
-			object = dynamic_cast<SceneObject*>(dobject);
-
-			if (object == NULL) {
-				error("different object already in database");
-				unlock();
-
-				return NULL;
-			} else {
-				unlock();
-
-				return object;
-			}
-		}
-
-		if (database->getData(objectID, objectData)) {
-			unlock();
-
-			return NULL;
-		}
-
-		VectorMap<String, String> variableDataMap;
-		Serializable::getVariableDataMap(objectData, variableDataMap);
-
-		uint32 serverObjectCRC = UnsignedInteger::valueOf(variableDataMap.get("serverObjectCRC"));
-
-		object = createObject(serverObjectCRC, false, objectID, false);
+	if (dobject != NULL) {
+		object = dynamic_cast<SceneObject*>(dobject);
 
 		if (object == NULL) {
-			error("could not load object from database");
-			unlock();
+			error("different object already in database");
+
 			return NULL;
+		} else {
+
+			return object;
 		}
+	}
 
-		unlock();
+	if (database->getData(objectID, objectData)) {
 
-	} catch (Exception& e) {
-		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in SceneObject* ObjectManager::loadFromDatabase(uint64 objectID)");
+		return NULL;
+	}
+
+	VectorMap<String, String> variableDataMap;
+	Serializable::getVariableDataMap(objectData, variableDataMap);
+
+	uint32 serverObjectCRC = UnsignedInteger::valueOf(variableDataMap.get("serverObjectCRC"));
+
+	object = createObject(serverObjectCRC, false, objectID);
+
+	if (object == NULL) {
+		error("could not load object from database");
+		return NULL;
 	}
 
 	deSerializeObject(object, objectData);
@@ -289,12 +277,14 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 }
 
 int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	if (database == NULL)
+		return 0;
+
 	try {
 		String objectData;
 		((ManagedObject*)object)->serialize(objectData);
 
-		database->putData(object->_getObjectID(), objectData);
-		database->sync();
+		database->putData(object->_getObjectID(), objectData, true);
 
 		/*objectData.escapeString();
 
@@ -308,81 +298,64 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 	return 1;
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint64 oid, bool doLock) {
+SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint64 oid) {
 	SceneObject* object = NULL;
 
-	try {
-		lock(doLock);
+	Locker _locker(this);
 
-		object = loadObjectFromTemplate(objectCRC);
+	object = loadObjectFromTemplate(objectCRC);
 
-		if (object == NULL) {
-			unlock(doLock);
-			return NULL;
-		}
+	if (object == NULL) {
+		return NULL;
+	}
 
-		object->setZoneProcessServer(server);
-		object->setPersistent(persistent);
+	object->setZoneProcessServer(server);
+	object->setPersistent(persistent);
 
-		if (oid == 0)
-			oid = getNextFreeObjectID(false);
+	if (oid == 0)
+		oid = getNextFreeObjectID();
 
-		object->_setObjectID(oid);
+	object->_setObjectID(oid);
 
-		String logName = object->getLoggingName();
+	String logName = object->getLoggingName();
 
-		StringBuffer newLogName;
-		newLogName << logName << " 0x" << hex << oid;
+	StringBuffer newLogName;
+	newLogName << logName << " 0x" << hex << oid;
 
-		object->setLoggingName(newLogName.toString());
+	object->setLoggingName(newLogName.toString());
 
-		object->deploy(newLogName.toString());
+	object->deploy(newLogName.toString());
 
-		if (persistent) {
-			String objectData;
-			object->serialize(objectData);
-			database->putData(object->getObjectID(), objectData);
-			database->sync();
+	if (persistent) {
+		String objectData;
+		object->serialize(objectData);
+		database->putData(object->getObjectID(), objectData, true);
 
-			/*objectData.escapeString();
+		/*objectData.escapeString();
 
 			StringBuffer query;
 			query << "INSERT INTO `objects` (`objectid`, `data`) VALUES (" << object->getObjectID() << ", '" << objectData << "');";
 			ServerDatabase::instance()->executeStatement(query);*/
 
-			object->queueUpdateToDatabaseTask();
-		}
-
-		unlock(doLock);
-	} catch (Exception& e) {
-		unlock(doLock);
-
-		error("exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid)");
-		error(e.getMessage());
-
-		e.printStackTrace();
-	} catch (...) {
-		unlock(doLock);
-
-		error("unreported exception caught in SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 oid)");
+		object->queueUpdateToDatabaseTask();
 	}
+
+
 
 	return object;
 }
 
 int ObjectManager::destroyObject(uint64 objectID) {
-	lock();
+	Locker _locker(this);
 
 	/*try {
 		ManagedReference<SceneObject*> object = remove(objectID);
 
 		if (object == NULL) {
-			unlock();
 			return;
 		}
 
 		if (object->isPlayerCreature()) {
-			unlock();
 			return;
 		}
 
@@ -398,8 +371,6 @@ int ObjectManager::destroyObject(uint64 objectID) {
 	} catch (...) {
 		error("unreported exception caught in void ObjectManager::destroyObject(uint64 objectID)");
 	}*/
-
-	unlock();
 
 	return 1;
 }

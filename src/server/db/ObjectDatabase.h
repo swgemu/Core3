@@ -33,7 +33,7 @@ public:
 	static int isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags);
 
 	int getData(uint64 objKey, String& objectData);
-	int putData(uint64 objKey, const String& objectData);
+	int putData(uint64 objKey, const String& objectData, bool syncToDisk = false);
 
 	int sync();
 
