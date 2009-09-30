@@ -90,6 +90,10 @@ public:
 		insertUnicode(id->getCustomString());
 	}
 
+	inline void insertStringIdParameters(StringId * id) {
+		//TODO: add this
+	}
+
 	template<class E> void insertDeltaVector(DeltaVector<E>* vector) {
 		insertInt(vector->size());
 		insertInt(vector->getUpdateCounter());

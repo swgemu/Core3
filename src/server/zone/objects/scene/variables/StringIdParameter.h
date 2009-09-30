@@ -42,12 +42,12 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGID_H_
-#define STRINGID_H_
+#ifndef STRINGIDPARAMETER_H_
+#define STRINGIDPARAMETER_H_
 
 #include "engine/engine.h"
-
-#include "StringIdParameter.h"
+#include "StringId.h"
+#include "../SceneObject.h"
 
 namespace server {
 namespace zone {
@@ -55,121 +55,59 @@ namespace objects {
 namespace scene {
 namespace variables {
 
-class StringId : public Serializable {
+class StringIdParameter {
+	UnicodeString unicodeParameter;
+	uint64 pointerParameter;
 	String file;
-	String stringID;
-	String fullPath;
-
-	UnicodeString customName;
-
-	//Parameters
-	StringIdParameter TT;
-	StringIdParameter TU;
-	StringIdParameter TO;
-	uint32 DI;
-	float DF;
-
-private:
-	inline void addSerializableVariables();
-
-public:
-	StringId();
-	StringId(const StringId& id);
-	StringId(const String& fullPath);
-	StringId(const String& fil, const String& stringId);
-	StringId(const UnicodeString& custom);
-
-	void getFullPath(String& str) {
-		str = "@" + file + ":" + stringID;
-	}
+	String str;
 
 	void clear() {
+		unicodeParameter.clear();
+		pointerParameter = 0;
 		file.clear();
-		stringID.clear();
-		fullPath.clear();
-		customName.clear();
-
-		TT.clear();
-		TU.clear();
-		TO.clear();
+		str.clear();
 	}
 
-	String& getFile() {
-		return file;
+public:
+	void set(SceneObject * obj) {
+		clear();
+		pointerParameter = obj->getObjectID();
 	}
 
-	String& getStringID() {
-		return stringID;
+	void set(uint64 oid) {
+		clear();
+		pointerParameter = oid;
 	}
 
-	UnicodeString& getCustomString() {
-		return customName;
+	void set(StringId sid) {
+		clear();
+		file = sid.getFile();
+		str = sid.getStringID();
 	}
 
-	void setCustomString(const UnicodeString& custom) {
-		customName = custom;
+	void set(const String& f, const String& s) {
+		clear();
+		file = f;
+		str = s;
 	}
 
-	void setStringId(const String& fullPath) {
-		if (fullPath.isEmpty())
-			return;
-
-		this->fullPath = fullPath;
-
-		if (fullPath.charAt(0) == '@') {
-			StringTokenizer tokenizer(fullPath.subString(1));
-			tokenizer.setDelimeter(":");
-
-			tokenizer.getStringToken(file);
-			tokenizer.getStringToken(stringID);
-		}
+	void set(String s) {
+		clear();
+		unicodeParameter = UnicodeString(s);
 	}
 
-	//Parameter Stuff
-
-	template<T>
-	void setTT(T obj) {
-		TT.set(obj);
+	void set(UnicodeString us) {
+		clear();
+		unicodeParameter = us;
 	}
 
-	void setTT(const String& f, const String& s) {
-		TT.set(StringId(f,c));
+	void set(const char * cs) {
+		clear();
+		unicodeParameter = UnicodeString(cs);
 	}
 
-	template<T>
-	void setTU(T obj) {
-		TD.set(obj);
-	}
-
-	void setTU(const String& f, const String& s) {
-		TU.set(StringId(f,c));
-	}
-
-	template<T>
-	void setTO(T obj) {
-		TO.set(obj);
-	}
-
-	void setTO(const String& f, const String& s) {
-		TO.set(StringId(f,c));
-	}
-
-	void setDI(uint32 i) {
-		DI = i;
-	}
-
-	void setDF(float f) {
-		DF = f;
-	}
-
-	friend StringBuffer &operator<<(StringBuffer &stream, StringId ob);
 };
 
-StringBuffer &operator<<(StringBuffer &stream, StringId ob) {
-	stream << ob.fullPath;
-
-	return stream;
-}
 
 }
 }
@@ -178,4 +116,4 @@ StringBuffer &operator<<(StringBuffer &stream, StringId ob) {
 }
 
 using namespace server::zone::objects::scene::variables;
-#endif /* STRINGID_H_ */
+#endif /* STRINGIDPARAMETER_H_ */
