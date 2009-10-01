@@ -175,7 +175,6 @@ void ObjectManager::closeDatabase() {
 
 DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	SceneObject* object = NULL;
-	String objectData;
 
 	Locker _locker(this);
 
@@ -195,15 +194,17 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		}
 	}
 
-	if (database->getData(objectID, objectData)) {
+	ObjectInputStream* objectData = new ObjectInputStream(500);
 
+	if (database->getData(objectID, objectData))
+		return NULL;
+
+	uint32 serverObjectCRC = 0;
+
+	if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
+		error("error reading serverObjectCRC from ObjectInputStream");
 		return NULL;
 	}
-
-	VectorMap<String, String> variableDataMap;
-	Serializable::getVariableDataMap(objectData, variableDataMap);
-
-	uint32 serverObjectCRC = UnsignedInteger::valueOf(variableDataMap.get("serverObjectCRC"));
 
 	object = createObject(serverObjectCRC, false, objectID);
 
@@ -222,12 +223,12 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	return object;
 }
 
-void ObjectManager::deSerializeObject(SceneObject* object, const String& objectData) {
+void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {
 	try {
 		object->wlock();
 
 		object->setPersistent(true);
-		object->deSerialize(objectData);
+		object->readObject(data);
 
 		Zone* zone = object->getZone();
 
@@ -281,10 +282,13 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 		return 0;
 
 	try {
-		String objectData;
-		((ManagedObject*)object)->serialize(objectData);
+		ObjectOutputStream* objectData = new ObjectOutputStream(500);
+
+		((ManagedObject*)object)->writeObject(objectData);
 
 		database->putData(object->_getObjectID(), objectData, true);
+
+		delete objectData;
 
 		/*objectData.escapeString();
 
@@ -327,20 +331,10 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint
 	object->deploy(newLogName.toString());
 
 	if (persistent) {
-		String objectData;
-		object->serialize(objectData);
-		database->putData(object->getObjectID(), objectData, true);
-
-		/*objectData.escapeString();
-
-			StringBuffer query;
-			query << "INSERT INTO `objects` (`objectid`, `data`) VALUES (" << object->getObjectID() << ", '" << objectData << "');";
-			ServerDatabase::instance()->executeStatement(query);*/
+		updatePersistentObject(object);
 
 		object->queueUpdateToDatabaseTask();
 	}
-
-
 
 	return object;
 }
