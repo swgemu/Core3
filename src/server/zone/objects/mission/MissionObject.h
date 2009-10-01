@@ -51,6 +51,8 @@ class MissionObjectImplementation : public SceneObjectImplementation {
 public:
 	MissionObjectImplementation(LuaObject* templateData);
 
+	MissionObjectImplementation(DummyConstructorParameter* param);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	MissionObject* _this;
@@ -101,6 +103,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

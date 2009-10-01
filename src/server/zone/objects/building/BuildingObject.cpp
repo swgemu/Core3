@@ -219,6 +219,10 @@ void BuildingObject::removeNotifiedObject(SceneObject* object) {
  *	BuildingObjectImplementation
  */
 
+BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
+	_classHelper = BuildingObjectHelper::instance();
+}
+
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 }
 
@@ -265,6 +269,8 @@ void BuildingObjectImplementation::runlock(bool doLock) {
 
 void BuildingObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("BuildingObject");
 
 	addSerializableVariable("cells", &cells);
 	addSerializableVariable("notifiedObjects", &notifiedObjects);
@@ -414,6 +420,10 @@ void BuildingObjectHelper::finalizeHelper() {
 
 DistributedObject* BuildingObjectHelper::instantiateObject() {
 	return new BuildingObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* BuildingObjectHelper::instantiateServant() {
+	return new BuildingObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* BuildingObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -206,6 +206,8 @@ class ChatManagerImplementation : public ManagedObjectImplementation {
 public:
 	ChatManagerImplementation(ZoneServer* serv, int initsize);
 
+	ChatManagerImplementation(DummyConstructorParameter* param);
+
 	void initiateRooms();
 
 	void destroyRooms();
@@ -307,6 +309,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

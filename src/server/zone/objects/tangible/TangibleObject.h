@@ -113,6 +113,8 @@ protected:
 public:
 	TangibleObjectImplementation(LuaObject* templateData);
 
+	TangibleObjectImplementation(DummyConstructorParameter* param);
+
 	virtual void sendBaselinesTo(SceneObject* player);
 
 	virtual void setDefender(SceneObject* defender);
@@ -236,6 +238,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

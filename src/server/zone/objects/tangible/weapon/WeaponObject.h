@@ -62,6 +62,8 @@ protected:
 public:
 	WeaponObjectImplementation(LuaObject* templateData);
 
+	WeaponObjectImplementation(DummyConstructorParameter* param);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	int getAttackType();
@@ -116,6 +118,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

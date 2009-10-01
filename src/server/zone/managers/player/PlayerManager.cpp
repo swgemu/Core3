@@ -103,6 +103,10 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
  *	PlayerManagerImplementation
  */
 
+PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = PlayerManagerHelper::instance();
+}
+
 PlayerManagerImplementation::~PlayerManagerImplementation() {
 }
 
@@ -149,6 +153,8 @@ void PlayerManagerImplementation::runlock(bool doLock) {
 
 void PlayerManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("PlayerManager");
 
 	addSerializableVariable("server", &server);
 }
@@ -217,6 +223,10 @@ void PlayerManagerHelper::finalizeHelper() {
 
 DistributedObject* PlayerManagerHelper::instantiateObject() {
 	return new PlayerManager(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* PlayerManagerHelper::instantiateServant() {
+	return new PlayerManagerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PlayerManagerHelper::createAdapter(DistributedObjectStub* obj) {

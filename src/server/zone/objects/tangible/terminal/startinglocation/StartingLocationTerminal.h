@@ -57,6 +57,8 @@ class StartingLocationTerminalImplementation : public TerminalImplementation {
 public:
 	StartingLocationTerminalImplementation(LuaObject* templateData);
 
+	StartingLocationTerminalImplementation(DummyConstructorParameter* param);
+
 	int useObject(SceneObject* object);
 
 	StartingLocationTerminal* _this;
@@ -107,6 +109,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

@@ -291,6 +291,8 @@ public:
 
 	ZoneServerImplementation(int processingThreads, int galaxyid = 2);
 
+	ZoneServerImplementation(DummyConstructorParameter* param);
+
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	void init();
@@ -516,6 +518,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

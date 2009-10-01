@@ -122,7 +122,7 @@
 <pathentry kind="out" path=""/>
 <pathentry kind="con" path="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO"/>
 <pathentry kind="prj" path="/MMOEngine"/>
-<pathentry kind="lib" library="D:/Programming/Projects/swgemu/MMOEngine/lib/unix/libengine3.a" path=""/>
+<pathentry kind="lib" library="D:/Programming/Projects/swgemu/core3/MMOEngine/lib/unix/libengine3.a" path=""/>
 </storageModule>
 </cconfiguration>
 </storageModule>

@@ -73,6 +73,8 @@ class WaypointObjectImplementation : public IntangibleObjectImplementation {
 public:
 	WaypointObjectImplementation(LuaObject* templateData);
 
+	WaypointObjectImplementation(DummyConstructorParameter* param);
+
 	void changeStatus(bool status);
 
 	void switchStatus();
@@ -154,6 +156,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

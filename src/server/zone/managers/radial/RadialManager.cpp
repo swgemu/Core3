@@ -76,6 +76,10 @@ void RadialManager::handleUseObject(PlayerCreature* player, SceneObject* object)
  *	RadialManagerImplementation
  */
 
+RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = RadialManagerHelper::instance();
+}
+
 RadialManagerImplementation::~RadialManagerImplementation() {
 }
 
@@ -122,6 +126,8 @@ void RadialManagerImplementation::runlock(bool doLock) {
 
 void RadialManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("RadialManager");
 
 	addSerializableVariable("zoneServer", &zoneServer);
 }
@@ -183,6 +189,10 @@ void RadialManagerHelper::finalizeHelper() {
 
 DistributedObject* RadialManagerHelper::instantiateObject() {
 	return new RadialManager(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* RadialManagerHelper::instantiateServant() {
+	return new RadialManagerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* RadialManagerHelper::createAdapter(DistributedObjectStub* obj) {

@@ -638,6 +638,10 @@ String ZoneServer::getMessageoftheDay() {
  *	ZoneServerImplementation
  */
 
+ZoneServerImplementation::ZoneServerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = ZoneServerHelper::instance();
+}
+
 ZoneServerImplementation::~ZoneServerImplementation() {
 }
 
@@ -656,6 +660,8 @@ ZoneServerImplementation::operator const ZoneServer*() {
 
 void ZoneServerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("ZoneServer");
 
 	addSerializableVariable("procThreadCount", &procThreadCount);
 	addSerializableVariable("zones", &zones);
@@ -1140,6 +1146,10 @@ void ZoneServerHelper::finalizeHelper() {
 
 DistributedObject* ZoneServerHelper::instantiateObject() {
 	return new ZoneServer(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ZoneServerHelper::instantiateServant() {
+	return new ZoneServerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ZoneServerHelper::createAdapter(DistributedObjectStub* obj) {

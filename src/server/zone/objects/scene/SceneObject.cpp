@@ -1244,6 +1244,10 @@ VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::ge
  *	SceneObjectImplementation
  */
 
+SceneObjectImplementation::SceneObjectImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = SceneObjectHelper::instance();
+}
+
 SceneObjectImplementation::~SceneObjectImplementation() {
 }
 
@@ -1290,6 +1294,8 @@ void SceneObjectImplementation::runlock(bool doLock) {
 
 void SceneObjectImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("SceneObject");
 
 	addSerializableVariable("zone", &zone);
 	addSerializableVariable("persistent", &persistent);
@@ -2330,6 +2336,10 @@ void SceneObjectHelper::finalizeHelper() {
 
 DistributedObject* SceneObjectHelper::instantiateObject() {
 	return new SceneObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* SceneObjectHelper::instantiateServant() {
+	return new SceneObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* SceneObjectHelper::createAdapter(DistributedObjectStub* obj) {

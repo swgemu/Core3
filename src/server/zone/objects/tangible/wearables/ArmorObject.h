@@ -50,6 +50,8 @@ class ArmorObjectImplementation : public WearableObjectImplementation {
 public:
 	ArmorObjectImplementation(LuaObject* templateData);
 
+	ArmorObjectImplementation(DummyConstructorParameter* param);
+
 	ArmorObject* _this;
 
 	operator const ArmorObject*();
@@ -96,6 +98,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

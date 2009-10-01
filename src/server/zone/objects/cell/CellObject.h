@@ -56,6 +56,8 @@ class CellObjectImplementation : public SceneObjectImplementation {
 public:
 	CellObjectImplementation(LuaObject* templateData);
 
+	CellObjectImplementation(DummyConstructorParameter* param);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	int getCellNumber();
@@ -114,6 +116,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

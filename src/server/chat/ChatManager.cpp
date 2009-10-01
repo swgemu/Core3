@@ -211,6 +211,10 @@ unsigned long long ChatManager::getNextRoomID() {
  *	ChatManagerImplementation
  */
 
+ChatManagerImplementation::ChatManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = ChatManagerHelper::instance();
+}
+
 ChatManagerImplementation::~ChatManagerImplementation() {
 }
 
@@ -257,6 +261,8 @@ void ChatManagerImplementation::runlock(bool doLock) {
 
 void ChatManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("ChatManager");
 
 	addSerializableVariable("server", &server);
 	addSerializableVariable("playerManager", &playerManager);
@@ -392,6 +398,10 @@ void ChatManagerHelper::finalizeHelper() {
 
 DistributedObject* ChatManagerHelper::instantiateObject() {
 	return new ChatManager(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ChatManagerHelper::instantiateServant() {
+	return new ChatManagerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ChatManagerHelper::createAdapter(DistributedObjectStub* obj) {

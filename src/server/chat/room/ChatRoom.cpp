@@ -480,6 +480,10 @@ int ChatRoom::compareTo(ChatRoom* obj) {
  *	ChatRoomImplementation
  */
 
+ChatRoomImplementation::ChatRoomImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = ChatRoomHelper::instance();
+}
+
 ChatRoomImplementation::~ChatRoomImplementation() {
 }
 
@@ -526,6 +530,8 @@ void ChatRoomImplementation::runlock(bool doLock) {
 
 void ChatRoomImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("ChatRoom");
 
 	addSerializableVariable("server", &server);
 	addSerializableVariable("name", &name);
@@ -917,6 +923,10 @@ void ChatRoomHelper::finalizeHelper() {
 
 DistributedObject* ChatRoomHelper::instantiateObject() {
 	return new ChatRoom(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ChatRoomHelper::instantiateServant() {
+	return new ChatRoomImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ChatRoomHelper::createAdapter(DistributedObjectStub* obj) {
