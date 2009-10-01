@@ -207,19 +207,26 @@ void StructureManagerImplementation::loadPlayerStructures() {
 		ObjectDatabaseIterator iterator(objectDatabase);
 
 		uint64 objectID;
-		String objectData;
+		ObjectInputStream* objectData = new ObjectInputStream(2000);
 
-		VectorMap<String, String> dataMap;
+		uint64 zoneObjectID = 0;
+		int gameObjectType = 0;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (Serializable::getVariableDataMap(objectData, dataMap) == 0)
+			if (!Serializable::getVariable<uint64>("zone", &zoneObjectID, objectData)) {
+				objectData->clear();
 				continue;
+			}
 
-			uint64 zoneObjectID = UnsignedLong::valueOf(dataMap.get("zone"));
-			int gameObjectType = UnsignedInteger::valueOf(dataMap.get("gameObjectType"));
-
-			if (zoneObjectID != currentZoneObjectID || gameObjectType != 512)
+			if (!Serializable::getVariable<int>("gameObjectType", &gameObjectType, objectData)) {
+				objectData->clear();
 				continue;
+			}
+
+			if (zoneObjectID != currentZoneObjectID || gameObjectType != 512) {
+				objectData->clear();
+				continue;
+			}
 
 			SceneObject* object = server->getZoneServer()->getObject(objectID);
 
@@ -228,7 +235,11 @@ void StructureManagerImplementation::loadPlayerStructures() {
 			else {
 				error("could not load player building " + String::valueOf(objectID));
 			}
+
+			objectData->clear();
 		}
+
+		delete objectData;
 
 	} catch (DatabaseException& e) {
 		StringBuffer err;
