@@ -39,6 +39,10 @@ void Container::sendContainerObjectsTo(SceneObject* player) {
  *	ContainerImplementation
  */
 
+ContainerImplementation::ContainerImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
+	_classHelper = ContainerHelper::instance();
+}
+
 ContainerImplementation::~ContainerImplementation() {
 }
 
@@ -86,6 +90,8 @@ void ContainerImplementation::runlock(bool doLock) {
 void ContainerImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 
+	_setClassName("Container");
+
 }
 
 /*
@@ -131,6 +137,10 @@ void ContainerHelper::finalizeHelper() {
 
 DistributedObject* ContainerHelper::instantiateObject() {
 	return new Container(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ContainerHelper::instantiateServant() {
+	return new ContainerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ContainerHelper::createAdapter(DistributedObjectStub* obj) {

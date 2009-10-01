@@ -51,6 +51,10 @@ unsigned int IntangibleObject::getStatus() {
  *	IntangibleObjectImplementation
  */
 
+IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
+	_classHelper = IntangibleObjectHelper::instance();
+}
+
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 }
 
@@ -97,6 +101,8 @@ void IntangibleObjectImplementation::runlock(bool doLock) {
 
 void IntangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("IntangibleObject");
 
 	addSerializableVariable("status", &status);
 }
@@ -156,6 +162,10 @@ void IntangibleObjectHelper::finalizeHelper() {
 
 DistributedObject* IntangibleObjectHelper::instantiateObject() {
 	return new IntangibleObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* IntangibleObjectHelper::instantiateServant() {
+	return new IntangibleObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* IntangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {

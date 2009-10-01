@@ -51,6 +51,10 @@ int WeaponObject::getAttackType() {
  *	WeaponObjectImplementation
  */
 
+WeaponObjectImplementation::WeaponObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
+	_classHelper = WeaponObjectHelper::instance();
+}
+
 WeaponObjectImplementation::~WeaponObjectImplementation() {
 }
 
@@ -97,6 +101,8 @@ void WeaponObjectImplementation::runlock(bool doLock) {
 
 void WeaponObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("WeaponObject");
 
 	addSerializableVariable("attackType", &attackType);
 	addSerializableVariable("weaponEffect", &weaponEffect);
@@ -158,6 +164,10 @@ void WeaponObjectHelper::finalizeHelper() {
 
 DistributedObject* WeaponObjectHelper::instantiateObject() {
 	return new WeaponObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* WeaponObjectHelper::instantiateServant() {
+	return new WeaponObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* WeaponObjectHelper::createAdapter(DistributedObjectStub* obj) {

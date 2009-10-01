@@ -39,6 +39,10 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
  *	MissionObjectImplementation
  */
 
+MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
+	_classHelper = MissionObjectHelper::instance();
+}
+
 MissionObjectImplementation::~MissionObjectImplementation() {
 }
 
@@ -86,6 +90,8 @@ void MissionObjectImplementation::runlock(bool doLock) {
 void MissionObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
 
+	_setClassName("MissionObject");
+
 }
 
 /*
@@ -131,6 +137,10 @@ void MissionObjectHelper::finalizeHelper() {
 
 DistributedObject* MissionObjectHelper::instantiateObject() {
 	return new MissionObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* MissionObjectHelper::instantiateServant() {
+	return new MissionObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* MissionObjectHelper::createAdapter(DistributedObjectStub* obj) {

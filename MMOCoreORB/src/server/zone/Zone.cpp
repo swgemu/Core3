@@ -251,6 +251,10 @@ float Zone::getWeatherWindY() {
  *	ZoneImplementation
  */
 
+ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = ZoneHelper::instance();
+}
+
 ZoneImplementation::~ZoneImplementation() {
 }
 
@@ -297,6 +301,8 @@ void ZoneImplementation::runlock(bool doLock) {
 
 void ZoneImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("Zone");
 
 	addSerializableVariable("zoneID", &zoneID);
 	addSerializableVariable("server", &server);
@@ -522,6 +528,10 @@ void ZoneHelper::finalizeHelper() {
 
 DistributedObject* ZoneHelper::instantiateObject() {
 	return new Zone(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ZoneHelper::instantiateServant() {
+	return new ZoneImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ZoneHelper::createAdapter(DistributedObjectStub* obj) {

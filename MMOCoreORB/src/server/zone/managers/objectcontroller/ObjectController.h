@@ -136,6 +136,8 @@ class ObjectControllerImplementation : public ManagedObjectImplementation, publi
 public:
 	ObjectControllerImplementation(ZoneProcessServerImplementation* server);
 
+	ObjectControllerImplementation(DummyConstructorParameter* param);
+
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
 	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
@@ -198,6 +200,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

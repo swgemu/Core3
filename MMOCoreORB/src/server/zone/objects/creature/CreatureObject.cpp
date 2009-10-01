@@ -743,6 +743,10 @@ void CreatureObject::setBankCredits(int credits, bool notifyClient) {
  *	CreatureObjectImplementation
  */
 
+CreatureObjectImplementation::CreatureObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
+	_classHelper = CreatureObjectHelper::instance();
+}
+
 CreatureObjectImplementation::~CreatureObjectImplementation() {
 }
 
@@ -789,6 +793,8 @@ void CreatureObjectImplementation::runlock(bool doLock) {
 
 void CreatureObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("CreatureObject");
 
 	addSerializableVariable("bankCredits", &bankCredits);
 	addSerializableVariable("cashCredits", &cashCredits);
@@ -1429,6 +1435,10 @@ void CreatureObjectHelper::finalizeHelper() {
 
 DistributedObject* CreatureObjectHelper::instantiateObject() {
 	return new CreatureObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* CreatureObjectHelper::instantiateServant() {
+	return new CreatureObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* CreatureObjectHelper::createAdapter(DistributedObjectStub* obj) {

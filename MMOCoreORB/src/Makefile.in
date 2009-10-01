@@ -120,6 +120,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/features/Features.$(OBJEXT) \
 	server/db/ForumsDatabase.$(OBJEXT) \
 	server/db/ServerDatabase.$(OBJEXT) \
+	server/db/ObjectDatabase.$(OBJEXT) \
 	server/login/LoginMessageProcessorThread.$(OBJEXT) \
 	server/login/LoginPacketHandler.$(OBJEXT) \
 	server/login/LoginServer.$(OBJEXT) \
@@ -209,8 +210,9 @@ LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = $(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
+	-L/usr/local/BerkeleyDB.4.8/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
-	-lmysqlclient -lz -lengine3 -llua
+	-lmysqlclient -lz -lengine3 -llua -ldb_cxx
 
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
@@ -292,7 +294,8 @@ AM_CXXFLAGS = -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare
 ENGINE3_PATH = ../../../../MMOEngine
 INCLUDES = $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql
+	    -I$(ENGINE3_PATH)/include -I/usr/include/lua5.1 -I/usr/include/mysql \
+	    -I/usr/local/BerkeleyDB.4.8/include
 
 core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/ZoneClientSession.cpp \
@@ -326,6 +329,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/features/Features.cpp \
 		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
+		server/db/ObjectDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServer.cpp \
@@ -646,6 +650,8 @@ server/db/ForumsDatabase.$(OBJEXT): server/db/$(am__dirstamp) \
 	server/db/$(DEPDIR)/$(am__dirstamp)
 server/db/ServerDatabase.$(OBJEXT): server/db/$(am__dirstamp) \
 	server/db/$(DEPDIR)/$(am__dirstamp)
+server/db/ObjectDatabase.$(OBJEXT): server/db/$(am__dirstamp) \
+	server/db/$(DEPDIR)/$(am__dirstamp)
 server/login/$(am__dirstamp):
 	@$(MKDIR_P) server/login
 	@: > server/login/$(am__dirstamp)
@@ -850,6 +856,7 @@ mostlyclean-compile:
 	-rm -f server/chat/room/ChatRoomImplementation.$(OBJEXT)
 	-rm -f server/conf/ConfigManager.$(OBJEXT)
 	-rm -f server/db/ForumsDatabase.$(OBJEXT)
+	-rm -f server/db/ObjectDatabase.$(OBJEXT)
 	-rm -f server/db/ServerDatabase.$(OBJEXT)
 	-rm -f server/features/Features.$(OBJEXT)
 	-rm -f server/login/LoginMessageProcessorThread.$(OBJEXT)
@@ -929,6 +936,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/chat/room/$(DEPDIR)/ChatRoomImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/conf/$(DEPDIR)/ConfigManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ForumsDatabase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ObjectDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ServerDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/features/$(DEPDIR)/Features.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/login/$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@

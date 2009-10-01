@@ -270,6 +270,8 @@ public:
 
 	PlayerCreatureImplementation(LuaObject* templateData);
 
+	PlayerCreatureImplementation(DummyConstructorParameter* param);
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -462,6 +464,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

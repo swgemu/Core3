@@ -26,6 +26,10 @@ MeleeWeaponObject::~MeleeWeaponObject() {
  *	MeleeWeaponObjectImplementation
  */
 
+MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructorParameter* param) : WeaponObjectImplementation(param) {
+	_classHelper = MeleeWeaponObjectHelper::instance();
+}
+
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
 }
 
@@ -73,6 +77,8 @@ void MeleeWeaponObjectImplementation::runlock(bool doLock) {
 void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 	WeaponObjectImplementation::_serializationHelperMethod();
 
+	_setClassName("MeleeWeaponObject");
+
 }
 
 /*
@@ -111,6 +117,10 @@ void MeleeWeaponObjectHelper::finalizeHelper() {
 
 DistributedObject* MeleeWeaponObjectHelper::instantiateObject() {
 	return new MeleeWeaponObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* MeleeWeaponObjectHelper::instantiateServant() {
+	return new MeleeWeaponObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* MeleeWeaponObjectHelper::createAdapter(DistributedObjectStub* obj) {

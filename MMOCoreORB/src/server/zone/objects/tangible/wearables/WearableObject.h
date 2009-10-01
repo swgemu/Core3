@@ -50,6 +50,8 @@ class WearableObjectImplementation : public TangibleObjectImplementation {
 public:
 	WearableObjectImplementation(LuaObject* templateData);
 
+	WearableObjectImplementation(DummyConstructorParameter* param);
+
 	WearableObject* _this;
 
 	operator const WearableObject*();
@@ -96,6 +98,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

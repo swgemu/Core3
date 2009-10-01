@@ -284,6 +284,8 @@ public:
 
 	CreatureObjectImplementation(LuaObject* templateData);
 
+	CreatureObjectImplementation(DummyConstructorParameter* param);
+
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -555,6 +557,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

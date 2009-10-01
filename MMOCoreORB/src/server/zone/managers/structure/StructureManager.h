@@ -122,6 +122,8 @@ class StructureManagerImplementation : public ManagedObjectImplementation, publi
 public:
 	StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor);
 
+	StructureManagerImplementation(DummyConstructorParameter* param);
+
 	void loadStaticBuildings();
 
 	void loadPlayerStructures();
@@ -184,6 +186,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

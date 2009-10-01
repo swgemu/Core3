@@ -94,6 +94,8 @@ class RadialManagerImplementation : public ManagedObjectImplementation, public L
 public:
 	RadialManagerImplementation(ZoneServer* server);
 
+	RadialManagerImplementation(DummyConstructorParameter* param);
+
 	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
 
 	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
@@ -152,6 +154,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

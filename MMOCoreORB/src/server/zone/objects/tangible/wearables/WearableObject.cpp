@@ -26,6 +26,10 @@ WearableObject::~WearableObject() {
  *	WearableObjectImplementation
  */
 
+WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
+	_classHelper = WearableObjectHelper::instance();
+}
+
 WearableObjectImplementation::~WearableObjectImplementation() {
 }
 
@@ -73,6 +77,8 @@ void WearableObjectImplementation::runlock(bool doLock) {
 void WearableObjectImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 
+	_setClassName("WearableObject");
+
 }
 
 /*
@@ -111,6 +117,10 @@ void WearableObjectHelper::finalizeHelper() {
 
 DistributedObject* WearableObjectHelper::instantiateObject() {
 	return new WearableObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* WearableObjectHelper::instantiateServant() {
+	return new WearableObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* WearableObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -100,6 +100,8 @@ class ZoneClientSessionImplementation : public ManagedObjectImplementation, publ
 public:
 	ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
 
+	ZoneClientSessionImplementation(DummyConstructorParameter* param);
+
 	void sendMessage(BasePacket* msg);
 
 	void disconnect();
@@ -192,6 +194,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

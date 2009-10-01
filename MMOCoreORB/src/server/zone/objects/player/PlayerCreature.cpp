@@ -490,6 +490,10 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
  *	PlayerCreatureImplementation
  */
 
+PlayerCreatureImplementation::PlayerCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
+	_classHelper = PlayerCreatureHelper::instance();
+}
+
 PlayerCreatureImplementation::~PlayerCreatureImplementation() {
 }
 
@@ -536,6 +540,8 @@ void PlayerCreatureImplementation::runlock(bool doLock) {
 
 void PlayerCreatureImplementation::_serializationHelperMethod() {
 	CreatureObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("PlayerCreature");
 
 	addSerializableVariable("owner", &owner);
 	addSerializableVariable("savedZoneID", &savedZoneID);
@@ -972,6 +978,10 @@ void PlayerCreatureHelper::finalizeHelper() {
 
 DistributedObject* PlayerCreatureHelper::instantiateObject() {
 	return new PlayerCreature(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* PlayerCreatureHelper::instantiateServant() {
+	return new PlayerCreatureImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PlayerCreatureHelper::createAdapter(DistributedObjectStub* obj) {

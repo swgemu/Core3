@@ -218,6 +218,10 @@ unsigned int ZoneClientSession::getAccountID() {
  *	ZoneClientSessionImplementation
  */
 
+ZoneClientSessionImplementation::ZoneClientSessionImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = ZoneClientSessionHelper::instance();
+}
+
 ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
 }
 
@@ -236,6 +240,8 @@ ZoneClientSessionImplementation::operator const ZoneClientSession*() {
 
 void ZoneClientSessionImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("ZoneClientSession");
 
 	addSerializableVariable("player", &player);
 	addSerializableVariable("sessionKey", &sessionKey);
@@ -447,6 +453,10 @@ void ZoneClientSessionHelper::finalizeHelper() {
 
 DistributedObject* ZoneClientSessionHelper::instantiateObject() {
 	return new ZoneClientSession(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ZoneClientSessionHelper::instantiateServant() {
+	return new ZoneClientSessionImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ZoneClientSessionHelper::createAdapter(DistributedObjectStub* obj) {

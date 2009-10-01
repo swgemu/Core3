@@ -93,6 +93,10 @@ QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
  *	ObjectControllerImplementation
  */
 
+ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = ObjectControllerHelper::instance();
+}
+
 ObjectControllerImplementation::~ObjectControllerImplementation() {
 }
 
@@ -139,6 +143,8 @@ void ObjectControllerImplementation::runlock(bool doLock) {
 
 void ObjectControllerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("ObjectController");
 
 }
 
@@ -192,6 +198,10 @@ void ObjectControllerHelper::finalizeHelper() {
 
 DistributedObject* ObjectControllerHelper::instantiateObject() {
 	return new ObjectController(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ObjectControllerHelper::instantiateServant() {
+	return new ObjectControllerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ObjectControllerHelper::createAdapter(DistributedObjectStub* obj) {

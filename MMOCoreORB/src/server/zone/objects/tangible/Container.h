@@ -51,6 +51,8 @@ class ContainerImplementation : public TangibleObjectImplementation {
 public:
 	ContainerImplementation(LuaObject* templateData);
 
+	ContainerImplementation(DummyConstructorParameter* param);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	Container* _this;
@@ -101,6 +103,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

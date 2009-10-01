@@ -111,6 +111,8 @@ protected:
 public:
 	BuildingObjectImplementation(LuaObject* templateData);
 
+	BuildingObjectImplementation(DummyConstructorParameter* param);
+
 	void notifyInsert(QuadTreeEntry* obj);
 
 	void notifyDissapear(QuadTreeEntry* obj);
@@ -213,6 +215,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

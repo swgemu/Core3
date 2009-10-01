@@ -175,6 +175,8 @@ public:
 
 	ChatRoomImplementation(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid);
 
+	ChatRoomImplementation(DummyConstructorParameter* param);
+
 	void sendTo(PlayerCreature* player);
 
 	void sendDestroyTo(PlayerCreature* player);
@@ -367,6 +369,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
