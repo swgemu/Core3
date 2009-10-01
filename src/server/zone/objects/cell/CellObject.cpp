@@ -64,6 +64,10 @@ void CellObject::setCellNumber(int number) {
  *	CellObjectImplementation
  */
 
+CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
+	_classHelper = CellObjectHelper::instance();
+}
+
 CellObjectImplementation::~CellObjectImplementation() {
 }
 
@@ -110,6 +114,8 @@ void CellObjectImplementation::runlock(bool doLock) {
 
 void CellObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("CellObject");
 
 	addSerializableVariable("cellNumber", &cellNumber);
 }
@@ -181,6 +187,10 @@ void CellObjectHelper::finalizeHelper() {
 
 DistributedObject* CellObjectHelper::instantiateObject() {
 	return new CellObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* CellObjectHelper::instantiateServant() {
+	return new CellObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* CellObjectHelper::createAdapter(DistributedObjectStub* obj) {

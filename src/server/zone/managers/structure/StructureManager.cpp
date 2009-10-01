@@ -86,6 +86,10 @@ BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid, int
  *	StructureManagerImplementation
  */
 
+StructureManagerImplementation::StructureManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+	_classHelper = StructureManagerHelper::instance();
+}
+
 StructureManagerImplementation::~StructureManagerImplementation() {
 }
 
@@ -132,6 +136,8 @@ void StructureManagerImplementation::runlock(bool doLock) {
 
 void StructureManagerImplementation::_serializationHelperMethod() {
 	ManagedObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("StructureManager");
 
 	addSerializableVariable("zone", &zone);
 }
@@ -207,6 +213,10 @@ void StructureManagerHelper::finalizeHelper() {
 
 DistributedObject* StructureManagerHelper::instantiateObject() {
 	return new StructureManager(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* StructureManagerHelper::instantiateServant() {
+	return new StructureManagerImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* StructureManagerHelper::createAdapter(DistributedObjectStub* obj) {

@@ -32,8 +32,8 @@ public:
 
 	static int isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags);
 
-	int getData(uint64 objKey, String& objectData);
-	int putData(uint64 objKey, const String& objectData, bool syncToDisk = false);
+	int getData(uint64 objKey, ObjectInputStream* objectData);
+	int putData(uint64 objKey, ObjectOutputStream* stream, bool syncToDisk = false);
 
 	int sync();
 
@@ -56,8 +56,8 @@ public:
 
 	void resetIterator();
 
-	bool getNextKeyAndValue(uint64& key, String& data);
-	bool getNextValue(String& data);
+	bool getNextKeyAndValue(uint64& key, ObjectInputStream* data);
+	bool getNextValue(ObjectInputStream* data);
 	bool getNextKey(uint64& key);
 
 	inline void closeCursor() {

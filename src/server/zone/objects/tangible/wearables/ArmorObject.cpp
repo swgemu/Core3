@@ -26,6 +26,10 @@ ArmorObject::~ArmorObject() {
  *	ArmorObjectImplementation
  */
 
+ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
+	_classHelper = ArmorObjectHelper::instance();
+}
+
 ArmorObjectImplementation::~ArmorObjectImplementation() {
 }
 
@@ -73,6 +77,8 @@ void ArmorObjectImplementation::runlock(bool doLock) {
 void ArmorObjectImplementation::_serializationHelperMethod() {
 	WearableObjectImplementation::_serializationHelperMethod();
 
+	_setClassName("ArmorObject");
+
 }
 
 /*
@@ -111,6 +117,10 @@ void ArmorObjectHelper::finalizeHelper() {
 
 DistributedObject* ArmorObjectHelper::instantiateObject() {
 	return new ArmorObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* ArmorObjectHelper::instantiateServant() {
+	return new ArmorObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* ArmorObjectHelper::createAdapter(DistributedObjectStub* obj) {

@@ -177,13 +177,13 @@ SceneObject* ObjectManager::getObject(const UnicodeString& customName) {
 void ObjectManager::destroyObject(uint64 objectID) {
 	Locker _locker(this);
 
-	ReferenceSlot<SceneObject*> object = objectMap->remove(objectID);
+	Reference<SceneObject*> object = objectMap->remove(objectID);
 
 	if (object != NULL) {
 		object->info("finalizing object");
 
 		while (object->getSlottedObjectsSize() > 0) {
-			ReferenceSlot<SceneObject*> obj = object->getSlottedObject(0);
+			Reference<SceneObject*> obj = object->getSlottedObject(0);
 
 			object->removeObject(obj);
 
@@ -191,7 +191,7 @@ void ObjectManager::destroyObject(uint64 objectID) {
 		}
 
 		while (object->getContainerObjectsSize() > 0) {
-			ReferenceSlot<SceneObject*> obj = object->getContainerObject(0);
+			Reference<SceneObject*> obj = object->getContainerObject(0);
 
 			object->removeObject(obj);
 

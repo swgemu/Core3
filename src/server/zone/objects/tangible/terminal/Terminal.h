@@ -50,6 +50,8 @@ class TerminalImplementation : public TangibleObjectImplementation {
 public:
 	TerminalImplementation(LuaObject* templateData);
 
+	TerminalImplementation(DummyConstructorParameter* param);
+
 	Terminal* _this;
 
 	operator const Terminal*();
@@ -96,6 +98,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

@@ -53,6 +53,8 @@ protected:
 public:
 	IntangibleObjectImplementation(LuaObject* templateData);
 
+	IntangibleObjectImplementation(DummyConstructorParameter* param);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	unsigned int getStatus();
@@ -107,6 +109,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

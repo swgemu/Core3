@@ -258,6 +258,10 @@ void TangibleObject::setCustomizationString(const String& vars) {
  *	TangibleObjectImplementation
  */
 
+TangibleObjectImplementation::TangibleObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
+	_classHelper = TangibleObjectHelper::instance();
+}
+
 TangibleObjectImplementation::~TangibleObjectImplementation() {
 }
 
@@ -304,6 +308,8 @@ void TangibleObjectImplementation::runlock(bool doLock) {
 
 void TangibleObjectImplementation::_serializationHelperMethod() {
 	SceneObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("TangibleObject");
 
 	addSerializableVariable("targetable", &targetable);
 	addSerializableVariable("complexity", &complexity);
@@ -558,6 +564,10 @@ void TangibleObjectHelper::finalizeHelper() {
 
 DistributedObject* TangibleObjectHelper::instantiateObject() {
 	return new TangibleObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* TangibleObjectHelper::instantiateServant() {
+	return new TangibleObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* TangibleObjectHelper::createAdapter(DistributedObjectStub* obj) {

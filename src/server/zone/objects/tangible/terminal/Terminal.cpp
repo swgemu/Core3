@@ -26,6 +26,10 @@ Terminal::~Terminal() {
  *	TerminalImplementation
  */
 
+TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
+	_classHelper = TerminalHelper::instance();
+}
+
 TerminalImplementation::~TerminalImplementation() {
 }
 
@@ -73,6 +77,8 @@ void TerminalImplementation::runlock(bool doLock) {
 void TerminalImplementation::_serializationHelperMethod() {
 	TangibleObjectImplementation::_serializationHelperMethod();
 
+	_setClassName("Terminal");
+
 }
 
 /*
@@ -111,6 +117,10 @@ void TerminalHelper::finalizeHelper() {
 
 DistributedObject* TerminalHelper::instantiateObject() {
 	return new Terminal(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* TerminalHelper::instantiateServant() {
+	return new TerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* TerminalHelper::createAdapter(DistributedObjectStub* obj) {

@@ -114,6 +114,8 @@ public:
 
 	PlayerObjectImplementation(LuaObject* templateData);
 
+	PlayerObjectImplementation(DummyConstructorParameter* param);
+
 	void sendBaselinesTo(SceneObject* player);
 
 	unsigned int getCharacterBitmask();
@@ -194,6 +196,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

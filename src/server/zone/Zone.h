@@ -142,6 +142,8 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 public:
 	ZoneImplementation(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
+	ZoneImplementation(DummyConstructorParameter* param);
+
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -256,6 +258,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

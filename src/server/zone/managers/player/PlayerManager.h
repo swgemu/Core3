@@ -116,6 +116,8 @@ class PlayerManagerImplementation : public ManagedObjectImplementation, public L
 public:
 	PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl);
 
+	PlayerManagerImplementation(DummyConstructorParameter* param);
+
 	bool createPlayer(MessageCallback* callback);
 
 	bool checkPlayerName(MessageCallback* callback);
@@ -186,6 +188,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

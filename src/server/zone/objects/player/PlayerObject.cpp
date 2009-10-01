@@ -132,6 +132,10 @@ void PlayerObject::setTitle(const String& characterTitle) {
  *	PlayerObjectImplementation
  */
 
+PlayerObjectImplementation::PlayerObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
+	_classHelper = PlayerObjectHelper::instance();
+}
+
 PlayerObjectImplementation::~PlayerObjectImplementation() {
 }
 
@@ -178,6 +182,8 @@ void PlayerObjectImplementation::runlock(bool doLock) {
 
 void PlayerObjectImplementation::_serializationHelperMethod() {
 	IntangibleObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("PlayerObject");
 
 	addSerializableVariable("characterBitmask", &characterBitmask);
 	addSerializableVariable("title", &title);
@@ -301,6 +307,10 @@ void PlayerObjectHelper::finalizeHelper() {
 
 DistributedObject* PlayerObjectHelper::instantiateObject() {
 	return new PlayerObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* PlayerObjectHelper::instantiateServant() {
+	return new PlayerObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* PlayerObjectHelper::createAdapter(DistributedObjectStub* obj) {

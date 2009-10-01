@@ -127,6 +127,10 @@ String WaypointObject::getPlanetName() {
  *	WaypointObjectImplementation
  */
 
+WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
+	_classHelper = WaypointObjectHelper::instance();
+}
+
 WaypointObjectImplementation::~WaypointObjectImplementation() {
 }
 
@@ -173,6 +177,8 @@ void WaypointObjectImplementation::runlock(bool doLock) {
 
 void WaypointObjectImplementation::_serializationHelperMethod() {
 	IntangibleObjectImplementation::_serializationHelperMethod();
+
+	_setClassName("WaypointObject");
 
 	addSerializableVariable("internalNote", &internalNote);
 	addSerializableVariable("planetName", &planetName);
@@ -310,6 +316,10 @@ void WaypointObjectHelper::finalizeHelper() {
 
 DistributedObject* WaypointObjectHelper::instantiateObject() {
 	return new WaypointObject(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* WaypointObjectHelper::instantiateServant() {
+	return new WaypointObjectImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* WaypointObjectHelper::createAdapter(DistributedObjectStub* obj) {

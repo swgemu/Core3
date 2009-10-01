@@ -39,6 +39,10 @@ int StartingLocationTerminal::useObject(SceneObject* object) {
  *	StartingLocationTerminalImplementation
  */
 
+StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
+	_classHelper = StartingLocationTerminalHelper::instance();
+}
+
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
 }
 
@@ -86,6 +90,8 @@ void StartingLocationTerminalImplementation::runlock(bool doLock) {
 void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 	TerminalImplementation::_serializationHelperMethod();
 
+	_setClassName("StartingLocationTerminal");
+
 }
 
 /*
@@ -131,6 +137,10 @@ void StartingLocationTerminalHelper::finalizeHelper() {
 
 DistributedObject* StartingLocationTerminalHelper::instantiateObject() {
 	return new StartingLocationTerminal(DummyConstructorParameter::instance());
+}
+
+DistributedObjectServant* StartingLocationTerminalHelper::instantiateServant() {
+	return new StartingLocationTerminalImplementation(DummyConstructorParameter::instance());
 }
 
 DistributedObjectAdapter* StartingLocationTerminalHelper::createAdapter(DistributedObjectStub* obj) {

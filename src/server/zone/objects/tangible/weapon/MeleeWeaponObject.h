@@ -50,6 +50,8 @@ class MeleeWeaponObjectImplementation : public WeaponObjectImplementation {
 public:
 	MeleeWeaponObjectImplementation(LuaObject* templateData);
 
+	MeleeWeaponObjectImplementation(DummyConstructorParameter* param);
+
 	MeleeWeaponObject* _this;
 
 	operator const MeleeWeaponObject*();
@@ -96,6 +98,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 

@@ -104,7 +104,7 @@ void ObjectDatabase::closeDatabase() {
 	}
 }
 
-int ObjectDatabase::getData(uint64 objKey, String& objectData) {
+int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 	int ret = 0;
 
 	try {
@@ -124,11 +124,13 @@ int ObjectDatabase::getData(uint64 objKey, String& objectData) {
 			return ret;
 		}
 
-		objectData = (char*) data.get_data();
+		objectData->writeStream((const char*) data.get_data(), data.get_size());
+
+		objectData->reset();
 
 		free(data.get_data());
 
-		info("retreived data of size" + String::valueOf(objectData.length()), true);
+		info("retreived data of size" + String::valueOf(objectData->size()), true);
 	} catch(DbException &e) {
 		error("Error in getData");
 		error(e.what());
@@ -139,12 +141,12 @@ int ObjectDatabase::getData(uint64 objKey, String& objectData) {
 	return ret;
 }
 
-int ObjectDatabase::putData(uint64 objKey, const String& objectData, bool syncToDisk) {
+int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool syncToDisk) {
 	int ret = -1;
 
 	try {
 		Dbt key(&objKey, sizeof(uint64));
-		Dbt data((void*)objectData.toCharArray(), objectData.length() + 1);
+		Dbt data((void*)objectData->getBuffer(), objectData->size());
 
 		ret = objectsDatabase->put(NULL, &key, &data, 0);
 
@@ -211,13 +213,15 @@ void ObjectDatabaseIterator::resetIterator() {
 	databaseHandle->cursor(NULL, &cursor, 0);
 }
 
-bool ObjectDatabaseIterator::getNextKeyAndValue(uint64& key, String& data) {
+bool ObjectDatabaseIterator::getNextKeyAndValue(uint64& key, ObjectInputStream* data) {
 	try {
 		if (cursor->get(&this->key, &this->data, DB_NEXT) != 0)
 			return false;
 
 		key = *(uint64*) (this->key.get_data());
-		data = (char*) ObjectDatabaseIterator::data.get_data();
+		data->writeStream((char*)this->data.get_data(), this->data.get_size());
+
+		data->reset();
 
 	}  catch(DbException &e) {
 		error("Error in ObjectDatabaseIterator::getNextKeyAndValue(uint64& key, String& data)");
@@ -229,12 +233,14 @@ bool ObjectDatabaseIterator::getNextKeyAndValue(uint64& key, String& data) {
 	return true;
 }
 
-bool ObjectDatabaseIterator::getNextValue(String& data) {
+bool ObjectDatabaseIterator::getNextValue(ObjectInputStream* data) {
 	try {
 		if (cursor->get(&this->key, &this->data, DB_NEXT) != 0)
 			return false;
 
-		data = (char*) this->data.get_data();
+		data->writeStream((char*)this->data.get_data(), this->data.get_size());
+
+		data->reset();
 
 	}  catch(DbException &e) {
 		error("Error in ObjectDatabaseIterator::getNextValue(String& data)");

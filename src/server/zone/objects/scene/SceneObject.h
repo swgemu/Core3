@@ -735,6 +735,8 @@ public:
 
 	SceneObjectImplementation(LuaObject* templateData);
 
+	SceneObjectImplementation(DummyConstructorParameter* param);
+
 	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
@@ -1159,6 +1161,8 @@ public:
 	void finalizeHelper();
 
 	DistributedObject* instantiateObject();
+
+	DistributedObjectServant* instantiateServant();
 
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
