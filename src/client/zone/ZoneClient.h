@@ -54,7 +54,7 @@ class Zone;
 class ZoneClient : public BaseClient {
 	Zone* zone;
 
-	ReferenceSlot<PlayerCreature*> player;
+	Reference<PlayerCreature*> player;
 
 	uint32 key;
 	uint32 accountID;

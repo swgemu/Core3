@@ -62,25 +62,25 @@ public:
 	}
 
 	void operator=(const SceneObjectReference& ref) {
-		ReferenceSlot<O>::setObject(ref.object);
+		Reference<O>::setObject(ref.object);
 	}
 
 	void operator=(O obj) {
-		ReferenceSlot<O>::updateObject(obj);
+		Reference<O>::updateObject(obj);
 	}
 
 	int compareTo(const SceneObjectReference& ref) const {
-		if (ReferenceSlot<O>::object->getObjectID() < ref.ReferenceSlot<O>::object->getObjectID())
+		if (Reference<O>::object->getObjectID() < ref.Reference<O>::object->getObjectID())
 			return 1;
-		else if (ReferenceSlot<O>::object->getObjectID() > ref.ReferenceSlot<O>::object->getObjectID())
+		else if (Reference<O>::object->getObjectID() > ref.Reference<O>::object->getObjectID())
 			return -1;
 		else
 			return 0;
 	}
 
 	bool toString(String& str) {
-		if (ReferenceSlot<O>::get() != NULL)
-			str = String::valueOf((ReferenceSlot<O>::get())->getObjectID());
+		if (Reference<O>::get() != NULL)
+			str = String::valueOf((Reference<O>::get())->getObjectID());
 		else
 			str = String::valueOf(0);
 
@@ -98,7 +98,7 @@ public:
 	}
 
 	bool toBinaryStream(ObjectOutputStream* stream) {
-		O object = ReferenceSlot<O>::get();
+		O object = Reference<O>::get();
 
 		if (object != NULL) {
 			stream->writeLong(object->getObjectID());
