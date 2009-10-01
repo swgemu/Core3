@@ -215,6 +215,8 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 	deSerializeObject(object, objectData);
 
+	delete objectData;
+
 	object->info("loaded from db", true);
 
 	if (object->isPlayerCreature())
