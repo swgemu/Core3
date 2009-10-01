@@ -64,8 +64,8 @@ class StringIdParameter {
 	void clear() {
 		unicodeParameter.clear();
 		pointerParameter = 0;
-		file.clear();
-		str.clear();
+		file = "";
+		str = "";
 	}
 
 public:

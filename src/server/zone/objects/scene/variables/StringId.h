@@ -79,7 +79,7 @@ public:
 	StringId(const String& fil, const String& stringId);
 	StringId(const UnicodeString& custom);
 
-	void getFullPath(String& str) {
+	void getFullPath(String& str) const {
 		str = "@" + file + ":" + stringID;
 	}
 
@@ -94,15 +94,15 @@ public:
 		TO.clear();
 	}
 
-	String& getFile() {
+	inline String& getFile() const {
 		return file;
 	}
 
-	String& getStringID() {
+	inline String& getStringID() const {
 		return stringID;
 	}
 
-	UnicodeString& getCustomString() {
+	inline UnicodeString& getCustomString() const {
 		return customName;
 	}
 
@@ -133,7 +133,7 @@ public:
 	}
 
 	void setTT(const String& f, const String& s) {
-		TT.set(StringId(f,c));
+		TT.set(f,c);
 	}
 
 	template<T>
@@ -142,7 +142,7 @@ public:
 	}
 
 	void setTU(const String& f, const String& s) {
-		TU.set(StringId(f,c));
+		TU.set(f,c);
 	}
 
 	template<T>
@@ -151,7 +151,7 @@ public:
 	}
 
 	void setTO(const String& f, const String& s) {
-		TO.set(StringId(f,c));
+		TO.set(f,c);
 	}
 
 	void setDI(uint32 i) {
@@ -162,7 +162,7 @@ public:
 		DF = f;
 	}
 
-	friend StringBuffer &operator<<(StringBuffer &stream, StringId ob);
+	friend StringBuffer &operator<<(StringBuffer &stream, StringId ob) const;
 };
 
 StringBuffer &operator<<(StringBuffer &stream, StringId ob) {
