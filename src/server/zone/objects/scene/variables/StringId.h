@@ -63,11 +63,7 @@ class StringId : public Serializable {
 	UnicodeString customName;
 
 	//Parameters
-	StringIdParameter TT;
-	StringIdParameter TU;
-	StringIdParameter TO;
-	uint32 DI;
-	float DF;
+	StringIdParameters parameters;
 
 private:
 	inline void addSerializableVariables();
@@ -83,26 +79,15 @@ public:
 		str = "@" + file + ":" + stringID;
 	}
 
-	void clear() {
-		file.clear();
-		stringID.clear();
-		fullPath.clear();
-		customName.clear();
-
-		TT.clear();
-		TU.clear();
-		TO.clear();
-	}
-
-	inline String& getFile() const {
+	inline String& getFile() {
 		return file;
 	}
 
-	inline String& getStringID() const {
+	inline String& getStringID() {
 		return stringID;
 	}
 
-	inline UnicodeString& getCustomString() const {
+	inline UnicodeString& getCustomString() {
 		return customName;
 	}
 
@@ -110,56 +95,47 @@ public:
 		customName = custom;
 	}
 
-	void setStringId(const String& fullPath) {
-		if (fullPath.isEmpty())
-			return;
-
-		this->fullPath = fullPath;
-
-		if (fullPath.charAt(0) == '@') {
-			StringTokenizer tokenizer(fullPath.subString(1));
-			tokenizer.setDelimeter(":");
-
-			tokenizer.getStringToken(file);
-			tokenizer.getStringToken(stringID);
-		}
-	}
+	void setStringId(const String& fullPath);
 
 	//Parameter Stuff
 
-	template<T>
-	void setTT(T obj) {
-		TT.set(obj);
+	inline StringIdParameters& getParameters() {
+		return parameters;
 	}
 
-	void setTT(const String& f, const String& s) {
-		TT.set(f,c);
+	template<class T>
+	inline void setTT(const T& obj) {
+		parameters.setTT(obj);
 	}
 
-	template<T>
-	void setTU(T obj) {
-		TD.set(obj);
+	inline void setTT(const String& f, const String& s) {
+		parameters.setTT(f,s);
 	}
 
-	void setTU(const String& f, const String& s) {
-		TU.set(f,c);
+	template<class T>
+	inline void setTU(const T& obj) {
+		parameters.setTU(obj);
 	}
 
-	template<T>
-	void setTO(T obj) {
-		TO.set(obj);
+	inline void setTU(const String& f, const String& s) {
+		parameters.setTU(f,s);
 	}
 
-	void setTO(const String& f, const String& s) {
-		TO.set(f,c);
+	template<class T>
+	inline void setTO(const T& obj) {
+		parameters.setTO(obj);
 	}
 
-	void setDI(uint32 i) {
-		DI = i;
+	inline void setTO(const String& f, const String& s) {
+		parameters.setTO(f,s);
 	}
 
-	void setDF(float f) {
-		DF = f;
+	inline void setDI(uint32 i) {
+		parameters.setDI(i);
+	}
+
+	inline void setDF(float f) {
+		parameters.setDF(f);
 	}
 
 	friend StringBuffer &operator<<(StringBuffer &stream, StringId ob) const;

@@ -76,8 +76,25 @@ StringId::StringId(const UnicodeString& custom) : Serializable() {
 	addSerializableVariables();
 }
 
+void StringId::setStringId(const String& fullPath) {
+	if (fullPath.isEmpty())
+		return;
+
+	this->fullPath = fullPath;
+
+	if (fullPath.charAt(0) == '@') {
+		StringTokenizer tokenizer(fullPath.subString(1));
+		tokenizer.setDelimeter(":");
+
+		tokenizer.getStringToken(file);
+		tokenizer.getStringToken(stringID);
+	}
+}
+
 void StringId::addSerializableVariables() {
 	addSerializableVariable("file", &file);
 	addSerializableVariable("stringID", &stringID);
 	addSerializableVariable("customName", &customName);
+	addSerializableVariable("fullPath", &fullPath);
+	addSerializableVariable("parameters", &parameters);
 }

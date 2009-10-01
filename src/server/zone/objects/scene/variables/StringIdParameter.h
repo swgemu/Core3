@@ -55,11 +55,25 @@ namespace objects {
 namespace scene {
 namespace variables {
 
-class StringIdParameter {
+class StringIdParameter : public Serializable {
 	UnicodeString unicodeParameter;
 	uint64 pointerParameter;
 	String file;
 	String str;
+
+private:
+	inline void addSerializableVariables() {
+		addSerializableVariable("unicodeParameter", &unicodeParameter);
+		addSerializableVariable("pointerParameter", &pointerParameter);
+		addSerializableVariable("file", &file);
+		addSerializableVariable("str", &str);
+	}
+
+public:
+
+	StringIdParameter() : Serializable() {
+		addSerialiazableVariables();
+	}
 
 	void clear() {
 		unicodeParameter.clear();
@@ -68,7 +82,6 @@ class StringIdParameter {
 		str = "";
 	}
 
-public:
 	void set(SceneObject * obj) {
 		clear();
 		pointerParameter = obj->getObjectID();
@@ -79,7 +92,7 @@ public:
 		pointerParameter = oid;
 	}
 
-	void set(StringId sid) {
+	void set(const StringId& sid) {
 		clear();
 		file = sid.getFile();
 		str = sid.getStringID();
@@ -91,19 +104,18 @@ public:
 		str = s;
 	}
 
-	void set(String s) {
-		clear();
-		unicodeParameter = UnicodeString(s);
-	}
-
-	void set(UnicodeString us) {
+	void set(const UnicodeString& us) {
 		clear();
 		unicodeParameter = us;
 	}
 
-	void set(const char * cs) {
+	void set(const String& cs) {
 		clear();
 		unicodeParameter = UnicodeString(cs);
+	}
+
+	uint32 size() const {
+		return unicodeParameter.length() * 2 + sizeof(pointerParameter) + file.length() + str.length();
 	}
 
 };
