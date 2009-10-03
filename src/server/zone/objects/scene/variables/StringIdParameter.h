@@ -114,8 +114,24 @@ public:
 		unicodeParameter = UnicodeString(cs);
 	}
 
-	uint32 size() const {
+	inline uint32 size() const {
 		return unicodeParameter.length() * 2 + sizeof(pointerParameter) + file.length() + str.length();
+	}
+
+	inline uint64 getPointerParameter() const {
+		return pointerParameter;
+	}
+
+	inline UnicodeString& getUnicodeParameter() const {
+		return unicodeParameter;
+	}
+
+	inline String& getFileParameter() const {
+		return file;
+	}
+
+	inline String& getStringIDParameter() const {
+		return str;
 	}
 
 };

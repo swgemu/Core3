@@ -110,7 +110,27 @@ public:
 		DF = f;
 	}
 
-	inline uint32 size() {
+	inline StringIdParameter& getTU() const {
+		return TU;
+	}
+
+	inline StringIdParameter& getTO() const {
+		return TO;
+	}
+
+	inline StringIdParameter& getTT() const {
+		return TT;
+	}
+
+	inline uint32 getDI() const {
+		return DI;
+	}
+
+	inline float getDF() const {
+		return DF;
+	}
+
+	inline uint32 size() const {
 		return TT.size() + TU.size() + TO.size() + sizeof(DI) + sizeof(DF);
 	}
 

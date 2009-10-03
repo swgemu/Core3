@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/StringId.h"
+#include "server/zone/objects/scene/variables/StringIdParameter.h"
+#include "server/zone/objects/scene/variables/StringIdParameters.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 class BaseLineMessage : public BaseMessage {
@@ -90,9 +92,56 @@ public:
 		insertUnicode(id->getCustomString());
 	}
 
-	inline void insertStringIdParameters(StringId * id) {
-		//TODO: add this
+	inline void insertStringIdParameters(const StringId& id) {
+		uint32 size = 54 + id.getFile().length() + id.getStringID().length() + id.getParameters().size();
+
+		bool odd = (size & 1);
+
+		if (odd)
+			insertInt((size + 1) / 2);
+		else
+			insertInt(size / 2);
+
+		insertShort(0);
+		insertByte(1);
+		insertInt(0xFFFFFFFF);
+
+		insertAscii(id.getFile());
+		insertInt(0);
+		insertAscii(id.getStringID());
+
+		StringIdParameters params = id.getParameters();
+
+		insertLong(params.getTU().getPointerParameter());
+		insertAscii(params.getTU().getFileParameter());
+		insertInt(0);
+		insertAscii(params.getTU().getStringIDParameter());
+		insertUnicode(params.getTU().getUnicodeParameter());
+
+
+		insertLong(params.getTT().getPointerParameter());
+		insertAscii(params.getTT().getFileParameter());
+		insertInt(0);
+		insertAscii(params.getTT().getStringIDParameter());
+		insertUnicode(params.getTT().getUnicodeParameter());
+
+
+		insertLong(params.getTO().getPointerParameter());
+		insertAscii(params.getTO().getFileParameter());
+		insertInt(0);
+		insertAscii(params.getTO().getStringIDParameter());
+		insertUnicode(params.getTO().getUnicodeParameter());
+
+
+		insertInt(params.getDI());
+		insertFloat(params.getDF());
+		insertShort(0);
+		insertByte(0);
+
+		if (odd)
+			insertByte(0);
 	}
+
 
 	template<class E> void insertDeltaVector(DeltaVector<E>* vector) {
 		insertInt(vector->size());
