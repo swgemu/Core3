@@ -42,6 +42,10 @@ class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(LuaObject* templateData);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -286,6 +290,10 @@ public:
 
 	CreatureObjectImplementation(DummyConstructorParameter* param);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -436,6 +444,8 @@ public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 

@@ -63,9 +63,9 @@ class Zone extends ManagedObject implements QuadTree {
 
 	private transient ZoneProcessServerImplementation processor;
 
-	private transient TaskManager taskManager;
+	//private transient TaskManager taskManager;
 	
-	private transient StructureManager structureManager; // move to planet manager when converted
+	private StructureManager structureManager; // move to planet manager when converted
 	
 	private ZoneServer server;
 
@@ -81,6 +81,7 @@ class Zone extends ManagedObject implements QuadTree {
 	private boolean weatherEnabled;
 	
 	public native Zone(ZoneServer zserv, ZoneProcessServerImplementation processor, int zoneid);
+	public native void initializeTransientMembers();
 	
 	@local
 	public native void insert(QuadTreeEntry entry);

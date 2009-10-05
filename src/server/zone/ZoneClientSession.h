@@ -19,6 +19,8 @@ class ZoneServer;
 
 using namespace server::zone;
 
+#include "engine/core/ManagedObject.h"
+
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/BasePacket.h"
@@ -29,8 +31,6 @@ using namespace server::zone;
 
 #include "system/net/Socket.h"
 
-#include "engine/core/ManagedObject.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
@@ -40,11 +40,11 @@ class ZoneClientSession : public ManagedObject {
 public:
 	ZoneClientSession(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
 
-	void sendMessage(BasePacket* msg);
-
 	void disconnect();
 
 	void disconnect(bool doLock);
+
+	void sendMessage(BasePacket* msg);
 
 	void balancePacketCheckupTime();
 
@@ -102,11 +102,11 @@ public:
 
 	ZoneClientSessionImplementation(DummyConstructorParameter* param);
 
-	void sendMessage(BasePacket* msg);
-
 	void disconnect();
 
 	void disconnect(bool doLock);
+
+	void sendMessage(BasePacket* msg);
 
 	void balancePacketCheckupTime();
 
@@ -153,11 +153,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void sendMessage(BasePacket* msg);
-
 	void disconnect();
 
 	void disconnect(bool doLock);
+
+	void sendMessage(BasePacket* msg);
 
 	void balancePacketCheckupTime();
 

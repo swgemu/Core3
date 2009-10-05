@@ -77,25 +77,9 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace events {
-
-class ObjectUpdateToDatabaseTask;
-
-} // namespace events
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene::events;
+#include "engine/core/ManagedObject.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
-
-#include "engine/core/ManagedObject.h"
 
 #include "engine/log/Logger.h"
 
@@ -130,6 +114,10 @@ class SceneObject : public ManagedObject {
 public:
 	SceneObject(LuaObject* templateData);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
@@ -157,8 +145,6 @@ public:
 	bool canAddObject(SceneObject* object);
 
 	void updateToDatabase();
-
-	void queueUpdateToDatabaseTask();
 
 	void create(ZoneClientSession* client);
 
@@ -290,8 +276,6 @@ public:
 
 	bool isCellObject();
 
-	bool isPersistent();
-
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -317,10 +301,6 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
-
-	void setPersistent(bool value);
-
-	void clearUpdateToDatabaseTask();
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -353,10 +333,6 @@ protected:
 	ZoneProcessServerImplementation* server;
 
 	ManagedReference<Zone* > zone;
-
-	bool persistent;
-
-	ObjectUpdateToDatabaseTask* updateToDatabaseTask;
 
 	ManagedReference<SceneObject* > parent;
 
@@ -737,6 +713,10 @@ public:
 
 	SceneObjectImplementation(DummyConstructorParameter* param);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void info(const String& msg, bool forced = false);
 
 	void error(const String& msg);
@@ -764,8 +744,6 @@ public:
 	virtual bool canAddObject(SceneObject* object);
 
 	void updateToDatabase();
-
-	void queueUpdateToDatabaseTask();
 
 	void create(ZoneClientSession* client);
 
@@ -897,8 +875,6 @@ public:
 
 	bool isCellObject();
 
-	bool isPersistent();
-
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -924,10 +900,6 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
-
-	void setPersistent(bool value);
-
-	void clearUpdateToDatabaseTask();
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -966,6 +938,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	void info(const String& msg, bool forced);
 
 	void error(const String& msg);
@@ -989,8 +963,6 @@ public:
 	bool canAddObject(SceneObject* object);
 
 	void updateToDatabase();
-
-	void queueUpdateToDatabaseTask();
 
 	void create(ZoneClientSession* client);
 
@@ -1114,8 +1086,6 @@ public:
 
 	bool isCellObject();
 
-	bool isPersistent();
-
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -1139,10 +1109,6 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
-
-	void setPersistent(bool value);
-
-	void clearUpdateToDatabaseTask();
 
 protected:
 	String _param0_info__String_bool_;

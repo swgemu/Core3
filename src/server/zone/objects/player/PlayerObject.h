@@ -36,6 +36,10 @@ class PlayerObject : public IntangibleObject {
 public:
 	PlayerObject(LuaObject* templateData);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	unsigned int getCharacterBitmask();
@@ -75,6 +79,7 @@ namespace objects {
 namespace player {
 
 class PlayerObjectImplementation : public IntangibleObjectImplementation {
+protected:
 	unsigned int characterBitmask;
 
 	String title;
@@ -115,6 +120,10 @@ public:
 	PlayerObjectImplementation(LuaObject* templateData);
 
 	PlayerObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -166,6 +175,8 @@ public:
 	PlayerObjectAdapter(PlayerObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 

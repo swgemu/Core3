@@ -62,6 +62,8 @@ class Zone : public ManagedObject {
 public:
 	Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
+	void initializeTransientMembers();
+
 	void insert(QuadTreeEntry* entry);
 
 	void remove(QuadTreeEntry* entry);
@@ -121,8 +123,6 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ZoneProcessServerImplementation* processor;
 
-	TaskManager* taskManager;
-
 	ManagedReference<StructureManager* > structureManager;
 
 	ManagedReference<ZoneServer* > server;
@@ -143,6 +143,8 @@ public:
 	ZoneImplementation(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid);
 
 	ZoneImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	void insert(QuadTreeEntry* entry);
 
@@ -216,6 +218,8 @@ public:
 	ZoneAdapter(ZoneImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void startManagers();
 

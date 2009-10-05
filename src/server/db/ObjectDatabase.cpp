@@ -166,6 +166,25 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 	return ret;
 }
 
+int ObjectDatabase::deleteData(uint64 objKey) {
+	int ret = -1;
+
+	Dbt key(&objKey, sizeof(uint64));
+
+	try {
+
+		ret = objectsDatabase->del(NULL, &key, 0);
+
+	} catch(DbException &e) {
+		error("Error in deleteData");
+		error(e.what());
+	} catch (...) {
+		error("unreported exception caught while trying to put data into berkeley DB ");
+	}
+
+	return ret;
+}
+
 int ObjectDatabase::sync() {
 	int ret = -1;
 

@@ -22,12 +22,32 @@ Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
 Container::~Container() {
 }
 
-void Container::sendContainerObjectsTo(SceneObject* player) {
+void Container::loadTemplateData(LuaObject* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ContainerImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void Container::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((ContainerImplementation*) _impl)->initializeTransientMembers();
+}
+
+void Container::sendContainerObjectsTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -106,6 +126,9 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -113,6 +136,10 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void ContainerAdapter::initializeTransientMembers() {
+	((ContainerImplementation*) impl)->initializeTransientMembers();
 }
 
 void ContainerAdapter::sendContainerObjectsTo(SceneObject* player) {

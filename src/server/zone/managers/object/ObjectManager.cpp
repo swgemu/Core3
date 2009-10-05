@@ -174,55 +174,113 @@ void ObjectManager::closeDatabase() {
 
 
 DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
-	SceneObject* object = NULL;
+	DistributedObjectStub* object = NULL;
 
 	Locker _locker(this);
 
 	// only for debugging proposes
 	DistributedObject* dobject = getObject(objectID);
 
-	if (dobject != NULL) {
-		object = dynamic_cast<SceneObject*>(dobject);
+	if (dobject != NULL && dobject->_getObjectID() != objectID) {
+		error("different object already in database");
 
-		if (object == NULL) {
-			error("different object already in database");
-
-			return NULL;
-		} else {
-
-			return object;
-		}
+		return NULL;
 	}
 
 	ObjectInputStream* objectData = new ObjectInputStream(500);
 
-	if (database->getData(objectID, objectData))
+	if (database->getData(objectID, objectData)) {
+		delete objectData;
 		return NULL;
+	}
 
 	uint32 serverObjectCRC = 0;
+	String className;
 
-	if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
-		error("error reading serverObjectCRC from ObjectInputStream");
-		return NULL;
+	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
+		object = createObject(serverObjectCRC, false, objectID);
+
+		if (object == NULL) {
+			error("could not load object from database");
+			delete objectData;
+			return NULL;
+		}
+
+		deSerializeObject((SceneObject*)object, objectData);
+
+		if (((SceneObject*)object)->isPlayerCreature())
+			server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
+
+		((SceneObject*)object)->info("loaded from db", true);
+
+	} else if (Serializable::getVariable<String>("_className", &className, objectData)) {
+		object = createObject(className, false, objectID);
+
+		if (object == NULL) {
+			error("could not load object from database");
+			delete objectData;
+			return NULL;
+		}
+
+		deSerializeObject((ManagedObject*)object, objectData);
+	} else {
+		error("could not load object from database, unknown template crc or class name");
+		object = NULL;
 	}
-
-	object = createObject(serverObjectCRC, false, objectID);
-
-	if (object == NULL) {
-		error("could not load object from database");
-		return NULL;
-	}
-
-	deSerializeObject(object, objectData);
 
 	delete objectData;
 
-	object->info("loaded from db", true);
+	return object;
+}
 
-	if (object->isPlayerCreature())
-		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
+ManagedObject* ObjectManager::createObject(const String& className, bool persistent, uint64 oid) {
+	ManagedObject* object = NULL;
+
+	Locker _locker(this);
+
+	DistributedObjectClassHelperMap* classMap = DistributedObjectBroker::instance()->getClassMap();
+
+	DistributedObjectClassHelper* helper = classMap->get(className);
+
+	if (helper != NULL) {
+		object = (ManagedObject*) helper->instantiateObject();
+		DistributedObjectServant* servant = helper->instantiateServant();
+
+		if (oid == 0)
+			oid = getNextFreeObjectID();
+
+		object->_setObjectID(oid);
+		object->_setImplementation(servant);
+
+		servant->_setStub(object);
+		servant->_setClassHelper(helper);
+		servant->_serializationHelperMethod();
+
+		object->deploy();
+	} else {
+		error("unknown className:" + className + " in classMap");
+	}
 
 	return object;
+}
+
+void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* data) {
+	try {
+		object->wlock();
+
+		object->setPersistent(true);
+		object->readObject(data);
+
+		object->queueUpdateToDatabaseTask();
+
+		object->unlock();
+	} catch (Exception& e) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	} catch (...) {
+		object->unlock();
+		error("could not deserialize object from DB");
+	}
 }
 
 void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* data) {

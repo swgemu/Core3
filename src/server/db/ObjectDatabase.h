@@ -34,6 +34,7 @@ public:
 
 	int getData(uint64 objKey, ObjectInputStream* objectData);
 	int putData(uint64 objKey, ObjectOutputStream* stream, bool syncToDisk = false);
+	int deleteData(uint64 objKey);
 
 	int sync();
 

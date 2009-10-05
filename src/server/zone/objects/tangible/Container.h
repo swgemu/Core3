@@ -24,6 +24,10 @@ class Container : public TangibleObject {
 public:
 	Container(LuaObject* templateData);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 protected:
@@ -52,6 +56,10 @@ public:
 	ContainerImplementation(LuaObject* templateData);
 
 	ContainerImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
 
@@ -89,6 +97,8 @@ public:
 	ContainerAdapter(ContainerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendContainerObjectsTo(SceneObject* player);
 

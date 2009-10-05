@@ -75,6 +75,10 @@ class TangibleObject extends SceneObject {
 	
 	public native TangibleObject(LuaObject templateData);
 	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	public native void initializeTransientMembers();
+	
 	public native abstract void sendBaselinesTo(SceneObject player);
 	
 	public native abstract void setDefender(SceneObject defender);

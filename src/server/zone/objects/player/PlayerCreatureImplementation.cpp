@@ -45,6 +45,15 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 	setOffline();
 }
 
+void PlayerCreatureImplementation::initializeTransientMembers() {
+	//setLoggingName("IntangibleObject");
+
+	disconnectEvent = NULL;
+	recoveryEvent = NULL;
+
+	CreatureObjectImplementation::initializeTransientMembers();
+}
+
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	if (owner == NULL)
 		return;
