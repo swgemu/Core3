@@ -22,6 +22,10 @@ class IntangibleObject : public SceneObject {
 public:
 	IntangibleObject(LuaObject* templateData);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	unsigned int getStatus();
@@ -54,6 +58,10 @@ public:
 	IntangibleObjectImplementation(LuaObject* templateData);
 
 	IntangibleObjectImplementation(DummyConstructorParameter* param);
+
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -93,6 +101,8 @@ public:
 	IntangibleObjectAdapter(IntangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 

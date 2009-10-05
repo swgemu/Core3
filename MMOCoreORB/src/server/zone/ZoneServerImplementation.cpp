@@ -94,6 +94,19 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	taskManager->setLogging(false);
 }
 
+void ZoneServerImplementation::initializeTransientMembers() {
+	phandler = NULL;
+
+	processor = NULL;
+
+	taskManager = TaskManager::instance();
+	taskManager->setLogging(false);
+
+	objectManager = NULL;
+
+	ManagedObjectImplementation::initializeTransientMembers();
+}
+
 void ZoneServerImplementation::start(int a, int b) {
 	DatagramServiceThread::start(a, b);
 }

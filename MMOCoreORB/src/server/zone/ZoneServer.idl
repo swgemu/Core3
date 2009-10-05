@@ -108,6 +108,7 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public static final int LOCKED = 3;
 	
 	public native ZoneServer(int processingThreads, int galaxyid = 2);
+	public native void initializeTransientMembers();
 	
 	@local
 	public native ServiceClient createConnection(Socket sock, @dereferenced SocketAddress addr);

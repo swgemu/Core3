@@ -61,6 +61,7 @@ which carries forward this exception.
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
 
 #include "variables/StringId.h"
 #include "events/ObjectUpdateToDatabaseTask.h"
@@ -69,6 +70,22 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 
 SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject") {
+	loadTemplateData(templateData);
+	initializeTransientMembers();
+}
+
+void SceneObjectImplementation::initializeTransientMembers() {
+	server = ZoneProcessServerImplementation::instance;
+
+	movementCounter = 0;
+
+	setGlobalLogging(true);
+	setLogging(false);
+
+	ManagedObjectImplementation::initializeTransientMembers();
+}
+
+void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	SceneObjectImplementation::parent = NULL;
 
 	slottedObjects.setNullValue(NULL);
@@ -108,12 +125,7 @@ SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : 
 
 	persistent = false;
 
-	updateToDatabaseTask = NULL;
-
 	movementCounter = 0;
-
-	setGlobalLogging(true);
-	setLogging(false);
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
@@ -154,14 +166,6 @@ void SceneObjectImplementation::updateToDatabase() {
 	}
 
 	queueUpdateToDatabaseTask();
-}
-
-void SceneObjectImplementation::queueUpdateToDatabaseTask() {
-	if (updateToDatabaseTask != NULL || !persistent)
-		return;
-
-	updateToDatabaseTask = new ObjectUpdateToDatabaseTask(_this);
-	updateToDatabaseTask->schedule();
 }
 
 uint64 SceneObjectImplementation::getObjectID() {
@@ -442,6 +446,11 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 
 void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	Locker zoneLocker(newZone);
+
+	if (isInQuadTree() && newZone != zone) {
+		error("trying to insert to zone an object that is already in a different quadtree");
+		StackTrace::printStackTrace();
+	}
 
 	SceneObjectImplementation::zone = newZone;
 

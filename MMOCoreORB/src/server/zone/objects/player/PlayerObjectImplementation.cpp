@@ -51,16 +51,24 @@ which carries forward this exception.
 
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 
-
-
 PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
 	IntangibleObjectImplementation(templateData) {
 
+	loadTemplateData(templateData);
+
+	setLoggingName("PlayerObject");
+}
+
+void PlayerObjectImplementation::initializeTransientMembers() {
+	//setLoggingName("PlayerObject");
+
+	IntangibleObjectImplementation::initializeTransientMembers();
+}
+
+void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	characterBitmask = ANONYMOUS;
 
 	adminLevel = 0;
-
-	setLoggingName("PlayerObject");
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {

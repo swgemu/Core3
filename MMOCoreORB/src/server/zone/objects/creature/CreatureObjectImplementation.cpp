@@ -67,6 +67,16 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 
 	setLoggingName("CreatureObject");
 
+	loadTemplateData(templateData);
+}
+
+void CreatureObjectImplementation::initializeTransientMembers() {
+	setLoggingName("CreatureObject");
+
+	TangibleObjectImplementation::initializeTransientMembers();
+}
+
+void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	bankCredits = 0;
 	cashCredits = 0;
 

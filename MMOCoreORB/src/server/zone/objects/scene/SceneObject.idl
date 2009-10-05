@@ -44,7 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.scene;
 
-import engine.core.ManagedObject;
+include engine.core.ManagedObject;
 
 import engine.log.Logger;
 import engine.core.ManagedReference;
@@ -66,19 +66,14 @@ import server.zone.Zone;
 import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.scene.events.ObjectUpdateToDatabaseTask;
 
 include server.zone.objects.scene.variables.StringId;
-
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
 	
 	protected Zone zone;
-	
-	protected boolean persistent;
-	protected transient ObjectUpdateToDatabaseTask updateToDatabaseTask;
-	
+		
 	protected SceneObject parent;
 	
 	@dereferenced
@@ -307,6 +302,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	public native SceneObject(LuaObject templateData);
 	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	public native void initializeTransientMembers();
+	
 	public void info(final string msg, boolean forced = false) {
 		Logger.info(msg, forced);
 	}
@@ -362,7 +361,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 	
 	public native void updateToDatabase();
-	public native void queueUpdateToDatabaseTask();
 	
 	public native void create(ZoneClientSession client);
 	public native void destroy(ZoneClientSession client);
@@ -573,10 +571,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return gameObjectType == CELLOBJECT;
 	}
 	
-	public boolean isPersistent() {
-		return persistent;
-	}
-	
 	public void setPosition(float x, float z, float y) {
 		QuadTreeEntry.setPosition(x, z, y);
 	}
@@ -628,14 +622,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
-	}
-	
-	public void setPersistent(boolean value) {
-		persistent = value;
-	}
-	
-	public void clearUpdateToDatabaseTask() {
-		updateToDatabaseTask = null;
 	}
 	
 	@local

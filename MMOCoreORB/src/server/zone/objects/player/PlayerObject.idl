@@ -52,10 +52,10 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
 
 class PlayerObject extends IntangibleObject {	
-	unsigned int characterBitmask;
-	string title;
+	protected unsigned int characterBitmask;
+	protected string title;
 	
-	unsigned int adminLevel;
+	protected unsigned int adminLevel;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -75,6 +75,10 @@ class PlayerObject extends IntangibleObject {
 	public static final int ECJR = 64;
 	
 	public native PlayerObject(LuaObject templateData);
+	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
 	

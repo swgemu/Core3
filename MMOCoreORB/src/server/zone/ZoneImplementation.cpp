@@ -87,6 +87,22 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 	structureManager = NULL;
 }
 
+void ZoneImplementation::initializeTransientMembers() {
+	processor = ZoneProcessServerImplementation::instance;
+
+	//taskManager =
+
+	heightMap = new HeightMap();
+
+	if (zoneID <= 9) {
+		String planetName = Planet::getPlanetName(zoneID);
+
+		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
+	}
+
+	ManagedObjectImplementation::initializeTransientMembers();
+}
+
 void ZoneImplementation::startManagers() {
 	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
 	//	return;
