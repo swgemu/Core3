@@ -208,9 +208,6 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 		deSerializeObject((SceneObject*)object, objectData);
 
-		if (((SceneObject*)object)->isPlayerCreature())
-			server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
-
 		((SceneObject*)object)->info("loaded from db", true);
 
 	} else if (Serializable::getVariable<String>("_className", &className, objectData)) {
@@ -257,6 +254,15 @@ ManagedObject* ObjectManager::createObject(const String& className, bool persist
 		servant->_serializationHelperMethod();
 
 		object->deploy();
+
+		if (persistent) {
+			updatePersistentObject(object);
+
+			object->queueUpdateToDatabaseTask();
+		}
+
+		object->setPersistent(persistent);
+
 	} else {
 		error("unknown className:" + className + " in classMap");
 	}
@@ -305,6 +311,9 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 		object->unlock();
 		error("could not deserialize object from DB");
 	}
+
+	if (object->isPlayerCreature())
+		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
 }
 
 SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
