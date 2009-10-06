@@ -114,6 +114,8 @@ class PlayerCreature : public CreatureObject {
 public:
 	PlayerCreature(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -272,6 +274,8 @@ public:
 
 	PlayerCreatureImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -380,6 +384,8 @@ public:
 	PlayerCreatureAdapter(PlayerCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void disconnect(bool closeClient, bool doLock);
 

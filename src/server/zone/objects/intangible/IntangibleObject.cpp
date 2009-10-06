@@ -22,12 +22,32 @@ IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObje
 IntangibleObject::~IntangibleObject() {
 }
 
-void IntangibleObject::sendBaselinesTo(SceneObject* player) {
+void IntangibleObject::loadTemplateData(LuaObject* templateData) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((IntangibleObjectImplementation*) _impl)->loadTemplateData(templateData);
+}
+
+void IntangibleObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((IntangibleObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+void IntangibleObject::sendBaselinesTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -40,7 +60,7 @@ unsigned int IntangibleObject::getStatus() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -108,7 +128,7 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(58):  return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(63):  return status;
 	return status;
 }
 
@@ -124,9 +144,12 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 7:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 8:
 		resp->insertInt(getStatus());
 		break;
 	default:
@@ -134,6 +157,10 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	}
 
 	return resp;
+}
+
+void IntangibleObjectAdapter::initializeTransientMembers() {
+	((IntangibleObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {

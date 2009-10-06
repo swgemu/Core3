@@ -42,6 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+//TODO: Delete this file once converted to StringId
+
 #ifndef STFPARAMETER_H_
 #define STFPARAMETER_H_
 

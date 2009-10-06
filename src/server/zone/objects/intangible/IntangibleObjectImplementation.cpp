@@ -54,7 +54,19 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templa
 
 	setLoggingName("IntangibleObject");
 
+	loadTemplateData(templateData);
+
 	status = 0;
+}
+
+void IntangibleObjectImplementation::initializeTransientMembers() {
+	setLoggingName("IntangibleObject");
+
+	SceneObjectImplementation::initializeTransientMembers();
+}
+
+void IntangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
+
 }
 
 void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {

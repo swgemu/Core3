@@ -28,6 +28,10 @@ class TangibleObject : public SceneObject {
 public:
 	TangibleObject(LuaObject* templateData);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	void setDefender(SceneObject* defender);
@@ -115,6 +119,10 @@ public:
 
 	TangibleObjectImplementation(DummyConstructorParameter* param);
 
+	void loadTemplateData(LuaObject* templateData);
+
+	void initializeTransientMembers();
+
 	virtual void sendBaselinesTo(SceneObject* player);
 
 	virtual void setDefender(SceneObject* defender);
@@ -187,6 +195,8 @@ public:
 	TangibleObjectAdapter(TangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 

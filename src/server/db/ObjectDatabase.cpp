@@ -33,6 +33,8 @@ ObjectDatabase::~ObjectDatabase() {
 }
 
 int ObjectDatabase::isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags) {
+	if (pid != Thread::getProcessID())
+		return 0;
 
 	return 1; // still running
 }
@@ -40,15 +42,19 @@ int ObjectDatabase::isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_
 void ObjectDatabase::openEnvironment() {
 	try {
 
+		databaseEnvironment->set_thread_count(50);
+
 		int ret = databaseEnvironment->open("databases", dbEnvironmentFlags, 0);
 
-		//databaseEnvironment->set_isalive(isAlive);
+		databaseEnvironment->set_isalive(isAlive);
 
 		if (ret != 0)
 			error("Trying to open environment error: " + String::valueOf(ret));
 
-		/*if (databaseEnvironment->failchk(0) != 0) we need to implement isAlive
-			error("Database environment crashed and cant continue, please run db_recovery");*/
+		if (databaseEnvironment->failchk(0) != 0) {
+			error("Database environment crashed and cant continue, please run db_recovery");
+			exit(1);
+		}
 
 	} catch(DbException &e) {
 		error("Error opening environment... please run db_recovery");
@@ -158,6 +164,25 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 
 	} catch(DbException &e) {
 		error("Error in putData");
+		error(e.what());
+	} catch (...) {
+		error("unreported exception caught while trying to put data into berkeley DB ");
+	}
+
+	return ret;
+}
+
+int ObjectDatabase::deleteData(uint64 objKey) {
+	int ret = -1;
+
+	Dbt key(&objKey, sizeof(uint64));
+
+	try {
+
+		ret = objectsDatabase->del(NULL, &key, 0);
+
+	} catch(DbException &e) {
+		error("Error in deleteData");
 		error(e.what());
 	} catch (...) {
 		error("unreported exception caught while trying to put data into berkeley DB ");

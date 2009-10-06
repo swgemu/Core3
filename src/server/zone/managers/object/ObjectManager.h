@@ -78,6 +78,7 @@ namespace zone {
 		void registerObjectTypes();
 		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
 		void deSerializeObject(SceneObject* object, ObjectInputStream* data);
+		void deSerializeObject(ManagedObject* object, ObjectInputStream* data);
 
 	public:
 		ObjectManager();
@@ -86,6 +87,7 @@ namespace zone {
 
 		// object methods
 		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0);
+		ManagedObject* createObject(const String& className, bool persistent, uint64 oid = 0);
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);

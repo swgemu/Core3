@@ -135,6 +135,10 @@ class CreatureObject extends TangibleObject {
 
 	public native CreatureObject(LuaObject templateData);
 	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	public native void initializeTransientMembers();
+	
 	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	public native void sendBaselinesTo(SceneObject player);

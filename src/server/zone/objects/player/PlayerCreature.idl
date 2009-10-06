@@ -113,6 +113,8 @@ class PlayerCreature extends CreatureObject {
 	public static final int LOADING = 6;
 	
 	public native PlayerCreature(LuaObject templateData);
+	public native void initializeTransientMembers();
+
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry entry);

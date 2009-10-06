@@ -90,6 +90,8 @@ which carries forward this exception.
 
 #include "managers/name/NameManager.h"
 
+ZoneProcessServerImplementation* ZoneProcessServerImplementation::instance = NULL;
+
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads)
 		: ServiceMessageHandlerThread("ZoneProcessorServer") {
 	server = serv;
@@ -100,6 +102,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	nameManager = new NameManager(this);
 
 	zonephandler = NULL;
+
+	instance = this;
 
 	setLogging(false);
 

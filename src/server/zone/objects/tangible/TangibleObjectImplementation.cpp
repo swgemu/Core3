@@ -56,6 +56,16 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 
 	setLoggingName("TangibleObject");
 
+	loadTemplateData(templateData);
+}
+
+void TangibleObjectImplementation::initializeTransientMembers() {
+	setLoggingName("TangibleObject");
+
+	SceneObjectImplementation::initializeTransientMembers();
+}
+
+void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	targetable = templateData->getByteField("targetable");
 
 	complexity = 100.f;

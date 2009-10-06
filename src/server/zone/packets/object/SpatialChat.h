@@ -70,6 +70,29 @@ public:
 		setCompression(true);
 	}
 
+	SpatialChat(uint64 senderid, uint64 recvid, const StringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
+		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
+
+		params->generate();
+
+		insertLong(senderid);
+		insertLong(target);
+		insertInt(0);
+		insertShort(0x32);
+		insertShort(mood2);
+		insertShort(moodid);
+		insertShort(0);
+
+		insertStringIdParameter(stringid);
+
+		insertByte(0);
+		insertShort(0);
+
+		setCompression(true);
+	}
+
+	//TODO: remove everything below here and convert existing implementations to above methods
+
 	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& str, StfParameter* params, uint64 target, uint16 moodid, uint16 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 

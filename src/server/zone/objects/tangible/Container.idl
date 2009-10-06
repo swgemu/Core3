@@ -51,5 +51,9 @@ import engine.lua.LuaObject;
 class Container extends TangibleObject {
 	public native Container(LuaObject templateData);
 	
+	@local
+	public native void loadTemplateData(LuaObject templateData);
+	public native void initializeTransientMembers();
+	
 	public native void sendContainerObjectsTo(SceneObject player);
 }

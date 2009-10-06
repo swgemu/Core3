@@ -114,6 +114,9 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	*/
 
 public:
+	static ZoneProcessServerImplementation* instance;
+
+public:
 	ZoneProcessServerImplementation(ZoneServer* serv, int processingThreads);
 
 	~ZoneProcessServerImplementation();

@@ -62,6 +62,26 @@ public:
 		insertInt(0x00);
 	}
 
+	ChatSystemMessage(const StringId& stringid) : BaseMessage() {
+		params->generate();
+
+		insertShort(0x08);
+		insertInt(0x6D2A6413);
+
+		insertByte(0);
+		insertInt(0); // UnicodeString
+
+		insertStringIdParameters(stringid);
+
+		insertInt(0);
+	}
+
+	ChatSystemMessage(const String& file, const String& stringid) : BaseMessage() {
+		ChatSystemMessage(StringId(file, stringid));
+	}
+
+	//TODO: remove everything after this, convert existing code to above methods
+
 	ChatSystemMessage(UnicodeString& message, StfParameter * params) : BaseMessage() {
 		params->generate();
 

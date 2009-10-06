@@ -58,6 +58,17 @@ public:
 		insertUnicode(message);
 	}
 
+	NpcConversationMessage(CreatureObject* creo, const StringId& stringid)
+			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
+		params->generate();
+
+		insertStringIdParameters(stringid);
+
+		insertInt(0);
+	}
+
+	//TODO: remove all below functions and change current implementations to use above methods
+
 	NpcConversationMessage(CreatureObject* creo, const String& file, const String& str, uint64 TO = 0, uint64 TU = 0, uint64 TT = 0, int DI = 0, float DF = 0) :
 		ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
 

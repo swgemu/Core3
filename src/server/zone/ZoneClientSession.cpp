@@ -24,25 +24,12 @@ ZoneClientSession::ZoneClientSession(DummyConstructorParameter* param) : Managed
 ZoneClientSession::~ZoneClientSession() {
 }
 
-void ZoneClientSession::sendMessage(BasePacket* msg) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(msg);
-
-		method.executeWithVoidReturn();
-	} else
-		((ZoneClientSessionImplementation*) _impl)->sendMessage(msg);
-}
-
 void ZoneClientSession::disconnect() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 6);
 
 		method.executeWithVoidReturn();
 	} else
@@ -54,12 +41,25 @@ void ZoneClientSession::disconnect(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
 		((ZoneClientSessionImplementation*) _impl)->disconnect(doLock);
+}
+
+void ZoneClientSession::sendMessage(BasePacket* msg) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(msg);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneClientSessionImplementation*) _impl)->sendMessage(msg);
 }
 
 void ZoneClientSession::balancePacketCheckupTime() {
@@ -324,13 +324,13 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 	switch (methid) {
 	case 6:
-		sendMessage((BasePacket*) inv->getObjectParameter());
-		break;
-	case 7:
 		disconnect();
 		break;
-	case 8:
+	case 7:
 		disconnect(inv->getBooleanParameter());
+		break;
+	case 8:
+		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
 	case 9:
 		balancePacketCheckupTime();
@@ -375,16 +375,16 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	return resp;
 }
 
-void ZoneClientSessionAdapter::sendMessage(BasePacket* msg) {
-	((ZoneClientSessionImplementation*) impl)->sendMessage(msg);
-}
-
 void ZoneClientSessionAdapter::disconnect() {
 	((ZoneClientSessionImplementation*) impl)->disconnect();
 }
 
 void ZoneClientSessionAdapter::disconnect(bool doLock) {
 	((ZoneClientSessionImplementation*) impl)->disconnect(doLock);
+}
+
+void ZoneClientSessionAdapter::sendMessage(BasePacket* msg) {
+	((ZoneClientSessionImplementation*) impl)->sendMessage(msg);
 }
 
 void ZoneClientSessionAdapter::balancePacketCheckupTime() {
