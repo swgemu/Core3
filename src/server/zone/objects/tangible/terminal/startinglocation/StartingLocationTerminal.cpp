@@ -11,9 +11,6 @@
 StartingLocationTerminal::StartingLocationTerminal(LuaObject* templateData) : Terminal(DummyConstructorParameter::instance()) {
 	_impl = new StartingLocationTerminalImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(StartingLocationTerminalHelper::instance());
-
-	((StartingLocationTerminalImplementation*) _impl)->_serializationHelperMethod();
 }
 
 StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -40,10 +37,16 @@ int StartingLocationTerminal::useObject(SceneObject* object) {
  */
 
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
-	_classHelper = StartingLocationTerminalHelper::instance();
+	_initializeImplementation();
 }
 
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
+}
+
+void StartingLocationTerminalImplementation::_initializeImplementation() {
+	_setClassHelper(StartingLocationTerminalHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void StartingLocationTerminalImplementation::_setStub(DistributedObjectStub* stub) {

@@ -99,6 +99,8 @@ public:
 protected:
 	virtual ~WaypointObjectImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

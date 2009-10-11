@@ -11,9 +11,6 @@
 MeleeWeaponObject::MeleeWeaponObject(LuaObject* templateData) : WeaponObject(DummyConstructorParameter::instance()) {
 	_impl = new MeleeWeaponObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(MeleeWeaponObjectHelper::instance());
-
-	((MeleeWeaponObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {
@@ -27,10 +24,16 @@ MeleeWeaponObject::~MeleeWeaponObject() {
  */
 
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructorParameter* param) : WeaponObjectImplementation(param) {
-	_classHelper = MeleeWeaponObjectHelper::instance();
+	_initializeImplementation();
 }
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
+}
+
+void MeleeWeaponObjectImplementation::_initializeImplementation() {
+	_setClassHelper(MeleeWeaponObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void MeleeWeaponObjectImplementation::_setStub(DistributedObjectStub* stub) {

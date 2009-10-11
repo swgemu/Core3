@@ -117,6 +117,8 @@ using namespace server::zone::managers::radial;
 
 #include "system/util/Vector.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace zone {
 
@@ -402,6 +404,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ZoneServerImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 

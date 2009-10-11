@@ -23,9 +23,6 @@
 PlayerCreature::PlayerCreature(LuaObject* templateData) : CreatureObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerCreatureImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(PlayerCreatureHelper::instance());
-
-	((PlayerCreatureImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerCreature::PlayerCreature(DummyConstructorParameter* param) : CreatureObject(param) {
@@ -503,10 +500,16 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
  */
 
 PlayerCreatureImplementation::PlayerCreatureImplementation(DummyConstructorParameter* param) : CreatureObjectImplementation(param) {
-	_classHelper = PlayerCreatureHelper::instance();
+	_initializeImplementation();
 }
 
 PlayerCreatureImplementation::~PlayerCreatureImplementation() {
+}
+
+void PlayerCreatureImplementation::_initializeImplementation() {
+	_setClassHelper(PlayerCreatureHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void PlayerCreatureImplementation::_setStub(DistributedObjectStub* stub) {

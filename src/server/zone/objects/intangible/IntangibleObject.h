@@ -75,6 +75,8 @@ public:
 protected:
 	virtual ~IntangibleObjectImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

@@ -156,6 +156,8 @@ public:
 protected:
 	virtual ~ObjectControllerImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

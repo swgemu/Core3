@@ -25,9 +25,6 @@
 ZoneServer::ZoneServer(int processingThreads, int galaxyid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneServerImplementation(processingThreads, galaxyid);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ZoneServerHelper::instance());
-
-	((ZoneServerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -651,10 +648,16 @@ String ZoneServer::getMessageoftheDay() {
  */
 
 ZoneServerImplementation::ZoneServerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ZoneServerHelper::instance();
+	_initializeImplementation();
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
+}
+
+void ZoneServerImplementation::_initializeImplementation() {
+	_setClassHelper(ZoneServerHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ZoneServerImplementation::_setStub(DistributedObjectStub* stub) {
@@ -698,105 +701,105 @@ void ZoneServerImplementation::fixScheduler() {
 
 void ZoneServerImplementation::increaseOnlinePlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(162):  ++
-	if ( ++currentPlayers > maximumPlayers)	// server/zone/ZoneServer.idl(163):  maximumPlayers = currentPlayers;
+	// server/zone/ZoneServer.idl(196):  ++
+	if ( ++currentPlayers > maximumPlayers)	// server/zone/ZoneServer.idl(197):  maximumPlayers = currentPlayers;
 	maximumPlayers = currentPlayers;
-	// server/zone/ZoneServer.idl(165):  totalPlayers;
+	// server/zone/ZoneServer.idl(199):  totalPlayers;
 	 ++totalPlayers;
 }
 
 void ZoneServerImplementation::decreaseOnlinePlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(169):  currentPlayers = currentPlayers - 1;
+	// server/zone/ZoneServer.idl(203):  currentPlayers = currentPlayers - 1;
 	currentPlayers = currentPlayers - 1;
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(173):  ++totalDeletedPlayers;
+	// server/zone/ZoneServer.idl(207):  ++totalDeletedPlayers;
 	 ++totalDeletedPlayers;
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(177):  return galaxyID;
+	// server/zone/ZoneServer.idl(211):  return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(183):  return serverState == LOCKED;
+	// server/zone/ZoneServer.idl(217):  return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(187):  return serverState == ONLINE;
+	// server/zone/ZoneServer.idl(221):  return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(191):  return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl(225):  return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(195):  return serverState == LOADING;
+	// server/zone/ZoneServer.idl(229):  return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(199):  return serverState;
+	// server/zone/ZoneServer.idl(233):  return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(203):  return zones.get(index);
+	// server/zone/ZoneServer.idl(237):  return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(207):  return maximumPlayers;
+	// server/zone/ZoneServer.idl(241):  return maximumPlayers;
 	return maximumPlayers;
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(211):  return totalPlayers;
+	// server/zone/ZoneServer.idl(245):  return totalPlayers;
 	return totalPlayers;
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(215):  return totalDeletedPlayers;
+	// server/zone/ZoneServer.idl(249):  return totalDeletedPlayers;
 	return totalDeletedPlayers;
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(219):  return playerManager;
+	// server/zone/ZoneServer.idl(253):  return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(223):  return chatManager;
+	// server/zone/ZoneServer.idl(257):  return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(227):  return objectController;
+	// server/zone/ZoneServer.idl(261):  return objectController;
 	return objectController;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(231):  return radialManager;
+	// server/zone/ZoneServer.idl(265):  return radialManager;
 	return radialManager;
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(241):  galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(275):  galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(245):  serverState = state;
+	// server/zone/ZoneServer.idl(279):  serverState = state;
 	serverState = state;
 }
 

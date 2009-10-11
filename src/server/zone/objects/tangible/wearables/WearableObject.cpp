@@ -11,9 +11,6 @@
 WearableObject::WearableObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WearableObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(WearableObjectHelper::instance());
-
-	((WearableObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -27,10 +24,16 @@ WearableObject::~WearableObject() {
  */
 
 WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = WearableObjectHelper::instance();
+	_initializeImplementation();
 }
 
 WearableObjectImplementation::~WearableObjectImplementation() {
+}
+
+void WearableObjectImplementation::_initializeImplementation() {
+	_setClassHelper(WearableObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void WearableObjectImplementation::_setStub(DistributedObjectStub* stub) {

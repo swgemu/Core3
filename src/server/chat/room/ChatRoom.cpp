@@ -15,17 +15,11 @@
 ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned long long cid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatRoomImplementation(server, name, cid);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ChatRoomHelper::instance());
-
-	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatRoomImplementation(server, parent, name, cid);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ChatRoomHelper::instance());
-
-	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -481,10 +475,16 @@ int ChatRoom::compareTo(ChatRoom* obj) {
  */
 
 ChatRoomImplementation::ChatRoomImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ChatRoomHelper::instance();
+	_initializeImplementation();
 }
 
 ChatRoomImplementation::~ChatRoomImplementation() {
+}
+
+void ChatRoomImplementation::_initializeImplementation() {
+	_setClassHelper(ChatRoomHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ChatRoomImplementation::_setStub(DistributedObjectStub* stub) {

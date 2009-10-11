@@ -11,9 +11,6 @@
 ArmorObject::ArmorObject(LuaObject* templateData) : WearableObject(DummyConstructorParameter::instance()) {
 	_impl = new ArmorObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ArmorObjectHelper::instance());
-
-	((ArmorObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -27,10 +24,16 @@ ArmorObject::~ArmorObject() {
  */
 
 ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
-	_classHelper = ArmorObjectHelper::instance();
+	_initializeImplementation();
 }
 
 ArmorObjectImplementation::~ArmorObjectImplementation() {
+}
+
+void ArmorObjectImplementation::_initializeImplementation() {
+	_setClassHelper(ArmorObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ArmorObjectImplementation::_setStub(DistributedObjectStub* stub) {

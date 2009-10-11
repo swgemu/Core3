@@ -53,7 +53,7 @@ void ObjectDatabase::openEnvironment() {
 
 		if (databaseEnvironment->failchk(0) != 0) {
 			error("Database environment crashed and cant continue, please run db_recovery");
-			exit(1);
+			//exit(1);
 		}
 
 	} catch(DbException &e) {

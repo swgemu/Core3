@@ -11,9 +11,6 @@
 WaypointObject::WaypointObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WaypointObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(WaypointObjectHelper::instance());
-
-	((WaypointObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -128,10 +125,16 @@ String WaypointObject::getPlanetName() {
  */
 
 WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
-	_classHelper = WaypointObjectHelper::instance();
+	_initializeImplementation();
 }
 
 WaypointObjectImplementation::~WaypointObjectImplementation() {
+}
+
+void WaypointObjectImplementation::_initializeImplementation() {
+	_setClassHelper(WaypointObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void WaypointObjectImplementation::_setStub(DistributedObjectStub* stub) {
