@@ -48,5 +48,11 @@ import server.zone.objects.tangible.wearables.WearableObject;
 import engine.lua.LuaObject;
 
 class ArmorObject extends WearableObject {
-	public native ArmorObject(LuaObject templateData);
+	public ArmorObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("ArmorObject");
+	}
+	
+	public native void initializeTransientMembers();
 }

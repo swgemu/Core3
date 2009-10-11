@@ -70,14 +70,16 @@ class BuildingObject extends TangibleObject implements QuadTree {
 
 		QuadTree.setSize(-1024, -1024, 1024, 1024);
 
-		notifiedObjects.setInsertPlan(SortedVector<SceneObject>.NO_DUPLICATE);
+		notifiedObjects.setNoDuplicateInsertPlan();
 
 		staticBuilding = false;
+		
+		super.containerVolumeLimit = 0xFFFFFFFF;
 
-		containerVolumeLimit = 0xFFFFFFFF;
-
-		containerType = 2;
+		super.containerType = 2;
 	}
+		
+	public native void initializeTransientMembers();
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry obj);

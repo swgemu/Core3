@@ -7,12 +7,18 @@
 
 #include "WaypointObject.h"
 
-WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) :
+/*WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) :
 	IntangibleObjectImplementation(templateData) {
 
 	internalNote = "EMPTY";
 
 	//setObjectName("New Waypoint");
+
+	setLoggingName("WaypointObject");
+}*/
+
+void WaypointObjectImplementation::initializeTransientMembers() {
+	SceneObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("WaypointObject");
 }

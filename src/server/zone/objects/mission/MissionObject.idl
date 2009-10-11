@@ -50,7 +50,11 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.StringId;
 
 class MissionObject extends SceneObject {
-	public native MissionObject(LuaObject templateData);
+	public MissionObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("MissionObject");
+	}
 	
 	public native void sendBaselinesTo(SceneObject player);
 }

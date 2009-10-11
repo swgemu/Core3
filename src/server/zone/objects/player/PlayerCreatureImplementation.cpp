@@ -46,12 +46,15 @@
 }*/
 
 void PlayerCreatureImplementation::initializeTransientMembers() {
+	CreatureObjectImplementation::initializeTransientMembers();
+
 	//setLoggingName("IntangibleObject");
 
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 
-	CreatureObjectImplementation::initializeTransientMembers();
+	setLoggingName("PlayerCreature");
+
 }
 
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {

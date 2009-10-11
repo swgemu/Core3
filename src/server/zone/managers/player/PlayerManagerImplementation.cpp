@@ -23,7 +23,6 @@
 
 #include "server/zone/Zone.h"
 
-
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) :
 	ManagedObjectImplementation(), Logger("PlayerManager") {
 	server = zoneServer;

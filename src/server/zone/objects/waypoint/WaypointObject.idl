@@ -54,7 +54,17 @@ class WaypointObject extends IntangibleObject {
 
 	boolean active;
 	
-	public native WaypointObject(LuaObject templateData);
+	public WaypointObject(LuaObject templateData) {
+		super(templateData);
+		
+		internalNote = "EMPTY";
+
+		//setObjectName("New Waypoint");
+
+		Logger.setLoggingName("WaypointObject");
+	}
+	
+	public native void initializeTransientMembers();
 	
 	public void changeStatus(boolean status) {
 		active = status;
