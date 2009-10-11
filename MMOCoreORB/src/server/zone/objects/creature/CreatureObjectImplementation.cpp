@@ -61,14 +61,14 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/ZoneServer.h"
 
-CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
+/*CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData), baseHAM(9, 1), wounds(9, 1), encumbrances(3, 1), hamList(9, 1),
 	maxHamList(9, 1) {
 
 	setLoggingName("CreatureObject");
 
 	loadTemplateData(templateData);
-}
+}*/
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CreatureObject");

@@ -51,13 +51,13 @@ which carries forward this exception.
 
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 
-PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
+/*PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
 	IntangibleObjectImplementation(templateData) {
 
 	loadTemplateData(templateData);
 
 	setLoggingName("PlayerObject");
-}
+}*/
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	//setLoggingName("PlayerObject");

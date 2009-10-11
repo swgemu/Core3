@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 
 
-ZoneClient::ZoneClient(const String& addr, int port) : BaseClient(addr, port) {
+ZoneClient::ZoneClient(int port) : BaseClient("localhost", port) {
 	setLogging(false);
 	setLoggingName("ZoneClient");
 

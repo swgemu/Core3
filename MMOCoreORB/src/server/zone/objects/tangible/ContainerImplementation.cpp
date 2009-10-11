@@ -44,13 +44,13 @@ which carries forward this exception.
 
 #include "Container.h"
 
-ContainerImplementation::ContainerImplementation(LuaObject* templateData) :
+/*ContainerImplementation::ContainerImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData) {
 
 	loadTemplateData(templateData);
 
 	setLoggingName("Container");
-}
+}*/
 
 void ContainerImplementation::initializeTransientMembers() {
 	setLoggingName("Container");

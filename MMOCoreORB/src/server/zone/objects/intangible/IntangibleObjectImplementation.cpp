@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "server/zone/packets/intangible/IntangibleObjectMessage6.h"
 
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData)
+/*IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData)
 	: SceneObjectImplementation(templateData) {
 
 	setLoggingName("IntangibleObject");
@@ -57,7 +57,7 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templa
 	loadTemplateData(templateData);
 
 	status = 0;
-}
+}*/
 
 void IntangibleObjectImplementation::initializeTransientMembers() {
 	setLoggingName("IntangibleObject");

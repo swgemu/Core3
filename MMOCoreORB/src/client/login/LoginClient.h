@@ -19,7 +19,7 @@ class LoginClient : public BaseClient {
 	LoginSession* loginSession;
 
 public:
-	LoginClient(const String& addr, int port);
+	LoginClient(int port);
 
 	~LoginClient();
 
