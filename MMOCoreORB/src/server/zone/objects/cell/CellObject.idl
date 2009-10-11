@@ -59,10 +59,12 @@ class CellObject extends SceneObject {
 
 		cellNumber = 0;
 
-		SceneObject.containerVolumeLimit = 0xFFFFFFFF;
+		super.containerVolumeLimit = 0xFFFFFFFF;
 
-		SceneObject.containerType = 2;
+		super.containerType = 2;
 	}
+	
+	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
 	

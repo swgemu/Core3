@@ -49,5 +49,11 @@ import engine.lua.LuaObject;
 
 
 class WearableObject extends TangibleObject {
-	public native WearableObject(LuaObject templateData);
+	public WearableObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("WearableObject");
+	}
+	
+	public native void initializeTransientMembers();
 }

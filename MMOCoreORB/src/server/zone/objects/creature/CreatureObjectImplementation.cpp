@@ -71,9 +71,9 @@ which carries forward this exception.
 }*/
 
 void CreatureObjectImplementation::initializeTransientMembers() {
-	setLoggingName("CreatureObject");
-
 	TangibleObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("CreatureObject");
 }
 
 void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {

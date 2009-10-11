@@ -261,7 +261,7 @@ ManagedObject* ObjectManager::createObject(const String& className, bool persist
 			object->queueUpdateToDatabaseTask();
 		}
 
-		object->setPersistent(persistent);
+		object->setPersistent();
 
 	} else {
 		error("unknown className:" + className + " in classMap");
@@ -274,7 +274,7 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 	try {
 		object->wlock();
 
-		object->setPersistent(true);
+		object->setPersistent();
 		object->readObject(data);
 
 		object->queueUpdateToDatabaseTask();
@@ -293,7 +293,7 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 	try {
 		object->wlock();
 
-		object->setPersistent(true);
+		object->setPersistent();
 		object->readObject(data);
 
 		Zone* zone = object->getZone();
@@ -355,7 +355,7 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 
 		((ManagedObject*)object)->writeObject(objectData);
 
-		database->putData(object->_getObjectID(), objectData, true);
+		database->putData(object->_getObjectID(), objectData);
 
 		delete objectData;
 
@@ -383,7 +383,9 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint
 	}
 
 	object->setZoneProcessServer(server);
-	object->setPersistent(persistent);
+
+	if (persistent)
+		object->setPersistent();
 
 	if (oid == 0)
 		oid = getNextFreeObjectID();

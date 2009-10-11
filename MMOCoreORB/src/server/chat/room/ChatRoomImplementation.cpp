@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "../../zone/packets/chat/ChatOnLeaveRoom.h"
 #include "../../zone/packets/chat/ChatOnEnteredRoom.h"
 
-ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint64 channelId)
+/*ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint64 channelId)
 		: ManagedObjectImplementation() {
 	server = serv;
 
@@ -105,7 +105,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 	playerList.setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
 
 	//parent->addSubRoom((ChatRoom*) _this);
-}
+}*/
 
 /*void ChatRoomImplementation::wlock() {
 	ManagedObjectImplementation::wlock(true);

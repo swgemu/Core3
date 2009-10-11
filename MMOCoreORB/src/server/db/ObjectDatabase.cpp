@@ -136,7 +136,7 @@ int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 
 		free(data.get_data());
 
-		info("retreived data of size" + String::valueOf(objectData->size()), true);
+		info("retrieved data of size " + String::valueOf(objectData->size()), true);
 	} catch(DbException &e) {
 		error("Error in getData");
 		error(e.what());

@@ -22,6 +22,12 @@
 	containerType = 2;
 }*/
 
+void CellObjectImplementation::initializeTransientMembers() {
+	SceneObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("CellObject");
+}
+
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	StringBuffer msg;
 	msg << "sending cell number " << cellNumber << " baselines";

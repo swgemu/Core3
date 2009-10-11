@@ -30,6 +30,13 @@
 	setLoggingName("BuildingObject");
 }*/
 
+void BuildingObjectImplementation::initializeTransientMembers() {
+	TangibleObjectImplementation::initializeTransientMembers();
+
+	QuadTree::setSize(-1024, -1024, 1024, 1024);
+	setLoggingName("BuildingObject");
+}
+
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (!isStaticBuilding()) { // send Baselines etc..
 		info("sending building object create");

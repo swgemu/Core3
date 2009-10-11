@@ -53,9 +53,9 @@ which carries forward this exception.
 }*/
 
 void ContainerImplementation::initializeTransientMembers() {
-	setLoggingName("Container");
-
 	TangibleObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("Container");
 }
 
 void ContainerImplementation::loadTemplateData(LuaObject* templateData) {

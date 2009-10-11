@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
+
 	server = ZoneProcessServerImplementation::instance;
 
 	movementCounter = 0;
@@ -77,7 +79,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setGlobalLogging(true);
 	setLogging(false);
 
-	ManagedObjectImplementation::initializeTransientMembers();
+	setLoggingName("SceneObject");
 }
 
 void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
@@ -145,6 +147,8 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 }
 
 void SceneObjectImplementation::updateToDatabase() {
+	Time start;
+
 	ZoneServer* server = getZoneServer();
 	server->updateObjectToDatabase(_this);
 
@@ -161,6 +165,8 @@ void SceneObjectImplementation::updateToDatabase() {
 	}
 
 	queueUpdateToDatabaseTask();
+
+	info("saved in " + String::valueOf(start.miliDifference()), true);
 }
 
 uint64 SceneObjectImplementation::getObjectID() {
