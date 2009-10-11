@@ -63,7 +63,23 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	protected boolean staticBuilding;
 
-	public native BuildingObject(LuaObject templateData);
+	public BuildingObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("BuildingObject");
+
+		QuadTree.setSize(-1024, -1024, 1024, 1024);
+
+		notifiedObjects.setInsertPlan(SortedVector<SceneObject*>.NO_DUPLICATE);
+
+		staticBuilding = false;
+
+		containerVolumeLimit = 0xFFFFFFFF;
+
+		containerType = 2;
+
+		Logger.setLoggingName("BuildingObject");
+	}
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry obj);

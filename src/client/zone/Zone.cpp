@@ -52,7 +52,7 @@ Zone::~Zone() {
 
 void Zone::run() {
 	try {
-		client = new ZoneClient("denver.swgemu.com", 44463);
+		client = new ZoneClient(44463);
 		client->setAccountID(accountID);
 		client->setZone(this);
 		client->setLoggingName("ZoneClient" + String::valueOf(instance));

@@ -52,7 +52,17 @@ class CellObject extends SceneObject {
 	int cellNumber;
 	//VectorMap<unsigned long, SceneObject> containmentObjects;
 	
-	public native CellObject(LuaObject templateData);
+	public CellObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("CellObject");
+
+		cellNumber = 0;
+
+		SceneObject.containerVolumeLimit = 0xFFFFFFFF;
+
+		SceneObject.containerType = 2;
+	}
 	
 	public native void sendBaselinesTo(SceneObject player);
 	

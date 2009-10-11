@@ -10,7 +10,7 @@
 #include "server/zone/packets/cell/CellObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 
-CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
+/*CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 	SceneObjectImplementation(templateData) {
 
 	setLoggingName("CellObject");
@@ -20,7 +20,7 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
 	containerVolumeLimit = 0xFFFFFFFF;
 
 	containerType = 2;
-}
+}*/
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	StringBuffer msg;

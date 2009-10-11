@@ -67,7 +67,7 @@ class ZoneClient : public BaseClient {
 	MessageQueue messageQueue;
 
 public:
-	ZoneClient(const String& addr, int port);
+	ZoneClient(int port);
 
 	~ZoneClient();
 

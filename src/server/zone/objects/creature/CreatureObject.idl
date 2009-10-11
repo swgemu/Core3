@@ -133,7 +133,13 @@ class CreatureObject extends TangibleObject {
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
 
-	public native CreatureObject(LuaObject templateData);
+	public CreatureObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("CreatureObject");
+
+		loadTemplateData(templateData);
+	}
 	
 	@local
 	public native void loadTemplateData(LuaObject templateData);

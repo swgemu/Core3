@@ -112,7 +112,24 @@ class PlayerCreature extends CreatureObject {
 	public static final int LOGGINGOUT = 5;
 	public static final int LOADING = 6;
 	
-	public native PlayerCreature(LuaObject templateData);
+	public PlayerCreature(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("PlayerCreature");
+
+		owner = null;
+
+		disconnectEvent = null;
+		recoveryEvent = null;
+
+		accountID = 0;
+
+		savedZoneID = -1;
+		savedParentID = 0;
+
+		setOffline();
+	}
+	
 	public native void initializeTransientMembers();
 
 	
