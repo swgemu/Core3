@@ -259,9 +259,9 @@ ManagedObject* ObjectManager::createObject(const String& className, bool persist
 			updatePersistentObject(object);
 
 			object->queueUpdateToDatabaseTask();
-		}
 
-		object->setPersistent();
+			object->setPersistent();
+		}
 
 	} else {
 		error("unknown className:" + className + " in classMap");
