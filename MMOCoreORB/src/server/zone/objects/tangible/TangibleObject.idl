@@ -47,6 +47,7 @@ package server.zone.objects.tangible;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
+import engine.log.Logger;
 
 include server.zone.objects.scene.variables.CustomizationVariables;
 
@@ -73,7 +74,13 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
 	
-	public native TangibleObject(LuaObject templateData);
+	public TangibleObject(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("TangibleObject");
+
+		loadTemplateData(templateData);
+	}
 	
 	@local
 	public native void loadTemplateData(LuaObject templateData);

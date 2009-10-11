@@ -69,11 +69,6 @@ which carries forward this exception.
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
-SceneObjectImplementation::SceneObjectImplementation(LuaObject* templateData) : Logger("SceneObject") {
-	loadTemplateData(templateData);
-	initializeTransientMembers();
-}
-
 void SceneObjectImplementation::initializeTransientMembers() {
 	server = ZoneProcessServerImplementation::instance;
 

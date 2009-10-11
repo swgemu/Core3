@@ -140,6 +140,8 @@ public:
 protected:
 	virtual ~ZoneClientSessionImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void _serializationHelperMethod();

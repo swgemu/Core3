@@ -11,9 +11,6 @@
 WeaponObject::WeaponObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WeaponObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(WeaponObjectHelper::instance());
-
-	((WeaponObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -52,10 +49,16 @@ int WeaponObject::getAttackType() {
  */
 
 WeaponObjectImplementation::WeaponObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = WeaponObjectHelper::instance();
+	_initializeImplementation();
 }
 
 WeaponObjectImplementation::~WeaponObjectImplementation() {
+}
+
+void WeaponObjectImplementation::_initializeImplementation() {
+	_setClassHelper(WeaponObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void WeaponObjectImplementation::_setStub(DistributedObjectStub* stub) {

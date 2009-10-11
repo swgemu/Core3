@@ -17,9 +17,6 @@
 Zone::Zone(ZoneServer* zserv, ZoneProcessServerImplementation* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneImplementation(zserv, processor, zoneid);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ZoneHelper::instance());
-
-	((ZoneImplementation*) _impl)->_serializationHelperMethod();
 }
 
 Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -264,10 +261,16 @@ float Zone::getWeatherWindY() {
  */
 
 ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ZoneHelper::instance();
+	_initializeImplementation();
 }
 
 ZoneImplementation::~ZoneImplementation() {
+}
+
+void ZoneImplementation::_initializeImplementation() {
+	_setClassHelper(ZoneHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ZoneImplementation::_setStub(DistributedObjectStub* stub) {

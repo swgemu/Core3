@@ -21,9 +21,6 @@
 StructureManager::StructureManager(Zone* zone, ZoneProcessServerImplementation* processor) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new StructureManagerImplementation(zone, processor);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(StructureManagerHelper::instance());
-
-	((StructureManagerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -87,10 +84,16 @@ BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid, int
  */
 
 StructureManagerImplementation::StructureManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = StructureManagerHelper::instance();
+	_initializeImplementation();
 }
 
 StructureManagerImplementation::~StructureManagerImplementation() {
+}
+
+void StructureManagerImplementation::_initializeImplementation() {
+	_setClassHelper(StructureManagerHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void StructureManagerImplementation::_setStub(DistributedObjectStub* stub) {

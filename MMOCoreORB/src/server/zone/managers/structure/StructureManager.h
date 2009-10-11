@@ -140,6 +140,8 @@ public:
 protected:
 	virtual ~StructureManagerImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

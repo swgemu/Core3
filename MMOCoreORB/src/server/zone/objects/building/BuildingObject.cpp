@@ -13,9 +13,6 @@
 BuildingObject::BuildingObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new BuildingObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(BuildingObjectHelper::instance());
-
-	((BuildingObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 BuildingObject::BuildingObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -220,10 +217,16 @@ void BuildingObject::removeNotifiedObject(SceneObject* object) {
  */
 
 BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = BuildingObjectHelper::instance();
+	_initializeImplementation();
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
+}
+
+void BuildingObjectImplementation::_initializeImplementation() {
+	_setClassHelper(BuildingObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void BuildingObjectImplementation::_setStub(DistributedObjectStub* stub) {

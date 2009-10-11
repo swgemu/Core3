@@ -242,6 +242,8 @@ public:
 protected:
 	virtual ~ChatManagerImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

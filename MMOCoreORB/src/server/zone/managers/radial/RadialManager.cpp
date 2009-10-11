@@ -17,9 +17,6 @@
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new RadialManagerImplementation(server);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(RadialManagerHelper::instance());
-
-	((RadialManagerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -77,10 +74,16 @@ void RadialManager::handleUseObject(PlayerCreature* player, SceneObject* object)
  */
 
 RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = RadialManagerHelper::instance();
+	_initializeImplementation();
 }
 
 RadialManagerImplementation::~RadialManagerImplementation() {
+}
+
+void RadialManagerImplementation::_initializeImplementation() {
+	_setClassHelper(RadialManagerHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void RadialManagerImplementation::_setStub(DistributedObjectStub* stub) {

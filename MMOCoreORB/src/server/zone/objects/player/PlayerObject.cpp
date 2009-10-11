@@ -13,9 +13,6 @@
 PlayerObject::PlayerObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(PlayerObjectHelper::instance());
-
-	((PlayerObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -153,10 +150,16 @@ void PlayerObject::setTitle(const String& characterTitle) {
  */
 
 PlayerObjectImplementation::PlayerObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
-	_classHelper = PlayerObjectHelper::instance();
+	_initializeImplementation();
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
+}
+
+void PlayerObjectImplementation::_initializeImplementation() {
+	_setClassHelper(PlayerObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {

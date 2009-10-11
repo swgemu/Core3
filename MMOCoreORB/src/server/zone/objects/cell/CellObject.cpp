@@ -11,9 +11,6 @@
 CellObject::CellObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new CellObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(CellObjectHelper::instance());
-
-	((CellObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -65,10 +62,16 @@ void CellObject::setCellNumber(int number) {
  */
 
 CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
-	_classHelper = CellObjectHelper::instance();
+	_initializeImplementation();
 }
 
 CellObjectImplementation::~CellObjectImplementation() {
+}
+
+void CellObjectImplementation::_initializeImplementation() {
+	_setClassHelper(CellObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void CellObjectImplementation::_setStub(DistributedObjectStub* stub) {

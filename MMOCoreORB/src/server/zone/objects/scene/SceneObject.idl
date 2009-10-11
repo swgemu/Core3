@@ -300,7 +300,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
 
-	public native SceneObject(LuaObject templateData);
+	public SceneObject(LuaObject templateData) {
+		loadTemplateData(templateData);
+		initializeTransientMembers();
+	}
 	
 	@local
 	public native void loadTemplateData(LuaObject templateData);

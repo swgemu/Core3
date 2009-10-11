@@ -13,9 +13,6 @@
 CreatureObject::CreatureObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CreatureObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(CreatureObjectHelper::instance());
-
-	((CreatureObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -764,10 +761,16 @@ void CreatureObject::setBankCredits(int credits, bool notifyClient) {
  */
 
 CreatureObjectImplementation::CreatureObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = CreatureObjectHelper::instance();
+	_initializeImplementation();
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
+}
+
+void CreatureObjectImplementation::_initializeImplementation() {
+	_setClassHelper(CreatureObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void CreatureObjectImplementation::_setStub(DistributedObjectStub* stub) {
