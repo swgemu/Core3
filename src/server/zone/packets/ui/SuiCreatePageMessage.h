@@ -53,8 +53,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../object/StfParameter.h"
-
 class SuiCreatePageMessage : public BaseMessage {
 	int optionOffset;
 	int optionCount;

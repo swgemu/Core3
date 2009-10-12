@@ -11,17 +11,19 @@
 
 namespace server {
 namespace zone {
-namespace packets {
-namespace object {
+namespace objects {
+namespace scene {
+namespace variables {
 
-class StfParameter;
+class StringId;
 
-} // namespace object
-} // namespace packets
+} // namespace variables
+} // namespace scene
+} // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::packets::object;
+using namespace server::zone::objects::scene::variables;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
@@ -54,11 +56,9 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
-
 	void sendSlottedObjectsTo(SceneObject* player);
 
-	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
+	void sendSystemMessage(StringId& stringid);
 
 	void setCombatState();
 
@@ -302,11 +302,9 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
-
 	void sendSlottedObjectsTo(SceneObject* player);
 
-	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
+	void sendSystemMessage(StringId& stringid);
 
 	void setCombatState();
 
@@ -457,8 +455,6 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
-
 	void sendSlottedObjectsTo(SceneObject* player);
 
 	void setCombatState();
@@ -556,8 +552,6 @@ public:
 protected:
 	String _param0_sendSystemMessage__String_;
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
-	String _param0_sendSystemMessage__String_String_long_;
-	String _param1_sendSystemMessage__String_String_long_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

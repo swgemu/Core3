@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 #include "server/zone/ZoneServer.h"
 
 /*CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) :
@@ -202,23 +203,15 @@ void CreatureObjectImplementation::sendSystemMessage(const String& message) {
 	sendSystemMessage(msg);
 }
 
-void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& str, uint64 targetid) {
-	if (!isPlayerCreature())
-		return;
-
-	ChatSystemMessage* msg = new ChatSystemMessage(file, str, targetid);
-	sendMessage(msg);
-}
-
-void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& str, StfParameter* param) {
-	if (!isPlayerCreature())
-		return;
-
-	ChatSystemMessage* msg = new ChatSystemMessage(file, str, param);
-	sendMessage(msg);
-}
-
 void CreatureObjectImplementation::sendSystemMessage(UnicodeString& message) {
+	if (!isPlayerCreature())
+		return;
+
+	ChatSystemMessage* smsg = new ChatSystemMessage(message);
+	sendMessage(smsg);
+}
+
+void CreatureObjectImplementation::sendSystemMessage(StringId& message) {
 	if (!isPlayerCreature())
 		return;
 

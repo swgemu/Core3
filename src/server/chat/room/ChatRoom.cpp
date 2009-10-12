@@ -606,106 +606,192 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* par, 
 	(&playerList)->setNullValue(NULL);
 }
 
+void ChatRoomImplementation::addSubRoom(ChatRoom* channel) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(126):  subRooms.put(channel.getName(), channel);
+	(&subRooms)->put(channel->getName(), channel);
+}
+
+void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(130):  subRooms.drop(channel.getName());
+	(&subRooms)->drop(channel->getName());
+}
+
+ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(134):  return subRooms.get(i);
+	return (&subRooms)->get(i);
+}
+
+ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(138):  return subRooms.get(name);
+	return (&subRooms)->get(name);
+}
+
+void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(146):  
+	for (	// server/chat/room/ChatRoom.idl(146):  for (int i = 0;
+	int i = 0;
+	i < (&playerList)->size();
+ ++i) {
+	// server/chat/room/ChatRoom.idl(147):  PlayerCreature player = playerList.get(i);
+	PlayerCreature* player = (&playerList)->get(i);
+	// server/chat/room/ChatRoom.idl(148):  player.sendMessage(msg.clone());
+	player->sendMessage(msg->clone());
+}
+	// server/chat/room/ChatRoom.idl(151):  msg.finalize();
+	msg->finalize();
+}
+
+void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(156):  
+	for (	// server/chat/room/ChatRoom.idl(156):  for (int i = 0;
+	int i = 0;
+	i < (&playerList)->size();
+ ++i) {
+	// server/chat/room/ChatRoom.idl(157):  PlayerCreature player = playerList.get(i);
+	PlayerCreature* player = (&playerList)->get(i);
+	// server/chat/room/ChatRoom.idl(159):  
+	for (	// server/chat/room/ChatRoom.idl(159):  for (int j = 0;
+	int j = 0;
+	j < messages->size();
+ ++j) {
+	// server/chat/room/ChatRoom.idl(160):  BaseMessage msg = messages.get(j);
+	BaseMessage* msg = messages->get(j);
+	// server/chat/room/ChatRoom.idl(161):  player.sendMessage(msg.clone());
+	player->sendMessage(msg->clone());
+}
+}
+	// server/chat/room/ChatRoom.idl(165):  
+	for (	// server/chat/room/ChatRoom.idl(165):  for (int j = 0;
+	int j = 0;
+	j < messages->size();
+ ++j) {
+	// server/chat/room/ChatRoom.idl(166):  BaseMessage msg = messages.get(j);
+	BaseMessage* msg = messages->get(j);
+	// server/chat/room/ChatRoom.idl(167):  msg.finalize();
+	msg->finalize();
+}
+	// server/chat/room/ChatRoom.idl(170):  messages.removeAll();
+	messages->removeAll();
+}
+
+bool ChatRoomImplementation::hasPlayer(PlayerCreature* player) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(174):  return playerList.contains(player.getFirstName());
+	return (&playerList)->contains(player->getFirstName());
+}
+
+bool ChatRoomImplementation::hasPlayer(const String& name) {
+	Locker _locker(_this);
+	// server/chat/room/ChatRoom.idl(178):  return playerList.contains(name);
+	return (&playerList)->contains(name);
+}
+
 void ChatRoomImplementation::setPrivate() {
-	// server/chat/room/ChatRoom.idl(149):  isPublicRoom = false;
+	// server/chat/room/ChatRoom.idl(186):  isPublicRoom = false;
 	isPublicRoom = false;
 }
 
 void ChatRoomImplementation::setPublic() {
-	// server/chat/room/ChatRoom.idl(153):  isPublicRoom = true;
+	// server/chat/room/ChatRoom.idl(190):  isPublicRoom = true;
 	isPublicRoom = true;
 }
 
 bool ChatRoomImplementation::isPublic() {
-	// server/chat/room/ChatRoom.idl(157):  return isPublicRoom == true;
+	// server/chat/room/ChatRoom.idl(194):  return isPublicRoom == true;
 	return isPublicRoom == true;
 }
 
 bool ChatRoomImplementation::isPrivate() {
-	// server/chat/room/ChatRoom.idl(161):  return isPublicRoom == false;
+	// server/chat/room/ChatRoom.idl(198):  return isPublicRoom == false;
 	return isPublicRoom == false;
 }
 
 PlayerCreature* ChatRoomImplementation::getPlayer(int idx) {
-	// server/chat/room/ChatRoom.idl(165):  return playerList.get(idx);
+	// server/chat/room/ChatRoom.idl(202):  return playerList.get(idx);
 	return (&playerList)->get(idx);
 }
 
 int ChatRoomImplementation::getPlayerSize() {
-	// server/chat/room/ChatRoom.idl(169):  return playerList.size();
+	// server/chat/room/ChatRoom.idl(206):  return playerList.size();
 	return (&playerList)->size();
 }
 
 void ChatRoomImplementation::setName(const String& Name) {
-	// server/chat/room/ChatRoom.idl(173):  name = Name;
+	// server/chat/room/ChatRoom.idl(210):  name = Name;
 	name = Name;
 }
 
 String ChatRoomImplementation::getName() {
-	// server/chat/room/ChatRoom.idl(177):  return name;
+	// server/chat/room/ChatRoom.idl(214):  return name;
 	return name;
 }
 
 String ChatRoomImplementation::getFullPath() {
-	// server/chat/room/ChatRoom.idl(181):  return fullPath;
+	// server/chat/room/ChatRoom.idl(218):  return fullPath;
 	return fullPath;
 }
 
 String ChatRoomImplementation::getOwner() {
-	// server/chat/room/ChatRoom.idl(185):  return owner;
+	// server/chat/room/ChatRoom.idl(222):  return owner;
 	return owner;
 }
 
 String ChatRoomImplementation::getCreator() {
-	// server/chat/room/ChatRoom.idl(189):  return creator;
+	// server/chat/room/ChatRoom.idl(226):  return creator;
 	return creator;
 }
 
 UnicodeString ChatRoomImplementation::getTitle() {
-	// server/chat/room/ChatRoom.idl(193):  return title;
+	// server/chat/room/ChatRoom.idl(230):  return title;
 	return title;
 }
 
 void ChatRoomImplementation::setOwner(const String& Owner) {
-	// server/chat/room/ChatRoom.idl(199):  owner = Owner;
+	// server/chat/room/ChatRoom.idl(236):  owner = Owner;
 	owner = Owner;
 }
 
 void ChatRoomImplementation::setCreator(const String& Creator) {
-	// server/chat/room/ChatRoom.idl(203):  creator = Creator;
+	// server/chat/room/ChatRoom.idl(240):  creator = Creator;
 	creator = Creator;
 }
 
 void ChatRoomImplementation::setTitle(const String& Title) {
-	// server/chat/room/ChatRoom.idl(207):  title = Title;
+	// server/chat/room/ChatRoom.idl(244):  title = Title;
 	title = Title;
 }
 
 unsigned int ChatRoomImplementation::getRoomID() {
-	// server/chat/room/ChatRoom.idl(211):  return roomID;
+	// server/chat/room/ChatRoom.idl(248):  return roomID;
 	return roomID;
 }
 
 int ChatRoomImplementation::getSubRoomsSize() {
-	// server/chat/room/ChatRoom.idl(215):  return subRooms.size();
+	// server/chat/room/ChatRoom.idl(252):  return subRooms.size();
 	return (&subRooms)->size();
 }
 
 ChatRoom* ChatRoomImplementation::getParent() {
-	// server/chat/room/ChatRoom.idl(219):  return parent;
+	// server/chat/room/ChatRoom.idl(256):  return parent;
 	return parent;
 }
 
 int ChatRoomImplementation::compareTo(ChatRoom* obj) {
-	// server/chat/room/ChatRoom.idl(223):  
-	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(224):  return 1;
+	// server/chat/room/ChatRoom.idl(260):  
+	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(261):  return 1;
 	return 1;
 
-	else 	// server/chat/room/ChatRoom.idl(225):  
-	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(226):  return -1;
+	else 	// server/chat/room/ChatRoom.idl(262):  
+	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(263):  return -1;
 	return -1;
 
-	else 	// server/chat/room/ChatRoom.idl(229):  return 0;
+	else 	// server/chat/room/ChatRoom.idl(266):  return 0;
 	return 0;
 }
 

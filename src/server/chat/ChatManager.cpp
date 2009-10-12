@@ -12,8 +12,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/packets/object/StfParameter.h"
-
 #include "server/zone/managers/player/PlayerMap.h"
 
 #include "server/zone/managers/player/PlayerManager.h"
@@ -277,7 +275,7 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 }
 
 unsigned long long ChatManagerImplementation::getNextRoomID() {
-	// server/chat/ChatManager.idl(163):  return ++roomID;
+	// server/chat/ChatManager.idl(162):  return ++roomID;
 	return  ++roomID;
 }
 

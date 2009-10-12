@@ -5,6 +5,8 @@
 #include "../../ZoneServer.h"
 #include "../../ZoneProcessServerImplementation.h"
 
+#include "../../objects/scene/variables/StringId.h"
+
 #include "../../objects.h"
 
 LootManager::LootManager(ZoneProcessServerImplementation* procServer) {
@@ -121,13 +123,10 @@ void LootManager::moveObject(TangibleObject* object, Player* player, Creature* c
 	object->setPersistent(false);
 
 	if (player->getGroupObject() != NULL) {
-		StfParameter * param = new StfParameter();
-		param->addTU(player->getObjectID());
-		param->addTT(object->getCustomName());
-
-		player->getGroupObject()->sendSystemMessage(player, "base_player", "prose_item_looted_other", param);
-
-		delete param;
+		StringId sid = "@base_player:prose_item_looted_other"; //%TU looted: %TT.
+		sid.setTU(player);
+		sid.setTT(object->getObjectName());
+		player->getGroupObject()->sendSystemMessage(player, sid);
 	}
 
 	//Register loot with server
@@ -152,12 +151,11 @@ void LootManager::lootCredits(Player* player, Creature* creature) {
 
 		player->addCashCredits(credits);
 
-		StfParameter * param = new StfParameter();
-		param->addDI(credits);
-		param->addTT(creature->getObjectID());
+		StringId sid = "@base_player:prose_coin_loot"; //You loot %DI credits from %TT.
+		sid.setDI(credits);
+		sid.setTT(creature);
 
-		player->sendSystemMessage("base_player", "prose_coin_loot", param);
-		delete param;
+		player->sendSystemMessage(sid);
 	}
 }
 

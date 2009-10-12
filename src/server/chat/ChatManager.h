@@ -59,20 +59,6 @@ using namespace server::zone::objects::player;
 
 namespace server {
 namespace zone {
-namespace packets {
-namespace object {
-
-class StfParameter;
-
-} // namespace object
-} // namespace packets
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::packets::object;
-
-namespace server {
-namespace zone {
 namespace managers {
 namespace player {
 

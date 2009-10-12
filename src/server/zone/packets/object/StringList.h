@@ -46,7 +46,7 @@ which carries forward this exception.
 #define STRINGLIST_H_
 
 #include "ObjectControllerMessage.h"
-#include "StfParameter.h"
+#include "../../objects/scene/variables/StringId.h"
 
 class StringList : public ObjectControllerMessage {
 	uint8 optionCount;
@@ -60,79 +60,16 @@ public:
 
 	void insertOption(const String& file, const String& str) {
 
-		int size = 0x56 + file.length() + str.length();
-		bool odd = (size & 1);
+		StringId sid = StringId(file, str);
 
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file);
-		insertInt(0);
-		insertAscii(str);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-
-		updateOptionCount();
+		insertOption(sid);
 	}
 
-	void insertOption(const String& file, const String& str, StfParameter* params) {
-		params->generate();
+	void insertOption(StringId& sid) {
 
-		int size = 0x11 + file.length() + str.length() + params->size();
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file);
-		insertInt(0);
-		insertAscii(str);
-
-		insertStream(params);
-
-		if (odd)
-			insertByte(0);
+		sid.addToPacketStream(this);
 
 		updateOptionCount();
-
-		delete params;
 	}
 
 	void insertOption(String& option) {
