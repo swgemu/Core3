@@ -53,26 +53,26 @@ import server.zone.objects.player.PlayerCreature;
 
 
 class ChatRoom extends ManagedObject {
-	private ZoneServer server;
+	protected ZoneServer server;
 
-	private string name;
-	string fullPath;
+	protected string name;
+	protected string fullPath;
 
-	private string owner;
-	private string creator;
+	protected string owner;
+	protected string creator;
 
-	private unicode title;
-	private unsigned long roomID;
+	protected unicode title;
+	protected unsigned long roomID;
 
-	private ChatRoom parent;
+	protected ChatRoom parent;
 
 	@dereferenced 
-	private VectorMap<string, PlayerCreature> playerList;
+	protected VectorMap<string, PlayerCreature> playerList;
 	
 	@dereferenced 
-	private VectorMap<string, ChatRoom> subRooms;
+	protected VectorMap<string, ChatRoom> subRooms;
 
-	boolean isPublicRoom;
+	protected boolean isPublicRoom;
 	
 	public ChatRoom(ZoneServer serv, final string roomName, unsigned long channelId) {
 		server = serv;
@@ -122,24 +122,61 @@ class ChatRoom extends ManagedObject {
 	public native void sendTo(PlayerCreature player);
 	public native void sendDestroyTo(PlayerCreature player);
 
-	public native void addSubRoom(ChatRoom channel);
+	public synchronized void addSubRoom(ChatRoom channel) {
+		subRooms.put(channel.getName(), channel);
+	}
 
-	public native void removeSubRoom(ChatRoom channel);
+	public synchronized void removeSubRoom(ChatRoom channel) {
+		subRooms.drop(channel.getName());
+	}
 
-	public native ChatRoom getSubRoom(int i);
-	public native ChatRoom getSubRoom(final string name);
+	public synchronized ChatRoom getSubRoom(int i) {
+		return subRooms.get(i);
+	}
+	
+	public synchronized ChatRoom getSubRoom(final string name) {
+		return subRooms.get(name);
+	}
 
 	public native void addPlayer(PlayerCreature player, boolean doLock = true);
 	public native void removePlayer(PlayerCreature player, boolean doLock = true);
 	public native void removePlayer(final string player);
 
-	public native void broadcastMessage(BaseMessage msg);
+	public synchronized void broadcastMessage(BaseMessage msg) {
+		for (int i = 0; i < playerList.size(); ++i) {
+			PlayerCreature player = playerList.get(i);
+			player.sendMessage(msg.clone());
+		}
+
+		msg.finalize();
+	}
 	
 	@local 
-	public native void broadcastMessages(Vector<BaseMessage> messages);
+	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
+		for (int i = 0; i < playerList.size(); ++i) {
+			PlayerCreature player = playerList.get(i);
 
-	public native boolean hasPlayer(PlayerCreature player);
-	public native boolean hasPlayer(final string name);
+			for (int j = 0; j < messages.size(); ++j) {
+				BaseMessage msg = messages.get(j);
+				player.sendMessage(msg.clone());
+			}
+		}
+
+		for (int j = 0; j < messages.size(); ++j) {
+			BaseMessage msg = messages.get(j);
+			msg.finalize();
+		}
+
+		messages.removeAll();
+	}
+
+	public synchronized boolean hasPlayer(PlayerCreature player) {
+		return playerList.contains(player.getFirstName());
+	}
+	
+	public synchronized boolean hasPlayer(final string name) {
+		return playerList.contains(name);
+	}
 
 	public native void removeAllPlayers();
 	
