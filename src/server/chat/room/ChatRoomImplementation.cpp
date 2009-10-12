@@ -46,74 +46,12 @@ which carries forward this exception.
 
 #include "../../zone/objects/player/PlayerCreature.h"
 
-
 #include "../../zone/ZoneServer.h"
 
 #include "../../zone/packets/chat/ChatRoomList.h"
 #include "../../zone/packets/chat/ChatOnDestroyRoom.h"
 #include "../../zone/packets/chat/ChatOnLeaveRoom.h"
 #include "../../zone/packets/chat/ChatOnEnteredRoom.h"
-
-/*ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint64 channelId)
-		: ManagedObjectImplementation() {
-	server = serv;
-
-	name = Name;
-	roomID = channelId;
-
-	owner = "system";
-	creator = "system";
-	title = UnicodeString("");
-	fullPath = Name;
-
-	parent = NULL;
-
-	isPublicRoom = true;
-
-	//_setObjectID(DistributedObjectBroker::getObjectManager()->getNextFreeObjectID());
-
-	//subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
-	subRooms.setNullValue(NULL);
-	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
-
-	//playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
-	playerList.setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
-}
-
-ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent,
-		const String& Name, uint64 channelId) : ManagedObjectImplementation() {
-	server = serv;
-
-	name = Name;
-	fullPath = Parent->getFullPath() + "." + Name;
-
-	roomID = channelId;
-
-	owner = "system";
-	creator = "system";
-	title = UnicodeString("");
-
-	parent = Parent;
-
-	isPublicRoom = true;
-
-	//subRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
-	subRooms.setNullValue(NULL);
-	subRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
-
-	//playerList = new VectorMap<String, ManagedReference<PlayerCreature*> >();
-	playerList.setInsertPlan(SortedVector<PlayerCreature*>::NO_DUPLICATE);
-
-	//parent->addSubRoom((ChatRoom*) _this);
-}*/
-
-/*void ChatRoomImplementation::wlock() {
-	ManagedObjectImplementation::wlock(true);
-}
-
-void ChatRoomImplementation::unlock() {
-	ManagedObjectImplementation::unlock(true);
-}*/
 
 void ChatRoomImplementation::deploy() {
 	_this->_setObjectID(roomID);
@@ -203,26 +141,6 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 	}
 }
 
-bool ChatRoomImplementation::hasPlayer(PlayerCreature* player) {
-	wlock();
-
-	bool result = playerList.contains(player->getFirstName());
-
-	unlock();
-
-	return result;
-}
-
-bool ChatRoomImplementation::hasPlayer(const String& name) {
-	wlock();
-
-	bool result = playerList.contains(name);
-
-	unlock();
-
-	return result;
-}
-
 void ChatRoomImplementation::removeAllPlayers() {
 	wlock();
 
@@ -246,77 +164,6 @@ void ChatRoomImplementation::removeAllPlayers() {
 	unlock();
 }
 
-
-ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
-	wlock();
-
-	ChatRoom* channel = subRooms.get(i);
-
-	unlock();
-
-	return channel;
-}
-
-ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
-	wlock();
-
-	ChatRoom* channel = subRooms.get(name);
-
-	unlock();
-
-	return channel;
-}
-
-void ChatRoomImplementation::addSubRoom(ChatRoom* channel) {
-	wlock();
-
-	subRooms.put(channel->getName(), channel);
-
-	unlock();
-}
-
-void ChatRoomImplementation::removeSubRoom(ChatRoom* channel) {
-	wlock();
-
-	subRooms.drop(channel->getName());
-
-	unlock();
-}
-
-void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
-	wlock();
-
-	for (int i = 0; i < playerList.size(); i++) {
-		PlayerCreature* player = playerList.get(i);
-		player->sendMessage(msg->clone());
-	}
-
-	delete msg;
-
-	unlock();
-}
-
-void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
-	wlock();
-
-	for (int i = 0; i < playerList.size(); ++i) {
-		PlayerCreature* player = playerList.get(i);
-
-		for (int j = 0; j < messages->size(); ++j) {
-			BaseMessage* msg = messages->get(j);
-			player->sendMessage(msg->clone());
-		}
-	}
-
-	for (int j = 0; j < messages->size(); ++j) {
-		Message* msg = messages->get(j);
-		msg->finalize();
-	}
-
-	messages->removeAll();
-
-	unlock();
-}
 
 String ChatRoomImplementation::getServerName() {
 	return server->getServerName();

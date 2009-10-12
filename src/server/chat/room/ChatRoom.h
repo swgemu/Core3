@@ -148,6 +148,7 @@ namespace chat {
 namespace room {
 
 class ChatRoomImplementation : public ManagedObjectImplementation {
+protected:
 	ManagedReference<ZoneServer* > server;
 
 	String name;
