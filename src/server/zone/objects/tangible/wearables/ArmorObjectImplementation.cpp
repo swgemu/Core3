@@ -7,7 +7,13 @@
 
 #include "ArmorObject.h"
 
-ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) :
+/*ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) :
 	WearableObjectImplementation(templateData) {
+	setLoggingName("ArmorObject");
+}*/
+
+void ArmorObjectImplementation::initializeTransientMembers() {
+	TangibleObjectImplementation::initializeTransientMembers();
+
 	setLoggingName("ArmorObject");
 }

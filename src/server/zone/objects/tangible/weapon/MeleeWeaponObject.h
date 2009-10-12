@@ -23,6 +23,8 @@ class MeleeWeaponObject : public WeaponObject {
 public:
 	MeleeWeaponObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 protected:
 	MeleeWeaponObject(DummyConstructorParameter* param);
 
@@ -52,6 +54,8 @@ public:
 
 	MeleeWeaponObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	MeleeWeaponObject* _this;
 
 	operator const MeleeWeaponObject*();
@@ -59,6 +63,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~MeleeWeaponObjectImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -86,6 +92,8 @@ public:
 	MeleeWeaponObjectAdapter(MeleeWeaponObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 };
 

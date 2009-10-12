@@ -12,20 +12,14 @@
  *	ChatRoomStub
  */
 
-ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned long long cid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ChatRoomImplementation(server, name, cid);
+ChatRoom::ChatRoom(ZoneServer* serv, const String& roomName, unsigned long long channelId) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new ChatRoomImplementation(serv, roomName, channelId);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ChatRoomHelper::instance());
-
-	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }
 
-ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new ChatRoomImplementation(server, parent, name, cid);
+ChatRoom::ChatRoom(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned long long channelId) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new ChatRoomImplementation(serv, par, roomName, channelId);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ChatRoomHelper::instance());
-
-	((ChatRoomImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -481,10 +475,16 @@ int ChatRoom::compareTo(ChatRoom* obj) {
  */
 
 ChatRoomImplementation::ChatRoomImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ChatRoomHelper::instance();
+	_initializeImplementation();
 }
 
 ChatRoomImplementation::~ChatRoomImplementation() {
+}
+
+void ChatRoomImplementation::_initializeImplementation() {
+	_setClassHelper(ChatRoomHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ChatRoomImplementation::_setStub(DistributedObjectStub* stub) {
@@ -546,106 +546,166 @@ void ChatRoomImplementation::_serializationHelperMethod() {
 	addSerializableVariable("isPublicRoom", &isPublicRoom);
 }
 
+ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& roomName, unsigned long long channelId) {
+	_initializeImplementation();
+	// server/chat/room/ChatRoom.idl(78):  server = serv;
+	server = serv;
+	// server/chat/room/ChatRoom.idl(80):  name = roomName;
+	name = roomName;
+	// server/chat/room/ChatRoom.idl(81):  roomID = channelId;
+	roomID = channelId;
+	// server/chat/room/ChatRoom.idl(83):  owner = "system";
+	owner = "system";
+	// server/chat/room/ChatRoom.idl(84):  creator = "system";
+	creator = "system";
+	// server/chat/room/ChatRoom.idl(85):  title = "";
+	title = "";
+	// server/chat/room/ChatRoom.idl(86):  fullPath = roomName;
+	fullPath = roomName;
+	// server/chat/room/ChatRoom.idl(88):  parent = null;
+	parent = NULL;
+	// server/chat/room/ChatRoom.idl(90):  isPublicRoom = true;
+	isPublicRoom = true;
+	// server/chat/room/ChatRoom.idl(92):  subRooms.setNullValue(null);
+	(&subRooms)->setNullValue(NULL);
+	// server/chat/room/ChatRoom.idl(93):  subRooms.setNoDuplicateInsertPlan();
+	(&subRooms)->setNoDuplicateInsertPlan();
+	// server/chat/room/ChatRoom.idl(95):  playerList.setNoDuplicateInsertPlan();
+	(&playerList)->setNoDuplicateInsertPlan();
+	// server/chat/room/ChatRoom.idl(96):  playerList.setNullValue(null);
+	(&playerList)->setNullValue(NULL);
+}
+
+ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned long long channelId) {
+	_initializeImplementation();
+	// server/chat/room/ChatRoom.idl(100):  server = serv;
+	server = serv;
+	// server/chat/room/ChatRoom.idl(102):  name = roomName;
+	name = roomName;
+	// server/chat/room/ChatRoom.idl(103):  fullPath = par.getFullPath() + "." + roomName;
+	fullPath = par->getFullPath() + "." + roomName;
+	// server/chat/room/ChatRoom.idl(105):  roomID = channelId;
+	roomID = channelId;
+	// server/chat/room/ChatRoom.idl(107):  owner = "system";
+	owner = "system";
+	// server/chat/room/ChatRoom.idl(108):  creator = "system";
+	creator = "system";
+	// server/chat/room/ChatRoom.idl(109):  title = "";
+	title = "";
+	// server/chat/room/ChatRoom.idl(111):  parent = par;
+	parent = par;
+	// server/chat/room/ChatRoom.idl(113):  isPublicRoom = true;
+	isPublicRoom = true;
+	// server/chat/room/ChatRoom.idl(115):  subRooms.setNullValue(null);
+	(&subRooms)->setNullValue(NULL);
+	// server/chat/room/ChatRoom.idl(116):  subRooms.setNoDuplicateInsertPlan();
+	(&subRooms)->setNoDuplicateInsertPlan();
+	// server/chat/room/ChatRoom.idl(118):  playerList.setNoDuplicateInsertPlan();
+	(&playerList)->setNoDuplicateInsertPlan();
+	// server/chat/room/ChatRoom.idl(119):  playerList.setNullValue(null);
+	(&playerList)->setNullValue(NULL);
+}
+
 void ChatRoomImplementation::setPrivate() {
-	// server/chat/room/ChatRoom.idl(107):  isPublicRoom = false;
+	// server/chat/room/ChatRoom.idl(149):  isPublicRoom = false;
 	isPublicRoom = false;
 }
 
 void ChatRoomImplementation::setPublic() {
-	// server/chat/room/ChatRoom.idl(111):  isPublicRoom = true;
+	// server/chat/room/ChatRoom.idl(153):  isPublicRoom = true;
 	isPublicRoom = true;
 }
 
 bool ChatRoomImplementation::isPublic() {
-	// server/chat/room/ChatRoom.idl(115):  return isPublicRoom == true;
+	// server/chat/room/ChatRoom.idl(157):  return isPublicRoom == true;
 	return isPublicRoom == true;
 }
 
 bool ChatRoomImplementation::isPrivate() {
-	// server/chat/room/ChatRoom.idl(119):  return isPublicRoom == false;
+	// server/chat/room/ChatRoom.idl(161):  return isPublicRoom == false;
 	return isPublicRoom == false;
 }
 
 PlayerCreature* ChatRoomImplementation::getPlayer(int idx) {
-	// server/chat/room/ChatRoom.idl(123):  return playerList.get(idx);
+	// server/chat/room/ChatRoom.idl(165):  return playerList.get(idx);
 	return (&playerList)->get(idx);
 }
 
 int ChatRoomImplementation::getPlayerSize() {
-	// server/chat/room/ChatRoom.idl(127):  return playerList.size();
+	// server/chat/room/ChatRoom.idl(169):  return playerList.size();
 	return (&playerList)->size();
 }
 
 void ChatRoomImplementation::setName(const String& Name) {
-	// server/chat/room/ChatRoom.idl(131):  name = Name;
+	// server/chat/room/ChatRoom.idl(173):  name = Name;
 	name = Name;
 }
 
 String ChatRoomImplementation::getName() {
-	// server/chat/room/ChatRoom.idl(135):  return name;
+	// server/chat/room/ChatRoom.idl(177):  return name;
 	return name;
 }
 
 String ChatRoomImplementation::getFullPath() {
-	// server/chat/room/ChatRoom.idl(139):  return fullPath;
+	// server/chat/room/ChatRoom.idl(181):  return fullPath;
 	return fullPath;
 }
 
 String ChatRoomImplementation::getOwner() {
-	// server/chat/room/ChatRoom.idl(143):  return owner;
+	// server/chat/room/ChatRoom.idl(185):  return owner;
 	return owner;
 }
 
 String ChatRoomImplementation::getCreator() {
-	// server/chat/room/ChatRoom.idl(147):  return creator;
+	// server/chat/room/ChatRoom.idl(189):  return creator;
 	return creator;
 }
 
 UnicodeString ChatRoomImplementation::getTitle() {
-	// server/chat/room/ChatRoom.idl(151):  return title;
+	// server/chat/room/ChatRoom.idl(193):  return title;
 	return title;
 }
 
 void ChatRoomImplementation::setOwner(const String& Owner) {
-	// server/chat/room/ChatRoom.idl(157):  owner = Owner;
+	// server/chat/room/ChatRoom.idl(199):  owner = Owner;
 	owner = Owner;
 }
 
 void ChatRoomImplementation::setCreator(const String& Creator) {
-	// server/chat/room/ChatRoom.idl(161):  creator = Creator;
+	// server/chat/room/ChatRoom.idl(203):  creator = Creator;
 	creator = Creator;
 }
 
 void ChatRoomImplementation::setTitle(const String& Title) {
-	// server/chat/room/ChatRoom.idl(165):  title = Title;
+	// server/chat/room/ChatRoom.idl(207):  title = Title;
 	title = Title;
 }
 
 unsigned int ChatRoomImplementation::getRoomID() {
-	// server/chat/room/ChatRoom.idl(169):  return roomID;
+	// server/chat/room/ChatRoom.idl(211):  return roomID;
 	return roomID;
 }
 
 int ChatRoomImplementation::getSubRoomsSize() {
-	// server/chat/room/ChatRoom.idl(173):  return subRooms.size();
+	// server/chat/room/ChatRoom.idl(215):  return subRooms.size();
 	return (&subRooms)->size();
 }
 
 ChatRoom* ChatRoomImplementation::getParent() {
-	// server/chat/room/ChatRoom.idl(177):  return parent;
+	// server/chat/room/ChatRoom.idl(219):  return parent;
 	return parent;
 }
 
 int ChatRoomImplementation::compareTo(ChatRoom* obj) {
-	// server/chat/room/ChatRoom.idl(181):  
-	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(182):  return 1;
+	// server/chat/room/ChatRoom.idl(223):  
+	if (roomID < obj->getRoomID())	// server/chat/room/ChatRoom.idl(224):  return 1;
 	return 1;
 
-	else 	// server/chat/room/ChatRoom.idl(183):  
-	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(184):  return -1;
+	else 	// server/chat/room/ChatRoom.idl(225):  
+	if (roomID > obj->getRoomID())	// server/chat/room/ChatRoom.idl(226):  return -1;
 	return -1;
 
-	else 	// server/chat/room/ChatRoom.idl(187):  return 0;
+	else 	// server/chat/room/ChatRoom.idl(229):  return 0;
 	return 0;
 }
 

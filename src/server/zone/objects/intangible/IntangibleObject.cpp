@@ -11,9 +11,6 @@
 IntangibleObject::IntangibleObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new IntangibleObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(IntangibleObjectHelper::instance());
-
-	((IntangibleObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -72,10 +69,16 @@ unsigned int IntangibleObject::getStatus() {
  */
 
 IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
-	_classHelper = IntangibleObjectHelper::instance();
+	_initializeImplementation();
 }
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
+}
+
+void IntangibleObjectImplementation::_initializeImplementation() {
+	_setClassHelper(IntangibleObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void IntangibleObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -127,8 +130,18 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("status", &status);
 }
 
+IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/intangible/IntangibleObject.idl(56):  Logger.setLoggingName("IntangibleObject");
+	Logger::setLoggingName("IntangibleObject");
+	// server/zone/objects/intangible/IntangibleObject.idl(58):  loadTemplateData(templateData);
+	loadTemplateData(templateData);
+	// server/zone/objects/intangible/IntangibleObject.idl(60):  status = 0;
+	status = 0;
+}
+
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(63):  return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(71):  return status;
 	return status;
 }
 

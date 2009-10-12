@@ -13,9 +13,6 @@
 ZoneClientSession::ZoneClientSession(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ZoneClientSessionImplementation(serv, sock, addr);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ZoneClientSessionHelper::instance());
-
-	((ZoneClientSessionImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ZoneClientSession::ZoneClientSession(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -219,10 +216,16 @@ unsigned int ZoneClientSession::getAccountID() {
  */
 
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ZoneClientSessionHelper::instance();
+	_initializeImplementation();
 }
 
 ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
+}
+
+void ZoneClientSessionImplementation::_initializeImplementation() {
+	_setClassHelper(ZoneClientSessionHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ZoneClientSessionImplementation::_setStub(DistributedObjectStub* stub) {

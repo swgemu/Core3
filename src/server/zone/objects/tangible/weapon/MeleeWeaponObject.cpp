@@ -11,9 +11,6 @@
 MeleeWeaponObject::MeleeWeaponObject(LuaObject* templateData) : WeaponObject(DummyConstructorParameter::instance()) {
 	_impl = new MeleeWeaponObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(MeleeWeaponObjectHelper::instance());
-
-	((MeleeWeaponObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponObject(param) {
@@ -22,15 +19,33 @@ MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponO
 MeleeWeaponObject::~MeleeWeaponObject() {
 }
 
+void MeleeWeaponObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((MeleeWeaponObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
 /*
  *	MeleeWeaponObjectImplementation
  */
 
 MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructorParameter* param) : WeaponObjectImplementation(param) {
-	_classHelper = MeleeWeaponObjectHelper::instance();
+	_initializeImplementation();
 }
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
+}
+
+void MeleeWeaponObjectImplementation::_initializeImplementation() {
+	_setClassHelper(MeleeWeaponObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void MeleeWeaponObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -81,6 +96,12 @@ void MeleeWeaponObjectImplementation::_serializationHelperMethod() {
 
 }
 
+MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(LuaObject* templateData) : WeaponObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/tangible/weapon/MeleeWeaponObject.idl(55):  Logger.setLoggingName("MeleeWeaponObject");
+	Logger::setLoggingName("MeleeWeaponObject");
+}
+
 /*
  *	MeleeWeaponObjectAdapter
  */
@@ -92,11 +113,18 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void MeleeWeaponObjectAdapter::initializeTransientMembers() {
+	((MeleeWeaponObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

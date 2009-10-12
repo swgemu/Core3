@@ -51,18 +51,18 @@ which carries forward this exception.
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage6.h"
 
 
-TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData)
+/*TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData)
 		: SceneObjectImplementation(templateData) {
 
 	setLoggingName("TangibleObject");
 
 	loadTemplateData(templateData);
-}
+}*/
 
 void TangibleObjectImplementation::initializeTransientMembers() {
-	setLoggingName("TangibleObject");
-
 	SceneObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("TangibleObject");
 }
 
 void TangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {

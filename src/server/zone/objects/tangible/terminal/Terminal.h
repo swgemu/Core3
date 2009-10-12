@@ -23,6 +23,8 @@ class Terminal : public TangibleObject {
 public:
 	Terminal(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 protected:
 	Terminal(DummyConstructorParameter* param);
 
@@ -52,6 +54,8 @@ public:
 
 	TerminalImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	Terminal* _this;
 
 	operator const Terminal*();
@@ -59,6 +63,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~TerminalImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -86,6 +92,8 @@ public:
 	TerminalAdapter(TerminalImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 };
 

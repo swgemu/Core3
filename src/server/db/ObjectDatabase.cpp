@@ -53,7 +53,7 @@ void ObjectDatabase::openEnvironment() {
 
 		if (databaseEnvironment->failchk(0) != 0) {
 			error("Database environment crashed and cant continue, please run db_recovery");
-			exit(1);
+			//exit(1);
 		}
 
 	} catch(DbException &e) {
@@ -136,7 +136,7 @@ int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 
 		free(data.get_data());
 
-		info("retreived data of size" + String::valueOf(objectData->size()), true);
+		info("retrieved data of size " + String::valueOf(objectData->size()), true);
 	} catch(DbException &e) {
 		error("Error in getData");
 		error(e.what());

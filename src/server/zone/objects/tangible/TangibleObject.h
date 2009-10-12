@@ -19,6 +19,8 @@
 
 #include "system/util/Vector.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -168,6 +170,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~TangibleObjectImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 

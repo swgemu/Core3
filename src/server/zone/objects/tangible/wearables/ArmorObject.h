@@ -23,6 +23,8 @@ class ArmorObject : public WearableObject {
 public:
 	ArmorObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 protected:
 	ArmorObject(DummyConstructorParameter* param);
 
@@ -52,6 +54,8 @@ public:
 
 	ArmorObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	ArmorObject* _this;
 
 	operator const ArmorObject*();
@@ -59,6 +63,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ArmorObjectImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -86,6 +92,8 @@ public:
 	ArmorObjectAdapter(ArmorObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 };
 

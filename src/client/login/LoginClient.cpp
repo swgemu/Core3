@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "engine/service/proto/packets/SessionIDRequestMessage.h"
 //#include "objects/player/Player.h"
 
-LoginClient::LoginClient(const String& addr, int port) : BaseClient(addr, port) {
+LoginClient::LoginClient(int port) : BaseClient("localhost", port) {
 	setLogging(false);
 	setLoggingName("LoginClient");
 

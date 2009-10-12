@@ -11,9 +11,6 @@
 WearableObject::WearableObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WearableObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(WearableObjectHelper::instance());
-
-	((WearableObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -22,15 +19,33 @@ WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObjec
 WearableObject::~WearableObject() {
 }
 
+void WearableObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
 /*
  *	WearableObjectImplementation
  */
 
 WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = WearableObjectHelper::instance();
+	_initializeImplementation();
 }
 
 WearableObjectImplementation::~WearableObjectImplementation() {
+}
+
+void WearableObjectImplementation::_initializeImplementation() {
+	_setClassHelper(WearableObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void WearableObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -81,6 +96,12 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 
 }
 
+WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/tangible/wearables/WearableObject.idl(55):  Logger.setLoggingName("WearableObject");
+	Logger::setLoggingName("WearableObject");
+}
+
 /*
  *	WearableObjectAdapter
  */
@@ -92,11 +113,18 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void WearableObjectAdapter::initializeTransientMembers() {
+	((WearableObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

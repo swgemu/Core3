@@ -24,6 +24,8 @@ class WaypointObject : public IntangibleObject {
 public:
 	WaypointObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 	void changeStatus(bool status);
 
 	void switchStatus();
@@ -75,6 +77,8 @@ public:
 
 	WaypointObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void changeStatus(bool status);
 
 	void switchStatus();
@@ -98,6 +102,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~WaypointObjectImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -125,6 +131,8 @@ public:
 	WaypointObjectAdapter(WaypointObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void changeStatus(bool status);
 

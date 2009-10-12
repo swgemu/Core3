@@ -11,9 +11,6 @@
 StartingLocationTerminal::StartingLocationTerminal(LuaObject* templateData) : Terminal(DummyConstructorParameter::instance()) {
 	_impl = new StartingLocationTerminalImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(StartingLocationTerminalHelper::instance());
-
-	((StartingLocationTerminalImplementation*) _impl)->_serializationHelperMethod();
 }
 
 StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* param) : Terminal(param) {
@@ -22,12 +19,24 @@ StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* pa
 StartingLocationTerminal::~StartingLocationTerminal() {
 }
 
-int StartingLocationTerminal::useObject(SceneObject* object) {
+void StartingLocationTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((StartingLocationTerminalImplementation*) _impl)->initializeTransientMembers();
+}
+
+int StartingLocationTerminal::useObject(SceneObject* object) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(object);
 
 		return method.executeWithSignedIntReturn();
@@ -40,10 +49,16 @@ int StartingLocationTerminal::useObject(SceneObject* object) {
  */
 
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(DummyConstructorParameter* param) : TerminalImplementation(param) {
-	_classHelper = StartingLocationTerminalHelper::instance();
+	_initializeImplementation();
 }
 
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
+}
+
+void StartingLocationTerminalImplementation::_initializeImplementation() {
+	_setClassHelper(StartingLocationTerminalHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void StartingLocationTerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -94,6 +109,12 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 
 }
 
+StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(56):  Logger.setLoggingName("StartingLocationTerminal");
+	Logger::setLoggingName("StartingLocationTerminal");
+}
+
 /*
  *	StartingLocationTerminalAdapter
  */
@@ -106,6 +127,9 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 
 	switch (methid) {
 	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
 		resp->insertSignedInt(useObject((SceneObject*) inv->getObjectParameter()));
 		break;
 	default:
@@ -113,6 +137,10 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	}
 
 	return resp;
+}
+
+void StartingLocationTerminalAdapter::initializeTransientMembers() {
+	((StartingLocationTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
 int StartingLocationTerminalAdapter::useObject(SceneObject* object) {

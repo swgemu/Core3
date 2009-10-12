@@ -9,9 +9,15 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/StartingLocationList.h"
 
-
+/*
 StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) :
 	TerminalImplementation(templateData) {
+
+	setLoggingName("StartingLocationTerminal");
+}*/
+
+void StartingLocationTerminalImplementation::initializeTransientMembers() {
+	TerminalImplementation::initializeTransientMembers();
 
 	setLoggingName("StartingLocationTerminal");
 }

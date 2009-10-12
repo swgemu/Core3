@@ -358,6 +358,8 @@ public:
 protected:
 	virtual ~PlayerCreatureImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

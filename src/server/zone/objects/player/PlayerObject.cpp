@@ -13,9 +13,6 @@
 PlayerObject::PlayerObject(LuaObject* templateData) : IntangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(PlayerObjectHelper::instance());
-
-	((PlayerObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(param) {
@@ -153,10 +150,16 @@ void PlayerObject::setTitle(const String& characterTitle) {
  */
 
 PlayerObjectImplementation::PlayerObjectImplementation(DummyConstructorParameter* param) : IntangibleObjectImplementation(param) {
-	_classHelper = PlayerObjectHelper::instance();
+	_initializeImplementation();
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
+}
+
+void PlayerObjectImplementation::_initializeImplementation() {
+	_setClassHelper(PlayerObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void PlayerObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -210,28 +213,36 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("adminLevel", &adminLevel);
 }
 
+PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/player/PlayerObject.idl(80):  loadTemplateData(templateData);
+	loadTemplateData(templateData);
+	// server/zone/objects/player/PlayerObject.idl(82):  Logger.setLoggingName("PlayerObject");
+	Logger::setLoggingName("PlayerObject");
+}
+
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(86):  return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(92):  return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(90):  return title;
+	// server/zone/objects/player/PlayerObject.idl(96):  return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(94):  return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(100):  return adminLevel;
 	return adminLevel;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(98):  characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(104):  characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(105):  title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(111):  title = characterTitle;
 	title = characterTitle;
 }
 

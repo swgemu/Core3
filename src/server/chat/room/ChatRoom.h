@@ -47,9 +47,9 @@ namespace room {
 
 class ChatRoom : public ManagedObject {
 public:
-	ChatRoom(ZoneServer* server, const String& name, unsigned long long cid);
+	ChatRoom(ZoneServer* serv, const String& roomName, unsigned long long channelId);
 
-	ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid);
+	ChatRoom(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned long long channelId);
 
 	void sendTo(PlayerCreature* player);
 
@@ -171,9 +171,9 @@ class ChatRoomImplementation : public ManagedObjectImplementation {
 	bool isPublicRoom;
 
 public:
-	ChatRoomImplementation(ZoneServer* server, const String& name, unsigned long long cid);
+	ChatRoomImplementation(ZoneServer* serv, const String& roomName, unsigned long long channelId);
 
-	ChatRoomImplementation(ZoneServer* server, ChatRoom* parent, const String& name, unsigned long long cid);
+	ChatRoomImplementation(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned long long channelId);
 
 	ChatRoomImplementation(DummyConstructorParameter* param);
 
@@ -254,6 +254,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ChatRoomImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 

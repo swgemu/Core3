@@ -21,9 +21,6 @@
 ObjectController::ObjectController(ZoneProcessServerImplementation* server) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ObjectControllerImplementation(server);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ObjectControllerHelper::instance());
-
-	((ObjectControllerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -94,10 +91,16 @@ QueueCommand* ObjectController::getQueueCommand(unsigned int crc) {
  */
 
 ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ObjectControllerHelper::instance();
+	_initializeImplementation();
 }
 
 ObjectControllerImplementation::~ObjectControllerImplementation() {
+}
+
+void ObjectControllerImplementation::_initializeImplementation() {
+	_setClassHelper(ObjectControllerHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ObjectControllerImplementation::_setStub(DistributedObjectStub* stub) {

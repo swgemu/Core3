@@ -11,9 +11,6 @@
 WeaponObject::WeaponObject(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WeaponObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(WeaponObjectHelper::instance());
-
-	((WeaponObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -22,12 +19,24 @@ WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(pa
 WeaponObject::~WeaponObject() {
 }
 
-void WeaponObject::sendBaselinesTo(SceneObject* player) {
+void WeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((WeaponObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+void WeaponObject::sendBaselinesTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -40,7 +49,7 @@ int WeaponObject::getAttackType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -52,10 +61,16 @@ int WeaponObject::getAttackType() {
  */
 
 WeaponObjectImplementation::WeaponObjectImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = WeaponObjectHelper::instance();
+	_initializeImplementation();
 }
 
 WeaponObjectImplementation::~WeaponObjectImplementation() {
+}
+
+void WeaponObjectImplementation::_initializeImplementation() {
+	_setClassHelper(WeaponObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void WeaponObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -109,8 +124,20 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("weaponEffectIndex", &weaponEffectIndex);
 }
 
+WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(59):  attackType = templateData.getIntField("attackType");
+	attackType = templateData->getIntField("attackType");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(60):  weaponEffect = templateData.getStringField("weaponEffect");
+	weaponEffect = templateData->getStringField("weaponEffect");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(61):  weaponEffectIndex = templateData.getIntField("weaponEffectIndex");
+	weaponEffectIndex = templateData->getIntField("weaponEffectIndex");
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(63):  Logger.setLoggingName("WeaponObject");
+	Logger::setLoggingName("WeaponObject");
+}
+
 int WeaponObjectImplementation::getAttackType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl(61):  return attackType;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl(71):  return attackType;
 	return attackType;
 }
 
@@ -126,9 +153,12 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case 6:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 7:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 8:
 		resp->insertSignedInt(getAttackType());
 		break;
 	default:
@@ -136,6 +166,10 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	}
 
 	return resp;
+}
+
+void WeaponObjectAdapter::initializeTransientMembers() {
+	((WeaponObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {

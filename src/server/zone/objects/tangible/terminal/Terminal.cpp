@@ -11,9 +11,6 @@
 Terminal::Terminal(LuaObject* templateData) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TerminalImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(TerminalHelper::instance());
-
-	((TerminalImplementation*) _impl)->_serializationHelperMethod();
 }
 
 Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -22,15 +19,33 @@ Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
 Terminal::~Terminal() {
 }
 
+void Terminal::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((TerminalImplementation*) _impl)->initializeTransientMembers();
+}
+
 /*
  *	TerminalImplementation
  */
 
 TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param) : TangibleObjectImplementation(param) {
-	_classHelper = TerminalHelper::instance();
+	_initializeImplementation();
 }
 
 TerminalImplementation::~TerminalImplementation() {
+}
+
+void TerminalImplementation::_initializeImplementation() {
+	_setClassHelper(TerminalHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void TerminalImplementation::_setStub(DistributedObjectStub* stub) {
@@ -81,6 +96,12 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 }
 
+TerminalImplementation::TerminalImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/tangible/terminal/Terminal.idl(55):  Logger.setLoggingName("Terminal");
+	Logger::setLoggingName("Terminal");
+}
+
 /*
  *	TerminalAdapter
  */
@@ -92,11 +113,18 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void TerminalAdapter::initializeTransientMembers() {
+	((TerminalImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

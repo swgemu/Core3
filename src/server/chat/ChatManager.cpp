@@ -29,9 +29,6 @@
 ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ChatManagerImplementation(serv, initsize);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ChatManagerHelper::instance());
-
-	((ChatManagerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ChatManager::ChatManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -212,10 +209,16 @@ unsigned long long ChatManager::getNextRoomID() {
  */
 
 ChatManagerImplementation::ChatManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = ChatManagerHelper::instance();
+	_initializeImplementation();
 }
 
 ChatManagerImplementation::~ChatManagerImplementation() {
+}
+
+void ChatManagerImplementation::_initializeImplementation() {
+	_setClassHelper(ChatManagerHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ChatManagerImplementation::_setStub(DistributedObjectStub* stub) {

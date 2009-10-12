@@ -11,9 +11,6 @@
 CellObject::CellObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new CellObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(CellObjectHelper::instance());
-
-	((CellObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -22,12 +19,24 @@ CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 CellObject::~CellObject() {
 }
 
-void CellObject::sendBaselinesTo(SceneObject* player) {
+void CellObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+void CellObject::sendBaselinesTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -40,7 +49,7 @@ int CellObject::getCellNumber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -52,7 +61,7 @@ void CellObject::setCellNumber(int number) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(number);
 
 		method.executeWithVoidReturn();
@@ -65,10 +74,16 @@ void CellObject::setCellNumber(int number) {
  */
 
 CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
-	_classHelper = CellObjectHelper::instance();
+	_initializeImplementation();
 }
 
 CellObjectImplementation::~CellObjectImplementation() {
+}
+
+void CellObjectImplementation::_initializeImplementation() {
+	_setClassHelper(CellObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void CellObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -120,13 +135,25 @@ void CellObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cellNumber", &cellNumber);
 }
 
+CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/cell/CellObject.idl(58):  Logger.setLoggingName("CellObject");
+	Logger::setLoggingName("CellObject");
+	// server/zone/objects/cell/CellObject.idl(60):  cellNumber = 0;
+	cellNumber = 0;
+	// server/zone/objects/cell/CellObject.idl(62):  super.containerVolumeLimit = 0xFFFFFFFF;
+	SceneObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/cell/CellObject.idl(64):  super.containerType = 2;
+	SceneObjectImplementation::containerType = 2;
+}
+
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(80):  return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(92):  return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(84):  cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(96):  cellNumber = number;
 	cellNumber = number;
 }
 
@@ -142,12 +169,15 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 7:
-		resp->insertSignedInt(getCellNumber());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
+		resp->insertSignedInt(getCellNumber());
+		break;
+	case 9:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
 	default:
@@ -155,6 +185,10 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void CellObjectAdapter::initializeTransientMembers() {
+	((CellObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {

@@ -69,7 +69,7 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/mission/MissionObject.idl \
 				server/zone/managers/radial/RadialManager.idl
 
-IDL_CLASSPATH = ../../MMOEngine/src 
+IDL_CLASSPATH = ../../MMOEngine/include 
 
 all:
 	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)

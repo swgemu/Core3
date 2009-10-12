@@ -13,7 +13,7 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 
-BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) :
+/*BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) :
 	TangibleObjectImplementation(templateData), QuadTree(-1024, -1024, 1024, 1024) {
 
 	//cells = new Vector<ManagedReference<CellObject*> >();
@@ -27,6 +27,13 @@ BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateDa
 
 	containerType = 2;
 
+	setLoggingName("BuildingObject");
+}*/
+
+void BuildingObjectImplementation::initializeTransientMembers() {
+	TangibleObjectImplementation::initializeTransientMembers();
+
+	QuadTree::setSize(-1024, -1024, 1024, 1024);
 	setLoggingName("BuildingObject");
 }
 

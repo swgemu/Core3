@@ -46,6 +46,8 @@ class BuildingObject : public TangibleObject {
 public:
 	BuildingObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 	void notifyInsert(QuadTreeEntry* obj);
 
 	void notifyDissapear(QuadTreeEntry* obj);
@@ -113,6 +115,8 @@ public:
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void notifyInsert(QuadTreeEntry* obj);
 
 	void notifyDissapear(QuadTreeEntry* obj);
@@ -155,6 +159,8 @@ public:
 protected:
 	virtual ~BuildingObjectImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);
@@ -181,6 +187,8 @@ public:
 	BuildingObjectAdapter(BuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void notifyInsertToZone(SceneObject* object);
 

@@ -7,9 +7,15 @@
 
 #include "MeleeWeaponObject.h"
 
-MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(LuaObject* templateData) :
+/*MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(LuaObject* templateData) :
 	WeaponObjectImplementation(templateData) {
 
 	setLoggingName("MeleeWeaponObject");
 
+}*/
+
+void MeleeWeaponObjectImplementation::initializeTransientMembers() {
+	WeaponObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("MeleeWeaponObject");
 }

@@ -11,9 +11,6 @@
 ArmorObject::ArmorObject(LuaObject* templateData) : WearableObject(DummyConstructorParameter::instance()) {
 	_impl = new ArmorObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(ArmorObjectHelper::instance());
-
-	((ArmorObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(param) {
@@ -22,15 +19,33 @@ ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(para
 ArmorObject::~ArmorObject() {
 }
 
+void ArmorObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
 /*
  *	ArmorObjectImplementation
  */
 
 ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
-	_classHelper = ArmorObjectHelper::instance();
+	_initializeImplementation();
 }
 
 ArmorObjectImplementation::~ArmorObjectImplementation() {
+}
+
+void ArmorObjectImplementation::_initializeImplementation() {
+	_setClassHelper(ArmorObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void ArmorObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -81,6 +96,12 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 
 }
 
+ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/tangible/wearables/ArmorObject.idl(54):  Logger.setLoggingName("ArmorObject");
+	Logger::setLoggingName("ArmorObject");
+}
+
 /*
  *	ArmorObjectAdapter
  */
@@ -92,11 +113,18 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ArmorObjectAdapter::initializeTransientMembers() {
+	((ArmorObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

@@ -110,6 +110,8 @@ public:
 protected:
 	virtual ~RadialManagerImplementation();
 
+	void _initializeImplementation();
+
 	void _setStub(DistributedObjectStub* stub);
 
 	void lock(bool doLock = true);

@@ -26,6 +26,8 @@ class StartingLocationTerminal : public Terminal {
 public:
 	StartingLocationTerminal(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 	int useObject(SceneObject* object);
 
 protected:
@@ -59,6 +61,8 @@ public:
 
 	StartingLocationTerminalImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	int useObject(SceneObject* object);
 
 	StartingLocationTerminal* _this;
@@ -68,6 +72,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~StartingLocationTerminalImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -95,6 +101,8 @@ public:
 	StartingLocationTerminalAdapter(StartingLocationTerminalImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	int useObject(SceneObject* object);
 

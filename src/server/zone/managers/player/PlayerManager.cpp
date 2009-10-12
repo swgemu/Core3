@@ -19,9 +19,6 @@
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServerImplementation* impl) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerManagerImplementation(zoneServer, impl);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(PlayerManagerHelper::instance());
-
-	((PlayerManagerImplementation*) _impl)->_serializationHelperMethod();
 }
 
 PlayerManager::PlayerManager(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -104,10 +101,16 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
  */
 
 PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
-	_classHelper = PlayerManagerHelper::instance();
+	_initializeImplementation();
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
+}
+
+void PlayerManagerImplementation::_initializeImplementation() {
+	_setClassHelper(PlayerManagerHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void PlayerManagerImplementation::_setStub(DistributedObjectStub* stub) {

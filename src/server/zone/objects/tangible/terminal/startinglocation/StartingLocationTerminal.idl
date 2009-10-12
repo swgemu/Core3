@@ -50,6 +50,12 @@ import engine.lua.LuaObject;
 
 class StartingLocationTerminal extends Terminal {
 	
-	public native StartingLocationTerminal(LuaObject templateData);
+	public StartingLocationTerminal(LuaObject templateData) {
+		super(templateData);
+		
+		Logger.setLoggingName("StartingLocationTerminal");
+	}
+	
+	public native void initializeTransientMembers();
 	public native int useObject(SceneObject object);
 }

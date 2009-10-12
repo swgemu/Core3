@@ -27,7 +27,7 @@
 
 #include "PlayerObject.h"
 
-PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
+/*PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
 	CreatureObjectImplementation(templateData) {
 
 	setLoggingName("PlayerCreature");
@@ -43,15 +43,18 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateDa
 	savedParentID = 0;
 
 	setOffline();
-}
+}*/
 
 void PlayerCreatureImplementation::initializeTransientMembers() {
+	CreatureObjectImplementation::initializeTransientMembers();
+
 	//setLoggingName("IntangibleObject");
 
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 
-	CreatureObjectImplementation::initializeTransientMembers();
+	setLoggingName("PlayerCreature");
+
 }
 
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {

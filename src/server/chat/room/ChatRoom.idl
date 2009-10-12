@@ -74,8 +74,50 @@ class ChatRoom extends ManagedObject {
 
 	boolean isPublicRoom;
 	
-	public native ChatRoom(ZoneServer server, final string name, unsigned long cid);
-	public native ChatRoom(ZoneServer server, ChatRoom parent, final string name, unsigned long cid);
+	public ChatRoom(ZoneServer serv, final string roomName, unsigned long channelId) {
+		server = serv;
+
+		name = roomName;
+		roomID = channelId;
+
+		owner = "system";
+		creator = "system";
+		title = "";
+		fullPath = roomName;
+
+		parent = null;
+
+		isPublicRoom = true;
+
+		subRooms.setNullValue(null);
+		subRooms.setNoDuplicateInsertPlan();
+
+		playerList.setNoDuplicateInsertPlan();
+		playerList.setNullValue(null);
+	}
+	
+	public ChatRoom(ZoneServer serv, ChatRoom par, final string roomName, unsigned long channelId) {
+		server = serv;
+
+		name = roomName;
+		fullPath = par.getFullPath() + "." + roomName;
+
+		roomID = channelId;
+
+		owner = "system";
+		creator = "system";
+		title = "";
+
+		parent = par;
+
+		isPublicRoom = true;
+
+		subRooms.setNullValue(null);
+		subRooms.setNoDuplicateInsertPlan();
+
+		playerList.setNoDuplicateInsertPlan();
+		playerList.setNullValue(null);
+	}
 	
 	public native void sendTo(PlayerCreature player);
 	public native void sendDestroyTo(PlayerCreature player);

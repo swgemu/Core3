@@ -23,6 +23,8 @@ class WearableObject : public TangibleObject {
 public:
 	WearableObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 protected:
 	WearableObject(DummyConstructorParameter* param);
 
@@ -52,6 +54,8 @@ public:
 
 	WearableObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	WearableObject* _this;
 
 	operator const WearableObject*();
@@ -59,6 +63,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~WearableObjectImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -86,6 +92,8 @@ public:
 	WearableObjectAdapter(WearableObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 };
 

@@ -11,9 +11,6 @@
 MissionObject::MissionObject(LuaObject* templateData) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new MissionObjectImplementation(templateData);
 	_impl->_setStub(this);
-	_impl->_setClassHelper(MissionObjectHelper::instance());
-
-	((MissionObjectImplementation*) _impl)->_serializationHelperMethod();
 }
 
 MissionObject::MissionObject(DummyConstructorParameter* param) : SceneObject(param) {
@@ -40,10 +37,16 @@ void MissionObject::sendBaselinesTo(SceneObject* player) {
  */
 
 MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
-	_classHelper = MissionObjectHelper::instance();
+	_initializeImplementation();
 }
 
 MissionObjectImplementation::~MissionObjectImplementation() {
+}
+
+void MissionObjectImplementation::_initializeImplementation() {
+	_setClassHelper(MissionObjectHelper::instance());
+
+	_serializationHelperMethod();
 }
 
 void MissionObjectImplementation::_setStub(DistributedObjectStub* stub) {
@@ -92,6 +95,12 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 
 	_setClassName("MissionObject");
 
+}
+
+MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+	_initializeImplementation();
+	// server/zone/objects/mission/MissionObject.idl(56):  Logger.setLoggingName("MissionObject");
+	Logger::setLoggingName("MissionObject");
 }
 
 /*

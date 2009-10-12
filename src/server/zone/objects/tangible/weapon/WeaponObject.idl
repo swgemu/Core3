@@ -53,7 +53,17 @@ class WeaponObject extends TangibleObject {
 	protected string weaponEffect;
 	protected int weaponEffectIndex;
 	
-	public native WeaponObject(LuaObject templateData);
+	public WeaponObject(LuaObject templateData) {
+		super(templateData);
+		
+		attackType = templateData.getIntField("attackType");
+		weaponEffect =  templateData.getStringField("weaponEffect");
+		weaponEffectIndex = templateData.getIntField("weaponEffectIndex");
+		
+		Logger.setLoggingName("WeaponObject");
+	}
+	
+	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
 	

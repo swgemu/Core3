@@ -24,6 +24,8 @@ class CellObject : public SceneObject {
 public:
 	CellObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	int getCellNumber();
@@ -58,6 +60,8 @@ public:
 
 	CellObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 	int getCellNumber();
@@ -71,6 +75,8 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~CellObjectImplementation();
+
+	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
 
@@ -98,6 +104,8 @@ public:
 	CellObjectAdapter(CellObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
