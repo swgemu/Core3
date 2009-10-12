@@ -142,9 +142,9 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : Sc
 	// server/zone/objects/cell/CellObject.idl(60):  cellNumber = 0;
 	cellNumber = 0;
 	// server/zone/objects/cell/CellObject.idl(62):  super.containerVolumeLimit = 0xFFFFFFFF;
-	SceneObject::containerVolumeLimit = 0xFFFFFFFF;
+	SceneObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
 	// server/zone/objects/cell/CellObject.idl(64):  super.containerType = 2;
-	SceneObject::containerType = 2;
+	SceneObjectImplementation::containerType = 2;
 }
 
 int CellObjectImplementation::getCellNumber() {

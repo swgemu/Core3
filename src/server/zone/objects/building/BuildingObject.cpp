@@ -303,9 +303,9 @@ BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateDa
 	// server/zone/objects/building/BuildingObject.idl(75):  staticBuilding = false;
 	staticBuilding = false;
 	// server/zone/objects/building/BuildingObject.idl(77):  super.containerVolumeLimit = 0xFFFFFFFF;
-	TangibleObject::containerVolumeLimit = 0xFFFFFFFF;
+	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
 	// server/zone/objects/building/BuildingObject.idl(79):  super.containerType = 2;
-	TangibleObject::containerType = 2;
+	TangibleObjectImplementation::containerType = 2;
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
