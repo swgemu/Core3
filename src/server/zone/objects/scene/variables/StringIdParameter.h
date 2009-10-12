@@ -46,14 +46,19 @@ which carries forward this exception.
 #define STRINGIDPARAMETER_H_
 
 #include "engine/engine.h"
-#include "StringId.h"
-#include "../SceneObject.h"
+
+
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace scene {
+
+class SceneObject;
+
 namespace variables {
+
+class StringId;
 
 class StringIdParameter : public Serializable {
 	UnicodeString unicodeParameter;
@@ -72,7 +77,7 @@ private:
 public:
 
 	StringIdParameter() : Serializable() {
-		addSerialiazableVariables();
+		addSerializableVariables();
 	}
 
 	void clear() {
@@ -82,21 +87,16 @@ public:
 		str = "";
 	}
 
-	void set(SceneObject * obj) {
-		clear();
-		pointerParameter = obj->getObjectID();
-	}
+	void set(SceneObject * obj);
+
+	void set(StringId& sid);
 
 	void set(uint64 oid) {
 		clear();
 		pointerParameter = oid;
 	}
 
-	void set(const StringId& sid) {
-		clear();
-		file = sid.getFile();
-		str = sid.getStringID();
-	}
+
 
 	void set(const String& f, const String& s) {
 		clear();
@@ -122,15 +122,15 @@ public:
 		return pointerParameter;
 	}
 
-	inline UnicodeString& getUnicodeParameter() const {
+	inline UnicodeString& getUnicodeParameter() {
 		return unicodeParameter;
 	}
 
-	inline String& getFileParameter() const {
+	inline String& getFileParameter() {
 		return file;
 	}
 
-	inline String& getStringIDParameter() const {
+	inline String& getStringIDParameter() {
 		return str;
 	}
 

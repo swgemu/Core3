@@ -19,12 +19,24 @@ MissionObject::MissionObject(DummyConstructorParameter* param) : SceneObject(par
 MissionObject::~MissionObject() {
 }
 
-void MissionObject::sendBaselinesTo(SceneObject* player) {
+void MissionObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
+void MissionObject::sendBaselinesTo(SceneObject* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -115,6 +127,9 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -122,6 +137,10 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
+}
+
+void MissionObjectAdapter::initializeTransientMembers() {
+	((MissionObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 void MissionObjectAdapter::sendBaselinesTo(SceneObject* player) {

@@ -272,7 +272,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 
 	if (hair->getGameObjectType() != SceneObjectImplementation::GENERICITEM) {
 		info("wrong hair object type");
-		hair->finalize();
+		//hair->finalize();
 
 		return NULL;
 	} else {

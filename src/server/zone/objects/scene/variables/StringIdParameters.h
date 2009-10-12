@@ -110,19 +110,19 @@ public:
 		DF = f;
 	}
 
-	inline StringIdParameter& getTU() const {
+	inline StringIdParameter& getTU() {
 		return TU;
 	}
 
-	inline StringIdParameter& getTO() const {
+	inline StringIdParameter& getTO() {
 		return TO;
 	}
 
-	inline StringIdParameter& getTT() const {
+	inline StringIdParameter& getTT() {
 		return TT;
 	}
 
-	inline uint32 getDI() const {
+	inline uint32 getDI() const{
 		return DI;
 	}
 

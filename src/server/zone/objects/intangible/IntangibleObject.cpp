@@ -141,7 +141,7 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templa
 }
 
 unsigned int IntangibleObjectImplementation::getStatus() {
-	// server/zone/objects/intangible/IntangibleObject.idl(71):  return status;
+	// server/zone/objects/intangible/IntangibleObject.idl(70):  return status;
 	return status;
 }
 

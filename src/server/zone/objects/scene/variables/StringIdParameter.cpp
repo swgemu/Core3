@@ -42,108 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGID_H_
-#define STRINGID_H_
+#include "StringIdParameter.h"
 
-#include "engine/engine.h"
+#include "StringId.h"
+#include "../SceneObject.h"
 
-#include "StringIdParameters.h"
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace variables {
-
-class StringId : public Serializable {
-	String file;
-	String stringID;
-	String fullPath;
-
-	UnicodeString customName;
-
-	//Parameters
-	StringIdParameters parameters;
-
-private:
-	inline void addSerializableVariables();
-
-public:
-	StringId();
-	StringId(const StringId& id);
-	StringId(const String& fullPath);
-	StringId(const String& fil, const String& stringId);
-	StringId(const UnicodeString& custom);
-
-	void getFullPath(String& str) const {
-		str = "@" + file + ":" + stringID;
-	}
-
-	inline String& getFile() {
-		return file;
-	}
-
-	inline String& getStringID() {
-		return stringID;
-	}
-
-	inline UnicodeString& getCustomString() {
-		return customName;
-	}
-
-	void setCustomString(const UnicodeString& custom) {
-		customName = custom;
-	}
-
-	void setStringId(const String& fullPath);
-
-	//Parameter Stuff
-
-	inline StringIdParameters& getParameters() {
-		return parameters;
-	}
-
-	template<class T>
-	inline void setTT(const T& obj) {
-		parameters.setTT(obj);
-	}
-
-	inline void setTT(const String& f, const String& s) {
-		parameters.setTT(f,s);
-	}
-
-	template<class T>
-	inline void setTU(const T& obj) {
-		parameters.setTU(obj);
-	}
-
-	inline void setTU(const String& f, const String& s) {
-		parameters.setTU(f,s);
-	}
-
-	template<class T>
-	inline void setTO(const T& obj) {
-		parameters.setTO(obj);
-	}
-
-	inline void setTO(const String& f, const String& s) {
-		parameters.setTO(f,s);
-	}
-
-	inline void setDI(uint32 i) {
-		parameters.setDI(i);
-	}
-
-	inline void setDF(float f) {
-		parameters.setDF(f);
-	}
-};
-
-}
-}
-}
-}
+void StringIdParameter::set(SceneObject * obj) {
+	clear();
+	pointerParameter = obj->getObjectID();
 }
 
-using namespace server::zone::objects::scene::variables;
-#endif /* STRINGID_H_ */
+void StringIdParameter::set(StringId& sid) {
+	clear();
+	file = sid.getFile();
+	str = sid.getStringID();
+}

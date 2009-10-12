@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 #include "../../objects/creature/CreatureObject.h"
-#include "StfParameter.h"
+#include "StfParameter.h" //TODO:remove this
 
 class NpcConversationMessage : public ObjectControllerMessage {
 public:
@@ -58,11 +58,10 @@ public:
 		insertUnicode(message);
 	}
 
-	NpcConversationMessage(CreatureObject* creo, const StringId& stringid)
+	NpcConversationMessage(CreatureObject* creo, StringId& stringid)
 			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
-		params->generate();
 
-		insertStringIdParameters(stringid);
+		stringid.addToPacketStream(this);
 
 		insertInt(0);
 	}

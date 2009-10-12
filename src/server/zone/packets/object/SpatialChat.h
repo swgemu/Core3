@@ -70,10 +70,8 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, const StringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
+	SpatialChat(uint64 senderid, uint64 recvid, StringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
-
-		params->generate();
 
 		insertLong(senderid);
 		insertLong(target);
@@ -83,7 +81,7 @@ public:
 		insertShort(moodid);
 		insertShort(0);
 
-		insertStringIdParameter(stringid);
+		stringid.addToPacketStream(this);
 
 		insertByte(0);
 		insertShort(0);

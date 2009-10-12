@@ -24,6 +24,8 @@ class MissionObject : public SceneObject {
 public:
 	MissionObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 	void sendBaselinesTo(SceneObject* player);
 
 protected:
@@ -52,6 +54,8 @@ public:
 	MissionObjectImplementation(LuaObject* templateData);
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 
@@ -91,6 +95,8 @@ public:
 	MissionObjectAdapter(MissionObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
 

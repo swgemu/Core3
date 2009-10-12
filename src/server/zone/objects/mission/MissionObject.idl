@@ -56,5 +56,6 @@ class MissionObject extends SceneObject {
 		Logger.setLoggingName("MissionObject");
 	}
 	
+	public native void initializeTransientMembers();
 	public native void sendBaselinesTo(SceneObject player);
 }
