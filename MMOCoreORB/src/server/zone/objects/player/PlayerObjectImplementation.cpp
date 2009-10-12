@@ -60,9 +60,9 @@ which carries forward this exception.
 }*/
 
 void PlayerObjectImplementation::initializeTransientMembers() {
-	//setLoggingName("PlayerObject");
-
 	IntangibleObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("PlayerObject");
 }
 
 void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {

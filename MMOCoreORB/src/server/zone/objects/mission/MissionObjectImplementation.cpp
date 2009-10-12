@@ -7,11 +7,14 @@
 
 #include "MissionObject.h"
 #include "server/zone/packets/mission/MissionObjectMessage6.h"
-/*
-MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+
+
+void MissionObjectImplementation::initializeTransientMembers() {
+	SceneObjectImplementation::initializeTransientMembers();
+
 	setLoggingName("MissionObject");
 }
-*/
+
 void MissionObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending miso baselines");
 

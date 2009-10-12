@@ -60,9 +60,9 @@ which carries forward this exception.
 }*/
 
 void IntangibleObjectImplementation::initializeTransientMembers() {
-	setLoggingName("IntangibleObject");
-
 	SceneObjectImplementation::initializeTransientMembers();
+
+	setLoggingName("IntangibleObject");
 }
 
 void IntangibleObjectImplementation::loadTemplateData(LuaObject* templateData) {
