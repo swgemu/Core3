@@ -52,8 +52,16 @@ void StringIdParameter::set(SceneObject * obj) {
 	pointerParameter = obj->getObjectID();
 }
 
+void StringIdParameter::set(StringId * sid) {
+	set(*sid);
+}
+
 void StringIdParameter::set(StringId& sid) {
 	clear();
-	file = sid.getFile();
-	str = sid.getStringID();
+	if (!sid.getCustomString().isEmpty()) {
+		unicodeParameter = sid.getCustomString();
+	} else {
+		file = sid.getFile();
+		str = sid.getStringID();
+	}
 }

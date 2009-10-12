@@ -58,19 +58,21 @@ namespace variables {
 class StringId : public Serializable {
 	String file;
 	String stringID;
-	String fullPath;
-
 	UnicodeString customName;
-
-	//Parameters
 	StringIdParameters parameters;
 
 private:
-	inline void addSerializableVariables();
+	inline void addSerializableVariables() {
+		addSerializableVariable("file", &file);
+		addSerializableVariable("stringID", &stringID);
+		addSerializableVariable("customName", &customName);
+		addSerializableVariable("parameters", &parameters);
+	}
 
 public:
 	StringId();
 	StringId(const StringId& id);
+	StringId(const char * cstr);
 	StringId(const String& fullPath);
 	StringId(const String& fil, const String& stringId);
 	StringId(const UnicodeString& custom);
@@ -137,6 +139,8 @@ public:
 	inline void setDF(float f) {
 		parameters.setDF(f);
 	}
+
+	void addToPacketStream(Message * packet);
 };
 
 }

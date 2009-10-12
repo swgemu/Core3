@@ -125,7 +125,7 @@ public:
 		insertInt(0);
 	}
 
-	ChatSystemMessage(const String& file, const String& str, uint64 targetid = 0) : BaseMessage() {
+	ChatSystemMessage(const String& file, const String& str, uint64 targetid) : BaseMessage() {
 		insertShort(0x08);
 		insertInt(0x6D2A6413);
 

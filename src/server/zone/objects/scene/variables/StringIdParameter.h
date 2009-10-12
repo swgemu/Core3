@@ -89,6 +89,7 @@ public:
 
 	void set(SceneObject * obj);
 
+	void set(StringId * sid);
 	void set(StringId& sid);
 
 	void set(uint64 oid) {
@@ -112,6 +113,11 @@ public:
 	void set(const String& cs) {
 		clear();
 		unicodeParameter = UnicodeString(cs);
+	}
+
+	void set(const char * cstr) {
+		clear();
+		unicodeParameter = UnicodeString(cstr);
 	}
 
 	inline uint32 size() const {

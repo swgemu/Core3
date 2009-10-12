@@ -63,6 +63,12 @@ StringId::StringId(const String& fullPath) : Serializable() {
 	addSerializableVariables();
 }
 
+StringId::StringId(const char * fullPath) : Serializable() {
+	setStringId(String(fullPath));
+
+	addSerializableVariables();
+}
+
 StringId::StringId(const String& fil, const String& stringId) : Serializable() {
 	file = fil;
 	stringID = stringId;
