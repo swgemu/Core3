@@ -66,6 +66,10 @@ class StringIdParameter : public Serializable {
 	String file;
 	String str;
 
+	StringIdParameter() : Serializable() {
+		addSerializableVariables();
+	}
+
 private:
 	inline void addSerializableVariables() {
 		addSerializableVariable("unicodeParameter", &unicodeParameter);
@@ -75,10 +79,6 @@ private:
 	}
 
 public:
-
-	StringIdParameter() : Serializable() {
-		addSerializableVariables();
-	}
 
 	void clear() {
 		unicodeParameter.clear();
@@ -90,14 +90,13 @@ public:
 	void set(SceneObject * obj);
 
 	void set(StringId * sid);
+
 	void set(StringId& sid);
 
 	void set(uint64 oid) {
 		clear();
 		pointerParameter = oid;
 	}
-
-
 
 	void set(const String& f, const String& s) {
 		clear();
@@ -140,6 +139,7 @@ public:
 		return str;
 	}
 
+	friend class StringIdParameters;
 };
 
 

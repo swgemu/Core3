@@ -61,6 +61,10 @@ class StringIdParameters : public Serializable {
 	uint32 DI;
 	float DF;
 
+	StringIdParameters() : Serializable() {
+		addSerializableVariables();
+	}
+
 private:
 	inline void addSerializableVariables() {
 		addSerializableVariable("TT", &TT);
@@ -71,9 +75,6 @@ private:
 	}
 
 public:
-	StringIdParameters() : Serializable() {
-		addSerializableVariables();
-	}
 
 	template<class T>
 	inline void setTT(const T& obj) {
@@ -134,6 +135,7 @@ public:
 		return TT.size() + TU.size() + TO.size() + sizeof(DI) + sizeof(DF);
 	}
 
+	friend class StringId;
 };
 
 }
