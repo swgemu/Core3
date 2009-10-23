@@ -210,16 +210,17 @@ bool SceneObject::canAddObject(SceneObject* object) {
 		return ((SceneObjectImplementation*) _impl)->canAddObject(object);
 }
 
-void SceneObject::updateToDatabase() {
+void SceneObject::updateToDatabase(bool startTask) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addBooleanParameter(startTask);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->updateToDatabase();
+		((SceneObjectImplementation*) _impl)->updateToDatabase(startTask);
 }
 
 void SceneObject::create(ZoneClientSession* client) {
@@ -1689,7 +1690,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(canAddObject((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 18:
-		updateToDatabase();
+		updateToDatabase(inv->getBooleanParameter());
 		break;
 	case 19:
 		create((ZoneClientSession*) inv->getObjectParameter());
@@ -1965,8 +1966,8 @@ bool SceneObjectAdapter::canAddObject(SceneObject* object) {
 	return ((SceneObjectImplementation*) impl)->canAddObject(object);
 }
 
-void SceneObjectAdapter::updateToDatabase() {
-	((SceneObjectImplementation*) impl)->updateToDatabase();
+void SceneObjectAdapter::updateToDatabase(bool startTask) {
+	((SceneObjectImplementation*) impl)->updateToDatabase(startTask);
 }
 
 void SceneObjectAdapter::create(ZoneClientSession* client) {

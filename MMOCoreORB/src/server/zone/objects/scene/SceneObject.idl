@@ -363,7 +363,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return true;
 	}
 	
-	public native void updateToDatabase();
+	public native void updateToDatabase(boolean startTask = true);
 	
 	public native void create(ZoneClientSession client);
 	public native void destroy(ZoneClientSession client);

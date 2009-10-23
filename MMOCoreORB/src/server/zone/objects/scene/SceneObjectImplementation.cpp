@@ -146,7 +146,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
 }
 
-void SceneObjectImplementation::updateToDatabase() {
+void SceneObjectImplementation::updateToDatabase(bool startTask) {
 	Time start;
 
 	ZoneServer* server = getZoneServer();
@@ -155,16 +155,17 @@ void SceneObjectImplementation::updateToDatabase() {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
-		object->updateToDatabase();
+		object->updateToDatabase(false);
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		ManagedReference<SceneObject*> object = containerObjects.get(j);
 
-		object->updateToDatabase();
+		object->updateToDatabase(false);
 	}
 
-	queueUpdateToDatabaseTask();
+	if (startTask)
+		queueUpdateToDatabaseTask();
 
 	info("saved in " + String::valueOf(start.miliDifference()), true);
 }
