@@ -92,7 +92,9 @@ public:
 
 	void loadStructures();
 
-	BuildingObject* loadStaticBuilding(unsigned long long oid, int planet);
+	BuildingObject* loadStaticBuilding(unsigned long long oid);
+
+	void loadStaticCells(BuildingObject* building);
 
 protected:
 	StructureManager(DummyConstructorParameter* param);
@@ -130,7 +132,9 @@ public:
 
 	void loadStructures();
 
-	BuildingObject* loadStaticBuilding(unsigned long long oid, int planet);
+	BuildingObject* loadStaticBuilding(unsigned long long oid);
+
+	void loadStaticCells(BuildingObject* building);
 
 	StructureManager* _this;
 
@@ -175,7 +179,9 @@ public:
 
 	void loadStructures();
 
-	BuildingObject* loadStaticBuilding(unsigned long long oid, int planet);
+	BuildingObject* loadStaticBuilding(unsigned long long oid);
+
+	void loadStaticCells(BuildingObject* building);
 
 };
 

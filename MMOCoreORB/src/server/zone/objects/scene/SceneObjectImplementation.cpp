@@ -76,6 +76,9 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	movementCounter = 0;
 
+	//TODO: This belongs in Managed Object - Bobius
+	permanent = false;
+
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -164,10 +167,10 @@ void SceneObjectImplementation::updateToDatabase(bool startTask) {
 		object->updateToDatabase(false);
 	}
 
-	if (startTask)
+	if (startTask && !isPermanent())
 		queueUpdateToDatabaseTask();
 
-	info("saved in " + String::valueOf(start.miliDifference()), true);
+	info("saved in " + String::valueOf(start.miliDifference()));
 }
 
 uint64 SceneObjectImplementation::getObjectID() {

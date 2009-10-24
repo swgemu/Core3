@@ -12,6 +12,7 @@
 #include "server/db/ServerDatabase.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/db/ObjectDatabase.h"
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
@@ -29,55 +30,22 @@ void StructureManagerImplementation::loadStaticBuildings() {
 	//lock();
 
 	StringBuffer query;
-	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
+	query << "SELECT parentid FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = 'object/cell/shared_cell.iff' GROUP BY parentid;";
 
 	try {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
-			uint64 oid = result->getUnsignedLong(1);
+			BuildingObject * building = NULL;
 
-			uint64 parentId = result->getUnsignedLong(2);
+			uint64 parentId = result->getUnsignedLong(0);
 
-			String file = result->getString(3);
+			building = loadStaticBuilding(parentId);
 
-			float oX = result->getFloat(4);
-			float oY = result->getFloat(5);
-			float oZ = result->getFloat(6);
-			float oW = result->getFloat(7);
-
-			float x = result->getFloat(8);
-			float z = result->getFloat(9);
-			float y = result->getFloat(10);
-
-			float type = result->getFloat(11);
-			bool client = result->getBoolean(12);
-
-			//info("Loading Structures for zone: " + zone->getZoneID());
-
-			if (file.indexOf("object/cell/") != -1) {
-				BuildingObject* buio = (BuildingObject*) server->getZoneServer()->getObject(parentId);
-
-				if (buio == NULL)
-					buio = loadStaticBuilding(parentId, planetid);
-
-				StringBuffer msg;
-				msg << "StructureManagerImplementation::loadStaticBuildings(), loading cell (" << oid << " for building: " << parentId << endl;
-				info(msg.toString());
-
-				SceneObject* cell = server->getZoneServer()->createObject(file.hashCode(), false, oid);
-				cell->initializePosition(x, z, y);
-				cell->setDirection(oX, oZ, oY, oW);
-
-				//cell->setZoneProcessServer(server);
-				//zone->registerObject(cell);
-
-				buio->addCell((CellObject*)cell); // sets the cell number - assumes loading in order
-
-				/*if (cellMap->put(oid, cell) != NULL) {
-					error("Error CELL/BUILDING already exists\n");
-					raise(SIGSEGV);
-				}*/
+			if (building == NULL) {
+				error("Can not add building "+ String::valueOf(parentId) + ". BUILDING DOES NOT EXIST");
+				continue;
 			}
 		}
 
@@ -91,24 +59,20 @@ void StructureManagerImplementation::loadStaticBuildings() {
 	//unlock();
 }
 
-BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, int planet) {
-	BuildingObject* buio = NULL;
+void StructureManagerImplementation::loadStaticCells(BuildingObject * building) {
+	CellObject* cell = NULL;
 
-
-	StringBuffer msg;
-	msg << "Loading Static Building id: " << oid;
-	info(msg.toString());
+	ZoneServer * zoneServer = zone->getZoneServer();
 
 	StringBuffer query;
-	query << "SELECT * FROM staticobjects WHERE zoneid = '" << planet << "' AND objectid = '" << oid << "';";
+	query << "SELECT * FROM staticobjects WHERE file = 'object/cell/shared_cell.iff'";
+	query << " AND parentid = " << building->getObjectID();
 
 	try {
 		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
-		if (result->next()) {
-			uint64 oid = result->getUnsignedLong(1);
-			uint64 parentId = result->getUnsignedLong(2);
-
+		while (result->next()) {
+			uint64 oid = result->getLong(1);
 			String file = result->getString(3);
 
 			float oX = result->getFloat(4);
@@ -120,47 +84,82 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 			float z = result->getFloat(9);
 			float y = result->getFloat(10);
 
-			float type = result->getFloat(11);
-			bool client = result->getBoolean(12);
+			info("loading cell (" + String::valueOf(oid) + ") from mysql db");
 
-			/*if (file.indexOf("building") != -1 && file.indexOf("cloning") != -1) {
-				CloningFacility* cloningFacility = new CloningFacility(oid, client);
-				buio = (BuildingObject*) cloningFacility;
+			cell = (CellObject*) server->getZoneServer()->createPermanentObject(file.hashCode(), oid);
 
-				if (cloningFacilityMap->put(oid, cloningFacility) != NULL) {
-					error("Error CloningFacility already exists\n");
-					raise(SIGSEGV);
-				}
-			} else {
-				buio = new BuildingObject(oid, client);
+			if (cell == NULL) {
+				error("cannot create static cell " + String::valueOf(oid));
+				continue;
 			}
+			cell->initializePosition(x, z, y);
+			cell->setDirection(oX, oZ, oY, oW);
 
-			buio->setZoneProcessServer(server);
-
-			buio->setObjectCRC(file.hashCode());
-			buio->setBuildingType(guessBuildingType(oid, file));*/
-			//setObjectType
-			//setObjectName
-
-			info("trying to create " + file);
-
-			buio = (BuildingObject*) server->getZoneServer()->createObject(file.hashCode(), false, oid);
-
-			buio->initializePosition(x, z, y);
-			buio->setDirection(oX, oZ, oY, oW);
-			buio->setStaticBuilding(true);
-			//buio->setPersistent(true); // static = persistent - don't save
-			//buio->setUpdated(false); // static = persistent
-
-			buio->insertToZone(zone);
-
-			/*if (buildingMap->put(oid, buio) != NULL) {
-				error("Error CELL/BUILDING already exists\n");
-				raise(SIGSEGV);
-			}*/
+			building->addCell(cell);
 		}
 
 		delete result;
+
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuilding");
+	}
+}
+
+BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
+	BuildingObject* buio = NULL;
+
+	ZoneServer * zoneServer = zone->getZoneServer();
+
+	try {
+		ManagedReference<SceneObject *> obj = zoneServer->getObject(oid);
+
+		if (obj != NULL && obj->isBuildingObject()) {
+			info("loading building (" + String::valueOf(oid) + ") from static object db");
+			buio = (BuildingObject *) obj.get();
+
+		} else {
+			StringBuffer query;
+			query << "SELECT * FROM staticobjects WHERE objectid = '" << oid << "';";
+			ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+			if (result->next()) {
+				info("loading building (" + String::valueOf(oid) + ") from mysql db");
+
+
+				String file = result->getString(3);
+
+				float oX = result->getFloat(4);
+				float oY = result->getFloat(5);
+				float oZ = result->getFloat(6);
+				float oW = result->getFloat(7);
+
+				float x = result->getFloat(8);
+				float z = result->getFloat(9);
+				float y = result->getFloat(10);
+
+				info("trying to create " + file);
+
+				buio = (BuildingObject*) server->getZoneServer()->createPermanentObject(file.hashCode(), oid);
+
+				if (buio == NULL) {
+					return NULL;
+				}
+
+				buio->initializePosition(x, z, y);
+				buio->setDirection(oX, oZ, oY, oW);
+				buio->setStaticBuilding(true);
+
+				loadStaticCells(buio);
+
+				buio->insertToZone(zone);
+
+				buio->updateToDatabase();
+			}
+
+			delete result;
+		}
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	} catch (...) {
@@ -171,7 +170,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 }
 
 void StructureManagerImplementation::loadPlayerStructures() {
-
+/*
 	StringBuffer msg;
 	msg << "StructureManagerImplementation::loadPlayerStructures()";
 	info(msg.toString());
@@ -179,27 +178,6 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	try {
 		int planetid = zone->getZoneID();
 		uint64 currentZoneObjectID = zone->_getObjectID();
-
-
-
-		/*StringBuffer query;
-		query << "SELECT objectid FROM objects WHERE data LIKE '%gameObjectType=512%' AND data LIKE '%zone=" << zone->_getObjectID() << "%';";
-
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
-
-		while (result->next()) {
-			uint64 objectID = result->getUnsignedLong(0);
-
-			SceneObject* object = server->getZoneServer()->getObject(objectID);
-
-			if (object != NULL)
-				object->info("loaded building into world", true);
-			else {
-				error("could not load building " + String::valueOf(objectID));
-			}
-		}
-
-		delete result;*/
 
 		// This is very unefficient, only do it on server load.
 		ObjectDatabase* objectDatabase = ObjectManager::instance()->getObjectDatabase();
@@ -249,5 +227,6 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	} catch (...) {
 		throw Exception("problem in StructureManagerImplementation::loadPlayerStructures()");
 	}
+*/
 }
 

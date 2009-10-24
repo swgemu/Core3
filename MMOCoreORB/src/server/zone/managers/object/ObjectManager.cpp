@@ -71,7 +71,8 @@ Lua* ObjectManager::luaTemplatesInstance = NULL;
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
 
-	database = new ObjectDatabase();
+	database = new ObjectDatabase("objects.db");
+	staticDatabase = new ObjectDatabase("staticobjects.db");
 
 	registerObjectTypes();
 
@@ -91,6 +92,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 ObjectManager::~ObjectManager() {
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
+
+	closeDatabases();
 }
 
 void ObjectManager::registerObjectTypes() {
@@ -141,11 +144,17 @@ void ObjectManager::loadLastUsedObjectID() {
 	info("loading last used object id");
 
 	ObjectDatabaseIterator iterator(database);
+	ObjectDatabaseIterator staticIterator(staticDatabase);
 
 	uint64 maxObjectID = 0;
 	uint64 objectID;
 
 	while (iterator.getNextKey(objectID)) {
+		if (objectID > maxObjectID)
+			maxObjectID = objectID;
+	}
+
+	while (staticIterator.getNextKey(objectID)) {
 		if (objectID > maxObjectID)
 			maxObjectID = objectID;
 	}
@@ -161,7 +170,7 @@ void ObjectManager::loadLastUsedObjectID() {
 
 }*/
 
-void ObjectManager::closeDatabase() {
+void ObjectManager::closeDatabases() {
 	Locker _locker(this);
 
 	if (database != NULL) {
@@ -170,6 +179,13 @@ void ObjectManager::closeDatabase() {
 		delete database;
 		database = NULL;
 	}
+
+	if (staticDatabase != NULL) {
+		staticDatabase->sync();
+
+		delete staticDatabase;
+		staticDatabase = NULL;
+	}
 }
 
 
@@ -177,6 +193,8 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	DistributedObjectStub* object = NULL;
 
 	Locker _locker(this);
+
+	bool permanant = false;
 
 	// only for debugging proposes
 	DistributedObject* dobject = getObject(objectID);
@@ -190,15 +208,21 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	ObjectInputStream* objectData = new ObjectInputStream(500);
 
 	if (database->getData(objectID, objectData)) {
-		delete objectData;
-		return NULL;
+		//Not found in regular database, let's check static
+		if (staticDatabase->getData(objectID, objectData)) {
+			//Not found in static database either.
+			delete objectData;
+			return NULL;
+		} else {
+			permanant = true;
+		}
 	}
 
 	uint32 serverObjectCRC = 0;
 	String className;
 
 	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
-		object = createObject(serverObjectCRC, false, objectID);
+		object = createObject(serverObjectCRC, false, permanant, objectID);
 
 		if (object == NULL) {
 			error("could not load object from database");
@@ -208,10 +232,10 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 		deSerializeObject((SceneObject*)object, objectData);
 
-		((SceneObject*)object)->info("loaded from db", true);
+		((SceneObject*)object)->info("loaded from db");
 
 	} else if (Serializable::getVariable<String>("_className", &className, objectData)) {
-		object = createObject(className, false, objectID);
+		object = createObject(className, false, permanant, objectID);
 
 		if (object == NULL) {
 			error("could not load object from database");
@@ -230,7 +254,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	return object;
 }
 
-ManagedObject* ObjectManager::createObject(const String& className, bool persistent, uint64 oid) {
+ManagedObject* ObjectManager::createObject(const String& className, bool persistent, bool permanent, uint64 oid) {
 	ManagedObject* object = NULL;
 
 	Locker _locker(this);
@@ -256,11 +280,16 @@ ManagedObject* ObjectManager::createObject(const String& className, bool persist
 		object->deploy();
 
 		if (persistent) {
-			updatePersistentObject(object);
+			updatePersistentObject(object, permanent);
 
 			object->queueUpdateToDatabaseTask();
 
 			object->setPersistent();
+
+			/*//TODO: Uncomment once permanent flags are moved to ManagedObject
+			if (permanent)
+				object->setPermanent();
+			*/
 		}
 
 	} else {
@@ -346,7 +375,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
-int ObjectManager::updatePersistentObject(DistributedObject* object) {
+int ObjectManager::updatePersistentObject(DistributedObject* object, bool permanent) {
 	if (database == NULL)
 		return 0;
 
@@ -355,7 +384,10 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 
 		((ManagedObject*)object)->writeObject(objectData);
 
-		database->putData(object->_getObjectID(), objectData);
+		if(permanent)
+			staticDatabase->putData(object->_getObjectID(), objectData);
+		else
+			database->putData(object->_getObjectID(), objectData);
 
 		delete objectData;
 
@@ -371,7 +403,7 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 	return 1;
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint64 oid) {
+SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool permanent, uint64 oid) {
 	SceneObject* object = NULL;
 
 	Locker _locker(this);
@@ -386,6 +418,9 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint
 
 	if (persistent)
 		object->setPersistent();
+
+	if (permanent)
+		object->setPermanent();
 
 	if (oid == 0)
 		oid = getNextFreeObjectID();
@@ -402,7 +437,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint
 	object->deploy(newLogName.toString());
 
 	if (persistent) {
-		updatePersistentObject(object);
+		updatePersistentObject(object, permanent);
 
 		object->queueUpdateToDatabaseTask();
 	}

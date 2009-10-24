@@ -16,6 +16,8 @@ class ObjectDatabase : public Logger {
 	DbEnv* databaseEnvironment;
 	Db* objectsDatabase;
 
+	String databaseFileName;
+
 	uint32 dbEnvironmentFlags;
 	uint32 dbFlags;
 
@@ -26,8 +28,12 @@ private:
 	void openEnvironment();
 	void closeEnvironment();
 
+	ObjectDatabase() {
+		//Should not be used
+	}
+
 public:
-	ObjectDatabase();
+	ObjectDatabase(const String& dbFileName);
 	~ObjectDatabase();
 
 	static int isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags);

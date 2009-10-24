@@ -66,6 +66,7 @@ namespace zone {
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
 		ObjectDatabase* database;
+		ObjectDatabase* staticDatabase;
 
 	public:
 		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
@@ -86,11 +87,11 @@ namespace zone {
 		~ObjectManager();
 
 		// object methods
-		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0);
-		ManagedObject* createObject(const String& className, bool persistent, uint64 oid = 0);
+		SceneObject* createObject(uint32 objectCRC, bool persistent, bool permanent = false, uint64 oid = 0);
+		ManagedObject* createObject(const String& className, bool persistent, bool permanent = false, uint64 oid = 0);
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
-		int updatePersistentObject(DistributedObject* object);
+		int updatePersistentObject(DistributedObject* object, bool permanent = false);
 
 		int destroyObject(uint64 objectID);
 
@@ -100,7 +101,7 @@ namespace zone {
 
 		//void savePersistentObjects();
 
-		void closeDatabase();
+		void closeDatabases();
 
 		void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
 			server = srv;

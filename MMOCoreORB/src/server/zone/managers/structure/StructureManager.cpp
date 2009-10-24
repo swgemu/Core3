@@ -65,18 +65,30 @@ void StructureManager::loadStructures() {
 		((StructureManagerImplementation*) _impl)->loadStructures();
 }
 
-BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid, int planet) {
+BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
 		method.addUnsignedLongParameter(oid);
-		method.addSignedIntParameter(planet);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
 	} else
-		return ((StructureManagerImplementation*) _impl)->loadStaticBuilding(oid, planet);
+		return ((StructureManagerImplementation*) _impl)->loadStaticBuilding(oid);
+}
+
+void StructureManager::loadStaticCells(BuildingObject* building) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(building);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->loadStaticCells(building);
 }
 
 /*
@@ -173,7 +185,10 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		loadStructures();
 		break;
 	case 9:
-		resp->insertLong(loadStaticBuilding(inv->getUnsignedLongParameter(), inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(loadStaticBuilding(inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 10:
+		loadStaticCells((BuildingObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -194,8 +209,12 @@ void StructureManagerAdapter::loadStructures() {
 	((StructureManagerImplementation*) impl)->loadStructures();
 }
 
-BuildingObject* StructureManagerAdapter::loadStaticBuilding(unsigned long long oid, int planet) {
-	return ((StructureManagerImplementation*) impl)->loadStaticBuilding(oid, planet);
+BuildingObject* StructureManagerAdapter::loadStaticBuilding(unsigned long long oid) {
+	return ((StructureManagerImplementation*) impl)->loadStaticBuilding(oid);
+}
+
+void StructureManagerAdapter::loadStaticCells(BuildingObject* building) {
+	((StructureManagerImplementation*) impl)->loadStaticCells(building);
 }
 
 /*
