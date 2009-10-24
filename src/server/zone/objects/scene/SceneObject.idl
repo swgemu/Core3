@@ -106,6 +106,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	@dereferenced
 	protected StringId detailedDescription;
 	
+	//TODO: This belongs in Managed Object - Bobius
+	protected boolean permanent;
+	
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType;
@@ -630,6 +633,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
 		return containerObjects;
+	}
+	
+	//TODO: This belongs in Managed Object - Bobius
+	public boolean isPermanent() {
+		return permanent;
+	}
+	
+	//TODO: This belongs in Managed Object - Bobius
+	public void setPermanent() {
+		permanent = true;
 	}
 
 }

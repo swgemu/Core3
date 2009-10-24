@@ -304,6 +304,10 @@ public:
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
+	bool isPermanent();
+
+	void setPermanent();
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -355,6 +359,8 @@ protected:
 	StringId objectName;
 
 	StringId detailedDescription;
+
+	bool permanent;
 
 	unsigned int containerType;
 
@@ -903,6 +909,10 @@ public:
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
+	bool isPermanent();
+
+	void setPermanent();
+
 	SceneObject* _this;
 
 	operator const SceneObject*();
@@ -1111,6 +1121,10 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
+
+	bool isPermanent();
+
+	void setPermanent();
 
 protected:
 	String _param0_info__String_bool_;

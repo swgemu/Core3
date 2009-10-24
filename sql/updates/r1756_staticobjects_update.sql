@@ -1,0 +1,1 @@
+ALTER TABLE `swgemu`.`staticobjects` ADD INDEX parent(`parentid`);

@@ -7,15 +7,20 @@
 
 #include "ObjectDatabase.h"
 
-ObjectDatabase::ObjectDatabase() : Logger("ObjectDatabase") {
+ObjectDatabase::ObjectDatabase(const String& dbFileName) : Logger("ObjectDatabase") {
 	databaseEnvironment = new DbEnv(0);
 	objectsDatabase = new Db(databaseEnvironment, 0);
 
 	dbFlags = DB_CREATE | DB_THREAD;
 	dbEnvironmentFlags = DB_CREATE | DB_THREAD | DB_INIT_LOCK | DB_INIT_LOG | DB_INIT_TXN | DB_INIT_MPOOL;
 
+	databaseFileName = dbFileName;
+
 	openEnvironment();
 	openDatabase();
+
+	setGlobalLogging(true);
+	setLogging(false);
 
 	//setFileLogger("log/berkeley.log");
 
@@ -82,15 +87,15 @@ void ObjectDatabase::openDatabase() {
 	try {
 		//berkeley->set_error_stream(&System::out);
 
-		int ret = objectsDatabase->open(NULL, "objects.db", NULL, DB_HASH, dbFlags, 0);
+		int ret = objectsDatabase->open(NULL, databaseFileName, NULL, DB_HASH, dbFlags, 0);
 
 		if (ret != 0) {
-			error("Trying to open database error:" + String::valueOf(ret));
+			error("Trying to open database (" + databaseFileName + ") error:" + String::valueOf(ret));
 		} else
-			info("opened objects database", true);
+			info("opened objects database (" + databaseFileName + ")", true);
 
 	} catch(DbException &e) {
-		error("Error opening database: " );
+		error("Error opening database (" + databaseFileName + "): " );
 		error(e.what());
 	} catch (...) {
 		error("unreported exception caught while trying to open berkeley DB ");
@@ -102,8 +107,10 @@ void ObjectDatabase::closeDatabase() {
 
 		objectsDatabase->close(0);
 
+		info("database (" + databaseFileName + ") closed", true);
+
 	} catch (DbException &e) {
-		error("Error closing database: ");
+		error("Error closing database (" + databaseFileName + "):");
 		error(e.what());
 	} catch (...) {
 		error("unreported exception caught while trying to open berkeley DB ");
@@ -125,7 +132,7 @@ int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 
 		if (ret != 0) {
 			if (ret != DB_NOTFOUND)
-				error("Trying to get database error:" + String::valueOf(ret));
+				error("Trying to get database (" + databaseFileName + ") error:" + String::valueOf(ret));
 
 			return ret;
 		}
@@ -136,7 +143,7 @@ int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 
 		free(data.get_data());
 
-		info("retrieved data of size " + String::valueOf(objectData->size()), true);
+		info("retrieved data of size " + String::valueOf(objectData->size()));
 	} catch(DbException &e) {
 		error("Error in getData");
 		error(e.what());
@@ -157,7 +164,7 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 		ret = objectsDatabase->put(NULL, &key, &data, 0);
 
 		if (ret != 0)
-			error("Trying to open database error:" + String::valueOf(ret));
+			error("Trying to open database (" + databaseFileName + ") error:" + String::valueOf(ret));
 
 		if (syncToDisk)
 			objectsDatabase->sync(0);

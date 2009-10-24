@@ -473,9 +473,9 @@ void ZoneServerImplementation::shutdown() {
 
 	info("zones shut down", true);
 
-	info("closing database...", true);
+	info("closing databases...", true);
 
-	objectManager->closeDatabase();
+	objectManager->closeDatabases();
 
 	printInfo(true);
 
@@ -609,7 +609,7 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 }
 
 void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
-	objectManager->updatePersistentObject(object);
+	objectManager->updatePersistentObject(object, object->isPermanent());
 }
 
 SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool persistent, uint64 oid) {
@@ -618,10 +618,32 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool per
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, persistent, oid);
+		obj = objectManager->createObject(templateCRC, persistent, false, oid);
 
 		if (obj != NULL && obj->isPlayerCreature())
 			chatManager->addPlayer((PlayerCreature*)obj);
+
+		//unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+
+		//unlock();
+	} catch (...) {
+		error("unreported exception caught in ZoneServerImplementation::createObject");
+		//unlock();
+	}
+
+	return obj;
+}
+
+SceneObject* ZoneServerImplementation::createPermanentObject(uint32 templateCRC, uint64 oid) {
+	SceneObject* obj = NULL;
+
+	try {
+		//lock(); ObjectManager has its own mutex
+
+		obj = objectManager->createObject(templateCRC, true, true, oid);
 
 		//unlock();
 	} catch (Exception& e) {

@@ -160,6 +160,8 @@ public:
 
 	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
 
+	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID = 0);
+
 	void updateObjectToDatabase(SceneObject* object);
 
 	void destroyObject(unsigned long long objectID);
@@ -331,6 +333,8 @@ public:
 
 	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
 
+	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID = 0);
+
 	void updateObjectToDatabase(SceneObject* object);
 
 	void destroyObject(unsigned long long objectID);
@@ -447,6 +451,8 @@ public:
 	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
 	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID);
+
+	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID);
 
 	void updateObjectToDatabase(SceneObject* object);
 
