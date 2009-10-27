@@ -23,6 +23,20 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -81,6 +95,10 @@ public:
 	void addNotifiedObject(SceneObject* object);
 
 	void removeNotifiedObject(SceneObject* object);
+
+	void onEnter(PlayerCreature* player);
+
+	void onExit(PlayerCreature* player);
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -151,6 +169,10 @@ public:
 
 	void removeNotifiedObject(SceneObject* object);
 
+	virtual void onEnter(PlayerCreature* player);
+
+	virtual void onExit(PlayerCreature* player);
+
 	BuildingObject* _this;
 
 	operator const BuildingObject*();
@@ -211,6 +233,10 @@ public:
 	void addNotifiedObject(SceneObject* object);
 
 	void removeNotifiedObject(SceneObject* object);
+
+	void onEnter(PlayerCreature* player);
+
+	void onExit(PlayerCreature* player);
 
 };
 

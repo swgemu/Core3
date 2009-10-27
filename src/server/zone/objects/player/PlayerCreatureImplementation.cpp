@@ -332,3 +332,15 @@ void PlayerCreatureImplementation::setOnline() {
 
 	doRecovery();
 }
+
+void PlayerCreatureImplementation::insertToBuilding(BuildingObject * building) {
+	SceneObjectImplementation::insertToBuilding(building);
+
+	building->onEnter(_this);
+}
+
+void PlayerCreatureImplementation::removeFromBuilding(BuildingObject * building) {
+	SceneObjectImplementation::removeFromBuilding(building);
+
+	building->onExit(_this);
+}

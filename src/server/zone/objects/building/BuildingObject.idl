@@ -52,6 +52,7 @@ import server.zone.objects.cell.CellObject;
 import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
 
 
 class BuildingObject extends TangibleObject implements QuadTree {
@@ -129,6 +130,12 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public void removeNotifiedObject(SceneObject object) {
 		notifiedObjects.drop(object);
+	}
+	
+	public abstract void onEnter(PlayerCreature player) {
+	}
+	
+	public abstract void onExit(PlayerCreature player) {
 	}
 
 }

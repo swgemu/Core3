@@ -6,6 +6,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -224,6 +226,32 @@ void BuildingObject::removeNotifiedObject(SceneObject* object) {
 		((BuildingObjectImplementation*) _impl)->removeNotifiedObject(object);
 }
 
+void BuildingObject::onEnter(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->onEnter(player);
+}
+
+void BuildingObject::onExit(PlayerCreature* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->onExit(player);
+}
+
 /*
  *	BuildingObjectImplementation
  */
@@ -294,48 +322,54 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(69):  Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(70):  Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(71):  QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(72):  QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(73):  notifiedObjects.setNoDuplicateInsertPlan();
+	// server/zone/objects/building/BuildingObject.idl(74):  notifiedObjects.setNoDuplicateInsertPlan();
 	(&notifiedObjects)->setNoDuplicateInsertPlan();
-	// server/zone/objects/building/BuildingObject.idl(75):  staticBuilding = false;
+	// server/zone/objects/building/BuildingObject.idl(76):  staticBuilding = false;
 	staticBuilding = false;
-	// server/zone/objects/building/BuildingObject.idl(77):  super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(78):  super.containerVolumeLimit = 0xFFFFFFFF;
 	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(79):  super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(80):  super.containerType = 2;
 	TangibleObjectImplementation::containerType = 2;
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(111):  return staticBuilding;
+	// server/zone/objects/building/BuildingObject.idl(112):  return staticBuilding;
 	return staticBuilding;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(115):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(116):  return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(119):  staticBuilding = value;
+	// server/zone/objects/building/BuildingObject.idl(120):  staticBuilding = value;
 	staticBuilding = value;
 }
 
 bool BuildingObjectImplementation::hasNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(123):  return notifiedObjects.contains(object);
+	// server/zone/objects/building/BuildingObject.idl(124):  return notifiedObjects.contains(object);
 	return (&notifiedObjects)->contains(object);
 }
 
 void BuildingObjectImplementation::addNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(127):  notifiedObjects.put(object);
+	// server/zone/objects/building/BuildingObject.idl(128):  notifiedObjects.put(object);
 	(&notifiedObjects)->put(object);
 }
 
 void BuildingObjectImplementation::removeNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(131):  notifiedObjects.drop(object);
+	// server/zone/objects/building/BuildingObject.idl(132):  notifiedObjects.drop(object);
 	(&notifiedObjects)->drop(object);
+}
+
+void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
+}
+
+void BuildingObjectImplementation::onExit(PlayerCreature* player) {
 }
 
 /*
@@ -384,6 +418,12 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 17:
 		removeNotifiedObject((SceneObject*) inv->getObjectParameter());
+		break;
+	case 18:
+		onEnter((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 19:
+		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -438,6 +478,14 @@ void BuildingObjectAdapter::addNotifiedObject(SceneObject* object) {
 
 void BuildingObjectAdapter::removeNotifiedObject(SceneObject* object) {
 	((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
+}
+
+void BuildingObjectAdapter::onEnter(PlayerCreature* player) {
+	((BuildingObjectImplementation*) impl)->onEnter(player);
+}
+
+void BuildingObjectAdapter::onExit(PlayerCreature* player) {
+	((BuildingObjectImplementation*) impl)->onExit(player);
 }
 
 /*
