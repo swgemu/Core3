@@ -51,6 +51,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.building.BuildingObject;
 import server.zone.objects.tangible.Container;
 import engine.service.proto.BasePacket;
 import engine.lua.LuaObject;
@@ -264,5 +265,8 @@ class PlayerCreature extends CreatureObject {
 	public void removeChatRoom(ChatRoom room) {
 		chatRooms.drop(room);
 	}
+	
+	public native void insertToBuilding(BuildingObject building);
+	public native void removeFromBuilding(BuildingObject building);
 	
 }
