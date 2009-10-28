@@ -26,6 +26,20 @@ using namespace server::zone::objects::cell;
 namespace server {
 namespace zone {
 namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -48,8 +62,6 @@ using namespace server::zone::objects::player;
 #include "system/util/SortedVector.h"
 
 #include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {

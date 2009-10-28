@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/player/PlayerObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "server/zone/objects/tangible/Container.h"

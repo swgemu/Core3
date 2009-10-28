@@ -6,6 +6,8 @@
 
 #include "server/zone/packets/object/StfParameter.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	CreatureObjectStub
  */

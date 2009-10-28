@@ -14,6 +14,10 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	ObjectControllerStub
  */

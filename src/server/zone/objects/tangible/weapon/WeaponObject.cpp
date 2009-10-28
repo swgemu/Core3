@@ -4,6 +4,8 @@
 
 #include "WeaponObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	WeaponObjectStub
  */

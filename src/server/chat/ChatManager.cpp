@@ -18,6 +18,8 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "server/zone/packets/chat/ChatRoomList.h"
 
 #include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"

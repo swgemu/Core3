@@ -36,6 +36,20 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace building {
 
 class BuildingObject;
@@ -112,8 +126,6 @@ using namespace server::chat::room;
 #include "engine/util/QuadTreeEntry.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/service/proto/BasePacket.h"
 
