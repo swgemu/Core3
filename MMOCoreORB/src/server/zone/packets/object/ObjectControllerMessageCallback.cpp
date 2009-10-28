@@ -5,6 +5,8 @@
  *      Author: theanswer
  */
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "ObjectControllerMessageCallback.h"
 
 ObjectFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>* ObjectControllerMessageCallback::objectMessageControllerFactory = NULL;

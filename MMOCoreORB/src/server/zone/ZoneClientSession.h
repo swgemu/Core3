@@ -11,6 +11,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 
 class ZoneServer;
 
@@ -30,8 +44,6 @@ using namespace server::zone;
 #include "system/net/SocketAddress.h"
 
 #include "system/net/Socket.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {

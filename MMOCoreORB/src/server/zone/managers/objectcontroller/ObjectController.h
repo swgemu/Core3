@@ -77,15 +77,39 @@ class ZoneProcessServerImplementation;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/Lua.h"
 
 #include "engine/log/Logger.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {

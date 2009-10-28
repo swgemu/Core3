@@ -9,9 +9,21 @@
 
 #include "engine/core/ManagedReference.h"
 
-#include "server/zone/objects/tangible/terminal/Terminal.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
 
-#include "server/zone/objects/scene/SceneObject.h"
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
 

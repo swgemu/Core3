@@ -4,6 +4,8 @@
 
 #include "StartingLocationTerminal.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	StartingLocationTerminalStub
  */

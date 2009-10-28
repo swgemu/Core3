@@ -4,6 +4,8 @@
 
 #include "Container.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	ContainerStub
  */

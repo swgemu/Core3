@@ -23,6 +23,20 @@ class StfParameter;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
@@ -30,8 +44,6 @@ using namespace server::zone::packets::object;
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 namespace zone {

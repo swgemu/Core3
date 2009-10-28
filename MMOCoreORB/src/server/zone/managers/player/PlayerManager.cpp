@@ -10,6 +10,8 @@
 
 #include "server/zone/packets/MessageCallback.h"
 
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 #include "server/zone/ZoneServer.h"
 
 /*
