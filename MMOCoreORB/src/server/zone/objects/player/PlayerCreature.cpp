@@ -499,32 +499,6 @@ void PlayerCreature::removeChatRoom(ChatRoom* room) {
 		((PlayerCreatureImplementation*) _impl)->removeChatRoom(room);
 }
 
-void PlayerCreature::insertToBuilding(BuildingObject* building) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 42);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerCreatureImplementation*) _impl)->insertToBuilding(building);
-}
-
-void PlayerCreature::removeFromBuilding(BuildingObject* building) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 43);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerCreatureImplementation*) _impl)->removeFromBuilding(building);
-}
-
 /*
  *	PlayerCreatureImplementation
  */
@@ -881,12 +855,6 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case 41:
 		removeChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
-	case 42:
-		insertToBuilding((BuildingObject*) inv->getObjectParameter());
-		break;
-	case 43:
-		removeFromBuilding((BuildingObject*) inv->getObjectParameter());
-		break;
 	default:
 		return NULL;
 	}
@@ -1036,14 +1004,6 @@ void PlayerCreatureAdapter::addChatRoom(ChatRoom* room) {
 
 void PlayerCreatureAdapter::removeChatRoom(ChatRoom* room) {
 	((PlayerCreatureImplementation*) impl)->removeChatRoom(room);
-}
-
-void PlayerCreatureAdapter::insertToBuilding(BuildingObject* building) {
-	((PlayerCreatureImplementation*) impl)->insertToBuilding(building);
-}
-
-void PlayerCreatureAdapter::removeFromBuilding(BuildingObject* building) {
-	((PlayerCreatureImplementation*) impl)->removeFromBuilding(building);
 }
 
 /*

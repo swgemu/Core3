@@ -265,8 +265,4 @@ class PlayerCreature extends CreatureObject {
 	public void removeChatRoom(ChatRoom room) {
 		chatRooms.drop(room);
 	}
-	
-	public native void insertToBuilding(BuildingObject building);
-	public native void removeFromBuilding(BuildingObject building);
-	
 }
