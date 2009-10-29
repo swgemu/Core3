@@ -228,32 +228,6 @@ void BuildingObject::removeNotifiedObject(SceneObject* object) {
 		((BuildingObjectImplementation*) _impl)->removeNotifiedObject(object);
 }
 
-void BuildingObject::onEnter(PlayerCreature* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((BuildingObjectImplementation*) _impl)->onEnter(player);
-}
-
-void BuildingObject::onExit(PlayerCreature* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((BuildingObjectImplementation*) _impl)->onExit(player);
-}
-
 /*
  *	BuildingObjectImplementation
  */
@@ -368,12 +342,6 @@ void BuildingObjectImplementation::removeNotifiedObject(SceneObject* object) {
 	(&notifiedObjects)->drop(object);
 }
 
-void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
-}
-
-void BuildingObjectImplementation::onExit(PlayerCreature* player) {
-}
-
 /*
  *	BuildingObjectAdapter
  */
@@ -420,12 +388,6 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 17:
 		removeNotifiedObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case 18:
-		onEnter((PlayerCreature*) inv->getObjectParameter());
-		break;
-	case 19:
-		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -480,14 +442,6 @@ void BuildingObjectAdapter::addNotifiedObject(SceneObject* object) {
 
 void BuildingObjectAdapter::removeNotifiedObject(SceneObject* object) {
 	((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
-}
-
-void BuildingObjectAdapter::onEnter(PlayerCreature* player) {
-	((BuildingObjectImplementation*) impl)->onEnter(player);
-}
-
-void BuildingObjectAdapter::onExit(PlayerCreature* player) {
-	((BuildingObjectImplementation*) impl)->onExit(player);
 }
 
 /*

@@ -108,10 +108,6 @@ public:
 
 	void removeNotifiedObject(SceneObject* object);
 
-	void onEnter(PlayerCreature* player);
-
-	void onExit(PlayerCreature* player);
-
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -181,10 +177,6 @@ public:
 
 	void removeNotifiedObject(SceneObject* object);
 
-	virtual void onEnter(PlayerCreature* player);
-
-	virtual void onExit(PlayerCreature* player);
-
 	BuildingObject* _this;
 
 	operator const BuildingObject*();
@@ -245,10 +237,6 @@ public:
 	void addNotifiedObject(SceneObject* object);
 
 	void removeNotifiedObject(SceneObject* object);
-
-	void onEnter(PlayerCreature* player);
-
-	void onExit(PlayerCreature* player);
 
 };
 
