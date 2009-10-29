@@ -303,56 +303,128 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
 
+	/**
+	 * SceneObject constructor, used to initialize the object.
+	 * @pre { templateData is a valid LuaObject that contains the necessary values to initialize SceneObject }
+	 * @post { SceneObject is initialized } 
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members 
+	 */
 	public SceneObject(LuaObject templateData) {
 		loadTemplateData(templateData);
 		initializeTransientMembers();
 	}
 	
+	/**
+	 * reads and sets the template data from a LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	@local
 	public native void loadTemplateData(LuaObject templateData);
+	
+	/**
+	 * initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre { transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	public native void initializeTransientMembers();
 	
+	/**
+	 * logs info message
+	 * @pre { }
+	 * @post { message has been printed to console or file }
+	 * @param msg message to print
+	 * @param forced if true, always prints the message to console 
+	 */
 	public void info(final string msg, boolean forced = false) {
 		Logger.info(msg, forced);
 	}
 	
+	/**
+	 * logs error message
+	 * @pre { }
+	 * @post { error message has been printed to console and file }
+	 * @param msg error message to print
+	 */
 	public void error(final string msg) {
 		Logger.error(msg);
 	}
 	
+	/** 
+	 * returns the number of in range objects, the size of the in range object vector
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is locked, zone is locked }
+	 * @return number of in range objects
+	 */
 	public int inRangeObjectCount() {
 		return QuadTreeEntry.inRangeObjectCount();
 	}
 	
+	/**
+	 * retrieves an object from the in range object vector
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is locked, zone is locked }
+	 * @return returns a QuadTreeEntry in range object from the in range vector
+	 */
 	@local
 	public QuadTreeEntry getInRangeObject(int index) {
 		return QuadTreeEntry.getInRangeObject(index);
 	}
 	
+	/**
+	 * evaluates if the object is in range
+	 * @pre { this object is locked, obj is locked}
+	 * @post { this object is locked, obj is locked }
+	 * @param obj object that will be checked against
+	 * @param range range to check
+	 * @return returns true if this object is in range with obj
+	 */
 	public boolean isInRange(SceneObject obj, float range) {
 		return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
 	}
 	
+	/**
+	 * evaluates if the object is in range
+	 * @pre { this object is locked, obj is locked}
+	 * @post { this object is locked, obj is locked }
+	 * @param obj object that will be checked against
+	 * @param range range to check
+	 * @return returns true if this object is in range with obj
+	 */
 	@local
 	public boolean isInRange(QuadTreeEntry obj, float range) {
 		return QuadTreeEntry.isInRange(obj, range);
 	}
 	
-	public void redeploy() {
-	}
-
-	public void scheduleUndeploy() {
-	}
-
-	public void undeploy() {
-	}
-
-	public void removeUndeploymentEvent() {
-	}
-	
+	/**
+	 * tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post { this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
 	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
+	
+	/**
+	 * tries to remove/unlink object
+	 * @pre { this object is locked, object is locked }
+	 * @post { this object is locked, object is locked }
+	 * @param object SceneObject that will be removed from the current object
+	 * @param notifyClient not used currently
+	 * @return returns true if the object has been successfully removed
+	 */
 	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
 	
+	/**
+	 * evaluates if this object has the necessary slots free to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post { this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @return returns true if the object can be added
+	 */
 	public abstract boolean canAddObject(SceneObject object) {
 		int arrangementSize = object.getArrangementDescriptorSize();
 
@@ -366,26 +438,122 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return true;
 	}
 	
+	/**
+	 * updates this object to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	public native void updateToDatabase(boolean startTask = true);
 	
+	/**
+	 * sends a SceneObjectCreateMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the SceneObjectCreateMessage message }
+	 * @param client ZoneClientSession that will receive the message
+	 */
 	public native void create(ZoneClientSession client);
+	
+	/**
+	 * sends a SceneObjectDestroyMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the destroy message }
+	 * @param client ZoneClientSession that will receive the message
+	 */
 	public native void destroy(ZoneClientSession client);
+	
+	/**
+	 * sends a SceneObjectCloseMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the close message }
+	 * @param client ZoneClientSession that will receive the message
+	 */
 	public native void close(ZoneClientSession client);
+	
+	/**
+	 * sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the link message }
+	 * @param client ZoneClientSession that will receive the message
+	 * @param containmentType arrangement type?
+	 */
 	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
+	
+	/**
+	 * creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param objectID object id of object to link
+	 * @param containmentType arrangement type?
+	 * @return returns a new valid UpdateContainmentMessage
+	 */
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 	
+	/**
+	 * sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	public native abstract void sendTo(SceneObject player, boolean doClose = true);
+	
+	/**
+	 * sends a SceneObjectDestroyMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the destroy message }
+	 * @param plaer SceneObject that will receive the message 
+	 */
 	public native abstract void sendDestroyTo(SceneObject player);
+	
+	/**
+	 * sends the baseline messages of this object to the specified player, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	public abstract void sendBaselinesTo(SceneObject player) {
 	}
 	
+	/**
+	 * sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	public native abstract void sendContainerObjectsTo(SceneObject player);
+	
+	/**
+	 * sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	public native abstract void sendSlottedObjectsTo(SceneObject player);
 	
+	/**
+	 * sends the necessary messages to owner client, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	public abstract void sendToOwner(boolean doClose = true) {
 	}
 	
+	/**
+	 * sends an AttributeListMessage to specified object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, object received the attribute list message }
+	 * @param object SceneObject that will receive the message
+	 */
 	public native abstract void sendAttributeListTo(SceneObject object);
+	
+	/**
+	 * fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete }
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse) {
 	}
 	
@@ -393,28 +561,111 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return 0;
 	}
 	
+	/**
+	 * inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
 	public native abstract void insertToZone(Zone zone);
+	
+	/**
+	 * inserts this object into the building, this method is only to be called from insertToZone
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is in the building, this object is locked, zone is locked }
+	 * @param building BuildingObject where this object will be inserted
+	 */
 	public native abstract void insertToBuilding(BuildingObject building);
 	
+	/**
+	 * switches zone and position of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, is in the new zone and in the new position }
+	 * @param newZoneID new zone id where the object will be inserted
+	 * @param newPositionX new position X
+	 * @param newPositionZ new position Z
+	 * @param newPositionY new position Y
+	 */
 	public native abstract void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 	
+	/**
+	 * removes object from zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and not in zone }
+	 */
 	public native abstract void removeFromZone();
+	
+	/**
+	 * removes this object from the building, this method is only to be called from removeFromZone
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is not in the building, this object is locked, zone is locked }
+	 * @param building BuildingObject from where this object will be removed
+	 */
 	public native abstract void removeFromBuilding(BuildingObject building);
 	
+	/**
+	 * updates position of this object to the rest of in range objects
+	 * @pre { this object is locked }
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
 	public native abstract void updateZone(boolean lightUpdate);
+	
+	/**
+	 * updates position and/or parent of this object and to the rest of in range objects
+	 * @pre { this object is locked, newParent is a CellObject }
+	 * @post { this object is locked, in range objects are updated of the new position and parent }
+	 * @param newParent cellObject where this object is
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate); 
 	
+	/**
+	 * broadcasts the message to the in range objects
+	 * @pre { this object is locked, message is not null }
+	 * @post { this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
 	public native void broadcastMessage(BasePacket message, boolean sendSelf);
+	
+	/**
+	 * broadcasts an object to the in range objects
+	 * @pre { this object is locked, object is not null }
+	 * @post { this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
 	
+	
+	/**
+	 * broadcasts a vector of messages to the in range objects
+	 * @pre { this object is locked }
+	 * @post { this object is locked, in range objects received the messages, messages are deleted and removed from the vector }
+	 * @param messages a vector containing the messages to be sent, it will be emptied when messages get sent
+	 * @param sendSelf if true the owner of this object receives the messages too
+	 */
 	@local
 	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
 	
+	/**
+	 * sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post { owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
 	public abstract void sendMessage(BasePacket msg) {
 		if (msg != null)
 			msg.finalize();
 	}
 	
+	/**
+	 * compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post { this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
 	public int compareTo(SceneObject obj) {
 		if (getObjectID() < obj.getObjectID())
 			return 1;
@@ -424,9 +675,21 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return 0;
 	}
 	
+	/**
+	 * fills the specified vector with the containment objects of this object
+	 * @pre { this obejct is locked }
+	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
+	 * @param objects the vector map that will contain the objects and their occupied slots 
+	 */
 	@local
 	public native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
 	
+	/**
+	 * returns the object id of the parent of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
+	 */
 	public unsigned long getParentID() {
 		if (parent != null) {
 			return parent.getObjectID();
@@ -434,6 +697,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return 0;
 	}
 	
+
 	public native unsigned long getObjectID();
 	
 	public float getPositionX() {
@@ -542,7 +806,21 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		return server.getZoneServer();
 	}
 	
+	/**
+	 * returns the parent of all children in the object tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns the parent of all children in the object tree
+	 */
 	public native SceneObject getGrandParent();
+	
+
+	/**
+	 * evaluates if this object is a child of the specified SceneObject
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if this object is a child of object
+	 */
 	public native boolean isASubChildOf(SceneObject object);
 	
 	public boolean isInQuadTree() {
