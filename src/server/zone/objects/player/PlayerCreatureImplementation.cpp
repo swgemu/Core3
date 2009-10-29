@@ -23,38 +23,15 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "professions/SkillBox.h"
-
 #include "PlayerObject.h"
-
-/*PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) :
-	CreatureObjectImplementation(templateData) {
-
-	setLoggingName("PlayerCreature");
-
-	owner = NULL;
-
-	disconnectEvent = NULL;
-	recoveryEvent = NULL;
-
-	accountID = 0;
-
-	savedZoneID = -1;
-	savedParentID = 0;
-
-	setOffline();
-}*/
 
 void PlayerCreatureImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
-	//setLoggingName("IntangibleObject");
-
 	disconnectEvent = NULL;
 	recoveryEvent = NULL;
 
 	setLoggingName("PlayerCreature");
-
 }
 
 void PlayerCreatureImplementation::sendToOwner(bool doClose) {
