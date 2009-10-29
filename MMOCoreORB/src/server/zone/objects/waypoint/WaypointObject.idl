@@ -59,8 +59,6 @@ class WaypointObject extends IntangibleObject {
 		
 		internalNote = "EMPTY";
 
-		//setObjectName("New Waypoint");
-
 		Logger.setLoggingName("WaypointObject");
 	}
 	

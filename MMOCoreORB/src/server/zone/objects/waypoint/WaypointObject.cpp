@@ -204,46 +204,46 @@ WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateDa
 	_initializeImplementation();
 	// server/zone/objects/waypoint/WaypointObject.idl(60):  internalNote = "EMPTY";
 	internalNote = "EMPTY";
-	// server/zone/objects/waypoint/WaypointObject.idl(64):  Logger.setLoggingName("WaypointObject");
+	// server/zone/objects/waypoint/WaypointObject.idl(62):  Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");
 }
 
 void WaypointObjectImplementation::changeStatus(bool status) {
-	// server/zone/objects/waypoint/WaypointObject.idl(70):  active = status;
+	// server/zone/objects/waypoint/WaypointObject.idl(68):  active = status;
 	active = status;
 }
 
 void WaypointObjectImplementation::switchStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(74):  
-	if (active)	// server/zone/objects/waypoint/WaypointObject.idl(75):  active = false;
+	// server/zone/objects/waypoint/WaypointObject.idl(72):  
+	if (active)	// server/zone/objects/waypoint/WaypointObject.idl(73):  active = false;
 	active = false;
 
-	else 	// server/zone/objects/waypoint/WaypointObject.idl(78):  active = true;
+	else 	// server/zone/objects/waypoint/WaypointObject.idl(76):  active = true;
 	active = true;
 }
 
 bool WaypointObjectImplementation::getStatus() {
-	// server/zone/objects/waypoint/WaypointObject.idl(82):  return active;
+	// server/zone/objects/waypoint/WaypointObject.idl(80):  return active;
 	return active;
 }
 
 void WaypointObjectImplementation::setInternalNote(const String& message) {
-	// server/zone/objects/waypoint/WaypointObject.idl(86):  internalNote = message;
+	// server/zone/objects/waypoint/WaypointObject.idl(84):  internalNote = message;
 	internalNote = message;
 }
 
 void WaypointObjectImplementation::setPlanetName(const String& planet) {
-	// server/zone/objects/waypoint/WaypointObject.idl(90):  planetName = planet;
+	// server/zone/objects/waypoint/WaypointObject.idl(88):  planetName = planet;
 	planetName = planet;
 }
 
 String WaypointObjectImplementation::getInternalNote() {
-	// server/zone/objects/waypoint/WaypointObject.idl(96):  return internalNote;
+	// server/zone/objects/waypoint/WaypointObject.idl(94):  return internalNote;
 	return internalNote;
 }
 
 String WaypointObjectImplementation::getPlanetName() {
-	// server/zone/objects/waypoint/WaypointObject.idl(100):  return planetName;
+	// server/zone/objects/waypoint/WaypointObject.idl(98):  return planetName;
 	return planetName;
 }
 
