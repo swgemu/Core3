@@ -74,6 +74,12 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
 	
+	/**
+	 * TangibleObject constructor, used to initialized the object
+	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
+	 * @post { TangibleObject is initialized } 
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize TangibleObject members
+	 */
 	public TangibleObject(LuaObject templateData) {
 		super(templateData);
 		
@@ -82,26 +88,87 @@ class TangibleObject extends SceneObject {
 		loadTemplateData(templateData);
 	}
 	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	@local
 	public native void loadTemplateData(LuaObject templateData);
+	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {Êtransient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	public native void initializeTransientMembers();
 	
+	/**
+	 * Sends the TANO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	public native abstract void sendBaselinesTo(SceneObject player);
 	
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	public native abstract void setDefender(SceneObject defender);
+	
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	public native abstract void addDefender(SceneObject defender);
+	
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	public native abstract void removeDefender(SceneObject defender);
+	
+	/**
+	 * Removes all the defenders from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender vector is empty }
+	 */
 	public native abstract void removeDefenders();
 	
+	/**
+	 * Sets the combat state, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
 	public abstract void setCombatState() {
 		
 	}
 	
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	public abstract void clearCombatState(boolean clearDefenders = true) {
 		if (clearDefenders)
 			removeDefenders();
 	}
 	
+	/**
+	 * Evaluates if this object contains the specified defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if SceneObject defender exists in the defender vector
+	 */
 	public boolean hasDefender(SceneObject defender) {
 		for (int i = 0; i < defenderList.size(); ++i) {
 			if (defenderList.get(i) == defender)
@@ -115,11 +182,11 @@ class TangibleObject extends SceneObject {
 		return unknownByte;
 	}
 	
-	/*
+	
 	@local
 	public CustomizationVariables getCustomizationVariables() {
 		return customizationVariables;
-	}*/
+	}
 	
 	public int getObjectCount() {
 		return objectCount;

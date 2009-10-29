@@ -49,8 +49,7 @@ import engine.lua.LuaObject;
 import system.util.VectorMap;
 
 class CellObject extends SceneObject {
-	int cellNumber;
-	//VectorMap<unsigned long, SceneObject> containmentObjects;
+	protected int cellNumber;
 	
 	public CellObject(LuaObject templateData) {
 		super(templateData);
@@ -67,26 +66,6 @@ class CellObject extends SceneObject {
 	public native void initializeTransientMembers();
 	
 	public native void sendBaselinesTo(SceneObject player);
-	
-	/*public boolean addObject(SceneObject object) {
-		boolean result = containmentObjects.put(object.getObjectID(), object);
-	
-		return result;
-	}
-	
-	public boolean removeObject(SceneObject object) {
-		boolean result = containmentObjects.drop(object.getObjectID());
-			
-		return result;
-	}
-	
-	public SceneObject getContainmentObject(int idx) {
-		return containmentObjects.get(idx);
-	}
-	
-	public int getContainmentObjectsSize() {
-		return containmentObjects.size();
-	}*/
 	
 	public int getCellNumber() {
 		return cellNumber;

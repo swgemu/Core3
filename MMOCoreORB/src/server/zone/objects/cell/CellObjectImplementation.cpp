@@ -10,18 +10,6 @@
 #include "server/zone/packets/cell/CellObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 
-/*CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) :
-	SceneObjectImplementation(templateData) {
-
-	setLoggingName("CellObject");
-
-	cellNumber = 0;
-
-	containerVolumeLimit = 0xFFFFFFFF;
-
-	containerType = 2;
-}*/
-
 void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 

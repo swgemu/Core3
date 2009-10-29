@@ -133,6 +133,12 @@ class CreatureObject extends TangibleObject {
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
 
+	/**
+	 * CreatureObject constructor, used to initialized the object
+	 * @pre { templateData is a valid SharedCreatureObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
+	 * @post { CreatureObject is initialized } 
+	 * @param templateData templateData points to the SharedCreatureObjectTemplate LuaObject that is used to initialize CreatureObject members
+	 */
 	public CreatureObject(LuaObject templateData) {
 		super(templateData);
 		
@@ -141,25 +147,169 @@ class CreatureObject extends TangibleObject {
 		loadTemplateData(templateData);
 	}
 	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	@local
 	public native void loadTemplateData(LuaObject templateData);
+	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {Êtransient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	public native void initializeTransientMembers();
 	
+	/**
+	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
+	 * @pre { }
+	 * @post { client received the CommandQueueRemove message }
+	 * @param actioncntr action id that will be cleared from clients queue
+	 * @param timer how many seconds will the action take to execute
+	 * @param tab1 message 1
+	 * @param tab2 message 2 
+	 */
 	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	public native void sendBaselinesTo(SceneObject player);
+	
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {Ê}
+	 * @post { this object received the message }
+	 * @param message string message to send
+	 */
 	public native void sendSystemMessage(final string message);
+	
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {Ê}
+	 * @post { this object received the message }
+	 * @param message unicode message to send
+	 */
 	public native void sendSystemMessage(unicode message);
 	public native void sendSystemMessage(final string file, final string str, unsigned long targetid = 0);
-	public native void sendSlottedObjectsTo(SceneObject player);
 	
 	@local
 	public native void sendSystemMessage(final string file, final string str, StfParameter param);
 	
-	public native void setCombatState();
-	public native void clearCombatState(boolean clearDefenders);
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
+	public native void sendSlottedObjectsTo(SceneObject player);
 	
+	/**
+	 * Sets the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
+	public native void setCombatState();
+	
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
+	public native void clearCombatState(boolean clearDefenders = true);
+	
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {Êthis object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
+	
+	/**
+	 * Updates a specific type of the HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the HAM type updated to the new value }
+	 * @param type specifies which HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setHAM(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates a specific type of the Base HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Base HAM type updated to the new value }
+	 * @param type specifies which Base HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setBaseHAM(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates a specific type of the Wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Wounds type updated to the new value }
+	 * @param type specifies which Wounds type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setWounds(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates a specific type of the Max HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Max HAM type updated to the new value }
+	 * @param type specifies which Max HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates a specific type of the Encumbrance
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Encumbrance type updated to the new value }
+	 * @param type specifies which Encumbrance type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
+	
+	/**
+	 * Updates the weapon id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param objectID the new weapon id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
+	
+	/**
+	 * Updates the target id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param objectID the new target id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
+	
+	/**
+	 * Updates the bank credits of the this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified bank credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setBankCredits(int credits, boolean notifyClient = true);
 	
 	public int getBankCredits() {
 		return bankCredits;
@@ -325,15 +475,5 @@ class CreatureObject extends TangibleObject {
 	public void setHeight(float heigh) {
 		height = heigh;
 	}
-	
-	public native void setHAM(int type, int value, boolean notifyClient = true);
-	public native void setBaseHAM(int type, int value, boolean notifyClient = true);
-	public native void setWounds(int type, int value, boolean notifyClient = true);
-	public native void setMaxHAM(int type, int value, boolean notifyClient = true);
-	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
-	
-	public native void setWeaponID(unsigned long objectID, boolean notifyClient = false);
-	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
-	public native void setBankCredits(int credits, boolean notifyClient = true);
 	
 }

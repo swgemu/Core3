@@ -53,6 +53,7 @@ namespace objects {
 namespace cell {
 
 class CellObjectImplementation : public SceneObjectImplementation {
+protected:
 	int cellNumber;
 
 public:
