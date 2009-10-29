@@ -130,14 +130,6 @@ public:
 
 	bool isInRange(QuadTreeEntry* obj, float range);
 
-	void redeploy();
-
-	void scheduleUndeploy();
-
-	void undeploy();
-
-	void removeUndeploymentEvent();
-
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
@@ -735,14 +727,6 @@ public:
 
 	bool isInRange(QuadTreeEntry* obj, float range);
 
-	void redeploy();
-
-	void scheduleUndeploy();
-
-	void undeploy();
-
-	void removeUndeploymentEvent();
-
 	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
@@ -959,14 +943,6 @@ public:
 	int inRangeObjectCount();
 
 	bool isInRange(SceneObject* obj, float range);
-
-	void redeploy();
-
-	void scheduleUndeploy();
-
-	void undeploy();
-
-	void removeUndeploymentEvent();
 
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
 
