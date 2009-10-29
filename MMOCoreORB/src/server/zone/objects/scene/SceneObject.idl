@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 package server.zone.objects.scene;
 
@@ -71,52 +71,52 @@ include server.zone.objects.scene.variables.StringId;
 
 class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	protected transient ZoneProcessServerImplementation server;
-	
+
 	protected Zone zone;
-		
+
 	protected SceneObject parent;
-	
+
 	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
-	
+
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;
-	
+
 	@dereferenced
 	protected Quaternion direction;
-	
+
 	protected transient unsigned int movementCounter;
-	
+
 	protected native float positionX;
 	protected native float positionZ;
 	protected native float positionY;
-	
+
 	@dereferenced
 	protected Vector<string> arrangementDescriptors;
-	
+
 	@dereferenced
 	protected Vector<string> slotDescriptors;
-	
+
 	@dereferenced
 	protected StringId objectName;
-	
+
 	@dereferenced
 	protected StringId detailedDescription;
-	
+
 	//TODO: This belongs in Managed Object - Bobius
 	protected boolean permanent;
-	
+
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
 	protected unsigned int gameObjectType;
 	protected unsigned int containmentType;
-	
+
 	public static final int CELLOBJECT = 11;
 	public static final int PLAYEROBJECT = 12;
-	
+
 	public static final int ARMOR = 0x100;
 	public static final int BODYARMOR = 0x101;
 	public static final int HEADARMOR = 0x102;
@@ -313,7 +313,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		loadTemplateData(templateData);
 		initializeTransientMembers();
 	}
-	
+
 	/**
 	 * reads and sets the template data from a LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -322,14 +322,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	@local
 	public native void loadTemplateData(LuaObject templateData);
-	
+
 	/**
 	 * initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre { transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * logs info message
 	 * @pre { }
@@ -340,7 +340,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void info(final string msg, boolean forced = false) {
 		Logger.info(msg, forced);
 	}
-	
+
 	/**
 	 * logs error message
 	 * @pre { }
@@ -350,7 +350,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void error(final string msg) {
 		Logger.error(msg);
 	}
-	
+
 	/** 
 	 * returns the number of in range objects, the size of the in range object vector
 	 * @pre { this object is locked, zone is locked }
@@ -360,7 +360,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public int inRangeObjectCount() {
 		return QuadTreeEntry.inRangeObjectCount();
 	}
-	
+
 	/**
 	 * retrieves an object from the in range object vector
 	 * @pre { this object is locked, zone is locked }
@@ -371,7 +371,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public QuadTreeEntry getInRangeObject(int index) {
 		return QuadTreeEntry.getInRangeObject(index);
 	}
-	
+
 	/**
 	 * evaluates if the object is in range
 	 * @pre { this object is locked, obj is locked}
@@ -383,7 +383,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public boolean isInRange(SceneObject obj, float range) {
 		return QuadTreeEntry.isInRange(obj.getPositionX(), obj.getPositionY(), range);
 	}
-	
+
 	/**
 	 * evaluates if the object is in range
 	 * @pre { this object is locked, obj is locked}
@@ -396,7 +396,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public boolean isInRange(QuadTreeEntry obj, float range) {
 		return QuadTreeEntry.isInRange(obj, range);
 	}
-	
+
 	/**
 	 * tries to add/link object
 	 * @pre { this object is locked, object is locked }
@@ -407,7 +407,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @return returns true if the object has been successfully added
 	 */
 	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
-	
+
 	/**
 	 * tries to remove/unlink object
 	 * @pre { this object is locked, object is locked }
@@ -417,7 +417,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @return returns true if the object has been successfully removed
 	 */
 	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
-	
+
 	/**
 	 * evaluates if this object has the necessary slots free to be able to add the specified SceneObject
 	 * @pre { this object is locked, object is locked }
@@ -434,10 +434,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			if (slottedObjects.contains(childArrangement))
 				return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * updates this object to database
 	 * @pre { this object is locked }
@@ -445,7 +445,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param startTask if true, queues a new update task
 	 */
 	public native void updateToDatabase(boolean startTask = true);
-	
+
 	/**
 	 * sends a SceneObjectCreateMessage of this object to client
 	 * @pre { this object is locked }
@@ -453,7 +453,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param client ZoneClientSession that will receive the message
 	 */
 	public native void create(ZoneClientSession client);
-	
+
 	/**
 	 * sends a SceneObjectDestroyMessage of this object to client
 	 * @pre { this object is locked }
@@ -461,7 +461,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param client ZoneClientSession that will receive the message
 	 */
 	public native void destroy(ZoneClientSession client);
-	
+
 	/**
 	 * sends a SceneObjectCloseMessage of this object to client
 	 * @pre { this object is locked }
@@ -469,7 +469,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param client ZoneClientSession that will receive the message
 	 */
 	public native void close(ZoneClientSession client);
-	
+
 	/**
 	 * sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
 	 * @pre { this object is locked }
@@ -478,7 +478,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param containmentType arrangement type?
 	 */
 	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
-	
+
 	/**
 	 * creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
 	 * @pre { this object is locked }
@@ -488,7 +488,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @return returns a new valid UpdateContainmentMessage
 	 */
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
-	
+
 	/**
 	 * sends the necessary messages to player in order to create this object
 	 * @pre { this object is locked }
@@ -497,7 +497,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	public native abstract void sendTo(SceneObject player, boolean doClose = true);
-	
+
 	/**
 	 * sends a SceneObjectDestroyMessage of this object to client
 	 * @pre { this object is locked }
@@ -505,7 +505,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param plaer SceneObject that will receive the message 
 	 */
 	public native abstract void sendDestroyTo(SceneObject player);
-	
+
 	/**
 	 * sends the baseline messages of this object to the specified player, needs to be overriden
 	 * @pre { this object is locked }
@@ -514,7 +514,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	public abstract void sendBaselinesTo(SceneObject player) {
 	}
-	
+
 	/**
 	 * sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
@@ -522,7 +522,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	public native abstract void sendContainerObjectsTo(SceneObject player);
-	
+
 	/**
 	 * sends the contained slotted objects to the specified player
 	 * @pre { this object is locked }
@@ -530,7 +530,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	public native abstract void sendSlottedObjectsTo(SceneObject player);
-	
+
 	/**
 	 * sends the necessary messages to owner client, needs to be overriden
 	 * @pre { this object is locked }
@@ -539,7 +539,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	public abstract void sendToOwner(boolean doClose = true) {
 	}
-	
+
 	/**
 	 * sends an AttributeListMessage to specified object
 	 * @pre { this object is locked }
@@ -547,7 +547,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param object SceneObject that will receive the message
 	 */
 	public native abstract void sendAttributeListTo(SceneObject object);
-	
+
 	/**
 	 * fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -556,11 +556,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse) {
 	}
-	
+
 	public abstract int useObject(SceneObject object) {
 		return 0;
 	}
-	
+
 	/**
 	 * inserts this object into zone
 	 * @pre { this object is locked }
@@ -568,7 +568,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param zone Zone object where this object will be inserted
 	 */
 	public native abstract void insertToZone(Zone zone);
-	
+
 	/**
 	 * inserts this object into the building, this method is only to be called from insertToZone
 	 * @pre { this object is locked, zone is locked }
@@ -576,7 +576,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param building BuildingObject where this object will be inserted
 	 */
 	public native abstract void insertToBuilding(BuildingObject building);
-	
+
 	/**
 	 * switches zone and position of this object
 	 * @pre { this object is locked }
@@ -587,14 +587,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param newPositionY new position Y
 	 */
 	public native abstract void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
-	
+
 	/**
 	 * removes object from zone
 	 * @pre { this object is locked }
 	 * @post { this object is locked and not in zone }
 	 */
 	public native abstract void removeFromZone();
-	
+
 	/**
 	 * removes this object from the building, this method is only to be called from removeFromZone
 	 * @pre { this object is locked, zone is locked }
@@ -602,7 +602,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param building BuildingObject from where this object will be removed
 	 */
 	public native abstract void removeFromBuilding(BuildingObject building);
-	
+
 	/**
 	 * updates position of this object to the rest of in range objects
 	 * @pre { this object is locked }
@@ -610,7 +610,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
 	public native abstract void updateZone(boolean lightUpdate);
-	
+
 	/**
 	 * updates position and/or parent of this object and to the rest of in range objects
 	 * @pre { this object is locked, newParent is a CellObject }
@@ -619,7 +619,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate); 
-	
+
 	/**
 	 * broadcasts the message to the in range objects
 	 * @pre { this object is locked, message is not null }
@@ -627,7 +627,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param sendSelf if true the owner if this object receives the message too
 	 */
 	public native void broadcastMessage(BasePacket message, boolean sendSelf);
-	
+
 	/**
 	 * broadcasts an object to the in range objects
 	 * @pre { this object is locked, object is not null }
@@ -636,8 +636,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param sendSelf if true the owner of this object receives the object too
 	 */
 	public native void broadcastObject(SceneObject object, boolean sendSelf);
-	
-	
+
+
 	/**
 	 * broadcasts a vector of messages to the in range objects
 	 * @pre { this object is locked }
@@ -647,7 +647,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	@local
 	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
-	
+
 	/**
 	 * sends BasePacket msg to the owner of this object, needs to be overriden
 	 * @pre { } 
@@ -658,7 +658,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		if (msg != null)
 			msg.finalize();
 	}
-	
+
 	/**
 	 * compares object ids of this object with obj
 	 * @pre { this object is locked, obj is not null }
@@ -674,7 +674,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		else
 			return 0;
 	}
-	
+
 	/**
 	 * fills the specified vector with the containment objects of this object
 	 * @pre { this obejct is locked }
@@ -683,7 +683,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	@local
 	public native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
-	
+
 	/**
 	 * returns the object id of the parent of this object
 	 * @pre { this object is locked }
@@ -696,10 +696,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		} else
 			return 0;
 	}
-	
+
 
 	public native unsigned long getObjectID();
-	
+
 	public float getPositionX() {
 		return QuadTreeEntry.getPositionX();
 	}
@@ -711,7 +711,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public float getPositionY() {
 		return QuadTreeEntry.getPositionY();
 	}
-	
+
 	public float getDirectionX() {
 		return direction.getX();
 	}
@@ -727,85 +727,85 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public float getDirectionW() {
 		return direction.getW();
 	}
-	
+
 	public unsigned int getClientObjectCRC() {
 		return clientObjectCRC;
 	}
-	
+
 	public unsigned int getServerObjectCRC() {
 		return serverObjectCRC;
 	}
-	
+
 	@local
 	public StringId getObjectName() {
 		return objectName;
 	}
-	
+
 	@local
 	public StringId getDetailedDescription() {
 		return detailedDescription;
 	}
-	
+
 	public int getArrangementDescriptorSize() {
 		return arrangementDescriptors.size();
 	}
-	
+
 	public string getArrangementDescriptor(int idx) {
 		return arrangementDescriptors.get(idx);
 	}
-	
+
 	public string getSlotDescriptor(int idx) {
 		return slotDescriptors.get(idx);
 	}
-	
+
 	public SceneObject getSlottedObject(final string slot) {
 		return slottedObjects.get(slot);
 	}
-	
+
 	public int getSlotDescriptorSize() {
 		return slotDescriptors.size();
 	}
-	
+
 	public int getContainerObjectsSize() {
 		return containerObjects.size();
 	}
-	
+
 	public SceneObject getContainerObject(int idx) {
 		return containerObjects.get(idx);
 	}
-	
+
 	public abstract ZoneClientSession getClient() {
 		return null;
 	}
-	
+
 	public unsigned int getGameObjectType() {
 		return gameObjectType;
 	}
-	
+
 	public unsigned int getContainmentType() {
 		return containmentType;
 	}
-	
+
 	public Zone getZone() {
 		return zone;
 	}
-	
+
 	public float getDirectionAngle() {
 		return direction.getDegrees();
 	}
-	
+
 	public unsigned int getMovementCounter() {
 		return movementCounter;
 	}
-	
+
 	public SceneObject getParent() {
 		return parent;
 	}
-	
+
 	public ZoneServer getZoneServer() {
 		return server.getZoneServer();
 	}
-	
+
 	/**
 	 * returns the parent of all children in the object tree
 	 * @pre { this object is locked }
@@ -813,7 +813,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @return returns the parent of all children in the object tree
 	 */
 	public native SceneObject getGrandParent();
-	
+
 
 	/**
 	 * evaluates if this object is a child of the specified SceneObject
@@ -822,102 +822,102 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @return returns true if this object is a child of object
 	 */
 	public native boolean isASubChildOf(SceneObject object);
-	
+
 	public boolean isInQuadTree() {
 		return QuadTreeEntry.isInQuadTree();
 	}
-	
+
 	public string getLoggingName() {
 		return Logger.getLoggingName();
 	}
-	
+
 	public boolean isPlayerCreature() {
 		return gameObjectType == PLAYERCREATURE;
 	}
-	
+
 	public boolean isCreatureObject() {
 		return gameObjectType & CREATURE;
 	}
-	
+
 	public boolean isBuildingObject() {
 		return gameObjectType & BUILDING;
 	}
-	
+
 	public boolean isWeaponObject() {
 		return gameObjectType & WEAPON;
 	}
-	
+
 	public boolean isArmorObject() {
 		return gameObjectType & ARMOR;
 	}
-	
+
 	public boolean isCellObject() {
 		return gameObjectType == CELLOBJECT;
 	}
-	
+
 	public void setPosition(float x, float z, float y) {
 		QuadTreeEntry.setPosition(x, z, y);
 	}
-	
+
 	public void initializePosition(float x, float z, float y) {
 		QuadTreeEntry.initializePosition(x, z, y);
 	}
-	
+
 	public void setGameObjectType(unsigned int type) {
 		gameObjectType = type;
 	}
-	
+
 	public void setClientObjectCRC(unsigned int objCRC) {
 		clientObjectCRC = objCRC;
 	}
-	
+
 	public void setServerObjectCRC(unsigned int objCRC) {
 		serverObjectCRC = objCRC;
 	}
-	
+
 	public void setParent(SceneObject par) {
 		parent = par;
 	}
-	
+
 	@local
 	public void setZoneProcessServer(ZoneProcessServerImplementation srv) {
 		server = srv;
 	}
-		
+
 	public void setObjectName(final unicode name) {
 		objectName.setCustomString(name);
 	}
-	
+
 	public void setZone(Zone zon) {
 		zone = zon;
 	}
-	
+
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
 	}
-	
+
 	public void setMovementCounter(unsigned int count) {
 		movementCounter = count;
 	}
-	
+
 	public void setContainmentType(unsigned int type) {
 		containmentType = type;
 	}
-	
+
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
 	}
-	
+
 	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
 		return containerObjects;
 	}
-	
+
 	//TODO: This belongs in Managed Object - Bobius
 	public boolean isPermanent() {
 		return permanent;
 	}
-	
+
 	//TODO: This belongs in Managed Object - Bobius
 	public void setPermanent() {
 		permanent = true;
