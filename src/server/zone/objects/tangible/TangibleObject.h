@@ -52,6 +52,8 @@ public:
 
 	byte getUnknownByte();
 
+	CustomizationVariables* getCustomizationVariables();
+
 	int getObjectCount();
 
 	int getMaxCondition();
@@ -142,6 +144,8 @@ public:
 	bool hasDefender(SceneObject* defender);
 
 	byte getUnknownByte();
+
+	CustomizationVariables* getCustomizationVariables();
 
 	int getObjectCount();
 

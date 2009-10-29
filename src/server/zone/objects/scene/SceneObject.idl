@@ -305,9 +305,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	/**
 	 * SceneObject constructor, used to initialize the object.
-	 * @pre { templateData is a valid LuaObject that contains the necessary values to initialize SceneObject }
+	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
 	 * @post { SceneObject is initialized } 
-	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members 
+	 * @param templateData templateData points to the SharedObjectTemplate LuaObject that is used to initialize SceneObejct members 
 	 */
 	public SceneObject(LuaObject templateData) {
 		loadTemplateData(templateData);
@@ -315,7 +315,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * reads and sets the template data from a LuaObject
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
 	 * @post { SceneObject members are initialized }
 	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
@@ -324,14 +324,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void loadTemplateData(LuaObject templateData);
 
 	/**
-	 * initializes the transient members of SceneObject, must call the inherited object method first.
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre { transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
 
 	/**
-	 * logs info message
+	 * Logs an info message
 	 * @pre { }
 	 * @post { message has been printed to console or file }
 	 * @param msg message to print
@@ -342,7 +342,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * logs error message
+	 * Logs an error message
 	 * @pre { }
 	 * @post { error message has been printed to console and file }
 	 * @param msg error message to print
@@ -352,7 +352,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/** 
-	 * returns the number of in range objects, the size of the in range object vector
+	 * Returns the number of in range objects, the size of the in range object vector
 	 * @pre { this object is locked, zone is locked }
 	 * @post { this object is locked, zone is locked }
 	 * @return number of in range objects
@@ -362,7 +362,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * retrieves an object from the in range object vector
+	 * Retrieves an object from the in range object vector
 	 * @pre { this object is locked, zone is locked }
 	 * @post { this object is locked, zone is locked }
 	 * @return returns a QuadTreeEntry in range object from the in range vector
@@ -373,7 +373,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * evaluates if the object is in range
+	 * Evaluates if the object is in range
 	 * @pre { this object is locked, obj is locked}
 	 * @post { this object is locked, obj is locked }
 	 * @param obj object that will be checked against
@@ -385,7 +385,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * evaluates if the object is in range
+	 * Evaluates if the object is in range
 	 * @pre { this object is locked, obj is locked}
 	 * @post { this object is locked, obj is locked }
 	 * @param obj object that will be checked against
@@ -398,7 +398,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * tries to add/link object
+	 * Tries to add/link object
 	 * @pre { this object is locked, object is locked }
 	 * @post { this object is locked, object is locked }
 	 * @param object SceneObject that will be added to the current object
@@ -409,7 +409,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
 
 	/**
-	 * tries to remove/unlink object
+	 * Tries to remove/unlink object
 	 * @pre { this object is locked, object is locked }
 	 * @post { this object is locked, object is locked }
 	 * @param object SceneObject that will be removed from the current object
@@ -419,7 +419,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
 
 	/**
-	 * evaluates if this object has the necessary slots free to be able to add the specified SceneObject
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
 	 * @pre { this object is locked, object is locked }
 	 * @post { this object is locked, object is locked }
 	 * @param object SceneObject that will be checked
@@ -439,7 +439,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * updates this object to database
+	 * Updates this object to database
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param startTask if true, queues a new update task
@@ -447,7 +447,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void updateToDatabase(boolean startTask = true);
 
 	/**
-	 * sends a SceneObjectCreateMessage of this object to client
+	 * Sends a SceneObjectCreateMessage of this object to client
 	 * @pre { this object is locked }
 	 * @post { this object is locked, client received the SceneObjectCreateMessage message }
 	 * @param client ZoneClientSession that will receive the message
@@ -455,7 +455,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void create(ZoneClientSession client);
 
 	/**
-	 * sends a SceneObjectDestroyMessage of this object to client
+	 * Sends a SceneObjectDestroyMessage of this object to client
 	 * @pre { this object is locked }
 	 * @post { this object is locked, client received the destroy message }
 	 * @param client ZoneClientSession that will receive the message
@@ -463,7 +463,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void destroy(ZoneClientSession client);
 
 	/**
-	 * sends a SceneObjectCloseMessage of this object to client
+	 * Sends a SceneObjectCloseMessage of this object to client
 	 * @pre { this object is locked }
 	 * @post { this object is locked, client received the close message }
 	 * @param client ZoneClientSession that will receive the message
@@ -471,7 +471,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void close(ZoneClientSession client);
 
 	/**
-	 * sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
+	 * Sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
 	 * @pre { this object is locked }
 	 * @post { this object is locked, client received the link message }
 	 * @param client ZoneClientSession that will receive the message
@@ -480,7 +480,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void link(ZoneClientSession client, unsigned int containmentType = 4);
 
 	/**
-	 * creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
+	 * Creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param objectID object id of object to link
@@ -490,7 +490,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native BaseMessage link(unsigned long objectID, unsigned int containmentType = 4);
 
 	/**
-	 * sends the necessary messages to player in order to create this object
+	 * Sends the necessary messages to player in order to create this object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received this object }
 	 * @param player SceneObject that will receive the messages
@@ -499,7 +499,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void sendTo(SceneObject player, boolean doClose = true);
 
 	/**
-	 * sends a SceneObjectDestroyMessage of this object to client
+	 * Sends a SceneObjectDestroyMessage of this object to client
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the destroy message }
 	 * @param plaer SceneObject that will receive the message 
@@ -507,7 +507,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void sendDestroyTo(SceneObject player);
 
 	/**
-	 * sends the baseline messages of this object to the specified player, needs to be overriden
+	 * Sends the baseline messages of this object to the specified player, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
@@ -516,7 +516,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * sends the contained non slotted objects to the specified player
+	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the container objects }
 	 * @param player SceneObject that will receive the objects 
@@ -524,7 +524,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void sendContainerObjectsTo(SceneObject player);
 
 	/**
-	 * sends the contained slotted objects to the specified player
+	 * Sends the contained slotted objects to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the slotted objects }
 	 * @param player SceneObject that will receive the objects 
@@ -532,7 +532,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void sendSlottedObjectsTo(SceneObject player);
 
 	/**
-	 * sends the necessary messages to owner client, needs to be overriden
+	 * Sends the necessary messages to owner client, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, owner received its own scene object }
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
@@ -541,7 +541,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * sends an AttributeListMessage to specified object
+	 * Sends an AttributeListMessage to specified object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, object received the attribute list message }
 	 * @param object SceneObject that will receive the message
@@ -549,7 +549,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void sendAttributeListTo(SceneObject object);
 
 	/**
-	 * fills the radial options, needs to be overriden
+	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
 	 * @post { this object is locked, menuResponse is complete }
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
@@ -562,7 +562,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * inserts this object into zone
+	 * Inserts this object into zone
 	 * @pre { this object is locked }
 	 * @post { this object is locked and inserted into zone }
 	 * @param zone Zone object where this object will be inserted
@@ -570,7 +570,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void insertToZone(Zone zone);
 
 	/**
-	 * inserts this object into the building, this method is only to be called from insertToZone
+	 * Inserts this object into the building, this method is only to be called from insertToZone
 	 * @pre { this object is locked, zone is locked }
 	 * @post { this object is in the building, this object is locked, zone is locked }
 	 * @param building BuildingObject where this object will be inserted
@@ -578,7 +578,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void insertToBuilding(BuildingObject building);
 
 	/**
-	 * switches zone and position of this object
+	 * Switches zone and position of this object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, is in the new zone and in the new position }
 	 * @param newZoneID new zone id where the object will be inserted
@@ -589,14 +589,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY);
 
 	/**
-	 * removes object from zone
+	 * Removes object from zone
 	 * @pre { this object is locked }
 	 * @post { this object is locked and not in zone }
 	 */
 	public native abstract void removeFromZone();
 
 	/**
-	 * removes this object from the building, this method is only to be called from removeFromZone
+	 * Removes this object from the building, this method is only to be called from removeFromZone
 	 * @pre { this object is locked, zone is locked }
 	 * @post { this object is not in the building, this object is locked, zone is locked }
 	 * @param building BuildingObject from where this object will be removed
@@ -604,7 +604,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void removeFromBuilding(BuildingObject building);
 
 	/**
-	 * updates position of this object to the rest of in range objects
+	 * Updates position of this object to the rest of in range objects
 	 * @pre { this object is locked }
 	 * @post { this object is locked, in range objects are updated with the new position }
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
@@ -612,7 +612,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void updateZone(boolean lightUpdate);
 
 	/**
-	 * updates position and/or parent of this object and to the rest of in range objects
+	 * Updates position and/or parent of this object and to the rest of in range objects
 	 * @pre { this object is locked, newParent is a CellObject }
 	 * @post { this object is locked, in range objects are updated of the new position and parent }
 	 * @param newParent cellObject where this object is
@@ -621,7 +621,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate); 
 
 	/**
-	 * broadcasts the message to the in range objects
+	 * Broadcasts the message to the in range objects
 	 * @pre { this object is locked, message is not null }
 	 * @post { this object is locked, in range objects received a copy of the message, message is deleted }
 	 * @param sendSelf if true the owner if this object receives the message too
@@ -629,7 +629,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void broadcastMessage(BasePacket message, boolean sendSelf);
 
 	/**
-	 * broadcasts an object to the in range objects
+	 * Broadcasts an object to the in range objects
 	 * @pre { this object is locked, object is not null }
 	 * @post { this object is locked, in range objects received the object }
 	 * @param object SceneObject that will be sent to the in range objects
@@ -639,7 +639,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 
 	/**
-	 * broadcasts a vector of messages to the in range objects
+	 * Broadcasts a vector of messages to the in range objects
 	 * @pre { this object is locked }
 	 * @post { this object is locked, in range objects received the messages, messages are deleted and removed from the vector }
 	 * @param messages a vector containing the messages to be sent, it will be emptied when messages get sent
@@ -649,7 +649,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void broadcastMessages(Vector<BasePacket> messages, boolean sendSelf);
 
 	/**
-	 * sends BasePacket msg to the owner of this object, needs to be overriden
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
 	 * @pre { } 
 	 * @post { owner of this object received message, message is deleted }
 	 * @param msg BasePacket to be sent
@@ -660,7 +660,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * compares object ids of this object with obj
+	 * Compares object ids of this object with obj
 	 * @pre { this object is locked, obj is not null }
 	 * @post { this object is locked }
 	 * @param obj SceneObject that will be compared to
@@ -676,7 +676,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * fills the specified vector with the containment objects of this object
+	 * Fills the specified vector with the containment objects of this object
 	 * @pre { this obejct is locked }
 	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
 	 * @param objects the vector map that will contain the objects and their occupied slots 
@@ -685,7 +685,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
 
 	/**
-	 * returns the object id of the parent of this object
+	 * Returns the object id of the parent of this object
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
@@ -807,7 +807,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	}
 
 	/**
-	 * returns the parent of all children in the object tree
+	 * Returns the parent of all children in the object tree
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @return returns the parent of all children in the object tree
@@ -816,7 +816,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 
 	/**
-	 * evaluates if this object is a child of the specified SceneObject
+	 * Evaluates if this object is a child of the specified SceneObject
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @return returns true if this object is a child of object
