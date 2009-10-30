@@ -93,10 +93,10 @@ public:
 
 		parent = message->parseLong();
 
-		directionW = message->parseFloat();
 		directionX = message->parseFloat();
 		directionY = message->parseFloat();
 		directionZ = message->parseFloat();
+		directionW = message->parseFloat();
 
 		positionX = message->parseFloat();
 		positionZ = message->parseFloat();
