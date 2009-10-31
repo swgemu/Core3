@@ -391,6 +391,16 @@ public:
 
 	static const int FACTIONPERKBUILDING = 0x203;
 
+	static const int TUTORIALBUILDING = 0x204;
+
+	static const int MEDICALBUILDING = 0x205;
+
+	static const int RECREATIONBUILDING = 0x206;
+
+	static const int CLONINGBUILDING = 0x207;
+
+	static const int TRAVELBUILDING = 0x208;
+
 	static const int CREATURE = 0x400;
 
 	static const int NPCCREATURE = 0x401;

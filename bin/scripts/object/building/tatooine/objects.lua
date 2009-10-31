@@ -225,7 +225,7 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:cantina_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_cantina_mos_eisley_tatooine.ilf",
 
@@ -445,7 +445,7 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 
 	detailedDescription = "@building_detail:cloning_facility_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
 
@@ -500,7 +500,7 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 
 	detailedDescription = "@building_detail:cloning_facility_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "",
 
@@ -1600,7 +1600,7 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_tatooine.ilf",
 
@@ -1765,7 +1765,7 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "",
 
@@ -1820,7 +1820,7 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
 
@@ -1875,7 +1875,7 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 
 	detailedDescription = "@building_detail:hotel_tatooine_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -1930,7 +1930,7 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 
 	detailedDescription = "@building_detail:hotel_tatooine_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -2590,7 +2590,7 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 
 	detailedDescription = "@building_detail:The Lucky Despot Hotel and Casino",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -2920,7 +2920,7 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:shuttleport_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -2975,7 +2975,7 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 
 	detailedDescription = "@building_detail:starport_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "interiorlayout/starport_tatooine.ilf",
 

@@ -69,6 +69,11 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
+				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
+				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
+				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
+				server/zone/objects/building/travel/TravelBuildingObject.cpp \
+				server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \

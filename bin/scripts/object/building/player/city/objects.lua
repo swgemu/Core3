@@ -216,7 +216,7 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:cantina",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -271,7 +271,7 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:cantina",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -326,7 +326,7 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:cantina",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -546,7 +546,7 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:cloning",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "",
 
@@ -601,7 +601,7 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:cloning",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "",
 
@@ -656,7 +656,7 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:cloning",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "",
 
@@ -3571,7 +3571,7 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "",
 
@@ -3626,7 +3626,7 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "",
 
@@ -3681,7 +3681,7 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "",
 
@@ -3736,7 +3736,7 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 
 	detailedDescription = "@building_detail:shuttleport",
 
-	gameObjectType = 4096,
+	gameObjectType = 520,
 
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport",
@@ -3788,7 +3788,7 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 
 	detailedDescription = "@building_detail:shuttleport",
 
-	gameObjectType = 4096,
+	gameObjectType = 520,
 
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport",
@@ -3840,7 +3840,7 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 
 	detailedDescription = "@building_detail:shuttleport",
 
-	gameObjectType = 4096,
+	gameObjectType = 520,
 
 	locationReservationRadius = 0,
 	lookAtText = "@building_lookat:shuttleport",
@@ -3892,7 +3892,7 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -3947,7 +3947,7 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -4002,7 +4002,7 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 

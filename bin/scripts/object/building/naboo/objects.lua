@@ -390,7 +390,7 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:cantina_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_cantina_style_01.ilf",
 
@@ -500,7 +500,7 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:cloning_facility_naboo",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
 
@@ -555,7 +555,7 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 
 	detailedDescription = "@building_detail:palace_naboo_theed",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "interiorlayout/emperor_retreat.ilf",
 
@@ -1435,7 +1435,7 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_01.ilf",
 
@@ -1490,7 +1490,7 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 
 	detailedDescription = "@building_detail:guild_university_naboo",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_guild_university_style_naboo.ilf",
 
@@ -1600,7 +1600,7 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_naboo.ilf",
 
@@ -1655,7 +1655,7 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
 
@@ -1710,7 +1710,7 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:hotel_naboo_theed",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_hotel_style_naboo2.ilf",
 
@@ -2480,7 +2480,7 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:shuttleport_naboo",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -2535,7 +2535,7 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:starport_naboo",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "interiorlayout/starport_naboo_interior.ilf",
 

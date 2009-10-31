@@ -170,7 +170,7 @@ object_building_corellia_shared_cantina_corellia = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:cantina_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_cantina_style_01.ilf",
 
@@ -280,7 +280,7 @@ object_building_corellia_shared_cloning_corellia = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:guild_combat_corellia",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "interiorlayout/shared_cloning_facility.ilf",
 
@@ -1435,7 +1435,7 @@ object_building_corellia_shared_guild_theater_corellia_s01 = SharedBuildingObjec
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_guild_theatre_style_01.ilf",
 
@@ -1545,7 +1545,7 @@ object_building_corellia_shared_hospital_corellia = SharedBuildingObjectTemplate
 
 	detailedDescription = "@building_detail:hospital_corellia",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_corellia.ilf",
 
@@ -1600,7 +1600,7 @@ object_building_corellia_shared_hospital_corellia_s02 = SharedBuildingObjectTemp
 
 	detailedDescription = "@building_detail:hospital_corellia",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "interiorlayout/shared_hospital_style_02.ilf",
 
@@ -1655,7 +1655,7 @@ object_building_corellia_shared_hotel_corellia = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:guild_combat_corellia",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "interiorlayout/shared_hotel_style_corellia.ilf",
 
@@ -2095,7 +2095,7 @@ object_building_corellia_shared_shuttleport_corellia = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:shuttleport_corellia",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -2425,7 +2425,7 @@ object_building_corellia_shared_starport_corellia = SharedBuildingObjectTemplate
 
 	detailedDescription = "@building_detail:starport_corellia",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "interiorlayout/starport_corellia_interior.ilf",
 

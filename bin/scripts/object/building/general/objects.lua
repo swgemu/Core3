@@ -1600,7 +1600,7 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:base_cantina",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -3250,7 +3250,7 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 
 	detailedDescription = "@building_detail:base_cloning_facility",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "",
 
@@ -4075,7 +4075,7 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:hotel_general_style_1",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -4130,7 +4130,7 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 
 	detailedDescription = "@building_detail:hotel_general_style_2",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -4240,7 +4240,7 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 
 	detailedDescription = "@building_detail:shuttleport_general",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -4680,7 +4680,7 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 
 	detailedDescription = "@building_detail:cloning_facility_general",
 
-	gameObjectType = 512,
+	gameObjectType = 519,
 
 	interiorLayoutFileName = "",
 
@@ -4845,7 +4845,7 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 
 	detailedDescription = "@building_detail:theater",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -4900,7 +4900,7 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 
 	detailedDescription = "@building_detail:guild_university_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -4955,7 +4955,7 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "",
 
@@ -5010,7 +5010,7 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:hospital",
 
-	gameObjectType = 512,
+	gameObjectType = 517,
 
 	interiorLayoutFileName = "",
 
@@ -5065,7 +5065,7 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 
 	detailedDescription = "@building_detail:hotel_tatooine_general",
 
-	gameObjectType = 512,
+	gameObjectType = 518,
 
 	interiorLayoutFileName = "",
 
@@ -5120,7 +5120,7 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 
 	detailedDescription = "@building_detail:starport",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -5175,7 +5175,7 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 
 	detailedDescription = "@building_detail:starport",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -5395,7 +5395,7 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 
 	detailedDescription = "@building_detail:association_hall_civilian_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 516,
 
 	interiorLayoutFileName = "interiorlayout/newbie_hall.ilf",
 
@@ -5450,7 +5450,7 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 
 	detailedDescription = "@building_detail:association_hall_civilian_tatooine",
 
-	gameObjectType = 512,
+	gameObjectType = 516,
 
 	interiorLayoutFileName = "",
 
@@ -6110,7 +6110,7 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 
 	detailedDescription = "@building_detail:shuttleport_general",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -6440,7 +6440,7 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 
 	detailedDescription = "@building_detail:starport_general",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -6495,7 +6495,7 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 
 	detailedDescription = "@building_detail:starport_general_style_1",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 
@@ -6550,7 +6550,7 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 
 	detailedDescription = "@building_detail:starport_general_style_2",
 
-	gameObjectType = 512,
+	gameObjectType = 520,
 
 	interiorLayoutFileName = "",
 

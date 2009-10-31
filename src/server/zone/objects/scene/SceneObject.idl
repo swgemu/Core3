@@ -130,6 +130,11 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public static final int BUILDING = 0x200;
 	public static final int MUNICIPALBUILDING = 0x201;
 	public static final int FACTIONPERKBUILDING = 0x203;
+	public static final int TUTORIALBUILDING = 0x204;
+	public static final int MEDICALBUILDING = 0x205;
+	public static final int RECREATIONBUILDING = 0x206;
+	public static final int CLONINGBUILDING = 0x207;
+	public static final int TRAVELBUILDING = 0x208;
 
 	public static final int CREATURE = 0x400;
 	public static final int NPCCREATURE = 0x401;

@@ -55,6 +55,11 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/cloning/CloningBuildingObject.h"
+#include "server/zone/objects/building/medical/MedicalBuildingObject.h"
+#include "server/zone/objects/building/recreation/RecreationBuildingObject.h"
+#include "server/zone/objects/building/travel/TravelBuildingObject.h"
+#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
@@ -121,6 +126,11 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WaypointObject>(SceneObjectImplementation::WAYPOINT);
 
 	objectFactory.registerObject<BuildingObject>(SceneObjectImplementation::BUILDING);
+	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectImplementation::TUTORIALBUILDING);
+	objectFactory.registerObject<CloningBuildingObject>(SceneObjectImplementation::CLONINGBUILDING);
+	objectFactory.registerObject<MedicalBuildingObject>(SceneObjectImplementation::MEDICALBUILDING);
+	objectFactory.registerObject<TravelBuildingObject>(SceneObjectImplementation::TRAVELBUILDING);
+	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectImplementation::RECREATIONBUILDING);
 
 	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
 	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
