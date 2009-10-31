@@ -216,6 +216,10 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -376,6 +380,10 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	PlayerCreature* _this;
 
 	operator const PlayerCreature*();
@@ -484,6 +492,10 @@ public:
 	void addChatRoom(ChatRoom* room);
 
 	void removeChatRoom(ChatRoom* room);
+
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;
