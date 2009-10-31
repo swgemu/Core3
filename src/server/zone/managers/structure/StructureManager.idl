@@ -68,7 +68,10 @@ class StructureManager extends ManagedObject implements Logger {
 		loadPlayerStructures();
 	}
 	
-	public native BuildingObject loadStaticBuilding(unsigned long oid);
-	public native void loadStaticCells(BuildingObject building);
+	@local
+	private native BuildingObject loadStaticBuilding(unsigned long oid);
+	
+	@local
+	private native void loadStaticCells(BuildingObject building);
 }
 

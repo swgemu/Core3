@@ -92,10 +92,6 @@ public:
 
 	void loadStructures();
 
-	BuildingObject* loadStaticBuilding(unsigned long long oid);
-
-	void loadStaticCells(BuildingObject* building);
-
 protected:
 	StructureManager(DummyConstructorParameter* param);
 
@@ -132,10 +128,12 @@ public:
 
 	void loadStructures();
 
+private:
 	BuildingObject* loadStaticBuilding(unsigned long long oid);
 
 	void loadStaticCells(BuildingObject* building);
 
+public:
 	StructureManager* _this;
 
 	operator const StructureManager*();
@@ -178,10 +176,6 @@ public:
 	void loadPlayerStructures();
 
 	void loadStructures();
-
-	BuildingObject* loadStaticBuilding(unsigned long long oid);
-
-	void loadStaticCells(BuildingObject* building);
 
 };
 

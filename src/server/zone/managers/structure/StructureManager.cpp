@@ -65,32 +65,6 @@ void StructureManager::loadStructures() {
 		((StructureManagerImplementation*) _impl)->loadStructures();
 }
 
-BuildingObject* StructureManager::loadStaticBuilding(unsigned long long oid) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addUnsignedLongParameter(oid);
-
-		return (BuildingObject*) method.executeWithObjectReturn();
-	} else
-		return ((StructureManagerImplementation*) _impl)->loadStaticBuilding(oid);
-}
-
-void StructureManager::loadStaticCells(BuildingObject* building) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->loadStaticCells(building);
-}
-
 /*
  *	StructureManagerImplementation
  */
@@ -184,12 +158,6 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case 8:
 		loadStructures();
 		break;
-	case 9:
-		resp->insertLong(loadStaticBuilding(inv->getUnsignedLongParameter())->_getObjectID());
-		break;
-	case 10:
-		loadStaticCells((BuildingObject*) inv->getObjectParameter());
-		break;
 	default:
 		return NULL;
 	}
@@ -207,14 +175,6 @@ void StructureManagerAdapter::loadPlayerStructures() {
 
 void StructureManagerAdapter::loadStructures() {
 	((StructureManagerImplementation*) impl)->loadStructures();
-}
-
-BuildingObject* StructureManagerAdapter::loadStaticBuilding(unsigned long long oid) {
-	return ((StructureManagerImplementation*) impl)->loadStaticBuilding(oid);
-}
-
-void StructureManagerAdapter::loadStaticCells(BuildingObject* building) {
-	((StructureManagerImplementation*) impl)->loadStaticCells(building);
 }
 
 /*
