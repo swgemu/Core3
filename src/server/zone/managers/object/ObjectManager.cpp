@@ -104,49 +104,49 @@ ObjectManager::~ObjectManager() {
 void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::CREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::NPCCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::DROIDCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::PROBOTCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::CREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::NPCCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
 
-	objectFactory.registerObject<PlayerCreature>(SceneObjectImplementation::PLAYERCREATURE);
+	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
 
-	objectFactory.registerObject<IntangibleObject>(SceneObjectImplementation::INTANGIBLE);
+	objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
 
-	objectFactory.registerObject<ArmorObject>(SceneObjectImplementation::ARMOR);
-	objectFactory.registerObject<ArmorObject>(SceneObjectImplementation::BODYARMOR); //chest plates
+	objectFactory.registerObject<ArmorObject>(SceneObject::ARMOR);
+	objectFactory.registerObject<ArmorObject>(SceneObject::BODYARMOR); //chest plates
 
-	objectFactory.registerObject<Container>(SceneObjectImplementation::CONTAINER);
-	objectFactory.registerObject<TangibleObject>(SceneObjectImplementation::GENERICITEM);
-	objectFactory.registerObject<TangibleObject>(SceneObjectImplementation::WEARABLECONTAINER);
+	objectFactory.registerObject<Container>(SceneObject::CONTAINER);
+	objectFactory.registerObject<TangibleObject>(SceneObject::GENERICITEM);
+	objectFactory.registerObject<TangibleObject>(SceneObject::WEARABLECONTAINER);
 
-	objectFactory.registerObject<CellObject>(SceneObjectImplementation::CELLOBJECT);
-	objectFactory.registerObject<PlayerObject>(SceneObjectImplementation::PLAYEROBJECT);
+	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
+	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
 
-	objectFactory.registerObject<WaypointObject>(SceneObjectImplementation::WAYPOINT);
+	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
 
-	objectFactory.registerObject<BuildingObject>(SceneObjectImplementation::BUILDING);
-	objectFactory.registerObject<TutorialBuildingObject>(SceneObjectImplementation::TUTORIALBUILDING);
-	objectFactory.registerObject<CloningBuildingObject>(SceneObjectImplementation::CLONINGBUILDING);
-	objectFactory.registerObject<MedicalBuildingObject>(SceneObjectImplementation::MEDICALBUILDING);
-	objectFactory.registerObject<TravelBuildingObject>(SceneObjectImplementation::TRAVELBUILDING);
-	objectFactory.registerObject<RecreationBuildingObject>(SceneObjectImplementation::RECREATIONBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
+	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
+	objectFactory.registerObject<CloningBuildingObject>(SceneObject::CLONINGBUILDING);
+	objectFactory.registerObject<MedicalBuildingObject>(SceneObject::MEDICALBUILDING);
+	objectFactory.registerObject<TravelBuildingObject>(SceneObject::TRAVELBUILDING);
+	objectFactory.registerObject<RecreationBuildingObject>(SceneObject::RECREATIONBUILDING);
 
-	objectFactory.registerObject<WeaponObject>(SceneObjectImplementation::WEAPON);
-	objectFactory.registerObject<MeleeWeaponObject>(SceneObjectImplementation::MELEEWEAPON);
+	objectFactory.registerObject<WeaponObject>(SceneObject::WEAPON);
+	objectFactory.registerObject<MeleeWeaponObject>(SceneObject::MELEEWEAPON);
 
-	objectFactory.registerObject<MissionObject>(SceneObjectImplementation::MISSIONOBJECT);
+	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
 
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::TERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::SPACETERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::SHIPPINGTERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObjectImplementation::INTERACTIVETERMINAL);
-	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectImplementation::NEWBIETUTORIALTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::TERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::SPACETERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
+	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
 
 
 	//temporary
-	objectFactory.registerObject<CreatureObject>(SceneObjectImplementation::HOVERVEHICLE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);
 
 }
 

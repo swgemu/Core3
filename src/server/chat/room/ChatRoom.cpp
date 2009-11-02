@@ -806,11 +806,249 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		sendTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 7:
+		sendDestroyTo((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 8:
+		addSubRoom((ChatRoom*) inv->getObjectParameter());
+		break;
+	case 9:
+		removeSubRoom((ChatRoom*) inv->getObjectParameter());
+		break;
+	case 10:
+		resp->insertLong(getSubRoom(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 11:
+		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__String_))->_getObjectID());
+		break;
+	case 12:
+		addPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 13:
+		removePlayer((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 14:
+		removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_));
+		break;
+	case 15:
+		broadcastMessage((BaseMessage*) inv->getObjectParameter());
+		break;
+	case 16:
+		resp->insertBoolean(hasPlayer((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 17:
+		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__String_)));
+		break;
+	case 18:
+		removeAllPlayers();
+		break;
+	case 19:
+		deploy();
+		break;
+	case 20:
+		setPrivate();
+		break;
+	case 21:
+		setPublic();
+		break;
+	case 22:
+		resp->insertBoolean(isPublic());
+		break;
+	case 23:
+		resp->insertBoolean(isPrivate());
+		break;
+	case 24:
+		resp->insertLong(getPlayer(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 25:
+		resp->insertSignedInt(getPlayerSize());
+		break;
+	case 26:
+		setName(inv->getAsciiParameter(_param0_setName__String_));
+		break;
+	case 27:
+		resp->insertAscii(getName());
+		break;
+	case 28:
+		resp->insertAscii(getFullPath());
+		break;
+	case 29:
+		resp->insertAscii(getOwner());
+		break;
+	case 30:
+		resp->insertAscii(getCreator());
+		break;
+	case 31:
+		resp->insertUnicode(getTitle());
+		break;
+	case 32:
+		resp->insertAscii(getServerName());
+		break;
+	case 33:
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
+		break;
+	case 34:
+		setCreator(inv->getAsciiParameter(_param0_setCreator__String_));
+		break;
+	case 35:
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		break;
+	case 36:
+		resp->insertInt(getRoomID());
+		break;
+	case 37:
+		resp->insertSignedInt(getSubRoomsSize());
+		break;
+	case 38:
+		resp->insertLong(getParent()->_getObjectID());
+		break;
+	case 39:
+		resp->insertSignedInt(compareTo((ChatRoom*) inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ChatRoomAdapter::sendTo(PlayerCreature* player) {
+	((ChatRoomImplementation*) impl)->sendTo(player);
+}
+
+void ChatRoomAdapter::sendDestroyTo(PlayerCreature* player) {
+	((ChatRoomImplementation*) impl)->sendDestroyTo(player);
+}
+
+void ChatRoomAdapter::addSubRoom(ChatRoom* channel) {
+	((ChatRoomImplementation*) impl)->addSubRoom(channel);
+}
+
+void ChatRoomAdapter::removeSubRoom(ChatRoom* channel) {
+	((ChatRoomImplementation*) impl)->removeSubRoom(channel);
+}
+
+ChatRoom* ChatRoomAdapter::getSubRoom(int i) {
+	return ((ChatRoomImplementation*) impl)->getSubRoom(i);
+}
+
+ChatRoom* ChatRoomAdapter::getSubRoom(const String& name) {
+	return ((ChatRoomImplementation*) impl)->getSubRoom(name);
+}
+
+void ChatRoomAdapter::addPlayer(PlayerCreature* player, bool doLock) {
+	((ChatRoomImplementation*) impl)->addPlayer(player, doLock);
+}
+
+void ChatRoomAdapter::removePlayer(PlayerCreature* player, bool doLock) {
+	((ChatRoomImplementation*) impl)->removePlayer(player, doLock);
+}
+
+void ChatRoomAdapter::removePlayer(const String& player) {
+	((ChatRoomImplementation*) impl)->removePlayer(player);
+}
+
+void ChatRoomAdapter::broadcastMessage(BaseMessage* msg) {
+	((ChatRoomImplementation*) impl)->broadcastMessage(msg);
+}
+
+bool ChatRoomAdapter::hasPlayer(PlayerCreature* player) {
+	return ((ChatRoomImplementation*) impl)->hasPlayer(player);
+}
+
+bool ChatRoomAdapter::hasPlayer(const String& name) {
+	return ((ChatRoomImplementation*) impl)->hasPlayer(name);
+}
+
+void ChatRoomAdapter::removeAllPlayers() {
+	((ChatRoomImplementation*) impl)->removeAllPlayers();
+}
+
+void ChatRoomAdapter::deploy() {
+	((ChatRoomImplementation*) impl)->deploy();
+}
+
+void ChatRoomAdapter::setPrivate() {
+	((ChatRoomImplementation*) impl)->setPrivate();
+}
+
+void ChatRoomAdapter::setPublic() {
+	((ChatRoomImplementation*) impl)->setPublic();
+}
+
+bool ChatRoomAdapter::isPublic() {
+	return ((ChatRoomImplementation*) impl)->isPublic();
+}
+
+bool ChatRoomAdapter::isPrivate() {
+	return ((ChatRoomImplementation*) impl)->isPrivate();
+}
+
+PlayerCreature* ChatRoomAdapter::getPlayer(int idx) {
+	return ((ChatRoomImplementation*) impl)->getPlayer(idx);
+}
+
+int ChatRoomAdapter::getPlayerSize() {
+	return ((ChatRoomImplementation*) impl)->getPlayerSize();
+}
+
+void ChatRoomAdapter::setName(const String& Name) {
+	((ChatRoomImplementation*) impl)->setName(Name);
+}
+
+String ChatRoomAdapter::getName() {
+	return ((ChatRoomImplementation*) impl)->getName();
+}
+
+String ChatRoomAdapter::getFullPath() {
+	return ((ChatRoomImplementation*) impl)->getFullPath();
+}
+
+String ChatRoomAdapter::getOwner() {
+	return ((ChatRoomImplementation*) impl)->getOwner();
+}
+
+String ChatRoomAdapter::getCreator() {
+	return ((ChatRoomImplementation*) impl)->getCreator();
+}
+
+UnicodeString ChatRoomAdapter::getTitle() {
+	return ((ChatRoomImplementation*) impl)->getTitle();
+}
+
+String ChatRoomAdapter::getServerName() {
+	return ((ChatRoomImplementation*) impl)->getServerName();
+}
+
+void ChatRoomAdapter::setOwner(const String& Owner) {
+	((ChatRoomImplementation*) impl)->setOwner(Owner);
+}
+
+void ChatRoomAdapter::setCreator(const String& Creator) {
+	((ChatRoomImplementation*) impl)->setCreator(Creator);
+}
+
+void ChatRoomAdapter::setTitle(const String& Title) {
+	((ChatRoomImplementation*) impl)->setTitle(Title);
+}
+
+unsigned int ChatRoomAdapter::getRoomID() {
+	return ((ChatRoomImplementation*) impl)->getRoomID();
+}
+
+int ChatRoomAdapter::getSubRoomsSize() {
+	return ((ChatRoomImplementation*) impl)->getSubRoomsSize();
+}
+
+ChatRoom* ChatRoomAdapter::getParent() {
+	return ((ChatRoomImplementation*) impl)->getParent();
+}
+
+int ChatRoomAdapter::compareTo(ChatRoom* obj) {
+	return ((ChatRoomImplementation*) impl)->compareTo(obj);
 }
 
 /*

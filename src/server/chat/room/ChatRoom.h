@@ -285,6 +285,82 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendTo(PlayerCreature* player);
+
+	void sendDestroyTo(PlayerCreature* player);
+
+	void addSubRoom(ChatRoom* channel);
+
+	void removeSubRoom(ChatRoom* channel);
+
+	ChatRoom* getSubRoom(int i);
+
+	ChatRoom* getSubRoom(const String& name);
+
+	void addPlayer(PlayerCreature* player, bool doLock);
+
+	void removePlayer(PlayerCreature* player, bool doLock);
+
+	void removePlayer(const String& player);
+
+	void broadcastMessage(BaseMessage* msg);
+
+	bool hasPlayer(PlayerCreature* player);
+
+	bool hasPlayer(const String& name);
+
+	void removeAllPlayers();
+
+	void deploy();
+
+	void setPrivate();
+
+	void setPublic();
+
+	bool isPublic();
+
+	bool isPrivate();
+
+	PlayerCreature* getPlayer(int idx);
+
+	int getPlayerSize();
+
+	void setName(const String& Name);
+
+	String getName();
+
+	String getFullPath();
+
+	String getOwner();
+
+	String getCreator();
+
+	UnicodeString getTitle();
+
+	String getServerName();
+
+	void setOwner(const String& Owner);
+
+	void setCreator(const String& Creator);
+
+	void setTitle(const String& Title);
+
+	unsigned int getRoomID();
+
+	int getSubRoomsSize();
+
+	ChatRoom* getParent();
+
+	int compareTo(ChatRoom* obj);
+
+protected:
+	String _param0_getSubRoom__String_;
+	String _param0_removePlayer__String_;
+	String _param0_hasPlayer__String_;
+	String _param0_setName__String_;
+	String _param0_setOwner__String_;
+	String _param0_setCreator__String_;
+	String _param0_setTitle__String_;
 };
 
 class ChatRoomHelper : public DistributedObjectClassHelper, public Singleton<ChatRoomHelper> {

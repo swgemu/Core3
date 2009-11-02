@@ -175,11 +175,39 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
+		break;
+	case 7:
+		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
+		break;
+	case 8:
+		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+		break;
+	case 9:
+		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool PlayerManagerAdapter::checkExistentNameInDatabase(const String& firstName) {
+	return ((PlayerManagerImplementation*) impl)->checkExistentNameInDatabase(firstName);
+}
+
+TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+	return ((PlayerManagerImplementation*) impl)->createHairObject(hairObjectFile, hairCustomization);
+}
+
+bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
+	return ((PlayerManagerImplementation*) impl)->createAllPlayerObjects(player);
+}
+
+void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {
+	((PlayerManagerImplementation*) impl)->createTutorialBuilding(player);
 }
 
 /*

@@ -258,11 +258,74 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		changeStatus(inv->getBooleanParameter());
+		break;
+	case 8:
+		switchStatus();
+		break;
+	case 9:
+		resp->insertBoolean(getStatus());
+		break;
+	case 10:
+		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__String_));
+		break;
+	case 11:
+		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__String_));
+		break;
+	case 12:
+		resp->insertInt(getPlanetCRC());
+		break;
+	case 13:
+		resp->insertAscii(getInternalNote());
+		break;
+	case 14:
+		resp->insertAscii(getPlanetName());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void WaypointObjectAdapter::initializeTransientMembers() {
+	((WaypointObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void WaypointObjectAdapter::changeStatus(bool status) {
+	((WaypointObjectImplementation*) impl)->changeStatus(status);
+}
+
+void WaypointObjectAdapter::switchStatus() {
+	((WaypointObjectImplementation*) impl)->switchStatus();
+}
+
+bool WaypointObjectAdapter::getStatus() {
+	return ((WaypointObjectImplementation*) impl)->getStatus();
+}
+
+void WaypointObjectAdapter::setInternalNote(const String& message) {
+	((WaypointObjectImplementation*) impl)->setInternalNote(message);
+}
+
+void WaypointObjectAdapter::setPlanetName(const String& planet) {
+	((WaypointObjectImplementation*) impl)->setPlanetName(planet);
+}
+
+unsigned int WaypointObjectAdapter::getPlanetCRC() {
+	return ((WaypointObjectImplementation*) impl)->getPlanetCRC();
+}
+
+String WaypointObjectAdapter::getInternalNote() {
+	return ((WaypointObjectImplementation*) impl)->getInternalNote();
+}
+
+String WaypointObjectAdapter::getPlanetName() {
+	return ((WaypointObjectImplementation*) impl)->getPlanetName();
 }
 
 /*

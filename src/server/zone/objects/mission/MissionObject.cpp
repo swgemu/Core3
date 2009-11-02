@@ -126,11 +126,25 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void MissionObjectAdapter::initializeTransientMembers() {
+	((MissionObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void MissionObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	((MissionObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
 /*

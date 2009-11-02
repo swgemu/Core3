@@ -167,6 +167,36 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void disconnect();
+
+	void disconnect(bool doLock);
+
+	void sendMessage(BasePacket* msg);
+
+	void balancePacketCheckupTime();
+
+	void resetPacketCheckupTime();
+
+	void closeConnection(bool lockPlayer, bool doLock);
+
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
+
+	String getAddress();
+
+	void setPlayer(SceneObject* playerCreature);
+
+	void setSessionKey(unsigned int key);
+
+	void setAccountID(unsigned int id);
+
+	SceneObject* getPlayer();
+
+	unsigned int getSessionKey();
+
+	unsigned int getAccountID();
+
 };
 
 class ZoneClientSessionHelper : public DistributedObjectClassHelper, public Singleton<ZoneClientSessionHelper> {

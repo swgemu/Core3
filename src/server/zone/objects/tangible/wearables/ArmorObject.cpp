@@ -113,11 +113,18 @@ Packet* ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ArmorObjectAdapter::initializeTransientMembers() {
+	((ArmorObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

@@ -128,11 +128,25 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		resp->insertSignedInt(useObject((SceneObject*) inv->getObjectParameter()));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void StartingLocationTerminalAdapter::initializeTransientMembers() {
+	((StartingLocationTerminalImplementation*) impl)->initializeTransientMembers();
+}
+
+int StartingLocationTerminalAdapter::useObject(SceneObject* object) {
+	return ((StartingLocationTerminalImplementation*) impl)->useObject(object);
 }
 
 /*

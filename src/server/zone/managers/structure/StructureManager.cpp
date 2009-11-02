@@ -8,11 +8,7 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
-#include "server/zone/managers/object/ObjectManager.h"
-
 #include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/cell/CellObject.h"
 
 /*
  *	StructureManagerStub
@@ -125,11 +121,18 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		loadStructures();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void StructureManagerAdapter::loadStructures() {
+	((StructureManagerImplementation*) impl)->loadStructures();
 }
 
 /*
