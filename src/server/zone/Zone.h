@@ -221,6 +221,38 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void startManagers();
+
+	void stopManagers();
+
+	float getHeight(float x, float y);
+
+	int getZoneID();
+
+	ZoneServer* getZoneServer();
+
+	unsigned long long getGalacticTime();
+
+	unsigned int getWeatherID();
+
+	void setWeatherID(unsigned int value);
+
+	void changeWeatherID(int value);
+
+	bool isWeatherEnabled();
+
+	void setWeatherEnabled(bool value);
+
+	void setWeatherWindX(float value);
+
+	void setWeatherWindY(float value);
+
+	float getWeatherWindX();
+
+	float getWeatherWindY();
+
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {

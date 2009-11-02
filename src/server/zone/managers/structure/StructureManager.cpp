@@ -125,11 +125,32 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		loadStaticBuildings();
+		break;
+	case 7:
+		loadPlayerStructures();
+		break;
+	case 8:
+		loadStructures();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void StructureManagerAdapter::loadStaticBuildings() {
+	((StructureManagerImplementation*) impl)->loadStaticBuildings();
+}
+
+void StructureManagerAdapter::loadPlayerStructures() {
+	((StructureManagerImplementation*) impl)->loadPlayerStructures();
+}
+
+void StructureManagerAdapter::loadStructures() {
+	((StructureManagerImplementation*) impl)->loadStructures();
 }
 
 /*

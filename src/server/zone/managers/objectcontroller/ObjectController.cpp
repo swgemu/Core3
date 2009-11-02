@@ -166,11 +166,25 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 7:
+		enqueueCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_enqueueCommand__CreatureObject_int_int_long_UnicodeString_));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+	return ((ObjectControllerImplementation*) impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
+}
+
+void ObjectControllerAdapter::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
+	((ObjectControllerImplementation*) impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*

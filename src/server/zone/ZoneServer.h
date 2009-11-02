@@ -136,6 +136,14 @@ namespace zone {
 
 class ZoneServer : public ManagedObject {
 public:
+	static const int OFFLINE = 0;
+
+	static const int LOADING = 1;
+
+	static const int ONLINE = 2;
+
+	static const int LOCKED = 3;
+
 	ZoneServer(int processingThreads, int galaxyid = 2);
 
 	void initializeTransientMembers();
@@ -436,6 +444,105 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void init();
+
+	void run();
+
+	void shutdown();
+
+	void startManagers();
+
+	void stopManagers();
+
+	void start(int p, int mconn);
+
+	void stop();
+
+	void addTotalSentPacket(int count);
+
+	void addTotalResentPacket(int count);
+
+	void printInfo(bool forcedLog);
+
+	void printEvents();
+
+	SceneObject* getObject(unsigned long long objectID, bool doLock);
+
+	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID);
+
+	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID);
+
+	void updateObjectToDatabase(SceneObject* object);
+
+	void destroyObject(unsigned long long objectID);
+
+	void lock(bool doLock);
+
+	void unlock(bool doLock);
+
+	void fixScheduler();
+
+	void changeUserCap(int amount);
+
+	int getConnectionCount();
+
+	void increaseOnlinePlayers();
+
+	void decreaseOnlinePlayers();
+
+	void increaseTotalDeletedPlayers();
+
+	int getGalaxyID();
+
+	String getServerName();
+
+	bool isServerLocked();
+
+	bool isServerOnline();
+
+	bool isServerOffline();
+
+	bool isServerLoading();
+
+	int getServerState();
+
+	Zone* getZone(int index);
+
+	int getMaxPlayers();
+
+	int getTotalPlayers();
+
+	int getDeletedPlayers();
+
+	PlayerManager* getPlayerManager();
+
+	ChatManager* getChatManager();
+
+	ObjectController* getObjectController();
+
+	RadialManager* getRadialManager();
+
+	void setServerName(const String& servername);
+
+	void setGalaxyID(int galaxyid);
+
+	void setServerState(int state);
+
+	void setServerStateLocked();
+
+	void setServerStateOnline();
+
+	void loadMessageoftheDay();
+
+	void changeMessageoftheDay(const String& newMOTD);
+
+	String getMessageoftheDay();
+
+protected:
+	String _param0_setServerName__String_;
+	String _param0_changeMessageoftheDay__String_;
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {

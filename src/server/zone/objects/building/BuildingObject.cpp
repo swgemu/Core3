@@ -353,11 +353,95 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
+		break;
+	case 8:
+		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 9:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 10:
+		sendDestroyTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 11:
+		addCell((CellObject*) inv->getObjectParameter());
+		break;
+	case 12:
+		resp->insertBoolean(isStaticBuilding());
+		break;
+	case 13:
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 14:
+		setStaticBuilding(inv->getBooleanParameter());
+		break;
+	case 15:
+		resp->insertBoolean(hasNotifiedObject((SceneObject*) inv->getObjectParameter()));
+		break;
+	case 16:
+		addNotifiedObject((SceneObject*) inv->getObjectParameter());
+		break;
+	case 17:
+		removeNotifiedObject((SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void BuildingObjectAdapter::initializeTransientMembers() {
+	((BuildingObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
+	((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
+}
+
+void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {
+	((BuildingObjectImplementation*) impl)->sendTo(player, doClose);
+}
+
+void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	((BuildingObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
+	((BuildingObjectImplementation*) impl)->sendDestroyTo(player);
+}
+
+void BuildingObjectAdapter::addCell(CellObject* cell) {
+	((BuildingObjectImplementation*) impl)->addCell(cell);
+}
+
+bool BuildingObjectAdapter::isStaticBuilding() {
+	return ((BuildingObjectImplementation*) impl)->isStaticBuilding();
+}
+
+CellObject* BuildingObjectAdapter::getCell(int idx) {
+	return ((BuildingObjectImplementation*) impl)->getCell(idx);
+}
+
+void BuildingObjectAdapter::setStaticBuilding(bool value) {
+	((BuildingObjectImplementation*) impl)->setStaticBuilding(value);
+}
+
+bool BuildingObjectAdapter::hasNotifiedObject(SceneObject* object) {
+	return ((BuildingObjectImplementation*) impl)->hasNotifiedObject(object);
+}
+
+void BuildingObjectAdapter::addNotifiedObject(SceneObject* object) {
+	((BuildingObjectImplementation*) impl)->addNotifiedObject(object);
+}
+
+void BuildingObjectAdapter::removeNotifiedObject(SceneObject* object) {
+	((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
 }
 
 /*

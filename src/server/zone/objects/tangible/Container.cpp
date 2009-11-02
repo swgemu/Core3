@@ -138,11 +138,25 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ContainerAdapter::initializeTransientMembers() {
+	((ContainerImplementation*) impl)->initializeTransientMembers();
+}
+
+void ContainerAdapter::sendContainerObjectsTo(SceneObject* player) {
+	((ContainerImplementation*) impl)->sendContainerObjectsTo(player);
 }
 
 /*

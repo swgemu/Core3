@@ -113,11 +113,18 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void WearableObjectAdapter::initializeTransientMembers() {
+	((WearableObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

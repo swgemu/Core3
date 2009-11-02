@@ -414,11 +414,123 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		startManagers();
+		break;
+	case 8:
+		stopManagers();
+		break;
+	case 9:
+		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
+		break;
+	case 10:
+		resp->insertSignedInt(getZoneID());
+		break;
+	case 11:
+		resp->insertLong(getZoneServer()->_getObjectID());
+		break;
+	case 12:
+		resp->insertLong(getGalacticTime());
+		break;
+	case 13:
+		resp->insertInt(getWeatherID());
+		break;
+	case 14:
+		setWeatherID(inv->getUnsignedIntParameter());
+		break;
+	case 15:
+		changeWeatherID(inv->getSignedIntParameter());
+		break;
+	case 16:
+		resp->insertBoolean(isWeatherEnabled());
+		break;
+	case 17:
+		setWeatherEnabled(inv->getBooleanParameter());
+		break;
+	case 18:
+		setWeatherWindX(inv->getFloatParameter());
+		break;
+	case 19:
+		setWeatherWindY(inv->getFloatParameter());
+		break;
+	case 20:
+		resp->insertFloat(getWeatherWindX());
+		break;
+	case 21:
+		resp->insertFloat(getWeatherWindY());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ZoneAdapter::initializeTransientMembers() {
+	((ZoneImplementation*) impl)->initializeTransientMembers();
+}
+
+void ZoneAdapter::startManagers() {
+	((ZoneImplementation*) impl)->startManagers();
+}
+
+void ZoneAdapter::stopManagers() {
+	((ZoneImplementation*) impl)->stopManagers();
+}
+
+float ZoneAdapter::getHeight(float x, float y) {
+	return ((ZoneImplementation*) impl)->getHeight(x, y);
+}
+
+int ZoneAdapter::getZoneID() {
+	return ((ZoneImplementation*) impl)->getZoneID();
+}
+
+ZoneServer* ZoneAdapter::getZoneServer() {
+	return ((ZoneImplementation*) impl)->getZoneServer();
+}
+
+unsigned long long ZoneAdapter::getGalacticTime() {
+	return ((ZoneImplementation*) impl)->getGalacticTime();
+}
+
+unsigned int ZoneAdapter::getWeatherID() {
+	return ((ZoneImplementation*) impl)->getWeatherID();
+}
+
+void ZoneAdapter::setWeatherID(unsigned int value) {
+	((ZoneImplementation*) impl)->setWeatherID(value);
+}
+
+void ZoneAdapter::changeWeatherID(int value) {
+	((ZoneImplementation*) impl)->changeWeatherID(value);
+}
+
+bool ZoneAdapter::isWeatherEnabled() {
+	return ((ZoneImplementation*) impl)->isWeatherEnabled();
+}
+
+void ZoneAdapter::setWeatherEnabled(bool value) {
+	((ZoneImplementation*) impl)->setWeatherEnabled(value);
+}
+
+void ZoneAdapter::setWeatherWindX(float value) {
+	((ZoneImplementation*) impl)->setWeatherWindX(value);
+}
+
+void ZoneAdapter::setWeatherWindY(float value) {
+	((ZoneImplementation*) impl)->setWeatherWindY(value);
+}
+
+float ZoneAdapter::getWeatherWindX() {
+	return ((ZoneImplementation*) impl)->getWeatherWindX();
+}
+
+float ZoneAdapter::getWeatherWindY() {
+	return ((ZoneImplementation*) impl)->getWeatherWindY();
 }
 
 /*
