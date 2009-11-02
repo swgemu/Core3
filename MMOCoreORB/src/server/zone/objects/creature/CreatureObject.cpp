@@ -1079,11 +1079,382 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 8:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
+		break;
+	case 10:
+		sendSystemMessage(inv->getUnicodeParameter(_param0_sendSystemMessage__UnicodeString_));
+		break;
+	case 11:
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_String_long_), inv->getAsciiParameter(_param1_sendSystemMessage__String_String_long_), inv->getUnsignedLongParameter());
+		break;
+	case 12:
+		sendSlottedObjectsTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 13:
+		setCombatState();
+		break;
+	case 14:
+		clearCombatState(inv->getBooleanParameter());
+		break;
+	case 15:
+		setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 16:
+		setHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 17:
+		setBaseHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 18:
+		setWounds(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 19:
+		setMaxHAM(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 20:
+		setEncumbrance(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 21:
+		setWeaponID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		break;
+	case 22:
+		setTargetID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		break;
+	case 23:
+		setBankCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case 24:
+		resp->insertSignedInt(getBankCredits());
+		break;
+	case 25:
+		resp->insertSignedInt(getCashCredits());
+		break;
+	case 26:
+		resp->insertSignedInt(getBaseHAM(inv->getSignedIntParameter()));
+		break;
+	case 27:
+		resp->insertSignedInt(getWounds(inv->getSignedIntParameter()));
+		break;
+	case 28:
+		resp->insertSignedInt(getHAM(inv->getSignedIntParameter()));
+		break;
+	case 29:
+		resp->insertSignedInt(getMaxHAM(inv->getSignedIntParameter()));
+		break;
+	case 30:
+		resp->insertSignedInt(getEncumbrance(inv->getSignedIntParameter()));
+		break;
+	case 31:
+		resp->insertByte(getPosture());
+		break;
+	case 32:
+		resp->insertByte(getFactionRank());
+		break;
+	case 33:
+		resp->insertLong(getCreatureLinkID());
+		break;
+	case 34:
+		resp->insertFloat(getShockWounds());
+		break;
+	case 35:
+		resp->insertLong(getStateBitmask());
+		break;
+	case 36:
+		resp->insertLong(getListenID());
+		break;
+	case 37:
+		resp->insertFloat(getRunSpeed());
+		break;
+	case 38:
+		resp->insertFloat(getWalkSpeed());
+		break;
+	case 39:
+		resp->insertFloat(getTerrainNegotiation());
+		break;
+	case 40:
+		resp->insertFloat(getRunAcceleration());
+		break;
+	case 41:
+		resp->insertFloat(getWalkAcceleration());
+		break;
+	case 42:
+		resp->insertSignedInt(getLevel());
+		break;
+	case 43:
+		resp->insertAscii(getPerformanceAnimation());
+		break;
+	case 44:
+		resp->insertAscii(getMoodString());
+		break;
+	case 45:
+		resp->insertLong(getWeaponID());
+		break;
+	case 46:
+		resp->insertLong(getGroupID());
+		break;
+	case 47:
+		resp->insertLong(getGroupInviterID());
+		break;
+	case 48:
+		resp->insertLong(getGroupInviteCounter());
+		break;
+	case 49:
+		resp->insertSignedInt(getGuildID());
+		break;
+	case 50:
+		resp->insertLong(getTargetID());
+		break;
+	case 51:
+		resp->insertByte(getMoodID());
+		break;
+	case 52:
+		resp->insertFloat(getSlopeModPercent());
+		break;
+	case 53:
+		resp->insertSignedInt(getPerformanceCounter());
+		break;
+	case 54:
+		resp->insertSignedInt(getInstrumentID());
+		break;
+	case 55:
+		resp->insertByte(getFrozen());
+		break;
+	case 56:
+		resp->insertFloat(getHeight());
+		break;
+	case 57:
+		resp->insertSignedInt(getSpecies());
+		break;
+	case 58:
+		setHeight(inv->getFloatParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void CreatureObjectAdapter::initializeTransientMembers() {
+	((CreatureObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void CreatureObjectAdapter::clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2) {
+	((CreatureObjectImplementation*) impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
+}
+
+void CreatureObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	((CreatureObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void CreatureObjectAdapter::sendSystemMessage(const String& message) {
+	((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
+}
+
+void CreatureObjectAdapter::sendSystemMessage(UnicodeString& message) {
+	((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
+}
+
+void CreatureObjectAdapter::sendSystemMessage(const String& file, const String& str, unsigned long long targetid) {
+	((CreatureObjectImplementation*) impl)->sendSystemMessage(file, str, targetid);
+}
+
+void CreatureObjectAdapter::sendSlottedObjectsTo(SceneObject* player) {
+	((CreatureObjectImplementation*) impl)->sendSlottedObjectsTo(player);
+}
+
+void CreatureObjectAdapter::setCombatState() {
+	((CreatureObjectImplementation*) impl)->setCombatState();
+}
+
+void CreatureObjectAdapter::clearCombatState(bool clearDefenders) {
+	((CreatureObjectImplementation*) impl)->clearCombatState(clearDefenders);
+}
+
+void CreatureObjectAdapter::setPosture(int newPosture, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setPosture(newPosture, notifyClient);
+}
+
+void CreatureObjectAdapter::setHAM(int type, int value, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setHAM(type, value, notifyClient);
+}
+
+void CreatureObjectAdapter::setBaseHAM(int type, int value, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setBaseHAM(type, value, notifyClient);
+}
+
+void CreatureObjectAdapter::setWounds(int type, int value, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setWounds(type, value, notifyClient);
+}
+
+void CreatureObjectAdapter::setMaxHAM(int type, int value, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setMaxHAM(type, value, notifyClient);
+}
+
+void CreatureObjectAdapter::setEncumbrance(int type, int value, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setEncumbrance(type, value, notifyClient);
+}
+
+void CreatureObjectAdapter::setWeaponID(unsigned long long objectID, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setWeaponID(objectID, notifyClient);
+}
+
+void CreatureObjectAdapter::setTargetID(unsigned long long targetID, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setTargetID(targetID, notifyClient);
+}
+
+void CreatureObjectAdapter::setBankCredits(int credits, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setBankCredits(credits, notifyClient);
+}
+
+int CreatureObjectAdapter::getBankCredits() {
+	return ((CreatureObjectImplementation*) impl)->getBankCredits();
+}
+
+int CreatureObjectAdapter::getCashCredits() {
+	return ((CreatureObjectImplementation*) impl)->getCashCredits();
+}
+
+int CreatureObjectAdapter::getBaseHAM(int idx) {
+	return ((CreatureObjectImplementation*) impl)->getBaseHAM(idx);
+}
+
+int CreatureObjectAdapter::getWounds(int idx) {
+	return ((CreatureObjectImplementation*) impl)->getWounds(idx);
+}
+
+int CreatureObjectAdapter::getHAM(int idx) {
+	return ((CreatureObjectImplementation*) impl)->getHAM(idx);
+}
+
+int CreatureObjectAdapter::getMaxHAM(int idx) {
+	return ((CreatureObjectImplementation*) impl)->getMaxHAM(idx);
+}
+
+int CreatureObjectAdapter::getEncumbrance(int idx) {
+	return ((CreatureObjectImplementation*) impl)->getEncumbrance(idx);
+}
+
+byte CreatureObjectAdapter::getPosture() {
+	return ((CreatureObjectImplementation*) impl)->getPosture();
+}
+
+byte CreatureObjectAdapter::getFactionRank() {
+	return ((CreatureObjectImplementation*) impl)->getFactionRank();
+}
+
+unsigned long long CreatureObjectAdapter::getCreatureLinkID() {
+	return ((CreatureObjectImplementation*) impl)->getCreatureLinkID();
+}
+
+float CreatureObjectAdapter::getShockWounds() {
+	return ((CreatureObjectImplementation*) impl)->getShockWounds();
+}
+
+unsigned long long CreatureObjectAdapter::getStateBitmask() {
+	return ((CreatureObjectImplementation*) impl)->getStateBitmask();
+}
+
+unsigned long long CreatureObjectAdapter::getListenID() {
+	return ((CreatureObjectImplementation*) impl)->getListenID();
+}
+
+float CreatureObjectAdapter::getRunSpeed() {
+	return ((CreatureObjectImplementation*) impl)->getRunSpeed();
+}
+
+float CreatureObjectAdapter::getWalkSpeed() {
+	return ((CreatureObjectImplementation*) impl)->getWalkSpeed();
+}
+
+float CreatureObjectAdapter::getTerrainNegotiation() {
+	return ((CreatureObjectImplementation*) impl)->getTerrainNegotiation();
+}
+
+float CreatureObjectAdapter::getRunAcceleration() {
+	return ((CreatureObjectImplementation*) impl)->getRunAcceleration();
+}
+
+float CreatureObjectAdapter::getWalkAcceleration() {
+	return ((CreatureObjectImplementation*) impl)->getWalkAcceleration();
+}
+
+int CreatureObjectAdapter::getLevel() {
+	return ((CreatureObjectImplementation*) impl)->getLevel();
+}
+
+String CreatureObjectAdapter::getPerformanceAnimation() {
+	return ((CreatureObjectImplementation*) impl)->getPerformanceAnimation();
+}
+
+String CreatureObjectAdapter::getMoodString() {
+	return ((CreatureObjectImplementation*) impl)->getMoodString();
+}
+
+unsigned long long CreatureObjectAdapter::getWeaponID() {
+	return ((CreatureObjectImplementation*) impl)->getWeaponID();
+}
+
+unsigned long long CreatureObjectAdapter::getGroupID() {
+	return ((CreatureObjectImplementation*) impl)->getGroupID();
+}
+
+unsigned long long CreatureObjectAdapter::getGroupInviterID() {
+	return ((CreatureObjectImplementation*) impl)->getGroupInviterID();
+}
+
+unsigned long long CreatureObjectAdapter::getGroupInviteCounter() {
+	return ((CreatureObjectImplementation*) impl)->getGroupInviteCounter();
+}
+
+int CreatureObjectAdapter::getGuildID() {
+	return ((CreatureObjectImplementation*) impl)->getGuildID();
+}
+
+unsigned long long CreatureObjectAdapter::getTargetID() {
+	return ((CreatureObjectImplementation*) impl)->getTargetID();
+}
+
+byte CreatureObjectAdapter::getMoodID() {
+	return ((CreatureObjectImplementation*) impl)->getMoodID();
+}
+
+float CreatureObjectAdapter::getSlopeModPercent() {
+	return ((CreatureObjectImplementation*) impl)->getSlopeModPercent();
+}
+
+int CreatureObjectAdapter::getPerformanceCounter() {
+	return ((CreatureObjectImplementation*) impl)->getPerformanceCounter();
+}
+
+int CreatureObjectAdapter::getInstrumentID() {
+	return ((CreatureObjectImplementation*) impl)->getInstrumentID();
+}
+
+byte CreatureObjectAdapter::getFrozen() {
+	return ((CreatureObjectImplementation*) impl)->getFrozen();
+}
+
+float CreatureObjectAdapter::getHeight() {
+	return ((CreatureObjectImplementation*) impl)->getHeight();
+}
+
+int CreatureObjectAdapter::getSpecies() {
+	return ((CreatureObjectImplementation*) impl)->getSpecies();
+}
+
+void CreatureObjectAdapter::setHeight(float heigh) {
+	((CreatureObjectImplementation*) impl)->setHeight(heigh);
 }
 
 /*

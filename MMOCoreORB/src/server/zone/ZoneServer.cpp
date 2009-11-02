@@ -830,11 +830,347 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		init();
+		break;
+	case 8:
+		run();
+		break;
+	case 9:
+		shutdown();
+		break;
+	case 10:
+		startManagers();
+		break;
+	case 11:
+		stopManagers();
+		break;
+	case 12:
+		start(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 13:
+		stop();
+		break;
+	case 14:
+		addTotalSentPacket(inv->getSignedIntParameter());
+		break;
+	case 15:
+		addTotalResentPacket(inv->getSignedIntParameter());
+		break;
+	case 16:
+		printInfo(inv->getBooleanParameter());
+		break;
+	case 17:
+		printEvents();
+		break;
+	case 18:
+		resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		break;
+	case 19:
+		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 20:
+		resp->insertLong(createPermanentObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 21:
+		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
+		break;
+	case 22:
+		destroyObject(inv->getUnsignedLongParameter());
+		break;
+	case 23:
+		lock(inv->getBooleanParameter());
+		break;
+	case 24:
+		unlock(inv->getBooleanParameter());
+		break;
+	case 25:
+		fixScheduler();
+		break;
+	case 26:
+		changeUserCap(inv->getSignedIntParameter());
+		break;
+	case 27:
+		resp->insertSignedInt(getConnectionCount());
+		break;
+	case 28:
+		increaseOnlinePlayers();
+		break;
+	case 29:
+		decreaseOnlinePlayers();
+		break;
+	case 30:
+		increaseTotalDeletedPlayers();
+		break;
+	case 31:
+		resp->insertSignedInt(getGalaxyID());
+		break;
+	case 32:
+		resp->insertAscii(getServerName());
+		break;
+	case 33:
+		resp->insertBoolean(isServerLocked());
+		break;
+	case 34:
+		resp->insertBoolean(isServerOnline());
+		break;
+	case 35:
+		resp->insertBoolean(isServerOffline());
+		break;
+	case 36:
+		resp->insertBoolean(isServerLoading());
+		break;
+	case 37:
+		resp->insertSignedInt(getServerState());
+		break;
+	case 38:
+		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 39:
+		resp->insertSignedInt(getMaxPlayers());
+		break;
+	case 40:
+		resp->insertSignedInt(getTotalPlayers());
+		break;
+	case 41:
+		resp->insertSignedInt(getDeletedPlayers());
+		break;
+	case 42:
+		resp->insertLong(getPlayerManager()->_getObjectID());
+		break;
+	case 43:
+		resp->insertLong(getChatManager()->_getObjectID());
+		break;
+	case 44:
+		resp->insertLong(getObjectController()->_getObjectID());
+		break;
+	case 45:
+		resp->insertLong(getRadialManager()->_getObjectID());
+		break;
+	case 46:
+		setServerName(inv->getAsciiParameter(_param0_setServerName__String_));
+		break;
+	case 47:
+		setGalaxyID(inv->getSignedIntParameter());
+		break;
+	case 48:
+		setServerState(inv->getSignedIntParameter());
+		break;
+	case 49:
+		setServerStateLocked();
+		break;
+	case 50:
+		setServerStateOnline();
+		break;
+	case 51:
+		loadMessageoftheDay();
+		break;
+	case 52:
+		changeMessageoftheDay(inv->getAsciiParameter(_param0_changeMessageoftheDay__String_));
+		break;
+	case 53:
+		resp->insertAscii(getMessageoftheDay());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ZoneServerAdapter::initializeTransientMembers() {
+	((ZoneServerImplementation*) impl)->initializeTransientMembers();
+}
+
+void ZoneServerAdapter::init() {
+	((ZoneServerImplementation*) impl)->init();
+}
+
+void ZoneServerAdapter::run() {
+	((ZoneServerImplementation*) impl)->run();
+}
+
+void ZoneServerAdapter::shutdown() {
+	((ZoneServerImplementation*) impl)->shutdown();
+}
+
+void ZoneServerAdapter::startManagers() {
+	((ZoneServerImplementation*) impl)->startManagers();
+}
+
+void ZoneServerAdapter::stopManagers() {
+	((ZoneServerImplementation*) impl)->stopManagers();
+}
+
+void ZoneServerAdapter::start(int p, int mconn) {
+	((ZoneServerImplementation*) impl)->start(p, mconn);
+}
+
+void ZoneServerAdapter::stop() {
+	((ZoneServerImplementation*) impl)->stop();
+}
+
+void ZoneServerAdapter::addTotalSentPacket(int count) {
+	((ZoneServerImplementation*) impl)->addTotalSentPacket(count);
+}
+
+void ZoneServerAdapter::addTotalResentPacket(int count) {
+	((ZoneServerImplementation*) impl)->addTotalResentPacket(count);
+}
+
+void ZoneServerAdapter::printInfo(bool forcedLog) {
+	((ZoneServerImplementation*) impl)->printInfo(forcedLog);
+}
+
+void ZoneServerAdapter::printEvents() {
+	((ZoneServerImplementation*) impl)->printEvents();
+}
+
+SceneObject* ZoneServerAdapter::getObject(unsigned long long objectID, bool doLock) {
+	return ((ZoneServerImplementation*) impl)->getObject(objectID, doLock);
+}
+
+SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistent, objectID);
+}
+
+SceneObject* ZoneServerAdapter::createPermanentObject(unsigned int templateCRC, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createPermanentObject(templateCRC, objectID);
+}
+
+void ZoneServerAdapter::updateObjectToDatabase(SceneObject* object) {
+	((ZoneServerImplementation*) impl)->updateObjectToDatabase(object);
+}
+
+void ZoneServerAdapter::destroyObject(unsigned long long objectID) {
+	((ZoneServerImplementation*) impl)->destroyObject(objectID);
+}
+
+void ZoneServerAdapter::lock(bool doLock) {
+	((ZoneServerImplementation*) impl)->lock(doLock);
+}
+
+void ZoneServerAdapter::unlock(bool doLock) {
+	((ZoneServerImplementation*) impl)->unlock(doLock);
+}
+
+void ZoneServerAdapter::fixScheduler() {
+	((ZoneServerImplementation*) impl)->fixScheduler();
+}
+
+void ZoneServerAdapter::changeUserCap(int amount) {
+	((ZoneServerImplementation*) impl)->changeUserCap(amount);
+}
+
+int ZoneServerAdapter::getConnectionCount() {
+	return ((ZoneServerImplementation*) impl)->getConnectionCount();
+}
+
+void ZoneServerAdapter::increaseOnlinePlayers() {
+	((ZoneServerImplementation*) impl)->increaseOnlinePlayers();
+}
+
+void ZoneServerAdapter::decreaseOnlinePlayers() {
+	((ZoneServerImplementation*) impl)->decreaseOnlinePlayers();
+}
+
+void ZoneServerAdapter::increaseTotalDeletedPlayers() {
+	((ZoneServerImplementation*) impl)->increaseTotalDeletedPlayers();
+}
+
+int ZoneServerAdapter::getGalaxyID() {
+	return ((ZoneServerImplementation*) impl)->getGalaxyID();
+}
+
+String ZoneServerAdapter::getServerName() {
+	return ((ZoneServerImplementation*) impl)->getServerName();
+}
+
+bool ZoneServerAdapter::isServerLocked() {
+	return ((ZoneServerImplementation*) impl)->isServerLocked();
+}
+
+bool ZoneServerAdapter::isServerOnline() {
+	return ((ZoneServerImplementation*) impl)->isServerOnline();
+}
+
+bool ZoneServerAdapter::isServerOffline() {
+	return ((ZoneServerImplementation*) impl)->isServerOffline();
+}
+
+bool ZoneServerAdapter::isServerLoading() {
+	return ((ZoneServerImplementation*) impl)->isServerLoading();
+}
+
+int ZoneServerAdapter::getServerState() {
+	return ((ZoneServerImplementation*) impl)->getServerState();
+}
+
+Zone* ZoneServerAdapter::getZone(int index) {
+	return ((ZoneServerImplementation*) impl)->getZone(index);
+}
+
+int ZoneServerAdapter::getMaxPlayers() {
+	return ((ZoneServerImplementation*) impl)->getMaxPlayers();
+}
+
+int ZoneServerAdapter::getTotalPlayers() {
+	return ((ZoneServerImplementation*) impl)->getTotalPlayers();
+}
+
+int ZoneServerAdapter::getDeletedPlayers() {
+	return ((ZoneServerImplementation*) impl)->getDeletedPlayers();
+}
+
+PlayerManager* ZoneServerAdapter::getPlayerManager() {
+	return ((ZoneServerImplementation*) impl)->getPlayerManager();
+}
+
+ChatManager* ZoneServerAdapter::getChatManager() {
+	return ((ZoneServerImplementation*) impl)->getChatManager();
+}
+
+ObjectController* ZoneServerAdapter::getObjectController() {
+	return ((ZoneServerImplementation*) impl)->getObjectController();
+}
+
+RadialManager* ZoneServerAdapter::getRadialManager() {
+	return ((ZoneServerImplementation*) impl)->getRadialManager();
+}
+
+void ZoneServerAdapter::setServerName(const String& servername) {
+	((ZoneServerImplementation*) impl)->setServerName(servername);
+}
+
+void ZoneServerAdapter::setGalaxyID(int galaxyid) {
+	((ZoneServerImplementation*) impl)->setGalaxyID(galaxyid);
+}
+
+void ZoneServerAdapter::setServerState(int state) {
+	((ZoneServerImplementation*) impl)->setServerState(state);
+}
+
+void ZoneServerAdapter::setServerStateLocked() {
+	((ZoneServerImplementation*) impl)->setServerStateLocked();
+}
+
+void ZoneServerAdapter::setServerStateOnline() {
+	((ZoneServerImplementation*) impl)->setServerStateOnline();
+}
+
+void ZoneServerAdapter::loadMessageoftheDay() {
+	((ZoneServerImplementation*) impl)->loadMessageoftheDay();
+}
+
+void ZoneServerAdapter::changeMessageoftheDay(const String& newMOTD) {
+	((ZoneServerImplementation*) impl)->changeMessageoftheDay(newMOTD);
+}
+
+String ZoneServerAdapter::getMessageoftheDay() {
+	return ((ZoneServerImplementation*) impl)->getMessageoftheDay();
 }
 
 /*

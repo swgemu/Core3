@@ -148,11 +148,32 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 7:
+		handleObjectMenuRequest((PlayerCreature*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case 8:
+		handleUseObject((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void RadialManagerAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
+	((RadialManagerImplementation*) impl)->handleObjectMenuSelect(player, selectID, objectID);
+}
+
+void RadialManagerAdapter::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
+	((RadialManagerImplementation*) impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
+}
+
+void RadialManagerAdapter::handleUseObject(PlayerCreature* player, SceneObject* object) {
+	((RadialManagerImplementation*) impl)->handleUseObject(player, object);
 }
 
 /*

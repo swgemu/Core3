@@ -151,6 +151,12 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
+
+	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
+
+	void handleUseObject(PlayerCreature* player, SceneObject* object);
+
 };
 
 class RadialManagerHelper : public DistributedObjectClassHelper, public Singleton<RadialManagerHelper> {

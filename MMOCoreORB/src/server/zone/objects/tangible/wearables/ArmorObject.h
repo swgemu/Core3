@@ -93,6 +93,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 };
 
 class ArmorObjectHelper : public DistributedObjectClassHelper, public Singleton<ArmorObjectHelper> {

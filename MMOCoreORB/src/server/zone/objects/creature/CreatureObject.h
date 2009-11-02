@@ -52,6 +52,30 @@ namespace creature {
 
 class CreatureObject : public TangibleObject {
 public:
+	static const int HUMAN = 0;
+
+	static const int RODIAN = 1;
+
+	static const int TRANDOSHAN = 2;
+
+	static const int MONCAL = 3;
+
+	static const int WOOKIE = 4;
+
+	static const int BOTHAN = 5;
+
+	static const int TWILEK = 6;
+
+	static const int ZABRAK = 7;
+
+	static const int ITHORIAN = 0x21;
+
+	static const int SULLUSTAN = 0x31;
+
+	static const int MALE = 0;
+
+	static const int FEMALE = 1;
+
 	CreatureObject(LuaObject* templateData);
 
 	void loadTemplateData(LuaObject* templateData);
@@ -459,6 +483,117 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
+
+	void sendBaselinesTo(SceneObject* player);
+
+	void sendSystemMessage(const String& message);
+
+	void sendSystemMessage(UnicodeString& message);
+
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
+
+	void sendSlottedObjectsTo(SceneObject* player);
+
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders);
+
+	void setPosture(int newPosture, bool notifyClient);
+
+	void setHAM(int type, int value, bool notifyClient);
+
+	void setBaseHAM(int type, int value, bool notifyClient);
+
+	void setWounds(int type, int value, bool notifyClient);
+
+	void setMaxHAM(int type, int value, bool notifyClient);
+
+	void setEncumbrance(int type, int value, bool notifyClient);
+
+	void setWeaponID(unsigned long long objectID, bool notifyClient);
+
+	void setTargetID(unsigned long long targetID, bool notifyClient);
+
+	void setBankCredits(int credits, bool notifyClient);
+
+	int getBankCredits();
+
+	int getCashCredits();
+
+	int getBaseHAM(int idx);
+
+	int getWounds(int idx);
+
+	int getHAM(int idx);
+
+	int getMaxHAM(int idx);
+
+	int getEncumbrance(int idx);
+
+	byte getPosture();
+
+	byte getFactionRank();
+
+	unsigned long long getCreatureLinkID();
+
+	float getShockWounds();
+
+	unsigned long long getStateBitmask();
+
+	unsigned long long getListenID();
+
+	float getRunSpeed();
+
+	float getWalkSpeed();
+
+	float getTerrainNegotiation();
+
+	float getRunAcceleration();
+
+	float getWalkAcceleration();
+
+	int getLevel();
+
+	String getPerformanceAnimation();
+
+	String getMoodString();
+
+	unsigned long long getWeaponID();
+
+	unsigned long long getGroupID();
+
+	unsigned long long getGroupInviterID();
+
+	unsigned long long getGroupInviteCounter();
+
+	int getGuildID();
+
+	unsigned long long getTargetID();
+
+	byte getMoodID();
+
+	float getSlopeModPercent();
+
+	int getPerformanceCounter();
+
+	int getInstrumentID();
+
+	byte getFrozen();
+
+	float getHeight();
+
+	int getSpecies();
+
+	void setHeight(float heigh);
+
+protected:
+	String _param0_sendSystemMessage__String_;
+	UnicodeString _param0_sendSystemMessage__UnicodeString_;
+	String _param0_sendSystemMessage__String_String_long_;
+	String _param1_sendSystemMessage__String_String_long_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

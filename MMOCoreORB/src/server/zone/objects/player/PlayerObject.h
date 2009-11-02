@@ -58,6 +58,36 @@ namespace player {
 
 class PlayerObject : public IntangibleObject {
 public:
+	static const int LFG = 1;
+
+	static const int NEWBIEHELPER = 2;
+
+	static const int ROLEPLAYER = 4;
+
+	static const int AFK = 0x80;
+
+	static const int LD = 0x100;
+
+	static const int FACTIONRANK = 0x200;
+
+	static const int ANONYMOUS = 0x80000000;
+
+	static const int CSR = 1;
+
+	static const int DEVELOPER = 2;
+
+	static const int ADMIN = 3;
+
+	static const int NORMAL = 4;
+
+	static const int QA = 8;
+
+	static const int EC = 16;
+
+	static const int CSRJR = 32;
+
+	static const int ECJR = 64;
+
 	PlayerObject(LuaObject* templateData);
 
 	void loadTemplateData(LuaObject* templateData);
@@ -202,6 +232,26 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void sendBaselinesTo(SceneObject* player);
+
+	unsigned int getCharacterBitmask();
+
+	String getTitle();
+
+	unsigned int getAdminLevel();
+
+	void setCharacterBitmask(unsigned int bitmask);
+
+	bool setCharacterBit(unsigned int bit, bool notifyClient);
+
+	bool clearCharacterBit(unsigned int bit, bool notifyClient);
+
+	void setTitle(const String& characterTitle);
+
+protected:
+	String _param0_setTitle__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

@@ -261,11 +261,74 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
+	case 7:
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 8:
+		resp->insertInt(getCharacterBitmask());
+		break;
+	case 9:
+		resp->insertAscii(getTitle());
+		break;
+	case 10:
+		resp->insertInt(getAdminLevel());
+		break;
+	case 11:
+		setCharacterBitmask(inv->getUnsignedIntParameter());
+		break;
+	case 12:
+		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 13:
+		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 14:
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void PlayerObjectAdapter::initializeTransientMembers() {
+	((PlayerObjectImplementation*) impl)->initializeTransientMembers();
+}
+
+void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
+	((PlayerObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+unsigned int PlayerObjectAdapter::getCharacterBitmask() {
+	return ((PlayerObjectImplementation*) impl)->getCharacterBitmask();
+}
+
+String PlayerObjectAdapter::getTitle() {
+	return ((PlayerObjectImplementation*) impl)->getTitle();
+}
+
+unsigned int PlayerObjectAdapter::getAdminLevel() {
+	return ((PlayerObjectImplementation*) impl)->getAdminLevel();
+}
+
+void PlayerObjectAdapter::setCharacterBitmask(unsigned int bitmask) {
+	((PlayerObjectImplementation*) impl)->setCharacterBitmask(bitmask);
+}
+
+bool PlayerObjectAdapter::setCharacterBit(unsigned int bit, bool notifyClient) {
+	return ((PlayerObjectImplementation*) impl)->setCharacterBit(bit, notifyClient);
+}
+
+bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool notifyClient) {
+	return ((PlayerObjectImplementation*) impl)->clearCharacterBit(bit, notifyClient);
+}
+
+void PlayerObjectAdapter::setTitle(const String& characterTitle) {
+	((PlayerObjectImplementation*) impl)->setTitle(characterTitle);
 }
 
 /*

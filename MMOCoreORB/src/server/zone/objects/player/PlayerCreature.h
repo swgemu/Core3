@@ -138,6 +138,18 @@ namespace player {
 
 class PlayerCreature : public CreatureObject {
 public:
+	static const int ONLINE = 1;
+
+	static const int OFFLINE = 2;
+
+	static const int LINKDEAD = 3;
+
+	static const int LOGGINGIN = 4;
+
+	static const int LOGGINGOUT = 5;
+
+	static const int LOADING = 6;
+
 	PlayerCreature(LuaObject* templateData);
 
 	void initializeTransientMembers();
@@ -413,6 +425,80 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void unload();
+
+	void reload(ZoneClientSession* client);
+
+	void logout(bool doLock);
+
+	void activateRecovery();
+
+	void doRecovery();
+
+	void sendMessage(BasePacket* msg);
+
+	void sendToOwner(bool doClose);
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
+
+	unsigned int getAccountID();
+
+	ZoneClientSession* getClient();
+
+	byte getRaceID();
+
+	unsigned long long getSavedParentID();
+
+	int getSavedZoneID();
+
+	String getFirstName();
+
+	String getLastName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedZoneID(int id);
+
+	void setClient(ZoneClientSession* cli);
+
+	void setBiography(const UnicodeString& bio);
+
+	void setRaceID(byte id);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void setAccountID(unsigned int id);
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
+
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
+
+protected:
+	UnicodeString _param0_setBiography__UnicodeString_;
 };
 
 class PlayerCreatureHelper : public DistributedObjectClassHelper, public Singleton<PlayerCreatureHelper> {

@@ -204,6 +204,47 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
+	void sendBaselinesTo(SceneObject* player);
+
+	void setDefender(SceneObject* defender);
+
+	void addDefender(SceneObject* defender);
+
+	void removeDefender(SceneObject* defender);
+
+	void removeDefenders();
+
+	void setCombatState();
+
+	void clearCombatState(bool clearDefenders);
+
+	bool hasDefender(SceneObject* defender);
+
+	byte getUnknownByte();
+
+	int getObjectCount();
+
+	int getMaxCondition();
+
+	int getConditionDamage();
+
+	int getVolume();
+
+	float getComplexity();
+
+	unsigned int getOptionsBitmask();
+
+	unsigned int getPvpStatusBitmask();
+
+	void getCustomizationString(String& variables);
+
+	void setCustomizationString(const String& vars);
+
+protected:
+	String _param0_getCustomizationString__String_;
+	String _param0_setCustomizationString__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {
