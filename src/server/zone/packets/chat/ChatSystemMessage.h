@@ -46,7 +46,7 @@ which carries forward this exception.
 #define CHATSYSTEMMESSAGE_H_
 
 #include "engine/engine.h"
-#include "../object/StfParameter.h"
+#include "../../objects/scene/variables/StringId.h"
 
 class ChatSystemMessage : public BaseMessage {
 public:
@@ -62,96 +62,20 @@ public:
 		insertInt(0x00);
 	}
 
-	ChatSystemMessage(UnicodeString& message, StfParameter * params) : BaseMessage() {
-		params->generate();
-
-		insertShort(0x08);
-		insertInt(0x6D2A6413);
-
-		insertByte(0);
-		insertUnicode(message); // UnicodeString
-
-		int size = 0x15 + params->size();
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii("");
-		insertInt(0);
-
-		insertAscii("");
-
-		insertStream(params);
-
-		if (odd)
-			insertByte(0);
-
-		insertInt(0);
-	}
-
-	ChatSystemMessage(const String& file, const String& str, uint64 targetid = 0) : BaseMessage() {
+	ChatSystemMessage(StringId& stringid) : BaseMessage() {
 		insertShort(0x08);
 		insertInt(0x6D2A6413);
 
 		insertByte(0);
 		insertInt(0); // UnicodeString
 
-		int size = file.length() + str.length() + 0x56;
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file);
-		insertInt(0);
-
-		insertAscii(str);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(targetid);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
-
-		insertLong(0);
-		insertAscii("");
-		insertInt(0);
-		insertAscii("");
-		insertInt(0);
+		stringid.addToPacketStream(this);
 
 		insertInt(0);
-		insertInt(0);
-		insertByte(0);
-		insertShort(0);
-
-		if (odd)
-			insertByte(0);
-
-		insertInt(0);
-
 	}
 
-	ChatSystemMessage(const String& file, const String& str, StfParameter * params) : BaseMessage() {
-		params->generate();
+	ChatSystemMessage(const String& file, const String& stringid) : BaseMessage() {
+		StringId sid = StringId(file, stringid);
 
 		insertShort(0x08);
 		insertInt(0x6D2A6413);
@@ -159,91 +83,10 @@ public:
 		insertByte(0);
 		insertInt(0); // UnicodeString
 
-		int size = file.length() + str.length() + 0x11 + params->size();
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		insertShort(0);
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file);
-		insertInt(0);
-
-		insertAscii(str);
-
-		insertStream(params);
-
-		if (odd)
-			insertByte(0);
+		sid.addToPacketStream(this);
 
 		insertInt(0);
 	}
-
-	ChatSystemMessage(const String& file, const String& str, String& var, int quantity
-			, bool flipByte) : BaseMessage() {
-		UnicodeString ustr = UnicodeString(var.toCharArray());
-		createMessage(file, str, ustr, quantity, flipByte);
-	}
-
-	ChatSystemMessage(const String& file, const String& str, UnicodeString& var, int quantity
-			, bool flipByte) : BaseMessage() {
-		createMessage(file, str, var, quantity, flipByte);
-	}
-
-	void createMessage(const String& file, const String& str, UnicodeString& var, int quantity, bool flipByte) {
-		insertShort(0x04);
-		insertInt(0x6D2A6413);
-
-		insertByte(0);
-		insertInt(0);
-
-		int size = file.length() + str.length() + (2 * var.length()) + 0x56;
-		bool odd = (size & 1);
-
-		if (odd)
-			insertInt((size + 1) / 2);
-		else
-			insertInt(size / 2);
-
-		if (!flipByte)
-			insertShort(0);
-		else
-			insertShort(1);
-
-		insertByte(1);
-		insertInt(0xFFFFFFFF);
-
-		insertAscii(file);
-		insertInt(0);
-
-		insertAscii(str);
-		insertInt(0);
-
-		insertLong(0);
-		insertLong(0);
-		insertLong(0);
-		insertLong(0);
-		insertLong(0);
-		insertLong(0);
-		insertInt(0);
-
-		insertUnicode(var);
-		insertInt(quantity);
-
-		insertInt(0);
-		insertInt(0); // ???
-		insertShort(0); // ???
-		insertByte(0);
-
-		if (odd)
-			insertByte(0);
-	}
-
 };
 
 #endif /*CHATSYSTEMMESSAGE_H_*/

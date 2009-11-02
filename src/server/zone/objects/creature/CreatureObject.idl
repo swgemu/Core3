@@ -47,7 +47,7 @@ package server.zone.objects.creature;
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
-import server.zone.packets.object.StfParameter;
+import server.zone.objects.scene.variables.StringId;
 
 //import server.zone.objects.player.professions.SkillBox;
 
@@ -197,10 +197,9 @@ class CreatureObject extends TangibleObject {
 	 * @param message unicode message to send
 	 */
 	public native void sendSystemMessage(unicode message);
-	public native void sendSystemMessage(final string file, final string str, unsigned long targetid = 0);
 	
 	@local
-	public native void sendSystemMessage(final string file, final string str, StfParameter param);
+	public native void sendSystemMessage(@dereferenced StringId stringid);
 	
 	/**
 	 * Sends the contained slotted objects to the specified player

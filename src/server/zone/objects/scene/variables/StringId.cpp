@@ -63,6 +63,12 @@ StringId::StringId(const String& fullPath) : Serializable() {
 	addSerializableVariables();
 }
 
+StringId::StringId(const char * fullPath) : Serializable() {
+	setStringId(String(fullPath));
+
+	addSerializableVariables();
+}
+
 StringId::StringId(const String& fil, const String& stringId) : Serializable() {
 	file = fil;
 	stringID = stringId;
@@ -76,8 +82,63 @@ StringId::StringId(const UnicodeString& custom) : Serializable() {
 	addSerializableVariables();
 }
 
-void StringId::addSerializableVariables() {
-	addSerializableVariable("file", &file);
-	addSerializableVariable("stringID", &stringID);
-	addSerializableVariable("customName", &customName);
+void StringId::setStringId(const String& fullPath) {
+	if (fullPath.isEmpty())
+		return;
+
+	if (fullPath.charAt(0) == '@') {
+		StringTokenizer tokenizer(fullPath.subString(1));
+		tokenizer.setDelimeter(":");
+
+		tokenizer.getStringToken(file);
+		tokenizer.getStringToken(stringID);
+	}
+}
+
+void StringId::addToPacketStream(Message * packet) {
+	uint32 size = 54 + file.length() + stringID.length() + parameters.size();
+
+	bool odd = (size & 1);
+
+	if (odd)
+		packet->insertInt((size + 1) / 2);
+	else
+		packet->insertInt(size / 2);
+
+		packet->insertShort(0);
+		packet->insertByte(1);
+		packet->insertInt(0xFFFFFFFF);
+
+		packet->insertAscii(file);
+		packet->insertInt(0);
+		packet->insertAscii(stringID);
+
+		packet->insertLong(parameters.getTU().getPointerParameter());
+		packet->insertAscii(parameters.getTU().getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(parameters.getTU().getStringIDParameter());
+		packet->insertUnicode(parameters.getTU().getUnicodeParameter());
+
+
+		packet->insertLong(parameters.getTT().getPointerParameter());
+		packet->insertAscii(parameters.getTT().getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(parameters.getTT().getStringIDParameter());
+		packet->insertUnicode(parameters.getTT().getUnicodeParameter());
+
+
+		packet->insertLong(parameters.getTO().getPointerParameter());
+		packet->insertAscii(parameters.getTO().getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(parameters.getTO().getStringIDParameter());
+		packet->insertUnicode(parameters.getTO().getUnicodeParameter());
+
+
+		packet->insertInt(parameters.getDI());
+		packet->insertFloat(parameters.getDF());
+		packet->insertShort(0);
+		packet->insertByte(0);
+
+		if (odd)
+			packet->insertByte(0);
 }

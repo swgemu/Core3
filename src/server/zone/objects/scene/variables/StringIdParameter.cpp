@@ -42,53 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#include "StringIdParameter.h"
 
-#include "ObjectControllerMessage.h"
-#include "../../objects/scene/variables/StringId.h"
+#include "StringId.h"
+#include "../SceneObject.h"
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
+void StringIdParameter::set(SceneObject * obj) {
+	clear();
+	pointerParameter = obj->getObjectID();
+}
 
-public:
+void StringIdParameter::set(StringId * sid) {
+	set(*sid);
+}
 
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+void StringIdParameter::set(StringId& sid) {
+	clear();
+	if (!sid.getCustomString().isEmpty()) {
+		unicodeParameter = sid.getCustomString();
+	} else {
+		file = sid.getFile();
+		str = sid.getStringID();
 	}
-
-	void insertOption(const String& file, const String& str) {
-
-		StringId sid = StringId(file, str);
-
-		insertOption(sid);
-	}
-
-	void insertOption(StringId& sid) {
-
-		sid.addToPacketStream(this);
-
-		updateOptionCount();
-	}
-
-	void insertOption(String& option) {
-		insertUnicode(UnicodeString(option));
-		updateOptionCount();
-	}
-
-	void insertOption(UnicodeString& option) {
-		insertUnicode(option);
-		updateOptionCount();
-	}
-
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
-	}
-
-	int getOptionCount() {
-		return optionCount;
-	}
-};
-
-#endif
+}

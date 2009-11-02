@@ -42,51 +42,107 @@
  which carries forward this exception.
  */
 
-#ifndef SPATIALCHAT_H_
-#define SPATIALCHAT_H_
+#ifndef STRINGIDPARAMETERS_H_
+#define STRINGIDPARAMETERS_H_
 
-#include "ObjectControllerMessage.h"
+#include "engine/engine.h"
+#include "StringIdParameter.h"
 
-class SpatialChat: public ObjectControllerMessage {
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace variables {
+
+class StringIdParameters : public Serializable {
+	StringIdParameter TT;
+	StringIdParameter TU;
+	StringIdParameter TO;
+	uint32 DI;
+	float DF;
+
+	StringIdParameters() : Serializable() {
+		addSerializableVariables();
+	}
+
+private:
+	inline void addSerializableVariables() {
+		addSerializableVariable("TT", &TT);
+		addSerializableVariable("TU", &TU);
+		addSerializableVariable("TO", &TO);
+		addSerializableVariable("DI", &DI);
+		addSerializableVariable("DF", &DF);
+	}
+
 public:
-	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
-			uint32 mood2) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
-		insertLong(senderid);
-		insertLong(target);
-		insertUnicode(message);
 
-		insertShort(0x32);
-		insertShort((uint16) mood2);
-		insertShort((uint16) moodid);
-		insertByte(0);
-		insertByte(0);
-
-		insertLong(0);
-		insertInt(0);
-		insertInt(0);
-
-		setCompression(true);
+	template<class T>
+	inline void setTT(const T& obj) {
+		TT.set(obj);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, StringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
-		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
-
-		insertLong(senderid);
-		insertLong(target);
-		insertInt(0);
-		insertShort(0x32);
-		insertShort(mood2);
-		insertShort(moodid);
-		insertShort(0);
-
-		stringid.addToPacketStream(this);
-
-		insertByte(0);
-		insertShort(0);
-
-		setCompression(true);
+	inline void setTT(const String& f, const String& s) {
+		TT.set(f, s);
 	}
+
+	template<class T>
+	inline void setTU(const T& obj) {
+		TU.set(obj);
+	}
+
+	inline void setTU(const String& f, const String& s) {
+		TU.set(f, s);
+	}
+
+	template<class T>
+	inline void setTO(const T& obj) {
+		TO.set(obj);
+	}
+
+	inline void setTO(const String& f, const String& s) {
+		TO.set(f, s);
+	}
+
+	inline void setDI(uint32 i) {
+		DI = i;
+	}
+
+	inline void setDF(float f) {
+		DF = f;
+	}
+
+	inline StringIdParameter& getTU() {
+		return TU;
+	}
+
+	inline StringIdParameter& getTO() {
+		return TO;
+	}
+
+	inline StringIdParameter& getTT() {
+		return TT;
+	}
+
+	inline uint32 getDI() const{
+		return DI;
+	}
+
+	inline float getDF() const {
+		return DF;
+	}
+
+	inline uint32 size() const {
+		return TT.size() + TU.size() + TO.size() + sizeof(DI) + sizeof(DF);
+	}
+
+	friend class StringId;
 };
 
-#endif /*SPATIALCHAT_H_*/
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::scene::variables;
+#endif /* STRINGIDPARAMETERS_H_ */
