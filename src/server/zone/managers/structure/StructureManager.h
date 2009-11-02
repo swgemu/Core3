@@ -86,10 +86,6 @@ class StructureManager : public ManagedObject {
 public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
 
-	void loadStaticBuildings();
-
-	void loadPlayerStructures();
-
 	void loadStructures();
 
 protected:
@@ -122,18 +118,18 @@ public:
 
 	StructureManagerImplementation(DummyConstructorParameter* param);
 
+private:
 	void loadStaticBuildings();
 
 	void loadPlayerStructures();
 
-	void loadStructures();
-
-private:
 	BuildingObject* loadStaticBuilding(unsigned long long oid);
 
 	void loadStaticCells(BuildingObject* building);
 
 public:
+	void loadStructures();
+
 	StructureManager* _this;
 
 	operator const StructureManager*();

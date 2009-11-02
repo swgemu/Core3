@@ -29,36 +29,12 @@ StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedOb
 StructureManager::~StructureManager() {
 }
 
-void StructureManager::loadStaticBuildings() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->loadStaticBuildings();
-}
-
-void StructureManager::loadPlayerStructures() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		method.executeWithVoidReturn();
-	} else
-		((StructureManagerImplementation*) _impl)->loadPlayerStructures();
-}
-
 void StructureManager::loadStructures() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 
 		method.executeWithVoidReturn();
 	} else
@@ -132,9 +108,9 @@ void StructureManagerImplementation::_serializationHelperMethod() {
 }
 
 void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl(67):  loadStaticBuildings();
+	// server/zone/managers/structure/StructureManager.idl(74):  loadStaticBuildings();
 	loadStaticBuildings();
-	// server/zone/managers/structure/StructureManager.idl(68):  loadPlayerStructures();
+	// server/zone/managers/structure/StructureManager.idl(75):  loadPlayerStructures();
 	loadPlayerStructures();
 }
 
