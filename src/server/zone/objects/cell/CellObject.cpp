@@ -168,39 +168,11 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		initializeTransientMembers();
-		break;
-	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
-		break;
-	case 8:
-		resp->insertSignedInt(getCellNumber());
-		break;
-	case 9:
-		setCellNumber(inv->getSignedIntParameter());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void CellObjectAdapter::initializeTransientMembers() {
-	((CellObjectImplementation*) impl)->initializeTransientMembers();
-}
-
-void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((CellObjectImplementation*) impl)->sendBaselinesTo(player);
-}
-
-int CellObjectAdapter::getCellNumber() {
-	return ((CellObjectImplementation*) impl)->getCellNumber();
-}
-
-void CellObjectAdapter::setCellNumber(int number) {
-	((CellObjectImplementation*) impl)->setCellNumber(number);
 }
 
 /*

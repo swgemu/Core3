@@ -283,35 +283,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initiateRooms();
-
-	void destroyRooms();
-
-	void addRoom(ChatRoom* channel);
-
-	void removeRoom(ChatRoom* channel);
-
-	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
-
-	void sendRoomList(PlayerCreature* player);
-
-	void addPlayer(PlayerCreature* player);
-
-	PlayerCreature* getPlayer(const String& name);
-
-	PlayerCreature* removePlayer(const String& name);
-
-	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
-
-	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
-
-	unsigned long long getNextRoomID();
-
-protected:
-	String _param0_getPlayer__String_;
-	String _param0_removePlayer__String_;
-	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
-	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

@@ -266,6 +266,23 @@ class PlayerCreature extends CreatureObject {
 		chatRooms.drop(room);
 	}
 	
+	/**
+	 * Inserts this object into the building, this method is only to be called from insertToZone
+	 * Includes a trigger to BuildingObject::onEnter
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is in the building, building->onEnter has been triggered,
+	 * 		   this object is locked, zone is locked }
+	 * @param building BuildingObject where this object will be inserted
+	 */
 	public native void insertToBuilding(BuildingObject building);
+	
+	/**
+	 * Removes this object from the building, this method is only to be called from removeFromZone
+	 * Includes a trigger to BuildingObject::onExit
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is not in the building, building->onExit has been triggered, 
+	 * 		   this object is locked, zone is locked }
+	 * @param building BuildingObject from where this object will be removed
+	 */
 	public native void removeFromBuilding(BuildingObject building);
 }

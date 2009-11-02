@@ -222,34 +222,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
-
-	void notifyInsertToZone(SceneObject* object);
-
-	void sendTo(SceneObject* player, bool doClose);
-
-	void sendBaselinesTo(SceneObject* player);
-
-	void sendDestroyTo(SceneObject* player);
-
-	void addCell(CellObject* cell);
-
-	bool isStaticBuilding();
-
-	CellObject* getCell(int idx);
-
-	void setStaticBuilding(bool value);
-
-	bool hasNotifiedObject(SceneObject* object);
-
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
-
-	void onEnter(PlayerCreature* player);
-
-	void onExit(PlayerCreature* player);
-
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

@@ -132,10 +132,26 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		notifiedObjects.drop(object);
 	}
 	
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from PlayerCreature::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player PlayerCreature that entered the building
+	 */
 	public abstract void onEnter(PlayerCreature player) { 
 
 	}
 	
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from PlayerCreature::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player PlayerCreature that exited the building
+	 */
 	public abstract void onExit(PlayerCreature player) {
 		
 	}
