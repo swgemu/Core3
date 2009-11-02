@@ -93,8 +93,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
-
 };
 
 class MeleeWeaponObjectHelper : public DistributedObjectClassHelper, public Singleton<MeleeWeaponObjectHelper> {

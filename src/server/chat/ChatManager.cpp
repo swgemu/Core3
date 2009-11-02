@@ -294,95 +294,11 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		initiateRooms();
-		break;
-	case 7:
-		destroyRooms();
-		break;
-	case 8:
-		addRoom((ChatRoom*) inv->getObjectParameter());
-		break;
-	case 9:
-		removeRoom((ChatRoom*) inv->getObjectParameter());
-		break;
-	case 10:
-		populateRoomListMessage((ChatRoom*) inv->getObjectParameter(), (ChatRoomList*) inv->getObjectParameter());
-		break;
-	case 11:
-		sendRoomList((PlayerCreature*) inv->getObjectParameter());
-		break;
-	case 12:
-		addPlayer((PlayerCreature*) inv->getObjectParameter());
-		break;
-	case 13:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
-		break;
-	case 14:
-		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
-		break;
-	case 15:
-		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
-		break;
-	case 16:
-		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
-		break;
-	case 17:
-		resp->insertLong(getNextRoomID());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void ChatManagerAdapter::initiateRooms() {
-	((ChatManagerImplementation*) impl)->initiateRooms();
-}
-
-void ChatManagerAdapter::destroyRooms() {
-	((ChatManagerImplementation*) impl)->destroyRooms();
-}
-
-void ChatManagerAdapter::addRoom(ChatRoom* channel) {
-	((ChatManagerImplementation*) impl)->addRoom(channel);
-}
-
-void ChatManagerAdapter::removeRoom(ChatRoom* channel) {
-	((ChatManagerImplementation*) impl)->removeRoom(channel);
-}
-
-void ChatManagerAdapter::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
-	((ChatManagerImplementation*) impl)->populateRoomListMessage(channel, msg);
-}
-
-void ChatManagerAdapter::sendRoomList(PlayerCreature* player) {
-	((ChatManagerImplementation*) impl)->sendRoomList(player);
-}
-
-void ChatManagerAdapter::addPlayer(PlayerCreature* player) {
-	((ChatManagerImplementation*) impl)->addPlayer(player);
-}
-
-PlayerCreature* ChatManagerAdapter::getPlayer(const String& name) {
-	return ((ChatManagerImplementation*) impl)->getPlayer(name);
-}
-
-PlayerCreature* ChatManagerAdapter::removePlayer(const String& name) {
-	return ((ChatManagerImplementation*) impl)->removePlayer(name);
-}
-
-void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
-	((ChatManagerImplementation*) impl)->broadcastMessage(player, message, target, moodid, mood2);
-}
-
-void ChatManagerAdapter::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
-	((ChatManagerImplementation*) impl)->handleSpatialChatInternalMessage(player, args);
-}
-
-unsigned long long ChatManagerAdapter::getNextRoomID() {
-	return ((ChatManagerImplementation*) impl)->getNextRoomID();
 }
 
 /*

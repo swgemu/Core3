@@ -156,32 +156,11 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		initializeTransientMembers();
-		break;
-	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
-		break;
-	case 8:
-		resp->insertInt(getStatus());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void IntangibleObjectAdapter::initializeTransientMembers() {
-	((IntangibleObjectImplementation*) impl)->initializeTransientMembers();
-}
-
-void IntangibleObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((IntangibleObjectImplementation*) impl)->sendBaselinesTo(player);
-}
-
-unsigned int IntangibleObjectAdapter::getStatus() {
-	return ((IntangibleObjectImplementation*) impl)->getStatus();
 }
 
 /*

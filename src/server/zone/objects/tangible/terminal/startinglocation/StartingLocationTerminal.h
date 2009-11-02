@@ -114,10 +114,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
-
-	int useObject(SceneObject* object);
-
 };
 
 class StartingLocationTerminalHelper : public DistributedObjectClassHelper, public Singleton<StartingLocationTerminalHelper> {

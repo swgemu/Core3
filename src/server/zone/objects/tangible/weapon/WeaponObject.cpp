@@ -154,32 +154,11 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		initializeTransientMembers();
-		break;
-	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
-		break;
-	case 8:
-		resp->insertSignedInt(getAttackType());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void WeaponObjectAdapter::initializeTransientMembers() {
-	((WeaponObjectImplementation*) impl)->initializeTransientMembers();
-}
-
-void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
-	((WeaponObjectImplementation*) impl)->sendBaselinesTo(player);
-}
-
-int WeaponObjectAdapter::getAttackType() {
-	return ((WeaponObjectImplementation*) impl)->getAttackType();
 }
 
 /*

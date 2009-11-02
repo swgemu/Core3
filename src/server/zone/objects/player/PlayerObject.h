@@ -202,26 +202,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
-
-	void sendBaselinesTo(SceneObject* player);
-
-	unsigned int getCharacterBitmask();
-
-	String getTitle();
-
-	unsigned int getAdminLevel();
-
-	void setCharacterBitmask(unsigned int bitmask);
-
-	bool setCharacterBit(unsigned int bit, bool notifyClient);
-
-	bool clearCharacterBit(unsigned int bit, bool notifyClient);
-
-	void setTitle(const String& characterTitle);
-
-protected:
-	String _param0_setTitle__String_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

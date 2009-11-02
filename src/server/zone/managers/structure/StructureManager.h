@@ -171,12 +171,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void loadStaticBuildings();
-
-	void loadPlayerStructures();
-
-	void loadStructures();
-
 };
 
 class StructureManagerHelper : public DistributedObjectClassHelper, public Singleton<StructureManagerHelper> {

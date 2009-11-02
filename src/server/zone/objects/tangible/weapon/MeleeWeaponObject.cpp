@@ -113,18 +113,11 @@ Packet* MeleeWeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		initializeTransientMembers();
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void MeleeWeaponObjectAdapter::initializeTransientMembers() {
-	((MeleeWeaponObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*
