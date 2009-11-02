@@ -132,27 +132,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
-
-	void changeStatus(bool status);
-
-	void switchStatus();
-
-	bool getStatus();
-
-	void setInternalNote(const String& message);
-
-	void setPlanetName(const String& planet);
-
-	unsigned int getPlanetCRC();
-
-	String getInternalNote();
-
-	String getPlanetName();
-
-protected:
-	String _param0_setInternalNote__String_;
-	String _param0_setPlanetName__String_;
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {

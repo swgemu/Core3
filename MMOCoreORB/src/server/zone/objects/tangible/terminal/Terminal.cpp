@@ -113,18 +113,11 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		initializeTransientMembers();
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-void TerminalAdapter::initializeTransientMembers() {
-	((TerminalImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

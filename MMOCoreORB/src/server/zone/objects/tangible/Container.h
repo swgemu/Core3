@@ -112,10 +112,6 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initializeTransientMembers();
-
-	void sendContainerObjectsTo(SceneObject* player);
-
 };
 
 class ContainerHelper : public DistributedObjectClassHelper, public Singleton<ContainerHelper> {
