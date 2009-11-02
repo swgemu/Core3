@@ -58,20 +58,19 @@ class StructureManager extends ManagedObject implements Logger {
 	
 	private transient ZoneProcessServerImplementation server;
 		
-	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
+	private native void loadStaticBuildings();
 	
-	public native void loadStaticBuildings();
-	public native void loadPlayerStructures();
+	private native void loadPlayerStructures();
+	
+	private native BuildingObject loadStaticBuilding(unsigned long oid);
+	
+	private native void loadStaticCells(BuildingObject building);
+	
+	//PUBLIC FUNCTIONS
+	
+	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
 	
 	public void loadStructures() {
 		loadStaticBuildings();
 		loadPlayerStructures();
 	}
-	
-	@local
-	private native BuildingObject loadStaticBuilding(unsigned long oid);
-	
-	@local
-	private native void loadStaticCells(BuildingObject building);
-}
-
