@@ -42,62 +42,76 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "StringId.h"
+#include "ParameterizedStringId.h"
 
-StringId::StringId() : Serializable() {
+ParameterizedStringId::ParameterizedStringId() : StringId() {
 	addSerializableVariables();
 }
 
-StringId::StringId(const StringId& id) : Object(), Serializable() {
-	file = id.file;
-	stringID = id.stringID;
-
-	customName = id.customName;
-
+ParameterizedStringId::ParameterizedStringId(const StringId& id) : StringId(id) {
 	addSerializableVariables();
 }
 
-StringId::StringId(const String& fullPath) : Serializable() {
-	setStringId(fullPath);
-
+ParameterizedStringId::ParameterizedStringId(const char * cstr) : StringId (cstr) {
 	addSerializableVariables();
 }
 
-StringId::StringId(const char * fullPath) : Serializable() {
-	setStringId(String(fullPath));
-
+ParameterizedStringId::ParameterizedStringId(const String& fullPath) : StringId (fullPath) {
 	addSerializableVariables();
 }
 
-StringId::StringId(const String& fil, const String& stringId) : Serializable() {
-	file = fil;
-	stringID = stringId;
-
+ParameterizedStringId::ParameterizedStringId(const String& fil, const String& stringId) : StringId(fil, stringId) {
 	addSerializableVariables();
 }
 
-StringId::StringId(const UnicodeString& custom) : Serializable() {
-	customName = custom;
-
+ParameterizedStringId::ParameterizedStringId(const UnicodeString& custom) : StringId(custom) {
 	addSerializableVariables();
 }
 
-void StringId::clear() {
-	file = "";
-	stringID = "";
-	customName.clear();
+void ParameterizedStringId::addToPacketStream(Message * packet) {
+	uint32 size = 54 + file.length() + stringID.length() + parametersSize();
+
+	bool odd = (size & 1);
+
+	if (odd)
+		packet->insertInt((size + 1) / 2);
+	else
+		packet->insertInt(size / 2);
+
+		packet->insertShort(0);
+		packet->insertByte(1);
+		packet->insertInt(0xFFFFFFFF);
+
+		packet->insertAscii(file);
+		packet->insertInt(0);
+		packet->insertAscii(stringID);
+
+		packet->insertLong(TU.getPointerParameter());
+		packet->insertAscii(TU.getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(TU.getStringIDParameter());
+		packet->insertUnicode(TU.getUnicodeParameter());
+
+
+		packet->insertLong(TT.getPointerParameter());
+		packet->insertAscii(TT.getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(TT.getStringIDParameter());
+		packet->insertUnicode(TT.getUnicodeParameter());
+
+
+		packet->insertLong(TO.getPointerParameter());
+		packet->insertAscii(TO.getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(TO.getStringIDParameter());
+		packet->insertUnicode(TO.getUnicodeParameter());
+
+
+		packet->insertInt(DI);
+		packet->insertFloat(DF);
+		packet->insertShort(0);
+		packet->insertByte(0);
+
+		if (odd)
+			packet->insertByte(0);
 }
-
-void StringId::setStringId(const String& fullPath) {
-	if (fullPath.isEmpty())
-		return;
-
-	if (fullPath.charAt(0) == '@') {
-		StringTokenizer tokenizer(fullPath.subString(1));
-		tokenizer.setDelimeter(":");
-
-		tokenizer.getStringToken(file);
-		tokenizer.getStringToken(stringID);
-	}
-}
-

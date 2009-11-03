@@ -42,51 +42,105 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#ifndef STRINGIDPARAMETER_H_
+#define STRINGIDPARAMETER_H_
 
-#include "ObjectControllerMessage.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "engine/engine.h"
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
+#include "StringId.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+namespace variables {
+
+class StringIdParameter : public Serializable {
+	uint64 pointerParameter;
+	StringId stringID;
+
+	StringIdParameter() : Serializable() {
+		addSerializableVariables();
+	}
+
+private:
+	inline void addSerializableVariables() {
+		addSerializableVariable("stringID", &stringID);
+		addSerializableVariable("pointerParameter", &pointerParameter);
+	}
 
 public:
+	void set(SceneObject* obj);
+	void set(StringId* sid);
+	void set(StringId& sid);
 
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+	void clear() {
+		stringID.clear();
+		pointerParameter = 0;
 	}
 
-	void insertOption(const String& file, const String& str) {
-		insertUnicode(UnicodeString("@" + file + ":" + str));
-		updateOptionCount();
+	void set(uint64 oid) {
+		clear();
+
+		pointerParameter = oid;
 	}
 
-	void insertOption(ParameterizedStringId& sid) {
+	void set(const String& file, const String& id) {
+		clear();
 
-		sid.addToPacketStream(this);
-
-		updateOptionCount();
+		stringID.setStringId(file, id);
 	}
 
-	void insertOption(String& option) {
-		insertUnicode(UnicodeString(option));
-		updateOptionCount();
+	void set(const UnicodeString& us) {
+		clear();
+
+		stringID.setCustomString(us);
 	}
 
-	void insertOption(UnicodeString& option) {
-		insertUnicode(option);
-		updateOptionCount();
+	void set(const String& cs) {
+		clear();
+
+		stringID.setCustomString(UnicodeString(cs));
 	}
 
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
+	void set(const char* cstr) {
+		clear();
+
+		stringID.setCustomString(UnicodeString(cstr));
 	}
 
-	int getOptionCount() {
-		return optionCount;
+	inline uint32 size() const {
+		return sizeof(pointerParameter) + stringID.size();
 	}
+
+	inline uint64 getPointerParameter() const {
+		return pointerParameter;
+	}
+
+	inline UnicodeString& getUnicodeParameter() {
+		return stringID.getCustomString();
+	}
+
+	inline String& getFileParameter() {
+		return stringID.getFile();
+	}
+
+	inline String& getStringIDParameter() {
+		return stringID.getStringID();
+	}
+
+	friend class ParameterizedStringId;
 };
 
-#endif
+
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::scene::variables;
+#endif /* STRINGIDPARAMETER_H_ */

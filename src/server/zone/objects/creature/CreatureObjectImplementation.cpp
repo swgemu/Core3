@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -193,19 +194,20 @@ void CreatureObjectImplementation::sendSystemMessage(const String& message) {
 	sendSystemMessage(msg);
 }
 
-void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& str, uint64 targetid) {
+void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& stringid) {
 	if (!isPlayerCreature())
 		return;
 
-	ChatSystemMessage* msg = new ChatSystemMessage(file, str, targetid);
+	ChatSystemMessage* msg = new ChatSystemMessage(file, stringid);
 	sendMessage(msg);
 }
 
-void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& str, StfParameter* param) {
+
+void CreatureObjectImplementation::sendSystemMessage(ParameterizedStringId& message) {
 	if (!isPlayerCreature())
 		return;
 
-	ChatSystemMessage* msg = new ChatSystemMessage(file, str, param);
+	ChatSystemMessage* msg = new ChatSystemMessage(message);
 	sendMessage(msg);
 }
 
