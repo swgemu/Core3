@@ -42,51 +42,52 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#include "ParameterizedStringId.h"
 
-#include "ObjectControllerMessage.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+void ParameterizedStringId::addToPacketStream(Message * packet) {
+	uint32 size = 54 + file.length() + stringID.length() + parameters.size();
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
+	bool odd = (size & 1);
 
-public:
+	if (odd)
+		packet->insertInt((size + 1) / 2);
+	else
+		packet->insertInt(size / 2);
 
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
-	}
+		packet->insertShort(0);
+		packet->insertByte(1);
+		packet->insertInt(0xFFFFFFFF);
 
-	void insertOption(const String& file, const String& str) {
-		insertUnicode(UnicodeString("@" + file + ":" + str));
-		updateOptionCount();
-	}
+		packet->insertAscii(file);
+		packet->insertInt(0);
+		packet->insertAscii(stringID);
 
-	void insertOption(ParameterizedStringId& sid) {
+		packet->insertLong(parameters.getTU().getPointerParameter());
+		packet->insertAscii(parameters.getTU().getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(parameters.getTU().getStringIDParameter());
+		packet->insertUnicode(parameters.getTU().getUnicodeParameter());
 
-		sid.addToPacketStream(this);
 
-		updateOptionCount();
-	}
+		packet->insertLong(parameters.getTT().getPointerParameter());
+		packet->insertAscii(parameters.getTT().getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(parameters.getTT().getStringIDParameter());
+		packet->insertUnicode(parameters.getTT().getUnicodeParameter());
 
-	void insertOption(String& option) {
-		insertUnicode(UnicodeString(option));
-		updateOptionCount();
-	}
 
-	void insertOption(UnicodeString& option) {
-		insertUnicode(option);
-		updateOptionCount();
-	}
+		packet->insertLong(parameters.getTO().getPointerParameter());
+		packet->insertAscii(parameters.getTO().getFileParameter());
+		packet->insertInt(0);
+		packet->insertAscii(parameters.getTO().getStringIDParameter());
+		packet->insertUnicode(parameters.getTO().getUnicodeParameter());
 
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
-	}
 
-	int getOptionCount() {
-		return optionCount;
-	}
-};
+		packet->insertInt(parameters.getDI());
+		packet->insertFloat(parameters.getDF());
+		packet->insertShort(0);
+		packet->insertByte(0);
 
-#endif
+		if (odd)
+			packet->insertByte(0);
+}

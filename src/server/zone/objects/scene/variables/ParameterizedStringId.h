@@ -42,51 +42,87 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STRINGLIST_H_
-#define STRINGLIST_H_
+#ifndef PARAMETERIZEDSTRINGID_H_
+#define PARAMETERIZEDSTRINGID_H_
 
-#include "ObjectControllerMessage.h"
-#include "../../objects/scene/variables/ParameterizedStringId.h"
+#include "engine/engine.h"
 
-class StringList : public ObjectControllerMessage {
-	uint8 optionCount;
+#include "StringIdParameters.h"
+#include "StringId.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace variables {
+
+class ParameterizedStringId : public StringId {
+	StringIdParameters parameters;
+
+protected:
+
+	inline void addSerializableVariables() {
+		StringId::addSerializableVariables();
+		addSerializableVariable("parameters", &parameters);
+	}
 
 public:
+	ParameterizedStringId() : StringId() { }
+	ParameterizedStringId(const StringId& id) : StringId(id) { }
+	ParameterizedStringId(const char * cstr) : StringId (cstr) { }
+	ParameterizedStringId(const String& fullPath) : StringId (fullPath) { }
+	ParameterizedStringId(const String& fil, const String& stringId) : StringId(fil, stringId) { }
+	ParameterizedStringId(const UnicodeString& custom) : StringId(custom) { }
 
-	StringList(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xE0) {
-		optionCount = 0;
-		insertByte(0);
+	//Parameter Stuff
+
+	inline StringIdParameters& getParameters() {
+		return parameters;
 	}
 
-	void insertOption(const String& file, const String& str) {
-		insertUnicode(UnicodeString("@" + file + ":" + str));
-		updateOptionCount();
+	template<class T>
+	inline void setTT(const T& obj) {
+		parameters.setTT(obj);
 	}
 
-	void insertOption(ParameterizedStringId& sid) {
-
-		sid.addToPacketStream(this);
-
-		updateOptionCount();
+	inline void setTT(const String& f, const String& s) {
+		parameters.setTT(f,s);
 	}
 
-	void insertOption(String& option) {
-		insertUnicode(UnicodeString(option));
-		updateOptionCount();
+	template<class T>
+	inline void setTU(const T& obj) {
+		parameters.setTU(obj);
 	}
 
-	void insertOption(UnicodeString& option) {
-		insertUnicode(option);
-		updateOptionCount();
+	inline void setTU(const String& f, const String& s) {
+		parameters.setTU(f,s);
 	}
 
-	void updateOptionCount() {
-		insertByte(30, ++optionCount);
+	template<class T>
+	inline void setTO(const T& obj) {
+		parameters.setTO(obj);
 	}
 
-	int getOptionCount() {
-		return optionCount;
+	inline void setTO(const String& f, const String& s) {
+		parameters.setTO(f,s);
 	}
+
+	inline void setDI(uint32 i) {
+		parameters.setDI(i);
+	}
+
+	inline void setDF(float f) {
+		parameters.setDF(f);
+	}
+
+	void addToPacketStream(Message * packet);
 };
 
-#endif
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::scene::variables;
+#endif /* PARAMETERIZEDSTRINGID_H_ */

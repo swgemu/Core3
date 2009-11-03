@@ -135,7 +135,7 @@ public:
 		return TT.size() + TU.size() + TO.size() + sizeof(DI) + sizeof(DF);
 	}
 
-	friend class StringId;
+	friend class ParameterizedStringId;
 };
 
 }

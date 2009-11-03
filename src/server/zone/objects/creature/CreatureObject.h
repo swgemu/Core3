@@ -15,7 +15,7 @@ namespace objects {
 namespace scene {
 namespace variables {
 
-class StringId;
+class ParameterizedStringId;
 
 } // namespace variables
 } // namespace scene
@@ -92,7 +92,9 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(StringId& stringid);
+	void sendSystemMessage(const String& file, const String& stringid);
+
+	void sendSystemMessage(ParameterizedStringId& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
@@ -338,7 +340,9 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
-	void sendSystemMessage(StringId& stringid);
+	void sendSystemMessage(const String& file, const String& stringid);
+
+	void sendSystemMessage(ParameterizedStringId& stringid);
 
 	void sendSlottedObjectsTo(SceneObject* player);
 
@@ -491,6 +495,8 @@ public:
 
 	void sendSystemMessage(UnicodeString& message);
 
+	void sendSystemMessage(const String& file, const String& stringid);
+
 	void sendSlottedObjectsTo(SceneObject* player);
 
 	void setCombatState();
@@ -588,6 +594,8 @@ public:
 protected:
 	String _param0_sendSystemMessage__String_;
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
+	String _param0_sendSystemMessage__String_String_;
+	String _param1_sendSystemMessage__String_String_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

@@ -47,6 +47,8 @@
 
 #include "ObjectControllerMessage.h"
 
+#include "../../objects/scene/variables/ParameterizedStringId.h"
+
 class SpatialChat: public ObjectControllerMessage {
 public:
 	SpatialChat(uint64 senderid, uint64 recvid, const UnicodeString& message, uint64 target, uint32 moodid,
@@ -69,7 +71,27 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, StringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
+	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& stringid, uint64 target, uint32 moodid,
+			uint32 mood2) :
+		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
+		insertLong(senderid);
+		insertLong(target);
+		insertUnicode(UnicodeString("@" + file + ":" + stringid));
+
+		insertShort(0x32);
+		insertShort((uint16) mood2);
+		insertShort((uint16) moodid);
+		insertByte(0);
+		insertByte(0);
+
+		insertLong(0);
+		insertInt(0);
+		insertInt(0);
+
+		setCompression(true);
+	}
+
+	SpatialChat(uint64 senderid, uint64 recvid, ParameterizedStringId& stringid, uint64 target, uint16 moodid, uint16 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 
 		insertLong(senderid);

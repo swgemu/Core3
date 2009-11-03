@@ -47,8 +47,6 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/StringId.h"
-#include "server/zone/objects/scene/variables/StringIdParameter.h"
-#include "server/zone/objects/scene/variables/StringIdParameters.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 class BaseLineMessage: public BaseMessage {

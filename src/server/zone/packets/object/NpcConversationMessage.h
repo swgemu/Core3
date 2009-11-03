@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 #include "../../objects/creature/CreatureObject.h"
+#include "../../objects/scene/variables/ParameterizedStringId.h"
 
 class NpcConversationMessage : public ObjectControllerMessage {
 public:
@@ -57,8 +58,14 @@ public:
 		insertUnicode(message);
 	}
 
-	NpcConversationMessage(CreatureObject* creo, StringId& stringid)
-			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
+	NpcConversationMessage(CreatureObject* creo, const String& file, const String& stringid)
+		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
+
+		insertUnicode(UnicodeString("@" + file + ":" + stringid));
+	}
+
+	NpcConversationMessage(CreatureObject* creo, ParameterizedStringId& stringid)
+		: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
 
 		stringid.addToPacketStream(this);
 

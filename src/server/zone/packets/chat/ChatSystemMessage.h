@@ -46,7 +46,7 @@ which carries forward this exception.
 #define CHATSYSTEMMESSAGE_H_
 
 #include "engine/engine.h"
-#include "../../objects/scene/variables/StringId.h"
+#include "../../objects/scene/variables/ParameterizedStringId.h"
 
 class ChatSystemMessage : public BaseMessage {
 public:
@@ -62,7 +62,7 @@ public:
 		insertInt(0x00);
 	}
 
-	ChatSystemMessage(StringId& stringid) : BaseMessage() {
+	ChatSystemMessage(ParameterizedStringId& stringid) : BaseMessage() {
 		insertShort(0x08);
 		insertInt(0x6D2A6413);
 
@@ -75,17 +75,16 @@ public:
 	}
 
 	ChatSystemMessage(const String& file, const String& stringid) : BaseMessage() {
-		StringId sid = StringId(file, stringid);
+		UnicodeString message = "@" + file + ":" + stringid;
 
-		insertShort(0x08);
-		insertInt(0x6D2A6413);
+		insertShort(0x05);
+		insertInt(0x6D2A6413);  // CRC
 
-		insertByte(0);
-		insertInt(0); // UnicodeString
+		insertByte(0x01);
 
-		sid.addToPacketStream(this);
+		insertUnicode(message);
 
-		insertInt(0);
+		insertInt(0x00);
 	}
 };
 

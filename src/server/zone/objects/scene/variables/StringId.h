@@ -47,7 +47,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "StringIdParameters.h"
 
 namespace server {
 namespace zone {
@@ -56,17 +55,17 @@ namespace scene {
 namespace variables {
 
 class StringId : public Serializable {
+
+protected:
+
 	String file;
 	String stringID;
 	UnicodeString customName;
-	StringIdParameters parameters;
 
-private:
-	inline void addSerializableVariables() {
+	virtual void addSerializableVariables() {
 		addSerializableVariable("file", &file);
 		addSerializableVariable("stringID", &stringID);
 		addSerializableVariable("customName", &customName);
-		addSerializableVariable("parameters", &parameters);
 	}
 
 public:
@@ -98,49 +97,6 @@ public:
 	}
 
 	void setStringId(const String& fullPath);
-
-	//Parameter Stuff
-
-	inline StringIdParameters& getParameters() {
-		return parameters;
-	}
-
-	template<class T>
-	inline void setTT(const T& obj) {
-		parameters.setTT(obj);
-	}
-
-	inline void setTT(const String& f, const String& s) {
-		parameters.setTT(f,s);
-	}
-
-	template<class T>
-	inline void setTU(const T& obj) {
-		parameters.setTU(obj);
-	}
-
-	inline void setTU(const String& f, const String& s) {
-		parameters.setTU(f,s);
-	}
-
-	template<class T>
-	inline void setTO(const T& obj) {
-		parameters.setTO(obj);
-	}
-
-	inline void setTO(const String& f, const String& s) {
-		parameters.setTO(f,s);
-	}
-
-	inline void setDI(uint32 i) {
-		parameters.setDI(i);
-	}
-
-	inline void setDF(float f) {
-		parameters.setDF(f);
-	}
-
-	void addToPacketStream(Message * packet);
 };
 
 }
