@@ -74,9 +74,6 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	movementCounter = 0;
 
-	//TODO: This belongs in Managed Object - Bobius
-	permanent = false;
-
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -148,6 +145,9 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 }
 
 void SceneObjectImplementation::updateToDatabase(bool startTask) {
+	if (!persistent)
+		return;
+
 	Time start;
 
 	ZoneServer* server = getZoneServer();
@@ -165,7 +165,7 @@ void SceneObjectImplementation::updateToDatabase(bool startTask) {
 		object->updateToDatabase(false);
 	}
 
-	if (startTask && !isPermanent())
+	if (startTask)
 		queueUpdateToDatabaseTask();
 
 	info("saved in " + String::valueOf(start.miliDifference()));

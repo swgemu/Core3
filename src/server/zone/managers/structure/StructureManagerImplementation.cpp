@@ -86,7 +86,7 @@ void StructureManagerImplementation::loadStaticCells(BuildingObject * building) 
 
 			info("loading cell (" + String::valueOf(oid) + ") from mysql db");
 
-			cell = (CellObject*) server->getZoneServer()->createPermanentObject(file.hashCode(), oid);
+			cell = (CellObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
 
 			if (cell == NULL) {
 				error("cannot create static cell " + String::valueOf(oid));
@@ -125,7 +125,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 			ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 			if (result->next()) {
-				info("loading building (" + String::valueOf(oid) + ") from mysql db");
+				info("loading building (" + String::valueOf(oid) + ") from mysql db", true);
 
 
 				String file = result->getString(3);
@@ -141,7 +141,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 				info("trying to create " + file);
 
-				buio = (BuildingObject*) server->getZoneServer()->createPermanentObject(file.hashCode(), oid);
+				buio = (BuildingObject*) server->getZoneServer()->createStaticObject(file.hashCode(), oid);
 
 				if (buio == NULL) {
 					return NULL;

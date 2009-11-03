@@ -334,6 +334,7 @@ void ZoneServerImplementation::init() {
 
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessServerImplementation(processor);
+	objectManager->loadStaticObjects();
 
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
@@ -609,7 +610,7 @@ SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
 }
 
 void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
-	objectManager->updatePersistentObject(object, object->isPermanent());
+	objectManager->updatePersistentObject(object);
 }
 
 SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool persistent, uint64 oid) {
@@ -618,7 +619,7 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool per
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, persistent, false, oid);
+		obj = objectManager->createObject(templateCRC, persistent, oid);
 
 		if (obj != NULL && obj->isPlayerCreature())
 			chatManager->addPlayer((PlayerCreature*)obj);
@@ -637,13 +638,13 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool per
 	return obj;
 }
 
-SceneObject* ZoneServerImplementation::createPermanentObject(uint32 templateCRC, uint64 oid) {
+SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, uint64 oid) {
 	SceneObject* obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, true, true, oid);
+		obj = objectManager->createStaticObject(templateCRC, oid);
 
 		//unlock();
 	} catch (Exception& e) {

@@ -237,7 +237,7 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, bool persistent,
 		return ((ZoneServerImplementation*) _impl)->createObject(templateCRC, persistent, objectID);
 }
 
-SceneObject* ZoneServer::createPermanentObject(unsigned int templateCRC, unsigned long long objectID) {
+SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -248,7 +248,7 @@ SceneObject* ZoneServer::createPermanentObject(unsigned int templateCRC, unsigne
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->createPermanentObject(templateCRC, objectID);
+		return ((ZoneServerImplementation*) _impl)->createStaticObject(templateCRC, objectID);
 }
 
 void ZoneServer::updateObjectToDatabase(SceneObject* object) {
@@ -873,7 +873,7 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 20:
-		resp->insertLong(createPermanentObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(createStaticObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 21:
 		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
@@ -1037,8 +1037,8 @@ SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, bool pers
 	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistent, objectID);
 }
 
-SceneObject* ZoneServerAdapter::createPermanentObject(unsigned int templateCRC, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createPermanentObject(templateCRC, objectID);
+SceneObject* ZoneServerAdapter::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createStaticObject(templateCRC, objectID);
 }
 
 void ZoneServerAdapter::updateObjectToDatabase(SceneObject* object) {

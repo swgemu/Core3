@@ -137,17 +137,55 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
-
 	objectFactory.registerObject<Terminal>(SceneObject::TERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::SPACETERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
 
-
 	//temporary
 	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);
+}
 
+void ObjectManager::loadStaticObjects() {
+	Locker _locker(this);
+
+	info("loading static objects...", true);
+
+	ObjectDatabaseIterator iterator(staticDatabase);
+
+	uint32 serverObjectCRC;
+	uint64 objectID;
+
+	ObjectInputStream* objectData = new ObjectInputStream(2000);
+
+	while (iterator.getNextKeyAndValue(objectID, objectData)) {
+		SceneObject* object = (SceneObject*) getObject(objectID);
+
+		if (object != NULL)
+			continue;
+
+		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
+			error("unknown scene object in static database");
+			continue;
+		}
+
+		if (object == NULL) {
+			object = createObject(serverObjectCRC, false, objectID);
+
+			if (object == NULL) {
+				error("could not load object from static database");
+
+				continue;
+			}
+
+			deSerializeObject(object, objectData);
+
+			objectData->reset();
+		}
+	}
+
+	delete objectData;
 }
 
 void ObjectManager::loadLastUsedObjectID() {
@@ -204,8 +242,6 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 	Locker _locker(this);
 
-	bool permanant = false;
-
 	// only for debugging proposes
 	DistributedObject* dobject = getObject(objectID);
 
@@ -218,13 +254,9 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	ObjectInputStream* objectData = new ObjectInputStream(500);
 
 	if (database->getData(objectID, objectData)) {
-		//Not found in regular database, let's check static
 		if (staticDatabase->getData(objectID, objectData)) {
-			//Not found in static database either.
 			delete objectData;
 			return NULL;
-		} else {
-			permanant = true;
 		}
 	}
 
@@ -232,7 +264,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	String className;
 
 	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
-		object = createObject(serverObjectCRC, false, permanant, objectID);
+		object = createObject(serverObjectCRC, false, objectID);
 
 		if (object == NULL) {
 			error("could not load object from database");
@@ -245,7 +277,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		((SceneObject*)object)->info("loaded from db");
 
 	} else if (Serializable::getVariable<String>("_className", &className, objectData)) {
-		object = createObject(className, false, permanant, objectID);
+		object = createObject(className, false, objectID);
 
 		if (object == NULL) {
 			error("could not load object from database");
@@ -264,7 +296,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	return object;
 }
 
-ManagedObject* ObjectManager::createObject(const String& className, bool persistent, bool permanent, uint64 oid) {
+ManagedObject* ObjectManager::createObject(const String& className, bool persistent, uint64 oid) {
 	ManagedObject* object = NULL;
 
 	Locker _locker(this);
@@ -290,16 +322,11 @@ ManagedObject* ObjectManager::createObject(const String& className, bool persist
 		object->deploy();
 
 		if (persistent) {
-			updatePersistentObject(object, permanent);
+			updatePersistentObject(object);
 
 			object->queueUpdateToDatabaseTask();
 
 			object->setPersistent();
-
-			/*//TODO: Uncomment once permanent flags are moved to ManagedObject
-			if (permanent)
-				object->setPermanent();
-			*/
 		}
 
 	} else {
@@ -313,10 +340,10 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 	try {
 		object->wlock();
 
-		object->setPersistent();
 		object->readObject(data);
 
-		object->queueUpdateToDatabaseTask();
+		if (object->isPersistent())
+			object->queueUpdateToDatabaseTask();
 
 		object->unlock();
 	} catch (Exception& e) {
@@ -332,7 +359,6 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 	try {
 		object->wlock();
 
-		object->setPersistent();
 		object->readObject(data);
 
 		Zone* zone = object->getZone();
@@ -340,7 +366,8 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 		if (zone != NULL)
 			object->insertToZone(zone);
 
-		object->queueUpdateToDatabaseTask();
+		if (object->isPersistent())
+			object->queueUpdateToDatabaseTask();
 
 		object->unlock();
 	} catch (Exception& e) {
@@ -385,7 +412,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
-int ObjectManager::updatePersistentObject(DistributedObject* object, bool permanent) {
+int ObjectManager::updatePersistentObject(DistributedObject* object) {
 	if (database == NULL)
 		return 0;
 
@@ -394,10 +421,7 @@ int ObjectManager::updatePersistentObject(DistributedObject* object, bool perman
 
 		((ManagedObject*)object)->writeObject(objectData);
 
-		if(permanent)
-			staticDatabase->putData(object->_getObjectID(), objectData);
-		else
-			database->putData(object->_getObjectID(), objectData);
+		database->putData(object->_getObjectID(), objectData);
 
 		delete objectData;
 
@@ -413,7 +437,53 @@ int ObjectManager::updatePersistentObject(DistributedObject* object, bool perman
 	return 1;
 }
 
-SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool permanent, uint64 oid) {
+SceneObject* ObjectManager::createStaticObject(uint32 objectCRC, uint64 oid) {
+	Locker _locker(this);
+
+	DistributedObject* obj = getObject(oid);
+
+	SceneObject* object =  dynamic_cast<SceneObject*>(obj);
+
+	if (object != NULL && object->getServerObjectCRC() == objectCRC) {
+		return object;
+	}
+
+	if (object == NULL) {
+		object = createObject(objectCRC, false, oid);
+
+		if (object == NULL) {
+			error("error creating static object crc 0x" + String::hexvalueOf((int)objectCRC));
+			return NULL;
+		}
+
+		updateStaticObjectToDatabase(object);
+	} else {
+		error("creating static object");
+	}
+
+	return object;
+}
+
+int ObjectManager::updateStaticObjectToDatabase(SceneObject* object) {
+	if (staticDatabase == NULL)
+		return 0;
+
+	try {
+		ObjectOutputStream* objectData = new ObjectOutputStream(500);
+
+		object->writeObject(objectData);
+
+		staticDatabase->putData(object->getObjectID(), objectData);
+
+		delete objectData;
+	} catch (...) {
+		error("unreported exception caught in ObjectManager::updateStaticObjectToDatabase(SceneObject* object)");
+	}
+
+	return 1;
+}
+
+SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint64 oid) {
 	SceneObject* object = NULL;
 
 	Locker _locker(this);
@@ -428,9 +498,6 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool
 
 	if (persistent)
 		object->setPersistent();
-
-	if (permanent)
-		object->setPermanent();
 
 	if (oid == 0)
 		oid = getNextFreeObjectID();
@@ -447,7 +514,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, bool
 	object->deploy(newLogName.toString());
 
 	if (persistent) {
-		updatePersistentObject(object, permanent);
+		updatePersistentObject(object);
 
 		object->queueUpdateToDatabaseTask();
 	}

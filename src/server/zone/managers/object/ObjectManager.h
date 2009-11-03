@@ -83,23 +83,21 @@ namespace zone {
 
 	public:
 		ObjectManager();
-
 		~ObjectManager();
 
+		void loadStaticObjects();
+
 		// object methods
-		SceneObject* createObject(uint32 objectCRC, bool persistent, bool permanent = false, uint64 oid = 0);
-		ManagedObject* createObject(const String& className, bool persistent, bool permanent = false, uint64 oid = 0);
+		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0);
+		ManagedObject* createObject(const String& className, bool persistent, uint64 oid = 0);
+
+		SceneObject* createStaticObject(uint32 objectCRC, uint64 oid = 0);
+		int updateStaticObjectToDatabase(SceneObject* object);
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
-		int updatePersistentObject(DistributedObject* object, bool permanent = false);
+		int updatePersistentObject(DistributedObject* object);
 
 		int destroyObject(uint64 objectID);
-
-		/*template<typename ClassType> void createObject() {
-
-		}*/
-
-		//void savePersistentObjects();
 
 		void closeDatabases();
 

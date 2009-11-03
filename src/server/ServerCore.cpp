@@ -97,58 +97,21 @@ void ServerCore::init() {
 		String& orbaddr = configManager.getORBNamingDirectoryAddress();
 		orb = DistributedObjectBroker::initialize(orbaddr);
 
-		/*if (!orbaddr.isEmpty()) {
-			loginServer = NULL;
-			zoneServer = (ZoneServer*) DistributedObjectBroker::instance()->lookUp("ZoneServer");
+		orb->setCustomObjectManager(ObjectManager::instance());
 
-			if (zoneServer != NULL) {
-				info("Distributed Object client has ZoneServer", true);
+		if (configManager.getMakeLogin()) {
+			loginServer = new LoginServer(&configManager);
+		}
 
-				String serverName = zoneServer->getServerName();
-				int galaxyID = zoneServer->getGalaxyID();
+		if (configManager.getMakeZone()) {
+			zoneServer = new ZoneServer(configManager.getZoneProcessingThreads(), configManager.getZoneGalaxyID());
+			zoneServer->deploy("ZoneServer");
+		}
 
-				StringBuffer test;
-				test << "galaxyID:" << galaxyID;
+		if (configManager.getMakePing()) {
+			pingServer = new PingServer();
+		}
 
-				info("zone server name " + serverName, true);
-				info(test.toString(), true);
-
-				SceneObject* object = zoneServer->getObject(5);
-
-				if (object != NULL) {
-					info("woot got object id 5", true);
-				} else {
-					info(":( didnt get object id 5", true);
-				}
-			} else {
-				info("no zone server :((", true);
-			}
-
-
-			zoneServer = NULL;
-
-
-
-		} else {*/
-			orb->setCustomObjectManager(ObjectManager::instance());
-
-			if (configManager.getMakeLogin()) {
-				loginServer = new LoginServer(&configManager);
-			}
-
-			if (configManager.getMakeZone()) {
-				zoneServer = new ZoneServer(configManager.getZoneProcessingThreads(), configManager.getZoneGalaxyID());
-				zoneServer->deploy("ZoneServer");
-			}
-
-			/*if (configManager.getMakeStatus()) {
-			statusServer = new StatusServer(&configManager, zoneServer);
-		}*/
-
-			if (configManager.getMakePing()) {
-				pingServer = new PingServer();
-			}
-		//}
 
 	} catch (ServiceException& e) {
 		shutdown();

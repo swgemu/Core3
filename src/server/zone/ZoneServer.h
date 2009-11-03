@@ -180,7 +180,7 @@ public:
 
 	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
 
-	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
 	void updateObjectToDatabase(SceneObject* object);
 
@@ -353,7 +353,7 @@ public:
 
 	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
 
-	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
 	void updateObjectToDatabase(SceneObject* object);
 
@@ -472,7 +472,7 @@ public:
 
 	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID);
 
-	SceneObject* createPermanentObject(unsigned int templateCRC, unsigned long long objectID);
+	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID);
 
 	void updateObjectToDatabase(SceneObject* object);
 
