@@ -47,17 +47,19 @@ package server.zone.managers.structure;
 import engine.core.ManagedObject;
 import server.zone.Zone;
 import server.zone.ZoneProcessServerImplementation;
-import server.zone.managers.object.ObjectManager;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
-import server.zone.objects.cell.CellObject;
 import system.thread.Thread;
 
 class StructureManager extends ManagedObject implements Logger {
 	private Zone zone;
 	
 	private transient ZoneProcessServerImplementation server;
-		
+	
+	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);	
+	
+	//PRIVATE METHODS
+	
 	private native void loadStaticBuildings();
 	
 	private native void loadPlayerStructures();
@@ -66,11 +68,11 @@ class StructureManager extends ManagedObject implements Logger {
 	
 	private native void loadStaticCells(BuildingObject building);
 	
-	//PUBLIC FUNCTIONS
-	
-	public native StructureManager(Zone zone, ZoneProcessServerImplementation processor);
+	//PUBLIC METHODS
 	
 	public void loadStructures() {
 		loadStaticBuildings();
 		loadPlayerStructures();
-	}
+	}	
+}
+
