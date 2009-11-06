@@ -31,20 +31,6 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace object {
-
-class ObjectManager;
-
-} // namespace object
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::object;
-
-namespace server {
-namespace zone {
 namespace objects {
 namespace building {
 
@@ -56,20 +42,6 @@ class BuildingObject;
 } // namespace server
 
 using namespace server::zone::objects::building;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace cell {
-
-class CellObject;
-
-} // namespace cell
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::cell;
 
 #include "engine/core/ManagedObject.h"
 
@@ -166,10 +138,6 @@ public:
 	StructureManagerAdapter(StructureManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void loadStaticBuildings();
-
-	void loadPlayerStructures();
 
 	void loadStructures();
 
