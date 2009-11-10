@@ -118,8 +118,6 @@ void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	initializePosition(0.f, 0.f, 0.f);
 
-	persistent = false;
-
 	movementCounter = 0;
 }
 
