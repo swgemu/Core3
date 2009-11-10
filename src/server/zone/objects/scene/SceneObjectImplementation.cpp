@@ -119,6 +119,9 @@ void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	initializePosition(0.f, 0.f, 0.f);
 
 	movementCounter = 0;
+
+	//TODO: Remove this after bug [SWGEMU-111] is fixed in engine
+	persistent = false;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
