@@ -312,10 +312,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @param templateData templateData points to the SharedObjectTemplate LuaObject that is used to initialize SceneObejct members 
 	 */
 	public SceneObject(LuaObject templateData) {
-		//TODO: Reverse order after bug [SWGEMU-111] is fixed in engine
-		initializeTransientMembers();
 		loadTemplateData(templateData);
-		
+		initializeTransientMembers();
 	}
 
 	/**

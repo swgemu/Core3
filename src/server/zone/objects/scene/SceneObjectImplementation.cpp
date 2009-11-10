@@ -70,6 +70,10 @@ which carries forward this exception.
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
+	//TODO: Remove this after bug [SWGEMU-111] is fixed in engine
+	persistent = false;
+	//END
+
 	server = ZoneProcessServerImplementation::instance;
 
 	movementCounter = 0;
@@ -119,9 +123,6 @@ void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	initializePosition(0.f, 0.f, 0.f);
 
 	movementCounter = 0;
-
-	//TODO: Remove this after bug [SWGEMU-111] is fixed in engine
-	persistent = false;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
