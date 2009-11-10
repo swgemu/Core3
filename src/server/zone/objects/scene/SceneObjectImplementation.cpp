@@ -168,7 +168,28 @@ void SceneObjectImplementation::updateToDatabase(bool startTask) {
 	if (startTask)
 		queueUpdateToDatabaseTask();
 
-	info("saved in " + String::valueOf(start.miliDifference()));
+	info("saved in " + String::valueOf(start.miliDifference()) + " ms");
+}
+
+void SceneObjectImplementation::updateToStaticDatabase() {
+	Time start;
+
+	ZoneServer* server = getZoneServer();
+	server->updateObjectToStaticDatabase(_this);
+
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
+
+		object->updateToStaticDatabase();
+	}
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
+
+		object->updateToStaticDatabase();
+	}
+
+	info("saved static in " + String::valueOf(start.miliDifference()) + " ms");
 }
 
 uint64 SceneObjectImplementation::getObjectID() {

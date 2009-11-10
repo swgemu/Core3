@@ -613,6 +613,10 @@ void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
 	objectManager->updatePersistentObject(object);
 }
 
+void ZoneServerImplementation::updateObjectToStaticDatabase(SceneObject* object) {
+	objectManager->updateStaticObjectToDatabase(object);
+}
+
 SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool persistent, uint64 oid) {
 	SceneObject* obj = NULL;
 

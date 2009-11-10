@@ -184,6 +184,8 @@ public:
 
 	void updateObjectToDatabase(SceneObject* object);
 
+	void updateObjectToStaticDatabase(SceneObject* object);
+
 	void destroyObject(unsigned long long objectID);
 
 	void lock(bool doLock = true);
@@ -357,6 +359,8 @@ public:
 
 	void updateObjectToDatabase(SceneObject* object);
 
+	void updateObjectToStaticDatabase(SceneObject* object);
+
 	void destroyObject(unsigned long long objectID);
 
 	void lock(bool doLock = true);
@@ -475,6 +479,8 @@ public:
 	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID);
 
 	void updateObjectToDatabase(SceneObject* object);
+
+	void updateObjectToStaticDatabase(SceneObject* object);
 
 	void destroyObject(unsigned long long objectID);
 

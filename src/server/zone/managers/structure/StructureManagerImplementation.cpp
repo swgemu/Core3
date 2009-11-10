@@ -125,7 +125,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 			ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 			if (result->next()) {
-				info("loading building (" + String::valueOf(oid) + ") from mysql db", true);
+				info("loading building (" + String::valueOf(oid) + ") from mysql db");
 
 
 				String file = result->getString(3);
@@ -155,7 +155,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 				buio->insertToZone(zone);
 
-				buio->updateToDatabase();
+				buio->updateToStaticDatabase();
 			}
 
 			delete result;
