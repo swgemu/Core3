@@ -10,16 +10,18 @@
 
 #include "../MessageCallback.h"
 /* Valid action strings found:
- * openInventory
- * closeInventory
- * openHolocron
- * closeHolocron
  * openCharacterSheet
  * closeCharacterSheet
+ * openInventory
+ * closeInventory
  * openStatMigration
  * closeStatMigration
- * openContainer
- * closeContainer
+ * openHolocron
+ * closeHolocron
+ * zoomCamera
+ * overlayMap
+ * changeLookAtTarget
+ * changeMouseMode
  * equipToolbar
  */
 class NewbieTutorialRequest : public BaseMessage {
