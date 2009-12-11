@@ -355,7 +355,7 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("defenderList", &defenderList);
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/TangibleObject.idl(86):  Logger.setLoggingName("TangibleObject");
 	Logger::setLoggingName("TangibleObject");

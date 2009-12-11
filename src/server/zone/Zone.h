@@ -55,6 +55,8 @@ using namespace server::zone::managers::structure;
 
 #include "engine/core/ManagedObject.h"
 
+#include "system/lang/System.h"
+
 namespace server {
 namespace zone {
 
@@ -144,6 +146,8 @@ public:
 
 	ZoneImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void insert(QuadTreeEntry* entry);
@@ -220,6 +224,8 @@ public:
 	ZoneAdapter(ZoneImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

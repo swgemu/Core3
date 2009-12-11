@@ -296,7 +296,7 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("staticBuilding", &staticBuilding);
 }
 
-BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/building/BuildingObject.idl(70):  Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");

@@ -329,77 +329,82 @@ void ZoneImplementation::_serializationHelperMethod() {
 	addSerializableVariable("weatherEnabled", &weatherEnabled);
 }
 
+void ZoneImplementation::finalize() {
+	// server/zone/Zone.idl(67):  System.out.println("vazze");
+	System::out->println("vazze");
+}
+
 int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl(106):  return zoneID;
+	// server/zone/Zone.idl(112):  return zoneID;
 	return zoneID;
 }
 
 ZoneServer* ZoneImplementation::getZoneServer() {
-	// server/zone/Zone.idl(112):  return server;
+	// server/zone/Zone.idl(118):  return server;
 	return server;
 }
 
 unsigned long long ZoneImplementation::getGalacticTime() {
-	// server/zone/Zone.idl(116):  return galacticTime.miliDifference() / 1000;
+	// server/zone/Zone.idl(122):  return galacticTime.miliDifference() / 1000;
 	return (&galacticTime)->miliDifference() / 1000;
 }
 
 unsigned int ZoneImplementation::getWeatherID() {
-	// server/zone/Zone.idl(120):  return weatherID;
+	// server/zone/Zone.idl(126):  return weatherID;
 	return weatherID;
 }
 
 void ZoneImplementation::setWeatherID(unsigned int value) {
-	// server/zone/Zone.idl(124):  weatherID = value;
+	// server/zone/Zone.idl(130):  weatherID = value;
 	weatherID = value;
 }
 
 void ZoneImplementation::changeWeatherID(int value) {
-	// server/zone/Zone.idl(128):  weatherID 
+	// server/zone/Zone.idl(134):  weatherID 
 	if (weatherID == 0 && value < 0){
-	// server/zone/Zone.idl(129):  weatherID = 0;
+	// server/zone/Zone.idl(135):  weatherID = 0;
 	weatherID = 0;
-	// server/zone/Zone.idl(130):  return;
+	// server/zone/Zone.idl(136):  return;
 	return;
 }
-	// server/zone/Zone.idl(133):  += value;
+	// server/zone/Zone.idl(139):  += value;
 	weatherID += value;
-	// server/zone/Zone.idl(135):  }
+	// server/zone/Zone.idl(141):  }
 	if (weatherID > 4){
-	// server/zone/Zone.idl(136):  weatherID = 4;
+	// server/zone/Zone.idl(142):  weatherID = 4;
 	weatherID = 4;
-	// server/zone/Zone.idl(137):  return;
+	// server/zone/Zone.idl(143):  return;
 	return;
 }
 }
 
 bool ZoneImplementation::isWeatherEnabled() {
-	// server/zone/Zone.idl(142):  return weatherEnabled;
+	// server/zone/Zone.idl(148):  return weatherEnabled;
 	return weatherEnabled;
 }
 
 void ZoneImplementation::setWeatherEnabled(bool value) {
-	// server/zone/Zone.idl(146):  weatherEnabled = value;
+	// server/zone/Zone.idl(152):  weatherEnabled = value;
 	weatherEnabled = value;
 }
 
 void ZoneImplementation::setWeatherWindX(float value) {
-	// server/zone/Zone.idl(150):  weatherWindX = value;
+	// server/zone/Zone.idl(156):  weatherWindX = value;
 	weatherWindX = value;
 }
 
 void ZoneImplementation::setWeatherWindY(float value) {
-	// server/zone/Zone.idl(154):  weatherWindY = value;
+	// server/zone/Zone.idl(160):  weatherWindY = value;
 	weatherWindY = value;
 }
 
 float ZoneImplementation::getWeatherWindX() {
-	// server/zone/Zone.idl(158):  return weatherWindX;
+	// server/zone/Zone.idl(164):  return weatherWindX;
 	return weatherWindX;
 }
 
 float ZoneImplementation::getWeatherWindY() {
-	// server/zone/Zone.idl(162):  return weatherWindY;
+	// server/zone/Zone.idl(168):  return weatherWindY;
 	return weatherWindY;
 }
 
@@ -415,51 +420,54 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		finalize();
 		break;
 	case 7:
-		startManagers();
+		initializeTransientMembers();
 		break;
 	case 8:
-		stopManagers();
+		startManagers();
 		break;
 	case 9:
-		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
+		stopManagers();
 		break;
 	case 10:
-		resp->insertSignedInt(getZoneID());
+		resp->insertFloat(getHeight(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 11:
-		resp->insertLong(getZoneServer()->_getObjectID());
+		resp->insertSignedInt(getZoneID());
 		break;
 	case 12:
-		resp->insertLong(getGalacticTime());
+		resp->insertLong(getZoneServer()->_getObjectID());
 		break;
 	case 13:
-		resp->insertInt(getWeatherID());
+		resp->insertLong(getGalacticTime());
 		break;
 	case 14:
-		setWeatherID(inv->getUnsignedIntParameter());
+		resp->insertInt(getWeatherID());
 		break;
 	case 15:
-		changeWeatherID(inv->getSignedIntParameter());
+		setWeatherID(inv->getUnsignedIntParameter());
 		break;
 	case 16:
-		resp->insertBoolean(isWeatherEnabled());
+		changeWeatherID(inv->getSignedIntParameter());
 		break;
 	case 17:
-		setWeatherEnabled(inv->getBooleanParameter());
+		resp->insertBoolean(isWeatherEnabled());
 		break;
 	case 18:
-		setWeatherWindX(inv->getFloatParameter());
+		setWeatherEnabled(inv->getBooleanParameter());
 		break;
 	case 19:
-		setWeatherWindY(inv->getFloatParameter());
+		setWeatherWindX(inv->getFloatParameter());
 		break;
 	case 20:
-		resp->insertFloat(getWeatherWindX());
+		setWeatherWindY(inv->getFloatParameter());
 		break;
 	case 21:
+		resp->insertFloat(getWeatherWindX());
+		break;
+	case 22:
 		resp->insertFloat(getWeatherWindY());
 		break;
 	default:
@@ -467,6 +475,10 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+void ZoneAdapter::finalize() {
+	((ZoneImplementation*) impl)->finalize();
 }
 
 void ZoneAdapter::initializeTransientMembers() {

@@ -860,7 +860,7 @@ void CreatureObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("templateString", &templateString);
 }
 
-CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/creature/CreatureObject.idl(145):  Logger.setLoggingName("CreatureObject");
 	Logger::setLoggingName("CreatureObject");
