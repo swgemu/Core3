@@ -119,7 +119,7 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 }
 
-ContainerImplementation::ContainerImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+ContainerImplementation::ContainerImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/Container.idl(55):  Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");

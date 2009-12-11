@@ -217,7 +217,7 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("adminLevel", &adminLevel);
 }
 
-PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
+PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/player/PlayerObject.idl(80):  loadTemplateData(templateData);
 	loadTemplateData(templateData);

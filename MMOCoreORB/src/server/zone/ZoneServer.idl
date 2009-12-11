@@ -142,6 +142,10 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 		taskManager.setLogging(false);
 	}*/
 	
+	public void test() {
+		Zone zone = new Zone(this, null, 0);
+	}
+	
 	public native void initializeTransientMembers();
 	
 	@local

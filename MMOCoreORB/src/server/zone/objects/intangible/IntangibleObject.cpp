@@ -130,7 +130,7 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("status", &status);
 }
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/intangible/IntangibleObject.idl(56):  Logger.setLoggingName("IntangibleObject");
 	Logger::setLoggingName("IntangibleObject");

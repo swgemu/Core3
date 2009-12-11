@@ -96,7 +96,7 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 
 }
 
-WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+WearableObjectImplementation::WearableObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/wearables/WearableObject.idl(55):  Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");

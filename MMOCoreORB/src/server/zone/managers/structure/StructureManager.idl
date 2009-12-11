@@ -75,4 +75,3 @@ class StructureManager extends ManagedObject implements Logger {
 		loadPlayerStructures();
 	}	
 }
-

@@ -109,7 +109,7 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 
 }
 
-MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/mission/MissionObject.idl(56):  Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");

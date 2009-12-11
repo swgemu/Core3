@@ -58,9 +58,15 @@ import server.zone.managers.structure.StructureManager;
 
 include server.zone.managers.planet.HeightMap;
 
+import system.lang.System;
+
 class Zone extends ManagedObject implements QuadTree {
 	private int zoneID;
 
+	public void finalize() {
+		System.out.println("vazze");
+	}
+	
 	private transient ZoneProcessServerImplementation processor;
 
 	//private transient TaskManager taskManager;
