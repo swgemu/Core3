@@ -19,6 +19,7 @@ WearableObject::WearableObject(DummyConstructorParameter* param) : TangibleObjec
 WearableObject::~WearableObject() {
 }
 
+
 void WearableObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -40,6 +41,11 @@ WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParam
 }
 
 WearableObjectImplementation::~WearableObjectImplementation() {
+	WearableObjectImplementation::finalize();
+}
+
+
+void WearableObjectImplementation::finalize() {
 }
 
 void WearableObjectImplementation::_initializeImplementation() {

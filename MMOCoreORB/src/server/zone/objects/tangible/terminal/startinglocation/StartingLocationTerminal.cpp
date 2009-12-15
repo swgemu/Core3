@@ -21,6 +21,7 @@ StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* pa
 StartingLocationTerminal::~StartingLocationTerminal() {
 }
 
+
 void StartingLocationTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -55,6 +56,11 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(D
 }
 
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
+	StartingLocationTerminalImplementation::finalize();
+}
+
+
+void StartingLocationTerminalImplementation::finalize() {
 }
 
 void StartingLocationTerminalImplementation::_initializeImplementation() {

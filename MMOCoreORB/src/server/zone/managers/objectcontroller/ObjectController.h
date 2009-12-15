@@ -180,6 +180,8 @@ public:
 protected:
 	virtual ~ObjectControllerImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

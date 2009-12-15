@@ -110,6 +110,8 @@ public:
 protected:
 	virtual ~StructureManagerImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

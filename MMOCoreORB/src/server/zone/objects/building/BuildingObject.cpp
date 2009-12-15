@@ -25,6 +25,7 @@ BuildingObject::BuildingObject(DummyConstructorParameter* param) : TangibleObjec
 BuildingObject::~BuildingObject() {
 }
 
+
 void BuildingObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -237,6 +238,11 @@ BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParam
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
+	BuildingObjectImplementation::finalize();
+}
+
+
+void BuildingObjectImplementation::finalize() {
 }
 
 void BuildingObjectImplementation::_initializeImplementation() {

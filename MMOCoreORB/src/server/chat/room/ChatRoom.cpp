@@ -28,6 +28,7 @@ ChatRoom::ChatRoom(DummyConstructorParameter* param) : ManagedObject(param) {
 ChatRoom::~ChatRoom() {
 }
 
+
 void ChatRoom::sendTo(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -479,6 +480,11 @@ ChatRoomImplementation::ChatRoomImplementation(DummyConstructorParameter* param)
 }
 
 ChatRoomImplementation::~ChatRoomImplementation() {
+	ChatRoomImplementation::finalize();
+}
+
+
+void ChatRoomImplementation::finalize() {
 }
 
 void ChatRoomImplementation::_initializeImplementation() {

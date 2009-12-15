@@ -27,6 +27,7 @@ RadialManager::RadialManager(DummyConstructorParameter* param) : ManagedObject(p
 RadialManager::~RadialManager() {
 }
 
+
 void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -80,6 +81,11 @@ RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParamet
 }
 
 RadialManagerImplementation::~RadialManagerImplementation() {
+	RadialManagerImplementation::finalize();
+}
+
+
+void RadialManagerImplementation::finalize() {
 }
 
 void RadialManagerImplementation::_initializeImplementation() {

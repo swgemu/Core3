@@ -83,6 +83,8 @@ public:
 protected:
 	virtual ~ContainerImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

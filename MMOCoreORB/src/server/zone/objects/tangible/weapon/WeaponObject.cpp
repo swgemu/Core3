@@ -21,6 +21,7 @@ WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(pa
 WeaponObject::~WeaponObject() {
 }
 
+
 void WeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -67,6 +68,11 @@ WeaponObjectImplementation::WeaponObjectImplementation(DummyConstructorParameter
 }
 
 WeaponObjectImplementation::~WeaponObjectImplementation() {
+	WeaponObjectImplementation::finalize();
+}
+
+
+void WeaponObjectImplementation::finalize() {
 }
 
 void WeaponObjectImplementation::_initializeImplementation() {

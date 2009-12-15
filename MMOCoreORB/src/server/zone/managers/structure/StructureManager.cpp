@@ -25,6 +25,7 @@ StructureManager::StructureManager(DummyConstructorParameter* param) : ManagedOb
 StructureManager::~StructureManager() {
 }
 
+
 void StructureManager::loadStructures() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -46,6 +47,11 @@ StructureManagerImplementation::StructureManagerImplementation(DummyConstructorP
 }
 
 StructureManagerImplementation::~StructureManagerImplementation() {
+	StructureManagerImplementation::finalize();
+}
+
+
+void StructureManagerImplementation::finalize() {
 }
 
 void StructureManagerImplementation::_initializeImplementation() {

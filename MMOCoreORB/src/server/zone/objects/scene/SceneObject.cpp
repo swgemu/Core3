@@ -31,6 +31,7 @@ SceneObject::SceneObject(DummyConstructorParameter* param) : ManagedObject(param
 SceneObject::~SceneObject() {
 }
 
+
 void SceneObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -1192,6 +1193,11 @@ SceneObjectImplementation::SceneObjectImplementation(DummyConstructorParameter* 
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
+	SceneObjectImplementation::finalize();
+}
+
+
+void SceneObjectImplementation::finalize() {
 }
 
 void SceneObjectImplementation::_initializeImplementation() {

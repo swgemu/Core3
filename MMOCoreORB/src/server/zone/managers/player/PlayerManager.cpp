@@ -29,6 +29,7 @@ PlayerManager::PlayerManager(DummyConstructorParameter* param) : ManagedObject(p
 PlayerManager::~PlayerManager() {
 }
 
+
 bool PlayerManager::createPlayer(MessageCallback* callback) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -107,6 +108,11 @@ PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParamet
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
+	PlayerManagerImplementation::finalize();
+}
+
+
+void PlayerManagerImplementation::finalize() {
 }
 
 void PlayerManagerImplementation::_initializeImplementation() {
