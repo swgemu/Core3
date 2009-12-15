@@ -19,6 +19,7 @@ IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObje
 IntangibleObject::~IntangibleObject() {
 }
 
+
 void IntangibleObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -73,6 +74,11 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorP
 }
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
+	IntangibleObjectImplementation::finalize();
+}
+
+
+void IntangibleObjectImplementation::finalize() {
 }
 
 void IntangibleObjectImplementation::_initializeImplementation() {

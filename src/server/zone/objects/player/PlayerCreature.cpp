@@ -35,6 +35,7 @@ PlayerCreature::PlayerCreature(DummyConstructorParameter* param) : CreatureObjec
 PlayerCreature::~PlayerCreature() {
 }
 
+
 void PlayerCreature::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -508,6 +509,11 @@ PlayerCreatureImplementation::PlayerCreatureImplementation(DummyConstructorParam
 }
 
 PlayerCreatureImplementation::~PlayerCreatureImplementation() {
+	PlayerCreatureImplementation::finalize();
+}
+
+
+void PlayerCreatureImplementation::finalize() {
 }
 
 void PlayerCreatureImplementation::_initializeImplementation() {

@@ -23,6 +23,7 @@ CreatureObject::CreatureObject(DummyConstructorParameter* param) : TangibleObjec
 CreatureObject::~CreatureObject() {
 }
 
+
 void CreatureObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -767,6 +768,11 @@ CreatureObjectImplementation::CreatureObjectImplementation(DummyConstructorParam
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
+	CreatureObjectImplementation::finalize();
+}
+
+
+void CreatureObjectImplementation::finalize() {
 }
 
 void CreatureObjectImplementation::_initializeImplementation() {

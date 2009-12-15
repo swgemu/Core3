@@ -68,7 +68,7 @@ public:
 	}
 };
 
-ZoneServer* ServerCore::zoneServer = NULL;
+ManagedReference<ZoneServer*> ServerCore::zoneServer = NULL;
 
 ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
@@ -139,8 +139,6 @@ void ServerCore::init() {
 			if (configManager.getMakeZone()) {
 				zoneServer = new ZoneServer(configManager.getZoneProcessingThreads(), configManager.getZoneGalaxyID());
 				zoneServer->deploy("ZoneServer");
-
-				zoneServer->test();
 			}
 
 			/*if (configManager.getMakeStatus()) {

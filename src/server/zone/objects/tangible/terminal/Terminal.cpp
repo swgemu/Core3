@@ -19,6 +19,7 @@ Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
 Terminal::~Terminal() {
 }
 
+
 void Terminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -40,6 +41,11 @@ TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param)
 }
 
 TerminalImplementation::~TerminalImplementation() {
+	TerminalImplementation::finalize();
+}
+
+
+void TerminalImplementation::finalize() {
 }
 
 void TerminalImplementation::_initializeImplementation() {

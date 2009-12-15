@@ -19,6 +19,7 @@ TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(p
 TangibleObject::~TangibleObject() {
 }
 
+
 void TangibleObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -288,6 +289,11 @@ TangibleObjectImplementation::TangibleObjectImplementation(DummyConstructorParam
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
+	TangibleObjectImplementation::finalize();
+}
+
+
+void TangibleObjectImplementation::finalize() {
 }
 
 void TangibleObjectImplementation::_initializeImplementation() {

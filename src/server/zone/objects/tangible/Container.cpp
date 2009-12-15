@@ -21,6 +21,7 @@ Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
 Container::~Container() {
 }
 
+
 void Container::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -63,6 +64,11 @@ ContainerImplementation::ContainerImplementation(DummyConstructorParameter* para
 }
 
 ContainerImplementation::~ContainerImplementation() {
+	ContainerImplementation::finalize();
+}
+
+
+void ContainerImplementation::finalize() {
 }
 
 void ContainerImplementation::_initializeImplementation() {

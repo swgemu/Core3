@@ -1249,6 +1249,8 @@ public:
 protected:
 	virtual ~SceneObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

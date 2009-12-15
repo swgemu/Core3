@@ -256,6 +256,8 @@ public:
 protected:
 	virtual ~ChatRoomImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

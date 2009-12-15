@@ -122,6 +122,8 @@ public:
 protected:
 	virtual ~RadialManagerImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -25,6 +25,7 @@ Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
 Zone::~Zone() {
 }
 
+
 void Zone::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -265,7 +266,9 @@ ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : Manag
 }
 
 ZoneImplementation::~ZoneImplementation() {
+	ZoneImplementation::finalize();
 }
+
 
 void ZoneImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneHelper::instance());

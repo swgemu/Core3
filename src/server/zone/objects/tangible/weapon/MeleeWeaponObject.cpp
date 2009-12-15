@@ -19,6 +19,7 @@ MeleeWeaponObject::MeleeWeaponObject(DummyConstructorParameter* param) : WeaponO
 MeleeWeaponObject::~MeleeWeaponObject() {
 }
 
+
 void MeleeWeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -40,6 +41,11 @@ MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructo
 }
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
+	MeleeWeaponObjectImplementation::finalize();
+}
+
+
+void MeleeWeaponObjectImplementation::finalize() {
 }
 
 void MeleeWeaponObjectImplementation::_initializeImplementation() {

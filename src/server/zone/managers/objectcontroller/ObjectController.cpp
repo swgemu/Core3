@@ -33,6 +33,7 @@ ObjectController::ObjectController(DummyConstructorParameter* param) : ManagedOb
 ObjectController::~ObjectController() {
 }
 
+
 bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -99,6 +100,11 @@ ObjectControllerImplementation::ObjectControllerImplementation(DummyConstructorP
 }
 
 ObjectControllerImplementation::~ObjectControllerImplementation() {
+	ObjectControllerImplementation::finalize();
+}
+
+
+void ObjectControllerImplementation::finalize() {
 }
 
 void ObjectControllerImplementation::_initializeImplementation() {

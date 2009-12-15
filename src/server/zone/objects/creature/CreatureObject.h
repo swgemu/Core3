@@ -454,6 +454,8 @@ public:
 protected:
 	virtual ~CreatureObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

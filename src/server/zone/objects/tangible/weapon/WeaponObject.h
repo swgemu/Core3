@@ -92,6 +92,8 @@ public:
 protected:
 	virtual ~WeaponObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
