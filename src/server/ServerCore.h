@@ -81,7 +81,7 @@ class ServerCore : public Core, public Logger {
 
 	PingServer* pingServer;
 
-	static server::zone::ZoneServer* zoneServer;
+	static ManagedReference<server::zone::ZoneServer*> zoneServer;
 
 public:
 	ServerCore();

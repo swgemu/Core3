@@ -37,6 +37,7 @@ ChatManager::ChatManager(DummyConstructorParameter* param) : ManagedObject(param
 ChatManager::~ChatManager() {
 }
 
+
 void ChatManager::initiateRooms() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -213,6 +214,11 @@ ChatManagerImplementation::ChatManagerImplementation(DummyConstructorParameter* 
 }
 
 ChatManagerImplementation::~ChatManagerImplementation() {
+	ChatManagerImplementation::finalize();
+}
+
+
+void ChatManagerImplementation::finalize() {
 }
 
 void ChatManagerImplementation::_initializeImplementation() {

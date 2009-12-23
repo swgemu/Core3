@@ -19,6 +19,7 @@ MissionObject::MissionObject(DummyConstructorParameter* param) : SceneObject(par
 MissionObject::~MissionObject() {
 }
 
+
 void MissionObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -53,6 +54,11 @@ MissionObjectImplementation::MissionObjectImplementation(DummyConstructorParamet
 }
 
 MissionObjectImplementation::~MissionObjectImplementation() {
+	MissionObjectImplementation::finalize();
+}
+
+
+void MissionObjectImplementation::finalize() {
 }
 
 void MissionObjectImplementation::_initializeImplementation() {
@@ -109,7 +115,7 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 
 }
 
-MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/mission/MissionObject.idl(56):  Logger.setLoggingName("MissionObject");
 	Logger::setLoggingName("MissionObject");

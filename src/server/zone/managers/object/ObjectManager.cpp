@@ -1,46 +1,9 @@
 /*
-Copyright (C) 2007 <SWGEmu>
-
-This File is part of Core3.
-
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ * ObjectManager.cpp
+ *
+ *  Created on: 13/11/2009
+ *      Author: victor
+ */
 
 #include "ObjectManager.h"
 
@@ -70,14 +33,16 @@ which carries forward this exception.
 #include "server/chat/ChatManager.h"
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/db/ObjectDatabase.h"
+#include "server/db/ObjectDatabaseEnvironment.h"
+
+#define NULLHIGH 0x0000FFFFFFFFFFFF;
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
 	server = NULL;
 
-	database = new ObjectDatabase("objects.db");
-	staticDatabase = new ObjectDatabase("staticobjects.db");
+	databaseEnvironment = ObjectDatabaseEnvironment::instance();
 
 	registerObjectTypes();
 
@@ -88,6 +53,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	registerFunctions();
 	luaTemplatesInstance->runFile("scripts/object/main.lua");
 
+	databaseEnvironment->loadDatabase("staticobjects", true, 0);
+
 	loadLastUsedObjectID();
 
 	setLogging(false);
@@ -95,10 +62,12 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 }
 
 ObjectManager::~ObjectManager() {
+	info("closing databases...", true);
+
+	ObjectDatabaseEnvironment::instance()->finalize();
+
 	delete luaTemplatesInstance;
 	luaTemplatesInstance = NULL;
-
-	closeDatabases();
 }
 
 void ObjectManager::registerObjectTypes() {
@@ -147,64 +116,27 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);
 }
 
-void ObjectManager::loadStaticObjects() {
-	Locker _locker(this);
-
-	info("loading static objects...", true);
-
-	ObjectDatabaseIterator iterator(staticDatabase);
-
-	uint32 serverObjectCRC;
-	uint64 objectID;
-
-	ObjectInputStream* objectData = new ObjectInputStream(2000);
-
-	while (iterator.getNextKeyAndValue(objectID, objectData)) {
-		SceneObject* object = (SceneObject*) getObject(objectID);
-
-		if (object != NULL)
-			continue;
-
-		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
-			error("unknown scene object in static database");
-			continue;
-		}
-
-		if (object == NULL) {
-			object = createObject(serverObjectCRC, false, objectID);
-
-			if (object == NULL) {
-				error("could not load object from static database");
-
-				continue;
-			}
-
-			deSerializeObject(object, objectData);
-
-			objectData->reset();
-		}
-	}
-
-	delete objectData;
-}
 
 void ObjectManager::loadLastUsedObjectID() {
 	info("loading last used object id");
 
-	ObjectDatabaseIterator iterator(database);
-	ObjectDatabaseIterator staticIterator(staticDatabase);
-
 	uint64 maxObjectID = 0;
 	uint64 objectID;
 
-	while (iterator.getNextKey(objectID)) {
-		if (objectID > maxObjectID)
-			maxObjectID = objectID;
-	}
+	/*uint64 nullify = 0x0000FFFF;
+	nullify = (nullify << 32) + 0xFFFFFFFF;*/
 
-	while (staticIterator.getNextKey(objectID)) {
-		if (objectID > maxObjectID)
-			maxObjectID = objectID;
+	for (int i = 0; i < databaseEnvironment->getDatabaseCount(); ++i) {
+		ObjectDatabase* db = databaseEnvironment->getDatabase(i);
+
+		ObjectDatabaseIterator iterator(db);
+
+		while (iterator.getNextKey(objectID)) {
+			objectID = objectID & NULLHIGH;
+
+			if (objectID > maxObjectID)
+				maxObjectID = objectID;
+		}
 	}
 
 	if (nextObjectID < maxObjectID + 1)
@@ -213,128 +145,179 @@ void ObjectManager::loadLastUsedObjectID() {
 	info("done loading last use object id " + String::valueOf(nextObjectID));
 }
 
-/*void ObjectManager::savePersistentObjects() {
+void ObjectManager::loadStaticObjects() {
 	Locker _locker(this);
 
-}*/
+	info("loading static objects...", true);
 
-void ObjectManager::closeDatabases() {
-	Locker _locker(this);
+	ObjectDatabase* staticDatabase = databaseEnvironment->loadDatabase("staticobjects", true, 0);
 
-	if (database != NULL) {
-		database->sync();
+	ObjectDatabaseIterator iterator(staticDatabase);
 
-		delete database;
-		database = NULL;
-	}
+	uint32 serverObjectCRC;
+	uint64 objectID;
 
-	if (staticDatabase != NULL) {
-		staticDatabase->sync();
+	ObjectInputStream objectData(2000);
 
-		delete staticDatabase;
-		staticDatabase = NULL;
+	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+		SceneObject* object = (SceneObject*) getObject(objectID);
+
+		if (object != NULL)
+			continue;
+
+		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+			error("unknown scene object in static database");
+			continue;
+		}
+
+		if (object == NULL) {
+			object = createObject(serverObjectCRC, 0, "staticobjects", objectID);
+
+			if (object == NULL) {
+				error("could not load object from static database");
+
+				continue;
+			}
+
+			deSerializeObject(object, &objectData);
+
+			objectData.reset();
+		}
 	}
 }
 
+int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	try {
+		ObjectOutputStream* objectData = new ObjectOutputStream(500);
+
+		((ManagedObject*)object)->writeObject(objectData);
+
+		uint64 oid = object->_getObjectID();
+
+		ObjectDatabase* database = getTable(oid);
+
+		if (database != NULL) {
+			StringBuffer msg;
+			String dbName;
+
+			database->getDatabaseName(dbName);
+
+			msg << "saving to database with table " << dbName << " and object id 0x" << oid;
+			info(msg.toString(), true);
+
+			database->putData(oid, objectData);
+
+			delete objectData;
+		} else {
+			StringBuffer err;
+			err << "unknown database id of objectID 0x" << hex << oid;
+			error(err.toString());
+		}
+
+		/*objectData.escapeString();
+
+		StringBuffer query;
+		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
+		ServerDatabase::instance()->executeStatement(query);*/
+	} catch (...) {
+		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
+	}
+
+	return 1;
+}
+
+SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
+	Locker _locker(this);
+
+	SceneObject* object = NULL;
+
+	try {
+		LuaFunction getTemplate(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
+		getTemplate << objectCRC; // push first argument
+		luaTemplatesInstance->callFunction(&getTemplate);
+
+		LuaObject result(luaTemplatesInstance->getLuaState());
+
+		if (!result.isValidTable())
+			return NULL;
+
+		uint32 gameObjectType = result.getIntField("gameObjectType");
+
+		object = objectFactory.createObject(gameObjectType, &result);
+		object->setServerObjectCRC(objectCRC);
+
+	} catch (Exception& e) {
+		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
+		error(e.getMessage());
+
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
+	}
+
+	return object;
+}
 
 DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	DistributedObjectStub* object = NULL;
 
 	Locker _locker(this);
 
+	uint16 tableID = (uint16)(objectID >> 48);
+
+	/*StringBuffer infoMsg;
+	infoMsg << "trying to get database with table id 0x" << hex << tableID << " with obejct id 0x" << hex << objectID;
+	info(infoMsg.toString(), true);*/
+
+	ObjectDatabase* database = databaseEnvironment->getDatabase(tableID);
+
 	// only for debugging proposes
-	DistributedObject* dobject = getObject(objectID);
+	/*DistributedObject* dobject = getObject(objectID);
 
 	if (dobject != NULL && dobject->_getObjectID() != objectID) {
 		error("different object already in database");
 
 		return NULL;
-	}
+	}*/
 
-	ObjectInputStream* objectData = new ObjectInputStream(500);
+	ObjectInputStream objectData(500);
 
-	if (database->getData(objectID, objectData)) {
-		if (staticDatabase->getData(objectID, objectData)) {
-			delete objectData;
-			return NULL;
-		}
+	if (database->getData(objectID, &objectData)) {
+		return NULL;
 	}
 
 	uint32 serverObjectCRC = 0;
 	String className;
 
-	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, objectData)) {
-		object = createObject(serverObjectCRC, false, objectID);
+	if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+		object = instantiateSceneObject(serverObjectCRC, objectID);
 
 		if (object == NULL) {
 			error("could not load object from database");
-			delete objectData;
 			return NULL;
 		}
 
-		deSerializeObject((SceneObject*)object, objectData);
+		deSerializeObject((SceneObject*)object, &objectData);
 
 		((SceneObject*)object)->info("loaded from db");
 
-	} else if (Serializable::getVariable<String>("_className", &className, objectData)) {
-		object = createObject(className, false, objectID);
+	} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
+		object = createObject(className, false, "", objectID);
 
 		if (object == NULL) {
 			error("could not load object from database");
-			delete objectData;
 			return NULL;
 		}
 
-		deSerializeObject((ManagedObject*)object, objectData);
+		deSerializeObject((ManagedObject*)object, &objectData);
 	} else {
 		error("could not load object from database, unknown template crc or class name");
-		object = NULL;
 	}
 
-	delete objectData;
 
 	return object;
 }
 
-ManagedObject* ObjectManager::createObject(const String& className, bool persistent, uint64 oid) {
-	ManagedObject* object = NULL;
-
-	Locker _locker(this);
-
-	DistributedObjectClassHelperMap* classMap = DistributedObjectBroker::instance()->getClassMap();
-
-	DistributedObjectClassHelper* helper = classMap->get(className);
-
-	if (helper != NULL) {
-		object = (ManagedObject*) helper->instantiateObject();
-		DistributedObjectServant* servant = helper->instantiateServant();
-
-		if (oid == 0)
-			oid = getNextFreeObjectID();
-
-		object->_setObjectID(oid);
-		object->_setImplementation(servant);
-
-		servant->_setStub(object);
-		servant->_setClassHelper(helper);
-		servant->_serializationHelperMethod();
-
-		object->deploy();
-
-		if (persistent) {
-			updatePersistentObject(object);
-
-			object->queueUpdateToDatabaseTask();
-
-			object->setPersistent();
-		}
-
-	} else {
-		error("unknown className:" + className + " in classMap");
-	}
-
-	return object;
-}
 
 void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* data) {
 	try {
@@ -382,125 +365,17 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
 }
 
-SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
-	SceneObject* object = NULL;
-
-	try {
-		LuaFunction getTemplate(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
-		getTemplate << objectCRC; // push first argument
-		luaTemplatesInstance->callFunction(&getTemplate);
-
-		LuaObject result(luaTemplatesInstance->getLuaState());
-
-		if (!result.isValidTable())
-			return NULL;
-
-		uint32 gameObjectType = result.getIntField("gameObjectType");
-
-		object = objectFactory.createObject(gameObjectType, &result);
-		object->setServerObjectCRC(objectCRC);
-
-	} catch (Exception& e) {
-		error("exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
-		error(e.getMessage());
-
-		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
-	}
-
-	return object;
-}
-
-int ObjectManager::updatePersistentObject(DistributedObject* object) {
-	if (database == NULL)
-		return 0;
-
-	try {
-		ObjectOutputStream* objectData = new ObjectOutputStream(500);
-
-		((ManagedObject*)object)->writeObject(objectData);
-
-		database->putData(object->_getObjectID(), objectData);
-
-		delete objectData;
-
-		/*objectData.escapeString();
-
-		StringBuffer query;
-		query << "UPDATE objects SET data = '" << objectData << "' WHERE objectid = " << object->_getObjectID() << ";";
-		ServerDatabase::instance()->executeStatement(query);*/
-	} catch (...) {
-		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
-	}
-
-	return 1;
-}
-
-SceneObject* ObjectManager::createStaticObject(uint32 objectCRC, uint64 oid) {
-	Locker _locker(this);
-
-	DistributedObject* obj = getObject(oid);
-
-	SceneObject* object =  dynamic_cast<SceneObject*>(obj);
-
-	if (object != NULL && object->getServerObjectCRC() == objectCRC) {
-		return object;
-	}
-
-	if (object == NULL) {
-		object = createObject(objectCRC, false, oid);
-
-		if (object == NULL) {
-			error("error creating static object crc 0x" + String::hexvalueOf((int)objectCRC));
-			return NULL;
-		}
-
-		updateStaticObjectToDatabase(object);
-	} else {
-		error("creating static object");
-	}
-
-	return object;
-}
-
-int ObjectManager::updateStaticObjectToDatabase(SceneObject* object) {
-	if (staticDatabase == NULL)
-		return 0;
-
-	try {
-		ObjectOutputStream* objectData = new ObjectOutputStream(500);
-
-		object->writeObject(objectData);
-
-		staticDatabase->putData(object->getObjectID(), objectData);
-
-		delete objectData;
-	} catch (...) {
-		error("unreported exception caught in ObjectManager::updateStaticObjectToDatabase(SceneObject* object)");
-	}
-
-	return 1;
-}
-
-SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint64 oid) {
+SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid) {
 	SceneObject* object = NULL;
 
 	Locker _locker(this);
 
 	object = loadObjectFromTemplate(objectCRC);
 
-	if (object == NULL) {
+	if (object == NULL)
 		return NULL;
-	}
 
 	object->setZoneProcessServer(server);
-
-	if (persistent)
-		object->setPersistent();
-
-	if (oid == 0)
-		oid = getNextFreeObjectID();
 
 	object->_setObjectID(oid);
 
@@ -512,14 +387,130 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, bool persistent, uint
 	object->setLoggingName(newLogName.toString());
 
 	object->deploy(newLogName.toString());
+	info("deploying.." + newLogName.toString());
 
-	if (persistent) {
+	return object;
+}
+
+SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid) {
+	SceneObject* object = NULL;
+
+	loadTable(database, oid);
+
+	if (oid == 0) {
+		if (database != "staticobjects")
+			oid = getNextObjectID(database);
+		else
+			oid = getNextFreeObjectID();
+	}
+
+	object = instantiateSceneObject(objectCRC, oid);
+
+	if (object == NULL) {
+		error("could not create object CRC = " + String::valueOf(objectCRC));
+		return NULL;
+	}
+
+	if (persistenceLevel > 0) {
+		object->setPersistent(persistenceLevel);
+
 		updatePersistentObject(object);
 
 		object->queueUpdateToDatabaseTask();
 	}
 
 	return object;
+}
+
+
+ManagedObject* ObjectManager::createObject(const String& className, int persistenceLevel, const String& database, uint64 oid) {
+	ManagedObject* object = NULL;
+
+	Locker _locker(this);
+
+	DistributedObjectClassHelperMap* classMap = DistributedObjectBroker::instance()->getClassMap();
+
+	DistributedObjectClassHelper* helper = classMap->get(className);
+
+	if (helper != NULL) {
+		object = (ManagedObject*) helper->instantiateObject();
+		DistributedObjectServant* servant = helper->instantiateServant();
+
+		loadTable(database, oid);
+
+		if (oid == 0) {
+			if (database != "staticobjects")
+				oid = getNextObjectID(database);
+			else
+				oid = getNextFreeObjectID();
+		}
+
+		object->_setObjectID(oid);
+		object->_setImplementation(servant);
+
+		servant->_setStub(object);
+		servant->_setClassHelper(helper);
+		servant->_serializationHelperMethod();
+
+		object->deploy();
+
+		if (persistenceLevel > 0) {
+			updatePersistentObject(object);
+
+			object->queueUpdateToDatabaseTask();
+
+			object->setPersistent(persistenceLevel);
+		}
+
+	} else {
+		error("unknown className:" + className + " in classMap");
+	}
+
+	return object;
+}
+
+uint64 ObjectManager::getNextObjectID(const String& database) {
+	uint64 oid = 0;
+
+	if (database.length() > 0) {
+		uint16 tableID = (uint16) database.hashCode();
+
+		oid += tableID;
+
+		oid = oid << 48;
+	}
+
+	oid += getNextFreeObjectID();
+
+	return oid;
+}
+
+ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID) {
+	ObjectDatabase* table = NULL;
+
+	if (database.length() > 0) {
+		if (objectID != 0) {
+			uint16 tableID = (uint16) (objectID >> 48);
+
+			table = databaseEnvironment->loadDatabase(database, true, tableID);
+		} else {
+			table = databaseEnvironment->loadDatabase(database, true);
+		}
+	}
+
+	return table;
+}
+
+ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
+	ObjectDatabase* table = NULL;
+
+	if (objectID != 0) {
+		uint16 tableID = (uint16) (objectID >> 48);
+
+		table = databaseEnvironment->getDatabase(tableID);
+	}
+
+	return table;
 }
 
 int ObjectManager::destroyObject(uint64 objectID) {
@@ -564,3 +555,4 @@ int ObjectManager::includeFile(lua_State* L) {
 
 	return 0;
 }
+

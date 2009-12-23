@@ -19,6 +19,7 @@ Terminal::Terminal(DummyConstructorParameter* param) : TangibleObject(param) {
 Terminal::~Terminal() {
 }
 
+
 void Terminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -40,6 +41,11 @@ TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param)
 }
 
 TerminalImplementation::~TerminalImplementation() {
+	TerminalImplementation::finalize();
+}
+
+
+void TerminalImplementation::finalize() {
 }
 
 void TerminalImplementation::_initializeImplementation() {
@@ -96,7 +102,7 @@ void TerminalImplementation::_serializationHelperMethod() {
 
 }
 
-TerminalImplementation::TerminalImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+TerminalImplementation::TerminalImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/Terminal.idl(55):  Logger.setLoggingName("Terminal");
 	Logger::setLoggingName("Terminal");

@@ -19,6 +19,7 @@ IntangibleObject::IntangibleObject(DummyConstructorParameter* param) : SceneObje
 IntangibleObject::~IntangibleObject() {
 }
 
+
 void IntangibleObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -73,6 +74,11 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(DummyConstructorP
 }
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {
+	IntangibleObjectImplementation::finalize();
+}
+
+
+void IntangibleObjectImplementation::finalize() {
 }
 
 void IntangibleObjectImplementation::_initializeImplementation() {
@@ -130,7 +136,7 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("status", &status);
 }
 
-IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+IntangibleObjectImplementation::IntangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/intangible/IntangibleObject.idl(56):  Logger.setLoggingName("IntangibleObject");
 	Logger::setLoggingName("IntangibleObject");

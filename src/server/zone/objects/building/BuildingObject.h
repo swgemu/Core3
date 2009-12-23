@@ -193,6 +193,8 @@ public:
 protected:
 	virtual ~BuildingObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

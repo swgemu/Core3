@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "Zone.h"
 
 #include "../db/ServerDatabase.h"
+#include "../db/ObjectDatabaseEnvironment.h"
 
 #include "managers/object/ObjectManager.h"
 #include "managers/objectcontroller/ObjectController.h"
@@ -334,7 +335,6 @@ void ZoneServerImplementation::init() {
 
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessServerImplementation(processor);
-	objectManager->loadStaticObjects();
 
 	phandler = new BasePacketHandler("ZoneServer", processor->getMessageQueue());
 	phandler->setLogging(false);
@@ -393,6 +393,8 @@ void ZoneServerImplementation::init() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
+
+	objectManager->loadStaticObjects();
 
 	objectController = new ObjectController(processor);
 	objectController->deploy("ObjectController");
@@ -473,10 +475,6 @@ void ZoneServerImplementation::shutdown() {
 	}
 
 	info("zones shut down", true);
-
-	info("closing databases...", true);
-
-	objectManager->closeDatabases();
 
 	printInfo(true);
 
@@ -614,16 +612,16 @@ void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
 }
 
 void ZoneServerImplementation::updateObjectToStaticDatabase(SceneObject* object) {
-	objectManager->updateStaticObjectToDatabase(object);
+	objectManager->updatePersistentObject(object);
 }
 
-SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, bool persistent, uint64 oid) {
+SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int persistenceLevel, uint64 oid) {
 	SceneObject* obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, persistent, oid);
+		obj = objectManager->createObject(templateCRC, persistenceLevel, "sceneobjects", oid);
 
 		if (obj != NULL && obj->isPlayerCreature())
 			chatManager->addPlayer((PlayerCreature*)obj);
@@ -648,7 +646,7 @@ SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, ui
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createStaticObject(templateCRC, oid);
+		obj = objectManager->createObject(templateCRC, 1, "staticobjects", oid);
 
 		//unlock();
 	} catch (Exception& e) {

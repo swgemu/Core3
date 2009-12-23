@@ -95,6 +95,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/db/ObjectDatabase.cpp \
+		server/db/ObjectDatabaseEnvironment.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServer.cpp \

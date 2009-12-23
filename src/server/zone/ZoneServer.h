@@ -178,7 +178,7 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
+	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
 
 	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
@@ -353,7 +353,7 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID = 0);
+	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
 
 	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
@@ -433,6 +433,8 @@ public:
 protected:
 	virtual ~ZoneServerImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -474,7 +476,7 @@ public:
 
 	SceneObject* getObject(unsigned long long objectID, bool doLock);
 
-	SceneObject* createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID);
+	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID);
 
 	SceneObject* createStaticObject(unsigned int templateCRC, unsigned long long objectID);
 

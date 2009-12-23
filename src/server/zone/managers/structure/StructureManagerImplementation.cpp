@@ -155,7 +155,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 
 				buio->insertToZone(zone);
 
-				buio->updateToStaticDatabase();
+				buio->updateToDatabase();
 			}
 
 			delete result;

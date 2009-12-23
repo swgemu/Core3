@@ -6,17 +6,20 @@
  */
 
 #include "ObjectDatabase.h"
+#include "ObjectDatabaseEnvironment.h"
 
-ObjectDatabase::ObjectDatabase(const String& dbFileName) : Logger("ObjectDatabase") {
-	databaseEnvironment = new DbEnv(0);
-	objectsDatabase = new Db(databaseEnvironment, 0);
+ObjectDatabase::ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& dbFileName) : Logger("ObjectDatabase") {
+	DbEnv* env = NULL;
+
+	if (dbEnv != NULL)
+		env = dbEnv->getBerkeleyEnvironment();
+
+	objectsDatabase = new Db(env, 0);
 
 	dbFlags = DB_CREATE | DB_THREAD;
-	dbEnvironmentFlags = DB_CREATE | DB_THREAD | DB_INIT_LOCK | DB_INIT_LOG | DB_INIT_TXN | DB_INIT_MPOOL;
 
 	databaseFileName = dbFileName;
 
-	openEnvironment();
 	openDatabase();
 
 	setGlobalLogging(true);
@@ -28,60 +31,10 @@ ObjectDatabase::ObjectDatabase(const String& dbFileName) : Logger("ObjectDatabas
 
 ObjectDatabase::~ObjectDatabase() {
 	closeDatabase();
-	closeEnvironment();
 
 	delete objectsDatabase;
 	objectsDatabase = NULL;
-
-	delete databaseEnvironment;
-	objectsDatabase = NULL;
 }
-
-int ObjectDatabase::isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags) {
-	if (pid != Thread::getProcessID())
-		return 0;
-
-	return 1; // still running
-}
-
-void ObjectDatabase::openEnvironment() {
-	try {
-
-		databaseEnvironment->set_thread_count(50);
-
-		int ret = databaseEnvironment->open("databases", dbEnvironmentFlags, 0);
-
-		databaseEnvironment->set_isalive(isAlive);
-
-		if (ret != 0)
-			error("Trying to open environment error: " + String::valueOf(ret));
-
-		if (databaseEnvironment->failchk(0) != 0) {
-			error("Database environment crashed and cant continue, please run db_recovery");
-			//exit(1);
-		}
-
-	} catch(DbException &e) {
-		error("Error opening environment... please run db_recovery");
-		error(e.what());
-	} catch (...) {
-		error("unreported exception caught while trying to open berkeley DB ");
-	}
-}
-
-void ObjectDatabase::closeEnvironment() {
-	try {
-
-		databaseEnvironment->close(0);
-
-	} catch (DbException &e) {
-		error("Error closing environment: ");
-		error(e.what());
-	} catch (...) {
-		error("unreported exception caught while trying to close environment");
-	}
-}
-
 
 void ObjectDatabase::openDatabase() {
 	try {
@@ -92,7 +45,7 @@ void ObjectDatabase::openDatabase() {
 		if (ret != 0) {
 			error("Trying to open database (" + databaseFileName + ") error:" + String::valueOf(ret));
 		} else
-			info("opened objects database (" + databaseFileName + ")", true);
+			info("opened object database (" + databaseFileName + ")", true);
 
 	} catch(DbException &e) {
 		error("Error opening database (" + databaseFileName + "): " );
@@ -160,6 +113,10 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 	try {
 		Dbt key(&objKey, sizeof(uint64));
 		Dbt data((void*)objectData->getBuffer(), objectData->size());
+
+		StringBuffer msg;
+		msg << "saving oid 0x" << hex << objKey;
+		info(msg.toString(), true);
 
 		ret = objectsDatabase->put(NULL, &key, &data, 0);
 

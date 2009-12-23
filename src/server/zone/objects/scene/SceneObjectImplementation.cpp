@@ -70,10 +70,6 @@ which carries forward this exception.
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
-	//TODO: Remove this after bug [SWGEMU-111] is fixed in engine
-	persistent = false;
-	//END
-
 	server = ZoneProcessServerImplementation::instance;
 
 	movementCounter = 0;
@@ -147,7 +143,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 }
 
 void SceneObjectImplementation::updateToDatabase(bool startTask) {
-	if (!persistent)
+	if (!isPersistent())
 		return;
 
 	Time start;
@@ -171,27 +167,6 @@ void SceneObjectImplementation::updateToDatabase(bool startTask) {
 		queueUpdateToDatabaseTask();
 
 	info("saved in " + String::valueOf(start.miliDifference()) + " ms");
-}
-
-void SceneObjectImplementation::updateToStaticDatabase() {
-	Time start;
-
-	ZoneServer* server = getZoneServer();
-	server->updateObjectToStaticDatabase(_this);
-
-	for (int i = 0; i < slottedObjects.size(); ++i) {
-		ManagedReference<SceneObject*> object = slottedObjects.get(i);
-
-		object->updateToStaticDatabase();
-	}
-
-	for (int j = 0; j < containerObjects.size(); ++j) {
-		ManagedReference<SceneObject*> object = containerObjects.get(j);
-
-		object->updateToStaticDatabase();
-	}
-
-	info("saved static in " + String::valueOf(start.miliDifference()) + " ms");
 }
 
 uint64 SceneObjectImplementation::getObjectID() {

@@ -103,6 +103,8 @@ public:
 protected:
 	virtual ~WaypointObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

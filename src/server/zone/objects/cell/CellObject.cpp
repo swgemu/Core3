@@ -19,6 +19,7 @@ CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 CellObject::~CellObject() {
 }
 
+
 void CellObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -78,6 +79,11 @@ CellObjectImplementation::CellObjectImplementation(DummyConstructorParameter* pa
 }
 
 CellObjectImplementation::~CellObjectImplementation() {
+	CellObjectImplementation::finalize();
+}
+
+
+void CellObjectImplementation::finalize() {
 }
 
 void CellObjectImplementation::_initializeImplementation() {
@@ -135,7 +141,7 @@ void CellObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cellNumber", &cellNumber);
 }
 
-CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/cell/CellObject.idl(57):  Logger.setLoggingName("CellObject");
 	Logger::setLoggingName("CellObject");

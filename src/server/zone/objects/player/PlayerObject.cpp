@@ -25,6 +25,7 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 PlayerObject::~PlayerObject() {
 }
 
+
 void PlayerObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -158,6 +159,11 @@ PlayerObjectImplementation::PlayerObjectImplementation(DummyConstructorParameter
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
+	PlayerObjectImplementation::finalize();
+}
+
+
+void PlayerObjectImplementation::finalize() {
 }
 
 void PlayerObjectImplementation::_initializeImplementation() {
@@ -217,7 +223,7 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("adminLevel", &adminLevel);
 }
 
-PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
+PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/player/PlayerObject.idl(80):  loadTemplateData(templateData);
 	loadTemplateData(templateData);

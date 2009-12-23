@@ -19,6 +19,7 @@ RecreationBuildingObject::RecreationBuildingObject(DummyConstructorParameter* pa
 RecreationBuildingObject::~RecreationBuildingObject() {
 }
 
+
 /*
  *	RecreationBuildingObjectImplementation
  */
@@ -28,6 +29,11 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(D
 }
 
 RecreationBuildingObjectImplementation::~RecreationBuildingObjectImplementation() {
+	RecreationBuildingObjectImplementation::finalize();
+}
+
+
+void RecreationBuildingObjectImplementation::finalize() {
 }
 
 void RecreationBuildingObjectImplementation::_initializeImplementation() {
@@ -84,7 +90,7 @@ void RecreationBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(55):  Logger.setLoggingName("RecreationBuildingObject");
 	Logger::setLoggingName("RecreationBuildingObject");

@@ -21,6 +21,7 @@ Container::Container(DummyConstructorParameter* param) : TangibleObject(param) {
 Container::~Container() {
 }
 
+
 void Container::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -63,6 +64,11 @@ ContainerImplementation::ContainerImplementation(DummyConstructorParameter* para
 }
 
 ContainerImplementation::~ContainerImplementation() {
+	ContainerImplementation::finalize();
+}
+
+
+void ContainerImplementation::finalize() {
 }
 
 void ContainerImplementation::_initializeImplementation() {
@@ -119,7 +125,7 @@ void ContainerImplementation::_serializationHelperMethod() {
 
 }
 
-ContainerImplementation::ContainerImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+ContainerImplementation::ContainerImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/Container.idl(55):  Logger.setLoggingName("Container");
 	Logger::setLoggingName("Container");

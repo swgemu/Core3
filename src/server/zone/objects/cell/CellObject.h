@@ -77,6 +77,8 @@ public:
 protected:
 	virtual ~CellObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

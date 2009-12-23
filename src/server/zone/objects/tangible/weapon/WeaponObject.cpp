@@ -21,6 +21,7 @@ WeaponObject::WeaponObject(DummyConstructorParameter* param) : TangibleObject(pa
 WeaponObject::~WeaponObject() {
 }
 
+
 void WeaponObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -67,6 +68,11 @@ WeaponObjectImplementation::WeaponObjectImplementation(DummyConstructorParameter
 }
 
 WeaponObjectImplementation::~WeaponObjectImplementation() {
+	WeaponObjectImplementation::finalize();
+}
+
+
+void WeaponObjectImplementation::finalize() {
 }
 
 void WeaponObjectImplementation::_initializeImplementation() {
@@ -126,7 +132,7 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("weaponEffectIndex", &weaponEffectIndex);
 }
 
-WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+WeaponObjectImplementation::WeaponObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/weapon/WeaponObject.idl(59):  attackType = templateData.getIntField("attackType");
 	attackType = templateData->getIntField("attackType");

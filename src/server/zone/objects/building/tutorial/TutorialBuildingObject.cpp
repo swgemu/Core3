@@ -21,6 +21,7 @@ TutorialBuildingObject::TutorialBuildingObject(DummyConstructorParameter* param)
 TutorialBuildingObject::~TutorialBuildingObject() {
 }
 
+
 /*
  *	TutorialBuildingObjectImplementation
  */
@@ -30,6 +31,11 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(Dummy
 }
 
 TutorialBuildingObjectImplementation::~TutorialBuildingObjectImplementation() {
+	TutorialBuildingObjectImplementation::finalize();
+}
+
+
+void TutorialBuildingObjectImplementation::finalize() {
 }
 
 void TutorialBuildingObjectImplementation::_initializeImplementation() {
@@ -86,7 +92,7 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
+TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(56):  Logger.setLoggingName("TutorialBuildingObject");
 	Logger::setLoggingName("TutorialBuildingObject");

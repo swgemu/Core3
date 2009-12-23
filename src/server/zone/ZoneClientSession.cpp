@@ -23,6 +23,7 @@ ZoneClientSession::ZoneClientSession(DummyConstructorParameter* param) : Managed
 ZoneClientSession::~ZoneClientSession() {
 }
 
+
 void ZoneClientSession::disconnect() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -222,6 +223,11 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DummyConstructo
 }
 
 ZoneClientSessionImplementation::~ZoneClientSessionImplementation() {
+	ZoneClientSessionImplementation::finalize();
+}
+
+
+void ZoneClientSessionImplementation::finalize() {
 }
 
 void ZoneClientSessionImplementation::_initializeImplementation() {

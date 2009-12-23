@@ -449,13 +449,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public native void updateToDatabase(boolean startTask = true);
 	
 	/**
-	 * Updates this object to static database
-	 * @pre { this object is locked }
-	 * @post { this object is locked }
-	 */
-	public native void updateToStaticDatabase();
-
-	/**
 	 * Sends a SceneObjectCreateMessage of this object to client
 	 * @pre { this object is locked }
 	 * @post {Êthis object is locked, client received the SceneObjectCreateMessage message }

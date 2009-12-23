@@ -492,8 +492,6 @@ public:
 
 	void updateToDatabase(bool startTask = true);
 
-	void updateToStaticDatabase();
-
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -1095,8 +1093,6 @@ public:
 
 	void updateToDatabase(bool startTask = true);
 
-	void updateToStaticDatabase();
-
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -1263,6 +1259,8 @@ public:
 protected:
 	virtual ~SceneObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1309,8 +1307,6 @@ public:
 	bool canAddObject(SceneObject* object);
 
 	void updateToDatabase(bool startTask);
-
-	void updateToStaticDatabase();
 
 	void create(ZoneClientSession* client);
 

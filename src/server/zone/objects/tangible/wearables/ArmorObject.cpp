@@ -19,6 +19,7 @@ ArmorObject::ArmorObject(DummyConstructorParameter* param) : WearableObject(para
 ArmorObject::~ArmorObject() {
 }
 
+
 void ArmorObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -40,6 +41,11 @@ ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* 
 }
 
 ArmorObjectImplementation::~ArmorObjectImplementation() {
+	ArmorObjectImplementation::finalize();
+}
+
+
+void ArmorObjectImplementation::finalize() {
 }
 
 void ArmorObjectImplementation::_initializeImplementation() {
@@ -96,7 +102,7 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 
 }
 
-ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) : WearableObjectImplementation(templateData) {
+ArmorObjectImplementation::ArmorObjectImplementation(LuaObject* templateData) : WearableObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/wearables/ArmorObject.idl(54):  Logger.setLoggingName("ArmorObject");
 	Logger::setLoggingName("ArmorObject");

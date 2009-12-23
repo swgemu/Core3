@@ -12,31 +12,24 @@
 
 #include "db_cxx.h"
 
+class ObjectDatabaseEnvironment;
+
 class ObjectDatabase : public Logger {
-	DbEnv* databaseEnvironment;
 	Db* objectsDatabase;
 
 	String databaseFileName;
-
-	uint32 dbEnvironmentFlags;
 	uint32 dbFlags;
 
 private:
 	void closeDatabase();
 	void openDatabase();
 
-	void openEnvironment();
-	void closeEnvironment();
-
 	ObjectDatabase() {
-		//Should not be used
 	}
 
 public:
-	ObjectDatabase(const String& dbFileName);
+	ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& dbFileName);
 	~ObjectDatabase();
-
-	static int isAlive(DbEnv* dbenv, pid_t pid, db_threadid_t tid, u_int32_t flags);
 
 	int getData(uint64 objKey, ObjectInputStream* objectData);
 	int putData(uint64 objKey, ObjectOutputStream* stream, bool syncToDisk = false);
@@ -46,6 +39,10 @@ public:
 
 	inline Db* getDatabaseHandle() {
 		return objectsDatabase;
+	}
+
+	inline void getDatabaseName(String& name) {
+		name = databaseFileName.replaceFirst(".db", "");
 	}
 
 };

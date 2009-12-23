@@ -19,6 +19,7 @@ TangibleObject::TangibleObject(DummyConstructorParameter* param) : SceneObject(p
 TangibleObject::~TangibleObject() {
 }
 
+
 void TangibleObject::loadTemplateData(LuaObject* templateData) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -288,6 +289,11 @@ TangibleObjectImplementation::TangibleObjectImplementation(DummyConstructorParam
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
+	TangibleObjectImplementation::finalize();
+}
+
+
+void TangibleObjectImplementation::finalize() {
 }
 
 void TangibleObjectImplementation::_initializeImplementation() {
@@ -355,7 +361,7 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("defenderList", &defenderList);
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
+TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/TangibleObject.idl(86):  Logger.setLoggingName("TangibleObject");
 	Logger::setLoggingName("TangibleObject");

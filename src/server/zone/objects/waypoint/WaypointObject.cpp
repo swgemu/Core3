@@ -19,6 +19,7 @@ WaypointObject::WaypointObject(DummyConstructorParameter* param) : IntangibleObj
 WaypointObject::~WaypointObject() {
 }
 
+
 void WaypointObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -141,6 +142,11 @@ WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParam
 }
 
 WaypointObjectImplementation::~WaypointObjectImplementation() {
+	WaypointObjectImplementation::finalize();
+}
+
+
+void WaypointObjectImplementation::finalize() {
 }
 
 void WaypointObjectImplementation::_initializeImplementation() {
@@ -200,7 +206,7 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("active", &active);
 }
 
-WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
+WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/waypoint/WaypointObject.idl(60):  internalNote = "EMPTY";
 	internalNote = "EMPTY";

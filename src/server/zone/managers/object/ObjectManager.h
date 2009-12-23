@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "engine/util/ObjectFactory.h"
 
 class ObjectDatabase;
+class ObjectDatabaseEnvironment;
 
 namespace server {
 namespace zone {
@@ -65,8 +66,7 @@ namespace zone {
 
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
-		ObjectDatabase* database;
-		ObjectDatabase* staticDatabase;
+		ObjectDatabaseEnvironment* databaseEnvironment;
 
 	public:
 		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
@@ -74,12 +74,17 @@ namespace zone {
 		static Lua* luaTemplatesInstance;
 
 	private:
+		/**
+		 * Loads the highest object id without the highest 16 bits that specify the table.
+		 */
 		void loadLastUsedObjectID();
 
 		void registerObjectTypes();
 		SceneObject* loadObjectFromTemplate(uint32 objectCRC);
 		void deSerializeObject(SceneObject* object, ObjectInputStream* data);
 		void deSerializeObject(ManagedObject* object, ObjectInputStream* data);
+
+		SceneObject* instantiateSceneObject(uint32 objectCRC, uint64 oid);
 
 	public:
 		ObjectManager();
@@ -88,30 +93,26 @@ namespace zone {
 		void loadStaticObjects();
 
 		// object methods
-		SceneObject* createObject(uint32 objectCRC, bool persistent, uint64 oid = 0);
-		ManagedObject* createObject(const String& className, bool persistent, uint64 oid = 0);
+		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
 
-		SceneObject* createStaticObject(uint32 objectCRC, uint64 oid = 0);
-		int updateStaticObjectToDatabase(SceneObject* object);
+		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0);
 
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);
 
 		int destroyObject(uint64 objectID);
 
-		void closeDatabases();
+		uint64 getNextObjectID(const String& database);
 
-		void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
+		ObjectDatabase* loadTable(const String& database, uint64 objectID = 0);
+		ObjectDatabase* getTable(uint64 objectID);
+
+		inline void setZoneProcessServerImplementation(ZoneProcessServerImplementation* srv) {
 			server = srv;
-		}
-
-		inline ObjectDatabase* getObjectDatabase() {
-			return database;
 		}
 
 		// LUA
 		void registerFunctions();
-
 		static int includeFile(lua_State* L);
 
 	};

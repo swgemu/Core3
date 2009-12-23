@@ -68,7 +68,7 @@ public:
 	}
 };
 
-ZoneServer* ServerCore::zoneServer = NULL;
+ManagedReference<ZoneServer*> ServerCore::zoneServer = NULL;
 
 ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	orb = NULL;
@@ -206,6 +206,8 @@ void ServerCore::shutdown() {
 	DistributedObjectBroker::finalize();
 
 	info("server closed");
+
+	exit(1);
 }
 
 void ServerCore::handleCommands() {

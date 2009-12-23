@@ -48,7 +48,7 @@ StringId::StringId() : Serializable() {
 	addSerializableVariables();
 }
 
-StringId::StringId(const StringId& id) : Object(), Serializable() {
+StringId::StringId(const StringId& id) : Serializable() {
 	file = id.file;
 	stringID = id.stringID;
 

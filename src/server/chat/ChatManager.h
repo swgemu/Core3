@@ -240,6 +240,8 @@ public:
 protected:
 	virtual ~ChatManagerImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

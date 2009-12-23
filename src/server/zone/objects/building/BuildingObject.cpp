@@ -25,6 +25,7 @@ BuildingObject::BuildingObject(DummyConstructorParameter* param) : TangibleObjec
 BuildingObject::~BuildingObject() {
 }
 
+
 void BuildingObject::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -263,6 +264,11 @@ BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParam
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
+	BuildingObjectImplementation::finalize();
+}
+
+
+void BuildingObjectImplementation::finalize() {
 }
 
 void BuildingObjectImplementation::_initializeImplementation() {
@@ -322,7 +328,7 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("staticBuilding", &staticBuilding);
 }
 
-BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
+BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/building/BuildingObject.idl(70):  Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");

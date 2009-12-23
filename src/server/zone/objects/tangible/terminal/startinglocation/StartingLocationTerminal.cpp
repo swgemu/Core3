@@ -21,6 +21,7 @@ StartingLocationTerminal::StartingLocationTerminal(DummyConstructorParameter* pa
 StartingLocationTerminal::~StartingLocationTerminal() {
 }
 
+
 void StartingLocationTerminal::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -55,6 +56,11 @@ StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(D
 }
 
 StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation() {
+	StartingLocationTerminalImplementation::finalize();
+}
+
+
+void StartingLocationTerminalImplementation::finalize() {
 }
 
 void StartingLocationTerminalImplementation::_initializeImplementation() {
@@ -111,7 +117,7 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
+StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(56):  Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");

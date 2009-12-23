@@ -35,6 +35,7 @@ ZoneServer::ZoneServer(DummyConstructorParameter* param) : ManagedObject(param) 
 ZoneServer::~ZoneServer() {
 }
 
+
 void ZoneServer::initializeTransientMembers() {
 	if (_impl == NULL) {
 		if (!deployed)
@@ -222,19 +223,19 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->getObject(objectID, doLock);
 }
 
-SceneObject* ZoneServer::createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID) {
+SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
 		method.addUnsignedIntParameter(templateCRC);
-		method.addBooleanParameter(persistent);
+		method.addSignedIntParameter(persistenceLevel);
 		method.addUnsignedLongParameter(objectID);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return ((ZoneServerImplementation*) _impl)->createObject(templateCRC, persistent, objectID);
+		return ((ZoneServerImplementation*) _impl)->createObject(templateCRC, persistenceLevel, objectID);
 }
 
 SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
@@ -681,6 +682,11 @@ ZoneServerImplementation::ZoneServerImplementation(DummyConstructorParameter* pa
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
+	ZoneServerImplementation::finalize();
+}
+
+
+void ZoneServerImplementation::finalize() {
 }
 
 void ZoneServerImplementation::_initializeImplementation() {
@@ -883,7 +889,7 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getObject(inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 19:
-		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 20:
 		resp->insertLong(createStaticObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
@@ -1049,8 +1055,8 @@ SceneObject* ZoneServerAdapter::getObject(unsigned long long objectID, bool doLo
 	return ((ZoneServerImplementation*) impl)->getObject(objectID, doLock);
 }
 
-SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, bool persistent, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistent, objectID);
+SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistenceLevel, objectID);
 }
 
 SceneObject* ZoneServerAdapter::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
