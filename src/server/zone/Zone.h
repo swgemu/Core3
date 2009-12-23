@@ -146,8 +146,6 @@ public:
 
 	ZoneImplementation(DummyConstructorParameter* param);
 
-	void finalize();
-
 	void initializeTransientMembers();
 
 	void insert(QuadTreeEntry* entry);
@@ -196,6 +194,8 @@ public:
 protected:
 	virtual ~ZoneImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -224,8 +224,6 @@ public:
 	ZoneAdapter(ZoneImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void finalize();
 
 	void initializeTransientMembers();
 

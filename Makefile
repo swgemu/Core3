@@ -79,7 +79,7 @@ IDL_CLASSPATH = ../../MMOEngine/include
 
 all:
 	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
-	cd build/unix && ../../configure && make -j4
+	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#done
@@ -88,6 +88,7 @@ rebuild: clean all
 
 config:
 	autoreconf --force
+	cd build/unix && ../../configure
 	#done
 
 clean: cleanidl

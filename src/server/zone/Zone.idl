@@ -63,10 +63,6 @@ import system.lang.System;
 class Zone extends ManagedObject implements QuadTree {
 	private int zoneID;
 
-	public void finalize() {
-		System.out.println("vazze");
-	}
-	
 	private transient ZoneProcessServerImplementation processor;
 
 	//private transient TaskManager taskManager;

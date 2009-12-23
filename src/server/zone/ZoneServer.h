@@ -146,6 +146,8 @@ public:
 
 	ZoneServer(int processingThreads, int galaxyid = 2);
 
+	void test();
+
 	void initializeTransientMembers();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
@@ -321,6 +323,8 @@ public:
 
 	ZoneServerImplementation(DummyConstructorParameter* param);
 
+	void test();
+
 	void initializeTransientMembers();
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
@@ -449,6 +453,8 @@ public:
 	ZoneServerAdapter(ZoneServerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void test();
 
 	void initializeTransientMembers();
 
