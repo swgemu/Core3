@@ -126,18 +126,26 @@ void ZoneClientSession::unlock(bool doLock) {
 		((ZoneClientSessionImplementation*) _impl)->unlock(doLock);
 }
 
-void ZoneClientSession::acquire() {
+void ZoneClientSession::_acquire() {
 	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 14);
+
+		method.executeWithVoidReturn();
 	} else
 		((ZoneClientSessionImplementation*) _impl)->acquire();
 }
 
-void ZoneClientSession::release() {
+void ZoneClientSession::_release() {
 	if (_impl == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, 15);
+
+		method.executeWithVoidReturn();
 	} else
 		((ZoneClientSessionImplementation*) _impl)->release();
 }
@@ -147,7 +155,7 @@ String ZoneClientSession::getAddress() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 
 		method.executeWithAsciiReturn(_return_getAddress);
 		return _return_getAddress;
@@ -160,7 +168,7 @@ void ZoneClientSession::setPlayer(SceneObject* playerCreature) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(playerCreature);
 
 		method.executeWithVoidReturn();
@@ -173,7 +181,7 @@ void ZoneClientSession::setSessionKey(unsigned int key) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addUnsignedIntParameter(key);
 
 		method.executeWithVoidReturn();
@@ -186,7 +194,7 @@ void ZoneClientSession::setAccountID(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addUnsignedIntParameter(id);
 
 		method.executeWithVoidReturn();
@@ -199,7 +207,7 @@ SceneObject* ZoneClientSession::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -211,7 +219,7 @@ unsigned int ZoneClientSession::getSessionKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -223,7 +231,7 @@ unsigned int ZoneClientSession::getAccountID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -375,24 +383,30 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		unlock(inv->getBooleanParameter());
 		break;
 	case 14:
-		resp->insertAscii(getAddress());
+		acquire();
 		break;
 	case 15:
-		setPlayer((SceneObject*) inv->getObjectParameter());
+		release();
 		break;
 	case 16:
-		setSessionKey(inv->getUnsignedIntParameter());
+		resp->insertAscii(getAddress());
 		break;
 	case 17:
-		setAccountID(inv->getUnsignedIntParameter());
+		setPlayer((SceneObject*) inv->getObjectParameter());
 		break;
 	case 18:
-		resp->insertLong(getPlayer()->_getObjectID());
+		setSessionKey(inv->getUnsignedIntParameter());
 		break;
 	case 19:
-		resp->insertInt(getSessionKey());
+		setAccountID(inv->getUnsignedIntParameter());
 		break;
 	case 20:
+		resp->insertLong(getPlayer()->_getObjectID());
+		break;
+	case 21:
+		resp->insertInt(getSessionKey());
+		break;
+	case 22:
 		resp->insertInt(getAccountID());
 		break;
 	default:
@@ -432,6 +446,14 @@ void ZoneClientSessionAdapter::lock(bool doLock) {
 
 void ZoneClientSessionAdapter::unlock(bool doLock) {
 	((ZoneClientSessionImplementation*) impl)->unlock(doLock);
+}
+
+void ZoneClientSessionAdapter::acquire() {
+	((ZoneClientSessionImplementation*) impl)->acquire();
+}
+
+void ZoneClientSessionAdapter::release() {
+	((ZoneClientSessionImplementation*) impl)->release();
 }
 
 String ZoneClientSessionAdapter::getAddress() {

@@ -181,6 +181,14 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	}
 }
 
+void ZoneClientSession::acquire() {
+	ManagedObject::acquire();
+}
+
+void ZoneClientSession::release() {
+	ManagedObject::release();
+}
+
 void ZoneClientSessionImplementation::acquire() {
 	_this->acquire();
 }

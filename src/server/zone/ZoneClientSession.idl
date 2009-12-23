@@ -81,10 +81,10 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	public native void lock(boolean doLock = true);
 	public native void unlock(boolean doLock = true);
 
-	@local
+	@nativeStub
 	public native void acquire();
 
-	@local
+	@nativeStub
 	public native void release();
 
 	public string getAddress() {

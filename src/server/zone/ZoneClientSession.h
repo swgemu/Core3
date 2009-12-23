@@ -91,6 +91,10 @@ protected:
 
 	virtual ~ZoneClientSession();
 
+	void _acquire();
+
+	void _release();
+
 	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
@@ -192,6 +196,10 @@ public:
 	void lock(bool doLock);
 
 	void unlock(bool doLock);
+
+	void acquire();
+
+	void release();
 
 	String getAddress();
 
