@@ -186,7 +186,7 @@ void PlayerCreatureImplementation::unload() {
 	}
 
 	clearUpdateToDatabaseTask();
-	updateToDatabase(false);
+	updateToDatabaseAllObjects(false);
 
 	if (savedParent != NULL)
 		getZoneServer()->updateObjectToDatabase(savedParent);

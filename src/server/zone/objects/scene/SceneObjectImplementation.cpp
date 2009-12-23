@@ -142,7 +142,11 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 	return new UpdateContainmentMessage(getObjectID(), objectID, containmentType);
 }
 
-void SceneObjectImplementation::updateToDatabase(bool startTask) {
+void SceneObjectImplementation::updateToDatabase() {
+	updateToDatabaseAllObjects(true);
+}
+
+void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	if (!isPersistent())
 		return;
 
@@ -154,13 +158,13 @@ void SceneObjectImplementation::updateToDatabase(bool startTask) {
 	for (int i = 0; i < slottedObjects.size(); ++i) {
 		ManagedReference<SceneObject*> object = slottedObjects.get(i);
 
-		object->updateToDatabase(false);
+		object->updateToDatabaseAllObjects(false);
 	}
 
 	for (int j = 0; j < containerObjects.size(); ++j) {
 		ManagedReference<SceneObject*> object = containerObjects.get(j);
 
-		object->updateToDatabase(false);
+		object->updateToDatabaseAllObjects(false);
 	}
 
 	if (startTask)

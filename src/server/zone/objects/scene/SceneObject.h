@@ -490,7 +490,9 @@ public:
 
 	bool canAddObject(SceneObject* object);
 
-	void updateToDatabase(bool startTask = true);
+	void updateToDatabase();
+
+	void updateToDatabaseAllObjects(bool startTask = true);
 
 	void create(ZoneClientSession* client);
 
@@ -1091,7 +1093,9 @@ public:
 
 	virtual bool canAddObject(SceneObject* object);
 
-	void updateToDatabase(bool startTask = true);
+	void updateToDatabase();
+
+	void updateToDatabaseAllObjects(bool startTask = true);
 
 	void create(ZoneClientSession* client);
 
@@ -1306,7 +1310,9 @@ public:
 
 	bool canAddObject(SceneObject* object);
 
-	void updateToDatabase(bool startTask);
+	void updateToDatabase();
+
+	void updateToDatabaseAllObjects(bool startTask);
 
 	void create(ZoneClientSession* client);
 

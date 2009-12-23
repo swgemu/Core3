@@ -203,11 +203,13 @@ void ServerCore::shutdown() {
 		database = NULL;
 	}
 
+	ObjectManager::finalize();
+
 	DistributedObjectBroker::finalize();
 
 	info("server closed");
 
-	exit(1);
+	//exit(1);
 }
 
 void ServerCore::handleCommands() {

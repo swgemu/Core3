@@ -8,7 +8,7 @@
 #include "ObjectDatabase.h"
 #include "ObjectDatabaseEnvironment.h"
 
-ObjectDatabase::ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& dbFileName) : Logger("ObjectDatabase") {
+ObjectDatabase::ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& dbFileName) {
 	DbEnv* env = NULL;
 
 	if (dbEnv != NULL)
@@ -20,10 +20,11 @@ ObjectDatabase::ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& d
 
 	databaseFileName = dbFileName;
 
-	openDatabase();
-
+	setLoggingName("ObjectDatabase " + dbFileName);
 	setGlobalLogging(true);
 	setLogging(false);
+
+	openDatabase();
 
 	//setFileLogger("log/berkeley.log");
 
@@ -43,9 +44,9 @@ void ObjectDatabase::openDatabase() {
 		int ret = objectsDatabase->open(NULL, databaseFileName, NULL, DB_HASH, dbFlags, 0);
 
 		if (ret != 0) {
-			error("Trying to open database (" + databaseFileName + ") error:" + String::valueOf(ret));
+			error("Trying to open database error:" + String::valueOf(ret));
 		} else
-			info("opened object database (" + databaseFileName + ")", true);
+			info("opened object database", true);
 
 	} catch(DbException &e) {
 		error("Error opening database (" + databaseFileName + "): " );
@@ -60,7 +61,7 @@ void ObjectDatabase::closeDatabase() {
 
 		objectsDatabase->close(0);
 
-		info("database (" + databaseFileName + ") closed", true);
+		info("database closed", true);
 
 	} catch (DbException &e) {
 		error("Error closing database (" + databaseFileName + "):");

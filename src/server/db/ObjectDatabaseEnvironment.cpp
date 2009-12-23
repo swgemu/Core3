@@ -36,6 +36,8 @@ ObjectDatabaseEnvironment::~ObjectDatabaseEnvironment() {
 
 	delete databaseEnvironment;
 	databaseEnvironment = NULL;
+
+	info("closed", true);
 }
 
 void ObjectDatabaseEnvironment::openEnvironment() {
