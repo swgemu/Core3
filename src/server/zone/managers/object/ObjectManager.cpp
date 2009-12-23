@@ -35,7 +35,7 @@
 #include "server/db/ObjectDatabase.h"
 #include "server/db/ObjectDatabaseEnvironment.h"
 
-#define NULLHIGH 0x0000FFFFFFFFFFFF;
+//#define NULLHIGH 0x0000FFFFFFFFFFFF;
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
@@ -123,8 +123,8 @@ void ObjectManager::loadLastUsedObjectID() {
 	uint64 maxObjectID = 0;
 	uint64 objectID;
 
-	/*uint64 nullify = 0x0000FFFF;
-	nullify = (nullify << 32) + 0xFFFFFFFF;*/
+	uint64 nullify = 0x0000FFFF;
+	nullify = (nullify << 32) + 0xFFFFFFFF;
 
 	for (int i = 0; i < databaseEnvironment->getDatabaseCount(); ++i) {
 		ObjectDatabase* db = databaseEnvironment->getDatabase(i);
@@ -132,7 +132,7 @@ void ObjectManager::loadLastUsedObjectID() {
 		ObjectDatabaseIterator iterator(db);
 
 		while (iterator.getNextKey(objectID)) {
-			objectID = objectID & NULLHIGH;
+			objectID = objectID & nullify;
 
 			if (objectID > maxObjectID)
 				maxObjectID = objectID;
