@@ -101,6 +101,11 @@ am__objects_1 = server/zone/ZoneServer.$(OBJEXT) \
 	server/zone/objects/player/PlayerCreature.$(OBJEXT) \
 	server/zone/objects/cell/CellObject.$(OBJEXT) \
 	server/zone/objects/building/BuildingObject.$(OBJEXT) \
+	server/zone/objects/building/cloning/CloningBuildingObject.$(OBJEXT) \
+	server/zone/objects/building/medical/MedicalBuildingObject.$(OBJEXT) \
+	server/zone/objects/building/recreation/RecreationBuildingObject.$(OBJEXT) \
+	server/zone/objects/building/travel/TravelBuildingObject.$(OBJEXT) \
+	server/zone/objects/building/tutorial/TutorialBuildingObject.$(OBJEXT) \
 	server/zone/managers/player/PlayerManager.$(OBJEXT) \
 	server/chat/room/ChatRoom.$(OBJEXT) \
 	server/chat/ChatManager.$(OBJEXT) \
@@ -121,6 +126,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/db/ForumsDatabase.$(OBJEXT) \
 	server/db/ServerDatabase.$(OBJEXT) \
 	server/db/ObjectDatabase.$(OBJEXT) \
+	server/db/ObjectDatabaseEnvironment.$(OBJEXT) \
 	server/login/LoginMessageProcessorThread.$(OBJEXT) \
 	server/login/LoginPacketHandler.$(OBJEXT) \
 	server/login/LoginServer.$(OBJEXT) \
@@ -145,6 +151,8 @@ am_core3_OBJECTS = $(am__objects_1) \
 	server/zone/objects/creature/LuaCreatureObject.$(OBJEXT) \
 	server/zone/objects/player/PlayerObjectImplementation.$(OBJEXT) \
 	server/zone/objects/scene/variables/StringId.$(OBJEXT) \
+	server/zone/objects/scene/variables/StringIdParameter.$(OBJEXT) \
+	server/zone/objects/scene/variables/ParameterizedStringId.$(OBJEXT) \
 	server/zone/objects/scene/variables/CustomizationVariables.$(OBJEXT) \
 	server/zone/objects/cell/CellObjectImplementation.$(OBJEXT) \
 	server/zone/objects/building/BuildingObjectImplementation.$(OBJEXT) \
@@ -223,6 +231,7 @@ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
 PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
+PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 RANLIB = @RANLIB@
@@ -309,6 +318,11 @@ core3_IDLS = server/zone/ZoneServer.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
+				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
+				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
+				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
+				server/zone/objects/building/travel/TravelBuildingObject.cpp \
+				server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
@@ -330,6 +344,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/db/ObjectDatabase.cpp \
+		server/db/ObjectDatabaseEnvironment.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \
 		server/login/LoginServer.cpp \
@@ -354,6 +369,8 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
+		server/zone/objects/scene/variables/StringIdParameter.cpp \
+		server/zone/objects/scene/variables/ParameterizedStringId.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
@@ -513,6 +530,51 @@ server/zone/objects/building/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/building/BuildingObject.$(OBJEXT):  \
 	server/zone/objects/building/$(am__dirstamp) \
 	server/zone/objects/building/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/cloning/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/cloning
+	@: > server/zone/objects/building/cloning/$(am__dirstamp)
+server/zone/objects/building/cloning/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/cloning/$(DEPDIR)
+	@: > server/zone/objects/building/cloning/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/cloning/CloningBuildingObject.$(OBJEXT):  \
+	server/zone/objects/building/cloning/$(am__dirstamp) \
+	server/zone/objects/building/cloning/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/medical/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/medical
+	@: > server/zone/objects/building/medical/$(am__dirstamp)
+server/zone/objects/building/medical/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/medical/$(DEPDIR)
+	@: > server/zone/objects/building/medical/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/medical/MedicalBuildingObject.$(OBJEXT):  \
+	server/zone/objects/building/medical/$(am__dirstamp) \
+	server/zone/objects/building/medical/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/recreation/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/recreation
+	@: > server/zone/objects/building/recreation/$(am__dirstamp)
+server/zone/objects/building/recreation/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/recreation/$(DEPDIR)
+	@: > server/zone/objects/building/recreation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/recreation/RecreationBuildingObject.$(OBJEXT):  \
+	server/zone/objects/building/recreation/$(am__dirstamp) \
+	server/zone/objects/building/recreation/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/travel/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/travel
+	@: > server/zone/objects/building/travel/$(am__dirstamp)
+server/zone/objects/building/travel/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/travel/$(DEPDIR)
+	@: > server/zone/objects/building/travel/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/travel/TravelBuildingObject.$(OBJEXT):  \
+	server/zone/objects/building/travel/$(am__dirstamp) \
+	server/zone/objects/building/travel/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/tutorial/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/tutorial
+	@: > server/zone/objects/building/tutorial/$(am__dirstamp)
+server/zone/objects/building/tutorial/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) server/zone/objects/building/tutorial/$(DEPDIR)
+	@: > server/zone/objects/building/tutorial/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/building/tutorial/TutorialBuildingObject.$(OBJEXT):  \
+	server/zone/objects/building/tutorial/$(am__dirstamp) \
+	server/zone/objects/building/tutorial/$(DEPDIR)/$(am__dirstamp)
 server/zone/managers/player/$(am__dirstamp):
 	@$(MKDIR_P) server/zone/managers/player
 	@: > server/zone/managers/player/$(am__dirstamp)
@@ -652,6 +714,8 @@ server/db/ServerDatabase.$(OBJEXT): server/db/$(am__dirstamp) \
 	server/db/$(DEPDIR)/$(am__dirstamp)
 server/db/ObjectDatabase.$(OBJEXT): server/db/$(am__dirstamp) \
 	server/db/$(DEPDIR)/$(am__dirstamp)
+server/db/ObjectDatabaseEnvironment.$(OBJEXT):  \
+	server/db/$(am__dirstamp) server/db/$(DEPDIR)/$(am__dirstamp)
 server/login/$(am__dirstamp):
 	@$(MKDIR_P) server/login
 	@: > server/login/$(am__dirstamp)
@@ -766,6 +830,12 @@ server/zone/objects/scene/variables/$(DEPDIR)/$(am__dirstamp):
 server/zone/objects/scene/variables/StringId.$(OBJEXT):  \
 	server/zone/objects/scene/variables/$(am__dirstamp) \
 	server/zone/objects/scene/variables/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/variables/StringIdParameter.$(OBJEXT):  \
+	server/zone/objects/scene/variables/$(am__dirstamp) \
+	server/zone/objects/scene/variables/$(DEPDIR)/$(am__dirstamp)
+server/zone/objects/scene/variables/ParameterizedStringId.$(OBJEXT):  \
+	server/zone/objects/scene/variables/$(am__dirstamp) \
+	server/zone/objects/scene/variables/$(DEPDIR)/$(am__dirstamp)
 server/zone/objects/scene/variables/CustomizationVariables.$(OBJEXT):  \
 	server/zone/objects/scene/variables/$(am__dirstamp) \
 	server/zone/objects/scene/variables/$(DEPDIR)/$(am__dirstamp)
@@ -857,6 +927,7 @@ mostlyclean-compile:
 	-rm -f server/conf/ConfigManager.$(OBJEXT)
 	-rm -f server/db/ForumsDatabase.$(OBJEXT)
 	-rm -f server/db/ObjectDatabase.$(OBJEXT)
+	-rm -f server/db/ObjectDatabaseEnvironment.$(OBJEXT)
 	-rm -f server/db/ServerDatabase.$(OBJEXT)
 	-rm -f server/features/Features.$(OBJEXT)
 	-rm -f server/login/LoginMessageProcessorThread.$(OBJEXT)
@@ -887,6 +958,11 @@ mostlyclean-compile:
 	-rm -f server/zone/managers/structure/StructureManagerImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/building/BuildingObject.$(OBJEXT)
 	-rm -f server/zone/objects/building/BuildingObjectImplementation.$(OBJEXT)
+	-rm -f server/zone/objects/building/cloning/CloningBuildingObject.$(OBJEXT)
+	-rm -f server/zone/objects/building/medical/MedicalBuildingObject.$(OBJEXT)
+	-rm -f server/zone/objects/building/recreation/RecreationBuildingObject.$(OBJEXT)
+	-rm -f server/zone/objects/building/travel/TravelBuildingObject.$(OBJEXT)
+	-rm -f server/zone/objects/building/tutorial/TutorialBuildingObject.$(OBJEXT)
 	-rm -f server/zone/objects/cell/CellObject.$(OBJEXT)
 	-rm -f server/zone/objects/cell/CellObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/creature/CreatureObject.$(OBJEXT)
@@ -903,7 +979,9 @@ mostlyclean-compile:
 	-rm -f server/zone/objects/scene/SceneObject.$(OBJEXT)
 	-rm -f server/zone/objects/scene/SceneObjectImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/scene/variables/CustomizationVariables.$(OBJEXT)
+	-rm -f server/zone/objects/scene/variables/ParameterizedStringId.$(OBJEXT)
 	-rm -f server/zone/objects/scene/variables/StringId.$(OBJEXT)
+	-rm -f server/zone/objects/scene/variables/StringIdParameter.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/Container.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/ContainerImplementation.$(OBJEXT)
 	-rm -f server/zone/objects/tangible/TangibleObject.$(OBJEXT)
@@ -937,6 +1015,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/conf/$(DEPDIR)/ConfigManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ForumsDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ObjectDatabase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ObjectDatabaseEnvironment.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/db/$(DEPDIR)/ServerDatabase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/features/$(DEPDIR)/Features.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/login/$(DEPDIR)/LoginMessageProcessorThread.Po@am__quote@
@@ -967,6 +1046,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/managers/structure/$(DEPDIR)/StructureManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/$(DEPDIR)/BuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/$(DEPDIR)/BuildingObjectImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/cloning/$(DEPDIR)/CloningBuildingObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/medical/$(DEPDIR)/MedicalBuildingObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/recreation/$(DEPDIR)/RecreationBuildingObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/travel/$(DEPDIR)/TravelBuildingObject.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/building/tutorial/$(DEPDIR)/TutorialBuildingObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/cell/$(DEPDIR)/CellObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/cell/$(DEPDIR)/CellObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/creature/$(DEPDIR)/CreatureObject.Po@am__quote@
@@ -983,7 +1067,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/SceneObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/$(DEPDIR)/SceneObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/variables/$(DEPDIR)/CustomizationVariables.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/variables/$(DEPDIR)/ParameterizedStringId.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/variables/$(DEPDIR)/StringId.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/scene/variables/$(DEPDIR)/StringIdParameter.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/$(DEPDIR)/Container.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/$(DEPDIR)/ContainerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@server/zone/objects/tangible/$(DEPDIR)/TangibleObject.Po@am__quote@
@@ -1159,6 +1245,16 @@ distclean-generic:
 	-rm -f server/zone/managers/structure/$(am__dirstamp)
 	-rm -f server/zone/objects/building/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/building/$(am__dirstamp)
+	-rm -f server/zone/objects/building/cloning/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/building/cloning/$(am__dirstamp)
+	-rm -f server/zone/objects/building/medical/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/building/medical/$(am__dirstamp)
+	-rm -f server/zone/objects/building/recreation/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/building/recreation/$(am__dirstamp)
+	-rm -f server/zone/objects/building/travel/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/building/travel/$(am__dirstamp)
+	-rm -f server/zone/objects/building/tutorial/$(DEPDIR)/$(am__dirstamp)
+	-rm -f server/zone/objects/building/tutorial/$(am__dirstamp)
 	-rm -f server/zone/objects/cell/$(DEPDIR)/$(am__dirstamp)
 	-rm -f server/zone/objects/cell/$(am__dirstamp)
 	-rm -f server/zone/objects/creature/$(DEPDIR)/$(am__dirstamp)
@@ -1198,7 +1294,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1232,7 +1328,7 @@ install-ps: install-ps-am
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) server/$(DEPDIR) server/chat/$(DEPDIR) server/chat/room/$(DEPDIR) server/conf/$(DEPDIR) server/db/$(DEPDIR) server/features/$(DEPDIR) server/login/$(DEPDIR) server/ping/$(DEPDIR) server/proxy/$(DEPDIR) server/zone/$(DEPDIR) server/zone/managers/name/$(DEPDIR) server/zone/managers/object/$(DEPDIR) server/zone/managers/objectcontroller/$(DEPDIR) server/zone/managers/objectcontroller/command/$(DEPDIR) server/zone/managers/planet/$(DEPDIR) server/zone/managers/player/$(DEPDIR) server/zone/managers/radial/$(DEPDIR) server/zone/managers/structure/$(DEPDIR) server/zone/objects/building/$(DEPDIR) server/zone/objects/building/cloning/$(DEPDIR) server/zone/objects/building/medical/$(DEPDIR) server/zone/objects/building/recreation/$(DEPDIR) server/zone/objects/building/travel/$(DEPDIR) server/zone/objects/building/tutorial/$(DEPDIR) server/zone/objects/cell/$(DEPDIR) server/zone/objects/creature/$(DEPDIR) server/zone/objects/intangible/$(DEPDIR) server/zone/objects/mission/$(DEPDIR) server/zone/objects/player/$(DEPDIR) server/zone/objects/scene/$(DEPDIR) server/zone/objects/scene/variables/$(DEPDIR) server/zone/objects/tangible/$(DEPDIR) server/zone/objects/tangible/terminal/$(DEPDIR) server/zone/objects/tangible/terminal/startinglocation/$(DEPDIR) server/zone/objects/tangible/weapon/$(DEPDIR) server/zone/objects/tangible/wearables/$(DEPDIR) server/zone/objects/waypoint/$(DEPDIR) server/zone/packets/charcreation/$(DEPDIR) server/zone/packets/object/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

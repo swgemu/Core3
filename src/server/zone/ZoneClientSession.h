@@ -68,6 +68,10 @@ public:
 
 	void unlock(bool doLock = true);
 
+	void acquire();
+
+	void release();
+
 	String getAddress();
 
 	void setPlayer(SceneObject* playerCreature);
@@ -129,6 +133,10 @@ public:
 	void lock(bool doLock = true);
 
 	void unlock(bool doLock = true);
+
+	void acquire();
+
+	void release();
 
 	String getAddress();
 
