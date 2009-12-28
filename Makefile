@@ -50,6 +50,7 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/player/PlayerObject.idl \
 				server/zone/objects/player/PlayerCreature.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
+				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/cell/CellObject.idl \
