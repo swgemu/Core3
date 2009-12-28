@@ -64,7 +64,6 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/chat/room/ChatRoom.idl \
 				server/chat/ChatManager.idl \
 				server/zone/managers/objectcontroller/ObjectController.idl \
-				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/weapon/WeaponObject.idl \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.idl \
 				server/zone/objects/tangible/wearables/WearableObject.idl \
