@@ -48,16 +48,11 @@ which carries forward this exception.
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
 
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
+#include "server/zone/packets/player/PlayerObjectMessage8.h"
 
-/*PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) :
-	IntangibleObjectImplementation(templateData) {
-
-	loadTemplateData(templateData);
-
-	setLoggingName("PlayerObject");
-}*/
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -69,6 +64,9 @@ void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	characterBitmask = ANONYMOUS;
 
 	adminLevel = 0;
+
+	forcePower = 0;
+	forcePowerMax = 0;
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -79,6 +77,9 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* play6 = new PlayerObjectMessage6(_this);
 	player->sendMessage(play6);
+
+	BaseMessage* play8 = new PlayerObjectMessage8(this);
+	player->sendMessage(play8);
 }
 
 bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) {
@@ -112,4 +113,43 @@ bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient
 		return true;
 	} else
 		return false;
+}
+
+
+void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
+	if (experienceList.contains(xpType)) {
+		xp += experienceList.get(xpType);
+
+		if (xp <= 0) {
+			removeExperience(xpType, notifyClient);
+			return;
+		}
+	}
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->startUpdate(0);
+		experienceList.set(xpType, xp, dplay8, 1);
+		dplay8->close();
+
+		sendMessage(dplay8);
+	} else {
+		experienceList.set(xpType, xp);
+	}
+}
+
+void PlayerObjectImplementation::removeExperience(const String& xpType, bool notifyClient) {
+	if (!experienceList.contains(xpType))
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->startUpdate(0);
+		experienceList.drop(xpType, dplay8, 1);
+		dplay8->close();
+
+		sendMessage(dplay8);
+	} else {
+		experienceList.drop(xpType);
+	}
 }

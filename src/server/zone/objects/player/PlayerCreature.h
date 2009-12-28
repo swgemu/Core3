@@ -119,6 +119,8 @@ class ChatRoom;
 
 using namespace server::chat::room;
 
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
@@ -170,6 +172,10 @@ public:
 
 	void doRecovery();
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
@@ -204,6 +210,8 @@ public:
 
 	void setSavedZoneID(int id);
 
+	void setSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -228,9 +236,7 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
-	void insertToBuilding(BuildingObject* building);
-
-	void removeFromBuilding(BuildingObject* building);
+	int getSkillPoints();
 
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
@@ -285,6 +291,8 @@ protected:
 
 	PlayerRecoveryEvent* recoveryEvent;
 
+	int skillPoints;
+
 	Time nextAction;
 
 	Time nextTip;
@@ -334,6 +342,10 @@ public:
 
 	void doRecovery();
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose = true);
@@ -368,6 +380,8 @@ public:
 
 	void setSavedZoneID(int id);
 
+	void setSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -392,9 +406,7 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
-	void insertToBuilding(BuildingObject* building);
-
-	void removeFromBuilding(BuildingObject* building);
+	int getSkillPoints();
 
 	PlayerCreature* _this;
 
@@ -449,6 +461,10 @@ public:
 
 	void doRecovery();
 
+	void insertToBuilding(BuildingObject* building);
+
+	void removeFromBuilding(BuildingObject* building);
+
 	void sendMessage(BasePacket* msg);
 
 	void sendToOwner(bool doClose);
@@ -483,6 +499,8 @@ public:
 
 	void setSavedZoneID(int id);
 
+	void setSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -507,9 +525,7 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
-	void insertToBuilding(BuildingObject* building);
-
-	void removeFromBuilding(BuildingObject* building);
+	int getSkillPoints();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;

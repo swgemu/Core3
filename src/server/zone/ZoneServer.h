@@ -109,6 +109,20 @@ class RadialManager;
 
 using namespace server::zone::managers::radial;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace professions {
+
+class ProfessionManager;
+
+} // namespace professions
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::professions;
+
 #include "engine/service/proto/BasePacketHandler.h"
 
 #include "engine/service/DatagramServiceThread.h"
@@ -159,6 +173,8 @@ public:
 	void shutdown();
 
 	void startManagers();
+
+	void startZones();
 
 	void stopManagers();
 
@@ -236,6 +252,8 @@ public:
 
 	RadialManager* getRadialManager();
 
+	ProfessionManager* getProfessionManager();
+
 	void setServerName(const String& servername);
 
 	void setGalaxyID(int galaxyid);
@@ -283,6 +301,8 @@ class ZoneServerImplementation : public ManagedObjectImplementation, public Data
 	ObjectManager* objectManager;
 
 	ManagedReference<PlayerManager* > playerManager;
+
+	ProfessionManager* professionManager;
 
 	ManagedReference<ChatManager* > chatManager;
 
@@ -337,6 +357,8 @@ public:
 
 	void startManagers();
 
+	void startZones();
+
 	void stopManagers();
 
 	void start(int p, int mconn = 10);
@@ -413,6 +435,8 @@ public:
 
 	RadialManager* getRadialManager();
 
+	ProfessionManager* getProfessionManager();
+
 	void setServerName(const String& servername);
 
 	void setGalaxyID(int galaxyid);
@@ -465,6 +489,8 @@ public:
 	void shutdown();
 
 	void startManagers();
+
+	void startZones();
 
 	void stopManagers();
 

@@ -42,50 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTMESSAGE8_H_
-#define PLAYEROBJECTMESSAGE8_H_
+#ifndef FOURBYFOURPROFESSION_H_
+#define FOURBYFOURPROFESSION_H_
 
-#include "../BaseLineMessage.h"
+#include "Profession.h"
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/variables/WaypointList.h"
-
-
-class PlayerObjectMessage8 : public BaseLineMessage {
+class FourByFourProfession : public Profession {
+protected:
+	
+	SkillBox* branches[4][4];
+	
 public:
-	PlayerObjectMessage8(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
-		// experiences
-		DeltaVectorMap<String, int>* xpList = play->getExperienceList();
-		insertDeltaVectorMap(xpList);
+	FourByFourProfession(String& name) : Profession(name, FOURBYFOUR) {
+	}
+	
+	void setBox(int branch, int level, SkillBox* skillbox) {
+		if (branch < 1 || branch > 4 || level < 1 || level > 4)
+			throw new ArrayIndexOutOfBoundsException();
 		
-		// waypoints
-		WaypointList* wayList = play->getWaypointList();
-		insertDeltaVectorMap(wayList);
+		branches[branch - 1][level - 1] = skillbox;
+		skillBoxes.add(skillbox);
+	}
 
-		// force bar stats
-		insertInt(play->getForcePower());
-		insertInt(play->getForcePowerMax());
+	inline SkillBox* getBox(int branch, int level) {
+		if (branch < 1 || branch > 4 || level < 1 || level > 4)
+			throw new ArrayIndexOutOfBoundsException();
 
-		// padawan quests
-		insertInt(0);
-		insertInt(0);
-
-		// FS quests
-		insertInt(0);
-		insertInt(0);
-
-		// quests
-		insertInt(0);
-		insertInt(0);
-
-		//
-		insertInt(0);
-		insertInt(0);
-		
-		setSize();
+		return branches[branch - 1][level - 1];
 	}
 	
 };
 
-#endif /*PLAYEROBJECTMESSAGE8_H_*/
+#endif /*FOURBYFOURPROFESSION_H_*/

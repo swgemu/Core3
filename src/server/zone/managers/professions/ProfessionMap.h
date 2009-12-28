@@ -42,33 +42,23 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREOBJECTDELTAMESSAGE1_H_
-#define CREATUREOBJECTDELTAMESSAGE1_H_
+#ifndef PROFESSIONMAP_H_
+#define PROFESSIONMAP_H_
 
-#include "../../packets/DeltaMessage.h"
-#include "../../objects/creature/CreatureAttribute.h"
+#include "engine/engine.h"
 
-class CreatureObjectDeltaMessage1 : public DeltaMessage {
-	CreatureObjectImplementation* creo;
+#include "../../objects/creature/professions/Profession.h"
+
+class ProfessionMap : public HashTable<String, Profession*> , public HashTableIterator<String, Profession*> {
+	int hash(const String& key) {
+	    return key.hashCode();
+	}
 
 public:
-	CreatureObjectDeltaMessage1(CreatureObjectImplementation* cr)
-			: DeltaMessage(cr->getObjectID(), 0x4352454F, 1) {
-		creo = cr;
+	ProfessionMap() : HashTable<String, Profession*>(50) , HashTableIterator<String, Profession*>(this) {
+		setNullValue(NULL);
 	}
-
-	void updateBankCredits() {
-		startUpdate(0x00);
-		insertInt(creo->getBankCredits());
-	}
-
-	void updateCashCredits() {
-		startUpdate(0x01);
-		insertInt(creo->getCashCredits());
-	}
-
-
 
 };
 
-#endif /*CREATUREOBJECTDELTAMESSAGE1_H_*/
+#endif /*PROFESSIONMAP_H_*/

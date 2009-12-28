@@ -13,7 +13,6 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
@@ -92,7 +91,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
 
-	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
+	//objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
 
 	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
@@ -188,9 +187,9 @@ void ObjectManager::loadStaticObjects() {
 
 int ObjectManager::updatePersistentObject(DistributedObject* object) {
 	try {
-		ObjectOutputStream* objectData = new ObjectOutputStream(500);
+		ObjectOutputStream objectData(500);
 
-		((ManagedObject*)object)->writeObject(objectData);
+		((ManagedObject*)object)->writeObject(&objectData);
 
 		uint64 oid = object->_getObjectID();
 
@@ -205,9 +204,7 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 			msg << "saving to database with table " << dbName << " and object id 0x" << oid;
 			info(msg.toString(), true);
 
-			database->putData(oid, objectData);
-
-			delete objectData;
+			database->putData(oid, &objectData);
 		} else {
 			StringBuffer err;
 			err << "unknown database id of objectID 0x" << hex << oid;
@@ -258,6 +255,18 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
+void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, const String& database) {
+	Locker _locker(this);
+
+	uint64 newObjectID = getNextObjectID(database);
+
+	object->_setObjectID(newObjectID);
+
+	object->setPersistent(persistenceLevel);
+
+	updatePersistentObject(object);
+}
+
 DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	DistributedObjectStub* object = NULL;
 
@@ -270,6 +279,9 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	info(infoMsg.toString(), true);*/
 
 	ObjectDatabase* database = databaseEnvironment->getDatabase(tableID);
+
+	if (database == NULL)
+		return NULL;
 
 	// only for debugging proposes
 	/*DistributedObject* dobject = getObject(objectID);

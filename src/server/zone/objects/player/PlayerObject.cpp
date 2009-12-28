@@ -59,12 +59,41 @@ void PlayerObject::sendBaselinesTo(SceneObject* player) {
 		((PlayerObjectImplementation*) _impl)->sendBaselinesTo(player);
 }
 
-unsigned int PlayerObject::getCharacterBitmask() {
+void PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addAsciiParameter(xpType);
+		method.addSignedIntParameter(xp);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->addExperience(xpType, xp, notifyClient);
+}
+
+void PlayerObject::removeExperience(const String& xpType, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addAsciiParameter(xpType);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->removeExperience(xpType, notifyClient);
+}
+
+unsigned int PlayerObject::getCharacterBitmask() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -76,7 +105,7 @@ String PlayerObject::getTitle() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		method.executeWithAsciiReturn(_return_getTitle);
 		return _return_getTitle;
@@ -89,7 +118,7 @@ unsigned int PlayerObject::getAdminLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -101,7 +130,7 @@ void PlayerObject::setCharacterBitmask(unsigned int bitmask) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 13);
 		method.addUnsignedIntParameter(bitmask);
 
 		method.executeWithVoidReturn();
@@ -114,7 +143,7 @@ bool PlayerObject::setCharacterBit(unsigned int bit, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 14);
 		method.addUnsignedIntParameter(bit);
 		method.addBooleanParameter(notifyClient);
 
@@ -128,7 +157,7 @@ bool PlayerObject::clearCharacterBit(unsigned int bit, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 15);
 		method.addUnsignedIntParameter(bit);
 		method.addBooleanParameter(notifyClient);
 
@@ -142,12 +171,52 @@ void PlayerObject::setTitle(const String& characterTitle) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 16);
 		method.addAsciiParameter(characterTitle);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerObjectImplementation*) _impl)->setTitle(characterTitle);
+}
+
+DeltaVectorMap<String, int>* PlayerObject::getExperienceList() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getExperienceList();
+}
+
+int PlayerObject::getForcePower() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getForcePower();
+}
+
+int PlayerObject::getForcePowerMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getForcePowerMax();
+}
+
+WaypointList* PlayerObject::getWaypointList() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getWaypointList();
 }
 
 /*
@@ -220,40 +289,64 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 
 	addSerializableVariable("characterBitmask", &characterBitmask);
 	addSerializableVariable("title", &title);
+	addSerializableVariable("forcePower", &forcePower);
+	addSerializableVariable("forcePowerMax", &forcePowerMax);
 	addSerializableVariable("adminLevel", &adminLevel);
+	addSerializableVariable("experienceList", &experienceList);
+	addSerializableVariable("waypointList", &waypointList);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerObject.idl(80):  loadTemplateData(templateData);
+	// server/zone/objects/player/PlayerObject.idl(94):  loadTemplateData(templateData);
 	loadTemplateData(templateData);
-	// server/zone/objects/player/PlayerObject.idl(82):  Logger.setLoggingName("PlayerObject");
+	// server/zone/objects/player/PlayerObject.idl(96):  Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
 
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(92):  return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(121):  return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(96):  return title;
+	// server/zone/objects/player/PlayerObject.idl(125):  return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(100):  return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(129):  return adminLevel;
 	return adminLevel;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(104):  characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(133):  characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(111):  title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(140):  title = characterTitle;
 	title = characterTitle;
+}
+
+DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
+	// server/zone/objects/player/PlayerObject.idl(145):  return experienceList;
+	return (&experienceList);
+}
+
+int PlayerObjectImplementation::getForcePower() {
+	// server/zone/objects/player/PlayerObject.idl(149):  return forcePower;
+	return forcePower;
+}
+
+int PlayerObjectImplementation::getForcePowerMax() {
+	// server/zone/objects/player/PlayerObject.idl(153):  return forcePowerMax;
+	return forcePowerMax;
+}
+
+WaypointList* PlayerObjectImplementation::getWaypointList() {
+	// server/zone/objects/player/PlayerObject.idl(158):  return waypointList;
+	return (&waypointList);
 }
 
 /*
@@ -274,25 +367,37 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertInt(getCharacterBitmask());
+		addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
-		resp->insertAscii(getTitle());
+		removeExperience(inv->getAsciiParameter(_param0_removeExperience__String_bool_), inv->getBooleanParameter());
 		break;
 	case 10:
-		resp->insertInt(getAdminLevel());
+		resp->insertInt(getCharacterBitmask());
 		break;
 	case 11:
-		setCharacterBitmask(inv->getUnsignedIntParameter());
+		resp->insertAscii(getTitle());
 		break;
 	case 12:
-		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertInt(getAdminLevel());
 		break;
 	case 13:
-		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		setCharacterBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 14:
+		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 15:
+		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		break;
+	case 16:
 		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		break;
+	case 17:
+		resp->insertSignedInt(getForcePower());
+		break;
+	case 18:
+		resp->insertSignedInt(getForcePowerMax());
 		break;
 	default:
 		return NULL;
@@ -307,6 +412,14 @@ void PlayerObjectAdapter::initializeTransientMembers() {
 
 void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((PlayerObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void PlayerObjectAdapter::addExperience(const String& xpType, int xp, bool notifyClient) {
+	((PlayerObjectImplementation*) impl)->addExperience(xpType, xp, notifyClient);
+}
+
+void PlayerObjectAdapter::removeExperience(const String& xpType, bool notifyClient) {
+	((PlayerObjectImplementation*) impl)->removeExperience(xpType, notifyClient);
 }
 
 unsigned int PlayerObjectAdapter::getCharacterBitmask() {
@@ -335,6 +448,14 @@ bool PlayerObjectAdapter::clearCharacterBit(unsigned int bit, bool notifyClient)
 
 void PlayerObjectAdapter::setTitle(const String& characterTitle) {
 	((PlayerObjectImplementation*) impl)->setTitle(characterTitle);
+}
+
+int PlayerObjectAdapter::getForcePower() {
+	return ((PlayerObjectImplementation*) impl)->getForcePower();
+}
+
+int PlayerObjectAdapter::getForcePowerMax() {
+	return ((PlayerObjectImplementation*) impl)->getForcePowerMax();
 }
 
 /*

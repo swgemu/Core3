@@ -64,6 +64,7 @@ import server.zone.Zone;
 import server.chat.ChatManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
+import server.zone.managers.professions.ProfessionManager;
 
 class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient BasePacketHandler phandler;
@@ -80,6 +81,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	private transient ObjectManager objectManager;
 	
 	private PlayerManager playerManager;
+	
+	private transient ProfessionManager professionManager;
 	
 	private ChatManager chatManager;
 	
@@ -159,6 +162,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native void shutdown();
 
 	public native void startManagers();
+	
+	public native void startZones();
 
 	public native void stopManagers();
 	
@@ -270,6 +275,11 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	
 	public RadialManager getRadialManager() {
 		return radialManager;
+	}
+	
+	@local
+	public ProfessionManager getProfessionManager() {
+		return professionManager;
 	}
 
 	/*public time_t getStartTimestamp() {

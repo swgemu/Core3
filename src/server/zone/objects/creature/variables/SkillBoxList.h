@@ -42,33 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREOBJECTDELTAMESSAGE1_H_
-#define CREATUREOBJECTDELTAMESSAGE1_H_
+#ifndef SKILLBOXLIST_H_
+#define SKILLBOXLIST_H_
 
-#include "../../packets/DeltaMessage.h"
-#include "../../objects/creature/CreatureAttribute.h"
+#include "engine/engine.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 
-class CreatureObjectDeltaMessage1 : public DeltaMessage {
-	CreatureObjectImplementation* creo;
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace professions {
 
+class SkillBox;
+
+} // namespace professions
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::professions;
+
+class SkillBoxList : public DeltaVector<SkillBox*> {
 public:
-	CreatureObjectDeltaMessage1(CreatureObjectImplementation* cr)
-			: DeltaMessage(cr->getObjectID(), 0x4352454F, 1) {
-		creo = cr;
-	}
+	bool add(SkillBox* element, DeltaMessage* message = NULL);
 
-	void updateBankCredits() {
-		startUpdate(0x00);
-		insertInt(creo->getBankCredits());
-	}
+	bool toString(String& str);
+	bool parseFromString(const String& str, int version = 0);
 
-	void updateCashCredits() {
-		startUpdate(0x01);
-		insertInt(creo->getCashCredits());
-	}
+	bool toBinaryStream(ObjectOutputStream* stream);
+	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-
-
+	void getStringList(Vector<String>& skillBoxes);
+	void loadFromNames(Vector<String>& skillBoxes);
 };
 
-#endif /*CREATUREOBJECTDELTAMESSAGE1_H_*/
+#endif /*SKILLBOXLIST_H_*/

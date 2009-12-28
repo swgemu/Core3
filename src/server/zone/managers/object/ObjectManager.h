@@ -97,6 +97,11 @@ namespace zone {
 
 		ManagedObject* createObject(const String& className, int persistenceLevel, const String& database, uint64 oid = 0);
 
+		/**
+		 * Assigns a new persistent object id, stores in the specified database
+		 */
+		void persistObject(ManagedObject* object, int persistenceLevel, const String& database);
+
 		DistributedObjectStub* loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);
 

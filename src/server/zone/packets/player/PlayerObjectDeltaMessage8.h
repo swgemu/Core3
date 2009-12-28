@@ -47,8 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/player/PlayerObjectImplementation.h"
-#include "../../objects/waypoint/WaypointObject.h"
+#include "../../objects/player/PlayerObject.h"
 
 class PlayerObjectDeltaMessage8 : public DeltaMessage {
 	PlayerObjectImplementation* play;
@@ -59,7 +58,7 @@ public:
 		play = pl;
 	}
 
-	void startWaypointUpdate() {
+	/*void startWaypointUpdate() {
 		startUpdate(0x01);
 		startList(1, play->getNewWaypointListCount(1));
 	}
@@ -106,7 +105,7 @@ public:
 		insertByte(1);
 		insertAscii(name.toCharArray());
 		insertInt(0);
-	}
+	}*/
 };
 
 #endif /*PLAYEROBJECTDELTAMESSAGE8_H_*/

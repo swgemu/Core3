@@ -203,7 +203,6 @@ public:
 	void getData(String& ascii);
 
 	bool toString(String& ascii);
-
 	bool parseFromString(const String& str, int version = 0);
 
 	bool toBinaryStream(ObjectOutputStream* stream);

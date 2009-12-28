@@ -118,7 +118,9 @@ namespace objectcontroller {
 
 class ObjectController : public ManagedObject {
 public:
-	ObjectController(ZoneProcessServerImplementation* server);
+	ObjectController(ZoneProcessServerImplementation* srv);
+
+	void loadCommands();
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
@@ -158,9 +160,13 @@ class ObjectControllerImplementation : public ManagedObjectImplementation, publi
 	CommandList* queueCommands;
 
 public:
-	ObjectControllerImplementation(ZoneProcessServerImplementation* server);
+	ObjectControllerImplementation(ZoneProcessServerImplementation* srv);
 
 	ObjectControllerImplementation(DummyConstructorParameter* param);
+
+	void finalize();
+
+	void loadCommands();
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
@@ -179,8 +185,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ObjectControllerImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -210,6 +214,10 @@ public:
 	ObjectControllerAdapter(ObjectControllerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
+
+	void loadCommands();
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient);
 

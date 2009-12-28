@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "managers/objectcontroller/ObjectController.h"
 #include "managers/player/PlayerManager.h"
 #include "managers/radial/RadialManager.h"
+#include "managers/professions/ProfessionManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -77,6 +78,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads, int ga
 	chatManager = NULL;
 	objectController = NULL;
 	radialManager = NULL;
+	professionManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -345,26 +347,7 @@ void ZoneServerImplementation::init() {
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
-	info("Initializing zones", true);
-
-	for (int i = 0; i < 45; ++i) {
-		Zone* zone = NULL;
-
-		if (i <= 10 || i == 42) {
-			zone = new Zone(_this, processor, i);
-			uint64 zoneObjectID = 0;
-
-			zoneObjectID = ~zoneObjectID;
-			zoneObjectID -= i;
-			zone->_setObjectID(zoneObjectID);
-
-			zone->deploy("Zone", i);
-
-			zone->startManagers();
-		}
-
-		zones.add(zone);
-	}
+	startZones();
 
 	startManagers();
 /*
@@ -391,6 +374,30 @@ void ZoneServerImplementation::init() {
 	return;
 }
 
+void ZoneServerImplementation::startZones() {
+	info("Initializing zones", true);
+
+	for (int i = 0; i < 45; ++i) {
+		Zone* zone = NULL;
+
+		if (i <= 10 || i == 42) {
+			zone = new Zone(_this, processor, i);
+			uint64 zoneObjectID = 0;
+
+			zoneObjectID = ~zoneObjectID;
+			zoneObjectID -= i;
+			zone->_setObjectID(zoneObjectID);
+
+			zone->deploy("Zone", i);
+
+			zone->startManagers();
+		}
+
+		zones.add(zone);
+	}
+
+}
+
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
@@ -398,6 +405,8 @@ void ZoneServerImplementation::startManagers() {
 
 	objectController = new ObjectController(processor);
 	objectController->deploy("ObjectController");
+
+	professionManager = new ProfessionManager(objectController);
 
 	playerManager = new PlayerManager(_this, processor);
 	playerManager->deploy("PlayerManager");
@@ -486,7 +495,10 @@ void ZoneServerImplementation::stopManagers() {
 
 	//info("saving objects...");
 
+	delete professionManager;
+	professionManager = NULL;
 
+	objectController = NULL;
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 

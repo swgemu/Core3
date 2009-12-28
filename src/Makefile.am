@@ -78,7 +78,6 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/chat/room/ChatRoom.cpp \
 				server/chat/ChatManager.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
-				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/objects/tangible/weapon/MeleeWeaponObject.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
@@ -112,12 +111,14 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/name/NameManager.cpp \
+		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
+		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
@@ -132,7 +133,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/ChatManagerImplementation.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
-		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
+		server/zone/objects/player/variables/WaypointObject.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/MeleeWeaponObjectImplementation.cpp \
 		server/zone/managers/structure/StructureManagerImplementation.cpp \

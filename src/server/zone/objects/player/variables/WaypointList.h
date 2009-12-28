@@ -42,51 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.managers.objectcontroller;
+#ifndef WAYPOINTLIST_H_
+#define WAYPOINTLIST_H_
 
-import engine.core.ManagedObject;
-import engine.lua.Lua;
-import server.zone.managers.objectcontroller.command.CommandList;
-import server.zone.managers.objectcontroller.command.CommandConfigManager;
-import server.zone.objects.creature.commands.QueueCommand;
-import server.zone.ZoneServer;
-import engine.log.Logger;
-import server.zone.ZoneProcessServerImplementation;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.CreatureObject;
+#include "engine/engine.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "WaypointObject.h"
 
-class ObjectController extends ManagedObject implements Lua {
-	private transient ZoneProcessServerImplementation server;
-	
-	private transient CommandConfigManager configManager;
-	private transient CommandList queueCommands;
-	
-	public ObjectController(ZoneProcessServerImplementation srv) {
-		server = srv;
-		
-		Logger.setLoggingName("ObjectController");
-		
-		Logger.setLogging(true);
-		Logger.setGlobalLogging(true);
-		
-		loadCommands();
-	}
-	
-	public native void finalize();
-	
-	public native void loadCommands();
-	
-	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false);
-	
-	public native void enqueueCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, unicode arguments);
-	
-	@local
-	public native void addQueueCommand(QueueCommand command);
-	
-	@local
-	public native QueueCommand getQueueCommand(final string name);
+class WaypointList : public DeltaVectorMap<uint64, WaypointObject> {
 
-	@local
-	public native QueueCommand getQueueCommand(unsigned int crc);
-	
-}
+};
+
+
+#endif /* WAYPOINTLIST_H_ */

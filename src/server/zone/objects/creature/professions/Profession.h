@@ -42,50 +42,94 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTMESSAGE8_H_
-#define PLAYEROBJECTMESSAGE8_H_
+#ifndef PROFESSION_H_
+#define PROFESSION_H_
 
-#include "../BaseLineMessage.h"
-
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/variables/WaypointList.h"
+#include "engine/engine.h"
 
 
-class PlayerObjectMessage8 : public BaseLineMessage {
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace professions {
+
+class SkillBox;
+
+} // namespace professions
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::professions;
+
+class Profession {
+protected:
+	String name;
+	int type;
+	
+	Vector<SkillBox*> skillBoxes;
+	
 public:
-	PlayerObjectMessage8(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
-		// experiences
-		DeltaVectorMap<String, int>* xpList = play->getExperienceList();
-		insertDeltaVectorMap(xpList);
-		
-		// waypoints
-		WaypointList* wayList = play->getWaypointList();
-		insertDeltaVectorMap(wayList);
+	const static int FOURBYFOUR = 1;
+	const static int ONEBYFOUR = 2;
+	const static int PYRAMID = 3;
 
-		// force bar stats
-		insertInt(play->getForcePower());
-		insertInt(play->getForcePowerMax());
-
-		// padawan quests
-		insertInt(0);
-		insertInt(0);
-
-		// FS quests
-		insertInt(0);
-		insertInt(0);
-
-		// quests
-		insertInt(0);
-		insertInt(0);
-
-		//
-		insertInt(0);
-		insertInt(0);
-		
-		setSize();
+public:
+	Profession(String& Name, int Type) {
+		name = Name;
+		type = Type;
 	}
+	
+	virtual ~Profession() {
+	} 
+	
+	void setMasterBox(SkillBox* skillbox) {
+		skillBoxes.add(skillbox);
+	}
+	
+	void setNoviceBox(SkillBox* skillbox) {
+		skillBoxes.add(skillbox);
+	}
+	
+	inline SkillBox* getNoviceBox() {
+		return skillBoxes.get(0);
+	}
+		
+	inline SkillBox* getMasterBox() {
+		return skillBoxes.get(1);;
+	}
+
+private:
+	virtual void getProfessionBoxes(Vector<SkillBox*>& boxes) {
+	}
+
+public:	
+	inline String& getName() {
+		return name;
+	}
+	
+	inline bool isFourByFour() {
+		return type == FOURBYFOUR;
+	}
+	
+	inline bool isOneByFour() {
+		return type == ONEBYFOUR;
+	}
+	
+	inline bool isPyramid() {
+		return type == PYRAMID;
+	}
+	
+	inline int getType() {
+		return type;
+	}
+	
+	inline Vector<SkillBox*>* getSkillBoxes() {
+		return &skillBoxes;
+	}		
 	
 };
 
-#endif /*PLAYEROBJECTMESSAGE8_H_*/
+#endif /*PROFESSION_H_*/

@@ -14,17 +14,9 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/db/ServerDatabase.h"
 
-
-ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServerImplementation* server) : ManagedObjectImplementation(), Lua() {
-	setLoggingName("ObjectController");
-
-	ObjectControllerImplementation::server = server;
-
+void ObjectControllerImplementation::loadCommands() {
 	configManager = new CommandConfigManager(server);
 	queueCommands = new CommandList();
-
-	setLogging(true);
-	setGlobalLogging(true);
 
 	info("loading queue commands...", true);
 	configManager->loadSlashCommandsFile(queueCommands);
@@ -36,7 +28,31 @@ ObjectControllerImplementation::ObjectControllerImplementation(ZoneProcessServer
 	// LUA
 	init();
 	Luna<LuaCreatureObject>::Register(L);
-	//runFile("scripts/testscript.lua");
+
+}
+
+void ObjectControllerImplementation::finalize() {
+	info("deleting object controller", true);
+
+	delete configManager;
+	configManager = NULL;
+
+	CommandConfigManager::slashCommands = NULL;
+
+	queueCommands->resetIterator();
+
+	SortedVector<QueueCommand*> uniqueCommands;
+	uniqueCommands.setNoDuplicateInsertPlan();
+
+	while (queueCommands->hasNext()) {
+		uniqueCommands.put(queueCommands->getNextValue());
+	}
+
+	for (int i = 0; i < uniqueCommands.size(); ++i)
+		delete uniqueCommands.get(i);
+
+	delete queueCommands;
+	queueCommands = NULL;
 }
 
 bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {

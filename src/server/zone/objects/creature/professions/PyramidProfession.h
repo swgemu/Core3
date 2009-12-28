@@ -42,50 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTMESSAGE8_H_
-#define PLAYEROBJECTMESSAGE8_H_
+#ifndef PYRAMIDPROFESSION_H_
+#define PYRAMIDPROFESSION_H_
 
-#include "../BaseLineMessage.h"
+#include "Profession.h"
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/variables/WaypointList.h"
+class PyramidProfession : public Profession {
+protected:
 
+	SkillBox* branches[10];
 
-class PlayerObjectMessage8 : public BaseLineMessage {
 public:
-	PlayerObjectMessage8(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
-		// experiences
-		DeltaVectorMap<String, int>* xpList = play->getExperienceList();
-		insertDeltaVectorMap(xpList);
+	PyramidProfession(String& name) : Profession(name, PYRAMID) {
+	}
+	
+	void setBox(int branch, SkillBox* skillbox) {
+		if (branch < 1 || branch > 10)
+			throw new ArrayIndexOutOfBoundsException();
 		
-		// waypoints
-		WaypointList* wayList = play->getWaypointList();
-		insertDeltaVectorMap(wayList);
+		branches[branch - 1] = skillbox;
+		skillBoxes.add(skillbox);
+	}
 
-		// force bar stats
-		insertInt(play->getForcePower());
-		insertInt(play->getForcePowerMax());
+	inline SkillBox* getBox(int branch) {
+		if (branch < 1 || branch > 10)
+			throw new ArrayIndexOutOfBoundsException();
 
-		// padawan quests
-		insertInt(0);
-		insertInt(0);
-
-		// FS quests
-		insertInt(0);
-		insertInt(0);
-
-		// quests
-		insertInt(0);
-		insertInt(0);
-
-		//
-		insertInt(0);
-		insertInt(0);
-		
-		setSize();
+		return branches[branch - 1];
 	}
 	
 };
 
-#endif /*PLAYEROBJECTMESSAGE8_H_*/
+#endif /*PYRAMIDPROFESSION_H_*/

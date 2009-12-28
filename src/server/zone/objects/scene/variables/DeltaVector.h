@@ -18,6 +18,7 @@ namespace scene {
 namespace variables {
 
 template <class E> class DeltaVector : public Serializable {
+protected:
 	Vector<E> vector;
 	uint32 updateCounter;
 
@@ -39,24 +40,24 @@ public:
 		addSerializableVariable("updateCounter", &updateCounter);
 	}
 
-	E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
+	virtual E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
 		E object = vector.set(idx, newValue);
 
 		if (message != NULL) {
 			if (updates != 0)
-				message->startList(1, updateCounter += updates);
+				message->startList(updates, updateCounter += updates);
 
 			message->insertByte(2);
 			message->insertShort(idx);
 
-			E oldElement = newValue;
-			TypeInfo<E>::toBinaryStream(&oldElement, message);
+			E& nonconst = const_cast<E&>(newValue);
+			TypeInfo<E>::toBinaryStream(&nonconst, message);
 		}
 
 		return object;
 	}
 
-	bool add(const E& element, DeltaMessage* message = NULL) {
+	virtual bool add(const E& element, DeltaMessage* message = NULL) {
 		bool val = vector.add(element);
 
 		if (message != NULL) {
@@ -65,8 +66,8 @@ public:
 			message->insertByte(1);
 			message->insertShort(vector.size() - 1);
 
-			E oldElement = element;
-			TypeInfo<E>::toBinaryStream(&oldElement, message);
+			E& nonconst = const_cast<E&>(element);
+			TypeInfo<E>::toBinaryStream(&nonconst, message);
 		}
 
 		return val;
@@ -96,6 +97,17 @@ public:
 			message->startList(1, ++updateCounter);
 			message->insertByte(4);
 		}
+	}
+
+	bool contains(const E& element) {
+		bool found = false;
+
+		for (int i = 0; i < size(); ++i) {
+			if (element == get(i))
+				return true;
+		}
+
+		return found;
 	}
 
 	inline uint32 getUpdateCounter() {

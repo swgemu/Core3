@@ -168,7 +168,7 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 		play->sendMessage(msg->clone());
 	}
 
-	msg->finalize();
+	delete msg;
 }
 
 void GroupObjectImplementation::sendSystemMessage(SceneObject* player,

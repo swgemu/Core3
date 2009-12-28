@@ -281,7 +281,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 			return;
 		} else {
-			message->finalize();
+			delete message;
 
 			return;
 		}
@@ -300,7 +300,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 	}
 
-	message->finalize();
+	delete message;
 }
 
 void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
@@ -313,7 +313,7 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 			return;
 		} else {
 			while (!messages->isEmpty()) {
-				messages->remove(0)->finalize();
+				delete messages->remove(0);
 			}
 
 			return;
@@ -337,8 +337,12 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 	}
 
 	while (!messages->isEmpty()) {
-		messages->remove(0)->finalize();
+		delete messages->remove(0);
 	}
+}
+
+void SceneObjectImplementation::sendMessage(BasePacket* msg) {
+	delete msg;
 }
 
 void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {

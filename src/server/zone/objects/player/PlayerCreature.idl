@@ -58,6 +58,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.chat.room.ChatRoom;
+include server.zone.objects.scene.variables.DeltaVectorMap;
 
 class PlayerCreature extends CreatureObject {
 	protected ZoneClientSession owner;
@@ -84,6 +85,8 @@ class PlayerCreature extends CreatureObject {
 	
 	protected transient PlayerDisconnectEvent disconnectEvent;
 	protected transient PlayerRecoveryEvent recoveryEvent;
+	
+	protected int skillPoints;
 
 	// player objects
 
@@ -132,7 +135,6 @@ class PlayerCreature extends CreatureObject {
 	}
 	
 	public native void initializeTransientMembers();
-
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry entry);
@@ -152,15 +154,40 @@ class PlayerCreature extends CreatureObject {
 	
 	public native void doRecovery();
 	
-	public void sendMessage(BasePacket msg) {
-		if (owner == null) {
-			msg.finalize();
-			return;
-		} else {
-			owner.sendMessage(msg);
-		}
-	}
+	/**
+	 * Inserts this object into the building, this method is only to be called from insertToZone
+	 * Includes a trigger to BuildingObject::onEnter
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is in the building, building->onEnter has been triggered,
+	 * 		   this object is locked, zone is locked }
+	 * @param building BuildingObject where this object will be inserted
+	 */
+	public native void insertToBuilding(BuildingObject building);
 	
+	/**
+	 * Removes this object from the building, this method is only to be called from removeFromZone
+	 * Includes a trigger to BuildingObject::onExit
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is not in the building, building->onExit has been triggered, 
+	 * 		   this object is locked, zone is locked }
+	 * @param building BuildingObject from where this object will be removed
+	 */
+	public native void removeFromBuilding(BuildingObject building);
+	
+	/**
+	 * Sends a message to client
+	 * @pre { }
+	 * @post { message is sent to client }
+	 * @param msg BasePacket to send
+	 */
+	public native void sendMessage(BasePacket msg);
+	
+	/**
+	 * Sends the necessary messages to owner client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	public native void sendToOwner(boolean doClose = true);
 	
 	public boolean isOnline() {
@@ -218,6 +245,10 @@ class PlayerCreature extends CreatureObject {
 		savedZoneID = id;
 	}
 	
+	public void setSkillPoints(int points) {
+		skillPoints = points;
+	}
+	
 	public void setClient(ZoneClientSession cli) {
 		owner = cli;
 	}
@@ -266,23 +297,8 @@ class PlayerCreature extends CreatureObject {
 		chatRooms.drop(room);
 	}
 	
-	/**
-	 * Inserts this object into the building, this method is only to be called from insertToZone
-	 * Includes a trigger to BuildingObject::onEnter
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is in the building, building->onEnter has been triggered,
-	 * 		   this object is locked, zone is locked }
-	 * @param building BuildingObject where this object will be inserted
-	 */
-	public native void insertToBuilding(BuildingObject building);
+	public int getSkillPoints() {
+		return skillPoints;
+	}
 	
-	/**
-	 * Removes this object from the building, this method is only to be called from removeFromZone
-	 * Includes a trigger to BuildingObject::onExit
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is not in the building, building->onExit has been triggered, 
-	 * 		   this object is locked, zone is locked }
-	 * @param building BuildingObject from where this object will be removed
-	 */
-	public native void removeFromBuilding(BuildingObject building);
 }

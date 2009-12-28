@@ -47,6 +47,12 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/player/variables/WaypointObject.h"
+
+#include "server/zone/objects/player/variables/WaypointList.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -96,6 +102,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void addExperience(const String& xpType, int xp, bool notifyClient = true);
+
+	void removeExperience(const String& xpType, bool notifyClient = true);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -109,6 +119,14 @@ public:
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
 
 	void setTitle(const String& characterTitle);
+
+	DeltaVectorMap<String, int>* getExperienceList();
+
+	int getForcePower();
+
+	int getForcePowerMax();
+
+	WaypointList* getWaypointList();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -138,7 +156,15 @@ protected:
 
 	String title;
 
+	int forcePower;
+
+	int forcePowerMax;
+
 	unsigned int adminLevel;
+
+	DeltaVectorMap<String, int> experienceList;
+
+	WaypointList waypointList;
 
 public:
 	static const int LFG = 1;
@@ -181,6 +207,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void addExperience(const String& xpType, int xp, bool notifyClient = true);
+
+	void removeExperience(const String& xpType, bool notifyClient = true);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -194,6 +224,14 @@ public:
 	bool clearCharacterBit(unsigned int bit, bool notifyClient = false);
 
 	void setTitle(const String& characterTitle);
+
+	DeltaVectorMap<String, int>* getExperienceList();
+
+	int getForcePower();
+
+	int getForcePowerMax();
+
+	WaypointList* getWaypointList();
 
 	PlayerObject* _this;
 
@@ -238,6 +276,10 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void addExperience(const String& xpType, int xp, bool notifyClient);
+
+	void removeExperience(const String& xpType, bool notifyClient);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -252,7 +294,13 @@ public:
 
 	void setTitle(const String& characterTitle);
 
+	int getForcePower();
+
+	int getForcePowerMax();
+
 protected:
+	String _param0_addExperience__String_int_bool_;
+	String _param0_removeExperience__String_bool_;
 	String _param0_setTitle__String_;
 };
 

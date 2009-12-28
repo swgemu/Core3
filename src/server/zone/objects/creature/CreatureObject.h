@@ -28,6 +28,22 @@ using namespace server::zone::objects::scene::variables;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+namespace professions {
+
+class SkillBox;
+
+} // namespace professions
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::professions;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -40,6 +56,10 @@ class SceneObject;
 using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -120,6 +140,14 @@ public:
 
 	void setBankCredits(int credits, bool notifyClient = true);
 
+	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void addSkillBox(const String& skillBox, bool notifyClient = true);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -197,6 +225,10 @@ public:
 	int getSpecies();
 
 	DeltaVector<int>* getBaseHAM();
+
+	SkillBoxList* getSkillBoxList();
+
+	DeltaVectorMap<String, long long>* getSkillModList();
 
 	void setHeight(float heigh);
 
@@ -299,6 +331,10 @@ protected:
 
 	String templateString;
 
+	SkillBoxList skillBoxList;
+
+	DeltaVectorMap<String, long long> skillModList;
+
 public:
 	static const int HUMAN = 0;
 
@@ -367,6 +403,14 @@ public:
 	void setTargetID(unsigned long long targetID, bool notifyClient = false);
 
 	void setBankCredits(int credits, bool notifyClient = true);
+
+	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void addSkillBox(const String& skillBox, bool notifyClient = true);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
+
+	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
 
 	int getBankCredits();
 
@@ -446,6 +490,10 @@ public:
 
 	DeltaVector<int>* getBaseHAM();
 
+	SkillBoxList* getSkillBoxList();
+
+	DeltaVectorMap<String, long long>* getSkillModList();
+
 	void setHeight(float heigh);
 
 	CreatureObject* _this;
@@ -523,6 +571,12 @@ public:
 
 	void setBankCredits(int credits, bool notifyClient);
 
+	void addSkillBox(const String& skillBox, bool notifyClient);
+
+	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
+
+	void removeSkillMod(const String& skillMod, bool notifyCLient);
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -598,6 +652,9 @@ protected:
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
 	String _param0_sendSystemMessage__String_String_;
 	String _param1_sendSystemMessage__String_String_;
+	String _param0_addSkillBox__String_bool_;
+	String _param0_addSkillMod__String_long_bool_;
+	String _param0_removeSkillMod__String_bool_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

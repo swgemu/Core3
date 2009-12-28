@@ -42,50 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PLAYEROBJECTMESSAGE8_H_
-#define PLAYEROBJECTMESSAGE8_H_
+#ifndef CERTIFICATION_H_
+#define CERTIFICATION_H_
 
-#include "../BaseLineMessage.h"
+#include "engine/engine.h"
 
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/variables/WaypointList.h"
-
-
-class PlayerObjectMessage8 : public BaseLineMessage {
+class Certification {
+	String name;
+	
 public:
-	PlayerObjectMessage8(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
-		// experiences
-		DeltaVectorMap<String, int>* xpList = play->getExperienceList();
-		insertDeltaVectorMap(xpList);
-		
-		// waypoints
-		WaypointList* wayList = play->getWaypointList();
-		insertDeltaVectorMap(wayList);
-
-		// force bar stats
-		insertInt(play->getForcePower());
-		insertInt(play->getForcePowerMax());
-
-		// padawan quests
-		insertInt(0);
-		insertInt(0);
-
-		// FS quests
-		insertInt(0);
-		insertInt(0);
-
-		// quests
-		insertInt(0);
-		insertInt(0);
-
-		//
-		insertInt(0);
-		insertInt(0);
-		
-		setSize();
+	Certification(String& Name) {
+		name = Name;
 	}
 	
+	inline String& getName() {
+		return name;
+	}
 };
 
-#endif /*PLAYEROBJECTMESSAGE8_H_*/
+#endif /*CERTIFICATION_H_*/

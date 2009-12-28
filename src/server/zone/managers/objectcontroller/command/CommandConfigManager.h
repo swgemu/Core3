@@ -66,10 +66,10 @@ namespace command {
 class CommandList;
 
 class CommandConfigManager : public Lua {
+public:
 	static ZoneProcessServerImplementation* server;
 	static CommandList* slashCommands;
 
-public:
 	CommandConfigManager(ZoneProcessServerImplementation* serv);
 
 	void registerFunctions();

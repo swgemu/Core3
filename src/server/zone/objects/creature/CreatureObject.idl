@@ -48,11 +48,14 @@ import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
 import server.zone.objects.scene.variables.ParameterizedStringId;
+import server.zone.objects.creature.professions.SkillBox;
 
 //import server.zone.objects.player.professions.SkillBox;
 
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.creature.variables.SkillBoxList;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -74,9 +77,7 @@ class CreatureObject extends TangibleObject {
 	protected DeltaVector<int> wounds;
 	
 	protected unsigned long stateBitmask;
-	
-	//protected VectorMap<string, SkillBox> skillBoxes;
-	
+		
 	@dereferenced
 	protected DeltaVector<int> encumbrances;
 	
@@ -118,6 +119,13 @@ class CreatureObject extends TangibleObject {
 	protected byte frozen;
 	
 	protected string templateString;
+	
+	// Profession stuff
+	@dereferenced
+	protected SkillBoxList skillBoxList;
+	
+	@dereferenced
+	protected DeltaVectorMap<string, long> skillModList;
 	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
@@ -325,6 +333,44 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setBankCredits(int credits, boolean notifyClient = true);
 	
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@local
+	public native void addSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox name to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addSkillBox(final string skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Adds new value to the specified skillmod (add a negative number to substract)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to change
+	 * @param value value to add/substract
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void addSkillMod(final string skillMod, long value, boolean notifyClient = true);
+	
+	/**
+	 * Removes skill mod from the list (same as setting to 0)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void removeSkillMod(final string skillMod, boolean notifyCLient = true);
+	
 	public int getBankCredits() {
 		return bankCredits;
 	}
@@ -484,6 +530,16 @@ class CreatureObject extends TangibleObject {
 	@local
 	public DeltaVector<int> getBaseHAM() {
 		return baseHAM;
+	}
+	
+	@local
+	public SkillBoxList getSkillBoxList() {
+		return skillBoxList;
+	}
+	
+	@local
+	public DeltaVectorMap<string, long> getSkillModList() {
+		return skillModList;
 	}
 	
 	public void setHeight(float heigh) {

@@ -48,6 +48,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/StringId.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 class BaseLineMessage: public BaseMessage {
 public:
@@ -97,6 +98,20 @@ public:
 		for (int i = 0; i < vector->size(); ++i) {
 			E& value = vector->get(i);
 			TypeInfo<E>::toBinaryStream(&value, this);
+		}
+	}
+
+	template<class K, class V> void insertDeltaVectorMap(DeltaVectorMap<K, V>* vectorMap) {
+		insertInt(vectorMap->size());
+		insertInt(vectorMap->getUpdateCounter());
+
+		for (int i = 0; i < vectorMap->size(); ++i) {
+			K& key = vectorMap->getKeyAt(i);
+			V& value = vectorMap->getValueAt(i);
+
+			insertByte(0);
+			TypeInfo<K>::toBinaryStream(&key, this);
+			TypeInfo<V>::toBinaryStream(&value, this);
 		}
 	}
 

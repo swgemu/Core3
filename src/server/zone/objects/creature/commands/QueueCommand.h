@@ -105,6 +105,10 @@ public:
 	virtual ~QueueCommand() {
 	}
 
+	int compareTo(QueueCommand* command) {
+		return slashCommandName.compareTo(command->slashCommandName);
+	}
+
 	//setters
 	inline void setAnimation(const String& ename) {
 		animCRC = ename.hashCode();

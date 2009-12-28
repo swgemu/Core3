@@ -50,12 +50,26 @@ import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.creature.CreatureObject;
 
 import server.zone.ZoneClientSession;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.player.variables.WaypointObject;
+include server.zone.objects.player.variables.WaypointList;
+
+
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
 	protected string title;
 	
+	protected int forcePower;
+	protected int forcePowerMax;
+	
 	protected unsigned int adminLevel;
+	
+	@dereferenced
+	protected DeltaVectorMap<string, int> experienceList;
+	
+	@dereferenced
+	protected WaypointList waypointList;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -88,6 +102,21 @@ class PlayerObject extends IntangibleObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
+	 /**
+	 * Adds experience of a type to the player's experience pool.
+	 * \param xpType The string value for the type of experience to add.
+	 * \param xp The value of experience to add.
+	 * \param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 */
+	public native void addExperience(final string xpType, int xp, boolean notifyClient = true);
+
+    /**
+	 * Removes experience of a type from the player's experience pool.
+	 * \param xpType The string value for the type of experience to remove.
+	 * \param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 */
+	public native void removeExperience(final string xpType, boolean notifyClient = true);
+	
 	public unsigned int getCharacterBitmask() {
 		return characterBitmask;
 	}
@@ -109,5 +138,23 @@ class PlayerObject extends IntangibleObject {
 	
 	public void setTitle(final string characterTitle) {
 		title = characterTitle;
+	}
+	
+	@local
+	public DeltaVectorMap<string, int> getExperienceList() {
+		return experienceList;
+	}
+	
+	public int getForcePower() {
+		return forcePower;
+	}
+	
+	public int getForcePowerMax() {
+		return forcePowerMax;
+	}
+	
+	@local
+	public WaypointList getWaypointList() {
+		return waypointList;
 	}
 }

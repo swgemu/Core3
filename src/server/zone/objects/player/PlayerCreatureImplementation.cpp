@@ -310,6 +310,15 @@ void PlayerCreatureImplementation::setOnline() {
 	doRecovery();
 }
 
+void PlayerCreatureImplementation::sendMessage(BasePacket* msg) {
+	if (owner == NULL) {
+		delete msg;
+		return;
+	} else {
+		owner->sendMessage(msg);
+	}
+}
+
 void PlayerCreatureImplementation::insertToBuilding(BuildingObject * building) {
 	SceneObjectImplementation::insertToBuilding(building);
 	building->onEnter(_this);

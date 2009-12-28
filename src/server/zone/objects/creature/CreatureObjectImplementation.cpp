@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "CreatureState.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
@@ -61,6 +62,8 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -385,8 +388,76 @@ void CreatureObjectImplementation::setBankCredits(int credits, bool notifyClient
 		delta->updateBankCredits();
 		delta->close();
 
-		broadcastMessage(delta, true);
+		sendMessage(delta);
 	}
+}
+
+void CreatureObjectImplementation::addSkillBox(SkillBox* skillBox, bool notifyClient) {
+	if (skillBoxList.contains(skillBox))
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
+		msg->startUpdate(0x03);
+		skillBoxList.add(skillBox, msg);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		skillBoxList.add(skillBox, NULL);
+	}
+}
+
+void CreatureObjectImplementation::removeSkillMod(const String& skillMod, bool notifyClient) {
+	if (!skillModList.contains(skillMod))
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* msg = new CreatureObjectDeltaMessage4(this);
+		msg->startUpdate(0x03);
+		skillModList.drop(skillMod, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		skillModList.drop(skillMod);
+	}
+}
+
+void CreatureObjectImplementation::addSkillMod(const String& skillMod, int64 value, bool notifyClient) {
+	if (skillModList.contains(skillMod)) {
+		value += skillModList.get(skillMod);
+
+		if (value <= 0) {
+			removeSkillMod(skillMod, notifyClient);
+			return;
+		}
+	}
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage4* msg = new CreatureObjectDeltaMessage4(this);
+		msg->startUpdate(0x03);
+		skillModList.set(skillMod, value, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		skillModList.set(skillMod, value);
+	}
+}
+
+void CreatureObjectImplementation::addSkillBox(const String& skillBox, bool notifyClient) {
+	ZoneServer* zoneServer = server->getZoneServer();
+	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+
+	SkillBox* skillBoxObject = professionManager->getSkillBox(skillBox);
+
+	if (skillBoxObject == NULL) {
+		error("trying to add null skill box " + skillBox);
+		return;
+	}
+
+	addSkillBox(skillBoxObject, notifyClient);
 }
 
 void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient) {

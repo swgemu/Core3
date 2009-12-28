@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/professions/SkillBox.h"
+
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
 	CreatureObjectMessage1(CreatureObjectImplementation* creo)
@@ -57,32 +59,26 @@ public:
 		insertInt(creo->getCashCredits());
 
 		// Base HAM
-		DeltaVector<int>* baseHam  = creo->getBaseHAM();
+		DeltaVector<int>* baseHam = creo->getBaseHAM();
 		insertDeltaVector(baseHam);
 
-		insertSkillBoxes(creo);
+		SkillBoxList* skillBoxList = creo->getSkillBoxList();
+		insertSkillBoxes(skillBoxList);
 
 		setSize();
 
 		setCompression(true);
 	}
 
-	void insertSkillBoxes(CreatureObjectImplementation* creo) {
-		/*PlayerImplementation* player = (PlayerImplementation*)creo;
+	void insertSkillBoxes(SkillBoxList* vector) {
+		insertInt(vector->size());
+		insertInt(vector->getUpdateCounter());
 
-		int size = player->skillBoxes.size();
-		player->skillBoxes.resetIterator();
+		for (int i = 0; i < vector->size(); ++i) {
+			SkillBox* skillBox = vector->get(i);
 
-		insertInt(size);
-		insertInt(creo->skillBoxesUpdateCounter);
-
-		while (player->skillBoxes.hasNext()) {
-			SkillBox* skillBox = player->skillBoxes.getNextValue();
 			insertAscii(skillBox->getName());
-		}*/
-
-		insertInt(0);
-		insertInt(0);
+		}
 	}
 
 };
