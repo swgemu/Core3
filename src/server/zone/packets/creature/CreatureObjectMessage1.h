@@ -60,26 +60,16 @@ public:
 
 		// Base HAM
 		DeltaVector<int>* baseHam = creo->getBaseHAM();
-		insertDeltaVector(baseHam);
+		baseHam->insertToMessage(this);
 
 		SkillBoxList* skillBoxList = creo->getSkillBoxList();
-		insertSkillBoxes(skillBoxList);
+		skillBoxList->insertToMessage(this);
 
 		setSize();
 
 		setCompression(true);
 	}
 
-	void insertSkillBoxes(SkillBoxList* vector) {
-		insertInt(vector->size());
-		insertInt(vector->getUpdateCounter());
-
-		for (int i = 0; i < vector->size(); ++i) {
-			SkillBox* skillBox = vector->get(i);
-
-			insertAscii(skillBox->getName());
-		}
-	}
 
 };
 

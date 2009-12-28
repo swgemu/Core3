@@ -99,6 +99,16 @@ public:
 		}
 	}
 
+	virtual void insertToMessage(BaseMessage* msg) {
+		msg->insertInt(size());
+		msg->insertInt(updateCounter);
+
+		for (int i = 0; i < size(); ++i) {
+			E& value = get(i);
+			TypeInfo<E>::toBinaryStream(&value, msg);
+		}
+	}
+
 	bool contains(const E& element) {
 		bool found = false;
 

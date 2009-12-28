@@ -47,9 +47,61 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-#include "WaypointObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 
-class WaypointList : public DeltaVectorMap<uint64, WaypointObject> {
+class WaypointList : public DeltaVectorMap<uint64, ManagedReference<WaypointObject*> > {
+public:
+
+	int set(uint64 key, WaypointObject* value, DeltaMessage* message = NULL, int updates = 1) {
+		int pos = vectorMap.put(key, value);
+
+		if (message != NULL) {
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
+
+			message->insertByte(0);
+
+			message->insertLong(key);
+			value->insertToMessage(message);
+		}
+
+		return pos;
+	}
+
+	bool drop(const uint64& key, DeltaMessage* message = NULL, int updates = 1) {
+		if (!vectorMap.contains(key))
+			return false;
+
+		ManagedReference<WaypointObject*> value = vectorMap.get(key);
+
+		vectorMap.drop(key);
+
+		if (message != NULL) {
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
+
+			message->insertByte(1);
+
+			message->insertLong(key);
+			value->insertToMessage(message);
+		}
+
+		return true;
+	}
+
+	void insertToMessage(BaseMessage* msg) {
+		msg->insertInt(size());
+		msg->insertInt(getUpdateCounter());
+
+		for (int i = 0; i < size(); ++i) {
+			uint64& key = getKeyAt(i);
+			ManagedReference<WaypointObject*> value = getValueAt(i);
+
+			msg->insertByte(0);
+			msg->insertLong(key);
+			value->insertToMessage(msg);
+		}
+	}
 
 };
 

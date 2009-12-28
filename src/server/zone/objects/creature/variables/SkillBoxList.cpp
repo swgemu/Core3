@@ -94,3 +94,13 @@ bool SkillBoxList::add(SkillBox* element, DeltaMessage* message) {
 	return val;
 }
 
+void SkillBoxList::insertToMessage(BaseMessage* msg) {
+	msg->insertInt(size());
+	msg->insertInt(updateCounter);
+
+	for (int i = 0; i < size(); ++i) {
+		SkillBox* skillBox = get(i);
+
+		msg->insertAscii(skillBox->getName());
+	}
+}

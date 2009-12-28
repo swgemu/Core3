@@ -48,7 +48,11 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../waypoint/WaypointObject.h"
+#include "../../../waypoint/WaypointObject.h"
+#include "../../../player/PlayerObject.h"
+
+#include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 class WaypointSlashCommand : public QueueCommand {
 public:
@@ -65,28 +69,24 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
-		/*
+
 		int counter = 0;
 		String dummy;
 
-		packet->shiftOffset(8);
-
 		String usageError = "Usage: /waypoint X Y <name> or /waypoint <name>";
 
-		UnicodeString rawWaypoint;
-		packet->parseUnicode(rawWaypoint);
-		String waypointData = rawWaypoint.toString();
+		String waypointData = arguments.toString();
 
 		String waypointName = "New Waypoint";
-		String planet = Planet::getPlanetName(player->getZoneID());
-		float x = player->getPositionX();
-		float y = player->getPositionY();
+		String planet = Planet::getPlanetName(creature->getZone()->getZoneID());
+		float x = creature->getPositionX();
+		float y = creature->getPositionY();
 		float z = 0.0f;
 
-		SceneObject* parentObject = player->getParent();
+		SceneObject* parentObject = creature->getParent();
 
 		if (parentObject != NULL) {
-			if (parentObject->isCell()) {
+			if (parentObject->isCellObject()) {
 				SceneObject* grandParentObject = parentObject->getParent();
 
 				if (grandParentObject != NULL) {
@@ -115,7 +115,7 @@ public:
 						if (isalpha(temp[0]) == 0) {
 							y = atof(temp.toCharArray());
 						} else {
-							player->sendSystemMessage(usageError);
+							creature->sendSystemMessage(usageError);
 							return false;
 						}
 					}
@@ -128,16 +128,16 @@ public:
 						newWaypointName << name << " ";
 					}
 
-					*//*if (!newWaypointName.isEmpty())
+					/*if (!newWaypointName.isEmpty())
 					 newWaypointName.deleteRange(0, 1);*/// ????
-					/*
+
 					waypointName = newWaypointName.toString();
 				} else {
 					//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
 					planet = arg1;
 
 					if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
-						player->sendSystemMessage(usageError);
+						creature->sendSystemMessage(usageError);
 						return false;
 					}
 
@@ -148,7 +148,7 @@ public:
 						if (!Character::isLetterOrDigit(temp.charAt(0))) {
 							x = Float::valueOf(temp);
 						} else {
-							player->sendSystemMessage(usageError);
+							creature->sendSystemMessage(usageError);
 							return false;
 						}
 					}
@@ -160,7 +160,7 @@ public:
 						if (!Character::isLetterOrDigit(temp.charAt(0))) {
 							z = Float::valueOf(temp);
 						} else {
-							player->sendSystemMessage(usageError);
+							creature->sendSystemMessage(usageError);
 							return false;
 						}
 					}
@@ -172,7 +172,7 @@ public:
 						if (!Character::isLetterOrDigit(temp.charAt(0))) {
 							y = Float::valueOf(temp);
 						} else {
-							player->sendSystemMessage(usageError);
+							creature->sendSystemMessage(usageError);
 							return false;
 						}
 					}
@@ -189,14 +189,16 @@ public:
 		y = (y < -8192) ? -8192 : y;
 		y = (y > 8192) ? 8192 : y;
 
-		//Create our waypoint
-		WaypointObject* waypoint = new WaypointObject(player->getNewItemID());
-		waypoint->setPlanetName(planet);
-		waypoint->setPosition(x, z, y);
-		waypoint->setCustomName(waypointName);
-		waypoint->setActivated(true);
+		PlayerObject* playerObject = (PlayerObject*) creature->getSlottedObject("ghost");
 
-		player->addWaypoint(waypoint);*/
+		ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+		obj->setPlanetCRC(planet.hashCode());
+		obj->setPosition(x, z, y);
+		obj->setCustomName(waypointName);
+		obj->setActive(true);
+
+		playerObject->addWaypoint(obj, true);
+
 		return true;
 	}
 

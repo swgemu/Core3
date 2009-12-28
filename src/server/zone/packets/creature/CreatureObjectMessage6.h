@@ -69,10 +69,10 @@ public:
 		insertInt(creo->getInstrumentID()); //might be switched
 
 		DeltaVector<int>* ham = creo->getHAM();
-		insertDeltaVector(ham);
+		ham->insertToMessage(this);
 
 		DeltaVector<int>* maxHam = creo->getMaxHAM();
-		insertDeltaVector(maxHam);
+		maxHam->insertToMessage(this);
 
 		insertEquipmentList(creo);
 

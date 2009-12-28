@@ -53,6 +53,8 @@ which carries forward this exception.
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 #include "server/zone/packets/player/PlayerObjectMessage8.h"
 
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -80,6 +82,13 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* play8 = new PlayerObjectMessage8(this);
 	player->sendMessage(play8);
+}
+
+void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
+	if (parent == NULL)
+		delete msg;
+
+	parent->sendMessage(msg);
 }
 
 bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) {
@@ -153,3 +162,35 @@ void PlayerObjectImplementation::removeExperience(const String& xpType, bool not
 		experienceList.drop(xpType);
 	}
 }
+
+void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool notifyClient) {
+	uint64 waypointID = waypoint->getObjectID();
+
+	if (waypointList.contains(waypointID)) {
+		error("this contains this waypoint ID");
+		return;
+	}
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
+		msg->startUpdate(1);
+		waypointList.set(waypointID, waypoint, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		waypointList.set(waypointID, waypoint);
+	}
+
+	waypoint->updateToDatabase();
+}
+
+void PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
+	ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
+	obj->setPlanetCRC(planet.hashCode());
+	obj->setPosition(positionX, 0, positionY);
+	obj->setActive(true);
+
+	addWaypoint(obj, notifyClient);
+}
+

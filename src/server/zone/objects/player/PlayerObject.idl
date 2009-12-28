@@ -51,10 +51,8 @@ import server.zone.objects.creature.CreatureObject;
 
 import server.zone.ZoneClientSession;
 include server.zone.objects.scene.variables.DeltaVectorMap;
-include server.zone.objects.player.variables.WaypointObject;
+import server.zone.objects.waypoint.WaypointObject;
 include server.zone.objects.player.variables.WaypointList;
-
-
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -102,20 +100,47 @@ class PlayerObject extends IntangibleObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
+	public native void sendMessage(BasePacket msg);
+	
 	 /**
 	 * Adds experience of a type to the player's experience pool.
-	 * \param xpType The string value for the type of experience to add.
-	 * \param xp The value of experience to add.
-	 * \param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to add.
+	 * @param xp The value of experience to add.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
 	 */
 	public native void addExperience(final string xpType, int xp, boolean notifyClient = true);
 
     /**
 	 * Removes experience of a type from the player's experience pool.
-	 * \param xpType The string value for the type of experience to remove.
-	 * \param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to remove.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
 	 */
 	public native void removeExperience(final string xpType, boolean notifyClient = true);
+	
+	/**
+	 * Adds waypoint object to waypointList
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param waypoint waypoint object to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void addWaypoint(WaypointObject waypoint, boolean notifyClient = true);
+	
+	/** 
+	 * Adds a new waypoint with the specified coordinates
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param planet planet where waypoint will be created
+	 * @param positionX waypoint position X
+	 * @param positionY waypoint position Y
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void addWaypoint(final string planet, float positionX, float positionY, boolean notifyClient = true);
 	
 	public unsigned int getCharacterBitmask() {
 		return characterBitmask;

@@ -47,9 +47,21 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
 
-#include "server/zone/objects/player/variables/WaypointObject.h"
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/player/variables/WaypointList.h"
 
@@ -102,9 +114,15 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendMessage(BasePacket* msg);
+
 	void addExperience(const String& xpType, int xp, bool notifyClient = true);
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
+
+	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+
+	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
 	unsigned int getCharacterBitmask();
 
@@ -207,9 +225,15 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendMessage(BasePacket* msg);
+
 	void addExperience(const String& xpType, int xp, bool notifyClient = true);
 
 	void removeExperience(const String& xpType, bool notifyClient = true);
+
+	void addWaypoint(WaypointObject* waypoint, bool notifyClient = true);
+
+	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
 	unsigned int getCharacterBitmask();
 
@@ -276,9 +300,13 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendMessage(BasePacket* msg);
+
 	void addExperience(const String& xpType, int xp, bool notifyClient);
 
 	void removeExperience(const String& xpType, bool notifyClient);
+
+	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient);
 
 	unsigned int getCharacterBitmask();
 
@@ -301,6 +329,7 @@ public:
 protected:
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_bool_;
+	String _param0_addWaypoint__String_float_float_bool_;
 	String _param0_setTitle__String_;
 };
 

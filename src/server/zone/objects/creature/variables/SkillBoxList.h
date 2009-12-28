@@ -76,6 +76,8 @@ public:
 
 	void getStringList(Vector<String>& skillBoxes);
 	void loadFromNames(Vector<String>& skillBoxes);
+
+	void insertToMessage(BaseMessage* msg);
 };
 
 #endif /*SKILLBOXLIST_H_*/

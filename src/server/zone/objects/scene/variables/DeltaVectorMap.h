@@ -38,7 +38,7 @@ public:
 		addSerializableVariable("updateCounter", &updateCounter);
 	}
 
-	int set(const K& key, const V& value, DeltaMessage* message = NULL, int updates = 1) {
+	virtual int set(const K& key, const V& value, DeltaMessage* message = NULL, int updates = 1) {
 		int pos = vectorMap.put(key, value);
 
 		if (message != NULL) {
@@ -56,7 +56,7 @@ public:
 		return pos;
 	}
 
-	bool drop(const K& key, DeltaMessage* message = NULL, int updates = 1) {
+	virtual bool drop(const K& key, DeltaMessage* message = NULL, int updates = 1) {
 		if (!vectorMap.contains(key))
 			return false;
 
@@ -77,6 +77,20 @@ public:
 		}
 
 		return true;
+	}
+
+	virtual void insertToMessage(BaseMessage* msg) {
+		msg->insertInt(size());
+		msg->insertInt(getUpdateCounter());
+
+		for (int i = 0; i < size(); ++i) {
+			K& key = getKeyAt(i);
+			V& value = getValueAt(i);
+
+			msg->insertByte(0);
+			TypeInfo<K>::toBinaryStream(&key, msg);
+			TypeInfo<V>::toBinaryStream(&value, msg);
+		}
 	}
 
 	inline V& getValueAt(int index) {

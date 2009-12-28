@@ -57,11 +57,11 @@ public:
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 8, 0x07) {
 		// experiences
 		DeltaVectorMap<String, int>* xpList = play->getExperienceList();
-		insertDeltaVectorMap(xpList);
+		xpList->insertToMessage(this);
 		
 		// waypoints
 		WaypointList* wayList = play->getWaypointList();
-		insertDeltaVectorMap(wayList);
+		wayList->insertToMessage(this);
 
 		// force bar stats
 		insertInt(play->getForcePower());

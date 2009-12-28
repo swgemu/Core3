@@ -91,30 +91,6 @@ public:
 		insertUnicode(id->getCustomString());
 	}
 
-	template<class E> void insertDeltaVector(DeltaVector<E>* vector) {
-		insertInt(vector->size());
-		insertInt(vector->getUpdateCounter());
-
-		for (int i = 0; i < vector->size(); ++i) {
-			E& value = vector->get(i);
-			TypeInfo<E>::toBinaryStream(&value, this);
-		}
-	}
-
-	template<class K, class V> void insertDeltaVectorMap(DeltaVectorMap<K, V>* vectorMap) {
-		insertInt(vectorMap->size());
-		insertInt(vectorMap->getUpdateCounter());
-
-		for (int i = 0; i < vectorMap->size(); ++i) {
-			K& key = vectorMap->getKeyAt(i);
-			V& value = vectorMap->getValueAt(i);
-
-			insertByte(0);
-			TypeInfo<K>::toBinaryStream(&key, this);
-			TypeInfo<V>::toBinaryStream(&value, this);
-		}
-	}
-
 	//
 
 };

@@ -59,12 +59,11 @@ public:
 
 		//Encumbrances
 		DeltaVector<int>* encumbrances = creo->getEncumbrances();
-		insertDeltaVector(encumbrances);
+		encumbrances->insertToMessage(this);
 
 		// skill mods
 		DeltaVectorMap<String, int64>* skillMods = creo->getSkillModList();
-		insertDeltaVectorMap(skillMods);
-		//insertSkillMods(creo);
+		skillMods->insertToMessage(this);
 
 		//
 		insertFloat(1);

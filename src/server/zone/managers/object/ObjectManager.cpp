@@ -26,6 +26,7 @@
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/db/ServerDatabase.h"
 #include "ObjectMap.h"
 #include "server/zone/Zone.h"
@@ -91,7 +92,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CellObject>(SceneObject::CELLOBJECT);
 	objectFactory.registerObject<PlayerObject>(SceneObject::PLAYEROBJECT);
 
-	//objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
+	objectFactory.registerObject<WaypointObject>(SceneObject::WAYPOINT);
 
 	objectFactory.registerObject<BuildingObject>(SceneObject::BUILDING);
 	objectFactory.registerObject<TutorialBuildingObject>(SceneObject::TUTORIALBUILDING);
