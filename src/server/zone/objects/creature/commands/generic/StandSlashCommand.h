@@ -70,9 +70,6 @@ public:
 
 		creature->setPosture(CreaturePosture::UPRIGHT);
 
-		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
-		prof->trainSkillBox(arguments.toString(), (PlayerCreature*)creature, true);
-
 		return true;
 	}
 

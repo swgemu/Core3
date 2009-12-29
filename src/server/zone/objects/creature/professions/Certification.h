@@ -52,7 +52,7 @@ class Certification : public Skill {
 	
 public:
 	Certification(String& Name) : Skill(Name) {
-		type = CERTIFICATION;
+		skillType = CERTIFICATION;
 	}
 
 };

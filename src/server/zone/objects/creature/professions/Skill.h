@@ -14,16 +14,18 @@ class Skill {
 protected:
 	String name;
 
-	int type;
+	int skillType;
 
 public:
 	const static int CERTIFICATION = 1;
 	const static int QUEUECOMMAND = 2;
+	const static int SKILLBOX = 3;
+	const static int PROFESSION = 4;
 
 	Skill(const String& Name) {
 		name = Name;
 
-		type = 0;
+		skillType = 0;
 	}
 
 	virtual ~Skill() {
@@ -35,11 +37,19 @@ public:
 	}
 
 	inline bool isCertification() {
-		return type == CERTIFICATION;
+		return skillType == CERTIFICATION;
 	}
 
 	inline bool isQueueCommand() {
-		return type == QUEUECOMMAND;
+		return skillType == QUEUECOMMAND;
+	}
+
+	inline bool isProfession() {
+		return skillType == PROFESSION;
+	}
+
+	inline bool isSkillBox() {
+		return skillType == SKILLBOX;
 	}
 };
 

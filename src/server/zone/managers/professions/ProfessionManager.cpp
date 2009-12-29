@@ -272,13 +272,17 @@ bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* pl
 bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player) {
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
-	if (!playerSkillBoxList->contains(skillBox))
+	if (!playerSkillBoxList->contains(skillBox)) {
+		System::out << "player doesnt contain skill box to surrender" << endl;
 		return false;
+	}
 
 	if (skillBox->isMasterBox())
 		return true;
 
 	Vector<SkillBox*>* children = skillBox->getChildren();
+
+	System::out << "trying to check children..." << endl;
 
 	for (int i = 0; i < children->size(); ++i) {
 		SkillBox* box = children->get(i);
@@ -435,6 +439,9 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 		if (result->next())
 			fourByFourProfession->setMasterBox(loadSkillBox(result, (Profession*) fourByFourProfession));
 
+		if (!professionMap.containsKey(name))
+			professionMap.put(name, fourByFourProfession);
+
 		for (int i = 1; i <= 4; i++) {
 			for (int j = 1; j <= 4; j++) {
 				if (!result->next()) {
@@ -459,6 +466,9 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 		if (result->next())
 			oneByFourProfession->setMasterBox(loadSkillBox(result, (Profession*)oneByFourProfession));
 
+		if (!professionMap.containsKey(name))
+			professionMap.put(name, oneByFourProfession);
+
 		for (int i = 1; i <= 4; i++) {
 			if (!result->next()) {
 					StringBuffer msg;
@@ -481,6 +491,9 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 		if (result->next())
 			pyramidProfession->setMasterBox(loadSkillBox(result, (Profession*)pyramidProfession));
 
+		if (!professionMap.containsKey(name))
+			professionMap.put(name, pyramidProfession);
+
 		for (int i = 1; i <= 10; i++) {
 			if (!result->next()) {
 					StringBuffer msg;
@@ -498,16 +511,65 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 	return profession;
 }
 
+SkillBox* ProfessionManager::loadBox(const String& name, Profession* profession) {
+	SkillBox* box = NULL;
+
+	StringBuffer query;
+	query << "SELECT * FROM skills WHERE skill_name = '" << name << "'";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	if (!result->next()) {
+		StringBuffer msg;
+		msg << "Skill " << name << " not found in database";
+
+		throw Exception(msg.toString());
+	}
+
+	bool isProfession = result->getInt(6);
+
+	if (!isProfession)
+		box = loadSkillBox(result, profession);
+
+	delete result;
+
+	return box;
+}
+
 SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profession) {
-	SkillBox* skillBox = new SkillBox(result->getString(1), result->getInt(0), profession);
+	String name = result->getString(1);
+
+	if (skillBoxMap.contains(name))
+		return skillBoxMap.get(name);
+
+	SkillBox* skillBox = new SkillBox(name, result->getInt(0), profession);
 
 	String skillParent = result->getString(2);
 
 	if (skillParent.length() > 1) {
 		SkillBox* parent = skillBoxMap.get(skillParent);
+
+		if (parent == NULL) {
+			Profession* profession = professionMap.get(skillParent);
+
+			if (profession != NULL) {
+				parent = profession->getNoviceBox();
+			}
+		}
+
+		/*info("trying to get parent.." + skillParent, true);
+
+		if (parent == NULL) {
+			parent = loadBox(skillParent, profession);
+		}*/
+
 		if (parent != NULL) {
+			info(skillParent + " found", true);
+
 			skillBox->setParent(parent);
 			parent->addChild(skillBox);
+		} else {
+			info("parent not found " + skillParent, true);
 		}
 	}
 

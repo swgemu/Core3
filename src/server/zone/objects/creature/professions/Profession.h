@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "Skill.h"
 
 namespace server {
 namespace zone {
@@ -64,9 +65,8 @@ class SkillBox;
 
 using namespace server::zone::objects::creature::professions;
 
-class Profession {
+class Profession : public Skill {
 protected:
-	String name;
 	int type;
 	
 	Vector<SkillBox*> skillBoxes;
@@ -77,9 +77,10 @@ public:
 	const static int PYRAMID = 3;
 
 public:
-	Profession(String& Name, int Type) {
-		name = Name;
+	Profession(String& Name, int Type) : Skill(Name) {
 		type = Type;
+
+		skillType = PROFESSION;
 	}
 	
 	virtual ~Profession() {
@@ -106,10 +107,6 @@ private:
 	}
 
 public:	
-	inline String& getName() {
-		return name;
-	}
-	
 	inline bool isFourByFour() {
 		return type == FOURBYFOUR;
 	}

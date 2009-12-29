@@ -121,6 +121,8 @@ namespace server {
 		void loadSkillMods(SkillBox* skillBox, String& skillMods);
 		void loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics);
 
+		SkillBox* loadBox(const String& name, Profession* profession);
+
 		bool checkPrerequisites(SkillBox* skillBox, PlayerCreature* player);
 		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
 		void awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);

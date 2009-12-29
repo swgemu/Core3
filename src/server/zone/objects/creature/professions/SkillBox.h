@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "Profession.h"
 #include "Certification.h"
 #include "SkillModList.h"
+#include "Skill.h"
 
 namespace server {
  namespace zone {
@@ -71,8 +72,7 @@ namespace server {
    namespace creature {
     namespace professions {
 
-	class SkillBox {
-		String name;
+	class SkillBox : public Skill {
 		int skillBoxId;
 
 		SkillBox* parent;
@@ -108,8 +108,9 @@ namespace server {
 
 
 	public:
-		SkillBox(const String& s, int id, Profession* prof) {
-			name = s;
+		SkillBox(const String& s, int id, Profession* prof) : Skill(s) {
+			skillType = SKILLBOX;
+
 			skillBoxId = id;
 			profession = prof;
 
@@ -231,10 +232,6 @@ namespace server {
 
 		void setParent(SkillBox* pr) {
 			parent = pr;
-		}
-
-		inline String& getName() {
-			return name;
 		}
 
 		inline SkillBox* getParent() {

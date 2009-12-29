@@ -99,7 +99,7 @@ public:
 
 		cooldown = 0;
 
-		type = QUEUECOMMAND;
+		skillType = QUEUECOMMAND;
 	}
 
 	virtual ~QueueCommand() {
