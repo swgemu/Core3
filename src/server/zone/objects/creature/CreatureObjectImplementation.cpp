@@ -408,6 +408,36 @@ void CreatureObjectImplementation::addSkillBox(SkillBox* skillBox, bool notifyCl
 	}
 }
 
+void CreatureObjectImplementation::removeSkillBox(SkillBox* skillBox, bool notifyClient) {
+	if (!skillBoxList.contains(skillBox))
+		return;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
+		msg->startUpdate(0x03);
+		skillBoxList.remove(skillBox, msg);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		skillBoxList.remove(skillBox);
+	}
+}
+
+void CreatureObjectImplementation::removeSkillBox(const String& skillBox, bool notifyClient) {
+	ZoneServer* zoneServer = server->getZoneServer();
+	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+
+	SkillBox* skillBoxObject = professionManager->getSkillBox(skillBox);
+
+	if (skillBoxObject == NULL) {
+		error("trying to remove null skill box " + skillBox);
+		return;
+	}
+
+	removeSkillBox(skillBoxObject, notifyClient);
+}
+
 void CreatureObjectImplementation::removeSkillMod(const String& skillMod, bool notifyClient) {
 	if (!skillModList.contains(skillMod))
 		return;

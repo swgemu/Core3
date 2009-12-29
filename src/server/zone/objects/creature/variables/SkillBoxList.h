@@ -68,14 +68,16 @@ class SkillBoxList : public DeltaVector<SkillBox*> {
 public:
 	bool add(SkillBox* element, DeltaMessage* message = NULL);
 
+	void remove(SkillBox* skillBox, DeltaMessage* message = NULL);
+
 	bool toString(String& str);
 	bool parseFromString(const String& str, int version = 0);
 
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	void getStringList(Vector<String>& skillBoxes);
-	void loadFromNames(Vector<String>& skillBoxes);
+	void getStringList(Vector<String>& skills);
+	void loadFromNames(Vector<String>& skills);
 
 	void insertToMessage(BaseMessage* msg);
 };

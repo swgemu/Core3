@@ -48,11 +48,16 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.commands.QueueCommand;
+include server.zone.objects.creature.professions.Certification;
 
 import server.zone.ZoneClientSession;
 include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.scene.variables.DeltaVector;
 import server.zone.objects.waypoint.WaypointObject;
 include server.zone.objects.player.variables.WaypointList;
+include server.zone.objects.creature.professions.Skill;
+include server.zone.objects.player.variables.SkillList;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -61,6 +66,13 @@ class PlayerObject extends IntangibleObject {
 	protected int forcePower;
 	protected int forcePowerMax;
 	
+	protected int foodFilling;
+	protected int foodFillingMax;
+	
+	protected int drinkFilling;
+	protected int drinkFillingMax;
+	
+	protected int jediState;
 	protected unsigned int adminLevel;
 	
 	@dereferenced
@@ -68,6 +80,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected WaypointList waypointList;
+	
+	@dereferenced
+	protected SkillList skillList;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -142,6 +157,51 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void addWaypoint(final string planet, float positionX, float positionY, boolean notifyClient = true);
 	
+	/**
+	 * Adds new queue commands to player
+	 * @pre { this is locked }
+	 * @post { his is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void addSkills(@dereferenced Vector<QueueCommand> skills, boolean notifyClient = true);
+	
+	/**
+	 * Adds new certifications to player
+	 * @pre { this is locked }
+	 * @post { his is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void addSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
+	
+	/**
+	 * Removes new queue commands to player
+	 * @pre { this is locked }
+	 * @post { his is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void removeSkills(@dereferenced Vector<QueueCommand> skills, boolean notifyClient = true);
+	
+	/**
+	 * Removes new certifications to player
+	 * @pre { this is locked }
+	 * @post { his is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	@local
+	public native void removeSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
+	
+	@local
+	public boolean hasSkill(Skill skill) {
+		return skillList.contains(skill);
+	}
+	
 	public unsigned int getCharacterBitmask() {
 		return characterBitmask;
 	}
@@ -181,5 +241,30 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public WaypointList getWaypointList() {
 		return waypointList;
+	}
+	
+	@local
+	public SkillList getSkills() {
+		return skillList;
+	}
+	
+	public int getFoodFilling() {
+		return foodFilling;
+	}
+	
+	public int getFoodFillingMax() {
+		return foodFillingMax;
+	}
+	
+	public int getDrinkFilling() {
+		return drinkFilling;
+	}
+	
+	public int getDrinkFillingMax() {
+		return drinkFillingMax;
+	}
+	
+	public int getJediState() {
+		return jediState;
 	}
 }

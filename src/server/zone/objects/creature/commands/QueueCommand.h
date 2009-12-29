@@ -53,6 +53,7 @@ which carries forward this exception.
 
 
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "../professions/Skill.h"
 //#include "../../../managers/combat/CombatManager.h"
 
 namespace server {
@@ -62,9 +63,8 @@ namespace creature {
 namespace commands {
 
 
-class QueueCommand {
+class QueueCommand : public Skill {
 protected:
-	String slashCommandName;
 	uint32 nameCRC;
 
 	uint32 animCRC;
@@ -82,12 +82,10 @@ protected:
 	ZoneProcessServerImplementation* server;
 
 public:
-	QueueCommand(const String& name, ZoneProcessServerImplementation* serv) {
+	QueueCommand(const String& name, ZoneProcessServerImplementation* serv) : Skill(name) {
 		server = serv;
 
 		nameCRC = name.hashCode();
-
-		slashCommandName = name;
 
 		animCRC = 0;
 
@@ -100,13 +98,15 @@ public:
 		addToQueue = false;
 
 		cooldown = 0;
+
+		type = QUEUECOMMAND;
 	}
 
 	virtual ~QueueCommand() {
 	}
 
 	int compareTo(QueueCommand* command) {
-		return slashCommandName.compareTo(command->slashCommandName);
+		return name.compareTo(command->name);
 	}
 
 	//setters
@@ -335,7 +335,7 @@ public:
 	}
 
 	inline String& getSlashCommandName() {
-		return slashCommandName;
+		return name;
 	}
 
 };

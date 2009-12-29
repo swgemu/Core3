@@ -49,12 +49,15 @@ which carries forward this exception.
 #include "server/zone/packets/player/PlayerObjectMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage8.h"
+#include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
 
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 #include "server/zone/packets/player/PlayerObjectMessage8.h"
+#include "server/zone/packets/player/PlayerObjectMessage9.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
-
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/professions/Certification.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -69,6 +72,14 @@ void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	forcePower = 0;
 	forcePowerMax = 0;
+
+	foodFilling = 0;
+	foodFillingMax = 0;
+
+	drinkFilling = 0;
+	drinkFillingMax = 0;
+
+	jediState = 0;
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -82,6 +93,9 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* play8 = new PlayerObjectMessage8(this);
 	player->sendMessage(play8);
+
+	BaseMessage* play9 = new PlayerObjectMessage9(this);
+	player->sendMessage(play9);
 }
 
 void PlayerObjectImplementation::sendMessage(BasePacket* msg) {
@@ -194,3 +208,90 @@ void PlayerObjectImplementation::addWaypoint(const String& planet, float positio
 	addWaypoint(obj, notifyClient);
 }
 
+void PlayerObjectImplementation::addSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.add(skills.get(0), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.add(skills.get(i), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.add(skills.get(i));
+	}
+}
+
+void PlayerObjectImplementation::addSkills(Vector<Certification*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.add(skills.get(0), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.add(skills.get(i), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.add(skills.get(i));
+	}
+}
+
+void PlayerObjectImplementation::removeSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.remove(skillList.find(skills.get(0)), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)));
+	}
+}
+
+void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bool notifyClient) {
+	if (skills.size() == 0)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
+		msg->startUpdate(0);
+
+		skillList.remove(skillList.find(skills.get(0)), msg, skills.size());
+
+		for (int i = 1; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)), msg, 0);
+
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		for (int i = 0; i < skills.size(); ++i)
+			skillList.remove(skillList.find(skills.get(i)));
+	}
+}

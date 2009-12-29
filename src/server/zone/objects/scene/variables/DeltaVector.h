@@ -57,11 +57,12 @@ public:
 		return object;
 	}
 
-	virtual bool add(const E& element, DeltaMessage* message = NULL) {
+	virtual bool add(const E& element, DeltaMessage* message = NULL, int updates = 1) {
 		bool val = vector.add(element);
 
 		if (message != NULL) {
-			message->startList(1, ++updateCounter);
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
 
 			message->insertByte(1);
 			message->insertShort(vector.size() - 1);
@@ -77,11 +78,12 @@ public:
 		return vector.get(index);
 	}
 
-	E remove(int index, DeltaMessage* message = NULL) {
+	E remove(int index, DeltaMessage* message = NULL, int updates = 1) {
 		E object = vector.remove(index);
 
 		if (message != NULL) {
-			message->startList(1, ++updateCounter);
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
 
 			message->insertByte(0);
 			message->insertShort((uint16)index);
@@ -110,14 +112,16 @@ public:
 	}
 
 	bool contains(const E& element) {
-		bool found = false;
+		return find(element) != -1;
+	}
 
+	int find(const E& element) {
 		for (int i = 0; i < size(); ++i) {
 			if (element == get(i))
-				return true;
+				return i;
 		}
 
-		return found;
+		return -1;
 	}
 
 	inline uint32 getUpdateCounter() {

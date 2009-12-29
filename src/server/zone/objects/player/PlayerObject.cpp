@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+
 #include "server/zone/ZoneClientSession.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -125,6 +127,46 @@ void PlayerObject::addWaypoint(const String& planet, float positionX, float posi
 		method.executeWithVoidReturn();
 	} else
 		((PlayerObjectImplementation*) _impl)->addWaypoint(planet, positionX, positionY, notifyClient);
+}
+
+void PlayerObject::addSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((PlayerObjectImplementation*) _impl)->addSkills(skills, notifyClient);
+}
+
+void PlayerObject::addSkills(Vector<Certification*>& skills, bool notifyClient) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((PlayerObjectImplementation*) _impl)->addSkills(skills, notifyClient);
+}
+
+void PlayerObject::removeSkills(Vector<QueueCommand*>& skills, bool notifyClient) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((PlayerObjectImplementation*) _impl)->removeSkills(skills, notifyClient);
+}
+
+void PlayerObject::removeSkills(Vector<Certification*>& skills, bool notifyClient) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((PlayerObjectImplementation*) _impl)->removeSkills(skills, notifyClient);
+}
+
+bool PlayerObject::hasSkill(Skill* skill) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerObjectImplementation*) _impl)->hasSkill(skill);
 }
 
 unsigned int PlayerObject::getCharacterBitmask() {
@@ -258,6 +300,74 @@ WaypointList* PlayerObject::getWaypointList() {
 		return ((PlayerObjectImplementation*) _impl)->getWaypointList();
 }
 
+SkillList* PlayerObject::getSkills() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getSkills();
+}
+
+int PlayerObject::getFoodFilling() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getFoodFilling();
+}
+
+int PlayerObject::getFoodFillingMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getFoodFillingMax();
+}
+
+int PlayerObject::getDrinkFilling() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getDrinkFilling();
+}
+
+int PlayerObject::getDrinkFillingMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getDrinkFillingMax();
+}
+
+int PlayerObject::getJediState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getJediState();
+}
+
 /*
  *	PlayerObjectImplementation
  */
@@ -330,62 +440,103 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("title", &title);
 	addSerializableVariable("forcePower", &forcePower);
 	addSerializableVariable("forcePowerMax", &forcePowerMax);
+	addSerializableVariable("foodFilling", &foodFilling);
+	addSerializableVariable("foodFillingMax", &foodFillingMax);
+	addSerializableVariable("drinkFilling", &drinkFilling);
+	addSerializableVariable("drinkFillingMax", &drinkFillingMax);
+	addSerializableVariable("jediState", &jediState);
 	addSerializableVariable("adminLevel", &adminLevel);
 	addSerializableVariable("experienceList", &experienceList);
 	addSerializableVariable("waypointList", &waypointList);
+	addSerializableVariable("skillList", &skillList);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
-	// server/zone/objects/player/PlayerObject.idl(92):  loadTemplateData(templateData);
+	// server/zone/objects/player/PlayerObject.idl(107):  loadTemplateData(templateData);
 	loadTemplateData(templateData);
-	// server/zone/objects/player/PlayerObject.idl(94):  Logger.setLoggingName("PlayerObject");
+	// server/zone/objects/player/PlayerObject.idl(109):  Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
 
+bool PlayerObjectImplementation::hasSkill(Skill* skill) {
+	// server/zone/objects/player/PlayerObject.idl(202):  return skillList.contains(skill);
+	return (&skillList)->contains(skill);
+}
+
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(146):  return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(206):  return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(150):  return title;
+	// server/zone/objects/player/PlayerObject.idl(210):  return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(154):  return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(214):  return adminLevel;
 	return adminLevel;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(158):  characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(218):  characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(165):  title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(225):  title = characterTitle;
 	title = characterTitle;
 }
 
 DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
-	// server/zone/objects/player/PlayerObject.idl(170):  return experienceList;
+	// server/zone/objects/player/PlayerObject.idl(230):  return experienceList;
 	return (&experienceList);
 }
 
 int PlayerObjectImplementation::getForcePower() {
-	// server/zone/objects/player/PlayerObject.idl(174):  return forcePower;
+	// server/zone/objects/player/PlayerObject.idl(234):  return forcePower;
 	return forcePower;
 }
 
 int PlayerObjectImplementation::getForcePowerMax() {
-	// server/zone/objects/player/PlayerObject.idl(178):  return forcePowerMax;
+	// server/zone/objects/player/PlayerObject.idl(238):  return forcePowerMax;
 	return forcePowerMax;
 }
 
 WaypointList* PlayerObjectImplementation::getWaypointList() {
-	// server/zone/objects/player/PlayerObject.idl(183):  return waypointList;
+	// server/zone/objects/player/PlayerObject.idl(243):  return waypointList;
 	return (&waypointList);
+}
+
+SkillList* PlayerObjectImplementation::getSkills() {
+	// server/zone/objects/player/PlayerObject.idl(248):  return skillList;
+	return (&skillList);
+}
+
+int PlayerObjectImplementation::getFoodFilling() {
+	// server/zone/objects/player/PlayerObject.idl(252):  return foodFilling;
+	return foodFilling;
+}
+
+int PlayerObjectImplementation::getFoodFillingMax() {
+	// server/zone/objects/player/PlayerObject.idl(256):  return foodFillingMax;
+	return foodFillingMax;
+}
+
+int PlayerObjectImplementation::getDrinkFilling() {
+	// server/zone/objects/player/PlayerObject.idl(260):  return drinkFilling;
+	return drinkFilling;
+}
+
+int PlayerObjectImplementation::getDrinkFillingMax() {
+	// server/zone/objects/player/PlayerObject.idl(264):  return drinkFillingMax;
+	return drinkFillingMax;
+}
+
+int PlayerObjectImplementation::getJediState() {
+	// server/zone/objects/player/PlayerObject.idl(268):  return jediState;
+	return jediState;
 }
 
 /*
@@ -443,6 +594,21 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 20:
 		resp->insertSignedInt(getForcePowerMax());
+		break;
+	case 21:
+		resp->insertSignedInt(getFoodFilling());
+		break;
+	case 22:
+		resp->insertSignedInt(getFoodFillingMax());
+		break;
+	case 23:
+		resp->insertSignedInt(getDrinkFilling());
+		break;
+	case 24:
+		resp->insertSignedInt(getDrinkFillingMax());
+		break;
+	case 25:
+		resp->insertSignedInt(getJediState());
 		break;
 	default:
 		return NULL;
@@ -509,6 +675,26 @@ int PlayerObjectAdapter::getForcePower() {
 
 int PlayerObjectAdapter::getForcePowerMax() {
 	return ((PlayerObjectImplementation*) impl)->getForcePowerMax();
+}
+
+int PlayerObjectAdapter::getFoodFilling() {
+	return ((PlayerObjectImplementation*) impl)->getFoodFilling();
+}
+
+int PlayerObjectAdapter::getFoodFillingMax() {
+	return ((PlayerObjectImplementation*) impl)->getFoodFillingMax();
+}
+
+int PlayerObjectAdapter::getDrinkFilling() {
+	return ((PlayerObjectImplementation*) impl)->getDrinkFilling();
+}
+
+int PlayerObjectAdapter::getDrinkFillingMax() {
+	return ((PlayerObjectImplementation*) impl)->getDrinkFillingMax();
+}
+
+int PlayerObjectAdapter::getJediState() {
+	return ((PlayerObjectImplementation*) impl)->getJediState();
 }
 
 /*

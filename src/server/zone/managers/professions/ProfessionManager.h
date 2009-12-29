@@ -64,9 +64,21 @@ class SkillBox;
 
 using namespace server::zone::objects::creature::professions;
 
-class Certification;
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+class PlayerCreature;
+}
+}
+}
+}
+using namespace server::zone::objects::player;
 
-class ZoneProcessServerImplementation;
+
+class Certification;
+class Skill;
+
 namespace server {
 	namespace zone {
 		namespace managers {
@@ -77,7 +89,7 @@ namespace server {
 	}
 }
 
-class server::zone::managers::objectcontroller::ObjectController;
+using namespace server::zone::managers::objectcontroller;
 
 namespace server {
  namespace zone {
@@ -90,7 +102,7 @@ namespace server {
 
 		//SkillManager* skillManager;
 
-		server::zone::managers::objectcontroller::ObjectController* objectController;
+		ObjectController* objectController;
 
 		VectorMap<String, SkillBox*> skillBoxMap;
 		VectorMap<String, Certification*> certificationMap;
@@ -109,24 +121,34 @@ namespace server {
 		void loadSkillMods(SkillBox* skillBox, String& skillMods);
 		void loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics);
 
+		bool checkPrerequisites(SkillBox* skillBox, PlayerCreature* player);
+		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
+		void awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+		void removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+
+		bool checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player);
+
 	public:
-		ProfessionManager(server::zone::managers::objectcontroller::ObjectController* controller);
+		ProfessionManager(ObjectController* controller);
 		~ProfessionManager();
 
 		// Player methods
-		/*void loadProfessions(PlayerImplementation* player);
-		void saveProfessions(PlayerImplementation* player);
 
-		void loadDefaultSkills(PlayerImplementation* player);
 
-		bool trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-		bool trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
-		bool loseJediSkillBox(PlayerImplementation* player, bool updateClient = true);
-		bool surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-		bool surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);*/
+		//void loadDefaultSkills(PlayerImplementation* player);
+
+		//bool loseJediSkillBox(PlayerImplementation* player, bool updateClient = true);
 
 		//void surrenderAll(PlayerImplementation* player);
 
+		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
+
+		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
+
+
+		Skill* getSkill(const String& name);
 
 		inline SkillBox* getSkillBox(const String& prof) {
 			return skillBoxMap.get(prof);

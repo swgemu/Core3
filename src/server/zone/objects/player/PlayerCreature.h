@@ -212,6 +212,8 @@ public:
 
 	void setSkillPoints(int points);
 
+	void addSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -382,6 +384,8 @@ public:
 
 	void setSkillPoints(int points);
 
+	void addSkillPoints(int points);
+
 	void setClient(ZoneClientSession* cli);
 
 	void setBiography(const UnicodeString& bio);
@@ -500,6 +504,8 @@ public:
 	void setSavedZoneID(int id);
 
 	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
 
 	void setClient(ZoneClientSession* cli);
 

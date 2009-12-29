@@ -48,6 +48,10 @@ which carries forward this exception.
 
 #include "../../../scene/SceneObject.h"
 
+#include "server/zone/managers/professions/ProfessionManager.h"
+//#include "server/zone/ZoneProcessServerImplementation.h"
+
+
 class StandSlashCommand : public QueueCommand {
 public:
 
@@ -65,6 +69,9 @@ public:
 			return false;
 
 		creature->setPosture(CreaturePosture::UPRIGHT);
+
+		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
+		prof->trainSkillBox(arguments.toString(), (PlayerCreature*)creature, true);
 
 		return true;
 	}

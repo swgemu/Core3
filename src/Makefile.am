@@ -121,6 +121,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/variables/SkillList.cpp \
 		server/zone/objects/scene/variables/StringId.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
 		server/zone/objects/scene/variables/ParameterizedStringId.cpp \

@@ -47,16 +47,17 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/player/PlayerObjectImplementation.h"
+#include "../../objects/player/PlayerObject.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
+//#include "../../objects/draftschematic/DraftSchematic.h"
 
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:
 	PlayerObjectMessage9(PlayerObjectImplementation* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
-		insertSkills(play);
+		DeltaVector<Skill*>* skills = play->getSkills();
+		skills->insertToMessage(this);
 
 		// crafting states
 		insertInt(0);
@@ -106,7 +107,7 @@ public:
 	}
 
 	void insertDraftSchematics(PlayerObjectImplementation* play) {
-		uint32 dsListSize = play->player->getDraftSchematicListSize();
+		/*uint32 dsListSize = play->player->getDraftSchematicListSize();
 		uint32 dsUpdateCount = play->player->getDraftSchematicUpdateCount(0);
 
 		insertInt(dsListSize);
@@ -115,19 +116,11 @@ public:
 		for (int i = 0; i < dsListSize; i++) {
 			insertInt(play->player->getDraftSchematic(i)->getObjectCRC());
 			insertInt(play->player->getDraftSchematic(i)->getSchematicID());
-		}
+		}*/
+		insertInt(0);
+		insertInt(0);
 	}
 
-	void insertSkills(PlayerObjectImplementation* play) {
-		int size = play->player->getSkillAndCertificationSize();
-
-		insertInt(size);
-		insertInt(play->player->getCreatureSkillsCount());
-
-		for (int i = 0; i < size; ++i) {
-			insertAscii(play->player->getSkillOrCertification(i));
-		}
-	}
 
 };
 

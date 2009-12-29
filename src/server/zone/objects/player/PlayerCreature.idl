@@ -130,6 +130,8 @@ class PlayerCreature extends CreatureObject {
 
 		savedZoneID = -1;
 		savedParentID = 0;
+		
+		skillPoints = 0;
 
 		setOffline();
 	}
@@ -247,6 +249,10 @@ class PlayerCreature extends CreatureObject {
 	
 	public void setSkillPoints(int points) {
 		skillPoints = points;
+	}
+	
+	public void addSkillPoints(int points) {
+		skillPoints += points;
 	}
 	
 	public void setClient(ZoneClientSession cli) {

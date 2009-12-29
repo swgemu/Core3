@@ -48,6 +48,8 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
+
 
 class SurrenderSkillSlashCommand : public QueueCommand {
 public:
@@ -65,26 +67,9 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*
-		try {
-			packet->shiftOffset(8);
+		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
+		prof->surrenderSkillBox(arguments.toString(), (PlayerCreature*)creature, true);
 
-			UnicodeString skillBox;
-			packet->parseUnicode(skillBox);
-
-			player->surrenderSkillBox(skillBox.toString());
-
-			return true;
-		} catch (Exception& e) {
-			System::out
-					<< "unreported ObjectControllerMessage::parseSurrenderSkillBox(PlayerCreature* player, Message* pack) exception\n";
-			e.printStackTrace();
-			return false;
-		} catch (...) {
-			System::out
-					<< "unreported ObjectControllerMessage::parseSurrenderSkillBox(PlayerCreature* player, Message* pack) exception\n";
-			return false;
-		}*/
 
 		return true;
 	}

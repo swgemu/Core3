@@ -144,6 +144,10 @@ public:
 
 	void addSkillBox(const String& skillBox, bool notifyClient = true);
 
+	void removeSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void removeSkillBox(const String& skillBox, bool notifyClient = true);
+
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
@@ -408,6 +412,10 @@ public:
 
 	void addSkillBox(const String& skillBox, bool notifyClient = true);
 
+	void removeSkillBox(SkillBox* skillBox, bool notifyClient = true);
+
+	void removeSkillBox(const String& skillBox, bool notifyClient = true);
+
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
@@ -573,6 +581,8 @@ public:
 
 	void addSkillBox(const String& skillBox, bool notifyClient);
 
+	void removeSkillBox(const String& skillBox, bool notifyClient);
+
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient);
@@ -653,6 +663,7 @@ protected:
 	String _param0_sendSystemMessage__String_String_;
 	String _param1_sendSystemMessage__String_String_;
 	String _param0_addSkillBox__String_bool_;
+	String _param0_removeSkillBox__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 };

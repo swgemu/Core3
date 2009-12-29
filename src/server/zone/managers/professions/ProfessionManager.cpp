@@ -58,14 +58,16 @@ which carries forward this exception.
 #include "../../objects/creature/professions/FourByFourProfession.h"
 #include "../../objects/creature/professions/OneByFourProfession.h"
 #include "../../objects/creature/professions/PyramidProfession.h"
+#include "../../objects/creature/professions/Skill.h"
+#include "../../objects/player/PlayerCreature.h"
+#include "../../objects/player/PlayerObject.h"
+#include "../../objects/player/Races.h"
 
 
 ProfessionManager::ProfessionManager(ObjectController* controller)
 	: Mutex("Profession Manager"), Logger("ProfessionManager") {
 
 	objectController = controller;
-	//server = serv;
-	//skillManager = new SkillManager(this);
 
 	skillBoxMap.setNullValue(NULL);
 	certificationMap.setNullValue(NULL);
@@ -88,58 +90,7 @@ ProfessionManager::~ProfessionManager() {
 	while (professionMap.hasNext())
 		delete professionMap.getNextValue();
 }
-
-/*void ProfessionManager::loadProfessions(PlayerImplementation* player) {
-	SkillBox* skillBox;
-	String box;
-
-	StringBuffer query;
-	query << "SELECT professions FROM characters WHERE character_id = " << player->characterID;
-
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
-
-	if (!result->next()) {
-		StringBuffer msg;
-		msg << "unknown character ID" << player->characterID;
-
-		throw Exception(msg.toString());
-	}
-
-	String professions = result->getString(0);
-
-	delete result;
-
-	String decodedData;
-	BinaryData decodedProfession(professions);
-	decodedProfession.decode(decodedData);
-
-	if (decodedData.length() == 0)
-		return;
-
-	uint16* data = (uint16*)decodedData.toCharArray();
-	uint16 size = *data;
-	data++;
-
-	for (int i = 0; i < size; i++) {
-		uint16 idx = *data;
-
-		skillBox = skillBoxMap.get(idx);
-		if (skillBox == NULL) {
-			StringBuffer msg;
-			msg << "Invalid SkillBox when loading professions for character:" << player->characterID;
-
-			throw Exception(msg.toString());
-		}
-
-		skillManager->loadSkillBox(skillBox, player, true);
-		player->skillBoxesToSave.put(skillBox);
-
-		data++;
-	}
-
-	loadDefaultSkills(player);
-}
-
+/*
 void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 	// Load default skills..
 	Skill* defaultAttackSkill = skillManager->getSkill("attack");
@@ -151,72 +102,101 @@ void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {
 	if (throwGrenade != NULL)
 		player->creatureSkills.put(throwGrenade->getNameCRC(), throwGrenade);
 }
+*/
 
-void ProfessionManager::saveProfessions(PlayerImplementation* player) {
-	int size = player->skillBoxesToSave.size();
+bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* player) {
+	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
-	if (size > 40) {
-		StringBuffer msg;
-		msg << "SkillBoxes overflow when saving professions for character:" << player->characterID;
-
-		for (int i = 0; i < size; i++) {
-			SkillBox* sBox = player->skillBoxesToSave.get(i);
-			System::out << i << ": " << sBox->getName() << "\n";
-		}
-
-		throw Exception(msg.toString());
+	if (playerSkillBoxList->contains(skillBox)) {
+		System::out << "player contains skillbox " << endl;
+		return false;
 	}
 
-	uint16* data = new uint16[size + 1];
-	data[0] = (uint16)size;
-
-	for (int i = 0; i < size; i++) {
-		SkillBox* sBox = player->skillBoxesToSave.get(i);
-	 	int pos = skillBoxMap.find(sBox->getName());
-		data[i+1] = (uint16)pos;
+	if ((player->getSkillPoints() + skillBox->skillPointsRequired) > 250) {
+		System::out << "too many skill points " << player->getSkillPoints() << endl;
+		return false;
 	}
-
-	String professionData((char*)data, (size + 1) * 2);
-
-	String encodedData;
-	BinaryData profession(professionData);
-	profession.encode(encodedData);
-
-	StringBuffer query;
-	query << "UPDATE characters SET "
-          << "professions ='" << encodedData.subString(0, encodedData.length() - 1)
-          << "' WHERE character_id=" << player->characterID << ";";
-
-	ServerDatabase::instance()->executeStatement(query.toString());
-
-	delete [] data;
-}
-
-bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (player->skillBoxes.containsKey(skillBox->getName()))
-		return false;
-
-	if ((player->skillPoints + skillBox->skillPointsRequired) > 250)
-		return false;
 
 	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
 		SkillBox* sBox = skillBox->requiredSkills.get(i);
-		if (!player->skillBoxes.containsKey(sBox->getName()))
+
+		if (!playerSkillBoxList->contains(sBox)) {
+			System::out << "required skill not found " << endl;
 			return false;
+		}
 	}
 
-	for (int i = 0; i < skillBox->requiredSkills.size(); i++)
-		player->skillBoxesToSave.drop(skillBox->requiredSkills.get(i));
+	return true;
+}
 
-	player->skillBoxesToSave.put(skillBox);
+void ProfessionManager::awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
-	skillManager->loadSkillBox(skillBox, player, false, updateClient);
+	for (int i = 0; i < skillBox->skillMods.size(); ++i) {
+		String skillMod = skillBox->skillMods.elementAt(i).getKey();
+		int value = skillBox->skillMods.elementAt(i).getValue();
 
-	if (skillBox->isMasterBox()) {
+		player->addSkillMod(skillMod, value, updateClient);
+	}
+}
+
+void ProfessionManager::removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	for (int i = 0; i < skillBox->skillMods.size(); ++i) {
+		String skillMod = skillBox->skillMods.elementAt(i).getKey();
+		int value = skillBox->skillMods.elementAt(i).getValue();
+
+		player->addSkillMod(skillMod, -value, updateClient);
+	}
+}
+
+void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
+	if (player == NULL || skillBox == NULL)
+		return;
+
+	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+
+	if (playerSkillBoxList->contains(skillBox))
+		return;
+
+	SkillBox* skillBoxReq = NULL;
+
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	player->addSkillBox(skillBox, updateClient);
+	player->addSkillPoints(skillBox->getSkillPointsRequired());
+
+	playerObject->addSkills(skillBox->skillCommands, updateClient);
+	playerObject->addSkills(skillBox->skillCertifications, updateClient);
+
+	awardSkillMods(skillBox, player, updateClient);
+	//awardDraftSchematics(skillBox, player, updateClient);
+
+	if (!awardRequired)
+		return;
+
+	for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
+		skillBoxReq = skillBox->requiredSkills.get(i);
+		awardSkillBox(skillBoxReq, player, true, false);
+	}
+}
+
+bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+	if (!checkPrerequisites(skillBox, player))
+		return false;
+
+	System::out << "trying to teach 2" << skillBox << endl;
+
+
+	//skillManager->loadSkillBox(skillBox, player, false, updateClient);
+	awardSkillBox(skillBox, player, false, updateClient);
+
+	/*if (skillBox->isMasterBox()) {
 		player->awardBadge(Badge::getID(skillBox->getName()));
-	}
+	}*/
 
-	if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
+	/*if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
 
 		String socialLanguage = "social_language_";
 		String language = "language_";
@@ -241,24 +221,28 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 		}
 
 		if (player->getSkill(socialLanguage + "lekku_comprehend") == NULL)
-			player->addSkillMod(language + "lekku_comprehend", 100, true);
-	}
+			player->addSkillMod(language + "lekku_comprehend", 100, updateClient);
+	}*/
 
-	player->setPlayerLevel(updateClient);
+	//player->setPlayerLevel(updateClient);
 
 	return true;
 }
 
-bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
+bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
+
+	System::out << "trying to teach " << skillBox << endl;
 
 	if (sBox != NULL)
 		return trainSkillBox(sBox, player, updateClient);
-	else
+	else {
+		System::out << "NULL BOX " << endl;
 		return false;
+	}
 }
 
-bool ProfessionManager::loseJediSkillBox(PlayerImplementation* player, bool updateClient) {
+/*bool ProfessionManager::loseJediSkillBox(PlayerImplementation* player, bool updateClient) {
 	SortedVector<SkillBox*> removable;
 	for (int i = 0; i < player->skillBoxesToSave.size(); i++) {
 		if (player->skillBoxesToSave.get(i)->getName().indexOf("force_discipline_") >= 0)
@@ -283,56 +267,84 @@ bool ProfessionManager::loseJediSkillBox(PlayerImplementation* player, bool upda
 	}
 	return true;
 }
+*/
 
-bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient) {
-	if (!player->skillBoxesToSave.contains(skillBox)) {
+bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player) {
+	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+
+	if (!playerSkillBoxList->contains(skillBox))
 		return false;
-	} else {
-		skillManager->removeSkillBox(skillBox, player, updateClient);
 
-		player->skillBoxesToSave.drop(skillBox);
-
-		for (int i = 0; i < skillBox->requiredSkills.size(); i++) {
-			SkillBox* sBox = skillBox->requiredSkills.get(i);
-			player->skillBoxesToSave.put(sBox);
-		}
-
-		if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
-			//int race = Races::getRaceID(player->getRaceFileName());
-
-			String socialLanguage = "social_language_";
-			String language = "language_";
-
-			for (int i = 1; i < 10 ; i++) {
-
-				String skillName;
-				String languageName;
-
-				if (i == 6) {
-					skillName = String(socialLanguage + "moncalamari_comprehend");
-					languageName = String(language + "moncalamari_comprehend");
-				} else {
-					skillName = String(socialLanguage + Races::getRace(i) + "_comprehend");
-					languageName = String(language + Races::getRace(i) + "_comprehend");
-				}
-
-				if (player->getSkill(skillName) == NULL) {
-					player->removeSkillMod(languageName, true);
-				}
-
-			}
-
-			if (player->getSkill(socialLanguage + "lekku_comprehend") == NULL)
-				player->removeSkillMod(language + "lekku_comprehend", true);
-		}
-
-		player->setPlayerLevel(updateClient);
-
+	if (skillBox->isMasterBox())
 		return true;
+
+	Vector<SkillBox*>* children = skillBox->getChildren();
+
+	for (int i = 0; i < children->size(); ++i) {
+		SkillBox* box = children->get(i);
+
+		System::out << "checking child box " << box->getName() << endl;
+
+		if (playerSkillBoxList->contains(box))
+			return false;
 	}
+
+	return true;
 }
 
-bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
+bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+	if (!checkRequisitesToSurrender(skillBox, player))
+		return false;
+
+	player->removeSkillBox(skillBox, updateClient);
+	player->addSkillPoints(-skillBox->getSkillPointsRequired());
+
+	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
+
+	playerObject->removeSkills(skillBox->skillCommands, updateClient);
+	playerObject->removeSkills(skillBox->skillCertifications, updateClient);
+
+	removeSkillMods(skillBox, player, updateClient);
+
+
+	/*
+
+	if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
+		//int race = Races::getRaceID(player->getRaceFileName());
+
+		String socialLanguage = "social_language_";
+		String language = "language_";
+
+		for (int i = 1; i < 10 ; i++) {
+
+			String skillName;
+			String languageName;
+
+			if (i == 6) {
+				skillName = String(socialLanguage + "moncalamari_comprehend");
+				languageName = String(language + "moncalamari_comprehend");
+			} else {
+				skillName = String(socialLanguage + Races::getRace(i) + "_comprehend");
+				languageName = String(language + Races::getRace(i) + "_comprehend");
+			}
+
+			if (player->getSkill(skillName) == NULL) {
+				player->removeSkillMod(languageName, true);
+			}
+
+		}
+
+		if (player->getSkill(socialLanguage + "lekku_comprehend") == NULL)
+			player->removeSkillMod(language + "lekku_comprehend", true);
+	}
+
+	player->setPlayerLevel(updateClient);*/
+
+	return true;
+
+}
+
+bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
 	if (sBox != NULL) {
@@ -341,7 +353,7 @@ bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerImplemen
 
 	return false;
 }
-
+/*
 void ProfessionManager::surrenderAll(PlayerImplementation* player) {
 	while (player->skillBoxesToSave.size() > 0) {
 		surrenderSkillBox(player->skillBoxesToSave.get(0), player, false);
@@ -495,6 +507,7 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 		SkillBox* parent = skillBoxMap.get(skillParent);
 		if (parent != NULL) {
 			skillBox->setParent(parent);
+			parent->addChild(skillBox);
 		}
 	}
 
@@ -641,3 +654,11 @@ void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedD
 	}
 }
 
+Skill* ProfessionManager::getSkill(const String& name) {
+	Skill* skill = certificationMap.get(name);
+
+	if (skill == NULL)
+		skill = objectController->getQueueCommand(name);
+
+	return skill;
+}

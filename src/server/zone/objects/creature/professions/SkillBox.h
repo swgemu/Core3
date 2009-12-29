@@ -76,6 +76,7 @@ namespace server {
 		int skillBoxId;
 
 		SkillBox* parent;
+		Vector<SkillBox*> children;
 		Profession* profession;
 
 		bool skillGodOnly;
@@ -103,7 +104,7 @@ namespace server {
 
 		Vector<QueueCommand*> skillCommands;
 		Vector<Certification*> skillCertifications;
-		SkillModList skillMods;
+		VectorMap<String, int32>  skillMods;
 
 
 	public:
@@ -125,6 +126,10 @@ namespace server {
 			skillXpCap = 0;
 
 			skillIsSearchable = false;
+		}
+
+		void addChild(SkillBox* obj) {
+			children.add(obj);
 		}
 
 		int compareTo(SkillBox* obj) {
@@ -278,6 +283,10 @@ namespace server {
 
 		int getSkillMoneyRequired() {
 			return skillMoneyRequired;
+		}
+
+		Vector<SkillBox*>* getChildren() {
+			return &children;
 		}
 
 		friend class SkillManager;

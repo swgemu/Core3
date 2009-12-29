@@ -39,6 +39,22 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+namespace commands {
+
+class QueueCommand;
+
+} // namespace commands
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::commands;
+
+namespace server {
+namespace zone {
 
 class ZoneClientSession;
 
@@ -61,9 +77,17 @@ class WaypointObject;
 
 using namespace server::zone::objects::waypoint;
 
+#include "server/zone/objects/creature/professions/Certification.h"
+
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
 #include "server/zone/objects/player/variables/WaypointList.h"
+
+#include "server/zone/objects/creature/professions/Skill.h"
+
+#include "server/zone/objects/player/variables/SkillList.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -124,6 +148,16 @@ public:
 
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
+	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	bool hasSkill(Skill* skill);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -145,6 +179,18 @@ public:
 	int getForcePowerMax();
 
 	WaypointList* getWaypointList();
+
+	SkillList* getSkills();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getJediState();
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
@@ -178,11 +224,23 @@ protected:
 
 	int forcePowerMax;
 
+	int foodFilling;
+
+	int foodFillingMax;
+
+	int drinkFilling;
+
+	int drinkFillingMax;
+
+	int jediState;
+
 	unsigned int adminLevel;
 
 	DeltaVectorMap<String, int> experienceList;
 
 	WaypointList waypointList;
+
+	SkillList skillList;
 
 public:
 	static const int LFG = 1;
@@ -235,6 +293,16 @@ public:
 
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
+	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
+
+	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	bool hasSkill(Skill* skill);
+
 	unsigned int getCharacterBitmask();
 
 	String getTitle();
@@ -256,6 +324,18 @@ public:
 	int getForcePowerMax();
 
 	WaypointList* getWaypointList();
+
+	SkillList* getSkills();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getJediState();
 
 	PlayerObject* _this;
 
@@ -325,6 +405,16 @@ public:
 	int getForcePower();
 
 	int getForcePowerMax();
+
+	int getFoodFilling();
+
+	int getFoodFillingMax();
+
+	int getDrinkFilling();
+
+	int getDrinkFillingMax();
+
+	int getJediState();
 
 protected:
 	String _param0_addExperience__String_int_bool_;

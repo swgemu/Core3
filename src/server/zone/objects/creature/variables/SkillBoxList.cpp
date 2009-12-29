@@ -85,13 +85,26 @@ bool SkillBoxList::add(SkillBox* element, DeltaMessage* message) {
 		message->startList(1, ++updateCounter);
 
 		message->insertByte(1);
-		message->insertShort(vector.size() - 1);
 
 		String name = element->getName();
 		name.toBinaryStream(message);
 	}
 
 	return val;
+}
+
+void SkillBoxList::remove(SkillBox* skillBox, DeltaMessage* message) {
+	int index = find(skillBox);
+
+	SkillBox* object = vector.remove(index);
+
+	if (message != NULL) {
+		message->startList(1, ++updateCounter);
+
+		message->insertByte(0);
+		String name = object->getName();
+		name.toBinaryStream(message);
+	}
 }
 
 void SkillBoxList::insertToMessage(BaseMessage* msg) {

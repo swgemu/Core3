@@ -80,9 +80,7 @@ class CreatureObject extends TangibleObject {
 		
 	@dereferenced
 	protected DeltaVector<int> encumbrances;
-	
-	// skillmods
-	
+		
 	protected float runSpeed;
 	protected float walkSpeed;
 	protected float terrainNegotiation;
@@ -123,7 +121,7 @@ class CreatureObject extends TangibleObject {
 	// Profession stuff
 	@dereferenced
 	protected SkillBoxList skillBoxList;
-	
+		
 	@dereferenced
 	protected DeltaVectorMap<string, long> skillModList;
 	
@@ -351,6 +349,25 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void addSkillBox(final string skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	@local
+	public native void removeSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void removeSkillBox(final string skillBox, boolean notifyClient = true);
 	
 	/**
 	 * Adds new value to the specified skillmod (add a negative number to substract)

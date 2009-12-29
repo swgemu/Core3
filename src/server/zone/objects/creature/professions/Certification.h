@@ -46,18 +46,15 @@ which carries forward this exception.
 #define CERTIFICATION_H_
 
 #include "engine/engine.h"
+#include "Skill.h"
 
-class Certification {
-	String name;
+class Certification : public Skill {
 	
 public:
-	Certification(String& Name) {
-		name = Name;
+	Certification(String& Name) : Skill(Name) {
+		type = CERTIFICATION;
 	}
-	
-	inline String& getName() {
-		return name;
-	}
+
 };
 
 #endif /*CERTIFICATION_H_*/

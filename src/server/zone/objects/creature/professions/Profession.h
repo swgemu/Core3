@@ -128,8 +128,8 @@ public:
 	
 	inline Vector<SkillBox*>* getSkillBoxes() {
 		return &skillBoxes;
-	}		
-	
+	}
+
 };
 
 #endif /*PROFESSION_H_*/
