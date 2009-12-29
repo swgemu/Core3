@@ -49,6 +49,8 @@ import engine.lua.LuaObject;
 import system.util.Vector;
 import server.zone.objects.scene.variables.ParameterizedStringId;
 import server.zone.objects.creature.professions.SkillBox;
+import server.zone.objects.group.GroupObject;
+
 
 //import server.zone.objects.player.professions.SkillBox;
 
@@ -98,7 +100,8 @@ class CreatureObject extends TangibleObject {
 	protected string moodString;
 	
 	protected unsigned long weaponID;
-	protected unsigned long groupID;
+	
+	GroupObject group;
 	protected unsigned long groupInviterID;
 	protected unsigned long groupInviteCounter;
 	
@@ -388,6 +391,30 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void removeSkillMod(final string skillMod, boolean notifyCLient = true);
 	
+	/**
+	 * Sets a new group inviter id
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param id object id of the inviter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void updateGroupInviterID(unsigned long id, boolean notifyClient = true);
+	
+	/**
+	 * Sets the group of this object
+	 * @pre { this object is locked }
+	 * @post {this object is locked }
+	 * @param group GroupObject to update
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void updateGroup(GroupObject group, boolean notifyClient = true);
+	
+	public native unicode getCreatureName();
+	
+	public boolean isGroupped() {
+		return group != null;
+	}
+	
 	public int getBankCredits() {
 		return bankCredits;
 	}
@@ -497,11 +524,18 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public unsigned long getGroupID() {
-		return groupID;
+		if (group != null)
+			return group.getObjectID();
+		else
+			return 0;
 	}
 	
 	public unsigned long getGroupInviterID() {
 		return groupInviterID;
+	}
+	
+	public GroupObject getGroup() {
+		return group;
 	}
 	
 	public unsigned long getGroupInviteCounter() {

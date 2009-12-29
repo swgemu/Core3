@@ -59,7 +59,7 @@ public:
 	}
 
 
-	void addMember(SceneObject* player, int idx) {
+	/*void addMember(SceneObject* player, int idx) {
 		startUpdate(0x01);
 
 		startList(1, grup->getNewListCount(1));
@@ -92,7 +92,7 @@ public:
 		insertShort(0);
 		insertLong(newLeader->getObjectID());
 		insertAscii(newLeader->getObjectName()->getCustomString().toString());
-	}
+	}*/
 	
 	void updateLevel(uint16 value) {
 		startUpdate(0x04);

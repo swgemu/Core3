@@ -69,6 +69,7 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
+				server/zone/objects/group/GroupObject.cpp \
 				server/zone/objects/building/BuildingObject.cpp \
 				server/zone/objects/building/cloning/CloningBuildingObject.cpp \
 				server/zone/objects/building/medical/MedicalBuildingObject.cpp \
@@ -112,11 +113,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/player/PlayerManagerImplementation.cpp \
 		server/zone/managers/name/NameManager.cpp \
+		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
+		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \

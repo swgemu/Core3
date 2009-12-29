@@ -71,16 +71,8 @@ public:
 	}
 	
 	void groupLists() {
-		int groupSize = grup->getGroupSize();
-		
-		insertInt(groupSize);
-		insertInt(grup->getListCount());
-		
-		for (int i = 0; i < groupSize; i++) {
-			Player* player = grup->getGroupMember(i);
-			insertLong(player->getObjectID());
-			insertAscii(player->getObjectName()->getCustomString().toString());
-		}
+		GroupList* list = grup->getGroupList();
+		list->insertToMessage(this);
 		
 		insertInt(0); // uses the same method as above to parse this
 		insertInt(0);

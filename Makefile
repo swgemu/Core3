@@ -50,6 +50,7 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/player/PlayerObject.idl \
 				server/zone/objects/player/PlayerCreature.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
+				server/zone/objects/group/GroupObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
@@ -85,6 +86,10 @@ all:
 	#done
 
 rebuild: clean all
+
+idl:
+	cd src && $(IDLC) -cp $(IDL_CLASSPATH) $(IDL_SOURCES)
+	#done
 
 config:
 	autoreconf --force

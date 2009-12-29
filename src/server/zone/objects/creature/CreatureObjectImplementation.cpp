@@ -63,6 +63,7 @@ which carries forward this exception.
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -95,7 +96,7 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	level = 0;
 
 	weaponID = 0;
-	groupID = 0;
+	group = NULL;
 	groupInviterID = 0;
 	groupInviteCounter = 0;
 	guildID = 0;
@@ -512,3 +513,29 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		broadcastMessages(&messages, true);
 	}
 }
+
+UnicodeString CreatureObjectImplementation::getCreatureName() {
+	return objectName.getCustomString();
+}
+
+void CreatureObjectImplementation::updateGroupInviterID(uint64 id, bool notifyClient) {
+	groupInviterID = id;
+	++groupInviteCounter;
+
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	delta->updateInviterId();
+	delta->close();
+
+	broadcastMessage(delta, true);
+}
+
+void CreatureObjectImplementation::updateGroup(GroupObject* grp, bool notifyClient) {
+	group = grp;
+
+	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
+	delta->updateGroupID();
+	delta->close();
+
+	broadcastMessage(delta, true);
+}
+

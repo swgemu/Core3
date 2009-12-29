@@ -68,9 +68,18 @@ public:
 		addLongUpdate(0x09, creo->getTargetID());
 	}
 
-	/*void updateGroupID() {
+	void updateInviterId() {
+		startUpdate(0x07);
+
+		insertLong(creo->getGroupInviterID());
+		insertLong(creo->getGroupInviteCounter());
+	}
+
+	void updateGroupID() {
 		addLongUpdate(0x06, creo->getGroupID());
 	}
+
+	/*
 
 	void updateInviterId() {
 		startUpdate(0x07);

@@ -44,6 +44,20 @@ using namespace server::zone::objects::creature::professions;
 namespace server {
 namespace zone {
 namespace objects {
+namespace group {
+
+class GroupObject;
+
+} // namespace group
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::group;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -152,6 +166,14 @@ public:
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
 
+	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
+
+	void updateGroup(GroupObject* group, bool notifyClient = true);
+
+	UnicodeString getCreatureName();
+
+	bool isGroupped();
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -208,6 +230,8 @@ public:
 
 	unsigned long long getGroupInviterID();
 
+	GroupObject* getGroup();
+
 	unsigned long long getGroupInviteCounter();
 
 	int getGuildID();
@@ -243,6 +267,8 @@ protected:
 
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
+
+	UnicodeString _return_getCreatureName;
 
 	friend class CreatureObjectHelper;
 };
@@ -311,8 +337,10 @@ protected:
 
 	unsigned long long weaponID;
 
-	unsigned long long groupID;
+private:
+	ManagedReference<GroupObject* > group;
 
+protected:
 	unsigned long long groupInviterID;
 
 	unsigned long long groupInviteCounter;
@@ -420,6 +448,14 @@ public:
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
 
+	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
+
+	void updateGroup(GroupObject* group, bool notifyClient = true);
+
+	UnicodeString getCreatureName();
+
+	bool isGroupped();
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -475,6 +511,8 @@ public:
 	unsigned long long getGroupID();
 
 	unsigned long long getGroupInviterID();
+
+	GroupObject* getGroup();
 
 	unsigned long long getGroupInviteCounter();
 
@@ -587,6 +625,14 @@ public:
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient);
 
+	void updateGroupInviterID(unsigned long long id, bool notifyClient);
+
+	void updateGroup(GroupObject* group, bool notifyClient);
+
+	UnicodeString getCreatureName();
+
+	bool isGroupped();
+
 	int getBankCredits();
 
 	int getCashCredits();
@@ -634,6 +680,8 @@ public:
 	unsigned long long getGroupID();
 
 	unsigned long long getGroupInviterID();
+
+	GroupObject* getGroup();
 
 	unsigned long long getGroupInviteCounter();
 
