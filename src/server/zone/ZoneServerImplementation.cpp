@@ -515,10 +515,11 @@ ServiceClient* ZoneServerImplementation::createConnection(Socket* sock, SocketAd
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return NULL;*/
 
-	ZoneClientSession* client = new ZoneClientSession(this, sock, &addr);
+	ZoneClientSession* client = new ZoneClientSession(sock, &addr);
 	client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 
 	ZoneClientSessionImplementation* clientImpl = (ZoneClientSessionImplementation*) client->_getImplementation();
+	clientImpl->init(this);
 
 	String address = client->getAddress();
 

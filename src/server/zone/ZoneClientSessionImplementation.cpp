@@ -50,10 +50,8 @@ which carries forward this exception.
 
 #include "objects/player/PlayerCreature.h"
 
-ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr)
+ZoneClientSessionImplementation::ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr)
 		:  ManagedObjectImplementation(), BaseClientProxy(sock, *addr) {
-	init(serv);
-
 	player = NULL;
 	sessionKey = 0;
 	accountID = 0;

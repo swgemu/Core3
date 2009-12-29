@@ -46,10 +46,8 @@ package server.zone;
 
 import engine.service.proto.BaseClientProxy;
 import engine.service.proto.BasePacket;
-import engine.service.DatagramServiceThread;
 import system.net.SocketAddress;
 import system.net.Socket;
-include engine.core.ManagedObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 
@@ -61,7 +59,7 @@ class ZoneClientSession extends ManagedObject implements BaseClientProxy {
 	
 	boolean disconnecting;
 	
-	public native ZoneClientSession(DatagramServiceThread serv, Socket sock, SocketAddress addr);
+	public native ZoneClientSession(Socket sock, SocketAddress addr);
 		
 	public native void disconnect();
 	public native void disconnect(boolean doLock);

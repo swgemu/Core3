@@ -33,13 +33,9 @@ class ZoneServer;
 
 using namespace server::zone;
 
-#include "engine/core/ManagedObject.h"
-
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/BasePacket.h"
-
-#include "engine/service/DatagramServiceThread.h"
 
 #include "system/net/SocketAddress.h"
 
@@ -50,7 +46,7 @@ namespace zone {
 
 class ZoneClientSession : public ManagedObject {
 public:
-	ZoneClientSession(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
+	ZoneClientSession(Socket* sock, SocketAddress* addr);
 
 	void disconnect();
 
@@ -118,7 +114,7 @@ class ZoneClientSessionImplementation : public ManagedObjectImplementation, publ
 	bool disconnecting;
 
 public:
-	ZoneClientSessionImplementation(DatagramServiceThread* serv, Socket* sock, SocketAddress* addr);
+	ZoneClientSessionImplementation(Socket* sock, SocketAddress* addr);
 
 	ZoneClientSessionImplementation(DummyConstructorParameter* param);
 
