@@ -116,6 +116,8 @@ public:
 
 	static const int PLAYEROBJECT = 12;
 
+	static const int GROUPOBJECT = 13;
+
 	static const int ARMOR = 0x100;
 
 	static const int BODYARMOR = 0x101;
@@ -716,6 +718,8 @@ public:
 	static const int CELLOBJECT = 11;
 
 	static const int PLAYEROBJECT = 12;
+
+	static const int GROUPOBJECT = 13;
 
 	static const int ARMOR = 0x100;
 

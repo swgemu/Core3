@@ -78,8 +78,8 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 
 		if (player->isGroupped()) {
 			ParameterizedStringId stringId;
-			stringId.setTT("group", "already_grouped");
-			stringId.setTU(player);
+			stringId.setStringId("group", "already_grouped");
+			stringId.setTT(player);
 			leader->sendSystemMessage(stringId);
 			//leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
 
@@ -89,8 +89,8 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 
 		if (player->getGroupInviterID() == leader->getObjectID()) {
 			ParameterizedStringId stringId;
-			stringId.setTT("group", "considering_your_group");
-			stringId.setTU(player);
+			stringId.setStringId("group", "considering_your_group");
+			stringId.setTT(player);
 			leader->sendSystemMessage(stringId);
 			//leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
 
@@ -108,11 +108,12 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 		player->updateGroupInviterID(leader->getObjectID());
 
 		ParameterizedStringId stringId;
-		stringId.setTT("group", "considering_your_group");
-		stringId.setTU(leader);
+		stringId.setStringId("group", "invite_target");
+		stringId.setTT(leader);
 		player->sendSystemMessage(stringId);
 
-		stringId.setTU(player);
+		stringId.setStringId("group", "invite_leader");
+		stringId.setTT(player);
 		leader->sendSystemMessage(stringId);
 
 		player->unlock();
@@ -196,7 +197,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
 	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(2022504856, 0, "");
-
+	group->initializeLeader(leader);
 	group->setZone(leader->getZone());
 
 	group->sendTo(leader);

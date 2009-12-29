@@ -64,6 +64,8 @@ public:
 
 	SceneObject* getGroupMember(int index);
 
+	void initializeLeader(SceneObject* player);
+
 	SceneObject* getLeader();
 
 	GroupList* getGroupList();
@@ -123,6 +125,8 @@ public:
 	int getGroupSize();
 
 	SceneObject* getGroupMember(int index);
+
+	void initializeLeader(SceneObject* player);
 
 	SceneObject* getLeader();
 
@@ -190,6 +194,8 @@ public:
 	int getGroupSize();
 
 	SceneObject* getGroupMember(int index);
+
+	void initializeLeader(SceneObject* player);
 
 	SceneObject* getLeader();
 

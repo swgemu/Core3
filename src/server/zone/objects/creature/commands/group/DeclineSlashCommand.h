@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../../scene/SceneObject.h"
 //#include "../../../../managers/combat/CombatManager.h"
+#include "../../../scene/variables/ParameterizedStringId.h"
+
 
 class DeclineSlashCommand : public QueueCommand {
 public:
@@ -66,17 +68,22 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*uint64 inviterID = player->getGroupInviterID();
-		SceneObject* object = player->getZone()->lookupObject(inviterID);
+		uint64 inviterID = creature->getGroupInviterID();
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(inviterID);
 
-		if (object == NULL || !object->isPlayerCreature* player)
+		if (object == NULL || !object->isPlayerCreature())
 			return false;
 
-		Player* inviter = (Player*) object;
+		PlayerCreature* inviter = (PlayerCreature*) object.get();
 
-		player->updateGroupInviterId(0);
-		inviter->sendSystemMessage("group", "decline_leader", player->getObjectID());
-		player->sendSystemMessage("group", "decline_self");*/
+		creature->updateGroupInviterID(0);
+
+		ParameterizedStringId stringId;
+		stringId.setStringId("group", "decline_leader");
+		stringId.setTT(creature);
+
+		inviter->sendSystemMessage(stringId);
+		creature->sendSystemMessage("group", "decline_self");
 
 		return true;
 		/*DECLINE DUEL CODE

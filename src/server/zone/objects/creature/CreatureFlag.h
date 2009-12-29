@@ -42,43 +42,23 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef UPDATEPVPSTATUSMESSAGE_H_
-#define UPDATEPVPSTATUSMESSAGE_H_
+#ifndef CREATUREFLAG_H_
+#define CREATUREFLAG_H_
 
 #include "engine/engine.h"
 
-#include "../../objects/tangible/TangibleObject.h"
-
-#include "../../objects/creature/CreatureObject.h"
-
-class UpdatePVPStatusMessage : public BaseMessage {
+class CreatureFlag {
 public:
-	UpdatePVPStatusMessage(CreatureObject* creo, uint32 pvpBitmask) : BaseMessage() {
-		insertShort(0x04);
-		insertInt(0x08A1C126);  // CRC
-		insertInt(pvpBitmask);
-		insertInt(creo->getFaction());
-
-		insertLong(creo->getObjectID());
-	}
-
-	UpdatePVPStatusMessage(CreatureObjectImplementation* creo, uint32 pvpBitmask) : BaseMessage() {
-		insertShort(0x04);
-		insertInt(0x08A1C126);  // CRC
-		insertInt(pvpBitmask);
-		insertInt(creo->getFaction());
-
-		insertLong(creo->getObjectID());
-	}
-
-	UpdatePVPStatusMessage(TangibleObject* tano, uint32 pvpBitmask) : BaseMessage() {
-		insertShort(0x04);
-		insertInt(0x08A1C126);  // CRC
-		insertInt(pvpBitmask);
-		insertInt(0);
-
-		insertLong(tano->getObjectID());
-	}
-
+	static const uint32 NONE = 0x00;
+	static const uint32 ATTACKABLE = 0x01;
+	static const uint32 AGGRESSIVE = 0x02;
+	static const uint32 OVERT = 0x04;
+	static const uint32 TEF = 0x08;
+	static const uint32 PLAYER = 0x10;
+	static const uint32 ENEMY = 0x20;
+	static const uint32 CHANGEFACTIONSTATUS = 0x40;
+	static const uint32 BLINK_GREEN = 0x80;
 };
-#endif /*UPDATEPVPSTATUSMESSAGE_H_*/
+
+
+#endif /* CREATUREFLAG_H_ */

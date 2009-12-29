@@ -66,11 +66,9 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*GroupManager* groupManager = server->getGroupManager();
-		if (groupManager == NULL)
-			return false;
+		GroupManager* groupManager = GroupManager::instance();
+		groupManager->joinGroup(creature);
 
-		groupManager->joinGroup(player);*/
 		return true;
 	}
 

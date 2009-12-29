@@ -43,8 +43,6 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 }
 
 void GroupObjectImplementation::addMember(SceneObject* player) {
-	groupMembers.add(player);
-
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 	grp->startUpdate(1);
 	groupMembers.add(player, grp);

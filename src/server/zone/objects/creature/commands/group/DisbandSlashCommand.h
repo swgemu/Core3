@@ -48,8 +48,8 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../group/GroupObject.h"
-//#include "../../../../managers/group/GroupManager.h"
+#include "../../../group/GroupObject.h"
+#include "../../../../managers/group/GroupManager.h"
 
 class DisbandSlashCommand : public QueueCommand {
 public:
@@ -67,22 +67,20 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*
-		GroupManager* groupManager = server->getGroupManager();
-		if (groupManager == NULL)
-			return false;
+		GroupManager* groupManager = GroupManager::instance();
 
-		ManagedReference<GroupObject> group = player->getGroupObject();
+		ManagedReference<GroupObject*> group = creature->getGroup();
+
 		if (group == NULL)
 			return false;
 
 		//If player not is leader, he will leave the group instead.
 		//Fix 13 feb 2009 - Bankler
-		if (player != group->getLeader())
-			groupManager->leaveGroup(group.get(), player);
-
+		if (creature != group->getLeader())
+			groupManager->leaveGroup(group.get(), creature);
 		else
-			groupManager->disbandGroup(group.get(), player);*/
+			groupManager->disbandGroup(group.get(), creature);
+
 		return true;
 	}
 

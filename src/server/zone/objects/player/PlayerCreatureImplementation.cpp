@@ -20,6 +20,8 @@
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/group/GroupObject.h"
+
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
@@ -55,6 +57,9 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 		grandParent->sendTo(_this);
 	} else
 		sendTo(_this, doClose);
+
+	if (group != NULL)
+		group->sendTo(_this);
 
 	owner->resetPacketCheckupTime();
 }

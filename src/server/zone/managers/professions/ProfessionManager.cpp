@@ -557,19 +557,13 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 			}
 		}
 
-		/*info("trying to get parent.." + skillParent, true);
-
-		if (parent == NULL) {
-			parent = loadBox(skillParent, profession);
-		}*/
-
 		if (parent != NULL) {
-			info(skillParent + " found", true);
+			info(skillParent + " found");
 
 			skillBox->setParent(parent);
 			parent->addChild(skillBox);
 		} else {
-			info("parent not found " + skillParent, true);
+			info("parent not found " + skillParent);
 		}
 	}
 

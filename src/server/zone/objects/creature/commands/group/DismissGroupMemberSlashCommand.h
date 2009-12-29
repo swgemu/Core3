@@ -48,8 +48,8 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../../managers/group/GroupManager.h"
-//#include "../../../group/GroupObject.h"
+#include "../../../../managers/group/GroupManager.h"
+#include "../../../group/GroupObject.h"
 
 class DismissGroupMemberSlashCommand : public QueueCommand {
 public:
@@ -67,25 +67,21 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*GroupManager* groupManager = server->getGroupManager();
-		if (groupManager == NULL)
+		GroupManager* groupManager = GroupManager::instance();
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isPlayerCreature())
 			return false;
 
-		uint64 target = packet->parseLong();
-		SceneObject* object = player->getZone()->lookupObject(target);
+		CreatureObject* targetObject = (CreatureObject*) object.get();
 
-		if (object == NULL || (!object->isPlayer() &&
-				!(object->isNonPlayerCreature() && ((CreatureObject*)object)->isPet())) ||
-				object == player)
-			return false;
-
-		Player* targetObject = (Player*) object;
-
-		ManagedReference<GroupObject> group = player->getGroupObject();
+		ManagedReference<GroupObject*> group = creature->getGroup();
 		if (group == NULL)
 			return false;
 
-		groupManager->kickFromGroup(group.get(), player, targetObject);*/
+		groupManager->kickFromGroup(group.get(), creature, targetObject);
+
 		return true;
 	}
 

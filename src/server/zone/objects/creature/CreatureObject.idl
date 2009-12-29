@@ -66,6 +66,9 @@ class CreatureObject extends TangibleObject {
 	protected int gender;
 	protected int species;
 	
+	protected int pvpStatusBitmask;
+	protected int faction;
+	
 	@dereferenced
 	protected DeltaVector<int> baseHAM;
 	
@@ -101,7 +104,7 @@ class CreatureObject extends TangibleObject {
 	
 	protected unsigned long weaponID;
 	
-	GroupObject group;
+	protected GroupObject group;
 	protected unsigned long groupInviterID;
 	protected unsigned long groupInviteCounter;
 	
@@ -576,6 +579,14 @@ class CreatureObject extends TangibleObject {
 	
 	public int getSpecies() {
 		return species;
+	}
+	
+	public int getFaction() {
+		return faction;
+	}
+	
+	public int getPvpStatusBitmask() {
+		return pvpStatusBitmask;
 	}
 	
 	@local

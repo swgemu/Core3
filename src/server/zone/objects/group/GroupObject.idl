@@ -110,9 +110,9 @@ class GroupObject extends SceneObject {
 		return groupMembers.get(index);
 	}
 
-	/*void addMember(SceneObject player) {
+	public void initializeLeader(SceneObject player) {
 		groupMembers.add(player);
-	}*/
+	}
 
 	public SceneObject getLeader() {
 		return groupMembers.get(0);

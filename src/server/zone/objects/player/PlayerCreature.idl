@@ -58,6 +58,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.chat.room.ChatRoom;
+include server.zone.objects.creature.CreatureFlag;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 
 class PlayerCreature extends CreatureObject {
@@ -132,6 +133,8 @@ class PlayerCreature extends CreatureObject {
 		savedParentID = 0;
 		
 		skillPoints = 0;
+		
+		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 
 		setOffline();
 	}

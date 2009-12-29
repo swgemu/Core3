@@ -44,6 +44,7 @@ which carries forward this exception.
 
 #include "CreatureObject.h"
 #include "CreatureState.h"
+#include "CreatureFlag.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
@@ -64,10 +65,14 @@ which carries forward this exception.
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 #include "server/zone/objects/group/GroupObject.h"
-
+#include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "CreatureFlag.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
+
+	groupInviterID = 0;
+	groupInviteCounter = 0;
 
 	setLoggingName("CreatureObject");
 }
@@ -76,8 +81,11 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	bankCredits = 0;
 	cashCredits = 0;
 
+	pvpStatusBitmask = CreatureFlag::PLAYER;
+
 	posture = 0;
 	factionRank = 0;
+	faction = 0;
 
 	creatureLinkID = 0;
 
@@ -170,6 +178,9 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this);
 	player->sendMessage(msg6);
+
+	BaseMessage* pvp = new UpdatePVPStatusMessage(this, pvpStatusBitmask);
+	player->sendMessage(pvp);
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {

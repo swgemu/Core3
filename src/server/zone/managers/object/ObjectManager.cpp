@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/weapon/MeleeWeaponObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -111,6 +112,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
+
+	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
 
 	//temporary
 	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);

@@ -58,7 +58,7 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 
 	detailedDescription = "string_id_table",
 
-	gameObjectType = 2,
+	gameObjectType = 13,
 
 	locationReservationRadius = 0,
 	lookAtText = "string_id_table",

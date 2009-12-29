@@ -119,6 +119,8 @@ class ChatRoom;
 
 using namespace server::chat::room;
 
+#include "server/zone/objects/creature/CreatureFlag.h"
+
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "system/lang/Time.h"

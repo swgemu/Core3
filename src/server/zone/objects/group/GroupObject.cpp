@@ -173,12 +173,25 @@ SceneObject* GroupObject::getGroupMember(int index) {
 		return ((GroupObjectImplementation*) _impl)->getGroupMember(index);
 }
 
-SceneObject* GroupObject::getLeader() {
+void GroupObject::initializeLeader(SceneObject* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->initializeLeader(player);
+}
+
+SceneObject* GroupObject::getLeader() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -296,6 +309,11 @@ SceneObject* GroupObjectImplementation::getGroupMember(int index) {
 	return (&groupMembers)->get(index);
 }
 
+void GroupObjectImplementation::initializeLeader(SceneObject* player) {
+	// server/zone/objects/group/GroupObject.idl(115):  groupMembers.add(player);
+	(&groupMembers)->add(player);
+}
+
 SceneObject* GroupObjectImplementation::getLeader() {
 	// server/zone/objects/group/GroupObject.idl(119):  return groupMembers.get(0);
 	return (&groupMembers)->get(0);
@@ -354,6 +372,9 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 18:
+		initializeLeader((SceneObject*) inv->getObjectParameter());
+		break;
+	case 19:
 		resp->insertLong(getLeader()->_getObjectID());
 		break;
 	default:
@@ -409,6 +430,10 @@ int GroupObjectAdapter::getGroupSize() {
 
 SceneObject* GroupObjectAdapter::getGroupMember(int index) {
 	return ((GroupObjectImplementation*) impl)->getGroupMember(index);
+}
+
+void GroupObjectAdapter::initializeLeader(SceneObject* player) {
+	((GroupObjectImplementation*) impl)->initializeLeader(player);
 }
 
 SceneObject* GroupObjectAdapter::getLeader() {

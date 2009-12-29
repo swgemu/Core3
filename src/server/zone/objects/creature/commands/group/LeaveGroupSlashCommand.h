@@ -48,8 +48,8 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../../managers/group/GroupManager.h"
-//#include "../../../group/GroupObject.h"
+#include "../../../../managers/group/GroupManager.h"
+#include "../../../group/GroupObject.h"
 
 class LeaveGroupSlashCommand : public QueueCommand {
 public:
@@ -67,16 +67,14 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*GroupManager* groupManager = server->getGroupManager();
-		if (groupManager == NULL)
-			return false;
+		GroupManager* groupManager = GroupManager::instance();
 
-		ManagedReference<GroupObject> group = player->getGroupObject();
+		ManagedReference<GroupObject*> group = creature->getGroup();
 
 		if (group == NULL)
 			return false;
 
-		groupManager->leaveGroup(group.get(), player);*/
+		groupManager->leaveGroup(group.get(), creature);
 		return true;
 	}
 

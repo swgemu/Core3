@@ -48,8 +48,8 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
-//#include "../../../group/GroupObject.h"
-//#include "../../../../managers/group/GroupManager.h"
+#include "../../../group/GroupObject.h"
+#include "../../../../managers/group/GroupManager.h"
 
 class MakeLeaderSlashCommand : public QueueCommand {
 public:
@@ -67,22 +67,22 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*GroupManager* groupManager = server->getGroupManager();
-		if (groupManager == NULL)
+		GroupManager* groupManager = GroupManager::instance();
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isPlayerCreature())
 			return false;
 
-		uint64 target = packet->parseLong();
-		SceneObject* object = player->getZone()->lookupObject(target);
+		PlayerCreature* targetObject = (PlayerCreature*) object.get();
 
-		if (object == NULL || !object->isPlayerCreature* player)
-			return false;
-		Player* targetObject = (Player*) object;
+		GroupObject* group = creature->getGroup();
 
-		GroupObject* group = player->getGroupObject();
 		if (group == NULL)
 			return false;
 
-		groupManager->makeLeader(group, player, targetObject);*/
+		groupManager->makeLeader(group, creature, targetObject);
+
 		return true;
 	}
 

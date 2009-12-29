@@ -48,6 +48,8 @@ which carries forward this exception.
 
 
 #include "../../../scene/SceneObject.h"
+#include "../../../scene/variables/ParameterizedStringId.h"
+
 
 class UninviteSlashCommand : public QueueCommand {
 public:
@@ -65,25 +67,28 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*uint64 objectID = packet->parseLong();
-		SceneObject* object = player->getZone()->lookupObject(objectID);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isPlayerCreature* player)
+		if (object == NULL || !object->isPlayerCreature())
 			return false;
 
-		Player* play = (Player*) object;
+		PlayerCreature* play = (PlayerCreature*) object.get();
 
 		try {
-			play->wlock(player);
+			play->wlock(creature);
 
-			if (play->getGroupInviterID() != player->getObjectID()) {
-				player->sendSystemMessage("group", "must_be_leader");
+			if (play->getGroupInviterID() != creature->getObjectID()) {
+				creature->sendSystemMessage("group", "must_be_leader");
 				play->unlock();
 				return false;
 			} else {
-				play->updateGroupInviterId(0);
+				play->updateGroupInviterID(0);
 				play->sendSystemMessage("group", "uninvite_self");
-				player->sendSystemMessage("group", "uninvite_target", play->getObjectID());
+
+				ParameterizedStringId stringId;
+				stringId.setStringId("group", "uninvite_target");
+				stringId.setTT(play);
+				creature->sendSystemMessage(stringId);
 			}
 
 			play->unlock();
@@ -92,7 +97,8 @@ public:
 			play->unlock();
 			System::out << "Exception in parseGroupUninvite(PlayerCreature* player, Message* pack)\n";
 			return false;
-		}*/
+		}
+
 		return false;
 	}
 

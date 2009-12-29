@@ -252,6 +252,10 @@ public:
 
 	int getSpecies();
 
+	int getFaction();
+
+	int getPvpStatusBitmask();
+
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -295,6 +299,10 @@ protected:
 
 	int species;
 
+	int pvpStatusBitmask;
+
+	int faction;
+
 	DeltaVector<int> baseHAM;
 
 	byte posture;
@@ -337,10 +345,8 @@ protected:
 
 	unsigned long long weaponID;
 
-private:
 	ManagedReference<GroupObject* > group;
 
-protected:
 	unsigned long long groupInviterID;
 
 	unsigned long long groupInviteCounter;
@@ -534,6 +540,10 @@ public:
 
 	int getSpecies();
 
+	int getFaction();
+
+	int getPvpStatusBitmask();
+
 	DeltaVector<int>* getBaseHAM();
 
 	SkillBoxList* getSkillBoxList();
@@ -702,6 +712,10 @@ public:
 	float getHeight();
 
 	int getSpecies();
+
+	int getFaction();
+
+	int getPvpStatusBitmask();
 
 	void setHeight(float heigh);
 

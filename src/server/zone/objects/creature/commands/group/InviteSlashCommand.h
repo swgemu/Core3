@@ -49,8 +49,9 @@ which carries forward this exception.
 
 #include "../../../scene/SceneObject.h"
 //#include "../../../player/Player.h"
-//#include "../../../creature/CreatureObject.h"
-//#include "../../../../managers/group/GroupManager.h"
+#include "../../../creature/CreatureObject.h"
+#include "../../../../managers/group/GroupManager.h"
+#include "server/zone/ZoneServer.h"
 
 class InviteSlashCommand : public QueueCommand {
 public:
@@ -67,15 +68,21 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
-		/*
-		GroupManager* groupManager = server->getGroupManager();
-		if(groupManager == NULL)
+
+		GroupManager* groupManager = GroupManager::instance();
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL)
 			return false;
 
-		uint64 objectID = packet->parseLong();
-		SceneObject* object = player->getZone()->lookupObject(objectID);
+		if (object->isPlayerCreature()) {
+			PlayerCreature* player = (PlayerCreature*) object.get();
 
-		if (object == NULL || (!object->isPlayer() &&
+	 		groupManager->inviteToGroup(creature, player);
+		}
+
+		/*if (object == NULL || (!object->isPlayer() &&
 				!(object->isNonPlayerCreature() && ((CreatureObject*)object)->isPet())) ||
 				object == player)
 			return false;
@@ -90,6 +97,7 @@ public:
 		 			groupManager->invitePetToGroup(player,(CreaturePet*)creo);
 		 		}
 		 	}*/
+
 		return true;
 	}
 
