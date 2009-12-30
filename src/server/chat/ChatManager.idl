@@ -102,9 +102,15 @@ class ChatManager extends ManagedObject {
 	public native void broadcastMessage(CreatureObject player, final unicode message, unsigned long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 	
 	public native void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
+	public native void handleGroupChat(PlayerCreature player, final unicode message);
+
 	
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
+	
+	public native void destroyRoom(ChatRoom room);
+	
+	public native ChatRoom createGroupRoom(unsigned long groupID, PlayerCreature creator);
 
 	/*public native void sendMail(final string sendername, unicode header, unicode body, final string name);
 	public native void sendMailBody(PlayerCreature receiver, unsigned int mailid);
@@ -148,7 +154,6 @@ class ChatManager extends ManagedObject {
 
 	public native ChatRoom createRoomByFullPath(final string path);
 
-	public native void destroyRoom(ChatRoom room);
 
 
 	public native ChatRoom getChatRoomByFullPath(final string path);

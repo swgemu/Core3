@@ -54,7 +54,9 @@ public:
 
 	bool hasMember(SceneObject* player);
 
-	void startChannel();
+	void startChatRoom();
+
+	void destroyChatRoom();
 
 	int getGroupLevel();
 
@@ -93,7 +95,7 @@ namespace group {
 class GroupObjectImplementation : public SceneObjectImplementation {
 	GroupList groupMembers;
 
-	ManagedReference<ChatRoom* > groupChannel;
+	ManagedReference<ChatRoom* > chatRoom;
 
 	int groupLevel;
 
@@ -116,7 +118,9 @@ public:
 
 	bool hasMember(SceneObject* player);
 
-	void startChannel();
+	void startChatRoom();
+
+	void destroyChatRoom();
 
 	int getGroupLevel();
 
@@ -185,7 +189,9 @@ public:
 
 	bool hasMember(SceneObject* player);
 
-	void startChannel();
+	void startChatRoom();
+
+	void destroyChatRoom();
 
 	int getGroupLevel();
 

@@ -11,12 +11,13 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/player/PlayerMap.h"
 #include "server/zone/packets/chat/ChatRoomList.h"
+#include "server/zone/packets/chat/ChatRoomMessage.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
 #include "server/zone/packets/chat/ChatInstantMessageToClient.h"
 #include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
-
-
+#include "server/zone/packets/chat/ChatOnDestroyRoom.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
@@ -305,3 +306,82 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 	sender->sendMessage(amsg);
 }
 
+ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreature* creator) {
+	// Pre: creator locked;
+	// Post: creator locked.
+
+	ManagedReference<ChatRoom*> groupChatRoom;
+
+	StringBuffer name;
+	name << groupID;
+
+	ChatRoom* newGroupRoom = new ChatRoom(server, groupRoom, name.toString(), getNextRoomID());
+	newGroupRoom->deploy();
+
+	newGroupRoom->setPrivate();
+	groupRoom->addSubRoom(newGroupRoom);
+	addRoom(newGroupRoom);
+
+	groupChatRoom = new ChatRoom(server, newGroupRoom, "GroupChat", getNextRoomID());
+	groupChatRoom->deploy();
+
+	groupChatRoom->setTitle(name.toString());
+	groupChatRoom->setPrivate();
+
+	groupChatRoom->sendTo(creator);
+	groupChatRoom->addPlayer(creator, false);
+
+	newGroupRoom->addSubRoom(groupChatRoom);
+	addRoom(groupChatRoom);
+
+	return groupChatRoom;
+}
+
+void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
+	Locker _locker(_this);
+
+	roomMap->remove(room->getRoomID());
+
+	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
+	room->broadcastMessage(msg);
+	room->removeAllPlayers();
+
+	ManagedReference<ChatRoom*> parent = room->getParent();
+
+	if (parent != NULL)
+		parent->removeSubRoom(room);
+}
+
+
+void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const UnicodeString& message) {
+	/*if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	ManagedReference<GroupObject*> group = sender->getGroup();
+	if (group == NULL)
+		return;
+
+	sender->unlock();
+
+	try {
+		group->wlock();
+
+		ManagedReference<ChatRoom*> room = group->getGroupChannel();
+
+		if (room != NULL) {
+			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+			group->broadcastMessage(msg);
+		}
+
+		group->unlock();
+	} catch (...) {
+		System::out << "Exception in ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack)\n";
+		group->unlock();
+	}
+
+	sender->wlock();
+}

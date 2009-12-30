@@ -129,12 +129,12 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	uint64 inviterID = player->getGroupInviterID();
 
 	ZoneServer* server = player->getZone()->getZoneServer();
-	SceneObject* object = server->getObject(inviterID);
+	ManagedReference<SceneObject*> object = server->getObject(inviterID);
 
 	if (object == NULL || !object->isPlayerCreature() || object == player)
 		return;
 
-	CreatureObject* inviter = (CreatureObject*)object;
+	CreatureObject* inviter = (CreatureObject*) object.get();
 	GroupObject* group = NULL;
 
 	try {
@@ -176,10 +176,12 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		player->updateGroup(group);
 		player->sendSystemMessage("group", "joined_self");
 
-		ChatRoom* groupChannel = group->getGroupChannel();
+		ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 
-		/*groupChannel->sendTo(player);
-		groupChannel->addPlayer(player, false);*/
+		if (groupChannel != NULL && player->isPlayerCreature()) {
+			groupChannel->sendTo((PlayerCreature*) player);
+			groupChannel->addPlayer((PlayerCreature*) player, false);
+		}
 
 		player->updateGroupInviterID(0);
 
@@ -198,6 +200,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 
 	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(2022504856, 0, "");
 	group->initializeLeader(leader);
+	group->startChatRoom();
 	group->setZone(leader->getZone());
 
 	group->sendTo(leader);
@@ -221,12 +224,13 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 		group->wlock(player);
 
 		ChatRoom* groupChannel = group->getGroupChannel();
-		if (groupChannel != NULL) {
-			/*groupChannel->removePlayer(player, false);
-			groupChannel->sendDestroyTo(player);
+		if (groupChannel != NULL && player->isPlayerCreature()) {
+			PlayerCreature* playerCreature = (PlayerCreature*) player;
+			groupChannel->removePlayer(playerCreature, false);
+			groupChannel->sendDestroyTo(playerCreature);
 
 			ChatRoom* room = groupChannel->getParent();
-			room->sendDestroyTo(player);*/
+			room->sendDestroyTo(playerCreature);
 		}
 
 		player->updateGroup(NULL);
@@ -349,12 +353,15 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 		try {
 			playerToKick->wlock();
 
-			/*ChatRoom* groupChannel = group->getGroupChannel();
-			groupChannel->removePlayer(playerToKick, false);
-			groupChannel->sendDestroyTo(playerToKick);
+			if (playerToKick->isPlayerCreature()) {
+				PlayerCreature* pl = (PlayerCreature*) playerToKick;
+				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
+				groupChannel->removePlayer(pl, false);
+				groupChannel->sendDestroyTo(pl);
 
-			ChatRoom* room = groupChannel->getParent();
-			room->sendDestroyTo(playerToKick);*/
+				ManagedReference<ChatRoom*> room = groupChannel->getParent();
+				room->sendDestroyTo(pl);
+			}
 
 			playerToKick->updateGroup(NULL);
 

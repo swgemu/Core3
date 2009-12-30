@@ -112,7 +112,7 @@ bool GroupObject::hasMember(SceneObject* player) {
 		return ((GroupObjectImplementation*) _impl)->hasMember(player);
 }
 
-void GroupObject::startChannel() {
+void GroupObject::startChatRoom() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +121,19 @@ void GroupObject::startChannel() {
 
 		method.executeWithVoidReturn();
 	} else
-		((GroupObjectImplementation*) _impl)->startChannel();
+		((GroupObjectImplementation*) _impl)->startChatRoom();
+}
+
+void GroupObject::destroyChatRoom() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->destroyChatRoom();
 }
 
 int GroupObject::getGroupLevel() {
@@ -129,7 +141,7 @@ int GroupObject::getGroupLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -141,7 +153,7 @@ ChatRoom* GroupObject::getGroupChannel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -153,7 +165,7 @@ int GroupObject::getGroupSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -165,7 +177,7 @@ SceneObject* GroupObject::getGroupMember(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addSignedIntParameter(index);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -178,7 +190,7 @@ void GroupObject::initializeLeader(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -191,7 +203,7 @@ SceneObject* GroupObject::getLeader() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -275,7 +287,7 @@ void GroupObjectImplementation::_serializationHelperMethod() {
 	_setClassName("GroupObject");
 
 	addSerializableVariable("groupMembers", &groupMembers);
-	addSerializableVariable("groupChannel", &groupChannel);
+	addSerializableVariable("chatRoom", &chatRoom);
 	addSerializableVariable("groupLevel", &groupLevel);
 }
 
@@ -285,42 +297,42 @@ GroupObjectImplementation::GroupObjectImplementation(LuaObject* templateData) : 
 	groupLevel = 0;
 	// server/zone/objects/group/GroupObject.idl(69):  Logger.setLoggingName("GroupObject");
 	Logger::setLoggingName("GroupObject");
-	// server/zone/objects/group/GroupObject.idl(71):  startChannel();
-	startChannel();
+	// server/zone/objects/group/GroupObject.idl(71):  chatRoom = null;
+	chatRoom = NULL;
 }
 
 int GroupObjectImplementation::getGroupLevel() {
-	// server/zone/objects/group/GroupObject.idl(99):  return groupLevel;
+	// server/zone/objects/group/GroupObject.idl(100):  return groupLevel;
 	return groupLevel;
 }
 
 ChatRoom* GroupObjectImplementation::getGroupChannel() {
-	// server/zone/objects/group/GroupObject.idl(103):  return groupChannel;
-	return groupChannel;
+	// server/zone/objects/group/GroupObject.idl(104):  return chatRoom;
+	return chatRoom;
 }
 
 int GroupObjectImplementation::getGroupSize() {
-	// server/zone/objects/group/GroupObject.idl(107):  return groupMembers.size();
+	// server/zone/objects/group/GroupObject.idl(108):  return groupMembers.size();
 	return (&groupMembers)->size();
 }
 
 SceneObject* GroupObjectImplementation::getGroupMember(int index) {
-	// server/zone/objects/group/GroupObject.idl(111):  return groupMembers.get(index);
+	// server/zone/objects/group/GroupObject.idl(112):  return groupMembers.get(index);
 	return (&groupMembers)->get(index);
 }
 
 void GroupObjectImplementation::initializeLeader(SceneObject* player) {
-	// server/zone/objects/group/GroupObject.idl(115):  groupMembers.add(player);
+	// server/zone/objects/group/GroupObject.idl(116):  groupMembers.add(player);
 	(&groupMembers)->add(player);
 }
 
 SceneObject* GroupObjectImplementation::getLeader() {
-	// server/zone/objects/group/GroupObject.idl(119):  return groupMembers.get(0);
+	// server/zone/objects/group/GroupObject.idl(120):  return groupMembers.get(0);
 	return (&groupMembers)->get(0);
 }
 
 GroupList* GroupObjectImplementation::getGroupList() {
-	// server/zone/objects/group/GroupObject.idl(125):  return groupMembers;
+	// server/zone/objects/group/GroupObject.idl(126):  return groupMembers;
 	return (&groupMembers);
 }
 
@@ -357,24 +369,27 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(hasMember((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 13:
-		startChannel();
+		startChatRoom();
 		break;
 	case 14:
-		resp->insertSignedInt(getGroupLevel());
+		destroyChatRoom();
 		break;
 	case 15:
-		resp->insertLong(getGroupChannel()->_getObjectID());
+		resp->insertSignedInt(getGroupLevel());
 		break;
 	case 16:
-		resp->insertSignedInt(getGroupSize());
+		resp->insertLong(getGroupChannel()->_getObjectID());
 		break;
 	case 17:
-		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertSignedInt(getGroupSize());
 		break;
 	case 18:
-		initializeLeader((SceneObject*) inv->getObjectParameter());
+		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 19:
+		initializeLeader((SceneObject*) inv->getObjectParameter());
+		break;
+	case 20:
 		resp->insertLong(getLeader()->_getObjectID());
 		break;
 	default:
@@ -412,8 +427,12 @@ bool GroupObjectAdapter::hasMember(SceneObject* player) {
 	return ((GroupObjectImplementation*) impl)->hasMember(player);
 }
 
-void GroupObjectAdapter::startChannel() {
-	((GroupObjectImplementation*) impl)->startChannel();
+void GroupObjectAdapter::startChatRoom() {
+	((GroupObjectImplementation*) impl)->startChatRoom();
+}
+
+void GroupObjectAdapter::destroyChatRoom() {
+	((GroupObjectImplementation*) impl)->destroyChatRoom();
 }
 
 int GroupObjectAdapter::getGroupLevel() {

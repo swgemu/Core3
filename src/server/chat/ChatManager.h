@@ -162,7 +162,13 @@ public:
 
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
+	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
+
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
+
+	void destroyRoom(ChatRoom* room);
+
+	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
 	unsigned long long getNextRoomID();
 
@@ -228,7 +234,13 @@ public:
 
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
+	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
+
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
+
+	void destroyRoom(ChatRoom* room);
+
+	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
 	unsigned long long getNextRoomID();
 
@@ -293,6 +305,12 @@ public:
 
 	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
 
+	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
+
+	void destroyRoom(ChatRoom* room);
+
+	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
+
 	unsigned long long getNextRoomID();
 
 protected:
@@ -300,6 +318,7 @@ protected:
 	String _param0_removePlayer__String_;
 	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
 	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
+	UnicodeString _param1_handleGroupChat__PlayerCreature_UnicodeString_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

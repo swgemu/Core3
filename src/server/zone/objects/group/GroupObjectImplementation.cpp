@@ -11,7 +11,10 @@
 #include "server/zone/packets/group/GroupObjectDeltaMessage6.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/chat/room/ChatRoom.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneServer.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
@@ -24,12 +27,31 @@ void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* grup6 = new GroupObjectMessage6((GroupObject*) _this);
 	client->sendMessage(grup6);
 
-	if (player->isPlayerCreature() && groupChannel != NULL)
-		groupChannel->sendTo((PlayerCreature*)player);
+	if (player->isPlayerCreature() && chatRoom != NULL)
+		chatRoom->sendTo((PlayerCreature*) player);
 }
 
-void GroupObjectImplementation::startChannel() {
-	groupChannel = NULL;
+void GroupObjectImplementation::startChatRoom() {
+	PlayerCreature* leader = (PlayerCreature*) ((SceneObject*) groupMembers.get(0));
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
+
+	chatRoom = chatManager->createGroupRoom(getObjectID(), leader);
+}
+
+void GroupObjectImplementation::destroyChatRoom() {
+	if (chatRoom == NULL)
+		return;
+
+	ManagedReference<ChatRoom*> room = chatRoom->getParent();
+	ManagedReference<ChatRoom*> parent = room->getParent();
+
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
+
+	chatManager->destroyRoom(chatRoom);
+	chatManager->destroyRoom(room);
+
+	chatRoom = NULL;
+
 }
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
@@ -145,19 +167,7 @@ void GroupObjectImplementation::disband() {
 		}
 	}
 
-	/*
-
-	if (groupChannel != NULL) {
-		ChatRoom* room = groupChannel->getParent();
-		ChatRoom* parent = room->getParent();
-
-		ChatManager* chatManager = getZone()->getChatManager();
-
-		chatManager->destroyRoom(groupChannel);
-		chatManager->destroyRoom(room);
-
-		groupChannel = NULL;
-	}*/
+	destroyChatRoom();
 
 	groupMembers.removeAll();
 

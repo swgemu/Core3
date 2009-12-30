@@ -56,7 +56,7 @@ class GroupObject extends SceneObject {
 	@dereferenced
 	GroupList groupMembers;
 		
-	ChatRoom groupChannel;
+	ChatRoom chatRoom;
 	
 	int groupLevel;
 	
@@ -67,7 +67,7 @@ class GroupObject extends SceneObject {
 		
 		Logger.setLoggingName("GroupObject");
 		
-		startChannel();
+		chatRoom = null;
 	}
 	
 	public native void sendBaselinesTo(SceneObject player);
@@ -85,7 +85,8 @@ class GroupObject extends SceneObject {
 
 	public native boolean hasMember(SceneObject player);
 
-	public native void startChannel();
+	public native void startChatRoom();
+	public native void destroyChatRoom();
 
 	//public native float getRangerBonusForHarvesting(SceneObject player);
 
@@ -99,7 +100,7 @@ class GroupObject extends SceneObject {
 	}
 
 	public ChatRoom getGroupChannel() {
-		return groupChannel;
+		return chatRoom;
 	}
 
 	public int getGroupSize() {

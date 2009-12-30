@@ -636,22 +636,6 @@ ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
 	return (&subRooms)->get(name);
 }
 
-void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
-	Locker _locker(_this);
-	// server/chat/room/ChatRoom.idl(146):  
-	for (	// server/chat/room/ChatRoom.idl(146):  for (int i = 0;
-	int i = 0;
-	i < (&playerList)->size();
- ++i) {
-	// server/chat/room/ChatRoom.idl(147):  PlayerCreature player = playerList.get(i);
-	PlayerCreature* player = (&playerList)->get(i);
-	// server/chat/room/ChatRoom.idl(148):  player.sendMessage(msg.clone());
-	player->sendMessage(msg->clone());
-}
-	// server/chat/room/ChatRoom.idl(151):  msg.finalize();
-	msg->finalize();
-}
-
 void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 	Locker _locker(_this);
 	// server/chat/room/ChatRoom.idl(156):  

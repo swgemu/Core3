@@ -67,8 +67,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		/*ChatManager* chatManager = player->getZone()->getChatManager();
-		chatManager->handleGroupChat(player, packet);*/
+		if (!creature->isPlayerCreature())
+			return false;
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->handleGroupChat((PlayerCreature*) creature, arguments);
+
 		return true;
 	}
 
