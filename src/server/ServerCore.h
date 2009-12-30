@@ -62,7 +62,6 @@ class LoginServer;
 class StatusServer;
 class Features;
 class PingServer;
-class server::zone::ZoneServer;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager configManager;
