@@ -144,6 +144,8 @@ public:
 
 	void destroyRooms();
 
+	ChatRoom* createRoom(const String& roomName, ChatRoom* parent = NULL);
+
 	void addRoom(ChatRoom* channel);
 
 	void removeRoom(ChatRoom* channel);
@@ -164,13 +166,27 @@ public:
 
 	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
 
+	ChatRoom* createRoomByFullPath(const String& path);
+
+	ChatRoom* getChatRoomByFullPath(const String& path);
+
+	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
+
+	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
 	void destroyRoom(ChatRoom* room);
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
-	unsigned long long getNextRoomID();
+	ChatRoom* getChatRoom(unsigned int id);
+
+	ChatRoom* getGameRoom(const String& game);
+
+	unsigned int getNextRoomID();
+
+	int getPlayerCount();
 
 protected:
 	ChatManager(DummyConstructorParameter* param);
@@ -203,7 +219,7 @@ class ChatManagerImplementation : public ManagedObjectImplementation {
 
 	ChatRoomMap* roomMap;
 
-	unsigned long long roomID;
+	unsigned int roomID;
 
 	bool mute;
 
@@ -212,9 +228,13 @@ public:
 
 	ChatManagerImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void initiateRooms();
 
 	void destroyRooms();
+
+	ChatRoom* createRoom(const String& roomName, ChatRoom* parent = NULL);
 
 	void addRoom(ChatRoom* channel);
 
@@ -236,13 +256,27 @@ public:
 
 	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
 
+	ChatRoom* createRoomByFullPath(const String& path);
+
+	ChatRoom* getChatRoomByFullPath(const String& path);
+
+	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
+
+	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
 	void destroyRoom(ChatRoom* room);
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
-	unsigned long long getNextRoomID();
+	ChatRoom* getChatRoom(unsigned int id);
+
+	ChatRoom* getGameRoom(const String& game);
+
+	unsigned int getNextRoomID();
+
+	int getPlayerCount();
 
 	ChatManager* _this;
 
@@ -251,8 +285,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~ChatManagerImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -283,9 +315,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void finalize();
+
 	void initiateRooms();
 
 	void destroyRooms();
+
+	ChatRoom* createRoom(const String& roomName, ChatRoom* parent);
 
 	void addRoom(ChatRoom* channel);
 
@@ -307,18 +343,38 @@ public:
 
 	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
 
+	ChatRoom* createRoomByFullPath(const String& path);
+
+	ChatRoom* getChatRoomByFullPath(const String& path);
+
+	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
+
+	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+
 	void destroyRoom(ChatRoom* room);
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
 
-	unsigned long long getNextRoomID();
+	ChatRoom* getChatRoom(unsigned int id);
+
+	ChatRoom* getGameRoom(const String& game);
+
+	unsigned int getNextRoomID();
+
+	int getPlayerCount();
 
 protected:
+	String _param0_createRoom__String_ChatRoom_;
 	String _param0_getPlayer__String_;
 	String _param0_removePlayer__String_;
 	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
 	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
 	UnicodeString _param1_handleGroupChat__PlayerCreature_UnicodeString_;
+	String _param0_createRoomByFullPath__String_;
+	String _param0_getChatRoomByFullPath__String_;
+	String _param1_getChatRoomByGamePath__ChatRoom_String_;
+	UnicodeString _param1_handleChatRoomMessage__PlayerCreature_UnicodeString_int_int_;
+	String _param0_getGameRoom__String_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

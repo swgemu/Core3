@@ -138,7 +138,13 @@ void GroupObjectImplementation::disband() {
 		try {
 			play->wlock((GroupObject*) _this);
 
-			//play->removeChatRoom(groupChannel);
+			if (play->isPlayerCreature()) {
+				chatRoom->removePlayer((PlayerCreature*) play, false);
+				chatRoom->sendDestroyTo((PlayerCreature*) play);
+
+				ChatRoom* room = chatRoom->getParent();
+				room->sendDestroyTo((PlayerCreature*) play);
+			}
 
 			//sendClosestWaypointDestroyTo(play);
 

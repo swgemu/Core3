@@ -79,17 +79,26 @@ class ChatManager extends ManagedObject {
 	ChatRoom guildRoom;
 	transient ChatRoomMap roomMap;
 
-	unsigned long roomID;
+	unsigned int roomID;
 
 	boolean mute;
 	
 	public native ChatManager(ZoneServer serv, int initsize);
 	
+	public native void finalize();
+	
 	public native void initiateRooms();
 	public native void destroyRooms();
 	
-	public native void addRoom(ChatRoom channel);
-	public native void removeRoom(ChatRoom channel);
+	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);
+	
+	public synchronized void addRoom(ChatRoom channel) {
+		roomMap.put(channel.getRoomID(), channel);
+	}
+	
+	public synchronized void removeRoom(ChatRoom channel) {
+		roomMap.remove(channel.getRoomID());
+	}
 	
 	public native void populateRoomListMessage(ChatRoom channel, ChatRoomList msg);
 	
@@ -103,6 +112,14 @@ class ChatManager extends ManagedObject {
 	
 	public native void handleSpatialChatInternalMessage(PlayerCreature player, final unicode args);
 	public native void handleGroupChat(PlayerCreature player, final unicode message);
+	
+	public native ChatRoom createRoomByFullPath(final string path);
+	
+	public native ChatRoom getChatRoomByFullPath(final string path);
+	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
+	
+	public native void handleChatRoomMessage(PlayerCreature sender, final unicode message, unsigned int roomID, unsigned int counter);
+
 
 	
 	@local
@@ -143,34 +160,37 @@ class ChatManager extends ManagedObject {
 	public native void handleChatDestroyRoom(PlayerCreature player, BaseMessage pack);
 	public native void handleChatRemoveAvatarFromRoom(PlayerCreature player, BaseMessage pack);
 
-	public native ChatRoom getChatRoom(unsigned int id);
 
 	
 
 
 	public native void sendGuildChat(PlayerCreature player);
 
-	public native ChatRoom createGroupRoom(unsigned int groupID, PlayerCreature creator);
-
-	public native ChatRoom createRoomByFullPath(final string path);
 
 
 
-	public native ChatRoom getChatRoomByFullPath(final string path);
 
-	public native ChatRoom getGameRoom(final string game);
-	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
+
 	 */
+	
+	public synchronized ChatRoom getChatRoom(unsigned int id) {
+		return roomMap.get(id);
+	}
+	
+	public synchronized ChatRoom getGameRoom(final string game) {
+		return gameRooms.get(game);
+	}
 	 
-	public unsigned long getNextRoomID() {
+	public synchronized unsigned int getNextRoomID() {
 		return ++roomID;
 	}
 	
-	/*
+	
 	public int getPlayerCount() {
 		return playerMap.size();
 	}
 
+	/*
 	public boolean isMute() {
 		return mute;
 	}

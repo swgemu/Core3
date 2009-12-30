@@ -76,6 +76,8 @@ which carries forward this exception.
 
 #include "packets/chat/ChatRoomList.h"
 #include "packets/chat/ChatInstantMessageToCharacter.h"
+#include "packets/chat/ChatSendToRoomCallback.h"
+
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 	processServer = serv;
@@ -110,6 +112,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<LagRequestCallback>(0x31805ee0);
 	messageCallbackFactory.registerObject<LagReportCallback>(0xc5ed2f85);
 	messageCallbackFactory.registerObject<ChatInstantMessageToCharacter>(0x84BB21F7);
+	messageCallbackFactory.registerObject<ChatSendToRoomCallback>(0x20e4dbe3);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {

@@ -62,7 +62,7 @@ class ChatRoom extends ManagedObject {
 	protected string creator;
 
 	protected unicode title;
-	protected unsigned long roomID;
+	protected unsigned int roomID;
 
 	protected ChatRoom parent;
 
@@ -74,16 +74,16 @@ class ChatRoom extends ManagedObject {
 
 	protected boolean isPublicRoom;
 	
-	public ChatRoom(ZoneServer serv, final string roomName, unsigned long channelId) {
-		server = serv;
+	public ChatRoom() {
+		server = null;
 
-		name = roomName;
-		roomID = channelId;
+		name = "";
+		roomID = 0;
 
 		owner = "system";
 		creator = "system";
 		title = "";
-		fullPath = roomName;
+		fullPath = "";
 
 		parent = null;
 
@@ -96,20 +96,25 @@ class ChatRoom extends ManagedObject {
 		playerList.setNullValue(null);
 	}
 	
-	public ChatRoom(ZoneServer serv, ChatRoom par, final string roomName, unsigned long channelId) {
+	public void init(ZoneServer serv, ChatRoom par, final string roomName, unsigned int channelID) {
 		server = serv;
-
+		
 		name = roomName;
-		fullPath = par.getFullPath() + "." + roomName;
-
-		roomID = channelId;
-
+		
+		roomID = channelID;
+		
+		parent = par;
+		
 		owner = "system";
 		creator = "system";
 		title = "";
-
-		parent = par;
-
+		
+		if (par == null) {
+			fullPath = roomName;
+		} else {
+			fullPath = par.getFullPath() + "." + roomName;
+		}
+		
 		isPublicRoom = true;
 
 		subRooms.setNullValue(null);
@@ -180,8 +185,6 @@ class ChatRoom extends ManagedObject {
 
 	public native void removeAllPlayers();
 	
-	public native void deploy();
-
 	public void setPrivate() {
 		isPublicRoom = false;
 	}
@@ -242,6 +245,10 @@ class ChatRoom extends ManagedObject {
 
 	public void setTitle(final string Title) {
 		title = Title;
+	}
+	
+	public void setRoomID(int id) {
+		roomID = id;
 	}
 
 	public unsigned int getRoomID() {

@@ -51,14 +51,14 @@ namespace server {
 namespace chat {
 namespace room {
 
-class ChatRoomMap : public HashTable<uint32, ChatRoom*>, public HashTableIterator<uint32, ChatRoom*> {
+class ChatRoomMap : public HashTable<uint32, ManagedReference<ChatRoom*> >, public HashTableIterator<uint32, ManagedReference<ChatRoom*> > {
 	
 	int hash(const uint32& key) {
         return key;
 	}
 
 public:
-	ChatRoomMap(int initsize) : HashTable<uint32, ChatRoom*>(initsize), HashTableIterator<uint32, ChatRoom*>(this) {
+	ChatRoomMap(int initsize) : HashTable<uint32, ManagedReference<ChatRoom*> >(initsize), HashTableIterator<uint32, ManagedReference<ChatRoom*> >(this) {
 		setNullValue(NULL);
 	}
 

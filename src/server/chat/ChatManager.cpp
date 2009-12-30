@@ -62,12 +62,26 @@ void ChatManager::destroyRooms() {
 		((ChatManagerImplementation*) _impl)->destroyRooms();
 }
 
-void ChatManager::addRoom(ChatRoom* channel) {
+ChatRoom* ChatManager::createRoom(const String& roomName, ChatRoom* parent) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addAsciiParameter(roomName);
+		method.addObjectParameter(parent);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->createRoom(roomName, parent);
+}
+
+void ChatManager::addRoom(ChatRoom* channel) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -80,7 +94,7 @@ void ChatManager::removeRoom(ChatRoom* channel) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(channel);
 
 		method.executeWithVoidReturn();
@@ -93,7 +107,7 @@ void ChatManager::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(channel);
 		method.addObjectParameter(msg);
 
@@ -107,7 +121,7 @@ void ChatManager::sendRoomList(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -120,7 +134,7 @@ void ChatManager::addPlayer(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -133,7 +147,7 @@ PlayerCreature* ChatManager::getPlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -146,7 +160,7 @@ PlayerCreature* ChatManager::removePlayer(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addAsciiParameter(name);
 
 		return (PlayerCreature*) method.executeWithObjectReturn();
@@ -159,7 +173,7 @@ void ChatManager::broadcastMessage(CreatureObject* player, const UnicodeString& 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 		method.addUnsignedLongParameter(target);
@@ -176,7 +190,7 @@ void ChatManager::handleSpatialChatInternalMessage(PlayerCreature* player, const
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(args);
 
@@ -190,13 +204,69 @@ void ChatManager::handleGroupChat(PlayerCreature* player, const UnicodeString& m
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 		method.addUnicodeParameter(message);
 
 		method.executeWithVoidReturn();
 	} else
 		((ChatManagerImplementation*) _impl)->handleGroupChat(player, message);
+}
+
+ChatRoom* ChatManager::createRoomByFullPath(const String& path) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addAsciiParameter(path);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->createRoomByFullPath(path);
+}
+
+ChatRoom* ChatManager::getChatRoomByFullPath(const String& path) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addAsciiParameter(path);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->getChatRoomByFullPath(path);
+}
+
+ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addObjectParameter(game);
+		method.addAsciiParameter(path);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->getChatRoomByGamePath(game, path);
+}
+
+void ChatManager::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(sender);
+		method.addUnicodeParameter(message);
+		method.addUnsignedIntParameter(roomID);
+		method.addUnsignedIntParameter(counter);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->handleChatRoomMessage(sender, message, roomID, counter);
 }
 
 void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
@@ -212,7 +282,7 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -225,7 +295,7 @@ ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, PlayerCreatur
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 24);
 		method.addUnsignedLongParameter(groupID);
 		method.addObjectParameter(creator);
 
@@ -234,16 +304,54 @@ ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, PlayerCreatur
 		return ((ChatManagerImplementation*) _impl)->createGroupRoom(groupID, creator);
 }
 
-unsigned long long ChatManager::getNextRoomID() {
+ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 25);
+		method.addUnsignedIntParameter(id);
 
-		return method.executeWithUnsignedLongReturn();
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->getChatRoom(id);
+}
+
+ChatRoom* ChatManager::getGameRoom(const String& game) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addAsciiParameter(game);
+
+		return (ChatRoom*) method.executeWithObjectReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->getGameRoom(game);
+}
+
+unsigned int ChatManager::getNextRoomID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((ChatManagerImplementation*) _impl)->getNextRoomID();
+}
+
+int ChatManager::getPlayerCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ChatManagerImplementation*) _impl)->getPlayerCount();
 }
 
 /*
@@ -258,9 +366,6 @@ ChatManagerImplementation::~ChatManagerImplementation() {
 	ChatManagerImplementation::finalize();
 }
 
-
-void ChatManagerImplementation::finalize() {
-}
 
 void ChatManagerImplementation::_initializeImplementation() {
 	_setClassHelper(ChatManagerHelper::instance());
@@ -323,9 +428,39 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 	addSerializableVariable("mute", &mute);
 }
 
-unsigned long long ChatManagerImplementation::getNextRoomID() {
-	// server/chat/ChatManager.idl(167):  return ++roomID;
+void ChatManagerImplementation::addRoom(ChatRoom* channel) {
+	Locker _locker(_this);
+	// server/chat/ChatManager.idl(96):  roomMap.put(channel.getRoomID(), channel);
+	roomMap->put(channel->getRoomID(), channel);
+}
+
+void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
+	Locker _locker(_this);
+	// server/chat/ChatManager.idl(100):  roomMap.remove(channel.getRoomID());
+	roomMap->remove(channel->getRoomID());
+}
+
+ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
+	Locker _locker(_this);
+	// server/chat/ChatManager.idl(178):  return roomMap.get(id);
+	return roomMap->get(id);
+}
+
+ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
+	Locker _locker(_this);
+	// server/chat/ChatManager.idl(182):  return gameRooms.get(game);
+	return (&gameRooms)->get(game);
+}
+
+unsigned int ChatManagerImplementation::getNextRoomID() {
+	Locker _locker(_this);
+	// server/chat/ChatManager.idl(186):  return ++roomID;
 	return  ++roomID;
+}
+
+int ChatManagerImplementation::getPlayerCount() {
+	// server/chat/ChatManager.idl(191):  return playerMap.size();
+	return playerMap->size();
 }
 
 /*
@@ -340,49 +475,76 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		initiateRooms();
+		finalize();
 		break;
 	case 7:
-		destroyRooms();
+		initiateRooms();
 		break;
 	case 8:
-		addRoom((ChatRoom*) inv->getObjectParameter());
+		destroyRooms();
 		break;
 	case 9:
-		removeRoom((ChatRoom*) inv->getObjectParameter());
+		resp->insertLong(createRoom(inv->getAsciiParameter(_param0_createRoom__String_ChatRoom_), (ChatRoom*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 10:
-		populateRoomListMessage((ChatRoom*) inv->getObjectParameter(), (ChatRoomList*) inv->getObjectParameter());
+		addRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 11:
-		sendRoomList((PlayerCreature*) inv->getObjectParameter());
+		removeRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 12:
-		addPlayer((PlayerCreature*) inv->getObjectParameter());
+		populateRoomListMessage((ChatRoom*) inv->getObjectParameter(), (ChatRoomList*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		sendRoomList((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
+		addPlayer((PlayerCreature*) inv->getObjectParameter());
 		break;
 	case 15:
-		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	case 16:
-		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
+		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
 		break;
 	case 17:
-		handleGroupChat((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleGroupChat__PlayerCreature_UnicodeString_));
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 18:
-		destroyRoom((ChatRoom*) inv->getObjectParameter());
+		handleSpatialChatInternalMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_));
 		break;
 	case 19:
-		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), (PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		handleGroupChat((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleGroupChat__PlayerCreature_UnicodeString_));
 		break;
 	case 20:
-		resp->insertLong(getNextRoomID());
+		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__String_))->_getObjectID());
+		break;
+	case 21:
+		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__String_))->_getObjectID());
+		break;
+	case 22:
+		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_String_))->_getObjectID());
+		break;
+	case 23:
+		handleChatRoomMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleChatRoomMessage__PlayerCreature_UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 24:
+		destroyRoom((ChatRoom*) inv->getObjectParameter());
+		break;
+	case 25:
+		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), (PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		break;
+	case 26:
+		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
+		break;
+	case 27:
+		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__String_))->_getObjectID());
+		break;
+	case 28:
+		resp->insertInt(getNextRoomID());
+		break;
+	case 29:
+		resp->insertSignedInt(getPlayerCount());
 		break;
 	default:
 		return NULL;
@@ -391,12 +553,20 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	return resp;
 }
 
+void ChatManagerAdapter::finalize() {
+	((ChatManagerImplementation*) impl)->finalize();
+}
+
 void ChatManagerAdapter::initiateRooms() {
 	((ChatManagerImplementation*) impl)->initiateRooms();
 }
 
 void ChatManagerAdapter::destroyRooms() {
 	((ChatManagerImplementation*) impl)->destroyRooms();
+}
+
+ChatRoom* ChatManagerAdapter::createRoom(const String& roomName, ChatRoom* parent) {
+	return ((ChatManagerImplementation*) impl)->createRoom(roomName, parent);
 }
 
 void ChatManagerAdapter::addRoom(ChatRoom* channel) {
@@ -439,6 +609,22 @@ void ChatManagerAdapter::handleGroupChat(PlayerCreature* player, const UnicodeSt
 	((ChatManagerImplementation*) impl)->handleGroupChat(player, message);
 }
 
+ChatRoom* ChatManagerAdapter::createRoomByFullPath(const String& path) {
+	return ((ChatManagerImplementation*) impl)->createRoomByFullPath(path);
+}
+
+ChatRoom* ChatManagerAdapter::getChatRoomByFullPath(const String& path) {
+	return ((ChatManagerImplementation*) impl)->getChatRoomByFullPath(path);
+}
+
+ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const String& path) {
+	return ((ChatManagerImplementation*) impl)->getChatRoomByGamePath(game, path);
+}
+
+void ChatManagerAdapter::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
+	((ChatManagerImplementation*) impl)->handleChatRoomMessage(sender, message, roomID, counter);
+}
+
 void ChatManagerAdapter::destroyRoom(ChatRoom* room) {
 	((ChatManagerImplementation*) impl)->destroyRoom(room);
 }
@@ -447,8 +633,20 @@ ChatRoom* ChatManagerAdapter::createGroupRoom(unsigned long long groupID, Player
 	return ((ChatManagerImplementation*) impl)->createGroupRoom(groupID, creator);
 }
 
-unsigned long long ChatManagerAdapter::getNextRoomID() {
+ChatRoom* ChatManagerAdapter::getChatRoom(unsigned int id) {
+	return ((ChatManagerImplementation*) impl)->getChatRoom(id);
+}
+
+ChatRoom* ChatManagerAdapter::getGameRoom(const String& game) {
+	return ((ChatManagerImplementation*) impl)->getGameRoom(game);
+}
+
+unsigned int ChatManagerAdapter::getNextRoomID() {
 	return ((ChatManagerImplementation*) impl)->getNextRoomID();
+}
+
+int ChatManagerAdapter::getPlayerCount() {
+	return ((ChatManagerImplementation*) impl)->getPlayerCount();
 }
 
 /*

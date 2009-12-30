@@ -54,12 +54,6 @@ which carries forward this exception.
 #include "../../zone/packets/chat/ChatOnLeaveRoom.h"
 #include "../../zone/packets/chat/ChatOnEnteredRoom.h"
 
-void ChatRoomImplementation::deploy() {
-	_this->_setObjectID(roomID);
-
-	((DistributedObjectStub*)_this)->deploy();
-}
-
 void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
 	crl->addChannel((ChatRoom*) _this);

@@ -10,12 +10,14 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/player/PlayerMap.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/chat/ChatRoomList.h"
 #include "server/zone/packets/chat/ChatRoomMessage.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
 #include "server/zone/packets/chat/ChatInstantMessageToClient.h"
 #include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
+#include "server/zone/packets/chat/ChatOnSendRoomMessage.h"
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
 #include "server/zone/objects/group/GroupObject.h"
 
@@ -39,83 +41,143 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	mute = false;
 
-	roomID = 0xFFFFFFFF;
-	roomID = roomID << 32;
+	roomID = 0;
 
 	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
 	//gameCommandHandler = new GameCommandHandler();
 }
 
-/*ChatManagerImplementation::~ChatManagerImplementation() {
-	destroyRooms();
-
-	playerMap->finalize();
+void ChatManagerImplementation::finalize() {
+	delete playerMap;
 	playerMap = NULL;
 
 	delete roomMap;
 	roomMap = NULL;
+}
 
-	delete gameCommandHandler;
-	gameCommandHandler = NULL;
-}*/
+ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
+	ManagedReference<ChatRoom*> room = (ChatRoom*) ObjectManager::instance()->createObject("ChatRoom", 0 , "");
+	room->init(server, parent, roomName, getNextRoomID());
+
+	addRoom(room);
+
+	return room;
+}
 
 void ChatManagerImplementation::initiateRooms() {
 	gameRooms.setNullValue(NULL);
 
-	ChatRoom* mainRoom = new ChatRoom(server, "SWG", getNextRoomID());
-	mainRoom->deploy();
+	ChatRoom* mainRoom = createRoom("SWG");
 	mainRoom->setPrivate();
-	addRoom(mainRoom);
 	gameRooms.put("SWG", mainRoom);
 
-	ChatRoom* core3Room = new ChatRoom(server, mainRoom, server->getServerName(), getNextRoomID());
-	core3Room->deploy();
+	ChatRoom* core3Room = createRoom(server->getServerName(), mainRoom);
 	core3Room->setPrivate();
 	mainRoom->addSubRoom(core3Room);
-	addRoom(core3Room);
 
-	groupRoom = new ChatRoom(server, core3Room, "group", getNextRoomID());
-	groupRoom->deploy();
+	groupRoom = createRoom("group", core3Room);
 	groupRoom->setPrivate();
 	core3Room->addSubRoom(groupRoom);
-	addRoom(groupRoom);
 
-	guildRoom = new ChatRoom(server, core3Room, "guild", getNextRoomID());
-	guildRoom->deploy();
+	guildRoom = createRoom("guild", core3Room);
 	guildRoom->setPrivate();
 	core3Room->addSubRoom(guildRoom);
-	addRoom(guildRoom);
 
-	ChatRoom* generalRoom = new ChatRoom(server, core3Room, "general", getNextRoomID());
-	generalRoom->deploy();
+	ChatRoom* generalRoom = createRoom("geeneral", core3Room);
 	core3Room->addSubRoom(generalRoom);
-	addRoom(generalRoom);
 
 	// Planet Chat
 
 	// Naboo
-	ChatRoom* nabooRoom = new ChatRoom(server, core3Room, "naboo", getNextRoomID());
-	nabooRoom->deploy();
+	ChatRoom* nabooRoom = createRoom("naboo", core3Room);
 	core3Room->addSubRoom(nabooRoom);
-	addRoom(nabooRoom);
 
-	ChatRoom* nabooPlanetary = new ChatRoom(server, nabooRoom, "chat", getNextRoomID());
-	nabooPlanetary->deploy();
+	ChatRoom* nabooPlanetary = createRoom("chat", nabooRoom);
 	nabooRoom->addSubRoom(nabooPlanetary);
-	addRoom(nabooPlanetary);
 }
 
-/*void ChatManagerImplementation::wlock() {
-	ManagedObjectImplementation::wlock(true);
+ChatRoom* ChatManagerImplementation::createRoomByFullPath(const String& path) {
+	StringTokenizer tokenizer(path);
+	tokenizer.setDelimeter(".");
+
+	String game;
+	tokenizer.getStringToken(game);
+
+	ChatRoom* gameRoom = getGameRoom(game);
+
+	if (gameRoom == NULL)
+		return NULL;
+
+	String channel;
+
+	ChatRoom* room = gameRoom;
+	while (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(channel);
+
+		if (room->getSubRoom(channel) == NULL)
+			break;
+		else
+			room = room->getSubRoom(channel);
+	}
+
+	if (room == gameRoom)
+		return NULL;
+
+	if (room->isPrivate())
+		return NULL;
+
+	ChatRoom* newRoom = createRoom(channel, room);
+	room->addSubRoom(newRoom);
+
+	return newRoom;
 }
 
-void ChatManagerImplementation::unlock() {
-	ManagedObjectImplementation::unlock(true);
-}*/
+ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const String& path) {
+	StringTokenizer tokenizer(path);
+	tokenizer.setDelimeter(".");
+
+	String channel;
+	ChatRoom* room = game;
+
+	while (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(channel);
+
+		room = room->getSubRoom(channel);
+		if (room == NULL)
+			return NULL;
+	}
+
+	if (room == game)
+		return NULL;
+	else
+		return room;
+}
+
+ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
+	StringTokenizer tokenizer(path);
+	tokenizer.setDelimeter(".");
+
+	if (!tokenizer.hasMoreTokens())
+		return NULL;
+
+	String game;
+	tokenizer.getStringToken(game);
+
+	ChatRoom* gameRoom = getGameRoom(game);
+
+	if (gameRoom == NULL)
+		return NULL;
+
+	String gamePath;
+	tokenizer.finalToken(gamePath);
+
+	return getChatRoomByGamePath(gameRoom, gamePath);
+}
+
 
 void ChatManagerImplementation::destroyRooms() {
-	wlock();
+	Locker _locker(_this);
 
 	roomMap->resetIterator();
 
@@ -127,24 +189,6 @@ void ChatManagerImplementation::destroyRooms() {
 	roomMap->removeAll();
 
 	gameRooms.removeAll();
-
-	unlock();
-}
-
-void ChatManagerImplementation::addRoom(ChatRoom* channel) {
-	wlock();
-
-	roomMap->put(channel->getRoomID(), channel);
-
-	unlock();
-}
-
-void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
-	wlock();
-
-	roomMap->remove(channel->getRoomID());
-
-	unlock();
 }
 
 void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
@@ -158,6 +202,35 @@ void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatR
 	}
 }
 
+void ChatManagerImplementation::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
+	/*if (sender->isChatMuted() && !sender->isPrivileged()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	ChatRoom* channel = getChatRoom(roomID);
+
+	if (channel == NULL)
+		return;
+
+	if (!channel->hasPlayer(sender))
+		return;
+
+	BaseMessage* msg = new ChatRoomMessage(name, message, roomID);
+	channel->broadcastMessage(msg);
+
+	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
+	channel->broadcastMessage(amsg);
+
+	/*Vector<Message*> messages;
+	messages.add(msg);
+	messages.add(amsg);
+
+	channel->broadcastMessage(messages);*/
+}
+
 void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {
 	ChatRoomList* crl = new ChatRoomList();
 
@@ -169,16 +242,14 @@ void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {
 }
 
 void ChatManagerImplementation::addPlayer(PlayerCreature* player) {
-	wlock();
+	Locker _locker(_this);
 
 	String name = player->getFirstName().toLowerCase();
 	playerMap->put(name, player, false);
-
-	unlock();
 }
 
 PlayerCreature* ChatManagerImplementation::getPlayer(const String& name) {
-	wlock();
+	Locker _locker(_this);
 
 	PlayerCreature* player = NULL;
 
@@ -193,18 +264,16 @@ PlayerCreature* ChatManagerImplementation::getPlayer(const String& name) {
 		System::out << "unreported exception caught in ChatManagerImplementation::getPlayer";
 	}
 
-	unlock();
 	return player;
 }
 
 PlayerCreature* ChatManagerImplementation::removePlayer(const String& name) {
-	wlock();
+	Locker _locker(_this);
 
 	String lName = name.toLowerCase();
 
 	PlayerCreature* player = playerMap->remove(lName, false);
 
-	unlock();
 	return player;
 }
 
@@ -315,15 +384,11 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreat
 	StringBuffer name;
 	name << groupID;
 
-	ChatRoom* newGroupRoom = new ChatRoom(server, groupRoom, name.toString(), getNextRoomID());
-	newGroupRoom->deploy();
-
+	ChatRoom* newGroupRoom = createRoom(name.toString(), groupRoom);
 	newGroupRoom->setPrivate();
 	groupRoom->addSubRoom(newGroupRoom);
-	addRoom(newGroupRoom);
 
-	groupChatRoom = new ChatRoom(server, newGroupRoom, "GroupChat", getNextRoomID());
-	groupChatRoom->deploy();
+	groupChatRoom = createRoom("GroupChat", newGroupRoom);
 
 	groupChatRoom->setTitle(name.toString());
 	groupChatRoom->setPrivate();
@@ -332,15 +397,12 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreat
 	groupChatRoom->addPlayer(creator, false);
 
 	newGroupRoom->addSubRoom(groupChatRoom);
-	addRoom(groupChatRoom);
 
 	return groupChatRoom;
 }
 
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	Locker _locker(_this);
-
-	roomMap->remove(room->getRoomID());
 
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
 	room->broadcastMessage(msg);
@@ -350,6 +412,8 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 
 	if (parent != NULL)
 		parent->removeSubRoom(room);
+
+	roomMap->remove(room->getRoomID());
 }
 
 

@@ -463,6 +463,7 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 
 		object->_setObjectID(oid);
 		object->_setImplementation(servant);
+		object->setPersistent(persistenceLevel);
 
 		servant->_setStub(object);
 		servant->_setClassHelper(helper);
@@ -474,8 +475,6 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 			updatePersistentObject(object);
 
 			object->queueUpdateToDatabaseTask();
-
-			object->setPersistent(persistenceLevel);
 		}
 
 	} else {
