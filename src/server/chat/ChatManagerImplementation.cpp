@@ -84,7 +84,7 @@ void ChatManagerImplementation::initiateRooms() {
 	guildRoom->setPrivate();
 	core3Room->addSubRoom(guildRoom);
 
-	ChatRoom* generalRoom = createRoom("geeneral", core3Room);
+	ChatRoom* generalRoom = createRoom("general", core3Room);
 	core3Room->addSubRoom(generalRoom);
 
 	// Planet Chat

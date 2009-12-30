@@ -51,7 +51,6 @@ void GroupObjectImplementation::destroyChatRoom() {
 	chatManager->destroyRoom(room);
 
 	chatRoom = NULL;
-
 }
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {

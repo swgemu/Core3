@@ -51,15 +51,27 @@ namespace server {
 namespace chat {
 namespace room {
 
-class ChatRoomMap : public HashTable<uint32, ManagedReference<ChatRoom*> >, public HashTableIterator<uint32, ManagedReference<ChatRoom*> > {
+class ChatRoomMap : public HashTable<uint32, ChatRoom*>, public HashTableIterator<uint32, ChatRoom* > {
 	
 	int hash(const uint32& key) {
         return key;
 	}
 
 public:
-	ChatRoomMap(int initsize) : HashTable<uint32, ManagedReference<ChatRoom*> >(initsize), HashTableIterator<uint32, ManagedReference<ChatRoom*> >(this) {
+	ChatRoomMap(int initsize) : HashTable<uint32, ChatRoom*>(initsize), HashTableIterator<uint32, ChatRoom*>(this) {
 		setNullValue(NULL);
+	}
+
+	void put(uint32 key, ChatRoom* room) {
+		if (HashTable<uint32, ChatRoom*>::put(key, room) == NULL)
+			room->acquire();
+	}
+
+	void remove(uint32 key) {
+		ChatRoom* room = HashTable<uint32, ChatRoom*>::remove(key);
+
+		if (room != NULL)
+			room->release();
 	}
 
 };

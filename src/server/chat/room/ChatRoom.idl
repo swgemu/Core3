@@ -123,7 +123,7 @@ class ChatRoom extends ManagedObject {
 		playerList.setNoDuplicateInsertPlan();
 		playerList.setNullValue(null);
 	}
-	
+		
 	public native void sendTo(PlayerCreature player);
 	public native void sendDestroyTo(PlayerCreature player);
 
