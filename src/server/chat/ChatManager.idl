@@ -120,8 +120,6 @@ class ChatManager extends ManagedObject {
 	
 	public native void handleChatRoomMessage(PlayerCreature sender, final unicode message, unsigned int roomID, unsigned int counter);
 
-
-	
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);
 	
@@ -134,7 +132,6 @@ class ChatManager extends ManagedObject {
 	public native void listMail(PlayerCreature ply);
 	public native void deleteMail(unsigned int mailid);
 
-	public native void handleTellMessage(PlayerCreature player, BaseMessage pack);
 	public native void handleMessage(PlayerCreature player, BaseMessage pack);
 	public native void handleEmote(PlayerCreature player, BaseMessage pack);
 	public native void handleMood(PlayerCreature player, BaseMessage pack);
@@ -152,7 +149,6 @@ class ChatManager extends ManagedObject {
 	public native void initGuildChannel(PlayerCreature creator, unsigned int gid);
 
 	public native void handleChatRoomMessage(PlayerCreature player, BaseMessage pack);
-	public native void handleGroupChat(PlayerCreature player, BaseMessage pack);
 	public native void handleGuildChat(PlayerCreature player, BaseMessage pack);
 
 	public native void handleCreateRoom(PlayerCreature player, BaseMessage pack);
@@ -161,15 +157,7 @@ class ChatManager extends ManagedObject {
 	public native void handleChatRemoveAvatarFromRoom(PlayerCreature player, BaseMessage pack);
 
 
-	
-
-
 	public native void sendGuildChat(PlayerCreature player);
-
-
-
-
-
 
 	 */
 	

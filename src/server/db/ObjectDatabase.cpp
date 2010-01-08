@@ -9,14 +9,11 @@
 #include "ObjectDatabaseEnvironment.h"
 
 ObjectDatabase::ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& dbFileName) {
-	DbEnv* env = NULL;
+	environment = dbEnv->getBerkeleyEnvironment();
 
-	if (dbEnv != NULL)
-		env = dbEnv->getBerkeleyEnvironment();
+	objectsDatabase = new Db(environment, 0);
 
-	objectsDatabase = new Db(env, 0);
-
-	dbFlags = DB_CREATE | DB_THREAD;
+	dbFlags = DB_CREATE | DB_THREAD | DB_AUTO_COMMIT;
 
 	databaseFileName = dbFileName;
 
@@ -51,8 +48,10 @@ void ObjectDatabase::openDatabase() {
 	} catch(DbException &e) {
 		error("Error opening database (" + databaseFileName + "): " );
 		error(e.what());
+		exit(1);
 	} catch (...) {
 		error("unreported exception caught while trying to open berkeley DB ");
+		exit(1);
 	}
 }
 
@@ -101,8 +100,10 @@ int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 	} catch(DbException &e) {
 		error("Error in getData");
 		error(e.what());
+		exit(1);
 	} catch (...) {
 		error("unreported exception caught while trying to get data from berkeley DB ");
+		exit(1);
 	}
 
 	return ret;
@@ -112,6 +113,7 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 	int ret = -1;
 
 	try {
+		DbTxn* tid;
 		Dbt key(&objKey, sizeof(uint64));
 		Dbt data((void*)objectData->getBuffer(), objectData->size());
 
@@ -119,10 +121,23 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 		msg << "saving oid 0x" << hex << objKey;
 		info(msg.toString(), true);
 
-		ret = objectsDatabase->put(NULL, &key, &data, 0);
+		if (environment->txn_begin(NULL, &tid, 0) != 0) {
+			error("Error starting transaction");
+			exit(1);
+		}
 
-		if (ret != 0)
+		ret = objectsDatabase->put(tid, &key, &data, 0);
+
+		if (ret != 0) {
 			error("Trying to open database (" + databaseFileName + ") error:" + String::valueOf(ret));
+			tid->abort();
+			exit(1);
+		}
+
+		if (tid->commit(0) != 0) {
+			error("Error commiting the transaction");
+			exit(1);
+		}
 
 		if (syncToDisk)
 			objectsDatabase->sync(0);
@@ -130,8 +145,10 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 	} catch(DbException &e) {
 		error("Error in putData");
 		error(e.what());
+		exit(1);
 	} catch (...) {
 		error("unreported exception caught while trying to put data into berkeley DB ");
+		exit(1);
 	}
 
 	return ret;
@@ -149,8 +166,10 @@ int ObjectDatabase::deleteData(uint64 objKey) {
 	} catch(DbException &e) {
 		error("Error in deleteData");
 		error(e.what());
+		exit(1);
 	} catch (...) {
 		error("unreported exception caught while trying to put data into berkeley DB ");
+		exit(1);
 	}
 
 	return ret;

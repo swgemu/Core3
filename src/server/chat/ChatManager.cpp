@@ -442,24 +442,24 @@ void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
 
 ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(178):  return roomMap.get(id);
+	// server/chat/ChatManager.idl(166):  return roomMap.get(id);
 	return roomMap->get(id);
 }
 
 ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(182):  return gameRooms.get(game);
+	// server/chat/ChatManager.idl(170):  return gameRooms.get(game);
 	return (&gameRooms)->get(game);
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(186):  return ++roomID;
+	// server/chat/ChatManager.idl(174):  return ++roomID;
 	return  ++roomID;
 }
 
 int ChatManagerImplementation::getPlayerCount() {
-	// server/chat/ChatManager.idl(191):  return playerMap.size();
+	// server/chat/ChatManager.idl(179):  return playerMap.size();
 	return playerMap->size();
 }
 

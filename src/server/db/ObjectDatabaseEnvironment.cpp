@@ -49,16 +49,18 @@ void ObjectDatabaseEnvironment::openEnvironment() {
 
 		databaseEnvironment->set_isalive(isAlive);
 
+		databaseEnvironment->log_set_config(DB_LOG_AUTO_REMOVE, 1); // delete unnecesary log files
+
 		if (ret != 0)
 			error("Trying to open environment error: " + String::valueOf(ret));
 
 		if (databaseEnvironment->failchk(0) != 0) {
-			error("Database environment crashed and cant continue, please run db_recovery -c in the databases folder");
+			error("Database environment crashed and cant continue, please run db_recover in the databases folder");
 			exit(1);
 		}
 
 	} catch(DbException &e) {
-		error("Error opening environment... please run db_recovery -c in the database folder");
+		error("Error opening environment... please run db_recover in the database folder");
 		error(e.what());
 		exit(1);
 	} catch (...) {

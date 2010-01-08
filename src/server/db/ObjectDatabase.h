@@ -16,6 +16,7 @@ class ObjectDatabaseEnvironment;
 
 class ObjectDatabase : public Logger {
 	Db* objectsDatabase;
+	DbEnv* environment;
 
 	String databaseFileName;
 	uint32 dbFlags;
@@ -70,6 +71,10 @@ public:
 
 		cursor = NULL;
 	}
+
+};
+
+class ObjectDatabaseTransaction {
 
 };
 
