@@ -18,7 +18,12 @@ ObjectDatabaseEnvironment::ObjectDatabaseEnvironment() : Logger("ObjectDatabaseE
 	databases.setNullValue(NULL);
 	databases.setNoDuplicateInsertPlan();
 
+	nameDirectory.setNullValue(-1);
+	nameDirectory.setNoDuplicateInsertPlan();
+
 	databaseDirectory = NULL;
+
+	lastTableID = 0;
 
 	openEnvironment();
 
@@ -49,7 +54,7 @@ void ObjectDatabaseEnvironment::openEnvironment() {
 
 		databaseEnvironment->set_isalive(isAlive);
 
-		databaseEnvironment->log_set_config(DB_LOG_AUTO_REMOVE, 1); // delete unnecesary log files
+		//databaseEnvironment->log_set_config(DB_LOG_AUTO_REMOVE, 1); // delete unnecesary log files
 
 		if (ret != 0)
 			error("Trying to open environment error: " + String::valueOf(ret));
@@ -87,6 +92,10 @@ void ObjectDatabaseEnvironment::loadDatabases() {
 		info(msg.toString(), true);
 
 		databases.put((uint16)tableID, db);
+		nameDirectory.put(dbName, tableID);
+
+		if (tableID > lastTableID)
+			lastTableID = tableID;
 
 		tableName.reset();
 	}
@@ -107,7 +116,7 @@ ObjectDatabase* ObjectDatabaseEnvironment::loadDatabase(const String& name, bool
 	Locker _locker(this);
 
 	if (uniqueID == 0xFFFF)
-		uniqueID = (uint16)name.hashCode();
+		uniqueID = getDatabaseID(name);
 
 	ObjectDatabase* db = databases.get(uniqueID);
 
@@ -116,6 +125,9 @@ ObjectDatabase* ObjectDatabaseEnvironment::loadDatabase(const String& name, bool
 
 	if (db == NULL && !create)
 		return NULL;
+
+	if (uniqueID == 0xFFFF)
+		uniqueID = ++lastTableID;
 
 	db = new ObjectDatabase(this, String(name + ".db"));
 
@@ -128,9 +140,10 @@ ObjectDatabase* ObjectDatabaseEnvironment::loadDatabase(const String& name, bool
 	String nm = name;
 	nm.toBinaryStream(&nameData);
 
-	databaseDirectory->putData((uint64)uniqueID, &nameData, true);
+	databaseDirectory->putData((uint64)uniqueID, &nameData);
 
 	databases.put(uniqueID, db);
+	nameDirectory.put(name, uniqueID);
 
 	return db;
 }

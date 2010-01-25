@@ -33,7 +33,7 @@ public:
 	~ObjectDatabase();
 
 	int getData(uint64 objKey, ObjectInputStream* objectData);
-	int putData(uint64 objKey, ObjectOutputStream* stream, bool syncToDisk = false);
+	int putData(uint64 objKey, ObjectOutputStream* stream, bool useTransaction = false);
 	int deleteData(uint64 objKey);
 
 	int sync();

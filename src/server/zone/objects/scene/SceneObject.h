@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 
@@ -76,6 +78,20 @@ class ObjectMenuResponse;
 } // namespace server
 
 using namespace server::zone::packets::object;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
 
 #include "engine/core/ManagedObject.h"
 
@@ -522,8 +538,6 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
-	int useObject(SceneObject* object);
-
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -551,6 +565,8 @@ public:
 	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	unsigned long long getObjectID();
 
@@ -1127,8 +1143,6 @@ public:
 
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
-	virtual int useObject(SceneObject* object);
-
 	virtual void insertToZone(Zone* zone);
 
 	virtual void insertToBuilding(BuildingObject* building);
@@ -1156,6 +1170,8 @@ public:
 	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
+
+	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	unsigned long long getObjectID();
 
@@ -1344,8 +1360,6 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
-	int useObject(SceneObject* object);
-
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -1369,6 +1383,8 @@ public:
 	int compareTo(SceneObject* obj);
 
 	unsigned long long getParentID();
+
+	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	unsigned long long getObjectID();
 

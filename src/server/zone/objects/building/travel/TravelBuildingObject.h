@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"

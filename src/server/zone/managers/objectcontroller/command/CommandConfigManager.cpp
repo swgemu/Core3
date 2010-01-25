@@ -69,666 +69,780 @@ void CommandConfigManager::registerFunctions() {
 	lua_register(getLuaState(), "RunSlashCommandsFile", runSlashCommandsFile);
 
 	//AddSkills
-	lua_register(getLuaState(), "AddActivateCloneSlashCommand", addActivateCloneSlashCommand);
-	lua_register(getLuaState(), "AddActivateQuestSlashCommand", addActivateQuestSlashCommand);
-	lua_register(getLuaState(), "AddAddAllowedPlayerSlashCommand", addAddAllowedPlayerSlashCommand);
-	lua_register(getLuaState(), "AddAddBannedPlayerSlashCommand", addAddBannedPlayerSlashCommand);
-	lua_register(getLuaState(), "AddAddFriendSlashCommand", addAddFriendSlashCommand);
-	lua_register(getLuaState(), "AddAddIgnoreSlashCommand", addAddIgnoreSlashCommand);
-	lua_register(getLuaState(), "AddAddMapLocationSlashCommand", addAddMapLocationSlashCommand);
-	lua_register(getLuaState(), "AddAddPowerSlashCommand", addAddPowerSlashCommand);
-	lua_register(getLuaState(), "AddAdjustLotCountSlashCommand", addAdjustLotCountSlashCommand);
-	lua_register(getLuaState(), "AddAdrenalBoostSlashCommand", addAdrenalBoostSlashCommand);
-	lua_register(getLuaState(), "AddAiIgnoreSlashCommand", addAiIgnoreSlashCommand);
-	lua_register(getLuaState(), "AddAimSlashCommand", addAimSlashCommand);
-	lua_register(getLuaState(), "AddAimedShotSlashCommand", addAimedShotSlashCommand);
-	lua_register(getLuaState(), "AddAnonSlashCommand", addAnonSlashCommand);
-	lua_register(getLuaState(), "AddApplyPowerupSlashCommand", addApplyPowerupSlashCommand);
-	lua_register(getLuaState(), "AddAreaTauntSlashCommand", addAreaTauntSlashCommand);
-	lua_register(getLuaState(), "AddAreatrackSlashCommand", addAreatrackSlashCommand);
-	lua_register(getLuaState(), "AddArmorBreakSlashCommand", addArmorBreakSlashCommand);
-	lua_register(getLuaState(), "AddAssignDroidSlashCommand", addAssignDroidSlashCommand);
-	lua_register(getLuaState(), "AddAssociateDroidControlDeviceWithShipSlashCommand", addAssociateDroidControlDeviceWithShipSlashCommand);
-	lua_register(getLuaState(), "AddAttackSlashCommand", addAttackSlashCommand);
-	lua_register(getLuaState(), "AddAuctionAcceptSlashCommand", addAuctionAcceptSlashCommand);
-	lua_register(getLuaState(), "AddAuctionBidSlashCommand", addAuctionBidSlashCommand);
-	lua_register(getLuaState(), "AddAuctionCancelSlashCommand", addAuctionCancelSlashCommand);
-	lua_register(getLuaState(), "AddAuctionCreateSlashCommand", addAuctionCreateSlashCommand);
-	lua_register(getLuaState(), "AddAuctionQuerySlashCommand", addAuctionQuerySlashCommand);
-	lua_register(getLuaState(), "AddAuctionRetrieveSlashCommand", addAuctionRetrieveSlashCommand);
-	lua_register(getLuaState(), "AddAuctionsaySlashCommand", addAuctionsaySlashCommand);
-	lua_register(getLuaState(), "AddAvoidIncapacitationSlashCommand", addAvoidIncapacitationSlashCommand);
-	lua_register(getLuaState(), "AddBactaInfusionSlashCommand", addBactaInfusionSlashCommand);
-	lua_register(getLuaState(), "AddBactaJabSlashCommand", addBactaJabSlashCommand);
-	lua_register(getLuaState(), "AddBactaShotSlashCommand", addBactaShotSlashCommand);
-	lua_register(getLuaState(), "AddBactaSpraySlashCommand", addBactaSpraySlashCommand);
-	lua_register(getLuaState(), "AddBactaTossSlashCommand", addBactaTossSlashCommand);
-	lua_register(getLuaState(), "AddBandageSlashCommand", addBandageSlashCommand);
-	lua_register(getLuaState(), "AddBattlefieldStatusSlashCommand", addBattlefieldStatusSlashCommand);
-	lua_register(getLuaState(), "AddBerserkSlashCommand", addBerserkSlashCommand);
-	lua_register(getLuaState(), "AddBetSlashCommand", addBetSlashCommand);
-	lua_register(getLuaState(), "AddBindingStrikeSlashCommand", addBindingStrikeSlashCommand);
-	lua_register(getLuaState(), "AddBleedAttackSlashCommand", addBleedAttackSlashCommand);
-	lua_register(getLuaState(), "AddBlindAttackSlashCommand", addBlindAttackSlashCommand);
-	lua_register(getLuaState(), "AddBlindRecoverySlashCommand", addBlindRecoverySlashCommand);
-	lua_register(getLuaState(), "AddBoardShuttleSlashCommand", addBoardShuttleSlashCommand);
-	lua_register(getLuaState(), "AddBodyHitSlashCommand", addBodyHitSlashCommand);
-	lua_register(getLuaState(), "AddBodyShotSlashCommand", addBodyShotSlashCommand);
-	lua_register(getLuaState(), "AddBoostmoraleSlashCommand", addBoostmoraleSlashCommand);
-	lua_register(getLuaState(), "AddBroadcastSlashCommand", addBroadcastSlashCommand);
-	lua_register(getLuaState(), "AddBroadcastAreaSlashCommand", addBroadcastAreaSlashCommand);
-	lua_register(getLuaState(), "AddBroadcastGalaxySlashCommand", addBroadcastGalaxySlashCommand);
-	lua_register(getLuaState(), "AddBroadcastPlanetSlashCommand", addBroadcastPlanetSlashCommand);
-	lua_register(getLuaState(), "AddBurstRunSlashCommand", addBurstRunSlashCommand);
-	lua_register(getLuaState(), "AddBurstShotSlashCommand", addBurstShotSlashCommand);
-	lua_register(getLuaState(), "AddCancelCraftingSessionSlashCommand", addCancelCraftingSessionSlashCommand);
-	lua_register(getLuaState(), "AddCenterOfBeingSlashCommand", addCenterOfBeingSlashCommand);
-	lua_register(getLuaState(), "AddChangeBandMusicSlashCommand", addChangeBandMusicSlashCommand);
-	lua_register(getLuaState(), "AddChangeDanceSlashCommand", addChangeDanceSlashCommand);
-	lua_register(getLuaState(), "AddChangeMusicSlashCommand", addChangeMusicSlashCommand);
-	lua_register(getLuaState(), "AddChannelForceSlashCommand", addChannelForceSlashCommand);
-	lua_register(getLuaState(), "AddChargeShotSlashCommand", addChargeShotSlashCommand);
-	lua_register(getLuaState(), "AddCheckForceStatusSlashCommand", addCheckForceStatusSlashCommand);
-	lua_register(getLuaState(), "AddCitybanSlashCommand", addCitybanSlashCommand);
-	lua_register(getLuaState(), "AddCityInfoSlashCommand", addCityInfoSlashCommand);
-	lua_register(getLuaState(), "AddCitypardonSlashCommand", addCitypardonSlashCommand);
-	lua_register(getLuaState(), "AddClaimVeteranRewardSlashCommand", addClaimVeteranRewardSlashCommand);
-	lua_register(getLuaState(), "AddClearCompletedQuestSlashCommand", addClearCompletedQuestSlashCommand);
-	lua_register(getLuaState(), "AddClearQueueSlashCommand", addClearQueueSlashCommand);
-	lua_register(getLuaState(), "AddClearVeteranRewardSlashCommand", addClearVeteranRewardSlashCommand);
-	lua_register(getLuaState(), "AddClientQualifiedForSkillSlashCommand", addClientQualifiedForSkillSlashCommand);
-	lua_register(getLuaState(), "AddCloneSlashCommand", addCloneSlashCommand);
-	lua_register(getLuaState(), "AddCloseContainerSlashCommand", addCloseContainerSlashCommand);
-	lua_register(getLuaState(), "AddCloseLotteryContainerSlashCommand", addCloseLotteryContainerSlashCommand);
-	lua_register(getLuaState(), "AddCobSlashCommand", addCobSlashCommand);
-	lua_register(getLuaState(), "AddColorlightsSlashCommand", addColorlightsSlashCommand);
-	lua_register(getLuaState(), "AddCombatSlashCommand", addCombatSlashCommand);
-	lua_register(getLuaState(), "AddCombatEscapeSlashCommand", addCombatEscapeSlashCommand);
-	lua_register(getLuaState(), "AddCombatModeCheckSlashCommand", addCombatModeCheckSlashCommand);
-	lua_register(getLuaState(), "AddCombatSpamSlashCommand", addCombatSpamSlashCommand);
-	lua_register(getLuaState(), "AddCombatTargetSlashCommand", addCombatTargetSlashCommand);
-	lua_register(getLuaState(), "AddComboAttackSlashCommand", addComboAttackSlashCommand);
-	lua_register(getLuaState(), "AddCompleteQuestSlashCommand", addCompleteQuestSlashCommand);
-	lua_register(getLuaState(), "AddConcealSlashCommand", addConcealSlashCommand);
-	lua_register(getLuaState(), "AddConcealShotSlashCommand", addConcealShotSlashCommand);
-	lua_register(getLuaState(), "AddConcussionShotSlashCommand", addConcussionShotSlashCommand);
-	lua_register(getLuaState(), "AddConfusionShotSlashCommand", addConfusionShotSlashCommand);
-	lua_register(getLuaState(), "AddConsentSlashCommand", addConsentSlashCommand);
-	lua_register(getLuaState(), "AddCorpseSlashCommand", addCorpseSlashCommand);
-	lua_register(getLuaState(), "AddCounterAttackSlashCommand", addCounterAttackSlashCommand);
-	lua_register(getLuaState(), "AddCountertoxinSlashCommand", addCountertoxinSlashCommand);
-	lua_register(getLuaState(), "AddCountertoxinSpraySlashCommand", addCountertoxinSpraySlashCommand);
-	lua_register(getLuaState(), "AddCoupDeGraceSlashCommand", addCoupDeGraceSlashCommand);
-	lua_register(getLuaState(), "AddCoverSlashCommand", addCoverSlashCommand);
-	lua_register(getLuaState(), "AddCoverchargeSlashCommand", addCoverchargeSlashCommand);
-	lua_register(getLuaState(), "AddCraftSlashCommand", addCraftSlashCommand);
-	lua_register(getLuaState(), "AddCreateCreatureSlashCommand", addCreateCreatureSlashCommand);
-	lua_register(getLuaState(), "AddCreateManfSchematicSlashCommand", addCreateManfSchematicSlashCommand);
-	lua_register(getLuaState(), "AddCreateMissionElementSlashCommand", addCreateMissionElementSlashCommand);
-	lua_register(getLuaState(), "AddCreateNPCSlashCommand", addCreateNPCSlashCommand);
-	lua_register(getLuaState(), "AddCreatePrototypeSlashCommand", addCreatePrototypeSlashCommand);
-	lua_register(getLuaState(), "AddCreateSpawningElementSlashCommand", addCreateSpawningElementSlashCommand);
-	lua_register(getLuaState(), "AddCreateSpawningElementWithDifficultySlashCommand", addCreateSpawningElementWithDifficultySlashCommand);
-	lua_register(getLuaState(), "AddCreatureAreaAttackSlashCommand", addCreatureAreaAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureAreaBleedingSlashCommand", addCreatureAreaBleedingSlashCommand);
-	lua_register(getLuaState(), "AddCreatureAreaComboSlashCommand", addCreatureAreaComboSlashCommand);
-	lua_register(getLuaState(), "AddCreatureAreaDiseaseSlashCommand", addCreatureAreaDiseaseSlashCommand);
-	lua_register(getLuaState(), "AddCreatureAreaKnockdownSlashCommand", addCreatureAreaKnockdownSlashCommand);
-	lua_register(getLuaState(), "AddCreatureAreaPoisonSlashCommand", addCreatureAreaPoisonSlashCommand);
-	lua_register(getLuaState(), "AddCreatureBlindAttackSlashCommand", addCreatureBlindAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureDizzyAttackSlashCommand", addCreatureDizzyAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureIntimidationAttackSlashCommand", addCreatureIntimidationAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureKnockdownAttackSlashCommand", addCreatureKnockdownAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureMeleeAttackSlashCommand", addCreatureMeleeAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreaturePostureDownAttackSlashCommand", addCreaturePostureDownAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreaturePostureUpAttackSlashCommand", addCreaturePostureUpAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureRangedAttackSlashCommand", addCreatureRangedAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreatureStunAttackSlashCommand", addCreatureStunAttackSlashCommand);
-	lua_register(getLuaState(), "AddCreditsSlashCommand", addCreditsSlashCommand);
-	lua_register(getLuaState(), "AddCrippleAttackSlashCommand", addCrippleAttackSlashCommand);
-	lua_register(getLuaState(), "AddCripplingShotSlashCommand", addCripplingShotSlashCommand);
-	lua_register(getLuaState(), "AddCriticalShotSlashCommand", addCriticalShotSlashCommand);
-	lua_register(getLuaState(), "AddCriticalStrikeSlashCommand", addCriticalStrikeSlashCommand);
-	lua_register(getLuaState(), "AddCsAppendCommentSlashCommand", addCsAppendCommentSlashCommand);
-	lua_register(getLuaState(), "AddCsCancelTicketSlashCommand", addCsCancelTicketSlashCommand);
-	lua_register(getLuaState(), "AddCsConnectPlayerSlashCommand", addCsConnectPlayerSlashCommand);
-	lua_register(getLuaState(), "AddCsCreateTicketSlashCommand", addCsCreateTicketSlashCommand);
-	lua_register(getLuaState(), "AddCsDisconnectPlayerSlashCommand", addCsDisconnectPlayerSlashCommand);
-	lua_register(getLuaState(), "AddCsGetArticleSlashCommand", addCsGetArticleSlashCommand);
-	lua_register(getLuaState(), "AddCsGetCommentsSlashCommand", addCsGetCommentsSlashCommand);
-	lua_register(getLuaState(), "AddCsGetTicketsSlashCommand", addCsGetTicketsSlashCommand);
-	lua_register(getLuaState(), "AddCsRequestCategoriesSlashCommand", addCsRequestCategoriesSlashCommand);
-	lua_register(getLuaState(), "AddCsSearchKnowledgeBaseSlashCommand", addCsSearchKnowledgeBaseSlashCommand);
-	lua_register(getLuaState(), "AddCuiConsentResponseSlashCommand", addCuiConsentResponseSlashCommand);
-	lua_register(getLuaState(), "AddCustomizeDroidSlashCommand", addCustomizeDroidSlashCommand);
-	lua_register(getLuaState(), "AddCustomizeVehicleSlashCommand", addCustomizeVehicleSlashCommand);
-	lua_register(getLuaState(), "AddCyborgBurstRunSlashCommand", addCyborgBurstRunSlashCommand);
-	lua_register(getLuaState(), "AddCyborgCriticalSnipeSlashCommand", addCyborgCriticalSnipeSlashCommand);
-	lua_register(getLuaState(), "AddCyborgKickDownSlashCommand", addCyborgKickDownSlashCommand);
-	lua_register(getLuaState(), "AddCyborgLightningSlashCommand", addCyborgLightningSlashCommand);
-	lua_register(getLuaState(), "AddCyborgReviveSlashCommand", addCyborgReviveSlashCommand);
-	lua_register(getLuaState(), "AddCyborgStrengthBuffSlashCommand", addCyborgStrengthBuffSlashCommand);
-	lua_register(getLuaState(), "AddCyborgSureShotSlashCommand", addCyborgSureShotSlashCommand);
-	lua_register(getLuaState(), "AddDatabaseSlashCommand", addDatabaseSlashCommand);
-	lua_register(getLuaState(), "AddDazzleSlashCommand", addDazzleSlashCommand);
-	lua_register(getLuaState(), "AddDeactivateQuestSlashCommand", addDeactivateQuestSlashCommand);
-	lua_register(getLuaState(), "AddDeathBlowSlashCommand", addDeathBlowSlashCommand);
-	lua_register(getLuaState(), "AddDeathCountSlashCommand", addDeathCountSlashCommand);
-	lua_register(getLuaState(), "AddDeclareOvertSlashCommand", addDeclareOvertSlashCommand);
-	lua_register(getLuaState(), "AddDeclareresidenceSlashCommand", addDeclareresidenceSlashCommand);
-	lua_register(getLuaState(), "AddDeclineSlashCommand", addDeclineSlashCommand);
-	lua_register(getLuaState(), "AddDecontaminateSlashCommand", addDecontaminateSlashCommand);
-	lua_register(getLuaState(), "AddDefaultActionSlashCommand", addDefaultActionSlashCommand);
-	lua_register(getLuaState(), "AddDefaultAttackSlashCommand", addDefaultAttackSlashCommand);
-	lua_register(getLuaState(), "AddDefuseMinefieldSlashCommand", addDefuseMinefieldSlashCommand);
-	lua_register(getLuaState(), "AddDelegateFactionPointsSlashCommand", addDelegateFactionPointsSlashCommand);
-	lua_register(getLuaState(), "AddDenyServiceSlashCommand", addDenyServiceSlashCommand);
-	lua_register(getLuaState(), "AddDeployTrapSlashCommand", addDeployTrapSlashCommand);
-	lua_register(getLuaState(), "AddDestroySlashCommand", addDestroySlashCommand);
-	lua_register(getLuaState(), "AddDestroystructureSlashCommand", addDestroystructureSlashCommand);
-	lua_register(getLuaState(), "AddDetonateDroidSlashCommand", addDetonateDroidSlashCommand);
-	lua_register(getLuaState(), "AddDeuteriumTossSlashCommand", addDeuteriumTossSlashCommand);
-	lua_register(getLuaState(), "AddDiagnoseSlashCommand", addDiagnoseSlashCommand);
-	lua_register(getLuaState(), "AddDisarmingShotSlashCommand", addDisarmingShotSlashCommand);
-	lua_register(getLuaState(), "AddDisbandSlashCommand", addDisbandSlashCommand);
-	lua_register(getLuaState(), "AddDiseaseInnoculationSlashCommand", addDiseaseInnoculationSlashCommand);
-	lua_register(getLuaState(), "AddDisinfectSlashCommand", addDisinfectSlashCommand);
-	lua_register(getLuaState(), "AddDismissGroupMemberSlashCommand", addDismissGroupMemberSlashCommand);
-	lua_register(getLuaState(), "AddDismountSlashCommand", addDismountSlashCommand);
-	lua_register(getLuaState(), "AddDismountandstoreSlashCommand", addDismountandstoreSlashCommand);
-	lua_register(getLuaState(), "AddDistractSlashCommand", addDistractSlashCommand);
-	lua_register(getLuaState(), "AddDiveShotSlashCommand", addDiveShotSlashCommand);
-	lua_register(getLuaState(), "AddDizzyAttackSlashCommand", addDizzyAttackSlashCommand);
-	lua_register(getLuaState(), "AddDizzyRecoverySlashCommand", addDizzyRecoverySlashCommand);
-	lua_register(getLuaState(), "AddDominateMindSlashCommand", addDominateMindSlashCommand);
-	lua_register(getLuaState(), "AddDragPlayerSlashCommand", addDragPlayerSlashCommand);
-	lua_register(getLuaState(), "AddDrainForceSlashCommand", addDrainForceSlashCommand);
-	lua_register(getLuaState(), "AddDuelSlashCommand", addDuelSlashCommand);
-	lua_register(getLuaState(), "AddDuelistStanceSlashCommand", addDuelistStanceSlashCommand);
-	lua_register(getLuaState(), "AddDumpTargetInformationSlashCommand", addDumpTargetInformationSlashCommand);
-	lua_register(getLuaState(), "AddDumpZoneInformationSlashCommand", addDumpZoneInformationSlashCommand);
-	lua_register(getLuaState(), "AddEatSlashCommand", addEatSlashCommand);
-	lua_register(getLuaState(), "AddEditAppearanceSlashCommand", addEditAppearanceSlashCommand);
-	lua_register(getLuaState(), "AddEditBankSlashCommand", addEditBankSlashCommand);
-	lua_register(getLuaState(), "AddEditBankAccountSlashCommand", addEditBankAccountSlashCommand);
-	lua_register(getLuaState(), "AddEditStatsSlashCommand", addEditStatsSlashCommand);
-	lua_register(getLuaState(), "AddElectrolyteDrainSlashCommand", addElectrolyteDrainSlashCommand);
-	lua_register(getLuaState(), "AddEmboldenpetsSlashCommand", addEmboldenpetsSlashCommand);
-	lua_register(getLuaState(), "AddEmptyMailTargetSlashCommand", addEmptyMailTargetSlashCommand);
-	lua_register(getLuaState(), "AddEndDuelSlashCommand", addEndDuelSlashCommand);
-	lua_register(getLuaState(), "AddEndorphineInjectionSlashCommand", addEndorphineInjectionSlashCommand);
-	lua_register(getLuaState(), "AddEnragepetsSlashCommand", addEnragepetsSlashCommand);
-	lua_register(getLuaState(), "AddEquilibriumSlashCommand", addEquilibriumSlashCommand);
-	lua_register(getLuaState(), "AddExecuteKnowledgeBaseMessageSlashCommand", addExecuteKnowledgeBaseMessageSlashCommand);
-	lua_register(getLuaState(), "AddExtinguishFireSlashCommand", addExtinguishFireSlashCommand);
-	lua_register(getLuaState(), "AddExtractObjectSlashCommand", addExtractObjectSlashCommand);
-	lua_register(getLuaState(), "AddEyeShotSlashCommand", addEyeShotSlashCommand);
-	lua_register(getLuaState(), "AddFactoryCrateSplitSlashCommand", addFactoryCrateSplitSlashCommand);
-	lua_register(getLuaState(), "AddFanShotSlashCommand", addFanShotSlashCommand);
-	lua_register(getLuaState(), "AddFeignDeathSlashCommand", addFeignDeathSlashCommand);
-	lua_register(getLuaState(), "AddFindSlashCommand", addFindSlashCommand);
-	lua_register(getLuaState(), "AddFindFriendSlashCommand", addFindFriendSlashCommand);
-	lua_register(getLuaState(), "AddFindMyTrainerSlashCommand", addFindMyTrainerSlashCommand);
-	lua_register(getLuaState(), "AddFindObjectSlashCommand", addFindObjectSlashCommand);
-	lua_register(getLuaState(), "AddFindPlayerSlashCommand", addFindPlayerSlashCommand);
-	lua_register(getLuaState(), "AddFirearmStrikeSlashCommand", addFirearmStrikeSlashCommand);
-	lua_register(getLuaState(), "AddFirejetSlashCommand", addFirejetSlashCommand);
-	lua_register(getLuaState(), "AddFishSlashCommand", addFishSlashCommand);
-	lua_register(getLuaState(), "AddFlashSpeederSlashCommand", addFlashSpeederSlashCommand);
-	lua_register(getLuaState(), "AddFlourishSlashCommand", addFlourishSlashCommand);
-	lua_register(getLuaState(), "AddForageSlashCommand", addForageSlashCommand);
-	lua_register(getLuaState(), "AddForceAbsorbSlashCommand", addForceAbsorbSlashCommand);
-	lua_register(getLuaState(), "AddForceArmorSlashCommand", addForceArmorSlashCommand);
-	lua_register(getLuaState(), "AddForceAuraSlashCommand", addForceAuraSlashCommand);
-	lua_register(getLuaState(), "AddForceBreachSlashCommand", addForceBreachSlashCommand);
-	lua_register(getLuaState(), "AddForceChokeSlashCommand", addForceChokeSlashCommand);
-	lua_register(getLuaState(), "AddForceCloakSlashCommand", addForceCloakSlashCommand);
-	lua_register(getLuaState(), "AddForceCommandSlashCommand", addForceCommandSlashCommand);
-	lua_register(getLuaState(), "AddForceCureDiseaseSlashCommand", addForceCureDiseaseSlashCommand);
-	lua_register(getLuaState(), "AddForceCurePoisonSlashCommand", addForceCurePoisonSlashCommand);
-	lua_register(getLuaState(), "AddForceExtinguishSlashCommand", addForceExtinguishSlashCommand);
-	lua_register(getLuaState(), "AddForceFeedbackSlashCommand", addForceFeedbackSlashCommand);
-	lua_register(getLuaState(), "AddForceHealSlashCommand", addForceHealSlashCommand);
-	lua_register(getLuaState(), "AddForceHitSlashCommand", addForceHitSlashCommand);
-	lua_register(getLuaState(), "AddForceInfusionSlashCommand", addForceInfusionSlashCommand);
-	lua_register(getLuaState(), "AddForceIntimidateSlashCommand", addForceIntimidateSlashCommand);
-	lua_register(getLuaState(), "AddForceKnockdownSlashCommand", addForceKnockdownSlashCommand);
-	lua_register(getLuaState(), "AddForceLightningSlashCommand", addForceLightningSlashCommand);
-	lua_register(getLuaState(), "AddForceLightningAreaSlashCommand", addForceLightningAreaSlashCommand);
-	lua_register(getLuaState(), "AddForceMeditateSlashCommand", addForceMeditateSlashCommand);
-	lua_register(getLuaState(), "AddForceOfWillSlashCommand", addForceOfWillSlashCommand);
-	lua_register(getLuaState(), "AddForceResistBleedingSlashCommand", addForceResistBleedingSlashCommand);
-	lua_register(getLuaState(), "AddForceResistDiseaseSlashCommand", addForceResistDiseaseSlashCommand);
-	lua_register(getLuaState(), "AddForceResistPoisonSlashCommand", addForceResistPoisonSlashCommand);
-	lua_register(getLuaState(), "AddForceResistStatesSlashCommand", addForceResistStatesSlashCommand);
-	lua_register(getLuaState(), "AddForceRunSlashCommand", addForceRunSlashCommand);
-	lua_register(getLuaState(), "AddForceSapSlashCommand", addForceSapSlashCommand);
-	lua_register(getLuaState(), "AddForceShieldSlashCommand", addForceShieldSlashCommand);
-	lua_register(getLuaState(), "AddForceShockSlashCommand", addForceShockSlashCommand);
-	lua_register(getLuaState(), "AddForceSpeedSlashCommand", addForceSpeedSlashCommand);
-	lua_register(getLuaState(), "AddForceStrikeSlashCommand", addForceStrikeSlashCommand);
-	lua_register(getLuaState(), "AddForceSuppressionSlashCommand", addForceSuppressionSlashCommand);
-	lua_register(getLuaState(), "AddForceThrowSlashCommand", addForceThrowSlashCommand);
-	lua_register(getLuaState(), "AddForceValorSlashCommand", addForceValorSlashCommand);
-	lua_register(getLuaState(), "AddForceWaveSlashCommand", addForceWaveSlashCommand);
-	lua_register(getLuaState(), "AddForceWeakenSlashCommand", addForceWeakenSlashCommand);
-	lua_register(getLuaState(), "AddForceWoundHealSlashCommand", addForceWoundHealSlashCommand);
-	lua_register(getLuaState(), "AddFormupSlashCommand", addFormupSlashCommand);
-	lua_register(getLuaState(), "AddFreezePlayerSlashCommand", addFreezePlayerSlashCommand);
-	lua_register(getLuaState(), "AddFullAutoAreaSlashCommand", addFullAutoAreaSlashCommand);
-	//lua_register(getLuaState(), "AddGSlashCommand", addGSlashCommand);
-	lua_register(getLuaState(), "AddGallopSlashCommand", addGallopSlashCommand);
-	lua_register(getLuaState(), "AddGallopStopSlashCommand", addGallopStopSlashCommand);
-	//lua_register(getLuaState(), "AddGcSlashCommand", addGcSlashCommand);
-	lua_register(getLuaState(), "AddGcwStatusSlashCommand", addGcwStatusSlashCommand);
-	lua_register(getLuaState(), "AddGenerateCraftedItemSlashCommand", addGenerateCraftedItemSlashCommand);
-	lua_register(getLuaState(), "AddGetAccountInfoSlashCommand", addGetAccountInfoSlashCommand);
-	lua_register(getLuaState(), "AddGetAttributesSlashCommand", addGetAttributesSlashCommand);
-	lua_register(getLuaState(), "AddGetAttributesBatchSlashCommand", addGetAttributesBatchSlashCommand);
-	lua_register(getLuaState(), "AddGetFriendListSlashCommand", addGetFriendListSlashCommand);
-	lua_register(getLuaState(), "AddGetGameTimeSlashCommand", addGetGameTimeSlashCommand);
-	lua_register(getLuaState(), "AddGetIgnoreListSlashCommand", addGetIgnoreListSlashCommand);
-	lua_register(getLuaState(), "AddGetMapLocationsSlashCommand", addGetMapLocationsSlashCommand);
-	lua_register(getLuaState(), "AddGetObjVarsSlashCommand", addGetObjVarsSlashCommand);
-	lua_register(getLuaState(), "AddGetPlayerIdSlashCommand", addGetPlayerIdSlashCommand);
-	lua_register(getLuaState(), "AddGetPrototypeSlashCommand", addGetPrototypeSlashCommand);
-	lua_register(getLuaState(), "AddGetRankSlashCommand", addGetRankSlashCommand);
-	lua_register(getLuaState(), "AddGetSpawnDelaysSlashCommand", addGetSpawnDelaysSlashCommand);
-	lua_register(getLuaState(), "AddGetStationNameSlashCommand", addGetStationNameSlashCommand);
-	lua_register(getLuaState(), "AddGetVeteranRewardTimeSlashCommand", addGetVeteranRewardTimeSlashCommand);
-	lua_register(getLuaState(), "AddGetVeteranRewardTimeCsSlashCommand", addGetVeteranRewardTimeCsSlashCommand);
-	lua_register(getLuaState(), "AddGiveItemSlashCommand", addGiveItemSlashCommand);
-	lua_register(getLuaState(), "AddGiveMaintenanceToVendorSlashCommand", addGiveMaintenanceToVendorSlashCommand);
-	lua_register(getLuaState(), "AddGivevendormaintSlashCommand", addGivevendormaintSlashCommand);
-	lua_register(getLuaState(), "AddGmCreateClassResourceSlashCommand", addGmCreateClassResourceSlashCommand);
-	lua_register(getLuaState(), "AddGmCreateSpecificResourceSlashCommand", addGmCreateSpecificResourceSlashCommand);
-	lua_register(getLuaState(), "AddGmForceCommandSlashCommand", addGmForceCommandSlashCommand);
-	lua_register(getLuaState(), "AddGmForceRankSlashCommand", addGmForceRankSlashCommand);
-	lua_register(getLuaState(), "AddGmFsVillageSlashCommand", addGmFsVillageSlashCommand);
-	lua_register(getLuaState(), "AddGmJediStateSlashCommand", addGmJediStateSlashCommand);
-	lua_register(getLuaState(), "AddGmReviveSlashCommand", addGmReviveSlashCommand);
-	lua_register(getLuaState(), "AddGmWeaponSlashCommand", addGmWeaponSlashCommand);
-	lua_register(getLuaState(), "AddGotoSlashCommand", addGotoSlashCommand);
-	lua_register(getLuaState(), "AddGrantBadgeSlashCommand", addGrantBadgeSlashCommand);
-	lua_register(getLuaState(), "AddGrantPadawanTrialsEligibilitySlashCommand", addGrantPadawanTrialsEligibilitySlashCommand);
-	lua_register(getLuaState(), "AddGrantSkillSlashCommand", addGrantSkillSlashCommand);
-	lua_register(getLuaState(), "AddGrantTitleSlashCommand", addGrantTitleSlashCommand);
-	lua_register(getLuaState(), "AddGrantZoningRightsSlashCommand", addGrantZoningRightsSlashCommand);
-	lua_register(getLuaState(), "AddGroupChatSlashCommand", addGroupChatSlashCommand);
-	lua_register(getLuaState(), "AddGroupLootSlashCommand", addGroupLootSlashCommand);
-	//lua_register(getLuaState(), "AddGroupSaySlashCommand", addGroupSaySlashCommand);
-	//lua_register(getLuaState(), "AddGsaySlashCommand", addGsaySlashCommand);
-	//lua_register(getLuaState(), "AddGtellSlashCommand", addGtellSlashCommand);
-	//lua_register(getLuaState(), "AddGuildSlashCommand", addGuildSlashCommand);
-	lua_register(getLuaState(), "AddGuildRemoveSlashCommand", addGuildRemoveSlashCommand);
-	lua_register(getLuaState(), "AddGuildsaySlashCommand", addGuildsaySlashCommand);
-	lua_register(getLuaState(), "AddGuildstatusSlashCommand", addGuildstatusSlashCommand);
-	lua_register(getLuaState(), "AddHandleClientLoginSlashCommand", addHandleClientLoginSlashCommand);
-	lua_register(getLuaState(), "AddHarmfulSlashCommand", addHarmfulSlashCommand);
-	lua_register(getLuaState(), "AddHarmlessSlashCommand", addHarmlessSlashCommand);
-	lua_register(getLuaState(), "AddHarvestCorpseSlashCommand", addHarvestCorpseSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterActivateSlashCommand", addHarvesterActivateSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterDeactivateSlashCommand", addHarvesterDeactivateSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterDiscardHopperSlashCommand", addHarvesterDiscardHopperSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterGetResourceDataSlashCommand", addHarvesterGetResourceDataSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterHarvestSlashCommand", addHarvesterHarvestSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterMakeCrateSlashCommand", addHarvesterMakeCrateSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterSelectResourceSlashCommand", addHarvesterSelectResourceSlashCommand);
-	lua_register(getLuaState(), "AddHarvesterTakeSurveySlashCommand", addHarvesterTakeSurveySlashCommand);
-	lua_register(getLuaState(), "AddHasVeteranRewardSlashCommand", addHasVeteranRewardSlashCommand);
-	lua_register(getLuaState(), "AddHaveconsentSlashCommand", addHaveconsentSlashCommand);
-	lua_register(getLuaState(), "AddHeadHitSlashCommand", addHeadHitSlashCommand);
-	lua_register(getLuaState(), "AddHeadShotSlashCommand", addHeadShotSlashCommand);
-	lua_register(getLuaState(), "AddHealDroidDamageSlashCommand", addHealDroidDamageSlashCommand);
-	lua_register(getLuaState(), "AddHealDroidWoundSlashCommand", addHealDroidWoundSlashCommand);
-	lua_register(getLuaState(), "AddHealPetSlashCommand", addHealPetSlashCommand);
-	lua_register(getLuaState(), "AddHealStatesSlashCommand", addHealStatesSlashCommand);
-	lua_register(getLuaState(), "AddHealWoundSlashCommand", addHealWoundSlashCommand);
-	lua_register(getLuaState(), "AddHemorrhageSlashCommand", addHemorrhageSlashCommand);
-	lua_register(getLuaState(), "AddHoloEmoteSlashCommand", addHoloEmoteSlashCommand);
-	lua_register(getLuaState(), "AddImagedesignSlashCommand", addImagedesignSlashCommand);
-	lua_register(getLuaState(), "AddImpaleSlashCommand", addImpaleSlashCommand);
-	lua_register(getLuaState(), "AddInfectSlashCommand", addInfectSlashCommand);
-	lua_register(getLuaState(), "AddInitializeComponentSlashCommand", addInitializeComponentSlashCommand);
-	lua_register(getLuaState(), "AddInnateSlashCommand", addInnateSlashCommand);
-	lua_register(getLuaState(), "AddInsertItemIntoShipComponentSlotSlashCommand", addInsertItemIntoShipComponentSlotSlashCommand);
-	lua_register(getLuaState(), "AddInstallMissionTerminalSlashCommand", addInstallMissionTerminalSlashCommand);
-	lua_register(getLuaState(), "AddInstallShipComponentSlashCommand", addInstallShipComponentSlashCommand);
-	lua_register(getLuaState(), "AddInsureSlashCommand", addInsureSlashCommand);
-	lua_register(getLuaState(), "AddIntimidateSlashCommand", addIntimidateSlashCommand);
-	lua_register(getLuaState(), "AddIntimidateShotSlashCommand", addIntimidateShotSlashCommand);
-	lua_register(getLuaState(), "AddInviteSlashCommand", addInviteSlashCommand);
-	lua_register(getLuaState(), "AddInvulnerableSlashCommand", addInvulnerableSlashCommand);
-	lua_register(getLuaState(), "AddItemmovebackSlashCommand", addItemmovebackSlashCommand);
-	lua_register(getLuaState(), "AddItemmovedownSlashCommand", addItemmovedownSlashCommand);
-	lua_register(getLuaState(), "AddItemmoveforwardSlashCommand", addItemmoveforwardSlashCommand);
-	lua_register(getLuaState(), "AddItemmoveupSlashCommand", addItemmoveupSlashCommand);
-	lua_register(getLuaState(), "AddItemrotateleftSlashCommand", addItemrotateleftSlashCommand);
-	lua_register(getLuaState(), "AddItemrotaterightSlashCommand", addItemrotaterightSlashCommand);
-	lua_register(getLuaState(), "AddJoinSlashCommand", addJoinSlashCommand);
-	lua_register(getLuaState(), "AddJoinGameSlashCommand", addJoinGameSlashCommand);
-	lua_register(getLuaState(), "AddKickSlashCommand", addKickSlashCommand);
-	lua_register(getLuaState(), "AddKillSlashCommand", addKillSlashCommand);
-	lua_register(getLuaState(), "AddKillPlayerSlashCommand", addKillPlayerSlashCommand);
-	lua_register(getLuaState(), "AddKipUpShotSlashCommand", addKipUpShotSlashCommand);
-	lua_register(getLuaState(), "AddKneecapShotSlashCommand", addKneecapShotSlashCommand);
-	lua_register(getLuaState(), "AddKneelSlashCommand", addKneelSlashCommand);
-	lua_register(getLuaState(), "AddKnockdownRecoverySlashCommand", addKnockdownRecoverySlashCommand);
-	lua_register(getLuaState(), "AddLagSlashCommand", addLagSlashCommand);
-	lua_register(getLuaState(), "AddLastDitchSlashCommand", addLastDitchSlashCommand);
-	lua_register(getLuaState(), "AddLaunchFireworkSlashCommand", addLaunchFireworkSlashCommand);
-	lua_register(getLuaState(), "AddLeaveGameSlashCommand", addLeaveGameSlashCommand);
-	lua_register(getLuaState(), "AddLeaveGroupSlashCommand", addLeaveGroupSlashCommand);
-	lua_register(getLuaState(), "AddLegHitSlashCommand", addLegHitSlashCommand);
-	lua_register(getLuaState(), "AddLegShotSlashCommand", addLegShotSlashCommand);
-	lua_register(getLuaState(), "AddLegSweepSlashCommand", addLegSweepSlashCommand);
-	lua_register(getLuaState(), "AddLethalShotSlashCommand", addLethalShotSlashCommand);
-	lua_register(getLuaState(), "AddLfgSlashCommand", addLfgSlashCommand);
-	lua_register(getLuaState(), "AddListActiveQuestsSlashCommand", addListActiveQuestsSlashCommand);
-	lua_register(getLuaState(), "AddListCompletedQuestsSlashCommand", addListCompletedQuestsSlashCommand);
-	lua_register(getLuaState(), "AddListenSlashCommand", addListenSlashCommand);
-	lua_register(getLuaState(), "AddListGuildsSlashCommand", addListGuildsSlashCommand);
-	lua_register(getLuaState(), "AddLogoutServerSlashCommand", addLogoutServerSlashCommand);
-	lua_register(getLuaState(), "AddLootAllSlashCommand", addLootAllSlashCommand);
-	lua_register(getLuaState(), "AddLootSlashCommand", addLootSlashCommand);
-	lua_register(getLuaState(), "AddLootPlayerCorpseSlashCommand", addLootPlayerCorpseSlashCommand);
-	lua_register(getLuaState(), "AddLowBlowSlashCommand", addLowBlowSlashCommand);
-	lua_register(getLuaState(), "AddLungeSlashCommand", addLungeSlashCommand);
-	lua_register(getLuaState(), "AddMakeLeaderSlashCommand", addMakeLeaderSlashCommand);
-	lua_register(getLuaState(), "AddMakeMasterLooterSlashCommand", addMakeMasterLooterSlashCommand);
-	lua_register(getLuaState(), "AddMakeSurveySlashCommand", addMakeSurveySlashCommand);
-	lua_register(getLuaState(), "AddManufactureSlashCommand", addManufactureSlashCommand);
-	lua_register(getLuaState(), "AddMaskscentSlashCommand", addMaskscentSlashCommand);
-	lua_register(getLuaState(), "AddMaxCombatAbilitySlashCommand", addMaxCombatAbilitySlashCommand);
-	lua_register(getLuaState(), "AddMaxStatsSlashCommand", addMaxStatsSlashCommand);
-	lua_register(getLuaState(), "AddMedicalForageSlashCommand", addMedicalForageSlashCommand);
-	lua_register(getLuaState(), "AddMeditateSlashCommand", addMeditateSlashCommand);
-	lua_register(getLuaState(), "AddMeleeAssaultSlashCommand", addMeleeAssaultSlashCommand);
-	lua_register(getLuaState(), "AddMeleeHitSlashCommand", addMeleeHitSlashCommand);
-	lua_register(getLuaState(), "AddMeleeStrikeSlashCommand", addMeleeStrikeSlashCommand);
-	lua_register(getLuaState(), "AddMindBlastSlashCommand", addMindBlastSlashCommand);
-	lua_register(getLuaState(), "AddMoneySlashCommand", addMoneySlashCommand);
-	lua_register(getLuaState(), "AddMountSlashCommand", addMountSlashCommand);
-	lua_register(getLuaState(), "AddMoveFurnitureSlashCommand", addMoveFurnitureSlashCommand);
-	lua_register(getLuaState(), "AddNameStructureSlashCommand", addNameStructureSlashCommand);
-	lua_register(getLuaState(), "AddNeurotoxinSlashCommand", addNeurotoxinSlashCommand);
-	lua_register(getLuaState(), "AddNewbiehelperSlashCommand", addNewbiehelperSlashCommand);
-	lua_register(getLuaState(), "AddNewbieRequestStartingLocationsSlashCommand", addNewbieRequestStartingLocationsSlashCommand);
-	lua_register(getLuaState(), "AddNewbieSelectStartingLocationSlashCommand", addNewbieSelectStartingLocationSlashCommand);
-	lua_register(getLuaState(), "AddNextCraftingStageSlashCommand", addNextCraftingStageSlashCommand);
-	lua_register(getLuaState(), "AddNpcSlashCommand", addNpcSlashCommand);
-	lua_register(getLuaState(), "AddNpcConversationSelectSlashCommand", addNpcConversationSelectSlashCommand);
-	lua_register(getLuaState(), "AddNpcConversationStartSlashCommand", addNpcConversationStartSlashCommand);
-	lua_register(getLuaState(), "AddNpcConversationStopSlashCommand", addNpcConversationStopSlashCommand);
-	lua_register(getLuaState(), "AddNutrientInjectionSlashCommand", addNutrientInjectionSlashCommand);
-	lua_register(getLuaState(), "AddObjectSlashCommand", addObjectSlashCommand);
-	lua_register(getLuaState(), "AddObjvarSlashCommand", addObjvarSlashCommand);
-	lua_register(getLuaState(), "AddOpenContainerSlashCommand", addOpenContainerSlashCommand);
-	lua_register(getLuaState(), "AddOpenLotteryContainerSlashCommand", addOpenLotteryContainerSlashCommand);
-	lua_register(getLuaState(), "AddOverchargeShotSlashCommand", addOverchargeShotSlashCommand);
-	lua_register(getLuaState(), "AddOverrideActiveMonthsSlashCommand", addOverrideActiveMonthsSlashCommand);
-	lua_register(getLuaState(), "AddOverridePadawanTrialsEligibilitySlashCommand", addOverridePadawanTrialsEligibilitySlashCommand);
-	lua_register(getLuaState(), "AddOverwhelmingShotSlashCommand", addOverwhelmingShotSlashCommand);
-	lua_register(getLuaState(), "AddPanicShotSlashCommand", addPanicShotSlashCommand);
-	lua_register(getLuaState(), "AddParalyzeSlashCommand", addParalyzeSlashCommand);
-	lua_register(getLuaState(), "AddParryRiposteSlashCommand", addParryRiposteSlashCommand);
-	lua_register(getLuaState(), "AddPauseDanceSlashCommand", addPauseDanceSlashCommand);
-	lua_register(getLuaState(), "AddPauseMusicSlashCommand", addPauseMusicSlashCommand);
-	lua_register(getLuaState(), "AddPaWithdrawSlashCommand", addPaWithdrawSlashCommand);
-	lua_register(getLuaState(), "AddPaymaintenanceSlashCommand", addPaymaintenanceSlashCommand);
-	lua_register(getLuaState(), "AddPeaceSlashCommand", addPeaceSlashCommand);
-	lua_register(getLuaState(), "AddPermissionListModifySlashCommand", addPermissionListModifySlashCommand);
-	lua_register(getLuaState(), "AddPistolWhipSlashCommand", addPistolWhipSlashCommand);
-	lua_register(getLuaState(), "AddPlaceBattlefieldStructureSlashCommand", addPlaceBattlefieldStructureSlashCommand);
-	lua_register(getLuaState(), "AddPlacedShotSlashCommand", addPlacedShotSlashCommand);
-	lua_register(getLuaState(), "AddPlaceStructureSlashCommand", addPlaceStructureSlashCommand);
-	lua_register(getLuaState(), "AddPlaceStructureModeSlashCommand", addPlaceStructureModeSlashCommand);
-	lua_register(getLuaState(), "AddPlanetsaySlashCommand", addPlanetsaySlashCommand);
-	lua_register(getLuaState(), "AddPlanetwarpSlashCommand", addPlanetwarpSlashCommand);
-	lua_register(getLuaState(), "AddPlanetwarpTargetSlashCommand", addPlanetwarpTargetSlashCommand);
-	lua_register(getLuaState(), "AddPointBlankAreaSlashCommand", addPointBlankAreaSlashCommand);
-	lua_register(getLuaState(), "AddPointBlankShotSlashCommand", addPointBlankShotSlashCommand);
-	lua_register(getLuaState(), "AddPoisonInnoculationSlashCommand", addPoisonInnoculationSlashCommand);
-	lua_register(getLuaState(), "AddPowerAttackSlashCommand", addPowerAttackSlashCommand);
-	lua_register(getLuaState(), "AddPowerBoostSlashCommand", addPowerBoostSlashCommand);
-	lua_register(getLuaState(), "AddProneSlashCommand", addProneSlashCommand);
-	lua_register(getLuaState(), "AddPurchaseReinforcementSlashCommand", addPurchaseReinforcementSlashCommand);
-	lua_register(getLuaState(), "AddPurchaseTicketSlashCommand", addPurchaseTicketSlashCommand);
-	lua_register(getLuaState(), "AddQuickDrawSlashCommand", addQuickDrawSlashCommand);
-	lua_register(getLuaState(), "AddRallySlashCommand", addRallySlashCommand);
-	lua_register(getLuaState(), "AddRangedShotSlashCommand", addRangedShotSlashCommand);
-	lua_register(getLuaState(), "AddRapidFireSlashCommand", addRapidFireSlashCommand);
-	lua_register(getLuaState(), "AddRecklessShotSlashCommand", addRecklessShotSlashCommand);
-	lua_register(getLuaState(), "AddReconnectToTransferServerSlashCommand", addReconnectToTransferServerSlashCommand);
-	lua_register(getLuaState(), "AddRecruitSkillTrainerSlashCommand", addRecruitSkillTrainerSlashCommand);
-	lua_register(getLuaState(), "AddRegainConsciousnessSlashCommand", addRegainConsciousnessSlashCommand);
-	lua_register(getLuaState(), "AddRegenerationSlashCommand", addRegenerationSlashCommand);
-	lua_register(getLuaState(), "AddRegisterWithLocationSlashCommand", addRegisterWithLocationSlashCommand);
-	lua_register(getLuaState(), "AddReloadSlashCommand", addReloadSlashCommand);
-	lua_register(getLuaState(), "AddRemoteSlashCommand", addRemoteSlashCommand);
-	lua_register(getLuaState(), "AddRemoveAllowedPlayerSlashCommand", addRemoveAllowedPlayerSlashCommand);
-	lua_register(getLuaState(), "AddRemoveBannedPlayerSlashCommand", addRemoveBannedPlayerSlashCommand);
-	lua_register(getLuaState(), "AddRemoveFriendSlashCommand", addRemoveFriendSlashCommand);
-	lua_register(getLuaState(), "AddRemoveIgnoreSlashCommand", addRemoveIgnoreSlashCommand);
-	lua_register(getLuaState(), "AddRepairBattlefieldStructureSlashCommand", addRepairBattlefieldStructureSlashCommand);
-	lua_register(getLuaState(), "AddRepairShipComponentInSlotSlashCommand", addRepairShipComponentInSlotSlashCommand);
-	lua_register(getLuaState(), "AddReportSlashCommand", addReportSlashCommand);
-	lua_register(getLuaState(), "AddRequestBadgesSlashCommand", addRequestBadgesSlashCommand);
-	lua_register(getLuaState(), "AddRequestBiographySlashCommand", addRequestBiographySlashCommand);
-	lua_register(getLuaState(), "AddRequestCharacterMatchSlashCommand", addRequestCharacterMatchSlashCommand);
-	lua_register(getLuaState(), "AddRequestCharacterSheetInfoSlashCommand", addRequestCharacterSheetInfoSlashCommand);
-	lua_register(getLuaState(), "AddRequestCoreSampleSlashCommand", addRequestCoreSampleSlashCommand);
-	lua_register(getLuaState(), "AddRequestCraftingSessionSlashCommand", addRequestCraftingSessionSlashCommand);
-	lua_register(getLuaState(), "AddRequestDraftSlotsSlashCommand", addRequestDraftSlotsSlashCommand);
-	lua_register(getLuaState(), "AddRequestDraftSlotsBatchSlashCommand", addRequestDraftSlotsBatchSlashCommand);
-	lua_register(getLuaState(), "AddRequestManfSchematicSlotsSlashCommand", addRequestManfSchematicSlotsSlashCommand);
-	lua_register(getLuaState(), "AddRequestResourceWeightsSlashCommand", addRequestResourceWeightsSlashCommand);
-	lua_register(getLuaState(), "AddRequestResourceWeightsBatchSlashCommand", addRequestResourceWeightsBatchSlashCommand);
-	lua_register(getLuaState(), "AddRequestSetStatMigrationDataSlashCommand", addRequestSetStatMigrationDataSlashCommand);
-	lua_register(getLuaState(), "AddRequestStatMigrationDataSlashCommand", addRequestStatMigrationDataSlashCommand);
-	lua_register(getLuaState(), "AddRequestStatMigrationStartSlashCommand", addRequestStatMigrationStartSlashCommand);
-	lua_register(getLuaState(), "AddRequestStatMigrationStopSlashCommand", addRequestStatMigrationStopSlashCommand);
-	lua_register(getLuaState(), "AddRequestStimpackSlashCommand", addRequestStimpackSlashCommand);
-	lua_register(getLuaState(), "AddRequestSurveySlashCommand", addRequestSurveySlashCommand);
-	lua_register(getLuaState(), "AddRequestWaypointAtPositionSlashCommand", addRequestWaypointAtPositionSlashCommand);
-	lua_register(getLuaState(), "AddRescueSlashCommand", addRescueSlashCommand);
-	lua_register(getLuaState(), "AddResendLoginMessageToAllSlashCommand", addResendLoginMessageToAllSlashCommand);
-	lua_register(getLuaState(), "AddResetJediSlashCommand", addResetJediSlashCommand);
-	lua_register(getLuaState(), "AddResourceSlashCommand", addResourceSlashCommand);
-	lua_register(getLuaState(), "AddResourceContainerSplitSlashCommand", addResourceContainerSplitSlashCommand);
-	lua_register(getLuaState(), "AddResourceContainerTransferSlashCommand", addResourceContainerTransferSlashCommand);
-	lua_register(getLuaState(), "AddResourceSetNameSlashCommand", addResourceSetNameSlashCommand);
-	lua_register(getLuaState(), "AddRespecStatCommitSlashCommand", addRespecStatCommitSlashCommand);
-	lua_register(getLuaState(), "AddResSampleLoopSlashCommand", addResSampleLoopSlashCommand);
-	lua_register(getLuaState(), "AddRestartConversionSlashCommand", addRestartConversionSlashCommand);
-	lua_register(getLuaState(), "AddRestartCraftingSessionSlashCommand", addRestartCraftingSessionSlashCommand);
-	lua_register(getLuaState(), "AddRestrainingShotSlashCommand", addRestrainingShotSlashCommand);
-	lua_register(getLuaState(), "AddResuscitatePlayerSlashCommand", addResuscitatePlayerSlashCommand);
-	lua_register(getLuaState(), "AddRetreatSlashCommand", addRetreatSlashCommand);
-	lua_register(getLuaState(), "AddRevivePlayerSlashCommand", addRevivePlayerSlashCommand);
-	lua_register(getLuaState(), "AddRevokeBadgeSlashCommand", addRevokeBadgeSlashCommand);
-	lua_register(getLuaState(), "AddRevokeSkillSlashCommand", addRevokeSkillSlashCommand);
-	lua_register(getLuaState(), "AddRolePlaySlashCommand", addRolePlaySlashCommand);
-	lua_register(getLuaState(), "AddRollShotSlashCommand", addRollShotSlashCommand);
-	lua_register(getLuaState(), "AddRotateFurnitureSlashCommand", addRotateFurnitureSlashCommand);
-	lua_register(getLuaState(), "AddSaberArmorBreakSlashCommand", addSaberArmorBreakSlashCommand);
-	lua_register(getLuaState(), "AddSaberBlindSlashCommand", addSaberBlindSlashCommand);
-	lua_register(getLuaState(), "AddSaberBodyHitSlashCommand", addSaberBodyHitSlashCommand);
-	lua_register(getLuaState(), "AddSaberDervishSlashCommand", addSaberDervishSlashCommand);
-	lua_register(getLuaState(), "AddSaberHeadHitSlashCommand", addSaberHeadHitSlashCommand);
-	lua_register(getLuaState(), "AddSaberHitSlashCommand", addSaberHitSlashCommand);
-	lua_register(getLuaState(), "AddSaberLegHitSlashCommand", addSaberLegHitSlashCommand);
-	lua_register(getLuaState(), "AddSaberPowerAttackSlashCommand", addSaberPowerAttackSlashCommand);
-	lua_register(getLuaState(), "AddSaberSlashSlashCommand", addSaberSlashSlashCommand);
-	lua_register(getLuaState(), "AddSaberSpinAttackSlashCommand", addSaberSpinAttackSlashCommand);
-	lua_register(getLuaState(), "AddSaberStrikeSlashCommand", addSaberStrikeSlashCommand);
-	lua_register(getLuaState(), "AddSaberStunStrikeSlashCommand", addSaberStunStrikeSlashCommand);
-	lua_register(getLuaState(), "AddSaberSweepSlashCommand", addSaberSweepSlashCommand);
-	lua_register(getLuaState(), "AddSaberSwipeSlashCommand", addSaberSwipeSlashCommand);
-	lua_register(getLuaState(), "AddSaberThrowSlashCommand", addSaberThrowSlashCommand);
-	lua_register(getLuaState(), "AddSampleSlashCommand", addSampleSlashCommand);
-	lua_register(getLuaState(), "AddSampleDNASlashCommand", addSampleDNASlashCommand);
-	lua_register(getLuaState(), "AddScatterHitSlashCommand", addScatterHitSlashCommand);
-	lua_register(getLuaState(), "AddScatterShotSlashCommand", addScatterShotSlashCommand);
-	lua_register(getLuaState(), "AddScriptSlashCommand", addScriptSlashCommand);
-	lua_register(getLuaState(), "AddSearchCorpseSlashCommand", addSearchCorpseSlashCommand);
-	lua_register(getLuaState(), "AddSecretSpawnSpamSlashCommand", addSecretSpawnSpamSlashCommand);
-	lua_register(getLuaState(), "AddSeGogglesSlashCommand", addSeGogglesSlashCommand);
-	lua_register(getLuaState(), "AddSelectDraftSchematicSlashCommand", addSelectDraftSchematicSlashCommand);
-	lua_register(getLuaState(), "AddSerotoninInjectionSlashCommand", addSerotoninInjectionSlashCommand);
-	lua_register(getLuaState(), "AddServerSlashCommand", addServerSlashCommand);
-	lua_register(getLuaState(), "AddServerDestroyObjectSlashCommand", addServerDestroyObjectSlashCommand);
-	lua_register(getLuaState(), "AddServerSysGroupSlashCommand", addServerSysGroupSlashCommand);
-	lua_register(getLuaState(), "AddSetBiographySlashCommand", addSetBiographySlashCommand);
-	lua_register(getLuaState(), "AddSetBiographyAdminSlashCommand", addSetBiographyAdminSlashCommand);
-	lua_register(getLuaState(), "AddSetBoostmoraleSlashCommand", addSetBoostmoraleSlashCommand);
-	lua_register(getLuaState(), "AddSetChargeSlashCommand", addSetChargeSlashCommand);
-	lua_register(getLuaState(), "AddSetCurrentSkillTitleSlashCommand", addSetCurrentSkillTitleSlashCommand);
-	lua_register(getLuaState(), "AddSetExperienceSlashCommand", addSetExperienceSlashCommand);
-	lua_register(getLuaState(), "AddSetFactionSlashCommand", addSetFactionSlashCommand);
-	lua_register(getLuaState(), "AddSetFactionStandingSlashCommand", addSetFactionStandingSlashCommand);
-	lua_register(getLuaState(), "AddSetFirstNameSlashCommand", addSetFirstNameSlashCommand);
-	lua_register(getLuaState(), "AddSetFormupSlashCommand", addSetFormupSlashCommand);
-	lua_register(getLuaState(), "AddSetGodModeSlashCommand", addSetGodModeSlashCommand);
-	lua_register(getLuaState(), "AddSetGrievousAuthorizedSlashCommand", addSetGrievousAuthorizedSlashCommand);
-	lua_register(getLuaState(), "AddSetHueSlashCommand", addSetHueSlashCommand);
-	lua_register(getLuaState(), "AddSetIntimidateSlashCommand", addSetIntimidateSlashCommand);
-	lua_register(getLuaState(), "AddSetLastNameSlashCommand", addSetLastNameSlashCommand);
-	lua_register(getLuaState(), "AddSetLoginMessageSlashCommand", addSetLoginMessageSlashCommand);
-	lua_register(getLuaState(), "AddSetLoginTitleSlashCommand", addSetLoginTitleSlashCommand);
-	lua_register(getLuaState(), "AddSetMatchMakingCharacterIdSlashCommand", addSetMatchMakingCharacterIdSlashCommand);
-	lua_register(getLuaState(), "AddSetMatchMakingPersonalIdSlashCommand", addSetMatchMakingPersonalIdSlashCommand);
-	lua_register(getLuaState(), "AddSetMaximumSpawnTimeSlashCommand", addSetMaximumSpawnTimeSlashCommand);
-	lua_register(getLuaState(), "AddSetMinimumSpawnTimeSlashCommand", addSetMinimumSpawnTimeSlashCommand);
-	lua_register(getLuaState(), "AddSetMoodSlashCommand", addSetMoodSlashCommand);
-	lua_register(getLuaState(), "AddSetMoodInternalSlashCommand", addSetMoodInternalSlashCommand);
-	lua_register(getLuaState(), "AddSetNameSlashCommand", addSetNameSlashCommand);
-	lua_register(getLuaState(), "AddSetNameSlashCommand", addSetNameSlashCommand);
-	lua_register(getLuaState(), "AddSetOwnerSlashCommand", addSetOwnerSlashCommand);
-	lua_register(getLuaState(), "AddSetPerformanceBuffTargetSlashCommand", addSetPerformanceBuffTargetSlashCommand);
-	lua_register(getLuaState(), "AddSetpermissionSlashCommand", addSetpermissionSlashCommand);
-	lua_register(getLuaState(), "AddSetPlanetLimitSlashCommand", addSetPlanetLimitSlashCommand);
-	lua_register(getLuaState(), "AddSetPlayerAppearanceSlashCommand", addSetPlayerAppearanceSlashCommand);
-	lua_register(getLuaState(), "AddSetPlayerStateSlashCommand", addSetPlayerStateSlashCommand);
-	lua_register(getLuaState(), "AddSetprivacySlashCommand", addSetprivacySlashCommand);
-	lua_register(getLuaState(), "AddSetPublicStateSlashCommand", addSetPublicStateSlashCommand);
-	lua_register(getLuaState(), "AddSetRankSlashCommand", addSetRankSlashCommand);
-	lua_register(getLuaState(), "AddSetRetreatSlashCommand", addSetRetreatSlashCommand);
-	lua_register(getLuaState(), "AddSetSpeedSlashCommand", addSetSpeedSlashCommand);
-	lua_register(getLuaState(), "AddSetSpokenLanguageSlashCommand", addSetSpokenLanguageSlashCommand);
-	lua_register(getLuaState(), "AddSetSteadyaimSlashCommand", addSetSteadyaimSlashCommand);
-	lua_register(getLuaState(), "AddSetTEFSlashCommand", addSetTEFSlashCommand);
-	lua_register(getLuaState(), "AddSetVeteranRewardSlashCommand", addSetVeteranRewardSlashCommand);
-	lua_register(getLuaState(), "AddSetWarcrySlashCommand", addSetWarcrySlashCommand);
-	lua_register(getLuaState(), "AddSetWaypointActiveStatusSlashCommand", addSetWaypointActiveStatusSlashCommand);
-	lua_register(getLuaState(), "AddSetWaypointNameSlashCommand", addSetWaypointNameSlashCommand);
-	lua_register(getLuaState(), "AddShockSlashCommand", addShockSlashCommand);
-	lua_register(getLuaState(), "AddShowCouncilRankSlashCommand", addShowCouncilRankSlashCommand);
-	lua_register(getLuaState(), "AddShowDanceVisualsSlashCommand", addShowDanceVisualsSlashCommand);
-	lua_register(getLuaState(), "AddShowFactionInformationSlashCommand", addShowFactionInformationSlashCommand);
-	lua_register(getLuaState(), "AddShowMusicianVisualsSlashCommand", addShowMusicianVisualsSlashCommand);
-	lua_register(getLuaState(), "AddShowPvPRatingSlashCommand", addShowPvPRatingSlashCommand);
-	lua_register(getLuaState(), "AddShowSpawnRegionSlashCommand", addShowSpawnRegionSlashCommand);
-	lua_register(getLuaState(), "AddSitServerSlashCommand", addSitServerSlashCommand);
-	lua_register(getLuaState(), "AddSkillSlashCommand", addSkillSlashCommand);
-	lua_register(getLuaState(), "AddSmokebombSlashCommand", addSmokebombSlashCommand);
-	lua_register(getLuaState(), "AddSniperShotSlashCommand", addSniperShotSlashCommand);
-	lua_register(getLuaState(), "AddSnoopSlashCommand", addSnoopSlashCommand);
-	lua_register(getLuaState(), "AddSocialSlashCommand", addSocialSlashCommand);
-	lua_register(getLuaState(), "AddSocialInternalSlashCommand", addSocialInternalSlashCommand);
-	lua_register(getLuaState(), "AddSpatialChatSlashCommand", addSpatialChatSlashCommand);
-	lua_register(getLuaState(), "AddSpatialChatInternalSlashCommand", addSpatialChatInternalSlashCommand);
-	lua_register(getLuaState(), "AddSpawnStatusSlashCommand", addSpawnStatusSlashCommand);
-	lua_register(getLuaState(), "AddSpinAttackSlashCommand", addSpinAttackSlashCommand);
-	lua_register(getLuaState(), "AddSplitCreditsWithGroupSlashCommand", addSplitCreditsWithGroupSlashCommand);
-	lua_register(getLuaState(), "AddSpotlightSlashCommand", addSpotlightSlashCommand);
-	lua_register(getLuaState(), "AddSprayShotSlashCommand", addSprayShotSlashCommand);
-	lua_register(getLuaState(), "AddStabilizersSlashCommand", addStabilizersSlashCommand);
-	lua_register(getLuaState(), "AddStandSlashCommand", addStandSlashCommand);
-	lua_register(getLuaState(), "AddStartBandSlashCommand", addStartBandSlashCommand);
-	lua_register(getLuaState(), "AddStartCitySpawnerSlashCommand", addStartCitySpawnerSlashCommand);
-	lua_register(getLuaState(), "AddStartDanceSlashCommand", addStartDanceSlashCommand);
-	lua_register(getLuaState(), "AddStartleShotSlashCommand", addStartleShotSlashCommand);
-	lua_register(getLuaState(), "AddStartMusicSlashCommand", addStartMusicSlashCommand);
-	lua_register(getLuaState(), "AddStartSpawnerSlashCommand", addStartSpawnerSlashCommand);
-	lua_register(getLuaState(), "AddStartTargetSpawnerSlashCommand", addStartTargetSpawnerSlashCommand);
-	lua_register(getLuaState(), "AddStartTraceLoggingSlashCommand", addStartTraceLoggingSlashCommand);
-	lua_register(getLuaState(), "AddStasisSlashCommand", addStasisSlashCommand);
-	lua_register(getLuaState(), "AddStatSlashCommand", addStatSlashCommand);
-	lua_register(getLuaState(), "AddSteadyaimSlashCommand", addSteadyaimSlashCommand);
-	lua_register(getLuaState(), "AddStopBandSlashCommand", addStopBandSlashCommand);
-	lua_register(getLuaState(), "AddStopBleedingSlashCommand", addStopBleedingSlashCommand);
-	lua_register(getLuaState(), "AddStopCitySpawnerSlashCommand", addStopCitySpawnerSlashCommand);
-	lua_register(getLuaState(), "AddStopCraftingSessionSlashCommand", addStopCraftingSessionSlashCommand);
-	lua_register(getLuaState(), "AddStopDanceSlashCommand", addStopDanceSlashCommand);
-	lua_register(getLuaState(), "AddStoplisteningSlashCommand", addStoplisteningSlashCommand);
-	lua_register(getLuaState(), "AddStopMusicSlashCommand", addStopMusicSlashCommand);
-	lua_register(getLuaState(), "AddStoppingShotSlashCommand", addStoppingShotSlashCommand);
-	lua_register(getLuaState(), "AddStopSpawnerSlashCommand", addStopSpawnerSlashCommand);
-	lua_register(getLuaState(), "AddStopTargetSpawnerSlashCommand", addStopTargetSpawnerSlashCommand);
-	lua_register(getLuaState(), "AddStopTraceLoggingSlashCommand", addStopTraceLoggingSlashCommand);
-	lua_register(getLuaState(), "AddStopwatchingSlashCommand", addStopwatchingSlashCommand);
-	lua_register(getLuaState(), "AddStructurestatusSlashCommand", addStructurestatusSlashCommand);
-	lua_register(getLuaState(), "AddStunningBlowSlashCommand", addStunningBlowSlashCommand);
-	lua_register(getLuaState(), "AddStunRecoverySlashCommand", addStunRecoverySlashCommand);
-	lua_register(getLuaState(), "AddSuppressionFireSlashCommand", addSuppressionFireSlashCommand);
-	lua_register(getLuaState(), "AddSurrenderSkillSlashCommand", addSurrenderSkillSlashCommand);
-	lua_register(getLuaState(), "AddSurveySlashCommand", addSurveySlashCommand);
-	lua_register(getLuaState(), "AddSweepAttackSlashCommand", addSweepAttackSlashCommand);
-	lua_register(getLuaState(), "AddSwitchWeaponModeSlashCommand", addSwitchWeaponModeSlashCommand);
-	lua_register(getLuaState(), "AddSwordFlurrySlashCommand", addSwordFlurrySlashCommand);
-	lua_register(getLuaState(), "AddSynchronizedUiListenSlashCommand", addSynchronizedUiListenSlashCommand);
-	lua_register(getLuaState(), "AddSynchronizedUiStopListeningSlashCommand", addSynchronizedUiStopListeningSlashCommand);
-	lua_register(getLuaState(), "AddSystemMessageSlashCommand", addSystemMessageSlashCommand);
-	lua_register(getLuaState(), "AddTakeCoverSlashCommand", addTakeCoverSlashCommand);
-	lua_register(getLuaState(), "AddTameSlashCommand", addTameSlashCommand);
-	lua_register(getLuaState(), "AddTargetSlashCommand", addTargetSlashCommand);
-	lua_register(getLuaState(), "AddTauntSlashCommand", addTauntSlashCommand);
-	lua_register(getLuaState(), "AddTeachSlashCommand", addTeachSlashCommand);
-	lua_register(getLuaState(), "AddTeleportSlashCommand", addTeleportSlashCommand);
-	lua_register(getLuaState(), "AddTeleportTargetSlashCommand", addTeleportTargetSlashCommand);
-	lua_register(getLuaState(), "AddTeleportToSlashCommand", addTeleportToSlashCommand);
-	lua_register(getLuaState(), "AddTellpetSlashCommand", addTellpetSlashCommand);
-	lua_register(getLuaState(), "AddThrowGrenadeSlashCommand", addThrowGrenadeSlashCommand);
-	lua_register(getLuaState(), "AddThrowTrapSlashCommand", addThrowTrapSlashCommand);
-	lua_register(getLuaState(), "AddThyroidRuptureSlashCommand", addThyroidRuptureSlashCommand);
-	lua_register(getLuaState(), "AddTipSlashCommand", addTipSlashCommand);
-	lua_register(getLuaState(), "AddToggleAwayFromKeyBoardSlashCommand", addToggleAwayFromKeyBoardSlashCommand);
-	lua_register(getLuaState(), "AddToggleCombatTauntsSlashCommand", addToggleCombatTauntsSlashCommand);
-	lua_register(getLuaState(), "AddToggleDisplayingFactionRankSlashCommand", addToggleDisplayingFactionRankSlashCommand);
-	lua_register(getLuaState(), "AddTorsoShotSlashCommand", addTorsoShotSlashCommand);
-	lua_register(getLuaState(), "AddTotalHealSlashCommand", addTotalHealSlashCommand);
-	lua_register(getLuaState(), "AddTransferForceSlashCommand", addTransferForceSlashCommand);
-	lua_register(getLuaState(), "AddTransferItemSlashCommand", addTransferItemSlashCommand);
-	lua_register(getLuaState(), "AddTransferItemArmorSlashCommand", addTransferItemArmorSlashCommand);
-	lua_register(getLuaState(), "AddTransferItemMiscSlashCommand", addTransferItemMiscSlashCommand);
-	lua_register(getLuaState(), "AddTransferItemWeaponSlashCommand", addTransferItemWeaponSlashCommand);
-	lua_register(getLuaState(), "AddTransferstructureSlashCommand", addTransferstructureSlashCommand);
-	lua_register(getLuaState(), "AddTraumatizeSlashCommand", addTraumatizeSlashCommand);
-	lua_register(getLuaState(), "AddUnassociateDroidControlDeviceWithShipSlashCommand", addUnassociateDroidControlDeviceWithShipSlashCommand);
-	lua_register(getLuaState(), "AddUnCityBanSlashCommand", addUnCityBanSlashCommand);
-	lua_register(getLuaState(), "AddUnconsentSlashCommand", addUnconsentSlashCommand);
-	lua_register(getLuaState(), "AddUnderhandShotSlashCommand", addUnderhandShotSlashCommand);
-	lua_register(getLuaState(), "AddUnfreezePlayerSlashCommand", addUnfreezePlayerSlashCommand);
-	lua_register(getLuaState(), "AddUninstallShipComponentSlashCommand", addUninstallShipComponentSlashCommand);
-	lua_register(getLuaState(), "AddUninviteSlashCommand", addUninviteSlashCommand);
-	lua_register(getLuaState(), "AddUnsnoopSlashCommand", addUnsnoopSlashCommand);
-	lua_register(getLuaState(), "AddUseDoctorBagSlashCommand", addUseDoctorBagSlashCommand);
-	lua_register(getLuaState(), "AddUseReconDroneSlashCommand", addUseReconDroneSlashCommand);
-	lua_register(getLuaState(), "AddUseSkillBuffSlashCommand", addUseSkillBuffSlashCommand);
-	lua_register(getLuaState(), "AddVentriloquismSlashCommand", addVentriloquismSlashCommand);
-	lua_register(getLuaState(), "AddVertFurnitureSlashCommand", addVertFurnitureSlashCommand);
-	lua_register(getLuaState(), "AddVitalizeSlashCommand", addVitalizeSlashCommand);
-	lua_register(getLuaState(), "AddVolleyFireSlashCommand", addVolleyFireSlashCommand);
-	lua_register(getLuaState(), "AddVolleyFireAttackSlashCommand", addVolleyFireAttackSlashCommand);
-	lua_register(getLuaState(), "AddWarcrySlashCommand", addWarcrySlashCommand);
-	lua_register(getLuaState(), "AddWarningShotSlashCommand", addWarningShotSlashCommand);
-	lua_register(getLuaState(), "AddWatchSlashCommand", addWatchSlashCommand);
-	lua_register(getLuaState(), "AddWaypointSlashCommand", addWaypointSlashCommand);
-	lua_register(getLuaState(), "AddWipeItemsSlashCommand", addWipeItemsSlashCommand);
-	lua_register(getLuaState(), "AddWookieeRoarSlashCommand", addWookieeRoarSlashCommand);
-/*	lua_register(getLuaState(), "AddOpenContainerSlashCommand", addOpenContainerSlashCommand);
-	lua_register(getLuaState(), "AddGroupSaySlashCommand", addGroupSaySlashCommand);*/
+
+	lua_register(getLuaState(), "AddActionShot1Command", addActionShot1Command);
+	lua_register(getLuaState(), "AddActionShot2Command", addActionShot2Command);
+	lua_register(getLuaState(), "AddActivateCloneCommand", addActivateCloneCommand);
+	lua_register(getLuaState(), "AddActivateQuestCommand", addActivateQuestCommand);
+	lua_register(getLuaState(), "AddAddAllowedPlayerCommand", addAddAllowedPlayerCommand);
+	lua_register(getLuaState(), "AddAddBannedPlayerCommand", addAddBannedPlayerCommand);
+	lua_register(getLuaState(), "AddAddFriendCommand", addAddFriendCommand);
+	lua_register(getLuaState(), "AddAddIgnoreCommand", addAddIgnoreCommand);
+	lua_register(getLuaState(), "AddAddMapLocationCommand", addAddMapLocationCommand);
+	lua_register(getLuaState(), "AddAddPowerCommand", addAddPowerCommand);
+	lua_register(getLuaState(), "AddAdjustLotCountCommand", addAdjustLotCountCommand);
+	lua_register(getLuaState(), "AddAiIgnoreCommand", addAiIgnoreCommand);
+	lua_register(getLuaState(), "AddAimCommand", addAimCommand);
+	lua_register(getLuaState(), "AddAlertCommand", addAlertCommand);
+	lua_register(getLuaState(), "AddAnimalAttackCommand", addAnimalAttackCommand);
+	lua_register(getLuaState(), "AddAnimalCalmCommand", addAnimalCalmCommand);
+	lua_register(getLuaState(), "AddAnimalScareCommand", addAnimalScareCommand);
+	lua_register(getLuaState(), "AddAnonCommand", addAnonCommand);
+	lua_register(getLuaState(), "AddApplyDiseaseCommand", addApplyDiseaseCommand);
+	lua_register(getLuaState(), "AddApplyPoisonCommand", addApplyPoisonCommand);
+	lua_register(getLuaState(), "AddApplyPowerupCommand", addApplyPowerupCommand);
+	lua_register(getLuaState(), "AddAreatrackCommand", addAreatrackCommand);
+	lua_register(getLuaState(), "AddAssignDroidCommand", addAssignDroidCommand);
+	lua_register(getLuaState(), "AddAssistCommand", addAssistCommand);
+	lua_register(getLuaState(), "AddAssociateDroidControlDeviceWithShipCommand", addAssociateDroidControlDeviceWithShipCommand);
+	lua_register(getLuaState(), "AddAttackCommand", addAttackCommand);
+	lua_register(getLuaState(), "AddAuctionCommand", addAuctionCommand);
+	lua_register(getLuaState(), "AddAuctionAcceptCommand", addAuctionAcceptCommand);
+	lua_register(getLuaState(), "AddAuctionBidCommand", addAuctionBidCommand);
+	lua_register(getLuaState(), "AddAuctionCancelCommand", addAuctionCancelCommand);
+	lua_register(getLuaState(), "AddAuctionCreateCommand", addAuctionCreateCommand);
+	lua_register(getLuaState(), "AddAuctionQueryCommand", addAuctionQueryCommand);
+	lua_register(getLuaState(), "AddAuctionRetrieveCommand", addAuctionRetrieveCommand);
+	lua_register(getLuaState(), "AddAuctionsayCommand", addAuctionsayCommand);
+	lua_register(getLuaState(), "AddAvoidIncapacitationCommand", addAvoidIncapacitationCommand);
+	lua_register(getLuaState(), "AddBandFlourishCommand", addBandFlourishCommand);
+	lua_register(getLuaState(), "AddBattlefieldStatusCommand", addBattlefieldStatusCommand);
+	lua_register(getLuaState(), "AddBerserk1Command", addBerserk1Command);
+	lua_register(getLuaState(), "AddBerserk2Command", addBerserk2Command);
+	lua_register(getLuaState(), "AddBetCommand", addBetCommand);
+	lua_register(getLuaState(), "AddBleedingShotCommand", addBleedingShotCommand);
+	lua_register(getLuaState(), "AddBlindAttackCommand", addBlindAttackCommand);
+	lua_register(getLuaState(), "AddBoardShuttleCommand", addBoardShuttleCommand);
+	lua_register(getLuaState(), "AddBodyShot1Command", addBodyShot1Command);
+	lua_register(getLuaState(), "AddBodyShot2Command", addBodyShot2Command);
+	lua_register(getLuaState(), "AddBodyShot3Command", addBodyShot3Command);
+	lua_register(getLuaState(), "AddBoostmoraleCommand", addBoostmoraleCommand);
+	lua_register(getLuaState(), "AddBroadcastCommand", addBroadcastCommand);
+	lua_register(getLuaState(), "AddBroadcastAreaCommand", addBroadcastAreaCommand);
+	lua_register(getLuaState(), "AddBroadcastGalaxyCommand", addBroadcastGalaxyCommand);
+	lua_register(getLuaState(), "AddBroadcastPlanetCommand", addBroadcastPlanetCommand);
+	lua_register(getLuaState(), "AddBurstRunCommand", addBurstRunCommand);
+	lua_register(getLuaState(), "AddBurstShot1Command", addBurstShot1Command);
+	lua_register(getLuaState(), "AddBurstShot2Command", addBurstShot2Command);
+	lua_register(getLuaState(), "AddCancelCraftingSessionCommand", addCancelCraftingSessionCommand);
+	lua_register(getLuaState(), "AddCenterOfBeingCommand", addCenterOfBeingCommand);
+	lua_register(getLuaState(), "AddChangeBandMusicCommand", addChangeBandMusicCommand);
+	lua_register(getLuaState(), "AddChangeDanceCommand", addChangeDanceCommand);
+	lua_register(getLuaState(), "AddChangeMusicCommand", addChangeMusicCommand);
+	lua_register(getLuaState(), "AddChannelForceCommand", addChannelForceCommand);
+	lua_register(getLuaState(), "AddChargeShot1Command", addChargeShot1Command);
+	lua_register(getLuaState(), "AddChargeShot2Command", addChargeShot2Command);
+	lua_register(getLuaState(), "AddCheckForceStatusCommand", addCheckForceStatusCommand);
+	lua_register(getLuaState(), "AddCitybanCommand", addCitybanCommand);
+	lua_register(getLuaState(), "AddCitypardonCommand", addCitypardonCommand);
+	lua_register(getLuaState(), "AddClaimVeteranRewardCommand", addClaimVeteranRewardCommand);
+	lua_register(getLuaState(), "AddClearCompletedQuestCommand", addClearCompletedQuestCommand);
+	lua_register(getLuaState(), "AddClearVeteranRewardCommand", addClearVeteranRewardCommand);
+	lua_register(getLuaState(), "AddClientQualifiedForSkillCommand", addClientQualifiedForSkillCommand);
+	lua_register(getLuaState(), "AddCloneCommand", addCloneCommand);
+	lua_register(getLuaState(), "AddCloseContainerCommand", addCloseContainerCommand);
+	lua_register(getLuaState(), "AddColorlightsCommand", addColorlightsCommand);
+	lua_register(getLuaState(), "AddCombatCommand", addCombatCommand);
+	lua_register(getLuaState(), "AddCombatEscapeCommand", addCombatEscapeCommand);
+	lua_register(getLuaState(), "AddCombatModeCheckCommand", addCombatModeCheckCommand);
+	lua_register(getLuaState(), "AddCombatSpamCommand", addCombatSpamCommand);
+	lua_register(getLuaState(), "AddCombatTargetCommand", addCombatTargetCommand);
+	lua_register(getLuaState(), "AddCompleteQuestCommand", addCompleteQuestCommand);
+	lua_register(getLuaState(), "AddConcealCommand", addConcealCommand);
+	lua_register(getLuaState(), "AddConcealShotCommand", addConcealShotCommand);
+	lua_register(getLuaState(), "AddConfusionShotCommand", addConfusionShotCommand);
+	lua_register(getLuaState(), "AddConsentCommand", addConsentCommand);
+	lua_register(getLuaState(), "AddCorpseCommand", addCorpseCommand);
+	lua_register(getLuaState(), "AddCounterAttackCommand", addCounterAttackCommand);
+	lua_register(getLuaState(), "AddCoupDeGraceCommand", addCoupDeGraceCommand);
+	lua_register(getLuaState(), "AddCraftCommand", addCraftCommand);
+	lua_register(getLuaState(), "AddCreateCreatureCommand", addCreateCreatureCommand);
+	lua_register(getLuaState(), "AddCreateManfSchematicCommand", addCreateManfSchematicCommand);
+	lua_register(getLuaState(), "AddCreateMissionElementCommand", addCreateMissionElementCommand);
+	lua_register(getLuaState(), "AddCreateNPCCommand", addCreateNPCCommand);
+	lua_register(getLuaState(), "AddCreatePrototypeCommand", addCreatePrototypeCommand);
+	lua_register(getLuaState(), "AddCreateSpawningElementCommand", addCreateSpawningElementCommand);
+	lua_register(getLuaState(), "AddCreateSpawningElementWithDifficultyCommand", addCreateSpawningElementWithDifficultyCommand);
+	lua_register(getLuaState(), "AddCreatureAreaAttackCommand", addCreatureAreaAttackCommand);
+	lua_register(getLuaState(), "AddCreatureAreaBleedingCommand", addCreatureAreaBleedingCommand);
+	lua_register(getLuaState(), "AddCreatureAreaComboCommand", addCreatureAreaComboCommand);
+	lua_register(getLuaState(), "AddCreatureAreaDiseaseCommand", addCreatureAreaDiseaseCommand);
+	lua_register(getLuaState(), "AddCreatureAreaKnockdownCommand", addCreatureAreaKnockdownCommand);
+	lua_register(getLuaState(), "AddCreatureAreaPoisonCommand", addCreatureAreaPoisonCommand);
+	lua_register(getLuaState(), "AddCreditsCommand", addCreditsCommand);
+	lua_register(getLuaState(), "AddCripplingShotCommand", addCripplingShotCommand);
+	lua_register(getLuaState(), "AddCsAppendCommentCommand", addCsAppendCommentCommand);
+	lua_register(getLuaState(), "AddCsCancelTicketCommand", addCsCancelTicketCommand);
+	lua_register(getLuaState(), "AddCsConnectPlayerCommand", addCsConnectPlayerCommand);
+	lua_register(getLuaState(), "AddCsCreateTicketCommand", addCsCreateTicketCommand);
+	lua_register(getLuaState(), "AddCsDisconnectPlayerCommand", addCsDisconnectPlayerCommand);
+	lua_register(getLuaState(), "AddCsGetArticleCommand", addCsGetArticleCommand);
+	lua_register(getLuaState(), "AddCsGetCommentsCommand", addCsGetCommentsCommand);
+	lua_register(getLuaState(), "AddCsGetTicketsCommand", addCsGetTicketsCommand);
+	lua_register(getLuaState(), "AddCsRequestCategoriesCommand", addCsRequestCategoriesCommand);
+	lua_register(getLuaState(), "AddCsSearchKnowledgeBaseCommand", addCsSearchKnowledgeBaseCommand);
+	lua_register(getLuaState(), "AddCuiConsentResponseCommand", addCuiConsentResponseCommand);
+	lua_register(getLuaState(), "AddCureDiseaseCommand", addCureDiseaseCommand);
+	lua_register(getLuaState(), "AddCurePoisonCommand", addCurePoisonCommand);
+	lua_register(getLuaState(), "AddCustomizeDroidCommand", addCustomizeDroidCommand);
+	lua_register(getLuaState(), "AddCustomizeVehicleCommand", addCustomizeVehicleCommand);
+	lua_register(getLuaState(), "AddDatabaseCommand", addDatabaseCommand);
+	lua_register(getLuaState(), "AddDazzleCommand", addDazzleCommand);
+	lua_register(getLuaState(), "AddDeactivateQuestCommand", addDeactivateQuestCommand);
+	lua_register(getLuaState(), "AddDeathBlowCommand", addDeathBlowCommand);
+	lua_register(getLuaState(), "AddDeathCountCommand", addDeathCountCommand);
+	lua_register(getLuaState(), "AddDeclareOvertCommand", addDeclareOvertCommand);
+	lua_register(getLuaState(), "AddDeclareresidenceCommand", addDeclareresidenceCommand);
+	lua_register(getLuaState(), "AddDeclineCommand", addDeclineCommand);
+	lua_register(getLuaState(), "AddDefaultAttackCommand", addDefaultAttackCommand);
+	lua_register(getLuaState(), "AddDefuseMinefieldCommand", addDefuseMinefieldCommand);
+	lua_register(getLuaState(), "AddDelegateFactionPointsCommand", addDelegateFactionPointsCommand);
+	lua_register(getLuaState(), "AddDenyServiceCommand", addDenyServiceCommand);
+	lua_register(getLuaState(), "AddDeployTrapCommand", addDeployTrapCommand);
+	lua_register(getLuaState(), "AddDestroyCommand", addDestroyCommand);
+	lua_register(getLuaState(), "AddDestroystructureCommand", addDestroystructureCommand);
+	lua_register(getLuaState(), "AddDetonateDroidCommand", addDetonateDroidCommand);
+	lua_register(getLuaState(), "AddDiagnoseCommand", addDiagnoseCommand);
+	lua_register(getLuaState(), "AddDisarmingShot1Command", addDisarmingShot1Command);
+	lua_register(getLuaState(), "AddDisarmingShot2Command", addDisarmingShot2Command);
+	lua_register(getLuaState(), "AddDisbandCommand", addDisbandCommand);
+	lua_register(getLuaState(), "AddDismissGroupMemberCommand", addDismissGroupMemberCommand);
+	lua_register(getLuaState(), "AddDismountCommand", addDismountCommand);
+	lua_register(getLuaState(), "AddDismountandstoreCommand", addDismountandstoreCommand);
+	lua_register(getLuaState(), "AddDistractCommand", addDistractCommand);
+	lua_register(getLuaState(), "AddDiveShotCommand", addDiveShotCommand);
+	lua_register(getLuaState(), "AddDizzyAttackCommand", addDizzyAttackCommand);
+	lua_register(getLuaState(), "AddDoubleTapCommand", addDoubleTapCommand);
+	lua_register(getLuaState(), "AddDragIncapacitatedPlayerCommand", addDragIncapacitatedPlayerCommand);
+	lua_register(getLuaState(), "AddDrainForceCommand", addDrainForceCommand);
+	lua_register(getLuaState(), "AddDuelCommand", addDuelCommand);
+	lua_register(getLuaState(), "AddDumpTargetInformationCommand", addDumpTargetInformationCommand);
+	lua_register(getLuaState(), "AddDumpZoneInformationCommand", addDumpZoneInformationCommand);
+	lua_register(getLuaState(), "AddEatCommand", addEatCommand);
+	lua_register(getLuaState(), "AddEditAppearanceCommand", addEditAppearanceCommand);
+	lua_register(getLuaState(), "AddEditBankCommand", addEditBankCommand);
+	lua_register(getLuaState(), "AddEditBankAccountCommand", addEditBankAccountCommand);
+	lua_register(getLuaState(), "AddEditStatsCommand", addEditStatsCommand);
+	lua_register(getLuaState(), "AddEmboldenpetsCommand", addEmboldenpetsCommand);
+	lua_register(getLuaState(), "AddEmptyMailTargetCommand", addEmptyMailTargetCommand);
+	lua_register(getLuaState(), "AddEndDuelCommand", addEndDuelCommand);
+	lua_register(getLuaState(), "AddEnragepetsCommand", addEnragepetsCommand);
+	lua_register(getLuaState(), "AddEquilibriumCommand", addEquilibriumCommand);
+	lua_register(getLuaState(), "AddExecuteKnowledgeBaseMessageCommand", addExecuteKnowledgeBaseMessageCommand);
+	lua_register(getLuaState(), "AddExtinguishFireCommand", addExtinguishFireCommand);
+	lua_register(getLuaState(), "AddExtractObjectCommand", addExtractObjectCommand);
+	lua_register(getLuaState(), "AddEyeShotCommand", addEyeShotCommand);
+	lua_register(getLuaState(), "AddFactoryCrateSplitCommand", addFactoryCrateSplitCommand);
+	lua_register(getLuaState(), "AddFanShotCommand", addFanShotCommand);
+	lua_register(getLuaState(), "AddFastBlastCommand", addFastBlastCommand);
+	lua_register(getLuaState(), "AddFeignDeathCommand", addFeignDeathCommand);
+	lua_register(getLuaState(), "AddFindCommand", addFindCommand);
+	lua_register(getLuaState(), "AddFindFriendCommand", addFindFriendCommand);
+	lua_register(getLuaState(), "AddFindMyTrainerCommand", addFindMyTrainerCommand);
+	lua_register(getLuaState(), "AddFindObjectCommand", addFindObjectCommand);
+	lua_register(getLuaState(), "AddFindPlayerCommand", addFindPlayerCommand);
+	lua_register(getLuaState(), "AddFireAcidCone1Command", addFireAcidCone1Command);
+	lua_register(getLuaState(), "AddFireAcidCone2Command", addFireAcidCone2Command);
+	lua_register(getLuaState(), "AddFireAcidSingle1Command", addFireAcidSingle1Command);
+	lua_register(getLuaState(), "AddFireAcidSingle2Command", addFireAcidSingle2Command);
+	lua_register(getLuaState(), "AddFireHeavyWeaponCommand", addFireHeavyWeaponCommand);
+	lua_register(getLuaState(), "AddFirejetCommand", addFirejetCommand);
+	lua_register(getLuaState(), "AddFireLightningCone1Command", addFireLightningCone1Command);
+	lua_register(getLuaState(), "AddFireLightningCone2Command", addFireLightningCone2Command);
+	lua_register(getLuaState(), "AddFireLightningSingle1Command", addFireLightningSingle1Command);
+	lua_register(getLuaState(), "AddFireLightningSingle2Command", addFireLightningSingle2Command);
+	lua_register(getLuaState(), "AddFirstAidCommand", addFirstAidCommand);
+	lua_register(getLuaState(), "AddFishCommand", addFishCommand);
+	lua_register(getLuaState(), "AddFlameCone1Command", addFlameCone1Command);
+	lua_register(getLuaState(), "AddFlameCone2Command", addFlameCone2Command);
+	lua_register(getLuaState(), "AddFlameSingle1Command", addFlameSingle1Command);
+	lua_register(getLuaState(), "AddFlameSingle2Command", addFlameSingle2Command);
+	lua_register(getLuaState(), "AddFlashSpeederCommand", addFlashSpeederCommand);
+	lua_register(getLuaState(), "AddFlourishCommand", addFlourishCommand);
+	lua_register(getLuaState(), "AddFlurryShot1Command", addFlurryShot1Command);
+	lua_register(getLuaState(), "AddFlurryShot2Command", addFlurryShot2Command);
+	lua_register(getLuaState(), "AddFlushingShot1Command", addFlushingShot1Command);
+	lua_register(getLuaState(), "AddFlushingShot2Command", addFlushingShot2Command);
+	lua_register(getLuaState(), "AddForageCommand", addForageCommand);
+	lua_register(getLuaState(), "AddForceAbsorb1Command", addForceAbsorb1Command);
+	lua_register(getLuaState(), "AddForceAbsorb2Command", addForceAbsorb2Command);
+	lua_register(getLuaState(), "AddForceArmor1Command", addForceArmor1Command);
+	lua_register(getLuaState(), "AddForceArmor2Command", addForceArmor2Command);
+	lua_register(getLuaState(), "AddForceChokeCommand", addForceChokeCommand);
+	lua_register(getLuaState(), "AddForceCommandCommand", addForceCommandCommand);
+	lua_register(getLuaState(), "AddForceCureDiseaseCommand", addForceCureDiseaseCommand);
+	lua_register(getLuaState(), "AddForceCurePoisonCommand", addForceCurePoisonCommand);
+	lua_register(getLuaState(), "AddForceFeedback1Command", addForceFeedback1Command);
+	lua_register(getLuaState(), "AddForceFeedback2Command", addForceFeedback2Command);
+	lua_register(getLuaState(), "AddForceIntimidate1Command", addForceIntimidate1Command);
+	lua_register(getLuaState(), "AddForceIntimidate2Command", addForceIntimidate2Command);
+	lua_register(getLuaState(), "AddForceKnockdown1Command", addForceKnockdown1Command);
+	lua_register(getLuaState(), "AddForceKnockdown2Command", addForceKnockdown2Command);
+	lua_register(getLuaState(), "AddForceKnockdown3Command", addForceKnockdown3Command);
+	lua_register(getLuaState(), "AddForceLightningCone1Command", addForceLightningCone1Command);
+	lua_register(getLuaState(), "AddForceLightningCone2Command", addForceLightningCone2Command);
+	lua_register(getLuaState(), "AddForceLightningSingle1Command", addForceLightningSingle1Command);
+	lua_register(getLuaState(), "AddForceLightningSingle2Command", addForceLightningSingle2Command);
+	lua_register(getLuaState(), "AddForceMeditateCommand", addForceMeditateCommand);
+	lua_register(getLuaState(), "AddForceOfWillCommand", addForceOfWillCommand);
+	lua_register(getLuaState(), "AddForceProtectionCommand", addForceProtectionCommand);
+	lua_register(getLuaState(), "AddForceResistBleedingCommand", addForceResistBleedingCommand);
+	lua_register(getLuaState(), "AddForceResistDiseaseCommand", addForceResistDiseaseCommand);
+	lua_register(getLuaState(), "AddForceResistPoisonCommand", addForceResistPoisonCommand);
+	lua_register(getLuaState(), "AddForceResistStatesCommand", addForceResistStatesCommand);
+	lua_register(getLuaState(), "AddForceRun1Command", addForceRun1Command);
+	lua_register(getLuaState(), "AddForceRun2Command", addForceRun2Command);
+	lua_register(getLuaState(), "AddForceRun3Command", addForceRun3Command);
+	lua_register(getLuaState(), "AddForceShield1Command", addForceShield1Command);
+	lua_register(getLuaState(), "AddForceShield2Command", addForceShield2Command);
+	lua_register(getLuaState(), "AddForceSpeed1Command", addForceSpeed1Command);
+	lua_register(getLuaState(), "AddForceSpeed2Command", addForceSpeed2Command);
+	lua_register(getLuaState(), "AddForceThrow1Command", addForceThrow1Command);
+	lua_register(getLuaState(), "AddForceThrow2Command", addForceThrow2Command);
+	lua_register(getLuaState(), "AddForceWeaken1Command", addForceWeaken1Command);
+	lua_register(getLuaState(), "AddForceWeaken2Command", addForceWeaken2Command);
+	lua_register(getLuaState(), "AddFormupCommand", addFormupCommand);
+	lua_register(getLuaState(), "AddFreezePlayerCommand", addFreezePlayerCommand);
+	lua_register(getLuaState(), "AddFullAutoArea1Command", addFullAutoArea1Command);
+	lua_register(getLuaState(), "AddFullAutoArea2Command", addFullAutoArea2Command);
+	lua_register(getLuaState(), "AddFullAutoSingle1Command", addFullAutoSingle1Command);
+	lua_register(getLuaState(), "AddFullAutoSingle2Command", addFullAutoSingle2Command);
+	lua_register(getLuaState(), "AddGCommand", addGCommand);
+	lua_register(getLuaState(), "AddGallopCommand", addGallopCommand);
+	lua_register(getLuaState(), "AddGallopStopCommand", addGallopStopCommand);
+	lua_register(getLuaState(), "AddGcCommand", addGcCommand);
+	lua_register(getLuaState(), "AddGcwStatusCommand", addGcwStatusCommand);
+	lua_register(getLuaState(), "AddGenerateCraftedItemCommand", addGenerateCraftedItemCommand);
+	lua_register(getLuaState(), "AddGetAccountInfoCommand", addGetAccountInfoCommand);
+	lua_register(getLuaState(), "AddGetAttributesCommand", addGetAttributesCommand);
+	lua_register(getLuaState(), "AddGetAttributesBatchCommand", addGetAttributesBatchCommand);
+	lua_register(getLuaState(), "AddGetFriendListCommand", addGetFriendListCommand);
+	lua_register(getLuaState(), "AddGetGameTimeCommand", addGetGameTimeCommand);
+	lua_register(getLuaState(), "AddGetIgnoreListCommand", addGetIgnoreListCommand);
+	lua_register(getLuaState(), "AddGetMapLocationsCommand", addGetMapLocationsCommand);
+	lua_register(getLuaState(), "AddGetObjVarsCommand", addGetObjVarsCommand);
+	lua_register(getLuaState(), "AddGetPlayerIdCommand", addGetPlayerIdCommand);
+	lua_register(getLuaState(), "AddGetPrototypeCommand", addGetPrototypeCommand);
+	lua_register(getLuaState(), "AddGetRankCommand", addGetRankCommand);
+	lua_register(getLuaState(), "AddGetSpawnDelaysCommand", addGetSpawnDelaysCommand);
+	lua_register(getLuaState(), "AddGetStationNameCommand", addGetStationNameCommand);
+	lua_register(getLuaState(), "AddGetVeteranRewardTimeCommand", addGetVeteranRewardTimeCommand);
+	lua_register(getLuaState(), "AddGetVeteranRewardTimeCsCommand", addGetVeteranRewardTimeCsCommand);
+	lua_register(getLuaState(), "AddGiveItemCommand", addGiveItemCommand);
+	lua_register(getLuaState(), "AddGiveMaintenanceToVendorCommand", addGiveMaintenanceToVendorCommand);
+	lua_register(getLuaState(), "AddGivevendormaintCommand", addGivevendormaintCommand);
+	lua_register(getLuaState(), "AddGmForceCommandCommand", addGmForceCommandCommand);
+	lua_register(getLuaState(), "AddGmCreateClassResourceCommand", addGmCreateClassResourceCommand);
+	lua_register(getLuaState(), "AddGmCreateSpecificResourceCommand", addGmCreateSpecificResourceCommand);
+	lua_register(getLuaState(), "AddGmForceRankCommand", addGmForceRankCommand);
+	lua_register(getLuaState(), "AddGmFsVillageCommand", addGmFsVillageCommand);
+	lua_register(getLuaState(), "AddGmJediStateCommand", addGmJediStateCommand);
+	lua_register(getLuaState(), "AddGmReviveCommand", addGmReviveCommand);
+	lua_register(getLuaState(), "AddGotoCommand", addGotoCommand);
+	lua_register(getLuaState(), "AddGrantBadgeCommand", addGrantBadgeCommand);
+	lua_register(getLuaState(), "AddGrantPadawanTrialsEligibilityCommand", addGrantPadawanTrialsEligibilityCommand);
+	lua_register(getLuaState(), "AddGrantSkillCommand", addGrantSkillCommand);
+	lua_register(getLuaState(), "AddGrantTitleCommand", addGrantTitleCommand);
+	lua_register(getLuaState(), "AddGrantZoningRightsCommand", addGrantZoningRightsCommand);
+	lua_register(getLuaState(), "AddGroupChatCommand", addGroupChatCommand);
+	lua_register(getLuaState(), "AddGroupSayCommand", addGroupSayCommand);
+	lua_register(getLuaState(), "AddGsayCommand", addGsayCommand);
+	lua_register(getLuaState(), "AddGtellCommand", addGtellCommand);
+	lua_register(getLuaState(), "AddGuildCommand", addGuildCommand);
+	lua_register(getLuaState(), "AddGuildremoveCommand", addGuildremoveCommand);
+	lua_register(getLuaState(), "AddGuildsayCommand", addGuildsayCommand);
+	lua_register(getLuaState(), "AddGuildstatusCommand", addGuildstatusCommand);
+	lua_register(getLuaState(), "AddHarmfulCommand", addHarmfulCommand);
+	lua_register(getLuaState(), "AddHarmlessCommand", addHarmlessCommand);
+	lua_register(getLuaState(), "AddHarvestCorpseCommand", addHarvestCorpseCommand);
+	lua_register(getLuaState(), "AddHarvesterActivateCommand", addHarvesterActivateCommand);
+	lua_register(getLuaState(), "AddHarvesterDeactivateCommand", addHarvesterDeactivateCommand);
+	lua_register(getLuaState(), "AddHarvesterDiscardHopperCommand", addHarvesterDiscardHopperCommand);
+	lua_register(getLuaState(), "AddHarvesterGetResourceDataCommand", addHarvesterGetResourceDataCommand);
+	lua_register(getLuaState(), "AddHarvesterHarvestCommand", addHarvesterHarvestCommand);
+	lua_register(getLuaState(), "AddHarvesterMakeCrateCommand", addHarvesterMakeCrateCommand);
+	lua_register(getLuaState(), "AddHarvesterSelectResourceCommand", addHarvesterSelectResourceCommand);
+	lua_register(getLuaState(), "AddHarvesterTakeSurveyCommand", addHarvesterTakeSurveyCommand);
+	lua_register(getLuaState(), "AddHasVeteranRewardCommand", addHasVeteranRewardCommand);
+	lua_register(getLuaState(), "AddHaveconsentCommand", addHaveconsentCommand);
+	lua_register(getLuaState(), "AddHeadShot1Command", addHeadShot1Command);
+	lua_register(getLuaState(), "AddHeadShot2Command", addHeadShot2Command);
+	lua_register(getLuaState(), "AddHeadShot3Command", addHeadShot3Command);
+	lua_register(getLuaState(), "AddHealActionSelf1Command", addHealActionSelf1Command);
+	lua_register(getLuaState(), "AddHealActionSelf2Command", addHealActionSelf2Command);
+	lua_register(getLuaState(), "AddHealActionWoundOther1Command", addHealActionWoundOther1Command);
+	lua_register(getLuaState(), "AddHealActionWoundOther2Command", addHealActionWoundOther2Command);
+	lua_register(getLuaState(), "AddHealActionWoundSelf1Command", addHealActionWoundSelf1Command);
+	lua_register(getLuaState(), "AddHealActionWoundSelf2Command", addHealActionWoundSelf2Command);
+	lua_register(getLuaState(), "AddHealAllOther1Command", addHealAllOther1Command);
+	lua_register(getLuaState(), "AddHealAllOther2Command", addHealAllOther2Command);
+	lua_register(getLuaState(), "AddHealAllSelf1Command", addHealAllSelf1Command);
+	lua_register(getLuaState(), "AddHealAllSelf2Command", addHealAllSelf2Command);
+	lua_register(getLuaState(), "AddHealBattleFatigueOther1Command", addHealBattleFatigueOther1Command);
+	lua_register(getLuaState(), "AddHealBattleFatigueOther2Command", addHealBattleFatigueOther2Command);
+	lua_register(getLuaState(), "AddHealBattleFatigueSelf1Command", addHealBattleFatigueSelf1Command);
+	lua_register(getLuaState(), "AddHealBattleFatigueSelf2Command", addHealBattleFatigueSelf2Command);
+	lua_register(getLuaState(), "AddHealDamageCommand", addHealDamageCommand);
+	lua_register(getLuaState(), "AddHealDroidDamageCommand", addHealDroidDamageCommand);
+	lua_register(getLuaState(), "AddHealDroidWoundCommand", addHealDroidWoundCommand);
+	lua_register(getLuaState(), "AddHealEnhanceCommand", addHealEnhanceCommand);
+	lua_register(getLuaState(), "AddHealHealthSelf1Command", addHealHealthSelf1Command);
+	lua_register(getLuaState(), "AddHealHealthSelf2Command", addHealHealthSelf2Command);
+	lua_register(getLuaState(), "AddHealHealthWoundOther1Command", addHealHealthWoundOther1Command);
+	lua_register(getLuaState(), "AddHealHealthWoundOther2Command", addHealHealthWoundOther2Command);
+	lua_register(getLuaState(), "AddHealHealthWoundSelf1Command", addHealHealthWoundSelf1Command);
+	lua_register(getLuaState(), "AddHealHealthWoundSelf2Command", addHealHealthWoundSelf2Command);
+	lua_register(getLuaState(), "AddHealMindCommand", addHealMindCommand);
+	lua_register(getLuaState(), "AddHealMindSelf1Command", addHealMindSelf1Command);
+	lua_register(getLuaState(), "AddHealMindSelf2Command", addHealMindSelf2Command);
+	lua_register(getLuaState(), "AddHealMindWoundOther1Command", addHealMindWoundOther1Command);
+	lua_register(getLuaState(), "AddHealMindWoundOther2Command", addHealMindWoundOther2Command);
+	lua_register(getLuaState(), "AddHealMindWoundSelf1Command", addHealMindWoundSelf1Command);
+	lua_register(getLuaState(), "AddHealMindWoundSelf2Command", addHealMindWoundSelf2Command);
+	lua_register(getLuaState(), "AddHealPetCommand", addHealPetCommand);
+	lua_register(getLuaState(), "AddHealStateCommand", addHealStateCommand);
+	lua_register(getLuaState(), "AddHealStatesOtherCommand", addHealStatesOtherCommand);
+	lua_register(getLuaState(), "AddHealStatesSelfCommand", addHealStatesSelfCommand);
+	lua_register(getLuaState(), "AddHealthShot1Command", addHealthShot1Command);
+	lua_register(getLuaState(), "AddHealthShot2Command", addHealthShot2Command);
+	lua_register(getLuaState(), "AddHealWoundCommand", addHealWoundCommand);
+	lua_register(getLuaState(), "AddHoloEmoteCommand", addHoloEmoteCommand);
+	lua_register(getLuaState(), "AddImagedesignCommand", addImagedesignCommand);
+	lua_register(getLuaState(), "AddInitializeComponentCommand", addInitializeComponentCommand);
+	lua_register(getLuaState(), "AddInnateCommand", addInnateCommand);
+	lua_register(getLuaState(), "AddInsertItemIntoShipComponentSlotCommand", addInsertItemIntoShipComponentSlotCommand);
+	lua_register(getLuaState(), "AddInstallMissionTerminalCommand", addInstallMissionTerminalCommand);
+	lua_register(getLuaState(), "AddInstallShipComponentCommand", addInstallShipComponentCommand);
+	lua_register(getLuaState(), "AddInsureCommand", addInsureCommand);
+	lua_register(getLuaState(), "AddIntimidate1Command", addIntimidate1Command);
+	lua_register(getLuaState(), "AddIntimidate2Command", addIntimidate2Command);
+	lua_register(getLuaState(), "AddIntimidationAttackCommand", addIntimidationAttackCommand);
+	lua_register(getLuaState(), "AddInviteCommand", addInviteCommand);
+	lua_register(getLuaState(), "AddInvulnerableCommand", addInvulnerableCommand);
+	lua_register(getLuaState(), "AddItemmovebackCommand", addItemmovebackCommand);
+	lua_register(getLuaState(), "AddItemmovedownCommand", addItemmovedownCommand);
+	lua_register(getLuaState(), "AddItemmoveforwardCommand", addItemmoveforwardCommand);
+	lua_register(getLuaState(), "AddItemmoveupCommand", addItemmoveupCommand);
+	lua_register(getLuaState(), "AddItemrotateleftCommand", addItemrotateleftCommand);
+	lua_register(getLuaState(), "AddItemrotaterightCommand", addItemrotaterightCommand);
+	lua_register(getLuaState(), "AddJediMindTrickCommand", addJediMindTrickCommand);
+	lua_register(getLuaState(), "AddJoinCommand", addJoinCommand);
+	lua_register(getLuaState(), "AddJoinGameCommand", addJoinGameCommand);
+	lua_register(getLuaState(), "AddKickCommand", addKickCommand);
+	lua_register(getLuaState(), "AddKillCommand", addKillCommand);
+	lua_register(getLuaState(), "AddKillPlayerCommand", addKillPlayerCommand);
+	lua_register(getLuaState(), "AddKipUpShotCommand", addKipUpShotCommand);
+	lua_register(getLuaState(), "AddKneelCommand", addKneelCommand);
+	lua_register(getLuaState(), "AddKnockdownAttackCommand", addKnockdownAttackCommand);
+	lua_register(getLuaState(), "AddKnockdownFireCommand", addKnockdownFireCommand);
+	lua_register(getLuaState(), "AddLagCommand", addLagCommand);
+	lua_register(getLuaState(), "AddLastDitchCommand", addLastDitchCommand);
+	lua_register(getLuaState(), "AddLaunchFireworkCommand", addLaunchFireworkCommand);
+	lua_register(getLuaState(), "AddLeaveGameCommand", addLeaveGameCommand);
+	lua_register(getLuaState(), "AddLeaveGroupCommand", addLeaveGroupCommand);
+	lua_register(getLuaState(), "AddLegShot1Command", addLegShot1Command);
+	lua_register(getLuaState(), "AddLegShot2Command", addLegShot2Command);
+	lua_register(getLuaState(), "AddLegShot3Command", addLegShot3Command);
+	lua_register(getLuaState(), "AddLfgCommand", addLfgCommand);
+	lua_register(getLuaState(), "AddListActiveQuestsCommand", addListActiveQuestsCommand);
+	lua_register(getLuaState(), "AddListCompletedQuestsCommand", addListCompletedQuestsCommand);
+	lua_register(getLuaState(), "AddListenCommand", addListenCommand);
+	lua_register(getLuaState(), "AddListGuildsCommand", addListGuildsCommand);
+	lua_register(getLuaState(), "AddLogoutCommand", addLogoutCommand);
+	lua_register(getLuaState(), "AddLootCommand", addLootCommand);
+	lua_register(getLuaState(), "AddLootAiCorpseCommand", addLootAiCorpseCommand);
+	lua_register(getLuaState(), "AddLootPlayerCorpseCommand", addLootPlayerCorpseCommand);
+	lua_register(getLuaState(), "AddLowBlowCommand", addLowBlowCommand);
+	lua_register(getLuaState(), "AddMakeLeaderCommand", addMakeLeaderCommand);
+	lua_register(getLuaState(), "AddMakeSurveyCommand", addMakeSurveyCommand);
+	lua_register(getLuaState(), "AddManufactureCommand", addManufactureCommand);
+	lua_register(getLuaState(), "AddMaskscentCommand", addMaskscentCommand);
+	lua_register(getLuaState(), "AddMaxCombatAbilityCommand", addMaxCombatAbilityCommand);
+	lua_register(getLuaState(), "AddMaxStatsCommand", addMaxStatsCommand);
+	lua_register(getLuaState(), "AddMedicalForageCommand", addMedicalForageCommand);
+	lua_register(getLuaState(), "AddMeditateCommand", addMeditateCommand);
+	lua_register(getLuaState(), "AddMelee1hBlindHit1Command", addMelee1hBlindHit1Command);
+	lua_register(getLuaState(), "AddMelee1hBlindHit2Command", addMelee1hBlindHit2Command);
+	lua_register(getLuaState(), "AddMelee1hBodyHit1Command", addMelee1hBodyHit1Command);
+	lua_register(getLuaState(), "AddMelee1hBodyHit2Command", addMelee1hBodyHit2Command);
+	lua_register(getLuaState(), "AddMelee1hBodyHit3Command", addMelee1hBodyHit3Command);
+	lua_register(getLuaState(), "AddMelee1hDizzyHit1Command", addMelee1hDizzyHit1Command);
+	lua_register(getLuaState(), "AddMelee1hDizzyHit2Command", addMelee1hDizzyHit2Command);
+	lua_register(getLuaState(), "AddMelee1hHealthHit1Command", addMelee1hHealthHit1Command);
+	lua_register(getLuaState(), "AddMelee1hHealthHit2Command", addMelee1hHealthHit2Command);
+	lua_register(getLuaState(), "AddMelee1hHit1Command", addMelee1hHit1Command);
+	lua_register(getLuaState(), "AddMelee1hHit2Command", addMelee1hHit2Command);
+	lua_register(getLuaState(), "AddMelee1hHit3Command", addMelee1hHit3Command);
+	lua_register(getLuaState(), "AddMelee1hLunge1Command", addMelee1hLunge1Command);
+	lua_register(getLuaState(), "AddMelee1hLunge2Command", addMelee1hLunge2Command);
+	lua_register(getLuaState(), "AddMelee1hScatterHit1Command", addMelee1hScatterHit1Command);
+	lua_register(getLuaState(), "AddMelee1hScatterHit2Command", addMelee1hScatterHit2Command);
+	lua_register(getLuaState(), "AddMelee1hSpinAttack1Command", addMelee1hSpinAttack1Command);
+	lua_register(getLuaState(), "AddMelee1hSpinAttack2Command", addMelee1hSpinAttack2Command);
+	lua_register(getLuaState(), "AddMelee2hArea1Command", addMelee2hArea1Command);
+	lua_register(getLuaState(), "AddMelee2hArea2Command", addMelee2hArea2Command);
+	lua_register(getLuaState(), "AddMelee2hArea3Command", addMelee2hArea3Command);
+	lua_register(getLuaState(), "AddMelee2hHeadHit1Command", addMelee2hHeadHit1Command);
+	lua_register(getLuaState(), "AddMelee2hHeadHit2Command", addMelee2hHeadHit2Command);
+	lua_register(getLuaState(), "AddMelee2hHeadHit3Command", addMelee2hHeadHit3Command);
+	lua_register(getLuaState(), "AddMelee2hHit1Command", addMelee2hHit1Command);
+	lua_register(getLuaState(), "AddMelee2hHit2Command", addMelee2hHit2Command);
+	lua_register(getLuaState(), "AddMelee2hHit3Command", addMelee2hHit3Command);
+	lua_register(getLuaState(), "AddMelee2hLunge1Command", addMelee2hLunge1Command);
+	lua_register(getLuaState(), "AddMelee2hLunge2Command", addMelee2hLunge2Command);
+	lua_register(getLuaState(), "AddMelee2hMindHit1Command", addMelee2hMindHit1Command);
+	lua_register(getLuaState(), "AddMelee2hMindHit2Command", addMelee2hMindHit2Command);
+	lua_register(getLuaState(), "AddMelee2hSpinAttack1Command", addMelee2hSpinAttack1Command);
+	lua_register(getLuaState(), "AddMelee2hSpinAttack2Command", addMelee2hSpinAttack2Command);
+	lua_register(getLuaState(), "AddMelee2hSweep1Command", addMelee2hSweep1Command);
+	lua_register(getLuaState(), "AddMelee2hSweep2Command", addMelee2hSweep2Command);
+	lua_register(getLuaState(), "AddMindBlast1Command", addMindBlast1Command);
+	lua_register(getLuaState(), "AddMindBlast2Command", addMindBlast2Command);
+	lua_register(getLuaState(), "AddMindShot1Command", addMindShot1Command);
+	lua_register(getLuaState(), "AddMindShot2Command", addMindShot2Command);
+	lua_register(getLuaState(), "AddMoneyCommand", addMoneyCommand);
+	lua_register(getLuaState(), "AddMountCommand", addMountCommand);
+	lua_register(getLuaState(), "AddMoveFurnitureCommand", addMoveFurnitureCommand);
+	lua_register(getLuaState(), "AddMultiTargetPistolShotCommand", addMultiTargetPistolShotCommand);
+	lua_register(getLuaState(), "AddMultiTargetShotCommand", addMultiTargetShotCommand);
+	lua_register(getLuaState(), "AddNameStructureCommand", addNameStructureCommand);
+	lua_register(getLuaState(), "AddNewbiehelperCommand", addNewbiehelperCommand);
+	lua_register(getLuaState(), "AddNewbieRequestStartingLocationsCommand", addNewbieRequestStartingLocationsCommand);
+	lua_register(getLuaState(), "AddNewbieSelectStartingLocationCommand", addNewbieSelectStartingLocationCommand);
+	lua_register(getLuaState(), "AddNextCraftingStageCommand", addNextCraftingStageCommand);
+	lua_register(getLuaState(), "AddNpcCommand", addNpcCommand);
+	lua_register(getLuaState(), "AddNpcConversationSelectCommand", addNpcConversationSelectCommand);
+	lua_register(getLuaState(), "AddNpcConversationStartCommand", addNpcConversationStartCommand);
+	lua_register(getLuaState(), "AddNpcConversationStopCommand", addNpcConversationStopCommand);
+	lua_register(getLuaState(), "AddObjectCommand", addObjectCommand);
+	lua_register(getLuaState(), "AddObjvarCommand", addObjvarCommand);
+	lua_register(getLuaState(), "AddOpenContainerCommand", addOpenContainerCommand);
+	lua_register(getLuaState(), "AddOverChargeShot1Command", addOverChargeShot1Command);
+	lua_register(getLuaState(), "AddOverChargeShot2Command", addOverChargeShot2Command);
+	lua_register(getLuaState(), "AddOverrideActiveMonthsCommand", addOverrideActiveMonthsCommand);
+	lua_register(getLuaState(), "AddOverridePadawanTrialsEligibilityCommand", addOverridePadawanTrialsEligibilityCommand);
+	lua_register(getLuaState(), "AddPanicShotCommand", addPanicShotCommand);
+	lua_register(getLuaState(), "AddPauseDanceCommand", addPauseDanceCommand);
+	lua_register(getLuaState(), "AddPauseMusicCommand", addPauseMusicCommand);
+	lua_register(getLuaState(), "AddPaWithdrawCommand", addPaWithdrawCommand);
+	lua_register(getLuaState(), "AddPaymaintenanceCommand", addPaymaintenanceCommand);
+	lua_register(getLuaState(), "AddPeaceCommand", addPeaceCommand);
+	lua_register(getLuaState(), "AddPermissionListModifyCommand", addPermissionListModifyCommand);
+	lua_register(getLuaState(), "AddPistolMeleeDefense1Command", addPistolMeleeDefense1Command);
+	lua_register(getLuaState(), "AddPistolMeleeDefense2Command", addPistolMeleeDefense2Command);
+	lua_register(getLuaState(), "AddPlaceBattlefieldStructureCommand", addPlaceBattlefieldStructureCommand);
+	lua_register(getLuaState(), "AddPlaceStructureCommand", addPlaceStructureCommand);
+	lua_register(getLuaState(), "AddPlaceStructureModeCommand", addPlaceStructureModeCommand);
+	lua_register(getLuaState(), "AddPlanetCommand", addPlanetCommand);
+	lua_register(getLuaState(), "AddPlanetsayCommand", addPlanetsayCommand);
+	lua_register(getLuaState(), "AddPlanetwarpCommand", addPlanetwarpCommand);
+	lua_register(getLuaState(), "AddPlanetwarpTargetCommand", addPlanetwarpTargetCommand);
+	lua_register(getLuaState(), "AddPointBlankArea1Command", addPointBlankArea1Command);
+	lua_register(getLuaState(), "AddPointBlankArea2Command", addPointBlankArea2Command);
+	lua_register(getLuaState(), "AddPointBlankSingle1Command", addPointBlankSingle1Command);
+	lua_register(getLuaState(), "AddPointBlankSingle2Command", addPointBlankSingle2Command);
+	lua_register(getLuaState(), "AddPolearmActionHit1Command", addPolearmActionHit1Command);
+	lua_register(getLuaState(), "AddPolearmActionHit2Command", addPolearmActionHit2Command);
+	lua_register(getLuaState(), "AddPolearmArea1Command", addPolearmArea1Command);
+	lua_register(getLuaState(), "AddPolearmArea2Command", addPolearmArea2Command);
+	lua_register(getLuaState(), "AddPolearmHit1Command", addPolearmHit1Command);
+	lua_register(getLuaState(), "AddPolearmHit2Command", addPolearmHit2Command);
+	lua_register(getLuaState(), "AddPolearmHit3Command", addPolearmHit3Command);
+	lua_register(getLuaState(), "AddPolearmLegHit1Command", addPolearmLegHit1Command);
+	lua_register(getLuaState(), "AddPolearmLegHit2Command", addPolearmLegHit2Command);
+	lua_register(getLuaState(), "AddPolearmLegHit3Command", addPolearmLegHit3Command);
+	lua_register(getLuaState(), "AddPolearmLunge1Command", addPolearmLunge1Command);
+	lua_register(getLuaState(), "AddPolearmLunge2Command", addPolearmLunge2Command);
+	lua_register(getLuaState(), "AddPolearmSpinAttack1Command", addPolearmSpinAttack1Command);
+	lua_register(getLuaState(), "AddPolearmSpinAttack2Command", addPolearmSpinAttack2Command);
+	lua_register(getLuaState(), "AddPolearmStun1Command", addPolearmStun1Command);
+	lua_register(getLuaState(), "AddPolearmStun2Command", addPolearmStun2Command);
+	lua_register(getLuaState(), "AddPolearmSweep1Command", addPolearmSweep1Command);
+	lua_register(getLuaState(), "AddPolearmSweep2Command", addPolearmSweep2Command);
+	lua_register(getLuaState(), "AddPostureDownAttackCommand", addPostureDownAttackCommand);
+	lua_register(getLuaState(), "AddPostureUpAttackCommand", addPostureUpAttackCommand);
+	lua_register(getLuaState(), "AddPowerBoostCommand", addPowerBoostCommand);
+	lua_register(getLuaState(), "AddProneCommand", addProneCommand);
+	lua_register(getLuaState(), "AddPurchaseReinforcementCommand", addPurchaseReinforcementCommand);
+	lua_register(getLuaState(), "AddPurchaseTicketCommand", addPurchaseTicketCommand);
+	lua_register(getLuaState(), "AddQuickHealCommand", addQuickHealCommand);
+	lua_register(getLuaState(), "AddRallyCommand", addRallyCommand);
+	lua_register(getLuaState(), "AddReconnectToTransferServerCommand", addReconnectToTransferServerCommand);
+	lua_register(getLuaState(), "AddRecruitSkillTrainerCommand", addRecruitSkillTrainerCommand);
+	lua_register(getLuaState(), "AddRegainConsciousnessCommand", addRegainConsciousnessCommand);
+	lua_register(getLuaState(), "AddRegenerationCommand", addRegenerationCommand);
+	lua_register(getLuaState(), "AddRegisterWithLocationCommand", addRegisterWithLocationCommand);
+	lua_register(getLuaState(), "AddReloadCommand", addReloadCommand);
+	lua_register(getLuaState(), "AddRemoteCommand", addRemoteCommand);
+	lua_register(getLuaState(), "AddRemoveAllowedPlayerCommand", addRemoveAllowedPlayerCommand);
+	lua_register(getLuaState(), "AddRemoveBannedPlayerCommand", addRemoveBannedPlayerCommand);
+	lua_register(getLuaState(), "AddRemoveFriendCommand", addRemoveFriendCommand);
+	lua_register(getLuaState(), "AddRemoveIgnoreCommand", addRemoveIgnoreCommand);
+	lua_register(getLuaState(), "AddRepairBattlefieldStructureCommand", addRepairBattlefieldStructureCommand);
+	lua_register(getLuaState(), "AddRepairShipComponentInSlotCommand", addRepairShipComponentInSlotCommand);
+	lua_register(getLuaState(), "AddReportCommand", addReportCommand);
+	lua_register(getLuaState(), "AddRequestBadgesCommand", addRequestBadgesCommand);
+	lua_register(getLuaState(), "AddRequestBiographyCommand", addRequestBiographyCommand);
+	lua_register(getLuaState(), "AddRequestCharacterMatchCommand", addRequestCharacterMatchCommand);
+	lua_register(getLuaState(), "AddRequestCharacterSheetInfoCommand", addRequestCharacterSheetInfoCommand);
+	lua_register(getLuaState(), "AddRequestCoreSampleCommand", addRequestCoreSampleCommand);
+	lua_register(getLuaState(), "AddRequestCraftingSessionCommand", addRequestCraftingSessionCommand);
+	lua_register(getLuaState(), "AddRequestDraftSlotsCommand", addRequestDraftSlotsCommand);
+	lua_register(getLuaState(), "AddRequestDraftSlotsBatchCommand", addRequestDraftSlotsBatchCommand);
+	lua_register(getLuaState(), "AddRequestManfSchematicSlotsCommand", addRequestManfSchematicSlotsCommand);
+	lua_register(getLuaState(), "AddRequestResourceWeightsCommand", addRequestResourceWeightsCommand);
+	lua_register(getLuaState(), "AddRequestResourceWeightsBatchCommand", addRequestResourceWeightsBatchCommand);
+	lua_register(getLuaState(), "AddRequestSetStatMigrationDataCommand", addRequestSetStatMigrationDataCommand);
+	lua_register(getLuaState(), "AddRequestStatMigrationDataCommand", addRequestStatMigrationDataCommand);
+	lua_register(getLuaState(), "AddRequestStatMigrationStartCommand", addRequestStatMigrationStartCommand);
+	lua_register(getLuaState(), "AddRequestStatMigrationStopCommand", addRequestStatMigrationStopCommand);
+	lua_register(getLuaState(), "AddRequestStimpackCommand", addRequestStimpackCommand);
+	lua_register(getLuaState(), "AddRequestSurveyCommand", addRequestSurveyCommand);
+	lua_register(getLuaState(), "AddRequestWaypointAtPositionCommand", addRequestWaypointAtPositionCommand);
+	lua_register(getLuaState(), "AddRescueCommand", addRescueCommand);
+	lua_register(getLuaState(), "AddResendLoginMessageToAllCommand", addResendLoginMessageToAllCommand);
+	lua_register(getLuaState(), "AddResetJediCommand", addResetJediCommand);
+	lua_register(getLuaState(), "AddResourceCommand", addResourceCommand);
+	lua_register(getLuaState(), "AddResourceContainerSplitCommand", addResourceContainerSplitCommand);
+	lua_register(getLuaState(), "AddResourceContainerTransferCommand", addResourceContainerTransferCommand);
+	lua_register(getLuaState(), "AddResourceSetNameCommand", addResourceSetNameCommand);
+	lua_register(getLuaState(), "AddResSampleLoopCommand", addResSampleLoopCommand);
+	lua_register(getLuaState(), "AddRestartConversionCommand", addRestartConversionCommand);
+	lua_register(getLuaState(), "AddRestartCraftingSessionCommand", addRestartCraftingSessionCommand);
+	lua_register(getLuaState(), "AddRetreatCommand", addRetreatCommand);
+	lua_register(getLuaState(), "AddRevivePlayerCommand", addRevivePlayerCommand);
+	lua_register(getLuaState(), "AddRevokeBadgeCommand", addRevokeBadgeCommand);
+	lua_register(getLuaState(), "AddRevokeSkillCommand", addRevokeSkillCommand);
+	lua_register(getLuaState(), "AddRolePlayCommand", addRolePlayCommand);
+	lua_register(getLuaState(), "AddRollShotCommand", addRollShotCommand);
+	lua_register(getLuaState(), "AddRotateFurnitureCommand", addRotateFurnitureCommand);
+	lua_register(getLuaState(), "AddSaber1hComboHit1Command", addSaber1hComboHit1Command);
+	lua_register(getLuaState(), "AddSaber1hComboHit2Command", addSaber1hComboHit2Command);
+	lua_register(getLuaState(), "AddSaber1hComboHit3Command", addSaber1hComboHit3Command);
+	lua_register(getLuaState(), "AddSaber1hFlurryCommand", addSaber1hFlurryCommand);
+	lua_register(getLuaState(), "AddSaber1hFlurry2Command", addSaber1hFlurry2Command);
+	lua_register(getLuaState(), "AddSaber1hHeadHit1Command", addSaber1hHeadHit1Command);
+	lua_register(getLuaState(), "AddSaber1hHeadHit2Command", addSaber1hHeadHit2Command);
+	lua_register(getLuaState(), "AddSaber1hHeadHit3Command", addSaber1hHeadHit3Command);
+	lua_register(getLuaState(), "AddSaber1hHit1Command", addSaber1hHit1Command);
+	lua_register(getLuaState(), "AddSaber1hHit2Command", addSaber1hHit2Command);
+	lua_register(getLuaState(), "AddSaber1hHit3Command", addSaber1hHit3Command);
+	lua_register(getLuaState(), "AddSaber2hBodyHit1Command", addSaber2hBodyHit1Command);
+	lua_register(getLuaState(), "AddSaber2hBodyHit2Command", addSaber2hBodyHit2Command);
+	lua_register(getLuaState(), "AddSaber2hBodyHit3Command", addSaber2hBodyHit3Command);
+	lua_register(getLuaState(), "AddSaber2hFrenzyCommand", addSaber2hFrenzyCommand);
+	lua_register(getLuaState(), "AddSaber2hHit1Command", addSaber2hHit1Command);
+	lua_register(getLuaState(), "AddSaber2hHit2Command", addSaber2hHit2Command);
+	lua_register(getLuaState(), "AddSaber2hHit3Command", addSaber2hHit3Command);
+	lua_register(getLuaState(), "AddSaber2hPhantomCommand", addSaber2hPhantomCommand);
+	lua_register(getLuaState(), "AddSaber2hSweep1Command", addSaber2hSweep1Command);
+	lua_register(getLuaState(), "AddSaber2hSweep2Command", addSaber2hSweep2Command);
+	lua_register(getLuaState(), "AddSaber2hSweep3Command", addSaber2hSweep3Command);
+	lua_register(getLuaState(), "AddSaberPolearmDervishCommand", addSaberPolearmDervishCommand);
+	lua_register(getLuaState(), "AddSaberPolearmDervish2Command", addSaberPolearmDervish2Command);
+	lua_register(getLuaState(), "AddSaberPolearmHit1Command", addSaberPolearmHit1Command);
+	lua_register(getLuaState(), "AddSaberPolearmHit2Command", addSaberPolearmHit2Command);
+	lua_register(getLuaState(), "AddSaberPolearmHit3Command", addSaberPolearmHit3Command);
+	lua_register(getLuaState(), "AddSaberPolearmLegHit1Command", addSaberPolearmLegHit1Command);
+	lua_register(getLuaState(), "AddSaberPolearmLegHit2Command", addSaberPolearmLegHit2Command);
+	lua_register(getLuaState(), "AddSaberPolearmLegHit3Command", addSaberPolearmLegHit3Command);
+	lua_register(getLuaState(), "AddSaberPolearmSpinAttack1Command", addSaberPolearmSpinAttack1Command);
+	lua_register(getLuaState(), "AddSaberPolearmSpinAttack2Command", addSaberPolearmSpinAttack2Command);
+	lua_register(getLuaState(), "AddSaberPolearmSpinAttack3Command", addSaberPolearmSpinAttack3Command);
+	lua_register(getLuaState(), "AddSaberSlash1Command", addSaberSlash1Command);
+	lua_register(getLuaState(), "AddSaberSlash2Command", addSaberSlash2Command);
+	lua_register(getLuaState(), "AddSaberThrow1Command", addSaberThrow1Command);
+	lua_register(getLuaState(), "AddSaberThrow2Command", addSaberThrow2Command);
+	lua_register(getLuaState(), "AddSaberThrow3Command", addSaberThrow3Command);
+	lua_register(getLuaState(), "AddSampleCommand", addSampleCommand);
+	lua_register(getLuaState(), "AddSampleDNACommand", addSampleDNACommand);
+	lua_register(getLuaState(), "AddScatterShot1Command", addScatterShot1Command);
+	lua_register(getLuaState(), "AddScatterShot2Command", addScatterShot2Command);
+	lua_register(getLuaState(), "AddScriptCommand", addScriptCommand);
+	lua_register(getLuaState(), "AddSearchCorpseCommand", addSearchCorpseCommand);
+	lua_register(getLuaState(), "AddSecretSpawnSpamCommand", addSecretSpawnSpamCommand);
+	lua_register(getLuaState(), "AddSeGogglesCommand", addSeGogglesCommand);
+	lua_register(getLuaState(), "AddSelectDraftSchematicCommand", addSelectDraftSchematicCommand);
+	lua_register(getLuaState(), "AddServerCommand", addServerCommand);
+	lua_register(getLuaState(), "AddServerDestroyObjectCommand", addServerDestroyObjectCommand);
+	lua_register(getLuaState(), "AddServerSysGroupCommand", addServerSysGroupCommand);
+	lua_register(getLuaState(), "AddSetBiographyAdminCommand", addSetBiographyAdminCommand);
+	lua_register(getLuaState(), "AddSetBiographyCommand", addSetBiographyCommand);
+	lua_register(getLuaState(), "AddSetBoostmoraleCommand", addSetBoostmoraleCommand);
+	lua_register(getLuaState(), "AddSetChargeCommand", addSetChargeCommand);
+	lua_register(getLuaState(), "AddSetCurrentSkillTitleCommand", addSetCurrentSkillTitleCommand);
+	lua_register(getLuaState(), "AddSetExperienceCommand", addSetExperienceCommand);
+	lua_register(getLuaState(), "AddSetFactionCommand", addSetFactionCommand);
+	lua_register(getLuaState(), "AddSetFactionStandingCommand", addSetFactionStandingCommand);
+	lua_register(getLuaState(), "AddSetFirstNameCommand", addSetFirstNameCommand);
+	lua_register(getLuaState(), "AddSetFormupCommand", addSetFormupCommand);
+	lua_register(getLuaState(), "AddSetGodModeCommand", addSetGodModeCommand);
+	lua_register(getLuaState(), "AddSetHueCommand", addSetHueCommand);
+	lua_register(getLuaState(), "AddSetIntimidateCommand", addSetIntimidateCommand);
+	lua_register(getLuaState(), "AddSetLastNameCommand", addSetLastNameCommand);
+	lua_register(getLuaState(), "AddSetLoginMessageCommand", addSetLoginMessageCommand);
+	lua_register(getLuaState(), "AddSetLoginTitleCommand", addSetLoginTitleCommand);
+	lua_register(getLuaState(), "AddSetMatchMakingCharacterIdCommand", addSetMatchMakingCharacterIdCommand);
+	lua_register(getLuaState(), "AddSetMatchMakingPersonalIdCommand", addSetMatchMakingPersonalIdCommand);
+	lua_register(getLuaState(), "AddSetMaximumSpawnTimeCommand", addSetMaximumSpawnTimeCommand);
+	lua_register(getLuaState(), "AddSetMinimumSpawnTimeCommand", addSetMinimumSpawnTimeCommand);
+	lua_register(getLuaState(), "AddSetMoodCommand", addSetMoodCommand);
+	lua_register(getLuaState(), "AddSetMoodInternalCommand", addSetMoodInternalCommand);
+	lua_register(getLuaState(), "AddSetNameCommand", addSetNameCommand);
+	lua_register(getLuaState(), "AddSetNameCommand", addSetNameCommand);
+	lua_register(getLuaState(), "AddSetOwnerCommand", addSetOwnerCommand);
+	lua_register(getLuaState(), "AddSetPerformanceBuffTargetCommand", addSetPerformanceBuffTargetCommand);
+	lua_register(getLuaState(), "AddSetpermissionCommand", addSetpermissionCommand);
+	lua_register(getLuaState(), "AddSetPlanetLimitCommand", addSetPlanetLimitCommand);
+	lua_register(getLuaState(), "AddSetPlayerAppearanceCommand", addSetPlayerAppearanceCommand);
+	lua_register(getLuaState(), "AddSetPlayerStateCommand", addSetPlayerStateCommand);
+	lua_register(getLuaState(), "AddSetprivacyCommand", addSetprivacyCommand);
+	lua_register(getLuaState(), "AddSetPublicStateCommand", addSetPublicStateCommand);
+	lua_register(getLuaState(), "AddSetRankCommand", addSetRankCommand);
+	lua_register(getLuaState(), "AddSetRetreatCommand", addSetRetreatCommand);
+	lua_register(getLuaState(), "AddSetSpeedCommand", addSetSpeedCommand);
+	lua_register(getLuaState(), "AddSetSpokenLanguageCommand", addSetSpokenLanguageCommand);
+	lua_register(getLuaState(), "AddSetSteadyaimCommand", addSetSteadyaimCommand);
+	lua_register(getLuaState(), "AddSetTEFCommand", addSetTEFCommand);
+	lua_register(getLuaState(), "AddSetVeteranRewardCommand", addSetVeteranRewardCommand);
+	lua_register(getLuaState(), "AddSetWarcryCommand", addSetWarcryCommand);
+	lua_register(getLuaState(), "AddSetWaypointActiveStatusCommand", addSetWaypointActiveStatusCommand);
+	lua_register(getLuaState(), "AddSetWaypointNameCommand", addSetWaypointNameCommand);
+	lua_register(getLuaState(), "AddShowCouncilRankCommand", addShowCouncilRankCommand);
+	lua_register(getLuaState(), "AddShowDanceVisualsCommand", addShowDanceVisualsCommand);
+	lua_register(getLuaState(), "AddShowFactionInformationCommand", addShowFactionInformationCommand);
+	lua_register(getLuaState(), "AddShowMusicianVisualsCommand", addShowMusicianVisualsCommand);
+	lua_register(getLuaState(), "AddShowPvPRatingCommand", addShowPvPRatingCommand);
+	lua_register(getLuaState(), "AddShowSpawnRegionCommand", addShowSpawnRegionCommand);
+	lua_register(getLuaState(), "AddSitServerCommand", addSitServerCommand);
+	lua_register(getLuaState(), "AddSkillCommand", addSkillCommand);
+	lua_register(getLuaState(), "AddSmokebombCommand", addSmokebombCommand);
+	lua_register(getLuaState(), "AddSniperShotCommand", addSniperShotCommand);
+	lua_register(getLuaState(), "AddSnoopCommand", addSnoopCommand);
+	lua_register(getLuaState(), "AddSocialCommand", addSocialCommand);
+	lua_register(getLuaState(), "AddSocialInternalCommand", addSocialInternalCommand);
+	lua_register(getLuaState(), "AddSpatialChatCommand", addSpatialChatCommand);
+	lua_register(getLuaState(), "AddSpatialChatInternalCommand", addSpatialChatInternalCommand);
+	lua_register(getLuaState(), "AddSpawnStatusCommand", addSpawnStatusCommand);
+	lua_register(getLuaState(), "AddSplitCreditsWithGroupCommand", addSplitCreditsWithGroupCommand);
+	lua_register(getLuaState(), "AddSpotlightCommand", addSpotlightCommand);
+	lua_register(getLuaState(), "AddSprayShotCommand", addSprayShotCommand);
+	lua_register(getLuaState(), "AddStandCommand", addStandCommand);
+	lua_register(getLuaState(), "AddStartBandCommand", addStartBandCommand);
+	lua_register(getLuaState(), "AddStartCitySpawnerCommand", addStartCitySpawnerCommand);
+	lua_register(getLuaState(), "AddStartDanceCommand", addStartDanceCommand);
+	lua_register(getLuaState(), "AddStartleShot1Command", addStartleShot1Command);
+	lua_register(getLuaState(), "AddStartleShot2Command", addStartleShot2Command);
+	lua_register(getLuaState(), "AddStartMusicCommand", addStartMusicCommand);
+	lua_register(getLuaState(), "AddStartSpawnerCommand", addStartSpawnerCommand);
+	lua_register(getLuaState(), "AddStartTargetSpawnerCommand", addStartTargetSpawnerCommand);
+	lua_register(getLuaState(), "AddStartTraceLoggingCommand", addStartTraceLoggingCommand);
+	lua_register(getLuaState(), "AddStatCommand", addStatCommand);
+	lua_register(getLuaState(), "AddSteadyaimCommand", addSteadyaimCommand);
+	lua_register(getLuaState(), "AddStopBandCommand", addStopBandCommand);
+	lua_register(getLuaState(), "AddStopBleedingCommand", addStopBleedingCommand);
+	lua_register(getLuaState(), "AddStopCitySpawnerCommand", addStopCitySpawnerCommand);
+	lua_register(getLuaState(), "AddStopCraftingSessionCommand", addStopCraftingSessionCommand);
+	lua_register(getLuaState(), "AddStopDanceCommand", addStopDanceCommand);
+	lua_register(getLuaState(), "AddStoplisteningCommand", addStoplisteningCommand);
+	lua_register(getLuaState(), "AddStopMusicCommand", addStopMusicCommand);
+	lua_register(getLuaState(), "AddStoppingShotCommand", addStoppingShotCommand);
+	lua_register(getLuaState(), "AddStopSpawnerCommand", addStopSpawnerCommand);
+	lua_register(getLuaState(), "AddStopTargetSpawnerCommand", addStopTargetSpawnerCommand);
+	lua_register(getLuaState(), "AddStopTraceLoggingCommand", addStopTraceLoggingCommand);
+	lua_register(getLuaState(), "AddStopwatchingCommand", addStopwatchingCommand);
+	lua_register(getLuaState(), "AddStrafeShot1Command", addStrafeShot1Command);
+	lua_register(getLuaState(), "AddStrafeShot2Command", addStrafeShot2Command);
+	lua_register(getLuaState(), "AddStructurestatusCommand", addStructurestatusCommand);
+	lua_register(getLuaState(), "AddStunAttackCommand", addStunAttackCommand);
+	lua_register(getLuaState(), "AddSuppressionFire1Command", addSuppressionFire1Command);
+	lua_register(getLuaState(), "AddSuppressionFire2Command", addSuppressionFire2Command);
+	lua_register(getLuaState(), "AddSurpriseShotCommand", addSurpriseShotCommand);
+	lua_register(getLuaState(), "AddSurrenderSkillCommand", addSurrenderSkillCommand);
+	lua_register(getLuaState(), "AddSurveyCommand", addSurveyCommand);
+	lua_register(getLuaState(), "AddSynchronizedUiListenCommand", addSynchronizedUiListenCommand);
+	lua_register(getLuaState(), "AddSynchronizedUiStopListeningCommand", addSynchronizedUiStopListeningCommand);
+	lua_register(getLuaState(), "AddSystemMessageCommand", addSystemMessageCommand);
+	lua_register(getLuaState(), "AddTakeCoverCommand", addTakeCoverCommand);
+	lua_register(getLuaState(), "AddTameCommand", addTameCommand);
+	lua_register(getLuaState(), "AddTargetCommand", addTargetCommand);
+	lua_register(getLuaState(), "AddTauntCommand", addTauntCommand);
+	lua_register(getLuaState(), "AddTeachCommand", addTeachCommand);
+	lua_register(getLuaState(), "AddTeleportCommand", addTeleportCommand);
+	lua_register(getLuaState(), "AddTeleportTargetCommand", addTeleportTargetCommand);
+	lua_register(getLuaState(), "AddTeleportToCommand", addTeleportToCommand);
+	lua_register(getLuaState(), "AddTellpetCommand", addTellpetCommand);
+	lua_register(getLuaState(), "AddTendDamageCommand", addTendDamageCommand);
+	lua_register(getLuaState(), "AddTendDamageToolCommand", addTendDamageToolCommand);
+	lua_register(getLuaState(), "AddTendWoundCommand", addTendWoundCommand);
+	lua_register(getLuaState(), "AddTendWoundsToolCommand", addTendWoundsToolCommand);
+	lua_register(getLuaState(), "AddThreatenShotCommand", addThreatenShotCommand);
+	lua_register(getLuaState(), "AddThrowGrenadeCommand", addThrowGrenadeCommand);
+	lua_register(getLuaState(), "AddThrowTrapCommand", addThrowTrapCommand);
+	lua_register(getLuaState(), "AddTipCommand", addTipCommand);
+	lua_register(getLuaState(), "AddToggleAwayFromKeyBoardCommand", addToggleAwayFromKeyBoardCommand);
+	lua_register(getLuaState(), "AddToggleDisplayingFactionRankCommand", addToggleDisplayingFactionRankCommand);
+	lua_register(getLuaState(), "AddTorsoShotCommand", addTorsoShotCommand);
+	lua_register(getLuaState(), "AddTotalHealOtherCommand", addTotalHealOtherCommand);
+	lua_register(getLuaState(), "AddTotalHealSelfCommand", addTotalHealSelfCommand);
+	lua_register(getLuaState(), "AddTransferForceCommand", addTransferForceCommand);
+	lua_register(getLuaState(), "AddTransferItemCommand", addTransferItemCommand);
+	lua_register(getLuaState(), "AddTransferItemArmorCommand", addTransferItemArmorCommand);
+	lua_register(getLuaState(), "AddTransferItemMiscCommand", addTransferItemMiscCommand);
+	lua_register(getLuaState(), "AddTransferItemWeaponCommand", addTransferItemWeaponCommand);
+	lua_register(getLuaState(), "AddTransferstructureCommand", addTransferstructureCommand);
+	lua_register(getLuaState(), "AddTumbleToKneelingCommand", addTumbleToKneelingCommand);
+	lua_register(getLuaState(), "AddTumbleToProneCommand", addTumbleToProneCommand);
+	lua_register(getLuaState(), "AddTumbleToStandingCommand", addTumbleToStandingCommand);
+	lua_register(getLuaState(), "AddUnarmedBlind1Command", addUnarmedBlind1Command);
+	lua_register(getLuaState(), "AddUnarmedBodyHit1Command", addUnarmedBodyHit1Command);
+	lua_register(getLuaState(), "AddUnarmedCombo1Command", addUnarmedCombo1Command);
+	lua_register(getLuaState(), "AddUnarmedCombo2Command", addUnarmedCombo2Command);
+	lua_register(getLuaState(), "AddUnarmedDizzy1Command", addUnarmedDizzy1Command);
+	lua_register(getLuaState(), "AddUnarmedHeadHit1Command", addUnarmedHeadHit1Command);
+	lua_register(getLuaState(), "AddUnarmedHit1Command", addUnarmedHit1Command);
+	lua_register(getLuaState(), "AddUnarmedHit2Command", addUnarmedHit2Command);
+	lua_register(getLuaState(), "AddUnarmedHit3Command", addUnarmedHit3Command);
+	lua_register(getLuaState(), "AddUnarmedKnockdown1Command", addUnarmedKnockdown1Command);
+	lua_register(getLuaState(), "AddUnarmedKnockdown2Command", addUnarmedKnockdown2Command);
+	lua_register(getLuaState(), "AddUnarmedLegHit1Command", addUnarmedLegHit1Command);
+	lua_register(getLuaState(), "AddUnarmedLunge1Command", addUnarmedLunge1Command);
+	lua_register(getLuaState(), "AddUnarmedLunge2Command", addUnarmedLunge2Command);
+	lua_register(getLuaState(), "AddUnarmedSpinAttack1Command", addUnarmedSpinAttack1Command);
+	lua_register(getLuaState(), "AddUnarmedSpinAttack2Command", addUnarmedSpinAttack2Command);
+	lua_register(getLuaState(), "AddUnarmedStun1Command", addUnarmedStun1Command);
+	lua_register(getLuaState(), "AddUnassociateDroidControlDeviceWithShipCommand", addUnassociateDroidControlDeviceWithShipCommand);
+	lua_register(getLuaState(), "AddUnCityBanCommand", addUnCityBanCommand);
+	lua_register(getLuaState(), "AddUnconsentCommand", addUnconsentCommand);
+	lua_register(getLuaState(), "AddUnderHandShotCommand", addUnderHandShotCommand);
+	lua_register(getLuaState(), "AddUnfreezePlayerCommand", addUnfreezePlayerCommand);
+	lua_register(getLuaState(), "AddUninstallShipComponentCommand", addUninstallShipComponentCommand);
+	lua_register(getLuaState(), "AddUninviteCommand", addUninviteCommand);
+	lua_register(getLuaState(), "AddUnsnoopCommand", addUnsnoopCommand);
+	lua_register(getLuaState(), "AddUseReconDroneCommand", addUseReconDroneCommand);
+	lua_register(getLuaState(), "AddUseSkillBuffCommand", addUseSkillBuffCommand);
+	lua_register(getLuaState(), "AddVentriloquismCommand", addVentriloquismCommand);
+	lua_register(getLuaState(), "AddToggleCombatTauntsCommand", addToggleCombatTauntsCommand);
+	lua_register(getLuaState(), "AddVertFurnitureCommand", addVertFurnitureCommand);
+	lua_register(getLuaState(), "AddVitalizeCommand", addVitalizeCommand);
+	lua_register(getLuaState(), "AddVolleyFireCommand", addVolleyFireCommand);
+	lua_register(getLuaState(), "AddVolleyFireAttackCommand", addVolleyFireAttackCommand);
+	lua_register(getLuaState(), "AddWarcry1Command", addWarcry1Command);
+	lua_register(getLuaState(), "AddWarcry2Command", addWarcry2Command);
+	lua_register(getLuaState(), "AddWarningShotCommand", addWarningShotCommand);
+	lua_register(getLuaState(), "AddWatchCommand", addWatchCommand);
+	lua_register(getLuaState(), "AddWildShot1Command", addWildShot1Command);
+	lua_register(getLuaState(), "AddWildShot2Command", addWildShot2Command);
+	lua_register(getLuaState(), "AddWipeItemsCommand", addWipeItemsCommand);
+	lua_register(getLuaState(), "AddWookieeRoarCommand", addWookieeRoarCommand);
+	lua_register(getLuaState(), "AddCityInfoCommand", addCityInfoCommand);
+	lua_register(getLuaState(), "AddEjectCommand", addEjectCommand);
+	lua_register(getLuaState(), "AddLaunchIntoSpaceCommand", addLaunchIntoSpaceCommand);
+	lua_register(getLuaState(), "AddUnstickCommand", addUnstickCommand);
+	lua_register(getLuaState(), "AddWaypointCommand", addWaypointCommand);
+	lua_register(getLuaState(), "AddCreateVendorCommand", addCreateVendorCommand);
+
+
 }
 
 void CommandConfigManager::registerGlobals() {
@@ -851,6619 +965,7711 @@ void CommandConfigManager::parseSlashCommand(LuaObject &slashcommand, QueueComma
 
 	slashCommands->put(slashCommand);
 
-	String alternativeNames = slashcommand.getStringField("alternativeNames");
+	/*String alternativeNames = slashcommand.getStringField("alternativeNames");
 	if (!alternativeNames.isEmpty())
-		parseAlternativeNames(alternativeNames, slashCommand);
+		parseAlternativeNames(alternativeNames, slashCommand);*/
 }
 
-int CommandConfigManager::addActivateCloneSlashCommand(lua_State* L) {
+int CommandConfigManager::addActionShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ActivateCloneSlashCommand* slashCommand = new ActivateCloneSlashCommand(slashcommand.getStringField("name"), server);
+	ActionShot1Command* slashCommand = new ActionShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addActivateQuestSlashCommand(lua_State* L) {
+int CommandConfigManager::addActionShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ActivateQuestSlashCommand* slashCommand = new ActivateQuestSlashCommand(slashcommand.getStringField("name"), server);
+	ActionShot2Command* slashCommand = new ActionShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAddAllowedPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addActivateCloneCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AddAllowedPlayerSlashCommand* slashCommand = new AddAllowedPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	ActivateCloneCommand* slashCommand = new ActivateCloneCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAddBannedPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addActivateQuestCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AddBannedPlayerSlashCommand* slashCommand = new AddBannedPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	ActivateQuestCommand* slashCommand = new ActivateQuestCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAddFriendSlashCommand(lua_State* L) {
+int CommandConfigManager::addAddAllowedPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AddFriendSlashCommand* slashCommand = new AddFriendSlashCommand(slashcommand.getStringField("name"), server);
+	AddAllowedPlayerCommand* slashCommand = new AddAllowedPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAddIgnoreSlashCommand(lua_State* L) {
+int CommandConfigManager::addAddBannedPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AddIgnoreSlashCommand* slashCommand = new AddIgnoreSlashCommand(slashcommand.getStringField("name"), server);
+	AddBannedPlayerCommand* slashCommand = new AddBannedPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAddMapLocationSlashCommand(lua_State* L) {
+int CommandConfigManager::addAddFriendCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AddMapLocationSlashCommand* slashCommand = new AddMapLocationSlashCommand(slashcommand.getStringField("name"), server);
+	AddFriendCommand* slashCommand = new AddFriendCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAddPowerSlashCommand(lua_State* L) {
+int CommandConfigManager::addAddIgnoreCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AddPowerSlashCommand* slashCommand = new AddPowerSlashCommand(slashcommand.getStringField("name"), server);
+	AddIgnoreCommand* slashCommand = new AddIgnoreCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAdjustLotCountSlashCommand(lua_State* L) {
+int CommandConfigManager::addAddMapLocationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
-	if (!slashcommand.isValidTable()) {
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AddMapLocationCommand* slashCommand = new AddMapLocationCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAddPowerCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AddPowerCommand* slashCommand = new AddPowerCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAdjustLotCountCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AdjustLotCountCommand* slashCommand = new AdjustLotCountCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAiIgnoreCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AiIgnoreCommand* slashCommand = new AiIgnoreCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAimCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AimCommand* slashCommand = new AimCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAlertCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AlertCommand* slashCommand = new AlertCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAnimalAttackCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AnimalAttackCommand* slashCommand = new AnimalAttackCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAnimalCalmCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AnimalCalmCommand* slashCommand = new AnimalCalmCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAnimalScareCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AnimalScareCommand* slashCommand = new AnimalScareCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAnonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AnonCommand* slashCommand = new AnonCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addApplyDiseaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ApplyDiseaseCommand* slashCommand = new ApplyDiseaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addApplyPoisonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ApplyPoisonCommand* slashCommand = new ApplyPoisonCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addApplyPowerupCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ApplyPowerupCommand* slashCommand = new ApplyPowerupCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAreatrackCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AreatrackCommand* slashCommand = new AreatrackCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAssignDroidCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AssignDroidCommand* slashCommand = new AssignDroidCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAssistCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AssistCommand* slashCommand = new AssistCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAssociateDroidControlDeviceWithShipCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AssociateDroidControlDeviceWithShipCommand* slashCommand = new AssociateDroidControlDeviceWithShipCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAttackCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AttackCommand* slashCommand = new AttackCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionCommand* slashCommand = new AuctionCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionAcceptCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionAcceptCommand* slashCommand = new AuctionAcceptCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionBidCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionBidCommand* slashCommand = new AuctionBidCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionCancelCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionCancelCommand* slashCommand = new AuctionCancelCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionCreateCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionCreateCommand* slashCommand = new AuctionCreateCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionQueryCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionQueryCommand* slashCommand = new AuctionQueryCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionRetrieveCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionRetrieveCommand* slashCommand = new AuctionRetrieveCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAuctionsayCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AuctionsayCommand* slashCommand = new AuctionsayCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addAvoidIncapacitationCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	AvoidIncapacitationCommand* slashCommand = new AvoidIncapacitationCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBandFlourishCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BandFlourishCommand* slashCommand = new BandFlourishCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBattlefieldStatusCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BattlefieldStatusCommand* slashCommand = new BattlefieldStatusCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBerserk1Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	Berserk1Command* slashCommand = new Berserk1Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBerserk2Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	Berserk2Command* slashCommand = new Berserk2Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBetCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BetCommand* slashCommand = new BetCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBleedingShotCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BleedingShotCommand* slashCommand = new BleedingShotCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBlindAttackCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BlindAttackCommand* slashCommand = new BlindAttackCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBoardShuttleCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BoardShuttleCommand* slashCommand = new BoardShuttleCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBodyShot1Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BodyShot1Command* slashCommand = new BodyShot1Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBodyShot2Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BodyShot2Command* slashCommand = new BodyShot2Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBodyShot3Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BodyShot3Command* slashCommand = new BodyShot3Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBoostmoraleCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BoostmoraleCommand* slashCommand = new BoostmoraleCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBroadcastCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BroadcastCommand* slashCommand = new BroadcastCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBroadcastAreaCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BroadcastAreaCommand* slashCommand = new BroadcastAreaCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBroadcastGalaxyCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BroadcastGalaxyCommand* slashCommand = new BroadcastGalaxyCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBroadcastPlanetCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BroadcastPlanetCommand* slashCommand = new BroadcastPlanetCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBurstRunCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BurstRunCommand* slashCommand = new BurstRunCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBurstShot1Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BurstShot1Command* slashCommand = new BurstShot1Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addBurstShot2Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	BurstShot2Command* slashCommand = new BurstShot2Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCancelCraftingSessionCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CancelCraftingSessionCommand* slashCommand = new CancelCraftingSessionCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCenterOfBeingCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CenterOfBeingCommand* slashCommand = new CenterOfBeingCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addChangeBandMusicCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ChangeBandMusicCommand* slashCommand = new ChangeBandMusicCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addChangeDanceCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ChangeDanceCommand* slashCommand = new ChangeDanceCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addChangeMusicCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ChangeMusicCommand* slashCommand = new ChangeMusicCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addChannelForceCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ChannelForceCommand* slashCommand = new ChannelForceCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addChargeShot1Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ChargeShot1Command* slashCommand = new ChargeShot1Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addChargeShot2Command(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ChargeShot2Command* slashCommand = new ChargeShot2Command(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCheckForceStatusCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CheckForceStatusCommand* slashCommand = new CheckForceStatusCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCitybanCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CitybanCommand* slashCommand = new CitybanCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCitypardonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CitypardonCommand* slashCommand = new CitypardonCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addClaimVeteranRewardCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ClaimVeteranRewardCommand* slashCommand = new ClaimVeteranRewardCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addClearCompletedQuestCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ClearCompletedQuestCommand* slashCommand = new ClearCompletedQuestCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addClearVeteranRewardCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ClearVeteranRewardCommand* slashCommand = new ClearVeteranRewardCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addClientQualifiedForSkillCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ClientQualifiedForSkillCommand* slashCommand = new ClientQualifiedForSkillCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCloneCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CloneCommand* slashCommand = new CloneCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCloseContainerCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CloseContainerCommand* slashCommand = new CloseContainerCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addColorlightsCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ColorlightsCommand* slashCommand = new ColorlightsCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCombatCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CombatCommand* slashCommand = new CombatCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCombatEscapeCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CombatEscapeCommand* slashCommand = new CombatEscapeCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCombatModeCheckCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CombatModeCheckCommand* slashCommand = new CombatModeCheckCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCombatSpamCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CombatSpamCommand* slashCommand = new CombatSpamCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCombatTargetCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CombatTargetCommand* slashCommand = new CombatTargetCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCompleteQuestCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CompleteQuestCommand* slashCommand = new CompleteQuestCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addConcealCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ConcealCommand* slashCommand = new ConcealCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addConcealShotCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ConcealShotCommand* slashCommand = new ConcealShotCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addConfusionShotCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ConfusionShotCommand* slashCommand = new ConfusionShotCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addConsentCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	ConsentCommand* slashCommand = new ConsentCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCorpseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CorpseCommand* slashCommand = new CorpseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCounterAttackCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CounterAttackCommand* slashCommand = new CounterAttackCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCoupDeGraceCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CoupDeGraceCommand* slashCommand = new CoupDeGraceCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCraftCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CraftCommand* slashCommand = new CraftCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreateCreatureCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreateCreatureCommand* slashCommand = new CreateCreatureCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreateManfSchematicCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreateManfSchematicCommand* slashCommand = new CreateManfSchematicCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreateMissionElementCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreateMissionElementCommand* slashCommand = new CreateMissionElementCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreateNPCCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreateNPCCommand* slashCommand = new CreateNPCCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatePrototypeCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatePrototypeCommand* slashCommand = new CreatePrototypeCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreateSpawningElementCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreateSpawningElementCommand* slashCommand = new CreateSpawningElementCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreateSpawningElementWithDifficultyCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreateSpawningElementWithDifficultyCommand* slashCommand = new CreateSpawningElementWithDifficultyCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatureAreaAttackCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatureAreaAttackCommand* slashCommand = new CreatureAreaAttackCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatureAreaBleedingCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatureAreaBleedingCommand* slashCommand = new CreatureAreaBleedingCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatureAreaComboCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatureAreaComboCommand* slashCommand = new CreatureAreaComboCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatureAreaDiseaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatureAreaDiseaseCommand* slashCommand = new CreatureAreaDiseaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatureAreaKnockdownCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatureAreaKnockdownCommand* slashCommand = new CreatureAreaKnockdownCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreatureAreaPoisonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreatureAreaPoisonCommand* slashCommand = new CreatureAreaPoisonCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCreditsCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CreditsCommand* slashCommand = new CreditsCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCripplingShotCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CripplingShotCommand* slashCommand = new CripplingShotCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsAppendCommentCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsAppendCommentCommand* slashCommand = new CsAppendCommentCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsCancelTicketCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsCancelTicketCommand* slashCommand = new CsCancelTicketCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsConnectPlayerCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsConnectPlayerCommand* slashCommand = new CsConnectPlayerCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsCreateTicketCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsCreateTicketCommand* slashCommand = new CsCreateTicketCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsDisconnectPlayerCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsDisconnectPlayerCommand* slashCommand = new CsDisconnectPlayerCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsGetArticleCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsGetArticleCommand* slashCommand = new CsGetArticleCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsGetCommentsCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsGetCommentsCommand* slashCommand = new CsGetCommentsCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsGetTicketsCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsGetTicketsCommand* slashCommand = new CsGetTicketsCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsRequestCategoriesCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsRequestCategoriesCommand* slashCommand = new CsRequestCategoriesCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCsSearchKnowledgeBaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CsSearchKnowledgeBaseCommand* slashCommand = new CsSearchKnowledgeBaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCuiConsentResponseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CuiConsentResponseCommand* slashCommand = new CuiConsentResponseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCureDiseaseCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
+
+	CureDiseaseCommand* slashCommand = new CureDiseaseCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
+
+int CommandConfigManager::addCurePoisonCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
 		return 0;
-	}
 
-	AdjustLotCountSlashCommand* slashCommand = new AdjustLotCountSlashCommand(slashcommand.getStringField("name"), server);
+	CurePoisonCommand* slashCommand = new CurePoisonCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAdrenalBoostSlashCommand(lua_State* L) {
+int CommandConfigManager::addCustomizeDroidCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AdrenalBoostSlashCommand* slashCommand = new AdrenalBoostSlashCommand(slashcommand.getStringField("name"), server);
+	CustomizeDroidCommand* slashCommand = new CustomizeDroidCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAiIgnoreSlashCommand(lua_State* L) {
+int CommandConfigManager::addCustomizeVehicleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AiIgnoreSlashCommand* slashCommand = new AiIgnoreSlashCommand(slashcommand.getStringField("name"), server);
+	CustomizeVehicleCommand* slashCommand = new CustomizeVehicleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAimSlashCommand(lua_State* L) {
+int CommandConfigManager::addDatabaseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AimSlashCommand* slashCommand = new AimSlashCommand(slashcommand.getStringField("name"), server);
+	DatabaseCommand* slashCommand = new DatabaseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAimedShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addDazzleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AimedShotSlashCommand* slashCommand = new AimedShotSlashCommand(slashcommand.getStringField("name"), server);
+	DazzleCommand* slashCommand = new DazzleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAnonSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeactivateQuestCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AnonSlashCommand* slashCommand = new AnonSlashCommand(slashcommand.getStringField("name"), server);
+	DeactivateQuestCommand* slashCommand = new DeactivateQuestCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addApplyPowerupSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeathBlowCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ApplyPowerupSlashCommand* slashCommand = new ApplyPowerupSlashCommand(slashcommand.getStringField("name"), server);
+	DeathBlowCommand* slashCommand = new DeathBlowCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAreaTauntSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeathCountCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AreaTauntSlashCommand* slashCommand = new AreaTauntSlashCommand(slashcommand.getStringField("name"), server);
+	DeathCountCommand* slashCommand = new DeathCountCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAreatrackSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeclareOvertCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AreatrackSlashCommand* slashCommand = new AreatrackSlashCommand(slashcommand.getStringField("name"), server);
+	DeclareOvertCommand* slashCommand = new DeclareOvertCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addArmorBreakSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeclareresidenceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ArmorBreakSlashCommand* slashCommand = new ArmorBreakSlashCommand(slashcommand.getStringField("name"), server);
+	DeclareresidenceCommand* slashCommand = new DeclareresidenceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAssignDroidSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeclineCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AssignDroidSlashCommand* slashCommand = new AssignDroidSlashCommand(slashcommand.getStringField("name"), server);
+	DeclineCommand* slashCommand = new DeclineCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAssociateDroidControlDeviceWithShipSlashCommand(lua_State* L) {
+int CommandConfigManager::addDefaultAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AssociateDroidControlDeviceWithShipSlashCommand* slashCommand = new AssociateDroidControlDeviceWithShipSlashCommand(slashcommand.getStringField("name"), server);
+	DefaultAttackCommand* slashCommand = new DefaultAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addDefuseMinefieldCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AttackSlashCommand* slashCommand = new AttackSlashCommand(slashcommand.getStringField("name"), server);
+	DefuseMinefieldCommand* slashCommand = new DefuseMinefieldCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionAcceptSlashCommand(lua_State* L) {
+int CommandConfigManager::addDelegateFactionPointsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionAcceptSlashCommand* slashCommand = new AuctionAcceptSlashCommand(slashcommand.getStringField("name"), server);
+	DelegateFactionPointsCommand* slashCommand = new DelegateFactionPointsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionBidSlashCommand(lua_State* L) {
+int CommandConfigManager::addDenyServiceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionBidSlashCommand* slashCommand = new AuctionBidSlashCommand(slashcommand.getStringField("name"), server);
+	DenyServiceCommand* slashCommand = new DenyServiceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionCancelSlashCommand(lua_State* L) {
+int CommandConfigManager::addDeployTrapCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionCancelSlashCommand* slashCommand = new AuctionCancelSlashCommand(slashcommand.getStringField("name"), server);
+	DeployTrapCommand* slashCommand = new DeployTrapCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionCreateSlashCommand(lua_State* L) {
+int CommandConfigManager::addDestroyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionCreateSlashCommand* slashCommand = new AuctionCreateSlashCommand(slashcommand.getStringField("name"), server);
+	DestroyCommand* slashCommand = new DestroyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionQuerySlashCommand(lua_State* L) {
+int CommandConfigManager::addDestroystructureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionQuerySlashCommand* slashCommand = new AuctionQuerySlashCommand(slashcommand.getStringField("name"), server);
+	DestroystructureCommand* slashCommand = new DestroystructureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionRetrieveSlashCommand(lua_State* L) {
+int CommandConfigManager::addDetonateDroidCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionRetrieveSlashCommand* slashCommand = new AuctionRetrieveSlashCommand(slashcommand.getStringField("name"), server);
+	DetonateDroidCommand* slashCommand = new DetonateDroidCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAuctionsaySlashCommand(lua_State* L) {
+int CommandConfigManager::addDiagnoseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AuctionsaySlashCommand* slashCommand = new AuctionsaySlashCommand(slashcommand.getStringField("name"), server);
+	DiagnoseCommand* slashCommand = new DiagnoseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addAvoidIncapacitationSlashCommand(lua_State* L) {
+int CommandConfigManager::addDisarmingShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	AvoidIncapacitationSlashCommand* slashCommand = new AvoidIncapacitationSlashCommand(slashcommand.getStringField("name"), server);
+	DisarmingShot1Command* slashCommand = new DisarmingShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBactaInfusionSlashCommand(lua_State* L) {
+int CommandConfigManager::addDisarmingShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BactaInfusionSlashCommand* slashCommand = new BactaInfusionSlashCommand(slashcommand.getStringField("name"), server);
+	DisarmingShot2Command* slashCommand = new DisarmingShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBactaJabSlashCommand(lua_State* L) {
+int CommandConfigManager::addDisbandCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BactaJabSlashCommand* slashCommand = new BactaJabSlashCommand(slashcommand.getStringField("name"), server);
+	DisbandCommand* slashCommand = new DisbandCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBactaShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addDismissGroupMemberCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BactaShotSlashCommand* slashCommand = new BactaShotSlashCommand(slashcommand.getStringField("name"), server);
+	DismissGroupMemberCommand* slashCommand = new DismissGroupMemberCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBactaSpraySlashCommand(lua_State* L) {
+int CommandConfigManager::addDismountCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BactaSpraySlashCommand* slashCommand = new BactaSpraySlashCommand(slashcommand.getStringField("name"), server);
+	DismountCommand* slashCommand = new DismountCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBactaTossSlashCommand(lua_State* L) {
+int CommandConfigManager::addDismountandstoreCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BactaTossSlashCommand* slashCommand = new BactaTossSlashCommand(slashcommand.getStringField("name"), server);
+	DismountandstoreCommand* slashCommand = new DismountandstoreCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBandageSlashCommand(lua_State* L) {
+int CommandConfigManager::addDistractCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BandageSlashCommand* slashCommand = new BandageSlashCommand(slashcommand.getStringField("name"), server);
+	DistractCommand* slashCommand = new DistractCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBattlefieldStatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addDiveShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BattlefieldStatusSlashCommand* slashCommand = new BattlefieldStatusSlashCommand(slashcommand.getStringField("name"), server);
+	DiveShotCommand* slashCommand = new DiveShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBerserkSlashCommand(lua_State* L) {
+int CommandConfigManager::addDizzyAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BerserkSlashCommand* slashCommand = new BerserkSlashCommand(slashcommand.getStringField("name"), server);
+	DizzyAttackCommand* slashCommand = new DizzyAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBetSlashCommand(lua_State* L) {
+int CommandConfigManager::addDoubleTapCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BetSlashCommand* slashCommand = new BetSlashCommand(slashcommand.getStringField("name"), server);
+	DoubleTapCommand* slashCommand = new DoubleTapCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBindingStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addDragIncapacitatedPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BindingStrikeSlashCommand* slashCommand = new BindingStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	DragIncapacitatedPlayerCommand* slashCommand = new DragIncapacitatedPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBleedAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addDrainForceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BleedAttackSlashCommand* slashCommand = new BleedAttackSlashCommand(slashcommand.getStringField("name"), server);
+	DrainForceCommand* slashCommand = new DrainForceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBlindAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addDuelCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BlindAttackSlashCommand* slashCommand = new BlindAttackSlashCommand(slashcommand.getStringField("name"), server);
+	DuelCommand* slashCommand = new DuelCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBlindRecoverySlashCommand(lua_State* L) {
+int CommandConfigManager::addDumpTargetInformationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BlindRecoverySlashCommand* slashCommand = new BlindRecoverySlashCommand(slashcommand.getStringField("name"), server);
+	DumpTargetInformationCommand* slashCommand = new DumpTargetInformationCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBoardShuttleSlashCommand(lua_State* L) {
+int CommandConfigManager::addDumpZoneInformationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BoardShuttleSlashCommand* slashCommand = new BoardShuttleSlashCommand(slashcommand.getStringField("name"), server);
+	DumpZoneInformationCommand* slashCommand = new DumpZoneInformationCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBodyHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addEatCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BodyHitSlashCommand* slashCommand = new BodyHitSlashCommand(slashcommand.getStringField("name"), server);
+	EatCommand* slashCommand = new EatCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBodyShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addEditAppearanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BodyShotSlashCommand* slashCommand = new BodyShotSlashCommand(slashcommand.getStringField("name"), server);
+	EditAppearanceCommand* slashCommand = new EditAppearanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBoostmoraleSlashCommand(lua_State* L) {
+int CommandConfigManager::addEditBankCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BoostmoraleSlashCommand* slashCommand = new BoostmoraleSlashCommand(slashcommand.getStringField("name"), server);
+	EditBankCommand* slashCommand = new EditBankCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBroadcastSlashCommand(lua_State* L) {
+int CommandConfigManager::addEditBankAccountCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BroadcastSlashCommand* slashCommand = new BroadcastSlashCommand(slashcommand.getStringField("name"), server);
+	EditBankAccountCommand* slashCommand = new EditBankAccountCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBroadcastAreaSlashCommand(lua_State* L) {
+int CommandConfigManager::addEditStatsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BroadcastAreaSlashCommand* slashCommand = new BroadcastAreaSlashCommand(slashcommand.getStringField("name"), server);
+	EditStatsCommand* slashCommand = new EditStatsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBroadcastGalaxySlashCommand(lua_State* L) {
+int CommandConfigManager::addEmboldenpetsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BroadcastGalaxySlashCommand* slashCommand = new BroadcastGalaxySlashCommand(slashcommand.getStringField("name"), server);
+	EmboldenpetsCommand* slashCommand = new EmboldenpetsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBroadcastPlanetSlashCommand(lua_State* L) {
+int CommandConfigManager::addEmptyMailTargetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BroadcastPlanetSlashCommand* slashCommand = new BroadcastPlanetSlashCommand(slashcommand.getStringField("name"), server);
+	EmptyMailTargetCommand* slashCommand = new EmptyMailTargetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBurstRunSlashCommand(lua_State* L) {
+int CommandConfigManager::addEndDuelCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BurstRunSlashCommand* slashCommand = new BurstRunSlashCommand(slashcommand.getStringField("name"), server);
+	EndDuelCommand* slashCommand = new EndDuelCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addBurstShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addEnragepetsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	BurstShotSlashCommand* slashCommand = new BurstShotSlashCommand(slashcommand.getStringField("name"), server);
+	EnragepetsCommand* slashCommand = new EnragepetsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCancelCraftingSessionSlashCommand(lua_State* L) {
+int CommandConfigManager::addEquilibriumCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CancelCraftingSessionSlashCommand* slashCommand = new CancelCraftingSessionSlashCommand(slashcommand.getStringField("name"), server);
+	EquilibriumCommand* slashCommand = new EquilibriumCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCenterOfBeingSlashCommand(lua_State* L) {
+int CommandConfigManager::addExecuteKnowledgeBaseMessageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CenterOfBeingSlashCommand* slashCommand = new CenterOfBeingSlashCommand(slashcommand.getStringField("name"), server);
+	ExecuteKnowledgeBaseMessageCommand* slashCommand = new ExecuteKnowledgeBaseMessageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addChangeBandMusicSlashCommand(lua_State* L) {
+int CommandConfigManager::addExtinguishFireCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ChangeBandMusicSlashCommand* slashCommand = new ChangeBandMusicSlashCommand(slashcommand.getStringField("name"), server);
+	ExtinguishFireCommand* slashCommand = new ExtinguishFireCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addChangeDanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addExtractObjectCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ChangeDanceSlashCommand* slashCommand = new ChangeDanceSlashCommand(slashcommand.getStringField("name"), server);
+	ExtractObjectCommand* slashCommand = new ExtractObjectCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addChangeMusicSlashCommand(lua_State* L) {
+int CommandConfigManager::addEyeShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ChangeMusicSlashCommand* slashCommand = new ChangeMusicSlashCommand(slashcommand.getStringField("name"), server);
+	EyeShotCommand* slashCommand = new EyeShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addChannelForceSlashCommand(lua_State* L) {
+int CommandConfigManager::addFactoryCrateSplitCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ChannelForceSlashCommand* slashCommand = new ChannelForceSlashCommand(slashcommand.getStringField("name"), server);
+	FactoryCrateSplitCommand* slashCommand = new FactoryCrateSplitCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addChargeShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addFanShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ChargeShotSlashCommand* slashCommand = new ChargeShotSlashCommand(slashcommand.getStringField("name"), server);
+	FanShotCommand* slashCommand = new FanShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCheckForceStatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addFastBlastCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CheckForceStatusSlashCommand* slashCommand = new CheckForceStatusSlashCommand(slashcommand.getStringField("name"), server);
+	FastBlastCommand* slashCommand = new FastBlastCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCitybanSlashCommand(lua_State* L) {
+int CommandConfigManager::addFeignDeathCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CitybanSlashCommand* slashCommand = new CitybanSlashCommand(slashcommand.getStringField("name"), server);
+	FeignDeathCommand* slashCommand = new FeignDeathCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCityInfoSlashCommand(lua_State* L) {
+int CommandConfigManager::addFindCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CityInfoSlashCommand* slashCommand = new CityInfoSlashCommand(slashcommand.getStringField("name"), server);
+	FindCommand* slashCommand = new FindCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCitypardonSlashCommand(lua_State* L) {
+int CommandConfigManager::addFindFriendCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CitypardonSlashCommand* slashCommand = new CitypardonSlashCommand(slashcommand.getStringField("name"), server);
+	FindFriendCommand* slashCommand = new FindFriendCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addClaimVeteranRewardSlashCommand(lua_State* L) {
+int CommandConfigManager::addFindMyTrainerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ClaimVeteranRewardSlashCommand* slashCommand = new ClaimVeteranRewardSlashCommand(slashcommand.getStringField("name"), server);
+	FindMyTrainerCommand* slashCommand = new FindMyTrainerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addClearCompletedQuestSlashCommand(lua_State* L) {
+int CommandConfigManager::addFindObjectCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ClearCompletedQuestSlashCommand* slashCommand = new ClearCompletedQuestSlashCommand(slashcommand.getStringField("name"), server);
+	FindObjectCommand* slashCommand = new FindObjectCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addClearQueueSlashCommand(lua_State* L) {
+int CommandConfigManager::addFindPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ClearQueueSlashCommand* slashCommand = new ClearQueueSlashCommand(slashcommand.getStringField("name"), server);
+	FindPlayerCommand* slashCommand = new FindPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addClearVeteranRewardSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireAcidCone1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ClearVeteranRewardSlashCommand* slashCommand = new ClearVeteranRewardSlashCommand(slashcommand.getStringField("name"), server);
+	FireAcidCone1Command* slashCommand = new FireAcidCone1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addClientQualifiedForSkillSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireAcidCone2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ClientQualifiedForSkillSlashCommand* slashCommand = new ClientQualifiedForSkillSlashCommand(slashcommand.getStringField("name"), server);
+	FireAcidCone2Command* slashCommand = new FireAcidCone2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCloneSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireAcidSingle1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CloneSlashCommand* slashCommand = new CloneSlashCommand(slashcommand.getStringField("name"), server);
+	FireAcidSingle1Command* slashCommand = new FireAcidSingle1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCloseContainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireAcidSingle2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CloseContainerSlashCommand* slashCommand = new CloseContainerSlashCommand(slashcommand.getStringField("name"), server);
+	FireAcidSingle2Command* slashCommand = new FireAcidSingle2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCloseLotteryContainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireHeavyWeaponCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CloseLotteryContainerSlashCommand* slashCommand = new CloseLotteryContainerSlashCommand(slashcommand.getStringField("name"), server);
+	FireHeavyWeaponCommand* slashCommand = new FireHeavyWeaponCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCobSlashCommand(lua_State* L) {
+int CommandConfigManager::addFirejetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CobSlashCommand* slashCommand = new CobSlashCommand(slashcommand.getStringField("name"), server);
+	FirejetCommand* slashCommand = new FirejetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addColorlightsSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireLightningCone1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ColorlightsSlashCommand* slashCommand = new ColorlightsSlashCommand(slashcommand.getStringField("name"), server);
+	FireLightningCone1Command* slashCommand = new FireLightningCone1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCombatSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireLightningCone2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CombatSlashCommand* slashCommand = new CombatSlashCommand(slashcommand.getStringField("name"), server);
+	FireLightningCone2Command* slashCommand = new FireLightningCone2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCombatEscapeSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireLightningSingle1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CombatEscapeSlashCommand* slashCommand = new CombatEscapeSlashCommand(slashcommand.getStringField("name"), server);
+	FireLightningSingle1Command* slashCommand = new FireLightningSingle1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCombatModeCheckSlashCommand(lua_State* L) {
+int CommandConfigManager::addFireLightningSingle2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CombatModeCheckSlashCommand* slashCommand = new CombatModeCheckSlashCommand(slashcommand.getStringField("name"), server);
+	FireLightningSingle2Command* slashCommand = new FireLightningSingle2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCombatSpamSlashCommand(lua_State* L) {
+int CommandConfigManager::addFirstAidCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CombatSpamSlashCommand* slashCommand = new CombatSpamSlashCommand(slashcommand.getStringField("name"), server);
+	FirstAidCommand* slashCommand = new FirstAidCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCombatTargetSlashCommand(lua_State* L) {
+int CommandConfigManager::addFishCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CombatTargetSlashCommand* slashCommand = new CombatTargetSlashCommand(slashcommand.getStringField("name"), server);
+	FishCommand* slashCommand = new FishCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addComboAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlameCone1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ComboAttackSlashCommand* slashCommand = new ComboAttackSlashCommand(slashcommand.getStringField("name"), server);
+	FlameCone1Command* slashCommand = new FlameCone1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCompleteQuestSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlameCone2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CompleteQuestSlashCommand* slashCommand = new CompleteQuestSlashCommand(slashcommand.getStringField("name"), server);
+	FlameCone2Command* slashCommand = new FlameCone2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addConcealSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlameSingle1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ConcealSlashCommand* slashCommand = new ConcealSlashCommand(slashcommand.getStringField("name"), server);
+	FlameSingle1Command* slashCommand = new FlameSingle1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addConcealShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlameSingle2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ConcealShotSlashCommand* slashCommand = new ConcealShotSlashCommand(slashcommand.getStringField("name"), server);
+	FlameSingle2Command* slashCommand = new FlameSingle2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addConcussionShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlashSpeederCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ConcussionShotSlashCommand* slashCommand = new ConcussionShotSlashCommand(slashcommand.getStringField("name"), server);
+	FlashSpeederCommand* slashCommand = new FlashSpeederCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addConfusionShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlourishCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ConfusionShotSlashCommand* slashCommand = new ConfusionShotSlashCommand(slashcommand.getStringField("name"), server);
+	FlourishCommand* slashCommand = new FlourishCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addConsentSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlurryShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ConsentSlashCommand* slashCommand = new ConsentSlashCommand(slashcommand.getStringField("name"), server);
+	FlurryShot1Command* slashCommand = new FlurryShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCorpseSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlurryShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CorpseSlashCommand* slashCommand = new CorpseSlashCommand(slashcommand.getStringField("name"), server);
+	FlurryShot2Command* slashCommand = new FlurryShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCounterAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlushingShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CounterAttackSlashCommand* slashCommand = new CounterAttackSlashCommand(slashcommand.getStringField("name"), server);
+	FlushingShot1Command* slashCommand = new FlushingShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCountertoxinSlashCommand(lua_State* L) {
+int CommandConfigManager::addFlushingShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CountertoxinSlashCommand* slashCommand = new CountertoxinSlashCommand(slashcommand.getStringField("name"), server);
+	FlushingShot2Command* slashCommand = new FlushingShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCountertoxinSpraySlashCommand(lua_State* L) {
+int CommandConfigManager::addForageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CountertoxinSpraySlashCommand* slashCommand = new CountertoxinSpraySlashCommand(slashcommand.getStringField("name"), server);
+	ForageCommand* slashCommand = new ForageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCoupDeGraceSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceAbsorb1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CoupDeGraceSlashCommand* slashCommand = new CoupDeGraceSlashCommand(slashcommand.getStringField("name"), server);
+	ForceAbsorb1Command* slashCommand = new ForceAbsorb1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCoverSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceAbsorb2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CoverSlashCommand* slashCommand = new CoverSlashCommand(slashcommand.getStringField("name"), server);
+	ForceAbsorb2Command* slashCommand = new ForceAbsorb2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCoverchargeSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceArmor1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CoverchargeSlashCommand* slashCommand = new CoverchargeSlashCommand(slashcommand.getStringField("name"), server);
+	ForceArmor1Command* slashCommand = new ForceArmor1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCraftSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceArmor2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CraftSlashCommand* slashCommand = new CraftSlashCommand(slashcommand.getStringField("name"), server);
+	ForceArmor2Command* slashCommand = new ForceArmor2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreateCreatureSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceChokeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreateCreatureSlashCommand* slashCommand = new CreateCreatureSlashCommand(slashcommand.getStringField("name"), server);
+	ForceChokeCommand* slashCommand = new ForceChokeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreateManfSchematicSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceCommandCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreateManfSchematicSlashCommand* slashCommand = new CreateManfSchematicSlashCommand(slashcommand.getStringField("name"), server);
+	ForceCommandCommand* slashCommand = new ForceCommandCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreateMissionElementSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceCureDiseaseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreateMissionElementSlashCommand* slashCommand = new CreateMissionElementSlashCommand(slashcommand.getStringField("name"), server);
+	ForceCureDiseaseCommand* slashCommand = new ForceCureDiseaseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreateNPCSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceCurePoisonCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreateNPCSlashCommand* slashCommand = new CreateNPCSlashCommand(slashcommand.getStringField("name"), server);
+	ForceCurePoisonCommand* slashCommand = new ForceCurePoisonCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatePrototypeSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceFeedback1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatePrototypeSlashCommand* slashCommand = new CreatePrototypeSlashCommand(slashcommand.getStringField("name"), server);
+	ForceFeedback1Command* slashCommand = new ForceFeedback1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreateSpawningElementSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceFeedback2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreateSpawningElementSlashCommand* slashCommand = new CreateSpawningElementSlashCommand(slashcommand.getStringField("name"), server);
+	ForceFeedback2Command* slashCommand = new ForceFeedback2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreateSpawningElementWithDifficultySlashCommand(lua_State* L) {
+int CommandConfigManager::addForceIntimidate1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreateSpawningElementWithDifficultySlashCommand* slashCommand = new CreateSpawningElementWithDifficultySlashCommand(slashcommand.getStringField("name"), server);
+	ForceIntimidate1Command* slashCommand = new ForceIntimidate1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureAreaAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceIntimidate2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureAreaAttackSlashCommand* slashCommand = new CreatureAreaAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceIntimidate2Command* slashCommand = new ForceIntimidate2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureAreaBleedingSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceKnockdown1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureAreaBleedingSlashCommand* slashCommand = new CreatureAreaBleedingSlashCommand(slashcommand.getStringField("name"), server);
+	ForceKnockdown1Command* slashCommand = new ForceKnockdown1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureAreaComboSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceKnockdown2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureAreaComboSlashCommand* slashCommand = new CreatureAreaComboSlashCommand(slashcommand.getStringField("name"), server);
+	ForceKnockdown2Command* slashCommand = new ForceKnockdown2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureAreaDiseaseSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceKnockdown3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureAreaDiseaseSlashCommand* slashCommand = new CreatureAreaDiseaseSlashCommand(slashcommand.getStringField("name"), server);
+	ForceKnockdown3Command* slashCommand = new ForceKnockdown3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureAreaKnockdownSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceLightningCone1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureAreaKnockdownSlashCommand* slashCommand = new CreatureAreaKnockdownSlashCommand(slashcommand.getStringField("name"), server);
+	ForceLightningCone1Command* slashCommand = new ForceLightningCone1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureAreaPoisonSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceLightningCone2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureAreaPoisonSlashCommand* slashCommand = new CreatureAreaPoisonSlashCommand(slashcommand.getStringField("name"), server);
+	ForceLightningCone2Command* slashCommand = new ForceLightningCone2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureBlindAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceLightningSingle1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureBlindAttackSlashCommand* slashCommand = new CreatureBlindAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceLightningSingle1Command* slashCommand = new ForceLightningSingle1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureDizzyAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceLightningSingle2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureDizzyAttackSlashCommand* slashCommand = new CreatureDizzyAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceLightningSingle2Command* slashCommand = new ForceLightningSingle2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureIntimidationAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceMeditateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureIntimidationAttackSlashCommand* slashCommand = new CreatureIntimidationAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceMeditateCommand* slashCommand = new ForceMeditateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureKnockdownAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceOfWillCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureKnockdownAttackSlashCommand* slashCommand = new CreatureKnockdownAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceOfWillCommand* slashCommand = new ForceOfWillCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureMeleeAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceProtectionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureMeleeAttackSlashCommand* slashCommand = new CreatureMeleeAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceProtectionCommand* slashCommand = new ForceProtectionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreaturePostureDownAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceResistBleedingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreaturePostureDownAttackSlashCommand* slashCommand = new CreaturePostureDownAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceResistBleedingCommand* slashCommand = new ForceResistBleedingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreaturePostureUpAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceResistDiseaseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreaturePostureUpAttackSlashCommand* slashCommand = new CreaturePostureUpAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceResistDiseaseCommand* slashCommand = new ForceResistDiseaseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureRangedAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceResistPoisonCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureRangedAttackSlashCommand* slashCommand = new CreatureRangedAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceResistPoisonCommand* slashCommand = new ForceResistPoisonCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreatureStunAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceResistStatesCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreatureStunAttackSlashCommand* slashCommand = new CreatureStunAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceResistStatesCommand* slashCommand = new ForceResistStatesCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCreditsSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceRun1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CreditsSlashCommand* slashCommand = new CreditsSlashCommand(slashcommand.getStringField("name"), server);
+	ForceRun1Command* slashCommand = new ForceRun1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCrippleAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceRun2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CrippleAttackSlashCommand* slashCommand = new CrippleAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ForceRun2Command* slashCommand = new ForceRun2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCripplingShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceRun3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CripplingShotSlashCommand* slashCommand = new CripplingShotSlashCommand(slashcommand.getStringField("name"), server);
+	ForceRun3Command* slashCommand = new ForceRun3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCriticalShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceShield1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CriticalShotSlashCommand* slashCommand = new CriticalShotSlashCommand(slashcommand.getStringField("name"), server);
+	ForceShield1Command* slashCommand = new ForceShield1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCriticalStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceShield2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CriticalStrikeSlashCommand* slashCommand = new CriticalStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	ForceShield2Command* slashCommand = new ForceShield2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsAppendCommentSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceSpeed1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsAppendCommentSlashCommand* slashCommand = new CsAppendCommentSlashCommand(slashcommand.getStringField("name"), server);
+	ForceSpeed1Command* slashCommand = new ForceSpeed1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsCancelTicketSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceSpeed2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsCancelTicketSlashCommand* slashCommand = new CsCancelTicketSlashCommand(slashcommand.getStringField("name"), server);
+	ForceSpeed2Command* slashCommand = new ForceSpeed2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsConnectPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceThrow1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsConnectPlayerSlashCommand* slashCommand = new CsConnectPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	ForceThrow1Command* slashCommand = new ForceThrow1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsCreateTicketSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceThrow2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsCreateTicketSlashCommand* slashCommand = new CsCreateTicketSlashCommand(slashcommand.getStringField("name"), server);
+	ForceThrow2Command* slashCommand = new ForceThrow2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsDisconnectPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceWeaken1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsDisconnectPlayerSlashCommand* slashCommand = new CsDisconnectPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	ForceWeaken1Command* slashCommand = new ForceWeaken1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsGetArticleSlashCommand(lua_State* L) {
+int CommandConfigManager::addForceWeaken2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsGetArticleSlashCommand* slashCommand = new CsGetArticleSlashCommand(slashcommand.getStringField("name"), server);
+	ForceWeaken2Command* slashCommand = new ForceWeaken2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsGetCommentsSlashCommand(lua_State* L) {
+int CommandConfigManager::addFormupCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsGetCommentsSlashCommand* slashCommand = new CsGetCommentsSlashCommand(slashcommand.getStringField("name"), server);
+	FormupCommand* slashCommand = new FormupCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsGetTicketsSlashCommand(lua_State* L) {
+int CommandConfigManager::addFreezePlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsGetTicketsSlashCommand* slashCommand = new CsGetTicketsSlashCommand(slashcommand.getStringField("name"), server);
+	FreezePlayerCommand* slashCommand = new FreezePlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsRequestCategoriesSlashCommand(lua_State* L) {
+int CommandConfigManager::addFullAutoArea1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsRequestCategoriesSlashCommand* slashCommand = new CsRequestCategoriesSlashCommand(slashcommand.getStringField("name"), server);
+	FullAutoArea1Command* slashCommand = new FullAutoArea1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCsSearchKnowledgeBaseSlashCommand(lua_State* L) {
+int CommandConfigManager::addFullAutoArea2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CsSearchKnowledgeBaseSlashCommand* slashCommand = new CsSearchKnowledgeBaseSlashCommand(slashcommand.getStringField("name"), server);
+	FullAutoArea2Command* slashCommand = new FullAutoArea2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCuiConsentResponseSlashCommand(lua_State* L) {
+int CommandConfigManager::addFullAutoSingle1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CuiConsentResponseSlashCommand* slashCommand = new CuiConsentResponseSlashCommand(slashcommand.getStringField("name"), server);
+	FullAutoSingle1Command* slashCommand = new FullAutoSingle1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCustomizeDroidSlashCommand(lua_State* L) {
+int CommandConfigManager::addFullAutoSingle2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CustomizeDroidSlashCommand* slashCommand = new CustomizeDroidSlashCommand(slashcommand.getStringField("name"), server);
+	FullAutoSingle2Command* slashCommand = new FullAutoSingle2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCustomizeVehicleSlashCommand(lua_State* L) {
+int CommandConfigManager::addGCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CustomizeVehicleSlashCommand* slashCommand = new CustomizeVehicleSlashCommand(slashcommand.getStringField("name"), server);
+	GCommand* slashCommand = new GCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgBurstRunSlashCommand(lua_State* L) {
+int CommandConfigManager::addGallopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgBurstRunSlashCommand* slashCommand = new CyborgBurstRunSlashCommand(slashcommand.getStringField("name"), server);
+	GallopCommand* slashCommand = new GallopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgCriticalSnipeSlashCommand(lua_State* L) {
+int CommandConfigManager::addGallopStopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgCriticalSnipeSlashCommand* slashCommand = new CyborgCriticalSnipeSlashCommand(slashcommand.getStringField("name"), server);
+	GallopStopCommand* slashCommand = new GallopStopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgKickDownSlashCommand(lua_State* L) {
+int CommandConfigManager::addGcCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgKickDownSlashCommand* slashCommand = new CyborgKickDownSlashCommand(slashcommand.getStringField("name"), server);
+	GcCommand* slashCommand = new GcCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgLightningSlashCommand(lua_State* L) {
+int CommandConfigManager::addGcwStatusCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgLightningSlashCommand* slashCommand = new CyborgLightningSlashCommand(slashcommand.getStringField("name"), server);
+	GcwStatusCommand* slashCommand = new GcwStatusCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgReviveSlashCommand(lua_State* L) {
+int CommandConfigManager::addGenerateCraftedItemCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgReviveSlashCommand* slashCommand = new CyborgReviveSlashCommand(slashcommand.getStringField("name"), server);
+	GenerateCraftedItemCommand* slashCommand = new GenerateCraftedItemCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgStrengthBuffSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetAccountInfoCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgStrengthBuffSlashCommand* slashCommand = new CyborgStrengthBuffSlashCommand(slashcommand.getStringField("name"), server);
+	GetAccountInfoCommand* slashCommand = new GetAccountInfoCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addCyborgSureShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetAttributesCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	CyborgSureShotSlashCommand* slashCommand = new CyborgSureShotSlashCommand(slashcommand.getStringField("name"), server);
+	GetAttributesCommand* slashCommand = new GetAttributesCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDatabaseSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetAttributesBatchCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DatabaseSlashCommand* slashCommand = new DatabaseSlashCommand(slashcommand.getStringField("name"), server);
+	GetAttributesBatchCommand* slashCommand = new GetAttributesBatchCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDazzleSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetFriendListCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DazzleSlashCommand* slashCommand = new DazzleSlashCommand(slashcommand.getStringField("name"), server);
+	GetFriendListCommand* slashCommand = new GetFriendListCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeactivateQuestSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetGameTimeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeactivateQuestSlashCommand* slashCommand = new DeactivateQuestSlashCommand(slashcommand.getStringField("name"), server);
+	GetGameTimeCommand* slashCommand = new GetGameTimeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeathBlowSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetIgnoreListCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeathBlowSlashCommand* slashCommand = new DeathBlowSlashCommand(slashcommand.getStringField("name"), server);
+	GetIgnoreListCommand* slashCommand = new GetIgnoreListCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeathCountSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetMapLocationsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeathCountSlashCommand* slashCommand = new DeathCountSlashCommand(slashcommand.getStringField("name"), server);
+	GetMapLocationsCommand* slashCommand = new GetMapLocationsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeclareOvertSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetObjVarsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeclareOvertSlashCommand* slashCommand = new DeclareOvertSlashCommand(slashcommand.getStringField("name"), server);
+	GetObjVarsCommand* slashCommand = new GetObjVarsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeclareresidenceSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetPlayerIdCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeclareresidenceSlashCommand* slashCommand = new DeclareresidenceSlashCommand(slashcommand.getStringField("name"), server);
+	GetPlayerIdCommand* slashCommand = new GetPlayerIdCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeclineSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetPrototypeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeclineSlashCommand* slashCommand = new DeclineSlashCommand(slashcommand.getStringField("name"), server);
+	GetPrototypeCommand* slashCommand = new GetPrototypeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDecontaminateSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetRankCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DecontaminateSlashCommand* slashCommand = new DecontaminateSlashCommand(slashcommand.getStringField("name"), server);
+	GetRankCommand* slashCommand = new GetRankCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDefaultActionSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetSpawnDelaysCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DefaultActionSlashCommand* slashCommand = new DefaultActionSlashCommand(slashcommand.getStringField("name"), server);
+	GetSpawnDelaysCommand* slashCommand = new GetSpawnDelaysCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDefaultAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetStationNameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DefaultAttackSlashCommand* slashCommand = new DefaultAttackSlashCommand(slashcommand.getStringField("name"), server);
+	GetStationNameCommand* slashCommand = new GetStationNameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDefuseMinefieldSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetVeteranRewardTimeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DefuseMinefieldSlashCommand* slashCommand = new DefuseMinefieldSlashCommand(slashcommand.getStringField("name"), server);
+	GetVeteranRewardTimeCommand* slashCommand = new GetVeteranRewardTimeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDelegateFactionPointsSlashCommand(lua_State* L) {
+int CommandConfigManager::addGetVeteranRewardTimeCsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DelegateFactionPointsSlashCommand* slashCommand = new DelegateFactionPointsSlashCommand(slashcommand.getStringField("name"), server);
+	GetVeteranRewardTimeCsCommand* slashCommand = new GetVeteranRewardTimeCsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDenyServiceSlashCommand(lua_State* L) {
+int CommandConfigManager::addGiveItemCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DenyServiceSlashCommand* slashCommand = new DenyServiceSlashCommand(slashcommand.getStringField("name"), server);
+	GiveItemCommand* slashCommand = new GiveItemCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeployTrapSlashCommand(lua_State* L) {
+int CommandConfigManager::addGiveMaintenanceToVendorCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeployTrapSlashCommand* slashCommand = new DeployTrapSlashCommand(slashcommand.getStringField("name"), server);
+	GiveMaintenanceToVendorCommand* slashCommand = new GiveMaintenanceToVendorCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDestroySlashCommand(lua_State* L) {
+int CommandConfigManager::addGivevendormaintCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DestroySlashCommand* slashCommand = new DestroySlashCommand(slashcommand.getStringField("name"), server);
+	GivevendormaintCommand* slashCommand = new GivevendormaintCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDestroystructureSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmForceCommandCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DestroystructureSlashCommand* slashCommand = new DestroystructureSlashCommand(slashcommand.getStringField("name"), server);
+	GmForceCommandCommand* slashCommand = new GmForceCommandCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDetonateDroidSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmCreateClassResourceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DetonateDroidSlashCommand* slashCommand = new DetonateDroidSlashCommand(slashcommand.getStringField("name"), server);
+	GmCreateClassResourceCommand* slashCommand = new GmCreateClassResourceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDeuteriumTossSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmCreateSpecificResourceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DeuteriumTossSlashCommand* slashCommand = new DeuteriumTossSlashCommand(slashcommand.getStringField("name"), server);
+	GmCreateSpecificResourceCommand* slashCommand = new GmCreateSpecificResourceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDiagnoseSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmForceRankCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DiagnoseSlashCommand* slashCommand = new DiagnoseSlashCommand(slashcommand.getStringField("name"), server);
+	GmForceRankCommand* slashCommand = new GmForceRankCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDisarmingShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmFsVillageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DisarmingShotSlashCommand* slashCommand = new DisarmingShotSlashCommand(slashcommand.getStringField("name"), server);
+	GmFsVillageCommand* slashCommand = new GmFsVillageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDisbandSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmJediStateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DisbandSlashCommand* slashCommand = new DisbandSlashCommand(slashcommand.getStringField("name"), server);
+	GmJediStateCommand* slashCommand = new GmJediStateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDiseaseInnoculationSlashCommand(lua_State* L) {
+int CommandConfigManager::addGmReviveCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DiseaseInnoculationSlashCommand* slashCommand = new DiseaseInnoculationSlashCommand(slashcommand.getStringField("name"), server);
+	GmReviveCommand* slashCommand = new GmReviveCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDisinfectSlashCommand(lua_State* L) {
+int CommandConfigManager::addGotoCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DisinfectSlashCommand* slashCommand = new DisinfectSlashCommand(slashcommand.getStringField("name"), server);
+	GotoCommand* slashCommand = new GotoCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDismissGroupMemberSlashCommand(lua_State* L) {
+int CommandConfigManager::addGrantBadgeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DismissGroupMemberSlashCommand* slashCommand = new DismissGroupMemberSlashCommand(slashcommand.getStringField("name"), server);
+	GrantBadgeCommand* slashCommand = new GrantBadgeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDismountSlashCommand(lua_State* L) {
+int CommandConfigManager::addGrantPadawanTrialsEligibilityCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DismountSlashCommand* slashCommand = new DismountSlashCommand(slashcommand.getStringField("name"), server);
+	GrantPadawanTrialsEligibilityCommand* slashCommand = new GrantPadawanTrialsEligibilityCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDismountandstoreSlashCommand(lua_State* L) {
+int CommandConfigManager::addGrantSkillCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DismountandstoreSlashCommand* slashCommand = new DismountandstoreSlashCommand(slashcommand.getStringField("name"), server);
+	GrantSkillCommand* slashCommand = new GrantSkillCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDistractSlashCommand(lua_State* L) {
+int CommandConfigManager::addGrantTitleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DistractSlashCommand* slashCommand = new DistractSlashCommand(slashcommand.getStringField("name"), server);
+	GrantTitleCommand* slashCommand = new GrantTitleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDiveShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addGrantZoningRightsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DiveShotSlashCommand* slashCommand = new DiveShotSlashCommand(slashcommand.getStringField("name"), server);
+	GrantZoningRightsCommand* slashCommand = new GrantZoningRightsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDizzyAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addGroupChatCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DizzyAttackSlashCommand* slashCommand = new DizzyAttackSlashCommand(slashcommand.getStringField("name"), server);
+	GroupChatCommand* slashCommand = new GroupChatCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDizzyRecoverySlashCommand(lua_State* L) {
+int CommandConfigManager::addGroupSayCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DizzyRecoverySlashCommand* slashCommand = new DizzyRecoverySlashCommand(slashcommand.getStringField("name"), server);
+	GroupSayCommand* slashCommand = new GroupSayCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDominateMindSlashCommand(lua_State* L) {
+int CommandConfigManager::addGsayCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DominateMindSlashCommand* slashCommand = new DominateMindSlashCommand(slashcommand.getStringField("name"), server);
+	GsayCommand* slashCommand = new GsayCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDragPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addGtellCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DragPlayerSlashCommand* slashCommand = new DragPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	GtellCommand* slashCommand = new GtellCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDrainForceSlashCommand(lua_State* L) {
+int CommandConfigManager::addGuildCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DrainForceSlashCommand* slashCommand = new DrainForceSlashCommand(slashcommand.getStringField("name"), server);
+	GuildCommand* slashCommand = new GuildCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDuelSlashCommand(lua_State* L) {
+int CommandConfigManager::addGuildremoveCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DuelSlashCommand* slashCommand = new DuelSlashCommand(slashcommand.getStringField("name"), server);
+	GuildremoveCommand* slashCommand = new GuildremoveCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDuelistStanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addGuildsayCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DuelistStanceSlashCommand* slashCommand = new DuelistStanceSlashCommand(slashcommand.getStringField("name"), server);
+	GuildsayCommand* slashCommand = new GuildsayCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDumpTargetInformationSlashCommand(lua_State* L) {
+int CommandConfigManager::addGuildstatusCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DumpTargetInformationSlashCommand* slashCommand = new DumpTargetInformationSlashCommand(slashcommand.getStringField("name"), server);
+	GuildstatusCommand* slashCommand = new GuildstatusCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addDumpZoneInformationSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarmfulCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	DumpZoneInformationSlashCommand* slashCommand = new DumpZoneInformationSlashCommand(slashcommand.getStringField("name"), server);
+	HarmfulCommand* slashCommand = new HarmfulCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEatSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarmlessCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EatSlashCommand* slashCommand = new EatSlashCommand(slashcommand.getStringField("name"), server);
+	HarmlessCommand* slashCommand = new HarmlessCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEditAppearanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvestCorpseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EditAppearanceSlashCommand* slashCommand = new EditAppearanceSlashCommand(slashcommand.getStringField("name"), server);
+	HarvestCorpseCommand* slashCommand = new HarvestCorpseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEditBankSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterActivateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EditBankSlashCommand* slashCommand = new EditBankSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterActivateCommand* slashCommand = new HarvesterActivateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEditBankAccountSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterDeactivateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EditBankAccountSlashCommand* slashCommand = new EditBankAccountSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterDeactivateCommand* slashCommand = new HarvesterDeactivateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEditStatsSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterDiscardHopperCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EditStatsSlashCommand* slashCommand = new EditStatsSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterDiscardHopperCommand* slashCommand = new HarvesterDiscardHopperCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addElectrolyteDrainSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterGetResourceDataCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ElectrolyteDrainSlashCommand* slashCommand = new ElectrolyteDrainSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterGetResourceDataCommand* slashCommand = new HarvesterGetResourceDataCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEmboldenpetsSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterHarvestCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EmboldenpetsSlashCommand* slashCommand = new EmboldenpetsSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterHarvestCommand* slashCommand = new HarvesterHarvestCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEmptyMailTargetSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterMakeCrateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EmptyMailTargetSlashCommand* slashCommand = new EmptyMailTargetSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterMakeCrateCommand* slashCommand = new HarvesterMakeCrateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEndDuelSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterSelectResourceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EndDuelSlashCommand* slashCommand = new EndDuelSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterSelectResourceCommand* slashCommand = new HarvesterSelectResourceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEndorphineInjectionSlashCommand(lua_State* L) {
+int CommandConfigManager::addHarvesterTakeSurveyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EndorphineInjectionSlashCommand* slashCommand = new EndorphineInjectionSlashCommand(slashcommand.getStringField("name"), server);
+	HarvesterTakeSurveyCommand* slashCommand = new HarvesterTakeSurveyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEnragepetsSlashCommand(lua_State* L) {
+int CommandConfigManager::addHasVeteranRewardCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EnragepetsSlashCommand* slashCommand = new EnragepetsSlashCommand(slashcommand.getStringField("name"), server);
+	HasVeteranRewardCommand* slashCommand = new HasVeteranRewardCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEquilibriumSlashCommand(lua_State* L) {
+int CommandConfigManager::addHaveconsentCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EquilibriumSlashCommand* slashCommand = new EquilibriumSlashCommand(slashcommand.getStringField("name"), server);
+	HaveconsentCommand* slashCommand = new HaveconsentCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addExecuteKnowledgeBaseMessageSlashCommand(lua_State* L) {
+int CommandConfigManager::addHeadShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ExecuteKnowledgeBaseMessageSlashCommand* slashCommand = new ExecuteKnowledgeBaseMessageSlashCommand(slashcommand.getStringField("name"), server);
+	HeadShot1Command* slashCommand = new HeadShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addExtinguishFireSlashCommand(lua_State* L) {
+int CommandConfigManager::addHeadShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ExtinguishFireSlashCommand* slashCommand = new ExtinguishFireSlashCommand(slashcommand.getStringField("name"), server);
+	HeadShot2Command* slashCommand = new HeadShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addExtractObjectSlashCommand(lua_State* L) {
+int CommandConfigManager::addHeadShot3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ExtractObjectSlashCommand* slashCommand = new ExtractObjectSlashCommand(slashcommand.getStringField("name"), server);
+	HeadShot3Command* slashCommand = new HeadShot3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addEyeShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealActionSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	EyeShotSlashCommand* slashCommand = new EyeShotSlashCommand(slashcommand.getStringField("name"), server);
+	HealActionSelf1Command* slashCommand = new HealActionSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFactoryCrateSplitSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealActionSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FactoryCrateSplitSlashCommand* slashCommand = new FactoryCrateSplitSlashCommand(slashcommand.getStringField("name"), server);
+	HealActionSelf2Command* slashCommand = new HealActionSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFanShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealActionWoundOther1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FanShotSlashCommand* slashCommand = new FanShotSlashCommand(slashcommand.getStringField("name"), server);
+	HealActionWoundOther1Command* slashCommand = new HealActionWoundOther1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFeignDeathSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealActionWoundOther2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FeignDeathSlashCommand* slashCommand = new FeignDeathSlashCommand(slashcommand.getStringField("name"), server);
+	HealActionWoundOther2Command* slashCommand = new HealActionWoundOther2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFindSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealActionWoundSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FindSlashCommand* slashCommand = new FindSlashCommand(slashcommand.getStringField("name"), server);
+	HealActionWoundSelf1Command* slashCommand = new HealActionWoundSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFindFriendSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealActionWoundSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FindFriendSlashCommand* slashCommand = new FindFriendSlashCommand(slashcommand.getStringField("name"), server);
+	HealActionWoundSelf2Command* slashCommand = new HealActionWoundSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFindMyTrainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealAllOther1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FindMyTrainerSlashCommand* slashCommand = new FindMyTrainerSlashCommand(slashcommand.getStringField("name"), server);
+	HealAllOther1Command* slashCommand = new HealAllOther1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFindObjectSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealAllOther2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FindObjectSlashCommand* slashCommand = new FindObjectSlashCommand(slashcommand.getStringField("name"), server);
+	HealAllOther2Command* slashCommand = new HealAllOther2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFindPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealAllSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FindPlayerSlashCommand* slashCommand = new FindPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	HealAllSelf1Command* slashCommand = new HealAllSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFirearmStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealAllSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FirearmStrikeSlashCommand* slashCommand = new FirearmStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	HealAllSelf2Command* slashCommand = new HealAllSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFirejetSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealBattleFatigueOther1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FirejetSlashCommand* slashCommand = new FirejetSlashCommand(slashcommand.getStringField("name"), server);
+	HealBattleFatigueOther1Command* slashCommand = new HealBattleFatigueOther1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFishSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealBattleFatigueOther2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FishSlashCommand* slashCommand = new FishSlashCommand(slashcommand.getStringField("name"), server);
+	HealBattleFatigueOther2Command* slashCommand = new HealBattleFatigueOther2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFlashSpeederSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealBattleFatigueSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FlashSpeederSlashCommand* slashCommand = new FlashSpeederSlashCommand(slashcommand.getStringField("name"), server);
+	HealBattleFatigueSelf1Command* slashCommand = new HealBattleFatigueSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFlourishSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealBattleFatigueSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FlourishSlashCommand* slashCommand = new FlourishSlashCommand(slashcommand.getStringField("name"), server);
+	HealBattleFatigueSelf2Command* slashCommand = new HealBattleFatigueSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForageSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealDamageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForageSlashCommand* slashCommand = new ForageSlashCommand(slashcommand.getStringField("name"), server);
+	HealDamageCommand* slashCommand = new HealDamageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceAbsorbSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealDroidDamageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceAbsorbSlashCommand* slashCommand = new ForceAbsorbSlashCommand(slashcommand.getStringField("name"), server);
+	HealDroidDamageCommand* slashCommand = new HealDroidDamageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceArmorSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealDroidWoundCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceArmorSlashCommand* slashCommand = new ForceArmorSlashCommand(slashcommand.getStringField("name"), server);
+	HealDroidWoundCommand* slashCommand = new HealDroidWoundCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceAuraSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealEnhanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceAuraSlashCommand* slashCommand = new ForceAuraSlashCommand(slashcommand.getStringField("name"), server);
+	HealEnhanceCommand* slashCommand = new HealEnhanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceBreachSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealHealthSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceBreachSlashCommand* slashCommand = new ForceBreachSlashCommand(slashcommand.getStringField("name"), server);
+	HealHealthSelf1Command* slashCommand = new HealHealthSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceChokeSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealHealthSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceChokeSlashCommand* slashCommand = new ForceChokeSlashCommand(slashcommand.getStringField("name"), server);
+	HealHealthSelf2Command* slashCommand = new HealHealthSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceCloakSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealHealthWoundOther1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceCloakSlashCommand* slashCommand = new ForceCloakSlashCommand(slashcommand.getStringField("name"), server);
+	HealHealthWoundOther1Command* slashCommand = new HealHealthWoundOther1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceCommandSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealHealthWoundOther2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceCommandSlashCommand* slashCommand = new ForceCommandSlashCommand(slashcommand.getStringField("name"), server);
+	HealHealthWoundOther2Command* slashCommand = new HealHealthWoundOther2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceCureDiseaseSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealHealthWoundSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceCureDiseaseSlashCommand* slashCommand = new ForceCureDiseaseSlashCommand(slashcommand.getStringField("name"), server);
+	HealHealthWoundSelf1Command* slashCommand = new HealHealthWoundSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceCurePoisonSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealHealthWoundSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceCurePoisonSlashCommand* slashCommand = new ForceCurePoisonSlashCommand(slashcommand.getStringField("name"), server);
+	HealHealthWoundSelf2Command* slashCommand = new HealHealthWoundSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceExtinguishSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceExtinguishSlashCommand* slashCommand = new ForceExtinguishSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindCommand* slashCommand = new HealMindCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceFeedbackSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceFeedbackSlashCommand* slashCommand = new ForceFeedbackSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindSelf1Command* slashCommand = new HealMindSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceHealSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceHealSlashCommand* slashCommand = new ForceHealSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindSelf2Command* slashCommand = new HealMindSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindWoundOther1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceHitSlashCommand* slashCommand = new ForceHitSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindWoundOther1Command* slashCommand = new HealMindWoundOther1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceInfusionSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindWoundOther2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceInfusionSlashCommand* slashCommand = new ForceInfusionSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindWoundOther2Command* slashCommand = new HealMindWoundOther2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceIntimidateSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindWoundSelf1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceIntimidateSlashCommand* slashCommand = new ForceIntimidateSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindWoundSelf1Command* slashCommand = new HealMindWoundSelf1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceKnockdownSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealMindWoundSelf2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceKnockdownSlashCommand* slashCommand = new ForceKnockdownSlashCommand(slashcommand.getStringField("name"), server);
+	HealMindWoundSelf2Command* slashCommand = new HealMindWoundSelf2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceLightningSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealPetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceLightningSlashCommand* slashCommand = new ForceLightningSlashCommand(slashcommand.getStringField("name"), server);
+	HealPetCommand* slashCommand = new HealPetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceLightningAreaSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealStateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceLightningAreaSlashCommand* slashCommand = new ForceLightningAreaSlashCommand(slashcommand.getStringField("name"), server);
+	HealStateCommand* slashCommand = new HealStateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceMeditateSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealStatesOtherCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceMeditateSlashCommand* slashCommand = new ForceMeditateSlashCommand(slashcommand.getStringField("name"), server);
+	HealStatesOtherCommand* slashCommand = new HealStatesOtherCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceOfWillSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealStatesSelfCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceOfWillSlashCommand* slashCommand = new ForceOfWillSlashCommand(slashcommand.getStringField("name"), server);
+	HealStatesSelfCommand* slashCommand = new HealStatesSelfCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceResistBleedingSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealthShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceResistBleedingSlashCommand* slashCommand = new ForceResistBleedingSlashCommand(slashcommand.getStringField("name"), server);
+	HealthShot1Command* slashCommand = new HealthShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceResistDiseaseSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealthShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceResistDiseaseSlashCommand* slashCommand = new ForceResistDiseaseSlashCommand(slashcommand.getStringField("name"), server);
+	HealthShot2Command* slashCommand = new HealthShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceResistPoisonSlashCommand(lua_State* L) {
+int CommandConfigManager::addHealWoundCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceResistPoisonSlashCommand* slashCommand = new ForceResistPoisonSlashCommand(slashcommand.getStringField("name"), server);
+	HealWoundCommand* slashCommand = new HealWoundCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceResistStatesSlashCommand(lua_State* L) {
+int CommandConfigManager::addHoloEmoteCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceResistStatesSlashCommand* slashCommand = new ForceResistStatesSlashCommand(slashcommand.getStringField("name"), server);
+	HoloEmoteCommand* slashCommand = new HoloEmoteCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceRunSlashCommand(lua_State* L) {
+int CommandConfigManager::addImagedesignCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceRunSlashCommand* slashCommand = new ForceRunSlashCommand(slashcommand.getStringField("name"), server);
+	ImagedesignCommand* slashCommand = new ImagedesignCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceSapSlashCommand(lua_State* L) {
+int CommandConfigManager::addInitializeComponentCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceSapSlashCommand* slashCommand = new ForceSapSlashCommand(slashcommand.getStringField("name"), server);
+	InitializeComponentCommand* slashCommand = new InitializeComponentCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceShieldSlashCommand(lua_State* L) {
+int CommandConfigManager::addInnateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceShieldSlashCommand* slashCommand = new ForceShieldSlashCommand(slashcommand.getStringField("name"), server);
+	InnateCommand* slashCommand = new InnateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceShockSlashCommand(lua_State* L) {
+int CommandConfigManager::addInsertItemIntoShipComponentSlotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceShockSlashCommand* slashCommand = new ForceShockSlashCommand(slashcommand.getStringField("name"), server);
+	InsertItemIntoShipComponentSlotCommand* slashCommand = new InsertItemIntoShipComponentSlotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceSpeedSlashCommand(lua_State* L) {
+int CommandConfigManager::addInstallMissionTerminalCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceSpeedSlashCommand* slashCommand = new ForceSpeedSlashCommand(slashcommand.getStringField("name"), server);
+	InstallMissionTerminalCommand* slashCommand = new InstallMissionTerminalCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addInstallShipComponentCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceStrikeSlashCommand* slashCommand = new ForceStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	InstallShipComponentCommand* slashCommand = new InstallShipComponentCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceSuppressionSlashCommand(lua_State* L) {
+int CommandConfigManager::addInsureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceSuppressionSlashCommand* slashCommand = new ForceSuppressionSlashCommand(slashcommand.getStringField("name"), server);
+	InsureCommand* slashCommand = new InsureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceThrowSlashCommand(lua_State* L) {
+int CommandConfigManager::addIntimidate1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceThrowSlashCommand* slashCommand = new ForceThrowSlashCommand(slashcommand.getStringField("name"), server);
+	Intimidate1Command* slashCommand = new Intimidate1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceValorSlashCommand(lua_State* L) {
+int CommandConfigManager::addIntimidate2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceValorSlashCommand* slashCommand = new ForceValorSlashCommand(slashcommand.getStringField("name"), server);
+	Intimidate2Command* slashCommand = new Intimidate2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceWaveSlashCommand(lua_State* L) {
+int CommandConfigManager::addIntimidationAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceWaveSlashCommand* slashCommand = new ForceWaveSlashCommand(slashcommand.getStringField("name"), server);
+	IntimidationAttackCommand* slashCommand = new IntimidationAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceWeakenSlashCommand(lua_State* L) {
+int CommandConfigManager::addInviteCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceWeakenSlashCommand* slashCommand = new ForceWeakenSlashCommand(slashcommand.getStringField("name"), server);
+	InviteCommand* slashCommand = new InviteCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addForceWoundHealSlashCommand(lua_State* L) {
+int CommandConfigManager::addInvulnerableCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ForceWoundHealSlashCommand* slashCommand = new ForceWoundHealSlashCommand(slashcommand.getStringField("name"), server);
+	InvulnerableCommand* slashCommand = new InvulnerableCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFormupSlashCommand(lua_State* L) {
+int CommandConfigManager::addItemmovebackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FormupSlashCommand* slashCommand = new FormupSlashCommand(slashcommand.getStringField("name"), server);
+	ItemmovebackCommand* slashCommand = new ItemmovebackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFreezePlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addItemmovedownCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FreezePlayerSlashCommand* slashCommand = new FreezePlayerSlashCommand(slashcommand.getStringField("name"), server);
+	ItemmovedownCommand* slashCommand = new ItemmovedownCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addFullAutoAreaSlashCommand(lua_State* L) {
+int CommandConfigManager::addItemmoveforwardCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	FullAutoAreaSlashCommand* slashCommand = new FullAutoAreaSlashCommand(slashcommand.getStringField("name"), server);
+	ItemmoveforwardCommand* slashCommand = new ItemmoveforwardCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-/*
-int CommandConfigManager::addGSlashCommand(lua_State* L) {
+
+int CommandConfigManager::addItemmoveupCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GSlashCommand* slashCommand = new GSlashCommand(slashcommand.getStringField("name"), server);
+	ItemmoveupCommand* slashCommand = new ItemmoveupCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-*/
-int CommandConfigManager::addGallopSlashCommand(lua_State* L) {
+
+int CommandConfigManager::addItemrotateleftCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GallopSlashCommand* slashCommand = new GallopSlashCommand(slashcommand.getStringField("name"), server);
+	ItemrotateleftCommand* slashCommand = new ItemrotateleftCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGallopStopSlashCommand(lua_State* L) {
+int CommandConfigManager::addItemrotaterightCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GallopStopSlashCommand* slashCommand = new GallopStopSlashCommand(slashcommand.getStringField("name"), server);
+	ItemrotaterightCommand* slashCommand = new ItemrotaterightCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-/*
-int CommandConfigManager::addGcSlashCommand(lua_State* L) {
+
+int CommandConfigManager::addJediMindTrickCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GcSlashCommand* slashCommand = new GcSlashCommand(slashcommand.getStringField("name"), server);
+	JediMindTrickCommand* slashCommand = new JediMindTrickCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
-}*/
+}
 
-int CommandConfigManager::addGcwStatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addJoinCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GcwStatusSlashCommand* slashCommand = new GcwStatusSlashCommand(slashcommand.getStringField("name"), server);
+	JoinCommand* slashCommand = new JoinCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGenerateCraftedItemSlashCommand(lua_State* L) {
+int CommandConfigManager::addJoinGameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GenerateCraftedItemSlashCommand* slashCommand = new GenerateCraftedItemSlashCommand(slashcommand.getStringField("name"), server);
+	JoinGameCommand* slashCommand = new JoinGameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetAccountInfoSlashCommand(lua_State* L) {
+int CommandConfigManager::addKickCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetAccountInfoSlashCommand* slashCommand = new GetAccountInfoSlashCommand(slashcommand.getStringField("name"), server);
+	KickCommand* slashCommand = new KickCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetAttributesSlashCommand(lua_State* L) {
+int CommandConfigManager::addKillCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetAttributesSlashCommand* slashCommand = new GetAttributesSlashCommand(slashcommand.getStringField("name"), server);
+	KillCommand* slashCommand = new KillCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetAttributesBatchSlashCommand(lua_State* L) {
+int CommandConfigManager::addKillPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetAttributesBatchSlashCommand* slashCommand = new GetAttributesBatchSlashCommand(slashcommand.getStringField("name"), server);
+	KillPlayerCommand* slashCommand = new KillPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetFriendListSlashCommand(lua_State* L) {
+int CommandConfigManager::addKipUpShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetFriendListSlashCommand* slashCommand = new GetFriendListSlashCommand(slashcommand.getStringField("name"), server);
+	KipUpShotCommand* slashCommand = new KipUpShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetGameTimeSlashCommand(lua_State* L) {
+int CommandConfigManager::addKneelCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetGameTimeSlashCommand* slashCommand = new GetGameTimeSlashCommand(slashcommand.getStringField("name"), server);
+	KneelCommand* slashCommand = new KneelCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetIgnoreListSlashCommand(lua_State* L) {
+int CommandConfigManager::addKnockdownAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetIgnoreListSlashCommand* slashCommand = new GetIgnoreListSlashCommand(slashcommand.getStringField("name"), server);
+	KnockdownAttackCommand* slashCommand = new KnockdownAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetMapLocationsSlashCommand(lua_State* L) {
+int CommandConfigManager::addKnockdownFireCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetMapLocationsSlashCommand* slashCommand = new GetMapLocationsSlashCommand(slashcommand.getStringField("name"), server);
+	KnockdownFireCommand* slashCommand = new KnockdownFireCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetObjVarsSlashCommand(lua_State* L) {
+int CommandConfigManager::addLagCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetObjVarsSlashCommand* slashCommand = new GetObjVarsSlashCommand(slashcommand.getStringField("name"), server);
+	LagCommand* slashCommand = new LagCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetPlayerIdSlashCommand(lua_State* L) {
+int CommandConfigManager::addLastDitchCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetPlayerIdSlashCommand* slashCommand = new GetPlayerIdSlashCommand(slashcommand.getStringField("name"), server);
+	LastDitchCommand* slashCommand = new LastDitchCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetPrototypeSlashCommand(lua_State* L) {
+int CommandConfigManager::addLaunchFireworkCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetPrototypeSlashCommand* slashCommand = new GetPrototypeSlashCommand(slashcommand.getStringField("name"), server);
+	LaunchFireworkCommand* slashCommand = new LaunchFireworkCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetRankSlashCommand(lua_State* L) {
+int CommandConfigManager::addLeaveGameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetRankSlashCommand* slashCommand = new GetRankSlashCommand(slashcommand.getStringField("name"), server);
+	LeaveGameCommand* slashCommand = new LeaveGameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetSpawnDelaysSlashCommand(lua_State* L) {
+int CommandConfigManager::addLeaveGroupCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetSpawnDelaysSlashCommand* slashCommand = new GetSpawnDelaysSlashCommand(slashcommand.getStringField("name"), server);
+	LeaveGroupCommand* slashCommand = new LeaveGroupCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetStationNameSlashCommand(lua_State* L) {
+int CommandConfigManager::addLegShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetStationNameSlashCommand* slashCommand = new GetStationNameSlashCommand(slashcommand.getStringField("name"), server);
+	LegShot1Command* slashCommand = new LegShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetVeteranRewardTimeSlashCommand(lua_State* L) {
+int CommandConfigManager::addLegShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetVeteranRewardTimeSlashCommand* slashCommand = new GetVeteranRewardTimeSlashCommand(slashcommand.getStringField("name"), server);
+	LegShot2Command* slashCommand = new LegShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGetVeteranRewardTimeCsSlashCommand(lua_State* L) {
+int CommandConfigManager::addLegShot3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GetVeteranRewardTimeCsSlashCommand* slashCommand = new GetVeteranRewardTimeCsSlashCommand(slashcommand.getStringField("name"), server);
+	LegShot3Command* slashCommand = new LegShot3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGiveItemSlashCommand(lua_State* L) {
+int CommandConfigManager::addLfgCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GiveItemSlashCommand* slashCommand = new GiveItemSlashCommand(slashcommand.getStringField("name"), server);
+	LfgCommand* slashCommand = new LfgCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGiveMaintenanceToVendorSlashCommand(lua_State* L) {
+int CommandConfigManager::addListActiveQuestsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GiveMaintenanceToVendorSlashCommand* slashCommand = new GiveMaintenanceToVendorSlashCommand(slashcommand.getStringField("name"), server);
+	ListActiveQuestsCommand* slashCommand = new ListActiveQuestsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGivevendormaintSlashCommand(lua_State* L) {
+int CommandConfigManager::addListCompletedQuestsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GivevendormaintSlashCommand* slashCommand = new GivevendormaintSlashCommand(slashcommand.getStringField("name"), server);
+	ListCompletedQuestsCommand* slashCommand = new ListCompletedQuestsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmCreateClassResourceSlashCommand(lua_State* L) {
+int CommandConfigManager::addListenCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmCreateClassResourceSlashCommand* slashCommand = new GmCreateClassResourceSlashCommand(slashcommand.getStringField("name"), server);
+	ListenCommand* slashCommand = new ListenCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmCreateSpecificResourceSlashCommand(lua_State* L) {
+int CommandConfigManager::addListGuildsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmCreateSpecificResourceSlashCommand* slashCommand = new GmCreateSpecificResourceSlashCommand(slashcommand.getStringField("name"), server);
+	ListGuildsCommand* slashCommand = new ListGuildsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmForceCommandSlashCommand(lua_State* L) {
+int CommandConfigManager::addLogoutCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmForceCommandSlashCommand* slashCommand = new GmForceCommandSlashCommand(slashcommand.getStringField("name"), server);
+	LogoutCommand* slashCommand = new LogoutCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmForceRankSlashCommand(lua_State* L) {
+int CommandConfigManager::addLootCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmForceRankSlashCommand* slashCommand = new GmForceRankSlashCommand(slashcommand.getStringField("name"), server);
+	LootCommand* slashCommand = new LootCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmFsVillageSlashCommand(lua_State* L) {
+int CommandConfigManager::addLootAiCorpseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmFsVillageSlashCommand* slashCommand = new GmFsVillageSlashCommand(slashcommand.getStringField("name"), server);
+	LootAiCorpseCommand* slashCommand = new LootAiCorpseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmJediStateSlashCommand(lua_State* L) {
+int CommandConfigManager::addLootPlayerCorpseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmJediStateSlashCommand* slashCommand = new GmJediStateSlashCommand(slashcommand.getStringField("name"), server);
+	LootPlayerCorpseCommand* slashCommand = new LootPlayerCorpseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmReviveSlashCommand(lua_State* L) {
+int CommandConfigManager::addLowBlowCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmReviveSlashCommand* slashCommand = new GmReviveSlashCommand(slashcommand.getStringField("name"), server);
+	LowBlowCommand* slashCommand = new LowBlowCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGmWeaponSlashCommand(lua_State* L) {
+int CommandConfigManager::addMakeLeaderCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GmWeaponSlashCommand* slashCommand = new GmWeaponSlashCommand(slashcommand.getStringField("name"), server);
+	MakeLeaderCommand* slashCommand = new MakeLeaderCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGotoSlashCommand(lua_State* L) {
+int CommandConfigManager::addMakeSurveyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GotoSlashCommand* slashCommand = new GotoSlashCommand(slashcommand.getStringField("name"), server);
+	MakeSurveyCommand* slashCommand = new MakeSurveyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGrantBadgeSlashCommand(lua_State* L) {
+int CommandConfigManager::addManufactureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GrantBadgeSlashCommand* slashCommand = new GrantBadgeSlashCommand(slashcommand.getStringField("name"), server);
+	ManufactureCommand* slashCommand = new ManufactureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGrantPadawanTrialsEligibilitySlashCommand(lua_State* L) {
+int CommandConfigManager::addMaskscentCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GrantPadawanTrialsEligibilitySlashCommand* slashCommand = new GrantPadawanTrialsEligibilitySlashCommand(slashcommand.getStringField("name"), server);
+	MaskscentCommand* slashCommand = new MaskscentCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGrantSkillSlashCommand(lua_State* L) {
+int CommandConfigManager::addMaxCombatAbilityCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GrantSkillSlashCommand* slashCommand = new GrantSkillSlashCommand(slashcommand.getStringField("name"), server);
+	MaxCombatAbilityCommand* slashCommand = new MaxCombatAbilityCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGrantTitleSlashCommand(lua_State* L) {
+int CommandConfigManager::addMaxStatsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GrantTitleSlashCommand* slashCommand = new GrantTitleSlashCommand(slashcommand.getStringField("name"), server);
+	MaxStatsCommand* slashCommand = new MaxStatsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGrantZoningRightsSlashCommand(lua_State* L) {
+int CommandConfigManager::addMedicalForageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GrantZoningRightsSlashCommand* slashCommand = new GrantZoningRightsSlashCommand(slashcommand.getStringField("name"), server);
+	MedicalForageCommand* slashCommand = new MedicalForageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGroupChatSlashCommand(lua_State* L) {
+int CommandConfigManager::addMeditateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GroupChatSlashCommand* slashCommand = new GroupChatSlashCommand(slashcommand.getStringField("name"), server);
+	MeditateCommand* slashCommand = new MeditateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGroupLootSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hBlindHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GroupLootSlashCommand* slashCommand = new GroupLootSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hBlindHit1Command* slashCommand = new Melee1hBlindHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-/*
-int CommandConfigManager::addGroupSaySlashCommand(lua_State* L) {
+
+int CommandConfigManager::addMelee1hBlindHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GroupSaySlashCommand* slashCommand = new GroupSaySlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hBlindHit2Command* slashCommand = new Melee1hBlindHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGsaySlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hBodyHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GsaySlashCommand* slashCommand = new GsaySlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hBodyHit1Command* slashCommand = new Melee1hBodyHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGtellSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hBodyHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GtellSlashCommand* slashCommand = new GtellSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hBodyHit2Command* slashCommand = new Melee1hBodyHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGuildSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hBodyHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GuildSlashCommand* slashCommand = new GuildSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hBodyHit3Command* slashCommand = new Melee1hBodyHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-*/
-int CommandConfigManager::addGuildRemoveSlashCommand(lua_State* L) {
+
+int CommandConfigManager::addMelee1hDizzyHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GuildRemoveSlashCommand* slashCommand = new GuildRemoveSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hDizzyHit1Command* slashCommand = new Melee1hDizzyHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGuildsaySlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hDizzyHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GuildsaySlashCommand* slashCommand = new GuildsaySlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hDizzyHit2Command* slashCommand = new Melee1hDizzyHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGuildstatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hHealthHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	GuildstatusSlashCommand* slashCommand = new GuildstatusSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hHealthHit1Command* slashCommand = new Melee1hHealthHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHandleClientLoginSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hHealthHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HandleClientLoginSlashCommand* slashCommand = new HandleClientLoginSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hHealthHit2Command* slashCommand = new Melee1hHealthHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarmfulSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarmfulSlashCommand* slashCommand = new HarmfulSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hHit1Command* slashCommand = new Melee1hHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarmlessSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarmlessSlashCommand* slashCommand = new HarmlessSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hHit2Command* slashCommand = new Melee1hHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvestCorpseSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvestCorpseSlashCommand* slashCommand = new HarvestCorpseSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hHit3Command* slashCommand = new Melee1hHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterActivateSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hLunge1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterActivateSlashCommand* slashCommand = new HarvesterActivateSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hLunge1Command* slashCommand = new Melee1hLunge1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterDeactivateSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hLunge2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterDeactivateSlashCommand* slashCommand = new HarvesterDeactivateSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hLunge2Command* slashCommand = new Melee1hLunge2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterDiscardHopperSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hScatterHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterDiscardHopperSlashCommand* slashCommand = new HarvesterDiscardHopperSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hScatterHit1Command* slashCommand = new Melee1hScatterHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterGetResourceDataSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hScatterHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterGetResourceDataSlashCommand* slashCommand = new HarvesterGetResourceDataSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hScatterHit2Command* slashCommand = new Melee1hScatterHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterHarvestSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hSpinAttack1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterHarvestSlashCommand* slashCommand = new HarvesterHarvestSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hSpinAttack1Command* slashCommand = new Melee1hSpinAttack1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterMakeCrateSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee1hSpinAttack2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterMakeCrateSlashCommand* slashCommand = new HarvesterMakeCrateSlashCommand(slashcommand.getStringField("name"), server);
+	Melee1hSpinAttack2Command* slashCommand = new Melee1hSpinAttack2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterSelectResourceSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hArea1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterSelectResourceSlashCommand* slashCommand = new HarvesterSelectResourceSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hArea1Command* slashCommand = new Melee2hArea1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHarvesterTakeSurveySlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hArea2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HarvesterTakeSurveySlashCommand* slashCommand = new HarvesterTakeSurveySlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hArea2Command* slashCommand = new Melee2hArea2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHasVeteranRewardSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hArea3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HasVeteranRewardSlashCommand* slashCommand = new HasVeteranRewardSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hArea3Command* slashCommand = new Melee2hArea3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHaveconsentSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hHeadHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HaveconsentSlashCommand* slashCommand = new HaveconsentSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hHeadHit1Command* slashCommand = new Melee2hHeadHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHeadHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hHeadHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HeadHitSlashCommand* slashCommand = new HeadHitSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hHeadHit2Command* slashCommand = new Melee2hHeadHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHeadShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hHeadHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HeadShotSlashCommand* slashCommand = new HeadShotSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hHeadHit3Command* slashCommand = new Melee2hHeadHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHealDroidDamageSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HealDroidDamageSlashCommand* slashCommand = new HealDroidDamageSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hHit1Command* slashCommand = new Melee2hHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHealDroidWoundSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HealDroidWoundSlashCommand* slashCommand = new HealDroidWoundSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hHit2Command* slashCommand = new Melee2hHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHealPetSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HealPetSlashCommand* slashCommand = new HealPetSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hHit3Command* slashCommand = new Melee2hHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHealStatesSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hLunge1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HealStatesSlashCommand* slashCommand = new HealStatesSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hLunge1Command* slashCommand = new Melee2hLunge1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHealWoundSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hLunge2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HealWoundSlashCommand* slashCommand = new HealWoundSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hLunge2Command* slashCommand = new Melee2hLunge2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHemorrhageSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hMindHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HemorrhageSlashCommand* slashCommand = new HemorrhageSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hMindHit1Command* slashCommand = new Melee2hMindHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addHoloEmoteSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hMindHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	HoloEmoteSlashCommand* slashCommand = new HoloEmoteSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hMindHit2Command* slashCommand = new Melee2hMindHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addImagedesignSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hSpinAttack1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ImagedesignSlashCommand* slashCommand = new ImagedesignSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hSpinAttack1Command* slashCommand = new Melee2hSpinAttack1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addImpaleSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hSpinAttack2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ImpaleSlashCommand* slashCommand = new ImpaleSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hSpinAttack2Command* slashCommand = new Melee2hSpinAttack2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInfectSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hSweep1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InfectSlashCommand* slashCommand = new InfectSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hSweep1Command* slashCommand = new Melee2hSweep1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInitializeComponentSlashCommand(lua_State* L) {
+int CommandConfigManager::addMelee2hSweep2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InitializeComponentSlashCommand* slashCommand = new InitializeComponentSlashCommand(slashcommand.getStringField("name"), server);
+	Melee2hSweep2Command* slashCommand = new Melee2hSweep2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInnateSlashCommand(lua_State* L) {
+int CommandConfigManager::addMindBlast1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InnateSlashCommand* slashCommand = new InnateSlashCommand(slashcommand.getStringField("name"), server);
+	MindBlast1Command* slashCommand = new MindBlast1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInsertItemIntoShipComponentSlotSlashCommand(lua_State* L) {
+int CommandConfigManager::addMindBlast2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InsertItemIntoShipComponentSlotSlashCommand* slashCommand = new InsertItemIntoShipComponentSlotSlashCommand(slashcommand.getStringField("name"), server);
+	MindBlast2Command* slashCommand = new MindBlast2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInstallMissionTerminalSlashCommand(lua_State* L) {
+int CommandConfigManager::addMindShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InstallMissionTerminalSlashCommand* slashCommand = new InstallMissionTerminalSlashCommand(slashcommand.getStringField("name"), server);
+	MindShot1Command* slashCommand = new MindShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInstallShipComponentSlashCommand(lua_State* L) {
+int CommandConfigManager::addMindShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InstallShipComponentSlashCommand* slashCommand = new InstallShipComponentSlashCommand(slashcommand.getStringField("name"), server);
+	MindShot2Command* slashCommand = new MindShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInsureSlashCommand(lua_State* L) {
+int CommandConfigManager::addMoneyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InsureSlashCommand* slashCommand = new InsureSlashCommand(slashcommand.getStringField("name"), server);
+	MoneyCommand* slashCommand = new MoneyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addIntimidateSlashCommand(lua_State* L) {
+int CommandConfigManager::addMountCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	IntimidateSlashCommand* slashCommand = new IntimidateSlashCommand(slashcommand.getStringField("name"), server);
+	MountCommand* slashCommand = new MountCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addIntimidateShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addMoveFurnitureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	IntimidateShotSlashCommand* slashCommand = new IntimidateShotSlashCommand(slashcommand.getStringField("name"), server);
+	MoveFurnitureCommand* slashCommand = new MoveFurnitureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInviteSlashCommand(lua_State* L) {
+int CommandConfigManager::addMultiTargetPistolShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InviteSlashCommand* slashCommand = new InviteSlashCommand(slashcommand.getStringField("name"), server);
+	MultiTargetPistolShotCommand* slashCommand = new MultiTargetPistolShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addInvulnerableSlashCommand(lua_State* L) {
+int CommandConfigManager::addMultiTargetShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	InvulnerableSlashCommand* slashCommand = new InvulnerableSlashCommand(slashcommand.getStringField("name"), server);
+	MultiTargetShotCommand* slashCommand = new MultiTargetShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addItemmovebackSlashCommand(lua_State* L) {
+int CommandConfigManager::addNameStructureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ItemmovebackSlashCommand* slashCommand = new ItemmovebackSlashCommand(slashcommand.getStringField("name"), server);
+	NameStructureCommand* slashCommand = new NameStructureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addItemmovedownSlashCommand(lua_State* L) {
+int CommandConfigManager::addNewbiehelperCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ItemmovedownSlashCommand* slashCommand = new ItemmovedownSlashCommand(slashcommand.getStringField("name"), server);
+	NewbiehelperCommand* slashCommand = new NewbiehelperCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addItemmoveforwardSlashCommand(lua_State* L) {
+int CommandConfigManager::addNewbieRequestStartingLocationsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ItemmoveforwardSlashCommand* slashCommand = new ItemmoveforwardSlashCommand(slashcommand.getStringField("name"), server);
+	NewbieRequestStartingLocationsCommand* slashCommand = new NewbieRequestStartingLocationsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addItemmoveupSlashCommand(lua_State* L) {
+int CommandConfigManager::addNewbieSelectStartingLocationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ItemmoveupSlashCommand* slashCommand = new ItemmoveupSlashCommand(slashcommand.getStringField("name"), server);
+	NewbieSelectStartingLocationCommand* slashCommand = new NewbieSelectStartingLocationCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addItemrotateleftSlashCommand(lua_State* L) {
+int CommandConfigManager::addNextCraftingStageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ItemrotateleftSlashCommand* slashCommand = new ItemrotateleftSlashCommand(slashcommand.getStringField("name"), server);
+	NextCraftingStageCommand* slashCommand = new NextCraftingStageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addItemrotaterightSlashCommand(lua_State* L) {
+int CommandConfigManager::addNpcCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ItemrotaterightSlashCommand* slashCommand = new ItemrotaterightSlashCommand(slashcommand.getStringField("name"), server);
+	NpcCommand* slashCommand = new NpcCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addJoinSlashCommand(lua_State* L) {
+int CommandConfigManager::addNpcConversationSelectCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	JoinSlashCommand* slashCommand = new JoinSlashCommand(slashcommand.getStringField("name"), server);
+	NpcConversationSelectCommand* slashCommand = new NpcConversationSelectCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addJoinGameSlashCommand(lua_State* L) {
+int CommandConfigManager::addNpcConversationStartCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	JoinGameSlashCommand* slashCommand = new JoinGameSlashCommand(slashcommand.getStringField("name"), server);
+	NpcConversationStartCommand* slashCommand = new NpcConversationStartCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKickSlashCommand(lua_State* L) {
+int CommandConfigManager::addNpcConversationStopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KickSlashCommand* slashCommand = new KickSlashCommand(slashcommand.getStringField("name"), server);
+	NpcConversationStopCommand* slashCommand = new NpcConversationStopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKillSlashCommand(lua_State* L) {
+int CommandConfigManager::addObjectCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KillSlashCommand* slashCommand = new KillSlashCommand(slashcommand.getStringField("name"), server);
+	ObjectCommand* slashCommand = new ObjectCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKillPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addObjvarCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KillPlayerSlashCommand* slashCommand = new KillPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	ObjvarCommand* slashCommand = new ObjvarCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKipUpShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addOpenContainerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KipUpShotSlashCommand* slashCommand = new KipUpShotSlashCommand(slashcommand.getStringField("name"), server);
+	OpenContainerCommand* slashCommand = new OpenContainerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKneecapShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addOverChargeShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KneecapShotSlashCommand* slashCommand = new KneecapShotSlashCommand(slashcommand.getStringField("name"), server);
+	OverChargeShot1Command* slashCommand = new OverChargeShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKneelSlashCommand(lua_State* L) {
+int CommandConfigManager::addOverChargeShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KneelSlashCommand* slashCommand = new KneelSlashCommand(slashcommand.getStringField("name"), server);
+	OverChargeShot2Command* slashCommand = new OverChargeShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addKnockdownRecoverySlashCommand(lua_State* L) {
+int CommandConfigManager::addOverrideActiveMonthsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	KnockdownRecoverySlashCommand* slashCommand = new KnockdownRecoverySlashCommand(slashcommand.getStringField("name"), server);
+	OverrideActiveMonthsCommand* slashCommand = new OverrideActiveMonthsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLagSlashCommand(lua_State* L) {
+int CommandConfigManager::addOverridePadawanTrialsEligibilityCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LagSlashCommand* slashCommand = new LagSlashCommand(slashcommand.getStringField("name"), server);
+	OverridePadawanTrialsEligibilityCommand* slashCommand = new OverridePadawanTrialsEligibilityCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLastDitchSlashCommand(lua_State* L) {
+int CommandConfigManager::addPanicShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LastDitchSlashCommand* slashCommand = new LastDitchSlashCommand(slashcommand.getStringField("name"), server);
+	PanicShotCommand* slashCommand = new PanicShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLaunchFireworkSlashCommand(lua_State* L) {
+int CommandConfigManager::addPauseDanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LaunchFireworkSlashCommand* slashCommand = new LaunchFireworkSlashCommand(slashcommand.getStringField("name"), server);
+	PauseDanceCommand* slashCommand = new PauseDanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLeaveGameSlashCommand(lua_State* L) {
+int CommandConfigManager::addPauseMusicCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LeaveGameSlashCommand* slashCommand = new LeaveGameSlashCommand(slashcommand.getStringField("name"), server);
+	PauseMusicCommand* slashCommand = new PauseMusicCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLeaveGroupSlashCommand(lua_State* L) {
+int CommandConfigManager::addPaWithdrawCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LeaveGroupSlashCommand* slashCommand = new LeaveGroupSlashCommand(slashcommand.getStringField("name"), server);
+	PaWithdrawCommand* slashCommand = new PaWithdrawCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLegHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addPaymaintenanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LegHitSlashCommand* slashCommand = new LegHitSlashCommand(slashcommand.getStringField("name"), server);
+	PaymaintenanceCommand* slashCommand = new PaymaintenanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLegShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addPeaceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LegShotSlashCommand* slashCommand = new LegShotSlashCommand(slashcommand.getStringField("name"), server);
+	PeaceCommand* slashCommand = new PeaceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLegSweepSlashCommand(lua_State* L) {
+int CommandConfigManager::addPermissionListModifyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LegSweepSlashCommand* slashCommand = new LegSweepSlashCommand(slashcommand.getStringField("name"), server);
+	PermissionListModifyCommand* slashCommand = new PermissionListModifyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLethalShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addPistolMeleeDefense1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LethalShotSlashCommand* slashCommand = new LethalShotSlashCommand(slashcommand.getStringField("name"), server);
+	PistolMeleeDefense1Command* slashCommand = new PistolMeleeDefense1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLfgSlashCommand(lua_State* L) {
+int CommandConfigManager::addPistolMeleeDefense2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LfgSlashCommand* slashCommand = new LfgSlashCommand(slashcommand.getStringField("name"), server);
+	PistolMeleeDefense2Command* slashCommand = new PistolMeleeDefense2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addListActiveQuestsSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlaceBattlefieldStructureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ListActiveQuestsSlashCommand* slashCommand = new ListActiveQuestsSlashCommand(slashcommand.getStringField("name"), server);
+	PlaceBattlefieldStructureCommand* slashCommand = new PlaceBattlefieldStructureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addListCompletedQuestsSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlaceStructureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ListCompletedQuestsSlashCommand* slashCommand = new ListCompletedQuestsSlashCommand(slashcommand.getStringField("name"), server);
+	PlaceStructureCommand* slashCommand = new PlaceStructureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addListenSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlaceStructureModeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ListenSlashCommand* slashCommand = new ListenSlashCommand(slashcommand.getStringField("name"), server);
+	PlaceStructureModeCommand* slashCommand = new PlaceStructureModeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addListGuildsSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlanetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ListGuildsSlashCommand* slashCommand = new ListGuildsSlashCommand(slashcommand.getStringField("name"), server);
+	PlanetCommand* slashCommand = new PlanetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLogoutServerSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlanetsayCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LogoutServerSlashCommand* slashCommand = new LogoutServerSlashCommand(slashcommand.getStringField("name"), server);
+	PlanetsayCommand* slashCommand = new PlanetsayCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLootAllSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlanetwarpCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LootAllSlashCommand* slashCommand = new LootAllSlashCommand(slashcommand.getStringField("name"), server);
+	PlanetwarpCommand* slashCommand = new PlanetwarpCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLootSlashCommand(lua_State* L) {
+int CommandConfigManager::addPlanetwarpTargetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LootSlashCommand* slashCommand = new LootSlashCommand(slashcommand.getStringField("name"), server);
+	PlanetwarpTargetCommand* slashCommand = new PlanetwarpTargetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLootPlayerCorpseSlashCommand(lua_State* L) {
+int CommandConfigManager::addPointBlankArea1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LootPlayerCorpseSlashCommand* slashCommand = new LootPlayerCorpseSlashCommand(slashcommand.getStringField("name"), server);
+	PointBlankArea1Command* slashCommand = new PointBlankArea1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLowBlowSlashCommand(lua_State* L) {
+int CommandConfigManager::addPointBlankArea2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LowBlowSlashCommand* slashCommand = new LowBlowSlashCommand(slashcommand.getStringField("name"), server);
+	PointBlankArea2Command* slashCommand = new PointBlankArea2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addLungeSlashCommand(lua_State* L) {
+int CommandConfigManager::addPointBlankSingle1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	LungeSlashCommand* slashCommand = new LungeSlashCommand(slashcommand.getStringField("name"), server);
+	PointBlankSingle1Command* slashCommand = new PointBlankSingle1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMakeLeaderSlashCommand(lua_State* L) {
+int CommandConfigManager::addPointBlankSingle2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MakeLeaderSlashCommand* slashCommand = new MakeLeaderSlashCommand(slashcommand.getStringField("name"), server);
+	PointBlankSingle2Command* slashCommand = new PointBlankSingle2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMakeMasterLooterSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmActionHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MakeMasterLooterSlashCommand* slashCommand = new MakeMasterLooterSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmActionHit1Command* slashCommand = new PolearmActionHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMakeSurveySlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmActionHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MakeSurveySlashCommand* slashCommand = new MakeSurveySlashCommand(slashcommand.getStringField("name"), server);
+	PolearmActionHit2Command* slashCommand = new PolearmActionHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addManufactureSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmArea1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ManufactureSlashCommand* slashCommand = new ManufactureSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmArea1Command* slashCommand = new PolearmArea1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMaskscentSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmArea2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MaskscentSlashCommand* slashCommand = new MaskscentSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmArea2Command* slashCommand = new PolearmArea2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMaxCombatAbilitySlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MaxCombatAbilitySlashCommand* slashCommand = new MaxCombatAbilitySlashCommand(slashcommand.getStringField("name"), server);
+	PolearmHit1Command* slashCommand = new PolearmHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMaxStatsSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MaxStatsSlashCommand* slashCommand = new MaxStatsSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmHit2Command* slashCommand = new PolearmHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMedicalForageSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MedicalForageSlashCommand* slashCommand = new MedicalForageSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmHit3Command* slashCommand = new PolearmHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMeditateSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmLegHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MeditateSlashCommand* slashCommand = new MeditateSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmLegHit1Command* slashCommand = new PolearmLegHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMeleeAssaultSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmLegHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MeleeAssaultSlashCommand* slashCommand = new MeleeAssaultSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmLegHit2Command* slashCommand = new PolearmLegHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMeleeHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmLegHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MeleeHitSlashCommand* slashCommand = new MeleeHitSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmLegHit3Command* slashCommand = new PolearmLegHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMeleeStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmLunge1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MeleeStrikeSlashCommand* slashCommand = new MeleeStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmLunge1Command* slashCommand = new PolearmLunge1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMindBlastSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmLunge2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MindBlastSlashCommand* slashCommand = new MindBlastSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmLunge2Command* slashCommand = new PolearmLunge2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMoneySlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmSpinAttack1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MoneySlashCommand* slashCommand = new MoneySlashCommand(slashcommand.getStringField("name"), server);
+	PolearmSpinAttack1Command* slashCommand = new PolearmSpinAttack1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMountSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmSpinAttack2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MountSlashCommand* slashCommand = new MountSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmSpinAttack2Command* slashCommand = new PolearmSpinAttack2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addMoveFurnitureSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmStun1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	MoveFurnitureSlashCommand* slashCommand = new MoveFurnitureSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmStun1Command* slashCommand = new PolearmStun1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNameStructureSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmStun2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NameStructureSlashCommand* slashCommand = new NameStructureSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmStun2Command* slashCommand = new PolearmStun2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNeurotoxinSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmSweep1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NeurotoxinSlashCommand* slashCommand = new NeurotoxinSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmSweep1Command* slashCommand = new PolearmSweep1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNewbiehelperSlashCommand(lua_State* L) {
+int CommandConfigManager::addPolearmSweep2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NewbiehelperSlashCommand* slashCommand = new NewbiehelperSlashCommand(slashcommand.getStringField("name"), server);
+	PolearmSweep2Command* slashCommand = new PolearmSweep2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNewbieRequestStartingLocationsSlashCommand(lua_State* L) {
+int CommandConfigManager::addPostureDownAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NewbieRequestStartingLocationsSlashCommand* slashCommand = new NewbieRequestStartingLocationsSlashCommand(slashcommand.getStringField("name"), server);
+	PostureDownAttackCommand* slashCommand = new PostureDownAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNewbieSelectStartingLocationSlashCommand(lua_State* L) {
+int CommandConfigManager::addPostureUpAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NewbieSelectStartingLocationSlashCommand* slashCommand = new NewbieSelectStartingLocationSlashCommand(slashcommand.getStringField("name"), server);
+	PostureUpAttackCommand* slashCommand = new PostureUpAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNextCraftingStageSlashCommand(lua_State* L) {
+int CommandConfigManager::addPowerBoostCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NextCraftingStageSlashCommand* slashCommand = new NextCraftingStageSlashCommand(slashcommand.getStringField("name"), server);
+	PowerBoostCommand* slashCommand = new PowerBoostCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNpcSlashCommand(lua_State* L) {
+int CommandConfigManager::addProneCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NpcSlashCommand* slashCommand = new NpcSlashCommand(slashcommand.getStringField("name"), server);
+	ProneCommand* slashCommand = new ProneCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNpcConversationSelectSlashCommand(lua_State* L) {
+int CommandConfigManager::addPurchaseReinforcementCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NpcConversationSelectSlashCommand* slashCommand = new NpcConversationSelectSlashCommand(slashcommand.getStringField("name"), server);
+	PurchaseReinforcementCommand* slashCommand = new PurchaseReinforcementCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNpcConversationStartSlashCommand(lua_State* L) {
+int CommandConfigManager::addPurchaseTicketCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NpcConversationStartSlashCommand* slashCommand = new NpcConversationStartSlashCommand(slashcommand.getStringField("name"), server);
+	PurchaseTicketCommand* slashCommand = new PurchaseTicketCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNpcConversationStopSlashCommand(lua_State* L) {
+int CommandConfigManager::addQuickHealCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NpcConversationStopSlashCommand* slashCommand = new NpcConversationStopSlashCommand(slashcommand.getStringField("name"), server);
+	QuickHealCommand* slashCommand = new QuickHealCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addNutrientInjectionSlashCommand(lua_State* L) {
+int CommandConfigManager::addRallyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	NutrientInjectionSlashCommand* slashCommand = new NutrientInjectionSlashCommand(slashcommand.getStringField("name"), server);
+	RallyCommand* slashCommand = new RallyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addObjectSlashCommand(lua_State* L) {
+int CommandConfigManager::addReconnectToTransferServerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ObjectSlashCommand* slashCommand = new ObjectSlashCommand(slashcommand.getStringField("name"), server);
+	ReconnectToTransferServerCommand* slashCommand = new ReconnectToTransferServerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addObjvarSlashCommand(lua_State* L) {
+int CommandConfigManager::addRecruitSkillTrainerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ObjvarSlashCommand* slashCommand = new ObjvarSlashCommand(slashcommand.getStringField("name"), server);
+	RecruitSkillTrainerCommand* slashCommand = new RecruitSkillTrainerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addOpenContainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addRegainConsciousnessCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	OpenContainerSlashCommand* slashCommand = new OpenContainerSlashCommand(slashcommand.getStringField("name"), server);
+	RegainConsciousnessCommand* slashCommand = new RegainConsciousnessCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addOpenLotteryContainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addRegenerationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	OpenLotteryContainerSlashCommand* slashCommand = new OpenLotteryContainerSlashCommand(slashcommand.getStringField("name"), server);
+	RegenerationCommand* slashCommand = new RegenerationCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addOverchargeShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addRegisterWithLocationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	OverchargeShotSlashCommand* slashCommand = new OverchargeShotSlashCommand(slashcommand.getStringField("name"), server);
+	RegisterWithLocationCommand* slashCommand = new RegisterWithLocationCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addOverrideActiveMonthsSlashCommand(lua_State* L) {
+int CommandConfigManager::addReloadCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	OverrideActiveMonthsSlashCommand* slashCommand = new OverrideActiveMonthsSlashCommand(slashcommand.getStringField("name"), server);
+	ReloadCommand* slashCommand = new ReloadCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addOverridePadawanTrialsEligibilitySlashCommand(lua_State* L) {
+int CommandConfigManager::addRemoteCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	OverridePadawanTrialsEligibilitySlashCommand* slashCommand = new OverridePadawanTrialsEligibilitySlashCommand(slashcommand.getStringField("name"), server);
+	RemoteCommand* slashCommand = new RemoteCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addOverwhelmingShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addRemoveAllowedPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	OverwhelmingShotSlashCommand* slashCommand = new OverwhelmingShotSlashCommand(slashcommand.getStringField("name"), server);
+	RemoveAllowedPlayerCommand* slashCommand = new RemoveAllowedPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPanicShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addRemoveBannedPlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PanicShotSlashCommand* slashCommand = new PanicShotSlashCommand(slashcommand.getStringField("name"), server);
+	RemoveBannedPlayerCommand* slashCommand = new RemoveBannedPlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addParalyzeSlashCommand(lua_State* L) {
+int CommandConfigManager::addRemoveFriendCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ParalyzeSlashCommand* slashCommand = new ParalyzeSlashCommand(slashcommand.getStringField("name"), server);
+	RemoveFriendCommand* slashCommand = new RemoveFriendCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addParryRiposteSlashCommand(lua_State* L) {
+int CommandConfigManager::addRemoveIgnoreCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ParryRiposteSlashCommand* slashCommand = new ParryRiposteSlashCommand(slashcommand.getStringField("name"), server);
+	RemoveIgnoreCommand* slashCommand = new RemoveIgnoreCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPauseDanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addRepairBattlefieldStructureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PauseDanceSlashCommand* slashCommand = new PauseDanceSlashCommand(slashcommand.getStringField("name"), server);
+	RepairBattlefieldStructureCommand* slashCommand = new RepairBattlefieldStructureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPauseMusicSlashCommand(lua_State* L) {
+int CommandConfigManager::addRepairShipComponentInSlotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PauseMusicSlashCommand* slashCommand = new PauseMusicSlashCommand(slashcommand.getStringField("name"), server);
+	RepairShipComponentInSlotCommand* slashCommand = new RepairShipComponentInSlotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPaWithdrawSlashCommand(lua_State* L) {
+int CommandConfigManager::addReportCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PaWithdrawSlashCommand* slashCommand = new PaWithdrawSlashCommand(slashcommand.getStringField("name"), server);
+	ReportCommand* slashCommand = new ReportCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPaymaintenanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestBadgesCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PaymaintenanceSlashCommand* slashCommand = new PaymaintenanceSlashCommand(slashcommand.getStringField("name"), server);
+	RequestBadgesCommand* slashCommand = new RequestBadgesCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPeaceSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestBiographyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PeaceSlashCommand* slashCommand = new PeaceSlashCommand(slashcommand.getStringField("name"), server);
+	RequestBiographyCommand* slashCommand = new RequestBiographyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-int CommandConfigManager::addPermissionListModifySlashCommand(lua_State* L) {
+
+int CommandConfigManager::addRequestCharacterMatchCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PermissionListModifySlashCommand* slashCommand = new PermissionListModifySlashCommand(slashcommand.getStringField("name"), server);
+	RequestCharacterMatchCommand* slashCommand = new RequestCharacterMatchCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPistolWhipSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestCharacterSheetInfoCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PistolWhipSlashCommand* slashCommand = new PistolWhipSlashCommand(slashcommand.getStringField("name"), server);
+	RequestCharacterSheetInfoCommand* slashCommand = new RequestCharacterSheetInfoCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlaceBattlefieldStructureSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestCoreSampleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlaceBattlefieldStructureSlashCommand* slashCommand = new PlaceBattlefieldStructureSlashCommand(slashcommand.getStringField("name"), server);
+	RequestCoreSampleCommand* slashCommand = new RequestCoreSampleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlacedShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestCraftingSessionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlacedShotSlashCommand* slashCommand = new PlacedShotSlashCommand(slashcommand.getStringField("name"), server);
+	RequestCraftingSessionCommand* slashCommand = new RequestCraftingSessionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlaceStructureSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestDraftSlotsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlaceStructureSlashCommand* slashCommand = new PlaceStructureSlashCommand(slashcommand.getStringField("name"), server);
+	RequestDraftSlotsCommand* slashCommand = new RequestDraftSlotsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlaceStructureModeSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestDraftSlotsBatchCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlaceStructureModeSlashCommand* slashCommand = new PlaceStructureModeSlashCommand(slashcommand.getStringField("name"), server);
+	RequestDraftSlotsBatchCommand* slashCommand = new RequestDraftSlotsBatchCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlanetsaySlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestManfSchematicSlotsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlanetsaySlashCommand* slashCommand = new PlanetsaySlashCommand(slashcommand.getStringField("name"), server);
+	RequestManfSchematicSlotsCommand* slashCommand = new RequestManfSchematicSlotsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlanetwarpSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestResourceWeightsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlanetwarpSlashCommand* slashCommand = new PlanetwarpSlashCommand(slashcommand.getStringField("name"), server);
+	RequestResourceWeightsCommand* slashCommand = new RequestResourceWeightsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPlanetwarpTargetSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestResourceWeightsBatchCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PlanetwarpTargetSlashCommand* slashCommand = new PlanetwarpTargetSlashCommand(slashcommand.getStringField("name"), server);
+	RequestResourceWeightsBatchCommand* slashCommand = new RequestResourceWeightsBatchCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPointBlankAreaSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestSetStatMigrationDataCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PointBlankAreaSlashCommand* slashCommand = new PointBlankAreaSlashCommand(slashcommand.getStringField("name"), server);
+	RequestSetStatMigrationDataCommand* slashCommand = new RequestSetStatMigrationDataCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPointBlankShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestStatMigrationDataCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PointBlankShotSlashCommand* slashCommand = new PointBlankShotSlashCommand(slashcommand.getStringField("name"), server);
+	RequestStatMigrationDataCommand* slashCommand = new RequestStatMigrationDataCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPoisonInnoculationSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestStatMigrationStartCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PoisonInnoculationSlashCommand* slashCommand = new PoisonInnoculationSlashCommand(slashcommand.getStringField("name"), server);
+	RequestStatMigrationStartCommand* slashCommand = new RequestStatMigrationStartCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPowerAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestStatMigrationStopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PowerAttackSlashCommand* slashCommand = new PowerAttackSlashCommand(slashcommand.getStringField("name"), server);
+	RequestStatMigrationStopCommand* slashCommand = new RequestStatMigrationStopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPowerBoostSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestStimpackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PowerBoostSlashCommand* slashCommand = new PowerBoostSlashCommand(slashcommand.getStringField("name"), server);
+	RequestStimpackCommand* slashCommand = new RequestStimpackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addProneSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestSurveyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ProneSlashCommand* slashCommand = new ProneSlashCommand(slashcommand.getStringField("name"), server);
+	RequestSurveyCommand* slashCommand = new RequestSurveyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPurchaseReinforcementSlashCommand(lua_State* L) {
+int CommandConfigManager::addRequestWaypointAtPositionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PurchaseReinforcementSlashCommand* slashCommand = new PurchaseReinforcementSlashCommand(slashcommand.getStringField("name"), server);
+	RequestWaypointAtPositionCommand* slashCommand = new RequestWaypointAtPositionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addPurchaseTicketSlashCommand(lua_State* L) {
+int CommandConfigManager::addRescueCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	PurchaseTicketSlashCommand* slashCommand = new PurchaseTicketSlashCommand(slashcommand.getStringField("name"), server);
+	RescueCommand* slashCommand = new RescueCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addQuickDrawSlashCommand(lua_State* L) {
+int CommandConfigManager::addResendLoginMessageToAllCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	QuickDrawSlashCommand* slashCommand = new QuickDrawSlashCommand(slashcommand.getStringField("name"), server);
+	ResendLoginMessageToAllCommand* slashCommand = new ResendLoginMessageToAllCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRallySlashCommand(lua_State* L) {
+int CommandConfigManager::addResetJediCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RallySlashCommand* slashCommand = new RallySlashCommand(slashcommand.getStringField("name"), server);
+	ResetJediCommand* slashCommand = new ResetJediCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRangedShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addResourceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RangedShotSlashCommand* slashCommand = new RangedShotSlashCommand(slashcommand.getStringField("name"), server);
+	ResourceCommand* slashCommand = new ResourceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRapidFireSlashCommand(lua_State* L) {
+int CommandConfigManager::addResourceContainerSplitCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RapidFireSlashCommand* slashCommand = new RapidFireSlashCommand(slashcommand.getStringField("name"), server);
+	ResourceContainerSplitCommand* slashCommand = new ResourceContainerSplitCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRecklessShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addResourceContainerTransferCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RecklessShotSlashCommand* slashCommand = new RecklessShotSlashCommand(slashcommand.getStringField("name"), server);
+	ResourceContainerTransferCommand* slashCommand = new ResourceContainerTransferCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addReconnectToTransferServerSlashCommand(lua_State* L) {
+int CommandConfigManager::addResourceSetNameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ReconnectToTransferServerSlashCommand* slashCommand = new ReconnectToTransferServerSlashCommand(slashcommand.getStringField("name"), server);
+	ResourceSetNameCommand* slashCommand = new ResourceSetNameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRecruitSkillTrainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addResSampleLoopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RecruitSkillTrainerSlashCommand* slashCommand = new RecruitSkillTrainerSlashCommand(slashcommand.getStringField("name"), server);
+	ResSampleLoopCommand* slashCommand = new ResSampleLoopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRegainConsciousnessSlashCommand(lua_State* L) {
+int CommandConfigManager::addRestartConversionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RegainConsciousnessSlashCommand* slashCommand = new RegainConsciousnessSlashCommand(slashcommand.getStringField("name"), server);
+	RestartConversionCommand* slashCommand = new RestartConversionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRegenerationSlashCommand(lua_State* L) {
+int CommandConfigManager::addRestartCraftingSessionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RegenerationSlashCommand* slashCommand = new RegenerationSlashCommand(slashcommand.getStringField("name"), server);
+	RestartCraftingSessionCommand* slashCommand = new RestartCraftingSessionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRegisterWithLocationSlashCommand(lua_State* L) {
+int CommandConfigManager::addRetreatCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RegisterWithLocationSlashCommand* slashCommand = new RegisterWithLocationSlashCommand(slashcommand.getStringField("name"), server);
+	RetreatCommand* slashCommand = new RetreatCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addReloadSlashCommand(lua_State* L) {
+int CommandConfigManager::addRevivePlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ReloadSlashCommand* slashCommand = new ReloadSlashCommand(slashcommand.getStringField("name"), server);
+	RevivePlayerCommand* slashCommand = new RevivePlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRemoteSlashCommand(lua_State* L) {
+int CommandConfigManager::addRevokeBadgeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RemoteSlashCommand* slashCommand = new RemoteSlashCommand(slashcommand.getStringField("name"), server);
+	RevokeBadgeCommand* slashCommand = new RevokeBadgeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRemoveAllowedPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addRevokeSkillCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RemoveAllowedPlayerSlashCommand* slashCommand = new RemoveAllowedPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	RevokeSkillCommand* slashCommand = new RevokeSkillCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRemoveBannedPlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addRolePlayCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RemoveBannedPlayerSlashCommand* slashCommand = new RemoveBannedPlayerSlashCommand(slashcommand.getStringField("name"), server);
+	RolePlayCommand* slashCommand = new RolePlayCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRemoveFriendSlashCommand(lua_State* L) {
+int CommandConfigManager::addRollShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RemoveFriendSlashCommand* slashCommand = new RemoveFriendSlashCommand(slashcommand.getStringField("name"), server);
+	RollShotCommand* slashCommand = new RollShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRemoveIgnoreSlashCommand(lua_State* L) {
+int CommandConfigManager::addRotateFurnitureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RemoveIgnoreSlashCommand* slashCommand = new RemoveIgnoreSlashCommand(slashcommand.getStringField("name"), server);
+	RotateFurnitureCommand* slashCommand = new RotateFurnitureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRepairBattlefieldStructureSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hComboHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RepairBattlefieldStructureSlashCommand* slashCommand = new RepairBattlefieldStructureSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hComboHit1Command* slashCommand = new Saber1hComboHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRepairShipComponentInSlotSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hComboHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RepairShipComponentInSlotSlashCommand* slashCommand = new RepairShipComponentInSlotSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hComboHit2Command* slashCommand = new Saber1hComboHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addReportSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hComboHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ReportSlashCommand* slashCommand = new ReportSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hComboHit3Command* slashCommand = new Saber1hComboHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestBadgesSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hFlurryCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestBadgesSlashCommand* slashCommand = new RequestBadgesSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hFlurryCommand* slashCommand = new Saber1hFlurryCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestBiographySlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hFlurry2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestBiographySlashCommand* slashCommand = new RequestBiographySlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hFlurry2Command* slashCommand = new Saber1hFlurry2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestCharacterMatchSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hHeadHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestCharacterMatchSlashCommand* slashCommand = new RequestCharacterMatchSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hHeadHit1Command* slashCommand = new Saber1hHeadHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestCharacterSheetInfoSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hHeadHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestCharacterSheetInfoSlashCommand* slashCommand = new RequestCharacterSheetInfoSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hHeadHit2Command* slashCommand = new Saber1hHeadHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestCoreSampleSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hHeadHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestCoreSampleSlashCommand* slashCommand = new RequestCoreSampleSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hHeadHit3Command* slashCommand = new Saber1hHeadHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestCraftingSessionSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestCraftingSessionSlashCommand* slashCommand = new RequestCraftingSessionSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hHit1Command* slashCommand = new Saber1hHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestDraftSlotsSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestDraftSlotsSlashCommand* slashCommand = new RequestDraftSlotsSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hHit2Command* slashCommand = new Saber1hHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestDraftSlotsBatchSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber1hHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestDraftSlotsBatchSlashCommand* slashCommand = new RequestDraftSlotsBatchSlashCommand(slashcommand.getStringField("name"), server);
+	Saber1hHit3Command* slashCommand = new Saber1hHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestManfSchematicSlotsSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hBodyHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestManfSchematicSlotsSlashCommand* slashCommand = new RequestManfSchematicSlotsSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hBodyHit1Command* slashCommand = new Saber2hBodyHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestResourceWeightsSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hBodyHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestResourceWeightsSlashCommand* slashCommand = new RequestResourceWeightsSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hBodyHit2Command* slashCommand = new Saber2hBodyHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestResourceWeightsBatchSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hBodyHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestResourceWeightsBatchSlashCommand* slashCommand = new RequestResourceWeightsBatchSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hBodyHit3Command* slashCommand = new Saber2hBodyHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestSetStatMigrationDataSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hFrenzyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestSetStatMigrationDataSlashCommand* slashCommand = new RequestSetStatMigrationDataSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hFrenzyCommand* slashCommand = new Saber2hFrenzyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestStatMigrationDataSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestStatMigrationDataSlashCommand* slashCommand = new RequestStatMigrationDataSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hHit1Command* slashCommand = new Saber2hHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestStatMigrationStartSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestStatMigrationStartSlashCommand* slashCommand = new RequestStatMigrationStartSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hHit2Command* slashCommand = new Saber2hHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestStatMigrationStopSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestStatMigrationStopSlashCommand* slashCommand = new RequestStatMigrationStopSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hHit3Command* slashCommand = new Saber2hHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestStimpackSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hPhantomCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestStimpackSlashCommand* slashCommand = new RequestStimpackSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hPhantomCommand* slashCommand = new Saber2hPhantomCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestSurveySlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hSweep1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestSurveySlashCommand* slashCommand = new RequestSurveySlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hSweep1Command* slashCommand = new Saber2hSweep1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRequestWaypointAtPositionSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hSweep2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RequestWaypointAtPositionSlashCommand* slashCommand = new RequestWaypointAtPositionSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hSweep2Command* slashCommand = new Saber2hSweep2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRescueSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaber2hSweep3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RescueSlashCommand* slashCommand = new RescueSlashCommand(slashcommand.getStringField("name"), server);
+	Saber2hSweep3Command* slashCommand = new Saber2hSweep3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResendLoginMessageToAllSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmDervishCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResendLoginMessageToAllSlashCommand* slashCommand = new ResendLoginMessageToAllSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmDervishCommand* slashCommand = new SaberPolearmDervishCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResetJediSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmDervish2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResetJediSlashCommand* slashCommand = new ResetJediSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmDervish2Command* slashCommand = new SaberPolearmDervish2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResourceSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResourceSlashCommand* slashCommand = new ResourceSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmHit1Command* slashCommand = new SaberPolearmHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResourceContainerSplitSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResourceContainerSplitSlashCommand* slashCommand = new ResourceContainerSplitSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmHit2Command* slashCommand = new SaberPolearmHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResourceContainerTransferSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResourceContainerTransferSlashCommand* slashCommand = new ResourceContainerTransferSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmHit3Command* slashCommand = new SaberPolearmHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResourceSetNameSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmLegHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResourceSetNameSlashCommand* slashCommand = new ResourceSetNameSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmLegHit1Command* slashCommand = new SaberPolearmLegHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRespecStatCommitSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmLegHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RespecStatCommitSlashCommand* slashCommand = new RespecStatCommitSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmLegHit2Command* slashCommand = new SaberPolearmLegHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResSampleLoopSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmLegHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResSampleLoopSlashCommand* slashCommand = new ResSampleLoopSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmLegHit3Command* slashCommand = new SaberPolearmLegHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRestartConversionSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmSpinAttack1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RestartConversionSlashCommand* slashCommand = new RestartConversionSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmSpinAttack1Command* slashCommand = new SaberPolearmSpinAttack1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRestartCraftingSessionSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmSpinAttack2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RestartCraftingSessionSlashCommand* slashCommand = new RestartCraftingSessionSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmSpinAttack2Command* slashCommand = new SaberPolearmSpinAttack2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRestrainingShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberPolearmSpinAttack3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RestrainingShotSlashCommand* slashCommand = new RestrainingShotSlashCommand(slashcommand.getStringField("name"), server);
+	SaberPolearmSpinAttack3Command* slashCommand = new SaberPolearmSpinAttack3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addResuscitatePlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberSlash1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ResuscitatePlayerSlashCommand* slashCommand = new ResuscitatePlayerSlashCommand(slashcommand.getStringField("name"), server);
+	SaberSlash1Command* slashCommand = new SaberSlash1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRetreatSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberSlash2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RetreatSlashCommand* slashCommand = new RetreatSlashCommand(slashcommand.getStringField("name"), server);
+	SaberSlash2Command* slashCommand = new SaberSlash2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRevivePlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberThrow1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RevivePlayerSlashCommand* slashCommand = new RevivePlayerSlashCommand(slashcommand.getStringField("name"), server);
+	SaberThrow1Command* slashCommand = new SaberThrow1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRevokeBadgeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberThrow2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RevokeBadgeSlashCommand* slashCommand = new RevokeBadgeSlashCommand(slashcommand.getStringField("name"), server);
+	SaberThrow2Command* slashCommand = new SaberThrow2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRevokeSkillSlashCommand(lua_State* L) {
+int CommandConfigManager::addSaberThrow3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RevokeSkillSlashCommand* slashCommand = new RevokeSkillSlashCommand(slashcommand.getStringField("name"), server);
+	SaberThrow3Command* slashCommand = new SaberThrow3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRolePlaySlashCommand(lua_State* L) {
+int CommandConfigManager::addSampleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RolePlaySlashCommand* slashCommand = new RolePlaySlashCommand(slashcommand.getStringField("name"), server);
+	SampleCommand* slashCommand = new SampleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRollShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addSampleDNACommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RollShotSlashCommand* slashCommand = new RollShotSlashCommand(slashcommand.getStringField("name"), server);
+	SampleDNACommand* slashCommand = new SampleDNACommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addRotateFurnitureSlashCommand(lua_State* L) {
+int CommandConfigManager::addScatterShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	RotateFurnitureSlashCommand* slashCommand = new RotateFurnitureSlashCommand(slashcommand.getStringField("name"), server);
+	ScatterShot1Command* slashCommand = new ScatterShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberArmorBreakSlashCommand(lua_State* L) {
+int CommandConfigManager::addScatterShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberArmorBreakSlashCommand* slashCommand = new SaberArmorBreakSlashCommand(slashcommand.getStringField("name"), server);
+	ScatterShot2Command* slashCommand = new ScatterShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberBlindSlashCommand(lua_State* L) {
+int CommandConfigManager::addScriptCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberBlindSlashCommand* slashCommand = new SaberBlindSlashCommand(slashcommand.getStringField("name"), server);
+	ScriptCommand* slashCommand = new ScriptCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberBodyHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addSearchCorpseCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberBodyHitSlashCommand* slashCommand = new SaberBodyHitSlashCommand(slashcommand.getStringField("name"), server);
+	SearchCorpseCommand* slashCommand = new SearchCorpseCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberDervishSlashCommand(lua_State* L) {
+int CommandConfigManager::addSecretSpawnSpamCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberDervishSlashCommand* slashCommand = new SaberDervishSlashCommand(slashcommand.getStringField("name"), server);
+	SecretSpawnSpamCommand* slashCommand = new SecretSpawnSpamCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberHeadHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addSeGogglesCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberHeadHitSlashCommand* slashCommand = new SaberHeadHitSlashCommand(slashcommand.getStringField("name"), server);
+	SeGogglesCommand* slashCommand = new SeGogglesCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addSelectDraftSchematicCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberHitSlashCommand* slashCommand = new SaberHitSlashCommand(slashcommand.getStringField("name"), server);
+	SelectDraftSchematicCommand* slashCommand = new SelectDraftSchematicCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberLegHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addServerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberLegHitSlashCommand* slashCommand = new SaberLegHitSlashCommand(slashcommand.getStringField("name"), server);
+	ServerCommand* slashCommand = new ServerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberPowerAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addServerDestroyObjectCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberPowerAttackSlashCommand* slashCommand = new SaberPowerAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ServerDestroyObjectCommand* slashCommand = new ServerDestroyObjectCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberSlashSlashCommand(lua_State* L) {
+int CommandConfigManager::addServerSysGroupCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberSlashSlashCommand* slashCommand = new SaberSlashSlashCommand(slashcommand.getStringField("name"), server);
+	ServerSysGroupCommand* slashCommand = new ServerSysGroupCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberSpinAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetBiographyAdminCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberSpinAttackSlashCommand* slashCommand = new SaberSpinAttackSlashCommand(slashcommand.getStringField("name"), server);
+	SetBiographyAdminCommand* slashCommand = new SetBiographyAdminCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetBiographyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberStrikeSlashCommand* slashCommand = new SaberStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	SetBiographyCommand* slashCommand = new SetBiographyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberStunStrikeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetBoostmoraleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberStunStrikeSlashCommand* slashCommand = new SaberStunStrikeSlashCommand(slashcommand.getStringField("name"), server);
+	SetBoostmoraleCommand* slashCommand = new SetBoostmoraleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberSweepSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetChargeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberSweepSlashCommand* slashCommand = new SaberSweepSlashCommand(slashcommand.getStringField("name"), server);
+	SetChargeCommand* slashCommand = new SetChargeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberSwipeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetCurrentSkillTitleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberSwipeSlashCommand* slashCommand = new SaberSwipeSlashCommand(slashcommand.getStringField("name"), server);
+	SetCurrentSkillTitleCommand* slashCommand = new SetCurrentSkillTitleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSaberThrowSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetExperienceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SaberThrowSlashCommand* slashCommand = new SaberThrowSlashCommand(slashcommand.getStringField("name"), server);
+	SetExperienceCommand* slashCommand = new SetExperienceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSampleSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetFactionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SampleSlashCommand* slashCommand = new SampleSlashCommand(slashcommand.getStringField("name"), server);
+	SetFactionCommand* slashCommand = new SetFactionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSampleDNASlashCommand(lua_State* L) {
+int CommandConfigManager::addSetFactionStandingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SampleDNASlashCommand* slashCommand = new SampleDNASlashCommand(slashcommand.getStringField("name"), server);
+	SetFactionStandingCommand* slashCommand = new SetFactionStandingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addScatterHitSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetFirstNameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ScatterHitSlashCommand* slashCommand = new ScatterHitSlashCommand(slashcommand.getStringField("name"), server);
+	SetFirstNameCommand* slashCommand = new SetFirstNameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addScatterShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetFormupCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ScatterShotSlashCommand* slashCommand = new ScatterShotSlashCommand(slashcommand.getStringField("name"), server);
+	SetFormupCommand* slashCommand = new SetFormupCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addScriptSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetGodModeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ScriptSlashCommand* slashCommand = new ScriptSlashCommand(slashcommand.getStringField("name"), server);
+	SetGodModeCommand* slashCommand = new SetGodModeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSearchCorpseSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetHueCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SearchCorpseSlashCommand* slashCommand = new SearchCorpseSlashCommand(slashcommand.getStringField("name"), server);
+	SetHueCommand* slashCommand = new SetHueCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSecretSpawnSpamSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetIntimidateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SecretSpawnSpamSlashCommand* slashCommand = new SecretSpawnSpamSlashCommand(slashcommand.getStringField("name"), server);
+	SetIntimidateCommand* slashCommand = new SetIntimidateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSeGogglesSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetLastNameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SeGogglesSlashCommand* slashCommand = new SeGogglesSlashCommand(slashcommand.getStringField("name"), server);
+	SetLastNameCommand* slashCommand = new SetLastNameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSelectDraftSchematicSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetLoginMessageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SelectDraftSchematicSlashCommand* slashCommand = new SelectDraftSchematicSlashCommand(slashcommand.getStringField("name"), server);
+	SetLoginMessageCommand* slashCommand = new SetLoginMessageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSerotoninInjectionSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetLoginTitleCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SerotoninInjectionSlashCommand* slashCommand = new SerotoninInjectionSlashCommand(slashcommand.getStringField("name"), server);
+	SetLoginTitleCommand* slashCommand = new SetLoginTitleCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addServerSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetMatchMakingCharacterIdCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ServerSlashCommand* slashCommand = new ServerSlashCommand(slashcommand.getStringField("name"), server);
+	SetMatchMakingCharacterIdCommand* slashCommand = new SetMatchMakingCharacterIdCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addServerDestroyObjectSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetMatchMakingPersonalIdCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ServerDestroyObjectSlashCommand* slashCommand = new ServerDestroyObjectSlashCommand(slashcommand.getStringField("name"), server);
+	SetMatchMakingPersonalIdCommand* slashCommand = new SetMatchMakingPersonalIdCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addServerSysGroupSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetMaximumSpawnTimeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ServerSysGroupSlashCommand* slashCommand = new ServerSysGroupSlashCommand(slashcommand.getStringField("name"), server);
+	SetMaximumSpawnTimeCommand* slashCommand = new SetMaximumSpawnTimeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetBiographySlashCommand(lua_State* L) {
+int CommandConfigManager::addSetMinimumSpawnTimeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetBiographySlashCommand* slashCommand = new SetBiographySlashCommand(slashcommand.getStringField("name"), server);
+	SetMinimumSpawnTimeCommand* slashCommand = new SetMinimumSpawnTimeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetBiographyAdminSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetMoodCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetBiographyAdminSlashCommand* slashCommand = new SetBiographyAdminSlashCommand(slashcommand.getStringField("name"), server);
+	SetMoodCommand* slashCommand = new SetMoodCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetBoostmoraleSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetMoodInternalCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetBoostmoraleSlashCommand* slashCommand = new SetBoostmoraleSlashCommand(slashcommand.getStringField("name"), server);
+	SetMoodInternalCommand* slashCommand = new SetMoodInternalCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetChargeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetNameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetChargeSlashCommand* slashCommand = new SetChargeSlashCommand(slashcommand.getStringField("name"), server);
+	SetNameCommand* slashCommand = new SetNameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetCurrentSkillTitleSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetOwnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetCurrentSkillTitleSlashCommand* slashCommand = new SetCurrentSkillTitleSlashCommand(slashcommand.getStringField("name"), server);
+	SetOwnerCommand* slashCommand = new SetOwnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetExperienceSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetPerformanceBuffTargetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetExperienceSlashCommand* slashCommand = new SetExperienceSlashCommand(slashcommand.getStringField("name"), server);
+	SetPerformanceBuffTargetCommand* slashCommand = new SetPerformanceBuffTargetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetFactionSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetpermissionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetFactionSlashCommand* slashCommand = new SetFactionSlashCommand(slashcommand.getStringField("name"), server);
+	SetpermissionCommand* slashCommand = new SetpermissionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetFactionStandingSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetPlanetLimitCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetFactionStandingSlashCommand* slashCommand = new SetFactionStandingSlashCommand(slashcommand.getStringField("name"), server);
+	SetPlanetLimitCommand* slashCommand = new SetPlanetLimitCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetFirstNameSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetPlayerAppearanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetFirstNameSlashCommand* slashCommand = new SetFirstNameSlashCommand(slashcommand.getStringField("name"), server);
+	SetPlayerAppearanceCommand* slashCommand = new SetPlayerAppearanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetFormupSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetPlayerStateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetFormupSlashCommand* slashCommand = new SetFormupSlashCommand(slashcommand.getStringField("name"), server);
+	SetPlayerStateCommand* slashCommand = new SetPlayerStateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetGodModeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetprivacyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetGodModeSlashCommand* slashCommand = new SetGodModeSlashCommand(slashcommand.getStringField("name"), server);
+	SetprivacyCommand* slashCommand = new SetprivacyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetGrievousAuthorizedSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetPublicStateCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetGrievousAuthorizedSlashCommand* slashCommand = new SetGrievousAuthorizedSlashCommand(slashcommand.getStringField("name"), server);
+	SetPublicStateCommand* slashCommand = new SetPublicStateCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetHueSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetRankCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetHueSlashCommand* slashCommand = new SetHueSlashCommand(slashcommand.getStringField("name"), server);
+	SetRankCommand* slashCommand = new SetRankCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetIntimidateSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetRetreatCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetIntimidateSlashCommand* slashCommand = new SetIntimidateSlashCommand(slashcommand.getStringField("name"), server);
+	SetRetreatCommand* slashCommand = new SetRetreatCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetLastNameSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetSpeedCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetLastNameSlashCommand* slashCommand = new SetLastNameSlashCommand(slashcommand.getStringField("name"), server);
+	SetSpeedCommand* slashCommand = new SetSpeedCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetLoginMessageSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetSpokenLanguageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetLoginMessageSlashCommand* slashCommand = new SetLoginMessageSlashCommand(slashcommand.getStringField("name"), server);
+	SetSpokenLanguageCommand* slashCommand = new SetSpokenLanguageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetLoginTitleSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetSteadyaimCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetLoginTitleSlashCommand* slashCommand = new SetLoginTitleSlashCommand(slashcommand.getStringField("name"), server);
+	SetSteadyaimCommand* slashCommand = new SetSteadyaimCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetMatchMakingCharacterIdSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetTEFCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetMatchMakingCharacterIdSlashCommand* slashCommand = new SetMatchMakingCharacterIdSlashCommand(slashcommand.getStringField("name"), server);
+	SetTEFCommand* slashCommand = new SetTEFCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetMatchMakingPersonalIdSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetVeteranRewardCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetMatchMakingPersonalIdSlashCommand* slashCommand = new SetMatchMakingPersonalIdSlashCommand(slashcommand.getStringField("name"), server);
+	SetVeteranRewardCommand* slashCommand = new SetVeteranRewardCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetMaximumSpawnTimeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetWarcryCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetMaximumSpawnTimeSlashCommand* slashCommand = new SetMaximumSpawnTimeSlashCommand(slashcommand.getStringField("name"), server);
+	SetWarcryCommand* slashCommand = new SetWarcryCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetMinimumSpawnTimeSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetWaypointActiveStatusCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetMinimumSpawnTimeSlashCommand* slashCommand = new SetMinimumSpawnTimeSlashCommand(slashcommand.getStringField("name"), server);
+	SetWaypointActiveStatusCommand* slashCommand = new SetWaypointActiveStatusCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetMoodSlashCommand(lua_State* L) {
+int CommandConfigManager::addSetWaypointNameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetMoodSlashCommand* slashCommand = new SetMoodSlashCommand(slashcommand.getStringField("name"), server);
+	SetWaypointNameCommand* slashCommand = new SetWaypointNameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetMoodInternalSlashCommand(lua_State* L) {
+int CommandConfigManager::addShowCouncilRankCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetMoodInternalSlashCommand* slashCommand = new SetMoodInternalSlashCommand(slashcommand.getStringField("name"), server);
+	ShowCouncilRankCommand* slashCommand = new ShowCouncilRankCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetNameSlashCommand(lua_State* L) {
+int CommandConfigManager::addShowDanceVisualsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetNameSlashCommand* slashCommand = new SetNameSlashCommand(slashcommand.getStringField("name"), server);
+	ShowDanceVisualsCommand* slashCommand = new ShowDanceVisualsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetOwnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addShowFactionInformationCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetOwnerSlashCommand* slashCommand = new SetOwnerSlashCommand(slashcommand.getStringField("name"), server);
+	ShowFactionInformationCommand* slashCommand = new ShowFactionInformationCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetPerformanceBuffTargetSlashCommand(lua_State* L) {
+int CommandConfigManager::addShowMusicianVisualsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetPerformanceBuffTargetSlashCommand* slashCommand = new SetPerformanceBuffTargetSlashCommand(slashcommand.getStringField("name"), server);
+	ShowMusicianVisualsCommand* slashCommand = new ShowMusicianVisualsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetpermissionSlashCommand(lua_State* L) {
+int CommandConfigManager::addShowPvPRatingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetpermissionSlashCommand* slashCommand = new SetpermissionSlashCommand(slashcommand.getStringField("name"), server);
+	ShowPvPRatingCommand* slashCommand = new ShowPvPRatingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetPlanetLimitSlashCommand(lua_State* L) {
+int CommandConfigManager::addShowSpawnRegionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetPlanetLimitSlashCommand* slashCommand = new SetPlanetLimitSlashCommand(slashcommand.getStringField("name"), server);
+	ShowSpawnRegionCommand* slashCommand = new ShowSpawnRegionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetPlayerAppearanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addSitServerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetPlayerAppearanceSlashCommand* slashCommand = new SetPlayerAppearanceSlashCommand(slashcommand.getStringField("name"), server);
+	SitServerCommand* slashCommand = new SitServerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetPlayerStateSlashCommand(lua_State* L) {
+int CommandConfigManager::addSkillCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetPlayerStateSlashCommand* slashCommand = new SetPlayerStateSlashCommand(slashcommand.getStringField("name"), server);
+	SkillCommand* slashCommand = new SkillCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetprivacySlashCommand(lua_State* L) {
+int CommandConfigManager::addSmokebombCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetprivacySlashCommand* slashCommand = new SetprivacySlashCommand(slashcommand.getStringField("name"), server);
+	SmokebombCommand* slashCommand = new SmokebombCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetPublicStateSlashCommand(lua_State* L) {
+int CommandConfigManager::addSniperShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetPublicStateSlashCommand* slashCommand = new SetPublicStateSlashCommand(slashcommand.getStringField("name"), server);
+	SniperShotCommand* slashCommand = new SniperShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetRankSlashCommand(lua_State* L) {
+int CommandConfigManager::addSnoopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetRankSlashCommand* slashCommand = new SetRankSlashCommand(slashcommand.getStringField("name"), server);
+	SnoopCommand* slashCommand = new SnoopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetRetreatSlashCommand(lua_State* L) {
+int CommandConfigManager::addSocialCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetRetreatSlashCommand* slashCommand = new SetRetreatSlashCommand(slashcommand.getStringField("name"), server);
+	SocialCommand* slashCommand = new SocialCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetSpeedSlashCommand(lua_State* L) {
+int CommandConfigManager::addSocialInternalCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetSpeedSlashCommand* slashCommand = new SetSpeedSlashCommand(slashcommand.getStringField("name"), server);
+	SocialInternalCommand* slashCommand = new SocialInternalCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetSpokenLanguageSlashCommand(lua_State* L) {
+int CommandConfigManager::addSpatialChatCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetSpokenLanguageSlashCommand* slashCommand = new SetSpokenLanguageSlashCommand(slashcommand.getStringField("name"), server);
+	SpatialChatCommand* slashCommand = new SpatialChatCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetSteadyaimSlashCommand(lua_State* L) {
+int CommandConfigManager::addSpatialChatInternalCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetSteadyaimSlashCommand* slashCommand = new SetSteadyaimSlashCommand(slashcommand.getStringField("name"), server);
+	SpatialChatInternalCommand* slashCommand = new SpatialChatInternalCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetTEFSlashCommand(lua_State* L) {
+int CommandConfigManager::addSpawnStatusCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetTEFSlashCommand* slashCommand = new SetTEFSlashCommand(slashcommand.getStringField("name"), server);
+	SpawnStatusCommand* slashCommand = new SpawnStatusCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetVeteranRewardSlashCommand(lua_State* L) {
+int CommandConfigManager::addSplitCreditsWithGroupCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetVeteranRewardSlashCommand* slashCommand = new SetVeteranRewardSlashCommand(slashcommand.getStringField("name"), server);
+	SplitCreditsWithGroupCommand* slashCommand = new SplitCreditsWithGroupCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetWarcrySlashCommand(lua_State* L) {
+int CommandConfigManager::addSpotlightCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetWarcrySlashCommand* slashCommand = new SetWarcrySlashCommand(slashcommand.getStringField("name"), server);
+	SpotlightCommand* slashCommand = new SpotlightCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetWaypointActiveStatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addSprayShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetWaypointActiveStatusSlashCommand* slashCommand = new SetWaypointActiveStatusSlashCommand(slashcommand.getStringField("name"), server);
+	SprayShotCommand* slashCommand = new SprayShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSetWaypointNameSlashCommand(lua_State* L) {
+int CommandConfigManager::addStandCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SetWaypointNameSlashCommand* slashCommand = new SetWaypointNameSlashCommand(slashcommand.getStringField("name"), server);
+	StandCommand* slashCommand = new StandCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShockSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartBandCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShockSlashCommand* slashCommand = new ShockSlashCommand(slashcommand.getStringField("name"), server);
+	StartBandCommand* slashCommand = new StartBandCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShowCouncilRankSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartCitySpawnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShowCouncilRankSlashCommand* slashCommand = new ShowCouncilRankSlashCommand(slashcommand.getStringField("name"), server);
+	StartCitySpawnerCommand* slashCommand = new StartCitySpawnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShowDanceVisualsSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartDanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShowDanceVisualsSlashCommand* slashCommand = new ShowDanceVisualsSlashCommand(slashcommand.getStringField("name"), server);
+	StartDanceCommand* slashCommand = new StartDanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShowFactionInformationSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartleShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShowFactionInformationSlashCommand* slashCommand = new ShowFactionInformationSlashCommand(slashcommand.getStringField("name"), server);
+	StartleShot1Command* slashCommand = new StartleShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShowMusicianVisualsSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartleShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShowMusicianVisualsSlashCommand* slashCommand = new ShowMusicianVisualsSlashCommand(slashcommand.getStringField("name"), server);
+	StartleShot2Command* slashCommand = new StartleShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShowPvPRatingSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartMusicCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShowPvPRatingSlashCommand* slashCommand = new ShowPvPRatingSlashCommand(slashcommand.getStringField("name"), server);
+	StartMusicCommand* slashCommand = new StartMusicCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addShowSpawnRegionSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartSpawnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ShowSpawnRegionSlashCommand* slashCommand = new ShowSpawnRegionSlashCommand(slashcommand.getStringField("name"), server);
+	StartSpawnerCommand* slashCommand = new StartSpawnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSitServerSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartTargetSpawnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SitServerSlashCommand* slashCommand = new SitServerSlashCommand(slashcommand.getStringField("name"), server);
+	StartTargetSpawnerCommand* slashCommand = new StartTargetSpawnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSkillSlashCommand(lua_State* L) {
+int CommandConfigManager::addStartTraceLoggingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SkillSlashCommand* slashCommand = new SkillSlashCommand(slashcommand.getStringField("name"), server);
+	StartTraceLoggingCommand* slashCommand = new StartTraceLoggingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSmokebombSlashCommand(lua_State* L) {
+int CommandConfigManager::addStatCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SmokebombSlashCommand* slashCommand = new SmokebombSlashCommand(slashcommand.getStringField("name"), server);
+	StatCommand* slashCommand = new StatCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSniperShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addSteadyaimCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SniperShotSlashCommand* slashCommand = new SniperShotSlashCommand(slashcommand.getStringField("name"), server);
+	SteadyaimCommand* slashCommand = new SteadyaimCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSnoopSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopBandCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SnoopSlashCommand* slashCommand = new SnoopSlashCommand(slashcommand.getStringField("name"), server);
+	StopBandCommand* slashCommand = new StopBandCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSocialSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopBleedingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SocialSlashCommand* slashCommand = new SocialSlashCommand(slashcommand.getStringField("name"), server);
+	StopBleedingCommand* slashCommand = new StopBleedingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSocialInternalSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopCitySpawnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SocialInternalSlashCommand* slashCommand = new SocialInternalSlashCommand(slashcommand.getStringField("name"), server);
+	StopCitySpawnerCommand* slashCommand = new StopCitySpawnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSpatialChatSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopCraftingSessionCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SpatialChatSlashCommand* slashCommand = new SpatialChatSlashCommand(slashcommand.getStringField("name"), server);
+	StopCraftingSessionCommand* slashCommand = new StopCraftingSessionCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSpatialChatInternalSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopDanceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SpatialChatInternalSlashCommand* slashCommand = new SpatialChatInternalSlashCommand(slashcommand.getStringField("name"), server);
+	StopDanceCommand* slashCommand = new StopDanceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSpawnStatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addStoplisteningCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SpawnStatusSlashCommand* slashCommand = new SpawnStatusSlashCommand(slashcommand.getStringField("name"), server);
+	StoplisteningCommand* slashCommand = new StoplisteningCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSpinAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopMusicCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SpinAttackSlashCommand* slashCommand = new SpinAttackSlashCommand(slashcommand.getStringField("name"), server);
+	StopMusicCommand* slashCommand = new StopMusicCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSplitCreditsWithGroupSlashCommand(lua_State* L) {
+int CommandConfigManager::addStoppingShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SplitCreditsWithGroupSlashCommand* slashCommand = new SplitCreditsWithGroupSlashCommand(slashcommand.getStringField("name"), server);
+	StoppingShotCommand* slashCommand = new StoppingShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSpotlightSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopSpawnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SpotlightSlashCommand* slashCommand = new SpotlightSlashCommand(slashcommand.getStringField("name"), server);
+	StopSpawnerCommand* slashCommand = new StopSpawnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSprayShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopTargetSpawnerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SprayShotSlashCommand* slashCommand = new SprayShotSlashCommand(slashcommand.getStringField("name"), server);
+	StopTargetSpawnerCommand* slashCommand = new StopTargetSpawnerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStabilizersSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopTraceLoggingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StabilizersSlashCommand* slashCommand = new StabilizersSlashCommand(slashcommand.getStringField("name"), server);
+	StopTraceLoggingCommand* slashCommand = new StopTraceLoggingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStandSlashCommand(lua_State* L) {
+int CommandConfigManager::addStopwatchingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StandSlashCommand* slashCommand = new StandSlashCommand(slashcommand.getStringField("name"), server);
+	StopwatchingCommand* slashCommand = new StopwatchingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartBandSlashCommand(lua_State* L) {
+int CommandConfigManager::addStrafeShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartBandSlashCommand* slashCommand = new StartBandSlashCommand(slashcommand.getStringField("name"), server);
+	StrafeShot1Command* slashCommand = new StrafeShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartCitySpawnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addStrafeShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartCitySpawnerSlashCommand* slashCommand = new StartCitySpawnerSlashCommand(slashcommand.getStringField("name"), server);
+	StrafeShot2Command* slashCommand = new StrafeShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartDanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addStructurestatusCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartDanceSlashCommand* slashCommand = new StartDanceSlashCommand(slashcommand.getStringField("name"), server);
+	StructurestatusCommand* slashCommand = new StructurestatusCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartleShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addStunAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartleShotSlashCommand* slashCommand = new StartleShotSlashCommand(slashcommand.getStringField("name"), server);
+	StunAttackCommand* slashCommand = new StunAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartMusicSlashCommand(lua_State* L) {
+int CommandConfigManager::addSuppressionFire1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartMusicSlashCommand* slashCommand = new StartMusicSlashCommand(slashcommand.getStringField("name"), server);
+	SuppressionFire1Command* slashCommand = new SuppressionFire1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartSpawnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addSuppressionFire2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartSpawnerSlashCommand* slashCommand = new StartSpawnerSlashCommand(slashcommand.getStringField("name"), server);
+	SuppressionFire2Command* slashCommand = new SuppressionFire2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartTargetSpawnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addSurpriseShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartTargetSpawnerSlashCommand* slashCommand = new StartTargetSpawnerSlashCommand(slashcommand.getStringField("name"), server);
+	SurpriseShotCommand* slashCommand = new SurpriseShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStartTraceLoggingSlashCommand(lua_State* L) {
+int CommandConfigManager::addSurrenderSkillCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StartTraceLoggingSlashCommand* slashCommand = new StartTraceLoggingSlashCommand(slashcommand.getStringField("name"), server);
+	SurrenderSkillCommand* slashCommand = new SurrenderSkillCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStasisSlashCommand(lua_State* L) {
+int CommandConfigManager::addSurveyCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StasisSlashCommand* slashCommand = new StasisSlashCommand(slashcommand.getStringField("name"), server);
+	SurveyCommand* slashCommand = new SurveyCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStatSlashCommand(lua_State* L) {
+int CommandConfigManager::addSynchronizedUiListenCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StatSlashCommand* slashCommand = new StatSlashCommand(slashcommand.getStringField("name"), server);
+	SynchronizedUiListenCommand* slashCommand = new SynchronizedUiListenCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSteadyaimSlashCommand(lua_State* L) {
+int CommandConfigManager::addSynchronizedUiStopListeningCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SteadyaimSlashCommand* slashCommand = new SteadyaimSlashCommand(slashcommand.getStringField("name"), server);
+	SynchronizedUiStopListeningCommand* slashCommand = new SynchronizedUiStopListeningCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopBandSlashCommand(lua_State* L) {
+int CommandConfigManager::addSystemMessageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopBandSlashCommand* slashCommand = new StopBandSlashCommand(slashcommand.getStringField("name"), server);
+	SystemMessageCommand* slashCommand = new SystemMessageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopBleedingSlashCommand(lua_State* L) {
+int CommandConfigManager::addTakeCoverCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopBleedingSlashCommand* slashCommand = new StopBleedingSlashCommand(slashcommand.getStringField("name"), server);
+	TakeCoverCommand* slashCommand = new TakeCoverCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopCitySpawnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addTameCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopCitySpawnerSlashCommand* slashCommand = new StopCitySpawnerSlashCommand(slashcommand.getStringField("name"), server);
+	TameCommand* slashCommand = new TameCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopCraftingSessionSlashCommand(lua_State* L) {
+int CommandConfigManager::addTargetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopCraftingSessionSlashCommand* slashCommand = new StopCraftingSessionSlashCommand(slashcommand.getStringField("name"), server);
+	TargetCommand* slashCommand = new TargetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopDanceSlashCommand(lua_State* L) {
+int CommandConfigManager::addTauntCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopDanceSlashCommand* slashCommand = new StopDanceSlashCommand(slashcommand.getStringField("name"), server);
+	TauntCommand* slashCommand = new TauntCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStoplisteningSlashCommand(lua_State* L) {
+int CommandConfigManager::addTeachCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StoplisteningSlashCommand* slashCommand = new StoplisteningSlashCommand(slashcommand.getStringField("name"), server);
+	TeachCommand* slashCommand = new TeachCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopMusicSlashCommand(lua_State* L) {
+int CommandConfigManager::addTeleportCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopMusicSlashCommand* slashCommand = new StopMusicSlashCommand(slashcommand.getStringField("name"), server);
+	TeleportCommand* slashCommand = new TeleportCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStoppingShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addTeleportTargetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StoppingShotSlashCommand* slashCommand = new StoppingShotSlashCommand(slashcommand.getStringField("name"), server);
+	TeleportTargetCommand* slashCommand = new TeleportTargetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopSpawnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addTeleportToCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopSpawnerSlashCommand* slashCommand = new StopSpawnerSlashCommand(slashcommand.getStringField("name"), server);
+	TeleportToCommand* slashCommand = new TeleportToCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopTargetSpawnerSlashCommand(lua_State* L) {
+int CommandConfigManager::addTellpetCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopTargetSpawnerSlashCommand* slashCommand = new StopTargetSpawnerSlashCommand(slashcommand.getStringField("name"), server);
+	TellpetCommand* slashCommand = new TellpetCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopTraceLoggingSlashCommand(lua_State* L) {
+int CommandConfigManager::addTendDamageCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopTraceLoggingSlashCommand* slashCommand = new StopTraceLoggingSlashCommand(slashcommand.getStringField("name"), server);
+	TendDamageCommand* slashCommand = new TendDamageCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStopwatchingSlashCommand(lua_State* L) {
+int CommandConfigManager::addTendDamageToolCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StopwatchingSlashCommand* slashCommand = new StopwatchingSlashCommand(slashcommand.getStringField("name"), server);
+	TendDamageToolCommand* slashCommand = new TendDamageToolCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStructurestatusSlashCommand(lua_State* L) {
+int CommandConfigManager::addTendWoundCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StructurestatusSlashCommand* slashCommand = new StructurestatusSlashCommand(slashcommand.getStringField("name"), server);
+	TendWoundCommand* slashCommand = new TendWoundCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStunningBlowSlashCommand(lua_State* L) {
+int CommandConfigManager::addTendWoundsToolCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StunningBlowSlashCommand* slashCommand = new StunningBlowSlashCommand(slashcommand.getStringField("name"), server);
+	TendWoundsToolCommand* slashCommand = new TendWoundsToolCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addStunRecoverySlashCommand(lua_State* L) {
+int CommandConfigManager::addThreatenShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	StunRecoverySlashCommand* slashCommand = new StunRecoverySlashCommand(slashcommand.getStringField("name"), server);
+	ThreatenShotCommand* slashCommand = new ThreatenShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSuppressionFireSlashCommand(lua_State* L) {
+int CommandConfigManager::addThrowGrenadeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SuppressionFireSlashCommand* slashCommand = new SuppressionFireSlashCommand(slashcommand.getStringField("name"), server);
+	ThrowGrenadeCommand* slashCommand = new ThrowGrenadeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSurrenderSkillSlashCommand(lua_State* L) {
+int CommandConfigManager::addThrowTrapCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SurrenderSkillSlashCommand* slashCommand = new SurrenderSkillSlashCommand(slashcommand.getStringField("name"), server);
+	ThrowTrapCommand* slashCommand = new ThrowTrapCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSurveySlashCommand(lua_State* L) {
+int CommandConfigManager::addTipCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SurveySlashCommand* slashCommand = new SurveySlashCommand(slashcommand.getStringField("name"), server);
+	TipCommand* slashCommand = new TipCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSweepAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addToggleAwayFromKeyBoardCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SweepAttackSlashCommand* slashCommand = new SweepAttackSlashCommand(slashcommand.getStringField("name"), server);
+	ToggleAwayFromKeyBoardCommand* slashCommand = new ToggleAwayFromKeyBoardCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSwitchWeaponModeSlashCommand(lua_State* L) {
+int CommandConfigManager::addToggleDisplayingFactionRankCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SwitchWeaponModeSlashCommand* slashCommand = new SwitchWeaponModeSlashCommand(slashcommand.getStringField("name"), server);
+	ToggleDisplayingFactionRankCommand* slashCommand = new ToggleDisplayingFactionRankCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSwordFlurrySlashCommand(lua_State* L) {
+int CommandConfigManager::addTorsoShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SwordFlurrySlashCommand* slashCommand = new SwordFlurrySlashCommand(slashcommand.getStringField("name"), server);
+	TorsoShotCommand* slashCommand = new TorsoShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSynchronizedUiListenSlashCommand(lua_State* L) {
+int CommandConfigManager::addTotalHealOtherCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SynchronizedUiListenSlashCommand* slashCommand = new SynchronizedUiListenSlashCommand(slashcommand.getStringField("name"), server);
+	TotalHealOtherCommand* slashCommand = new TotalHealOtherCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSynchronizedUiStopListeningSlashCommand(lua_State* L) {
+int CommandConfigManager::addTotalHealSelfCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SynchronizedUiStopListeningSlashCommand* slashCommand = new SynchronizedUiStopListeningSlashCommand(slashcommand.getStringField("name"), server);
+	TotalHealSelfCommand* slashCommand = new TotalHealSelfCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addSystemMessageSlashCommand(lua_State* L) {
+int CommandConfigManager::addTransferForceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	SystemMessageSlashCommand* slashCommand = new SystemMessageSlashCommand(slashcommand.getStringField("name"), server);
+	TransferForceCommand* slashCommand = new TransferForceCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTakeCoverSlashCommand(lua_State* L) {
+int CommandConfigManager::addTransferItemCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TakeCoverSlashCommand* slashCommand = new TakeCoverSlashCommand(slashcommand.getStringField("name"), server);
+	TransferItemCommand* slashCommand = new TransferItemCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTameSlashCommand(lua_State* L) {
+int CommandConfigManager::addTransferItemArmorCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TameSlashCommand* slashCommand = new TameSlashCommand(slashcommand.getStringField("name"), server);
+	TransferItemArmorCommand* slashCommand = new TransferItemArmorCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTargetSlashCommand(lua_State* L) {
+int CommandConfigManager::addTransferItemMiscCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TargetSlashCommand* slashCommand = new TargetSlashCommand(slashcommand.getStringField("name"), server);
+	TransferItemMiscCommand* slashCommand = new TransferItemMiscCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTauntSlashCommand(lua_State* L) {
+int CommandConfigManager::addTransferItemWeaponCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TauntSlashCommand* slashCommand = new TauntSlashCommand(slashcommand.getStringField("name"), server);
+	TransferItemWeaponCommand* slashCommand = new TransferItemWeaponCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTeachSlashCommand(lua_State* L) {
+int CommandConfigManager::addTransferstructureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TeachSlashCommand* slashCommand = new TeachSlashCommand(slashcommand.getStringField("name"), server);
+	TransferstructureCommand* slashCommand = new TransferstructureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTeleportSlashCommand(lua_State* L) {
+int CommandConfigManager::addTumbleToKneelingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TeleportSlashCommand* slashCommand = new TeleportSlashCommand(slashcommand.getStringField("name"), server);
+	TumbleToKneelingCommand* slashCommand = new TumbleToKneelingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTeleportTargetSlashCommand(lua_State* L) {
+int CommandConfigManager::addTumbleToProneCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TeleportTargetSlashCommand* slashCommand = new TeleportTargetSlashCommand(slashcommand.getStringField("name"), server);
+	TumbleToProneCommand* slashCommand = new TumbleToProneCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTeleportToSlashCommand(lua_State* L) {
+int CommandConfigManager::addTumbleToStandingCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TeleportToSlashCommand* slashCommand = new TeleportToSlashCommand(slashcommand.getStringField("name"), server);
+	TumbleToStandingCommand* slashCommand = new TumbleToStandingCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTellpetSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedBlind1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TellpetSlashCommand* slashCommand = new TellpetSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedBlind1Command* slashCommand = new UnarmedBlind1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addThrowGrenadeSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedBodyHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ThrowGrenadeSlashCommand* slashCommand = new ThrowGrenadeSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedBodyHit1Command* slashCommand = new UnarmedBodyHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addThrowTrapSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedCombo1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ThrowTrapSlashCommand* slashCommand = new ThrowTrapSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedCombo1Command* slashCommand = new UnarmedCombo1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addThyroidRuptureSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedCombo2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ThyroidRuptureSlashCommand* slashCommand = new ThyroidRuptureSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedCombo2Command* slashCommand = new UnarmedCombo2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTipSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedDizzy1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TipSlashCommand* slashCommand = new TipSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedDizzy1Command* slashCommand = new UnarmedDizzy1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addToggleAwayFromKeyBoardSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedHeadHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ToggleAwayFromKeyBoardSlashCommand* slashCommand = new ToggleAwayFromKeyBoardSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedHeadHit1Command* slashCommand = new UnarmedHeadHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addToggleCombatTauntsSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ToggleCombatTauntsSlashCommand* slashCommand = new ToggleCombatTauntsSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedHit1Command* slashCommand = new UnarmedHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addToggleDisplayingFactionRankSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedHit2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	ToggleDisplayingFactionRankSlashCommand* slashCommand = new ToggleDisplayingFactionRankSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedHit2Command* slashCommand = new UnarmedHit2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTorsoShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedHit3Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TorsoShotSlashCommand* slashCommand = new TorsoShotSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedHit3Command* slashCommand = new UnarmedHit3Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTotalHealSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedKnockdown1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TotalHealSlashCommand* slashCommand = new TotalHealSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedKnockdown1Command* slashCommand = new UnarmedKnockdown1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTransferForceSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedKnockdown2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TransferForceSlashCommand* slashCommand = new TransferForceSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedKnockdown2Command* slashCommand = new UnarmedKnockdown2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTransferItemSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedLegHit1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TransferItemSlashCommand* slashCommand = new TransferItemSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedLegHit1Command* slashCommand = new UnarmedLegHit1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTransferItemArmorSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedLunge1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TransferItemArmorSlashCommand* slashCommand = new TransferItemArmorSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedLunge1Command* slashCommand = new UnarmedLunge1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTransferItemMiscSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedLunge2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TransferItemMiscSlashCommand* slashCommand = new TransferItemMiscSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedLunge2Command* slashCommand = new UnarmedLunge2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTransferItemWeaponSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedSpinAttack1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TransferItemWeaponSlashCommand* slashCommand = new TransferItemWeaponSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedSpinAttack1Command* slashCommand = new UnarmedSpinAttack1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTransferstructureSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedSpinAttack2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TransferstructureSlashCommand* slashCommand = new TransferstructureSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedSpinAttack2Command* slashCommand = new UnarmedSpinAttack2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addTraumatizeSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnarmedStun1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	TraumatizeSlashCommand* slashCommand = new TraumatizeSlashCommand(slashcommand.getStringField("name"), server);
+	UnarmedStun1Command* slashCommand = new UnarmedStun1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUnassociateDroidControlDeviceWithShipSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnassociateDroidControlDeviceWithShipCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UnassociateDroidControlDeviceWithShipSlashCommand* slashCommand = new UnassociateDroidControlDeviceWithShipSlashCommand(slashcommand.getStringField("name"), server);
+	UnassociateDroidControlDeviceWithShipCommand* slashCommand = new UnassociateDroidControlDeviceWithShipCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUnCityBanSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnCityBanCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UnCityBanSlashCommand* slashCommand = new UnCityBanSlashCommand(slashcommand.getStringField("name"), server);
+	UnCityBanCommand* slashCommand = new UnCityBanCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUnconsentSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnconsentCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UnconsentSlashCommand* slashCommand = new UnconsentSlashCommand(slashcommand.getStringField("name"), server);
+	UnconsentCommand* slashCommand = new UnconsentCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUnderhandShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnderHandShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UnderhandShotSlashCommand* slashCommand = new UnderhandShotSlashCommand(slashcommand.getStringField("name"), server);
+	UnderHandShotCommand* slashCommand = new UnderHandShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUnfreezePlayerSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnfreezePlayerCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UnfreezePlayerSlashCommand* slashCommand = new UnfreezePlayerSlashCommand(slashcommand.getStringField("name"), server);
+	UnfreezePlayerCommand* slashCommand = new UnfreezePlayerCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUninstallShipComponentSlashCommand(lua_State* L) {
+int CommandConfigManager::addUninstallShipComponentCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UninstallShipComponentSlashCommand* slashCommand = new UninstallShipComponentSlashCommand(slashcommand.getStringField("name"), server);
+	UninstallShipComponentCommand* slashCommand = new UninstallShipComponentCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUninviteSlashCommand(lua_State* L) {
+int CommandConfigManager::addUninviteCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UninviteSlashCommand* slashCommand = new UninviteSlashCommand(slashcommand.getStringField("name"), server);
+	UninviteCommand* slashCommand = new UninviteCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUnsnoopSlashCommand(lua_State* L) {
+int CommandConfigManager::addUnsnoopCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UnsnoopSlashCommand* slashCommand = new UnsnoopSlashCommand(slashcommand.getStringField("name"), server);
+	UnsnoopCommand* slashCommand = new UnsnoopCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUseDoctorBagSlashCommand(lua_State* L) {
+int CommandConfigManager::addUseReconDroneCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UseDoctorBagSlashCommand* slashCommand = new UseDoctorBagSlashCommand(slashcommand.getStringField("name"), server);
+	UseReconDroneCommand* slashCommand = new UseReconDroneCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUseReconDroneSlashCommand(lua_State* L) {
+int CommandConfigManager::addUseSkillBuffCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UseReconDroneSlashCommand* slashCommand = new UseReconDroneSlashCommand(slashcommand.getStringField("name"), server);
+	UseSkillBuffCommand* slashCommand = new UseSkillBuffCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addUseSkillBuffSlashCommand(lua_State* L) {
+int CommandConfigManager::addVentriloquismCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	UseSkillBuffSlashCommand* slashCommand = new UseSkillBuffSlashCommand(slashcommand.getStringField("name"), server);
+	VentriloquismCommand* slashCommand = new VentriloquismCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addVentriloquismSlashCommand(lua_State* L) {
+int CommandConfigManager::addToggleCombatTauntsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	VentriloquismSlashCommand* slashCommand = new VentriloquismSlashCommand(slashcommand.getStringField("name"), server);
+	ToggleCombatTauntsCommand* slashCommand = new ToggleCombatTauntsCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addVertFurnitureSlashCommand(lua_State* L) {
+int CommandConfigManager::addVertFurnitureCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	VertFurnitureSlashCommand* slashCommand = new VertFurnitureSlashCommand(slashcommand.getStringField("name"), server);
+	VertFurnitureCommand* slashCommand = new VertFurnitureCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addVitalizeSlashCommand(lua_State* L) {
+int CommandConfigManager::addVitalizeCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	VitalizeSlashCommand* slashCommand = new VitalizeSlashCommand(slashcommand.getStringField("name"), server);
+	VitalizeCommand* slashCommand = new VitalizeCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addVolleyFireSlashCommand(lua_State* L) {
+int CommandConfigManager::addVolleyFireCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	VolleyFireSlashCommand* slashCommand = new VolleyFireSlashCommand(slashcommand.getStringField("name"), server);
+	VolleyFireCommand* slashCommand = new VolleyFireCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addVolleyFireAttackSlashCommand(lua_State* L) {
+int CommandConfigManager::addVolleyFireAttackCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	VolleyFireAttackSlashCommand* slashCommand = new VolleyFireAttackSlashCommand(slashcommand.getStringField("name"), server);
+	VolleyFireAttackCommand* slashCommand = new VolleyFireAttackCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addWarcrySlashCommand(lua_State* L) {
+int CommandConfigManager::addWarcry1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	WarcrySlashCommand* slashCommand = new WarcrySlashCommand(slashcommand.getStringField("name"), server);
+	Warcry1Command* slashCommand = new Warcry1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addWarningShotSlashCommand(lua_State* L) {
+int CommandConfigManager::addWarcry2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	WarningShotSlashCommand* slashCommand = new WarningShotSlashCommand(slashcommand.getStringField("name"), server);
+	Warcry2Command* slashCommand = new Warcry2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addWatchSlashCommand(lua_State* L) {
+int CommandConfigManager::addWarningShotCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	WatchSlashCommand* slashCommand = new WatchSlashCommand(slashcommand.getStringField("name"), server);
+	WarningShotCommand* slashCommand = new WarningShotCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addWaypointSlashCommand(lua_State* L) {
+int CommandConfigManager::addWatchCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	WaypointSlashCommand* slashCommand = new WaypointSlashCommand(slashcommand.getStringField("name"), server);
+	WatchCommand* slashCommand = new WatchCommand(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addWipeItemsSlashCommand(lua_State* L) {
+int CommandConfigManager::addWildShot1Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	WipeItemsSlashCommand* slashCommand = new WipeItemsSlashCommand(slashcommand.getStringField("name"), server);
+	WildShot1Command* slashCommand = new WildShot1Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addWookieeRoarSlashCommand(lua_State* L) {
+int CommandConfigManager::addWildShot2Command(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
 
-	WookieeRoarSlashCommand* slashCommand = new WookieeRoarSlashCommand(slashcommand.getStringField("name"), server);
+	WildShot2Command* slashCommand = new WildShot2Command(slashcommand.getStringField("name"), server);
 	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-/*
-int CommandConfigManager::addOpenContainerSlashCommand(lua_State* L) {
+int CommandConfigManager::addWipeItemsCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
+
+	WipeItemsCommand* slashCommand = new WipeItemsCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
 
-	String commandname = slashcommand.getStringField("name");
-	OpenContainerSlashCommand* slashCommand = new OpenContainerSlashCommand(commandname, server);
+int CommandConfigManager::addWookieeRoarCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
 
-	parseOptions(L, slashCommand);
+	WookieeRoarCommand* slashCommand = new WookieeRoarCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
 
-	String alternativeNames = slashcommand.getStringField("alternativeNames");
+int CommandConfigManager::addCityInfoCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
 
-	slashCommands->put(slashCommand);
+	CityInfoCommand* slashCommand = new CityInfoCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
 
-	if (!alternativeNames.isEmpty())
-		parseAlternativeNames(alternativeNames, slashCommand);
+int CommandConfigManager::addEjectCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
 
+	EjectCommand* slashCommand = new EjectCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
 
-int CommandConfigManager::addGroupSaySlashCommand(lua_State* L) {
+int CommandConfigManager::addLaunchIntoSpaceCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
 		return 0;
+
+	LaunchIntoSpaceCommand* slashCommand = new LaunchIntoSpaceCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
 
-	String commandname = slashcommand.getStringField("name");
-	GroupSaySlashCommand* slashCommand = new GroupSaySlashCommand(commandname, server);
+int CommandConfigManager::addUnstickCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
 
-	parseOptions(L, slashCommand);
+	UnstickCommand* slashCommand = new UnstickCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
 
-	String alternativeNames = slashcommand.getStringField("alternativeNames");
+int CommandConfigManager::addWaypointCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
 
-	slashCommands->put(slashCommand);
+	WaypointCommand* slashCommand = new WaypointCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
+	return 1;
+}
 
-	if (!alternativeNames.isEmpty())
-		parseAlternativeNames(alternativeNames, slashCommand);
+int CommandConfigManager::addCreateVendorCommand(lua_State* L) {
+	LuaObject slashcommand(L);
+	if (!slashcommand.isValidTable())
+		return 0;
 
+	CreateVendorCommand* slashCommand = new CreateVendorCommand(slashcommand.getStringField("name"), server);
+	parseSlashCommand(slashcommand, slashCommand);
 	return 1;
 }
-*/
+
+
+
+

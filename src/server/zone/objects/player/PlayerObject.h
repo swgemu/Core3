@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 namespace server {
 namespace zone {
 namespace objects {

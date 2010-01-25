@@ -21,6 +21,10 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectID = message->parseLong();
 
+	StringBuffer objectCtrl;
+	objectCtrl << "parsing objc type 0x" << hex << type;
+	client->getPlayer()->info(objectCtrl.toString(), true);
+
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
 
 	if (objectControllerCallback == NULL) {
@@ -33,6 +37,10 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 	}
 
 	try {
+
+		/*StringBuffer objectCtrl;
+		objectCtrl << "parsing objc type 0x" << hex << type;
+		client->getPlayer()->info(objectCtrl.toString(), true);*/
 
 		objectControllerCallback->parse(message);
 

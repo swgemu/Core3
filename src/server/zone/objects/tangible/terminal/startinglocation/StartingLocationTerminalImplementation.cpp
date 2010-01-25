@@ -7,14 +7,9 @@
 
 #include "StartingLocationTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+
 #include "server/zone/packets/object/StartingLocationList.h"
-
-/*
-StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) :
-	TerminalImplementation(templateData) {
-
-	setLoggingName("StartingLocationTerminal");
-}*/
 
 void StartingLocationTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
@@ -22,12 +17,14 @@ void StartingLocationTerminalImplementation::initializeTransientMembers() {
 	setLoggingName("StartingLocationTerminal");
 }
 
-int StartingLocationTerminalImplementation::useObject(SceneObject* object) {
-	if (!object->isCreatureObject())
+int StartingLocationTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+	//System::out << "entering start terminal radial call" << endl;
+
+	if (selectedID != 20) // not use object
 		return 1;
 
-	StartingLocationList* sll = new StartingLocationList((CreatureObject*)object);
-	object->sendMessage(sll);
+	StartingLocationList* sll = new StartingLocationList(player);
+	player->sendMessage(sll);
 
 	return 0;
 }

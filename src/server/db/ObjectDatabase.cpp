@@ -13,7 +13,7 @@ ObjectDatabase::ObjectDatabase(ObjectDatabaseEnvironment* dbEnv, const String& d
 
 	objectsDatabase = new Db(environment, 0);
 
-	dbFlags = DB_CREATE | DB_THREAD | DB_AUTO_COMMIT;
+	dbFlags = DB_CREATE | DB_THREAD /*| DB_AUTO_COMMIT*/;
 
 	databaseFileName = dbFileName;
 
@@ -109,19 +109,19 @@ int ObjectDatabase::getData(uint64 objKey, ObjectInputStream* objectData) {
 	return ret;
 }
 
-int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool syncToDisk) {
+int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool useTransaction) {
 	int ret = -1;
 
 	try {
-		DbTxn* tid;
+		DbTxn* tid = NULL;
 		Dbt key(&objKey, sizeof(uint64));
 		Dbt data((void*)objectData->getBuffer(), objectData->size());
 
-		StringBuffer msg;
+		/*StringBuffer msg;
 		msg << "saving oid 0x" << hex << objKey;
-		info(msg.toString(), true);
+		info(msg.toString());*/
 
-		if (environment->txn_begin(NULL, &tid, 0) != 0) {
+		if (useTransaction && environment->txn_begin(NULL, &tid, 0) != 0) {
 			error("Error starting transaction");
 			exit(1);
 		}
@@ -130,17 +130,15 @@ int ObjectDatabase::putData(uint64 objKey, ObjectOutputStream* objectData, bool 
 
 		if (ret != 0) {
 			error("Trying to open database (" + databaseFileName + ") error:" + String::valueOf(ret));
-			tid->abort();
+			if (useTransaction)
+				tid->abort();
 			exit(1);
 		}
 
-		if (tid->commit(0) != 0) {
+		if (useTransaction && tid->commit(0) != 0) {
 			error("Error commiting the transaction");
 			exit(1);
 		}
-
-		if (syncToDisk)
-			objectsDatabase->sync(0);
 
 	} catch(DbException &e) {
 		error("Error in putData");

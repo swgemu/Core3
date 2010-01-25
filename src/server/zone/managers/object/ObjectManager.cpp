@@ -36,8 +36,6 @@
 #include "server/db/ObjectDatabase.h"
 #include "server/db/ObjectDatabaseEnvironment.h"
 
-//#define NULLHIGH 0x0000FFFFFFFFFFFF;
-
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
 ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("ObjectManager") {
@@ -414,10 +412,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 	loadTable(database, oid);
 
 	if (oid == 0) {
-		if (database != "staticobjects")
-			oid = getNextObjectID(database);
-		else
-			oid = getNextFreeObjectID();
+		oid = getNextObjectID(database);
 	}
 
 	object = instantiateSceneObject(objectCRC, oid);
@@ -455,10 +450,7 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 		loadTable(database, oid);
 
 		if (oid == 0) {
-			if (database != "staticobjects")
-				oid = getNextObjectID(database);
-			else
-				oid = getNextFreeObjectID();
+			oid = getNextObjectID(database);
 		}
 
 		object->_setObjectID(oid);
@@ -488,7 +480,9 @@ uint64 ObjectManager::getNextObjectID(const String& database) {
 	uint64 oid = 0;
 
 	if (database.length() > 0) {
-		uint16 tableID = (uint16) database.hashCode();
+		uint16 tableID;
+
+		tableID = databaseEnvironment->getDatabaseID(database);
 
 		oid += tableID;
 

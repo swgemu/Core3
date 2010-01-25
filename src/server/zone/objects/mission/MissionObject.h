@@ -9,6 +9,8 @@
 
 #include "engine/core/ManagedReference.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "engine/lua/LuaObject.h"

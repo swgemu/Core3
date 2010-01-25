@@ -47,6 +47,8 @@ package server.zone.objects.tangible.terminal.startinglocation;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
+import server.zone.objects.player.PlayerCreature;
+
 
 class StartingLocationTerminal extends Terminal {
 	
@@ -57,5 +59,12 @@ class StartingLocationTerminal extends Terminal {
 	}
 	
 	public native void initializeTransientMembers();
-	public native int useObject(SceneObject object);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 }

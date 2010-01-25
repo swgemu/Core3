@@ -66,6 +66,7 @@ import server.zone.Zone;
 import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.player.PlayerCreature;
 
 include server.zone.objects.scene.variables.StringId;
 
@@ -74,6 +75,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	protected Zone zone;
 
+	//@weakReference
 	protected SceneObject parent;
 
 	@dereferenced
@@ -568,10 +570,6 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse) {
 	}
 
-	public abstract int useObject(SceneObject object) {
-		return 0;
-	}
-
 	/**
 	 * Inserts this object into zone
 	 * @pre { this object is locked }
@@ -703,6 +701,16 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 			return parent.getObjectID();
 		} else
 			return 0;
+	}
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+		return 0;
 	}
 
 	public native unsigned long getObjectID();

@@ -531,7 +531,7 @@ void SceneObjectImplementation::removeFromZone() {
 
 	Locker zoneLocker(zone);
 
-	ManagedReference<SceneObject*> par = parent;
+	ManagedReference<SceneObject*> par = parent.get();
 
 	if (parent != NULL && parent->isCellObject()) {
 		BuildingObject* building = (BuildingObject*)parent->getParent();
@@ -631,7 +631,7 @@ SceneObject* SceneObjectImplementation::getGrandParent() {
 	if (parent == NULL)
 		return NULL;
 
-	ManagedReference<SceneObject*> grandParent = parent;
+	ManagedReference<SceneObject*> grandParent = parent.get();
 
 	while (grandParent->getParent() != NULL)
 		grandParent = grandParent->getParent();
@@ -646,7 +646,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	if (parent == object)
 		return true;
 
-	ManagedReference<SceneObject*> grandParent = parent;
+	ManagedReference<SceneObject*> grandParent = parent.get();
 
 	while (grandParent->getParent() != NULL) {
 		grandParent = grandParent->getParent();

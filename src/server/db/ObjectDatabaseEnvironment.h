@@ -15,10 +15,13 @@ class ObjectDatabaseEnvironment : public Logger, public Singleton<ObjectDatabase
 	DbEnv* databaseEnvironment;
 
 	VectorMap<uint16, ObjectDatabase*> databases;
+	VectorMap<String, uint16> nameDirectory;
 
 	ObjectDatabase* databaseDirectory;
 
 	uint32 dbEnvironmentFlags;
+
+	uint16 lastTableID;
 
 private:
 	void openEnvironment();
@@ -43,21 +46,21 @@ public:
 	ObjectDatabase* loadDatabase(const String& name, bool create, uint16 uniqueID = 0xFFFF);
 
 	inline ObjectDatabase* getDatabase(uint16 id) {
-		Locker _locker(this);
+		//Locker _locker(this);
 
 		return databases.get(id);
 	}
 
 	inline ObjectDatabase* getDatabase(int idx) {
-		Locker _locker(this);
+		//Locker _locker(this);
 
 		return databases.get(idx);
 	}
 
-	inline ObjectDatabase* getDatabase(const String& name) {
-		Locker _locker(this);
+	inline uint16 getDatabaseID(const String& name) {
+		//Locker _locker(this);
 
-		return databases.get((uint16)name.hashCode());
+		return nameDirectory.get(name);
 	}
 
 	void getDatabaseName(uint16 tableID, String& name);
