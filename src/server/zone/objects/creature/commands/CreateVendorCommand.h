@@ -69,3 +69,4 @@ public:
 };
 
 #endif //CREATEVENDORCOMMAND_H_
+

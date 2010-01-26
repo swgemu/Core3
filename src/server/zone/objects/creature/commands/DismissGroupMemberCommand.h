@@ -86,3 +86,4 @@ public:
 };
 
 #endif //DISMISSGROUPMEMBERCOMMAND_H_
+

@@ -105,3 +105,4 @@ public:
 };
 
 #endif //UNINVITECOMMAND_H_
+

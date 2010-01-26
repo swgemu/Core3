@@ -74,3 +74,4 @@ public:
 };
 
 #endif //SURRENDERSKILLCOMMAND_H_
+

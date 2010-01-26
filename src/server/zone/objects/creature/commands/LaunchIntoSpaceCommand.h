@@ -69,3 +69,4 @@ public:
 };
 
 #endif //LAUNCHINTOSPACECOMMAND_H_
+

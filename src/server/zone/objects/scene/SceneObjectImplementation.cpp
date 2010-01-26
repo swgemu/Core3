@@ -631,7 +631,7 @@ SceneObject* SceneObjectImplementation::getGrandParent() {
 	if (parent == NULL)
 		return NULL;
 
-	ManagedReference<SceneObject*> grandParent = parent.get();
+	SceneObject* grandParent = parent;
 
 	while (grandParent->getParent() != NULL)
 		grandParent = grandParent->getParent();
@@ -646,7 +646,7 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 	if (parent == object)
 		return true;
 
-	ManagedReference<SceneObject*> grandParent = parent.get();
+	SceneObject* grandParent = parent;
 
 	while (grandParent->getParent() != NULL) {
 		grandParent = grandParent->getParent();

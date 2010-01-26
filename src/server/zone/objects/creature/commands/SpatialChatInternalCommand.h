@@ -79,3 +79,4 @@ public:
 };
 
 #endif //SPATIALCHATINTERNALCOMMAND_H_
+

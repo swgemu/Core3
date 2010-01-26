@@ -74,3 +74,4 @@ public:
 };
 
 #endif //GROUPCHATCOMMAND_H_
+

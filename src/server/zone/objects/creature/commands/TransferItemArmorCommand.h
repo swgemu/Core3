@@ -156,3 +156,4 @@ public:
 };
 
 #endif //TRANSFERITEMARMORCOMMAND_H_
+

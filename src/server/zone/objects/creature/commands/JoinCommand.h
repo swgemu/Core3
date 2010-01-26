@@ -73,3 +73,4 @@ public:
 };
 
 #endif //JOINCOMMAND_H_
+

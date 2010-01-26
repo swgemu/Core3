@@ -69,3 +69,4 @@ public:
 };
 
 #endif //EJECTCOMMAND_H_
+

@@ -316,3 +316,4 @@ public:
 };
 
 #endif //TRANSFERITEMMISCCOMMAND_H_
+

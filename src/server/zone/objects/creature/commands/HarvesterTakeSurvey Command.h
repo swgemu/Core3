@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef HARVESTERTAKESURVEY COMMAND_H_
-#define HARVESTERTAKESURVEY COMMAND_H_
+#ifndef HARVESTERTAKESURVEYCOMMAND_H_
+#define HARVESTERTAKESURVEYCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
 
@@ -69,3 +69,4 @@ public:
 };
 
 #endif //HARVESTERTAKESURVEY COMMAND_H_
+
