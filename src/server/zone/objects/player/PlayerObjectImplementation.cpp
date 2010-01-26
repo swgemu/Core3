@@ -199,6 +199,26 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool noti
 	waypoint->updateToDatabase();
 }
 
+void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyClient) {
+	ManagedReference<WaypointObject*> waypoint = waypointList.get(waypointID);
+
+	if (waypoint == NULL)
+		return;
+
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
+		msg->startUpdate(1);
+		waypointList.drop(waypointID, msg, 1);
+		msg->close();
+
+		sendMessage(msg);
+	} else {
+		waypointList.drop(waypointID);
+	}
+
+}
+
+
 void PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
 	ManagedReference<WaypointObject*> obj = (WaypointObject*) ObjectManager::instance()->createObject(3038003230, 2, "waypoints");
 	obj->setPlanetCRC(planet.hashCode());

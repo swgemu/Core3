@@ -55,6 +55,8 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 		StringBuffer infoMsg;
 		infoMsg << "NULL object selected in ObjectMenuSelect objectID: 0x" << hex << objectID;
 		error(infoMsg.toString());
+
+		return;
 	}
 
 	try {

@@ -158,6 +158,15 @@ class PlayerObject extends IntangibleObject {
 	public native void addWaypoint(final string planet, float positionX, float positionY, boolean notifyClient = true);
 	
 	/**
+	 * Removes a waypoint from this player
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint list doesnt contain the specified waypoint }
+	 * @param waypointID waypoint object id to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void removeWaypoint(unsigned long waypointID, boolean notifyClient = true);
+	
+	/**
 	 * Adds new queue commands to player
 	 * @pre { this is locked }
 	 * @post { his is locked }
@@ -196,6 +205,10 @@ class PlayerObject extends IntangibleObject {
 	 */
 	@local
 	public native void removeSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
+	
+	public boolean hasWaypoint(unsigned long objectID) {
+		return waypointList.contains(objectID);
+	}
 	
 	@local
 	public boolean hasSkill(Skill skill) {

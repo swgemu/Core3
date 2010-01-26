@@ -534,7 +534,7 @@ public:
 
 	void sendToOwner(bool doClose = true);
 
-	void sendAttributeListTo(SceneObject* object);
+	void sendAttributeListTo(PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
@@ -587,6 +587,8 @@ public:
 	unsigned int getClientObjectCRC();
 
 	unsigned int getServerObjectCRC();
+
+	bool isWaypointObject();
 
 	StringId* getObjectName();
 
@@ -669,6 +671,8 @@ public:
 	void setLoggingName(const String& name);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
+
+	bool hasObjectInContainer(unsigned long long objectID);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -1091,6 +1095,8 @@ public:
 
 	SceneObjectImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
@@ -1139,7 +1145,7 @@ public:
 
 	virtual void sendToOwner(bool doClose = true);
 
-	virtual void sendAttributeListTo(SceneObject* object);
+	virtual void sendAttributeListTo(PlayerCreature* object);
 
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
@@ -1192,6 +1198,8 @@ public:
 	unsigned int getClientObjectCRC();
 
 	unsigned int getServerObjectCRC();
+
+	bool isWaypointObject();
 
 	StringId* getObjectName();
 
@@ -1275,6 +1283,8 @@ public:
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
+	bool hasObjectInContainer(unsigned long long objectID);
+
 	SceneObject* _this;
 
 	operator const SceneObject*();
@@ -1282,8 +1292,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~SceneObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -1313,6 +1321,8 @@ public:
 	SceneObjectAdapter(SceneObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 
@@ -1356,7 +1366,7 @@ public:
 
 	void sendToOwner(bool doClose);
 
-	void sendAttributeListTo(SceneObject* object);
+	void sendAttributeListTo(PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
@@ -1405,6 +1415,8 @@ public:
 	unsigned int getClientObjectCRC();
 
 	unsigned int getServerObjectCRC();
+
+	bool isWaypointObject();
 
 	int getArrangementDescriptorSize();
 
@@ -1479,6 +1491,8 @@ public:
 	void setContainmentType(unsigned int type);
 
 	void setLoggingName(const String& name);
+
+	bool hasObjectInContainer(unsigned long long objectID);
 
 protected:
 	String _param0_info__String_bool_;

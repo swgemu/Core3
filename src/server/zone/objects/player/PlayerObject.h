@@ -150,6 +150,8 @@ public:
 
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
+	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
+
 	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
 
 	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
@@ -157,6 +159,8 @@ public:
 	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	bool hasWaypoint(unsigned long long objectID);
 
 	bool hasSkill(Skill* skill);
 
@@ -295,6 +299,8 @@ public:
 
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
+	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
+
 	void addSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
 
 	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
@@ -302,6 +308,8 @@ public:
 	void removeSkills(Vector<QueueCommand*>& skills, bool notifyClient = true);
 
 	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+
+	bool hasWaypoint(unsigned long long objectID);
 
 	bool hasSkill(Skill* skill);
 
@@ -347,8 +355,6 @@ public:
 protected:
 	virtual ~PlayerObjectImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -389,6 +395,10 @@ public:
 	void removeExperience(const String& xpType, bool notifyClient);
 
 	void addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient);
+
+	void removeWaypoint(unsigned long long waypointID, bool notifyClient);
+
+	bool hasWaypoint(unsigned long long objectID);
 
 	unsigned int getCharacterBitmask();
 

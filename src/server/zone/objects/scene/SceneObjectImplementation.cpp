@@ -65,6 +65,7 @@ which carries forward this exception.
 #include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
@@ -223,11 +224,8 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	destroy(player->getClient());
 }
 
-void SceneObjectImplementation::sendAttributeListTo(SceneObject* object) {
-	if (!object->isPlayerCreature())
-		return;
-
-	info("sending attribute list");
+void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
+	info("sending attribute list", true);
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 

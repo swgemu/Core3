@@ -46,6 +46,8 @@ which carries forward this exception.
 #define GETATTRIBUTESBATCHCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/Zone.h"
 
 class GetAttributesBatchCommand : public QueueCommand {
 public:
@@ -62,6 +64,38 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		StringTokenizer ids(arguments.toString());
+
+		Zone* zone = creature->getZone();
+
+		if (zone == NULL)
+			return false;
+
+		while (ids.hasMoreTokens()) {
+			uint64 objid = 0;
+
+			try {
+				objid = ids.getLongToken();
+
+			} catch (...) {
+			}
+
+			if (objid == 0)
+				continue;
+
+			ManagedReference<SceneObject*> object = zone->getZoneServer()->getObject(objid);
+
+			if (object != NULL) {
+				object->sendAttributeListTo((PlayerCreature*)creature);
+			} else {
+				AttributeListMessage* msg = new AttributeListMessage(objid);
+				creature->sendMessage(msg);
+			}
+		}
 
 		return true;
 	}

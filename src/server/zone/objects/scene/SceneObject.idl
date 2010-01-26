@@ -318,6 +318,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 		loadTemplateData(templateData);
 		initializeTransientMembers();
 	}
+	
+	public void finalize() {
+		Logger.info("deleting object", true);
+	}
 
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
@@ -559,7 +563,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * @post { this object is locked, object received the attribute list message }
 	 * @param object SceneObject that will receive the message
 	 */
-	public native abstract void sendAttributeListTo(SceneObject object);
+	public native abstract void sendAttributeListTo(PlayerCreature object);
 
 	/**
 	 * Fills the radial options, needs to be overriden
@@ -707,6 +711,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
 	public abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
@@ -749,6 +755,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	public unsigned int getServerObjectCRC() {
 		return serverObjectCRC;
+	}
+	
+	public boolean isWaypointObject() {
+		return gameObjectType == WAYPOINT;
 	}
 
 	@local
@@ -926,6 +936,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
 		return containerObjects;
+	}
+	
+	public boolean hasObjectInContainer(unsigned long objectID) {
+		return containerObjects.contains(objectID);
 	}
 
 }

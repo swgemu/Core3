@@ -46,6 +46,9 @@ which carries forward this exception.
 #define SERVERDESTROYOBJECTCOMMAND_H_
 
 #include "../../scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 
 class ServerDestroyObjectCommand : public QueueCommand {
 public:
@@ -62,6 +65,60 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		creature->info("serverdestroy arguments: " + arguments.toString(), true);
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL)
+			return false;
+
+		// need to add checks.. inventory, datapad, bank, waypoint
+
+		if (object->isWaypointObject()) {
+			PlayerObject* playerObject = (PlayerObject*) creature->getSlottedObject("ghost");
+
+			if (playerObject != NULL)
+				playerObject->removeWaypoint(target);
+
+			// delete from database
+
+			return true;
+		}
+
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
+		if (inventory != NULL) {
+			if (inventory->hasObjectInContainer(target)) {
+				inventory->removeObject(object);
+
+				//destroy object from database
+
+				return true;
+			}
+		}
+
+		SceneObject* datapad = creature->getSlottedObject("datapad");
+
+		if (datapad != NULL) {
+			if (datapad->hasObjectInContainer(target)) {
+				datapad->removeObject(object);
+
+				//destroy object from database
+
+				return true;
+			}
+		}
+
+		SceneObject* bank = creature->getSlottedObject("bank");
+
+		if (bank != NULL) {
+			if (bank->hasObjectInContainer(target)) {
+				bank->removeObject(object);
+
+				return true;
+			}
+		}
 
 		return true;
 	}
