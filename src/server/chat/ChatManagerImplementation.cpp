@@ -14,6 +14,7 @@
 #include "server/zone/packets/chat/ChatRoomList.h"
 #include "server/zone/packets/chat/ChatRoomMessage.h"
 #include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/packets/object/Emote.h"
 #include "server/zone/packets/chat/ChatInstantMessageToCharacter.h"
 #include "server/zone/packets/chat/ChatInstantMessageToClient.h"
 #include "server/zone/packets/chat/ChatOnSendInstantMessage.h"
@@ -229,6 +230,48 @@ void ChatManagerImplementation::handleChatRoomMessage(PlayerCreature* sender, co
 	messages.add(amsg);
 
 	channel->broadcastMessage(messages);*/
+}
+
+void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
+	Zone* zone = sender->getZone();
+
+	if (zone == NULL)
+		return;
+
+	StringTokenizer tokenizer(arguments.toString());
+	uint64 targetid;
+	uint32 emoteid, unkint, unkint2;
+
+	try {
+		targetid = tokenizer.getLongToken();
+		emoteid = tokenizer.getIntToken();
+		unkint = tokenizer.getIntToken();
+		unkint2 = tokenizer.getIntToken();
+	} catch (...) {
+		return;
+	}
+
+	Locker _zone(zone);
+
+	bool showtext = true;
+
+	if (unkint2 == 0)
+		showtext = false;
+
+	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
+		SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) sender->getInRangeObject(i))->_this);
+
+		if (object->isPlayerCreature()) {
+			PlayerCreature* creature = (PlayerCreature*) object;
+
+			//if (!creature->isIgnoring(player)) {
+				Emote* emsg = new Emote(creature, sender, targetid,
+						emoteid, showtext);
+				creature->sendMessage(emsg);
+			//}
+		}
+	}
+
 }
 
 void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {

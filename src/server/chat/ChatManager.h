@@ -176,6 +176,8 @@ public:
 
 	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
+	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
+
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
 	void destroyRoom(ChatRoom* room);
@@ -266,6 +268,8 @@ public:
 
 	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
+	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
+
 	void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message);
 
 	void destroyRoom(ChatRoom* room);
@@ -353,6 +357,8 @@ public:
 
 	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
+	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
+
 	void destroyRoom(ChatRoom* room);
 
 	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
@@ -376,6 +382,7 @@ protected:
 	String _param0_getChatRoomByFullPath__String_;
 	String _param1_getChatRoomByGamePath__ChatRoom_String_;
 	UnicodeString _param1_handleChatRoomMessage__PlayerCreature_UnicodeString_int_int_;
+	UnicodeString _param1_handleSocialInternalMessage__CreatureObject_UnicodeString_;
 	String _param0_getGameRoom__String_;
 };
 

@@ -945,6 +945,9 @@ void CommandConfigManager::parseOptions(LuaObject &slashcommand, QueueCommand* c
 	num = slashcommand.getIntField("addToCombatQueue");
 	command->setAddToCombatQueue(num);
 
+	field = slashcommand.getStringField("characterAbility");
+	command->setCharacterAbility(field);
+
 }
 
 void CommandConfigManager::parseAlternativeNames(String& alternativeNames, QueueCommand* slashCommand) {

@@ -63,6 +63,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+
+		ChatManager* chatManager = server->getChatManager();
+		if (chatManager == NULL)
+			return false;
+
+		chatManager->handleSocialInternalMessage(creature, arguments);
+
 		return true;
 	}
 

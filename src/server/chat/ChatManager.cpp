@@ -269,6 +269,20 @@ void ChatManager::handleChatRoomMessage(PlayerCreature* sender, const UnicodeStr
 		((ChatManagerImplementation*) _impl)->handleChatRoomMessage(sender, message, roomID, counter);
 }
 
+void ChatManager::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(sender);
+		method.addUnicodeParameter(arguments);
+
+		method.executeWithVoidReturn();
+	} else
+		((ChatManagerImplementation*) _impl)->handleSocialInternalMessage(sender, arguments);
+}
+
 void ChatManager::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -282,7 +296,7 @@ void ChatManager::destroyRoom(ChatRoom* room) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(room);
 
 		method.executeWithVoidReturn();
@@ -295,7 +309,7 @@ ChatRoom* ChatManager::createGroupRoom(unsigned long long groupID, PlayerCreatur
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addUnsignedLongParameter(groupID);
 		method.addObjectParameter(creator);
 
@@ -309,7 +323,7 @@ ChatRoom* ChatManager::getChatRoom(unsigned int id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addUnsignedIntParameter(id);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -322,7 +336,7 @@ ChatRoom* ChatManager::getGameRoom(const String& game) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addAsciiParameter(game);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
@@ -335,7 +349,7 @@ unsigned int ChatManager::getNextRoomID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -347,7 +361,7 @@ int ChatManager::getPlayerCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -442,24 +456,24 @@ void ChatManagerImplementation::removeRoom(ChatRoom* channel) {
 
 ChatRoom* ChatManagerImplementation::getChatRoom(unsigned int id) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(166):  return roomMap.get(id);
+	// server/chat/ChatManager.idl(167):  return roomMap.get(id);
 	return roomMap->get(id);
 }
 
 ChatRoom* ChatManagerImplementation::getGameRoom(const String& game) {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(170):  return gameRooms.get(game);
+	// server/chat/ChatManager.idl(171):  return gameRooms.get(game);
 	return (&gameRooms)->get(game);
 }
 
 unsigned int ChatManagerImplementation::getNextRoomID() {
 	Locker _locker(_this);
-	// server/chat/ChatManager.idl(174):  return ++roomID;
+	// server/chat/ChatManager.idl(175):  return ++roomID;
 	return  ++roomID;
 }
 
 int ChatManagerImplementation::getPlayerCount() {
-	// server/chat/ChatManager.idl(179):  return playerMap.size();
+	// server/chat/ChatManager.idl(180):  return playerMap.size();
 	return playerMap->size();
 }
 
@@ -529,21 +543,24 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		handleChatRoomMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleChatRoomMessage__PlayerCreature_UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 24:
-		destroyRoom((ChatRoom*) inv->getObjectParameter());
+		handleSocialInternalMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_handleSocialInternalMessage__CreatureObject_UnicodeString_));
 		break;
 	case 25:
-		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), (PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+		destroyRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 26:
-		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
+		resp->insertLong(createGroupRoom(inv->getUnsignedLongParameter(), (PlayerCreature*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 27:
-		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__String_))->_getObjectID());
+		resp->insertLong(getChatRoom(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 28:
-		resp->insertInt(getNextRoomID());
+		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__String_))->_getObjectID());
 		break;
 	case 29:
+		resp->insertInt(getNextRoomID());
+		break;
+	case 30:
 		resp->insertSignedInt(getPlayerCount());
 		break;
 	default:
@@ -623,6 +640,10 @@ ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const String
 
 void ChatManagerAdapter::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
 	((ChatManagerImplementation*) impl)->handleChatRoomMessage(sender, message, roomID, counter);
+}
+
+void ChatManagerAdapter::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
+	((ChatManagerImplementation*) impl)->handleSocialInternalMessage(sender, arguments);
 }
 
 void ChatManagerAdapter::destroyRoom(ChatRoom* room) {

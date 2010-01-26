@@ -119,6 +119,7 @@ class ChatManager extends ManagedObject {
 	public native ChatRoom getChatRoomByGamePath(ChatRoom game, final string path);
 	
 	public native void handleChatRoomMessage(PlayerCreature sender, final unicode message, unsigned int roomID, unsigned int counter);
+	public native void handleSocialInternalMessage(CreatureObject sender, final unicode arguments);
 
 	@local
 	public native void handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter message);

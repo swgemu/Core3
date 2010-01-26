@@ -12,6 +12,8 @@
 
 #include "server/zone/objects/creature/LuaCreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+
 #include "server/db/ServerDatabase.h"
 
 void ObjectControllerImplementation::loadCommands() {
@@ -86,21 +88,37 @@ void ObjectControllerImplementation::enqueueCommand(CreatureObject* object, unsi
 	// Pre: object is wlocked
 	// Post: object is wlocked
 
-	QueueCommand* sc = getQueueCommand(actionCRC);
+	QueueCommand* queueCommand = getQueueCommand(actionCRC);
 
-	if (sc != NULL) {
+	if (queueCommand != NULL) {
 		StringBuffer infoMsg;
-		infoMsg << "activating queue command 0x" << hex << actionCRC << " " << sc->getSlashCommandName();
-		object->info(infoMsg.toString());
+		infoMsg << "activating queue command 0x" << hex << actionCRC << " " << queueCommand->getQueueCommandName();
+		object->info(infoMsg.toString(), true);
 
-		bool completed = sc->doQueueCommand(object, targetID, arguments);
+		String characterAbility = queueCommand->getCharacterAbility();
+
+		if (characterAbility.length() > 1) {
+			object->info("activating characterAbility " + characterAbility, true);
+
+			if (object->isPlayerCreature()) {
+				PlayerObject* playerObject = (PlayerObject*) object->getSlottedObject("ghost");
+
+				if (!playerObject->hasSkill(queueCommand)) {
+					object->clearQueueAction(actionCount, 0, 2);
+
+					return;
+				}
+			}
+		}
+
+		bool completed = queueCommand->doQueueCommand(object, targetID, arguments);
 
 		if (!completed)
-			sc->onFail(actionCount, object);
+			queueCommand->onFail(actionCount, object);
 		else {
-			sc->onComplete(actionCount, object);
+			queueCommand->onComplete(actionCount, object);
 
-			if (sc->addToCombatQueue() && object->isPlayerCreature())
+			if (queueCommand->addToCombatQueue() && object->isPlayerCreature())
 				((PlayerCreature*)object)->clearQueueAction(actionCount);
 		}
 

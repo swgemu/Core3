@@ -71,7 +71,6 @@ public:
 			return false;
 
 		chatManager->handleSpatialChatInternalMessage((PlayerCreature*)creature, arguments);
-		return true;
 
 		return true;
 	}

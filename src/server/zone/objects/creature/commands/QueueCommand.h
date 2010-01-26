@@ -79,6 +79,8 @@ protected:
 
 	uint32 cooldown; // in msec
 
+	String characterAbility;
+
 	ZoneProcessServerImplementation* server;
 
 public:
@@ -170,6 +172,10 @@ public:
 
 	inline void setMaxRange(float r) {
 		maxRangeToTarget = (int)r;
+	}
+
+	inline void setCharacterAbility(const String& ability) {
+		characterAbility = ability;
 	}
 
 	//getters
@@ -334,8 +340,13 @@ public:
 
 	}
 
-	inline String& getSlashCommandName() {
+	inline String& getQueueCommandName() {
 		return name;
+	}
+
+
+	inline String& getCharacterAbility() {
+		return characterAbility;
 	}
 
 };
