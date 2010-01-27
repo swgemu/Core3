@@ -14,6 +14,7 @@
 #include "server/zone/packets/object/CommandQueueRemove.h"
 
 #include "server/chat/room/ChatRoom.h"
+#include "server/chat/ChatManager.h"
 
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
@@ -24,6 +25,8 @@
 
 
 #include "server/zone/ZoneProcessServerImplementation.h"
+#include "server/zone/ZoneServer.h"
+
 
 #include "PlayerObject.h"
 
@@ -112,9 +115,6 @@ void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == _this)
 		return;
 
-	if (scno->isBuildingObject())
-		((BuildingObject*)scno)->removeNotifiedObject(_this);
-
 	scno->sendDestroyTo(_this);
 }
 
@@ -195,6 +195,14 @@ void PlayerCreatureImplementation::unload() {
 
 	if (savedParent != NULL)
 		getZoneServer()->updateObjectToDatabase(savedParent);
+
+	getZoneServer()->getChatManager()->removePlayer(getFirstName().toLowerCase());
+
+	/*StringBuffer msg;
+	msg << "remaining ref count: " << _this->getReferenceCount();
+	info(msg.toString(), true);
+
+	_this->printReferenceHolders();*/
 }
 
 void PlayerCreatureImplementation::reload(ZoneClientSession* client) {

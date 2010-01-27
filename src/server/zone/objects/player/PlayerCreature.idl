@@ -139,6 +139,10 @@ class PlayerCreature extends CreatureObject {
 		setOffline();
 	}
 	
+	public void finalize() {
+		
+	}
+	
 	public native void initializeTransientMembers();
 	
 	@local

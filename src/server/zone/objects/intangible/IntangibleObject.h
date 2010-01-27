@@ -77,8 +77,6 @@ public:
 protected:
 	virtual ~IntangibleObjectImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

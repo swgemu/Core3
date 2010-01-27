@@ -89,6 +89,10 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
+	SceneObject* scnoStub = (SceneObject*) scno->_getStub();
+
+	removeNotifiedObject(scnoStub);
+
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 

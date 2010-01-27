@@ -66,8 +66,6 @@ public:
 protected:
 	virtual ~ArmorObjectImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

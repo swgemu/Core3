@@ -45,9 +45,6 @@ MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
 }
 
 
-void MeleeWeaponObjectImplementation::finalize() {
-}
-
 void MeleeWeaponObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MeleeWeaponObjectHelper::instance());
 

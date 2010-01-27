@@ -190,51 +190,12 @@ void BuildingObject::setStaticBuilding(bool value) {
 		((BuildingObjectImplementation*) _impl)->setStaticBuilding(value);
 }
 
-bool BuildingObject::hasNotifiedObject(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(object);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((BuildingObjectImplementation*) _impl)->hasNotifiedObject(object);
-}
-
-void BuildingObject::addNotifiedObject(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addObjectParameter(object);
-
-		method.executeWithVoidReturn();
-	} else
-		((BuildingObjectImplementation*) _impl)->addNotifiedObject(object);
-}
-
-void BuildingObject::removeNotifiedObject(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-		method.addObjectParameter(object);
-
-		method.executeWithVoidReturn();
-	} else
-		((BuildingObjectImplementation*) _impl)->removeNotifiedObject(object);
-}
-
 void BuildingObject::onEnter(PlayerCreature* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -247,7 +208,7 @@ void BuildingObject::onExit(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -267,9 +228,6 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 	BuildingObjectImplementation::finalize();
 }
 
-
-void BuildingObjectImplementation::finalize() {
-}
 
 void BuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(BuildingObjectHelper::instance());
@@ -324,54 +282,36 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 	_setClassName("BuildingObject");
 
 	addSerializableVariable("cells", &cells);
-	addSerializableVariable("notifiedObjects", &notifiedObjects);
 	addSerializableVariable("staticBuilding", &staticBuilding);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(70):  Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(67):  Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(72):  QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(69):  QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(74):  notifiedObjects.setNoDuplicateInsertPlan();
-	(&notifiedObjects)->setNoDuplicateInsertPlan();
-	// server/zone/objects/building/BuildingObject.idl(76):  staticBuilding = false;
+	// server/zone/objects/building/BuildingObject.idl(71):  staticBuilding = false;
 	staticBuilding = false;
-	// server/zone/objects/building/BuildingObject.idl(78):  super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(73):  super.containerVolumeLimit = 0xFFFFFFFF;
 	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(80):  super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(75):  super.containerType = 2;
 	TangibleObjectImplementation::containerType = 2;
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(112):  return staticBuilding;
+	// server/zone/objects/building/BuildingObject.idl(107):  return staticBuilding;
 	return staticBuilding;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(116):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(111):  return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(120):  staticBuilding = value;
+	// server/zone/objects/building/BuildingObject.idl(115):  staticBuilding = value;
 	staticBuilding = value;
-}
-
-bool BuildingObjectImplementation::hasNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(124):  return notifiedObjects.contains(object);
-	return (&notifiedObjects)->contains(object);
-}
-
-void BuildingObjectImplementation::addNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(128):  notifiedObjects.put(object);
-	(&notifiedObjects)->put(object);
-}
-
-void BuildingObjectImplementation::removeNotifiedObject(SceneObject* object) {
-	// server/zone/objects/building/BuildingObject.idl(132):  notifiedObjects.drop(object);
-	(&notifiedObjects)->drop(object);
 }
 
 void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
@@ -419,18 +359,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setStaticBuilding(inv->getBooleanParameter());
 		break;
 	case 15:
-		resp->insertBoolean(hasNotifiedObject((SceneObject*) inv->getObjectParameter()));
-		break;
-	case 16:
-		addNotifiedObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case 17:
-		removeNotifiedObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case 18:
 		onEnter((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case 19:
+	case 16:
 		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
@@ -474,18 +405,6 @@ CellObject* BuildingObjectAdapter::getCell(int idx) {
 
 void BuildingObjectAdapter::setStaticBuilding(bool value) {
 	((BuildingObjectImplementation*) impl)->setStaticBuilding(value);
-}
-
-bool BuildingObjectAdapter::hasNotifiedObject(SceneObject* object) {
-	return ((BuildingObjectImplementation*) impl)->hasNotifiedObject(object);
-}
-
-void BuildingObjectAdapter::addNotifiedObject(SceneObject* object) {
-	((BuildingObjectImplementation*) impl)->addNotifiedObject(object);
-}
-
-void BuildingObjectAdapter::removeNotifiedObject(SceneObject* object) {
-	((BuildingObjectImplementation*) impl)->removeNotifiedObject(object);
 }
 
 void BuildingObjectAdapter::onEnter(PlayerCreature* player) {

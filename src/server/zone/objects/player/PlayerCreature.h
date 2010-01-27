@@ -330,6 +330,8 @@ public:
 
 	PlayerCreatureImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void notifyInsert(QuadTreeEntry* entry);
@@ -424,8 +426,6 @@ public:
 protected:
 	virtual ~PlayerCreatureImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -454,6 +454,8 @@ public:
 	PlayerCreatureAdapter(PlayerCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

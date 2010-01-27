@@ -166,6 +166,10 @@ class CreatureObject extends TangibleObject {
 		loadTemplateData(templateData);
 	}
 	
+	public void finalize() {
+		
+	}
+	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }

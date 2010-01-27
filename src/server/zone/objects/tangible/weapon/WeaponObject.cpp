@@ -72,9 +72,6 @@ WeaponObjectImplementation::~WeaponObjectImplementation() {
 }
 
 
-void WeaponObjectImplementation::finalize() {
-}
-
 void WeaponObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WeaponObjectHelper::instance());
 

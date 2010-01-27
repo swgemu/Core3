@@ -107,12 +107,14 @@ namespace server {
 namespace zone {
 
 class ZoneClientSessionImplementation : public ManagedObjectImplementation, public BaseClientProxy {
-	ManagedReference<SceneObject* > player;
+protected:
+	ManagedWeakReference<SceneObject* > player;
 
 	unsigned int sessionKey;
 
 	unsigned int accountID;
 
+private:
 	bool disconnecting;
 
 public:

@@ -203,7 +203,7 @@ int ObjectManager::updatePersistentObject(DistributedObject* object) {
 
 			database->getDatabaseName(dbName);
 
-			msg << "saving to database with table " << dbName << " and object id 0x" << oid;
+			msg << "saving to database with table " << dbName << " and object id 0x" << hex << oid;
 			info(msg.toString(), true);
 
 			database->putData(oid, &objectData);
@@ -374,9 +374,6 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 		object->unlock();
 		error("could not deserialize object from DB");
 	}
-
-	if (object->isPlayerCreature())
-		server->getZoneServer()->getChatManager()->addPlayer((PlayerCreature*) object);
 }
 
 SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid) {

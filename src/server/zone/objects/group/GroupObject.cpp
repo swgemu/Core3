@@ -231,9 +231,6 @@ GroupObjectImplementation::~GroupObjectImplementation() {
 }
 
 
-void GroupObjectImplementation::finalize() {
-}
-
 void GroupObjectImplementation::_initializeImplementation() {
 	_setClassHelper(GroupObjectHelper::instance());
 

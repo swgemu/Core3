@@ -555,12 +555,6 @@ void CreatureObjectImplementation::updateGroup(GroupObject* grp, bool notifyClie
 }
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
-	if (commandQueue.size() > 15) {
-		clearQueueAction(actionCRC);
-
-		return;
-	}
-
 	ObjectController* objectController = getZoneServer()->getObjectController();
 
 	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
@@ -574,6 +568,12 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 
 	if (queueCommand->getDefaultPriority() == QueueCommand::IMMEDIATE) {
 		objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
+
+		return;
+	}
+
+	if (commandQueue.size() > 15) {
+		clearQueueAction(actionCRC);
 
 		return;
 	}

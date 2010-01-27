@@ -33,9 +33,6 @@ CloningBuildingObjectImplementation::~CloningBuildingObjectImplementation() {
 }
 
 
-void CloningBuildingObjectImplementation::finalize() {
-}
-
 void CloningBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CloningBuildingObjectHelper::instance());
 

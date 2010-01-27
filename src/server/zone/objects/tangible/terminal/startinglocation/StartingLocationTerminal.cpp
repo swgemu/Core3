@@ -63,9 +63,6 @@ StartingLocationTerminalImplementation::~StartingLocationTerminalImplementation(
 }
 
 
-void StartingLocationTerminalImplementation::finalize() {
-}
-
 void StartingLocationTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(StartingLocationTerminalHelper::instance());
 

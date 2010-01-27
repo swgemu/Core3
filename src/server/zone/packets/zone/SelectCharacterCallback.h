@@ -74,6 +74,8 @@ public:
 
 				player->setOnline();
 
+				zoneServer->getChatManager()->addPlayer(player);
+
 				player->unlock();
 			} catch (...) {
 				player->unlock();

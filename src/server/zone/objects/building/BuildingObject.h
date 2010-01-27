@@ -104,12 +104,6 @@ public:
 
 	void setStaticBuilding(bool value);
 
-	bool hasNotifiedObject(SceneObject* object);
-
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
-
 	void onEnter(PlayerCreature* player);
 
 	void onExit(PlayerCreature* player);
@@ -137,8 +131,6 @@ namespace building {
 class BuildingObjectImplementation : public TangibleObjectImplementation, public QuadTree {
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
-
-	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
 
 	bool staticBuilding;
 
@@ -177,12 +169,6 @@ public:
 
 	void setStaticBuilding(bool value);
 
-	bool hasNotifiedObject(SceneObject* object);
-
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
-
 	virtual void onEnter(PlayerCreature* player);
 
 	virtual void onExit(PlayerCreature* player);
@@ -194,8 +180,6 @@ public:
 	DistributedObjectStub* _getStub();
 protected:
 	virtual ~BuildingObjectImplementation();
-
-	void finalize();
 
 	void _initializeImplementation();
 
@@ -243,12 +227,6 @@ public:
 	CellObject* getCell(int idx);
 
 	void setStaticBuilding(bool value);
-
-	bool hasNotifiedObject(SceneObject* object);
-
-	void addNotifiedObject(SceneObject* object);
-
-	void removeNotifiedObject(SceneObject* object);
 
 	void onEnter(PlayerCreature* player);
 

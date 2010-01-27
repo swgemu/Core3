@@ -62,8 +62,6 @@ public:
 protected:
 	virtual ~TravelBuildingObjectImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

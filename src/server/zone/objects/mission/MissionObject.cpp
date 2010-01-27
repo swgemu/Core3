@@ -58,9 +58,6 @@ MissionObjectImplementation::~MissionObjectImplementation() {
 }
 
 
-void MissionObjectImplementation::finalize() {
-}
-
 void MissionObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObjectHelper::instance());
 

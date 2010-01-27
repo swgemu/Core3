@@ -121,6 +121,10 @@ using namespace server::zone::objects::player;
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "system/util/SortedVector.h"
+
+#include "system/lang/StackTrace.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -570,6 +574,12 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
+
 	unsigned long long getObjectID();
 
 	float getPositionX();
@@ -727,6 +737,8 @@ protected:
 	StringId objectName;
 
 	StringId detailedDescription;
+
+	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
 
 	unsigned int containerType;
 
@@ -1183,6 +1195,12 @@ public:
 
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
+
 	unsigned long long getObjectID();
 
 	float getPositionX();
@@ -1401,6 +1419,12 @@ public:
 	unsigned long long getParentID();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	bool hasNotifiedObject(SceneObject* object);
+
+	void addNotifiedObject(SceneObject* object);
+
+	void removeNotifiedObject(SceneObject* object);
 
 	unsigned long long getObjectID();
 

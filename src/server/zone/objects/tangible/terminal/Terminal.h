@@ -66,8 +66,6 @@ public:
 protected:
 	virtual ~TerminalImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -78,9 +78,6 @@ IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 }
 
 
-void IntangibleObjectImplementation::finalize() {
-}
-
 void IntangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(IntangibleObjectHelper::instance());
 

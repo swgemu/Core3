@@ -52,10 +52,11 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.ZoneServer;
 
 class ZoneClientSession extends ManagedObject implements BaseClientProxy {
-	SceneObject player;
+	@weakReference
+	protected SceneObject player;
 	
-	unsigned int sessionKey;
-	unsigned int accountID;
+	protected unsigned int sessionKey;
+	protected unsigned int accountID;
 	
 	boolean disconnecting;
 	

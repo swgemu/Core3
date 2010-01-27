@@ -45,9 +45,6 @@ ArmorObjectImplementation::~ArmorObjectImplementation() {
 }
 
 
-void ArmorObjectImplementation::finalize() {
-}
-
 void ArmorObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ArmorObjectHelper::instance());
 

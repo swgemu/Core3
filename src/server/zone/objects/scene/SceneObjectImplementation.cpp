@@ -71,6 +71,8 @@ which carries forward this exception.
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
+	notifiedObjects.setNoDuplicateInsertPlan();
+
 	server = ZoneProcessServerImplementation::instance;
 
 	movementCounter = 0;

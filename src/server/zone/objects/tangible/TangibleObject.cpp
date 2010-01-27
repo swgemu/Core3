@@ -293,9 +293,6 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 }
 
 
-void TangibleObjectImplementation::finalize() {
-}
-
 void TangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TangibleObjectHelper::instance());
 
@@ -369,86 +366,89 @@ TangibleObjectImplementation::TangibleObjectImplementation(LuaObject* templateDa
 	loadTemplateData(templateData);
 }
 
+void TangibleObjectImplementation::finalize() {
+}
+
 void TangibleObjectImplementation::setCombatState() {
 }
 
 void TangibleObjectImplementation::clearCombatState(bool clearDefenders) {
-	// server/zone/objects/tangible/TangibleObject.idl(162):  }
-	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(163):  removeDefenders();
+	// server/zone/objects/tangible/TangibleObject.idl(166):  }
+	if (clearDefenders)	// server/zone/objects/tangible/TangibleObject.idl(167):  removeDefenders();
 	removeDefenders();
 }
 
 bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
-	// server/zone/objects/tangible/TangibleObject.idl(173):  
-	for (	// server/zone/objects/tangible/TangibleObject.idl(173):  for (int i = 0;
+	// server/zone/objects/tangible/TangibleObject.idl(177):  
+	for (	// server/zone/objects/tangible/TangibleObject.idl(177):  for (int i = 0;
 	int i = 0;
 	i < (&defenderList)->size();
  ++i) {
-	// server/zone/objects/tangible/TangibleObject.idl(174):  }
-	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(175):  return true;
+	// server/zone/objects/tangible/TangibleObject.idl(178):  }
+	if ((&defenderList)->get(i) == defender)	// server/zone/objects/tangible/TangibleObject.idl(179):  return true;
 	return true;
 }
-	// server/zone/objects/tangible/TangibleObject.idl(178):  return false;
+	// server/zone/objects/tangible/TangibleObject.idl(182):  return false;
 	return false;
 }
 
 byte TangibleObjectImplementation::getUnknownByte() {
-	// server/zone/objects/tangible/TangibleObject.idl(182):  return unknownByte;
+	// server/zone/objects/tangible/TangibleObject.idl(186):  return unknownByte;
 	return unknownByte;
 }
 
 CustomizationVariables* TangibleObjectImplementation::getCustomizationVariables() {
-	// server/zone/objects/tangible/TangibleObject.idl(188):  return customizationVariables;
+	// server/zone/objects/tangible/TangibleObject.idl(192):  return customizationVariables;
 	return (&customizationVariables);
 }
 
 int TangibleObjectImplementation::getObjectCount() {
-	// server/zone/objects/tangible/TangibleObject.idl(192):  return objectCount;
+	// server/zone/objects/tangible/TangibleObject.idl(196):  return objectCount;
 	return objectCount;
 }
 
 int TangibleObjectImplementation::getMaxCondition() {
-	// server/zone/objects/tangible/TangibleObject.idl(196):  return maxCondition;
+	// server/zone/objects/tangible/TangibleObject.idl(200):  return maxCondition;
 	return maxCondition;
 }
 
 int TangibleObjectImplementation::getConditionDamage() {
-	// server/zone/objects/tangible/TangibleObject.idl(200):  return conditionDamage;
+	// server/zone/objects/tangible/TangibleObject.idl(204):  return conditionDamage;
 	return conditionDamage;
 }
 
 int TangibleObjectImplementation::getVolume() {
-	// server/zone/objects/tangible/TangibleObject.idl(204):  return volume;
+	// server/zone/objects/tangible/TangibleObject.idl(208):  return volume;
 	return volume;
 }
 
 float TangibleObjectImplementation::getComplexity() {
-	// server/zone/objects/tangible/TangibleObject.idl(208):  return complexity;
+	// server/zone/objects/tangible/TangibleObject.idl(212):  return complexity;
 	return complexity;
 }
 
 unsigned int TangibleObjectImplementation::getOptionsBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(212):  return optionsBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(216):  return optionsBitmask;
 	return optionsBitmask;
 }
 
 unsigned int TangibleObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/tangible/TangibleObject.idl(216):  return pvpStatusBitmask;
+	// server/zone/objects/tangible/TangibleObject.idl(220):  return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 void TangibleObjectImplementation::getCustomizationString(String& variables) {
-	// server/zone/objects/tangible/TangibleObject.idl(220):  customizationVariables.getData(variables);
+	// server/zone/objects/tangible/TangibleObject.idl(224):  customizationVariables.getData(variables);
 	(&customizationVariables)->getData(variables);
 }
 
 DeltaVector<ManagedReference<SceneObject* > >* TangibleObjectImplementation::getDefenderList() {
-	// server/zone/objects/tangible/TangibleObject.idl(225):  return defenderList;
+	// server/zone/objects/tangible/TangibleObject.idl(229):  return defenderList;
 	return (&defenderList);
 }
 
 void TangibleObjectImplementation::setCustomizationString(const String& vars) {
-	// server/zone/objects/tangible/TangibleObject.idl(229):  customizationVariables.parseFromClientString(vars);
+	// server/zone/objects/tangible/TangibleObject.idl(233):  customizationVariables.parseFromClientString(vars);
 	(&customizationVariables)->parseFromClientString(vars);
 }
 
@@ -464,60 +464,63 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		finalize();
 		break;
 	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 8:
-		setDefender((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		addDefender((SceneObject*) inv->getObjectParameter());
+		setDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		removeDefender((SceneObject*) inv->getObjectParameter());
+		addDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 11:
-		removeDefenders();
+		removeDefender((SceneObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		setCombatState();
+		removeDefenders();
 		break;
 	case 13:
-		clearCombatState(inv->getBooleanParameter());
+		setCombatState();
 		break;
 	case 14:
-		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
+		clearCombatState(inv->getBooleanParameter());
 		break;
 	case 15:
-		resp->insertByte(getUnknownByte());
+		resp->insertBoolean(hasDefender((SceneObject*) inv->getObjectParameter()));
 		break;
 	case 16:
-		resp->insertSignedInt(getObjectCount());
+		resp->insertByte(getUnknownByte());
 		break;
 	case 17:
-		resp->insertSignedInt(getMaxCondition());
+		resp->insertSignedInt(getObjectCount());
 		break;
 	case 18:
-		resp->insertSignedInt(getConditionDamage());
+		resp->insertSignedInt(getMaxCondition());
 		break;
 	case 19:
-		resp->insertSignedInt(getVolume());
+		resp->insertSignedInt(getConditionDamage());
 		break;
 	case 20:
-		resp->insertFloat(getComplexity());
+		resp->insertSignedInt(getVolume());
 		break;
 	case 21:
-		resp->insertInt(getOptionsBitmask());
+		resp->insertFloat(getComplexity());
 		break;
 	case 22:
-		resp->insertInt(getPvpStatusBitmask());
+		resp->insertInt(getOptionsBitmask());
 		break;
 	case 23:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		resp->insertInt(getPvpStatusBitmask());
 		break;
 	case 24:
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
+		break;
+	case 25:
 		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	default:
@@ -525,6 +528,10 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	}
 
 	return resp;
+}
+
+void TangibleObjectAdapter::finalize() {
+	((TangibleObjectImplementation*) impl)->finalize();
 }
 
 void TangibleObjectAdapter::initializeTransientMembers() {

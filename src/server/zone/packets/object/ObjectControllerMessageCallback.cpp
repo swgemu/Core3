@@ -63,7 +63,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 void ObjectControllerMessageCallback::run() {
 	ManagedReference<SceneObject*> player = client->getPlayer();
 
-	if (player == NULL)
+	if (player == NULL || objectControllerCallback == NULL)
 		return;
 
 	try {
@@ -77,8 +77,7 @@ void ObjectControllerMessageCallback::run() {
 			return;
 		}
 
-		if (objectControllerCallback != NULL)
-			objectControllerCallback->run();
+		objectControllerCallback->run();
 
 		player->unlock();
 

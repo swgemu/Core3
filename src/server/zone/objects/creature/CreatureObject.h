@@ -414,6 +414,8 @@ public:
 
 	CreatureObjectImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
@@ -604,6 +606,8 @@ public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

@@ -33,9 +33,6 @@ MedicalBuildingObjectImplementation::~MedicalBuildingObjectImplementation() {
 }
 
 
-void MedicalBuildingObjectImplementation::finalize() {
-}
-
 void MedicalBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MedicalBuildingObjectHelper::instance());
 

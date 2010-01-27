@@ -83,9 +83,6 @@ CellObjectImplementation::~CellObjectImplementation() {
 }
 
 
-void CellObjectImplementation::finalize() {
-}
-
 void CellObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CellObjectHelper::instance());
 

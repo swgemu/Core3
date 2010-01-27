@@ -68,9 +68,6 @@ ContainerImplementation::~ContainerImplementation() {
 }
 
 
-void ContainerImplementation::finalize() {
-}
-
 void ContainerImplementation::_initializeImplementation() {
 	_setClassHelper(ContainerHelper::instance());
 

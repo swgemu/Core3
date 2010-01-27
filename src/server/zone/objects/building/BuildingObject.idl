@@ -59,9 +59,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
 	
-	@dereferenced
-	protected SortedVector<SceneObject> notifiedObjects;
-	
 	protected boolean staticBuilding;
 
 	public BuildingObject(LuaObject templateData) {
@@ -70,8 +67,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		Logger.setLoggingName("BuildingObject");
 
 		QuadTree.setSize(-1024, -1024, 1024, 1024);
-
-		notifiedObjects.setNoDuplicateInsertPlan();
 
 		staticBuilding = false;
 		
@@ -118,18 +113,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	
 	public void setStaticBuilding(boolean value) {
 		staticBuilding = value;
-	}
-	
-	public boolean hasNotifiedObject(SceneObject object) {
-		return notifiedObjects.contains(object);
-	}
-	
-	public void addNotifiedObject(SceneObject object) {
-		notifiedObjects.put(object);
-	}
-	
-	public void removeNotifiedObject(SceneObject object) {
-		notifiedObjects.drop(object);
 	}
 	
 	/**

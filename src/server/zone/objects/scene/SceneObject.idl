@@ -58,6 +58,8 @@ import system.util.VectorMap;
 import engine.util.Quaternion;
 import engine.service.proto.BasePacket;
 import engine.service.proto.BaseMessage;
+import system.util.SortedVector;
+import system.lang.StackTrace;
 
 
 import server.zone.ZoneProcessServerImplementation;
@@ -107,6 +109,9 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	@dereferenced
 	protected StringId detailedDescription;
+	
+	@dereferenced
+	protected SortedVector<SceneObject> notifiedObjects;
 
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
@@ -321,6 +326,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public void finalize() {
 		Logger.info("deleting object", true);
+		//StackTrace.printStackTrace();
 	}
 
 	/**
@@ -725,6 +731,18 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	public abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
 		return 0;
+	}
+	
+	public boolean hasNotifiedObject(SceneObject object) {
+		return notifiedObjects.contains(object);
+	}
+	
+	public void addNotifiedObject(SceneObject object) {
+		notifiedObjects.put(object);
+	}
+	
+	public void removeNotifiedObject(SceneObject object) {
+		notifiedObjects.drop(object);
 	}
 
 	public native unsigned long getObjectID();

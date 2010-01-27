@@ -45,9 +45,6 @@ TerminalImplementation::~TerminalImplementation() {
 }
 
 
-void TerminalImplementation::finalize() {
-}
-
 void TerminalImplementation::_initializeImplementation() {
 	_setClassHelper(TerminalHelper::instance());
 

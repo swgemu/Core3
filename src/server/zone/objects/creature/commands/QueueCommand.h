@@ -323,56 +323,56 @@ public:
 		 * Because of this, we have to have this switch statement to match them up manually
 		 * */
 		if (!checkInvalidPostures(creature)) {
-			/*switch(player->getPosture()) {
+			switch(creature->getPosture()) {
 			case(CreaturePosture::UPRIGHT):
-				player->clearQueueAction(actioncntr, 0, 1, 0);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 0);
+			break;
 			case(CreaturePosture::CROUCHED):
-				player->clearQueueAction(actioncntr, 0, 1, 4);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 4);
+			break;
 			case(CreaturePosture::PRONE):
-				player->clearQueueAction(actioncntr, 0, 1, 7);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 7);
+			break;
 			case(CreaturePosture::SNEAKING):
-				player->clearQueueAction(actioncntr, 0, 1, 5);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 5);
+			break;
 			case(CreaturePosture::BLOCKING):
-				player->clearQueueAction(actioncntr, 0, 1, 21);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 21);
+			break;
 			case(CreaturePosture::CLIMBING):
-				player->clearQueueAction(actioncntr, 0, 1, 10);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 10);
+			break;
 			case(CreaturePosture::FLYING):
-				player->clearQueueAction(actioncntr, 0, 1, 12);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 12);
+			break;
 			case(CreaturePosture::LYINGDOWN):
-				player->clearQueueAction(actioncntr, 0, 1, 13);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 13);
+			break;
 			case(CreaturePosture::SITTING):
-				player->clearQueueAction(actioncntr, 0, 1, 14);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 14);
+			break;
 			case(CreaturePosture::SKILLANIMATING):
-				player->clearQueueAction(actioncntr, 0, 1, 15);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 15);
+			break;
 			case(CreaturePosture::DRIVINGVEHICLE):
-				player->clearQueueAction(actioncntr, 0, 1, 16);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 16);
+			break;
 			case(CreaturePosture::RIDINGCREATURE):
-				player->clearQueueAction(actioncntr, 0, 1, 17);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 17);
+			break;
 			case(CreaturePosture::KNOCKEDDOWN):
-				player->clearQueueAction(actioncntr, 0, 1, 18);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 18);
+			break;
 			case(CreaturePosture::INCAPACITATED):
-				player->clearQueueAction(actioncntr, 0, 1, 19);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 19);
+			break;
 			case(CreaturePosture::DEAD):
-				player->clearQueueAction(actioncntr, 0, 1, 20);
-				break;
+				creature->clearQueueAction(actioncntr, 0, 1, 20);
+			break;
 			default:
-				player->clearQueueAction(actioncntr);
+				creature->clearQueueAction(actioncntr);
 				break;
-			}*/
+			}
 		}
 	}
 

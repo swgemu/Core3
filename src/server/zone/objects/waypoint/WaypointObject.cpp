@@ -114,9 +114,6 @@ WaypointObjectImplementation::~WaypointObjectImplementation() {
 }
 
 
-void WaypointObjectImplementation::finalize() {
-}
-
 void WaypointObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WaypointObjectHelper::instance());
 

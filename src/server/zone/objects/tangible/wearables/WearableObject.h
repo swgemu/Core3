@@ -66,8 +66,6 @@ public:
 protected:
 	virtual ~WearableObjectImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
