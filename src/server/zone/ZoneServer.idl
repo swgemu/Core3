@@ -188,7 +188,8 @@ class ZoneServer extends ManagedObject implements DatagramServiceThread {
 	public native SceneObject createStaticObject(unsigned int templateCRC, unsigned long objectID = 0);
 	public native void updateObjectToDatabase(SceneObject object);
 	public native void updateObjectToStaticDatabase(SceneObject object);
-	public native void destroyObject(unsigned long objectID);
+	public native void destroyObjectFromDatabase(unsigned long objectID);
+
 	
 	public native void lock(boolean doLock = true);
 	public native void unlock(boolean doLock = true);

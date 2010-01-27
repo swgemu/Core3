@@ -63,6 +63,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		ManagedReference<SceneObject*> cell = creature->getParent();
+
+		if (cell == NULL)
+			return false;
+
+		ManagedReference<SceneObject*> tutorial = cell->getParent();
+
 		String city = arguments.toString();
 		//"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
 		//"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
@@ -104,6 +111,9 @@ public:
 		} else if (city == "tyrena") {
 			creature->switchZone(0, -5045.0f, 0, -2294.0f);
 		}
+
+		tutorial->destroyObjectFromDatabase(true);
+		tutorial->info("remaining references " + String::valueOf(tutorial->getReferenceCount()), true);
 
 		return true;
 	}

@@ -525,29 +525,15 @@ ObjectDatabase* ObjectManager::getTable(uint64 objectID) {
 int ObjectManager::destroyObject(uint64 objectID) {
 	Locker _locker(this);
 
-	/*try {
-		ManagedReference<SceneObject*> object = remove(objectID);
+	ObjectDatabase* table = getTable(objectID);
 
-		if (object == NULL) {
-			return;
-		}
-
-		if (object->isPlayerCreature()) {
-			return;
-		}
-
-		ManagedReference<SceneObject*> parent = object->getParent();
-
-		if (parent != NULL)
-			error("warning trying to destroy object with parent");
-
-		object->finalize();
-
-		// remove from db
-
-	} catch (...) {
-		error("unreported exception caught in void ObjectManager::destroyObject(uint64 objectID)");
-	}*/
+	if (table != NULL) {
+		table->deleteData(objectID);
+	} else {
+		StringBuffer msg;
+		msg << "could not delete object id from database table NULL for id 0x" << hex << objectID;
+		error(msg);
+	}
 
 	return 1;
 }

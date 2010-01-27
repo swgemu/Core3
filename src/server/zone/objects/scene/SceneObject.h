@@ -512,6 +512,8 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask = true);
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -704,7 +706,7 @@ protected:
 
 	ManagedReference<Zone* > zone;
 
-	ManagedReference<SceneObject* > parent;
+	ManagedWeakReference<SceneObject* > parent;
 
 	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
 
@@ -1123,6 +1125,8 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask = true);
 
+	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	void create(ZoneClientSession* client);
 
 	void destroy(ZoneClientSession* client);
@@ -1343,6 +1347,8 @@ public:
 	void updateToDatabase();
 
 	void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	void create(ZoneClientSession* client);
 

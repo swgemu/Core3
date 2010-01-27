@@ -304,7 +304,7 @@ void ZoneServer::updateObjectToStaticDatabase(SceneObject* object) {
 		((ZoneServerImplementation*) _impl)->updateObjectToStaticDatabase(object);
 }
 
-void ZoneServer::destroyObject(unsigned long long objectID) {
+void ZoneServer::destroyObjectFromDatabase(unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -314,7 +314,7 @@ void ZoneServer::destroyObject(unsigned long long objectID) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ZoneServerImplementation*) _impl)->destroyObject(objectID);
+		((ZoneServerImplementation*) _impl)->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServer::lock(bool doLock) {
@@ -778,110 +778,110 @@ void ZoneServerImplementation::fixScheduler() {
 
 void ZoneServerImplementation::increaseOnlinePlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(208):  ++
-	if ( ++currentPlayers > maximumPlayers)	// server/zone/ZoneServer.idl(209):  maximumPlayers = currentPlayers;
+	// server/zone/ZoneServer.idl(209):  ++
+	if ( ++currentPlayers > maximumPlayers)	// server/zone/ZoneServer.idl(210):  maximumPlayers = currentPlayers;
 	maximumPlayers = currentPlayers;
-	// server/zone/ZoneServer.idl(211):  totalPlayers;
+	// server/zone/ZoneServer.idl(212):  totalPlayers;
 	 ++totalPlayers;
 }
 
 void ZoneServerImplementation::decreaseOnlinePlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(215):  currentPlayers = currentPlayers - 1;
+	// server/zone/ZoneServer.idl(216):  currentPlayers = currentPlayers - 1;
 	currentPlayers = currentPlayers - 1;
 }
 
 void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(219):  ++totalDeletedPlayers;
+	// server/zone/ZoneServer.idl(220):  ++totalDeletedPlayers;
 	 ++totalDeletedPlayers;
 }
 
 int ZoneServerImplementation::getGalaxyID() {
-	// server/zone/ZoneServer.idl(223):  return galaxyID;
+	// server/zone/ZoneServer.idl(224):  return galaxyID;
 	return galaxyID;
 }
 
 bool ZoneServerImplementation::isServerLocked() {
-	// server/zone/ZoneServer.idl(229):  return serverState == LOCKED;
+	// server/zone/ZoneServer.idl(230):  return serverState == LOCKED;
 	return serverState == LOCKED;
 }
 
 bool ZoneServerImplementation::isServerOnline() {
-	// server/zone/ZoneServer.idl(233):  return serverState == ONLINE;
+	// server/zone/ZoneServer.idl(234):  return serverState == ONLINE;
 	return serverState == ONLINE;
 }
 
 bool ZoneServerImplementation::isServerOffline() {
-	// server/zone/ZoneServer.idl(237):  return serverState == OFFLINE;
+	// server/zone/ZoneServer.idl(238):  return serverState == OFFLINE;
 	return serverState == OFFLINE;
 }
 
 bool ZoneServerImplementation::isServerLoading() {
-	// server/zone/ZoneServer.idl(241):  return serverState == LOADING;
+	// server/zone/ZoneServer.idl(242):  return serverState == LOADING;
 	return serverState == LOADING;
 }
 
 int ZoneServerImplementation::getServerState() {
-	// server/zone/ZoneServer.idl(245):  return serverState;
+	// server/zone/ZoneServer.idl(246):  return serverState;
 	return serverState;
 }
 
 Zone* ZoneServerImplementation::getZone(int index) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(249):  return zones.get(index);
+	// server/zone/ZoneServer.idl(250):  return zones.get(index);
 	return (&zones)->get(index);
 }
 
 int ZoneServerImplementation::getMaxPlayers() {
-	// server/zone/ZoneServer.idl(253):  return maximumPlayers;
+	// server/zone/ZoneServer.idl(254):  return maximumPlayers;
 	return maximumPlayers;
 }
 
 int ZoneServerImplementation::getTotalPlayers() {
-	// server/zone/ZoneServer.idl(257):  return totalPlayers;
+	// server/zone/ZoneServer.idl(258):  return totalPlayers;
 	return totalPlayers;
 }
 
 int ZoneServerImplementation::getDeletedPlayers() {
-	// server/zone/ZoneServer.idl(261):  return totalDeletedPlayers;
+	// server/zone/ZoneServer.idl(262):  return totalDeletedPlayers;
 	return totalDeletedPlayers;
 }
 
 PlayerManager* ZoneServerImplementation::getPlayerManager() {
-	// server/zone/ZoneServer.idl(265):  return playerManager;
+	// server/zone/ZoneServer.idl(266):  return playerManager;
 	return playerManager;
 }
 
 ChatManager* ZoneServerImplementation::getChatManager() {
-	// server/zone/ZoneServer.idl(269):  return chatManager;
+	// server/zone/ZoneServer.idl(270):  return chatManager;
 	return chatManager;
 }
 
 ObjectController* ZoneServerImplementation::getObjectController() {
-	// server/zone/ZoneServer.idl(273):  return objectController;
+	// server/zone/ZoneServer.idl(274):  return objectController;
 	return objectController;
 }
 
 RadialManager* ZoneServerImplementation::getRadialManager() {
-	// server/zone/ZoneServer.idl(277):  return radialManager;
+	// server/zone/ZoneServer.idl(278):  return radialManager;
 	return radialManager;
 }
 
 ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl(282):  return professionManager;
+	// server/zone/ZoneServer.idl(283):  return professionManager;
 	return professionManager;
 }
 
 void ZoneServerImplementation::setGalaxyID(int galaxyid) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(292):  galaxyID = galaxyid;
+	// server/zone/ZoneServer.idl(293):  galaxyID = galaxyid;
 	galaxyID = galaxyid;
 }
 
 void ZoneServerImplementation::setServerState(int state) {
 	Locker _locker(_this);
-	// server/zone/ZoneServer.idl(296):  serverState = state;
+	// server/zone/ZoneServer.idl(297):  serverState = state;
 	serverState = state;
 }
 
@@ -954,7 +954,7 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		updateObjectToStaticDatabase((SceneObject*) inv->getObjectParameter());
 		break;
 	case 25:
-		destroyObject(inv->getUnsignedLongParameter());
+		destroyObjectFromDatabase(inv->getUnsignedLongParameter());
 		break;
 	case 26:
 		lock(inv->getBooleanParameter());
@@ -1132,8 +1132,8 @@ void ZoneServerAdapter::updateObjectToStaticDatabase(SceneObject* object) {
 	((ZoneServerImplementation*) impl)->updateObjectToStaticDatabase(object);
 }
 
-void ZoneServerAdapter::destroyObject(unsigned long long objectID) {
-	((ZoneServerImplementation*) impl)->destroyObject(objectID);
+void ZoneServerAdapter::destroyObjectFromDatabase(unsigned long long objectID) {
+	((ZoneServerImplementation*) impl)->destroyObjectFromDatabase(objectID);
 }
 
 void ZoneServerAdapter::lock(bool doLock) {

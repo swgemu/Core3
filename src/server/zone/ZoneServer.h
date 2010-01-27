@@ -206,7 +206,7 @@ public:
 
 	void updateObjectToStaticDatabase(SceneObject* object);
 
-	void destroyObject(unsigned long long objectID);
+	void destroyObjectFromDatabase(unsigned long long objectID);
 
 	void lock(bool doLock = true);
 
@@ -389,7 +389,7 @@ public:
 
 	void updateObjectToStaticDatabase(SceneObject* object);
 
-	void destroyObject(unsigned long long objectID);
+	void destroyObjectFromDatabase(unsigned long long objectID);
 
 	void lock(bool doLock = true);
 
@@ -518,7 +518,7 @@ public:
 
 	void updateObjectToStaticDatabase(SceneObject* object);
 
-	void destroyObject(unsigned long long objectID);
+	void destroyObjectFromDatabase(unsigned long long objectID);
 
 	void lock(bool doLock);
 

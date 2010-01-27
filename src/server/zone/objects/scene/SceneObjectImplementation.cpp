@@ -174,6 +174,29 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	info("saved in " + String::valueOf(start.miliDifference()) + " ms");
 }
 
+void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	ZoneServer* server = getZoneServer();
+
+	server->destroyObjectFromDatabase(getObjectID());
+
+	_this->setPersistent(0);
+
+	if (!destroyContainedObjects)
+		return;
+
+	for (int i = 0; i < slottedObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = slottedObjects.get(i);
+
+		object->destroyObjectFromDatabase(true);
+	}
+
+	for (int j = 0; j < containerObjects.size(); ++j) {
+		ManagedReference<SceneObject*> object = containerObjects.get(j);
+
+		object->destroyObjectFromDatabase(true);
+	}
+}
+
 uint64 SceneObjectImplementation::getObjectID() {
 	return _this->_getObjectID();
 }

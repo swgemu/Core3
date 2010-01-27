@@ -82,6 +82,7 @@ public:
 				playerObject->removeWaypoint(target);
 
 			// delete from database
+			object->destroyObjectFromDatabase(true);
 
 			return true;
 		}
@@ -92,7 +93,10 @@ public:
 			if (inventory->hasObjectInContainer(target)) {
 				inventory->removeObject(object);
 
+				object->sendDestroyTo(creature);
+
 				//destroy object from database
+				object->destroyObjectFromDatabase(true);
 
 				return true;
 			}
@@ -104,7 +108,10 @@ public:
 			if (datapad->hasObjectInContainer(target)) {
 				datapad->removeObject(object);
 
+				object->sendDestroyTo(creature);
+
 				//destroy object from database
+				object->destroyObjectFromDatabase(true);
 
 				return true;
 			}
@@ -115,6 +122,9 @@ public:
 		if (bank != NULL) {
 			if (bank->hasObjectInContainer(target)) {
 				bank->removeObject(object);
+
+				object->sendDestroyTo(creature);
+				object->destroyObjectFromDatabase(true);
 
 				return true;
 			}

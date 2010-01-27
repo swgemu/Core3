@@ -675,17 +675,10 @@ SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, ui
 	return obj;
 }
 
-void ZoneServerImplementation::destroyObject(uint64 objectID) {
-	ManagedReference<SceneObject*> object = getObject(objectID);
-
-	if (object == NULL)
-		return;
-
-	if (object->isPlayerCreature())
-		chatManager->removePlayer(((PlayerCreature*)object.get())->getFirstName());
-
+void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
 	objectManager->destroyObject(objectID);
 }
+
 /*
 SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
