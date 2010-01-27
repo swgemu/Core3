@@ -58,6 +58,7 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;
+include server.zone.objects.creature.variables.CommandQueueAction;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -130,6 +131,12 @@ class CreatureObject extends TangibleObject {
 		
 	@dereferenced
 	protected DeltaVectorMap<string, long> skillModList;
+	
+	@dereferenced
+	protected Vector<CommandQueueAction> commandQueue;
+	
+	@dereferenced
+	protected Time nextAction;
 	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
@@ -411,6 +418,19 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void updateGroup(GroupObject group, boolean notifyClient = true);
+	
+	/**
+	 * Enqueues a command action
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCRC queue command crc
+	 * @param actionCount command count
+	 * @param targetID target
+	 * @param arguments arguments
+	 */
+	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
+	
+	public native void activateQueueAction();
 	
 	public native unicode getCreatureName();
 	

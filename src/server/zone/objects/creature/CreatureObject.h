@@ -77,6 +77,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
 
+#include "server/zone/objects/creature/variables/CommandQueueAction.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -171,6 +173,10 @@ public:
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
 	void updateGroup(GroupObject* group, bool notifyClient = true);
+
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void activateQueueAction();
 
 	UnicodeString getCreatureName();
 
@@ -375,6 +381,10 @@ protected:
 
 	DeltaVectorMap<String, long long> skillModList;
 
+	Vector<CommandQueueAction*> commandQueue;
+
+	Time nextAction;
+
 public:
 	static const int HUMAN = 0;
 
@@ -459,6 +469,10 @@ public:
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
 	void updateGroup(GroupObject* group, bool notifyClient = true);
+
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void activateQueueAction();
 
 	UnicodeString getCreatureName();
 
@@ -562,8 +576,6 @@ public:
 protected:
 	virtual ~CreatureObjectImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -640,6 +652,10 @@ public:
 	void updateGroupInviterID(unsigned long long id, bool notifyClient);
 
 	void updateGroup(GroupObject* group, bool notifyClient);
+
+	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void activateQueueAction();
 
 	UnicodeString getCreatureName();
 
@@ -730,6 +746,7 @@ protected:
 	String _param0_removeSkillBox__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
+	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

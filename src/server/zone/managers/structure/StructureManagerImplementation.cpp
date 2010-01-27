@@ -113,7 +113,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid) {
 	ZoneServer * zoneServer = zone->getZoneServer();
 
 	try {
-		ManagedReference<SceneObject *> obj = zoneServer->getObject(oid);
+		ManagedWeakReference<SceneObject *> obj = zoneServer->getObject(oid);
 
 		if (obj != NULL && obj->isBuildingObject()) {
 			info("loading building (" + String::valueOf(oid) + ") from static object db");

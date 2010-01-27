@@ -75,7 +75,7 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 
 	protected Zone zone;
 
-	//@weakReference
+	@weakReference
 	protected SceneObject parent;
 
 	@dereferenced

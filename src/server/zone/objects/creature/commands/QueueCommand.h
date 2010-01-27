@@ -79,9 +79,13 @@ protected:
 
 	uint32 cooldown; // in msec
 
+	float defaultTime;
+
 	String characterAbility;
 
 	ZoneProcessServerImplementation* server;
+
+	int defaultPriority;
 
 public:
 	QueueCommand(const String& name, ZoneProcessServerImplementation* serv) : Skill(name) {
@@ -99,10 +103,18 @@ public:
 		disabled = false;
 		addToQueue = false;
 
+		defaultTime = 0.f;
+
 		cooldown = 0;
+
+		defaultPriority = NORMAL;
 
 		skillType = QUEUECOMMAND;
 	}
+
+	const static int NORMAL = 0;
+	const static int FRONT = 1;
+	const static int IMMEDIATE = 2;
 
 	virtual ~QueueCommand() {
 	}
@@ -144,6 +156,10 @@ public:
 		target = num;
 	}
 
+	inline void setDefaultTime(float time) {
+		defaultTime = time;
+	}
+
 	inline void setTargetType(int num) {
 		targetType = num;
 	}
@@ -178,6 +194,17 @@ public:
 		characterAbility = ability;
 	}
 
+	inline void setDefaultPriority(const String& priority) {
+		if (priority == "immediate")
+			defaultPriority = IMMEDIATE;
+		else if (priority == "normal")
+			defaultPriority = NORMAL;
+		else if (priority == "front")
+			defaultPriority = FRONT;
+		else
+			System::out << "Setting unknown priority " << priority << endl;
+	}
+
 	//getters
 	inline uint64 getStateMask() {
 		return stateMask;
@@ -205,6 +232,22 @@ public:
 
 	inline float getMaxRange() {
 		return maxRangeToTarget;
+	}
+
+	inline String& getQueueCommandName() {
+		return name;
+	}
+
+	inline String& getCharacterAbility() {
+		return characterAbility;
+	}
+
+	inline float getDefaultTime() {
+		return defaultTime;
+	}
+
+	inline int getDefaultPriority() {
+		return defaultPriority;
 	}
 
 	//misc
@@ -340,14 +383,14 @@ public:
 
 	}
 
-	inline String& getQueueCommandName() {
-		return name;
+	/**
+	 * Returns duration of the command
+	 */
+
+	virtual float getCommandDuration() {
+		return defaultTime;
 	}
 
-
-	inline String& getCharacterAbility() {
-		return characterAbility;
-	}
 
 };
 

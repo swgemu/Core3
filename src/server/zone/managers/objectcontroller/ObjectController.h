@@ -126,7 +126,7 @@ public:
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
-	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
+	float activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
 	void addQueueCommand(QueueCommand* command);
 
@@ -172,7 +172,7 @@ public:
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
-	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
+	float activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
 	void addQueueCommand(QueueCommand* command);
 
@@ -223,10 +223,10 @@ public:
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient);
 
-	void enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments);
+	float activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
 protected:
-	UnicodeString _param4_enqueueCommand__CreatureObject_int_int_long_UnicodeString_;
+	UnicodeString _param4_activateCommand__CreatureObject_int_int_long_UnicodeString_;
 };
 
 class ObjectControllerHelper : public DistributedObjectClassHelper, public Singleton<ObjectControllerHelper> {

@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "CreatureFlag.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
@@ -61,9 +62,12 @@ which carries forward this exception.
 #include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
+#include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/variables/ParameterizedStringId.h"
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/objects/creature/variables/CommandQueueAction.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
 #include "CreatureFlag.h"
@@ -548,5 +552,85 @@ void CreatureObjectImplementation::updateGroup(GroupObject* grp, bool notifyClie
 	delta->close();
 
 	broadcastMessage(delta, true);
+}
+
+void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {
+	if (commandQueue.size() > 15) {
+		clearQueueAction(actionCRC);
+
+		return;
+	}
+
+	ObjectController* objectController = getZoneServer()->getObjectController();
+
+	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
+
+	if (queueCommand == NULL) {
+		StringBuffer msg;
+		msg << "trying to enqueue NULL QUEUE COMMAND 0x" << hex << actionCRC;
+		error(msg.toString());
+		return;
+	}
+
+	if (queueCommand->getDefaultPriority() == QueueCommand::IMMEDIATE) {
+		objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
+
+		return;
+	}
+
+	CommandQueueAction* action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
+
+	if (commandQueue.size() != 0 || !nextAction.isPast()) {
+		if (commandQueue.size() == 0) {
+			CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
+			e->schedule(nextAction);
+		}
+
+		if (queueCommand->getDefaultPriority() == QueueCommand::NORMAL)
+			commandQueue.add(action);
+		else if (queueCommand->getDefaultPriority() == QueueCommand::FRONT)
+			commandQueue.add(0, action);
+	} else {
+		nextAction.updateToCurrentTime();
+
+		commandQueue.add(action);
+		activateQueueAction();
+	}
+}
+
+void CreatureObjectImplementation::activateQueueAction() {
+	if (nextAction.isFuture()) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
+		e->schedule(nextAction);
+
+		return;
+	}
+
+	if (commandQueue.size() == 0)
+		return;
+
+	CommandQueueAction* action = commandQueue.remove(0);
+
+	ObjectController* objectController = getZoneServer()->getObjectController();
+
+	float time = objectController->activateCommand(_this, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+
+	delete action;
+
+	nextAction.updateToCurrentTime();
+
+	if (time != 0)
+		nextAction.addMiliTime((uint32) (time * 1000));
+
+	if (commandQueue.size() != 0) {
+		CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
+
+		if (!nextAction.isFuture()) {
+			nextAction.updateToCurrentTime();
+			nextAction.addMiliTime(100);
+		}
+
+		e->schedule(nextAction);
+	}
 }
 

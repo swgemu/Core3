@@ -948,6 +948,12 @@ void CommandConfigManager::parseOptions(LuaObject &slashcommand, QueueCommand* c
 	field = slashcommand.getStringField("characterAbility");
 	command->setCharacterAbility(field);
 
+	field = slashcommand.getStringField("defaultPriority");
+	command->setDefaultPriority(field);
+
+	float time = slashcommand.getFloatField("defaultTime");
+	command->setDefaultTime(time);
+
 }
 
 void CommandConfigManager::parseAlternativeNames(String& alternativeNames, QueueCommand* slashCommand) {

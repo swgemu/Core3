@@ -42,60 +42,30 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-package server.zone.managers.objectcontroller;
+#include "CommandQueueAction.h"
 
-import engine.core.ManagedObject;
-import engine.lua.Lua;
-import server.zone.managers.objectcontroller.command.CommandList;
-import server.zone.managers.objectcontroller.command.CommandConfigManager;
-import server.zone.objects.creature.commands.QueueCommand;
-import server.zone.ZoneServer;
-import engine.log.Logger;
-import server.zone.ZoneProcessServerImplementation;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.CreatureObject;
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
-class ObjectController extends ManagedObject implements Lua {
-	private transient ZoneProcessServerImplementation server;
-	
-	private transient CommandConfigManager configManager;
-	private transient CommandList queueCommands;
-	
-	public ObjectController(ZoneProcessServerImplementation srv) {
-		server = srv;
-		
-		Logger.setLoggingName("ObjectController");
-		
-		Logger.setLogging(true);
-		Logger.setGlobalLogging(true);
-		
-		loadCommands();
-	}
-	
-	public native void finalize();
-	
-	public native void loadCommands();
-	
-	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false);
-	
-	/**
-	 * Activates a queue command from a creature object
-	 * @param object creature object that the command will be run on
-	 * @param actionCRC crc of the command to run
-	 * @param actionCount count of the command
-	 * @paramt targetID target object id
-	 * @param arguments arguments of the command
-	 * @returns time in seconds of command execution
-	 */
-	public native float activateCommand(CreatureObject object, unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
-	
-	@local
-	public native void addQueueCommand(QueueCommand command);
-	
-	@local
-	public native QueueCommand getQueueCommand(final string name);
+#include "server/zone/objects/player/PlayerCreature.h"
 
-	@local
-	public native QueueCommand getQueueCommand(unsigned int crc);
-	
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 tar, uint32 command, uint32 acntr, const UnicodeString& amod) {
+	actionCounter = acntr;
+
+	target = tar;
+
+	arguments = amod;
+
+	creature = cr;
+	queueCommand = command;
+}
+
+void CommandQueueAction::clear(float timer, uint32 tab1, uint32 tab2) {
+	creature->clearQueueAction(actionCounter, timer, tab1, tab2);
+}
+
+void CommandQueueAction::run() {
+
 }

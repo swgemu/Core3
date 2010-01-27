@@ -113,7 +113,7 @@ public:
 		}
 
 		tutorial->destroyObjectFromDatabase(true);
-		tutorial->info("remaining references " + String::valueOf(tutorial->getReferenceCount()), true);
+		//tutorial->info("remaining references " + String::valueOf(tutorial->getReferenceCount()), true);
 
 		return true;
 	}

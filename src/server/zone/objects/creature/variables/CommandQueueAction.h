@@ -42,38 +42,90 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREMOVEEVENT_H_
-#define CREATUREMOVEEVENT_H_
+#ifndef COMMANDQUEUEACTION_H_
+#define COMMANDQUEUEACTION_H_
 
-#include "../CreatureObjectImplementation.h"
+#include "engine/engine.h"
 
-class CreatureMoveEvent : public Event {
-	CreatureObject* creo;
-	float mv_X;
-	//float mv_Z;
-	float mv_Y;
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace scene {
+	   class SceneObject;
+   }
+  }
+ }
+}
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+ namespace zone {
+  namespace objects {
+   namespace creature {
+	   class CreatureObject;
+   }
+  }
+ }
+}
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace commands {
+	class QueueCommand;
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::creature::commands;
+
+class CommandQueueAction {
+	ManagedReference<CreatureObject*> creature;
+	uint64 target;
+	uint32 queueCommand;
+
+	uint32 actionCounter;
+
+	UnicodeString arguments;
 
 public:
-	CreatureMoveEvent(CreatureObject* cr, float x, float y) : Event(1000) {
-		creo = cr;
-		mv_X = x;
-		//mv_Z = z;
-		mv_Y = y;
+	CommandQueueAction(CreatureObject* cr, uint64 tar, uint32 command, uint32 acntr, const UnicodeString& amod);
+
+	void run();
+
+	void clearError(uint32 tab1, uint32 tab2 = 0) {
+		clear(0.0f, tab1, tab2);
 	}
 
-	bool activate() {
-		try {
-			creo->wlock();
+	void clear(float timer, uint32 tab1 = 0, uint32 tab2 = 0);
 
-			//creo->interpolateMove(mv_X, mv_Y);
 
-			creo->unlock();
-		} catch (...) {
-			creo->error("unreported exception caught in CreatureMoveEvent::activate");
-			creo->unlock();
-		}
+	inline CreatureObject* getCreature() {
+		return creature;
+	}
+
+	inline uint32 getCommand() {
+		return queueCommand;
+	}
+
+	inline uint64 getTarget() {
+		return target;
+	}
+
+	inline uint32 getActionCounter() {
+		return actionCounter;
+	}
+
+	inline UnicodeString getArguments() {
+		return arguments;
 	}
 
 };
 
-#endif /*CREATUREMOVEEVENT_H_*/
+#endif /*COMMANDQUEUEACTION_H_*/

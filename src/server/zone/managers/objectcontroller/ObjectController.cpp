@@ -62,7 +62,7 @@ bool ObjectController::transferObject(SceneObject* objectToTransfer, SceneObject
 		return ((ObjectControllerImplementation*) _impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
-void ObjectController::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
+float ObjectController::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,9 +74,9 @@ void ObjectController::enqueueCommand(CreatureObject* object, unsigned int actio
 		method.addUnsignedLongParameter(targetID);
 		method.addUnicodeParameter(arguments);
 
-		method.executeWithVoidReturn();
+		return method.executeWithFloatReturn();
 	} else
-		((ObjectControllerImplementation*) _impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
+		return ((ObjectControllerImplementation*) _impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 void ObjectController::addQueueCommand(QueueCommand* command) {
@@ -205,7 +205,7 @@ Packet* ObjectControllerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertBoolean(transferObject((SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 9:
-		enqueueCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_enqueueCommand__CreatureObject_int_int_long_UnicodeString_));
+		resp->insertFloat(activateCommand((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param4_activateCommand__CreatureObject_int_int_long_UnicodeString_)));
 		break;
 	default:
 		return NULL;
@@ -226,8 +226,8 @@ bool ObjectControllerAdapter::transferObject(SceneObject* objectToTransfer, Scen
 	return ((ObjectControllerImplementation*) impl)->transferObject(objectToTransfer, destinationObject, containmentType, notifyClient);
 }
 
-void ObjectControllerAdapter::enqueueCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, UnicodeString& arguments) {
-	((ObjectControllerImplementation*) impl)->enqueueCommand(object, actionCRC, actionCount, targetID, arguments);
+float ObjectControllerAdapter::activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments) {
+	return ((ObjectControllerImplementation*) impl)->activateCommand(object, actionCRC, actionCount, targetID, arguments);
 }
 
 /*
