@@ -114,6 +114,7 @@ public:
 
 		tutorial->destroyObjectFromDatabase(true);
 		tutorial->removeFromZone();
+		creature->updateToDatabase();
 		//tutorial->info("remaining references " + String::valueOf(tutorial->getReferenceCount()), true);
 
 		return true;

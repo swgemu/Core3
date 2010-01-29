@@ -636,9 +636,6 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int pers
 
 		obj = objectManager->createObject(templateCRC, persistenceLevel, "sceneobjects", oid);
 
-		if (obj != NULL && obj->isPlayerCreature())
-			chatManager->addPlayer((PlayerCreature*)obj);
-
 		//unlock();
 	} catch (Exception& e) {
 		error(e.getMessage());
