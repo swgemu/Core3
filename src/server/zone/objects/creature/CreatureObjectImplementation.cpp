@@ -651,3 +651,15 @@ void CreatureObjectImplementation::activateQueueAction() {
 	}
 }
 
+void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
+	for (int i = 0; i < commandQueue.size(); ++i) {
+		CommandQueueAction* action = commandQueue.get(i);
+
+		if (action->getActionCounter() == actionCount) {
+			commandQueue.remove(i);
+			delete action;
+			break;
+		}
+	}
+}
+

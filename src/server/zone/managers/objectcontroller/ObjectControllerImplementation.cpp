@@ -127,7 +127,8 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 	else {
 		queueCommand->onComplete(actionCount, object);
 
-		durationTime = queueCommand->getCommandDuration();
+		if (queueCommand->getDefaultPriority() != QueueCommand::IMMEDIATE)
+			durationTime = queueCommand->getCommandDuration();
 
 		if (queueCommand->addToCombatQueue() && object->isPlayerCreature())
 			((PlayerCreature*)object)->clearQueueAction(actionCount, durationTime);

@@ -442,6 +442,14 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setMood(byte moodID, boolean notifyClient = true);
 	
+	/**
+	 * Removes a command from queue
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCount the action count to remove
+	 */
+	public native void deleteQueueAction(unsigned int actionCount);
+	
 	public native void activateQueueAction();
 	
 	public native unicode getCreatureName();

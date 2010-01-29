@@ -63,6 +63,8 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		creature->setCombatState();
+
 		return true;
 	}
 

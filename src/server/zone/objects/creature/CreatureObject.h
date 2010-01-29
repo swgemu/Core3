@@ -178,6 +178,8 @@ public:
 
 	void setMood(byte moodID, bool notifyClient = true);
 
+	void deleteQueueAction(unsigned int actionCount);
+
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -478,6 +480,8 @@ public:
 
 	void setMood(byte moodID, bool notifyClient = true);
 
+	void deleteQueueAction(unsigned int actionCount);
+
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -664,6 +668,8 @@ public:
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
 	void setMood(byte moodID, bool notifyClient);
+
+	void deleteQueueAction(unsigned int actionCount);
 
 	void activateQueueAction();
 
