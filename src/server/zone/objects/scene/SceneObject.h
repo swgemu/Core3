@@ -544,6 +544,8 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
+	void openContainerTo(PlayerCreature* player);
+
 	void insertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
@@ -682,9 +684,13 @@ public:
 
 	void setLoggingName(const String& name);
 
+	void setStaticObject(bool val);
+
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool isStaticObject();
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -739,6 +745,8 @@ protected:
 	StringId detailedDescription;
 
 	SortedVector<ManagedReference<SceneObject* > > notifiedObjects;
+
+	bool staticObject;
 
 	unsigned int containerType;
 
@@ -1165,6 +1173,8 @@ public:
 
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
 
+	virtual void openContainerTo(PlayerCreature* player);
+
 	virtual void insertToZone(Zone* zone);
 
 	virtual void insertToBuilding(BuildingObject* building);
@@ -1303,9 +1313,13 @@ public:
 
 	void setLoggingName(const String& name);
 
+	void setStaticObject(bool val);
+
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool isStaticObject();
 
 	SceneObject* _this;
 
@@ -1393,6 +1407,8 @@ public:
 	void sendAttributeListTo(PlayerCreature* object);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse);
+
+	void openContainerTo(PlayerCreature* player);
 
 	void insertToZone(Zone* zone);
 
@@ -1522,7 +1538,11 @@ public:
 
 	void setLoggingName(const String& name);
 
+	void setStaticObject(bool val);
+
 	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool isStaticObject();
 
 protected:
 	String _param0_info__String_bool_;

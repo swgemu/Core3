@@ -59,8 +59,6 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
 	
-	protected boolean staticBuilding;
-
 	public BuildingObject(LuaObject templateData) {
 		super(templateData);
 		
@@ -68,7 +66,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 
 		QuadTree.setSize(-1024, -1024, 1024, 1024);
 
-		staticBuilding = false;
+		super.staticObject = false;
 		
 		super.containerVolumeLimit = 0xFFFFFFFF;
 
@@ -76,6 +74,19 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	}
 		
 	public native void initializeTransientMembers();
+	
+	public void removeFromZone() {
+		for (int i = 0; i < cells.size(); ++i) {
+			CellObject cell = cells.get(i);
+			
+			for (int j = 0; j < cell.getContainerObjectsSize(); ++j) {
+				SceneObject obj = cell.getContainerObject(j);
+				obj.removeFromZone();
+			}
+		}
+		
+		super.removeFromZone();
+	}
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry obj);
@@ -104,7 +115,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	public native void addCell(CellObject cell);
 	
 	public boolean isStaticBuilding() {
-		return staticBuilding;
+		return super.staticObject;
 	}
 	
 	public CellObject getCell(int idx) {
@@ -112,7 +123,7 @@ class BuildingObject extends TangibleObject implements QuadTree {
 	}
 	
 	public void setStaticBuilding(boolean value) {
-		staticBuilding = value;
+		super.staticObject = value;
 	}
 	
 	/**

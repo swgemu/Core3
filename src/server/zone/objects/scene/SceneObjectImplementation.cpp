@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformMessage.h"
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/packets/scene/ClientOpenContainerMessage.h"
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
@@ -122,6 +123,8 @@ void SceneObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	initializePosition(0.f, 0.f, 0.f);
 
 	movementCounter = 0;
+
+	staticObject = false;
 }
 
 void SceneObjectImplementation::create(ZoneClientSession* client) {
@@ -204,6 +207,9 @@ uint64 SceneObjectImplementation::getObjectID() {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
+	if (isStaticObject())
+		return;
+
 	ManagedReference<ZoneClientSession*> client = player->getClient();
 
 	if (client == NULL)
@@ -246,6 +252,9 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
+	if (staticObject)
+		return;
+
 	destroy(player->getClient());
 }
 
@@ -486,6 +495,8 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 
 	SceneObjectImplementation::zone = newZone;
 
+	zone->addSceneObject(_this);
+
 	initializePosition(positionX, positionZ, positionY);
 
 	sendToOwner(true);
@@ -574,6 +585,8 @@ void SceneObjectImplementation::removeFromZone() {
 
 	removeInRangeObjects();
 
+	zone->dropSceneObject(getObjectID());
+
 	zone = NULL;
 
 	info("removed from zone");
@@ -644,6 +657,11 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 		broadcastMessage(object->link(0, 0xFFFFFFFF));*/
 
 	return true;
+}
+
+void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
+	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this);
+	player->sendMessage(cont);
 }
 
 void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {

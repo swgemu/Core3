@@ -88,6 +88,8 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 }
 
 void ZoneImplementation::initializeTransientMembers() {
+	ManagedObjectImplementation::initializeTransientMembers();
+
 	processor = ZoneProcessServerImplementation::instance;
 
 	//taskManager =
@@ -99,8 +101,6 @@ void ZoneImplementation::initializeTransientMembers() {
 
 		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
-
-	ManagedObjectImplementation::initializeTransientMembers();
 }
 
 void ZoneImplementation::startManagers() {

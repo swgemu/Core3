@@ -22,6 +22,18 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 }
 
 
+void TutorialBuildingObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((TutorialBuildingObjectImplementation*) _impl)->initializeTransientMembers();
+}
+
 /*
  *	TutorialBuildingObjectImplementation
  */
@@ -95,6 +107,13 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaOb
 	Logger::setLoggingName("TutorialBuildingObject");
 }
 
+void TutorialBuildingObjectImplementation::initializeTransientMembers() {
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(60):  super.initializeTransientMembers();
+	BuildingObjectImplementation::initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(62):  Logger.setLoggingName("TutorialBuildingObject");
+	Logger::setLoggingName("TutorialBuildingObject");
+}
+
 /*
  *	TutorialBuildingObjectAdapter
  */
@@ -106,11 +125,18 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		initializeTransientMembers();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void TutorialBuildingObjectAdapter::initializeTransientMembers() {
+	((TutorialBuildingObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 /*

@@ -26,6 +26,7 @@
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
+#include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/db/ServerDatabase.h"
@@ -112,6 +113,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);
 
 	objectFactory.registerObject<GroupObject>(SceneObject::GROUPOBJECT);
+
+	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
 
 	//temporary
 	objectFactory.registerObject<CreatureObject>(SceneObject::HOVERVEHICLE);

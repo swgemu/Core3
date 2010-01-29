@@ -13,6 +13,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/db/ObjectDatabase.h"
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
@@ -22,6 +23,78 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 
 	setGlobalLogging(true);
 	setLogging(false);
+}
+
+void StructureManagerImplementation::loadStaticBanks() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	uint32 bankCRC = String("object/tangible/terminal/shared_terminal_bank.iff").hashCode();
+
+	//lock();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = 'object/tangible/terminal/shared_terminal_bank.iff';";
+
+	try {
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		BankTerminal* bank = NULL;
+		CellObject* cell = NULL;
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			if (parentId != 0) {
+				SceneObject* scene = zoneServer->getObject(parentId);
+
+				if (scene != NULL && scene->isCellObject())
+					cell = (CellObject*) scene;
+				else {
+					cell = NULL;
+
+					error("bank unknown parentid " + String::valueOf(parentId));
+					continue;
+				}
+			} else
+				cell = NULL;
+
+			bank = (BankTerminal*) zoneServer->createStaticObject(bankCRC, objectID);
+			bank->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(bank, -1);
+
+			bank->initializePosition(positionX, positionZ, positionY);
+			bank->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				bank->updateToDatabase();
+		}
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
+	}
+
+	//unlock();
 }
 
 void StructureManagerImplementation::loadStaticBuildings() {

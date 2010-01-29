@@ -76,6 +76,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void removeFromZone();
+
 	void notifyInsert(QuadTreeEntry* obj);
 
 	void notifyDissapear(QuadTreeEntry* obj);
@@ -132,14 +134,14 @@ class BuildingObjectImplementation : public TangibleObjectImplementation, public
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
-	bool staticBuilding;
-
 public:
 	BuildingObjectImplementation(LuaObject* templateData);
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
 
 	void initializeTransientMembers();
+
+	void removeFromZone();
 
 	void notifyInsert(QuadTreeEntry* obj);
 
@@ -211,6 +213,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void removeFromZone();
 
 	void notifyInsertToZone(SceneObject* object);
 

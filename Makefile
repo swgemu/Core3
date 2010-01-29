@@ -61,6 +61,7 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/building/recreation/RecreationBuildingObject.idl \
 				server/zone/objects/building/travel/TravelBuildingObject.idl \
 				server/zone/objects/building/tutorial/TutorialBuildingObject.idl \
+				server/zone/objects/tangible/terminal/bank/BankTerminal.idl \
 				server/zone/managers/player/PlayerManager.idl \
 				server/zone/managers/structure/StructureManager.idl \
 				server/chat/room/ChatRoom.idl \

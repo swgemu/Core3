@@ -112,6 +112,8 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	@dereferenced
 	protected SortedVector<SceneObject> notifiedObjects;
+	
+	protected boolean staticObject;
 
 	protected unsigned int containerType;
 	protected unsigned int containerVolumeLimit;
@@ -587,6 +589,14 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	 */
 	public abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse) {
 	}
+	
+	/**
+	 * Opens container contents to player
+	 * @pre { }
+	 * @post { }
+	 * @param player PlayerCreature to open the container to   
+	 */
+	public abstract native void openContainerTo(PlayerCreature player);
 
 	/**
 	 * Inserts this object into zone
@@ -958,6 +968,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	public void setLoggingName(final string name) {
 		Logger.setLoggingName(name);
 	}
+	
+	public void setStaticObject(boolean val) {
+		staticObject = val;
+	}
 
 	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
@@ -966,6 +980,10 @@ class SceneObject extends ManagedObject implements QuadTreeEntry, Logger {
 	
 	public boolean hasObjectInContainer(unsigned long objectID) {
 		return containerObjects.contains(objectID);
+	}
+	
+	public boolean isStaticObject() {
+		return staticObject;
 	}
 
 }

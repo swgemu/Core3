@@ -39,6 +39,8 @@ class TutorialBuildingObject : public BuildingObject {
 public:
 	TutorialBuildingObject(LuaObject* templateData);
 
+	void initializeTransientMembers();
+
 protected:
 	TutorialBuildingObject(DummyConstructorParameter* param);
 
@@ -67,6 +69,8 @@ public:
 	TutorialBuildingObjectImplementation(LuaObject* templateData);
 
 	TutorialBuildingObjectImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	TutorialBuildingObject* _this;
 
@@ -104,6 +108,8 @@ public:
 	TutorialBuildingObjectAdapter(TutorialBuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 };
 
