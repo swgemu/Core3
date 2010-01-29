@@ -176,6 +176,8 @@ public:
 
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
+	void setMood(byte moodID, bool notifyClient = true);
+
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -474,6 +476,8 @@ public:
 
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
+	void setMood(byte moodID, bool notifyClient = true);
+
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -658,6 +662,8 @@ public:
 	void updateGroup(GroupObject* group, bool notifyClient);
 
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
+
+	void setMood(byte moodID, bool notifyClient);
 
 	void activateQueueAction();
 

@@ -63,6 +63,15 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
+		StringTokenizer tokenizer(arguments.toString());
+
+		if (!tokenizer.hasMoreTokens())
+			return false;
+
+		uint8 moodid = (uint8)tokenizer.getIntToken();
+
+		creature->setMood(moodid);
+
 		return true;
 	}
 

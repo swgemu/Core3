@@ -80,6 +80,10 @@ void PlayerObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	drinkFillingMax = 0;
 
 	jediState = 0;
+
+	//adminLevel = 5;
+
+	//skillList.add(new QueueCommand("admin", server));
 }
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {

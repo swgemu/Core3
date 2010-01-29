@@ -79,6 +79,14 @@ public:
 		addLongUpdate(0x06, creo->getGroupID());
 	}
 
+	void updateMoodID() {
+		addByteUpdate(0x0A, creo->getMoodID());
+	}
+
+	void updateMoodStr() {
+		addAsciiUpdate(0x04, creo->getMoodString());
+	}
+
 	/*
 
 	void updateInviterId() {
@@ -88,13 +96,7 @@ public:
 		insertLong(creo->getNewGroupInviteCounter());
 	}
 
-	void updateMoodID() {
-		addByteUpdate(0x0A, creo->getMoodID());
-	}
 
-	void updateMoodStr() {
-		addAsciiUpdate(0x04, creo->getMoodStr());
-	}
 
 	void updatePerformanceAnimation(String pAnimation) {
 		startUpdate(0x03);

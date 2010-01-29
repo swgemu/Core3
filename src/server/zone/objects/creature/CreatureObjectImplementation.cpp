@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/creature/UpdatePVPStatusMessage.h"
+#include "server/zone/objects/player/Races.h"
+
 #include "CreatureFlag.h"
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -164,6 +166,7 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	}
 
 	speedTempl.pop();
+
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -552,6 +555,20 @@ void CreatureObjectImplementation::updateGroup(GroupObject* grp, bool notifyClie
 	delta->close();
 
 	broadcastMessage(delta, true);
+}
+
+void CreatureObjectImplementation::setMood(byte mood, bool notifyClient) {
+	moodID = mood;
+	moodString = Races::getMoodStr(Races::getMood(moodID));
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		dcreo6->updateMoodID();
+		dcreo6->updateMoodStr();
+		dcreo6->close();
+
+		broadcastMessage(dcreo6, true);
+	}
 }
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments) {

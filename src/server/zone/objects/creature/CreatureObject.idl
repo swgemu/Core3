@@ -434,6 +434,14 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments);
 	
+	/**
+	 * Sets characters mood
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param moodID mood to set
+	 */
+	public native void setMood(byte moodID, boolean notifyClient = true);
+	
 	public native void activateQueueAction();
 	
 	public native unicode getCreatureName();
