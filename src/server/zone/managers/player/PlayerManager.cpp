@@ -108,7 +108,6 @@ PlayerManagerImplementation::PlayerManagerImplementation(DummyConstructorParamet
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
-	PlayerManagerImplementation::finalize();
 }
 
 

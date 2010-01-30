@@ -29,9 +29,11 @@ TravelBuildingObjectImplementation::TravelBuildingObjectImplementation(DummyCons
 }
 
 TravelBuildingObjectImplementation::~TravelBuildingObjectImplementation() {
-	TravelBuildingObjectImplementation::finalize();
 }
 
+
+void TravelBuildingObjectImplementation::finalize() {
+}
 
 void TravelBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TravelBuildingObjectHelper::instance());

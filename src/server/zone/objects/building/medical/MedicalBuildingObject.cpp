@@ -29,9 +29,11 @@ MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(DummyCo
 }
 
 MedicalBuildingObjectImplementation::~MedicalBuildingObjectImplementation() {
-	MedicalBuildingObjectImplementation::finalize();
 }
 
+
+void MedicalBuildingObjectImplementation::finalize() {
+}
 
 void MedicalBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MedicalBuildingObjectHelper::instance());

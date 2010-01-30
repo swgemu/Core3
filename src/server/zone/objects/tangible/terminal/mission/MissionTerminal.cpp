@@ -45,9 +45,11 @@ MissionTerminalImplementation::MissionTerminalImplementation(DummyConstructorPar
 }
 
 MissionTerminalImplementation::~MissionTerminalImplementation() {
-	MissionTerminalImplementation::finalize();
 }
 
+
+void MissionTerminalImplementation::finalize() {
+}
 
 void MissionTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(MissionTerminalHelper::instance());

@@ -41,9 +41,11 @@ WearableObjectImplementation::WearableObjectImplementation(DummyConstructorParam
 }
 
 WearableObjectImplementation::~WearableObjectImplementation() {
-	WearableObjectImplementation::finalize();
 }
 
+
+void WearableObjectImplementation::finalize() {
+}
 
 void WearableObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WearableObjectHelper::instance());

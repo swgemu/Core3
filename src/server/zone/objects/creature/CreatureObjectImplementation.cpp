@@ -179,8 +179,8 @@ void CreatureObjectImplementation::finalize() {
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player == _this) {
-		CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
-		player->sendMessage(msg);
+		/*CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
+		player->sendMessage(msg);*/
 	}
 
 	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(_this);

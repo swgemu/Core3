@@ -43,9 +43,11 @@ TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(Dummy
 }
 
 TutorialBuildingObjectImplementation::~TutorialBuildingObjectImplementation() {
-	TutorialBuildingObjectImplementation::finalize();
 }
 
+
+void TutorialBuildingObjectImplementation::finalize() {
+}
 
 void TutorialBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TutorialBuildingObjectHelper::instance());

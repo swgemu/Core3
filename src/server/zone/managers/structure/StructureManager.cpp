@@ -47,7 +47,6 @@ StructureManagerImplementation::StructureManagerImplementation(DummyConstructorP
 }
 
 StructureManagerImplementation::~StructureManagerImplementation() {
-	StructureManagerImplementation::finalize();
 }
 
 

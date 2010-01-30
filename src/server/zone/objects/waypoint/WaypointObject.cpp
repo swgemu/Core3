@@ -110,9 +110,11 @@ WaypointObjectImplementation::WaypointObjectImplementation(DummyConstructorParam
 }
 
 WaypointObjectImplementation::~WaypointObjectImplementation() {
-	WaypointObjectImplementation::finalize();
 }
 
+
+void WaypointObjectImplementation::finalize() {
+}
 
 void WaypointObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WaypointObjectHelper::instance());

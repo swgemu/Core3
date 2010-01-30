@@ -308,7 +308,6 @@ ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : Manag
 }
 
 ZoneImplementation::~ZoneImplementation() {
-	ZoneImplementation::finalize();
 }
 
 

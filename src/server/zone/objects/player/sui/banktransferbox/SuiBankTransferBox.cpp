@@ -83,9 +83,11 @@ SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(DummyConstruc
 }
 
 SuiBankTransferBoxImplementation::~SuiBankTransferBoxImplementation() {
-	SuiBankTransferBoxImplementation::finalize();
 }
 
+
+void SuiBankTransferBoxImplementation::finalize() {
+}
 
 void SuiBankTransferBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiBankTransferBoxHelper::instance());

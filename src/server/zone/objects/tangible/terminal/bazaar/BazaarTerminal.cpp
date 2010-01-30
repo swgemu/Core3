@@ -87,9 +87,11 @@ BazaarTerminalImplementation::BazaarTerminalImplementation(DummyConstructorParam
 }
 
 BazaarTerminalImplementation::~BazaarTerminalImplementation() {
-	BazaarTerminalImplementation::finalize();
 }
 
+
+void BazaarTerminalImplementation::finalize() {
+}
 
 void BazaarTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(BazaarTerminalHelper::instance());

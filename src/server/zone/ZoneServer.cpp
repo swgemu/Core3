@@ -716,7 +716,6 @@ ZoneServerImplementation::ZoneServerImplementation(DummyConstructorParameter* pa
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
-	ZoneServerImplementation::finalize();
 }
 
 

@@ -83,7 +83,6 @@ PlanetManagerImplementation::PlanetManagerImplementation(DummyConstructorParamet
 }
 
 PlanetManagerImplementation::~PlanetManagerImplementation() {
-	PlanetManagerImplementation::finalize();
 }
 
 

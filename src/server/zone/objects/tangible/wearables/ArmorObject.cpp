@@ -41,9 +41,11 @@ ArmorObjectImplementation::ArmorObjectImplementation(DummyConstructorParameter* 
 }
 
 ArmorObjectImplementation::~ArmorObjectImplementation() {
-	ArmorObjectImplementation::finalize();
 }
 
+
+void ArmorObjectImplementation::finalize() {
+}
 
 void ArmorObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ArmorObjectHelper::instance());

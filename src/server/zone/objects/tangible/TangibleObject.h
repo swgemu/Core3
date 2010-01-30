@@ -125,8 +125,6 @@ public:
 
 	TangibleObjectImplementation(DummyConstructorParameter* param);
 
-	void finalize();
-
 	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
@@ -179,6 +177,8 @@ public:
 protected:
 	virtual ~TangibleObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -207,8 +207,6 @@ public:
 	TangibleObjectAdapter(TangibleObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void finalize();
 
 	void initializeTransientMembers();
 

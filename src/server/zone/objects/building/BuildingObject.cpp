@@ -237,9 +237,11 @@ BuildingObjectImplementation::BuildingObjectImplementation(DummyConstructorParam
 }
 
 BuildingObjectImplementation::~BuildingObjectImplementation() {
-	BuildingObjectImplementation::finalize();
 }
 
+
+void BuildingObjectImplementation::finalize() {
+}
 
 void BuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(BuildingObjectHelper::instance());

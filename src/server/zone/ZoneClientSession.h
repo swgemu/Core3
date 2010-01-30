@@ -39,6 +39,8 @@ using namespace server::zone;
 
 #include "engine/service/proto/BasePacket.h"
 
+#include "engine/core/ManagedObject.h"
+
 #include "system/net/SocketAddress.h"
 
 #include "system/net/Socket.h"

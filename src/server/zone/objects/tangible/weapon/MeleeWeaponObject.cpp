@@ -41,9 +41,11 @@ MeleeWeaponObjectImplementation::MeleeWeaponObjectImplementation(DummyConstructo
 }
 
 MeleeWeaponObjectImplementation::~MeleeWeaponObjectImplementation() {
-	MeleeWeaponObjectImplementation::finalize();
 }
 
+
+void MeleeWeaponObjectImplementation::finalize() {
+}
 
 void MeleeWeaponObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MeleeWeaponObjectHelper::instance());

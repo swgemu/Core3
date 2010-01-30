@@ -97,6 +97,8 @@ public:
 protected:
 	virtual ~MissionTerminalImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -67,7 +67,6 @@ RadialManagerImplementation::RadialManagerImplementation(DummyConstructorParamet
 }
 
 RadialManagerImplementation::~RadialManagerImplementation() {
-	RadialManagerImplementation::finalize();
 }
 
 

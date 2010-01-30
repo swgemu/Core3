@@ -80,6 +80,8 @@ public:
 protected:
 	virtual ~TutorialBuildingObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

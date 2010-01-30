@@ -227,9 +227,11 @@ GroupObjectImplementation::GroupObjectImplementation(DummyConstructorParameter* 
 }
 
 GroupObjectImplementation::~GroupObjectImplementation() {
-	GroupObjectImplementation::finalize();
 }
 
+
+void GroupObjectImplementation::finalize() {
+}
 
 void GroupObjectImplementation::_initializeImplementation() {
 	_setClassHelper(GroupObjectHelper::instance());

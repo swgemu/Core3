@@ -45,12 +45,9 @@ which carries forward this exception.
 package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
-import engine.lua.LuaObject;
-import system.util.Vector;
 import server.zone.objects.scene.variables.ParameterizedStringId;
 import server.zone.objects.creature.professions.SkillBox;
 import server.zone.objects.group.GroupObject;
-
 
 //import server.zone.objects.player.professions.SkillBox;
 
@@ -59,6 +56,11 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;
 include server.zone.objects.creature.variables.CommandQueueAction;
+
+import engine.core.ManagedObject;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import system.lang.Time;
 
 class CreatureObject extends TangibleObject {
 	protected int bankCredits;
@@ -167,7 +169,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native void finalize();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }

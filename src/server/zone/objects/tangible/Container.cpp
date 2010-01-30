@@ -64,9 +64,11 @@ ContainerImplementation::ContainerImplementation(DummyConstructorParameter* para
 }
 
 ContainerImplementation::~ContainerImplementation() {
-	ContainerImplementation::finalize();
 }
 
+
+void ContainerImplementation::finalize() {
+}
 
 void ContainerImplementation::_initializeImplementation() {
 	_setClassHelper(ContainerHelper::instance());

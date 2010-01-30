@@ -29,9 +29,11 @@ CloningBuildingObjectImplementation::CloningBuildingObjectImplementation(DummyCo
 }
 
 CloningBuildingObjectImplementation::~CloningBuildingObjectImplementation() {
-	CloningBuildingObjectImplementation::finalize();
 }
 
+
+void CloningBuildingObjectImplementation::finalize() {
+}
 
 void CloningBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CloningBuildingObjectHelper::instance());

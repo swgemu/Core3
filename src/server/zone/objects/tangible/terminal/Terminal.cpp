@@ -41,9 +41,11 @@ TerminalImplementation::TerminalImplementation(DummyConstructorParameter* param)
 }
 
 TerminalImplementation::~TerminalImplementation() {
-	TerminalImplementation::finalize();
 }
 
+
+void TerminalImplementation::finalize() {
+}
 
 void TerminalImplementation::_initializeImplementation() {
 	_setClassHelper(TerminalHelper::instance());

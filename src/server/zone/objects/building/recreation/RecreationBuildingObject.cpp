@@ -29,9 +29,11 @@ RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(D
 }
 
 RecreationBuildingObjectImplementation::~RecreationBuildingObjectImplementation() {
-	RecreationBuildingObjectImplementation::finalize();
 }
 
+
+void RecreationBuildingObjectImplementation::finalize() {
+}
 
 void RecreationBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(RecreationBuildingObjectHelper::instance());

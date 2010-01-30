@@ -62,6 +62,8 @@ public:
 protected:
 	virtual ~RecreationBuildingObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

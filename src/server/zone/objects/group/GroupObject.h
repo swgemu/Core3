@@ -146,6 +146,8 @@ public:
 protected:
 	virtual ~GroupObjectImplementation();
 
+	void finalize();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);

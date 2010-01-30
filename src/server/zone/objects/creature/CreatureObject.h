@@ -81,9 +81,13 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "engine/core/ManagedObject.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
+
+#include "system/lang/Time.h"
 
 namespace server {
 namespace zone {
