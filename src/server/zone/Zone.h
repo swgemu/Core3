@@ -59,6 +59,20 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace planet {
+
+class PlanetManager;
+
+} // namespace planet
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::planet;
+
 #include "server/zone/managers/planet/HeightMap.h"
 
 #include "server/zone/managers/object/ObjectMap.h"
@@ -103,6 +117,8 @@ public:
 	void dropSceneObject(unsigned long long objectID);
 
 	int getZoneID();
+
+	PlanetManager* getPlanetManager();
 
 	ZoneServer* getZoneServer();
 
@@ -149,7 +165,7 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ObjectMap objectMap;
 
-	ManagedReference<StructureManager* > structureManager;
+	ManagedReference<PlanetManager* > planetManager;
 
 	ManagedReference<ZoneServer* > server;
 
@@ -191,6 +207,8 @@ public:
 	void dropSceneObject(unsigned long long objectID);
 
 	int getZoneID();
+
+	PlanetManager* getPlanetManager();
 
 	ZoneServer* getZoneServer();
 
@@ -266,6 +284,8 @@ public:
 	void dropSceneObject(unsigned long long objectID);
 
 	int getZoneID();
+
+	PlanetManager* getPlanetManager();
 
 	ZoneServer* getZoneServer();
 

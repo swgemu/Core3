@@ -1,97 +1,96 @@
 /*
-Copyright (C) 2007 <SWGEmu>
-
-This File is part of Core3.
-
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
-
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
-
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ * RegionMap.h
+ *
+ *  Created on: 30/01/2010
+ *      Author: victor
+ */
 
 #ifndef REGIONMAP_H_
 #define REGIONMAP_H_
 
-//This should read the stf names in and put them in a file somewhere,
-//then add them to each zone.
-//String zone->getRegionName(float x, float y);
-//Would return something like @rori_region_names:narmle
+#include "engine/engine.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
-class RegionMap {
-public:
-	RegionMap(uint32 planetID) {}
-	~RegionMap() {}
-};
-
-class Region {
-	uint32 zoneID;
-	uint32 regionID;
-	String stfName;
-
-	Area* boundingBox;
+class Region : public Serializable {
+protected:
+	StringId name;
+	float x, y;
+	float radius;
+	float radius2;
 
 public:
-	Region() {}
-	~Region() {}
+	Region(const String& fullName, float posX, float posY, float radi) {
+		name.setStringId(fullName);
+		x = posX;
+		y = posY;
+		radius = radi;
+		radius2 = radius * radius;
 
-	//Setters
-	void setZoneID(uint32 zid) {
-		zoneID = zid;
+		addSerializableVariable("name", &name);
+		addSerializableVariable("x", &x);
+		addSerializableVariable("y", &y);
+		addSerializableVariable("radius", &radius);
+		addSerializableVariable("radius2", &radius2);
 	}
 
-	void setRegionID(uint32 rid) {
-		regionID = rid;
+	bool containsPoint(float px, float py) {
+		return (((px - x) * (px - x)) + ((py - y) * (py - y)) <= radius2 );
 	}
 
-	void setStfName(const String& stfname) {
-		stfName = stfname;
+	inline StringId getName() {
+		return name;
 	}
 
-	//Getters
-	uint32 getZoneID() {
-		return zoneID;
+	inline float getX() {
+		return x;
 	}
 
-	uint32 getRegionID() {
-		return regionID;
+	inline float getY() {
+		return y;
 	}
 
-	String getStfName() {
-		return stfName;
+	inline float getRadius() {
+		return radius;
+	}
+
+};
+
+class RegionMap : public Serializable {
+	Vector<Region*> regions;
+
+public:
+	RegionMap() {
+		addSerializableVariable("regions", &regions);
+	}
+
+	~RegionMap() {
+		for (int i = 0; i < regions.size(); ++i) {
+			delete regions.get(i);
+		}
+	}
+
+	void addRegion(const String& name, float x, float y, float radius) {
+		regions.add(new Region(name, x, y, radius));
+	}
+
+	bool getRegion(StringId* name, float x, float y) {
+		for (int i = 0; i < regions.size(); ++i) {
+			Region* region = regions.get(i);
+
+			if (region->containsPoint(x, y)) {
+				*name = region->getName();
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	inline int size() {
+		return regions.size();
 	}
 };
+
 
 #endif /* REGIONMAP_H_ */

@@ -97,6 +97,8 @@ private:
 
 	void loadStaticBanks();
 
+	void loadStaticBazaars();
+
 	void loadPlayerStructures();
 
 	BuildingObject* loadStaticBuilding(unsigned long long oid);

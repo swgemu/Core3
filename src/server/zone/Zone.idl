@@ -55,6 +55,7 @@ import server.zone.ZoneProcessServerImplementation;
 import server.zone.ZoneServer;
 import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
+import server.zone.managers.planet.PlanetManager;
 
 
 include server.zone.managers.planet.HeightMap;
@@ -71,7 +72,9 @@ class Zone extends ManagedObject implements QuadTree {
 	@dereferenced
 	private ObjectMap objectMap;
 	
-	private StructureManager structureManager; // move to planet manager when converted
+	//private StructureManager structureManager; // move to planet manager when converted
+	
+	private PlanetManager planetManager;
 	
 	private ZoneServer server;
 
@@ -121,6 +124,10 @@ class Zone extends ManagedObject implements QuadTree {
 	}
 	
 	//public native SceneObject lookupObject(unsigned long objectID);
+	
+	public PlanetManager getPlanetManager() {
+		return planetManager;
+	}
 
 	public ZoneServer getZoneServer() {
 		return server;

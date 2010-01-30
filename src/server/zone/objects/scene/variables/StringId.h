@@ -74,6 +74,18 @@ public:
 	StringId(const String& fil, const String& stringId);
 	StringId(const UnicodeString& custom);
 
+	StringId& operator=(const StringId& id) {
+		if (&id == this)
+			return *this;
+
+		file = id.file;
+		stringID = id.stringID;
+
+		customName = id.customName;
+
+		return *this;
+	}
+
 	void clear();
 
 	void getFullPath(String& str) const {

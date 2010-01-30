@@ -67,6 +67,8 @@ which carries forward this exception.
 #include "ZoneProcessServerImplementation.h"
 #include "objects/scene/SceneObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+
 
 ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	zoneID = id;
@@ -84,7 +86,7 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 
 	//galacticTime = new Time();
 
-	structureManager = NULL;
+	planetManager = NULL;
 }
 
 void ZoneImplementation::initializeTransientMembers() {
@@ -113,8 +115,8 @@ void ZoneImplementation::startManagers() {
 		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 	}
 
-	structureManager = new StructureManager(_this, processor);
-	structureManager->loadStructures();
+	planetManager = new PlanetManager(_this, processor);
+	planetManager->initialize();
 	/*creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
 

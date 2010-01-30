@@ -658,6 +658,8 @@ public:
 
 	bool isCellObject();
 
+	bool isBazaarTerminal();
+
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -1287,6 +1289,8 @@ public:
 
 	bool isCellObject();
 
+	bool isBazaarTerminal();
+
 	void setPosition(float x, float z, float y);
 
 	void initializePosition(float x, float z, float y);
@@ -1513,6 +1517,8 @@ public:
 	bool isArmorObject();
 
 	bool isCellObject();
+
+	bool isBazaarTerminal();
 
 	void setPosition(float x, float z, float y);
 

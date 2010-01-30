@@ -11,18 +11,111 @@
 #include "server/zone/Zone.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
+#include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
 #include "server/db/ObjectDatabase.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneProcessServerImplementation* processor) :
-	ManagedObjectImplementation(), Logger("StructureManager") {
+	ManagedObjectImplementation() {
 	StructureManagerImplementation::zone = zone;
 	StructureManagerImplementation::server = processor;
 
+	String managerName = "StructureManager ";
+	setLoggingName(managerName + Planet::getPlanetName(zone->getZoneID()));
+
 	setGlobalLogging(true);
 	setLogging(false);
+}
+
+void StructureManagerImplementation::loadStaticBazaars() {
+	int planetid = zone->getZoneID();
+	ZoneServer* zoneServer = zone->getZoneServer();
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	uint32 bazaarCRC = String("object/tangible/terminal/shared_terminal_bazaar.iff").hashCode();
+
+	StringBuffer query;
+
+	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
+	query << " AND file = 'object/tangible/terminal/shared_terminal_bazaar.iff';";
+
+	ResultSet* result = NULL;
+
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+
+		uint64 parentId = 0;
+		uint64 objectID = 0;
+		float positionX, positionZ, positionY;
+		SceneObject* cell;
+		BazaarTerminal* bazaar;
+
+		while (result->next()) {
+			parentId = result->getUnsignedLong(2);
+			objectID = result->getUnsignedLong(1);
+
+			SceneObject* savedObject = zoneServer->getObject(objectID);
+
+			if (savedObject != NULL)
+				continue;
+
+			positionX = result->getFloat(8);
+			positionZ = result->getFloat(9);
+			positionY = result->getFloat(10);
+
+			StringId region;
+
+			if (parentId == 0) {
+				if (!planetManager->getRegion(region, positionX, positionY)) {
+					StringBuffer msg;
+					msg << "could not find region for bazaar " << dec << objectID;
+					msg << " positionX " << positionX << " positionY " << positionY;
+					error(msg.toString());
+				}
+
+				cell = NULL;
+			} else {
+				cell = zoneServer->getObject(parentId);
+				SceneObject* buildingObject = cell->getParent();
+
+				if (!planetManager->getRegion(region, buildingObject->getPositionX(), buildingObject->getPositionY())) {
+					StringBuffer msg;
+					msg << "could not find region for bazaar " << dec << objectID << " parentid " << dec << parentId;
+					msg << " positionX " << buildingObject->getPositionX() << " positionY " << buildingObject->getPositionY();
+					error(msg.toString());
+				}
+			}
+
+			String regionCity = region.getStringID();
+
+			bazaar = (BazaarTerminal*) zoneServer->createStaticObject(bazaarCRC, objectID);
+			bazaar->setBazaarRegion(regionCity);
+			bazaar->setStaticObject(true);
+
+			if (cell != NULL)
+				cell->addObject(bazaar, -1);
+
+			bazaar->initializePosition(positionX, positionZ, positionY);
+			bazaar->insertToZone(zone);
+
+			if (cell != NULL)
+				cell->updateToDatabase();
+			else
+				bazaar->updateToDatabase();
+		}
+
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	} catch (...) {
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBazaars()\n");
+	}
+
+	delete result;
 }
 
 void StructureManagerImplementation::loadStaticBanks() {
@@ -38,8 +131,10 @@ void StructureManagerImplementation::loadStaticBanks() {
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid;
 	query << " AND file = 'object/tangible/terminal/shared_terminal_bank.iff';";
 
+	ResultSet* result = NULL;
+
 	try {
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+		result = ServerDatabase::instance()->executeQuery(query);
 
 		BankTerminal* bank = NULL;
 		CellObject* cell = NULL;
@@ -91,8 +186,10 @@ void StructureManagerImplementation::loadStaticBanks() {
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
+		error("unreported exception caught in PlanetManagerImplementation::loadStaticBanks()\n");
 	}
+
+	delete result;
 
 	//unlock();
 }
