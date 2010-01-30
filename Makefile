@@ -49,6 +49,8 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/creature/CreatureObject.idl \
 				server/zone/objects/player/PlayerObject.idl \
 				server/zone/objects/player/PlayerCreature.idl \
+				server/zone/objects/player/sui/SuiBox.idl \
+				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/intangible/IntangibleObject.idl \
 				server/zone/objects/group/GroupObject.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
