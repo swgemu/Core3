@@ -68,6 +68,7 @@ which carries forward this exception.
 #include "packets/object/ObjectMenuRequest.h"
 #include "packets/object/TargetUpdate.h"
 #include "packets/object/ObjectMenuSelect.h"
+#include "packets/object/MissionListRequestCallback.h"
 
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/NewTicketActivityResponseMessage.h"
@@ -127,6 +128,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 
 	objectMessageControllerFactory->registerObject<DataTransformCallback>(0x71);
 	objectMessageControllerFactory->registerObject<DataTransformWithParentCallback>(0xF1);
+	objectMessageControllerFactory->registerObject<MissionListRequestCallback>(0xF5);
 	objectMessageControllerFactory->registerObject<CommandQueueEnqueueCallback>(0x116);
 	objectMessageControllerFactory->registerObject<CommandQueueRemoveCallback>(0x117);
 	objectMessageControllerFactory->registerObject<TargetUpdateCallback>(0x126);

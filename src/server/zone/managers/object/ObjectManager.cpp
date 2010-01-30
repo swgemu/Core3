@@ -28,6 +28,7 @@
 #include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/tangible/terminal/bank/BankTerminal.h"
 #include "server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/db/ServerDatabase.h"
@@ -111,6 +112,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Terminal>(SceneObject::SPACETERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
+	objectFactory.registerObject<MissionTerminal>(SceneObject::MISSIONTERMINAL);
 	objectFactory.registerObject<BazaarTerminal>(SceneObject::BAZAAR);
 	objectFactory.registerObject<BankTerminal>(SceneObject::BANK);
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObject::NEWBIETUTORIALTERMINAL);

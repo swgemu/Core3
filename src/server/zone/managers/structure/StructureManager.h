@@ -99,6 +99,8 @@ private:
 
 	void loadStaticBazaars();
 
+	void loadStaticMissionTerminals();
+
 	void loadPlayerStructures();
 
 	BuildingObject* loadStaticBuilding(unsigned long long oid);

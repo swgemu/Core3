@@ -76,6 +76,7 @@ IDL_SOURCES = 	server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/Terminal.idl \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl \
 				server/zone/objects/mission/MissionObject.idl \
+				server/zone/objects/tangible/terminal/mission/MissionTerminal.idl \
 				server/zone/managers/radial/RadialManager.idl
 				
 
