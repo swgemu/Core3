@@ -85,8 +85,9 @@ which carries forward this exception.
 #include "managers/group/GroupManager.h"
 #include "managers/skills/SkillManager.h"
 #include "managers/loot/LootManager.h"
-#include "managers/sui/SuiManager.h"
 */
+
+#include "managers/sui/SuiManager.h"
 
 #include "managers/name/NameManager.h"
 
@@ -100,6 +101,7 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	procThreadCount = processingThreads;
 
 	nameManager = new NameManager(this);
+	suiManager = new SuiManager(this);
 
 	zonephandler = NULL;
 
@@ -119,6 +121,16 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 	if (zonephandler != NULL) {
 		delete zonephandler;
 		zonephandler = NULL;
+	}
+
+	if (nameManager != NULL) {
+		delete nameManager;
+		nameManager = NULL;
+	}
+
+	if (suiManager != NULL) {
+		delete suiManager;
+		suiManager = NULL;
 	}
 }
 

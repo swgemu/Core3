@@ -109,6 +109,10 @@ class PlayerObject extends IntangibleObject {
 		Logger.setLoggingName("PlayerObject");
 	}
 	
+	public void finalize() {
+		
+	}
+	
 	@local
 	public native void loadTemplateData(LuaObject templateData);
 	public native void initializeTransientMembers();

@@ -57,6 +57,8 @@ public:
 
 	MissionObjectImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
@@ -97,6 +99,8 @@ public:
 	MissionObjectAdapter(MissionObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

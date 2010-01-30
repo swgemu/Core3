@@ -53,6 +53,42 @@ class ObjectMenuResponse;
 
 using namespace server::zone::packets::object;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace banktransferbox {
+
+class SuiBankTransferBox;
+
+} // namespace banktransferbox
+} // namespace sui
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sui::banktransferbox;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+
+class SuiBox;
+
+} // namespace sui
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sui;
+
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"

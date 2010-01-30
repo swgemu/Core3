@@ -121,6 +121,8 @@ class ChatRoom;
 
 using namespace server::chat::room;
 
+#include "server/zone/objects/player/sui/SuiBox.h"
+
 #include "server/zone/objects/creature/CreatureFlag.h"
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
@@ -128,6 +130,8 @@ using namespace server::chat::room;
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
+
+#include "system/util/VectorMap.h"
 
 #include "engine/util/QuadTreeEntry.h"
 
@@ -244,6 +248,20 @@ public:
 
 	int getSkillPoints();
 
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	int getLotsRemaining();
+
+	int getFactionStatus();
+
 protected:
 	PlayerCreature(DummyConstructorParameter* param);
 
@@ -281,6 +299,8 @@ protected:
 
 	unsigned int accountID;
 
+	unsigned int suiBoxNextID;
+
 	String raceFile;
 
 	byte raceID;
@@ -291,7 +311,7 @@ protected:
 
 	UnicodeString biography;
 
-	byte lotsRemaining;
+	int lotsRemaining;
 
 	PlayerDisconnectEvent* disconnectEvent;
 
@@ -309,6 +329,10 @@ protected:
 
 	Time firstIncapacitationTime;
 
+private:
+	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
+
+protected:
 	int pvpRating;
 
 	int factionStatus;
@@ -417,6 +441,20 @@ public:
 	void removeChatRoom(ChatRoom* room);
 
 	int getSkillPoints();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	int getLotsRemaining();
+
+	int getFactionStatus();
 
 	PlayerCreature* _this;
 
@@ -538,6 +576,20 @@ public:
 	void removeChatRoom(ChatRoom* room);
 
 	int getSkillPoints();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID);
+
+	void addSuiBox(SuiBox* sui);
+
+	int getLotsRemaining();
+
+	int getFactionStatus();
 
 protected:
 	UnicodeString _param0_setBiography__UnicodeString_;

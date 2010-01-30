@@ -49,6 +49,11 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.player.sui.banktransferbox.SuiBankTransferBox;
+import server.zone.objects.player.sui.SuiBox;
+
+
+include server.zone.objects.player.sui.SuiWindowType;
 
 class BankTerminal extends Terminal {
 	
@@ -85,7 +90,16 @@ class BankTerminal extends Terminal {
 		if (selectedID == 245) {
 			SceneObject bank = player.getSlottedObject("bank");
 			bank.openContainerTo(player);
-		}
+		} else if (selectedID == 20) {
+			SuiBankTransferBox sui = new SuiBankTransferBox(this, player, SuiWindowType.BANK_TRANSFER);
+
+			sui.addCash(player.getCashCredits());
+			sui.addBank(player.getBankCredits());
+			
+			player.addSuiBox(sui);
+			player.sendMessage(sui.generateMessage());
+		} else
+			return 1;
 		
 		return 0;
 	}

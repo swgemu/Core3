@@ -150,13 +150,16 @@ CellObjectImplementation::CellObjectImplementation(LuaObject* templateData) : Sc
 	SceneObjectImplementation::containerType = 2;
 }
 
+void CellObjectImplementation::finalize() {
+}
+
 int CellObjectImplementation::getCellNumber() {
-	// server/zone/objects/cell/CellObject.idl(71):  return cellNumber;
+	// server/zone/objects/cell/CellObject.idl(74):  return cellNumber;
 	return cellNumber;
 }
 
 void CellObjectImplementation::setCellNumber(int number) {
-	// server/zone/objects/cell/CellObject.idl(75):  cellNumber = number;
+	// server/zone/objects/cell/CellObject.idl(78):  cellNumber = number;
 	cellNumber = number;
 }
 
@@ -178,9 +181,12 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(getCellNumber());
+		finalize();
 		break;
 	case 9:
+		resp->insertSignedInt(getCellNumber());
+		break;
+	case 10:
 		setCellNumber(inv->getSignedIntParameter());
 		break;
 	default:
@@ -196,6 +202,10 @@ void CellObjectAdapter::initializeTransientMembers() {
 
 void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((CellObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void CellObjectAdapter::finalize() {
+	((CellObjectImplementation*) impl)->finalize();
 }
 
 int CellObjectAdapter::getCellNumber() {

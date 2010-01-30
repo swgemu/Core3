@@ -67,6 +67,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void finalize();
+
 	int getCellNumber();
 
 	void setCellNumber(int number);
@@ -111,6 +113,8 @@ public:
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void finalize();
 
 	int getCellNumber();
 

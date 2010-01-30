@@ -80,6 +80,19 @@ class ChatManager;
 
 using namespace server::chat;
 
+
+namespace server {
+ namespace zone {
+  namespace managers {
+   namespace sui {
+    class SuiManager;
+   }
+  }
+ }
+}
+
+using namespace server::zone::managers::sui;
+
 namespace server {
 namespace zone {
 
@@ -103,6 +116,8 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 
 	//Static Managers
 	NameManager* nameManager;
+	SuiManager* suiManager;
+
 
 	/*CombatManager* combatManager;
 	ProfessionManager* professionManager;
@@ -110,7 +125,6 @@ class ZoneProcessServerImplementation : public ServiceMessageHandlerThread {
 	RadialManager* radialManager;
 	GroupManager* groupManager;
 	LootManager* lootManager;
-	SuiManager* suiManager;
 	*/
 
 public:
@@ -146,6 +160,10 @@ public:
 
 	inline ChatManager* getChatManager() {
 		return server->getChatManager();
+	}
+
+	inline SuiManager* getSuiManager() {
+		return suiManager;
 	}
 
 	/*inline UserManager* getUserManager() {
@@ -196,9 +214,7 @@ public:
 		return lootManager;
 	}
 
-	inline SuiManager* getSuiManager() {
-		return suiManager;
-	}
+
 
 	*/
 

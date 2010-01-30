@@ -67,6 +67,9 @@ class CellObject extends SceneObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	
+	public void finalize() {
+	}
+	
 	public int getCellNumber() {
 		return cellNumber;
 	}

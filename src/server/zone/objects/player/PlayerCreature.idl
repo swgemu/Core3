@@ -46,6 +46,7 @@ package server.zone.objects.player;
 
 import system.lang.Time;
 import system.util.SortedVector;
+import system.util.VectorMap;
 import engine.util.QuadTreeEntry;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneClientSession;
@@ -58,6 +59,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.chat.room.ChatRoom;
+include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.creature.CreatureFlag;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 
@@ -73,6 +75,8 @@ class PlayerCreature extends CreatureObject {
 	protected Time logoutTimeStamp;
 	
 	protected unsigned int accountID;
+	
+	protected unsigned int suiBoxNextID;
 
 	protected string raceFile; //race iff, defines the race file of the character being created.
 	protected byte raceID;
@@ -82,7 +86,7 @@ class PlayerCreature extends CreatureObject {
 
 	protected unicode biography; //char biography
 
-	protected byte lotsRemaining;
+	protected int lotsRemaining;
 	
 	protected transient PlayerDisconnectEvent disconnectEvent;
 	protected transient PlayerRecoveryEvent recoveryEvent;
@@ -106,9 +110,14 @@ class PlayerCreature extends CreatureObject {
 	@dereferenced
 	protected Time firstIncapacitationTime;
 	
+	@dereferenced
+	VectorMap<unsigned int, SuiBox> suiBoxes;
+	
 	protected int pvpRating;
 
 	protected int factionStatus;
+	
+	//protected BankTerminal registeredBank;
 	
 	public static final int ONLINE = 1;
 	public static final int OFFLINE = 2;
@@ -133,6 +142,11 @@ class PlayerCreature extends CreatureObject {
 		savedParentID = 0;
 		
 		skillPoints = 0;
+		
+		suiBoxNextID = 0;
+		
+		factionStatus = 0;
+		lotsRemaining = 0;
 		
 		super.pvpStatusBitmask = CreatureFlag.PLAYER;
 
@@ -312,6 +326,33 @@ class PlayerCreature extends CreatureObject {
 	
 	public int getSkillPoints() {
 		return skillPoints;
+	}
+	
+	public native unsigned int getNewSuiBoxID(unsigned int type);
+	
+	public boolean hasSuiBox(unsigned int boxID) {
+		return suiBoxes.contains(boxID);
+	}
+	
+	public SuiBox getSuiBox(unsigned int boxID) {
+		return suiBoxes.get(boxID);
+	}
+	
+	public void removeSuiBox(unsigned int boxID) {
+		suiBoxes.drop(boxID);
+	}
+	
+	public void addSuiBox(SuiBox sui) {
+		unsigned int key = sui.getBoxID();
+		suiBoxes.put(key, sui);
+	}
+	
+	public int getLotsRemaining() {
+		return lotsRemaining;
+	}
+	
+	public int getFactionStatus() {
+		return factionStatus;
 	}
 	
 }

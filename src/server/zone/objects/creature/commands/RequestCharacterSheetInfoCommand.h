@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "../../scene/SceneObject.h"
 
+#include "server/zone/packets/player/CharacterSheetResponseMessage.h"
+
 class RequestCharacterSheetInfoCommand : public QueueCommand {
 public:
 
@@ -62,6 +64,12 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return false;
+
+		if (!creature->isPlayerCreature())
+			return false;
+
+		BaseMessage* message = new CharacterSheetResponseMessage((PlayerCreature*)creature);
+		creature->sendMessage(message);
 
 		return true;
 	}

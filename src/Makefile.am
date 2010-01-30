@@ -66,6 +66,8 @@ core3_IDLS =	server/zone/ZoneServer.cpp \
 				server/zone/objects/tangible/Container.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/player/PlayerObject.cpp \
+				server/zone/objects/player/sui/SuiBox.cpp \
+				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/PlayerCreature.cpp \
 				server/zone/objects/cell/CellObject.cpp \
@@ -120,6 +122,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
 		server/zone/managers/professions/ProfessionManager.cpp \
+		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
@@ -138,6 +141,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/player/PlayerCreatureImplementation.cpp \
+		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \
 		server/zone/packets/object/ObjectControllerMessageCallback.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \

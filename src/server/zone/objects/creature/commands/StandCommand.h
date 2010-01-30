@@ -65,15 +65,15 @@ public:
 		if (!checkInvalidPostures(creature))
 			return false;
 
-		creature->setPosture(CreaturePosture::UPRIGHT);
+		//creature->setPosture(CreaturePosture::UPRIGHT);
 
-		/*StringTokenizer args(arguments.toString());
+		StringTokenizer args(arguments.toString());
 
 		int zoneid = args.getIntToken();
 		float posx = args.getFloatToken();
 		float posy = args.getFloatToken();
 
-		creature->switchZone(zoneid, posx, 0, posy);*/
+		creature->switchZone(zoneid, posx, 0, posy);
 
 
 		return true;

@@ -283,6 +283,8 @@ public:
 
 	PlayerObjectImplementation(DummyConstructorParameter* param);
 
+	void finalize();
+
 	void loadTemplateData(LuaObject* templateData);
 
 	void initializeTransientMembers();
@@ -383,6 +385,8 @@ public:
 	PlayerObjectAdapter(PlayerObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void finalize();
 
 	void initializeTransientMembers();
 

@@ -158,6 +158,8 @@ public:
 
 	void setBankCredits(int credits, bool notifyClient = true);
 
+	void setCashCredits(int credits, bool notifyClient = true);
+
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
 
 	void addSkillBox(const String& skillBox, bool notifyClient = true);
@@ -460,6 +462,8 @@ public:
 
 	void setBankCredits(int credits, bool notifyClient = true);
 
+	void setCashCredits(int credits, bool notifyClient = true);
+
 	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
 
 	void addSkillBox(const String& skillBox, bool notifyClient = true);
@@ -652,6 +656,8 @@ public:
 	void setTargetID(unsigned long long targetID, bool notifyClient);
 
 	void setBankCredits(int credits, bool notifyClient);
+
+	void setCashCredits(int credits, bool notifyClient);
 
 	void addSkillBox(const String& skillBox, bool notifyClient);
 

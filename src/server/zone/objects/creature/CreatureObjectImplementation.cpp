@@ -85,7 +85,7 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 
 void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 	bankCredits = 0;
-	cashCredits = 0;
+	cashCredits = 100;
 
 	pvpStatusBitmask = CreatureFlag::PLAYER;
 
@@ -167,6 +167,14 @@ void CreatureObjectImplementation::loadTemplateData(LuaObject* templateData) {
 
 	speedTempl.pop();
 
+}
+
+void CreatureObjectImplementation::finalize() {
+	for (int i = 0; i < commandQueue.size(); ++i) {
+		delete commandQueue.get(i);
+	}
+
+	commandQueue.removeAll();
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -405,6 +413,22 @@ void CreatureObjectImplementation::setBankCredits(int credits, bool notifyClient
 	if (notifyClient) {
 		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
 		delta->updateBankCredits();
+		delta->close();
+
+		sendMessage(delta);
+	}
+}
+
+
+void CreatureObjectImplementation::setCashCredits(int credits, bool notifyClient) {
+	if (cashCredits == credits)
+		return;
+
+	cashCredits = credits;
+
+	if (notifyClient) {
+		CreatureObjectDeltaMessage1* delta = new CreatureObjectDeltaMessage1(this);
+		delta->updateCashCredits();
 		delta->close();
 
 		sendMessage(delta);

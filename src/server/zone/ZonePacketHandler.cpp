@@ -73,6 +73,7 @@ which carries forward this exception.
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/NewTicketActivityResponseMessage.h"
 #include "packets/ui/CommoditiesItemTypeListResponse.h"
+#include "packets/ui/SuiEventNotificationCallback.h"
 
 #include "packets/player/NewbieTutorialRequest.h"
 
@@ -118,6 +119,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<ChatInstantMessageToCharacter>(0x84BB21F7);
 	messageCallbackFactory.registerObject<ChatSendToRoomCallback>(0x20e4dbe3);
 	messageCallbackFactory.registerObject<IsVendorOwnerMessageCallback>(0x21b55a3b);
+	messageCallbackFactory.registerObject<SuiEventNotificationCallback>(0x092D3564);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {

@@ -118,6 +118,9 @@ MissionObjectImplementation::MissionObjectImplementation(LuaObject* templateData
 	Logger::setLoggingName("MissionObject");
 }
 
+void MissionObjectImplementation::finalize() {
+}
+
 /*
  *	MissionObjectAdapter
  */
@@ -130,9 +133,12 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		finalize();
 		break;
 	case 7:
+		initializeTransientMembers();
+		break;
+	case 8:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -140,6 +146,10 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
+}
+
+void MissionObjectAdapter::finalize() {
+	((MissionObjectImplementation*) impl)->finalize();
 }
 
 void MissionObjectAdapter::initializeTransientMembers() {

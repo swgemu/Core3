@@ -166,9 +166,7 @@ class CreatureObject extends TangibleObject {
 		loadTemplateData(templateData);
 	}
 	
-	public void finalize() {
-		
-	}
+	public native void finalize();
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -340,13 +338,22 @@ class CreatureObject extends TangibleObject {
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = false);
 	
 	/**
-	 * Updates the bank credits of the this object
+	 * Updates the bank credits of this object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified bank credits }
 	 * @param credits the new credits
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setBankCredits(int credits, boolean notifyClient = true);
+	
+	/**
+	 * Update the cash credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified cash credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
+	public native void setCashCredits(int credits, boolean notifyClient = true);
 	
 	/**
 	 * Adds the specified skillbox to this object

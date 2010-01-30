@@ -341,3 +341,7 @@ void PlayerCreatureImplementation::removeFromBuilding(BuildingObject * building)
 	SceneObjectImplementation::removeFromBuilding(building);
 	building->onExit(_this);
 }
+
+uint32 PlayerCreatureImplementation::getNewSuiBoxID(uint32 type) {
+	return (++suiBoxNextID << 16) + (uint16)type;
+}

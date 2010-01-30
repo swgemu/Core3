@@ -10,6 +10,10 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
+
+#include "server/zone/objects/player/sui/SuiBox.h"
+
 /*
  *	BankTerminalStub
  */
@@ -134,31 +138,49 @@ void BankTerminalImplementation::_serializationHelperMethod() {
 
 BankTerminalImplementation::BankTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
 	_initializeImplementation();
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(58):  Logger.setLoggingName("BankTerminal");
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(63):  Logger.setLoggingName("BankTerminal");
 	Logger::setLoggingName("BankTerminal");
 }
 
 void BankTerminalImplementation::initializeTransientMembers() {
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(62):  super.initializeTransientMembers();
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(67):  super.initializeTransientMembers();
 	TerminalImplementation::initializeTransientMembers();
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(64):  Logger.setLoggingName("BankTerminal");
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(69):  Logger.setLoggingName("BankTerminal");
 	Logger::setLoggingName("BankTerminal");
 }
 
 void BankTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse) {
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(75):  menuResponse.addRadialMenuItem(245, 3, "@sui:bank_items");
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(80):  menuResponse.addRadialMenuItem(245, 3, "@sui:bank_items");
 	menuResponse->addRadialMenuItem(245, 3, "@sui:bank_items");
 }
 
 int BankTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(85):  return 
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(90):  
 	if (selectedID == 245){
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(86):  SceneObject bank = player.getSlottedObject("bank");
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(91):  SceneObject bank = player.getSlottedObject("bank");
 	SceneObject* bank = player->getSlottedObject("bank");
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(87):  bank.openContainerTo(player);
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(92):  bank.openContainerTo(player);
 	bank->openContainerTo(player);
 }
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(90):  0;
+
+	else 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(93):  
+	if (selectedID == 20){
+	ManagedReference<SuiBankTransferBox*> _ref0;
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(94):  SuiBankTransferBox sui = new SuiBankTransferBox(this, player, SuiWindowType.BANK_TRANSFER);
+	SuiBankTransferBox* sui = _ref0 = new SuiBankTransferBox(_this, player, SuiWindowType::BANK_TRANSFER);
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(96):  sui.addCash(player.getCashCredits());
+	sui->addCash(player->getCashCredits());
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(97):  sui.addBank(player.getBankCredits());
+	sui->addBank(player->getBankCredits());
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(99):  player.addSuiBox(sui);
+	player->addSuiBox(sui);
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(100):  player.sendMessage(sui.generateMessage());
+	player->sendMessage(sui->generateMessage());
+}
+
+	else 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(103):  return 1;
+	return 1;
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(105):  return 0;
 	return 0;
 }
 

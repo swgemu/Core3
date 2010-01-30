@@ -483,88 +483,91 @@ PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) 
 	Logger::setLoggingName("PlayerObject");
 }
 
+void PlayerObjectImplementation::finalize() {
+}
+
 bool PlayerObjectImplementation::hasWaypoint(unsigned long long objectID) {
-	// server/zone/objects/player/PlayerObject.idl(210):  return waypointList.contains(objectID);
+	// server/zone/objects/player/PlayerObject.idl(214):  return waypointList.contains(objectID);
 	return (&waypointList)->contains(objectID);
 }
 
 bool PlayerObjectImplementation::hasSkill(Skill* skill) {
-	// server/zone/objects/player/PlayerObject.idl(215):  return skillList.contains(skill);
+	// server/zone/objects/player/PlayerObject.idl(219):  return skillList.contains(skill);
 	return (&skillList)->contains(skill);
 }
 
 unsigned int PlayerObjectImplementation::getCharacterBitmask() {
-	// server/zone/objects/player/PlayerObject.idl(219):  return characterBitmask;
+	// server/zone/objects/player/PlayerObject.idl(223):  return characterBitmask;
 	return characterBitmask;
 }
 
 String PlayerObjectImplementation::getTitle() {
-	// server/zone/objects/player/PlayerObject.idl(223):  return title;
+	// server/zone/objects/player/PlayerObject.idl(227):  return title;
 	return title;
 }
 
 unsigned int PlayerObjectImplementation::getAdminLevel() {
-	// server/zone/objects/player/PlayerObject.idl(227):  return adminLevel;
+	// server/zone/objects/player/PlayerObject.idl(231):  return adminLevel;
 	return adminLevel;
 }
 
 void PlayerObjectImplementation::setCharacterBitmask(unsigned int bitmask) {
-	// server/zone/objects/player/PlayerObject.idl(231):  characterBitmask = bitmask;
+	// server/zone/objects/player/PlayerObject.idl(235):  characterBitmask = bitmask;
 	characterBitmask = bitmask;
 }
 
 void PlayerObjectImplementation::setTitle(const String& characterTitle) {
-	// server/zone/objects/player/PlayerObject.idl(238):  title = characterTitle;
+	// server/zone/objects/player/PlayerObject.idl(242):  title = characterTitle;
 	title = characterTitle;
 }
 
 DeltaVectorMap<String, int>* PlayerObjectImplementation::getExperienceList() {
-	// server/zone/objects/player/PlayerObject.idl(243):  return experienceList;
+	// server/zone/objects/player/PlayerObject.idl(247):  return experienceList;
 	return (&experienceList);
 }
 
 int PlayerObjectImplementation::getForcePower() {
-	// server/zone/objects/player/PlayerObject.idl(247):  return forcePower;
+	// server/zone/objects/player/PlayerObject.idl(251):  return forcePower;
 	return forcePower;
 }
 
 int PlayerObjectImplementation::getForcePowerMax() {
-	// server/zone/objects/player/PlayerObject.idl(251):  return forcePowerMax;
+	// server/zone/objects/player/PlayerObject.idl(255):  return forcePowerMax;
 	return forcePowerMax;
 }
 
 WaypointList* PlayerObjectImplementation::getWaypointList() {
-	// server/zone/objects/player/PlayerObject.idl(256):  return waypointList;
+	// server/zone/objects/player/PlayerObject.idl(260):  return waypointList;
 	return (&waypointList);
 }
 
 SkillList* PlayerObjectImplementation::getSkills() {
-	// server/zone/objects/player/PlayerObject.idl(261):  return skillList;
+	// server/zone/objects/player/PlayerObject.idl(265):  return skillList;
 	return (&skillList);
 }
 
 int PlayerObjectImplementation::getFoodFilling() {
-	// server/zone/objects/player/PlayerObject.idl(265):  return foodFilling;
+	// server/zone/objects/player/PlayerObject.idl(269):  return foodFilling;
 	return foodFilling;
 }
 
 int PlayerObjectImplementation::getFoodFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(269):  return foodFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(273):  return foodFillingMax;
 	return foodFillingMax;
 }
 
 int PlayerObjectImplementation::getDrinkFilling() {
-	// server/zone/objects/player/PlayerObject.idl(273):  return drinkFilling;
+	// server/zone/objects/player/PlayerObject.idl(277):  return drinkFilling;
 	return drinkFilling;
 }
 
 int PlayerObjectImplementation::getDrinkFillingMax() {
-	// server/zone/objects/player/PlayerObject.idl(277):  return drinkFillingMax;
+	// server/zone/objects/player/PlayerObject.idl(281):  return drinkFillingMax;
 	return drinkFillingMax;
 }
 
 int PlayerObjectImplementation::getJediState() {
-	// server/zone/objects/player/PlayerObject.idl(281):  return jediState;
+	// server/zone/objects/player/PlayerObject.idl(285):  return jediState;
 	return jediState;
 }
 
@@ -580,69 +583,72 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		finalize();
 		break;
 	case 7:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		initializeTransientMembers();
 		break;
 	case 8:
-		sendMessage((BasePacket*) inv->getObjectParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 9:
-		addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
 	case 10:
-		removeExperience(inv->getAsciiParameter(_param0_removeExperience__String_bool_), inv->getBooleanParameter());
+		addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		addWaypoint(inv->getAsciiParameter(_param0_addWaypoint__String_float_float_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
+		removeExperience(inv->getAsciiParameter(_param0_removeExperience__String_bool_), inv->getBooleanParameter());
 		break;
 	case 12:
-		removeWaypoint(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		addWaypoint(inv->getAsciiParameter(_param0_addWaypoint__String_float_float_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
 	case 13:
-		resp->insertBoolean(hasWaypoint(inv->getUnsignedLongParameter()));
+		removeWaypoint(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 14:
-		resp->insertInt(getCharacterBitmask());
+		resp->insertBoolean(hasWaypoint(inv->getUnsignedLongParameter()));
 		break;
 	case 15:
-		resp->insertAscii(getTitle());
+		resp->insertInt(getCharacterBitmask());
 		break;
 	case 16:
-		resp->insertInt(getAdminLevel());
+		resp->insertAscii(getTitle());
 		break;
 	case 17:
-		setCharacterBitmask(inv->getUnsignedIntParameter());
+		resp->insertInt(getAdminLevel());
 		break;
 	case 18:
-		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		setCharacterBitmask(inv->getUnsignedIntParameter());
 		break;
 	case 19:
-		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(setCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 20:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
+		resp->insertBoolean(clearCharacterBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 21:
-		resp->insertSignedInt(getForcePower());
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	case 22:
-		resp->insertSignedInt(getForcePowerMax());
+		resp->insertSignedInt(getForcePower());
 		break;
 	case 23:
-		resp->insertSignedInt(getFoodFilling());
+		resp->insertSignedInt(getForcePowerMax());
 		break;
 	case 24:
-		resp->insertSignedInt(getFoodFillingMax());
+		resp->insertSignedInt(getFoodFilling());
 		break;
 	case 25:
-		resp->insertSignedInt(getDrinkFilling());
+		resp->insertSignedInt(getFoodFillingMax());
 		break;
 	case 26:
-		resp->insertSignedInt(getDrinkFillingMax());
+		resp->insertSignedInt(getDrinkFilling());
 		break;
 	case 27:
+		resp->insertSignedInt(getDrinkFillingMax());
+		break;
+	case 28:
 		resp->insertSignedInt(getJediState());
 		break;
 	default:
@@ -650,6 +656,10 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	}
 
 	return resp;
+}
+
+void PlayerObjectAdapter::finalize() {
+	((PlayerObjectImplementation*) impl)->finalize();
 }
 
 void PlayerObjectAdapter::initializeTransientMembers() {

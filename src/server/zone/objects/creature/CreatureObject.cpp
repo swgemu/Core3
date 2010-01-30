@@ -294,6 +294,20 @@ void CreatureObject::setBankCredits(int credits, bool notifyClient) {
 		((CreatureObjectImplementation*) _impl)->setBankCredits(credits, notifyClient);
 }
 
+void CreatureObject::setCashCredits(int credits, bool notifyClient) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addSignedIntParameter(credits);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setCashCredits(credits, notifyClient);
+}
+
 void CreatureObject::addSkillBox(SkillBox* skillBox, bool notifyClient) {
 	if (_impl == NULL) {
 		throw ObjectNotLocalException(this);
@@ -307,7 +321,7 @@ void CreatureObject::addSkillBox(const String& skillBox, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addAsciiParameter(skillBox);
 		method.addBooleanParameter(notifyClient);
 
@@ -329,7 +343,7 @@ void CreatureObject::removeSkillBox(const String& skillBox, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addAsciiParameter(skillBox);
 		method.addBooleanParameter(notifyClient);
 
@@ -343,7 +357,7 @@ void CreatureObject::addSkillMod(const String& skillMod, long long value, bool n
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addAsciiParameter(skillMod);
 		method.addSignedLongParameter(value);
 		method.addBooleanParameter(notifyClient);
@@ -358,7 +372,7 @@ void CreatureObject::removeSkillMod(const String& skillMod, bool notifyCLient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addAsciiParameter(skillMod);
 		method.addBooleanParameter(notifyCLient);
 
@@ -372,7 +386,7 @@ void CreatureObject::updateGroupInviterID(unsigned long long id, bool notifyClie
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addUnsignedLongParameter(id);
 		method.addBooleanParameter(notifyClient);
 
@@ -386,7 +400,7 @@ void CreatureObject::updateGroup(GroupObject* group, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(group);
 		method.addBooleanParameter(notifyClient);
 
@@ -400,7 +414,7 @@ void CreatureObject::enqueueCommand(unsigned int actionCRC, unsigned int actionC
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addUnsignedIntParameter(actionCRC);
 		method.addUnsignedIntParameter(actionCount);
 		method.addUnsignedLongParameter(targetID);
@@ -416,7 +430,7 @@ void CreatureObject::setMood(byte moodID, bool notifyClient) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addByteParameter(moodID);
 		method.addBooleanParameter(notifyClient);
 
@@ -430,7 +444,7 @@ void CreatureObject::deleteQueueAction(unsigned int actionCount) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addUnsignedIntParameter(actionCount);
 
 		method.executeWithVoidReturn();
@@ -443,7 +457,7 @@ void CreatureObject::activateQueueAction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		method.executeWithVoidReturn();
 	} else
@@ -455,7 +469,7 @@ UnicodeString CreatureObject::getCreatureName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		method.executeWithUnicodeReturn(_return_getCreatureName);
 		return _return_getCreatureName;
@@ -468,7 +482,7 @@ bool CreatureObject::isGroupped() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -480,7 +494,7 @@ int CreatureObject::getBankCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -492,7 +506,7 @@ int CreatureObject::getCashCredits() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -504,7 +518,7 @@ int CreatureObject::getBaseHAM(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -517,7 +531,7 @@ int CreatureObject::getWounds(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -538,7 +552,7 @@ int CreatureObject::getHAM(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -559,7 +573,7 @@ int CreatureObject::getMaxHAM(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -580,7 +594,7 @@ int CreatureObject::getEncumbrance(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithSignedIntReturn();
@@ -601,7 +615,7 @@ byte CreatureObject::getPosture() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithByteReturn();
 	} else
@@ -613,7 +627,7 @@ byte CreatureObject::getFactionRank() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithByteReturn();
 	} else
@@ -625,7 +639,7 @@ unsigned long long CreatureObject::getCreatureLinkID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -637,7 +651,7 @@ float CreatureObject::getShockWounds() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -649,7 +663,7 @@ unsigned long long CreatureObject::getStateBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -661,7 +675,7 @@ unsigned long long CreatureObject::getListenID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -673,7 +687,7 @@ float CreatureObject::getRunSpeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -685,7 +699,7 @@ float CreatureObject::getWalkSpeed() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -697,7 +711,7 @@ float CreatureObject::getTerrainNegotiation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -709,7 +723,7 @@ float CreatureObject::getRunAcceleration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -721,7 +735,7 @@ float CreatureObject::getWalkAcceleration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -733,7 +747,7 @@ int CreatureObject::getLevel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -745,7 +759,7 @@ String CreatureObject::getPerformanceAnimation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 
 		method.executeWithAsciiReturn(_return_getPerformanceAnimation);
 		return _return_getPerformanceAnimation;
@@ -758,7 +772,7 @@ String CreatureObject::getMoodString() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 57);
 
 		method.executeWithAsciiReturn(_return_getMoodString);
 		return _return_getMoodString;
@@ -771,7 +785,7 @@ unsigned long long CreatureObject::getWeaponID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -783,7 +797,7 @@ unsigned long long CreatureObject::getGroupID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -795,7 +809,7 @@ unsigned long long CreatureObject::getGroupInviterID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -807,7 +821,7 @@ GroupObject* CreatureObject::getGroup() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 
 		return (GroupObject*) method.executeWithObjectReturn();
 	} else
@@ -819,7 +833,7 @@ unsigned long long CreatureObject::getGroupInviteCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -831,7 +845,7 @@ int CreatureObject::getGuildID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -843,7 +857,7 @@ unsigned long long CreatureObject::getTargetID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -855,7 +869,7 @@ byte CreatureObject::getMoodID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 
 		return method.executeWithByteReturn();
 	} else
@@ -867,7 +881,7 @@ float CreatureObject::getSlopeModPercent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 66);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -879,7 +893,7 @@ int CreatureObject::getPerformanceCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 67);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -891,7 +905,7 @@ int CreatureObject::getInstrumentID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 68);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -903,7 +917,7 @@ byte CreatureObject::getFrozen() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 69);
 
 		return method.executeWithByteReturn();
 	} else
@@ -915,7 +929,7 @@ float CreatureObject::getHeight() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 70);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -927,7 +941,7 @@ int CreatureObject::getSpecies() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 71);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -939,7 +953,7 @@ int CreatureObject::getFaction() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 72);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -951,7 +965,7 @@ int CreatureObject::getPvpStatusBitmask() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 73);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -987,7 +1001,7 @@ void CreatureObject::setHeight(float heigh) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 74);
 		method.addFloatParameter(heigh);
 
 		method.executeWithVoidReturn();
@@ -1113,240 +1127,237 @@ CreatureObjectImplementation::CreatureObjectImplementation(LuaObject* templateDa
 	loadTemplateData(templateData);
 }
 
-void CreatureObjectImplementation::finalize() {
-}
-
 bool CreatureObjectImplementation::isGroupped() {
-	// server/zone/objects/creature/CreatureObject.idl(458):  return group != null;
+	// server/zone/objects/creature/CreatureObject.idl(465):  return group != null;
 	return group != NULL;
 }
 
 int CreatureObjectImplementation::getBankCredits() {
-	// server/zone/objects/creature/CreatureObject.idl(462):  return bankCredits;
+	// server/zone/objects/creature/CreatureObject.idl(469):  return bankCredits;
 	return bankCredits;
 }
 
 int CreatureObjectImplementation::getCashCredits() {
-	// server/zone/objects/creature/CreatureObject.idl(466):  return cashCredits;
+	// server/zone/objects/creature/CreatureObject.idl(473):  return cashCredits;
 	return cashCredits;
 }
 
 int CreatureObjectImplementation::getBaseHAM(int idx) {
-	// server/zone/objects/creature/CreatureObject.idl(470):  return baseHAM.get(idx);
+	// server/zone/objects/creature/CreatureObject.idl(477):  return baseHAM.get(idx);
 	return (&baseHAM)->get(idx);
 }
 
 int CreatureObjectImplementation::getWounds(int idx) {
-	// server/zone/objects/creature/CreatureObject.idl(474):  return wounds.get(idx);
+	// server/zone/objects/creature/CreatureObject.idl(481):  return wounds.get(idx);
 	return (&wounds)->get(idx);
 }
 
 DeltaVector<int>* CreatureObjectImplementation::getWounds() {
-	// server/zone/objects/creature/CreatureObject.idl(479):  return wounds;
+	// server/zone/objects/creature/CreatureObject.idl(486):  return wounds;
 	return (&wounds);
 }
 
 int CreatureObjectImplementation::getHAM(int idx) {
-	// server/zone/objects/creature/CreatureObject.idl(483):  return hamList.get(idx);
+	// server/zone/objects/creature/CreatureObject.idl(490):  return hamList.get(idx);
 	return (&hamList)->get(idx);
 }
 
 DeltaVector<int>* CreatureObjectImplementation::getHAM() {
-	// server/zone/objects/creature/CreatureObject.idl(488):  return hamList;
+	// server/zone/objects/creature/CreatureObject.idl(495):  return hamList;
 	return (&hamList);
 }
 
 int CreatureObjectImplementation::getMaxHAM(int idx) {
-	// server/zone/objects/creature/CreatureObject.idl(492):  return maxHamList.get(idx);
+	// server/zone/objects/creature/CreatureObject.idl(499):  return maxHamList.get(idx);
 	return (&maxHamList)->get(idx);
 }
 
 DeltaVector<int>* CreatureObjectImplementation::getMaxHAM() {
-	// server/zone/objects/creature/CreatureObject.idl(497):  return maxHamList;
+	// server/zone/objects/creature/CreatureObject.idl(504):  return maxHamList;
 	return (&maxHamList);
 }
 
 int CreatureObjectImplementation::getEncumbrance(int idx) {
-	// server/zone/objects/creature/CreatureObject.idl(501):  return encumbrances.get(idx);
+	// server/zone/objects/creature/CreatureObject.idl(508):  return encumbrances.get(idx);
 	return (&encumbrances)->get(idx);
 }
 
 DeltaVector<int>* CreatureObjectImplementation::getEncumbrances() {
-	// server/zone/objects/creature/CreatureObject.idl(506):  return encumbrances;
+	// server/zone/objects/creature/CreatureObject.idl(513):  return encumbrances;
 	return (&encumbrances);
 }
 
 byte CreatureObjectImplementation::getPosture() {
-	// server/zone/objects/creature/CreatureObject.idl(510):  return posture;
+	// server/zone/objects/creature/CreatureObject.idl(517):  return posture;
 	return posture;
 }
 
 byte CreatureObjectImplementation::getFactionRank() {
-	// server/zone/objects/creature/CreatureObject.idl(514):  return factionRank;
+	// server/zone/objects/creature/CreatureObject.idl(521):  return factionRank;
 	return factionRank;
 }
 
 unsigned long long CreatureObjectImplementation::getCreatureLinkID() {
-	// server/zone/objects/creature/CreatureObject.idl(518):  return creatureLinkID;
+	// server/zone/objects/creature/CreatureObject.idl(525):  return creatureLinkID;
 	return creatureLinkID;
 }
 
 float CreatureObjectImplementation::getShockWounds() {
-	// server/zone/objects/creature/CreatureObject.idl(522):  return shockWounds;
+	// server/zone/objects/creature/CreatureObject.idl(529):  return shockWounds;
 	return shockWounds;
 }
 
 unsigned long long CreatureObjectImplementation::getStateBitmask() {
-	// server/zone/objects/creature/CreatureObject.idl(526):  return stateBitmask;
+	// server/zone/objects/creature/CreatureObject.idl(533):  return stateBitmask;
 	return stateBitmask;
 }
 
 unsigned long long CreatureObjectImplementation::getListenID() {
-	// server/zone/objects/creature/CreatureObject.idl(530):  return listenToID;
+	// server/zone/objects/creature/CreatureObject.idl(537):  return listenToID;
 	return listenToID;
 }
 
 float CreatureObjectImplementation::getRunSpeed() {
-	// server/zone/objects/creature/CreatureObject.idl(534):  return runSpeed;
+	// server/zone/objects/creature/CreatureObject.idl(541):  return runSpeed;
 	return runSpeed;
 }
 
 float CreatureObjectImplementation::getWalkSpeed() {
-	// server/zone/objects/creature/CreatureObject.idl(538):  return walkSpeed;
+	// server/zone/objects/creature/CreatureObject.idl(545):  return walkSpeed;
 	return walkSpeed;
 }
 
 float CreatureObjectImplementation::getTerrainNegotiation() {
-	// server/zone/objects/creature/CreatureObject.idl(542):  return terrainNegotiation;
+	// server/zone/objects/creature/CreatureObject.idl(549):  return terrainNegotiation;
 	return terrainNegotiation;
 }
 
 float CreatureObjectImplementation::getRunAcceleration() {
-	// server/zone/objects/creature/CreatureObject.idl(546):  return runAcceleration;
+	// server/zone/objects/creature/CreatureObject.idl(553):  return runAcceleration;
 	return runAcceleration;
 }
 
 float CreatureObjectImplementation::getWalkAcceleration() {
-	// server/zone/objects/creature/CreatureObject.idl(550):  return walkAcceleration;
+	// server/zone/objects/creature/CreatureObject.idl(557):  return walkAcceleration;
 	return walkAcceleration;
 }
 
 int CreatureObjectImplementation::getLevel() {
-	// server/zone/objects/creature/CreatureObject.idl(554):  return level;
+	// server/zone/objects/creature/CreatureObject.idl(561):  return level;
 	return level;
 }
 
 String CreatureObjectImplementation::getPerformanceAnimation() {
-	// server/zone/objects/creature/CreatureObject.idl(558):  return performanceAnimation;
+	// server/zone/objects/creature/CreatureObject.idl(565):  return performanceAnimation;
 	return performanceAnimation;
 }
 
 String CreatureObjectImplementation::getMoodString() {
-	// server/zone/objects/creature/CreatureObject.idl(562):  return moodString;
+	// server/zone/objects/creature/CreatureObject.idl(569):  return moodString;
 	return moodString;
 }
 
 unsigned long long CreatureObjectImplementation::getWeaponID() {
-	// server/zone/objects/creature/CreatureObject.idl(566):  return weaponID;
+	// server/zone/objects/creature/CreatureObject.idl(573):  return weaponID;
 	return weaponID;
 }
 
 unsigned long long CreatureObjectImplementation::getGroupID() {
-	// server/zone/objects/creature/CreatureObject.idl(570):  
-	if (group != NULL)	// server/zone/objects/creature/CreatureObject.idl(571):  return group.getObjectID();
+	// server/zone/objects/creature/CreatureObject.idl(577):  
+	if (group != NULL)	// server/zone/objects/creature/CreatureObject.idl(578):  return group.getObjectID();
 	return group->getObjectID();
 
-	else 	// server/zone/objects/creature/CreatureObject.idl(573):  return 0;
+	else 	// server/zone/objects/creature/CreatureObject.idl(580):  return 0;
 	return 0;
 }
 
 unsigned long long CreatureObjectImplementation::getGroupInviterID() {
-	// server/zone/objects/creature/CreatureObject.idl(577):  return groupInviterID;
+	// server/zone/objects/creature/CreatureObject.idl(584):  return groupInviterID;
 	return groupInviterID;
 }
 
 GroupObject* CreatureObjectImplementation::getGroup() {
-	// server/zone/objects/creature/CreatureObject.idl(581):  return group;
+	// server/zone/objects/creature/CreatureObject.idl(588):  return group;
 	return group;
 }
 
 unsigned long long CreatureObjectImplementation::getGroupInviteCounter() {
-	// server/zone/objects/creature/CreatureObject.idl(585):  return groupInviteCounter;
+	// server/zone/objects/creature/CreatureObject.idl(592):  return groupInviteCounter;
 	return groupInviteCounter;
 }
 
 int CreatureObjectImplementation::getGuildID() {
-	// server/zone/objects/creature/CreatureObject.idl(589):  return guildID;
+	// server/zone/objects/creature/CreatureObject.idl(596):  return guildID;
 	return guildID;
 }
 
 unsigned long long CreatureObjectImplementation::getTargetID() {
-	// server/zone/objects/creature/CreatureObject.idl(593):  return targetID;
+	// server/zone/objects/creature/CreatureObject.idl(600):  return targetID;
 	return targetID;
 }
 
 byte CreatureObjectImplementation::getMoodID() {
-	// server/zone/objects/creature/CreatureObject.idl(597):  return moodID;
+	// server/zone/objects/creature/CreatureObject.idl(604):  return moodID;
 	return moodID;
 }
 
 float CreatureObjectImplementation::getSlopeModPercent() {
-	// server/zone/objects/creature/CreatureObject.idl(601):  return slopeModPercent;
+	// server/zone/objects/creature/CreatureObject.idl(608):  return slopeModPercent;
 	return slopeModPercent;
 }
 
 int CreatureObjectImplementation::getPerformanceCounter() {
-	// server/zone/objects/creature/CreatureObject.idl(605):  return performanceCounter;
+	// server/zone/objects/creature/CreatureObject.idl(612):  return performanceCounter;
 	return performanceCounter;
 }
 
 int CreatureObjectImplementation::getInstrumentID() {
-	// server/zone/objects/creature/CreatureObject.idl(609):  return instrumentID;
+	// server/zone/objects/creature/CreatureObject.idl(616):  return instrumentID;
 	return instrumentID;
 }
 
 byte CreatureObjectImplementation::getFrozen() {
-	// server/zone/objects/creature/CreatureObject.idl(613):  return frozen;
+	// server/zone/objects/creature/CreatureObject.idl(620):  return frozen;
 	return frozen;
 }
 
 float CreatureObjectImplementation::getHeight() {
-	// server/zone/objects/creature/CreatureObject.idl(617):  return height;
+	// server/zone/objects/creature/CreatureObject.idl(624):  return height;
 	return height;
 }
 
 int CreatureObjectImplementation::getSpecies() {
-	// server/zone/objects/creature/CreatureObject.idl(621):  return species;
+	// server/zone/objects/creature/CreatureObject.idl(628):  return species;
 	return species;
 }
 
 int CreatureObjectImplementation::getFaction() {
-	// server/zone/objects/creature/CreatureObject.idl(625):  return faction;
+	// server/zone/objects/creature/CreatureObject.idl(632):  return faction;
 	return faction;
 }
 
 int CreatureObjectImplementation::getPvpStatusBitmask() {
-	// server/zone/objects/creature/CreatureObject.idl(629):  return pvpStatusBitmask;
+	// server/zone/objects/creature/CreatureObject.idl(636):  return pvpStatusBitmask;
 	return pvpStatusBitmask;
 }
 
 DeltaVector<int>* CreatureObjectImplementation::getBaseHAM() {
-	// server/zone/objects/creature/CreatureObject.idl(634):  return baseHAM;
+	// server/zone/objects/creature/CreatureObject.idl(641):  return baseHAM;
 	return (&baseHAM);
 }
 
 SkillBoxList* CreatureObjectImplementation::getSkillBoxList() {
-	// server/zone/objects/creature/CreatureObject.idl(639):  return skillBoxList;
+	// server/zone/objects/creature/CreatureObject.idl(646):  return skillBoxList;
 	return (&skillBoxList);
 }
 
 DeltaVectorMap<String, long long>* CreatureObjectImplementation::getSkillModList() {
-	// server/zone/objects/creature/CreatureObject.idl(644):  return skillModList;
+	// server/zone/objects/creature/CreatureObject.idl(651):  return skillModList;
 	return (&skillModList);
 }
 
 void CreatureObjectImplementation::setHeight(float heigh) {
-	// server/zone/objects/creature/CreatureObject.idl(648):  height = heigh;
+	// server/zone/objects/creature/CreatureObject.idl(655):  height = heigh;
 	height = heigh;
 }
 
@@ -1419,153 +1430,156 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setBankCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 25:
-		addSkillBox(inv->getAsciiParameter(_param0_addSkillBox__String_bool_), inv->getBooleanParameter());
+		setCashCredits(inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 26:
-		removeSkillBox(inv->getAsciiParameter(_param0_removeSkillBox__String_bool_), inv->getBooleanParameter());
+		addSkillBox(inv->getAsciiParameter(_param0_addSkillBox__String_bool_), inv->getBooleanParameter());
 		break;
 	case 27:
-		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_long_bool_), inv->getSignedLongParameter(), inv->getBooleanParameter());
+		removeSkillBox(inv->getAsciiParameter(_param0_removeSkillBox__String_bool_), inv->getBooleanParameter());
 		break;
 	case 28:
-		removeSkillMod(inv->getAsciiParameter(_param0_removeSkillMod__String_bool_), inv->getBooleanParameter());
+		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_long_bool_), inv->getSignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 29:
-		updateGroupInviterID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
+		removeSkillMod(inv->getAsciiParameter(_param0_removeSkillMod__String_bool_), inv->getBooleanParameter());
 		break;
 	case 30:
-		updateGroup((GroupObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		updateGroupInviterID(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 31:
-		enqueueCommand(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_enqueueCommand__int_int_long_UnicodeString_));
+		updateGroup((GroupObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 32:
-		setMood(inv->getByteParameter(), inv->getBooleanParameter());
+		enqueueCommand(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_enqueueCommand__int_int_long_UnicodeString_));
 		break;
 	case 33:
-		deleteQueueAction(inv->getUnsignedIntParameter());
+		setMood(inv->getByteParameter(), inv->getBooleanParameter());
 		break;
 	case 34:
-		activateQueueAction();
+		deleteQueueAction(inv->getUnsignedIntParameter());
 		break;
 	case 35:
-		resp->insertUnicode(getCreatureName());
+		activateQueueAction();
 		break;
 	case 36:
-		resp->insertBoolean(isGroupped());
+		resp->insertUnicode(getCreatureName());
 		break;
 	case 37:
-		resp->insertSignedInt(getBankCredits());
+		resp->insertBoolean(isGroupped());
 		break;
 	case 38:
-		resp->insertSignedInt(getCashCredits());
+		resp->insertSignedInt(getBankCredits());
 		break;
 	case 39:
-		resp->insertSignedInt(getBaseHAM(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getCashCredits());
 		break;
 	case 40:
-		resp->insertSignedInt(getWounds(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getBaseHAM(inv->getSignedIntParameter()));
 		break;
 	case 41:
-		resp->insertSignedInt(getHAM(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getWounds(inv->getSignedIntParameter()));
 		break;
 	case 42:
-		resp->insertSignedInt(getMaxHAM(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getHAM(inv->getSignedIntParameter()));
 		break;
 	case 43:
-		resp->insertSignedInt(getEncumbrance(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getMaxHAM(inv->getSignedIntParameter()));
 		break;
 	case 44:
-		resp->insertByte(getPosture());
+		resp->insertSignedInt(getEncumbrance(inv->getSignedIntParameter()));
 		break;
 	case 45:
-		resp->insertByte(getFactionRank());
+		resp->insertByte(getPosture());
 		break;
 	case 46:
-		resp->insertLong(getCreatureLinkID());
+		resp->insertByte(getFactionRank());
 		break;
 	case 47:
-		resp->insertFloat(getShockWounds());
+		resp->insertLong(getCreatureLinkID());
 		break;
 	case 48:
-		resp->insertLong(getStateBitmask());
+		resp->insertFloat(getShockWounds());
 		break;
 	case 49:
-		resp->insertLong(getListenID());
+		resp->insertLong(getStateBitmask());
 		break;
 	case 50:
-		resp->insertFloat(getRunSpeed());
+		resp->insertLong(getListenID());
 		break;
 	case 51:
-		resp->insertFloat(getWalkSpeed());
+		resp->insertFloat(getRunSpeed());
 		break;
 	case 52:
-		resp->insertFloat(getTerrainNegotiation());
+		resp->insertFloat(getWalkSpeed());
 		break;
 	case 53:
-		resp->insertFloat(getRunAcceleration());
+		resp->insertFloat(getTerrainNegotiation());
 		break;
 	case 54:
-		resp->insertFloat(getWalkAcceleration());
+		resp->insertFloat(getRunAcceleration());
 		break;
 	case 55:
-		resp->insertSignedInt(getLevel());
+		resp->insertFloat(getWalkAcceleration());
 		break;
 	case 56:
-		resp->insertAscii(getPerformanceAnimation());
+		resp->insertSignedInt(getLevel());
 		break;
 	case 57:
-		resp->insertAscii(getMoodString());
+		resp->insertAscii(getPerformanceAnimation());
 		break;
 	case 58:
-		resp->insertLong(getWeaponID());
+		resp->insertAscii(getMoodString());
 		break;
 	case 59:
-		resp->insertLong(getGroupID());
+		resp->insertLong(getWeaponID());
 		break;
 	case 60:
-		resp->insertLong(getGroupInviterID());
+		resp->insertLong(getGroupID());
 		break;
 	case 61:
-		resp->insertLong(getGroup()->_getObjectID());
+		resp->insertLong(getGroupInviterID());
 		break;
 	case 62:
-		resp->insertLong(getGroupInviteCounter());
+		resp->insertLong(getGroup()->_getObjectID());
 		break;
 	case 63:
-		resp->insertSignedInt(getGuildID());
+		resp->insertLong(getGroupInviteCounter());
 		break;
 	case 64:
-		resp->insertLong(getTargetID());
+		resp->insertSignedInt(getGuildID());
 		break;
 	case 65:
-		resp->insertByte(getMoodID());
+		resp->insertLong(getTargetID());
 		break;
 	case 66:
-		resp->insertFloat(getSlopeModPercent());
+		resp->insertByte(getMoodID());
 		break;
 	case 67:
-		resp->insertSignedInt(getPerformanceCounter());
+		resp->insertFloat(getSlopeModPercent());
 		break;
 	case 68:
-		resp->insertSignedInt(getInstrumentID());
+		resp->insertSignedInt(getPerformanceCounter());
 		break;
 	case 69:
-		resp->insertByte(getFrozen());
+		resp->insertSignedInt(getInstrumentID());
 		break;
 	case 70:
-		resp->insertFloat(getHeight());
+		resp->insertByte(getFrozen());
 		break;
 	case 71:
-		resp->insertSignedInt(getSpecies());
+		resp->insertFloat(getHeight());
 		break;
 	case 72:
-		resp->insertSignedInt(getFaction());
+		resp->insertSignedInt(getSpecies());
 		break;
 	case 73:
-		resp->insertSignedInt(getPvpStatusBitmask());
+		resp->insertSignedInt(getFaction());
 		break;
 	case 74:
+		resp->insertSignedInt(getPvpStatusBitmask());
+		break;
+	case 75:
 		setHeight(inv->getFloatParameter());
 		break;
 	default:
@@ -1649,6 +1663,10 @@ void CreatureObjectAdapter::setTargetID(unsigned long long targetID, bool notify
 
 void CreatureObjectAdapter::setBankCredits(int credits, bool notifyClient) {
 	((CreatureObjectImplementation*) impl)->setBankCredits(credits, notifyClient);
+}
+
+void CreatureObjectAdapter::setCashCredits(int credits, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->setCashCredits(credits, notifyClient);
 }
 
 void CreatureObjectAdapter::addSkillBox(const String& skillBox, bool notifyClient) {
