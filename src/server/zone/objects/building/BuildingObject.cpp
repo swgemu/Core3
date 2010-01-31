@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/ZoneServer.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -26,12 +28,24 @@ BuildingObject::~BuildingObject() {
 }
 
 
-void BuildingObject::initializeTransientMembers() {
+void BuildingObject::createCellObjects() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->createCellObjects();
+}
+
+void BuildingObject::initializeTransientMembers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		method.executeWithVoidReturn();
 	} else
@@ -43,7 +57,7 @@ void BuildingObject::removeFromZone() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		method.executeWithVoidReturn();
 	} else
@@ -71,7 +85,7 @@ void BuildingObject::notifyInsertToZone(SceneObject* object) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -116,7 +130,7 @@ void BuildingObject::sendTo(SceneObject* player, bool doClose) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -130,7 +144,7 @@ void BuildingObject::sendBaselinesTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -143,7 +157,7 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -156,7 +170,7 @@ void BuildingObject::addCell(CellObject* cell) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(cell);
 
 		method.executeWithVoidReturn();
@@ -169,7 +183,7 @@ bool BuildingObject::isStaticBuilding() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -181,7 +195,7 @@ CellObject* BuildingObject::getCell(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addSignedIntParameter(idx);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -194,7 +208,7 @@ void BuildingObject::setStaticBuilding(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -207,7 +221,7 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -220,7 +234,7 @@ void BuildingObject::onExit(PlayerCreature* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -296,57 +310,73 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 	_setClassName("BuildingObject");
 
 	addSerializableVariable("cells", &cells);
+	addSerializableVariable("totalCellNumber", &totalCellNumber);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
-	// server/zone/objects/building/BuildingObject.idl(65):  Logger.setLoggingName("BuildingObject");
+	// server/zone/objects/building/BuildingObject.idl(68):  Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl(67):  QuadTree.setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl(70):  QuadTree.setSize(-1024, -1024, 1024, 1024);
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
-	// server/zone/objects/building/BuildingObject.idl(69):  super.staticObject = false;
+	// server/zone/objects/building/BuildingObject.idl(72):  super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl(71):  super.containerVolumeLimit = 0xFFFFFFFF;
+	// server/zone/objects/building/BuildingObject.idl(74):  super.containerVolumeLimit = 0xFFFFFFFF;
 	TangibleObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl(73):  super.containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(76):  super.containerType = 2;
 	TangibleObjectImplementation::containerType = 2;
+	// server/zone/objects/building/BuildingObject.idl(78):  totalCellNumber = templateData.getIntField("totalCellNumber");
+	totalCellNumber = templateData->getIntField("totalCellNumber");
+}
+
+void BuildingObjectImplementation::createCellObjects() {
+	// server/zone/objects/building/BuildingObject.idl(82):  
+	for (	// server/zone/objects/building/BuildingObject.idl(82):  for (int i = 0;
+	int i = 0;
+	i < totalCellNumber;
+ ++i) {
+	// server/zone/objects/building/BuildingObject.idl(83):  SceneObject newCell = getZoneServer().createObject(206832110, 2);
+	SceneObject* newCell = getZoneServer()->createObject(206832110, 2);
+	// server/zone/objects/building/BuildingObject.idl(85):  addCell((CellObject)newCell);
+	addCell((CellObject*) newCell);
+}
 }
 
 void BuildingObjectImplementation::removeFromZone() {
-	// server/zone/objects/building/BuildingObject.idl(79):  
-	for (	// server/zone/objects/building/BuildingObject.idl(79):  for (int i = 0;
+	// server/zone/objects/building/BuildingObject.idl(92):  
+	for (	// server/zone/objects/building/BuildingObject.idl(92):  for (int i = 0;
 	int i = 0;
 	i < (&cells)->size();
  ++i) {
-	// server/zone/objects/building/BuildingObject.idl(80):  CellObject cell = cells.get(i);
+	// server/zone/objects/building/BuildingObject.idl(93):  CellObject cell = cells.get(i);
 	CellObject* cell = (&cells)->get(i);
-	// server/zone/objects/building/BuildingObject.idl(82):  
-	for (	// server/zone/objects/building/BuildingObject.idl(82):  for (int j = 0;
+	// server/zone/objects/building/BuildingObject.idl(95):  
+	for (	// server/zone/objects/building/BuildingObject.idl(95):  for (int j = 0;
 	int j = 0;
 	j < cell->getContainerObjectsSize();
  ++j) {
-	// server/zone/objects/building/BuildingObject.idl(83):  SceneObject obj = cell.getContainerObject(j);
+	// server/zone/objects/building/BuildingObject.idl(96):  SceneObject obj = cell.getContainerObject(j);
 	SceneObject* obj = cell->getContainerObject(j);
-	// server/zone/objects/building/BuildingObject.idl(84):  obj.removeFromZone();
+	// server/zone/objects/building/BuildingObject.idl(97):  obj.removeFromZone();
 	obj->removeFromZone();
 }
 }
-	// server/zone/objects/building/BuildingObject.idl(88):  super.removeFromZone();
+	// server/zone/objects/building/BuildingObject.idl(101):  super.removeFromZone();
 	TangibleObjectImplementation::removeFromZone();
 }
 
 bool BuildingObjectImplementation::isStaticBuilding() {
-	// server/zone/objects/building/BuildingObject.idl(118):  return super.staticObject;
+	// server/zone/objects/building/BuildingObject.idl(131):  return super.staticObject;
 	return TangibleObjectImplementation::staticObject;
 }
 
 CellObject* BuildingObjectImplementation::getCell(int idx) {
-	// server/zone/objects/building/BuildingObject.idl(122):  return cells.get(idx);
+	// server/zone/objects/building/BuildingObject.idl(135):  return cells.get(idx);
 	return (&cells)->get(idx);
 }
 
 void BuildingObjectImplementation::setStaticBuilding(bool value) {
-	// server/zone/objects/building/BuildingObject.idl(126):  super.staticObject = value;
+	// server/zone/objects/building/BuildingObject.idl(139):  super.staticObject = value;
 	TangibleObjectImplementation::staticObject = value;
 }
 
@@ -368,39 +398,42 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		initializeTransientMembers();
+		createCellObjects();
 		break;
 	case 7:
-		removeFromZone();
+		initializeTransientMembers();
 		break;
 	case 8:
-		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
+		removeFromZone();
 		break;
 	case 9:
-		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
 		break;
 	case 10:
-		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		sendDestroyTo((SceneObject*) inv->getObjectParameter());
+		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 12:
-		addCell((CellObject*) inv->getObjectParameter());
+		sendDestroyTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertBoolean(isStaticBuilding());
+		addCell((CellObject*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertBoolean(isStaticBuilding());
 		break;
 	case 15:
-		setStaticBuilding(inv->getBooleanParameter());
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 16:
-		onEnter((PlayerCreature*) inv->getObjectParameter());
+		setStaticBuilding(inv->getBooleanParameter());
 		break;
 	case 17:
+		onEnter((PlayerCreature*) inv->getObjectParameter());
+		break;
+	case 18:
 		onExit((PlayerCreature*) inv->getObjectParameter());
 		break;
 	default:
@@ -408,6 +441,10 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	}
 
 	return resp;
+}
+
+void BuildingObjectAdapter::createCellObjects() {
+	((BuildingObjectImplementation*) impl)->createCellObjects();
 }
 
 void BuildingObjectAdapter::initializeTransientMembers() {

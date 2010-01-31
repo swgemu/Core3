@@ -46,10 +46,6 @@ ObjectTemplates = { }
 function ObjectTemplates:addTemplate(obj, file)
 	crc = crcString(file)
 	
-	if crc == 206832110 then
-		print("inserting 206832110")
-	end
-	
 	addTemplateCRC(file, crc)
 	
 	if self[crc] == nil then

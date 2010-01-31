@@ -133,8 +133,10 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		callback->getRaceFile(race);
 		info("trying to create " + race);
 
+		uint32 serverObjectCRC = race.hashCode();
+
 		int raceID = Races::getRaceID(race);
-		uint32 playerCRC = Races::getRaceCRC(raceID);
+		/*uint32 playerCRC = Races::getRaceCRC(raceID);*/
 
 		UnicodeString name;
 		callback->getCharacterName(name);
@@ -145,7 +147,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 			return false;
 		}
 
-		SceneObject* player = server->createObject(playerCRC, 2); // player
+		SceneObject* player = server->createObject(serverObjectCRC, 2); // player
 
 		if (player == NULL) {
 			error("could not create player... could not create player object");
@@ -305,7 +307,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	player->addObject(datapad, 4);
 
-	SceneObject* playerObject = server->createObject(0x619BAE21, 1); //player object
+	SceneObject* playerObject = server->createObject(String("object/player/player.iff").hashCode(), 1); //player object
 
 	if (playerObject == NULL) {
 		error("could not create player object");
@@ -377,22 +379,13 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	String cell = "object/cell/shared_cell.iff";
 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
+	tutorial->createCellObjects();
 	tutorial->setStaticBuilding(false);
 
-	SceneObject* travelTutorialTerminal = server->createObject(4258705837uL, 1);
+	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/newbie_tutorial/terminal_warp.iff").hashCode(), 1);
 
-	SceneObject* cellTut = NULL;
-
-	for (int i = 0; i < 14; ++i) {
-		SceneObject* newCell = server->createObject(cell.hashCode(), 2);
-
-		tutorial->addCell((CellObject*)newCell);
-
-		if (i == 10) {
-			cellTut = newCell;
-			cellTut->addObject(travelTutorialTerminal, -1);
-		}
-	}
+	SceneObject* cellTut = tutorial->getCell(10);
+	cellTut->addObject(travelTutorialTerminal, -1);
 
 	tutorial->insertToZone(zone);
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);

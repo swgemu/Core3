@@ -53,11 +53,14 @@ import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.ZoneServer;
 
 
 class BuildingObject extends TangibleObject implements QuadTree {
 	@dereferenced
 	protected Vector<CellObject> cells;
+	
+	protected int totalCellNumber;
 	
 	public BuildingObject(LuaObject templateData) {
 		super(templateData);
@@ -71,6 +74,16 @@ class BuildingObject extends TangibleObject implements QuadTree {
 		super.containerVolumeLimit = 0xFFFFFFFF;
 
 		super.containerType = 2;
+		
+		totalCellNumber = templateData.getIntField("totalCellNumber");
+	}
+	
+	public void createCellObjects() {
+		for (int i = 0; i < totalCellNumber; ++i) {
+			SceneObject newCell = getZoneServer().createObject(206832110, 2);
+
+			addCell((CellObject)newCell);
+		}
 	}
 		
 	public native void initializeTransientMembers();

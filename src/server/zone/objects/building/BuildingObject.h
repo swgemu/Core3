@@ -53,6 +53,16 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+
+class ZoneServer;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -73,6 +83,8 @@ namespace building {
 class BuildingObject : public TangibleObject {
 public:
 	BuildingObject(LuaObject* templateData);
+
+	void createCellObjects();
 
 	void initializeTransientMembers();
 
@@ -134,10 +146,14 @@ class BuildingObjectImplementation : public TangibleObjectImplementation, public
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
+	int totalCellNumber;
+
 public:
 	BuildingObjectImplementation(LuaObject* templateData);
 
 	BuildingObjectImplementation(DummyConstructorParameter* param);
+
+	void createCellObjects();
 
 	void initializeTransientMembers();
 
@@ -213,6 +229,8 @@ public:
 	BuildingObjectAdapter(BuildingObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void createCellObjects();
 
 	void initializeTransientMembers();
 

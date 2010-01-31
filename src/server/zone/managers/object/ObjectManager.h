@@ -55,6 +55,7 @@ which carries forward this exception.
 
 class ObjectDatabase;
 class ObjectDatabaseEnvironment;
+class TemplateManager;
 
 namespace server {
 namespace zone {
@@ -67,6 +68,7 @@ namespace zone {
 	class ObjectManager : public DOBObjectManagerImplementation, public Logger, public Singleton<ObjectManager> {
 		ZoneProcessServerImplementation* server;
 		ObjectDatabaseEnvironment* databaseEnvironment;
+		TemplateManager* templateManager;
 
 	public:
 		ObjectFactory<SceneObject* (LuaObject*), uint32> objectFactory;
@@ -119,6 +121,8 @@ namespace zone {
 		// LUA
 		void registerFunctions();
 		static int includeFile(lua_State* L);
+		static int crcString(lua_State* L);
+		static int addTemplateCRC(lua_State* L);
 
 	};
 

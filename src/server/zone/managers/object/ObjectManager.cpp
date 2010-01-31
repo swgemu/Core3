@@ -38,6 +38,7 @@
 #include "server/zone/ZoneProcessServerImplementation.h"
 #include "server/db/ObjectDatabase.h"
 #include "server/db/ObjectDatabaseEnvironment.h"
+#include "server/zone/managers/template/TemplateManager.h"
 
 Lua* ObjectManager::luaTemplatesInstance = NULL;
 
@@ -45,6 +46,7 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	server = NULL;
 
 	databaseEnvironment = ObjectDatabaseEnvironment::instance();
+	templateManager = TemplateManager::instance();
 
 	registerObjectTypes();
 
@@ -545,12 +547,35 @@ int ObjectManager::destroyObject(uint64 objectID) {
 void ObjectManager::registerFunctions() {
 	//lua generic
 	lua_register(luaTemplatesInstance->getLuaState(), "includeFile", includeFile);
+	lua_register(luaTemplatesInstance->getLuaState(), "crcString", crcString);
+	lua_register(luaTemplatesInstance->getLuaState(), "addTemplateCRC", addTemplateCRC);
 }
 
 int ObjectManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
 	Lua::runFile("scripts/object/" + filename, L);
+
+	return 0;
+}
+
+int ObjectManager::crcString(lua_State* L) {
+	String ascii = Lua::getStringParameter(L);
+
+	uint32 crc = ascii.hashCode();
+
+	lua_pushnumber(L, crc);
+
+	return 1;
+}
+
+int ObjectManager::addTemplateCRC(lua_State* L) {
+	String ascii =  lua_tostring(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	uint32 crc = (uint32) ascii.hashCode();
+
+	TemplateManager::instance()->addTemplate(crc, ascii);
 
 	return 0;
 }
