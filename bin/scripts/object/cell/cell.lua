@@ -25,7 +25,7 @@ object_cell_cell = SharedCellObjectTemplate:new {
 	objectName = "",
 	onlyVisibleInTools = 0,
 
-	portalLayoutFilename = ,
+	portalLayoutFilename = "",
 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
