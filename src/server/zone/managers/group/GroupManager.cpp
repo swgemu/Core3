@@ -198,7 +198,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
-	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(2022504856, 0, "");
+	ManagedReference<GroupObject*> group = (GroupObject*) ObjectManager::instance()->createObject(0x13dcb432, 0, "");
 	group->initializeLeader(leader);
 	group->startChatRoom();
 	group->setZone(leader->getZone());
