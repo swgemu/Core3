@@ -152,7 +152,7 @@ void SuiBankTransferBoxImplementation::_serializationHelperMethod() {
 	addSerializableVariable("bank", &bank);
 }
 
-SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBoxImplementation((player)) {
+SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBoxImplementation(player) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl(72):  super.windowType = windowtype;
 	SuiBoxImplementation::windowType = windowtype;

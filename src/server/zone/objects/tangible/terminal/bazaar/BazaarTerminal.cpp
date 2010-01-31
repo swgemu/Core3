@@ -148,7 +148,7 @@ void BazaarTerminalImplementation::_serializationHelperMethod() {
 	addSerializableVariable("bazaarRegion", &bazaarRegion);
 }
 
-BazaarTerminalImplementation::BazaarTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
+BazaarTerminalImplementation::BazaarTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/bazaar/BazaarTerminal.idl(59):  Logger.setLoggingName("BazaarTerminal");
 	Logger::setLoggingName("BazaarTerminal");

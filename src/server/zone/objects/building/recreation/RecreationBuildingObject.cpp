@@ -89,7 +89,7 @@ void RecreationBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
+RecreationBuildingObjectImplementation::RecreationBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/building/recreation/RecreationBuildingObject.idl(55):  Logger.setLoggingName("RecreationBuildingObject");
 	Logger::setLoggingName("RecreationBuildingObject");

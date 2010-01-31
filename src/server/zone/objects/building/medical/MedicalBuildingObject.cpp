@@ -89,7 +89,7 @@ void MedicalBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
+MedicalBuildingObjectImplementation::MedicalBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/building/medical/MedicalBuildingObject.idl(55):  Logger.setLoggingName("MedicalBuildingObject");
 	Logger::setLoggingName("MedicalBuildingObject");

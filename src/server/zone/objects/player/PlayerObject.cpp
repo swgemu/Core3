@@ -475,7 +475,7 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("skillList", &skillList);
 }
 
-PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
+PlayerObjectImplementation::PlayerObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/player/PlayerObject.idl(107):  loadTemplateData(templateData);
 	loadTemplateData(templateData);

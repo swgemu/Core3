@@ -298,7 +298,7 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("cells", &cells);
 }
 
-BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation((templateData)) {
+BuildingObjectImplementation::BuildingObjectImplementation(LuaObject* templateData) : TangibleObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/building/BuildingObject.idl(65):  Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");

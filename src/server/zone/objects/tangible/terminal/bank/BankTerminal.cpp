@@ -138,7 +138,7 @@ void BankTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-BankTerminalImplementation::BankTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
+BankTerminalImplementation::BankTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl(63):  Logger.setLoggingName("BankTerminal");
 	Logger::setLoggingName("BankTerminal");

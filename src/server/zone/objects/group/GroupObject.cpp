@@ -290,7 +290,7 @@ void GroupObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("groupLevel", &groupLevel);
 }
 
-GroupObjectImplementation::GroupObjectImplementation(LuaObject* templateData) : SceneObjectImplementation((templateData)) {
+GroupObjectImplementation::GroupObjectImplementation(LuaObject* templateData) : SceneObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/group/GroupObject.idl(67):  groupLevel = 0;
 	groupLevel = 0;

@@ -105,7 +105,7 @@ void MissionTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-MissionTerminalImplementation::MissionTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
+MissionTerminalImplementation::MissionTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl(56):  Logger.setLoggingName("MissionTerminal");
 	Logger::setLoggingName("MissionTerminal");

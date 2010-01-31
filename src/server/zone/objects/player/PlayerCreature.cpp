@@ -742,7 +742,7 @@ void PlayerCreatureImplementation::_serializationHelperMethod() {
 	addSerializableVariable("factionStatus", &factionStatus);
 }
 
-PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) : CreatureObjectImplementation((templateData)) {
+PlayerCreatureImplementation::PlayerCreatureImplementation(LuaObject* templateData) : CreatureObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/player/PlayerCreature.idl(132):  Logger.setLoggingName("PlayerCreature");
 	Logger::setLoggingName("PlayerCreature");

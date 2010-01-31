@@ -89,7 +89,7 @@ void TravelBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TravelBuildingObjectImplementation::TravelBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
+TravelBuildingObjectImplementation::TravelBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/building/travel/TravelBuildingObject.idl(55):  Logger.setLoggingName("TravelBuildingObject");
 	Logger::setLoggingName("TravelBuildingObject");

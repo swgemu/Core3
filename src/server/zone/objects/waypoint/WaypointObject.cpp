@@ -176,7 +176,7 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 	addSerializableVariable("active", &active);
 }
 
-WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation((templateData)) {
+WaypointObjectImplementation::WaypointObjectImplementation(LuaObject* templateData) : IntangibleObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/waypoint/WaypointObject.idl(30):  Logger.setLoggingName("WaypointObject");
 	Logger::setLoggingName("WaypointObject");

@@ -103,7 +103,7 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 
 }
 
-TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation((templateData)) {
+TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation(LuaObject* templateData) : BuildingObjectImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl(56):  Logger.setLoggingName("TutorialBuildingObject");
 	Logger::setLoggingName("TutorialBuildingObject");

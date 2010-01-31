@@ -119,7 +119,7 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 
 }
 
-StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation((templateData)) {
+StartingLocationTerminalImplementation::StartingLocationTerminalImplementation(LuaObject* templateData) : TerminalImplementation(templateData) {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.idl(58):  Logger.setLoggingName("StartingLocationTerminal");
 	Logger::setLoggingName("StartingLocationTerminal");
